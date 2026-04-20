@@ -1,0 +1,317 @@
+{
+  "$comment": "EXEMPLE — Brand fictive Lumya. Montre à quoi ressemble un brand.json rempli, aligné sur _TEMPLATE.",
+  "_schema": "brand/L1-brand",
+  "_version": "2.1",
+  "_field_types": {
+    "identity.*": "stated",
+    "positioning.*": "stated",
+    "tone_of_voice.*": "stated",
+    "proofs.*": "observed",
+    "social_media.*": "observed",
+    "platforms.*": "observed",
+    "contacts.*": "observed",
+    "financials.currency": "observed",
+    "financials.aov": "derived",
+    "financials.monthly_revenue": "observed",
+    "financials.avg_cogs_pct": "derived",
+    "financials.avg_gross_margin": "derived",
+    "financials.customer_ltv": "derived",
+    "financials.refund_rate": "derived",
+    "financials.payback_days": "derived",
+    "financials.roas_breakeven": "derived",
+    "seasonality.*": "structured",
+    "products_index": "structured",
+    "market.market_overview.*": "structured",
+    "market.competitors[].name": "observed",
+    "market.competitors[].url": "observed",
+    "market.competitors[].estimated_monthly_revenue": "observed",
+    "market.competitors[].market_position": "structured",
+    "market.competitors[].price_vs_us": "structured",
+    "market.competitors[].primary_channel": "structured",
+    "market.competitors[].positioning": "structured",
+    "market.awareness_distribution.*": "structured",
+    "market.regulatory.*": "observed"
+  },
+  "purchase_driver": "pain",
+  "meta": {
+    "name": "Lumya",
+    "slug": "lumya",
+    "vertical": "skincare",
+    "market": "FR",
+    "stage": "growth",
+    "status": "active",
+    "owner": "Sophie Renard",
+    "team": [
+      "Sophie Renard",
+      "Julie (freelance media buyer)"
+    ],
+    "created": "2026-01-10",
+    "updated": "2026-04-03"
+  },
+  "identity": {
+    "url": "https://lumya.fr",
+    "tagline": "La peau que tu mérites, sans compromis.",
+    "year_founded": 2022,
+    "language": "fr",
+    "target_geo": [
+      "FR"
+    ],
+    "brand_mission": "Rendre les soins anti-âge cliniquement efficaces accessibles aux femmes actives.",
+    "brand_vision": "Devenir la référence DTC des soins visage à concentration clinique en France.",
+    "brand_story": "Fondée par une dermatologue lasse de voir ses patientes gaspiller de l'argent sur des crèmes inefficaces. Lumya est née d'une frustration professionnelle devenue mission.",
+    "brand_personality": [
+      "experte",
+      "accessible",
+      "directe",
+      "bienveillante"
+    ],
+    "brand_values": [
+      "transparence",
+      "efficacité prouvée",
+      "accessibilité",
+      "science-first"
+    ]
+  },
+  "positioning": {
+    "value_proposition": "Les résultats d'un soin professionnel, dans ta routine quotidienne.",
+    "market_category": "skincare anti-âge premium accessible",
+    "brand_differentiation": "Formules à concentration clinique validées par des dermatologues, sans les prix de pharmacie.",
+    "brand_promise": "Des résultats visibles et mesurables en 28 jours — ou remboursée."
+  },
+  "tone_of_voice": {
+    "style": "experte mais accessible, directe, sans jargon inutile",
+    "register": "conversational",
+    "banned_words": [
+      "révolutionnaire",
+      "magique",
+      "anti-âge miraculeux",
+      "rajeunissez"
+    ],
+    "frequent_words": [
+      "cliniquement prouvé",
+      "concentration active",
+      "résultats visibles",
+      "sans artifice"
+    ]
+  },
+  "proofs": {
+    "total_customers": 18500,
+    "global_rating": 4.7,
+    "global_review_count": 2340,
+    "results": [
+      "87% constatent une amélioration de l'éclat en 28 jours",
+      "Réduction rides -34% mesurée à 12 semaines"
+    ],
+    "testimonials": [
+      "Première crème que je rachète — et j'en suis à mon 4e pot. (Marie-Claire, 48 ans)",
+      "Mon dermato m'a demandé ce que j'utilisais tellement ma peau a changé. (Isabelle, 52 ans)"
+    ],
+    "certifications": [
+      "Testé dermatologiquement",
+      "Non comédogène"
+    ],
+    "press_mentions": [
+      "Madame Figaro",
+      "Elle",
+      "Cosmopolitan FR"
+    ],
+    "notable_endorsements": [
+      "Dr. Claire Morin, dermatologue (Paris 16e)",
+      "Testée en cabinet sur 120 patientes"
+    ]
+  },
+  "social_media": {
+    "instagram": {
+      "url": "https://instagram.com/lumya.skincare",
+      "followers": 24000
+    },
+    "tiktok": {
+      "url": "https://tiktok.com/@lumya.skincare",
+      "followers": 8500
+    },
+    "youtube": {
+      "url": "",
+      "subscribers": null
+    },
+    "facebook": {
+      "url": "https://facebook.com/lumya.skincare",
+      "followers": 12000
+    }
+  },
+  "platforms": {
+    "meta_ads": {
+      "account_id": "act_1234567890",
+      "pixel_id": "px_9876543210",
+      "catalog_id": null,
+      "active": true
+    },
+    "google_ads": {
+      "account_id": "",
+      "merchant_center_id": null,
+      "active": false
+    },
+    "tiktok_ads": {
+      "account_id": "",
+      "pixel_id": null,
+      "active": false
+    },
+    "shopify": {
+      "store_url": "lumya.myshopify.com",
+      "active": true
+    },
+    "klaviyo": {
+      "list_id": "KLV_lumya_main",
+      "active": true
+    },
+    "pinterest_ads": {
+      "account_id": null,
+      "active": false
+    }
+  },
+  "financials": {
+    "currency": "EUR",
+    "aov": 68,
+    "monthly_revenue": 85000,
+    "avg_cogs_pct": 0.28,
+    "avg_gross_margin": 0.72,
+    "customer_ltv": 210,
+    "refund_rate": 0.031,
+    "payback_days": 45,
+    "roas_breakeven": 1.39,
+    "_notes": {
+      "roas_breakeven": "Calculé : 1 / avg_gross_margin = 1/0.72 ≈ 1.39"
+    }
+  },
+  "seasonality": {
+    "monthly_revenue_distribution": {
+      "jan": 10,
+      "feb": 7,
+      "mar": 8,
+      "apr": 8,
+      "may": 7,
+      "jun": 6,
+      "jul": 5,
+      "aug": 5,
+      "sep": 11,
+      "oct": 9,
+      "nov": 14,
+      "dec": 10
+    },
+    "peak_periods": [
+      "septembre (rentrée)",
+      "novembre (Black Friday + Noël anticipé)"
+    ],
+    "trough_periods": [
+      "juillet-août (vacances)"
+    ],
+    "notes": "Saisonnalité typique beauté FR. Pic rentrée + fin d'année."
+  },
+  "contacts": {
+    "founder": {
+      "name": "Sophie Renard",
+      "email": "sophie@lumya.fr",
+      "role": "Fondatrice & CEO"
+    },
+    "marketing": {
+      "name": "Julie Fabre",
+      "email": "julie@lumya.fr",
+      "role": "Freelance media buyer"
+    },
+    "operations": {
+      "name": "",
+      "email": "",
+      "role": ""
+    }
+  },
+  "market": {
+    "meta": {
+      "updated": "2026-04-03",
+      "confidence": 72
+    },
+    "market_overview": {
+      "category": "skincare anti-âge",
+      "sophistication": "mature",
+      "size_estimate": null,
+      "growth_trend": "stable",
+      "seasonality": {
+        "peak_months": [
+          9,
+          11
+        ],
+        "trough_months": [
+          7,
+          8
+        ],
+        "notes": ""
+      }
+    },
+    "competitors": [
+      {
+        "name": "Filorga",
+        "url": "https://filorga.com",
+        "market_position": "leader",
+        "price_vs_us": "higher",
+        "primary_channel": "retail",
+        "positioning": "médical-luxe, distribution pharmacie",
+        "estimated_monthly_revenue": null
+      },
+      {
+        "name": "Caudalie",
+        "url": "https://caudalie.com",
+        "market_position": "challenger",
+        "price_vs_us": "parity",
+        "primary_channel": "retail",
+        "positioning": "naturel-premium, vigne, spa lifestyle",
+        "estimated_monthly_revenue": null
+      },
+      {
+        "name": "Bioderma",
+        "url": "https://bioderma.fr",
+        "market_position": "leader",
+        "price_vs_us": "lower",
+        "primary_channel": "retail",
+        "positioning": "dermo-accessible, recommandé médecins, mass market",
+        "estimated_monthly_revenue": null
+      }
+    ],
+    "awareness_distribution": {
+      "unaware": 0.55,
+      "problem_aware": 0.25,
+      "solution_aware": 0.12,
+      "product_aware": 0.06,
+      "most_aware": 0.02
+    },
+    "regulatory": {
+      "constraints": [
+        "Claims dermatologiques encadrés DGCCRF"
+      ],
+      "certifications_required": [],
+      "advertising_restrictions": [
+        "Interdit : 'rajeunit', 'efface les rides', toute promesse thérapeutique non prouvée"
+      ]
+    }
+  },
+  "products_index": [
+    {
+      "slug": "creme-eclat",
+      "name": "Crème Éclat Lumya",
+      "role": "hero",
+      "type": "sensory",
+      "product_category": "physical",
+      "price": 89,
+      "enriched": true
+    }
+  ],
+  "audiences_index": [
+    {
+      "slug": "femmes-40-55",
+      "name": "Femmes actives 40-55",
+      "scope": "segment",
+      "parent_slug": null,
+      "validation_status": "hypothesis"
+    }
+  ],
+  "_changelog": {
+    "2.1": "S30d-close: purchase_driver added (brand-level default, cascades to audiences). audience_trees[] added (optional marketplaces). Per D#243, D#244, D#246, D#250."
+  }
+}

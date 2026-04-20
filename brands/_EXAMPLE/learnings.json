@@ -1,0 +1,67 @@
+{
+  "$comment": "EXEMPLE — Learnings opérationnels accumulés pour Lumya.",
+  "_version": "1.0",
+  "_field_types": {
+    "entries[].id": "derived",
+    "entries[].fact": "observed",
+    "entries[].platform": "observed",
+    "entries[].date": "observed",
+    "entries[].source": "observed",
+    "entries[].tags": "structured",
+    "entries[].status": "derived",
+    "entries[].superseded_by": "derived",
+    "entries[].genericity": "derived",
+    "entries[].promoted_to": "derived"
+  },
+
+  "entries": [
+    {
+      "id": "LRN-001",
+      "fact": "Les adsets Lumya avec advantage_audience activé ignorent les exclusions retargeting. Toujours passer advantage_audience: 0 avant de modifier le targeting.",
+      "platform": "meta_ads",
+      "date": "2026-02-15",
+      "source": "session — création campagne NC",
+      "tags": ["targeting", "advantage_audience", "workaround"],
+      "status": "active",
+      "superseded_by": null,
+      "genericity": "sector",
+      "promoted_to": null
+    },
+    {
+      "id": "LRN-002",
+      "fact": "Shopify Lumya : les commandes cadeau (tag 'gift') ont un AOV 2x plus élevé mais un taux de retour 3x supérieur. Exclure du calcul LTV standard.",
+      "platform": "shopify",
+      "date": "2026-03-02",
+      "source": "analyse commandes Q1",
+      "tags": ["orders", "gift", "ltv", "exclusion"],
+      "status": "active",
+      "superseded_by": null,
+      "genericity": "brand-specific",
+      "promoted_to": null
+    },
+    {
+      "id": "LRN-003",
+      "fact": "Les audiences lookalike 1% BDD converties dans les 90 derniers jours surperforment les LKL BDD totale de 40% en CPA. Toujours segmenter la seed par recency.",
+      "platform": "meta_ads",
+      "date": "2026-03-18",
+      "source": "test A/B semaine 12",
+      "tags": ["lookalike", "seed_quality", "cpa", "test_result"],
+      "status": "active",
+      "superseded_by": null,
+      "genericity": "sector",
+      "promoted_to": null
+    },
+    {
+      "id": "LRN-004",
+      "fact": "DGCCRF : ne jamais utiliser 'anti-rides' comme claim sur les ads. Reformuler en 'aide à réduire l'apparence des rides'. Règle cosmétique FR.",
+      "platform": "compliance",
+      "date": "2026-01-20",
+      "source": "brief juridique client",
+      "tags": ["compliance", "dgccrf", "claims", "cosmétique"],
+      "status": "active",
+      "superseded_by": null,
+      "genericity": "universal",
+      "promoted_to": null
+    }
+  ]
+}

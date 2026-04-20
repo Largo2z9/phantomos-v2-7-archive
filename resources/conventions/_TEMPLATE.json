@@ -1,0 +1,59 @@
+{
+  "_schema": "convention",
+  "_version": "1.0",
+  "_field_types": {
+    "meta.*": "observed",
+    "access.*": "observed",
+    "rate_limits.*": "observed",
+    "operations[].*": "structured",
+    "naming_conventions.*": "structured",
+    "known_limitations[]": "observed",
+    "learned_rules[]": "observed"
+  },
+  "_doc_check": {
+    "required_before_first_call": true,
+    "last_doc_read": "",
+    "doc_source_urls": []
+  },
+  "meta": {
+    "platform": "",
+    "category": "",
+    "category_options": ["paid_media", "cms", "analytics", "workspace", "crm", "email", "marketplace"],
+    "api_version": "",
+    "documentation_url": "",
+    "last_updated": ""
+  },
+  "access": {
+    "method": "",
+    "method_options": ["mcp", "api_rest", "sdk", "browser_only"],
+    "credentials_location": "",
+    "credentials_location_options": ["brand", "shared"],
+    "credential_keys": [],
+    "oauth_scopes_required": [],
+    "app_review_required": false,
+    "loading_pattern": "from dotenv import load_dotenv; import os\nload_dotenv(os.path.join(BRAND_PATH, 'credentials.env'))"
+  },
+  "rate_limits": {
+    "per_second": null,
+    "per_hour": null,
+    "per_day": null,
+    "scope": "",
+    "scope_options": ["per_app", "per_user", "per_ad_account", "per_property"],
+    "quota_tiers": [],
+    "burst_strategy": "",
+    "backoff_on_429": "exponential",
+    "monitoring_endpoint": ""
+  },
+  "operations": [
+    {
+      "name": "",
+      "description": "",
+      "endpoint_or_method": "",
+      "example": "",
+      "notes": ""
+    }
+  ],
+  "naming_conventions": {},
+  "known_limitations": [],
+  "learned_rules": []
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "index.schema.json",
+  "version": "1.0.0",
+  "last_updated": null,
+  "stats": {
+    "total_resources": 0,
+    "by_type": {
+      "catalogue": 0,
+      "routing": 0,
+      "framework": 0,
+      "sop": 0,
+      "quality-spec": 0,
+      "convention": 0,
+      "template": 0
+    }
+  },
+  "resources": [],
+  "id_prefixes": {}
+}

@@ -1,0 +1,37 @@
+# Contract — Daily use
+
+> **Load this doc when:** the agent is in daily-use mode (post-setup), about to close a turn with suggestions, capture a learning, connect to a platform, or answer a definition question.
+> **Otherwise:** ignore. The root `CLAUDE.md` loads this on demand via pointer.
+
+---
+
+## Smart suggests. Chairman a/b/c/d
+
+**ALWAYS** end every daily-use message with suggestions. Option count depends on render mode:
+
+- **Markdown fallback** (when `AskUserQuestion` tool is unavailable): 4 options a/b/c/d with **(d) Other MANDATORY** as the open-door escape. Never skip (d) in markdown mode.
+- **`AskUserQuestion` tool** (preferred): 2 to 4 **substantive options**. The tool natively renders a free-text escape (*"Chat about this"* / *"Other"*). **NEVER** add an explicit *Other*, *Type something*, *Chat about this*, or *Ask me anything else* option inside the 4 slots — that duplicates the native escape and creates redundant friction. The 4 slots are all real suggestions, diversified.
+
+Substance rules (both modes): obvious next step of current flow, broadening / digging angle, lateral pivot, and (in markdown) open-door.
+
+**CRITICAL: prefer `AskUserQuestion` tool over markdown a/b/c/d.** The tool renders native clickable options + auto free-text escape + multi-select. **YOU MUST** load it via `ToolSearch(select:AskUserQuestion)` early in session (first daily-use turn), then use it for every a/b/c/d. Same substance rules apply: diversification, 6-15 words per option, no generic ("Tell me more"), no placeholder.
+
+Rules: 6-15 words/option, operator language, no jargon, no [placeholders], no generic ("Tell me more"). **NEVER** 3 variants of the same family (diversify: 1 deepening + 1 broadening + 1 lateral pivot). **ZERO** suggestions on terminal signals ("thanks", "later", "ok", "perfect"). Setup-brand Step 1-4 overrides to 1-2 next-steps max, **NEVER** a menu (resumes Step 5 + daily). 10-second test: a good suggestion is what the operator would have typed 10 seconds later. Contextual examples → `docs/system/patterns.md § Close Variants` + `.claude/commands/tour.md § Milestone 8`.
+
+---
+
+## Learning capture
+
+Silent buffer during session. Batch persist on trigger (end of Step 5, post-deliverable, every 3-5 dense turns, session close, explicit "learn/save"). **ALWAYS** show plain-language recap before write, operator corrects/accepts/skips in one go. **NEVER** propose persistence every turn. Triggers → `learn-from-session/SKILL.md § Triggers`. Rolling line in `session-state.md` every 5 turns (crash mitigation).
+
+---
+
+## Connectivity
+
+Just-in-time, no permanent auto-sync. Assisted setup, tokens in `credentials.env` (brand) / `credentials_shared.env` (workspace), conventions in `resources/conventions/{platform}.json`. One-time per platform, reused cross-brand. **NEVER** reply "no live connectors in V1" (product false-negative). Pattern + reply script → `docs/system/architecture.md § Connectivity Pattern`.
+
+---
+
+## Pedagogy on demand
+
+Operator asks *"what's X"* → **ALWAYS** immediate plain-language definition + concrete analogy if useful. 3 sentences max unless asked to dig. Permanent, not only onboarding.

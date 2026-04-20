@@ -1,0 +1,76 @@
+{
+  "_schema": "update-manifest/1.0",
+  "from_version": "2.6.2",
+  "to_version": "2.6.3",
+  "released_at": "2026-04-19",
+  "summary": "Disambiguation field added to colliding skills. Brand-snapshot digest system. Update mechanism bootstrap.",
+  "breaking": false,
+  "requires_confirmation": false,
+  "notes": "Safe overlay release. Zero impact on operator data. Post-update: regenerate manifest and brand snapshots.",
+  "changes": [
+    {
+      "type": "doc-change",
+      "file": "CLAUDE.md",
+      "action": "overwrite",
+      "safe": true,
+      "note": "Skills section gains disambiguation tie-breaker rule. Context DB section points at brand snapshot first. Mutation rule mandates snapshot rebuild after core file writes."
+    },
+    {
+      "type": "infra-change",
+      "file": ".skills/build-manifest.py",
+      "action": "overwrite",
+      "post_step": "python3 .skills/build-manifest.py",
+      "safe": true,
+      "note": "Manifest generator captures disambiguates_against and hyphenated keys."
+    },
+    {
+      "type": "infra-added",
+      "file": ".skills/build-brand-snapshot.py",
+      "action": "create",
+      "post_step": "python3 .skills/build-brand-snapshot.py --all",
+      "safe": true,
+      "note": "New script. Generates brands/{slug}/_snapshot.md per brand."
+    },
+    {
+      "type": "doc-change",
+      "files": [
+        ".skills/skills/setup-brand/SKILL.md",
+        ".skills/skills/onboard-brand/SKILL.md",
+        ".skills/skills/snapshot-brand/SKILL.md",
+        ".skills/skills/audit-meta-setup/SKILL.md",
+        ".skills/skills/validate-resources/SKILL.md"
+      ],
+      "action": "overwrite",
+      "safe": true,
+      "note": "disambiguates_against field added to frontmatter on 5 skills with trigger collisions."
+    },
+    {
+      "type": "doc-added",
+      "file": "_version.json",
+      "action": "create",
+      "safe": true,
+      "note": "Template version registry. Read by update-workspace at install and on update."
+    },
+    {
+      "type": "doc-added",
+      "file": "docs/system/updates.md",
+      "action": "create",
+      "safe": true,
+      "note": "Update doctrine for maintainers. How to publish clean releases."
+    },
+    {
+      "type": "skill-added",
+      "skill": "update-workspace",
+      "files": [".skills/skills/update-workspace/SKILL.md"],
+      "action": "create",
+      "safe": true,
+      "note": "Orchestrator skill. Applies update manifests. Delegates schema bumps to migrate-workspace."
+    }
+  ],
+  "post_update_checklist": [
+    "python3 .skills/build-manifest.py",
+    "python3 .skills/build-brand-snapshot.py --all",
+    "Run validate-resources on each brand",
+    "Update /operator/installation.json → template_version_installed = 2.6.3"
+  ]
+}

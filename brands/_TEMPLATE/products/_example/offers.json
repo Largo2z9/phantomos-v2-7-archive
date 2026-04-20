@@ -1,0 +1,63 @@
+{
+  "$comment": "Commercial offers for this product. v2.0 introduces offer_groups[] with shared{} inheritance. One entry per purchasable option. Facts only — what is available, at what price, under what conditions. Pre-cart scope only (post-cart = future funnel.json).",
+  "_schema": "offers",
+  "_version": "2.0",
+  "_changelog": {
+    "2.0": "MAJOR. Hard-break from flat offers[] (v1.x) to offer_groups[] + shared{} + offers[]. Merge rules: objects deep-merge, arrays replace, scalars override explicitly. Merge MUST be resolved BEFORE JSON Schema validation. Added meta.scope='pre_cart' const to codify offer/funnel frontier. Type enum reduced 12→10 (removed hardware_bundle → bundle+tags[hardware]+requires_offer_id; removed personalized → any type + personalization{} block pointer). subscription.intro_discount scalar → subscription.intro_phases[] array. Added membership{} block distinct from subscription (Amazon Prime / Thrive Market pattern). Removed zombie fields: commitment_duration, recurring_discount, skip_window, qty_per_variant, matrix_dimensions, supply_guarantee. 9th semantic check on requires_offer_id cycle detection runs post-merge in validate-all.py.",
+    "1.8": "Batch 5 stress test final flat-schema version. See _ARCHIVE for legacy."
+  },
+
+  "meta": {
+    "product_slug": "example-product",
+    "scope": "pre_cart",
+    "updated": ""
+  },
+
+  "offer_groups": [
+    {
+      "group_id": "GRP-01",
+      "name": "Default group",
+      "description": "One group per product as minimum. Split into multiple groups only when offers share distinct defaults (shipping, returns, warranty, payment_methods, active_window, product_refs). Group-of-1 is a valid pattern — use new_offer.py generator to avoid boilerplate.",
+      "active": true,
+
+      "shared": {
+        "$comment": "Shared defaults for all offers in this group. MERGE RULES: (1) nested objects (pricing, subscription, contents, etc.) merge deep — offer wins on key collision. (2) arrays (payment_methods, tags, product_refs) replace entirely when set at offer level. (3) scalars and booleans override explicitly. VALIDATION TIMING: validator MUST resolve merge (shared → offer) BEFORE running JSON Schema validation.",
+        "pricing": {
+          "model": "one_shot",
+          "currency": "EUR"
+        },
+        "tags": []
+      },
+
+      "offers": [
+        {
+          "offer_id": "OFR-01",
+          "name": "",
+          "type": "single",
+          "product_refs": [{"slug": "example-product", "quantity": 1}],
+          "pricing": {
+            "model": "one_shot",
+            "price": null,
+            "price_original": null,
+            "currency": "EUR"
+          },
+          "active": true,
+          "tags": [],
+
+          "_notes": {
+            "type": "single | subscription | bundle | prepay | membership | gifting | seasonal | launch | digital | service",
+            "type.bundle_hardware": "Hardware + consumable lock-in (Bruvi, Gozney, Keurig) = type 'bundle' + tags ['hardware'] + requires_offer_id pointing to the consumable offer.",
+            "type.personalized": "Quiz/AI-selected dynamic offers (Care/of, Prose, Function of Beauty) = keep the base type (subscription/one_time/bundle) and add a personalization{} block with {source, source_id, dynamic_pricing, dynamic_contents}. The offers.json only holds the pointer — rules engine lives elsewhere.",
+            "product_refs": "Array of {slug, quantity}. Required at offer level unless identical across group and set in shared. minItems: 1.",
+            "pricing.model": "one_shot | subscription | tiered",
+            "requires_offer_id": "For hardware+refill, membership+checkout, trial+converts. Points to another offer_id in this doc or a cross-product offer_id. Cycle detection runs in validate-all.py 9th semantic check.",
+            "subscription.intro_phases": "Array of {from_cycle, to_cycle, price|discount_type+value, label}. Replaces the v1.8 scalar intro_discount. Cycle null = phase open until churn. Last open phase = source of truth for steady-state pricing.",
+            "membership": "Distinct from subscription. Fields: billing_period, perks[], catalog_discount{applies_to, tag_filter}, includes_products[], physical_shipment. Use when the offer is access+perks, not delivery of a single recurring product.",
+            "meta.scope": "Const 'pre_cart'. Codifies that offers.json only describes merchandising before add-to-cart. Post-cart (upsell, bump, thank-you page) = future funnel.json.",
+            "migration_from_v1.8": "Run research/migrate_offers_v1_to_v2.py <path> --write. Group-of-1 wrapper auto-generated. Operator can regroup post-migration if multiple offers share distinct defaults."
+          }
+        }
+      ]
+    }
+  ]
+}

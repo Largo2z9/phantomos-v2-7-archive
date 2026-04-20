@@ -1,0 +1,23 @@
+{
+  "$comment": "Workspace state — auto-maintained by validate-resources. Only setup-brand may initialize brand_slug and last_session. All other writes by validate only.",
+
+  "brand_slug": "",
+  "last_session": null,
+  "last_activity": null,
+  "wedge_complete": false,
+
+  "completeness": {
+    "brand": "empty",
+    "products": {},
+    "audiences": {},
+    "offers": {},
+    "_notes": "Values: empty | draft | partial | complete. Brand entity includes market context."
+  },
+
+  "freshness": {
+    "_notes": "Auto-populated. Key = relative file path, value = { updated, stale }.",
+    "_threshold_days": 90
+  },
+
+  "flags": []
+}

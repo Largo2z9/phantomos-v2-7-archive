@@ -1,0 +1,103 @@
+{
+  "_schema": "convention",
+  "_version": "1.0",
+  "_notes": "Example convention file for Meta Ads. Copy and adapt for your instance.",
+  "_field_types": {
+    "meta.*": "observed",
+    "access.*": "observed",
+    "operations[].*": "structured",
+    "naming_conventions.*": "structured",
+    "known_limitations[]": "observed",
+    "learned_rules[]": "observed"
+  },
+  "meta": {
+    "platform": "Meta Ads",
+    "category": "paid_media",
+    "api_version": "v21.0",
+    "documentation_url": "https://developers.facebook.com/docs/marketing-apis",
+    "last_updated": "2026-04-01"
+  },
+  "access": {
+    "method": "api_rest",
+    "credentials_location": "brand",
+    "credential_keys": [
+      "META_ACCESS_TOKEN",
+      "META_AD_ACCOUNT_ID",
+      "META_PAGE_ID",
+      "META_INSTAGRAM_USER_ID"
+    ],
+    "loading_pattern": "from dotenv import load_dotenv; import os\nload_dotenv(os.path.join(BRAND_PATH, 'credentials.env'))\n# One shared token across brands — only META_AD_ACCOUNT_ID changes per brand.",
+    "shared_token_note": "Un seul token Meta partagé entre toutes les brands. Seul META_AD_ACCOUNT_ID change."
+  },
+  "operations": [
+    {
+      "name": "get_insights",
+      "description": "Pull performance metrics for campaigns, adsets, or ads",
+      "endpoint_or_method": "GET /{ad_account_id}/insights",
+      "example": "fields=spend,impressions,clicks,actions,cost_per_action_type,purchase_roas&date_preset=yesterday",
+      "notes": "Filter spend > 0 in Python, not via effective_status. Extract 'purchase' from actions array."
+    },
+    {
+      "name": "create_campaign",
+      "description": "Create a new campaign",
+      "endpoint_or_method": "POST /{ad_account_id}/campaigns",
+      "example": "name=FR-Conversion-Purchase&objective=OUTCOME_SALES&status=PAUSED&special_ad_categories=[]",
+      "notes": "Always create PAUSED. One campaign per objective, one per language."
+    },
+    {
+      "name": "create_ad",
+      "description": "Create an ad within an adset",
+      "endpoint_or_method": "POST /{ad_account_id}/ads",
+      "example": "name={date}-{product}-{format}-{crea_name}&adset_id={id}&creative={creative_id}&status=PAUSED",
+      "notes": "Batch max 6 ads per request. Always verify by GET /{ad_id} after creation (timeouts can mask success). Always disable multi_advertiser_optimization_type: PAUSED."
+    },
+    {
+      "name": "upload_image",
+      "description": "Upload an image asset",
+      "endpoint_or_method": "POST /{ad_account_id}/adimages",
+      "example": "bytes={base64_content}",
+      "notes": "Response contains hash — save to JSON immediately."
+    }
+  ],
+  "naming_conventions": {
+    "campaign_pattern": "{LANG}-{Objective}-{Suffix}",
+    "campaign_examples": [
+      "FR-Conversion-Purchase",
+      "FR-Conversion-Purchase_NC",
+      "FR-Advantage",
+      "FR-DPA-Click"
+    ],
+    "adset_pattern": "{LANG}-{Targeting}{_Placement}{-Theme}",
+    "adset_examples": [
+      "FR-Broad",
+      "FR-Launch",
+      "FR-Global",
+      "FR-Interest_Skincare",
+      "FR-LKL_BDD"
+    ],
+    "separator_rules": "Tiret (-) = séparateur de niveaux. Underscore (_) = remplace un espace. Pas d'accent.",
+    "utm_template": "utm_source={{site_source_name}}&utm_medium={{placement}}&utm_campaign={{campaign.name}}+-+{{adset.name}}&utm_content={{ad.name}}"
+  },
+  "known_limitations": [
+    "asset_feed_spec non modifiable après création (subcode 1815573). Corriger = nouveau creative + PATCH ad.",
+    "Endpoint /{object}/copies renvoie 'Unsupported request' en development_access tier.",
+    "Impossible de créer promoted_object avec mcme_conversion_id via API → dupliquer adset dans BM.",
+    "start_time d'un adset non modifiable après démarrage.",
+    "Si targeting_automation.advantage_audience = 1, targeting verrouillé → passer advantage_audience: 0 en même temps.",
+    "Endpoint /ads d'un adset peut avoir du caching → vérifier par IDs individuels."
+  ],
+  "learned_rules": [
+    "call_to_actions OBLIGATOIRE dans asset_feed_spec — sans = erreur subcode 1487664.",
+    "call_to_action_label OBLIGATOIRE dans chaque asset_customization_rule si call_to_actions présent.",
+    "Minimum 2 règles dans asset_customization_rules — 1 seule = erreur subcode 2446428.",
+    "omnichannel_link_spec est top-level du creative, PAS dans asset_feed_spec.",
+    "ad_formats: utiliser AUTOMATIC_FORMAT (pas SINGLE_IMAGE) avec asset_customization_rules.",
+    "optimization_type: PLACEMENT (pas REGULAR) pour multi-format — REGULAR limite à 1 ad par adset.",
+    "Supprimer degrees_of_freedom_spec.creative_features_spec.standard_enhancements (deprecated).",
+    "Supprimer image_crops format 191x100 (deprecated). Utiliser 100x100.",
+    "Utiliser instagram_user_id (pas instagram_actor_id — deprecated).",
+    "object_story_spec: {page_id, instagram_user_id} uniquement — pas de video_data/link_data (erreur 1815166).",
+    "Rate limiting: ~100k pts/h + 40 pts par ad active. Sleep 0.5s entre créations. Erreur code 17/subcode 2446079 = throttled.",
+    "Méthode: avant de créer un creative inconnu, GET les ads existantes qui marchent pour reverse-engineer la structure."
+  ]
+}

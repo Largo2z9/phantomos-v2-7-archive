@@ -1,0 +1,69 @@
+{
+  "$comment": "Profil opérateur — contexte macro transversal aux brands. Rempli progressivement via learn-from-session quand l'opérateur laisse tomber une info. Jamais en questionnaire. Tous les champs sont null/[] par défaut.",
+  "_schema": "operator/profile",
+  "_version": "1.0",
+  "_field_types": {
+    "identity.name": "stated",
+    "identity.role": "stated",
+    "identity.experience_years": "stated",
+    "identity.context_macro": "stated",
+    "identity.profile": "stated",
+    "stack_history[]": "stated",
+    "preferences.*": "stated",
+    "expectations.*": "stated",
+    "anti_patterns[]": "stated"
+  },
+
+  "identity": {
+    "$comment": "Qui est l'opérateur. Rempli quand il se présente ou le mentionne.",
+    "name": null,
+    "role": null,
+    "experience_years": null,
+    "context_macro": null,
+    "profile": null,
+    "profile_options": ["solo", "portfolio", "agency", "creator", "early", "dropshipper"]
+  },
+
+  "stack_history": [
+    {
+      "$comment_template": "Exemple d'entrée (à supprimer quand on remplit) : { tool: 'Lindy', status: 'abandoned'|'active'|'testing', tested_at: 'YYYY-MM', verdict: 'texte court', lessons: 'ce que ça nous apprend pour PhantomOS' }",
+      "tool": null,
+      "status": null,
+      "tested_at": null,
+      "verdict": null,
+      "lessons": null
+    }
+  ],
+
+  "preferences": {
+    "$comment": "Préférences de travail. Affinent le registre de l'agent.",
+    "communication_style": null,
+    "response_length": null,
+    "rhythm": null,
+    "work_hours": null,
+    "language": null,
+    "conversation_register": null,
+    "conversation_register_options": ["grounded", "standard", "dense", "technical"],
+    "os_tips_shown": [],
+    "tracking": null,
+    "tracking_options": ["on", "off"]
+  },
+
+  "expectations": {
+    "$comment": "Ce que l'opérateur attend de PhantomOS. Sert à calibrer les suggestions enrichment.",
+    "from_phantomos": null,
+    "success_criteria": null,
+    "deal_breakers": null
+  },
+
+  "anti_patterns": [
+    "$comment_template: liste de trucs que l'opérateur déteste ('questionnaires longs', 'jargon technique', 'ton commercial', 'trop de suggestions'). Capturé quand exprimé."
+  ],
+
+  "_meta": {
+    "created_at": null,
+    "last_updated": null,
+    "last_enriched_by": null,
+    "completeness": 0
+  }
+}

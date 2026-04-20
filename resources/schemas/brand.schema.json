@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Brand",
+  "description": "Per-brand identity, positioning, financials, market context. Lives in brands/{slug}/brand.json. v2.1+: purchase_driver default + audience_trees[] for marketplaces.",
+  "type": "object",
+  "required": ["meta", "identity", "positioning", "tone_of_voice", "platforms", "financials"],
+  "properties": {
+    "_schema": { "type": "string" },
+    "_version": { "type": "string" },
+    "_field_types": { "type": "object", "additionalProperties": { "type": "string" } },
+
+    "purchase_driver": {
+      "description": "Brand-level default purchase driver. Cascades to audience profiles unless overridden. See research/profile-v2.0-proposal/drivers-presets.md for taxonomy. Set to 'mixed' for brands with two distinct driver populations (requires audience_trees[] for marketplaces).",
+      "type": "string",
+      "enum": ["pain", "desire", "status", "utility", "identity", "mixed"]
+    },
+
+    "driver_blend": {
+      "description": "Required when purchase_driver='mixed'. Formal resolution rules per D#246.",
+      "type": "object",
+      "required": ["primary", "secondary", "ratio"],
+      "properties": {
+        "primary": { "type": "string", "enum": ["pain", "desire", "status", "utility", "identity"] },
+        "secondary": { "type": "string", "enum": ["pain", "desire", "status", "utility", "identity"] },
+        "ratio": { "type": "number", "minimum": 0, "maximum": 1, "description": "Weight of primary driver (0.5-1.0). Below 0.5 = invert primary/secondary." }
+      }
+    },
+
+    "audience_trees": {
+      "description": "Marketplace / two-sided brands primitive. Each tree = one distinct buyer population with its own driver (e.g. Substack: creators=status, readers=identity). When present, profile.json files live under audiences/{tree-slug}/{audience-slug}/profile.json and inherit tree-level driver unless overridden. Per D#244.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "name", "purchase_driver"],
+        "properties": {
+          "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "purchase_driver": { "type": "string", "enum": ["pain", "desire", "status", "utility", "identity", "mixed"] },
+          "side": { "type": "string", "enum": ["supply", "demand", "primary", "secondary"], "description": "Marketplace side label. Optional." },
+          "monetization": { "type": "string", "description": "Which side pays (if marketplace)." }
+        }
+      }
+    },
+
+    "meta": {
+      "type": "object",
+      "required": ["name", "slug", "created", "updated"],
+      "properties": {
+        "name": { "type": "string" },
+        "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "vertical": { "type": "string" },
+        "market": { "type": "string" },
+        "stage": { "type": "string", "enum": ["launch", "growth", "scale", "mature", "decline"] },
+        "status": { "type": "string", "enum": ["onboarding", "active", "paused", "churned"] },
+        "owner": { "type": "string" },
+        "team": { "type": "array", "items": { "type": "string" } },
+        "created": { "type": "string", "format": "date" },
+        "updated": { "type": "string", "format": "date" }
+      }
+    },
+
+    "identity": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" },
+        "tagline": { "type": "string" },
+        "year_founded": { "type": ["integer", "null"] },
+        "language": { "type": "string" },
+        "target_geo": { "type": "array", "items": { "type": "string" } },
+        "brand_mission": { "type": "string" },
+        "brand_vision": { "type": "string" },
+        "brand_story": { "type": "string" },
+        "brand_personality": { "type": "array", "items": { "type": "string" } },
+        "brand_values": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "positioning": {
+      "type": "object",
+      "properties": {
+        "value_proposition": { "type": "string" },
+        "market_category": { "type": "string" },
+        "brand_differentiation": { "type": "string" },
+        "brand_promise": { "type": "string" }
+      }
+    },
+
+    "tone_of_voice": {
+      "type": "object",
+      "properties": {
+        "style": { "type": "string" },
+        "register": { "type": "string", "enum": ["casual", "conversational", "professional", "formal"] },
+        "banned_words": { "type": "array", "items": { "type": "string" } },
+        "frequent_words": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "proofs": {
+      "type": "object",
+      "properties": {
+        "total_customers": { "type": ["integer", "null"] },
+        "global_rating": { "type": ["number", "null"] },
+        "global_review_count": { "type": ["integer", "null"] },
+        "results": { "type": "array", "items": { "type": "string" } },
+        "testimonials": { "type": "array", "items": { "type": "string" } },
+        "certifications": { "type": "array", "items": { "type": "string" } },
+        "press_mentions": { "type": "array", "items": { "type": "string" } },
+        "notable_endorsements": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "social_media": {
+      "type": "object",
+      "properties": {
+        "_notes": {}
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string" },
+          "followers": { "type": ["integer", "null"] },
+          "subscribers": { "type": ["integer", "null"] }
+        }
+      }
+    },
+
+    "platforms": {
+      "type": "object",
+      "properties": {
+        "_notes": {}
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "account_id": { "type": ["string", "null"] },
+          "pixel_id": { "type": ["string", "null"] },
+          "catalog_id": { "type": ["string", "null"] },
+          "store_url": { "type": "string" },
+          "list_id": { "type": ["string", "null"] },
+          "active": { "type": "boolean" }
+        }
+      }
+    },
+
+    "financials": {
+      "type": "object",
+      "properties": {
+        "currency": { "type": "string", "default": "EUR" },
+        "aov": { "type": ["number", "null"] },
+        "monthly_revenue": { "type": ["number", "null"] },
+        "avg_cogs_pct": { "type": ["number", "null"] },
+        "avg_gross_margin": { "type": ["number", "null"] },
+        "customer_ltv": { "type": ["number", "null"] },
+        "refund_rate": { "type": ["number", "null"] },
+        "payback_days": { "type": ["number", "null"] },
+        "roas_breakeven": { "type": ["number", "null"] }
+      }
+    },
+
+    "seasonality": {
+      "type": "object",
+      "properties": {
+        "monthly_revenue_distribution": {
+          "type": "object",
+          "properties": {
+            "jan": { "type": ["number", "null"] }, "feb": { "type": ["number", "null"] },
+            "mar": { "type": ["number", "null"] }, "apr": { "type": ["number", "null"] },
+            "may": { "type": ["number", "null"] }, "jun": { "type": ["number", "null"] },
+            "jul": { "type": ["number", "null"] }, "aug": { "type": ["number", "null"] },
+            "sep": { "type": ["number", "null"] }, "oct": { "type": ["number", "null"] },
+            "nov": { "type": ["number", "null"] }, "dec": { "type": ["number", "null"] }
+          }
+        },
+        "peak_periods": { "type": "array", "items": { "type": "string" } },
+        "trough_periods": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "contacts": {
+      "type": "object",
+      "properties": {
+        "_notes": {}
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "role": { "type": "string" }
+        }
+      }
+    },
+
+    "market": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "type": "object",
+          "properties": {
+            "updated": { "type": "string", "format": "date" },
+            "confidence": { "type": ["integer", "null"], "minimum": 0, "maximum": 100 }
+          }
+        },
+        "market_overview": {
+          "type": "object",
+          "properties": {
+            "category": { "type": "string" },
+            "sophistication": { "type": "string", "enum": ["nascent", "growing", "mature", "hyper_saturated"] },
+            "size_estimate": { "type": ["number", "null"] },
+            "growth_trend": { "type": "string", "enum": ["accelerating", "stable", "decelerating", "declining"] },
+            "seasonality": {
+              "type": "object",
+              "properties": {
+                "peak_months": { "type": "array", "items": { "type": "integer" } },
+                "trough_months": { "type": "array", "items": { "type": "integer" } },
+                "notes": { "type": "string" }
+              }
+            }
+          }
+        },
+        "competitors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "url": { "type": "string" },
+              "market_position": { "type": "string", "enum": ["leader", "challenger", "niche", "new_entrant"] },
+              "price_vs_us": { "type": "string", "enum": ["higher", "parity", "lower"] },
+              "primary_channel": { "type": "string" },
+              "positioning": { "type": "string" },
+              "estimated_monthly_revenue": { "type": ["number", "null"] }
+            }
+          }
+        },
+        "awareness_distribution": {
+          "type": "object",
+          "properties": {
+            "unaware": { "type": ["number", "null"] },
+            "problem_aware": { "type": ["number", "null"] },
+            "solution_aware": { "type": ["number", "null"] },
+            "product_aware": { "type": ["number", "null"] },
+            "most_aware": { "type": ["number", "null"] }
+          }
+        },
+        "regulatory": {
+          "type": "object",
+          "properties": {
+            "constraints": { "type": "array", "items": { "type": "string" } },
+            "certifications_required": { "type": "array", "items": { "type": "string" } },
+            "advertising_restrictions": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+
+    "products_index": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "name"],
+        "properties": {
+          "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "role": { "type": "string", "enum": ["hero", "secondary", "seasonal", "gateway"] },
+          "product_category": { "type": "string", "enum": ["physical", "physical_electronic", "digital", "service"] }
+        }
+      }
+    }
+  }
+}

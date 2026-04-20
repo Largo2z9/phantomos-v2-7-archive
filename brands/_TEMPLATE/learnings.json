@@ -1,0 +1,34 @@
+{
+  "$comment": "Brand-specific operational learnings. APPEND-ONLY — never delete or edit existing entries. Mark status to indicate relevance. Use capture-learning skill for fast appends.",
+  "_version": "1.1",
+  "_rules": {
+    "append_only": true,
+    "edit_existing": false,
+    "delete_existing": false,
+    "to_archive": "Set status to 'obsolete' or 'closed-wontretry'. Never remove the entry.",
+    "quick_add": "Use capture-learning skill: 'capture ce learning pour [brand] : [fait]'"
+  },
+  "_field_types": {
+    "entries[].id": "derived",
+    "entries[].fact": "observed",
+    "entries[].scope": "observed",
+    "entries[].platform": "observed",
+    "entries[].type": "observed",
+    "entries[].date": "observed",
+    "entries[].source": "observed",
+    "entries[].tags": "structured",
+    "entries[].status": "derived",
+    "entries[].superseded_by": "derived",
+    "entries[].genericity": "derived",
+    "entries[].promoted_to": "derived"
+  },
+  "_notes": {
+    "entries[].scope": "brand | platform | workspace — détermine où le learning s'applique",
+    "entries[].type": "workaround | compliance | behavior | api_rule — détermine comment l'agent l'utilise",
+    "entries[].platform": "meta | shopify | google | ga4 | klaviyo | etc — requis si scope=platform",
+    "entries[].status": "active | on-hold | obsolete | closed-wontretry | closed-success",
+    "entries[].genericity": "brand | sector | universal — portée du learning"
+  },
+
+  "entries": []
+}

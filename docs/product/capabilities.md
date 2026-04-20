@@ -1,0 +1,99 @@
+# Capabilities
+
+What the workspace covers today, what's next, what's explicitly out of scope. Not a feature list — a map of your work.
+
+At any moment in a session, type `?` or `skills` and the agent surfaces the section relevant to your current context.
+
+## The four layers
+
+PhantomOS organizes your work on four layers that feed each other.
+
+- **Strategy.** Direction: what makes the brand unique, roadmap, portfolio, competitive landscape, goals.
+- **Research.** Input to decisions: voice of customer, setup audits, offer diagnostic, competitor analysis.
+- **Production.** Output: creative briefs, copy (emails, landing, ads), concepts, editorial calendar.
+- **Ops.** Measurement and loop: campaign piloting, reporting, A/B tests, learnings that feed back into strategy.
+
+Each layer feeds the next. Ops learnings loop back into strategy. It's a cycle, not a stack.
+
+## Maturity state by layer
+
+Current version: V1.
+
+| Layer | What V1 ships | What arrives with skills to build | V2 roadmap |
+|---|---|---|---|
+| **Strategy & Macro** | Brand identity, positioning, annual roadmap, portfolio, strategic learnings | Goal tracking, auto-generated investor updates, risk registry | Scenario planning, forecasting |
+| **Research & Analysis** | Product/brand scan, doc ingestion, Meta setup audit | Full voice of customer (Reddit, Trustpilot, YouTube), market comparatives, competitor ads tracking | Social listening, trend detection |
+| **Production & Creative** | Briefs, copy, concepts, hooks, emails, landing copy (via custom assistant) | Per-channel production capability library | Visual generation |
+| **Ops & Iteration** | Learning capture, session relay, environment validation, platform setup audit | Daily KPI dashboard, LTV/CAC cohort, creative fatigue detection, A/B test tracking, auto weekly reporting | Attribution reconciliation, anomaly detection |
+
+Pick the layer where your current work lives. The rest fills as work requires it.
+
+## What V1 ships today
+
+- Configure one or several brands and keep their context up to date without re-briefing.
+- **Start the day fast** — on-demand session briefing (portfolio health, pending validations, what's in flight).
+- **Pick up where you left off** — clean resumption after absence, the agent reconstructs the last active thread.
+- Ingest briefs, docs, exports. The agent files them in the right layer.
+- Ask contextual questions (*"tone of brand X"*, *"customer objections Y"*) and get answers without re-setup.
+- Produce creative deliverables — hooks, angles, scripts, emails, landing copy — calibrated on brand context.
+- Audit Meta configuration (pixel, attribution, account structure, naming, DSA).
+- **Adversarial review on any deliverable** — multi-expert panel challenges a plan, brief, strategy, or setup. Zero compliments, verdict with priority actions.
+- Capture learnings (API workarounds, compliance rules, observed patterns) and promote them when they become universal.
+- Compare brands across customers, offers, completeness levels.
+- Validate workspace integrity (broken references, missing fields, obsolete learnings).
+
+## What arrives with primitives connected
+
+As soon as you connect Meta Ads, Shopify, Klaviyo, Google Ads, GA4, ClickUp, Notion, or Google Calendar, the workspace unlocks a wider surface. **None of the items below ships as a ready-made skill in V1** — they get built on demand via `build-agent` or arrive in later versions.
+
+- Auto daily and weekly reporting (headline KPIs, flags, recos).
+- LTV cohorts by vintage, multi-channel attribution.
+- Creative fatigue detection, quick budget wins, ad sets kill list.
+- RFM segments, churn tracking, Klaviyo flow audit.
+- Stock alert, real margins per SKU, monthly P&L.
+- Support tickets cross-referenced with audience objections, FAQ gaps, copy gaps.
+
+In V1 you get the context substrate and the core skills. The agent can be asked to build new skills against the connected primitives as needs come up.
+
+## What stays out of scope
+
+- Image analysis (visual consistency between landing pages and ads, moodboards).
+- Real-time social trends (TikTok, Instagram).
+- Live social listening community.
+- Video or graphic design generation.
+
+These blocks are handled by native specialized tools (Motion, Foreplay, Triple Whale, Midjourney). PhantomOS does not compete on that surface.
+
+## Workflows you can build on top
+
+The shipped skills are the foundation, not the ceiling. PhantomOS is a platform where the operator composes skills, orchestrators, agents, and sub-agents into workflows specific to their business. The value scales with context density — the more the workspace knows about your brands, audiences, products, and past performance, the more coherent the output at volume.
+
+The core pattern is **parametric composition**: decompose a proven craft into atomic variables, store them as curated banks in `resources/registries/` and `resources/routing/`, then traverse the matrix of their combinations to generate output at volume. PhantomOS ships registries out of the box — `angle-registry.md` (14 psychological angles), `creative-mechanics-registry.md` (28 mechanics), `proof-registry.md` (14 proof types ranked), `awareness-angle-matrix.md` (awareness level × angle router), `hook-formulas.md` (15 hook families). These are not documentation. They are the parameter space agents walk at generation time.
+
+Three patterns operators build on PhantomOS (not shipped as ready skills in V1 — assembled via `build-agent` or by chaining existing skills):
+
+**Mass creative generation with coherence.** One hundred Meta statiques in ten minutes, not by writing a hundred blank prompts but by walking `creative-mechanics-registry × angle-registry × audience profile × proof-registry × format`. Each variant is grounded in coordinates from stored banks, anchored in the product benefit from `spec.json`, the audience pain from `profile.json`, and what converted before from `learnings.json`. Sub-agents generate variants in parallel; the main agent ensures the set covers distinct angles and does not duplicate. High variety + high coherence because the atoms are curated and the combinations are grounded.
+
+**Klaviyo flow design grounded in existing signal.** Build a welcome flow for a new brand by reusing what converted in a sibling brand's workspace (if you run a portfolio), crossed with LTV data and segmented by current audience profiles. The workflow picks which segments need which cadence, which copy family has already performed, and iterates on what underperformed. Each email is grounded in an encoded decision, not generated from a blank prompt.
+
+**Cross-brand performance review.** A recurring audit skill reads `learnings.json` across the portfolio, identifies patterns that generalize, and proposes promoting them to `resources/` as shared playbooks. Proactive by design — it surfaces what the operator has not yet consolidated, rather than waiting to be asked.
+
+The common pattern: dense context plus orchestrated skills equals proactive, consistent output at volume. This is where PhantomOS becomes a platform, not just a workspace. Build your own workflows via `build-agent` in direct or guided-mission mode. See [`../system/cookbook.md`](../system/cookbook.md) for concrete build patterns.
+
+## How the work compounds
+
+You file nothing yourself. You talk, the agent classifies into the right layer. Each correction you make becomes a rule the agent applies on the next request — the context gets denser with use, not with effort.
+
+Come back whenever. Everything persists. The agent picks up where you left off.
+
+## When PhantomOS pays off
+
+The return on setup is not instant for every profile. The honest curve depends on three conditions.
+
+**Time in the saddle.** The first value is felt from session one — context loaded, no re-briefing. The compound, where encoded decisions reduce cognitive load and speed up delivery, lands between month three and month six of active use for a DTC solo operator, faster for a consultant running five to eight client brands. Pre-traction founders who adopt day one typically encode decisions that will pivot within weeks; the system densifies on a dead thesis. See `fit.md` for adoption timing by profile.
+
+**Capture discipline.** The moat is the continuous capture process, not the graph at any moment. An operator who skips logging corrections for two weeks gets a Notion clone that nobody reads. The agent proposes capture after every deliverable and `learn-from-session` batches on demand, but neither replaces the operator's reflex to log the reasoning behind a correction, not just the correction itself.
+
+**Operator comfort with Claude Code.** The first forty-five minutes run through a command-line interface. Past that, the web app and the desktop app work against the same workspace. An operator with no terminal experience will feel friction on day one; after that the friction is gone.
+
+See [`fit.md`](fit.md) for a full audit of best fit, conditional fit, and misfit profiles.

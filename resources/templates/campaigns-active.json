@@ -1,0 +1,32 @@
+{
+  "$comment": "Active campaigns registry. Operational metadata — not a brand entity. Updated by the operator, read by agents needing current campaign context.",
+  "_version": "1.0",
+  "_type": "template",
+  "_notes": {
+    "usage": "Store in resources/ for agency-level tracking, or in brands/{slug}/ for brand-specific campaigns.",
+    "product_ids": "Reference spec.json slugs — e.g. 'massage-insoles'",
+    "audience_ids": "Reference profile.json slugs — e.g. 'standing-workers'",
+    "creative_ids": "Optional — reference creative assets if tracked",
+    "status": "active | paused | ended | draft"
+  },
+  "campaigns": [
+    {
+      "id": "CAM-2026-01",
+      "name": "Example Campaign",
+      "brand_slug": "{brand-slug}",
+      "product_ids": ["{product-slug}"],
+      "audience_ids": ["{audience-slug}"],
+      "objective": "conversions | awareness | traffic | leads",
+      "budget_total": 0,
+      "budget_daily": 0,
+      "start_date": "YYYY-MM-DD",
+      "end_date": "YYYY-MM-DD",
+      "platform": "meta | google | tiktok | email",
+      "status": "draft",
+      "hypothesis": "We believe [audience] will respond to [angle] because [reason].",
+      "success_metric": "ROAS ≥ X or CPA ≤ €X",
+      "fallback": "If metric not met by [date], we will [action].",
+      "notes": ""
+    }
+  ]
+}

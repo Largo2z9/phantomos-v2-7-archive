@@ -1,0 +1,43 @@
+{
+  "_version": "1.0",
+  "_schema": "competitor_pricing",
+  "_field_types": {
+    "competitor_domain": "stated",
+    "product_slug": "stated",
+    "observations": "observed",
+    "notes": "stated"
+  },
+  "meta": {
+    "slug": "nike-airmax-97",
+    "created_at": "2026-04-19T14:00:00Z"
+  },
+  "competitor_domain": "nike.com",
+  "product_slug": "hero-sneaker",
+  "observations": [
+    {
+      "observed_at": "2026-03-15T10:00:00Z",
+      "price": 189.99,
+      "currency": "EUR",
+      "on_promo": false,
+      "promo_label": null,
+      "source_url": "https://nike.com/fr/airmax-97"
+    },
+    {
+      "observed_at": "2026-04-01T10:00:00Z",
+      "price": 159.99,
+      "currency": "EUR",
+      "on_promo": true,
+      "promo_label": "Spring Sale -15%",
+      "source_url": "https://nike.com/fr/airmax-97"
+    },
+    {
+      "observed_at": "2026-04-15T10:00:00Z",
+      "price": 189.99,
+      "currency": "EUR",
+      "on_promo": false,
+      "promo_label": null,
+      "source_url": "https://nike.com/fr/airmax-97"
+    }
+  ],
+  "notes": "Main competitor on hero sneaker. Promo window aligned with our Q2 launch — stress-test pricing."
+}

@@ -1,0 +1,314 @@
+{
+  "$comment": "Brand identity + positioning + financials. Factual context, not strategy.",
+  "_schema": "brand/L1-brand",
+  "_version": "2.1",
+  "_changelog": {
+    "2.1": "S30d-close: purchase_driver added (brand-level default, cascades to audiences). audience_trees[] added (optional marketplaces). Per D#243, D#244, D#246, D#250.",
+    "1.5": "S26e: No structural change to brand.json. Version bump for alignment with spec.json v1.5 (perishability, licensing, dynamic pricing, product_condition). All index-level fields unchanged.",
+    "1.4": "S26d: products_index[].product_category added (physical|physical_electronic|digital|service). Discriminated union for product nature — enables index-level routing to correct spec blocks. Backward compatible: null = physical (default).",
+    "1.3": "S26c: products_index[].type added (functional|sensory|lifestyle) — mirrors spec.json identity.type for index-level filtering without opening each file.",
+    "1.2": "S26b: products_index[].enriched added (true = has spec+offers folder, false = listed from catalogue only). products_index[].price added for quick reference on non-enriched products.",
+    "1.1": "S26: audiences_index[] added (mirrors products_index for audience pockets). market.external_intelligence[] was added earlier in S26."
+  },
+  "_field_types": {
+    "identity.*": "stated",
+    "positioning.*": "stated",
+    "tone_of_voice.*": "stated",
+    "proofs.*": "observed",
+    "social_media.*": "observed",
+    "platforms.*": "observed",
+    "contacts.*": "observed",
+    "financials.currency": "observed",
+    "financials.aov": "derived",
+    "financials.monthly_revenue": "observed",
+    "financials.avg_cogs_pct": "derived",
+    "financials.avg_gross_margin": "derived",
+    "financials.customer_ltv": "derived",
+    "financials.refund_rate": "derived",
+    "financials.payback_days": "derived",
+    "financials.roas_breakeven": "derived",
+    "seasonality.*": "structured",
+    "products_index": "structured",
+    "products_index[].enriched": "structured",
+    "products_index[].price": "observed",
+    "products_index[].type": "structured",
+    "products_index[].product_category": "structured",
+    "market.market_overview.*": "structured",
+    "market.competitors[].name": "observed",
+    "market.competitors[].url": "observed",
+    "market.competitors[].estimated_monthly_revenue": "observed",
+    "market.competitors[].market_position": "structured",
+    "market.competitors[].price_vs_us": "structured",
+    "market.competitors[].primary_channel": "structured",
+    "market.competitors[].positioning": "structured",
+    "market.awareness_distribution.*": "structured",
+    "market.regulatory.*": "observed",
+    "market.external_intelligence[].source": "observed",
+    "market.external_intelligence[].signal": "observed",
+    "market.external_intelligence[].tags": "structured",
+    "audiences_index[].slug": "structured",
+    "audiences_index[].scope": "structured",
+    "audiences_index[].parent_slug": "structured",
+    "audiences_index[].validation_status": "structured"
+  },
+  "meta": {
+    "name": "Example Brand",
+    "slug": "example-brand",
+    "vertical": "",
+    "market": "",
+    "stage": "launch",
+    "status": "onboarding",
+    "owner": "",
+    "team": [],
+    "created": "2026-01-01",
+    "updated": "2026-01-01",
+    "_notes": {
+      "stage": "launch | growth | scale | mature | decline",
+      "status": "onboarding | active | paused | churned"
+    }
+  },
+  "identity": {
+    "url": "",
+    "tagline": "",
+    "year_founded": null,
+    "language": "",
+    "target_geo": [],
+    "brand_mission": "",
+    "brand_vision": "",
+    "brand_story": "",
+    "brand_personality": [],
+    "brand_values": []
+  },
+  "positioning": {
+    "value_proposition": "",
+    "market_category": "",
+    "brand_differentiation": "",
+    "brand_promise": ""
+  },
+  "tone_of_voice": {
+    "style": "",
+    "register": "professional",
+    "banned_words": [],
+    "frequent_words": [],
+    "_notes": {
+      "style": "How the brand speaks. E.g. 'direct, playful, expert'",
+      "register": "casual | conversational | professional | formal"
+    }
+  },
+  "proofs": {
+    "total_customers": null,
+    "global_rating": null,
+    "global_review_count": null,
+    "results": [],
+    "testimonials": [],
+    "certifications": [],
+    "press_mentions": [],
+    "notable_endorsements": [],
+    "_notes": "Brand-level aggregated proofs. Product-specific proofs live in spec.json."
+  },
+  "social_media": {
+    "instagram": {
+      "url": "",
+      "followers": null
+    },
+    "tiktok": {
+      "url": "",
+      "followers": null
+    },
+    "youtube": {
+      "url": "",
+      "subscribers": null
+    },
+    "facebook": {
+      "url": "",
+      "followers": null
+    }
+  },
+  "platforms": {
+    "meta_ads": {
+      "account_id": "",
+      "pixel_id": "",
+      "catalog_id": null,
+      "active": false
+    },
+    "google_ads": {
+      "account_id": "",
+      "merchant_center_id": null,
+      "active": false
+    },
+    "tiktok_ads": {
+      "account_id": "",
+      "pixel_id": null,
+      "active": false
+    },
+    "shopify": {
+      "store_url": "",
+      "active": false
+    },
+    "klaviyo": {
+      "list_id": null,
+      "active": false
+    },
+    "pinterest_ads": {
+      "account_id": null,
+      "active": false
+    },
+    "_notes": "Platform account IDs and activation status. Add platforms as needed."
+  },
+  "financials": {
+    "currency": "EUR",
+    "aov": null,
+    "monthly_revenue": null,
+    "avg_cogs_pct": null,
+    "avg_gross_margin": null,
+    "customer_ltv": null,
+    "refund_rate": null,
+    "payback_days": null,
+    "roas_breakeven": null,
+    "_notes": {
+      "avg_cogs_pct": "Average COGS as % of retail price across products.",
+      "customer_ltv": "Average lifetime value in currency.",
+      "payback_days": "Days to recoup acquisition cost.",
+      "roas_breakeven": "Minimum ROAS to cover COGS + ad spend. Computed: 1 / avg_gross_margin."
+    }
+  },
+  "seasonality": {
+    "monthly_revenue_distribution": {
+      "jan": null,
+      "feb": null,
+      "mar": null,
+      "apr": null,
+      "may": null,
+      "jun": null,
+      "jul": null,
+      "aug": null,
+      "sep": null,
+      "oct": null,
+      "nov": null,
+      "dec": null,
+      "_notes": "% of annual revenue per month. Total ≈ 100."
+    },
+    "peak_periods": [],
+    "trough_periods": [],
+    "notes": ""
+  },
+  "contacts": {
+    "founder": {
+      "name": "",
+      "email": "",
+      "role": ""
+    },
+    "marketing": {
+      "name": "",
+      "email": "",
+      "role": ""
+    },
+    "operations": {
+      "name": "",
+      "email": "",
+      "role": ""
+    },
+    "_notes": "Key contacts for the brand. Add/remove roles as needed."
+  },
+  "market": {
+    "meta": {
+      "updated": "",
+      "confidence": null,
+      "_notes": {
+        "confidence": "0-100. Based on volume and recency of competitive intelligence."
+      }
+    },
+    "market_overview": {
+      "category": "",
+      "sophistication": "nascent",
+      "size_estimate": null,
+      "growth_trend": "stable",
+      "seasonality": {
+        "peak_months": [],
+        "trough_months": [],
+        "notes": ""
+      },
+      "_notes": {
+        "sophistication": "nascent | growing | mature | hyper_saturated",
+        "growth_trend": "accelerating | stable | decelerating | declining"
+      }
+    },
+    "competitors": [
+      {
+        "name": "",
+        "url": "",
+        "market_position": "challenger",
+        "price_vs_us": "parity",
+        "primary_channel": "",
+        "positioning": "",
+        "estimated_monthly_revenue": null,
+        "_notes": {
+          "market_position": "leader | challenger | niche | new_entrant",
+          "price_vs_us": "higher | parity | lower",
+          "primary_channel": "meta | google | tiktok | organic | email | retail"
+        }
+      }
+    ],
+    "awareness_distribution": {
+      "unaware": null,
+      "problem_aware": null,
+      "solution_aware": null,
+      "product_aware": null,
+      "most_aware": null,
+      "_notes": "Estimated % split across market. Total = 100. Product-level overrides in spec.json."
+    },
+    "regulatory": {
+      "constraints": [],
+      "certifications_required": [],
+      "advertising_restrictions": [],
+      "_notes": "Legal/compliance facts that affect messaging and claims."
+    },
+    "external_intelligence": [
+      {
+        "signal": "",
+        "source": "",
+        "platform": "",
+        "date": "",
+        "type": "",
+        "tags": [],
+        "confidence": "",
+        "_notes": {
+          "signal": "The market insight in one sentence. Factual, not interpreted.",
+          "source": "Where it was found: URL, report name, forum thread title.",
+          "platform": "reddit | trustpilot_competitor | amazon | google_trends | ad_library | industry_report | forum",
+          "type": "trend | competitor_move | pricing_signal | demand_signal | regulatory | category_shift",
+          "confidence": "high | medium | low. Based on source reliability + recency."
+        }
+      }
+    ],
+    "_notes_external_intelligence": "VoM (Voice of Market) — category-level signals NOT from this brand's customers. When entries > 10, consider migrating to a separate market.json entity."
+  },
+  "products_index": [
+    {
+      "slug": "example-product",
+      "name": "Example Product",
+      "role": "hero",
+      "type": "functional",
+      "product_category": "physical",
+      "price": null,
+      "enriched": false,
+      "_notes": {
+        "role": "hero | secondary | seasonal | gateway",
+        "type": "functional | sensory | lifestyle. Mirrors spec.json identity.type. Allows index-level filtering by product category without opening each spec.",
+        "product_category": "physical | physical_electronic | digital | service. Mirrors spec.json identity.product_category. Determines which spec blocks are relevant (composition vs device_features vs digital_specs vs service_specs). Default: physical. Null = physical (backward compat with v1.3).",
+        "enriched": "true = has products/{slug}/ folder with spec.json + offers.json. false = listed from catalogue scrape only (no folder). validate-resources skips enriched:false products.",
+        "price": "Unit price from catalogue scrape. Quick reference for non-enriched products. Source of truth for enriched products = products/{slug}/spec.json pricing.price."
+      }
+    }
+  ],
+  "audiences_index": [
+    {
+      "slug": "example-audience",
+      "name": "Example Audience",
+      "scope": "segment",
+      "parent_slug": null,
+      "validation_status": "hypothesis",
+      "_notes": "Read-only index. Source of truth = audiences/{slug}/profile.json. Gives agents a flat view of all audience pockets without opening each file. validate-resources checks index ↔ folders consistency."
+    }
+  ]
+}

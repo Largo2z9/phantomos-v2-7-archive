@@ -1,0 +1,280 @@
+{
+  "$comment": "Audience profile — deep psychographic + behavioral context. Factual description of who they are.",
+  "_schema": "brand/L3-audience",
+  "_version": "1.2",
+  "_changelog": {
+    "1.2": "S26b: meta.product_fit removed (subjective — belongs in pilotage docs, not neutral receptacle). product_id = provenance only.",
+    "1.1": "S26 red-team patches: key_expressions[].sample_size added (frequency needs denominator). pain_points[].awareness_stage + benefits[].awareness_stage added. meta.scope/parent_slug/overlap_with added (audience hierarchy). meta.validation_status added (hypothesis→scaled lifecycle). Tag namespaces enforced (problem:/context:/profession:/awareness:/life_moment:/behavior:). Breaking: key_expressions was already object[] since S26-early."
+  },
+  "_field_types": {
+    "identity.*": "structured",
+    "role.*": "structured",
+    "psychology.*": "structured",
+    "psychology.jtbd.*": "structured",
+    "decision_process.*": "structured",
+    "behavior.*": "structured",
+    "voice.*": "observed",
+    "voice.key_expressions": "observed",
+    "pain_points[].formulation": "observed",
+    "pain_points[].chain": "structured",
+    "pain_points[].emotion": "observed",
+    "pain_points[].trigger": "observed",
+    "pain_points[].awareness_stage": "structured",
+    "pain_points[]._source_meta.*": "observed",
+    "benefits[].formulation": "observed",
+    "benefits[].chain": "structured",
+    "benefits[].awareness_stage": "structured",
+    "benefits[]._source_meta.*": "observed",
+    "objections[].formulation": "observed",
+    "objections[].type": "structured",
+    "objections[].frequency": "structured",
+    "objections[].severity": "structured",
+    "objections[].lifecycle_stage": "structured",
+    "objections[]._source_meta.*": "observed",
+    "voice.key_expressions[].text": "observed",
+    "voice.key_expressions[].origin": "observed",
+    "voice.key_expressions[].platform": "observed",
+    "voice.key_expressions[].frequency": "structured",
+    "voice.key_expressions[].sample_size": "structured",
+    "market_position.*": "structured",
+    "research_meta.*": "observed",
+    "meta.scope": "structured",
+    "meta.parent_slug": "structured",
+    "meta.overlap_with": "structured",
+    "meta.tags": "structured",
+    "meta.audience_type": "structured",
+    "meta.validation_status": "structured",
+    "meta.product_id": "structured"
+  },
+
+  "meta": {
+    "name": "Example Audience",
+    "slug": "example-audience",
+    "product_id": null,
+    "scope": "segment",
+    "parent_slug": null,
+    "overlap_with": [],
+    "tags": [],
+    "audience_type": "primary",
+    "validation_status": "hypothesis",
+    "status": "draft",
+    "created": "2026-01-01",
+    "updated": "2026-01-01",
+    "_notes": {
+      "status": "draft | partial | complete",
+      "scope": "broad | segment | micro. Broad = persona large (ex: 'femmes actives'). Segment = poche définie (ex: 'infirmières debout'). Micro = hyper-niche (ex: 'infirmières urgentistes nuit'). Max 3 niveaux : broad → segment → micro. Pas de sous-micro.",
+      "parent_slug": "Slug de la poche parente dont celle-ci est une déclinaison. Null si poche racine. Permet la navigation broad → narrow sans arborescence dossier.",
+      "overlap_with": "Array de slugs d'autres poches qui partagent des traits. Signal de chevauchement — le détail de l'overlap (quels champs se recoupent) sort dans le rapport de mining, pas ici.",
+      "product_id": "Primary product slug this audience is mapped to. Null = brand-level audience.",
+      "tags": "Queryable labels with MANDATORY namespaces. Format: '{namespace}:{value}'. Namespaces autorisés : problem: | context: | profession: | awareness: | life_moment: | behavior:. Vocabulaire libre à l'intérieur du namespace. Ex: ['problem:foot-pain', 'context:standing-job', 'profession:nurse', 'awareness:solution-aware'].",
+      "audience_type": "primary | secondary | discovered | assumed. 'discovered' = found via VoC mining (not anticipated). 'assumed' = inferred from product logic (not validated).",
+      "validation_status": "hypothesis | tested | validated | scaled | fatigued. Factual observable state. hypothesis = pas encore testée en campagne. tested = ad set lancé, résultats non-concluants. validated = CPA/ROAS confirmé viable. scaled = budget significatif alloué. fatigued = performance en déclin. Règle : hypothesis > 30 jours sans test → flag par validate-resources.",
+      "product_id": "Primary product slug this audience was discovered from / built for. Provenance only — multi-product mapping lives in pilotage docs, not here."
+    }
+  },
+
+  "identity": {
+    "description": "",
+    "archetype": "",
+    "age_range": { "min": null, "max": null },
+    "gender": "",
+    "profession_category": "",
+    "income_level": "",
+    "lifestyle": [],
+    "information_sources": [],
+    "_notes": {
+      "gender": "male | female | all",
+      "income_level": "low | medium | high | luxury",
+      "information_sources": "Where they research before buying: Reddit, TikTok, Amazon reviews, friends, blogs, YouTube..."
+    }
+  },
+
+  "role": {
+    "type": "",
+    "proxy_link_id": null,
+    "_notes": {
+      "type": "end_user | buyer | influencer | gatekeeper. If proxy purchase: set proxy_link_id to linked profile.",
+      "proxy_link_id": "Audience slug of the linked profile (buyer ↔ user)."
+    }
+  },
+
+  "psychology": {
+    "core_desire": "",
+    "values": [],
+    "goals": [],
+    "beliefs_limiting": [],
+    "beliefs_facilitating": [],
+    "emotions": [],
+    "social_codes": [],
+    "life_moments": [],
+    "jtbd": {
+      "primary": "",
+      "context": "",
+      "emotional_driver": "",
+      "_notes": {
+        "primary": "What job do they hire this product for? One sentence.",
+        "context": "When/where does this job become urgent?",
+        "emotional_driver": "status | relief | belonging | control | identity"
+      }
+    },
+    "_notes": {
+      "core_desire": "Deep motivational layer: status | power | belonging | safety | freedom",
+      "life_moments": "Trigger events creating natural urgency (birth, move, promotion, breakup).",
+      "goals": "What they want to achieve. Goals × benefits = communication core."
+    }
+  },
+
+  "decision_process": {
+    "awareness_trigger": "",
+    "research_behavior": {
+      "primary_sources": [],
+      "secondary_sources": [],
+      "decision_makers": ""
+    },
+    "evaluation_criteria": [],
+    "trust_anchors": [],
+    "purchase_catalyst": "",
+    "risk_tolerance": "",
+    "_notes": {
+      "awareness_trigger": "What event or signal makes them start looking for a solution?",
+      "decision_makers": "self | family | peers | influencer | professional",
+      "risk_tolerance": "impulsive | cautious | needs_consensus | waits_for_proof"
+    }
+  },
+
+  "behavior": {
+    "purchase_frequency": "",
+    "conversion_timeline": "",
+    "dominant_device": "",
+    "cart_behavior": "",
+    "seasonal_spikes": [],
+    "channel_preferences": [],
+    "_notes": {
+      "purchase_frequency": "one_time | occasional | regular | subscription",
+      "conversion_timeline": "impulse (<1h) | short (1-7d) | considered (7-30d) | long (>30d)",
+      "dominant_device": "mobile | desktop | mixed",
+      "cart_behavior": "direct | comparison_shops | abandons_and_returns | waits_for_discount",
+      "channel_preferences": "Where they discover and buy: social, search, email, marketplace, retail, referral"
+    }
+  },
+
+  "voice": {
+    "vocabulary_to_use": [],
+    "vocabulary_to_avoid": [],
+    "key_expressions": [
+      {
+        "text": "",
+        "origin": "",
+        "platform": "",
+        "frequency": null,
+        "sample_size": null,
+        "_notes": {
+          "text": "Exact verbatim in THEIR language. e.g. 'j'en ai marre de...'",
+          "origin": "voc | brand_declared | inferred",
+          "platform": "trustpilot | amazon | reddit | support | survey | page_copy | interview | google_reviews | instagram_dm | tiktok | youtube | facebook",
+          "frequency": "Number of times this expression or close variants appear in the source. Null if not counted.",
+          "sample_size": "Total corpus size for this source. frequency/sample_size = true weight. Required when frequency is set."
+        }
+      }
+    ],
+    "tone_register": ""
+  },
+
+  "pain_points": [
+    {
+      "ref": "",
+      "priority": null,
+      "formulation": "",
+      "chain": [
+        { "level": "surface", "formulation": "" },
+        { "level": "consequence", "formulation": "" },
+        { "level": "deep", "formulation": "" }
+      ],
+      "emotion": "",
+      "trigger": "",
+      "awareness_stage": "problem_aware",
+      "_source_meta": {
+        "origin": "brand_declared",
+        "platform": "",
+        "sample_size": null,
+        "date_captured": ""
+      },
+      "_notes": {
+        "ref": "→ product.problems_solved[].problem_id. Must exist in spec.json.",
+        "formulation": "In THEIR vocabulary. Not the product-level formulation.",
+        "awareness_stage": "unaware | problem_aware | solution_aware | product_aware | most_aware. At which awareness level this pain point resonates most. Factual — based on where in the funnel this language appears (TOFU reviews vs post-purchase).",
+        "_source_meta.origin": "voc | brand_declared | inferred. Tracks where this data point came from.",
+        "_source_meta.platform": "trustpilot | amazon | reddit | support | survey | page_copy | interview | google_reviews | instagram_dm | tiktok | youtube | facebook",
+        "_source_meta.sample_size": "How many data points support this pattern. Null if not counted."
+      }
+    }
+  ],
+
+  "benefits": [
+    {
+      "ref": "",
+      "priority": null,
+      "formulation": "",
+      "chain": [
+        { "level": "functional", "formulation": "" },
+        { "level": "emotional", "formulation": "" },
+        { "level": "identity", "formulation": "" }
+      ],
+      "emotional_lever": "",
+      "awareness_stage": "solution_aware",
+      "_source_meta": {
+        "origin": "brand_declared",
+        "platform": "",
+        "sample_size": null,
+        "date_captured": ""
+      },
+      "_notes": {
+        "ref": "→ product.benefits[].benefit_id. Must exist in spec.json.",
+        "awareness_stage": "unaware | problem_aware | solution_aware | product_aware | most_aware. At which awareness level this benefit resonates most. Factual — based on where in the funnel this language appears.",
+        "_source_meta.origin": "voc | brand_declared | inferred"
+      }
+    }
+  ],
+
+  "objections": [
+    {
+      "type": "",
+      "formulation": "",
+      "frequency": null,
+      "severity": "",
+      "lifecycle_stage": "",
+      "_source_meta": {
+        "origin": "",
+        "platform": "",
+        "sample_size": null,
+        "date_captured": ""
+      },
+      "_notes": {
+        "type": "prix | scepticisme | temps | confiance | urgence | efficacité | comparaison",
+        "frequency": "1-10. Frequency in verbatims/research.",
+        "severity": "low | medium | high",
+        "lifecycle_stage": "awareness | consideration | decision | post_purchase",
+        "_source_meta.origin": "voc | brand_declared | inferred"
+      }
+    }
+  ],
+
+
+  "market_position": {
+    "awareness_level": "",
+    "sophistication_override": null,
+    "_notes": "Override product-level sophistication if this audience diverges. Null = inherits."
+  },
+
+
+  "research_meta": {
+    "confidence": null,
+    "opportunity_score": null,
+    "sources_used": [],
+    "_notes": {
+      "confidence": "0-100. Based on volume and quality of sources.",
+      "opportunity_score": "1-10. Size × urgency × accessibility.",
+      "sources_used": "What data fed this profile: reviews, interviews, analytics, surveys..."
+    }
+  }
+}

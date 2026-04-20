@@ -1,0 +1,22 @@
+{
+  "$comment": "EXEMPLE — Status auto-maintenu par validate-resources.",
+  "brand_slug": "lumya",
+  "last_session": "2026-04-03",
+  "last_activity": "2026-04-03T16:45:00Z",
+  "wedge_complete": true,
+  "completeness": {
+    "brand": "partial",
+    "products": { "creme-eclat": "complete" },
+    "audiences": { "femmes-40-55": "complete" },
+    "offers": { "creme-eclat": "empty" }
+  },
+  "freshness": {
+    "brand.json": { "updated": "2026-04-03", "stale": false },
+    "products/creme-eclat/spec.json": { "updated": "2026-04-03", "stale": false },
+    "audiences/femmes-40-55/profile.json": { "updated": "2026-04-03", "stale": false }
+  },
+  "flags": [
+    "offers/creme-eclat: empty — no active offer defined",
+    "brand: partial — contacts.email present but no secondary contact"
+  ]
+}

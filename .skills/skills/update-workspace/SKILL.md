@@ -1,0 +1,156 @@
+---
+name: update-workspace
+type: orchestrator
+version: "1.0.0"
+recommended_model: sonnet
+description: >
+  Applies one or more PhantomOS release updates to an installed workspace
+  without losing operator data. Reads the installed version, finds all
+  manifests between installed and latest, applies each change by type
+  (doc, skill, schema, infra), delegates schema migrations to migrate-workspace.
+  Preserves brands/, operator/, credentials.env, learnings.
+  FR: "mets à jour phantomOS", "update workspace", "installe la nouvelle version", "applique les mises à jour".
+  EN: "update workspace", "install latest version", "apply updates", "upgrade phantomos".
+permissions:
+  reads: [workspace, manifest]
+  writes: [workspace_template_files, operator_installation]
+  mode: direct
+  subagent_safe: false
+pipeline:
+  preconditions: |
+    - workspace currently installed (template files present)
+    - /operator/installation.json present OR first-run detection
+    - manifests available at docs/releases/{version}-manifest.json
+  postconditions: |
+    - template files updated to target version
+    - operator data untouched
+    - /operator/installation.json reflects new version
+    - validate-resources run on each brand, flags surfaced
+disambiguates_against:
+  migrate-workspace: "route to migrate-workspace when the operator only needs a schema migration within a version (no template file changes), not a full release update"
+  setup-brand: "route to setup-brand when operator wants to add a new brand, not update the template"
+---
+
+# Skill: Update Workspace
+
+Applies release updates to an installed PhantomOS workspace. Preserves operator data, syncs template files, runs migrations when schemas bump.
+
+## Tone
+
+Chairman reporting an update installation. Plain language, no technical detail exposed unless operator asks. Summary first, steps silent unless something needs confirmation.
+
+---
+
+## Invocation
+
+Operator says *"update"*, *"mets à jour"*, *"applique la nouvelle version"*, or the agent detects a version mismatch between `/operator/installation.json → template_version_installed` and `_version.json → template_version`.
+
+---
+
+## Method
+
+### Step 1 — Detect versions
+
+Read:
+- `_version.json → template_version` (the target/latest)
+- `/operator/installation.json → template_version_installed` (what's installed)
+
+If `/operator/installation.json` does not exist → first-run post-install. Set `template_version_installed` to the template's current version, write `installation.json`, and exit (no update needed, this is a fresh install).
+
+If versions match → *"Tu es déjà à jour en {version}. Rien à faire."* → exit.
+
+If installed < target → continue.
+
+### Step 2 — Build the update chain
+
+List every manifest at `docs/releases/{version}-manifest.json` where `from_version >= installed` and `to_version <= target`. Sort by `to_version` ascending. This is the chain of updates to apply in order.
+
+If any manifest in the chain has `breaking: true` or `requires_confirmation: true` → present the list to the operator with summaries and explicit confirm via `AskUserQuestion`. Otherwise proceed silently.
+
+### Step 3 — Apply each manifest in order
+
+For each manifest in the chain, walk `changes[]` and apply per type:
+
+**`doc-change` / `doc-added`** — overwrite/create the template file. Safe. No operator data touched.
+
+**`infra-change` / `infra-added`** — overwrite/create the script. Run the `post_step` if declared (e.g. rebuild manifest, rebuild snapshots).
+
+**`skill-added`** — copy the new SKILL.md folder into `.skills/skills/`. Regenerate `.skills/_manifest.json`.
+
+**`skill-renamed`** — rename the folder, update the frontmatter `name:`, regenerate manifest. Keep old name as alias in the manifest's `aliases_to_keep` if provided.
+
+**`skill-removed`** — flag to operator, propose alternative if declared. Move old folder to `.skills/skills/_archive/`. Update manifest.
+
+**`schema-bump`** — DO NOT apply directly. Delegate to `migrate-workspace` via Task tool with the migration script path, from/to schema versions, and affected files glob. Collect migration report.
+
+**`breaking`** — surface the full `notes` field to the operator, get explicit confirm, then apply as above.
+
+### Step 4 — Post-update
+
+For each applied manifest, append an entry to `/operator/installation.json → history[]`:
+
+```json
+{
+  "from_version": "...",
+  "to_version": "...",
+  "applied_at": "...",
+  "changes_count": N,
+  "migrations_run": [],
+  "flags": []
+}
+```
+
+Update `template_version_installed` to the target.
+
+Run the final manifest's `post_update_checklist` (typically: rebuild manifest, rebuild snapshots, run validate-resources).
+
+### Step 5 — Surface to operator
+
+Plain-language recap:
+
+> *"Update {from} → {to} appliquée. {N} changements. {M} migrations. {Tes marques / ton contexte opérateur / tes learnings} intacts. {0 / K flags à regarder} post-update."*
+
+If flags or migration warnings: surface as a short action list, not a report dump.
+
+---
+
+## Safety guarantees
+
+- **Never touch**: `brands/{slug}/*` (except `_TEMPLATE/`), `operator/`, `credentials.env`, `credentials_shared.env`, `learnings.json` under a brand.
+- **Always preserve**: user-authored extensions under `brands/{slug}/custom/`, custom skills under `.skills/skills/custom/`.
+- **Verify before write**: read current file content, confirm it matches what the manifest expects, abort if divergence suggests local modifications.
+- **Transactional per manifest**: if any change in a manifest fails, roll back the whole manifest (restore files from backup), log, surface to operator.
+
+---
+
+## Output
+
+```
+{
+  "status": "ok | partial | failed",
+  "from_version": "...",
+  "to_version": "...",
+  "manifests_applied": [...],
+  "migrations_run": [...],
+  "flags_raised": [...]
+}
+```
+
+---
+
+## Hard rules
+
+- **NEVER** touch operator data. If uncertain whether a file is template or operator-owned, treat as operator-owned.
+- **NEVER** skip schema-bump migrations. Data integrity > speed.
+- **NEVER** apply a breaking manifest without explicit operator confirmation.
+- **ALWAYS** regenerate `.skills/_manifest.json` and `brands/{slug}/_snapshot.md` post-update.
+- **ALWAYS** write to `/operator/installation.json → history[]` before marking update complete.
+
+---
+
+## Related
+
+- `docs/system/updates.md` — doctrine for publishing clean updates.
+- `docs/releases/{version}-manifest.json` — per-release change manifest.
+- `.skills/skills/migrate-workspace/SKILL.md` — delegated schema migration.
+- `_version.json` — target version registry.

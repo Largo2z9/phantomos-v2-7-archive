@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Resource Index",
+  "description": "Central registry of all resources in the workspace. Maintained by ingest-resource and validate-resources skills.",
+  "type": "object",
+  "required": ["version", "last_updated", "stats", "resources", "id_prefixes"],
+  "properties": {
+    "version": { "type": "string" },
+    "last_updated": { "type": ["string", "null"], "format": "date-time" },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "total_resources": { "type": "integer", "minimum": 0 },
+        "by_type": {
+          "type": "object",
+          "properties": {
+            "catalogue": { "type": "integer" },
+            "routing": { "type": "integer" },
+            "framework": { "type": "integer" },
+            "sop": { "type": "integer" },
+            "quality-spec": { "type": "integer" },
+            "convention": { "type": "integer" },
+            "template": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "path", "domain", "created", "updated", "tags"],
+        "properties": {
+          "id": { "type": "string", "description": "Unique resource identifier. For catalogues: the prefix (e.g. 'ANG'). For others: slugified filename." },
+          "type": { "type": "string", "enum": ["catalogue", "routing", "framework", "sop", "quality-spec", "convention", "template"] },
+          "path": { "type": "string", "description": "Relative path from workspace root" },
+          "domain": { "type": "string", "enum": ["creative", "media", "finance", "conversion", "retention", "ops", "general"] },
+          "title": { "type": "string" },
+          "created": { "type": "string", "format": "date" },
+          "updated": { "type": "string", "format": "date" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "refs_out": { "type": "array", "items": { "type": "string" }, "description": "IDs this resource references" },
+          "refs_in": { "type": "array", "items": { "type": "string" }, "description": "IDs that reference this resource" },
+          "entry_count": { "type": ["integer", "null"], "description": "For catalogues: number of entries" },
+          "step_count": { "type": ["integer", "null"], "description": "For SOPs: number of steps" }
+        }
+      }
+    },
+    "id_prefixes": {
+      "type": "object",
+      "description": "Map of catalogue ID prefixes to catalogue resource IDs. Ensures prefix uniqueness.",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

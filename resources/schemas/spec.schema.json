@@ -1,0 +1,621 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Product Specification",
+  "description": "Product specification — deep product knowledge, factual context. Lives in brands/{slug}/products/{product}/spec.json.",
+  "_template_version": "1.8",
+  "type": "object",
+  "required": ["meta"],
+  "properties": {
+    "$comment": { "type": "string" },
+    "_schema": { "type": "string" },
+    "_version": { "type": "string" },
+    "_changelog": { "type": "object" },
+    "_field_types": { "type": "object", "additionalProperties": { "type": "string" } },
+
+    "meta": {
+      "type": "object",
+      "required": ["name", "slug"],
+      "properties": {
+        "name": { "type": "string" },
+        "slug": { "type": "string", "pattern": "^[a-z0-9-]*$" },
+        "status": { "type": "string", "enum": ["draft", "partial", "complete"] },
+        "created": { "type": "string" },
+        "updated": { "type": "string" },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "identity": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["functional", "sensory", "lifestyle"] },
+        "product_category": { "type": "string", "enum": ["physical", "physical_electronic", "digital", "service"] },
+        "product_name": { "type": ["string", "null"] },
+        "category": { "type": "string" },
+        "niche": { "type": "string" },
+        "product_type": { "type": "string" },
+        "tagline": { "type": "string" },
+        "positioning": { "type": "string" },
+        "url": { "type": "string" },
+        "hero_image": { "type": "string" },
+        "google_product_category": { "type": ["string", "null"] },
+        "anti_features": { "type": "array", "items": { "type": "string" } },
+        "customizable": {
+          "type": ["object", "null"],
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "type": { "type": "string", "enum": ["text", "design", "config", "assembly"] },
+            "user_input_description": { "type": "string" }
+          }
+        },
+        "co_creation": {
+          "type": ["object", "null"],
+          "description": "Community-driven product design BEFORE production. Distinct from customizable (individual buyer). Ex: Asphalte.",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "mechanism": { "type": "string", "enum": ["vote", "survey", "iterative_feedback", "crowdfunding"] },
+            "community_size": { "type": ["integer", "null"] },
+            "input_collected": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "What the community decides: 'fabric', 'color', 'fit', 'feature_priority', 'flavor', ..."
+            },
+            "iteration_cycle": { "type": ["string", "null"], "enum": ["per_drop", "quarterly", "per_product", null] }
+          },
+          "required": ["enabled", "mechanism"]
+        },
+        "product_condition": { "type": "string", "enum": ["new", "refurbished", "certified_refurbished", "open_box"], "default": "new" },
+        "licensing": {
+          "type": ["object", "null"],
+          "properties": {
+            "ip_holder": { "type": "string" },
+            "territories": { "type": "array", "items": { "type": "string" } },
+            "royalty_pct": { "type": ["number", "null"] },
+            "renewal_date": { "type": ["string", "null"] },
+            "restrictions": { "type": ["string", "null"] }
+          }
+        },
+        "external_ids": {
+          "type": "object",
+          "properties": {
+            "shopify_handle": { "type": ["string", "null"] },
+            "meta_product_id": { "type": ["string", "null"] },
+            "gmc_id": { "type": ["string", "null"] }
+          },
+          "additionalProperties": { "type": ["string", "null"] }
+        },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "specs": {
+      "type": "object",
+      "properties": {
+        "materials": { "type": "array", "items": { "type": "string" } },
+        "composition": {
+          "type": "array",
+          "description": "v1.8+: accepts string (legacy) OR structured object per ingredient. Mix allowed.",
+          "items": {
+            "anyOf": [
+              { "type": "string" },
+              {
+                "type": "object",
+                "required": ["ingredient"],
+                "properties": {
+                  "ingredient": { "type": "string" },
+                  "pct": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+                  "organic_certified": { "type": ["boolean", "null"] },
+                  "class": { "type": ["string", "null"], "description": "active | filler | preservative | fragrance | colorant | emulsifier | binder | other" },
+                  "origin": { "type": ["string", "null"], "description": "Country/region of this specific ingredient." },
+                  "inci": { "type": ["string", "null"], "description": "INCI name for cosmetics." }
+                }
+              }
+            ]
+          }
+        },
+        "variants": { "type": "array", "items": { "type": "string" } },
+        "weight": { "type": ["number", "null"] },
+        "volume": { "type": ["number", "null"] },
+        "package_quantity": { "type": ["number", "null"] },
+        "device_features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "feature": { "type": "string" },
+              "description": { "type": "string" },
+              "implementation": { "type": "string" }
+            }
+          }
+        },
+        "digital_specs": {
+          "type": ["object", "null"],
+          "properties": {
+            "format": { "type": "string", "enum": ["audio", "video", "pdf", "app", "course"] },
+            "delivery_method": { "type": "string", "enum": ["download", "streaming", "usb_transfer", "in_app"] },
+            "access_duration": { "type": "string" },
+            "file_size": { "type": ["string", "null"] },
+            "drm": { "type": "boolean" },
+            "platform_requirements": { "type": ["string", "null"] }
+          }
+        },
+        "service_specs": {
+          "type": ["object", "null"],
+          "properties": {
+            "service_type": { "type": "string", "enum": ["repair", "consultation", "coaching", "installation", "subscription_service"] },
+            "duration": { "type": ["string", "null"] },
+            "coverage": { "type": "string" },
+            "conditions": { "type": "string" },
+            "delivery_method": { "type": "string", "enum": ["in_person", "remote", "mail_in", "on_site"] }
+          }
+        },
+        "nutrition_facts": {
+          "type": ["object", "null"],
+          "description": "For ingestible products (food, beverages, meal replacements, supplements). Null if not ingestible. Enables allergen compliance and dietary filtering.",
+          "properties": {
+            "serving_size": { "type": ["string", "null"], "description": "Ex: '400 kcal pouch', '30g', '1 scoop (25g)'." },
+            "calories": { "type": ["number", "null"], "minimum": 0 },
+            "macros": {
+              "type": "object",
+              "properties": {
+                "protein_g": { "type": ["number", "null"] },
+                "carbs_g": { "type": ["number", "null"] },
+                "of_which_sugars_g": { "type": ["number", "null"] },
+                "fat_g": { "type": ["number", "null"] },
+                "of_which_saturated_g": { "type": ["number", "null"] },
+                "fiber_g": { "type": ["number", "null"] },
+                "salt_g": { "type": ["number", "null"] }
+              }
+            },
+            "micros": {
+              "type": "array",
+              "description": "Vitamins/minerals. One entry per nutrient.",
+              "items": {
+                "type": "object",
+                "required": ["name", "amount", "unit"],
+                "properties": {
+                  "name": { "type": "string", "description": "Ex: 'vitamin_c', 'iron', 'b12'." },
+                  "amount": { "type": "number" },
+                  "unit": { "type": "string", "description": "mg | µg | g | IU." },
+                  "rda_pct": { "type": ["number", "null"], "description": "% of recommended daily allowance." }
+                }
+              }
+            },
+            "allergens": {
+              "type": "array",
+              "description": "EU14 + oats (v1.8). Regulatory-locked enum.",
+              "items": {
+                "type": "string",
+                "enum": ["gluten", "milk", "soy", "nuts", "eggs", "fish", "shellfish", "sesame", "sulfites", "celery", "mustard", "lupin", "molluscs", "peanuts", "oats"]
+              }
+            },
+            "allergen_sources": {
+              "type": "array",
+              "description": "v1.8+: free-text secondary allergen sources not covered by EU14 (e.g. 'lanolin', 'gelatin', 'bee products', 'latex'). Used for cosmetics/supplements where derived ingredients trigger reactions.",
+              "items": { "type": "string" }
+            },
+            "dietary_tags": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["vegan", "vegetarian", "gluten_free", "lactose_free", "keto", "paleo", "halal", "kosher", "organic", "sugar_free", "low_fodmap", "caffeine_free", "bio", "observed", "chicory_based", "clean_beauty", "cruelty_free"]
+              }
+            },
+            "nutri_score_grade": {
+              "type": ["string", "null"],
+              "enum": ["A", "B", "C", "D", "E", null],
+              "description": "French Nutri-Score grade (2025+ mandatory for FR food marketing claims). Null if not computed."
+            }
+          }
+        },
+        "posology": {
+          "type": ["object", "null"],
+          "description": "v1.8+: recommended usage for supplements, ingestibles, skincare with use-frequency. EU/EFSA compliance driver.",
+          "properties": {
+            "recommended_daily_servings": { "type": ["number", "null"], "minimum": 0 },
+            "serving_unit": { "type": ["string", "null"], "description": "gelule | capsule | tablet | scoop | ml | g | sachet | application | wash | dose" },
+            "timing": { "type": ["string", "null"], "description": "Free text: 'morning', 'with meals', 'before bed', etc." },
+            "duration_recommended": { "type": ["string", "null"], "description": "Ex: '3-month cure', 'continuous', 'until symptom relief'." },
+            "max_daily_dose": { "type": ["number", "null"] },
+            "notes": { "type": ["string", "null"] }
+          }
+        },
+        "contraindications": {
+          "type": ["object", "null"],
+          "description": "v1.8+: medical contraindications. Mandatory surface for regulated supplements, drugs, cosmetics with active principles.",
+          "properties": {
+            "conditions": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Medical conditions disqualifying use. Ex: ['hypertension', 'thyroid_disorder', 'epilepsy']."
+            },
+            "medications": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Drug interactions. Ex: ['anticoagulants', 'SSRI', 'MAOI']."
+            },
+            "age_min": { "type": ["number", "null"] },
+            "age_max": { "type": ["number", "null"] },
+            "pregnancy": { "type": ["string", "null"], "enum": ["safe", "avoid", "consult_doctor", "contraindicated", null] },
+            "breastfeeding": { "type": ["string", "null"], "enum": ["safe", "avoid", "consult_doctor", "contraindicated", null] },
+            "warnings": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "origin": {
+          "type": ["object", "null"],
+          "description": "v1.8+: structured origin/supply chain. Replaces free-text 'Made in France' claims.",
+          "properties": {
+            "country": { "type": ["string", "null"], "description": "ISO-3166 alpha-2 preferred. Ex: 'FR', 'IT', 'DE'." },
+            "region": { "type": ["string", "null"] },
+            "facility": { "type": ["string", "null"], "description": "Manufacturing facility name or city." },
+            "local_supply_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "% of raw materials sourced locally." },
+            "made_in_claim": { "type": ["string", "null"], "description": "Certified claim text: 'Fabriqué en France', 'Origine France Garantie', 'Made in Italy'." },
+            "supply_chain_transparency": { "type": ["string", "null"], "enum": ["full", "partial", "opaque", null] }
+          }
+        },
+        "production_method": {
+          "type": ["object", "null"],
+          "description": "v1.8+: how the product is made. Distinguishes industrial scale from craft/limited batches.",
+          "properties": {
+            "type": { "type": "string", "enum": ["industrial", "small_batch", "artisanal", "limited_batch", "handmade", "made_to_order"] },
+            "batch_size": { "type": ["number", "null"], "description": "Units per batch when relevant." },
+            "frequency": { "type": ["string", "null"], "description": "Ex: 'weekly', 'seasonal', 'on demand'." },
+            "method_notes": { "type": ["string", "null"] }
+          }
+        },
+        "preparation": {
+          "type": ["object", "null"],
+          "description": "v1.8+: for food/beverage requiring preparation. Null if ready-to-consume.",
+          "properties": {
+            "cooking_required": { "type": "boolean" },
+            "method": { "type": ["string", "null"], "description": "Ex: 'infuse', 'blend', 'boil', 'microwave', 'add water'." },
+            "time_minutes": { "type": ["number", "null"] },
+            "temperature": { "type": ["string", "null"] },
+            "serving_suggestions": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "external_databases": {
+          "type": ["object", "null"],
+          "description": "v1.8+: cross-refs to third-party databases. Enables automated fetch of external ratings.",
+          "properties": {
+            "open_food_facts_id": { "type": ["string", "null"] },
+            "yuka_id": { "type": ["string", "null"] },
+            "inci_beauty_id": { "type": ["string", "null"] },
+            "ciqual_id": { "type": ["string", "null"] },
+            "ean": { "type": ["string", "null"] },
+            "gtin": { "type": ["string", "null"] }
+          },
+          "additionalProperties": { "type": ["string", "null"] }
+        },
+        "target_suitability": {
+          "type": ["object", "null"],
+          "description": "v1.8+: universal 'who is this for' container. Works for cosmetics (skin/hair), apparel (body/climate), supplements (demographics).",
+          "properties": {
+            "skin_types": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["dry", "oily", "combination", "sensitive", "normal", "mature", "acne_prone", "rosacea", "eczema"] }
+            },
+            "hair_types": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["straight", "wavy", "curly", "coily", "fine", "thick", "dry", "oily", "damaged", "colored", "frizzy", "thinning"] }
+            },
+            "body_areas": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Free text. Ex: 'face', 'scalp', 'hands', 'full_body', 'outdoor_trail', 'urban'."
+            },
+            "use_cases": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Activity or context. Ex: 'trail_running', 'daily_commute', 'cold_weather', 'travel'."
+            },
+            "demographics": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Ex: 'adults', 'teens', 'women_menopause', 'men_40plus'."
+            }
+          }
+        },
+        "durability": {
+          "type": ["object", "null"],
+          "description": "v1.8+: for durable goods (apparel, electronics, furniture). Warranty, repair, lifespan. Powers circular economy and premium positioning.",
+          "properties": {
+            "warranty_years": { "type": ["number", "null"] },
+            "warranty_type": { "type": ["string", "null"], "enum": ["limited", "lifetime", "conditional", "commercial", null] },
+            "repairable": { "type": ["boolean", "null"] },
+            "spare_parts_available": { "type": ["boolean", "null"] },
+            "repair_program": { "type": ["string", "null"], "description": "Brand-operated repair service name/URL if exists." },
+            "lifespan_estimate": { "type": ["string", "null"], "description": "Ex: '10 years of regular use', '500 wash cycles'." },
+            "repairability_index": { "type": ["number", "null"], "minimum": 0, "maximum": 10, "description": "French repairability index (2021+) for electronics." }
+          }
+        },
+        "perishability": {
+          "type": ["object", "null"],
+          "properties": {
+            "shelf_life_days": {
+              "type": "object",
+              "properties": {
+                "min": { "type": "number" },
+                "max": { "type": "number" }
+              }
+            },
+            "peak_freshness_days": {
+              "type": "object",
+              "properties": {
+                "start": { "type": "number" },
+                "end": { "type": "number" }
+              }
+            },
+            "storage_conditions": { "type": "string" },
+            "freshness_guarantee": { "type": ["string", "null"] },
+            "period_after_opening_months": { "type": ["number", "null"], "description": "v1.8+: EU Cosmetics Regulation PAO. Number of months the product is safe once opened. Required for cosmetics with shelf life >30 months." },
+            "expiry_date_required": { "type": ["boolean", "null"], "description": "v1.8+: true if DLC/EXP date is regulatorily mandatory on packaging." }
+          }
+        },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "active_principle": {
+      "type": "object",
+      "properties": {
+        "how_it_works": { "type": "string" },
+        "active_element": { "type": "string" },
+        "technical_differentiator": { "type": "string" },
+        "_notes": { "type": "string" }
+      }
+    },
+
+    "unique_mechanism": {
+      "type": "object",
+      "properties": {
+        "name": { "type": ["string", "null"] },
+        "description": { "type": ["string", "null"] },
+        "_notes": { "type": "string" }
+      }
+    },
+
+    "benefits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "benefit_id": { "type": "string" },
+          "benefit": { "type": "string" },
+          "measurable_outcome": { "type": "string" },
+          "chain": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "level": { "type": "string", "enum": ["functional", "emotional", "identity"] },
+                "formulation": { "type": "string" }
+              }
+            }
+          },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "problems_solved": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "problem_id": { "type": "string" },
+          "problem": { "type": "string" },
+          "chain": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "level": { "type": "string", "enum": ["surface", "consequence", "deep"] },
+                "formulation": { "type": "string" }
+              }
+            }
+          },
+          "frequency": { "type": ["integer", "null"], "minimum": 1, "maximum": 10 },
+          "urgency": { "type": ["integer", "null"], "minimum": 1, "maximum": 10 },
+          "current_solutions": { "type": "array", "items": { "type": "string" } },
+          "verbatim_quotes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": { "type": "string" },
+                "platform": { "type": "string" },
+                "rating": { "type": ["number", "null"] },
+                "sentiment": { "type": "string", "enum": ["positive", "negative", "neutral"] }
+              }
+            }
+          },
+          "_notes": { "type": "object" }
+        }
+      }
+    },
+
+    "promise": {
+      "type": "object",
+      "properties": {
+        "main": { "type": "string" },
+        "variations": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "proofs": {
+      "type": "object",
+      "properties": {
+        "social": {
+          "type": "object",
+          "properties": {
+            "rating": { "type": ["number", "null"] },
+            "review_count": { "type": ["integer", "null"] },
+            "total_customers": { "type": ["integer", "null"] },
+            "testimonials": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "authority": {
+          "type": "object",
+          "properties": {
+            "expert_endorsements": { "type": "array", "items": { "type": "string" } },
+            "awards": { "type": "array", "items": { "type": "string" } },
+            "press_mentions": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "performance": {
+          "type": "object",
+          "properties": {
+            "quantifiable_results": { "type": "array", "items": { "type": "string" } },
+            "before_after": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "scientific": {
+          "type": "object",
+          "properties": {
+            "studies": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+
+    "compliance": {
+      "type": "object",
+      "properties": {
+        "certifications": { "type": "array", "items": { "type": "string" } },
+        "safety_warnings": { "type": "array", "items": { "type": "string" } },
+        "allergen_info": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "sensory_profile": {
+      "type": ["object", "null"],
+      "properties": {
+        "fragrance_pyramid": {
+          "type": "object",
+          "properties": {
+            "top_notes": { "type": "array", "items": { "type": "string" } },
+            "heart_notes": { "type": "array", "items": { "type": "string" } },
+            "base_notes": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "scent_family": { "type": ["string", "null"], "enum": ["floral", "oriental", "woody", "fresh", "chypre", "fougere", "gourmand", "aquatic", null] },
+        "mood": { "type": "array", "items": { "type": "string" } },
+        "occasion": { "type": "array", "items": { "type": "string" } },
+        "longevity": { "type": ["string", "null"] },
+        "sillage": { "type": ["string", "null"], "enum": ["light", "moderate", "heavy", "intimate", null] },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "sustainability": {
+      "type": ["object", "null"],
+      "properties": {
+        "packaging_type": { "type": ["string", "null"] },
+        "eco_claims": { "type": "array", "items": { "type": "string" } },
+        "certifications": { "type": "array", "items": { "type": "string" } },
+        "refill": {
+          "type": "object",
+          "properties": {
+            "available": { "type": "boolean" },
+            "refill_slug": { "type": ["string", "null"] },
+            "savings_pct": { "type": ["number", "null"] }
+          }
+        },
+        "environmental_impact": {
+          "type": "object",
+          "properties": {
+            "plastic_saved": { "type": ["string", "null"] },
+            "biodegradable": { "type": ["boolean", "null"] },
+            "carbon_footprint": { "type": ["string", "null"] }
+          }
+        },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "market_context": {
+      "type": "object",
+      "properties": {
+        "sophistication": { "type": ["string", "null"], "enum": ["nascent", "mature", "hyper_saturated", null, ""] },
+        "demonstrability": { "type": ["string", "null"], "enum": ["visible", "measurable", "felt", null, ""] },
+        "purchase_cycle": { "type": ["string", "null"], "enum": ["impulse", "considered", "long", null, ""] },
+        "price_sensitivity": { "type": ["string", "null"], "enum": ["low", "medium", "high", null, ""] },
+        "trust_barrier": { "type": ["string", "null"], "enum": ["low", "medium", "high", null, ""] },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "competitive_comparison": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "competitor_product": { "type": "string" },
+          "feature": { "type": "string" }
+        }
+      }
+    },
+
+    "gift_economy": {
+      "type": ["object", "null"],
+      "properties": {
+        "buyer_is_consumer": { "type": "boolean", "default": true },
+        "buyer_benefits_chain": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "level": { "type": "string", "enum": ["functional", "emotional", "identity"] },
+              "formulation": { "type": "string" }
+            }
+          }
+        },
+        "recipient_benefits_chain": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "level": { "type": "string", "enum": ["functional", "emotional", "identity"] },
+              "formulation": { "type": "string" }
+            }
+          }
+        },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "pricing": {
+      "type": "object",
+      "properties": {
+        "pricing_model": { "type": "string", "enum": ["fixed", "dynamic", "quote"], "default": "fixed" },
+        "price": { "type": ["number", "null"] },
+        "price_range": {
+          "type": ["object", "null"],
+          "properties": {
+            "min": { "type": "number" },
+            "max": { "type": "number" },
+            "typical": { "type": ["number", "null"] }
+          }
+        },
+        "price_factors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "factor": { "type": "string" },
+              "impact": { "type": "string" }
+            }
+          }
+        },
+        "currency": { "type": "string", "default": "EUR" },
+        "cogs": { "type": ["number", "null"] },
+        "gross_margin": { "type": ["number", "null"] },
+        "breakeven_cpa": { "type": ["number", "null"] },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "related_products": { "type": "array", "items": { "type": "string" } }
+  }
+}

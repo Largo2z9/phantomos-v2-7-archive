@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "competitor_pricing.schema.json",
+  "_version": "1.0",
+  "_schema": "competitor_pricing",
+  "_field_types": {
+    "competitor_domain": "stated",
+    "product_slug": "stated",
+    "observations": "observed",
+    "notes": "stated"
+  },
+  "title": "Competitor pricing \u2014 time-series tracking",
+  "description": "One file per (competitor, product) pair. Observations append over time. Cross-references product_slug to brands/{slug}/products/",
+  "type": "object",
+  "required": [
+    "_version",
+    "_schema",
+    "meta",
+    "competitor_domain",
+    "product_slug",
+    "observations"
+  ],
+  "properties": {
+    "_version": {
+      "const": "1.0"
+    },
+    "_schema": {
+      "const": "competitor_pricing"
+    },
+    "_field_types": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "stated",
+          "derived",
+          "structured"
+        ]
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": [
+        "slug",
+        "created_at"
+      ],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "competitor_domain": {
+      "type": "string",
+      "description": "Competitor site domain, e.g. 'competitor-brand.com'"
+    },
+    "product_slug": {
+      "type": "string",
+      "description": "Cross-reference to brands/{brand_slug}/products/{product_slug}/spec.json",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "observations": {
+      "type": "array",
+      "description": "Append-only time series of observed pricing",
+      "items": {
+        "type": "object",
+        "required": [
+          "observed_at",
+          "price",
+          "currency"
+        ],
+        "properties": {
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "price": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "EUR",
+              "USD",
+              "GBP",
+              "CAD"
+            ]
+          },
+          "on_promo": {
+            "type": "boolean",
+            "default": false
+          },
+          "promo_label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Operator-written context, e.g. 'main comp on hero product, drives pricing pressure Q4'"
+    }
+  }
+}

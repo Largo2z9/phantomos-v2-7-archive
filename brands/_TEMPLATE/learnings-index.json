@@ -1,0 +1,6 @@
+{
+  "$comment": "Lightweight index of learnings.json entries. Auto-maintained by learn-from-session and validate-resources. Never edit manually — rebuilt from learnings.json on validate.",
+  "_version": "1.0",
+
+  "entries": []
+}

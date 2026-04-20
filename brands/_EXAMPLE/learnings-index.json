@@ -1,0 +1,39 @@
+{
+  "$comment": "EXEMPLE — Index léger des learnings de Lumya. Auto-maintenu par learn-from-session et validate-resources. Ne jamais éditer manuellement — reconstruit depuis learnings.json sur validate.",
+  "_version": "1.0",
+
+  "entries": [
+    {
+      "id": "LRN-001",
+      "tags": ["targeting", "advantage_audience", "workaround"],
+      "platform": "meta_ads",
+      "date": "2026-02-15",
+      "status": "active",
+      "genericity": "sector"
+    },
+    {
+      "id": "LRN-002",
+      "tags": ["orders", "gift", "ltv", "exclusion"],
+      "platform": "shopify",
+      "date": "2026-03-02",
+      "status": "active",
+      "genericity": "brand-specific"
+    },
+    {
+      "id": "LRN-003",
+      "tags": ["lookalike", "seed_quality", "cpa", "test_result"],
+      "platform": "meta_ads",
+      "date": "2026-03-18",
+      "status": "active",
+      "genericity": "sector"
+    },
+    {
+      "id": "LRN-004",
+      "tags": ["compliance", "dgccrf", "claims", "cosmétique"],
+      "platform": "compliance",
+      "date": "2026-01-20",
+      "status": "active",
+      "genericity": "universal"
+    }
+  ]
+}

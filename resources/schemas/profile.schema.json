@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Audience Profile",
+  "description": "Audience profile — deep psychographic and behavioral context, factual description of who they are. Lives in brands/{slug}/audiences/{audience}/profile.json.",
+  "type": "object",
+  "required": ["meta"],
+  "properties": {
+    "$comment": { "type": "string" },
+    "_schema": { "type": "string" },
+    "_version": { "type": "string" },
+    "_field_types": { "type": "object", "additionalProperties": { "type": "string" } },
+
+    "meta": {
+      "type": "object",
+      "required": ["name", "slug"],
+      "properties": {
+        "name": { "type": "string" },
+        "slug": { "type": "string", "pattern": "^[a-z0-9-]*$" },
+        "product_id": { "type": ["string", "null"] },
+        "scope": { "type": "string", "enum": ["broad", "segment", "micro"] },
+        "parent_slug": { "type": ["string", "null"] },
+        "overlap_with": { "type": "array", "items": { "type": "string" } },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "audience_type": { "type": "string", "enum": ["primary", "secondary", "discovered", "assumed"] },
+        "validation_status": { "type": "string", "enum": ["hypothesis", "tested", "validated", "scaled", "fatigued"] },
+        "status": { "type": "string", "enum": ["draft", "partial", "complete"] },
+        "created": { "type": "string" },
+        "updated": { "type": "string" },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "identity": {
+      "type": "object",
+      "properties": {
+        "description": { "type": "string" },
+        "archetype": { "type": "string" },
+        "age_range": {
+          "type": "object",
+          "properties": {
+            "min": { "type": ["integer", "null"] },
+            "max": { "type": ["integer", "null"] }
+          }
+        },
+        "gender": { "type": ["string", "null"], "enum": ["male", "female", "all", ""] },
+        "profession_category": { "type": "string" },
+        "income_level": { "type": ["string", "null"], "enum": ["low", "medium", "high", "luxury", ""] },
+        "lifestyle": { "type": "array", "items": { "type": "string" } },
+        "information_sources": { "type": "array", "items": { "type": "string" } },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "role": {
+      "type": "object",
+      "properties": {
+        "type": { "type": ["string", "null"], "enum": ["end_user", "buyer", "influencer", "gatekeeper", ""] },
+        "proxy_link_id": { "type": ["string", "null"] },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "psychology": {
+      "type": "object",
+      "properties": {
+        "core_desire": { "type": "string" },
+        "values": { "type": "array", "items": { "type": "string" } },
+        "goals": { "type": "array", "items": { "type": "string" } },
+        "beliefs_limiting": { "type": "array", "items": { "type": "string" } },
+        "beliefs_facilitating": { "type": "array", "items": { "type": "string" } },
+        "emotions": { "type": "array", "items": { "type": "string" } },
+        "social_codes": { "type": "array", "items": { "type": "string" } },
+        "life_moments": { "type": "array", "items": { "type": "string" } },
+        "jtbd": {
+          "type": "object",
+          "properties": {
+            "primary": { "type": "string" },
+            "context": { "type": "string" },
+            "emotional_driver": { "type": ["string", "null"], "enum": ["status", "relief", "belonging", "control", "identity", ""] },
+            "_notes": { "type": "object" }
+          }
+        },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "decision_process": {
+      "type": "object",
+      "properties": {
+        "awareness_trigger": { "type": "string" },
+        "research_behavior": {
+          "type": "object",
+          "properties": {
+            "primary_sources": { "type": "array", "items": { "type": "string" } },
+            "secondary_sources": { "type": "array", "items": { "type": "string" } },
+            "decision_makers": { "type": ["string", "null"], "enum": ["self", "family", "peers", "influencer", "professional", ""] }
+          }
+        },
+        "evaluation_criteria": { "type": "array", "items": { "type": "string" } },
+        "trust_anchors": { "type": "array", "items": { "type": "string" } },
+        "purchase_catalyst": { "type": "string" },
+        "risk_tolerance": { "type": ["string", "null"], "enum": ["impulsive", "cautious", "needs_consensus", "waits_for_proof", ""] },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "behavior": {
+      "type": "object",
+      "properties": {
+        "purchase_frequency": { "type": ["string", "null"], "enum": ["one_time", "occasional", "regular", "subscription", ""] },
+        "conversion_timeline": { "type": ["string", "null"], "enum": ["impulse", "short", "considered", "long", ""] },
+        "dominant_device": { "type": ["string", "null"], "enum": ["mobile", "desktop", "mixed", ""] },
+        "cart_behavior": { "type": ["string", "null"], "enum": ["direct", "comparison_shops", "abandons_and_returns", "waits_for_discount", ""] },
+        "seasonal_spikes": { "type": "array", "items": { "type": "string" } },
+        "channel_preferences": { "type": "array", "items": { "type": "string" } },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "voice": {
+      "type": "object",
+      "properties": {
+        "vocabulary_to_use": { "type": "array", "items": { "type": "string" } },
+        "vocabulary_to_avoid": { "type": "array", "items": { "type": "string" } },
+        "key_expressions": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              { "type": "string" },
+              {
+                "type": "object",
+                "properties": {
+                  "text": { "type": "string" },
+                  "origin": { "type": ["string", "null"], "enum": ["voc", "brand_declared", "inferred", ""] },
+                  "platform": { "type": ["string", "null"] },
+                  "frequency": { "type": ["integer", "number", "null"] },
+                  "sample_size": { "type": ["integer", "number", "null"] },
+                  "_notes": { "type": "object" }
+                }
+              }
+            ]
+          }
+        },
+        "tone_register": { "type": "string" },
+        "_notes": { "type": "object" }
+      }
+    },
+
+    "pain_points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ref": { "type": "string" },
+          "priority": { "type": ["integer", "null"] },
+          "formulation": { "type": "string" },
+          "chain": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "level": { "type": "string", "enum": ["surface", "consequence", "deep"] },
+                "formulation": { "type": "string" }
+              }
+            }
+          },
+          "emotion": { "type": "string" },
+          "trigger": { "type": "string" },
+          "awareness_stage": { "type": "string", "enum": ["unaware", "problem_aware", "solution_aware", "product_aware", "most_aware"] },
+          "_source_meta": {
+            "type": "object",
+            "properties": {
+              "origin": { "type": "string", "enum": ["voc", "brand_declared", "inferred"] },
+              "platform": { "type": "string" },
+              "sample_size": { "type": ["integer", "null"] },
+              "date_captured": { "type": "string" }
+            }
+          },
+          "_notes": { "type": "object" }
+        }
+      }
+    },
+
+    "benefits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ref": { "type": "string" },
+          "priority": { "type": ["integer", "null"] },
+          "formulation": { "type": "string" },
+          "chain": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "level": { "type": "string", "enum": ["functional", "emotional", "identity"] },
+                "formulation": { "type": "string" }
+              }
+            }
+          },
+          "emotional_lever": { "type": "string" },
+          "awareness_stage": { "type": "string", "enum": ["unaware", "problem_aware", "solution_aware", "product_aware", "most_aware"] },
+          "_source_meta": {
+            "type": "object",
+            "properties": {
+              "origin": { "type": "string", "enum": ["voc", "brand_declared", "inferred"] },
+              "platform": { "type": "string" },
+              "sample_size": { "type": ["integer", "null"] },
+              "date_captured": { "type": "string" }
+            }
+          },
+          "_notes": { "type": "object" }
+        }
+      }
+    },
+
+    "objections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": ["string", "null"], "enum": ["prix", "scepticisme", "temps", "confiance", "urgence", "efficacité", "comparaison", ""] },
+          "formulation": { "type": "string" },
+          "frequency": { "type": ["integer", "null"], "minimum": 1, "maximum": 10 },
+          "severity": { "type": ["string", "null"], "enum": ["low", "medium", "high", ""] },
+          "lifecycle_stage": { "type": ["string", "null"], "enum": ["awareness", "consideration", "decision", "post_purchase", ""] },
+          "_notes": { "type": "object" }
+        }
+      }
+    },
+
+    "market_position": {
+      "type": "object",
+      "properties": {
+        "awareness_level": { "type": "string" },
+        "sophistication_override": { "type": ["string", "null"] },
+        "_notes": { "type": "string" }
+      }
+    },
+
+    "research_meta": {
+      "type": "object",
+      "properties": {
+        "confidence": { "type": ["integer", "null"], "minimum": 0, "maximum": 100 },
+        "opportunity_score": { "type": ["integer", "null"], "minimum": 1, "maximum": 10 },
+        "sources_used": { "type": "array", "items": { "type": "string" } },
+        "_notes": { "type": "object" }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "_schema": "template-version/1.0",
+  "template_version": "2.6.3",
+  "released_at": "2026-04-19",
+  "compatible_from": "2.0.0",
+  "summary": "Disambiguation field + brand-snapshot digest system + update mechanism",
+  "manifest": "docs/releases/2.6.3-manifest.json"
+}

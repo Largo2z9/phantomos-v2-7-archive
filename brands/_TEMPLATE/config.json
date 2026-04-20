@@ -1,0 +1,43 @@
+{
+  "$comment": "Brand-specific workspace configuration. Auto-enriched by learn-from-session.",
+  "_version": "1.1",
+
+  "language": "fr",
+  "timezone": "Europe/Paris",
+
+  "operator": {
+    "_notes": "Operator preferences. Auto-populated by learn-from-session from session observations. Skills read this to adapt communication.",
+    "communication_style": null,
+    "technical_level": null,
+    "response_length_preference": null,
+    "languages": []
+  },
+
+  "skills": {
+    "auto_flag_stale": true,
+    "freshness_threshold_days": 90
+  },
+
+  "conventions": {
+    "naming_style": "lowercase-with-dashes",
+    "currency": "EUR",
+    "date_format": "YYYY-MM-DD"
+  },
+
+  "integrations": {
+    "_notes": "Declare active integrations. Skills check this before calling external APIs.",
+    "meta_ads": false,
+    "google_ads": false,
+    "shopify": false,
+    "klaviyo": false
+  },
+
+  "proposal_review": {
+    "auto_accept": {
+      "min_confidence": 0.8,
+      "trusted_sources": ["verbatim", "human", "scrape"]
+    },
+    "surface_in_conversation": true,
+    "max_pending_before_prompt": 5
+  }
+}

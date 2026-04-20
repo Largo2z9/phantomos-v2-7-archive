@@ -1,0 +1,58 @@
+{
+  "$comment": "Brand roadmap and targets. Updated monthly. Facts only — no opinions or recommendations.",
+  "_version": "1.1",
+  "_field_types": {
+    "annual_goals[].metric": "observed",
+    "annual_goals[].target": "observed",
+    "annual_goals[].current": "derived",
+    "annual_goals[].deadline": "observed",
+    "monthly_targets[].month": "observed",
+    "monthly_targets[].kpis": "observed",
+    "current_focus": "observed",
+    "constraints": "observed",
+    "pacing.period": "observed",
+    "pacing.planned_spend": "observed",
+    "pacing.actual_spend": "derived",
+    "pacing.pacing_ratio": "derived",
+    "pacing.last_updated": "derived",
+    "variance_thresholds.roas_min": "observed",
+    "variance_thresholds.cpa_max": "observed",
+    "variance_thresholds.cos_max": "observed",
+    "variance_thresholds.spend_daily_max": "observed",
+    "variance_thresholds.custom": "observed",
+    "target_decomposition.method": "observed",
+    "target_decomposition.breakdowns": "derived"
+  },
+
+  "annual_goals": [],
+
+  "monthly_targets": [],
+
+  "current_focus": "",
+
+  "constraints": [],
+
+  "pacing": {
+    "$comment": "Budget pacing — filled by pilotage skill or manually. Updated weekly.",
+    "period": "monthly",
+    "planned_spend": null,
+    "actual_spend": null,
+    "pacing_ratio": null,
+    "last_updated": null
+  },
+
+  "variance_thresholds": {
+    "$comment": "Alert thresholds. KPI exceeding threshold triggers automatic flag.",
+    "roas_min": null,
+    "cpa_max": null,
+    "cos_max": null,
+    "spend_daily_max": null,
+    "custom": []
+  },
+
+  "target_decomposition": {
+    "$comment": "Annual objectives decomposed → monthly → weekly → daily.",
+    "method": "linear",
+    "breakdowns": []
+  }
+}

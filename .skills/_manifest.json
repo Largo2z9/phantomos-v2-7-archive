@@ -1,0 +1,578 @@
+{
+  "_version": "1.0",
+  "_generated_at": "2026-04-19T22:22:05Z",
+  "_count": 29,
+  "skills": [
+    {
+      "name": "analyze-extension-intent",
+      "type": "curator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/analyze-extension-intent/SKILL.md"
+    },
+    {
+      "name": "audit-meta-setup",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "audit meta",
+          "vérifie mon setup meta",
+          "check ma config meta",
+          "audit setup meta"
+        ],
+        "en": [
+          "audit meta setup",
+          "check my meta config",
+          "meta ads audit"
+        ]
+      },
+      "disambiguates_against": {
+        "validate-resources": "route to validate-resources when operator says 'audit' or 'check' without a platform context — that's a workspace integrity check, not a Meta platform audit"
+      },
+      "path": ".skills/skills/audit-meta-setup/SKILL.md"
+    },
+    {
+      "name": "brief-day",
+      "type": "navigator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [
+          "brief",
+          "daily brief",
+          "où j'en suis",
+          "quoi de neuf",
+          "fais-moi le point"
+        ],
+        "en": [
+          "brief",
+          "daily brief",
+          "what's up",
+          "where am I",
+          "status"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/brief-day/SKILL.md"
+    },
+    {
+      "name": "build-agent",
+      "type": "builder",
+      "model": "opus",
+      "subagent_safe": false,
+      "mode": "none",
+      "triggers": {
+        "fr": [
+          "construis-moi un agent",
+          "crée un skill",
+          "je veux un agent qui",
+          "build un outil qui",
+          "j'ai besoin d'un agent pour",
+          "crée-moi quelque chose qui"
+        ],
+        "en": [
+          "build an agent",
+          "create a skill",
+          "I want an agent that",
+          "build a tool that"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/build-agent/SKILL.md"
+    },
+    {
+      "name": "capture-learning",
+      "type": "capturer",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/capture-learning/SKILL.md"
+    },
+    {
+      "name": "check-cross-refs",
+      "type": "curator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/check-cross-refs/SKILL.md"
+    },
+    {
+      "name": "check-existing-coverage",
+      "type": "curator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/check-existing-coverage/SKILL.md"
+    },
+    {
+      "name": "ingest-resource",
+      "type": "curator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": [
+          "ingest",
+          "add resource",
+          "store this",
+          "add to KB"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/ingest-resource/SKILL.md"
+    },
+    {
+      "name": "learn-from-session",
+      "type": "capturer",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": [
+          "learn",
+          "session close",
+          "persist",
+          "save what we learned",
+          "I've noted some things to persist. Want me to save them?"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/learn-from-session/SKILL.md"
+    },
+    {
+      "name": "migrate-workspace",
+      "type": "curator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/migrate-workspace/SKILL.md"
+    },
+    {
+      "name": "mine-audience",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "mine les audiences pour {product}",
+          "identifie les audiences {brand}",
+          "voice of market {product}"
+        ],
+        "en": [
+          "mine audiences for {product}",
+          "find audience segments {brand}",
+          "voice of market {product}"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/mine-audience/SKILL.md"
+    },
+    {
+      "name": "onboard-brand",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": "false   # this is the pilot, it orchestrates subagents",
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "onboard cette brand",
+          "fais le full setup",
+          "onboarding complet",
+          "configure tout depuis zéro"
+        ],
+        "en": [
+          "full onboarding",
+          "onboard brand end to end",
+          "full setup pipeline"
+        ]
+      },
+      "disambiguates_against": {
+        "setup-brand": "route to setup-brand when operator wants only the initial structure/identity, not the full 4-step pipeline",
+        "snapshot-brand": "route to snapshot-brand when operator wants just URL scraping on an already-configured brand (not a full onboarding)"
+      },
+      "path": ".skills/skills/onboard-brand/SKILL.md"
+    },
+    {
+      "name": "promote-learning",
+      "type": "curator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": [
+          "promote this learning",
+          "make this learning shared",
+          "add to KB",
+          "this applies to all brands"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/promote-learning/SKILL.md"
+    },
+    {
+      "name": "propose-schema-draft",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/propose-schema-draft/SKILL.md"
+    },
+    {
+      "name": "query-context",
+      "type": "curator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [],
+        "en": [
+          "find",
+          "get",
+          "what do we have on",
+          "show me",
+          "lookup",
+          "fetch context",
+          "compare brands",
+          "which brands have",
+          "across all brands"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/query-context/SKILL.md"
+    },
+    {
+      "name": "red-team",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": "false   # the skill is the panel chairman, it orchestrates",
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "red team",
+          "audit red team",
+          "challenge ça",
+          "trouve les failles",
+          "devil's advocate",
+          "stress test",
+          "qu'est-ce qui cloche",
+          "qu'est-ce que je rate",
+          "blind spots",
+          "critique mon projet",
+          "roast this",
+          "red team cette brand",
+          "challenge ce brief"
+        ],
+        "en": [
+          "red team",
+          "red team audit",
+          "challenge this",
+          "find the flaws",
+          "devil's advocate",
+          "stress test",
+          "what's wrong",
+          "what am I missing",
+          "blind spots",
+          "roast this",
+          "critique my project"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/red-team/SKILL.md"
+    },
+    {
+      "name": "register-and-flag",
+      "type": "curator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/register-and-flag/SKILL.md"
+    },
+    {
+      "name": "resume-session",
+      "type": "navigator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [
+          "resume",
+          "reprends",
+          "je reviens",
+          "on en était où",
+          "continue"
+        ],
+        "en": [
+          "resume",
+          "pick up",
+          "where were we",
+          "continue"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/resume-session/SKILL.md"
+    },
+    {
+      "name": "scaffold-entity-files",
+      "type": "curator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/scaffold-entity-files/SKILL.md"
+    },
+    {
+      "name": "scaffold-extension",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [
+          "crée une extension",
+          "ajoute un custom entity",
+          "scaffold extension",
+          "nouveau type de données",
+          "ajoute un sidecar",
+          "track X cross sessions",
+          "scaffold"
+        ],
+        "en": [
+          "scaffold extension",
+          "create custom entity",
+          "new data type",
+          "add sidecar",
+          "scaffold a tracker for X",
+          "build extension"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/scaffold-extension/SKILL.md"
+    },
+    {
+      "name": "scaffold-skill-stub",
+      "type": "builder",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/scaffold-skill-stub/SKILL.md"
+    },
+    {
+      "name": "score-product-fit",
+      "type": "producer",
+      "model": "haiku   # override: producer default is sonnet, but this is a bounded lookup+scoring pipeline that haiku handles deterministically",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "evaluate le fit {product} × {audience}",
+          "product-fit {brand}",
+          "alignment {product} {audience}"
+        ],
+        "en": [
+          "evaluate fit {product} × {audience}",
+          "product-fit analysis {brand}",
+          "alignment analysis {product} {audience}"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/score-product-fit/SKILL.md"
+    },
+    {
+      "name": "setup-brand",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": [
+          "setup brand",
+          "configure brand",
+          "new brand",
+          "onboard brand"
+        ]
+      },
+      "disambiguates_against": {
+        "onboard-brand": "route to onboard-brand when operator wants the full 4-step pipeline (setup + URL scan + ingest + validate) end to end",
+        "snapshot-brand": "route to snapshot-brand when operator provides a URL and wants product/brand data auto-scraped (not a guided manual setup)"
+      },
+      "path": ".skills/skills/setup-brand/SKILL.md"
+    },
+    {
+      "name": "snapshot-brand",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "snapshot",
+          "snapshot ce produit",
+          "remplis le workspace",
+          "onboard ce produit",
+          "crée la fiche produit depuis l'URL",
+          "remplit spec.json depuis le site"
+        ],
+        "en": [
+          "snapshot",
+          "snapshot this product",
+          "populate workspace from URL",
+          "onboard product"
+        ]
+      },
+      "disambiguates_against": {
+        "setup-brand": "route to setup-brand when operator wants manual guided setup without URL scraping",
+        "onboard-brand": "route to onboard-brand when operator wants the full multi-step pipeline from scratch, not just a URL scrape"
+      },
+      "path": ".skills/skills/snapshot-brand/SKILL.md"
+    },
+    {
+      "name": "update-workspace",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [
+          "mets à jour phantomOS",
+          "update workspace",
+          "installe la nouvelle version",
+          "applique les mises à jour"
+        ],
+        "en": [
+          "update workspace",
+          "install latest version",
+          "apply updates",
+          "upgrade phantomos"
+        ]
+      },
+      "disambiguates_against": {
+        "migrate-workspace": "route to migrate-workspace when the operator only needs a schema migration within a version (no template file changes), not a full release update",
+        "setup-brand": "route to setup-brand when operator wants to add a new brand, not update the template"
+      },
+      "path": ".skills/skills/update-workspace/SKILL.md"
+    },
+    {
+      "name": "validate-naming",
+      "type": "curator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/validate-naming/SKILL.md"
+    },
+    {
+      "name": "validate-resources",
+      "type": "curator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [],
+        "en": [
+          "validate",
+          "audit",
+          "check KB",
+          "health check"
+        ]
+      },
+      "disambiguates_against": {
+        "audit-meta-setup": "route to audit-meta-setup when operator says 'audit' + platform context (Meta Ads) — that's a platform-specific audit, not a workspace integrity check"
+      },
+      "path": ".skills/skills/validate-resources/SKILL.md"
+    },
+    {
+      "name": "validate-schema-canon",
+      "type": "curator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/validate-schema-canon/SKILL.md"
+    },
+    {
+      "name": "watch-competitors",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "surveille mes concurrents Meta",
+          "qu'est-ce que font mes concurrents sur Meta",
+          "veille concurrentielle",
+          "analyse les pubs des concurrents",
+          "competitive Intel Meta"
+        ],
+        "en": [
+          "watch competitors on Meta",
+          "competitor ads analysis",
+          "Meta competitive intelligence"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/watch-competitors/SKILL.md"
+    }
+  ]
+}

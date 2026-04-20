@@ -1,0 +1,379 @@
+{
+  "_schema": "offers",
+  "_version": "2.0",
+  "meta": {
+    "product_slug": "creme-eclat",
+    "updated": "2026-04-04",
+    "scope": "pre_cart"
+  },
+  "offer_groups": [
+    {
+      "group_id": "GRP-01",
+      "name": "Default group (auto-migrated v1→v2)",
+      "description": "Auto-generated single-group wrapper from v1.x migration. Split into multiple groups if offers share distinct shared attributes.",
+      "active": true,
+      "shared": {},
+      "offers": [
+        {
+          "offer_id": "OFR-01",
+          "name": "Crème Éclat — 1 pot",
+          "type": "single",
+          "target_audience_id": null,
+          "pricing": {
+            "model": "one_shot",
+            "price": 49,
+            "price_original": null,
+            "price_per_unit": null,
+            "price_comparison_note": "1,63€/jour pour 30 jours",
+            "currency": "EUR",
+            "savings_amount": null,
+            "savings_percent": null
+          },
+          "contents": {
+            "quantity": 1,
+            "unit_name": "pot",
+            "duration": 30,
+            "duration_unit": "days",
+            "included_items": [],
+            "variant_selection": null
+          },
+          "subscription": null,
+          "incentives": {
+            "gifts": [
+              {
+                "name": "Sachet d'échantillons découverte",
+                "value": 12,
+                "conditions": "Première commande uniquement",
+                "first_order_only": true,
+                "unlock_after_orders": null
+              }
+            ],
+            "discount": {
+              "type": null,
+              "value": null,
+              "code": null,
+              "valid_until": null,
+              "conditions": null,
+              "flash_sale": false,
+              "early_bird": false
+            },
+            "bulk_tiers": [],
+            "referral": null
+          },
+          "gifting": {
+            "enabled": true,
+            "gift_wrapping": true,
+            "gift_message": true,
+            "recipient_shipping": true
+          },
+          "urgency": {
+            "limited_quantity": false,
+            "quantity_remaining": null,
+            "limited_time": false,
+            "countdown": false,
+            "units_sold": null,
+            "early_access": null
+          },
+          "payment_options": {
+            "methods": [
+              "credit_card",
+              "paypal",
+              "apple_pay"
+            ],
+            "installments": []
+          },
+          "placement": "product_page",
+          "landing_page": "https://lumya.co/products/creme-eclat",
+          "active": true,
+          "active_from": null,
+          "active_until": null,
+          "order_index": 0,
+          "product_refs": [
+            {
+              "slug": "creme-eclat",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "offer_id": "OFR-02",
+          "name": "Crème Éclat — Pack 3 mois",
+          "type": "bundle",
+          "target_audience_id": null,
+          "pricing": {
+            "model": "one_shot",
+            "price": 129,
+            "price_original": 147,
+            "price_per_unit": null,
+            "price_comparison_note": "1,43€/jour sur 90 jours",
+            "currency": "EUR",
+            "savings_amount": 18,
+            "savings_percent": 12
+          },
+          "contents": {
+            "quantity": 3,
+            "unit_name": "pots",
+            "duration": 90,
+            "duration_unit": "days",
+            "included_items": [],
+            "variant_selection": null
+          },
+          "subscription": null,
+          "incentives": {
+            "gifts": [],
+            "discount": {
+              "type": "percentage",
+              "value": 12,
+              "code": null,
+              "valid_until": null,
+              "conditions": "Pack 3 pots uniquement",
+              "flash_sale": false,
+              "early_bird": false
+            },
+            "bulk_tiers": [],
+            "referral": null
+          },
+          "gifting": {
+            "enabled": false,
+            "gift_wrapping": false,
+            "gift_message": false,
+            "recipient_shipping": false
+          },
+          "urgency": {
+            "limited_quantity": false,
+            "quantity_remaining": null,
+            "limited_time": false,
+            "countdown": false,
+            "units_sold": null,
+            "early_access": null
+          },
+          "payment_options": {
+            "methods": [
+              "credit_card",
+              "paypal",
+              "apple_pay"
+            ],
+            "installments": [
+              {
+                "nb_installments": 3,
+                "amount_per_installment": 43,
+                "provider": "Klarna",
+                "conditions": "Sans frais",
+                "min_order_value": null
+              }
+            ]
+          },
+          "placement": "product_page",
+          "landing_page": "https://lumya.co/products/creme-eclat",
+          "active": true,
+          "active_from": null,
+          "active_until": null,
+          "order_index": 1,
+          "product_refs": [
+            {
+              "slug": "creme-eclat",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "offer_id": "OFR-03",
+          "name": "Crème Éclat — Abonnement mensuel",
+          "type": "subscription",
+          "target_audience_id": null,
+          "pricing": {
+            "model": "subscription",
+            "price": 41,
+            "price_original": 49,
+            "price_per_unit": null,
+            "price_comparison_note": "1,37€/jour",
+            "currency": "EUR",
+            "savings_amount": 8,
+            "savings_percent": 16
+          },
+          "contents": {
+            "quantity": 1,
+            "unit_name": "pot",
+            "duration": 1,
+            "duration_unit": "months",
+            "included_items": [],
+            "variant_selection": null
+          },
+          "subscription": {
+            "frequency": "monthly",
+            "frequency_options": [
+              30
+            ],
+            "skip": true,
+            "pause": true,
+            "reschedule": true,
+            "required": false,
+            "discount_type": "percentage",
+            "discount_value": 16,
+            "intro_discount": null,
+            "shipping": {
+              "free": true,
+              "threshold": null
+            },
+            "cancellation": "Résiliation possible à tout moment, sans frais, depuis l'espace client",
+            "trial": {
+              "enabled": false,
+              "duration": null,
+              "duration_unit": null,
+              "requires_payment_method": false,
+              "converts_to_offer_id": null
+            }
+          },
+          "incentives": {
+            "gifts": [
+              {
+                "name": "Tote bag Lumya édition limitée",
+                "value": 18,
+                "conditions": "Abonnés actifs depuis 3 mois",
+                "first_order_only": false,
+                "unlock_after_orders": 3
+              }
+            ],
+            "discount": {
+              "type": "percentage",
+              "value": 16,
+              "code": null,
+              "valid_until": null,
+              "conditions": "Abonnés uniquement",
+              "flash_sale": false,
+              "early_bird": false
+            },
+            "bulk_tiers": [],
+            "referral": {
+              "enabled": true,
+              "referrer_reward": {
+                "type": "fixed_off",
+                "value": 10,
+                "description": "10€ de réduction sur la prochaine commande"
+              },
+              "referee_reward": {
+                "type": "percent_off",
+                "value": 15,
+                "description": "15% sur la première commande"
+              }
+            }
+          },
+          "gifting": {
+            "enabled": false,
+            "gift_wrapping": false,
+            "gift_message": false,
+            "recipient_shipping": false
+          },
+          "urgency": {
+            "limited_quantity": false,
+            "quantity_remaining": null,
+            "limited_time": false,
+            "countdown": false,
+            "units_sold": null,
+            "early_access": null
+          },
+          "payment_options": {
+            "methods": [
+              "credit_card"
+            ],
+            "installments": []
+          },
+          "placement": "product_page",
+          "landing_page": "https://lumya.co/products/creme-eclat",
+          "active": true,
+          "active_from": null,
+          "active_until": null,
+          "order_index": 2,
+          "product_refs": [
+            {
+              "slug": "creme-eclat",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "offer_id": "OFR-04",
+          "name": "Crème Éclat — Cure 6 mois prépayée",
+          "type": "prepay",
+          "target_audience_id": null,
+          "_comment": "Exemple type 'prepay' : même produit, prépayé 6 mois avec remise volume. Distinct du bundle (multi-produit).",
+          "pricing": {
+            "model": "one_shot",
+            "price": 228,
+            "price_original": 294,
+            "price_per_unit": null,
+            "price_comparison_note": "38€/mois — 1,27€/jour",
+            "currency": "EUR",
+            "savings_amount": 66,
+            "savings_percent": 22
+          },
+          "contents": {
+            "quantity": 6,
+            "unit_name": "pots",
+            "duration": 6,
+            "duration_unit": "months",
+            "included_items": [],
+            "variant_selection": null
+          },
+          "subscription": null,
+          "incentives": {
+            "gifts": [],
+            "discount": {
+              "type": "percentage",
+              "value": 22,
+              "code": null,
+              "valid_until": null,
+              "conditions": "Cure 6 mois uniquement — meilleure remise disponible",
+              "flash_sale": false,
+              "early_bird": false
+            },
+            "bulk_tiers": [],
+            "referral": null
+          },
+          "gifting": {
+            "enabled": false,
+            "gift_wrapping": false,
+            "gift_message": false,
+            "recipient_shipping": false
+          },
+          "urgency": {
+            "limited_quantity": false,
+            "quantity_remaining": null,
+            "limited_time": false,
+            "countdown": false,
+            "units_sold": null,
+            "early_access": null
+          },
+          "payment_options": {
+            "methods": [
+              "credit_card",
+              "paypal",
+              "apple_pay"
+            ],
+            "installments": [
+              {
+                "nb_installments": 4,
+                "amount_per_installment": 57,
+                "provider": "Klarna",
+                "conditions": "Sans frais",
+                "min_order_value": null
+              }
+            ]
+          },
+          "placement": "product_page",
+          "landing_page": "https://lumya.co/products/creme-eclat",
+          "active": true,
+          "active_from": null,
+          "active_until": null,
+          "order_index": 3,
+          "product_refs": [
+            {
+              "slug": "creme-eclat",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
