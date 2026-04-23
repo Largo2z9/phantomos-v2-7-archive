@@ -238,7 +238,7 @@ You don't need to open a file, that's my job.
 
 ### What we specifically do here (post-scrape / post-setup)
 
-1. **Context recap** (operator language, short block format): identity, hero product, audience (flag "inferred, to validate"), detected offers, business stage if given.
+1. **Context recap** (operator language, short block format): identity, hero product, audience (flag "inferred, to validate"), detected offers, business stage if given. Before sending this recap to the operator, invoke `validate-output-coherence` (Task tool, haiku, `subagent_safe: true`) with `output_text` = the recap draft, `brand_slug`, and `entity_refs` covering every product/audience/offer mentioned. Revise until `ok: true` — never ship a recap that contradicts or fabricates against the files just written.
 
 2. **Explicit blind spots** — detailed audience, past learnings, platform access, competitor benchmarks.
 

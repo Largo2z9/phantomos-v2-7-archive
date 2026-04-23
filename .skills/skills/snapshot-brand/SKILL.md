@@ -486,10 +486,11 @@ Good? Want to change anything before I save?
 - **If the operator corrects** ("price is 39€", "audience is more men") → apply the correction, reshow the modified summary, wait for confirmation.
 - **Never write files before explicit confirmation.**
 
-Once saved, run two silent post-writes before talking:
+Once saved, run three silent post-writes before talking:
 
 1. **Append to `brands/{slug}/pending-validations.md § Context gate`** one `[ ]` line per inferred field that was stamped with `mode=proposed` during this run. Wording in the operator's language, plain-language source tag (`(inferred from site)`, `(deduced)`), never `source` / `confidence` / `mode` jargon. Typical entries: audience(s) inferred, positioning inferred, tone inferred, compliance gaps detected (e.g. missing contraindications on a medical device).
 2. **Trigger `validate-resources` silently** on the brand. This refreshes `status.json` (completeness per entity, freshness stamps, `wedge_complete`), rebuilds `learnings-index.json` if present, and re-runs the snapshot digest. Surface its result only if it flags MAJOR/CRITICAL — otherwise stay silent.
+3. **Invoke `validate-output-coherence`** on the operator-facing summary you are about to write (Task tool, model haiku, `subagent_safe: true`). Pass `output_text` = the draft summary, `brand_slug`, `entity_refs` = every product/audience/offer you reference. If the report returns `blocking_issues` → revise the summary to remove the contradiction, rerun the check; do not show anything to the operator until `ok: true`. Warnings are informational only — log them, ship the summary. This gate catches the class of bug where the agent narrates *"I flagged compliance_gap as CRITICAL"* while `spec.json#/compliance_gap` is actually `{}`.
 
 Then propose enrichment without waiting:
 
@@ -531,6 +532,7 @@ I sort and file automatically.
 - **Do not create audience folder** if Q1 + Q2 are both null, not enough to identify audience.
 - **Write modes.** Never call `write_to_context` on a whole file path with `mode=proposed` — the proposal wrapper stamps `_proposed/_source/_confidence` at the root object and corrupts consumers. Always scaffold the file in `mode=direct` (full structure with null placeholders), then stamp inferred fields one by one with `mode=proposed` using a JSONPointer fragment (e.g. `file.json#/pricing/price`). The tool enforces this guard since 2.6.20.
 - **Offers.json = v2 `offer_groups[]` only.** Never write the legacy flat `offers[]` at root. `_version: "2.0"` is mandatory. Single-product files use a group-of-1. Use `product_refs: [{slug, quantity}]`, not `product_ids`.
+- **No narrative claim about an entity field without `validate-output-coherence`.** Any operator-facing sentence that references a field in `spec.json`, `offers.json`, `profile.json`, or `brand.json` (e.g. *"I flagged X in the spec"*, *"the compliance gap is marked CRITICAL"*, *"contraindications list is now complete"*) MUST pass through `validate-output-coherence` first. Fabrication class bug — the sub-skill's fact-consistency check catches claims that contradict or invent the underlying data.
 
 ---
 

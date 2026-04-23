@@ -1,0 +1,39 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.6.22",
+  "released_at": "2026-04-24",
+  "compatible_from": "2.0.0",
+  "theme": "wire validate-output-coherence",
+  "summary": "validate-output-coherence sub-skill existed since v2.6.17 but no caller was wired. snapshot-brand Step 7 and setup-brand Step 4 now invoke it as a mandatory pre-ship gate on their operator-facing summaries. Catches the fabrication class where the agent narrates claims that contradict or invent entity fields.",
+  "changes": [
+    {
+      "path": ".skills/skills/snapshot-brand/SKILL.md",
+      "kind": "edit",
+      "reason": "Step 7 adds the coherence invocation as the 3rd silent post-save action. Hard Rules add the no-narrative-without-coherence-check rule citing the compliance_gap fabrication trigger."
+    },
+    {
+      "path": ".skills/skills/setup-brand/SKILL.md",
+      "kind": "edit",
+      "reason": "Step 4 context recap: coherence check required before sending recap to operator."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "kind": "edit",
+      "reason": "v2.6.22 entry."
+    },
+    {
+      "path": "_version.json",
+      "kind": "edit",
+      "reason": "Bump to 2.6.22."
+    }
+  ],
+  "migrations_required": false,
+  "breaking_changes": false,
+  "operator_impact": "post-save and post-recap summaries are now fact-consistent with the JSON on disk. No change to the files the operator owns.",
+  "tested_on": ["SKILL.md edits, verified against Nooance onboarding fabrication trace (compliance_gap {} vs narrative 'flagged CRITICAL')"],
+  "caught_by": "same fresh-instance onboarding test as v2.6.20/21 (finding #3).",
+  "known_gaps": [
+    "Gate is a SKILL.md instruction, not hook-enforced. If the calling agent skips the Task tool invocation, the check doesn't run.",
+    "No PreToolUse hook yet intercepting operator-facing completions mentioning entity fields. Candidate v2.7.x."
+  ]
+}

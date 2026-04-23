@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.6.21",
+  "template_version": "2.6.22",
   "released_at": "2026-04-24",
   "compatible_from": "2.0.0",
-  "summary": "Close end-of-onboarding gap: setup-brand now substitutes {brand-name} across all 4 md files + seeds pending-validations baseline; snapshot-brand triggers validate-resources silently post-save and appends inferred fields to pending-validations Context gate.",
-  "manifest": "docs/releases/2.6.21-manifest.json"
+  "summary": "Wire validate-output-coherence as mandatory pre-ship gate in setup-brand Step 4 recap and snapshot-brand Step 7 post-save summary. Catches the fabrication class where the agent narrates entity claims that contradict the underlying JSON.",
+  "manifest": "docs/releases/2.6.22-manifest.json"
 }

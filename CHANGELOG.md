@@ -5,6 +5,21 @@
 
 ---
 
+## v2.6.22 — 2026-04-24 — Wire validate-output-coherence as a mandatory pre-ship gate
+
+**Caught during v2.6.19 fresh-instance test (finding #3).** The agent narrated *"I flagged compliance_gap as CRITICAL in the spec"* while `spec.json#/compliance_gap` was actually `{}`. The operator took the statement at face value. `validate-output-coherence` existed as a sub-skill since v2.6.17 but was declarative — no caller was wired to invoke it.
+
+**Fix**
+- `snapshot-brand/SKILL.md § Step 7` post-save: now requires invoking `validate-output-coherence` (Task tool, haiku, `subagent_safe: true`) on the operator-facing summary before it ships. `blocking_issues` → revise and retry. Warnings logged, do not block.
+- `snapshot-brand/SKILL.md § Hard Rules`: new rule — no narrative claim referencing a field in `spec.json` / `offers.json` / `profile.json` / `brand.json` ships without passing the coherence check first. The concrete compliance-gap fabrication is cited as the canonical trigger.
+- `setup-brand/SKILL.md § Step 4` context recap: same gate applies before sending the recap to the operator.
+
+**Operator impact**: post-setup and post-snapshot summaries are now fact-consistent with the files on disk. Agent can no longer claim to have flagged or filled a field that the JSON doesn't actually contain.
+
+**Known gap**: the gate is a SKILL.md instruction, not hook-enforced. If the calling agent skips the Task tool invocation, the check doesn't run. Future hardening: PreToolUse hook that intercepts large operator-facing completions mentioning entity fields and requires a recent coherence check event in the log (candidate v2.7.x).
+
+---
+
 ## v2.6.21 — 2026-04-24 — Close the end-of-onboarding governance gap
 
 **Caught during same fresh-instance test as v2.6.20.** After setup-brand + snapshot-brand + 29 mutations, `status.json.wedge_complete` stayed `false`, `completeness` was `{}`, `pending-validations.md` still had the template placeholder `{brand-name}` and no seeded checkpoints for the fields stamped in `mode=proposed`. The governance surface the operator sees was empty even though the workspace was populated.
