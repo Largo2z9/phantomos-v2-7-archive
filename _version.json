@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.6.22",
+  "template_version": "2.7.0",
   "released_at": "2026-04-24",
   "compatible_from": "2.0.0",
-  "summary": "Wire validate-output-coherence as mandatory pre-ship gate in setup-brand Step 4 recap and snapshot-brand Step 7 post-save summary. Catches the fabrication class where the agent narrates entity claims that contradict the underlying JSON.",
-  "manifest": "docs/releases/2.6.22-manifest.json"
+  "summary": "Enforcement layer — three SKILL.md instructions graduate to hook-enforced guards: (1) brand status auto-refreshed after every write via PostToolUse, (2) em-dash occurrences in operator replies audited via Stop, (3) entity-field claims without a recent coherence_check flagged via Stop. Plus refresh-brand-status.py primitive.",
+  "manifest": "docs/releases/2.7.0-manifest.json"
 }

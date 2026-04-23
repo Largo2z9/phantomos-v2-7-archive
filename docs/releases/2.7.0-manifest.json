@@ -1,0 +1,53 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.7.0",
+  "released_at": "2026-04-24",
+  "compatible_from": "2.0.0",
+  "theme": "enforcement layer — soft rules graduate to hook guards",
+  "summary": "Three SKILL.md rules from v2.6.20-22 (status refresh, em-dash, coherence claims) become hook-enforced where Claude Code permits. PostToolUse flushes brand status mechanically after every write. Stop / SubagentStop audit the last assistant message for em-dashes and entity-field claims without a coherence check. Text output cannot be blocked pre-render, so the two tone/coherence hooks are audit-with-stderr-surface, not hard block — documented as known gap.",
+  "changes": [
+    {
+      "path": ".skills/refresh-brand-status.py",
+      "kind": "new",
+      "reason": "Mechanical recomputation of status.json completeness + wedge_complete + last_activity. No LLM. Called by post-write-flush hook."
+    },
+    {
+      "path": ".claude/hooks/post-write-flush.py",
+      "kind": "new",
+      "reason": "PostToolUse on Bash. Detects write-to-context.py invocations on brand paths, synchronously refreshes status."
+    },
+    {
+      "path": ".claude/hooks/turn-end-audit.py",
+      "kind": "new",
+      "reason": "Stop + SubagentStop. Audits last assistant message for em-dashes (tone-audit.log) and entity-field claims without recent coherence_check (coherence-audit.log). Surfaces stderr summary."
+    },
+    {
+      "path": ".claude/settings.json",
+      "kind": "edit",
+      "reason": "Wire the three new hook entries."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "kind": "edit",
+      "reason": "v2.7.0 entry."
+    },
+    {
+      "path": "_version.json",
+      "kind": "edit",
+      "reason": "Bump to 2.7.0."
+    }
+  ],
+  "migrations_required": false,
+  "breaking_changes": false,
+  "operator_impact": "status.json now auto-refreshes after every brand write. Em-dash and coherence violations log to .phantom/ audit files.",
+  "tested_on": [
+    "refresh-brand-status.py verified on _EXAMPLE data (grades partial/partial/partial/complete, wedge_complete=true)",
+    "post-write-flush.py verified via simulated PostToolUse JSON (brand slug extracted, refresh invoked, status.json updated)",
+    "turn-end-audit.py verified via fake transcript with 2 em-dashes + 1 unchecked entity claim (both logged + stderr summary emitted)"
+  ],
+  "caught_by": "user request after v2.6.22 ship — 'règle le pb' on the three known-gaps listed across v2.6.20-22 manifests.",
+  "known_gaps": [
+    "Em-dash and coherence audits cannot block offending output — Claude Code does not expose a pre-render hook on assistant text. Soft enforcement only; audit logs accumulate and stderr warnings surface on next tool call.",
+    "Hard prevention of narrated fabrications would require either a Claude Code feature addition or restructuring workflows to route claims through tool calls (pre-hookable) rather than free text."
+  ]
+}

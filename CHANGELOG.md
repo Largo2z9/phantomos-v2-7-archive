@@ -5,6 +5,38 @@
 
 ---
 
+## v2.7.0 — 2026-04-24 — Enforcement layer: three soft rules become hook-guards
+
+**Why the minor bump.** v2.6.20–22 closed the skill-level gaps found during the Nooance fresh-instance test, but all three fixes were SKILL.md instructions — readable policy the agent could still skip under load. This release moves the enforcement from instructions to mechanics wherever Claude Code's hook surface allows it.
+
+**What the hook surface actually permits**
+- PreToolUse / PostToolUse / Stop / SubagentStop / UserPromptSubmit / SessionStart — these can inspect, block tool calls, or inject context.
+- There is no hook that can intercept assistant text output before it renders. Hard prevention of narrated fabrications or em-dashes in replies is therefore not possible. What is possible is post-hoc audit with persistent logs and stderr surfacing — the agent sees the warning at the next tool call and can self-correct. This release ships what's genuinely enforceable and is explicit about the limitation.
+
+**Hook 1 — Brand status auto-refresh (hard enforcement)**
+- New: `.skills/refresh-brand-status.py {slug}` — mechanical recomputation of `status.json`. No LLM. Grades `completeness.{brand,products,audiences,offers}` via field-presence heuristics, flips `wedge_complete` when all four entity types reach at least "draft", stamps `last_activity`.
+- New hook: `.claude/hooks/post-write-flush.py` — PostToolUse on Bash. Detects `write-to-context.py --path brands/{slug}/...` invocations, extracts the slug, invokes `refresh-brand-status.py {slug}` synchronously. The agent cannot skip this step; every successful write automatically flushes the brand's self-reported state.
+
+**Hook 2 — Em-dash audit (soft enforcement)**
+- New hook: `.claude/hooks/turn-end-audit.py` — Stop + SubagentStop. Parses the last assistant message from the transcript, counts em-dashes (CLAUDE.md bans `—` in replies). Logs one entry per occurrence to `.phantom/tone-audit.log` (max 5 per turn), emits a single stderr summary the agent sees at its next tool call.
+- Limitation: the text is already shown to the operator — the hook cannot retroactively strip it. The audit builds pressure and a persistent trail.
+
+**Hook 3 — Coherence violation audit (soft enforcement)**
+- Same `turn-end-audit.py` hook scans the last assistant message for entity-field markers (`spec.json`, `offers.json`, `profile.json`, `brand.json`, `compliance_gap`, `flagged CRITICAL`, `stamped field/value`). If any are found AND the events log does not show a `coherence_check` event in the last 5 minutes, logs the violation to `.phantom/coherence-audit.log` and surfaces a stderr warning.
+- This catches the exact class of bug that opened v2.6.22: agent narrating `"I flagged compliance_gap CRITICAL"` while `spec.json#/compliance_gap` was `{}`.
+
+**Wiring**
+- `.claude/settings.json` gains three hook entries: `PostToolUse.Bash → post-write-flush.py`, `Stop → turn-end-audit.py`, `SubagentStop → turn-end-audit.py`.
+
+**Operator impact**
+- `status.json` and `wedge_complete` are now always current after any brand write. No action required from the agent.
+- Em-dash and coherence violations accumulate in `.phantom/` audit logs. Largo can inspect them on demand or leave them as background telemetry.
+
+**Known gap**
+- The two soft-enforcement audits cannot block the offending output (Claude Code does not expose a pre-render hook on assistant text). Hard prevention would require either a feature addition on Claude Code's side or restructuring workflows so that claims flow through tool calls (which are pre-hookable) rather than free text. Not addressed in this release.
+
+---
+
 ## v2.6.22 — 2026-04-24 — Wire validate-output-coherence as a mandatory pre-ship gate
 
 **Caught during v2.6.19 fresh-instance test (finding #3).** The agent narrated *"I flagged compliance_gap as CRITICAL in the spec"* while `spec.json#/compliance_gap` was actually `{}`. The operator took the statement at face value. `validate-output-coherence` existed as a sub-skill since v2.6.17 but was declarative — no caller was wired to invoke it.
