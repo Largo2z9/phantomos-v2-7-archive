@@ -65,6 +65,27 @@ WELCOME.md, getting-started, and first-run surfaces follow a **product-tour fact
 
 The product carries the narrative. The narrative does not carry the product.
 
+## Heavy skill posture — always ask before cascade
+
+When a skill is about to execute a heavy workflow (multi-step, multi-subagent, >20k tokens estimated, or >10 minutes runtime), it MUST surface the plan to the operator before embarking on the cascade. No silent runaway execution.
+
+The surface pattern :
+
+```
+Je vais lancer {skill_name} sur {brand}. Voici ce qui va s'exécuter :
+- {N} étapes / checkpoints
+- Estimation : {runtime}, {tokens}
+- Sub-skills appelés : {top-3 ou "voir détail"}
+- Output : {destination}
+- Scénario (par défaut : {scenario}) — variantes : {list}
+
+On y va, scénario différent, ou autre cadrage ?
+```
+
+Operator confirms → execution. Adjusts → reconfigure. Refuses → skill stops without consuming tokens.
+
+**Hard rule** : no cascade > 3 subagents without explicit gate. No execution > 20k estimated tokens without explicit gate. Applies to all orchestrators and heavy domain skills. See `docs/system/skill-creation-protocol.md` for the full protocol.
+
 ## Anti-patterns
 
 Three failure modes recur in first drafts. Each is caught by a binary test before the line ships.
@@ -76,6 +97,8 @@ Three failure modes recur in first drafts. Each is caught by a binary test befor
 **Unverifiable metric.** *Three minutes to boot*, *10x faster*, *zero setup*. Every quantitative claim in a doc must be reproducible by the reader. Either specify the condition (*three minutes from empty workspace to first skill run*) or cut.
 
 **Triple-parallel punchline.** *"You talk, the agent writes. You correct, the agent learns. You stop, the agent persists."* Rhythmic triplets feel decisive but collapse into coach cadence when each member is a restatement of the others. The pattern recurs under many shapes (*"No X. No Y. No Z."*, *"X becomes rules. Y becomes patterns. Z becomes operable."*). Test: if the three members are paraphrases of one claim, keep the strongest and delete the rest. Keep the triplet only when each member adds distinct information.
+
+**Plumbing leak to operator.** Internal plumbing — `source`, `confidence`, `mode`, field paths, JSON Pointer syntax, `--source / --confidence / --mode` argument names — never surfaces in an operator-facing message. The operator is an e-commerce manager, not an engineer. The agent auto-tags source and confidence from semantic signal (literal scrape of the site → high / logical inference → medium / operator stated → authoritative) and presents the distinction only as `observé`, `déduit`, `déclaré`, `incertain` when it changes what the operator should do. Operator verbs stay accept / reject / correct / flag. Negative example (real, caught in S35 Onday test): *"Set confidence to 0.6 on the rating because it's not a verified Trustpilot"*. Good: *"The 4.7 rating is a claim from the site, not a verified Trustpilot — treat it as less reliable, recheck when we get access"*. Test before shipping a line: would an e-commerce agency manager say this sentence? If no, rewrite.
 
 ## Cross-surface rules (runtime vs docs)
 

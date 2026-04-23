@@ -341,9 +341,9 @@ Each generated file must:
 - Explicit output format (markdown, JSON, or both)
 - Hard Rules: non-negotiable guardrails of the agent
 
-**If the agent uses `write_to_context()`:**
+**If the agent uses ``.skills/write-to-context.py` (canonical channel — see capture-learning Step 4 for the exact Bash invocation)`:**
 - Explicitly state mutated fields, confidence value, mode (proposal by default)
-- Never direct write to JSON, always via `write_to_context()`
+- Never direct write to JSON, always via ``.skills/write-to-context.py` (canonical channel — see capture-learning Step 4 for the exact Bash invocation)`
 
 **If the agent relies on existing knowledge (Step 3):**
 - Add at Step 1: "Read [file] to load business context."
@@ -397,7 +397,7 @@ Conversation ends with Step 6 debrief, no extra markdown, no exhaustive recap.
 - **Never skip mapping** (Step 1). Even if the request seems simple, read first, reply after.
 - **Max 4 questions** to clarify intent. Beyond that, the agent makes a reasoned choice and explains.
 - **Always validate architecture** before generating (Step 4). Never generate without operator agreement.
-- **`write_to_context()` mandatory** for any agent that mutates the Context Engine. Never direct write.
+- **``.skills/write-to-context.py` (canonical channel — see capture-learning Step 4 for the exact Bash invocation)` mandatory** for any agent that mutates the Context Engine. Never direct write.
 - **Proposal mode by default** for any generated agent. Confidence = 1.0 reserved for `human:*` agents only.
 - **Never create a skill that duplicates an existing skill.** If an existing skill covers 80%+ of the need, propose extending it rather than creating a new one.
 - **The orchestrator does nothing itself.** It sequences only. Zero business logic in the orchestrator.

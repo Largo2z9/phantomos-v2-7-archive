@@ -40,7 +40,7 @@ See `docs/system/extending.md` for the extension layer architecture. See `docs/s
 
 Le gate `check-existing-coverage` en Phase 2 est le pivot. Dans les deux modes, la même logique :
 
-- Si la donnée ou l'intention matche une entité core existante → route vers write_to_context sur cette entité, **aucun scaffold**.
+- Si la donnée ou l'intention matche une entité core existante → route vers `.skills/write-to-context.py` sur cette entité, **aucun scaffold**.
 - Si match sur sidecar ou custom entity existante → écrit dans l'existant, nouvelle instance ou enrichissement sidecar, **pas de nouveau scaffold**.
 - Si match partiel avec un shared resource → scaffold une structure minimale qui cross-ref la ressource plutôt que dupliquer.
 - Si genuinely new → scaffold complet. En mode data-first, le scaffold est suivi immédiatement du populate avec la donnée apportée.
@@ -99,7 +99,7 @@ Halts on any schema canon violation.
 
 ### Phase 7 — `scaffold-entity-files`
 
-Write the physical files to disk via `write_to_context`:
+Write the physical files to disk via `.skills/write-to-context.py`:
 - `brands/{slug}/custom/{entity_type}/schema.json` (or `brands/{slug}/{entity}.extensions.json` for sidecar).
 - `brands/{slug}/custom/{entity_type}/README.md` (canonical structure: purpose, cross-refs, field conventions).
 - Empty or example instance file if requested.
@@ -114,7 +114,7 @@ Skipped if the operator does not need a populating skill (manual-only tracking, 
 
 ### Phase 9 — `register-and-flag`
 
-For custom entities: add an entry to `index.json → extensions[]` via `write_to_context`, with `type`, `scope`, `schema` path, `cross_refs`, `owner_skill`, `registered_at`. For sidecars: skip (sidecars are convention-discovered, not registered — see `docs/system/extending.md`).
+For custom entities: add an entry to `index.json → extensions[]` via `.skills/write-to-context.py`, with `type`, `scope`, `schema` path, `cross_refs`, `owner_skill`, `registered_at`. For sidecars: skip (sidecars are convention-discovered, not registered — see `docs/system/extending.md`).
 
 Add a flag entry to `brands/{slug}/todos.md → ## In Progress` tracking the adoption of the new extension (first data capture, first query).
 

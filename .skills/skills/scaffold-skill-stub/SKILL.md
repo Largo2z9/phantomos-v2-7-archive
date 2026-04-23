@@ -38,7 +38,7 @@ Generates the SKILL.md stub of a custom skill that will populate or query a new 
    - `## Method` (numbered steps, placeholder prose for the operator to fill)
    - `## Output` (expected shape)
    - `## Hard rules` (at least the mutation gate and cross-ref discipline)
-6. **Write the file** to `.skills/skills/custom/{skill_name}/SKILL.md` via `write_to_context`.
+6. **Write the file** to `.skills/skills/custom/{skill_name}/SKILL.md` via `.skills/write-to-context.py`.
 7. **Add a line to `brands/{slug}/todos.md → ## In Progress`**:
 
 > *"[ ] Implement body of custom skill `{skill_name}` — stub created by scaffold-extension. Fill in Method steps. Test on one instance before scaling."*

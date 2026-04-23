@@ -101,14 +101,19 @@ Learning capturé :
 Confirme ? (ou dis "corrige {champ}" pour ajuster)
 ```
 
-Si confirmé → appeler `write_to_context()` :
+Si confirmé → **exécuter** (Bash, pas pseudo-code) :
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brands/{slug}/learnings.json#entries[]" \
+  --value '{entrée JSON complète sur une ligne}' \
+  --source operator \
+  --confidence 1.0 \
+  --mode direct \
+  --reason "{1 phrase: d'où vient ce learning}"
 ```
-field_path: brands/{slug}/learnings.entries[]
-value: {entrée JSON complète}
-source: "operator"
-confidence: 1.0
-mode: "direct"
-```
+
+Le script est le SEUL canal sanctionné pour écrire dans `brands/` et `operator/`. Toute autre méthode (Edit, Write, python -c json.dump, echo >, sed -i, tee) est bloquée par le hook mutation-guard. Si le script échoue, surface l'erreur à l'opérateur — ne PAS contourner.
 
 Confirmer :
 ```

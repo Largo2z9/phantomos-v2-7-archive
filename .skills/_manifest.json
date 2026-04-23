@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-04-19T22:22:05Z",
-  "_count": 29,
+  "_generated_at": "2026-04-23T20:24:52Z",
+  "_count": 31,
   "skills": [
     {
       "name": "analyze-extension-intent",
@@ -431,6 +431,33 @@
       "path": ".skills/skills/score-product-fit/SKILL.md"
     },
     {
+      "name": "session-search",
+      "type": "navigator",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [
+          "qu'a-t-on dit sur",
+          "retrouve",
+          "cherche dans l'historique",
+          "quelle décision sur",
+          "session de février",
+          "notre discussion sur X"
+        ],
+        "en": [
+          "what did we say about",
+          "search history",
+          "which decision",
+          "past session"
+        ]
+      },
+      "disambiguates_against": {
+        "query-context": "route to query-context for CURRENT brand state (live JSON entities). Route to session-search for PAST narrative (sessions, decisions, history)."
+      },
+      "path": ".skills/skills/session-search/SKILL.md"
+    },
+    {
       "name": "setup-brand",
       "type": "orchestrator",
       "model": "sonnet",
@@ -517,6 +544,19 @@
       },
       "disambiguates_against": {},
       "path": ".skills/skills/validate-naming/SKILL.md"
+    },
+    {
+      "name": "validate-output-coherence",
+      "type": "sub-skill",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/validate-output-coherence/SKILL.md"
     },
     {
       "name": "validate-resources",

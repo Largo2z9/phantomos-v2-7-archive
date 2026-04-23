@@ -29,7 +29,7 @@ Depending on the extension class (custom entity or sidecar), execute one of the 
 
 ### Path 1 — Custom entity
 
-Write three files to `brands/{slug}/custom/{entity_type}/` via `write_to_context`:
+Write three files to `brands/{slug}/custom/{entity_type}/` via `.skills/write-to-context.py`:
 
 1. **`schema.json`** — the validated draft from Phase 6. Pretty-printed, 2-space indent, final newline.
 2. **`README.md`** — canonical template:
@@ -44,7 +44,7 @@ Write three files to `brands/{slug}/custom/{entity_type}/` via `write_to_context
 
 ### Path 2 — Sidecar
 
-Write a single file to `brands/{slug}/{entity}.extensions.json` via `write_to_context`:
+Write a single file to `brands/{slug}/{entity}.extensions.json` via `.skills/write-to-context.py`:
 
 1. **The sidecar file** — contains `_version`, `_schema`, `_extends: "{core_entity}"`, `_field_types`, and the operator-provided initial field values. In **mode data-first**, the initial values come from `provided_data`; in **mode intent-first**, the fields are empty or defaulted.
 

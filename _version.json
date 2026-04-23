@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.6.3",
-  "released_at": "2026-04-19",
+  "template_version": "2.6.19",
+  "released_at": "2026-04-23",
   "compatible_from": "2.0.0",
-  "summary": "Disambiguation field + brand-snapshot digest system + update mechanism",
-  "manifest": "docs/releases/2.6.3-manifest.json"
+  "summary": "Hygiene pass — FR → EN language drift in 3 system docs + 3 SKILL.md sections added in v2.6.17–18. Zero behavior change.",
+  "manifest": "docs/releases/2.6.19-manifest.json"
 }

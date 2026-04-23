@@ -169,25 +169,19 @@ Générer `competitive-intel-{brand-slug}-{YYYY-MM-DD}.md` dans `brands/{brand}/
 
 ## Step 6 — Proposer les insights au Context Engine
 
-Pour les signaux à confidence ≥ 0.7, appeler `write_to_context()` pour chaque insight :
+Pour les signaux à confidence ≥ 0.7, appeler `.skills/write-to-context.py` pour chaque insight :
 
-```python
-write_to_context(
-    workspace_root=WORKSPACE_ROOT,
-    brand=BRAND_SLUG,
-    agent_id="agent:watch-competitors",
-    run_id=RUN_ID,
-    field_path="brand/market.external_intelligence",
-    value={
-        "source": "Meta Ads Library",
-        "signal": "[observation résumée en 1 phrase]",
-        "tags": ["competitor", "creative-intel", ANGLE_TAG]
-    },
-    source={"type": "inference", "ref": "watch-competitors run {RUN_ID}"},
-    confidence=SIGNAL_CONFIDENCE,
-    mode="proposed"
-)
+```bash
+python3 .skills/write-to-context.py \
+  --path "brands/{slug}/brand.json#/market/external_intelligence/-" \
+  --value '{"source":"Meta Ads Library","signal":"{1-line observation}","tags":["competitor","creative-intel","{ANGLE_TAG}"]}' \
+  --source inference \
+  --confidence {0.7-0.9} \
+  --mode proposed \
+  --reason "watch-competitors run {RUN_ID}"
 ```
+
+Un appel par signal. `--mode proposed` n'accepte que des dict values (stamps `_proposed/_source/_confidence` en place).
 
 Un appel par signal. Maximum 5 signaux par run.
 
@@ -196,7 +190,7 @@ Un appel par signal. Maximum 5 signaux par run.
 ## Output Format
 
 - **Fichier markdown** : `brands/{brand}/strategy/competitive-intel-{brand-slug}-{YYYY-MM-DD}.md`
-- **Proposals write_to_context** : `brands/{brand}/brand.json → market.external_intelligence[]`
+- **Proposals write-to-context** : `brands/{brand}/brand.json#/market/external_intelligence/-`
 - **Log de run** : dernière ligne du rapport indique `RUN_ID` et nombre de proposals créées
 
 ---
@@ -204,7 +198,7 @@ Un appel par signal. Maximum 5 signaux par run.
 ## Hard Rules
 
 - **NEVER inventer des pubs.** Si une pub n'est pas collectée, elle n'existe pas. Pas d'hallucination sur les créas.
-- **NEVER écrire directement dans brand.json.** Toujours `write_to_context()` en mode `proposed`.
+- **NEVER écrire directement dans brand.json.** Toujours ``.skills/write-to-context.py` (canonical channel — see capture-learning Step 4 for the exact Bash invocation)` en mode `proposed`.
 - **ALWAYS indiquer la méthode de collecte** (MCP direct ou input manuel) dans le rapport.
 - **ALWAYS utiliser l'angle-registry et le creative-mechanics-registry comme grille.** Ne pas inventer de nouvelles catégories dans le rapport.
 - **Max 5 proposals** par run. Si plus de 5 signaux, prioriser par confidence décroissante.

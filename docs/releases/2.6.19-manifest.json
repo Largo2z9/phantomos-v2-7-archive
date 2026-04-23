@@ -1,0 +1,55 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.6.19",
+  "released_at": "2026-04-23",
+  "compatible_from": "2.0.0",
+  "theme": "hygiene — language drift",
+  "summary": "FR → EN rewrite of 3 system docs + 3 SKILL.md sections authored during v2.6.17–18. Template is EN-baseline per voice.md; operator-facing translation happens at runtime. No behavior change.",
+  "changes": [
+    {
+      "path": "docs/system/skill-creation-protocol.md",
+      "kind": "edit",
+      "reason": "Full rewrite EN."
+    },
+    {
+      "path": "docs/system/skill-architecture-redteam.md",
+      "kind": "edit",
+      "reason": "Full rewrite EN."
+    },
+    {
+      "path": "docs/system/skill-builder-cartography.md",
+      "kind": "edit",
+      "reason": "Full rewrite EN."
+    },
+    {
+      "path": ".skills/skills/validate-resources/SKILL.md",
+      "kind": "edit",
+      "reason": "Stamping section rewritten EN."
+    },
+    {
+      "path": ".skills/skills/migrate-workspace/SKILL.md",
+      "kind": "edit",
+      "reason": "v1.8 migration notes rewritten EN."
+    },
+    {
+      "path": ".skills/skills/learn-from-session/SKILL.md",
+      "kind": "edit",
+      "reason": "Enrichment candidate surface templates + answer space rewritten EN."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "kind": "edit",
+      "reason": "v2.6.19 entry."
+    },
+    {
+      "path": "_version.json",
+      "kind": "edit",
+      "reason": "Bump to 2.6.19."
+    }
+  ],
+  "migrations_required": false,
+  "breaking_changes": false,
+  "operator_impact": "none",
+  "tested_on": ["local workspace-template"],
+  "known_gaps": []
+}

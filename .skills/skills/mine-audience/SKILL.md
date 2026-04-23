@@ -115,7 +115,7 @@ For each candidate audience cluster, produce proposals targeting profile.json fi
 - Lower confidence (0.55–0.65): 1–2 verbatims, inferred from context
 - Never propose below 0.5 confidence
 
-Call `write_to_context()` for each proposal field with:
+Call ``.skills/write-to-context.py` (canonical channel — see capture-learning Step 4 for the exact Bash invocation)` for each proposal field with:
 - `field_path`: e.g., `profile/busy-nurses/psychology/core_desire`
 - `value`: synthesized text or list
 - `source`: `{"type": "verbatim", "platforms": ["reddit", "trustpilot"], "verbatim_count": 12}`
@@ -165,7 +165,7 @@ Verbatims collected: {N}
 
 ## Hard Rules
 
-- **Jamais écrire directement dans profile.json.** Tous les enrichissements passent par `write_to_context()` en mode `proposed`.
+- **Jamais écrire directement dans profile.json.** Tous les enrichissements passent par ``.skills/write-to-context.py` (canonical channel — see capture-learning Step 4 for the exact Bash invocation)` en mode `proposed`.
 - **Never hallucinate verbatims.** If a source is unavailable, signal it explicitly. Do NOT generate fake quotes.
 - **Source every claim.** Each proposal must have a `source` dict with `type`, `platform`, and a reference URL or ID.
 - **Confidence ≤ 0.9 for agents.** Agent confidence must never reach 1.0. That's reserved for humans.

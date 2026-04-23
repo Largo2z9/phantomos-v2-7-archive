@@ -117,10 +117,16 @@ Covers both `Ressources/` (shared KB) and `brands/` (context DB + OS).
 
 - `profile.pain_points[].ref` → must exist in `spec.problems_solved[].problem_id` (iterate array)
 - `profile.benefits[].ref` → must exist in `spec.benefits[].benefit_id` (iterate array)
-- `offers.meta.product_slug` → must exist in `brand.products_index[].slug`
+- `offers.offer_groups[].offers[].product_refs[].slug` → must exist in `brand.products_index[].slug` (v2 schema — offers are NESTED under `offer_groups[]`, each offer has `product_refs[]`; legacy `offers.meta.product_slug` is v1.x only)
 - `profile.meta.product_id` (if set) → must match a product slug in `products/`
 - Flag: **broken cross-refs**
 - **Report only** (data loss risk)
+
+**Offer counting — always iterate `offer_groups[].offers[]`** (v2 schema). Example:
+```python
+count = sum(len(g.get("offers", [])) for g in offers_doc.get("offer_groups", []))
+```
+Never count via flat `offers_doc.get("offers", [])` — that's the legacy v1.x path and returns 0 on v2 files, producing the false "offers missing" flag. If a brand still has a v1.x flat-offers file, the count legitimately is 0 under v2 expectation; flag it as schema-migration-pending, not as missing data.
 
 ### 11b. _field_types Consistency
 
@@ -316,7 +322,7 @@ Tier 1 checks (= wedge):
 Tier 2 checks (non-blocking, suggestions):
 - benefits[].chain or pain_points[].chain filled on any entity
 - brand.market.competitors has ≥1 entry
-- ≥1 offers.json exists with ≥1 offer entry
+- ≥1 offers.json exists with ≥1 entry in `offer_groups[].offers[]` (v2 schema — see § 11 counting rule)
 - tone_of_voice has banned_words or frequent_words
 
 Tier 3 checks (non-blocking, contextual):
@@ -480,4 +486,4 @@ Le schéma v1.8 est backward-compatible. Les contraintes additionnelles à véri
 
 **Règle :** Un instance en v1.7 doit aussi valider sous v1.8 (backward compat). Si échec → flagger comme régression.
 
-**Stamping :** Vérifier que `_template_version` == "1.8" sur tous les fichiers d'une instance fresh.
+**Stamping:** read expected `_version` values from `brands/_TEMPLATE` (living source of truth) and verify each file in a fresh instance matches the corresponding entity. Current values (2026-04-23): `brand.json _version=2.1`, `products/{slug}/spec.json _version=1.8`, `products/{slug}/offers.json _version=2.0`, `audiences/{slug}/profile.json _version=1.2`. Never hardcode "1.8" as a universal version — each entity has its own schema line. The field is `_version`, not `_template_version` (legacy terminology drift).

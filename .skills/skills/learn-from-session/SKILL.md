@@ -240,7 +240,7 @@ Signals: what they expect from PhantomOS, what they structurally hate.
 - *"I hate tools that ask 15 questions before producing anything"* → `anti_patterns_perso[]`
 - *"No third-party cloud for my data, non-negotiable"* → `expectations.deal_breakers`
 
-**Write mechanism**: via `write_to_context()` to `/operator/profile.json → {section}.{field}`. Mode `proposed` — the operator validates before write. This validation is quick (*"Noted for your profile: you tried Lindy and dropped it. OK?"*), not a long recap.
+**Write mechanism**: via ``.skills/write-to-context.py` (canonical channel — see capture-learning Step 4 for the exact Bash invocation)` to `/operator/profile.json → {section}.{field}`. Mode `proposed` — the operator validates before write. This validation is quick (*"Noted for your profile: you tried Lindy and dropped it. OK?"*), not a long recap.
 
 **NEVER** route these signals to `brands/{slug}/learnings.json` — they concern the operator, not the brand. Cross-contamination = structural bug.
 
@@ -405,6 +405,77 @@ Want me to validate the workspace now?
   ```
 
 **Effort/value ratio**: validate after learn = 30 seconds, zero friction. Best moment — operator is already in closing mode, and validate runs CHANGELOG rotation + learnings index rebuild + todos flags in a single pass.
+
+---
+
+## Enrichment candidate detection
+
+At session close, beyond persisting facts, surface potential system improvements detected during the session. Three classes of candidates. Never auto-create — detection suggests, operator decides.
+
+### Class A — Skill candidates
+
+Scan the session transcript for :
+
+- **Repeated tasks** — same type of request executed ≥ 2 times in the session (e.g., "generate a hook for X" then "generate a hook for Y"). → Candidate lightweight skill.
+- **Multi-step workflows** — recurring sequence ("check X, compare to Y, generate Z"). → Candidate heavy skill with SOP + orchestrator.
+- **Cross-brand workflows** — same action on multiple brands in the same session. → Candidate workspace-level skill.
+
+Surface at close :
+
+```
+During this session I observed:
+- You generated 3 ad briefs with the same structure (hook → body → CTA → proof).
+  → Simple skill candidate `brief-ad-quick`
+- You audited offers on 2 brands with the same method.
+  → Heavy skill candidate `audit-offers` with SOP + orchestrator
+
+Scaffold now, later, or never?
+```
+
+Operator confirms → trigger `build-agent`. Defer → log in `todos.md` with rationale. Never silently.
+
+### Class B — SOP / doc enrichment candidates
+
+Scan for knowledge-dense exchanges :
+
+- **Business patterns explained** — operator explained a pattern, gave concrete examples, critiqued an approach → candidate enrichment of reasoning layer in an existing SOP, OR new entry in a framework/guide.
+- **Edge cases discussed** — operator surfaced an edge case not currently documented → candidate addition to relevant SOP reasoning layer.
+- **Tactical tips** — operator shared a hack / shortcut / heuristic → candidate entry in a guide or catalogue.
+
+Example :
+
+```
+We discussed that the Karacare Spring Days GWP only works if AOV is above
+the threshold — business insight that would enrich
+`audit-meta-global.md § Layer 4 reasoning`.
+
+Add now, propose as todo, or nothing?
+```
+
+### Class C — Convention / rule promotion candidates
+
+Scan for learnings that transcend the single brand :
+
+- A learning saved on brand X that appears applicable to multiple brands (same vertical / same platform) → candidate promotion to `resources/conventions/` or `resources/frameworks/general/`
+- A workflow constraint surfaced on brand X that applies workspace-wide → candidate rule addition in `CLAUDE.md § Operator contract` or voice.md anti-patterns
+
+Example :
+
+```
+Learning L-042 ('Meta rejects efficacy claims without disclaimer in FR')
+applies to all FR supplement brands.
+Candidate for promotion to a workspace-level convention.
+
+Promote now, or wait for a 2nd occurrence on another brand?
+```
+
+### Protocol
+
+- Surface AT MOST 3 candidates per class per session close — don't spam.
+- Each candidate = 1 line hook + route to decision.
+- Default answer space: `yes / no / later`. Never open-ended.
+- On refusal or defer → log in `todos.md` with rationale so pattern doesn't disappear.
+- On acceptance → trigger `build-agent` (for skills), direct write via canonical channel (for docs/SOPs), or `promote-learning` primitive (for conventions).
 
 ---
 

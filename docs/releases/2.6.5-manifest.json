@@ -1,0 +1,75 @@
+{
+  "_schema": "update-manifest/1.0",
+  "from_version": "2.6.3",
+  "to_version": "2.6.5",
+  "released_at": "2026-04-22",
+  "summary": "Systemic enforcement layer. Two PreToolUse hooks (convention-guard on MCP calls, mutation-guard on brand/operator writes) and the canonical write_to_context implementation. Closes the gap between Markdown rules and machine-enforced behavior.",
+  "breaking": true,
+  "requires_confirmation": true,
+  "notes": "Breaking for workspaces that had scripts or skills hand-editing brands/*.json or operator/*.json. After install, any such bypass is blocked. Run validate-resources on every brand post-update to surface lingering issues. MCP calls on platforms without a conventions/{platform}.json file will also be blocked on first call — scaffold the convention from resources/conventions/_TEMPLATE.json or disable the hook temporarily.",
+  "changes": [
+    {
+      "type": "infra-added",
+      "file": ".claude/hooks/convention-guard.py",
+      "action": "create",
+      "safe": false,
+      "note": "PreToolUse hook. Intercepts mcp__{server}__* calls, enforces fresh conventions/{platform}.json. Universal by design (regex extraction, no hardcoded list). PLATFORM_ALIASES + PLATFORM_EXEMPT tables for naming quirks."
+    },
+    {
+      "type": "infra-added",
+      "file": ".claude/hooks/mutation-guard.py",
+      "action": "create",
+      "safe": false,
+      "note": "PreToolUse hook. Blocks direct JSON writes to brands/{slug}/*.json and operator/*.json via Edit/Write/NotebookEdit/MultiEdit/Bash. Allows cp -r _TEMPLATE, mkdir, read-only ops, .md writes, and the canonical .skills/write-to-context.py channel."
+    },
+    {
+      "type": "infra-change",
+      "file": ".claude/settings.json",
+      "action": "overwrite",
+      "safe": false,
+      "note": "Wires both hooks to PreToolUse. Overwrite preserves no prior settings (template clean slate)."
+    },
+    {
+      "type": "infra-added",
+      "file": ".skills/write-to-context.py",
+      "action": "create",
+      "safe": false,
+      "note": "Canonical mutation channel. CLI with --path (supports RFC 6901 JSON Pointer '#/entries/-' and legacy '#entries[]'), --value, --source, --confidence, --mode, --reason. Writes target JSON + appends event to .phantom/context-engine-events.jsonl."
+    },
+    {
+      "type": "skill-change",
+      "file": ".skills/skills/capture-learning/SKILL.md",
+      "action": "overwrite",
+      "safe": true,
+      "note": "Step 4 rewritten. Pseudo-code write_to_context(...) replaced with explicit Bash invocation of .skills/write-to-context.py. Binary rule added: the script is the only sanctioned channel; Edit/Write/python -c json.dump/echo >/sed -i/tee are blocked by mutation-guard."
+    },
+    {
+      "type": "doc-change",
+      "file": "CLAUDE.md",
+      "action": "overwrite",
+      "safe": true,
+      "note": "URL intake section added. Any ecom URL routes to snapshot-brand, no direct scrape or freestyle analysis."
+    },
+    {
+      "type": "doc-change",
+      "file": "CHANGELOG.md",
+      "action": "overwrite",
+      "safe": true,
+      "note": "Prepend v2.6.5 entry. v2.6.4 draft replaced (never shipped)."
+    },
+    {
+      "type": "doc-change",
+      "file": "_version.json",
+      "action": "overwrite",
+      "safe": true,
+      "note": "Bump template_version to 2.6.5, released_at to 2026-04-22, summary updated, manifest pointer updated."
+    }
+  ],
+  "post_steps": [
+    "chmod +x .claude/hooks/convention-guard.py .claude/hooks/mutation-guard.py .skills/write-to-context.py",
+    "mkdir -p .phantom",
+    "python3 .skills/build-manifest.py",
+    "For each active MCP the operator uses, ensure resources/conventions/{platform}.json exists with a fresh _doc_check.last_doc_read (< 90 days).",
+    "Run validate-resources per brand to surface any pre-existing direct-edit drift."
+  ]
+}

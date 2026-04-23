@@ -206,7 +206,19 @@ Anything: a conviction, a phrase you repeat internally,
 what you'd tell a friend to describe the brand.
 ```
 
-When the operator replies, write this sentence to `brands/{slug}/brand.json → origin_story` via `write_to_context()`.
+When the operator replies, **run** (Bash, not pseudo-code):
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brands/{slug}/brand.json#/origin_story" \
+  --value '"{operator's exact sentence, JSON-escaped}"' \
+  --source operator \
+  --confidence 1.0 \
+  --mode direct \
+  --reason "Step 3 brand anchoring — operator's own sentence"
+```
+
+The script is the ONLY sanctioned channel for writes under `brands/` and `operator/`. Edit, Write, `python -c json.dump`, `echo >`, `sed -i`, `tee` all bypass the mutation gate and are blocked.
 
 Confirm:
 ```

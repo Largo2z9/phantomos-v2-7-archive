@@ -116,7 +116,7 @@ Extract the filter condition from the intent. Scan the target field across all b
 | Intent pattern | Target field | Condition |
 |---------------|-------------|-----------|
 | "brands avec LTV > X" | `brand.json → financials.customer_ltv` | numeric comparison |
-| "brands avec offres actives" | `products/*/offers.json → offers[]` | array not empty |
+| "brands avec offres actives" | `products/*/offers.json → offer_groups[].offers[]` (v2 schema) | any group has a non-empty offers array |
 | "brands dans le secteur X" | `brand.json → meta.vertical` | string match |
 | "brands avec audience X" | `audiences/*/profile.json → meta.name` | string contains |
 | "brands incomplètes" | `status.json → wedge_complete` | = false |

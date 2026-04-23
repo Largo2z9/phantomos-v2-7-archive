@@ -81,20 +81,32 @@ When the URL is a homepage or brand URL → read the page HTML to detect the pro
 
 ⚠️ Some hero products are **not returned by the** Shopify API (`products.json`). The HTML nav is the source of truth for hero, not the API.
 
-**Mandatory confirmation before scraping:**
+**Mandatory confirmation before scraping — stage + ask:**
 
-After detection, always show the operator what was found and wait for explicit confirmation, even if the signal seems obvious:
+After detection, stage the proposal BEFORE asking the operator. The stage call records that a confirmation is pending; the next operator turn flows through the `checkpoint-resolver` hook and promotes the checkpoint based on the literal text of their reply.
 
-```
-I detected as hero product: {detected product name}
-URL: {product url}
+**Order of operations** (hard rule):
 
-Is this the product you want to snapshot? Or prefer another one?
-```
+1. Call stage-proposal with the detected product:
+   ```bash
+   python3 .skills/stage-proposal.py \
+     --brand {slug} \
+     --checkpoint confirmed_products \
+     --product-slug {detected product slug} \
+     --summary "Hero detected: {product name} — {url}"
+   ```
+2. Show the operator:
+   ```
+   I detected as hero product: {detected product name}
+   URL: {product url}
 
-→ Wait for "yes", "go", or correction ("no, it's X").
-→ **Never start scraping without explicit operator confirmation.**
-→ If the operator corrects → use the corrected product, confirm again.
+   Is this the product you want to snapshot? Or prefer another one?
+   ```
+3. **Wait for the operator turn.** The `checkpoint-resolver` hook reads their reply and resolves the pending proposal:
+   - `"oui"`, `"yes"`, `"go"`, `"ok"`, `"valide"` etc. → `confirmed_products` gains `{slug}` → Step 2 unlocked.
+   - `"non"`, `"no"`, `"pas bon"`, correction like `"non, it's X"` → rejection logged, pending cleared → re-detect, re-stage with the corrected product, re-ask.
+   - Free-form correction without confirm/reject marker (`"Hair Boost"`) → no automatic resolution. Clear pending manually by re-staging with the corrected slug (pending existing blocks new stage — surface gracefully to the operator).
+4. **Never start scraping until stage-proposal is resolved.** Writing `products/{slug}/spec.json` or `products/{slug}/offers.json` without the slug in `confirmed_products` is blocked by the write-to-context gate.
 
 **Validate the retained product URL:**
 - Accessible (HTTP 200) → continue
@@ -328,7 +340,16 @@ context     : {inferred or null}
 
 Absolute rule: if no clear signal in the page → leave null. Do not invent.
 
-### Step 5B — Present the proposal + correct
+### Step 5B — Stage + present the proposal + correct
+
+Stage the proposal before presenting:
+
+```bash
+python3 .skills/stage-proposal.py \
+  --brand {slug} \
+  --checkpoint audience_q1q4_answered \
+  --summary "Audience proposal: {label} — {gender}, {age_range}, problem: {problem}"
+```
 
 Display to the operator:
 ```
@@ -343,8 +364,14 @@ Close to your customers? Correct what's wrong, add what's missing.
 (Examples: "more women 35-55", "real problem is foot fatigue", "add: they are nurses")
 ```
 
-Accept: free-form corrections, additions, confirmation ("yes that's it", "spot on").
+**Wait for the operator turn.** The `checkpoint-resolver` hook resolves the pending:
+- Confirmation (`"oui"`, `"spot on"`, `"yes that's it"`) → `audience_q1q4_answered = true` → Step 6 write unlocked.
+- Rejection (`"non"`, `"not my customers"`) → pending cleared, re-infer, re-stage.
+- Free-form corrections (`"more women 35-55"`) → no automatic resolve. Apply the correction in memory, re-stage the updated proposal, re-ask.
+
 If the operator says "I don't know" or doesn't answer on a field → keep null, DO NOT invent.
+
+**Writing `audiences/{slug}/profile.json` is blocked by write-to-context until `audience_q1q4_answered = true`.**
 
 ### Step 5C — Unique complementary question (if data missing)
 
@@ -454,6 +481,7 @@ I sort and file automatically.
 
 ## Hard Rules
 
+- **Stage before asking — always.** Hero confirmation (Step 1) and audience confirmation (Step 5B) MUST call `.skills/stage-proposal.py` before showing the question to the operator. The checkpoint-resolver hook promotes checkpoints from the literal operator reply — agent self-declaration is not accepted. Writes to `products/*/spec.json`, `products/*/offers.json`, `audiences/*/profile.json` are blocked by the write-to-context workflow gate until checkpoints resolve.
 - **Never invent** a field not present in the page or answers. Null > approximation.
 - **Hero detection = nav HTML first, API second.** Some hero products are absent from `products.json`. The site nav is the source of truth, read the homepage HTML before any API call when the URL is a brand URL.
 - **Confirmation before scraping — always.** Show the detected product to the operator and wait for an explicit "go" before starting the scraping. Never assume.
@@ -502,6 +530,6 @@ The `_TEMPLATE` is at v1.8. When scraping a product page, you must look for and 
 - `contents.cure_metadata` — cure_name, is_premade, target_concern, phases[]. Relevant: pre-built cures.
 - `incentives.duration_tiers[]` — discount per engagement (1/3/6/12 months).
 - `incentives.loyalty` — loyalty program (points, tiers, sign_up_bonus).
-- `offers[].tags[]` — free tags at offer level.
+- `offer_groups[].offers[].tags[]` — free tags at offer level (v2 schema; legacy `offers[].tags[]` is v1.x).
 
-**Automatic stamping:** `_template_version` is copied from `_TEMPLATE/products/_example/*.json` at creation. Check that it's "1.8" after setup.
+**Automatic stamping:** each entity file carries its own `_version` field matching the schema it was built against. Current baseline (read live from `_TEMPLATE`): `brand.json _version=2.1`, `products/{slug}/spec.json _version=1.8`, `products/{slug}/offers.json _version=2.0`, `audiences/{slug}/profile.json _version=1.2`. After a fresh scaffold via `cp -r _TEMPLATE brands/{slug}`, these values are inherited automatically. Never hardcode version expectations — always read from `_TEMPLATE` first.

@@ -27,7 +27,7 @@ Closes the scaffold pipeline by registering the new extension in the central ind
 
 ### Step 1 — Index registration (custom entities only)
 
-For custom entities, append an entry to `index.json → extensions[]` via `write_to_context`:
+For custom entities, append an entry to `index.json → extensions[]` via `.skills/write-to-context.py`:
 
 ```json
 {

@@ -222,7 +222,7 @@ Structure:
 
 ## Hard Rules
 
-- **Jamais écrire directement dans profile.json.** Les proposals passent par `write_to_context()` en mode `proposed`, ou ne sont pas écrites du tout (rapport seul).
+- **Jamais écrire directement dans profile.json.** Les proposals passent par ``.skills/write-to-context.py` (canonical channel — see capture-learning Step 4 for the exact Bash invocation)` en mode `proposed`, ou ne sont pas écrites du tout (rapport seul).
 - **Analysis before mutation.** Ce skill est un analyse engine. Les mutations Context Engine sont optionnelles et générées seulement si la confiance est forte (≥ 0.7).
 - **No assumptions on missing data.** If `pain_points[]` is empty, note `[profile incomplete]` in the report. Never assume pain points.
 - **Confidence ≤ 0.85 for scoring.** Even with strong signals, human review is mandatory for mutation decisions.

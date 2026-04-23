@@ -1,0 +1,36 @@
+{
+  "_schema": "update-manifest/1.0",
+  "from_version": "2.6.14",
+  "to_version": "2.6.15",
+  "released_at": "2026-04-23",
+  "summary": "validate-resources SKILL.md aligned with v2 offers schema (offer_groups[].offers[]). Fixes false-negative 'offers missing' flag detected during Cherico live test.",
+  "breaking": false,
+  "requires_confirmation": false,
+  "notes": "Pure doc pass on one SKILL.md. No code change. After install, re-run validate-resources on any brand that previously got a spurious offers-missing flag.",
+  "changes": [
+    {
+      "type": "skill-change",
+      "file": ".skills/skills/validate-resources/SKILL.md",
+      "action": "overwrite",
+      "safe": true,
+      "note": "§ 11 Cross-Reference Validation: offers cross-ref updated from legacy offers.meta.product_slug to v2 offer_groups[].offers[].product_refs[]. Explicit code-block idiom for counting offers via offer_groups iteration. Line 319 wording tightened."
+    },
+    {
+      "type": "doc-change",
+      "file": "CHANGELOG.md",
+      "action": "overwrite",
+      "safe": true,
+      "note": "Prepend v2.6.15 entry with lesson on schema-migration drift."
+    },
+    {
+      "type": "doc-change",
+      "file": "_version.json",
+      "action": "overwrite",
+      "safe": true,
+      "note": "Bump template_version to 2.6.15."
+    }
+  ],
+  "post_steps": [
+    "Re-run validate-resources on brands that were flagged 'offers missing' pre-v2.6.15 — false positives should clear."
+  ]
+}

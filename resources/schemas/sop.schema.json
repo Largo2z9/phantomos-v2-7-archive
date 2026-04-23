@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "sop.schema.json",
+  "title": "SOP (Standard Operating Procedure) meta-schema",
+  "description": "Schema for Markdown SOPs stored in resources/sops/. An SOP is a methodology document: WHAT to check/do, in WHICH ORDER, with WHICH SEVERITY, and WHICH mini-skill executes each step. It does NOT contain execution logic — that lives in the mini-skills. An orchestrator skill reads an SOP and executes its sequence.",
+  "type": "object",
+  "note": "SOPs are stored as Markdown with YAML frontmatter. This JSON schema validates the frontmatter block. The body is free Markdown.",
+  "required": ["name", "type", "scope", "version", "description", "invoked_by"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]+$",
+      "description": "Slug identifying the SOP. Conventionally prefixed `audit-`, `setup-`, `roadmap-`, `hygiene-`, `diagnostic-`, etc."
+    },
+    "type": {
+      "const": "sop",
+      "description": "Discriminator — all SOPs declare type=sop."
+    },
+    "category": {
+      "enum": ["audit", "setup", "hygiene", "diagnostic", "roadmap", "launch", "optimization", "compliance", "reporting"],
+      "description": "High-level functional category. Used by orchestrators to discover relevant SOPs."
+    },
+    "scope": {
+      "enum": ["single-brand", "portfolio", "workspace", "platform-specific", "cross-channel"],
+      "description": "Level at which the SOP operates. single-brand = one brand at a time. portfolio = multiple brands via fan-out."
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "enum": ["meta", "google-ads", "tiktok", "pinterest", "snap", "shopify", "klaviyo", "email", "seo", "organic", "agnostic"]
+      },
+      "description": "Platforms the SOP touches. Agnostic = no platform dependency."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "author": {
+      "type": "string"
+    },
+    "last_reviewed": {
+      "type": "string",
+      "format": "date"
+    },
+    "language": {
+      "type": "string",
+      "description": "Primary language of the SOP content. SOPs may mix EN/FR for technical terms."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 80,
+      "description": "One to three sentence description of what the SOP does, for whom, and when it's used. Enough for an orchestrator to decide if this SOP is relevant."
+    },
+    "invoked_by": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_type": {
+            "enum": ["orchestrator", "operator-direct", "parent-sop", "scheduled", "event-triggered"]
+          },
+          "source": {
+            "type": "string",
+            "description": "Identifier: skill name, operator phrase, parent SOP name, schedule expression, event type."
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Who or what triggers this SOP. Explicit triggers so orchestrators can match operator intent to SOP. Operator-direct means the SOP is invokable conversationally too."
+    },
+    "requires": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Pre-conditions that must be satisfied before the SOP can run (access tokens, data populated, schema fields present, minimum history). Fail-fast checkpoints."
+    },
+    "precondition_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "mini-skill": {
+            "type": "string",
+            "description": "Name of a mini-skill that validates a precondition before the SOP proceeds."
+          }
+        }
+      },
+      "description": "Mini-skills the orchestrator runs FIRST before iterating the SOP body. If any fails, abort with operator feedback."
+    },
+    "used_in_scenarios": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Concrete operator contexts where this SOP is appropriate. Helps routing + orchestrator scenario selection. Free-text, human-readable."
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "enum": ["markdown report", "json structured", "csv", "slide deck", "dashboard"]
+        },
+        "sections": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "List of sections the output must contain. Orchestrator uses this to structure the report."
+        }
+      }
+    },
+    "output_destination": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "File paths where output should be written. Supports `{slug}` placeholder."
+    },
+    "estimated_runtime": {
+      "type": "string",
+      "description": "Human-readable estimate. Operator-facing."
+    },
+    "estimated_tokens": {
+      "type": "string",
+      "description": "Approximate LLM token cost. For cost planning."
+    },
+    "deprecated": {
+      "type": "boolean",
+      "default": false
+    },
+    "deprecated_since": {
+      "type": "string",
+      "format": "date"
+    },
+    "replaced_by": {
+      "type": "string",
+      "description": "Name of successor SOP if deprecated."
+    }
+  },
+  "additionalProperties": true,
+  "examples": [
+    {
+      "name": "audit-meta-global",
+      "type": "sop",
+      "category": "audit",
+      "scope": "single-brand",
+      "platforms": ["meta"],
+      "version": "1.0.0",
+      "description": "End-to-end audit methodology for a Meta Ads account on a single e-commerce brand. 40+ checkpoints organized in 7 layers.",
+      "invoked_by": [
+        {"source_type": "orchestrator", "source": "audit-meta-global"},
+        {"source_type": "operator-direct", "source": "audit complet Meta sur {brand}"}
+      ],
+      "requires": ["Meta Ads access", "Pixel ID known", "30 days spend history"],
+      "used_in_scenarios": ["new client onboarding", "quarterly review", "pre-scaling diagnostic"],
+      "output_schema": {"format": "markdown report", "sections": ["executive_summary", "findings_by_layer", "prioritized_action_plan"]},
+      "estimated_runtime": "15-30 minutes"
+    }
+  ]
+}

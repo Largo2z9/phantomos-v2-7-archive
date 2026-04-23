@@ -47,7 +47,7 @@ Does a `{entity}.extensions.json` already exist on the active brand that covers 
 - Match the intent's fields against existing sidecar fields.
 - If match, **stop here**. Return `route-to-existing-sidecar` with the sidecar path.
 
-Example: operator wants to add `supplier_lead_time_days` to brand, but `brand.extensions.json` already exists with this field. Route to write_to_context on the existing sidecar.
+Example: operator wants to add `supplier_lead_time_days` to brand, but `brand.extensions.json` already exists with this field. Route to `.skills/write-to-context.py` on the existing sidecar.
 
 ### Dimension 3 — Existing custom entity on the active brand
 
@@ -95,7 +95,7 @@ Example: operator wants a library of creative angles. Already exists as `resourc
 
 ## Decision by orchestrator
 
-- `route-to-*` → scaffold-extension halts. Main agent routes the operator to the existing structure via the appropriate skill (write_to_context, capture-learning, etc.).
+- `route-to-*` → scaffold-extension halts. Main agent routes the operator to the existing structure via the appropriate skill (`.skills/write-to-context.py`, capture-learning, etc.).
 - `partial-reuse` → scaffold-extension proceeds with Phase 3 schema draft, using the matched references as cross_refs instead of recreating fields.
 - `genuinely-new` → scaffold-extension proceeds with full scaffold.
 

@@ -97,6 +97,8 @@ Spawn subagent with Task tool:
 - Input: brand slug, URL
 - Expected output: `products/{slug}/spec.json`, `products/{slug}/offers.json`, `audiences/{slug}/profile.json` drafts
 
+**CRITICAL — stage-before-ask is enforced through the subagent too.** The snapshot-brand SKILL.md the subagent loads MANDATES that it call `.skills/stage-proposal.py` BEFORE presenting a hero or audience proposal to the operator. This orchestrator passes that rule down implicitly by delegating to snapshot-brand. If the subagent ever skips staging and tries a direct write to `products/*/spec.json`, `products/*/offers.json`, or `audiences/*/profile.json`, it will hit the workflow gate and receive a block message with a ready-to-run stage-proposal command. Do not retry a gated write; surface the gate message to the operator and wait for their confirmation, which the checkpoint-resolver hook resolves from their literal reply.
+
 **While snapshot runs**, continue conversation with operator (ask about any pasted docs, clarify intent, etc.). **NEVER** block the operator waiting for snapshot.
 
 **When snapshot returns** at a natural conversation break:
@@ -113,7 +115,7 @@ Spawn subagent with Task tool:
 Spawn subagent via Task tool for each pasted doc:
 - `model: sonnet`
 - Input: doc content, target brand slug, auto-detection or hint for entity (brand/product/audience/learning/strategy)
-- Expected: routed write via `write_to_context(mode="proposed")`
+- Expected: every mutation routed via `python3 .skills/write-to-context.py --mode proposed` (mode=proposed only for dict values; scalars/arrays use `--mode direct`). Direct file edits are blocked by the mutation-guard hook.
 
 **If no docs pasted** → skip Phase 3.
 

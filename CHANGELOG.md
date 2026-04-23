@@ -5,6 +5,364 @@
 
 ---
 
+## v2.6.19 — 2026-04-23 — Hygiene pass: language drift (FR → EN)
+
+**Action**: align all system docs + SKILL.md with voice.md EN-baseline policy. Template is authored in EN; operator-facing text is translated at runtime. Recent v2.6.17–18 additions had drifted into FR/EN mix — this pass restores coherence.
+
+**Files rewritten in EN**:
+- `docs/system/skill-creation-protocol.md`
+- `docs/system/skill-architecture-redteam.md`
+- `docs/system/skill-builder-cartography.md`
+- `.skills/skills/validate-resources/SKILL.md` (stamping section)
+- `.skills/skills/migrate-workspace/SKILL.md` (v1.8 migration notes)
+- `.skills/skills/learn-from-session/SKILL.md` (enrichment candidate surface templates + answer space)
+
+**Not touched**: operator-facing speech embedded in templates stays neutral — runtime translation handles FR operators. CHANGELOG historical entries stay as written (append-only).
+
+**Operator impact**: none visible. Doc hygiene only, zero behavior change.
+
+---
+
+## v2.6.18 — 2026-04-23 — Skill creation protocol + learn-from-session enrichment + heavy-skill gate
+
+**Action**: formalise the operator-controlled skill lifecycle. Three things Largo cadred explicitly : (1) skill creation must propose graduation (simple vs SOP+orchestrator vs multi-orchestrator) under operator control, (2) learn-from-session must surface enrichment candidates at close (new skills, SOP updates, convention promotions), (3) heavy skills must ask before cascade to prevent runaway execution.
+
+**What's new — skill creation protocol**:
+- `docs/system/skill-creation-protocol.md` — canonical protocol covering :
+  - Detection signals for skill proposal (repetition, genericity, cost, learn-from-session pattern)
+  - Graduation matrix : specific (one skill) vs heavy (SOP + orchestrator + mini-skills) vs macro (multiple orchestrators)
+  - Three operator validation gates : proposal, pre-cascade, final output
+  - extend_before_create discipline (default = extension, sibling skill = justified exception)
+  - Rollback / sunset pattern for obsolete skills
+
+**What's new — learn-from-session enrichment detection**:
+- `.skills/skills/learn-from-session/SKILL.md` — new "Enrichment candidate detection" section at close. Three classes :
+  - **Class A** — skill candidates (repeated tasks, multi-step workflows, cross-brand patterns)
+  - **Class B** — SOP / doc enrichment (business patterns explained, edge cases discussed, tactical tips)
+  - **Class C** — convention / rule promotion (learnings applicable beyond single brand)
+- Surface max 3 candidates per class at close. `oui / non / plus tard` answer space. Refused/deferred candidates logged in `todos.md` so pattern persists.
+
+**What's new — heavy skill pre-cascade gate**:
+- `docs/system/voice.md` — new "Heavy skill posture — always ask before cascade" section. Hard rule : no cascade > 3 subagents without explicit gate, no execution > 20k estimated tokens without explicit gate. Canonical surface pattern for the operator confirmation.
+
+**Operator impact** :
+- Skills are never auto-created. Detection surfaces candidates ; operator decides.
+- Heavy workflows (audits, multi-step generators, multi-brand operations) always pause for confirmation before burning tokens.
+- Learn-from-session becomes more than a persistence step — it's an active system-improvement surface.
+- Documentation layers stay clean — separation SOP (methodology) / orchestrator (executor) / mini-skills (atomic) reinforced.
+
+**Why this release** : Largo flagged that the memory/context optimizations we were debating were missing the point. Real friction is elsewhere — agents auto-cascading without asking, learn-from-session not helping the system grow, skill graduation unclear. This release addresses those three directly. No code changes, purely protocol documentation + SKILL.md enrichment.
+
+**Known gaps (not addressed in 2.6.18)** :
+- No `promote-learning` primitive yet for Class C (convention promotion). Manual via write-to-context for now.
+- No runtime enforcement of the heavy-skill gate (it's a voice.md rule read by agent — can be skipped if agent rushes). Enforcement via PreToolUse hook possible in future release if drift observed.
+- No metrics tracking of skill invocation patterns to auto-detect "repetition threshold". Detection remains heuristic in learn-from-session.
+
+---
+
+## v2.6.17 — 2026-04-23 — Resource discovery infrastructure + coherence gate + SOP enrichment pattern
+
+**Action**: closes the "how do skills find relevant knowledge without tagging" question raised after the S36 red team. Instead of pre-tagging resources with `applies_when: {vertical, skill_names}` (maintenance hell), resources are indexed automatically by content and skills query the index at runtime. A coherence gate sub-skill validates outputs before they reach the operator. The SOP format gains a `tier: binary|contextual` + `resource_discovery` + reasoning layer pattern (demonstrated on 3 exemplar checkpoints in audit-meta-global).
+
+**What's new — indexer extended**:
+- `.skills/memory-index.py` — indexes `resources/{frameworks,guides,catalogues,sops,conventions,quality-specs,templates,routing}/`. No tagging required on operator side. Markdown chunked by `## ` headings (large files split, small files = one chunk). Optional YAML frontmatter parsed for title/description boost. JSON resources = one chunk. Validated on loom workspace: 44 resource chunks indexed from existing template resources.
+
+**What's new — retrieval primitive**:
+- `.skills/discover-resources.py` — CLI `--query --source-types --limit --boost-recency --format`. FTS5 MATCH over indexed resource chunks, ranked by BM25 + optional recency boost. Auto-escapes user queries for FTS5 operator safety. Returns title, file_path, snippet, score per hit. Zero tagging maintenance — match is content-driven.
+
+**What's new — coherence gate sub-skill**:
+- `.skills/skills/validate-output-coherence/SKILL.md` — sub-skill (operator_facing: false, invocable_by: all orchestrators). Final gate before output reaches operator. Four checks : schema consistency (referenced fields exist), fact consistency (no brand contradiction), tone consistency (matches declared voice), no fabrication (numbers/claims sourced). Returns structured JSON with `{ok, warnings[], blocking_issues[]}`. Does NOT rewrite — only flags ; caller decides.
+
+**What's new — SOP pattern upgrade**:
+- `resources/sops/audit-meta-global.md` — three exemplar checkpoints (4.4 audience exclusions, 5.4 angle-awareness diversity, 6.2 restricted claim detection) gained `tier: binary|contextual`, `inputs_required`, `resource_discovery` block (for contextual), and a `Reasoning layer` narrative explaining why the check matters, industry context, edge cases, remediation. The remaining 37 checkpoints stay structured but will be enriched incrementally.
+
+**What's new — doc**:
+- `docs/system/skill-resource-discovery.md` — full pattern spec : 8-step execution flow (schema → reasoning → keywords → discover → confront → compose → validate → ship), priority rule (brand wins over resource), cost budget (~3-5k tokens overhead per skill execution, 5-15% of typical skill budget), when to add semantic search (not V1).
+
+**Operator impact** :
+- Dropping a new framework doc in `resources/frameworks/` instantly becomes discoverable by skills. No action required.
+- Dormant resources (deposited months ago, forgotten) automatically resurface when context matches.
+- Agent outputs pass a coherence gate — reduces silent hallucination about brand facts.
+- No schema changes, no breaking changes. Purely additive.
+
+**Why this release** : the red team (v2.6.17 doc) flagged that tagging per-resource was untenable at scale. Largo pushed back explicitly on maintenance burden. The retrieval-at-runtime pattern mirrors what we already built for narrative memory (FTS5) — extending it to resources was natural.
+
+**Known gaps (not addressed in 2.6.17)** :
+- Only 3 of 40 checkpoints in audit-meta-global have the reasoning layer. Incremental enrichment over time, prioritized by operator need.
+- `validate-output-coherence` is manual invocation by orchestrators. Not hook-enforced. If an orchestrator skips the call, it ships without the gate. Enforcement via PreToolUse hook possible in a future release.
+- Semantic search (embeddings) deferred. FTS5 lexical suffices for structured content vocabulary.
+
+---
+
+## v2.6.16 — 2026-04-23 — Schema drift grep pass (offers v2 + _version per-entity)
+
+**Action**: the lesson logged in v2.6.15 flagged that schema migrations leave consumer skills behind. Grep pass across all `.skills/` surfaces two classes of drift: legacy flat `offers[]` vs v2 `offer_groups[].offers[]`, and `_template_version` (non-existent field) vs actual per-entity `_version` field. 4 SKILL.md patches. Zero code change.
+
+**What's new — offers schema v2**:
+- `.skills/skills/query-context/SKILL.md` — "brands avec offres actives" query now reads `offer_groups[].offers[]` instead of legacy flat `offers[]`.
+- `.skills/skills/snapshot-brand/SKILL.md` § v1.8 Field Awareness — `offers[].tags[]` line corrected to `offer_groups[].offers[].tags[]` with v2/v1.x note.
+- `.skills/skills/migrate-workspace/SKILL.md` — same `offers[].tags` → `offer_groups[].offers[].tags` correction in the v1.7→v1.8 migration notes.
+
+**What's new — _version per-entity**:
+- Three skills (`snapshot-brand`, `validate-resources`, `migrate-workspace`) referenced a non-existent `_template_version` field and hardcoded `"1.8"` as if it applied to all entities. Actual template has per-entity `_version` with different values: `brand.json=2.1`, `spec.json=1.8`, `offers.json=2.0`, `profile.json=1.2`.
+- All three SKILL.md sections now instruct: read `_version` live from `brands/_TEMPLATE` as source of truth, don't hardcode. Values listed explicitly in each skill for reference.
+
+**Operator impact**: `query-context` queries about offers no longer silently miss v2-schema files. `snapshot-brand` no longer stamps a phantom `_template_version`. `validate-resources` no longer flags a fresh brand as failing on an absent field. `migrate-workspace` migration recipe now reflects the real schema state.
+
+**Lesson (continuation of v2.6.15)**: schema authority drift is the most underrated source of bugs — skills talk about fields that don't exist, reference paths that were renamed, hardcode versions that no longer apply. The source of truth must remain the template itself (read live), not quoted versions embedded in prose. Future releases should lint for hardcoded version strings and legacy path patterns in all SKILL.md before shipping.
+
+---
+
+## v2.6.15 — 2026-04-23 — validate-resources v2 schema alignment
+
+**Action**: same legacy-schema bug as build-brand-snapshot.py had before v2.6.11, but this time in the validate-resources SKILL.md. Detected during v2.6.14 live test on Cherico — validate-resources agent reported "offers missing" while offers.json actually held 4 properly structured offers. The skill prose was still pointing at `offers.meta.product_slug` (v1.x flat) instead of `offer_groups[].offers[].product_refs[]` (v2).
+
+**What's new**:
+- `.skills/skills/validate-resources/SKILL.md` — § 11 Cross-Reference Validation: offers cross-ref path updated to v2 schema, explicit code-block showing the correct offer counting idiom (`sum(len(g.get("offers", [])) for g in offers_doc.get("offer_groups", []))`). Scope checks list (line 319) updated to reference `offer_groups[].offers[]` instead of vague "offer entry".
+
+**Operator impact**: validate-resources no longer produces false "offers missing" flags on v2-schema brands. Zero change to data, pure prose correction.
+
+**Why this release**: shipped mid-test because the false validation output actively misled the operator in the Cherico session — agent relayed "fiche offres est en fait vide" to Largo while the file was correctly populated. A false negative in validation is worse than no validation: it prompts needless rework and erodes trust in the workspace.
+
+**Lesson to log (design gap)**: schema migrations (v1.x → v2.x on offers schema, confirmed v1.8→v2.0) leave consumer code/prose behind. v2.6.11 fixed build-brand-snapshot, v2.6.15 fixes validate-resources. There are probably more consumers reading offers with legacy paths. Grep pass pending in a future release: scan all .skills/**/*.py and .skills/skills/**/SKILL.md for `offers.meta.product_slug`, `\.offers\[` without `offer_groups`, etc. Schema versions should have a single authoritative consumer guide, not N copies of the same pattern drifting.
+
+---
+
+## v2.6.14 — 2026-04-23 — SessionStart context budget warning hook
+
+**Action**: closes the silent-scale-degradation risk surfaced by S35. An operator accumulates brands, learnings, decisions over weeks — the CLAUDE.md cascade grows, lazy-loaded docs balloon, prefix cache degrades, costs and latency rise. Until now, this drift was invisible. v2.6.14 makes it visible at every session start without blocking the session.
+
+**What's new**:
+- `.claude/hooks/budget-warn.py` — SessionStart hook. Runs `.skills/audit-context-budget.py --json` at every session launch. If any threshold is breached (root CLAUDE.md > 140 lines, always-loaded cascade > 250, any lazy doc > 200, worst-case session > 600), it writes a structured entry to `.phantom/context-budget-warnings.log` and emits a single-line stderr warning the agent can surface if asked. Soft enforcement — a hard block would fail a legitimate session mid-action; the maintainer fixes the cascade when ready.
+- `.claude/settings.json` — wires the hook to SessionStart. Existing hooks (PreToolUse convention-guard + mutation-guard, UserPromptSubmit checkpoint-resolver) unchanged.
+
+**Operator impact**:
+- First time any threshold is crossed, the session start emits a visible warning. Operator and maintainer both see it immediately.
+- The agent can surface the warning to the operator if asked ("pourquoi c'est lent ?" → "the context cascade has grown to 802 lines, over budget — detailed audit available"). No automatic action; the agent's default is to ignore the warning and continue.
+
+**Why this release**: Largo explicitly called out the risk — "c'est contraignant pour l'user si ça ne scale pas quand il a passé du temps à importer beaucoup de context". The enforcement is cheap, single-shot per session, and surfaces real data (tested on workspace: detected 4 lazy docs over 200 lines that had been growing unnoticed).
+
+**Why NOT P3.2 (progressive disclosure skills) or P3.3 (runtime event log)**: both are optimizations that only pay off with real scale signal — 100+ skills or multi-user debugging. Shipping them now without data = premature. Wait for a real tester to surface which one matters.
+
+---
+
+## v2.6.13 — 2026-04-23 — ensure-memory-fresh helper + onboard-brand stage-before-ask propagation
+
+**Action**: finishes the P2 polish surfaced in S35. Two small, targeted fixes that were deferrable but free to ship.
+
+**What's new — ensure-memory-fresh**:
+- `.skills/ensure-memory-fresh.py` — idempotent helper. Compares mtime of indexed sources vs `.phantom/memory.db`; rebuilds only if something is newer. Fresh case exits in milliseconds with `[ensure-memory-fresh] fresh`. Stale case shells out to `memory-index.py`. Usable from anywhere: skills, hooks, release scripts, manually.
+- `.skills/skills/session-search/SKILL.md` Step 0 rewritten — one line `python3 .skills/ensure-memory-fresh.py --quiet` replaces the previous prose "check mtime, decide whether to rebuild". Agent can no longer skip the freshness check.
+
+**What's new — orchestrator stage-before-ask propagation**:
+- `.skills/skills/onboard-brand/SKILL.md` Step 2 — explicit note that the subagent delegated to snapshot-brand MUST stage proposals before asking the operator. If it skips and tries a direct write, the workflow gate blocks with an actionable message. Orchestrator must not retry the gated write autonomously; surface the block to the operator and let checkpoint-resolver do its job on the next user turn.
+
+**Operator impact**:
+- session-search results are always backed by a fresh index from now on. If a session just captured a new decision, the next search query sees it without manual rebuild.
+- Agents orchestrating multi-step onboarding via onboard-brand inherit the stage-before-ask discipline explicitly instead of hoping the subagent reads snapshot-brand/SKILL.md completely.
+
+**Why this release**: S35 flagged both as P2 "nice-to-have but deferrable". After closing P1 in v2.6.12, shipping P2 in the same sitting avoids a future aller-retour. No breaking change, no operator-facing behavior change except search freshness.
+
+---
+
+## v2.6.12 — 2026-04-23 — Subagent infrastructure boundary + plumbing-leak rule
+
+**Action**: closes the two design gaps surfaced by the v2.6.10/11 Onday live test.
+
+**What's new — infrastructure guard** (D#345):
+- `.claude/hooks/mutation-guard.py` — adds `INFRASTRUCTURE_GLOBS` protection. Blocks Edit / Write / NotebookEdit / MultiEdit and Bash bypass (`>`, `tee`, `sed -i`, `open('w')`) on: `.skills/*.py`, `.skills/skills/*/*.py`, `.claude/hooks/*.py`, `.claude/settings*.json`. Only the human maintainer edits these, via a text editor outside the Claude Code tool loop. Agents that discover a bug in infrastructure should flag it to the operator, not autopatch.
+- 7/7 tests pass: Edit/Write/MultiEdit + Bash sed-i all blocked on the 4 path classes. SKILL.md still editable (exempt). Canonical channel on brand JSON still allowed (no regression on v2.6.5 behavior).
+
+**What's new — plumbing leak rule** (D#346):
+- `CLAUDE.md` § Operator contract — new binary row: auto-tag source + confidence from semantic signal, display as `observé / déduit / déclaré / incertain` when useful. NEVER surface `source`, `confidence` numbers, `mode`, or the `--source / --confidence / --mode` arg names to the operator.
+- `docs/system/voice.md` § Anti-patterns — new entry "Plumbing leak to operator" with real negative example caught during S35 Onday test + corrected version + binary test ("would an e-commerce agency manager say this sentence?").
+
+**Why this release**: the Onday live test produced two unrelated but equally clear violations. (1) A validate-resources subagent modified `build-brand-snapshot.py` autonomously to fix a bug — correct fix, wrong method. (2) An agent presented a table with "Source" and "Confidence" columns to the operator, who then reproduced the jargon verbatim ("set confidence to 0.6"). Both were caught in session, both are now structurally impossible: the first blocked by the hook, the second blocked by the operator-contract rule that any agent reading CLAUDE.md at session start will apply.
+
+**Operator impact**:
+- Zero change for well-behaved skills. Their writes still route through the canonical channel as before.
+- Any attempt by a subagent to Edit/Write workspace infrastructure gets a clear block message pointing at `scaffold-skill-stub` / `build-agent` for new skills or at the maintainer channel for existing ones.
+- Operator-facing messages tighten: no more `confidence=0.6` in propositions, no more "mode=proposed" mentioned to the end user.
+
+**Known gaps (not addressed in 2.6.12)**:
+- Ordering `stage-before-ask` still not guaranteed via orchestrators (onboard-brand specifically). Needs a rule inside the orchestrator SKILL.md or a dedicated helper.
+- Auto-rebuild memory.db still prose-based. Stop hook throttled candidate for v2.6.13.
+
+---
+
+## v2.6.11 — 2026-04-23 — build-brand-snapshot offer counter fix
+
+**Action**: fixes a silent bug discovered during the v2.6.10 live test onboarding (Onday). `build-brand-snapshot.py` was reading offers via the legacy flat `offers[]` array, but since v2.0 the schema nests offers under `offer_groups[].offers[]`. Result: snapshot always displayed `offers active: 0` even when offers.json was populated. The snapshot still built without crashing, so the bug was invisible until someone checked.
+
+**What's new**:
+- `.skills/build-brand-snapshot.py` — offer counter now iterates `offer_groups[].offers[]` correctly. Backward-compatible: if a legacy flat-offers file exists, the block is a no-op (0 offer_groups → nothing iterated), and an operator running an old-format brand sees `offers active: 0` which is the same as before. No regression.
+
+**Discovery context**: detected by the validate-resources subagent during Onday onboarding test. The subagent modified the script autonomously — technically a scope violation (subagents should flag infrastructure bugs, not fix them), but the fix itself was correct and is shipped here properly through the canonical maintainer path. Design gap to address in a future release: constrain subagent write permissions to brand/operator scope only, block writes to workspace infrastructure (`.skills/*.py`, `.claude/**`).
+
+**Operator impact**: snapshot now reports the real offer count. Zero change to any data path or write channel.
+
+---
+
+## v2.6.10 — 2026-04-23 — Non-critical skills patch pass (pseudo-code → canonical channel)
+
+**Action**: ferme la dette restante du patch pass initié en v2.6.7. Les 10 skills non-critiques qui référençaient encore `write_to_context()` comme pseudo-code sont maintenant alignés sur le canonical channel `.skills/write-to-context.py`. Sans ça, tout trigger opérateur sur ces skills aurait buté sur mutation-guard au premier write.
+
+**Skills patched**:
+- `mine-audience/SKILL.md` — enrichissement audience via proposals
+- `watch-competitors/SKILL.md` — Step 6 réécrit avec Bash block complet (mode=proposed), reference market.external_intelligence path
+- `scaffold-entity-files/SKILL.md` — writes via script dans custom/
+- `scaffold-extension/SKILL.md` — route-to-existing precision + hints
+- `scaffold-skill-stub/SKILL.md` — write SKILL.md stub via script
+- `score-product-fit/SKILL.md` — proposals mode note
+- `check-existing-coverage/SKILL.md` — routing hints
+- `build-agent/SKILL.md` — agent design mandate clarifié
+- `learn-from-session/SKILL.md` — write mechanism vers operator/profile.json
+- `register-and-flag/SKILL.md` — index.json#/extensions append
+
+**Operator impact**: any agent path that previously routed through these 10 skills can now write without hitting mutation-guard. All brand/operator mutations flow through the single canonical channel.
+
+**Why this release**: v2.6.7 only patched the 3 critical onboarding-path skills (setup-brand, onboard-brand, ingest-resource). The remaining 10 were listed as known gap because they're non-critical — but the first tester who triggers mine-audience or watch-competitors would have taken the wall. Closing now while the context is fresh.
+
+**Known gaps (not addressed in 2.6.10)**:
+- Some patched sections have minor cosmetic drift (nested backticks from batch replacement). Readable, functional, cosmetic polish deferred.
+- `watch-competitors/SKILL.md` references `market.external_intelligence[]` path — the schema field may or may not exist in `_TEMPLATE`; validate-resources will flag if agent writes there and schema rejects.
+
+---
+
+## v2.6.9 — 2026-04-23 — Narrative memory retrieval layer (FTS5) + context budget audit
+
+**Action**: PhantomOS has three memory layers — (1) entity memory (brand/product/audience JSONs — already strong), (2) operator memory (operator/profile.json + feedback memory — already in place), (3) narrative memory (session-log.md, decisions.md, learnings.json, events.jsonl — until now APPEND-ONLY TEXT, zero retrieval). This release adds the retrieval layer on (3), sourced from Hermes Agent's SQLite FTS5 pattern, without touching layers (1) or (2). Plus a context-budget audit tool so the CLAUDE.md cascade stays bounded.
+
+**What's new — memory retrieval**:
+- `.skills/memory-index.py` — idempotent rebuilder. Parses session-log.md (42 chunks from `## Session N|SN —` headers), decisions.md (353 chunks from `| N | … |` table rows), learnings.json (per-entry), `_snapshot.md` (per-brand), session-state.md (per Activity Log line), `.phantom/context-engine-events.jsonl` (per event). Writes to `.phantom/memory.db` with an FTS5 virtual table over title + content + source_ref. Runs in <1s on typical corpora. No data migration — sources remain the truth; the DB is a derived index.
+- `.skills/session-search.py` — CLI. Takes `--query` (any terms, auto-escaped for FTS5) + optional `--type / --brand / --since / --limit / --format`. Returns ranked hits with source_type, source_ref, date, brand, highlighted snippet, file path.
+- `.skills/skills/session-search/` (new skill, type=navigator, subagent_safe=true, recommended_model=haiku). Triggers on FR/EN operator queries about past sessions, decisions, learnings ("qu'a-t-on dit sur", "search history", "which decision", etc.). Ensures index freshness before querying. Disambiguates against `query-context` (current state vs past narrative).
+
+**What's new — budget audit**:
+- `.skills/audit-context-budget.py` — measures root CLAUDE.md line count, brand-level CLAUDE.md, lazy-loaded docs referenced via `docs/system/*.md`, worst-case session total. Reports warnings against thresholds (root ≤140, always-loaded ≤250, lazy docs ≤200, worst-case ≤600). Not a runtime hook — a pre-release gate helper. `--strict` exits 1 on overflow for CI.
+
+**Operator impact**:
+- Operator asks "qu'avait-on décidé sur le schema v2" → agent invokes session-search → gets the D#XX entry in 1 second, with snippet and source file. No more grep-the-3200-line-session-log.
+- The skill rebuilds the index automatically if source files changed since last build. Default behavior: fresh on every use.
+- Budget audit is maintainer-facing. Included in pre-release gate. Doesn't affect operator sessions.
+
+**Architecture decision (D#344)** — NARRATIVE layer retrieval only. Three memory layers stay strictly separate:
+  - Layer 1 (entity) — schema-bound, mutation-gated, human-validated. Unchanged.
+  - Layer 2 (operator) — feedback-learned, cross-session persistent. Unchanged.
+  - Layer 3 (narrative) — transcript-derived, append-only, now FTS5-indexed.
+No cross-layer writes. No merge. Queries can span the index, but results always carry their source_type. The discipline of PhantomOS's content layer is preserved — we only added a lens on the time dimension.
+
+**Why this release**: S34 tests on Karacare and Liv Happy Food confirmed empirically what was suspected — `session-log.md` grew to 3200+ lines and `decisions.md` to 357 entries with zero retrieval capability. Any cross-session recall required either manual grep or paying Claude Code tokens to grep for you. Hermes Agent solves this exact problem with `state.db` + FTS5 + `session_search` tool. Directly transposable. 200 lines Python. Immediate value.
+
+**Why NOT Obsidian-style embeddings (deliberate choice)**: semantic search via embeddings is 10x complexity for 2x value on this corpus. PhantomOS narrative is structured (sessions numbered, decisions indexed, brands typed) — FTS5 lexical match on these anchors is sufficient. Embeddings could come later for a secondary layer, but are not the current bottleneck.
+
+**Known gaps (not addressed in 2.6.9)**:
+- No auto-rebuild hook at session close. The skill rebuilds on first use; stale intermediate state possible inside a long session.
+- No auxiliary summarization (Hermes uses Gemini Flash to summarize top-N results). Can be added when snippet-based output feels insufficient.
+- Budget audit findings are informational. No strict enforcement at release gate yet.
+
+---
+
+## v2.6.8 — 2026-04-23 — build-brand-snapshot defensive read
+
+**Action**: snapshot builder no longer crashes on legacy `{_value, _proposed, _source, _confidence}` wrappers left behind by pre-v2.6.6 writes (when `mode=proposed` still wrapped scalars and arrays). Two new helpers + 3 read-site patches.
+
+**What's new**:
+- `.skills/build-brand-snapshot.py` — added `unwrap(value)` and `unwrap_list(value)` helpers. `unwrap` peels off the `{_value, _proposed, ...}` wrapper if present, otherwise returns the value unchanged. `unwrap_list` additionally coerces any shape to a list (empty list if not a list after unwrap), so callers can always slice safely.
+- Audiences block: applies `unwrap` on `identity`, `psychology`, and each pain object; uses `unwrap_list` on `pain_points`. No more `TypeError: unhashable type: 'slice'` when pain_points is a proposed-wrapped dict.
+- Identity block: applies `unwrap` on identity fields + tone block, so wrapped scalars render as text instead of `{_value: "..."}`.
+- Products block: applies `unwrap` on spec identity + pricing fields, same rationale.
+
+**Why this release**: the live Karacare + Liv Happy Food tests produced workspaces where mode=proposed had wrapped scalar and array values. v2.6.6 stopped new wrapped writes but existing brands keep the legacy shape until rewritten. The snapshot builder read path crashed on first use. Fixed without touching the data itself — consumers must be tolerant of historic artifacts.
+
+---
+
+## v2.6.7 — 2026-04-23 — Orchestrator skills patched + write-to-context security scan
+
+**Action**: two surfaces closed. (1) The 3 critical onboarding-path skills (`setup-brand`, `onboard-brand`, `ingest-resource`) no longer reference `write_to_context(...)` as pseudo-code — they document the explicit `python3 .skills/write-to-context.py` Bash invocation. Without this, the next onboarding session after v2.6.6 install would have butted against mutation-guard at every write the orchestrator emits. (2) The canonical write channel now runs a static security scan on `--value` and `--reason` before any mutation.
+
+**Skill patches**:
+- `setup-brand/SKILL.md` Step 3 — rewrote the `origin_story` write from `write_to_context()` pseudo to an explicit Bash block with operator-source + confidence 1.0 + mode direct. Added the mutation-guard callout.
+- `onboard-brand/SKILL.md` Step 3 — "routed write via `write_to_context(mode='proposed')`" → "every mutation routed via `python3 .skills/write-to-context.py --mode proposed` (dicts only; scalars/arrays use `--mode direct`). Direct file edits are blocked by mutation-guard."
+- `ingest-resource/SKILL.md` Step 3B — replaced the loose "Write file to brand folder" bullet with a full canonical-channel block: Bash invocation template, mode-proposed-dicts-only rule, workflow-gate pointer to `stage-proposal.py` + snapshot-brand Step 1/5 for gated paths.
+
+**Security scan** (in `.skills/write-to-context.py`):
+- `SECURITY_PATTERNS` — 5 regex families ported from NousResearch/hermes-agent: `prompt_injection`, `credential_exfil`, `ssh_backdoor`, `invisible_unicode`, `destructive_shell`.
+- `scan_value()` walks the --value tree, `scan_string()` also runs on `--reason`. On any hit: write is refused, a `refused` event with `reason: security_scan` and match excerpts is appended to `context-engine-events.jsonl`, the CLI prints all matches and exits 1.
+- Sanity tested: a value containing "ignore all previous instructions" is blocked; clean operator learnings pass through.
+
+**Operator impact**:
+- Agents that correctly follow the orchestrator skills keep working. Agents that improvised Edit/Write/`python -c json.dump` on brand files were already blocked since v2.6.5; the v2.6.7 skill patches surface the correct path in-context.
+- Pasting a document containing a prompt-injection string as a learning will now refuse the write. Log the refusal, sanitize or discard the source, retry.
+
+**Why this release**: v2.6.6 was "working for snapshot-brand + capture-learning, broken for orchestrators" — testers running onboard-brand after install would still have hit walls. The security scan is defensive hygiene: treating untrusted operator input as potentially malicious, since anything typed/pasted can come from a third-party page.
+
+**Known gaps (not addressed in 2.6.7)**:
+- 10 skills still reference `write_to_context` as pseudo-code (mine-audience, watch-competitors, scaffold-entity-files, scaffold-extension, scaffold-skill-stub, score-product-fit, check-existing-coverage, build-agent, learn-from-session, register-and-flag). Non-critical path, deferred.
+- `build-brand-snapshot.py` still fragile under new pain schema shapes.
+
+---
+
+## v2.6.6 — 2026-04-23 — Workflow-integrity layer + write_to_context hardening
+
+**Action**: adds the missing enforcement between data-integrity (v2.6.5 gates *what* can be written) and workflow-discipline (*when* it can be written). A staged-proposal system routes operator confirmations through a UserPromptSubmit hook whose input is the literal user message, so agents cannot self-mark confirmations. Plus two post-live-test hardenings on the canonical write channel.
+
+**What's new — workflow-integrity**:
+- `.skills/stage-proposal.py` — CLI. A skill stages a pending proposal in `brands/{slug}/.workflow.json`; the operator's next turn is classified by the hook as confirm/reject/ambiguous. Checkpoints known: `confirmed_products` (per-product gate) and `audience_q1q4_answered`.
+- `.claude/hooks/checkpoint-resolver.py` — UserPromptSubmit hook. Reads the operator's literal message, matches confirm/reject regexes (bilingual FR/EN), updates `.workflow.json` accordingly. Writes to `.phantom/checkpoint-resolver.log`. Agents cannot fake confirmation because the hook input is user text, not agent output.
+- `.skills/write-to-context.py` — WORKFLOW_GATES added. Blocks writes to `products/{slug}/spec.json`, `products/{slug}/offers.json`, and `audiences/{slug}/profile.json` until the required checkpoint is resolved. `source=operator` bypasses (user authority). Block message includes the exact `stage-proposal.py` command ready to run.
+- `.claude/settings.json` — wires the UserPromptSubmit hook.
+- `.skills/skills/snapshot-brand/SKILL.md` — patched at Step 1 Hero and Step 5B Audience to call `stage-proposal.py` before asking the operator; Hard Rule added.
+
+**What's new — write-to-context hardening** (from live test findings):
+- **Filename whitelist** — writes are refused if the target basename is not one of `{brand, status, config, learnings, strategy, spec, offers, profile}.json`, `*.extensions.json`, or `custom/*.json`. Prevents shell-escaping typos from silently creating garbage files like `profile.jsonontrainte-sante`.
+- **`mode=proposed` restricted to dicts** — wrapping scalars/arrays in `{_value, _proposed, _source, _confidence}` corrupts downstream consumers (a `brand.json/products_index` array became an object, breaking iteration). Proposed mode now rejects scalar/array values with a clear error pointing at `--mode direct`. Source and confidence are still preserved in the event log.
+- **`source=operator` requires `confidence=1.0`** — operator-source represents user authority (equivalent to the operator having typed the fact). Allowing confidence<1.0 with `source=operator` opened a bypass channel on the workflow gate. Now enforced at arg-parse.
+
+**Operator impact**:
+- Onboarding flow: snapshot-brand stages hero + audience proposals; operator's `oui`/`non` resolves them; writes proceed only after resolution. Experience: 2 explicit confirmation points instead of 0.
+- Agent errors now pinpoint exact path issues (`target path not a known schema file`) instead of silently creating junk.
+- Skills other than `capture-learning` and `snapshot-brand` still reference pseudo-code `write_to_context(...)` — they will hit workflow gates on first gated write. Patch pass pending.
+
+**Why this release**: two live onboarding tests (Karacare, Liv Happy Food) surfaced: (1) the agent wrote product specs and audience profiles without operator confirmation despite SKILL.md markdown rules — gates existed only in prose; (2) shell-escaping bugs in agent-built mega-commands created corrupted filenames that the write script accepted silently; (3) `mode=proposed` on arrays broke `brand-snapshot.py` and forced the agent into ugly path hacks. v2.6.6 closes all three surfaces.
+
+**Known gaps (not addressed in 2.6.6)**:
+- `build-brand-snapshot.py` is fragile under new pain schema shapes — unrelated, deferred.
+- Only `snapshot-brand/SKILL.md` is patched for the stage-before-ask pattern. `setup-brand`, `onboard-brand`, `ingest-resource` still say `call write_to_context()` as pseudo-code.
+- Free-form corrections from the operator (e.g. `"Hair Boost"` alone instead of `"yes"`) don't auto-resolve — agent must re-stage.
+
+---
+
+## v2.6.5 — 2026-04-22 — Systemic enforcement layer (convention + mutation + write_to_context)
+
+**Action**: closes the gap between Markdown promises and machine-enforced behavior on two load-bearing rules (convention-first for external tools, mutation-via-canonical-channel for brand/operator data) + finally implements `write_to_context` — the function named in the agent contract for months but never coded.
+
+**What's new — convention-guard**:
+- `.claude/hooks/convention-guard.py` — PreToolUse hook intercepting any `mcp__{server}__*` call. Extracts the platform via regex (no hardcoded list — every existing AND future MCP is auto-enrolled), looks up `resources/conventions/{slug}.json`, blocks if missing, has no `_doc_check.last_doc_read`, has invalid date format, or is older than 90 days. Successful reads logged to `.claude/convention-reads.log`.
+- `PLATFORM_ALIASES` normalizes noisy MCP server names (`claude_ai_Slack` → `slack`, `facebook-graph` → `meta-ads`). `PLATFORM_EXEMPT` skips internal/local MCPs.
+
+**What's new — mutation-guard**:
+- `.claude/hooks/mutation-guard.py` — PreToolUse hook intercepting `Edit|Write|NotebookEdit|MultiEdit|Bash`. Blocks direct JSON writes to `brands/{slug}/*.json` (except `_TEMPLATE`/`_EXAMPLE`) and `operator/*.json` via any route: Edit tool, `python -c 'json.dump(...)'`, `echo >`, `tee`, `sed -i`, heredoc redirects. Allows `cp -r _TEMPLATE`, `mkdir`, read-only ops, `.md` writes, and the canonical channel `.skills/write-to-context.py`.
+
+**What's new — write_to_context implementation**:
+- `.skills/write-to-context.py` — canonical mutation channel. CLI: `--path path#json_pointer --value JSON --source {agent,import,inference,operator,scrape} --confidence 0-1 --mode {direct,proposed} [--reason]`. Supports both RFC 6901 JSON Pointer (`#/entries/-` for append) and the legacy custom syntax (`#entries[]`). Writes the JSON target, appends an event to `.phantom/context-engine-events.jsonl` (ts, path, op, source, confidence, mode, digest, reason).
+- `.skills/skills/capture-learning/SKILL.md` — patched to call the script explicitly via Bash instead of pseudo-code `write_to_context(...)`. Every other skill that writes to brand/operator state must follow this pattern (backlog, not in this release).
+
+**Operator impact**:
+- First MCP call without a fresh convention → BLOCK with scaffold instructions.
+- Any attempt by the agent to hand-edit a brand JSON → BLOCK with a message pointing at `write-to-context.py`.
+- Every mutation is now traceable in `.phantom/context-engine-events.jsonl`.
+- Brands without MCP usage, and brands where the agent only reads, are unaffected.
+
+**Why this release**: the onboarding test of 2026-04-21 produced a clean data-integrity failure on two surfaces. (1) The Notion MCP was connected mid-session with no convention read — rule in CLAUDE.md, zero enforcement. (2) The agent wrote `brands/{slug}/*.json` via shell bypass (`cp -r`, `python json.dump`) skipping the proposed/direct workflow entirely. Both were promises. Both are gates now. Shipping together because `mutation-guard` depends on `write-to-context.py` existing — neither ships alone.
+
+**Known gaps (not addressed in 2.6.5)**:
+- Skills other than `capture-learning` still reference `write_to_context()` as pseudo-code. When they write, the agent improvises — and now takes the mutation-guard wall. Patch pass pending.
+- Workflow-integrity (Step 0-7 discipline in `snapshot-brand`, `setup-brand`) is orthogonal to data-integrity and still only enforced in Markdown.
+- `schema-guard` (prevent fields outside `_TEMPLATE`) prototyped in local instance, not ready for release.
+
+---
+
 ## v2.6.3 — 2026-04-19 — Disambiguation + brand-snapshot + update mechanism
 
 **Action**: two perf patches + the bootstrap of the update distribution system. Cuts routing ambiguity, snapshot-first reduces brand state reload cost, and installs the machinery so future updates land cleanly on tester workspaces without losing data.

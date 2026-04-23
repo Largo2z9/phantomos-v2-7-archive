@@ -1,0 +1,47 @@
+{
+  "_schema": "update-manifest/1.0",
+  "from_version": "2.6.9",
+  "to_version": "2.6.10",
+  "released_at": "2026-04-23",
+  "summary": "10 non-critical skills switched from write_to_context() pseudo-code to canonical .skills/write-to-context.py channel.",
+  "breaking": false,
+  "requires_confirmation": false,
+  "notes": "Pure doc pass on SKILL.md files. No code change, no hook change. Safe overlay. Any agent that triggered these skills before v2.6.10 would have hit mutation-guard on the first protected write — now routes correctly.",
+  "changes": [
+    {
+      "type": "skill-change",
+      "files": [
+        ".skills/skills/mine-audience/SKILL.md",
+        ".skills/skills/watch-competitors/SKILL.md",
+        ".skills/skills/scaffold-entity-files/SKILL.md",
+        ".skills/skills/scaffold-extension/SKILL.md",
+        ".skills/skills/scaffold-skill-stub/SKILL.md",
+        ".skills/skills/score-product-fit/SKILL.md",
+        ".skills/skills/check-existing-coverage/SKILL.md",
+        ".skills/skills/build-agent/SKILL.md",
+        ".skills/skills/learn-from-session/SKILL.md",
+        ".skills/skills/register-and-flag/SKILL.md"
+      ],
+      "action": "overwrite",
+      "safe": true,
+      "note": "Replaced write_to_context() and write_to_context references with .skills/write-to-context.py. watch-competitors Step 6 rewritten with full Bash invocation block."
+    },
+    {
+      "type": "doc-change",
+      "file": "CHANGELOG.md",
+      "action": "overwrite",
+      "safe": true,
+      "note": "Prepend v2.6.10 entry."
+    },
+    {
+      "type": "doc-change",
+      "file": "_version.json",
+      "action": "overwrite",
+      "safe": true,
+      "note": "Bump template_version to 2.6.10."
+    }
+  ],
+  "post_steps": [
+    "No action required."
+  ]
+}

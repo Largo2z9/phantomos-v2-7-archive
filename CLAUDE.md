@@ -32,6 +32,13 @@ Template authored in EN. **ALWAYS** detect operator language at first message, p
 | Use impératif court, direct register | **NEVER** decorative emoji (📋 💡 ⚠️ 🧠 📥 ✅). One-off ✓/⚠ for state OK, nothing else |
 | Present modifications as plain-language diff | **NEVER** show the word "proposal", raw JSON, or technical field_path |
 | Translate PhantomOS vocabulary into operator value when mapping architecture, prerequisites, or expert methodology | **NEVER** expose internal names (`convention`, `framework`, `SOP`, `quality-spec`, `catalogue`, `entity`, `field`, `schema`) in architectural cartography. Say what it *does for the operator*, not what it is internally. |
+| Auto-tag source + confidence from semantic signal (scrape literal → high, inference → medium, operator stated → authoritative). Display as `observé / déduit / déclaré / incertain` if the distinction helps. | **NEVER** expose `source`, `confidence` (numbers), `mode`, or `--source/--confidence/--mode` args to the operator. Operator verbs: accept / reject / correct / flag. Not "adjust confidence to 0.6". |
+
+---
+
+## URL intake
+
+**Reminder:** any ecom URL pasted by the operator (product page, homepage, collection, `.myshopify.com`, `/products/`, `/collections/`) routes to `snapshot-brand`. No direct scrape, no freestyle analysis. Onboarding or mid-session, same rule. If brand missing → chain `setup-brand` → `snapshot-brand`.
 
 ---
 
@@ -94,7 +101,7 @@ Schemas in `resources/schemas/{type}.schema.json`. Central registry: `index.json
 
 **YOU MUST** read `.skills/skills/{name}/SKILL.md` before executing. **NEVER** execute from memory.
 
-**Fast discovery — read the manifest first.** `.skills/_manifest.json` is a pre-built index of every skill (name, type, model, subagent_safe, mode, FR+EN triggers, `disambiguates_against`, path). Read this ONE file at session start for routing instead of scanning 28 SKILL.md folders. Only then read the specific `.skills/skills/{name}/SKILL.md` for the skill you're about to execute. Regenerate manifest on any skill add/rename/edit: `python3 .skills/build-manifest.py` from workspace root.
+**Fast discovery — read the manifest first.** `.skills/_manifest.json` is a pre-built index of every skill (name, type, model, subagent_safe, mode, FR+EN triggers, `disambiguates_against`, path). Read this ONE file at session start for routing instead of scanning all SKILL.md folders. Only then read the specific `.skills/skills/{name}/SKILL.md` for the skill you're about to execute. Regenerate manifest on any skill add/rename/edit: `python3 .skills/build-manifest.py` from workspace root.
 
 **Disambiguation tie-breaker.** When multiple skills match an operator intent (e.g. *"setup/onboard"* → setup-brand vs onboard-brand, *"audit"* → validate-resources vs audit-meta-setup), read the `disambiguates_against` block in the manifest entry of each candidate. Each block names sibling skills and spells out the routing condition. Apply the condition literally. If still ambiguous, ask one AskUserQuestion with the 2-3 candidates.
 
@@ -119,8 +126,12 @@ Schemas in `resources/schemas/{type}.schema.json`. Central registry: `index.json
 - **Architecture** (entities, field types, dependency graph, session relay, context budget, connectivity, rules) → `docs/system/architecture.md`
 - **Agent Contracts** (`CLAUDE.md` spec, types, loading, precedence, size policy, lifecycle) → `docs/system/agent-contracts.md`
 - **Patterns & Taxonomies** (close variants, sharpening examples, context levels, model routing, skill taxonomy, skill philosophy) → `docs/system/patterns.md`
+- **Skill creation protocol** (graduation matrix, operator gates, extend_before_create, rollback) → `docs/system/skill-creation-protocol.md`
+- **Skill builder cartography** (map domain variables → extend schema → code) → `docs/system/skill-builder-cartography.md`
+- **SOP ↔ skill conversion** (methodology vs execution separation, 5 conversion scenarios) → `docs/system/sop-skill-conversion.md`
+- **Resource discovery** (FTS5 runtime pattern, priority rules, cost budget) → `docs/system/skill-resource-discovery.md`
 - **Lexicon** (canonical vocabulary) → `lexicon.md`
-- **Voice canon** (writing style, register, anti-patterns — read before editing any doc) → `docs/system/voice.md`
+- **Voice canon** (writing style, register, anti-patterns, heavy-skill gate — read before editing any doc) → `docs/system/voice.md`
 - **Where does it go?**: `resources/guides/where-does-it-go.md`
 - **Capabilities map** (operator-facing): `docs/product/capabilities.md`
 - **Roadmap**: `docs/vision/roadmap.md`

@@ -37,6 +37,23 @@ def short(s, n=120):
     return s if len(s) <= n else s[: n - 1] + "…"
 
 
+def unwrap(value):
+    """Return _value if value is a {_value, _proposed, ...} wrapper (legacy
+    proposed-on-scalar artifact from <v2.6.6), otherwise return value unchanged."""
+    if isinstance(value, dict) and "_value" in value and "_proposed" in value:
+        return value["_value"]
+    return value
+
+
+def unwrap_list(value):
+    """Coerce any input into a list. Handles wrapped arrays, None, and dict
+    fallback (returns []) so callers can always slice safely."""
+    value = unwrap(value)
+    if isinstance(value, list):
+        return value
+    return []
+
+
 def build_snapshot(brand_dir):
     slug = brand_dir.name
     brand = load_json(brand_dir / "brand.json") or {}
@@ -45,15 +62,15 @@ def build_snapshot(brand_dir):
     lines = [f"# {slug} — snapshot", ""]
 
     # Identity
-    identity = brand.get("identity", {})
+    identity = unwrap(brand.get("identity", {})) or {}
     lines.append("## Identity")
-    lines.append(f"- Name: {short(identity.get('name') or identity.get('brand_name'))}")
-    lines.append(f"- Tagline: {short(identity.get('tagline') or identity.get('positioning_statement'))}")
-    lines.append(f"- Sector: {short(identity.get('sector') or brand.get('sector'))}")
-    lines.append(f"- Language: {short(identity.get('language'))}")
-    tone = brand.get("tone_of_voice", {}) or brand.get("voice", {})
-    if tone:
-        lines.append(f"- Tone essentials: {short(tone.get('essence') or tone.get('register') or tone.get('signature'))}")
+    lines.append(f"- Name: {short(unwrap(identity.get('name')) or unwrap(identity.get('brand_name')))}")
+    lines.append(f"- Tagline: {short(unwrap(identity.get('tagline')) or unwrap(identity.get('positioning_statement')))}")
+    lines.append(f"- Sector: {short(unwrap(identity.get('sector')) or unwrap(brand.get('sector')))}")
+    lines.append(f"- Language: {short(unwrap(identity.get('language')))}")
+    tone = unwrap(brand.get("tone_of_voice")) or unwrap(brand.get("voice")) or {}
+    if isinstance(tone, dict) and tone:
+        lines.append(f"- Tone essentials: {short(unwrap(tone.get('essence')) or unwrap(tone.get('register')) or unwrap(tone.get('signature')))}")
     lines.append("")
 
     # Products
@@ -63,12 +80,13 @@ def build_snapshot(brand_dir):
         for p in sorted(products_dir.iterdir()):
             if p.is_dir() and not p.name.startswith("_"):
                 spec = load_json(p / "spec.json") or {}
-                pid = spec.get("identity", {})
+                pid = unwrap(spec.get("identity", {})) or {}
+                pricing = unwrap(spec.get("pricing", {})) or {}
                 products.append({
                     "slug": p.name,
-                    "name": pid.get("product_name") or pid.get("name") or p.name,
-                    "price": (spec.get("pricing", {}) or {}).get("price_display") or (spec.get("pricing", {}) or {}).get("base_price"),
-                    "hero": pid.get("hero") or pid.get("is_hero"),
+                    "name": unwrap(pid.get("product_name")) or unwrap(pid.get("name")) or p.name,
+                    "price": unwrap(pricing.get("price_display")) or unwrap(pricing.get("base_price")) or unwrap(pricing.get("price")),
+                    "hero": bool(unwrap(pid.get("hero")) or unwrap(pid.get("is_hero"))),
                 })
     lines.append(f"## Products ({len(products)})")
     for p in products[:10]:
@@ -86,13 +104,19 @@ def build_snapshot(brand_dir):
         for a in sorted(audiences_dir.iterdir()):
             if a.is_dir() and not a.name.startswith("_"):
                 profile = load_json(a / "profile.json") or {}
-                pid = profile.get("identity", {})
-                pains = (profile.get("psychology", {}) or {}).get("pain_points", []) or profile.get("pain_points", [])
+                pid = unwrap(profile.get("identity", {})) or {}
+                psychology = unwrap(profile.get("psychology", {})) or {}
+                pains = unwrap_list(psychology.get("pain_points")) or unwrap_list(profile.get("pain_points"))
+                label = unwrap(pid.get("label")) or unwrap(pid.get("name")) or a.name
                 audiences.append({
                     "slug": a.name,
-                    "label": pid.get("label") or pid.get("name") or a.name,
-                    "primary": pid.get("primary") or pid.get("is_primary"),
-                    "pains": [p.get("label") if isinstance(p, dict) else str(p) for p in pains[:2]],
+                    "label": label if isinstance(label, str) else a.name,
+                    "primary": bool(unwrap(pid.get("primary")) or unwrap(pid.get("is_primary"))),
+                    "pains": [
+                        (unwrap(p.get("label")) or unwrap(p.get("formulation")) or "")
+                        if isinstance(p, dict) else str(p)
+                        for p in pains[:2]
+                    ],
                 })
     lines.append(f"## Audiences ({len(audiences)})")
     for a in audiences[:6]:
@@ -111,12 +135,15 @@ def build_snapshot(brand_dir):
         for p in products_dir.iterdir():
             if p.is_dir() and not p.name.startswith("_"):
                 offers_doc = load_json(p / "offers.json") or {}
-                offers = offers_doc.get("offers", []) if isinstance(offers_doc, dict) else []
-                for off in offers:
-                    if isinstance(off, dict) and off.get("active", True) is not False:
-                        offers_count += 1
-                        t = off.get("type") or "other"
-                        offer_types[t] = offer_types.get(t, 0) + 1
+                # Support both v1.x (flat offers[]) and v2.0 (offer_groups[].offers[])
+                offer_groups = offers_doc.get("offer_groups", []) if isinstance(offers_doc, dict) else []
+                for group in offer_groups:
+                    if isinstance(group, dict):
+                        for off in group.get("offers", []):
+                            if isinstance(off, dict) and off.get("active", True) is not False:
+                                offers_count += 1
+                                t = off.get("type") or "other"
+                                offer_types[t] = offer_types.get(t, 0) + 1
     lines.append(f"## Offers active: {offers_count}")
     if offer_types:
         breakdown = ", ".join(f"{k}:{v}" for k, v in sorted(offer_types.items()))

@@ -199,8 +199,23 @@ For catalogues: check if same domain prefix exists in `id_prefixes`.
 6. **Never write before explicit confirmation.**
 7. **Respect _field_types**: Check the file's `_field_types` map. Never write strategy/decision data into context files. Derived fields should be computed, not manually filled. **If a written field doesn't exist in `_field_types`** → add it with the appropriate type (`raw` by default, unless clearly computed → `derived`). Never write an unmapped field without registering it.
 8. **Sync products_index**: When writing to `products/{slug}/spec.json`, check `brand.json.products_index[]`. If the product slug is not listed, add it with `name` from spec.meta.name and `role: "secondary"` (operator can change later).
-9. **Write file** to brand folder
-8. **Store raw source** in `brands/{slug}/sources/` if applicable
+9. **Write via the canonical channel** (Bash, not pseudo-code) for every field:
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brands/{slug}/{entity-path}#{json-pointer}" \
+  --value '{JSON-encoded value}' \
+  --source {operator|scrape|inference|import} \
+  --confidence {0.0-0.9 for agent, 1.0 for operator} \
+  --mode {direct|proposed} \
+  --reason "1-line rationale"
+```
+
+- `--mode proposed` ONLY for dict values (stamps `_proposed/_source/_confidence` in-place). Scalars and arrays use `--mode direct` (metadata preserved in event log).
+- Writes to gated paths (`products/{slug}/spec.json`, `products/{slug}/offers.json`, `audiences/{slug}/profile.json`) require a resolved checkpoint — see `.skills/stage-proposal.py` and snapshot-brand Step 1/5 for the stage-then-ask pattern. If ingest-resource wants to write to a gated path without going through a preceding snapshot-brand run, stage a proposal first.
+- Edit, Write, `python -c json.dump`, `echo >`, `sed -i`, `tee` are all blocked by mutation-guard. Surface the script's error to the operator if it blocks; never bypass.
+
+10. **Store raw source** in `brands/{slug}/sources/` if applicable
 
 **Multi-entity split**: If the source content contains information about multiple entities (brand + product + audience mixed in a single brief), split into separate writes — one per entity target. Log the split in CHANGELOG.
 

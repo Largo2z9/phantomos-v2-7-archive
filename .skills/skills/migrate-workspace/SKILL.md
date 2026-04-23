@@ -153,18 +153,18 @@ Operator says "migrate all brands" or "batch migration":
 
 ## v1.7 → v1.8 Migration Path (2026-04)
 
-**100% backward compatible.** Aucune migration destructive requise.
+**100% backward compatible.** No destructive migration required.
 
-**Changements v1.8 :**
-- spec.json : +8 blocs optionnels (composition, posology, contraindications, origin, production_method, preparation, external_databases, target_suitability, durability)
-- spec.json : +`nutrition_facts.allergen_sources`, +`nutri_score_grade`, +`perishability.period_after_opening_months`, +`perishability.expiry_date_required`
-- spec.json : +6 dietary_tags, +"oats" dans allergens
-- offers.json : +`contents.duration_type`, +`duration_servings`, +`cure_metadata`, +`incentives.duration_tiers`, +`loyalty`, +`offers[].tags`
+**v1.8 changes:**
+- spec.json: +8 optional blocks (composition, posology, contraindications, origin, production_method, preparation, external_databases, target_suitability, durability)
+- spec.json: +`nutrition_facts.allergen_sources`, +`nutri_score_grade`, +`perishability.period_after_opening_months`, +`perishability.expiry_date_required`
+- spec.json: +6 dietary_tags, +"oats" in allergens
+- offers.json: +`contents.duration_type`, +`duration_servings`, +`cure_metadata`, +`incentives.duration_tiers`, +`loyalty`, +`offer_groups[].offers[].tags` (v2 schema — legacy v1.x was `offers[].tags`)
 
-**Étapes migration :**
-1. Bumper `_template_version` → "1.8" dans spec.json et offers.json de chaque produit.
-2. Ajouter les entries `_field_types` et `_changelog` depuis `_TEMPLATE/products/_example/`.
-3. Ne PAS toucher aux données existantes. Les nouveaux blocs restent à null jusqu'à prochain snapshot.
-4. Validation : relancer validate-resources, doit passer sans erreur.
+**Migration steps:**
+1. Read `_version` from `brands/_TEMPLATE` (living source) per entity, then align every instance file to the same value. The field is `_version` on every file (not `_template_version`, inherited drift). Current values: spec.json=1.8, offers.json=2.0, brand.json=2.1, profile.json=1.2.
+2. Add `_field_types` and `_changelog` entries from `_TEMPLATE/products/_example/`.
+3. Do NOT touch existing data. New blocks stay null until next snapshot.
+4. Validation: rerun validate-resources, must pass without error.
 
-**Pas besoin de re-snapshot.** Les instances v1.7 restent valides en v1.8. Enrichissement opt-in au prochain refresh.
+**No re-snapshot needed.** v1.7 instances remain valid in v1.8. Enrichment is opt-in at next refresh.
