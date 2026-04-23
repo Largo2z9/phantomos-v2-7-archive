@@ -272,11 +272,13 @@ Bad. Delivering a Meta audit without access. Proposing "3-angle creative brief" 
 ### E1 — Create the brand structure
 
 1. Copy `brands/_TEMPLATE/` to `brands/{slug}/`
-2. Replace placeholders in `brands/{slug}/CLAUDE.md`:
-   - `{brand-name}` → real name
-   - Data Access fields stay `[TO FILL]`
+2. Replace `{brand-name}` placeholder with the real brand name in **every** markdown file at brand root: `CLAUDE.md`, `session-state.md`, `pending-validations.md`, `todos.md`. Missing any of these is a bug — the operator will see `{brand-name}` in their own workspace. Data Access fields in CLAUDE.md stay `[TO FILL]` (those are filled in E2).
 3. Update `brands/{slug}/status.json`: `brand_slug` → slug, `last_session` → today
 4. Update `brands/{slug}/config.json`: `language` → chosen language
+5. **Seed `brands/{slug}/pending-validations.md`** with the baseline items under the three gate sections (append after the `<!-- Examples: -->` block of each section, do not remove the comments — they stay as reference):
+   - Under **Context gate**: `- [ ] Review inferred audience (segment, pains, objections)` + one line per field stamped in `mode=proposed` by snapshot-brand (positioning, tone, audience). Source tag embedded as plain-language `(inferred from site)` / `(stated by operator)` — never expose `source` / `confidence` / `mode` keywords.
+   - Under **Access gate**: one line per platform mentioned by the operator without a token (e.g. `- [ ] Set up Meta Ads access`).
+   - Under **Enrichment**: `- [ ] Surface past learnings (client history, past tests, platform rules learned)`.
 
 ### E2 — Configure ecosystem and access
 

@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.6.20",
+  "template_version": "2.6.21",
   "released_at": "2026-04-24",
   "compatible_from": "2.0.0",
-  "summary": "Fix snapshot-brand writing legacy v1 offers shape on single-variant products + write-to-context leak when mode=proposed used on whole-file paths. Caught during fresh-instance test.",
-  "manifest": "docs/releases/2.6.20-manifest.json"
+  "summary": "Close end-of-onboarding gap: setup-brand now substitutes {brand-name} across all 4 md files + seeds pending-validations baseline; snapshot-brand triggers validate-resources silently post-save and appends inferred fields to pending-validations Context gate.",
+  "manifest": "docs/releases/2.6.21-manifest.json"
 }

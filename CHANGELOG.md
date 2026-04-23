@@ -5,6 +5,24 @@
 
 ---
 
+## v2.6.21 — 2026-04-24 — Close the end-of-onboarding governance gap
+
+**Caught during same fresh-instance test as v2.6.20.** After setup-brand + snapshot-brand + 29 mutations, `status.json.wedge_complete` stayed `false`, `completeness` was `{}`, `pending-validations.md` still had the template placeholder `{brand-name}` and no seeded checkpoints for the fields stamped in `mode=proposed`. The governance surface the operator sees was empty even though the workspace was populated.
+
+**Root cause**
+- `setup-brand § E1` substituted `{brand-name}` only in `CLAUDE.md`, leaving `session-state.md`, `pending-validations.md`, and `todos.md` with the raw placeholder.
+- `setup-brand § E1` Step 4 narrative said to "seed pending-validations" but didn't spell out the write. Agent skipped it.
+- `snapshot-brand § Step 7` post-save ended with a soft "run validate when ready" suggestion. `validate-resources` was never auto-triggered, so `status.json` never refreshed after writes.
+- Inferred fields (audiences, tone, positioning) were stamped via `mode=proposed` but no corresponding checkpoint landed in `pending-validations.md § Context gate`.
+
+**Fix**
+- `setup-brand/SKILL.md § E1`: placeholder substitution now covers all 4 markdown files at brand root; seeding of the 3 baseline gate sections (context / access / enrichment) is spelled out line-by-line with plain-language source tags.
+- `snapshot-brand/SKILL.md § Step 7`: two silent post-save actions added — (1) append one `[ ]` line to `pending-validations.md § Context gate` per field stamped in `mode=proposed` during the run, (2) trigger `validate-resources` silently to refresh `status.json` and rebuild auxiliary indexes. Output surfaced only on MAJOR/CRITICAL.
+
+**Operator impact**: post-setup the workspace now accurately reports its own state (`wedge_complete` flips true when entities are complete) and the governance queue reflects real pending validations instead of template stubs.
+
+---
+
 ## v2.6.20 — 2026-04-24 — Fix offers schema drift + write-to-context proposal leak
 
 **Caught during v2.6.19 fresh-instance test** (nooance-paris onboarding). Two coupled regressions in the snapshot-brand → write_to_context path corrupted single-product offers.json files.

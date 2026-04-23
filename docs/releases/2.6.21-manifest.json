@@ -1,0 +1,39 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.6.21",
+  "released_at": "2026-04-24",
+  "compatible_from": "2.0.0",
+  "theme": "end-of-onboarding governance refresh",
+  "summary": "Fresh instances after setup + snapshot left status.json empty (wedge_complete=false, completeness={}) and pending-validations.md with raw {brand-name} placeholder + no seeded checkpoints. setup-brand now substitutes the placeholder across all 4 md files and seeds the baseline gates; snapshot-brand now triggers validate-resources silently post-save and appends inferred fields to the Context gate.",
+  "changes": [
+    {
+      "path": ".skills/skills/setup-brand/SKILL.md",
+      "kind": "edit",
+      "reason": "E1: widen placeholder substitution to all 4 md files at brand root; spell out pending-validations seeding with plain-language source tags per the operator-contract no-jargon rule."
+    },
+    {
+      "path": ".skills/skills/snapshot-brand/SKILL.md",
+      "kind": "edit",
+      "reason": "Step 7 post-save: append one [ ] line per mode=proposed field to pending-validations.md § Context gate, trigger validate-resources silently, surface only MAJOR/CRITICAL."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "kind": "edit",
+      "reason": "v2.6.21 entry."
+    },
+    {
+      "path": "_version.json",
+      "kind": "edit",
+      "reason": "Bump to 2.6.21."
+    }
+  ],
+  "migrations_required": false,
+  "breaking_changes": false,
+  "operator_impact": "post-setup, status.json and pending-validations.md now reflect real state. No action for existing instances — next snapshot-brand run per brand regenerates the surfaces.",
+  "tested_on": ["SKILL.md edits, verified against Nooance onboarding traces in /tmp/phantom-test-v2619"],
+  "caught_by": "same fresh-instance onboarding test as v2.6.20 (findings #4, #5).",
+  "known_gaps": [
+    "No auto-migration of existing pending-validations.md files stuck with {brand-name} — operator runs snapshot-brand or hand-edits.",
+    "validate-resources trigger is an SKILL.md instruction, not hook-enforced. If agent skips it the refresh is lost. Future: PostToolUse hook on write-to-context ending detection (candidate v2.7.x)."
+  ]
+}

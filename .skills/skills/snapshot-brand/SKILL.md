@@ -486,7 +486,12 @@ Good? Want to change anything before I save?
 - **If the operator corrects** ("price is 39€", "audience is more men") → apply the correction, reshow the modified summary, wait for confirmation.
 - **Never write files before explicit confirmation.**
 
-Once saved, propose enrichment without waiting:
+Once saved, run two silent post-writes before talking:
+
+1. **Append to `brands/{slug}/pending-validations.md § Context gate`** one `[ ]` line per inferred field that was stamped with `mode=proposed` during this run. Wording in the operator's language, plain-language source tag (`(inferred from site)`, `(deduced)`), never `source` / `confidence` / `mode` jargon. Typical entries: audience(s) inferred, positioning inferred, tone inferred, compliance gaps detected (e.g. missing contraindications on a medical device).
+2. **Trigger `validate-resources` silently** on the brand. This refreshes `status.json` (completeness per entity, freshness stamps, `wedge_complete`), rebuilds `learnings-index.json` if present, and re-runs the snapshot digest. Surface its result only if it flags MAJOR/CRITICAL — otherwise stay silent.
+
+Then propose enrichment without waiting:
 
 ```
 Saved.
