@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.6.19",
-  "released_at": "2026-04-23",
+  "template_version": "2.6.20",
+  "released_at": "2026-04-24",
   "compatible_from": "2.0.0",
-  "summary": "Hygiene pass — FR → EN language drift in 3 system docs + 3 SKILL.md sections added in v2.6.17–18. Zero behavior change.",
-  "manifest": "docs/releases/2.6.19-manifest.json"
+  "summary": "Fix snapshot-brand writing legacy v1 offers shape on single-variant products + write-to-context leak when mode=proposed used on whole-file paths. Caught during fresh-instance test.",
+  "manifest": "docs/releases/2.6.20-manifest.json"
 }

@@ -1,0 +1,44 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.6.20",
+  "released_at": "2026-04-24",
+  "compatible_from": "2.0.0",
+  "theme": "bugfix — offers schema drift + proposal wrapper leak",
+  "summary": "snapshot-brand single-variant path wrote v1 flat offers[] (stamped _version 2.0). write-to-context wrapped _proposed/_source/_confidence at the root object when mode=proposed was used on a whole-file path. Both caught during fresh-instance test of v2.6.19.",
+  "changes": [
+    {
+      "path": ".skills/skills/snapshot-brand/SKILL.md",
+      "kind": "edit",
+      "reason": "Step 4 template rewritten in v2 offer_groups shape. Hard rules added: never mode=proposed on whole-file path; v2 offers only."
+    },
+    {
+      "path": ".skills/write-to-context.py",
+      "kind": "edit",
+      "reason": "Guard added: mode=proposed without JSONPointer fragment is rejected with clear error."
+    },
+    {
+      "path": ".skills/_manifest.json",
+      "kind": "edit",
+      "reason": "Rebuilt after SKILL.md edit."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "kind": "edit",
+      "reason": "v2.6.20 entry."
+    },
+    {
+      "path": "_version.json",
+      "kind": "edit",
+      "reason": "Bump to 2.6.20."
+    }
+  ],
+  "migrations_required": false,
+  "breaking_changes": false,
+  "operator_impact": "preventive — existing drifted offers.json files need manual re-run of snapshot-brand to regenerate under v2 shape.",
+  "tested_on": ["fresh instance /tmp/phantom-test-v2619 with write-to-context guard"],
+  "caught_by": "onboarding test on nooance-paris (discovered masque-led-elite-x600/offers.json corruption)",
+  "known_gaps": [
+    "No auto-migration for existing v1 offers files in live instances.",
+    "validate-resources does not yet detect the schema-shape + _version mismatch (candidate for next release)."
+  ]
+}

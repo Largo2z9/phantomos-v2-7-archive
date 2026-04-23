@@ -5,6 +5,24 @@
 
 ---
 
+## v2.6.20 — 2026-04-24 — Fix offers schema drift + write-to-context proposal leak
+
+**Caught during v2.6.19 fresh-instance test** (nooance-paris onboarding). Two coupled regressions in the snapshot-brand → write_to_context path corrupted single-product offers.json files.
+
+**Bug 1 — snapshot-brand wrote v1 legacy `offers[]` shape on single-variant products**
+- `.skills/skills/snapshot-brand/SKILL.md § Step 4`: the JSON template shipped with the skill was the pre-v2 flat `{offers: [{product_ids: [...]}]}` shape. Bundle code path was already v2-correct (`offer_groups[]`), single-variant path had drifted.
+- Fix: rewrote Step 4 with the canonical v2 `offer_groups[]` + `product_refs: [{slug, quantity}]` shape. Added explicit hard rules: `_version: "2.0"` mandatory, flat `offers[]` rejected, group-of-1 is the default for single-product files.
+
+**Bug 2 — `write_to_context` leaked `_proposed/_source/_confidence` at the root object when `mode=proposed` used on a whole-file path**
+- When an agent called `write_to_context --path file.json --mode proposed` (no JSONPointer fragment), the proposal wrapper stamped the metadata keys at the top-level of the written JSON, corrupting downstream consumers.
+- Fix: `write-to-context.py` now rejects `mode=proposed` without a JSONPointer with a clear error. Scaffold must run in `mode=direct`; individual field stamping runs in `mode=proposed` with `file.json#/field`.
+
+**Hard rule added to `snapshot-brand/SKILL.md § Hard Rules`** covering both: never call `mode=proposed` on whole-file paths, always scaffold first in `direct` then stamp fields.
+
+**Operator impact**: preventive. Existing instances with the drifted X600-style files are not auto-migrated — rerun `snapshot-brand` on the affected product to regenerate under v2 shape, or hand-migrate using `research/migrate_offers_v1_to_v2.py` if present.
+
+---
+
 ## v2.6.19 — 2026-04-23 — Hygiene pass: language drift (FR → EN)
 
 **Action**: align all system docs + SKILL.md with voice.md EN-baseline policy. Template is authored in EN; operator-facing text is translated at runtime. Recent v2.6.17–18 additions had drifted into FR/EN mix — this pass restores coherence.

@@ -385,6 +385,15 @@ def main() -> None:
     else:
         rel_file, pointer = args.path.split("#", 1)
 
+    if args.mode == "proposed" and not pointer:
+        die(
+            "mode=proposed requires a JSONPointer fragment (e.g. file.json#/field). "
+            "Writing a whole file in proposed mode stamps _proposed/_source/_confidence "
+            "at the root object, corrupting consumers. Scaffold the file in mode=direct, "
+            "then stamp individual fields in mode=proposed.",
+            1,
+        )
+
     check_target_allowed(rel_file)
 
     target = (root / rel_file).resolve()

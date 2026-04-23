@@ -260,39 +260,66 @@ Each Shopify variant = one candidate offer.
 4. If a single variant without explicit duration, or group of variants same price without duration → `type: "single"`
 5. If `compare_at_price > price` → compute `savings_percent` and `savings_amount`
 
-Fill `brands/{slug}/products/{product_slug}/offers.json`:
+Fill `brands/{slug}/products/{product_slug}/offers.json` using the v2 `offer_groups[]` shape. Group-of-1 is valid and is the default for single-product offer files — only split into multiple groups if offers share distinct defaults (shipping, returns, warranty, payment_methods, active_window).
+
 ```json
 {
+  "_schema": "offers",
+  "_version": "2.0",
   "meta": {
     "product_slug": "{product_slug}",
+    "scope": "pre_cart",
     "updated": "{today}"
   },
-  "offers": [
+  "offer_groups": [
     {
-      "offer_id": "OFR-01",
-      "name": "{variant.title}",
-      "type": "{auto typing}",
-      "product_ids": ["{product_slug}"],
-      "pricing": {
-        "model": "one_shot",
-        "price": {variant.price / 100},
-        "price_original": {variant.compare_at_price / 100 or null},
-        "savings_percent": {computed or null},
-        "currency": "{EUR|USD}"
+      "group_id": "GRP-01",
+      "name": "Default group",
+      "active": true,
+      "shared": {
+        "pricing": {
+          "model": "one_shot",
+          "currency": "{EUR|USD}"
+        },
+        "tags": []
       },
-      "contents": {
-        "quantity": {extracted or null},
-        "unit_name": {extracted or null},
-        "duration": {extracted or null},
-        "duration_unit": {extracted or null},
-        "is_prepay": {true if prepay or multi-month bundle, else null}
-      },
-      "subscription": null,
-      "active": {variant.available}
+      "offers": [
+        {
+          "offer_id": "OFR-01",
+          "name": "{variant.title}",
+          "type": "{auto typing}",
+          "product_refs": [
+            {"slug": "{product_slug}", "quantity": {extracted or 1}}
+          ],
+          "pricing": {
+            "model": "one_shot",
+            "price": {variant.price / 100},
+            "price_original": {variant.compare_at_price / 100 or null},
+            "savings_percent": {computed or null},
+            "currency": "{EUR|USD}"
+          },
+          "contents": {
+            "quantity": {extracted or null},
+            "unit_name": {extracted or null},
+            "duration": {extracted or null},
+            "duration_unit": {extracted or null},
+            "is_prepay": {true if prepay or multi-month bundle, else null}
+          },
+          "subscription": null,
+          "active": {variant.available},
+          "tags": []
+        }
+      ]
     }
   ]
 }
 ```
+
+**Hard rules:**
+- `_version: "2.0"` is mandatory. Never write `_version: "1.x"` or omit it.
+- Always wrap offers in `offer_groups[].offers[]`. A flat `offers[]` at root is the legacy v1.x shape and is rejected by validate-resources.
+- Use `product_refs: [{slug, quantity}]`, not legacy `product_ids: [slug]`.
+- Group-of-1 is the default for single-product offer files. Only add more groups when shared defaults genuinely differ.
 
 If subscription detected (selling_plan_groups): create a `type: "subscription"` offer with subscription fields filled to null (to complete via ingest-resource).
 
@@ -497,6 +524,8 @@ I sort and file automatically.
 - **One product per run**. Multi-product = relaunch the skill for each product.
 - **`_snapshot` block always present** in spec.json and profile.json. Documents provenance.
 - **Do not create audience folder** if Q1 + Q2 are both null, not enough to identify audience.
+- **Write modes.** Never call `write_to_context` on a whole file path with `mode=proposed` — the proposal wrapper stamps `_proposed/_source/_confidence` at the root object and corrupts consumers. Always scaffold the file in `mode=direct` (full structure with null placeholders), then stamp inferred fields one by one with `mode=proposed` using a JSONPointer fragment (e.g. `file.json#/pricing/price`). The tool enforces this guard since 2.6.20.
+- **Offers.json = v2 `offer_groups[]` only.** Never write the legacy flat `offers[]` at root. `_version: "2.0"` is mandatory. Single-product files use a group-of-1. Use `product_refs: [{slug, quantity}]`, not `product_ids`.
 
 ---
 
