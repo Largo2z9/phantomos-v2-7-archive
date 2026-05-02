@@ -136,13 +136,13 @@ This distinction has precise operational implications. It is not enough to *depl
 
 ---
 
-## 7. Three positions in the new economy
+## 7. Encoded operator, applied to DTC paid acquisition
 
-What you do with the shift depends on who you are. The encoded operator stance applies directly to the current audience.
+The shift takes concrete form for the V1 audience: DTC paid acquisition operators encode their audiences, angles, creatives, advertorials, and learnings into a workspace. The agent operates them across every campaign and every brand you manage. What was billable-hour work — re-briefing context, re-writing copy, re-explaining audiences to a freelancer or junior — becomes an asset that compounds.
 
-**Encoded operator.** You hold the expertise. You encode your own craft in your own workspace. You go from one to twenty brands without hiring. You decouple your pricing from billable hours. You sell outcome (deliverable, result) not time. Encoded craft becomes a compounding asset ; unencoded craft stays billable-hour work.
+The pattern is general, but the proof is local. **Encoded operator:** you hold the expertise. You encode your own craft in your own workspace. You scale from one to twenty brands without hiring. You decouple your pricing from billable hours. You sell outcome (deliverable, result), not time. Encoded craft becomes a compounding asset; unencoded craft stays billable-hour work.
 
-For DTC paid acquisition operators, the current target audience, the encoded operator stance is immediate : your audiences, angles, creatives, advertorials, learnings live in the workspace, the agent operates them across every campaign and every brand you manage.
+The pattern extends to consultants, coaches, media buyers, and knowledge productizers — any operator whose value depends on a repeatable methodology. DTC paid acquisition is the first incarnation, where the canon is mature and the validation immediate.
 
 ---
 

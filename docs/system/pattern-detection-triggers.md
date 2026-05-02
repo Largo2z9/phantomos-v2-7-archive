@@ -101,5 +101,5 @@ The threshold is : *"would a senior operator reviewing this session say `we keep
 
 ## Status
 
-- **v1.0 doctrine** — operational from S46. Ship the rules, calibrate thresholds after 30 days of live data.
+- **v1.0 doctrine** — operational. Ship the rules, calibrate thresholds after 30 days of live data.
 - **Implementation note** — this is a doctrine document for skill authors. The actual daemon mechanics (when to scan, where to write the buffer, how to escalate) is operationalized via `learn-from-session` + future `invariant-violation-detector.py` hook (Phase 4.5 backlog).

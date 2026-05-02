@@ -28,7 +28,7 @@ When the operator wants to densify, specialized agents work in parallel on the r
 
 **Pre-traction founder, day one to month three.** Adopting before positioning and audiences are validated encodes guesses. Burn the setup time on direct customer conversations and ad tests instead. Come back post-first-signal.
 
-**Info-products and B2B services operators.** Different stack (no paid ads infrastructure), different metrics (LTV-driven course funnels, B2B pipeline). PhantomOS currently ships optimized for DTC paid, not these adjacent verticals. The platform itself is extensible if you encode your own kit, but no shipped kit supports you out of the box.
+**Info-products and B2B services operators.** Different stack (no paid ads infrastructure), different metrics (LTV-driven course funnels, B2B pipeline). PhantomOS ships optimized for DTC paid, not these adjacent verticals. The platform itself is extensible if you encode your own kit, but no shipped kit supports you out of the box.
 
 **Distribution-first creator.** Content volume operator whose core activity is distribution across social platforms (Twitter, YouTube, TikTok, newsletter sends). PhantomOS does not cover social scheduling, audio or video production pipelines, community management, newsletter infrastructure, or checkout.
 
@@ -38,9 +38,9 @@ When the operator wants to densify, specialized agents work in parallel on the r
 
 ## What the tour does not tell you
 
-The workspace is only as valuable as the capture discipline behind it. The moat is process, not artifact. A week without logging corrections turns the system into a Notion clone that nobody reads. Two mitigations exist currently (the agent proposes capture after each deliverable, and `learn-from-session` batches on demand) but neither replaces operator discipline. Honest expectation : if you abandon the capture reflex, the system pays back what you put in and no more.
+The workspace is only as valuable as the capture discipline behind it. The moat is process, not artifact. A week without logging corrections turns the system into a Notion clone that nobody reads. Two mitigations exist (the agent proposes capture after each deliverable, and `learn-from-session` batches on demand) but neither replaces operator discipline. Honest expectation : if you abandon the capture reflex, the system pays back what you put in and no more.
 
-The Claude Code requirement is a real adoption barrier. Claude Pro, Team, or Max subscription is required. The CLI is not optional currently : the web app works once the workspace exists, but first setup runs through Claude Code. An operator uncomfortable with a terminal will feel friction for the first forty-five minutes.
+The Claude Code requirement is a real adoption barrier. Claude Pro, Team, or Max subscription is required. The CLI is not optional : the web app works once the workspace exists, but first setup runs through Claude Code. An operator uncomfortable with a terminal will feel friction for the first forty-five minutes.
 
 **Run one agent at a time per workspace.** PhantomOS does not lock files on writes. If two Claude Code sessions target the same workspace simultaneously (two terminal windows, two parallel IDEs, or a shared cloud clone), concurrent `write_to_context` calls can corrupt the event log or overwrite proposals. Workaround until future iteration : close any other session on the same workspace before starting a new one. Multi-agent orchestration in a single session is fine ; parallel sessions on the same workspace are not.
 
@@ -72,7 +72,7 @@ There is a real session cost. The agent loads the agent contract, the active con
 - Dense exploration sessions where the prompt cache absorbs repeated reads.
 - Multi-context workflows where registries and learnings are mutualized.
 
-**Empirical proof is still pending.** No published benchmark comparing PhantomOS against Claude Projects or ChatGPT Teams on identical operator tasks exists yet. The structural arguments above rest on measurable primitives (cache savings, re-brief avoided, indexed vs full-dump loading, output-per-token of parametric composition) but the end-to-end comparison has not been conducted at scale. A public benchmark across five operators over three months is on the R&D roadmap. Until then, adopters should evaluate on their own token consumption curve over the first thirty to sixty days.
+**Empirical proof per operator, not aggregate.** No published benchmark across operators on identical tasks exists. The honest path : run the comparison on your own usage curve over 30 to 60 days. The structural arguments above (cache savings, re-brief avoided, indexed retrieval, parametric composition output-per-token, compound across sessions) rest on measurable primitives. The on-demand `benchmark-tokens` skill (planned) reads your session token consumption and compares against a baseline scenario you provide, on your real workspace, with your real brands. Generic benchmarks across abstract operators always lie ; per-operator benchmarks on real usage tell the truth.
 
 ## Agency client-data tension (DTC growth lead specific)
 
@@ -81,6 +81,16 @@ A growth lead at an agency who encodes brand-specific knowledge per DTC client i
 - **Workspace separation.** One workspace per client brand. The encoded substrate per brand stays portable. On retainer termination, the workspace transfers to the client (export of `brands/{slug}/` folder), or stays with the agency, depending on the service contract.
 - **Operator-side discipline.** No skill handles this split today. It requires explicit framing in the service contract (workspace ownership, transfer clause, encoded data property).
 - **Vertical pack roadmap.** A formal multi-tenant agency layer with native client-data separation, role-based permissions, and exit licensing is on the roadmap.
+
+## Workaround for small teams (2 to 5 operators)
+
+Single-writer per workspace by design. For agencies running multiple DTC clients with 2 to 5 operators, the operational pattern that works :
+
+- **One workspace per client brand**, owned by the senior operator who encodes the methodology.
+- **Junior operators consume read-only**, propose corrections via plain text or PR-style discussion, the senior commits to the workspace.
+- **Workspace handoff at retainer end** : export the brand folder, transfer to the client, or keep as agency IP depending on the service contract.
+
+Native multi-operator (role-based access, simultaneous editing, client read-only dashboards) is on the roadmap. Until then, this workaround covers the realistic 2 to 5 person agency case without ownership ambiguity.
 
 ## When to revisit this page
 

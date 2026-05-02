@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.13.0",
+  "template_version": "2.14.0",
   "released_at": "2026-05-02",
   "compatible_from": "2.0.0",
-  "summary": "connect-cockpit v1.1 · refactor registry-driven. Per-platform specs (required fields, where-to-find, server fallback) externalized to connectors.json registry. SKILL.md now platform-agnostic loop. Adding a new source (Klaviyo, Pinterest, X Ads, etc.) = 1 entry in connectors.json, no SKILL.md edit. Cockpit-side: GOOGLE_DEVELOPER_TOKEN + GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET fall back to process.env if absent from payload (Abyss app-level). Operator now provides only customer_id + refresh_token for Google Ads. Snap notes corrected: self-serve via DB encrypted credentials, no Vercel redeploy.",
-  "manifest": "docs/releases/2.13.0-manifest.json"
+  "summary": "Cleanup post-audit Red Team. Operator-facing surface clarified : audit-meta-setup renamed to audit-meta-account, ghost skill references dropped, manifesto restructured with DTC use case upfront, multi-operator workaround for 2-5 person agencies documented, on-demand benchmark-tokens skill flagged as planned. GitHub canon files added (LICENSE MIT, CONTRIBUTING, CODE_OF_CONDUCT, .github templates). docs/internal/ structure clarified with explicit contributor banners, release manifests moved to docs/internal/releases/manifest/. Doctrine refs to internal sessions and decision IDs swept from docs/system/. Stubs added : connected-sources.json (workspace + brand), brands/_TEMPLATE/angles/.",
+  "manifest": "docs/internal/releases/manifest/2.14.0-manifest.json"
 }

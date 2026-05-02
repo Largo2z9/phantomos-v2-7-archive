@@ -12,7 +12,7 @@ Le système est livré avec un kit de skills et de ressources métier prêtes à
 
 ## Le constat qui justifie son existence
 
-Trois écarts récurrents apparaissent dès qu'on essaie d'industrialiser le travail intellectuel d'un métier de connaissance avec les outils IA disponibles aujourd'hui.
+Trois écarts récurrents apparaissent dès qu'on essaie d'industrialiser le travail intellectuel d'un métier de connaissance avec les outils IA disponibles.
 
 **Le contexte ne s'accumule pas durablement.** Les outils IA grand public ont fait des progrès récents sur la mémoire (memory ChatGPT, Projects Claude, Custom GPTs), mais cette mémoire reste opaque, peu structurée, propriétaire au fournisseur, et non transposable d'un outil à l'autre. Le travail mental investi à brief le modèle ne se capitalise pas comme un actif que l'opérateur possède et structure lui-même.
 

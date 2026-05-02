@@ -1,6 +1,10 @@
 # System docs
 
-Contributor-facing documentation. How PhantomOS works under the hood, how to extend it, how to write for it.
+⚠️ **FOR CONTRIBUTORS AND CORE MAINTAINERS**
+
+If you are using PhantomOS as a DTC paid acquisition operator, you don't need to read these docs. See [`docs/product/`](../product/) for operator guidance instead.
+
+This section documents PhantomOS architecture, extension patterns, and internal disciplines that govern how skills and resources are designed.
 
 ## Architecture & specs
 

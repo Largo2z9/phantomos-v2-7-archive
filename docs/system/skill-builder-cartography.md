@@ -9,13 +9,13 @@ Two complementary cartography axes serve the canonical verb `cartographier` (pip
 | Axis | What it maps | Skill | When to use |
 |---|---|---|---|
 | **Data cartography** (this doc) | Domain variables → atomic fields → schema gaps → extension via `scaffold-extension` | `scaffold-extension` orchestrator + `analyze-extension-intent` sub-skill | Before coding a business-domain skill, when the substrate may not hold the variables the skill needs to read |
-| **Knowledge cartography** | Concepts core, leviers, débats, vocabulaire (mode `--learn <domaine>`) OR strategic READ-ONLY synthesis of an encoded brand (mode `--learn brand=<slug>`) | `cartograph` (D#380) | When the operator needs to understand a domain pedagogically, or to get a strategic briefing on an encoded brand without producing mutations |
+| **Knowledge cartography** | Concepts core, leviers, débats, vocabulaire (mode `--learn <domaine>`) OR strategic READ-ONLY synthesis of an encoded brand (mode `--learn brand=<slug>`) | `cartograph` (Extractibility test) | When the operator needs to understand a domain pedagogically, or to get a strategic briefing on an encoded brand without producing mutations |
 
 Both serve the canonical verb but at different layers. Data cartography prepares the substrate (where the data will live). Knowledge cartography uses the substrate (how to read it strategically) or operates without substrate (pedagogical maps).
 
-Composition pattern : on a new business-domain skill, knowledge cartography (`cartograph --learn <domaine>`) can precede data cartography (`scaffold-extension`) to build operator understanding before scaffolding new entities. Both can also feed `build-agent` Step 2b silent BUILD cartography (D#323) by clarifying intent and surfacing existing-coverage candidates.
+Composition pattern : on a new business-domain skill, knowledge cartography (`cartograph --learn <domaine>`) can precede data cartography (`scaffold-extension`) to build operator understanding before scaffolding new entities. Both can also feed `build-agent` Step 2b silent BUILD cartography (Extractibility test) by clarifying intent and surfacing existing-coverage candidates.
 
-Cross-ref : `cartograph/SKILL.md`, D#323 (build-agent Step 2b), D#380 (cartograph creation).
+Cross-ref : `cartograph/SKILL.md`, (build-agent Step 2b), (cartograph creation).
 
 ## Why
 
@@ -76,16 +76,16 @@ The operator validates the schema before the instance is populated.
 
 ```json
 {
-  "type": "custom_entity",
-  "scope": "brand",
-  "name": "commercial_mechanics",
-  "schema": "brands/{slug}/custom/commercial_mechanics/schema.json",
-  "instance": "brands/{slug}/custom/commercial_mechanics/mechanics.json",
-  "cross_refs": [
-    {"from": "reward.product_slug", "to": "brand.products_index[].slug"}
-  ],
-  "owner_skill": "snapshot-brand (detection) + capture-learning (manual enrichment)",
-  "registered_at": "YYYY-MM-DD"
+ "type": "custom_entity",
+ "scope": "brand",
+ "name": "commercial_mechanics",
+ "schema": "brands/{slug}/custom/commercial_mechanics/schema.json",
+ "instance": "brands/{slug}/custom/commercial_mechanics/mechanics.json",
+ "cross_refs": [
+ {"from": "reward.product_slug", "to": "brand.products_index[].slug"}
+ ],
+ "owner_skill": "snapshot-brand (detection) + capture-learning (manual enrichment)",
+ "registered_at": "YYYY-MM-DD"
 }
 ```
 
@@ -128,40 +128,40 @@ No home in the 6 core entities (brand / product / offer / profile / learning / s
 
 ```json
 {
-  "_schema": "brand/custom/commercial_mechanic/1.0",
-  "_version": "1.0",
-  "type": "object",
-  "required": ["mechanic_id", "type", "name", "active", "scope"],
-  "properties": {
-    "mechanic_id": {"type": "string", "pattern": "^MEC-[0-9]{3}$"},
-    "type": {"enum": ["gwp", "shipping_rule", "referral", "loyalty", "funnel_clone", "cart_discount", "scarcity"]},
-    "name": {"type": "string"},
-    "active": {"type": "boolean"},
-    "scope": {"enum": ["cart", "order", "account", "single_product"]},
-    "trigger": {
-      "type": "object",
-      "properties": {
-        "min_cart_value": {"type": "number"},
-        "currency": {"type": "string"},
-        "min_quantity": {"type": "integer"},
-        "product_required": {"type": "array", "items": {"type": "string"}},
-        "account_state": {"enum": ["referrer", "referee", "loyalty_member"]}
-      }
-    },
-    "reward": {
-      "type": "object",
-      "properties": {
-        "type": {"enum": ["product_gift", "discount_percent", "discount_amount", "free_shipping", "points", "credit"]},
-        "value": {},
-        "product_slug": {"type": "string"},
-        "points_amount": {"type": "integer"}
-      }
-    },
-    "active_from": {"type": "string", "format": "date"},
-    "active_to": {"type": "string", "format": "date"},
-    "source_urls": {"type": "array"},
-    "notes": {"type": "string"}
-  }
+ "_schema": "brand/custom/commercial_mechanic/1.0",
+ "_version": "1.0",
+ "type": "object",
+ "required": ["mechanic_id", "type", "name", "active", "scope"],
+ "properties": {
+ "mechanic_id": {"type": "string", "pattern": "^MEC-[0-9]{3}$"},
+ "type": {"enum": ["gwp", "shipping_rule", "referral", "loyalty", "funnel_clone", "cart_discount", "scarcity"]},
+ "name": {"type": "string"},
+ "active": {"type": "boolean"},
+ "scope": {"enum": ["cart", "order", "account", "single_product"]},
+ "trigger": {
+ "type": "object",
+ "properties": {
+ "min_cart_value": {"type": "number"},
+ "currency": {"type": "string"},
+ "min_quantity": {"type": "integer"},
+ "product_required": {"type": "array", "items": {"type": "string"}},
+ "account_state": {"enum": ["referrer", "referee", "loyalty_member"]}
+ }
+ },
+ "reward": {
+ "type": "object",
+ "properties": {
+ "type": {"enum": ["product_gift", "discount_percent", "discount_amount", "free_shipping", "points", "credit"]},
+ "value": {},
+ "product_slug": {"type": "string"},
+ "points_amount": {"type": "integer"}
+ }
+ },
+ "active_from": {"type": "string", "format": "date"},
+ "active_to": {"type": "string", "format": "date"},
+ "source_urls": {"type": "array"},
+ "notes": {"type": "string"}
+ }
 }
 ```
 
@@ -219,5 +219,5 @@ Competitor entity with competitor-scoped creative library, positioning tracked o
 - `.skills/skills/scaffold-extension/SKILL.md` — the orchestrator implementing this pattern
 - `docs/system/extending.md` — general extension doctrine
 - `agent-design-guide.md` — building agents that consume custom entities
-- D#330 (2026-04-19) — dual-mode scaffold-extension
-- D#331 (2026-04-19) — "extend before create" rule
+- (2026-04-19) — dual-mode scaffold-extension
+- (2026-04-19) — "extend before create" rule

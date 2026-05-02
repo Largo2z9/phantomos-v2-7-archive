@@ -38,8 +38,8 @@ SOPs are resources (knowledge). Skills are code (execution). The line is clear.
 
 1. Operator invokes `build-agent` skill (orchestrator, existing).
 2. `build-agent` reads the SOP, identifies each checkpoint's mini-skill reference (or lack thereof), builds a plan :
-   - For each checkpoint that names a `mini-skill:` reference → check if skill exists → if not, scaffold via `scaffold-skill-stub` with the checkpoint description as input
-   - Build parent orchestrator `audit-meta-global` that reads the SOP and calls each mini-skill
+ - For each checkpoint that names a `mini-skill:` reference → check if skill exists → if not, scaffold via `scaffold-skill-stub` with the checkpoint description as input
+ - Build parent orchestrator `audit-meta-global` that reads the SOP and calls each mini-skill
 3. Proposes the full plan to operator (N mini-skills to create, 1 orchestrator, estimated effort).
 4. Operator validates → `build-agent` executes the scaffolding.
 
@@ -68,8 +68,8 @@ SOPs are resources (knowledge). Skills are code (execution). The line is clear.
 1. Operator invokes `scaffold-extension` (data-first mode) or a new `extract-sop-from-skill` helper.
 2. Reads the existing SKILL.md, identifies the methodology sections (steps, decision trees, hard rules) vs execution sections (exact commands, output format).
 3. Proposes splitting into :
-   - `resources/sops/snapshot-brand.md` with methodology
-   - `.skills/skills/snapshot-brand/SKILL.md` reduced to execution + pointer to SOP
+ - `resources/sops/snapshot-brand.md` with methodology
+ - `.skills/skills/snapshot-brand/SKILL.md` reduced to execution + pointer to SOP
 4. Operator reviews the proposed split.
 
 **Key**: bidirectional conversion is supported. Legacy skills that embed methodology can be refactored.
@@ -113,13 +113,13 @@ Operator is about to save something. Apply in order :
 
 ```
 Operator intent
-    ↓
-Orchestrator skill  ──reads──→  SOP (methodology)
-    ↓                              ↓ describes
-    calls                       which mini-skills
-    ↓                              ↓
-Mini-skills  ──consult─→  Docs (reference)
-    ↓
+ ↓
+Orchestrator skill ──reads──→ SOP (methodology)
+ ↓ ↓ describes
+ calls which mini-skills
+ ↓ ↓
+Mini-skills ──consult─→ Docs (reference)
+ ↓
 Output to operator / disk / report
 ```
 

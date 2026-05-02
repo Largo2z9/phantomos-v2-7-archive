@@ -1,0 +1,85 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.14.0",
+  "released_at": "2026-05-02",
+  "compatible_from": "2.0.0",
+  "type": "cleanup",
+  "summary": "Cleanup post-audit Red Team. Operator-facing surface clarified, GitHub canon added, docs/internal/ structure formalized.",
+  "changes": [
+    {
+      "category": "skill",
+      "action": "renamed",
+      "from": ".skills/skills/audit-meta-setup/",
+      "to": ".skills/skills/audit-meta-account/",
+      "rationale": "Clearer name for operators (account vs setup ambiguous)."
+    },
+    {
+      "category": "skill_index",
+      "action": "removed_references",
+      "skills": ["generate-handoff", "produce-offer-scoring", "correct-skill"],
+      "rationale": "Referenced in INDEX.md and disambiguations but skills not shipped. Useful for R&D, not operator DTC. Operator who tried these names hit error."
+    },
+    {
+      "category": "docs",
+      "action": "restructured",
+      "files": ["docs/vision/manifesto.md (section 7 reordered : DTC use case upfront)"]
+    },
+    {
+      "category": "docs",
+      "action": "added",
+      "files": [
+        "LICENSE (MIT)",
+        "CONTRIBUTING.md",
+        "CODE_OF_CONDUCT.md (Contributor Covenant 2.1)",
+        ".github/ISSUE_TEMPLATE/bug_report.md",
+        ".github/ISSUE_TEMPLATE/feature_request.md",
+        ".github/PULL_REQUEST_TEMPLATE.md",
+        "docs/internal/README.md",
+        "docs/internal/releases/README.md",
+        "docs/releases/README.md (redirect to CHANGELOG and docs/internal/releases/)"
+      ]
+    },
+    {
+      "category": "docs",
+      "action": "moved",
+      "from": "docs/releases/*.json (35 manifests)",
+      "to": "docs/internal/releases/manifest/*.json"
+    },
+    {
+      "category": "docs",
+      "action": "updated",
+      "files": [
+        "docs/system/README.md (banner FOR CONTRIBUTORS)",
+        "docs/system/architecture.md (rephrased agnostic receptacle in extensible substrate)",
+        "docs/system/* (16 files, swept internal session and decision references)",
+        "docs/product/fit.md (workaround for 2-5 person agencies + benchmark-tokens on-demand)",
+        "docs/vision/positioning-pitch.md (sweep currently-today temporal hedging)",
+        "docs/vision/offering-deployment.md (sweep currently-today temporal hedging)",
+        "README.md (sweep currently-today temporal hedging)",
+        ".skills/INDEX.md (drop ghost skill references)",
+        ".skills/_manifest.json (regenerated post rename)",
+        ".skills/skills/export-session/SKILL.md (drop generate-handoff disambiguation)"
+      ]
+    },
+    {
+      "category": "schema_stubs",
+      "action": "added",
+      "files": [
+        "operator/connected-sources.json (workspace scope stub)",
+        "brands/_TEMPLATE/connected-sources.json (brand scope stub)",
+        "brands/_TEMPLATE/angles/README.md (entity stub)"
+      ]
+    }
+  ],
+  "breaking_changes": [
+    {
+      "what": "Skill renamed from audit-meta-setup to audit-meta-account",
+      "impact": "Workflows or scripts referencing the old name need to be updated to the new name."
+    },
+    {
+      "what": "Release manifests moved from docs/releases/ to docs/internal/releases/manifest/",
+      "impact": "Direct links to docs/releases/X-manifest.json need to be updated to docs/internal/releases/manifest/X-manifest.json."
+    }
+  ],
+  "migrations": []
+}

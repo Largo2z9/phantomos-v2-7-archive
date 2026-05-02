@@ -37,11 +37,11 @@ A markdown, JSON, or YAML template file. Safe overlay. Receiver agent overwrites
 
 ```json
 {
-  "type": "doc-change",
-  "file": "CLAUDE.md",
-  "action": "overwrite",
-  "safe": true,
-  "note": "Added disambiguation tie-breaker rule in Skills section."
+ "type": "doc-change",
+ "file": "CLAUDE.md",
+ "action": "overwrite",
+ "safe": true,
+ "note": "Added disambiguation tie-breaker rule in Skills section."
 }
 ```
 
@@ -51,11 +51,11 @@ A Python script, Makefile, or build artifact. Often followed by a `post_step` th
 
 ```json
 {
-  "type": "infra-added",
-  "file": ".skills/build-brand-snapshot.py",
-  "action": "create",
-  "post_step": "python3 .skills/build-brand-snapshot.py --all",
-  "safe": true
+ "type": "infra-added",
+ "file": ".skills/build-brand-snapshot.py",
+ "action": "create",
+ "post_step": "python3 .skills/build-brand-snapshot.py --all",
+ "safe": true
 }
 ```
 
@@ -69,11 +69,11 @@ Folder rename + frontmatter `name:` update. Optionally keeps aliases so existing
 
 ```json
 {
-  "type": "skill-renamed",
-  "from": "old-name",
-  "to": "new-name",
-  "aliases_to_keep": ["old-name"],
-  "safe": true
+ "type": "skill-renamed",
+ "from": "old-name",
+ "to": "new-name",
+ "aliases_to_keep": ["old-name"],
+ "safe": true
 }
 ```
 
@@ -83,10 +83,10 @@ A skill is deprecated. Receiver moves to `.skills/skills/_archive/`, flags the o
 
 ```json
 {
-  "type": "skill-removed",
-  "skill": "deprecated-skill",
-  "alternative": "new-skill-name",
-  "safe": true
+ "type": "skill-removed",
+ "skill": "deprecated-skill",
+ "alternative": "new-skill-name",
+ "safe": true
 }
 ```
 
@@ -96,15 +96,15 @@ A JSON schema version bumps (e.g. `brand.json` v2.1 → v2.2). **Requires a migr
 
 ```json
 {
-  "type": "schema-bump",
-  "schema": "brand.schema.json",
-  "from_schema_version": "2.1",
-  "to_schema_version": "2.2",
-  "migration_script": "infra/migrations/brand-v2.1-to-v2.2.py",
-  "affected_files_glob": "brands/*/brand.json",
-  "safe": false,
-  "requires_confirmation": true,
-  "note": "Renamed identity.sector → identity.vertical. Added identity.maturity_stage."
+ "type": "schema-bump",
+ "schema": "brand.schema.json",
+ "from_schema_version": "2.1",
+ "to_schema_version": "2.2",
+ "migration_script": "infra/migrations/brand-v2.1-to-v2.2.py",
+ "affected_files_glob": "brands/*/brand.json",
+ "safe": false,
+ "requires_confirmation": true,
+ "note": "Renamed identity.sector → identity.vertical. Added identity.maturity_stage."
 }
 ```
 

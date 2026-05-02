@@ -199,10 +199,10 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 
 ## 12. Status
 
-- **Draft v0.1** — research zone, Build mode, S44 (2026-04-26).
+- **Draft v0.1** — research zone, Build mode, .
 - **Promotion criterion** — to be reviewed by Largo, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` once cross-references with CI / SED / CMR / PTD scope are validated and the 5 pre-existing skill-* docs are confirmed consolidated as referenced inputs (not deprecated, kept as detail references).
 - **First applications** — frontmatter triad pass on 6 CMR-adjacent skills, mass `reasoning_pattern: null` declaration on 49 non-matrix skills, invariant-violation-detector hook draft, catalogue size measurement.
 
 ---
 
-*Doctrine drafted S44 — 2026-04-26 — consolidates 5 previously-scattered skill-* docs (skill-builder-cartography, skill-creation-protocol, skill-architecture-redteam, skill-resource-discovery, sop-skill-conversion) + patterns.md skill sections + sub-corpus System Lifecycle & Enforcement (hooks, Build/Release, updates, provider-agnostic). Sister to SED, CMR, PTD scope under CI master.*
+*Doctrine — consolidates 5 previously-scattered skill-* docs (skill-builder-cartography, skill-creation-protocol, skill-architecture-redteam, skill-resource-discovery, sop-skill-conversion) + patterns.md skill sections + sub-corpus System Lifecycle & Enforcement (hooks, Build/Release, updates, provider-agnostic). Sister to SED, CMR, PTD scope under CI master.*

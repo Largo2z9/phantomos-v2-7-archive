@@ -170,7 +170,7 @@ Doctrine Governance (promotion / amendment / retraction / conflict resolution am
 
 ## Frame test
 
-Above CI sits the Extractibility test (D#307 from `vision.md`) — *"if I replace 'brand' with 'matter / creator / venue / account', does the doctrine's invariant still hold?"* Pure marketing-anchored invariants are isolated as marketing-canon sub-corpus, not doctrine core. Applied transversally before any doctrine amendment or skill ship.
+Above CI sits the Extractibility test (the Extractibility test) — *"if I replace 'brand' with 'matter / creator / venue / account', does the doctrine's invariant still hold?"* Pure marketing-anchored invariants are isolated as marketing-canon sub-corpus, not doctrine core. Applied transversally before any doctrine amendment or skill ship.
 
 ## References
 

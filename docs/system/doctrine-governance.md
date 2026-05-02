@@ -21,8 +21,8 @@ This meta-process names the rules. It is short. It is append-only. It mirrors th
 
 A doctrine candidate (today : SED, CMR, SAD drafts in `research/`) becomes binding (promoted to `workspace-template/docs/system/`) only when **all four** of the following hold:
 
-1. **≥3 instances of application in active skills.** The doctrine has been applied at least three times to real skills, not just theorized. CMR satisfies this via paid-angles (S41), copy-brief (S42), analyze-copy (S43).
-2. **Extractibility test passed.** Per D#307 — *"if I replace 'brand' with 'matter' / 'creator' / 'venue' / 'account', do the doctrine's invariants still hold?"* Pure marketing-anchored invariants are isolated as marketing-canon sub-corpus, not the doctrine's core.
+1. **≥3 instances of application in active skills.** The doctrine has been applied at least three times to real skills, not just theorized. CMR satisfies this via paid-angles, copy-brief, analyze-copy.
+2. **Extractibility test passed.** Per — *"if I replace 'brand' with 'matter' / 'creator' / 'venue' / 'account', do the doctrine's invariants still hold?"* Pure marketing-anchored invariants are isolated as marketing-canon sub-corpus, not the doctrine's core.
 3. **Cross-reference consistency verified.** The candidate doctrine cross-references with all sister doctrines (CI master, SED substrate, CMR mechanism, SAD authoring, PTD provenance) in both directions. Boundary cases identified and either resolved or flagged as open tensions.
 4. **D# verrouillé in `decisions.md`.** A formal decision entry, append-only, marks the promotion. The D# is the immutable reference for any future amendment.
 
@@ -62,7 +62,7 @@ When two doctrines appear to conflict, the resolution follows this priority:
 
 | Layer | Discipline | Wins on |
 |---|---|---|
-| 0 (Frame) | Extractibility (D#307) | Architectural agnosticity — a feature that breaks the test loses |
+| 0 (Frame) | Extractibility (Extractibility test) | Architectural agnosticity — a feature that breaks the test loses |
 | 1 (Master) | CI | Substantive judgment, surface contract, two-tier rule |
 | 2 (Sub) | SED | Substrate integrity (mutation gate, sourcing, layer separation) |
 | 2 (Sub) | CMR | Production discipline when output is intersectional |
@@ -85,7 +85,7 @@ When conflict is genuinely irreducible : route to Largo. Decision logged in `dec
 A new doctrine candidate (e.g. tomorrow : Model-Adaptive Discipline, or Provider-Agnostic Discipline) requires:
 
 1. **Gap demonstration** — clearly named gap that no existing doctrine covers, validated on ≥2 concrete cases.
-2. **Sub-corpus check** — could the gap be covered by a sub-corpus of an existing doctrine? Default *yes* until proven otherwise (per D#365 — sub-corpus stratégie).
+2. **Sub-corpus check** — could the gap be covered by a sub-corpus of an existing doctrine? Default *yes* until proven otherwise (per — sub-corpus stratégie).
 3. **Draft in R&D** — `research/{name}-{date}.md` with structure mirroring existing doctrines (thesis, problem, anatomy, anti-patterns, decision-aid, ops requirements, cross-references, open tensions).
 4. **Promotion criterion** — same as §2.
 
@@ -139,11 +139,11 @@ A doctrine can change without skills changing. A skill can change without doctri
 
 ## 10. Status
 
-- **Meta-process draft v0.1** — R&D zone, Build mode, S44 (2026-04-26).
+- **Meta-process draft v0.1** — .
 - **Promotion criterion** — same as the doctrines it governs. Once 3 doctrines have been promoted under this process, this meta-process graduates to Release.
-- **First applications** — CMR / SED / SAD / PTD scope all routed through this process at S44.
+- **First applications** — CMR / SED / SAD / PTD scope all routed through this process.
 - **Cross-references** — referenced by CMR §3.5, SED §11.6, SAD §11.6, PTD scope §5.
 
 ---
 
-*Meta-process drafted S44 — 2026-04-26 — codifies how doctrines are promoted (≥3 instances + extractibility + cross-ref + D#), amended (append-only via new D#), retracted ([DEPRECATED Sxx] window), and reconciled (layer hierarchy + same-layer territorial). Append-only mirror of `decisions.md` discipline applied to the doctrines themselves.*
+*Meta-process — codifies how doctrines are promoted (≥3 instances + extractibility + cross-ref + D#), amended (append-only via new D#), retracted ([DEPRECATED Sxx] window), and reconciled (layer hierarchy + same-layer territorial). Append-only mirror of `decisions.md` discipline applied to the doctrines themselves.*

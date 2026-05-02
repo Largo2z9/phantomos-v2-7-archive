@@ -60,12 +60,12 @@ CMR is the third path: **canonical axes + LLM-as-resolver + internal combinatori
 A skill that satisfies CMR conditions reaches reproducible 95% senior-practitioner quality. Quality here is operationalized along five axes:
 
 - **Defensibility** — every claim in the output traces to a canonical source ID or a flagged inference. No anonymous assertion.
-- **Specificity** — outputs are not interchangeable across brands. A `paid-angles` run on a sports DTC pilot brand does not look like the same run on a B2C pilot brand.
+- **Specificity** — outputs are not interchangeable across brands. A `paid-angles` run on a DTC pilot brand does not look like the same run on a B2C pilot brand.
 - **Consistency** — two operators triggering the same skill on the same brand state get equivalent outputs. The skill is not a function of the operator's prompting style.
 - **Compound** — the skill consumes canon variables that other skills also consume. Investments in canon pay across the entire skill graph.
 - **Auditability** — the reasoning trace (cells considered, scores, dimensions activated) is recoverable from a run. The output is not opaque generation.
 
-The 95% target is not aspirational. `produce-paid-angles` already operates at this level on encoded brands. The live test on a sports DTC pilot brand (S41) and the cascade design across `paid-angles` → `copy-brief` → `analyze-copy` validate the mechanism in practice. CMR codifies what makes that work.
+The 95% target is not aspirational. `produce-paid-angles` already operates at this level on encoded brands. The live test on a DTC pilot brand and the cascade design across `paid-angles` → `copy-brief` → `analyze-copy` validate the mechanism in practice. CMR codifies what makes that work.
 
 ---
 
@@ -74,18 +74,18 @@ The 95% target is not aspirational. `produce-paid-angles` already operates at th
 CMR does not sit in isolation. It depends on, and is depended upon by, sister disciplines. Presenting them as peer is misleading — there is a real ordering:
 
 ```
-Frame test : Extractibility (D#307) — transverse, not a doctrine but a constraint test
-       │
+Frame test : Extractibility (Extractibility test) — transverse, not a doctrine but a constraint test
+ │
 MASTER : Contextual Intelligence (CI) — the agent reasons, never form-fills
-       │
-       ├─ SED (Schema Encoding Discipline) — substrate ; without rigorous schema, a matrix has nothing to range over
-       │   └─ Required prerequisite of CMR
-       │
-       ├─ CMR (Canonical Matrix Reasoning) — production mechanism atop SED
-       │   ↑ depends ontologically on SED ; "schema alone fails, matrix alone fails, both succeed"
-       │
-       └─ SAD (Skill Authoring Discipline) — meta-discipline that governs how skills consuming SED+CMR are built
-           ↑ operates above SED and CMR (skills consuming both are governed by SAD)
+ │
+ ├─ SED (Schema Encoding Discipline) — substrate ; without rigorous schema, a matrix has nothing to range over
+ │ └─ Required prerequisite of CMR
+ │
+ ├─ CMR (Canonical Matrix Reasoning) — production mechanism atop SED
+ │ ↑ depends ontologically on SED ; "schema alone fails, matrix alone fails, both succeed"
+ │
+ └─ SAD (Skill Authoring Discipline) — meta-discipline that governs how skills consuming SED+CMR are built
+ ↑ operates above SED and CMR (skills consuming both are governed by SAD)
 ```
 
 **Three load-bearing relationships:**
@@ -296,7 +296,7 @@ A doctrine that excludes that move misses the upside of the very practitioners i
 
 The breakthrough cell, when present, surfaces in the output with a clear marker (e.g. *"Pari : [angle]. Hypothèse : [...]. À valider en test."*) — not buried in the trace, not surfaced as an equal. The operator sees the bet exists, knows it is opt-in, and can choose to ship it or hold it.
 
-This pattern was named after live red-team feedback (S44) that the original draft of CMR was *too safe* for the highest tier of copy production. It encodes Schwartz's, Halbert's, and Suby's actual practice — not just the median senior — without dissolving the discipline that protects against hallucination at scale.
+This pattern was named after live red-team feedback that the original draft of CMR was *too safe* for the highest tier of copy production. It encodes Schwartz's, Halbert's, and Suby's actual practice — not just the median senior — without dissolving the discipline that protects against hallucination at scale.
 
 ---
 
@@ -365,4 +365,4 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 
 ---
 
-*Doctrine drafted S43 — 2026-04-26 — Largo + 4-prism triangulation (LLM architect / senior copywriter canon / strategy consultant / software architect).*
+*Doctrine — internal review.*

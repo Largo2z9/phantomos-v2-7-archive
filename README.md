@@ -4,7 +4,7 @@ PhantomOS is the agentic workspace for DTC paid acquisition operators. The metho
 
 The system targets operators whose paid acquisition is a craft : DTC brand founders past month 6, growth leads at agencies running multiple DTC clients, solo operators spending most of their time on Meta, TikTok, and Google Ads. It is not a chatbot with memory : the operator's context is read from the workspace before every agent response.
 
-The product is the workspace plus the DTC paid kit. PhantomOS ships with the full DTC paid acquisition kit : angles library, creative mechanics, proof types, audience encoding patterns, advertorial LP frameworks, hook formulas. Day-1 operational on a first brand, no encoding from scratch required. The platform itself is extensible if operating outside DTC, but the kit shipped today is optimized for DTC paid.
+The product is the workspace plus the DTC paid kit. PhantomOS ships with the full DTC paid acquisition kit : angles library, creative mechanics, proof types, audience encoding patterns, advertorial LP frameworks, hook formulas. Day-1 operational on a first brand, no encoding from scratch required. The platform itself is extensible if operating outside DTC, the kit is optimized for DTC paid.
 
 **Best fit.** DTC brand founders past month 6 with stable ROAS. Growth leads at agencies running 3 to 15 DTC accounts. Solo operators productizing their paid acquisition methodology. **Conditional fit.** DTC operators month 3 to 6 (still finding what works), small DTC teams of 2 to 4. **Not fit today.** Pre-traction founders, info-products, B2B services, agencies focused on social organic, performance creators focused on volume. Full honest audit in [`docs/product/fit.md`](docs/product/fit.md).
 

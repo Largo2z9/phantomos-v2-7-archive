@@ -67,7 +67,7 @@ L'offre cible, à 12-18 mois, segmentée par vertical pack et par mode de consom
 
 **Workspace clean** (l'environnement, agnostique du domaine) + **choix d'un ou plusieurs vertical packs** :
 
-- **DTC pack** (livré par défaut aujourd'hui, devient un pack parmi d'autres en future).
+- **DTC pack** (livré par défaut, devient un pack parmi d'autres ensuite).
 - **Consulting-core pack** (engagement, stakeholder, SOW, milestone, deliverable + skills `generate-client-deliverable`, `pipeline-review`, `productize-method`).
 - **Media-buyer-freelance pack** (retainer reporting, client dashboard, cross-account benchmark).
 - **Coach-expert pack** (`methodology-map`, `cohort-curriculum`, `productize-framework`).
@@ -133,11 +133,11 @@ Sortie attendue : qualité agency-grade sur les tâches encadrées par les capac
 
 ## 6. Transmissibilité et continuité
 
-Le workspace est transmissible par design. Cette propriété est à double tranchant : elle résout des problèmes business critiques et crée des tensions commerciales nouvelles. Trois patterns opérationnels existent aujourd'hui pour la gérer (référence : `fit.md § Consultant tension upgraded S46`).
+Le workspace est transmissible par design. Cette propriété est à double tranchant : elle résout des problèmes business critiques et crée des tensions commerciales nouvelles. Trois patterns opérationnels existent pour la gérer (référence : `fit.md § Consultant tension upgraded S46`).
 
 **Pattern 1 · Contractual licensing.** Le workspace reste propriété du consultant ; le client reçoit une licence d'usage bornée par la mission. Fin du retainer = fin de licence. Ne porte pas de couche de licensing applicative : c'est une discipline contractuelle, à inscrire dans le SOW.
 
-**Pattern 2 · Workspace separation.** Un workspace encode la méthode propriétaire du consultant (le moat, qui reste avec lui). Un second workspace par client dérive du premier mais ne fusionne pas en arrière. Pas de skill qui automatise cette séparation aujourd'hui : discipline opérateur jusqu'au prochain ship.
+**Pattern 2 · Workspace separation.** Un workspace encode la méthode propriétaire du consultant (le moat, qui reste avec lui). Un second workspace par client dérive du premier mais ne fusionne pas en arrière. Pas de skill qui automatise cette séparation : discipline opérateur jusqu'au prochain ship.
 
 **Pattern 3 · Outcome-based pricing.** Quand le consultant facture le résultat plutôt que les heures, l'auto-replacement devient une feature plutôt qu'un bug. Le client garde le workspace, le consultant garde la mission d'évolution. Le plus solide des trois patterns tant que le framework de provenance n'est pas écrit.
 
@@ -153,7 +153,7 @@ Statut au S46 (2026-04) :
 
 | Vertical | Statut | Prérequis manquants | ETA indicatif |
 |----------|--------|---------------------|---------------|
-| **DTC e-commerce** | Mature, livré aujourd'hui | aucun | Disponible |
+| **DTC e-commerce** | Mature, livré | aucun | Disponible |
 | **Consulting-core** | Identifié roadmap | Canon métier (frameworks consulting B2B), 5 skills production (`generate-client-deliverable`, `pipeline-review`, `productize-method` + 2), 1 client pilote | T+3-6 mois après 1er signal demande validé |
 | **Media-buyer-freelance** | Identifié roadmap | Skills retainer reporting + client dashboard + cross-account benchmark, 1 client pilote | T+2-4 mois |
 | **Coach-expert pack** | Identifié roadmap | Canon pédagogique (frameworks productisation knowledge), `methodology-map` + `cohort-curriculum` + `productize-framework`, 1 client pilote | T+3-5 mois |
@@ -176,7 +176,7 @@ Trois composantes :
 
 Trigger : framework le framework de provenance écrit (déclenché par 2e opérateur connecté, 1er knowledge pack vendu, 1er skill tiers).
 
-**Hypothèse produit** : les canons encodés ont une valeur intrinsèque, indépendamment du workspace qui les héberge. Un *pack copywriting DTC clean* (le canon copywriting déjà livré aujourd'hui, isolé et packageable), un *pack media buying gambling FR* (compliance + frameworks acquisition spécifique), un *pack consulting discovery B2B* (méthodologie de qualification + objections + proposal frameworks) peuvent se vendre comme assets standalone à des opérateurs qui possèdent déjà PhantomOS ou un environnement compatible.
+**Hypothèse produit** : les canons encodés ont une valeur intrinsèque, indépendamment du workspace qui les héberge. Un *pack copywriting DTC clean* (le canon copywriting déjà livré, isolé et packageable), un *pack media buying gambling FR* (compliance + frameworks acquisition spécifique), un *pack consulting discovery B2B* (méthodologie de qualification + objections + proposal frameworks) peuvent se vendre comme assets standalone à des opérateurs qui possèdent déjà PhantomOS ou un environnement compatible.
 
 ### Conditions de déploiement marketplace
 
@@ -197,7 +197,7 @@ Trois risques structurants à expliciter pour ne pas les subir.
 
 **Commodification du modèle IA sous-jacent.** Anthropic, OpenAI, Google convergent vers des modèles fungibles. Ce n'est **pas un risque pour PhantomOS** : la valeur n'est pas dans le modèle (qui sera commodifié), elle est dans la connaissance structurée et la méthodologie codifiée que l'opérateur accumule dans son workspace. À expliciter dans toute conversation de vente où l'objection *"et si Claude / GPT s'améliore tellement que je n'ai plus besoin de ton outil ?"* émerge. Argument inverse : plus le modèle s'améliore, plus la qualité de l'output dépend de la qualité du contexte, ce que PhantomOS structure.
 
-**Dépendance Anthropic actuelle.** PhantomOS tourne aujourd'hui sur Claude Code. Provider-agnosticisme est un objectif déclaré, mais non vérifié à grande échelle. Risque : changement de pricing Anthropic, changement de policy, ou éviction de Claude Code. Mitigation : architecture conçue pour découpler le runtime de l'agent du contenu encodé (le workspace est un dossier de fichiers, pas une base de données propriétaire). Validation empirique pending (cf. roadmap *empirical token benchmark*).
+**Dépendance Anthropic actuelle.** PhantomOS tourne sur Claude Code. Provider-agnosticisme est un objectif déclaré, mais non vérifié à grande échelle. Risque : changement de pricing Anthropic, changement de policy, ou éviction de Claude Code. Mitigation : architecture conçue pour découpler le runtime de l'agent du contenu encodé (le workspace est un dossier de fichiers, pas une base de données propriétaire). Validation empirique pending (cf. roadmap *empirical token benchmark*).
 
 **Risque mineur mais probable : pas d'adoption.** Un projet qui reste l'outil personnel de son créateur, aussi raffiné soit-il, n'est pas un produit. Le test de validité empirique est mesuré en **utilisateurs externes actifs**, pas en sophistication de la thèse. Adresser commercialement signifie : prioriser le 1er, le 3e, et le 10e client commercial signés avant d'enrichir la doctrine au-delà du strict nécessaire.
 

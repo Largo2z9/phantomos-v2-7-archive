@@ -66,12 +66,12 @@ Example pattern :
 ```
 audit-global (macro orchestrator)
 ├── audit-meta-global (orchestrator + SOP)
-│   ├── mini-skill: check-pixel-deployment
-│   ├── mini-skill: check-audience-exclusions
-│   └── ...
+│ ├── mini-skill: check-pixel-deployment
+│ ├── mini-skill: check-audience-exclusions
+│ └── ...
 ├── audit-shopify-global (orchestrator + SOP)
-│   ├── mini-skill: check-funnel-integrity
-│   └── ...
+│ ├── mini-skill: check-funnel-integrity
+│ └── ...
 ├── audit-tracking-global (orchestrator + SOP)
 └── audit-email-global (orchestrator + SOP)
 ```

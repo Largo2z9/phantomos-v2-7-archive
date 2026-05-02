@@ -52,25 +52,25 @@ Sidecars are **append-only with respect to the core schema**. They add fields, n
 
 ```json
 {
-  "_version": "1.0",
-  "_schema": "brand.extensions",
-  "_extends": "brand",
-  "_field_types": {
-    "contribution_margin_by_channel": "derived",
-    "supplier_lead_time_days": "stated",
-    "price_elasticity_last_measured": "derived"
-  },
-  "contribution_margin_by_channel": {
-    "meta_ads": 0.42,
-    "google_ads": 0.48,
-    "email": 0.67,
-    "organic": 0.71
-  },
-  "supplier_lead_time_days": 35,
-  "price_elasticity_last_measured": {
-    "value": -1.2,
-    "observed_at": "2026-04-01"
-  }
+ "_version": "1.0",
+ "_schema": "brand.extensions",
+ "_extends": "brand",
+ "_field_types": {
+ "contribution_margin_by_channel": "derived",
+ "supplier_lead_time_days": "stated",
+ "price_elasticity_last_measured": "derived"
+ },
+ "contribution_margin_by_channel": {
+ "meta_ads": 0.42,
+ "google_ads": 0.48,
+ "email": 0.67,
+ "organic": 0.71
+ },
+ "supplier_lead_time_days": 35,
+ "price_elasticity_last_measured": {
+ "value": -1.2,
+ "observed_at": "2026-04-01"
+ }
 }
 ```
 
@@ -113,13 +113,13 @@ In V1 the operator performs the four steps manually. A complete copy-paste-ready
 
 ```json
 {
-  "_version": "1.0",
-  "resources": [ /* shared resources, see architecture.md § Registry */ ],
-  "stats": { /* auto-maintained by validate-resources */ },
-  "id_prefixes": { /* auto-maintained */ },
-  "extensions": [
-    /* entries appended below */
-  ]
+ "_version": "1.0",
+ "resources": [ /* shared resources, see architecture.md § Registry */ ],
+ "stats": { /* auto-maintained by validate-resources */ },
+ "id_prefixes": { /* auto-maintained */ },
+ "extensions": [
+ /* entries appended below */
+ ]
 }
 ```
 
@@ -127,29 +127,29 @@ In V1 the operator performs the four steps manually. A complete copy-paste-ready
 
 ```json
 {
-  "extensions": [
-    {
-      "type": "competitor_pricing",
-      "scope": "brand",
-      "schema": "brands/{slug}/custom/competitor_pricing/schema.json",
-      "cross_refs": [
-        "product_slug → brands/{slug}/products/{product_slug}/spec.json"
-      ],
-      "owner_skill": "custom:scrape-competitor-pricing",
-      "registered_at": "2026-04-19"
-    },
-    {
-      "type": "contacts",
-      "scope": "operator",
-      "schema": "operator/extensions/contacts/schema.json",
-      "cross_refs": [
-        "brand_refs → brands/{slug}/",
-        "activity_refs → operator/extensions/{type}/{slug}.json"
-      ],
-      "owner_skill": null,
-      "registered_at": "2026-04-27"
-    }
-  ]
+ "extensions": [
+ {
+ "type": "competitor_pricing",
+ "scope": "brand",
+ "schema": "brands/{slug}/custom/competitor_pricing/schema.json",
+ "cross_refs": [
+ "product_slug → brands/{slug}/products/{product_slug}/spec.json"
+ ],
+ "owner_skill": "custom:scrape-competitor-pricing",
+ "registered_at": "2026-04-19"
+ },
+ {
+ "type": "contacts",
+ "scope": "operator",
+ "schema": "operator/extensions/contacts/schema.json",
+ "cross_refs": [
+ "brand_refs → brands/{slug}/",
+ "activity_refs → operator/extensions/{type}/{slug}.json"
+ ],
+ "owner_skill": null,
+ "registered_at": "2026-04-27"
+ }
+ ]
 }
 ```
 
@@ -173,11 +173,11 @@ Example invocation inside a custom skill (brand scope) :
 
 ```
 write_to_context(
-  field_path="custom.competitor_pricing.nike-airmax-97.observations[]",
-  value={observed_at: "2026-04-19T10:00:00Z", price: 189.99, currency: "EUR"},
-  source="scraper:nike.com",
-  confidence=0.95,
-  mode="direct"
+ field_path="custom.competitor_pricing.nike-airmax-97.observations[]",
+ value={observed_at: "2026-04-19T10:00:00Z", price: 189.99, currency: "EUR"},
+ source="scraper:nike.com",
+ confidence=0.95,
+ mode="direct"
 )
 ```
 
@@ -185,11 +185,11 @@ Example invocation (operator scope) :
 
 ```
 write_to_context(
-  field_path="operator.contacts.marc-dubois.touch_history[]",
-  value={observed_at: "2026-04-27T14:30:00Z", channel: "email", note: "discussion sur sa lecture en cours"},
-  source="operator",
-  confidence=0.95,
-  mode="direct"
+ field_path="operator.contacts.marc-dubois.touch_history[]",
+ value={observed_at: "2026-04-27T14:30:00Z", channel: "email", note: "discussion sur sa lecture en cours"},
+ source="operator",
+ confidence=0.95,
+ mode="direct"
 )
 ```
 
@@ -199,11 +199,11 @@ write_to_context(
 
 ```
 write_to_context(
-  field_path="brand.extensions.contribution_margin_by_channel.meta_ads",
-  value=0.42,
-  source="derived:shopify_costs_meta_attribution",
-  confidence=0.85,
-  mode="direct"
+ field_path="brand.extensions.contribution_margin_by_channel.meta_ads",
+ value=0.42,
+ source="derived:shopify_costs_meta_attribution",
+ confidence=0.85,
+ mode="direct"
 )
 ```
 

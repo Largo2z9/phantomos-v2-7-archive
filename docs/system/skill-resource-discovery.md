@@ -14,19 +14,19 @@ Every skill that consumes knowledge follows this order :
 
 ```
 1. Load structured brand schemas (mandatory)
-       ↓
+ ↓
 2. Primary reasoning (LLM thinks with brand facts)
-       ↓
+ ↓
 3. Derive context keywords (from brand + task)
-       ↓
+ ↓
 4. Call discover-resources (FTS5 query, top-K chunks)
-       ↓
+ ↓
 5. Confront primary reasoning with retrieved chunks
-       ↓
+ ↓
 6. Compose output
-       ↓
+ ↓
 7. Pass through validate-output-coherence
-       ↓
+ ↓
 8. Ship to operator (or revise if blocking)
 ```
 
@@ -40,11 +40,11 @@ The skill's frontmatter declares `inputs_required`. For a creative audit :
 
 ```yaml
 inputs_required:
-  - brands/{slug}/brand.json#/positioning
-  - brands/{slug}/brand.json#/tone_of_voice
-  - brands/{slug}/brand.json#/meta/vertical
-  - brands/{slug}/products/{product_slug}/spec.json
-  - brands/{slug}/audiences/{audience_slug}/profile.json
+ - brands/{slug}/brand.json#/positioning
+ - brands/{slug}/brand.json#/tone_of_voice
+ - brands/{slug}/brand.json#/meta/vertical
+ - brands/{slug}/products/{product_slug}/spec.json
+ - brands/{slug}/audiences/{audience_slug}/profile.json
 ```
 
 All loaded before any reasoning. These are the source of truth.
@@ -69,11 +69,11 @@ The skill can also accept an explicit `resource_discovery.keywords_template` fro
 
 ```yaml
 checkpoint 5.4:
-  tier: contextual
-  resource_discovery:
-    keywords_template: "angle diversity {vertical} {product_category} ecommerce"
-    limit: 5
-    source_types: [framework, guide]
+ tier: contextual
+ resource_discovery:
+ keywords_template: "angle diversity {vertical} {product_category} ecommerce"
+ limit: 5
+ source_types: [framework, guide]
 ```
 
 Variables like `{vertical}` are filled at runtime from the loaded brand schemas.
@@ -82,11 +82,11 @@ Variables like `{vertical}` are filled at runtime from the loaded brand schemas.
 
 ```bash
 python3 .skills/discover-resources.py \
-  --query "{keywords}" \
-  --source-types framework,guide \
-  --limit 5 \
-  --boost-recency \
-  --format json
+ --query "{keywords}" \
+ --source-types framework,guide \
+ --limit 5 \
+ --boost-recency \
+ --format json
 ```
 
 Returns top-K chunks ranked by BM25 + optional recency boost. Each chunk comes with : `resource_type`, `ref`, `title`, `date`, `file_path`, `snippet`, `score`.
@@ -112,7 +112,7 @@ The skill writes its deliverable (audit report, brief, analysis, whatever). Outp
 Before shipping to operator, the skill calls `validate-output-coherence` sub-skill :
 
 ```bash
-python3 -c "import subprocess; ..."  # pseudo-invocation
+python3 -c "import subprocess; ..." # pseudo-invocation
 ```
 
 The sub-skill checks : schema consistency (referenced fields exist), fact consistency (no brand contradiction), tone consistency (matches declared voice), no fabrication (numbers/claims sourced).

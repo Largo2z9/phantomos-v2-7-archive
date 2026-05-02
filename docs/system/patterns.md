@@ -118,10 +118,10 @@ In each `.skills/skills/{name}/SKILL.md` frontmatter:
 name: {skill-name}
 recommended_model: haiku | sonnet | opus
 permissions:
-  reads: [...]
-  writes: [...]
-  mode: direct | proposed | none
-  subagent_safe: true | false
+ reads: [...]
+ writes: [...]
+ mode: direct | proposed | none
+ subagent_safe: true | false
 ```
 
 The `recommended_model` + `subagent_safe` pair is the contract. The agent **NEVER** overrides without explicit reason.
@@ -163,7 +163,7 @@ Contract defaults (model, `subagent_safe`, write mode) are **defaults**, not law
 
 ```yaml
 type: curator
-recommended_model: sonnet   # override: dense document classification requires reasoning, not just lookup
+recommended_model: sonnet # override: dense document classification requires reasoning, not just lookup
 subagent_safe: true
 ```
 
@@ -278,16 +278,16 @@ The main agent routes operator intent to the right skill using three binary test
 Apply in order. Stop at the first definitive answer.
 
 1. **Capture or construct?**
-   - Capture an existing fact → `capture-learning` (single) or `learn-from-session` (batch).
-   - Construct a new structure or behavior → `scaffold-extension` or `build-agent`.
+ - Capture an existing fact → `capture-learning` (single) or `learn-from-session` (batch).
+ - Construct a new structure or behavior → `scaffold-extension` or `build-agent`.
 
 2. **(If capture) Single fact or whole session?**
-   - Single fact → `capture-learning`.
-   - Full session → `learn-from-session`.
+ - Single fact → `capture-learning`.
+ - Full session → `learn-from-session`.
 
 3. **(If construct) Data structure or skill behavior?**
-   - Data that will be stored, queried, traversed → `scaffold-extension`.
-   - Behavior that will be automated → `build-agent`.
+ - Data that will be stored, queried, traversed → `scaffold-extension`.
+ - Behavior that will be automated → `build-agent`.
 
 ### Overlap zones clarified
 

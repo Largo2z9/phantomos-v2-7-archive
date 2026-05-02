@@ -5,6 +5,33 @@
 
 ---
 
+## v2.14.0 — 2026-05-02 — Cleanup post-audit Red Team
+
+**Why this release.** Audit Red Team multi-perspective on the operator-facing surface revealed referenced skills that did not exist, internal jargon leaking to operator docs, manifesto starting with theory before reaching the DTC use case, and missing standard GitHub canon files. This release closes those gaps before broader release.
+
+**What shipped.**
+
+- **Skill renamed** : `audit-meta-setup` → `audit-meta-account` (clearer name for operators). All references updated across README, CLAUDE.md, /phantom command, severity-canon, and 3 doctrine files.
+- **Ghost skill references dropped** : `generate-handoff`, `produce-offer-scoring`, `correct-skill` were referenced in INDEX.md and disambiguations but never shipped. References removed.
+- **Manifesto restructured** : section 7 now opens with the concrete DTC paid acquisition case, then generalizes. Previously DTC was buried at the end after 7 sections of theory.
+- **Multi-operator workaround** : new section in `docs/product/fit.md` documenting the 2 to 5 person agency workflow (one workspace per client brand owned by senior operator, juniors consume read-only, workspace handoff at retainer end).
+- **Empirical proof reframed** : `docs/product/fit.md` cost honesty section points to an on-demand `benchmark-tokens` skill (planned) for per-operator measurement on real workspaces.
+- **Stubs added** : `operator/connected-sources.json` (workspace scope), `brands/_TEMPLATE/connected-sources.json` (brand scope), `brands/_TEMPLATE/angles/README.md` (entity stub).
+- **GitHub canon added** : `LICENSE` (MIT), `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1), `.github/ISSUE_TEMPLATE/` (bug + feature), `.github/PULL_REQUEST_TEMPLATE.md`.
+- **`docs/internal/` formalized** : explicit FOR CONTRIBUTORS banner, `docs/internal/README.md` table of contents, release manifests moved from `docs/releases/*.json` to `docs/internal/releases/manifest/*.json`. `docs/releases/README.md` redirects to root CHANGELOG and the internal manifests folder.
+- **Internal session and decision references swept** from 16 files in `docs/system/` (sessions Sxx, decisions Dxxx, "drafted Sxx", "R&D zone Build mode" labels removed).
+- **Architecture rephrased** : `docs/system/architecture.md` "agnostic receptacle for encoding any business domain" replaced by "extensible substrate for encoding any operator domain that an agent can operate on, DTC paid acquisition is the current incarnation".
+- **Temporal hedging swept** : "currently / today / aujourd'hui" removed from README, fit.md, positioning-pitch.md, offering-deployment.md (~9 occurrences).
+
+**Breaking changes.**
+
+- Skill rename `audit-meta-setup` → `audit-meta-account` (workflows or scripts referencing the old name need update).
+- Release manifests moved : direct links to `docs/releases/X-manifest.json` should now point to `docs/internal/releases/manifest/X-manifest.json`.
+
+**Operator impact.** Surface more credible : referenced skills resolve, doctrine jargon hidden behind clear contributor banners, manifesto reaches the DTC operator immediately, agency workflows documented. Day-1 experience does not break on missing files.
+
+---
+
 ## v2.13.0 — 2026-05-02 — connect-cockpit v1.1: registry-driven refactor
 
 **Why this release.** Previous v1.0 had per-platform subflows hardcoded in SKILL.md (200 lines). Adding a new source = SKILL.md edit + risk of drift across platforms. Registry pattern externalises platform specs to JSON · skill becomes platform-agnostic loop, registry becomes the single source of truth.

@@ -39,13 +39,13 @@ product = query("products/{slug}/spec.json", fields=["identity", "benefits", "pr
 audience = query("audiences/{slug}/profile.json", fields=["pain", "psychology.objections"])
 
 if tone_of_voice.style is null:
-  signal_list.append("Brand tone not configured")
-  use_style = "neutral"
+ signal_list.append("Brand tone not configured")
+ use_style = "neutral"
 
 generate_copy(brand, product, audience, style=use_style)
 
 if signal_list:
-  append("⚠ " + signal_list.join(" / "))
+ append("⚠ " + signal_list.join(" / "))
 ```
 
 ---
@@ -70,14 +70,14 @@ if signal_list:
 awareness_level = profile.psychology.awareness_level
 
 if awareness_level == "unaware":
-  angle_type = "problem agitation"
+ angle_type = "problem agitation"
 elif awareness_level == "problem_aware":
-  angle_type = "solution introduction"
+ angle_type = "solution introduction"
 elif awareness_level == "solution_aware":
-  angle_type = "product differentiation"
+ angle_type = "product differentiation"
 else:
-  angle_type = "social proof"  # default if null
-  signal("Awareness level unknown, social proof angle by default")
+ angle_type = "social proof" # default if null
+ signal("Awareness level unknown, social proof angle by default")
 ```
 
 ### Behavior if KB empty
@@ -160,7 +160,7 @@ Before creating a product or audience:
 ```
 existing_products = brand.json.products_index[].slug
 if new_slug in existing_products:
-  ask("This product already exists ({slug}). Enrich the existing sheet or create a variant?")
+ ask("This product already exists ({slug}). Enrich the existing sheet or create a variant?")
 ```
 
 ---

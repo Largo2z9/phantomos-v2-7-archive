@@ -144,7 +144,7 @@ To prevent scope creep, SED explicitly does NOT cover:
 - **The creation of new skills consuming the substrate** (SAD territory — authoring discipline).
 - **The trust / provenance / multi-tenant attribution of who wrote what** (PTD territory — full doctrine pending trigger conditions).
 - **The agent's communication style** (CI Surface contract sub-corpus — voice, close, sharpening).
-- **The vision / extractibility test** (D#307 — frame test above CI).
+- **The vision / extractibility test** (Extractibility frame test).
 
 When in doubt about whether a rule is SED or another discipline, ask: *"is this about how data gets and stays well-encoded ?"* If yes, SED. If no, route elsewhere.
 
@@ -187,10 +187,10 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 
 ## 12. Status
 
-- **Draft v0.1** — research zone, Build mode, S44 (2026-04-26).
+- **Draft v0.1** — research zone, Build mode, .
 - **Promotion criterion** — to be reviewed by Largo, then promoted to `workspace-template/docs/system/schema-encoding-discipline.md` once cross-references with CMR / SAD / PTD scope are validated and the 11 sub-disciplines previously scattered are confirmed consolidated.
 - **First applications** — patches to extension layer governance, sourcing-tag enforcement on legacy brand JSONs, triangulation-rule surface in `validate-resources` output.
 
 ---
 
-*Doctrine drafted S44 — 2026-04-26 — consolidates 11 previously-scattered sub-disciplines (mutation rule, _field_types, _version semver, sourcing tags, triangulation, validation runtime, append-only conventions, snapshot/manifest regen, conventions plateforme, extension layer, memory & observability) into one named discipline. Sister to CMR, SAD, PTD scope under CI master.*
+*Doctrine — consolidates 11 previously-scattered sub-disciplines (mutation rule, _field_types, _version semver, sourcing tags, triangulation, validation runtime, append-only conventions, snapshot/manifest regen, conventions plateforme, extension layer, memory & observability) into one named discipline. Sister to CMR, SAD, PTD scope under CI master.*

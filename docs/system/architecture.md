@@ -5,17 +5,17 @@
 
 ---
 
-## Positioning (D#307)
+## Positioning
 
-**Product level** — PhantomOS V1 ships as an agentic workspace for **SMB digital-native operators** (DTC e-commerce, prosumer, small-team SaaS, online service, creator). The 6-entity model (brand/product/offer/audience/learnings/strategy) is validated at scale on DTC e-commerce (140+ brands).
+**Product level** — PhantomOS ships as an agentic workspace for **DTC paid acquisition operators**. Default entities (brand / product / offer / audience / angle / learnings / strategy) are validated at scale on DTC e-commerce.
 
-**Thesis level** — PhantomOS is designed as an **agnostic receptacle for encoding any business domain** operable by agents. SMB digital-native is the first incarnation. Vertical packs for other domains (legal, health, enterprise, brick-and-mortar) are roadmap V2+.
+**Thesis level** — PhantomOS is designed as an **extensible substrate for encoding any operator domain** that an agent can operate on. DTC paid acquisition is the current incarnation. Other domains (legal, health, enterprise, brick-and-mortar) require custom encoding ; no shipped vertical pack today.
 
 **Design discipline — extractibility test (binary).** For every core feature: *"if I rename 'brand' to 'matter' (legal) / 'creator' (personal brand) / 'account' (SaaS) / 'venue' (hospitality), does it still hold?"* Yes → core. No → isolate in a vertical pack. This rule makes the agnostic thesis falsifiable in continuous design, not aspirational marketing.
 
 ---
 
-## Canonical vocabulary (D#308)
+## Canonical vocabulary
 
 PhantomOS implements a discipline named **Context Layering** — a more granular variant of context engineering (Lütke, Karpathy, June 2025). Four first-class concepts:
 
@@ -43,9 +43,9 @@ PhantomOS is a **structured context store with deterministic injection**. It's n
 **PhantomOS** — the operator explicitly defines the entities (brand, product, offer, audience, learnings, strategy) and their relationships (cross-refs by ID). The agent loads only entities relevant to its intent via deterministic rules. Zero probability, zero ambiguity.
 
 ```
-Vector RAG    → cosine similarity → floating chunks
-GraphRAG      → graph traversal   → relationship discovery
-PhantomOS     → intent matching   → tagged entities
+Vector RAG → cosine similarity → floating chunks
+GraphRAG → graph traversal → relationship discovery
+PhantomOS → intent matching → tagged entities
 ```
 
 ### Why this choice
@@ -146,13 +146,13 @@ Production data that proves its value **promotes** into reference (e.g. a consis
 
 ```
 Frameworks (mental models)
-    ↓ engender
+ ↓ engender
 Catalogues (inventoried elements)
-    ↓ referenced by
+ ↓ referenced by
 Routing (decision tables)
-    ↓ consumed by
+ ↓ consumed by
 SOPs (execution workflows) ← Templates (output formats)
-    ↓ validated by
+ ↓ validated by
 Quality Specs (evaluation criteria)
 
 Conventions (platform rules) — transversal, consulted by SOPs
@@ -170,9 +170,9 @@ At session start, after loading session-state.md:
 1. Scan the active brand's entities for `_proposals[]` with `status: "pending"`
 2. Proposals that match the `auto_accept` criteria in config.json → auto-accept silently, log `action: "auto-accept"` in the event log
 3. Remaining proposals (low confidence or untrusted source) → present to the operator in plain language:
-   - "Since last time, I have [N] updates to propose."
-   - Present each proposal as a readable diff: "I propose to change [field in plain language] from [old] to [new]. Reason: [source]."
-   - The operator validates, refuses, or modifies inline in the conversation
+ - "Since last time, I have [N] updates to propose."
+ - Present each proposal as a readable diff: "I propose to change [field in plain language] from [old] to [new]. Reason: [source]."
+ - The operator validates, refuses, or modifies inline in the conversation
 4. Never the word "proposal". Never raw JSON. Always operator language.
 5. If no proposals pending → mention nothing, go straight to normal flow.
 
@@ -207,9 +207,9 @@ If exceeded: compress session-state first, then trim reference sections, then ca
 
 ```
 Reusable by other brands? → resources/{type}/
-Brand-specific data?      → brands/{slug}/{entity}
-Operational rule/finding? → brands/{slug}/learnings.json   (use capture-learning)
-Active campaigns?         → resources/templates/campaigns-active.json
+Brand-specific data? → brands/{slug}/{entity}
+Operational rule/finding? → brands/{slug}/learnings.json (use capture-learning)
+Active campaigns? → resources/templates/campaigns-active.json
 ```
 Full decision tree: `resources/guides/where-does-it-go.md`.
 

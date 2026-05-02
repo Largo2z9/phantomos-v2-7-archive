@@ -102,12 +102,12 @@ Agent action : retry would need a guess. Surface to operator with framed choice 
 - `voice.md § Anti-patterns` — *"Stack-trace-as-explanation"* and *"Plumbing leak to operator"* are violated by panic-surfacing refusals
 - `canonical-matrix-reasoning.md § Hard Rules` — failure mode declared per-skill should reference this pattern
 - `delegation-pattern.md` — sister doctrine ; when a sub-agent hits a gate, the autonomous correction protocol applies inside the sub-agent first, surface to main only on retry failure
-- Validates Largo S46 audit : *"Trou 1 — Quand un outil refuse une action, l'agent panique au lieu de se débrouiller"*
+- Validates internal audit : *"Trou 1 — Quand un outil refuse une action, l'agent panique au lieu de se débrouiller"*
 
 ---
 
 ## Status
 
-- **Doctrine v1.0** — operational from S46. Mandatory for all skills consuming gated primitives.
+- **Doctrine v1.0** — operational. Mandatory for all skills consuming gated primitives.
 - **First applications** : `mutation-guard` refusals, `write_to_context` enum classifier, `validate-resources` flagged outputs, hook PreToolUse refusals.
 - **Future extension** : pattern detection daemon (P1 backlog) will pre-flag recurring refusal patterns before they accumulate to `correct-skill` threshold.
