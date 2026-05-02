@@ -30,7 +30,7 @@
   "migrations_required": false,
   "breaking_changes": false,
   "operator_impact": "post-setup, status.json and pending-validations.md now reflect real state. No action for existing instances — next snapshot-brand run per brand regenerates the surfaces.",
-  "tested_on": ["SKILL.md edits, verified against Nooance onboarding traces in /tmp/phantom-test-v2619"],
+  "tested_on": ["SKILL.md edits, verified against a beauty pilot test onboarding traces in /tmp/phantom-test-v2619"],
   "caught_by": "same fresh-instance onboarding test as v2.6.20 (findings #4, #5).",
   "known_gaps": [
     "No auto-migration of existing pending-validations.md files stuck with {brand-name} — operator runs snapshot-brand or hand-edits.",

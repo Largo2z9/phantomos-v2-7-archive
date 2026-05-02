@@ -1,0 +1,26 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.7.3",
+  "released_at": "2026-04-25",
+  "compatible_from": "2.0.0",
+  "theme": "Clean _field_types coverage in _TEMPLATE + skip meta paths in finalizer",
+  "summary": "First wellness/cosmetic pilot stress test of finalize-mutation-batch surfaced 17 warnings, most were latent _TEMPLATE bugs, not agent fabrication. Two-pronged fix: (1) make the wrapper skip pointers starting with $ (JSON-Schema metadata) and _ (runtime metadata like _snapshot, _proposed, _source), and skip non-entity files (config.json, status.json, learnings-index.json, session-state.md, pending-validations.md). These are workspace state, not data canon. (2) Patch _TEMPLATE _field_types maps across brand.json, products/_example/spec.json, products/_example/offers.json (full map created from scratch), audiences/_example/profile.json, learnings.json. Re-run on the same wellness/cosmetic pilot data after the patch: 0 warnings, 0 blocking, ok=true.",
+  "changes": [
+    {"path": ".skills/finalize-mutation-batch.py", "kind": "edit", "reason": "Skip $-prefixed and _-prefixed pointers. Skip non-entity workspace-state files."},
+    {"path": "brands/_TEMPLATE/brand.json", "kind": "edit", "reason": "Add meta.* and audiences_index globs to _field_types."},
+    {"path": "brands/_TEMPLATE/products/_example/spec.json", "kind": "edit", "reason": "Add meta.*, pricing.currency, description, identity.description."},
+    {"path": "brands/_TEMPLATE/products/_example/offers.json", "kind": "edit", "reason": "_field_types map created from scratch — was empty. Covers offer_groups, shared.*, offers[].*, pricing fields with proper observed/derived split."},
+    {"path": "brands/_TEMPLATE/audiences/_example/profile.json", "kind": "edit", "reason": "Add meta.* and pain.*."},
+    {"path": "brands/_TEMPLATE/learnings.json", "kind": "edit", "reason": "Add entries and entries[].* maps."},
+    {"path": "CHANGELOG.md", "kind": "edit", "reason": "v2.7.3 entry."},
+    {"path": "_version.json", "kind": "edit", "reason": "Bump to 2.7.3."}
+  ],
+  "migrations_required": false,
+  "breaking_changes": false,
+  "operator_impact": "None visible. Existing brands keep working. New brands scaffolded from _TEMPLATE now pass finalize-mutation-batch on first run with 0 warnings.",
+  "tested_on": [
+    "a wellness/cosmetic pilot workspace re-run post-patch: 17 warnings → 0 warnings, 0 blocking, ok=true on the same input data."
+  ],
+  "caught_by": "v2.7.2 wrapper output on first a wellness/cosmetic pilot stress run.",
+  "known_gaps": []
+}

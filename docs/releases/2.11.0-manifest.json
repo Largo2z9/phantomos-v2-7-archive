@@ -1,0 +1,121 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.11.0",
+  "released_at": "2026-04-26",
+  "session": "S44",
+  "category": "doctrine-consolidation",
+  "summary": "Doctrine architecture finale verrouillée post red team triangulation 5 prismes. CI master + 4 sub-doctrines + frame test + meta-process. 6 skills CMR-compliant. Operator-facing rule absolue actée.",
+  "decisions_locked": ["D#362", "D#363", "D#364", "D#365"],
+  "changes": [
+    {
+      "type": "doc-added",
+      "path": "docs/system/canonical-matrix-reasoning.md",
+      "summary": "CMR doctrine v0.2 — production mechanism for intersectional outputs. Schema + canon matrix + modulator/cell + cardinality cap + internal scoring. Three modes (coding / generating / pipeline) + hybrid. 13 invariants + 14 anti-patterns + decision-aid + breakthrough mode opt-in §10bis. Sub-pattern of execution of CI on intersectional production."
+    },
+    {
+      "type": "doc-added",
+      "path": "docs/system/schema-encoding-discipline.md",
+      "summary": "SED doctrine v0.1 — substrate sub-doctrine. Consolidates 11 previously-scattered sub-disciplines (mutation rule, _field_types, _version semver, sourcing tags, triangulation, validation runtime, append-only conventions, snapshot/manifest regen, conventions plateforme, extension layer, memory & observability). Two layers: spatial encoding (entities/fields/schemas) + temporal encoding (events/learnings/awareness). Prerequisite of CMR."
+    },
+    {
+      "type": "doc-added",
+      "path": "docs/system/skill-authoring-discipline.md",
+      "summary": "SAD doctrine v0.1 — meta-discipline above SED + CMR. Consolidates 5 skill-* docs + patterns.md skill sections. Three layers (single skill authoring + skill composition + system lifecycle). Three new rules: frontmatter triad CMR-compliance machine-verifiable, Skill Composition Contract, Failure doctrine with invariant-violation hook routing to capture-learning."
+    },
+    {
+      "type": "doc-added",
+      "path": "docs/system/doctrine-governance.md",
+      "summary": "Meta-process for doctrine evolution. Promotion criterion (≥3 instances + extractibility test + cross-ref + D# locked). Amendment append-only via D# new with [SUPERSEDES Dxxx]. Retraction via [DEPRECATED Sxx] window. Conflict resolution layer hierarchy + same-layer territorial."
+    },
+    {
+      "type": "doc-patched",
+      "path": "docs/system/contextual-intelligence.md",
+      "summary": "Sub-corpus sections added: Architectural Invariants, Inviolable Mechanical Floor, Surface Contract. Sister disciplines section listing SED/CMR/SAD/PTD with territory + file. Frame test (Extractibility D#307) section added. References extended with D#362-365."
+    },
+    {
+      "type": "doc-patched",
+      "path": "docs/system/voice.md",
+      "summary": "Anti-pattern Doctrine Acronym Leak added. CI/SED/CMR/SAD/PTD never visible operator-facing. Test before shipping: search line for acronyms. Match → rewrite."
+    },
+    {
+      "type": "doc-patched",
+      "path": "CLAUDE.md (root)",
+      "summary": "Master doctrine extended with Sub-doctrines section listing 4 operating disciplines + Doctrine Governance. Operator-facing rule absolue acted explicit (NEVER expose doctrine names or acronyms in operator-facing output)."
+    },
+    {
+      "type": "skill-patched",
+      "path": ".skills/skills/produce-paid-angles/SKILL.md",
+      "version": "1.0.0 -> 1.1.0",
+      "summary": "Frontmatter triad CMR (reasoning_pattern: matrix-driven, matrix_mode: generating, consumes: 6 paths). Hard Rules added: weights externalized canon (refuse inline override), voice consistency cross-block, emotional diversity check post-rank, risk_bet slot opt-in via --mode=breakthrough."
+    },
+    {
+      "type": "skill-patched",
+      "path": ".skills/skills/produce-copy-brief/SKILL.md",
+      "version": "1.0.0 -> 1.0.1",
+      "summary": "Frontmatter triad CMR (matrix_mode: generating, consumes: 5 paths)."
+    },
+    {
+      "type": "skill-patched",
+      "path": ".skills/skills/mine-voc/SKILL.md",
+      "version": "1.0.0 -> 1.0.1",
+      "summary": "Frontmatter triad CMR (matrix_mode: coding, consumes: voc-coding.md)."
+    },
+    {
+      "type": "skill-patched",
+      "path": ".skills/skills/mine-vom/SKILL.md",
+      "version": "1.0.0 -> 1.0.1",
+      "summary": "Frontmatter triad CMR (matrix_mode: coding, consumes: vom-mining.md)."
+    },
+    {
+      "type": "skill-patched",
+      "path": ".skills/skills/study-niche-marketdeepdive/SKILL.md",
+      "version": "1.0.0 -> 1.0.1",
+      "summary": "Frontmatter triad CMR (matrix_mode: generating, consumes: 2 paths)."
+    },
+    {
+      "type": "skill-added",
+      "path": ".claude/skills/analyze-copy/SKILL.md (largo-kb scope)",
+      "summary": "v0.1 audit-only producer Sonnet subagent_safe. Refacto S44: frontmatter triad CMR (matrix_mode: hybrid coding+generating), modulator macro Schwartz awareness × sophistication + persona/register, selective activation of 12 dimensions, tempo dimension, voice consistency cross-block, Hard Rules 9-12 (sourcing-mort cap, voice consistency, tempo, breakthrough mode opt-in)."
+    },
+    {
+      "type": "infra",
+      "path": "resources/frameworks/paid-angle-scoring-weights.json",
+      "version": "1.0.0",
+      "summary": "Initial externalization from paid-angle-scoring.md prose. 5 lenses with weights (verbatim 35% + awareness 25% + emotional 20% + objection 20% + placement binary filter), cluster_dedupe_rule, anchor_priority, output_caps, transverse_invariants (voice consistency + emotional diversity), risk_bet_slot, anti_patterns, _change_log."
+    },
+    {
+      "type": "infra",
+      "path": "resources/severity-canon.json",
+      "version": "1.0.0",
+      "summary": "Centralized severity canon. BLOCKER/MAJOR/MINOR levels + sourcing_tags (observed/stated/structured/derived) + operator_facing_translation + canon_origin_tags (canon_ref vs derived). Consumed by analyze-copy, audit-meta-setup, validate-resources, compatibility-rules, paid-angle-scoring-weights."
+    },
+    {
+      "type": "doc-patched",
+      "path": "shared-resources/copywriting-canon/frameworks/angles-biases-matrix.md",
+      "version": "0.1.0 -> 1.1.0",
+      "summary": "Verbatim anchor obligatoire par cellule (voc_id brand-side OR derived skill-author OR breakthrough mode opt-in 1 slot max). Corrélations axes Status/Belonging/Insider documentées explicitement (non-MECE flagué) — variations Identity-as-distinction, pas angles distincts."
+    },
+    {
+      "type": "infra",
+      "path": ".skills/_manifest.json",
+      "summary": "Regenerated post frontmatter triad batch. 38 skills total, machine-verifiable CMR-compliance via grep reasoning_pattern."
+    },
+    {
+      "type": "research-archive",
+      "path": "_archive/research-stale-2026-04-26/",
+      "summary": "Batch archive of ~22 stale research/ docs (onboarding stress tests, offers v2.0 batch, profile v2.0 proposal, calibration cabaia, overnight reports, legacy specs). README explains context. Append-only — no permanent deletion."
+    }
+  ],
+  "breaking_changes": [],
+  "migration_required": false,
+  "consumer_re_test_list": [
+    "skills consuming pattern-schema.json or compatibility-rules.json (analyze-copy, future audit skills)",
+    "skills consuming paid-angle-scoring.md (paid-angles weights moved to JSON — verify resolver)"
+  ],
+  "next_release_candidates": [
+    "Phase 2.5 mass tag reasoning_pattern: null on 49 non-CMR skills (cosmetic, scriptable)",
+    "Phase 4.5 invariant-violation-detector hook implementation",
+    "PTD full doctrine when trigger conditions hit",
+    "Skill produce-script or analyze-copy --mode=rewrite to close audit→draft loop"
+  ]
+}

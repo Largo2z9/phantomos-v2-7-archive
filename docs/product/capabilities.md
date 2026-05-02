@@ -15,6 +15,8 @@ PhantomOS organizes your work on four layers that feed each other.
 
 Each layer feeds the next. Ops learnings loop back into strategy. It's a cycle, not a stack.
 
+The four-layer structure is illustrated here on the DTC-marketing kit shipped by default in V1. The same structure applies to any domain the operator chooses to encode : a consultant runs Strategy (positioning) → Research (client intel) → Production (deliverables) → Ops (engagement learnings). A coach runs Strategy (curriculum frame) → Research (cohort signals) → Production (sessions, materials) → Ops (cohort feedback). The kit demonstrates ; the structure is agnostic.
+
 ## Maturity state by layer
 
 Current version: V1.
@@ -29,6 +31,8 @@ Current version: V1.
 Pick the layer where your current work lives. The rest fills as work requires it.
 
 ## What V1 ships today
+
+> The capabilities below are demonstrations of what the workspace produces once it is encoded — they are not the substrate itself. The substrate is the workspace, its encoding disciplines, the agent's reasoning mechanics, and the extensibility. The kit shipped here illustrates these on DTC marketing and direct response copy. Operators in other domains encode their own kit, with the same mechanics underneath.
 
 - Configure one or several brands and keep their context up to date without re-briefing.
 - **Start the day fast** — on-demand session briefing (portfolio health, pending validations, what's in flight).
@@ -94,6 +98,6 @@ The return on setup is not instant for every profile. The honest curve depends o
 
 **Capture discipline.** The moat is the continuous capture process, not the graph at any moment. An operator who skips logging corrections for two weeks gets a Notion clone that nobody reads. The agent proposes capture after every deliverable and `learn-from-session` batches on demand, but neither replaces the operator's reflex to log the reasoning behind a correction, not just the correction itself.
 
-**Operator comfort with Claude Code.** The first forty-five minutes run through a command-line interface. Past that, the web app and the desktop app work against the same workspace. An operator with no terminal experience will feel friction on day one; after that the friction is gone.
+**Operator comfort with Claude Code.** Initial setup uses Claude Code (a command-line interface) for around fifteen minutes via a guided flow. After that, the web app and the desktop app work against the same workspace, with zero re-setup. An operator with no terminal experience encounters one short guided session on day one, then the surface choice is theirs.
 
 See [`fit.md`](fit.md) for a full audit of best fit, conditional fit, and misfit profiles.

@@ -3,6 +3,7 @@ name: session-search
 type: navigator
 version: "1.0.0"
 recommended_model: haiku
+reasoning_pattern: null
 description: >
   Search the narrative memory index (SQLite FTS5) for past sessions, decisions,
   learnings, snapshots, and events. Returns ranked results with source,

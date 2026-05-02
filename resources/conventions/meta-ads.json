@@ -1,7 +1,6 @@
 {
   "_schema": "convention",
   "_version": "1.0",
-  "_notes": "Example convention file for Meta Ads. Copy and adapt for your instance.",
   "_field_types": {
     "meta.*": "observed",
     "access.*": "observed",

@@ -5,9 +5,183 @@
 
 ---
 
+## v2.12.0 — 2026-05-02 — Cockpit data plumbing: connect-cockpit
+
+**Why this release.** Phantom workspace operators need to wire their brand to the Abyss cockpit dashboard (app.abyss-initiative.com) without manual Airbyte UI access or Supabase SQL. Cockpit-side endpoint `POST /api/operator/onboard-brand` already provisions sources end-to-end server-side. This release adds the workspace-side skill that wraps that endpoint conversationally.
+
+**What shipped.**
+- `connect-cockpit` (builder Sonnet, subagent_safe: false, ~200 lines). Triggers FR/EN ("branche le cockpit", "connect cockpit"). 6-step guided flow: confirm brand identity, choose platforms, collect credentials per platform with concrete instructions where to fetch each token, POST to cockpit API, handle response (success / partial / failure), close with reasoned next-step.
+- 6 platforms supported via cockpit API: Shopify (self-serve), Meta Ads (self-serve, requires System User token), TikTok Ads (self-serve, requires Marketing API app), Snapchat Ads (self-serve, OAuth flow), GA4 (self-serve, Google OAuth without dev token). Google Ads marked blocked pending Google dev token approval (external action Largo).
+- Disambiguates against `setup-brand` (folder structure only) and `onboard-brand` (full 4-step setup + scan + ingest + validate). connect-cockpit is the data plumbing layer that runs after.
+- Hard rules: never expose payload IDs, never two questions per turn, never silent retry on failure, never hardcoded brand names in examples.
+
+**Operator impact.** Matteo and future Phantom operators can now onboard their client brands to the cockpit themselves via Claude Code. From workspace clone to live dashboard in 24h: setup-brand → connect-cockpit → first sync overnight.
+
+**Prerequisites.** `credentials_shared.env` must contain `ABYSS_OPERATOR_TOKEN` (provisioned by Largo via `onboard-operator` skill) and `ABYSS_API_BASE` (default `https://app.abyss-initiative.com`).
+
+---
+
+## v2.10.1 — 2026-04-26 — Production layer #2: produce-copy-brief
+
+**Why this release.** Cascade #2 of the production-layer roadmap. After produce-paid-angles (v2.10.0), the natural next surface is the copywriter brief — operator picks one ranked angle and gets a per-channel brief composed from the same encoded brand intelligence.
+
+**What shipped.**
+- `produce-copy-brief` (producer Sonnet, subagent_safe, ~425 lines). 8-step pipeline: resolve audience+angle+channel → read encoded data → verbatim density floor → map sections per voc-coding lenses → hook variants (4-tier anchor priority) → brief composition (800-1200 words) → Layer A trace + Layer B artifact → finalize-mutation-batch.
+- 4 focus modes: `default | hooks | objections | ctas | fresh`. Brief format pulled from `operator/profile.json#preferences.brief_format` with brand-specific override.
+- 5 architectural decisions encoded (S39 batch triage): channel inferred from operator stack + brand current_focus (never hardcoded Meta-as-default), hook examples = 3 hook-only, brief 800-1200 / 1500 ceiling, multi-offer = active offer inline in CTAs, brief artifact never pasted twice (write to file, surface synthesis only).
+
+**Operator impact.** Natural cascade: paid-angles → pick the angle → copy brief on that angle, channel-aware, verbatim-anchored, format-respected.
+
+---
+
+## v2.10.0 — 2026-04-25 — Production layer #1: produce-paid-angles + no-orphan-output doctrine
+
+**Why this release.** Intelligence layer (v2.9.x) encoded the brand. Production layer turns that intelligence into operator-shippable artifacts. First skill: paid creative angles, ranked, hook-anchored from voc verbatims. Doctrine: no producer surface should ever leave the operator in the void.
+
+**What shipped.**
+- `paid-angle-scoring.md` framework (147 lines). 5 lenses (verbatim density 35%, emotional resonance 20%, objection neutralization 20%, placement viability filter, awareness alignment 25%), aggregation formula, cluster filter, 4-tier verbatim anchor priority, 6 anti-patterns.
+- `produce-paid-angles` (producer Sonnet, subagent_safe, ~430 lines, 15 Hard Rules). Cartesian product internal, 5-lens scoring, cluster filter, ranked top 5 (cap 7), markdown table operator-facing with reasoned next-step close.
+- `CLAUDE.md` master doctrine: **No orphan output rule** added. Every producer / curator / orchestrator significant output ends with a contextual reasoned next-step proposal, never a flat menu, never a hardcoded template.
+- 5 architectural decisions encoded (S39 batch triage): hook granularity = headline-only, default count = 5, auto-trigger after mine-voc = OFF, cache 24h TTL, sister content/email = NOT in v1.
+
+**Operator impact.** "Trouve les meilleurs angles pour [audience]" returns a ranked matrice, hooks anchored verbatim from voc corpus. Every producer skill from now on closes with a reasoned next move.
+
+---
+
+## v2.9.1 — 2026-04-25 — Manifest discovery fix: trigger format FR:/EN:
+
+**Why this release.** Manifest builder regex expects `FR:` / `EN:` delimiters. v2.9.0 ship used `FR triggers:` / `EN triggers:` which did not parse. 4 deepening skills had empty triggers in `_manifest.json`, breaking trigger-based discovery.
+
+**What shipped.**
+- Trigger format fix in `mine-voc`, `mine-vom`, `study-niche-marketdeepdive`, `deepen-brand-context` (`cross-deepening-signals` already correct, no triggers as sub-skill).
+- `_manifest.json` regenerated, triggers now extracted correctly.
+
+**Operator impact.** Phrases like "mine voc", "creuse la voix client", "deep-dive niche" route correctly to the deepening skills.
+
+---
+
+## v2.9.0 — 2026-04-25 — Intelligence layer: 3 deepening skills + orchestrator + cross-synthesis
+
+**Why this release.** Snapshot Step 7 (v2.8.3) closed with two paths: validate-or-correct. Operator needed a third: "trust the synthesis, go deeper." This release ships the deepening surface as standalone producer skills + an orchestrator that adds real cross-synthesis value (not a wrapper).
+
+**What shipped.**
+- 3 frameworks codified, consumed as analytical vocabulary (never as section headers): `voc-coding.md` (143 lines), `vom-mining.md` (150 lines), `market-deepdive.md` (124 lines).
+- `mine-voc` (producer Sonnet, ~330 lines). Step 0 first-party data ask, source scrape (native widgets via Chrome MCP, Trustpilot, Sephora, Reddit, app stores), 4-lens coding, two-layer output (JSONL corpus + routed mutations to spec.json verbatim_quotes[] and profile.json voice.key_expressions[]). 4 `--focus` modes.
+- `mine-vom` (producer Sonnet, ~290 lines). Competitor integrity check, niche definition lock, source crawl, `external_intelligence[]` cap 5-7 per run. 4 `--focus` modes. 7d cache.
+- `study-niche-marketdeepdive` (orchestrator Sonnet, ~430 lines). Long-running 30-60 min strategic deep-dive. Mandatory ticket lifecycle. 12 steps. Memo 4-6 pages with `[MKT-NNN]` citations. 6-9 month re-run cadence. Standalone-only — never auto-chained.
+- `deepen-brand-context` (orchestrator Sonnet, 199 lines). Chains `mine-voc → mine-vom → cross-deepening-signals`. AskUserQuestion 4-paths Step 0.
+- `cross-deepening-signals` (sub-skill Sonnet, subagent_safe, operator_facing: false, 167 lines). Read-only. 3 mandatory cross-checks: audience candidate × market presence, vocabulary shift × current vernacular, white-space × channel signals. Output: 3-movement synthesis paragraph + JSON return contract.
+- `snapshot-brand` Step 7 enriched: trust-and-deepen close (4 paths AskUserQuestion).
+- D#357 locks 4 architectural decisions: `--focus` parameter, orchestrator with real cross-skill synthesis, Step 0 first-party data ask universal, free format for first-party imports.
+
+**Operator impact.** Four paths after snapshot synthesis instead of two. Three depths available: VoC alone (~15 min), VoM alone (~25 min), full deepening chain with cross-synthesis (~45 min).
+
+---
+
+## v2.8.3 — 2026-04-25 — Revert v2.8.2 bold anchors, back to pure prose 3 movements
+
+**Why this release.** Live test on a DTC pilot + Largo feedback: bold-section anchors ("**Le vrai pitch**", "**La cible logique**") feel template-flavored and visually heavy regardless of content quality. v2.8.2 was an over-correction. Pivot back to v2.8.1 pure-prose 3-movements format, with explicit ban added to prevent future drift.
+
+**What shipped.**
+- `snapshot-brand` Step 7 hard rules: pure prose only, explicit ban on bold-section anchors, numbered headings, templated paragraph openers. 3 movements with blank lines, NO titles. Each paragraph names what it carries via its first sentence.
+- Decisive test before sending: "if you see bold section labels or templated openers, you reverted to form-fill — rewrite as flowing prose."
+
+**Operator impact.** Snapshot Step 7 returns to v2.8.1 reading experience. Cleanest pattern observed to date. Doctrine clarification: structure carries itself through prose, not through scaffolding.
+
+---
+
+## v2.8.2 — 2026-04-25 — Adaptive named anchors in snapshot Step 7 (REVERTED in v2.8.3)
+
+**Why this release.** Largo flagged that pure-prose synthesis (v2.8.1) lacks scaffolding for fast scanning, but a fixed template would re-import the form-fill anti-pattern. Compromise attempted: 2-4 adaptive named anchors per snapshot, agent chooses based on what is load-bearing for THIS product in THIS niche.
+
+**What shipped.**
+- `snapshot-brand` Step 7: 2-4 adaptive bold anchors with open canonical list ("Le vrai pitch", "La cible logique", "L'angle commercial", "Ce que tu n'as peut-être pas vu", etc., + free-form). Hard limits: never empty, never template-flavored, never the same 4 anchors every brand.
+- Stress test harness: `research/synthesis-stress-test/scenarios.json` (10 scenarios) + `run.py` (Anthropic SDK) + `results.md` author verdict. Findings: 9/10 syntheses produced real insights, anchor diversity strong, 100% doctrine compliance in simulation.
+
+**Operator impact.** Brief — bold anchors visible during the v2.8.2 window only. Reverted within hours by v2.8.3 after the live DTC pilot test failed Largo's taste test ("pas fan des anchors en gras"). Stress test harness retained as future evaluation primitive.
+
+---
+
+## v2.8.1 — 2026-04-25 — Cascade A micro-patches from live test on a wellness pilot
+
+**Why this release.** Live wellness pilot test confirmed Cascade A v2.8.0 holds under load. Three micro-frictions surfaced and patched.
+
+**What shipped.**
+- `snapshot-brand` Step 7: "three movements + blank line between each" rule. Movement 1 = what it really is + who buys. Movement 2 = offer architecture. Movement 3 = 1-2 things noticed. Same density, breaks wall-of-text.
+- `tour` Milestone 3 (blasé question): explicit rule to ask early, woven into context-capture turn. Never as post-script closing the wow turn.
+- `tour` Milestone 7 url-path: hard rule against cascading Milestones 5/6 (PhantomOS intro + skill concept) immediately after the wow synthesis. Re-pitching dilutes the wow.
+
+**Operator impact.** Synthesis paragraph reads cleaner. Blasé question lands at the right moment. Wow synthesis no longer diluted by reflexive PhantomOS re-pitch.
+
+---
+
+## v2.8.0 — 2026-04-25 — Cascade A + C: synthesis-first across producer / orchestrator surfaces
+
+**Why this release.** First execution pass on the audit-v2.7.4-prompting roadmap. Producer surfaces still recapped as form-fill ("here's what I found in 8 fields"). Bundle: synthesis-first analytical paragraph using schemas as vocabulary, not as section headers. Plus pre-snapshot context capture so the wow lands in a context-aware operator state.
+
+**What shipped.**
+- `snapshot-brand` Step 7: form-fill recap → 4-6 sentence analytical paragraph using schemas (`problems_solved`, `audience.pain`, `market_context.sophistication`, `offer_groups[].offers[]`) as vocabulary. Single confirm question. No score, no field list, no missing-fields block. Inferred attributes flagged inline.
+- `tour` Milestone 7 url-path + `setup-brand` Step 4 + `onboard-brand` Phase 2: cascade the same synthesis vocabulary across surfaces. Onboard drops "I keep going with integrity check" announcement (validate runs silently).
+- `tour` Milestone 2 path-(a): pre-snapshot context capture. Use-case (own brand / client / agency portfolio / test) + stack (Shopify / Meta Ads / Klaviyo / Notion / Slack / Drive / others) collected in flowing prose, written to `operator/profile.json#identity.profile + context.stack[]`.
+
+**Operator impact.** Day-1 onboarding starts with two flowing context questions before scrape, no URL-first ambush. Snapshot returns as consultant's read on the brand, not as field-list recap.
+
+---
+
+## v2.7.4 — 2026-04-25 — Master doctrine: Contextual Intelligence locked
+
+**Why this release.** S37 confirmed the recurring pattern across v2.7.1-3: narrative MANDATORY rules in SKILL.md get skipped 100% under load, mechanical hooks/wrappers hold 100%. Architectural conclusion formalized as PhantomOS master doctrine. D#356.
+
+**What shipped.**
+- `docs/system/contextual-intelligence.md` (114 lines) — canonical doctrine. Thesis (PhantomOS reasons over a business universe, does not fill forms). Two-tier rule: mechanical layer = strict enforcement; semantic layer = strict trust. Decisive test for any new rule/hook/gate. 7 named anti-patterns.
+- `CLAUDE.md` root: new "Master doctrine" section at top, before FIRST ACTION. Two-tier rule + decisive test surfaced runtime.
+- `docs/system/voice.md`: opens with contextual-intelligence reference.
+
+**Operator impact.** None directly. All future architectural decisions must pass the decisive test before ship. Trust-first on semantics is now binding doctrine.
+
+---
+
+## v2.7.3 — 2026-04-25 — Clean _field_types coverage in _TEMPLATE + skip meta paths in finalizer
+
+**Why this release.** First wellness pilot stress test of `finalize-mutation-batch` surfaced 17 warnings. Most were latent _TEMPLATE bugs, not agent fabrication.
+
+**What shipped.**
+- `finalize-mutation-batch.py`: skip `$`-prefixed pointers (JSON-Schema metadata) and `_`-prefixed pointers (runtime metadata: `_snapshot`, `_proposed`, `_source`). Skip non-entity workspace-state files (`config.json`, `status.json`, `learnings-index.json`, `session-state.md`, `pending-validations.md`).
+- `_TEMPLATE` `_field_types` patches across `brand.json`, `products/_example/spec.json`, `products/_example/offers.json` (full map created from scratch — was empty), `audiences/_example/profile.json`, `learnings.json`.
+
+**Operator impact.** None visible. New brands scaffolded from `_TEMPLATE` now pass the wrapper on first run. Re-run on same wellness pilot data: 17 warnings → 0.
+
+---
+
+## v2.7.2 — 2026-04-25 — Walk back validate-output-coherence LLM skill, ship Python primitive
+
+**Why this release.** Stress test on a wellness pilot confirmed v2.7.1 P0 #1 was a half-fix. `validate-output-coherence` was prescribed as MANDATORY in `snapshot-brand` + `setup-brand` SKILL.md but the sub-agent skipped it 100% on the live run — 47 mutations written, 0 coherence_check events emitted. Soft enforcement does not survive load.
+
+**What shipped.**
+- `.skills/finalize-mutation-batch.py` (~259 lines) — deterministic Python wrapper, no LLM negotiation. Reads `_field_types` per touched file, inspects every recent write event, runs structural checks (unmapped paths, manual derived writes, `tone_of_voice` misclassification, missing `_field_types` maps), emits coherence_check event itself. Exit 2 on blocking = caller must revise.
+- `snapshot-brand` Step 7 + `setup-brand` Step 4: instruction reduced to a single bash line invoking the wrapper. Hard Rule rewritten around the Python primitive.
+
+**Operator impact.** Coherence enforcement now actually fires. Agent cannot skip. Bonus: catching the wrapper found 11 latent _TEMPLATE warnings (addressed in v2.7.3). Decision A1 (LLM-based coherence skill) effectively walked back — formalized in v2.7.4 / D#356.
+
+---
+
+## v2.7.1 — 2026-04-24 — P0 patches from v2.7.0 audit: coherence loop + REFINE category + canonical _field_types doc
+
+**Why this release.** Three P0 patches surfaced by the v2.7.0 fresh-instance audit. (1) Close the `coherence_check` event loop so the sub-skill emits an event the turn-end hook can verify. (2) Add a REFINE category to `checkpoint-resolver` with franglais matching patterns. (3) Ship a canonical reference for `_field_types` — cited in 8+ skills with no dedicated doc, leading to drift on edge cases.
+
+**What shipped.**
+- `docs/system/field-types.md` (87 lines) — canonical reference for the four-value tag (`observed | stated | derived | structured`). Binary decision test per type, decisive examples, 5 hard rules (no manual derived, tag exactly once, precision > globs, structured requires framework ref, unmapped writes refused).
+- `architecture.md` + `CLAUDE.md` cross-refs to the new doc.
+
+**Operator impact.** None visible. Doc + plumbing only. Agents lose the ambiguity that caused tag drift on edge cases.
+
+**Known gap.** Patch P0 #1 (coherence loop closure) shipped here as a soft prescription — proven half-fix in v2.7.2 stress test, walked back to a mechanical Python primitive.
+
+---
+
 ## v2.7.0 — 2026-04-24 — Enforcement layer: three soft rules become hook-guards
 
-**Why the minor bump.** v2.6.20–22 closed the skill-level gaps found during the Nooance fresh-instance test, but all three fixes were SKILL.md instructions — readable policy the agent could still skip under load. This release moves the enforcement from instructions to mechanics wherever Claude Code's hook surface allows it.
+**Why the minor bump.** v2.6.20–22 closed the skill-level gaps found during the beauty pilot fresh-instance test, but all three fixes were SKILL.md instructions — readable policy the agent could still skip under load. This release moves the enforcement from instructions to mechanics wherever Claude Code's hook surface allows it.
 
 **What the hook surface actually permits**
 - PreToolUse / PostToolUse / Stop / SubagentStop / UserPromptSubmit / SessionStart — these can inspect, block tool calls, or inject context.
@@ -72,7 +246,7 @@
 
 ## v2.6.20 — 2026-04-24 — Fix offers schema drift + write-to-context proposal leak
 
-**Caught during v2.6.19 fresh-instance test** (nooance-paris onboarding). Two coupled regressions in the snapshot-brand → write_to_context path corrupted single-product offers.json files.
+**Caught during v2.6.19 fresh-instance test** (beauty pilot onboarding). Two coupled regressions in the snapshot-brand → write_to_context path corrupted single-product offers.json files.
 
 **Bug 1 — snapshot-brand wrote v1 legacy `offers[]` shape on single-variant products**
 - `.skills/skills/snapshot-brand/SKILL.md § Step 4`: the JSON template shipped with the skill was the pre-v2 flat `{offers: [{product_ids: [...]}]}` shape. Bundle code path was already v2-correct (`offer_groups[]`), single-variant path had drifted.
@@ -148,7 +322,7 @@
 **Action**: closes the "how do skills find relevant knowledge without tagging" question raised after the S36 red team. Instead of pre-tagging resources with `applies_when: {vertical, skill_names}` (maintenance hell), resources are indexed automatically by content and skills query the index at runtime. A coherence gate sub-skill validates outputs before they reach the operator. The SOP format gains a `tier: binary|contextual` + `resource_discovery` + reasoning layer pattern (demonstrated on 3 exemplar checkpoints in audit-meta-global).
 
 **What's new — indexer extended**:
-- `.skills/memory-index.py` — indexes `resources/{frameworks,guides,catalogues,sops,conventions,quality-specs,templates,routing}/`. No tagging required on operator side. Markdown chunked by `## ` headings (large files split, small files = one chunk). Optional YAML frontmatter parsed for title/description boost. JSON resources = one chunk. Validated on loom workspace: 44 resource chunks indexed from existing template resources.
+- `.skills/memory-index.py` — indexes `resources/{frameworks,guides,catalogues,sops,conventions,quality-specs,templates,routing}/`. No tagging required on operator side. Markdown chunked by `## ` headings (large files split, small files = one chunk). Optional YAML frontmatter parsed for title/description boost. JSON resources = one chunk. Validated on the test workspace: 44 resource chunks indexed from existing template resources.
 
 **What's new — retrieval primitive**:
 - `.skills/discover-resources.py` — CLI `--query --source-types --limit --boost-recency --format`. FTS5 MATCH over indexed resource chunks, ranked by BM25 + optional recency boost. Auto-escapes user queries for FTS5 operator safety. Returns title, file_path, snippet, score per hit. Zero tagging maintenance — match is content-driven.
@@ -198,14 +372,14 @@
 
 ## v2.6.15 — 2026-04-23 — validate-resources v2 schema alignment
 
-**Action**: same legacy-schema bug as build-brand-snapshot.py had before v2.6.11, but this time in the validate-resources SKILL.md. Detected during v2.6.14 live test on Cherico — validate-resources agent reported "offers missing" while offers.json actually held 4 properly structured offers. The skill prose was still pointing at `offers.meta.product_slug` (v1.x flat) instead of `offer_groups[].offers[].product_refs[]` (v2).
+**Action**: same legacy-schema bug as build-brand-snapshot.py had before v2.6.11, but this time in the validate-resources SKILL.md. Detected during v2.6.14 live test on a haircare DTC pilot, validate-resources agent reported "offers missing" while offers.json actually held 4 properly structured offers. The skill prose was still pointing at `offers.meta.product_slug` (v1.x flat) instead of `offer_groups[].offers[].product_refs[]` (v2).
 
 **What's new**:
 - `.skills/skills/validate-resources/SKILL.md` — § 11 Cross-Reference Validation: offers cross-ref path updated to v2 schema, explicit code-block showing the correct offer counting idiom (`sum(len(g.get("offers", [])) for g in offers_doc.get("offer_groups", []))`). Scope checks list (line 319) updated to reference `offer_groups[].offers[]` instead of vague "offer entry".
 
 **Operator impact**: validate-resources no longer produces false "offers missing" flags on v2-schema brands. Zero change to data, pure prose correction.
 
-**Why this release**: shipped mid-test because the false validation output actively misled the operator in the Cherico session — agent relayed "fiche offres est en fait vide" to Largo while the file was correctly populated. A false negative in validation is worse than no validation: it prompts needless rework and erodes trust in the workspace.
+**Why this release**: shipped mid-test because the false validation output actively misled the operator in the haircare pilot session, agent relayed "fiche offres est en fait vide" to Largo while the file was correctly populated. A false negative in validation is worse than no validation: it prompts needless rework and erodes trust in the workspace.
 
 **Lesson to log (design gap)**: schema migrations (v1.x → v2.x on offers schema, confirmed v1.8→v2.0) leave consumer code/prose behind. v2.6.11 fixed build-brand-snapshot, v2.6.15 fixes validate-resources. There are probably more consumers reading offers with legacy paths. Grep pass pending in a future release: scan all .skills/**/*.py and .skills/skills/**/SKILL.md for `offers.meta.product_slug`, `\.offers\[` without `offer_groups`, etc. Schema versions should have a single authoritative consumer guide, not N copies of the same pattern drifting.
 
@@ -250,7 +424,7 @@
 
 ## v2.6.12 — 2026-04-23 — Subagent infrastructure boundary + plumbing-leak rule
 
-**Action**: closes the two design gaps surfaced by the v2.6.10/11 Onday live test.
+**Action**: closes the two design gaps surfaced by the v2.6.10/11 e-commerce pilot live test.
 
 **What's new — infrastructure guard** (D#345):
 - `.claude/hooks/mutation-guard.py` — adds `INFRASTRUCTURE_GLOBS` protection. Blocks Edit / Write / NotebookEdit / MultiEdit and Bash bypass (`>`, `tee`, `sed -i`, `open('w')`) on: `.skills/*.py`, `.skills/skills/*/*.py`, `.claude/hooks/*.py`, `.claude/settings*.json`. Only the human maintainer edits these, via a text editor outside the Claude Code tool loop. Agents that discover a bug in infrastructure should flag it to the operator, not autopatch.
@@ -258,9 +432,9 @@
 
 **What's new — plumbing leak rule** (D#346):
 - `CLAUDE.md` § Operator contract — new binary row: auto-tag source + confidence from semantic signal, display as `observé / déduit / déclaré / incertain` when useful. NEVER surface `source`, `confidence` numbers, `mode`, or the `--source / --confidence / --mode` arg names to the operator.
-- `docs/system/voice.md` § Anti-patterns — new entry "Plumbing leak to operator" with real negative example caught during S35 Onday test + corrected version + binary test ("would an e-commerce agency manager say this sentence?").
+- `docs/system/voice.md` § Anti-patterns — new entry "Plumbing leak to operator" with real negative example caught during S35 e-commerce pilot test + corrected version + binary test ("would an e-commerce agency manager say this sentence?").
 
-**Why this release**: the Onday live test produced two unrelated but equally clear violations. (1) A validate-resources subagent modified `build-brand-snapshot.py` autonomously to fix a bug — correct fix, wrong method. (2) An agent presented a table with "Source" and "Confidence" columns to the operator, who then reproduced the jargon verbatim ("set confidence to 0.6"). Both were caught in session, both are now structurally impossible: the first blocked by the hook, the second blocked by the operator-contract rule that any agent reading CLAUDE.md at session start will apply.
+**Why this release**: the e-commerce pilot live test produced two unrelated but equally clear violations. (1) A validate-resources subagent modified `build-brand-snapshot.py` autonomously to fix a bug — correct fix, wrong method. (2) An agent presented a table with "Source" and "Confidence" columns to the operator, who then reproduced the jargon verbatim ("set confidence to 0.6"). Both were caught in session, both are now structurally impossible: the first blocked by the hook, the second blocked by the operator-contract rule that any agent reading CLAUDE.md at session start will apply.
 
 **Operator impact**:
 - Zero change for well-behaved skills. Their writes still route through the canonical channel as before.
@@ -275,12 +449,12 @@
 
 ## v2.6.11 — 2026-04-23 — build-brand-snapshot offer counter fix
 
-**Action**: fixes a silent bug discovered during the v2.6.10 live test onboarding (Onday). `build-brand-snapshot.py` was reading offers via the legacy flat `offers[]` array, but since v2.0 the schema nests offers under `offer_groups[].offers[]`. Result: snapshot always displayed `offers active: 0` even when offers.json was populated. The snapshot still built without crashing, so the bug was invisible until someone checked.
+**Action**: fixes a silent bug discovered during the v2.6.10 live test onboarding (e-commerce pilot). `build-brand-snapshot.py` was reading offers via the legacy flat `offers[]` array, but since v2.0 the schema nests offers under `offer_groups[].offers[]`. Result: snapshot always displayed `offers active: 0` even when offers.json was populated. The snapshot still built without crashing, so the bug was invisible until someone checked.
 
 **What's new**:
 - `.skills/build-brand-snapshot.py` — offer counter now iterates `offer_groups[].offers[]` correctly. Backward-compatible: if a legacy flat-offers file exists, the block is a no-op (0 offer_groups → nothing iterated), and an operator running an old-format brand sees `offers active: 0` which is the same as before. No regression.
 
-**Discovery context**: detected by the validate-resources subagent during Onday onboarding test. The subagent modified the script autonomously — technically a scope violation (subagents should flag infrastructure bugs, not fix them), but the fix itself was correct and is shipped here properly through the canonical maintainer path. Design gap to address in a future release: constrain subagent write permissions to brand/operator scope only, block writes to workspace infrastructure (`.skills/*.py`, `.claude/**`).
+**Discovery context**: detected by the validate-resources subagent during the e-commerce pilot onboarding test. The subagent modified the script autonomously — technically a scope violation (subagents should flag infrastructure bugs, not fix them), but the fix itself was correct and is shipped here properly through the canonical maintainer path. Design gap to address in a future release: constrain subagent write permissions to brand/operator scope only, block writes to workspace infrastructure (`.skills/*.py`, `.claude/**`).
 
 **Operator impact**: snapshot now reports the real offer count. Zero change to any data path or write channel.
 
@@ -335,7 +509,7 @@
   - Layer 3 (narrative) — transcript-derived, append-only, now FTS5-indexed.
 No cross-layer writes. No merge. Queries can span the index, but results always carry their source_type. The discipline of PhantomOS's content layer is preserved — we only added a lens on the time dimension.
 
-**Why this release**: S34 tests on Karacare and Liv Happy Food confirmed empirically what was suspected — `session-log.md` grew to 3200+ lines and `decisions.md` to 357 entries with zero retrieval capability. Any cross-session recall required either manual grep or paying Claude Code tokens to grep for you. Hermes Agent solves this exact problem with `state.db` + FTS5 + `session_search` tool. Directly transposable. 200 lines Python. Immediate value.
+**Why this release**: S34 tests on two live DTC pilots (a DTC pilot, a food/lifestyle pilot) confirmed empirically what was suspected — `session-log.md` grew to 3200+ lines and `decisions.md` to 357 entries with zero retrieval capability. Any cross-session recall required either manual grep or paying Claude Code tokens to grep for you. Hermes Agent solves this exact problem with `state.db` + FTS5 + `session_search` tool. Directly transposable. 200 lines Python. Immediate value.
 
 **Why NOT Obsidian-style embeddings (deliberate choice)**: semantic search via embeddings is 10x complexity for 2x value on this corpus. PhantomOS narrative is structured (sessions numbered, decisions indexed, brands typed) — FTS5 lexical match on these anchors is sufficient. Embeddings could come later for a secondary layer, but are not the current bottleneck.
 
@@ -356,7 +530,7 @@ No cross-layer writes. No merge. Queries can span the index, but results always 
 - Identity block: applies `unwrap` on identity fields + tone block, so wrapped scalars render as text instead of `{_value: "..."}`.
 - Products block: applies `unwrap` on spec identity + pricing fields, same rationale.
 
-**Why this release**: the live Karacare + Liv Happy Food tests produced workspaces where mode=proposed had wrapped scalar and array values. v2.6.6 stopped new wrapped writes but existing brands keep the legacy shape until rewritten. The snapshot builder read path crashed on first use. Fixed without touching the data itself — consumers must be tolerant of historic artifacts.
+**Why this release**: the live two-pilot tests (DTC pilot, food/lifestyle pilot) produced workspaces where mode=proposed had wrapped scalar and array values. v2.6.6 stopped new wrapped writes but existing brands keep the legacy shape until rewritten. The snapshot builder read path crashed on first use. Fixed without touching the data itself — consumers must be tolerant of historic artifacts.
 
 ---
 
@@ -407,12 +581,12 @@ No cross-layer writes. No merge. Queries can span the index, but results always 
 - Agent errors now pinpoint exact path issues (`target path not a known schema file`) instead of silently creating junk.
 - Skills other than `capture-learning` and `snapshot-brand` still reference pseudo-code `write_to_context(...)` — they will hit workflow gates on first gated write. Patch pass pending.
 
-**Why this release**: two live onboarding tests (Karacare, Liv Happy Food) surfaced: (1) the agent wrote product specs and audience profiles without operator confirmation despite SKILL.md markdown rules — gates existed only in prose; (2) shell-escaping bugs in agent-built mega-commands created corrupted filenames that the write script accepted silently; (3) `mode=proposed` on arrays broke `brand-snapshot.py` and forced the agent into ugly path hacks. v2.6.6 closes all three surfaces.
+**Why this release**: two live onboarding tests (a DTC pilot, a food/lifestyle pilot) surfaced: (1) the agent wrote product specs and audience profiles without operator confirmation despite SKILL.md markdown rules — gates existed only in prose; (2) shell-escaping bugs in agent-built mega-commands created corrupted filenames that the write script accepted silently; (3) `mode=proposed` on arrays broke `brand-snapshot.py` and forced the agent into ugly path hacks. v2.6.6 closes all three surfaces.
 
 **Known gaps (not addressed in 2.6.6)**:
 - `build-brand-snapshot.py` is fragile under new pain schema shapes — unrelated, deferred.
 - Only `snapshot-brand/SKILL.md` is patched for the stage-before-ask pattern. `setup-brand`, `onboard-brand`, `ingest-resource` still say `call write_to_context()` as pseudo-code.
-- Free-form corrections from the operator (e.g. `"Hair Boost"` alone instead of `"yes"`) don't auto-resolve — agent must re-stage.
+- Free-form corrections from the operator (e.g. a product name alone instead of `"yes"`) don't auto-resolve, agent must re-stage.
 
 ---
 
@@ -900,7 +1074,7 @@ Each now has a single write target and a single type. Pipeline aligned with `pat
 - **audit-setup-meta v1.0** : 22 points, 5 blocs (Pixel, Structure compte, Campagnes, Catalogue, Règles). Mode déclaratif V1. Scoring maturité 1-5. Premier skill de production du template.
 
 ### Strategy enrichment
-- **strategy.json v1.1** : pacing (budget tracking), variance_thresholds (alertes KPI), target_decomposition (annuel → daily). Template + Example (Lumya). Schema créé.
+- **strategy.json v1.1** : pacing (budget tracking), variance_thresholds (alertes KPI), target_decomposition (annuel → daily). Template + Example (the example brand). Schema créé.
 
 ### Onboarding
 - **Step 4 adaptatif** : détection profil opérateur → Meta Ads = audit-setup-meta, autre = brief stratégique express, pas de plateforme = fallback.
@@ -913,18 +1087,18 @@ Each now has a single write target and a single type. Pipeline aligned with `pat
 ## v1.14.0 — 2026-04-10
 
 **Action**: BRAND SCHEMA v2.1 — purchase_driver + audience_trees[] + driver_blend
-**Files**: `resources/schemas/brand.schema.json` | `brands/stepprs/brand.json` | `brands/_TEMPLATE/brand.json` | `brands/_EXAMPLE/brand.json` | `brands/stepprs/products/*/offers.json` (11)
+**Files**: `resources/schemas/brand.schema.json` | `brands/example-brand/brand.json` | `brands/_TEMPLATE/brand.json` | `brands/_EXAMPLE/brand.json` | `brands/example-brand/products/*/offers.json` (11)
 **Decisions**: D#243, D#244, D#246, D#248, D#249, D#250, D#251
 
 S30d-close — Profile audience v2.1 foundations promoted to the brand schema:
 
 - **`purchase_driver`** (enum: pain | desire | status | utility | identity | mixed) — brand-level default cascading to all audiences. Optional, backward-compat.
 - **`audience_trees[]`** — optional primitive for two-sided marketplaces (supply × demand) where a single brand owns multiple distinct audience trees.
-- **`driver_blend`** (object: primary | secondary | ratio) — required when `purchase_driver = "mixed"`, e.g. stepprs-padel (pain 60 + identity 40).
+- **`driver_blend`** (object: primary | secondary | ratio) — required when `purchase_driver = "mixed"`, e.g. a sports-pilot-padel (pain 60 + identity 40).
 
 Live brand.json files bumped 1.5 → 2.1 with changelog entries. `_TEMPLATE` leaves `purchase_driver` absent (optional; users fill per brand). `_EXAMPLE` sets `purchase_driver: "pain"` for consistency with creme-eclat.
 
-**Offers fix (R1 overnight audit)**: 11 stepprs offers.json were missing required `active` field. Auto-added `"active": true` per offer. All 13/13 offers now PASS. Fresh run of `resources/scripts/validate-all.py` reports CRITICAL/HIGH/MED/LOW = 0.
+**Offers fix (R1 overnight audit)**: 11 example-brand offers.json were missing required `active` field. Auto-added `"active": true` per offer. All 13/13 offers now PASS. Fresh run of `resources/scripts/validate-all.py` reports CRITICAL/HIGH/MED/LOW = 0.
 
 **Profile schema v2.1** reste en research/ tant que calibration empirique (D#247) pas faite. Brand-level primitives promues comme delta minimum non-bloquant.
 
@@ -1059,7 +1233,7 @@ Gap identifié sur un pilote skincare-subscription (audit réel) : bundle multi-
 - `subscription.reschedule: boolean` — déplacer la date de prochaine livraison sans annuler. Distinct de `skip` (suppression) et `pause` (gel). Source: Billie, Flamingo.
 - `subscription.required: boolean|null` — true si subscription = seule option d'achat, false si one-shot disponible en parallèle. Null si non précisé. Source: Flamingo.
 
-**_EXAMPLE Lumya OFR-03 mis à jour :** `reschedule: true`, `required: false` (Crème Éclat vendue aussi à l'unité OFR-01).
+**_EXAMPLE OFR-03 mis à jour :** `reschedule: true`, `required: false` (example product vendu aussi à l'unité OFR-01).
 
 ---
 
@@ -1104,7 +1278,7 @@ Gap identifié sur un pilote skincare-subscription (audit réel) : bundle multi-
 - `urgency.early_access` : `{enabled, cohort, channels[], lead_days}` — early access VIP pour limited drops
 - `payment_options.installments[].min_order_value` : BNPL conditionnel (Savage X Afterpay $30+)
 
-**_EXAMPLE mis à jour** : OFR-04 ajouté (type prepay — Cure 6 mois Lumya). OFR-01 démontre `first_order_only`. OFR-03 démontre `unlock_after_orders`, `shipping.free`, `converts_to_offer_id`.
+**_EXAMPLE mis à jour** : OFR-04 ajouté (type prepay, Cure 6 mois example brand). OFR-01 démontre `first_order_only`. OFR-03 démontre `unlock_after_orders`, `shipping.free`, `converts_to_offer_id`.
 
 **Gaps V2 documentés (non implémentés)** : credit-based membership, skip_window, supply guarantee, type:membership
 **Research mapping** : `context-engine/research/offers-schema-mapping.md` (22 patterns, 3 statuts)
@@ -1151,7 +1325,7 @@ Gap identifié sur un pilote skincare-subscription (audit réel) : bundle multi-
 - Pas de flag acquisition_eligible sur le produit — c'est le placement qui porte le contexte
 - Clone-brand supprimé du backlog
 
-**Fichiers mis à jour**: `brands/_TEMPLATE/products/_example/offers.json`, `brands/_EXAMPLE/products/creme-eclat/offers.json` (NEW — 3 offres réelles Lumya), `Ressources/schemas/offers.schema.json`
+**Fichiers mis à jour**: `brands/_TEMPLATE/products/_example/offers.json`, `brands/_EXAMPLE/products/creme-eclat/offers.json` (NEW, 3 offres exemple brand), `Ressources/schemas/offers.schema.json`
 
 ---
 
@@ -1192,7 +1366,7 @@ Gap identifié sur un pilote skincare-subscription (audit réel) : bundle multi-
 **P1.1 — Cross-brand query** (query-resource v1.1.0):
 - New scope `all_brands` with 3 query types: filter, compare, aggregate
 - Filter: "quelles brands ont LTV > 500?" → scans all brands, returns matches
-- Compare: "compare lumya vs moova" → side-by-side table (vertical, AOV, positioning, products, audiences, context level)
+- Compare: "compare brand-a vs brand-b" → side-by-side table (vertical, AOV, positioning, products, audiences, context level)
 - Aggregate: "portfolio overview" → totals, revenue range, completeness distribution
 - Performance guard: meta-first scan for >10 brands, max 20 brands per cross-brand query
 - MCP tool definition updated with all_brands scope
@@ -1233,7 +1407,7 @@ Gap identifié sur un pilote skincare-subscription (audit réel) : bundle multi-
 - setup-brand: Onboarding brief now shows 3 levels with specific field guidance per tier
 - validate-resources: Added "Context Level" tier-aware display per brand (Tier 1 = blocking, Tier 2-3 = suggestions)
 - brands/_TEMPLATE/CLAUDE.md: Replaced "Wedge Docs" with "Context Levels" (3 tiers, checkboxes)
-- brands/_EXAMPLE/CLAUDE.md: Updated to show Lumya's tier status (Tier 1 ✅, Tier 2 partial, Tier 3 ✅)
+- brands/_EXAMPLE/CLAUDE.md: Updated to show the example brand's tier status (Tier 1 ✅, Tier 2 partial, Tier 3 ✅)
 
 **Fix #2 — Post-Validate Bridge**:
 - validate-resources: Added "Post-Validate Usage Guide" — shows concrete agent commands after validation (product descriptions, hooks, emails, briefs)
@@ -1264,4 +1438,4 @@ Gap identifié sur un pilote skincare-subscription (audit réel) : bundle multi-
 **Schemas**: brand, spec, profile, offers, learnings, strategy (JSON, aligned with _TEMPLATE)
 **Brand template**: 6 entities (brand, product, offer, audience, learnings, strategy) + OS files (CLAUDE.md, config.json, status.json, todos.md, session-state.md, credentials.env)
 **Credentials**: 2-level pattern — `credentials_shared.env` (workspace) + `brands/{slug}/credentials.env` (brand). All gitignored.
-**Example**: Lumya (skincare, FR) — brand + 1 product + 1 audience + 4 learnings + strategy, intentionally missing offers to demo validate flags
+**Example**: the example brand workspace (skincare, FR), brand + 1 product + 1 audience + 4 learnings + strategy, intentionally missing offers to demo validate flags

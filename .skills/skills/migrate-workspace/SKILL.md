@@ -3,12 +3,13 @@ name: migrate-workspace
 type: curator
 version: "1.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Migrates an existing brand instance to match a newer template version.
   Compares instance structure against target template, generates a diff,
   proposes safe modifications (add fields, rename, deprecate). Never deletes data.
-  Triggers: "migrate", "upgrade brand", "align with template", "check drift",
-  "template version mismatch".
+  FR: "migrate" "upgrade cette brand" "aligne avec le template" "check drift" "mets à jour la structure" "version mismatch".
+  EN: "migrate" "upgrade brand" "align with template" "check drift" "template version mismatch" "sync to latest template".
 permissions:
   reads: [brand, product, offer, profile, learning, strategy]
   writes: [brand, product, offer, profile, learning, strategy]

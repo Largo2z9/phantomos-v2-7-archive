@@ -1,0 +1,62 @@
+{
+  "_schema": "convention",
+  "_version": "1.0",
+  "_field_types": {
+    "meta.*": "observed",
+    "access.*": "observed",
+    "operations[].*": "structured",
+    "known_limitations[]": "observed",
+    "learned_rules[]": "observed"
+  },
+  "meta": {
+    "platform": "TripleWhale",
+    "category": "attribution",
+    "api_version": "v2",
+    "documentation_url": "https://developers.triplewhale.com",
+    "last_updated": ""
+  },
+  "access": {
+    "method": "api_rest",
+    "credentials_location": "brand",
+    "credential_keys": [
+      "TRIPLEWHALE_API_KEY",
+      "TRIPLEWHALE_SHOP_ID"
+    ],
+    "loading_pattern": "import requests\nheaders = {'x-api-key': TRIPLEWHALE_API_KEY, 'Content-Type': 'application/json'}"
+  },
+  "rate_limits": {
+    "per_second": 5,
+    "per_hour": null,
+    "scope": "per_shop",
+    "backoff_on_429": "exponential"
+  },
+  "operations": [
+    {
+      "name": "get_summary",
+      "description": "Pull blended performance summary (revenue, spend, ROAS, CAC, LTV)",
+      "endpoint_or_method": "POST /api/v2/tw-metrics/metrics-data",
+      "example": "{ shop: 'shop.myshopify.com', start: '2026-04-01', end: '2026-04-30', metrics: ['ad_spend','revenue','cpa','blended_roas'] }",
+      "notes": "Blended attribution model includes all paid + organic + email."
+    },
+    {
+      "name": "get_creative_breakdown",
+      "description": "Pull creative-level performance with attributed orders",
+      "endpoint_or_method": "POST /api/v2/willy/creatives",
+      "example": "{ shop: 'shop.myshopify.com', start, end, source: 'meta' }",
+      "notes": "Attribution model configured at TW level (default last-click vs custom)."
+    }
+  ],
+  "naming_conventions": {
+    "ad_naming_alignment": "Aligned with Meta/TikTok ad naming. TripleWhale parses UTMs to attribute."
+  },
+  "known_limitations": [
+    "Attribution accuracy depends on TripleWhale Pixel install + UTM consistency.",
+    "Blended metrics require all paid channels connected to TW.",
+    "Cohort analyses limited to TW UI ; API exposes only summarized data."
+  ],
+  "learned_rules": [
+    "Cross-check TW spend with native Meta/Google reports (often ~5% delta due to attribution windows).",
+    "Use TW for blended view, native platform APIs for granular adset/ad analysis.",
+    "Cache responses 1h minimum (TW data updates hourly, not real-time)."
+  ]
+}

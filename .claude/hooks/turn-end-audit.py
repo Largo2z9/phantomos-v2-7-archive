@@ -12,7 +12,7 @@ Audits:
 2. Narrative claims about entity fields (spec.json, offers.json, profile.json,
    brand.json, compliance_gap, flagged CRITICAL, etc.) without a recent
    coherence_check event in `.phantom/context-engine-events.jsonl`. The class
-   of bug caught on Nooance: agent said "I flagged compliance_gap CRITICAL"
+   of bug caught on a beauty pilot test: agent said "I flagged compliance_gap CRITICAL"
    while the field was {}.
 
 Writes:

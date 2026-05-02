@@ -1,0 +1,67 @@
+{
+  "_schema": "convention",
+  "_version": "1.0",
+  "_field_types": {
+    "meta.*": "observed",
+    "access.*": "observed",
+    "operations[].*": "structured",
+    "known_limitations[]": "observed",
+    "learned_rules[]": "observed"
+  },
+  "meta": {
+    "platform": "GA4",
+    "category": "analytics",
+    "api_version": "v1beta",
+    "documentation_url": "https://developers.google.com/analytics/devguides/reporting/data/v1",
+    "last_updated": ""
+  },
+  "access": {
+    "method": "api_rest",
+    "credentials_location": "brand",
+    "credential_keys": [
+      "GA4_PROPERTY_ID",
+      "GA4_SERVICE_ACCOUNT_KEY_PATH"
+    ],
+    "oauth_scopes_required": ["https://www.googleapis.com/auth/analytics.readonly"],
+    "loading_pattern": "from google.analytics.data_v1beta import BetaAnalyticsDataClient\nclient = BetaAnalyticsDataClient.from_service_account_json(GA4_SERVICE_ACCOUNT_KEY_PATH)"
+  },
+  "rate_limits": {
+    "per_second": null,
+    "per_hour": null,
+    "per_day": 50000,
+    "scope": "per_property",
+    "burst_strategy": "token_bucket",
+    "backoff_on_429": "exponential"
+  },
+  "operations": [
+    {
+      "name": "run_report",
+      "description": "Pull dimensional + metric data from GA4",
+      "endpoint_or_method": "BetaAnalyticsDataClient.run_report",
+      "example": "RunReportRequest(property='properties/{id}', dimensions=[Dimension(name='date'), Dimension(name='source')], metrics=[Metric(name='sessions'), Metric(name='conversions')], date_ranges=[DateRange(start_date='7daysAgo', end_date='today')])",
+      "notes": "Property ID format : 'properties/123456789' or just '123456789'. Service account needs Viewer role on the property."
+    },
+    {
+      "name": "run_realtime_report",
+      "description": "Pull live data (last 30 minutes)",
+      "endpoint_or_method": "BetaAnalyticsDataClient.run_realtime_report",
+      "example": "RunRealtimeReportRequest(property='properties/{id}', dimensions=[Dimension(name='unifiedScreenName')], metrics=[Metric(name='activeUsers')])",
+      "notes": "Useful for live campaign monitoring. Limited dimensions vs run_report."
+    }
+  ],
+  "naming_conventions": {
+    "event_naming": "snake_case (purchase, add_to_cart, view_item)",
+    "custom_dimension_pattern": "cd_{name}",
+    "utm_recommended": "utm_source=meta&utm_medium=paid&utm_campaign={campaign_name}&utm_content={ad_name}"
+  },
+  "known_limitations": [
+    "Quota daily applies per property + per service account.",
+    "Custom dimensions limited (50 user-scoped, 50 event-scoped).",
+    "Data freshness : up to 24h for some reports, < 1h for most."
+  ],
+  "learned_rules": [
+    "Always cache reports (15 min TTL minimum) to spare quota.",
+    "Use currency_code dimension if multi-currency property.",
+    "Filter by date_ranges always, never pull all-time without explicit need."
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "_schema": "convention",
+  "_version": "1.0",
+  "_field_types": {
+    "meta.*": "observed",
+    "access.*": "observed",
+    "operations[].*": "structured",
+    "naming_conventions.*": "structured",
+    "known_limitations[]": "observed",
+    "learned_rules[]": "observed"
+  },
+  "meta": {
+    "platform": "Shopify",
+    "category": "ecommerce",
+    "api_version": "2024-10",
+    "documentation_url": "https://shopify.dev/docs/api/admin-graphql",
+    "last_updated": ""
+  },
+  "access": {
+    "method": "api_rest",
+    "credentials_location": "brand",
+    "credential_keys": [
+      "SHOPIFY_STORE_DOMAIN",
+      "SHOPIFY_ADMIN_API_TOKEN",
+      "SHOPIFY_API_VERSION"
+    ],
+    "oauth_scopes_required": [
+      "read_products",
+      "read_orders",
+      "read_customers",
+      "write_products",
+      "write_themes"
+    ],
+    "loading_pattern": "import shopify\nshop_url = f\"https://{SHOPIFY_STORE_DOMAIN}/admin/api/{SHOPIFY_API_VERSION}\"\nshopify.ShopifyResource.activate_session(shopify.Session(shop_url, SHOPIFY_API_VERSION, SHOPIFY_ADMIN_API_TOKEN))"
+  },
+  "rate_limits": {
+    "per_second": 2,
+    "per_hour": null,
+    "scope": "per_store",
+    "burst_strategy": "leaky_bucket (40 req capacity, 2/s leak)",
+    "backoff_on_429": "exponential",
+    "monitoring_endpoint": "X-Shopify-Shop-Api-Call-Limit response header"
+  },
+  "operations": [
+    {
+      "name": "list_products",
+      "description": "List all products in the store",
+      "endpoint_or_method": "GET /admin/api/{version}/products.json",
+      "example": "?limit=250&fields=id,title,handle,variants",
+      "notes": "Pagination via Link header (next/previous). Max 250 per page."
+    },
+    {
+      "name": "list_orders",
+      "description": "List orders (with financial / fulfillment status)",
+      "endpoint_or_method": "GET /admin/api/{version}/orders.json",
+      "example": "?status=any&financial_status=paid&created_at_min=2026-01-01&limit=250",
+      "notes": "Default returns only open orders. Use status=any for closed too."
+    },
+    {
+      "name": "create_page",
+      "description": "Create a content page (LP)",
+      "endpoint_or_method": "POST /admin/api/{version}/pages.json",
+      "example": "{ page: { title: 'LP-Stack-Pense', body_html: '<html>...</html>', published: false } }",
+      "notes": "Always create published: false initially. Verify URL after creation."
+    }
+  ],
+  "naming_conventions": {
+    "lp_handle_pattern": "lp-{theme-slug}",
+    "lp_examples": ["lp-stack-pense", "lp-routine-matin"],
+    "product_handle_pattern": "{slug-product}",
+    "discount_code_pattern": "{CAMPAIGN}-{SUFFIX}"
+  },
+  "known_limitations": [
+    "Theme edits via Admin API require write_themes scope, not granted by default.",
+    "Webhooks require ngrok or production URL (not localhost) to register.",
+    "GraphQL Admin API has different rate limits (cost-based) than REST."
+  ],
+  "learned_rules": [
+    "For high-volume reads, prefer GraphQL bulk operations (asynchronous, cheap).",
+    "Always pass api_version explicitly ; default version drift can break code.",
+    "Discount codes : use Admin API for bulk creation, Shopify Admin UI doesn't scale."
+  ]
+}

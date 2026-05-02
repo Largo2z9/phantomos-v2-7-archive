@@ -3,18 +3,14 @@ name: query-context
 type: curator
 version: "1.1.0"
 recommended_model: haiku
+reasoning_pattern: null
 description: >
   Reads the workspace KB and returns relevant resources for agent consumption.
   Covers shared resources (Ressources/), single brand context (brands/{slug}/),
   and cross-brand queries (all brands).
   Read-only — never modifies files.
-  Triggers: "trouve", "cherche", "quel [type]", "donne-moi", "montre-moi",
-  "qu'est-ce qu'on a sur", "quels frameworks", "quel routing pour",
-  "contexte brand [slug]", "profile audience [slug]",
-  "compare [brand1] vs [brand2]", "quelles brands ont...", "cross-brand",
-  "toutes les brands", "all brands".
-  EN: "find", "get", "what do we have on", "show me", "lookup", "fetch context",
-  "compare brands", "which brands have", "across all brands".
+  FR: "trouve" "cherche" "donne-moi" "montre-moi" "qu'est-ce qu'on a sur" "quels frameworks" "quel routing pour" "contexte brand" "compare brands" "toutes les brands" "cross-brand".
+  EN: "find" "get" "what do we have on" "show me" "lookup" "fetch context" "compare brands" "which brands have" "across all brands".
 permissions:
   reads: [brand, product, offer, profile, learning, strategy]
   writes: []

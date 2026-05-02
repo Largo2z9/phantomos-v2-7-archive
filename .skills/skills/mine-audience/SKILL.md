@@ -4,6 +4,7 @@ type: producer
 version: "1.0.0"
 agent_id: mine-audience@v1.0
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Mine voice-of-market from Reddit, Trustpilot, and Meta Ads Library for a product+brand pair.
   Identify candidate audience segments and propose enrichments to profile.json (psychology, voice, pain_points, objections).
@@ -17,6 +18,9 @@ permissions:
 pipeline:
   preconditions: "brand.json and spec.json must exist for the product being analyzed"
   postconditions: "run score-product-fit to evaluate fit between discovered audiences and product"
+disambiguates_against:
+  mine-voc: "route to mine-voc when the goal is the existing customer voice on THIS brand (Trustpilot, Judge.me, brand reviews) — mine-audience is upstream, exploring who the audiences are at the product/segment level"
+  mine-vom: "route to mine-vom when the goal is the broader market voice (competitors' customers, niche communities) — mine-audience focuses on segment discovery and audience proposals for a specific product"
 ---
 
 ## Tone

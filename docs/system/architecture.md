@@ -129,6 +129,8 @@ Note: pre-v2.1 archives may still use the legacy labels `raw` (→ `observed`) a
 - `_field_types` uses glob patterns (`identity.*`, `market.competitors[].name`).
 - Validate skill checks _field_types consistency (check 11b).
 
+**Canon + binary decision tests + examples** : `docs/system/field-types.md`.
+
 ## Data Nature: Reference vs Production
 
 | | Reference | Production |

@@ -1,0 +1,75 @@
+{
+  "_schema": "https://phantomos.ai/schemas/severity-canon/v1.0",
+  "_version": "1.0.0",
+  "_field_types": {
+    "_schema": "structured",
+    "_version": "structured",
+    "severity_levels": "declared",
+    "sourcing_tags": "declared",
+    "canon_origin_tags": "declared"
+  },
+
+  "severity_levels": {
+    "BLOCKER": {
+      "description": "Refuse-to-ship. Hard violation of an invariant. Must be fixed before output reaches the operator.",
+      "examples": [
+        "Soph 5 audience + explicit subtlety mode",
+        "Generating mode cell with no verbatim anchor and no breakthrough flag",
+        "Mutation gate bypass attempted (Edit/Write on brand JSON)"
+      ]
+    },
+    "MAJOR": {
+      "description": "Surface to operator with explicit flag. Output may ship but operator must see the issue and choose to override.",
+      "examples": [
+        "Voice consistency cross-block drift (persona varies > 1 step)",
+        "Emotional diversity collapse (top N angles all same emotional driver)",
+        "Audit-pass score >= 9 without market validation"
+      ]
+    },
+    "MINOR": {
+      "description": "Log to backlog. Do not surface to operator unless cumulative pattern detected. Cosmetic or stylistic deviation.",
+      "examples": [
+        "Lexical register slightly off canonical brand voice",
+        "Cell sourcing tag missing but inferable from context"
+      ]
+    }
+  },
+
+  "sourcing_tags": {
+    "observed": "Scraped literally from the source (web page, API response, customer voice). High confidence.",
+    "stated": "Declared by the operator or an authoritative source. Authoritative confidence within scope.",
+    "structured": "Computed by deterministic function over observed/stated inputs. Reproducible.",
+    "derived": "Inferred by model reasoning over inputs. Hypothesis confidence — must be validated before treating as canonical."
+  },
+
+  "operator_facing_translation": {
+    "observed": "observé",
+    "stated": "déclaré",
+    "structured": "calculé",
+    "derived": "déduit"
+  },
+
+  "canon_origin_tags": {
+    "canon_ref": "References a canonical literature ID (e.g. BA-002, INF-006, HOR-001, Porter, Christensen). Authoritative.",
+    "derived": "Skill-author derived with explicit reasoning. Lower trust than canon_ref. Must carry derivation rationale."
+  },
+
+  "consumers": [
+    "skills/analyze-copy",
+    "skills/audit-meta-setup",
+    "skills/validate-resources",
+    "frameworks/compatibility-rules.json",
+    "frameworks/paid-angle-scoring-weights.json"
+  ],
+
+  "deprecation_table": {},
+
+  "_change_log": [
+    {
+      "version": "1.0.0",
+      "date": "2026-04-26",
+      "session": "S44",
+      "change": "Initial centralization. Previously scattered across analyze-copy SKILL.md, validate-resources, compatibility-rules.json. Operationalizes architectural invariants from internal canon."
+    }
+  ]
+}

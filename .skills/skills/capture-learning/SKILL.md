@@ -3,11 +3,12 @@ name: capture-learning
 type: capturer
 version: "1.0.0"
 recommended_model: haiku
+reasoning_pattern: null
 description: >
   Quick append of a single operational learning to learnings.json.
   Low friction — no full ingest ceremony.
-  Triggers: "capture ce learning", "note ça", "retiens que", "ajoute dans les learnings",
-  "on a découvert que", "capture learning", "remember that", "note this".
+  FR: "capture ce learning" "note ça" "retiens que" "ajoute dans les learnings" "on a découvert que" "garde en tête".
+  EN: "capture learning" "remember that" "note this" "save this learning" "log this insight".
 permissions:
   reads: [brand]
   writes: [learning]

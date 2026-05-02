@@ -1,0 +1,75 @@
+{
+  "_schema": "convention",
+  "_version": "1.0",
+  "_field_types": {
+    "meta.*": "observed",
+    "access.*": "observed",
+    "operations[].*": "structured",
+    "naming_conventions.*": "structured",
+    "known_limitations[]": "observed",
+    "learned_rules[]": "observed"
+  },
+  "meta": {
+    "platform": "Google Ads",
+    "category": "paid_media",
+    "api_version": "v18",
+    "documentation_url": "https://developers.google.com/google-ads/api/docs/start",
+    "last_updated": ""
+  },
+  "access": {
+    "method": "api_rest",
+    "credentials_location": "brand",
+    "credential_keys": [
+      "GOOGLE_ADS_DEVELOPER_TOKEN",
+      "GOOGLE_ADS_CLIENT_ID",
+      "GOOGLE_ADS_CLIENT_SECRET",
+      "GOOGLE_ADS_REFRESH_TOKEN",
+      "GOOGLE_ADS_LOGIN_CUSTOMER_ID",
+      "GOOGLE_ADS_CUSTOMER_ID"
+    ],
+    "oauth_scopes_required": ["https://www.googleapis.com/auth/adwords"],
+    "app_review_required": true,
+    "loading_pattern": "from google.ads.googleads.client import GoogleAdsClient\nclient = GoogleAdsClient.load_from_storage('credentials.env')"
+  },
+  "rate_limits": {
+    "per_second": null,
+    "per_hour": null,
+    "per_day": 15000,
+    "scope": "per_developer_token",
+    "burst_strategy": "queries_per_dev_token",
+    "backoff_on_429": "exponential",
+    "monitoring_endpoint": "GoogleAdsService.Search response.rate_limit"
+  },
+  "operations": [
+    {
+      "name": "search_query",
+      "description": "Pull data via Google Ads Query Language (GAQL)",
+      "endpoint_or_method": "GoogleAdsService.SearchStream",
+      "example": "SELECT campaign.id, campaign.name, metrics.cost_micros, metrics.conversions FROM campaign WHERE segments.date DURING LAST_7_DAYS",
+      "notes": "cost_micros = cost in micro-units (divide by 1M for currency)."
+    },
+    {
+      "name": "create_campaign",
+      "description": "Create a Performance Max or Search campaign",
+      "endpoint_or_method": "CampaignService.Mutate",
+      "example": "advertising_channel_type=PERFORMANCE_MAX, status=PAUSED, bidding_strategy=MAXIMIZE_CONVERSION_VALUE",
+      "notes": "Always create PAUSED. Performance Max requires asset groups (not ad groups)."
+    }
+  ],
+  "naming_conventions": {
+    "campaign_pattern": "{LANG}-{Type}-{Objective}",
+    "campaign_examples": ["FR-PMAX-Sales", "FR-Search-Brand", "FR-Display-Retarget"],
+    "asset_group_pattern": "{LANG}-{Theme}",
+    "separator_rules": "Tiret (-) séparateur."
+  },
+  "known_limitations": [
+    "Developer token requires Google approval (basic vs standard tier).",
+    "Customer ID format strict : XXX-XXX-XXXX (with dashes for display, no dashes for API).",
+    "PMAX assets cannot be edited after asset group creation, only added."
+  ],
+  "learned_rules": [
+    "Always test with --dry-run before mutate operations.",
+    "Conversion uploads via OfflineUserDataJobService for server-side tracking.",
+    "Use cost_micros throughout, format display only at output."
+  ]
+}

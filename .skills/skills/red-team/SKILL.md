@@ -3,6 +3,7 @@ name: red-team
 type: orchestrator
 version: "1.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Multi-expert adversarial audit on any artifact: document, plan, strategy, feed, brief,
   audit report, skill, workspace structure, code, dashboard. Composes 5-6 experts
@@ -18,7 +19,7 @@ permissions:
   reads: [brand, product, offer, profile, learning, strategy]
   writes: [learning]
   mode: proposed
-  subagent_safe: false   # the skill is the panel chairman, it orchestrates
+  subagent_safe: false
 pipeline:
   preconditions: operator provides an artifact to audit (document, plan, brief, strategy, skill, etc.)
   postconditions: |

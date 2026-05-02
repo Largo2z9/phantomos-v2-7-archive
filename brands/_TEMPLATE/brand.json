@@ -49,7 +49,9 @@
     "audiences_index[].slug": "structured",
     "audiences_index[].scope": "structured",
     "audiences_index[].parent_slug": "structured",
-    "audiences_index[].validation_status": "structured"
+    "audiences_index[].validation_status": "structured",
+    "meta.*": "structured",
+    "audiences_index": "structured"
   },
   "meta": {
     "name": "Example Brand",

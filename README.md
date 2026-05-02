@@ -1,46 +1,67 @@
 # PhantomOS
 
-PhantomOS is a workspace where everything about your brand lives in one place and an agent operates on it every session. One workspace per brand, one Agent Contract per workspace. You tell the system something once and it keeps it, so you stop re-briefing the same brand, tone, audience, and offers every time you open a new chat.
+PhantomOS is the agentic workspace for DTC paid acquisition operators. The methodology is encoded once (audiences, angles, creatives, offers, learnings) and the agent operates on it across every session, every brand, every channel. Context lives in the workspace, not in chat threads. Intelligence compounds with use.
 
-Built for operators who run their own business. Not a chatbot with memory. Your brand context lives in this workspace, read by your agent before every response. Corrections you make along the way also become rules applied next time, which compounds over sessions. But the first-day value is simpler than that: you stop restarting from zero.
+The system targets operators whose paid acquisition is a craft : DTC brand founders past month 6, growth leads at agencies running multiple DTC clients, solo operators spending most of their time on Meta, TikTok, and Google Ads. It is not a chatbot with memory : the operator's context is read from the workspace before every agent response.
 
-**Best fit.** Solo operators with a portfolio of 1 to 8 brands. Senior consultants and service businesses. DTC operators past month 6. Coaches and experts who productize knowledge. **Conditional fit.** Early-stage founders between month 3 and 12, and small teams of 2 to 4 operators. **Not fit today.** Enterprise agencies with 5+ people on shared client accounts, pre-traction founders in the first two months, and performance creators focused on volume and distribution. Full honest audit in [`docs/product/fit.md`](docs/product/fit.md).
+The product is the workspace plus the DTC paid kit. PhantomOS ships with the full DTC paid acquisition kit : angles library, creative mechanics, proof types, audience encoding patterns, advertorial LP frameworks, hook formulas. Day-1 operational on a first brand, no encoding from scratch required. The platform itself is extensible if operating outside DTC, but the kit shipped today is optimized for DTC paid.
+
+**Best fit.** DTC brand founders past month 6 with stable ROAS. Growth leads at agencies running 3 to 15 DTC accounts. Solo operators productizing their paid acquisition methodology. **Conditional fit.** DTC operators month 3 to 6 (still finding what works), small DTC teams of 2 to 4. **Not fit today.** Pre-traction founders, info-products, B2B services, agencies focused on social organic, performance creators focused on volume. Full honest audit in [`docs/product/fit.md`](docs/product/fit.md).
 
 ## Requirements
 
-PhantomOS runs inside [Claude Code](https://claude.ai/code), the Anthropic CLI (not the web chat). Not ChatGPT, not Cursor — the agent needs filesystem access to read and write the workspace without intermediaries, and CLAUDE.md auto-injection is what loads its contracts. A Claude Pro, Team, or Max subscription is required; files stay on your machine, the agent calls the Anthropic API for inference.
+PhantomOS runs inside [Claude Code](https://claude.ai/code), the Anthropic CLI. Not ChatGPT, not Cursor : the agent needs filesystem access to read and write the workspace. A Claude Pro, Team, or Max subscription is required ; files stay on the operator's machine, the agent calls the Anthropic API for inference.
 
 ## First steps
 
-From an empty clone to a first skill run: about fifteen minutes.
+From an empty clone to a first asset shipped : about thirty minutes.
 
-1. **Open the workspace in Claude Code.** Open the root folder, not a subfolder — the agent needs the whole tree to load its contracts.
-2. **Say hi.** On first run, the agent detects no brand is configured and starts onboarding. It asks your comfort level with AI and calibrates from there.
-3. **Drop a brand URL.** The agent scans for 3 to 5 minutes, pre-fills your brand at roughly 60% of Level 1 completeness, hands back for validation.
+1. **Open the workspace in Claude Code.** Open the root folder, not a subfolder.
+2. **Say hi.** On first run, the agent detects no brand is configured and starts onboarding. It asks the operator's DTC stack (Shopify, Klaviyo, Meta, TikTok, Google) and seniority on paid.
+3. **Drop the brand URL.** The agent scans for 3 to 5 minutes, pre-fills the brand at roughly 60% of Level 1 completeness, hands back for validation.
+4. **Connect the sources.** Meta Ads, TikTok Ads, Google Ads, Shopify, Klaviyo, GA4 : connect on demand as needed.
+5. **Run the first skill** : `audit-meta-setup` for a concrete setup diagnostic, or `produce-paid-angles` to generate a first angle batch from the encoded audiences.
 
-No package to install, no config to write. Everything ships in this repo.
-
-Nothing here is one-shot. You can stop mid-setup and come back tomorrow — everything you've told the agent stays. The workspace grows at your pace, not in a single sitting.
+No package to install. Everything ships in this repo. Sessions can stop mid-setup and resume the next day. Nothing told to the agent is lost.
 
 ## What lives here
 
-- **`CLAUDE.md`** — root Agent Contract. Auto-loaded every session.
-- **`WELCOME.md`** — first-run onboarding script. Agent-facing, read once before your first brand exists.
-- **`brands/`** — one folder per brand. Six versioned entities each: brand, product, offer, audience, learnings, strategy.
-- **`resources/`** — shared library across brands: frameworks, angles, platform conventions, templates.
-- **`.skills/skills/`** — executable capabilities the agent triggers on context.
-- **`docs/`** — product, vision, and system docs. Start at `docs/README.md`.
-- **`CHANGELOG.md`** — version history.
+- **`CLAUDE.md`** : root agent contract. Auto-loaded every session.
+- **`lexicon.md`** : vocabulary used in this workspace. 13 operator-facing terms.
+- **`brands/`** : one folder per brand operated. Encoded knowledge per brand.
+- **`resources/`** : shared library across brands. Frameworks, angles, creative mechanics, platform conventions.
+- **`.skills/skills/`** : executable capabilities the agent triggers on context.
+- **`docs/`** : product, vision, system docs. Start at `docs/README.md`.
+- **`CHANGELOG.md`** : version history.
 
-External tools (Meta, Shopify, Klaviyo, Google Calendar, Notion, ClickUp) connect on demand when a skill needs them. No continuous sync.
+External tools (Meta Ads, TikTok Ads, Google Ads, Shopify, Klaviyo, GA4, TripleWhale) connect on demand when a skill needs them. No continuous sync.
 
 ## The one rule
 
-You never touch a file. You talk, the agent writes. If something is wrong, say *"fix X on my brand"* — the agent records the change and keeps a trace.
+The operator guides the agent through language. The agent handles file operations internally ; results are surfaced, not the mechanics. If something is wrong, *"fix X on the brand"* records the change with a trace.
+
+## Install Claude Code (one-time)
+
+```
+npm install -g @anthropic-ai/claude-code
+```
+
+Then `cd` into this folder and run `claude`. Auth on first launch.
+
+## Updates
+
+PhantomOS ships incremental releases. When a new version is available, a direct notification is sent with a one-line summary. To install :
+
+1. `git pull` (if cloned from git) or rsync the new template files into the workspace folder.
+2. In Claude Code, *"update workspace"*. The `update-workspace` skill reads installed version vs target, applies every change.
+
+Operator data is preserved end-to-end : brand folders, operator settings, credentials, learnings. Only template files (skills, docs, schemas) are updated.
+
+Detail per release : `docs/releases/{version}-manifest.json`. Human-readable history : `CHANGELOG.md`.
 
 ## Going further
 
-- **To use PhantomOS** → `docs/product/getting-started.md`
-- **To understand what it is** → `docs/vision/prisms.md`
-- **To extend it** → `docs/system/README.md`
-- At any moment in a session, type `?` or `skills` — the agent pulls the right section from `docs/product/capabilities.md`.
+- **To use PhantomOS on a DTC brand** → `docs/product/getting-started.md`
+- **To understand the architecture** → `docs/vision/prisms.md`
+- **To extend it for non-DTC use cases** → `docs/system/README.md`
+- At any moment in a session, type `?` or `skills`. The agent pulls the right section from `docs/product/capabilities.md`.

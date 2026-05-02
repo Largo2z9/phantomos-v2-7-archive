@@ -3,12 +3,15 @@ name: register-and-flag
 type: curator
 version: "1.0.0"
 recommended_model: haiku
+reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Registers a newly scaffolded custom entity in
   `index.json → extensions[]` and adds a tracking entry to `brands/{slug}/todos.md`.
   Sidecars are skipped (convention-discovered, not indexed). Final step of the orchestrator
   pipeline before operator-facing confirmation.
   Invoked by scaffold-extension Phase 9.
+  FR: "register cette extension" "enregistre dans l'index" "flag pour adoption".
+  EN: "register extension" "register in index" "flag for adoption".
 permissions:
   reads: [index, brand]
   writes: [index, brand.todos]

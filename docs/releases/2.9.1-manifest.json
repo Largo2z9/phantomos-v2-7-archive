@@ -1,0 +1,28 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.9.1",
+  "released_at": "2026-04-25",
+  "compatible_from": "2.0.0",
+  "theme": "Trigger format FR:/EN: in 4 deepening skills (manifest discovery fix)",
+  "summary": "Manifest builder regex expects 'FR:' / 'EN:' delimiters in skill description for trigger extraction. Initial v2.9.0 ship used 'FR triggers:' / 'EN triggers:' which did not parse. Result: 4 skills had empty triggers in the manifest, breaking trigger-based skill discovery. Patched mine-voc, mine-vom, study-niche-marketdeepdive, deepen-brand-context. cross-deepening-signals already correct (no triggers, sub-skill operator_facing: false). Manifest regenerated, triggers now extracted correctly.",
+  "changes": [
+    {"path": ".skills/skills/mine-voc/SKILL.md", "kind": "edit", "reason": "Trigger delimiter format: 'FR:' / 'EN:' instead of 'FR triggers:' / 'EN triggers:'."},
+    {"path": ".skills/skills/mine-vom/SKILL.md", "kind": "edit", "reason": "Same."},
+    {"path": ".skills/skills/study-niche-marketdeepdive/SKILL.md", "kind": "edit", "reason": "Same."},
+    {"path": ".skills/skills/deepen-brand-context/SKILL.md", "kind": "edit", "reason": "Same."},
+    {"path": ".skills/_manifest.json", "kind": "edit", "reason": "Regenerated post-fix. Triggers now populated for the 4 deepening skills."},
+    {"path": "CHANGELOG.md", "kind": "edit", "reason": "v2.9.1 entry."},
+    {"path": "_version.json", "kind": "edit", "reason": "Bump to 2.9.1."}
+  ],
+  "migrations_required": false,
+  "breaking_changes": false,
+  "operator_impact": "Trigger-based discovery now works for the 4 deepening skills. Operator phrases like 'mine voc' / 'creuse la voix client' / 'deep-dive niche' route correctly.",
+  "tested_on": [
+    "Manifest regenerated, triggers field non-empty for all 4 patched skills",
+    "phantom-stress sync"
+  ],
+  "caught_by": "Manifest review post-v2.9.0 — 4 skills had empty trigger arrays.",
+  "known_gaps": [
+    "Manifest builder regex format (FR:/EN:) is implicit — not enforced by validate-resources. A future hardening could refuse SKILL.md with non-conformant trigger format."
+  ]
+}

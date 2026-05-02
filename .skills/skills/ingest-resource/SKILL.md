@@ -3,13 +3,13 @@ name: ingest-resource
 type: curator
 version: "1.1.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Ingests raw content (notes, articles, transcripts, existing files, copy-paste),
   classifies into typed JSON resources OR brand context, writes to the correct folder,
   and updates the central index. Fully autonomous — no operator confirmation required.
-  Triggers: "ingest", "ingère ça", "ajoute cette ressource", "range ça",
-  "transforme en ressource", or any raw content + "mets ça dans la KB".
-  EN: "ingest", "add resource", "store this", "add to KB".
+  FR: "ingest" "ingère ça" "ajoute cette ressource" "range ça" "transforme en ressource" "mets ça dans la KB" "digère ce doc" "ajoute ces données".
+  EN: "ingest" "add resource" "store this" "add to KB" "digest this" "add this data".
 permissions:
   reads: [brand, product, profile]
   writes: [brand, product, profile, learning]

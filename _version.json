@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.7.0",
-  "released_at": "2026-04-24",
+  "template_version": "2.12.0",
+  "released_at": "2026-05-02",
   "compatible_from": "2.0.0",
-  "summary": "Enforcement layer — three SKILL.md instructions graduate to hook-enforced guards: (1) brand status auto-refreshed after every write via PostToolUse, (2) em-dash occurrences in operator replies audited via Stop, (3) entity-field claims without a recent coherence_check flagged via Stop. Plus refresh-brand-status.py primitive.",
-  "manifest": "docs/releases/2.7.0-manifest.json"
+  "summary": "New builder skill `connect-cockpit`. Branche une marque au dashboard cockpit Abyss via POST /api/operator/onboard-brand server-side. Provisionne Airbyte sources + Supabase rows pour 6 platforms (Shopify, Meta, TikTok, Snap, GA4, Google Ads bloque dev token). Subflow guided one-question-per-turn, runs apres setup-brand, complementaire a onboard-brand.",
+  "manifest": "docs/releases/2.12.0-manifest.json"
 }

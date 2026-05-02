@@ -3,6 +3,7 @@ name: scaffold-skill-stub
 type: builder
 version: "1.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Generates a SKILL.md stub in `.skills/skills/custom/{name}/`
   for a skill that populates or queries a newly scaffolded extension. Writes into the meta-OS
@@ -10,6 +11,8 @@ description: >
   intent includes a custom skill. The stub body is skeletal; the operator fills in execution
   logic afterward or delegates to build-agent for deeper buildout.
   Invoked by scaffold-extension Phase 8.
+  FR: "scaffold un skill stub" "génère le stub du skill" "crée le squelette du skill".
+  EN: "scaffold skill stub" "generate skill stub" "create skill skeleton".
 permissions:
   reads: [resource, brand]
   writes: [skill.custom]

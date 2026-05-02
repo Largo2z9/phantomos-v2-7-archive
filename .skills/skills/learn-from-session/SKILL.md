@@ -3,11 +3,12 @@ name: learn-from-session
 type: capturer
 version: "1.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Extracts and persists knowledge acquired during a session. Scans the conversation,
   identifies what was learned/decided/corrected, and routes to the right files.
   Two trigger modes:
-  1. EXPLICIT — Triggers: "learn", "session close", "persist", "fin de session", "enregistre ce qu'on a fait", "save session". EN: "learn", "session close", "persist", "save what we learned".
+  1. EXPLICIT — FR: "learn" "session close" "persist" "fin de session" "enregistre ce qu'on a fait" "save session" "mets à jour les docs" "persiste les learnings". EN: "learn" "session close" "persist" "save what we learned" "end of session" "wrap up".
   2. PROACTIVE — The agent detects ≥1 learning signal during the session (operator correction, API workaround, strategic decision, compliance rule) and proposes unprompted: "I've noted some things to persist. Want me to save them?" If confirmed → run this skill.
 permissions:
   reads: [brand, product, profile, learning, strategy]
@@ -491,3 +492,5 @@ Promote now, or wait for a 2nd occurrence on another brand?
 - **Novice education once per brand** — suppress on repeat calls
 - **Always show what was learned** — summary is mandatory, not optional
 - **If conflict detected** (two opposing facts/decisions), surface to user: "Decision X contradicts Y. Which version is correct?" — wait for clarification before writing
+- **Log runtime patterns observed during the session** — beyond business facts, capture *agent-side frictions* (recurring tool errors, schema enum rejections, hook refusals self-corrected, doctrine drift detected) as `category: "system_friction"` learnings when ≥2 occurrences in the session. Example: enum classifier `--source system` rejected 2× → log as `LRN-{n} category:system_friction fact:"agent attempted --source=system, classifier strict on agent/import/inference/operator/scrape, self-corrected to agent. If pattern persists across sessions, propose enum extension."`. These learnings feed system-wide doctrine maintenance, not brand-specific copy. Persisted at workspace-level if cross-brand pattern, brand-level if brand-specific.
+- **Append session journal entry to `operator/session-state.md`** when session produced significant artifacts (any `produced/*` file written, ≥2 learnings persisted, or operator confirmed strategic decision). Format: `## YYYY-MM-DD · {brand_slug or "cross-brand"}` heading + 3 sentences max — what was the session goal, what was produced, what's the next thread to pick up. Append-only, never edit prior entries. This is the *operator's navigation across sessions* — different from learnings (facts) and decisions (locked choices).

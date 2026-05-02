@@ -192,6 +192,36 @@ Run `python3 05-projects/context-engine/hygiene-audit.py`. Parasitic files, top-
 
 ---
 
+## Distribution to partners
+
+Once a release is tagged, partners running PhantomOS locally need a way to know an update is available and a one-line command to install it. The maintainer choice for v2.10.x:
+
+**Channel** — partners receive a single Slack DM (or email if no Slack) when a release ships. No mailing list, no auto-pull, no broadcast. The maintainer pings each partner directly. Manual but predictable.
+
+**Notification template (maintainer side):**
+
+> *PhantomOS v{X.Y.Z} dispo. Theme : {theme courte}.*
+> *Run `update-workspace` skill quand tu veux. Migration auto sur tes données. Breaking changes : {none / surfacés au lancement}.*
+> *Detail : `docs/releases/{version}-manifest.json` (lis-le si tu veux comprendre le diff avant de pull).*
+
+**Partner-side flow:**
+
+1. Receive notification.
+2. In their workspace: `git pull` (if cloned from a git remote) or rsync from the source if shared by file.
+3. In Claude Code: trigger `update-workspace` (FR: "mets à jour phantomOS" / EN: "update workspace").
+4. Skill reads `_version.json` (current installed) vs new `_version.json` (target), finds all manifests between, applies each by type, surfaces a plain-language recap. Partner data untouched.
+
+**What the partner does NOT need:**
+- Reading every CHANGELOG entry between their installed version and target — `update-workspace` summarizes
+- Manually running migration scripts — delegated to `migrate-workspace` automatically on schema-bump
+- Worrying about credentials.env or learnings.json — explicitly preserved (see § Template vs operator data above)
+
+**When a partner skips updates** (e.g. doesn't pull for 6 weeks): the next pull may bridge multiple releases. `update-workspace` handles N-step chained updates by reading all manifests in version order. No manual intermediate step required.
+
+**Auto-update at session start** — out of scope for v2.10.x. Considered, deferred (server infra needed, low ROI vs manual notif on a 5-50 partner cohort).
+
+---
+
 ## Related
 
 - `_version.json` — current template version registry.
@@ -199,4 +229,5 @@ Run `python3 05-projects/context-engine/hygiene-audit.py`. Parasitic files, top-
 - `infra/migrations/` — every schema migration script lives here.
 - `.skills/skills/update-workspace/SKILL.md` — the receiver's installer.
 - `.skills/skills/migrate-workspace/SKILL.md` — delegated schema migration.
+- `operator/installation.json` — partner-local version state (initialized at first install, updated on every successful update-workspace run).
 - `CHANGELOG.md` — human-readable companion to the machine manifests.

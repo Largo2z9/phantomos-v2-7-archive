@@ -1,0 +1,52 @@
+{
+  "_version": "1.0",
+  "_schema": "operator_contacts",
+  "_field_types": {
+    "full_name": "stated",
+    "primary_email": "stated",
+    "linkedin": "stated",
+    "context_anchor": "stated",
+    "tags": "stated",
+    "last_touch": "derived",
+    "touch_history": "observed",
+    "notes": "stated",
+    "brand_refs": "stated",
+    "activity_refs": "stated"
+  },
+  "meta": {
+    "slug": "marc-dubois",
+    "created_at": "2026-02-12T10:00:00Z",
+    "last_modified": "2026-04-22T16:45:00Z"
+  },
+  "full_name": "Marc Dubois",
+  "primary_email": "marc@example.com",
+  "primary_phone": null,
+  "linkedin": "https://linkedin.com/in/marc-dubois-example",
+  "context_anchor": "Rencontré il y a deux ans, on se voit régulièrement autour d'intérêts communs (lecture, randonnée), et on a déjà collaboré ponctuellement sur un projet.",
+  "tags": ["ami", "lecture", "randonnée", "paris", "projet-collab-passé"],
+  "last_touch": {
+    "observed_at": "2026-04-22T16:45:00Z",
+    "channel": "email",
+    "note": "discussion sur sa lecture en cours, propose une rando le mois prochain"
+  },
+  "touch_history": [
+    {
+      "observed_at": "2026-02-12T11:00:00Z",
+      "channel": "in_person",
+      "note": "première rencontre lors d'un événement"
+    },
+    {
+      "observed_at": "2026-03-08T14:00:00Z",
+      "channel": "call",
+      "note": "appel pour caler une collaboration ponctuelle"
+    },
+    {
+      "observed_at": "2026-04-22T16:45:00Z",
+      "channel": "email",
+      "note": "discussion sur sa lecture en cours, propose une rando le mois prochain"
+    }
+  ],
+  "notes": "Préfère async, répond toujours bien aux emails longs. Très à l'aise sur les sujets philo et littérature. Disponibilité variable.",
+  "brand_refs": [],
+  "activity_refs": []
+}

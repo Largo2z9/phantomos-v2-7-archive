@@ -3,6 +3,7 @@ name: build-agent
 type: builder
 version: "1.0.0"
 recommended_model: opus
+reasoning_pattern: null
 description: >
   Custom agent architect. From a fuzzy operator intent, maps the available ecosystem
   (Context Engine, MCP, existing skills, workspace knowledge), designs the full

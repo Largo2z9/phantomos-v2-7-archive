@@ -1,22 +1,27 @@
 ---
 name: scaffold-extension
 type: orchestrator
-version: "1.0.0"
+version: "1.1.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
-  Orchestrator for building a new extension in PhantomOS (custom entity, sidecar, or custom skill).
-  Composes nine single-responsibility sub-skills for intent capture, schema drafting, naming
-  validation, cross-reference checking, canon validation, file scaffolding, and index registration.
+  Orchestrator for building a new extension in PhantomOS at one of three scopes (brand, operator, workspace).
+  Custom entity, sidecar, or custom skill. The operator decides what mérite d'être encodé,
+  peu importe le domaine (pro, perso, famille, hobby, créatif, technique, peu importe).
+  Composes nine single-responsibility sub-skills for intent capture, scope detection, schema drafting,
+  naming validation, cross-reference checking, canon validation, file scaffolding, and index registration.
   Respects the three governance rules of the extension layer: declared schema, registered-or-discovered,
   README documenting purpose.
   Triggers:
     FR: "crée une extension", "ajoute un custom entity", "scaffold extension", "nouveau type de données",
-        "ajoute un sidecar", "track X cross sessions", "scaffold"
+        "ajoute un sidecar", "track X cross sessions", "scaffold", "extension operator", "extension brand",
+        "encoder X côté opérateur", "tracker X dans mon workspace"
     EN: "scaffold extension", "create custom entity", "new data type", "add sidecar",
-        "scaffold a tracker for X", "build extension"
+        "scaffold a tracker for X", "build extension", "operator extension", "brand extension",
+        "track X for myself", "encode X for me"
 permissions:
-  reads: [brand, resource, index]
-  writes: [brand.custom, brand.extensions, index, skill.custom, brand.todos]
+  reads: [brand, operator, resource, index]
+  writes: [brand.custom, brand.extensions, operator.extensions, operator.profile.extensions, resource.extensions, index, skill.custom, brand.todos, operator.todos]
   mode: direct
   subagent_safe: false
 pipeline:
@@ -26,9 +31,11 @@ pipeline:
 
 # Skill: Scaffold Extension
 
-Orchestrator for scaffolding a new extension in the workspace. Covers custom entities, sidecar schemas, and the optional custom skill stub that populates the entity. Composed of nine single-responsibility sub-skills executed in strict sequence, with operator-visible checkpoints between phases.
+Orchestrator for scaffolding a new extension in the workspace, at any of the three scopes (brand, operator, workspace). Covers custom entities, sidecar schemas, and the optional custom skill stub that populates the entity. Composed of nine single-responsibility sub-skills executed in strict sequence, with operator-visible checkpoints between phases.
 
-See `docs/system/extending.md` for the extension layer architecture. See `docs/system/patterns.md § Skill Taxonomy` for type definitions.
+The skill is **agnostic to the domain** of the extension. The operator decides what mérite d'être encodé : business spécifique à une marque, contacts globaux pro et perso, opportunités, prestataires (freelances, artisans, professionnels de santé), projets perso, domotique, suivi santé, lectures, hobbies, admin perso, n'importe quoi. Le système n'a aucune opinion sur la légitimité du domaine, il scaffolde la structure et l'agent compose dessus.
+
+See `docs/system/extending.md § Three scopes` for the extension layer architecture and the scope routing rules. See `docs/system/patterns.md § Skill Taxonomy` for type definitions.
 
 ---
 
@@ -59,23 +66,64 @@ Execute the nine sub-skills in order. After each phase, surface a one-line statu
 
 ### Phase 1 — `analyze-extension-intent`
 
-Capture the operator's intent. Classify: custom entity / sidecar / both / skill-only. Extract attributes: data shape (time-series / instance-per-item / aggregate), expected population mechanism (manual / scraper / derived), cross-references to core entities. Three focused questions maximum.
+Capture the operator's intent. Classify three dimensions :
 
-Output: structured intent object consumed by downstream phases.
+1. **Kind** : custom entity / sidecar / both / skill-only.
+2. **Scope** : brand (lié à une mission précise) / operator (transversal à l'opérateur, pro et perso confondus) / workspace (partagé cross-brand). Detect via natural cues :
+   - Brand-scope cues : *"sur Karacare"*, *"pour cette mission"*, *"dans cette marque"*, *"sur ce client"*, intent attaché à un brand_slug actif.
+   - Operator-scope cues : *"pour moi"*, *"mes contacts"*, *"ma domotique"*, *"mon suivi santé"*, *"mes lectures"*, *"mes prestataires globalement"*, *"mes projets perso"*, intent transversal à l'opérateur sans rattachement à une marque.
+   - Workspace-scope cues : *"partagé entre toutes mes marques"*, *"canon perso transversal"*, *"benchmark cross-client"*, intent partagé multi-brand.
+   - Ambiguous → AskUserQuestion 2-3 options binaires.
+3. **Attributes** : data shape (time-series / instance-per-item / aggregate), expected population mechanism (manual / scraper / derived), cross-references to other entities (core ou autres extensions, n'importe quel scope).
+
+Three focused questions maximum across all three dimensions.
+
+Output: structured intent object consumed by downstream phases. `scope` field locks the path routing for Phase 7 and the registration shape for Phase 9.
 
 ### Phase 2 — `check-existing-coverage`
 
-Run the pre-build analysis gate. Walks five dimensions in order: core entities, existing sidecars on the active brand, existing custom entities on the active brand, custom entities on sibling brands, shared resources. Returns a verdict :
+Run the pre-build analysis gate. Walks dimensions in order, scope-aware :
+
+- **All scopes** : core brand entities, shared resources, existing operator extensions, existing workspace extensions.
+- **Brand scope additionally** : existing sidecars on the active brand, existing custom entities on the active brand, custom entities on sibling brands.
+- **Operator scope additionally** : existing operator sidecars (`profile.extensions.json`).
+
+Returns a verdict :
 
 - `route-to-*` → scaffold halts. The main agent routes the operator to the existing structure. The new extension is not needed.
 - `partial-reuse` → scaffold proceeds but Phase 3 schema draft uses the matched references as `cross_refs` or ID pointers rather than duplicating fields.
 - `genuinely-new` → scaffold proceeds with full scope.
 
-Surface the verdict to the operator with the matched target (if any). Operator can override — force scaffold if they have a reason to duplicate — but the default is respect the gate.
+Cross-scope match awareness : if operator wants `vendors` in operator scope and `vendors` already exists at brand scope on a specific brand, the gate flags this as `partial-reuse` (operator scope is upstream, brand scope can reference operator scope by slug). Vice versa is also detected.
+
+Surface the verdict to the operator with the matched target (if any). Operator can override (force scaffold if they have a reason to duplicate) but the default is respect the gate.
+
+### Phase 2bis — `suggest-domain-canon` (conditional)
+
+**Triggered when** the new extension targets a domain whose canonical methodology is **not yet encoded** in `resources/frameworks/` (e.g. operator asks for an extension on CRO, lifecycle email retention, B2B sales discovery, content SEO methodology — but no `cro-canon.md`, `retention-canon.md`, etc. exists).
+
+**Why this phase exists.** The operator typically does not know the senior references of their own domain — they have a business need, not a bibliography. The agent's role is to identify the 2-3 most recognized canonical references for the domain, propose them as a default suggestion, and encode the canon itself. The operator must never be asked to name the canon — only to validate the agent's recommendation.
+
+**Mechanism.**
+
+1. Identify the domain underlying the operator's request (CRO, retention, sales discovery, etc.).
+2. Pre-select the 2-3 canonical references most recognized in that domain (book + author + framework name + year if relevant). Restrict to *referenced senior practitioners with published work* — not generic blog posts. Cross-check via `mine-vom` patterns or hard-coded domain registry if available.
+3. Surface to operator via **AskUserQuestion** with a default recommendation + 1 alternative + 1 escape hatch :
+   - **Option A (default, agent recommendation)** : *"For [domain], the canonical references are [Author 1] + [Author 2] + [Author 3]. We encode all three as the foundation."*
+   - **Option B (lighter scope)** : *"Just [Author 1] + [Author 2], skip the third."*
+   - **Option C (operator override)** : *"I have my own framework I want encoded instead."* — operator names their preferred reference.
+4. On validation, the agent fetches the publicly accessible material (book summaries, articles, talks, transcripts) via `WebFetch`, extracts the operable principles, structures them in `resources/frameworks/{domain}-canon.md` with traceable IDs (`AUTHOR-001` to `AUTHOR-N`).
+5. Operator validates the encoded canon at the end (3-movement prose synthesis) — never asked to source it.
+
+**Halt condition.** If the domain has no recognized canon (emerging field, niche too young), surface honestly : *"This domain doesn't have an established methodology yet. We'll capture your own observations as we go via `learnings.json` and matricize once a pattern emerges."* — fall back to capture-then-matricize, do not invent a canon.
+
+**Output:** `resources/frameworks/{domain}-canon.md` populated and versioned. Operator-facing surface confirms : *"Canon encoded with [N principles from authors]. Skill scaffold continues."*
+
+This phase is **mandatory** when canon is absent and the extension implies methodology-driven reasoning. It is **skipped** when (a) the canon already exists in `resources/frameworks/`, or (b) the extension is purely structural (data-shape only, no methodology underneath).
 
 ### Phase 3 — `propose-schema-draft`
 
-Generate a canon-compliant JSON Schema draft for the custom entity (or sidecar). Follows `_version`, `_schema`, `_field_types` conventions. Uses patterns from `resources/schemas/` as structural reference. Integrates the cross-references and reused banks identified in Phase 2.
+Generate a canon-compliant JSON Schema draft for the custom entity (or sidecar). Follows `_version`, `_schema`, `_field_types` conventions. Uses patterns from `resources/schemas/` as structural reference. Integrates the cross-references and reused banks identified in Phase 2 — and the canon encoded in Phase 2bis if applicable (axes drawn from canonical references, not invented).
 
 Operator sees the schema, approves or adjusts.
 
@@ -99,12 +147,24 @@ Halts on any schema canon violation.
 
 ### Phase 7 — `scaffold-entity-files`
 
-Write the physical files to disk via `.skills/write-to-context.py`:
+Write the physical files to disk via `.skills/write-to-context.py`. Path routing depends on scope :
+
+**Brand scope :**
 - `brands/{slug}/custom/{entity_type}/schema.json` (or `brands/{slug}/{entity}.extensions.json` for sidecar).
-- `brands/{slug}/custom/{entity_type}/README.md` (canonical structure: purpose, cross-refs, field conventions).
+- `brands/{slug}/custom/{entity_type}/README.md` (canonical structure : purpose, cross-refs, field conventions).
 - Empty or example instance file if requested.
 
-For sidecars, only the `.extensions.json` file is written (no README, no folder — sidecars are discovered by convention).
+**Operator scope :**
+- `operator/extensions/{entity_type}/schema.json` (or `operator/profile.extensions.json` for sidecar on profile).
+- `operator/extensions/{entity_type}/README.md`.
+- Empty or example instance file if requested.
+
+**Workspace scope :**
+- `resources/extensions/{entity_type}/schema.json`.
+- `resources/extensions/{entity_type}/README.md`.
+- Empty or example instance file if requested.
+
+For sidecars, only the `.extensions.json` file is written (no README, no folder, sidecars are discovered by convention).
 
 ### Phase 8 — `scaffold-skill-stub` (conditional)
 
@@ -114,9 +174,13 @@ Skipped if the operator does not need a populating skill (manual-only tracking, 
 
 ### Phase 9 — `register-and-flag`
 
-For custom entities: add an entry to `index.json → extensions[]` via `.skills/write-to-context.py`, with `type`, `scope`, `schema` path, `cross_refs`, `owner_skill`, `registered_at`. For sidecars: skip (sidecars are convention-discovered, not registered — see `docs/system/extending.md`).
+For custom entities : add an entry to `index.json → extensions[]` via `.skills/write-to-context.py`, with `type`, `scope` (brand|operator|workspace), `schema` path (resolved per scope), `cross_refs`, `owner_skill`, `registered_at`. For sidecars : skip (sidecars are convention-discovered, not registered, see `docs/system/extending.md`).
 
-Add a flag entry to `brands/{slug}/todos.md → ## In Progress` tracking the adoption of the new extension (first data capture, first query).
+Add a flag entry to track adoption of the new extension (first data capture, first query) :
+
+- **Brand scope** → `brands/{slug}/todos.md → ## In Progress`.
+- **Operator scope** → `operator/todos.md → ## In Progress` (if absent, scaffold the section).
+- **Workspace scope** → `todos.md` at workspace root, section dedicated to extension adoption.
 
 Auto-triggered `validate-resources` runs post-write via the mutation rule in root CLAUDE.md, covering checks 15-18. Silent unless MAJOR or CRITICAL.
 
@@ -124,9 +188,16 @@ Auto-triggered `validate-resources` runs post-write via the mutation rule in roo
 
 ## Output to operator
 
-After Phase 9 completes successfully, surface a concise recap in operator language:
+After Phase 9 completes successfully, surface a concise recap in operator language. Adapt phrasing to scope :
 
-> *"Ton `{type}` est prêt sur `{brand_slug}`. Forme validée. {N} champs, {N} références vers ton contexte existant. {Un petit skill '{name}' a été ajouté — tu le rempliras avec `build-agent` / à la main / je peux t'aider maintenant.} Tu peux commencer à l'utiliser en disant `{trigger phrase}`."*
+**Brand scope :**
+> *"Ton `{type}` est prêt sur `{brand_slug}`. Forme validée. {N} champs, {N} références vers ton contexte existant. {Un petit skill '{name}' a été ajouté, tu le rempliras avec `build-agent` ou à la main, je peux t'aider maintenant.} Tu peux commencer à l'utiliser en disant `{trigger phrase}`."*
+
+**Operator scope :**
+> *"Ton `{type}` est prêt côté opérateur, transversal à toutes tes missions. {N} champs, {N} références prêtes. Tu peux commencer à l'utiliser en disant `{trigger phrase}`."*
+
+**Workspace scope :**
+> *"Ton `{type}` est prêt en couche partagée, accessible à toutes tes marques. {N} champs, {N} références prêtes. Tu peux commencer à l'utiliser en disant `{trigger phrase}`."*
 
 Never expose file paths, JSON structure, or internal field names. The operator owns the extension conceptually, not technically.
 

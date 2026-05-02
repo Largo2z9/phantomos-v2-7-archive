@@ -3,12 +3,15 @@ name: analyze-extension-intent
 type: curator
 version: "1.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Captures operator intent for a new extension and
   extracts structured attributes: entity class (custom entity / sidecar / skill-only),
   data shape (time-series / instance-per-item / aggregate), population mechanism
   (manual / scraper / derived), declared cross-references. Three focused questions max.
   Invoked by scaffold-extension Phase 1. Not intended for direct operator invocation.
+  FR: "analyse l'intent extension" "capture l'intent" "extension intent".
+  EN: "analyze extension intent" "capture extension intent" "extension intent".
 permissions:
   reads: [brand]
   writes: []

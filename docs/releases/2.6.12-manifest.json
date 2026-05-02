@@ -27,7 +27,7 @@
       "file": "docs/system/voice.md",
       "action": "overwrite",
       "safe": true,
-      "note": "Anti-patterns section: new 'Plumbing leak to operator' entry with real negative example from S35 Onday test + corrected version + binary test."
+      "note": "Anti-patterns section: new 'Plumbing leak to operator' entry with real negative example from S35 an e-commerce pilot run + corrected version + binary test."
     },
     {
       "type": "doc-change",

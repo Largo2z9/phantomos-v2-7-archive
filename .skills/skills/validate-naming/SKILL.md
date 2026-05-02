@@ -3,11 +3,14 @@ name: validate-naming
 type: curator
 version: "1.0.0"
 recommended_model: haiku
+reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Verifies the proposed extension name does not collide
   with core entity names (reserved), does not duplicate an existing extension, and
   respects kebab-case + MECE conventions.
   Invoked by scaffold-extension Phase 4.
+  FR: "valide le nom" "check le naming" "vérifie le nom de l'extension".
+  EN: "validate naming" "check name" "verify extension name".
 permissions:
   reads: [brand, index]
   writes: []

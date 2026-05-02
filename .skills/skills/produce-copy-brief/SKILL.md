@@ -1,0 +1,438 @@
+---
+name: produce-copy-brief
+type: producer
+version: "1.0.1"
+recommended_model: sonnet
+reasoning_pattern: matrix-driven
+matrix_mode: generating
+consumes:
+  - path: resources/frameworks/voc-coding.md
+    min_version: 1.0.0
+  - path: resources/registries/angle-registry.md
+    min_version: 1.0.0
+  - path: resources/registries/proof-registry.md
+    min_version: 1.0.0
+  - path: resources/quality-specs/hook-quality-spec.md
+    min_version: 1.0.0
+  - path: resources/templates/hook-formulas.md
+    min_version: 1.0.0
+description: >
+  Produces a copywriter brief for an audience × chosen angle × channel.
+  Consumes encoded brand intelligence (verbatims, pains, objections,
+  vernacular, voice) from mine-voc Layer B + optional chosen angle from
+  produce-paid-angles. Verbatim-anchored throughout (no inventions).
+  Operator-format-respected (operator's agency standard captured in
+  profile.json or brand config). Per-channel adapted (Meta vs Email vs
+  Landing vs TikTok script). Output: 800-1200 word structured brief
+  copy-pasteable for copywriter delivery, plus reasoned next-step
+  proposal per no-orphan-output doctrine.
+  FR: "brief copywriter pour {audience} {brand}", "brief copy {brand}", "brief Meta pour {audience}", "génère un brief pour {audience} sur {angle}", "brief campagne {brand}".
+  EN: "copywriter brief for {audience} {brand}", "copy brief {brand}", "brief Meta for {audience}", "generate brief for {audience} on {angle}".
+permissions:
+  reads: [brand, product, profile, learning, strategy]
+  writes: [learning]
+  emits_events: [coherence_check]
+  mode: proposed
+  subagent_safe: true
+pipeline:
+  preconditions: brand exists with at least one audience profile.json containing pain_points, objections, voice.key_expressions. Ideally mine-voc has run on the audience. If chained from produce-paid-angles, an angle is pre-selected.
+  postconditions: brief artifact in produced/copy-briefs/{date}-{audience-slug}-{angle-slug}-{channel}.md, generation trace in sources/produced-briefs/{date}/, learnings appended if pattern detected, finalize-mutation-batch event emitted.
+disambiguates_against:
+  produce-paid-angles: "route to produce-paid-angles when operator wants ANGLE IDEATION (matrice ranked) — produce-copy-brief is the downstream brief generation on a chosen angle"
+  ingest-resource: "route to ingest-resource when operator drops a brief reference doc to digest — that's input ingestion, not output generation"
+  mine-voc: "route to mine-voc when audience is thin (no verbatims encoded yet) — copy-brief needs verbatim density to anchor hooks credibly"
+---
+
+# Skill: produce-copy-brief
+
+Synthesizer, not fabricator. Reads the encoded brand substrate, picks the right angle if one was not handed in, and ships a copywriter brief that compresses fifteen years of agency briefing experience into a single document. The copywriter opens it, reads five minutes, starts writing. Every claim about the audience traces back to a real customer verbatim. Every objection has a proof matched to it. Every CTA matches the brand's tone register. The format the operator already uses on agency work is preserved when encoded — the agency standard is the agency value, the skill respects it.
+
+## Tone
+
+Two registers, do not confuse them.
+
+The brief artifact itself is structured agency document. Named sections, technical OK, jargon OK because the reader is a copywriter who needs craft language. That is the deliverable file.
+
+The agent's chat surrounding the brief delivery follows the snapshot-brand Step 7 voice canon strictly. Pure prose. No bold-section anchors. No enumeration of dimensions. No exposed JSON paths. Three implicit movements (what the brief carries → file pointer → reasoned next-step). Read snapshot-brand SKILL.md Step 7 if any uncertainty before writing the surrounding commentary.
+
+Banned in agent commentary: form-fill recap of every section, bold anchors like `**Pain anchored**\n...\n\n**Hooks**\n...`, exposed jargon (`voice.key_expressions[].sample_size`), exposed scores, internal labels, hardcoded `(a)/(b)/(c)/(d) Other` close.
+
+## Expert methodology
+
+Persona: senior agency strategist who has briefed 200+ copywriters and knows that a brief that does not anchor on real customer language produces generic copy. Reads the audience the way a strategist reads a research deck — lands on what matters, drops what dilutes, names the pain that is load-bearing for this angle.
+
+Frameworks consumed (read once at first invocation, then internalized):
+- `resources/frameworks/voc-coding.md` — JTBD lens for the brief opening, pain category typology, theme classification.
+- `resources/registries/angle-registry.md` — angle naming canon, hook-lever lookup.
+- `resources/registries/proof-registry.md` — proof type matched to objection type.
+- `resources/quality-specs/hook-quality-spec.md` — 5-criterion hook test, threshold ≥ 4/5.
+- `resources/templates/hook-formulas.md` — fallback hook library when verbatim anchor is weak.
+
+The skill consumes these verbatim. No improvisation on hook quality threshold, no improvisation on objection-proof mapping.
+
+---
+
+## Step 0 — Resolve audience, angle, channel
+
+Three resolutions in one step. The operator should never have to name a slug or a path.
+
+**Audience.** From operator natural-language reference, match against `brands/{slug}/audiences/*/profile.json` using `meta.tags`, `identity.label`, `identity.description`, `pain_points[].formulation` as match surfaces. One match → continue. Multiple matches → AskUserQuestion with the candidate audiences in plain language (*"On part sur la femme post-grossesse ou la femme 40+ pré-ménopause ?"*). Zero matches → audience does not exist yet, route to `mine-audience` first, do not invent.
+
+**Angle.** Three resolution paths in priority order:
+- Operator stated explicitly (*"brief sur l'angle miroir"*) → use it, resolve against `angle-registry.md` taxonomy or brand-specific naming.
+- Pre-selected from a previous `produce-paid-angles` run within the last 24h on the same audience → use the top-ranked angle from that run, the orchestration layer carries the context.
+- Operator silent → auto-select the highest-confidence angle from the encoded verbatims per the paid-angle-scoring lenses (top-1 cell), surface the choice in the opening sentence: *"Je pars sur l'angle miroir post-grossesse, c'est celui qui a la densité verbatim la plus forte sur cette poche. Si tu veux un autre, dis-moi avant que je rentre dans le brief."*
+
+**Channel.** Default = INFER, never hardcode Meta. Read three signals:
+- `operator/profile.json#context.stack[]` for active platforms.
+- `brand.json#market.current_focus` for the strategic emphasis.
+- `learnings.json` filtered to recent campaign patterns if any.
+
+Heuristic: stack with Meta + brand recent focus = paid acquisition → default Meta. Stack heavy on email/Klaviyo + brand focus = retention → default Email. Brand has a landing under refit → default Landing. Stack with TikTok signal + brand market sophistication low → TikTok script. Tie or no signal → AskUserQuestion 3-4 channel options in plain language. Never hardcode Meta as factory default — that fails operators on retention work.
+
+---
+
+## Step 1 — Read encoded data
+
+Load the substrate silently. Never narrate the loading.
+
+- `brands/{slug}/audiences/{audience-slug}/profile.json` — `pain_points[]` (formulation, chain, emotion, trigger, awareness_stage, _source_meta.sample_size), `objections[]` (type, formulation, frequency, severity, lifecycle_stage), `voice.key_expressions[]` (text, frequency, sample_size, platform), `voice.vocabulary_to_avoid[]`, `voice.tone_register`, `psychology.jtbd.{primary, context, emotional_driver}`, `decision_process.trust_anchors[]`, `market_position.awareness_level`, demographics.
+- `brands/{slug}/products/{hero}/spec.json` — `identity.{name, niche, positioning}`, `unique_mechanism`, `problems_solved[]` with `verbatim_quotes[]`, `benefits[].chain` (functional → emotional → identity), `proofs.{social, authority, performance, scientific}`, `compliance`, `market_context.{sophistication, demonstrability, trust_barrier}`.
+- `brands/{slug}/products/{hero}/offers.json` — active offer matching the channel, or active offer general if not channel-specific. Pricing, urgency, bonus, duration tier.
+- `brands/{slug}/brand.json` — `tone_of_voice.{style, register, banned_words, frequent_words}`, `positioning`, `market.*` if VoM has run (vernacular, white-spaces).
+- `brands/{slug}/strategy.json#current_focus` — informs CTA tone calibration.
+- `operator/profile.json#preferences.brief_format` — operator's preferred brief structure (decision #1).
+- `brands/{slug}/config.json#brief_format` — brand-specific override if exists (white-label / multi-client agencies).
+
+If the operator has no encoded brief format preference, default to the 6-section structure named in Step 3. Ask once at end of first brief delivery whether to lock the format as default, adjust, or stay flexible — persist via `write_to_context`.
+
+---
+
+## Step 2 — Verbatim density floor
+
+Hard gate before composition. Count `voice.key_expressions[]` entries with `sample_size` populated AND total `verbatim_quotes[]` across `pain_points[]` and `problems_solved[]`.
+
+If `voice.key_expressions[]` < 5 OR cumulative `verbatim_quotes[]` < 5 → recommend `mine-voc` first. Do not produce a brief on inferred-only basis. Surface to the operator: *"La voix client est trop fine pour ancrer un brief proprement — j'ai 2 expressions captées sur cette poche, le brief sortirait générique. Le move qui paie c'est de runner mine-voc d'abord, ~20 min, et on revient avec un brief vraiment ancré."* Stop unless operator forces explicitly with awareness of the trade-off.
+
+A brief without real customer language equals generic copy equals zero agency value. The floor is non-negotiable.
+
+---
+
+## Step 3 — Map brief sections per voc-coding lenses
+
+Mandatory sections inside the brief artifact (NOT in the agent's chat). If operator format encoded, adapt section names and ordering to that format. Default 6-section structure when no preference encoded:
+
+- **Header** — brand / audience / angle / channel / date / brief_id.
+- **Target audience** — 1 paragraph prose (demographic + psychographic + pain anchor + awareness stage), customer voice not brand voice.
+- **Le job (JTBD)** — primary JTBD in 1 sentence per `voc-coding.md` JTBD lens, customer voice. Context if it sharpens.
+- **Pain to activate** — formulation in customer language + emotion + trigger + 2-3 verbatim quotes with `sample_size` context inline.
+- **Language to reuse** — 5-10 expressions from `voice.key_expressions[]` ranked by `frequency / sample_size`, each on its own line, each tagged with platform and frequency context. The words to weave into copy.
+- **Objections to neutralize** — top 3 by recurrence × severity, each paired with a proof type from `proof-registry.md` that the brand actually carries. Lifecycle stage flagged (awareness / consideration / decision).
+- **Proofs available** — inventory by type (testimonials, scientific/clinical, authority, social), each entry sourced from `product.proofs[]`, ready to quote.
+- **CTAs** — 3 variants tone-aligned per `brand.tone_of_voice` + active offer pricing/urgency/bonus inline (decision #5). One direct-benefit, one risk-reversal, one urgency-anchored if offer carries urgency.
+- **Format constraints** — channel-specific: Meta primary text 125 char before "see more" / Email subject 50 char / Landing block structure / TikTok script 60s pacing. Banned claim language per platform policy.
+- **Hook examples** — 3 hook variants verbatim-anchored per Step 4 (hook-only, no body opening).
+- **Avoid** — `banned_words` from brand tone, banned angles given audience awareness stage, recent objections that backfired in past creative (sourced from `learnings.json` if encoded).
+
+Pain to activate ranks one pain only — the dominant one per `_source_meta.sample_size` AND relevance to the chosen angle. Efficiency angles pair with functional pain. Emotional-identity angles pair with emotional pain. Don't enumerate all pains, the brief activates one.
+
+---
+
+## Step 4 — Hook variants generation
+
+Three hooks, hook-only (decision #3). Body opening is the copywriter's job — the brief calibrates angle and verbatim anchor, the copywriter writes the body.
+
+Per `hook-quality-spec.md` 5-criterion test (Pattern Interrupt, Identification, Open Loop, Spécificité, Awareness Match) at threshold ≥ 4/5:
+
+1. **Exact verbatim** from `voice.key_expressions[]` with `sample_size ≥ 5` → highest priority. The hook IS the verbatim or a 2-4 word adaptation of it.
+2. **Semantic verbatim** from `verbatim_quotes[]` with high emotional weight → secondary. The hook adapts the verbatim while preserving the customer voice signature.
+3. **Hook formula** from `hook-formulas.md` matched to the angle's hook-lever, when verbatim anchors are exhausted. The brief flags this hook with `(formula)` inline so the copywriter knows it is a starting point not a customer quote.
+4. **Never invent a customer quote.** Never paraphrase a verbatim and present it as if it were a real customer quote. The trust contract is non-negotiable.
+
+Hook below 4/5 on the quality spec → retry once with a different anchor or drop. The skill does not negotiate on hook quality.
+
+Each shipped hook tagged in the brief with category (confession / callout / counter-intuitive / question / before-after) and lever (fear / desire / rational). Marked clearly: *"starting point — validate via hook-quality-spec before shipping."*
+
+---
+
+## Step 5 — Brief composition
+
+Compose markdown brief, 800-1200 word target, 1500 hard ceiling (decision #4). Past 1500 → propose splitting into per-channel briefs rather than shipping a mega-brief — past 1500 the copywriter skims and misses load-bearing constraints.
+
+Tone of the brief itself: agency-internal register. Technical OK. Jargon OK because the copywriter is the reader, not the operator's client. NOT operator-facing prose canon — the brief is craft document.
+
+Each verbatim quoted with its `sample_size` context inline (*"redoutait le moment de s'habiller (8 mentions Trustpilot)"*). Gives the copywriter signal of how dense the verbatim is — high frequency = safe to lead with, low frequency = use as supporting beat.
+
+Reads like an agency document. No bullet enumeration of every audience field. No `Field: content. Field: content.` form-fill openers. The brief is prose-first inside each section, with named sections as the structure scaffold.
+
+---
+
+## Step 6 — Layer A trace + Layer B artifact
+
+**Layer A — generation trace** at `brands/{slug}/sources/produced-briefs/{date}/trace.jsonl`:
+
+```json
+{
+  "id": "BRF-001",
+  "produced_at": "2026-04-25T10:14:00Z",
+  "audience_anchor": "femmes-30-55-minceur",
+  "angle_anchor": "miroir-post-grossesse",
+  "channel": "meta",
+  "verbatim_anchors_count": 7,
+  "verbatim_density_floor_passed": true,
+  "operator_format_used": "default-6-section",
+  "hook_variants_generated": 3,
+  "hook_variants_rejected": 1,
+  "rejection_reason": "awareness_mismatch"
+}
+```
+
+Audit substrate. Operator never reads it. Downstream skills (`audit-creative-output`, `learn-from-session`) read it to detect patterns.
+
+**Layer B — brief artifact** at `brands/{slug}/produced/copy-briefs/{YYYY-MM-DD}-{audience-slug}-{angle-slug}-{channel}.md`. Markdown clean, copy-pasteable into Notion / Slack / Doc / email for copywriter delivery.
+
+The next-step proposal lives in the conversational reply, NOT in the artifact file. The artifact is the pure deliverable. The agent commentary carries the reasoned next move.
+
+---
+
+## Step 7 — Operator-facing chat
+
+The agent message that surrounds the brief delivery. Apply snapshot-brand Step 7 voice canon STRICTLY — pure prose, three implicit movements, no bold anchors, no jargon leak.
+
+Structure:
+
+- **Intro 2-3 sentence prose:** what's in the brief, why these choices. Names the angle, the channel, the verbatim density signal, any inferred element flagged. Example: *"Brief sur l'angle miroir post-grossesse pour la femme minceur okr, channel Meta. J'ai ancré sur les trois verbatims les plus denses (le reflet, le ventre gonflé, le ras-le-bol des régimes) et les CTAs intègrent l'urgence du bundle 3 mois actif jusqu'au 15 mai."*
+- **File pointer inline:** *"Brief complet dans `produced/copy-briefs/2026-04-25-femmes-30-55-minceur-miroir-meta.md` — 950 mots, prêt à transmettre."* The brief artifact is NEVER pasted twice in the chat — write to file, surface synthesis only (lesson v2.10.0 mini-friction observed live test).
+- **Reasoned next-step proposal per no-orphan-output:** one strong recommendation grounded in operator goal × what was just produced × what is runnable. 1 alternative max if genuinely useful. Never a flat menu, never the same three proposals every time.
+
+Examples of valid next-step formulations:
+
+- *"Le move utile derrière, c'est de transmettre le brief à ton copywriter et de revenir dans 2-3 jours pour que je revoie les drafts qu'il sort. Sinon je peux directement sortir le brief Email parallel sur la même angle pour que le funnel reste cohésif."*
+- *"Tu peux runner produce-paid-angles --focus=retargeting si tu veux préparer la séquence warm post-prospection avant que ce brief ne tourne."*
+- *"L'angle est calibré, le copywriter peut partir tel quel. Je laisse poser, on revoit après les premiers tests Meta pour ajuster les hooks qui ne portent pas."*
+
+Recommendation forte + 1 alternative max. Never *"voilà le brief, autre chose ?"* — that fails the doctrine.
+
+---
+
+## Step 8 — Finalize
+
+Mandatory before shipping the operator-facing summary:
+
+```bash
+python3 .skills/finalize-mutation-batch.py --brand-slug {slug}
+```
+
+Mechanical Python primitive. Inspects every mutation written in this run (Layer A trace, Layer B artifact, optional learnings append), runs structural checks, emits a `coherence_check` event so `turn-end-audit` sees the loop closed.
+
+Exit code 2 = blocking issue → revise before shipping. Exit code 0 with warnings = log them, ship. Non-negotiable, mechanical, not skippable.
+
+---
+
+## Cache strategy
+
+24h TTL on the `(brand, audience, angle, channel)` tuple. Re-running the same brief query within 24h returns the cached output unless invalidated.
+
+**Invalidation triggers (automatic):**
+- Any mutation to `brands/{slug}/audiences/{audience-slug}/profile.json`.
+- Any mutation to `brands/{slug}/products/{hero}/spec.json` for the hero product in scope.
+- Any mutation to `brands/{slug}/brand.json#tone_of_voice` (banned words, register shift).
+
+**Manual override:** `--fresh` flag bypasses cache.
+
+Cache file location: `brands/{slug}/sources/produced-briefs/_cache/{audience-slug}-{angle-slug}-{channel}.json`. Cleared automatically on file watcher trigger (mutation event). Prevents LLM-variance noise on repeated identical queries.
+
+---
+
+## --focus parameter
+
+The skill accepts a focus modifier for narrower runs. The operator says it in plain language (*"brief express juste les hooks pour la femme minceur okr"*) and the agent maps to the flag — never surfaced as `--focus=` syntax in the chat.
+
+- **default** (no flag) — full brief 800-1200 words.
+- **`--focus=hooks`** — only the 3 hook variants + verbatim anchors, skip the rest. ~200 words. Useful for quick test ideation.
+- **`--focus=objections`** — brief emphasizes objection neutralization + proof matrix, lighter on language section. ~600 words.
+- **`--focus=ctas`** — brief focuses on CTA variants for an offer test, skips audience/pain section. ~400 words.
+- **`--fresh`** — bypasses cache, forces re-run with current encoded data.
+
+---
+
+## Hard Rules
+
+- **Verbatim density floor mandatory.** `voice.key_expressions[]` < 5 OR cumulative `verbatim_quotes[]` < 5 → recommend `mine-voc`, refuse to produce. A brief without real customer language is generic copy is zero value.
+- **Never invent customer quotes.** Never paraphrase a verbatim and present it as such. Either real (sourced from encoded `voice.key_expressions[]` or `verbatim_quotes[]`) or formula-flagged inline. The trust contract breaks irrecoverably on this rule.
+- **Hook-only, 3 hooks max.** No body opening (decision #3 — copywriter owns the body, brief calibrates the angle).
+- **Brief length 800-1200 target, 1500 hard ceiling.** Past 1500 → propose splitting per-channel rather than shipping a mega-brief.
+- **Multi-offer brand = active offer inline in CTAs.** Never enumerate other offers (decision #5) — keeps the brief focused. Active offer's pricing + urgency + bonus woven into the 3 CTA variants.
+- **Operator format respected when encoded.** Read `operator/profile.json#preferences.brief_format` + `brands/{slug}/config.json#brief_format` BEFORE defaulting to 6-section. The agency standard is the agency value.
+- **Channel inferred or asked, never hardcoded Meta** (decision #2). Read stack + brand focus + recent activity. Tie or silent → AskUserQuestion.
+- **Agent commentary follows snapshot Step 7 voice canon.** Pure prose 2-3 sentences + file pointer + reasoned next-step. The brief artifact has structured named sections — that's the deliverable, different register, do not confuse.
+- **No-orphan-output mandatory.** Always close on a reasoned next-step proposal per doctrine v2.10.0. Never *"voilà le brief, autre chose ?"*. Never a hardcoded `(a)/(b)/(c)/(d)` menu.
+- **Cache invalidation on entity mutation.** No stale results when fresh data lands.
+- **Schema field semantics as analytical vocabulary, never JSON path mentions.** *"the words your customers actually use"* — yes. *"voice.key_expressions[].sample_size"* — banned in operator surface.
+- **Banned jargon in operator-facing chat.** No `--focus=hooks --channel=meta`, no `verbatim_density_floor_passed`, no `_source_meta.sample_size`, no skill names mentioned in the synthesis.
+- **Brief artifact never pasted twice.** Write to file, surface synthesis only in chat. Pasting the full brief in the conversational reply is the friction observed live in v2.10.0 — banned.
+- **`finalize-mutation-batch` mandatory at end.** Step 8 runs the Python primitive before any operator-facing summary. Exit code 2 = revise before shipping.
+- **Sample_size context preserved in brief.** *"redoutait le moment de s'habiller (8 mentions)"* gives the copywriter signal of how dense the verbatim is. Naked verbatims without frequency context lose signal — the copywriter cannot tell what to lead with.
+- **Hook quality spec mandatory.** Every shipped hook passes the 5-criterion test at ≥ 4/5. Below threshold → retry once with a different anchor or drop. Non-negotiable.
+- **Direct response only in v1.** Brand storytelling briefs, manifesto pieces, founder-narrative content live under a separate skill type. The agency standard encoded here is direct response: pain → solution → proof → CTA.
+
+---
+
+## Cross-references
+
+- `resources/frameworks/voc-coding.md` — JTBD + Schwartz + theme typology + pain category lens. Mandatory read at first invocation.
+- `resources/registries/angle-registry.md` — angle naming canon, hook-lever lookup.
+- `resources/registries/proof-registry.md` — proof type matched to objection type. Drives the objections section proof matrix.
+- `resources/quality-specs/hook-quality-spec.md` — 5-criterion hook quality test, mandatory threshold ≥ 4/5.
+- `resources/templates/hook-formulas.md` — fallback hook library when verbatim anchor weak.
+- `.skills/skills/produce-paid-angles/SKILL.md` — sister upstream skill. Operator picks an angle from the ranked table → this skill turns it into a brief. Chained naturally.
+- `.skills/skills/mine-voc/SKILL.md` — upstream Layer B source. Provides the verbatim density that this skill consumes. Prerequisite, not sibling.
+- `.skills/skills/snapshot-brand/SKILL.md` — voice canon source for Step 7 agent chat. Read before writing the surrounding commentary if any uncertainty.
+- `.skills/finalize-mutation-batch.py` — mandatory Step 8 primitive.
+- `.skills/write-to-context.py` — canonical mutation channel for any append to `learnings.json` if a pattern is detected during the run.
+- `docs/system/contextual-intelligence.md` — master doctrine. No orphan output rule, contextual reasoning, anti-patterns.
+- `docs/system/voice.md` — voice canon, register, banned phrases.
+
+---
+
+## Example output — okr probiotique minceur, femme 30-55, angle Miroir post-grossesse, channel Meta
+
+What the operator triggers: *"brief copywriter pour la femme minceur okr, angle miroir, Meta"*.
+
+What the agent writes to the brief artifact at `brands/okr/produced/copy-briefs/2026-04-25-femmes-30-55-minceur-miroir-meta.md`:
+
+---
+
+```
+# Brief — okr / Femme minceur 30-55 / Miroir post-grossesse / Meta
+> 2026-04-25 · brief-okr-001
+
+## Target audience
+
+Femmes 30-55, mères, post-grossesse 6 mois à 5 ans, milieu urbain.
+Awareness stage : problem-aware basculant solution-aware. Elles savent
+qu'elles ont un problème — le ventre gonflé, le poids qui ne part pas,
+la silhouette qui ne revient pas — mais n'ont pas encore une solution
+catégorielle dont elles soient sûres. Elles ont essayé des régimes,
+parfois Anaca3 ou des thés détox, et chaque échec a renforcé une
+croyance limitante : "c'est foutu, c'est mon corps maintenant". Le
+ressort dominant n'est pas l'esthétique pure, c'est la rupture
+identitaire — elles ne se reconnaissent plus dans le miroir.
+
+## Le job (JTBD)
+
+Retrouver un corps qu'elles reconnaissent, sans avoir à se battre
+contre lui chaque jour.
+
+## Pain to activate
+
+Pain primaire émotionnel-identitaire avec ancrage somatique quotidien
+(ballonnement, ventre gonflé). Émotion : honte silencieuse, repli.
+Trigger : moment du miroir le matin, moment d'habillage, photos de
+famille où elles évitent l'objectif.
+
+Verbatims à citer dans la créa :
+- "Je ne pouvais plus voir mon reflet dans le miroir" (14 mentions Trustpilot)
+- "Frustration, échec, culpabilité" (cluster récurrent post-grossesse)
+- "Toujours ballonnée, le ventre lourd même à jeun" (9 mentions reviews)
+
+## Language to reuse
+
+Vocabulaire client à intégrer textuellement (priorité haute) :
+- "ballonnée" — préféré à "ballonnement" (registre quotidien, pas médical)
+- "ventre gonflé" — image visuelle, mieux que "rétention d'eau"
+- "j'ai déjà tout essayé, rien ne marche pour moi" (11 mentions, signal d'épuisement)
+- "mon reflet" / "le miroir" — ancrage identitaire, à protéger du langage marketing
+- "frustration, échec, culpabilité" — la boucle émotionnelle nommée
+- "le moment d'habillage" — trigger quotidien, peut ouvrir un hook scène
+
+À éviter : "minceur" comme verbe ("mincir"), "kilos en trop", "corps de
+rêve", "silhouette parfaite" — vocabulaire qui renvoie aux régimes
+qu'elles associent déjà à l'échec.
+
+## Objections to neutralize
+
+1. **"C'est juste du marketing."** Lifecycle : awareness. Lever via
+   proof scientifique attribué (étude clinique sur la souche probiotique,
+   institut + n=). Pas via claim générique "cliniquement prouvé" — elles
+   ont déjà été échaudées par ça.
+
+2. **"C'est cher pour 1 à 3 kg de différence."** Lifecycle : consideration.
+   Lever via reframe : ce n'est pas un produit minceur à l'unité, c'est
+   un protocole pour réparer le microbiote post-grossesse. La perte de
+   poids est le résultat, pas la promesse. Cost-calculator vs coach +
+   régimes ratés sur 5 ans en backup.
+
+3. **"Pourquoi ça plutôt qu'Anaca3, XLS Medical, Nutri&Co."** Lifecycle :
+   decision. Lever via parasitic-positioning inversé — Anaca3 = thermogenèse
+   (brûle), okr = microbiote (répare). Pas la même catégorie, donc pas la
+   même issue. Cite la souche, cite la durée d'action (3 mois vs effet
+   immédiat trompeur).
+
+## Proofs available
+
+- **Scientific** : étude clinique sur la souche probiotique [institut + n=]
+- **Social** : avis Trustpilot et Judge.me filtrés post-grossesse (mentions
+   accouchement, post-partum), ratings 4.6/5 sur 1200+ reviews
+- **Authority** : si endorsement sage-femme ou nutritionniste spécialisée
+   post-partum disponible, prioritaire en hiérarchie de proof
+- **Performance** : avant/après sur la dimension "ventre gonflé" plutôt
+   que sur le poids — alignement avec le pain primaire identitaire
+
+## CTAs
+
+1. Direct-benefit : "Retrouver mon reflet"
+2. Risk-reversal : "Tester la cure 30 jours, remboursé si rien ne change"
+3. Urgency (offre active 3 mois -20% jusqu'au 15 mai) : "Cure 3 mois -20%
+   jusqu'au 15 mai"
+
+## Format constraints (Meta)
+
+- Primary text : 125 caractères avant le "voir plus", contenu essentiel
+   dans cette portion
+- Headline : 27 caractères max recommandé
+- Description : 27 caractères
+- Image : 1080x1080 ou 1080x1350 pour feed mobile
+- Banni Meta policy : claims de perte de poids quantifiée ("perdez 5 kg"),
+   avant/après corporels graphiques sans disclaimer, langage de body-shaming
+- CTA boutons supportés : "En savoir plus", "Acheter", "S'inscrire"
+
+## Hook examples (starting points — validate via hook-quality-spec)
+
+Hook 1 — confession, fear→desire (verbatim exact, 14 mentions) :
+"Il y a deux ans, je ne pouvais plus voir mon reflet dans le miroir."
+
+Hook 2 — callout, fear (verbatim sémantique, 9 mentions) :
+"Si tu es toujours ballonnée six mois après ton accouchement, écoute ça."
+
+Hook 3 — counter-intuitive, rational→fear (formula) :
+"Ce n'est pas la graisse. C'est ton microbiote intestinal."
+
+## Avoid
+
+- Banni vocabulaire : "mincir", "kilos", "silhouette parfaite", "corps
+   de rêve", "régime miracle"
+- Banni angles : urgency-only (l'audience est problem-aware, pas most-aware
+   — l'urgence sans pédagogie = spam perçu)
+- Backfired récemment (learnings.json) : claims "perte de poids garantie"
+   rejetés par Meta ad review en mars, formulations esthétiques pures
+   sous-performent vs identity-anchored
+```
+
+---
+
+What the agent writes in the conversational reply (the chat surrounding the brief delivery, snapshot Step 7 canon applied):
+
+---
+
+Brief sur l'angle miroir post-grossesse pour la femme minceur okr, channel Meta. J'ai ancré sur les trois verbatims les plus denses (le reflet à 14 mentions, le ventre ballonné à 9, la boucle frustration-échec-culpabilité), et les CTAs intègrent l'urgence du bundle 3 mois actif jusqu'au 15 mai. Le hook 3 est une formule contre-intuitive sans verbatim direct, à valider en premier sur les tests parce que c'est lui qui ouvre le repositionnement microbiote vs thermogenèse.
+
+Brief complet dans `produced/copy-briefs/2026-04-25-femmes-30-55-minceur-miroir-meta.md` — 980 mots, prêt à transmettre au copywriter.
+
+Le move utile derrière, c'est de transmettre le brief tel quel et de revenir dans 2-3 jours pour qu'on revoie les drafts. Sinon je peux sortir le brief Email parallèle sur la même angle dans la foulée pour que ton copywriter ait le full funnel d'un coup et garde la cohésion de campagne.
+
+---
+
+The same skill on a skincare brand for women 28-42 with hyperpigmentation surfaces a different brief: pain to activate becomes the post-summer reveal moment, language section pulls *"j'ai la peau qui tire"* and *"taches qui s'installent"*, objections foreground actif scepticism over price, hook formulas shift toward revelation and statistic over confession. Output shape stays identical — same 11 sections, same verbatim-anchoring rule, same 800-1200 word envelope — but no section repeats from the okr brief verbatim. That non-repetition is the proof the skill reasons over the brand and does not template.
+
+On a supplement brand outside the post-partum niche (men's performance, longevity), the awareness stage often shifts to solution-aware, the angle library shifts toward expertise and mechanism over identity, the proof hierarchy puts scientific first and social second instead of the reverse. The brief structure absorbs the shift without breaking — sections reorder when the operator's encoded format demands, the verbatim-anchoring rule stays absolute.

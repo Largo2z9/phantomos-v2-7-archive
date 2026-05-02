@@ -6,7 +6,7 @@
   "summary": "build-brand-snapshot.py offer counter reads offer_groups[].offers[] (v2 schema) instead of legacy flat offers[].",
   "breaking": false,
   "requires_confirmation": false,
-  "notes": "Silent bug fix. Detected during v2.6.10 live onboarding (Onday test). Snapshot previously showed 'offers active: 0' regardless of populated offers.json — now reports the real count.",
+  "notes": "Silent bug fix. Detected during v2.6.10 live onboarding (an e-commerce pilot run). Snapshot previously showed 'offers active: 0' regardless of populated offers.json, now reports the real count.",
   "changes": [
     {
       "type": "infra-change",

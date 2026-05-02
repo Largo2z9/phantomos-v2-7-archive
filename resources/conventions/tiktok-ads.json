@@ -1,0 +1,77 @@
+{
+  "_schema": "convention",
+  "_version": "1.0",
+  "_field_types": {
+    "meta.*": "observed",
+    "access.*": "observed",
+    "operations[].*": "structured",
+    "naming_conventions.*": "structured",
+    "known_limitations[]": "observed",
+    "learned_rules[]": "observed"
+  },
+  "meta": {
+    "platform": "TikTok Ads",
+    "category": "paid_media",
+    "api_version": "v1.3",
+    "documentation_url": "https://business-api.tiktok.com/portal/docs",
+    "last_updated": ""
+  },
+  "access": {
+    "method": "api_rest",
+    "credentials_location": "brand",
+    "credential_keys": [
+      "TIKTOK_ACCESS_TOKEN",
+      "TIKTOK_ADVERTISER_ID",
+      "TIKTOK_APP_ID",
+      "TIKTOK_APP_SECRET"
+    ],
+    "oauth_scopes_required": ["ads.read", "ads.write", "user.info.basic"],
+    "loading_pattern": "from dotenv import load_dotenv; import os\nload_dotenv(os.path.join(BRAND_PATH, 'credentials.env'))"
+  },
+  "rate_limits": {
+    "per_second": 10,
+    "per_hour": null,
+    "per_day": null,
+    "scope": "per_app",
+    "burst_strategy": "token_bucket",
+    "backoff_on_429": "exponential"
+  },
+  "operations": [
+    {
+      "name": "get_reports",
+      "description": "Pull performance metrics (campaign, adgroup, ad)",
+      "endpoint_or_method": "GET /open_api/v1.3/report/integrated/get/",
+      "example": "advertiser_id={id}&report_type=BASIC&data_level=AUCTION_AD&dimensions=[ad_id]&metrics=[spend,impressions,clicks,conversions]",
+      "notes": "Time zone configured at advertiser level. Conversions = web_event_add_to_cart, web_event_purchase, etc."
+    },
+    {
+      "name": "create_campaign",
+      "description": "Create a new campaign",
+      "endpoint_or_method": "POST /open_api/v1.3/campaign/create/",
+      "example": "advertiser_id={id}&campaign_name=FR-Conv-Purchase&objective_type=CONVERSIONS&budget_mode=BUDGET_MODE_INFINITE&operation_status=DISABLE",
+      "notes": "Always create DISABLE (paused). One campaign per objective."
+    },
+    {
+      "name": "upload_video",
+      "description": "Upload a video creative asset",
+      "endpoint_or_method": "POST /open_api/v1.3/file/video/ad/upload/",
+      "example": "advertiser_id={id}&upload_type=UPLOAD_BY_FILE&video_file={multipart}",
+      "notes": "Returns video_id. Required for ad creation. MP4 max 500MB."
+    }
+  ],
+  "naming_conventions": {
+    "campaign_pattern": "{LANG}-{Objective}-{Suffix}",
+    "adgroup_pattern": "{LANG}-{Targeting}-{Placement}",
+    "separator_rules": "Tiret (-) = séparateur. Pas d'underscore ni accent."
+  },
+  "known_limitations": [
+    "Token expires after 24h refresh required.",
+    "advertiser_id strictly required on every call.",
+    "Pixel events depend on TikTok pixel install (not API-driven)."
+  ],
+  "learned_rules": [
+    "Always batch ad creation max 20 per request.",
+    "Verify ad status post-create via GET /ad/get/ (timeouts can mask success).",
+    "TikTok algorithm penalizes low-spend testing ; min daily budget per adgroup ~20 USD."
+  ]
+}

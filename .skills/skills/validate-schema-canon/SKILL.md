@@ -3,12 +3,15 @@ name: validate-schema-canon
 type: curator
 version: "1.0.0"
 recommended_model: haiku
+reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Validates a draft schema against canon conventions
   before any file is written: `_version`, `_schema`, `_field_types` (with enum constraint),
   required core fields, no override of core fields for sidecars. Pre-write guard.
   Reuses the logic of validate-resources check 16 applied before scaffold.
   Invoked by scaffold-extension Phase 6.
+  FR: "valide le schema canon" "check schema canon" "vérifie la conformité canon".
+  EN: "validate schema canon" "check schema canon" "verify canon compliance".
 permissions:
   reads: [resource, brand]
   writes: []

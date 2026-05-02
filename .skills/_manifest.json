@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-04-23T22:37:46Z",
-  "_count": 31,
+  "_generated_at": "2026-05-02T14:13:54Z",
+  "_count": 41,
   "skills": [
     {
       "name": "analyze-extension-intent",
@@ -10,8 +10,16 @@
       "subagent_safe": true,
       "mode": "none",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "analyse l'intent extension",
+          "capture l'intent",
+          "extension intent"
+        ],
+        "en": [
+          "analyze extension intent",
+          "capture extension intent",
+          "extension intent"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/analyze-extension-intent/SKILL.md"
@@ -97,8 +105,21 @@
       "subagent_safe": true,
       "mode": "direct",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "capture ce learning",
+          "note ça",
+          "retiens que",
+          "ajoute dans les learnings",
+          "on a découvert que",
+          "garde en tête"
+        ],
+        "en": [
+          "capture learning",
+          "remember that",
+          "note this",
+          "save this learning",
+          "log this insight"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/capture-learning/SKILL.md"
@@ -110,8 +131,16 @@
       "subagent_safe": true,
       "mode": "none",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "check les cross-refs",
+          "vérifie les références",
+          "résous les cross_refs"
+        ],
+        "en": [
+          "check cross-refs",
+          "verify references",
+          "resolve cross_refs"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/check-cross-refs/SKILL.md"
@@ -123,11 +152,133 @@
       "subagent_safe": true,
       "mode": "none",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "check coverage",
+          "vérifie si ça existe déjà",
+          "y a déjà quelque chose pour ça",
+          "check reuse"
+        ],
+        "en": [
+          "check coverage",
+          "is there already something for this",
+          "check existing coverage",
+          "check reuse"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/check-existing-coverage/SKILL.md"
+    },
+    {
+      "name": "connect-cockpit",
+      "type": "builder",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [
+          "branche le cockpit",
+          "connecte le dashboard",
+          "active les data sources",
+          "setup cockpit",
+          "onboard cockpit",
+          "connecte cette marque au cockpit",
+          "branche les sources data"
+        ],
+        "en": [
+          "connect cockpit",
+          "wire dashboard",
+          "activate data sources",
+          "onboard cockpit",
+          "hook brand to cockpit dashboard"
+        ]
+      },
+      "disambiguates_against": {
+        "setup-brand": "route to setup-brand for the workspace folder structure (brand.json, products, audience). connect-cockpit assumes that's already done.",
+        "onboard-brand": "route to onboard-brand for the full 4-step pipeline (setup + URL scan + ingest + validate). connect-cockpit only handles the cockpit data plumbing."
+      },
+      "path": ".skills/skills/connect-cockpit/SKILL.md"
+    },
+    {
+      "name": "connect-source",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "setup-brand": "setup-brand creates a new brand workspace. connect-source links an external platform to an existing brand or workspace.",
+        "scaffold-extension": "scaffold-extension adds a custom entity to the substrate. connect-source adds a runtime data source to consume."
+      },
+      "path": ".skills/skills/connect-source/SKILL.md"
+    },
+    {
+      "name": "cross-deepening-signals",
+      "type": "shared",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [
+          "cross-deepening",
+          "synthèse cross-signals",
+          "croise les signaux de deepening"
+        ],
+        "en": [
+          "cross-deepening",
+          "cross-signal synthesis",
+          "cross deepening signals"
+        ]
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/cross-deepening-signals/SKILL.md"
+    },
+    {
+      "name": "deepen-brand-context",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "deepen {brand}",
+          "approfondis {brand}",
+          "VoC + VoM ensemble",
+          "audit complet contexte",
+          "voix client et marché"
+        ],
+        "en": [
+          "deepen {brand}",
+          "deep dive customer + market",
+          "full deepening"
+        ]
+      },
+      "disambiguates_against": {
+        "mine-voc": "route directly to mine-voc when operator wants ONLY customer voice (faster, lighter)",
+        "mine-vom": "route directly to mine-vom when operator wants ONLY market voice (faster, lighter)",
+        "study-niche-marketdeepdive": "route to standalone study-niche-marketdeepdive when operator wants strategic memo on the niche, not customer + market voice. NOT chained here due to 30-60 min runtime.",
+        "onboard-brand": "route to onboard-brand for the full setup pipeline from scratch — deepen-brand-context assumes snapshot is done"
+      },
+      "path": ".skills/skills/deepen-brand-context/SKILL.md"
+    },
+    {
+      "name": "export-session",
+      "type": "capturer",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "capture-learning": "route to capture-learning when the operator wants to persist a single fact or insight as a structured learning entry. export-session captures the entire conversation as a transcript, not a learning.",
+        "ingest-resource": "route to ingest-resource when the operator brings external content (PDF, article, transcript from a different system) to integrate into the workspace knowledge layer. export-session is one-way out, ingest is one-way in.",
+        "generate-handoff": "route to generate-handoff when the operator needs a relay prompt to start a new session continuing this work. export-session is for archival, not continuity."
+      },
+      "path": ".skills/skills/export-session/SKILL.md"
     },
     {
       "name": "ingest-resource",
@@ -136,12 +287,23 @@
       "subagent_safe": true,
       "mode": "proposed",
       "triggers": {
-        "fr": [],
+        "fr": [
+          "ingest",
+          "ingère ça",
+          "ajoute cette ressource",
+          "range ça",
+          "transforme en ressource",
+          "mets ça dans la KB",
+          "digère ce doc",
+          "ajoute ces données"
+        ],
         "en": [
           "ingest",
           "add resource",
           "store this",
-          "add to KB"
+          "add to KB",
+          "digest this",
+          "add this data"
         ]
       },
       "disambiguates_against": {},
@@ -154,12 +316,23 @@
       "subagent_safe": false,
       "mode": "proposed",
       "triggers": {
-        "fr": [],
+        "fr": [
+          "learn",
+          "session close",
+          "persist",
+          "fin de session",
+          "enregistre ce qu'on a fait",
+          "save session",
+          "mets à jour les docs",
+          "persiste les learnings"
+        ],
         "en": [
           "learn",
           "session close",
           "persist",
           "save what we learned",
+          "end of session",
+          "wrap up",
           "I've noted some things to persist. Want me to save them?"
         ]
       },
@@ -173,8 +346,22 @@
       "subagent_safe": true,
       "mode": "direct",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "migrate",
+          "upgrade cette brand",
+          "aligne avec le template",
+          "check drift",
+          "mets à jour la structure",
+          "version mismatch"
+        ],
+        "en": [
+          "migrate",
+          "upgrade brand",
+          "align with template",
+          "check drift",
+          "template version mismatch",
+          "sync to latest template"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/migrate-workspace/SKILL.md"
@@ -197,14 +384,75 @@
           "voice of market {product}"
         ]
       },
-      "disambiguates_against": {},
+      "disambiguates_against": {
+        "mine-voc": "route to mine-voc when the goal is the existing customer voice on THIS brand (Trustpilot, Judge.me, brand reviews) — mine-audience is upstream, exploring who the audiences are at the product/segment level",
+        "mine-vom": "route to mine-vom when the goal is the broader market voice (competitors' customers, niche communities) — mine-audience focuses on segment discovery and audience proposals for a specific product"
+      },
       "path": ".skills/skills/mine-audience/SKILL.md"
+    },
+    {
+      "name": "mine-voc",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "voc {brand}",
+          "scrape les avis",
+          "mine les reviews",
+          "extrais ce que disent les clients",
+          "voice of customer"
+        ],
+        "en": [
+          "voc {brand}",
+          "mine reviews",
+          "voice of customer",
+          "scrape customer reviews"
+        ]
+      },
+      "disambiguates_against": {
+        "mine-vom": "route to mine-vom when operator wants market-level voice (competitors, niche communities), not brand-bound customer voice",
+        "mine-audience": "route to mine-audience when operator wants product-level audience discovery from scraping, not review verbatim mining",
+        "ingest-resource": "route to ingest-resource when operator drops a single document/CSV — that's a one-off ingest, not a multi-source mining session",
+        "watch-competitors": "route to watch-competitors when operator wants recurring monitoring of competitors' paid creatives, not one-shot customer voice"
+      },
+      "path": ".skills/skills/mine-voc/SKILL.md"
+    },
+    {
+      "name": "mine-vom",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "vom {brand}",
+          "audit le marché",
+          "scrape ce que dit la niche",
+          "mine les conversations marché",
+          "voice of market"
+        ],
+        "en": [
+          "vom {brand}",
+          "audit the market",
+          "mine niche conversations",
+          "voice of market"
+        ]
+      },
+      "disambiguates_against": {
+        "mine-voc": "route to mine-voc when operator wants brand-bound customer voice (their own customers' reviews), not market-level conversations",
+        "watch-competitors": "route to watch-competitors when operator wants recurring monitoring of competitors' paid creatives — that's continuous, mine-vom is one-shot qualitative",
+        "mine-audience": "route to mine-audience when operator wants product-level audience discovery from website scraping, not market-level voice mining",
+        "ingest-resource": "route to ingest-resource when operator drops a single market report/document"
+      },
+      "path": ".skills/skills/mine-vom/SKILL.md"
     },
     {
       "name": "onboard-brand",
       "type": "orchestrator",
       "model": "sonnet",
-      "subagent_safe": "false   # this is the pilot, it orchestrates subagents",
+      "subagent_safe": false,
       "mode": "proposed",
       "triggers": {
         "fr": [
@@ -226,18 +474,82 @@
       "path": ".skills/skills/onboard-brand/SKILL.md"
     },
     {
+      "name": "produce-copy-brief",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "brief copywriter pour {audience} {brand}",
+          "brief copy {brand}",
+          "brief Meta pour {audience}",
+          "génère un brief pour {audience} sur {angle}",
+          "brief campagne {brand}"
+        ],
+        "en": [
+          "copywriter brief for {audience} {brand}",
+          "copy brief {brand}",
+          "brief Meta for {audience}",
+          "generate brief for {audience} on {angle}"
+        ]
+      },
+      "disambiguates_against": {
+        "produce-paid-angles": "route to produce-paid-angles when operator wants ANGLE IDEATION (matrice ranked) — produce-copy-brief is the downstream brief generation on a chosen angle",
+        "ingest-resource": "route to ingest-resource when operator drops a brief reference doc to digest — that's input ingestion, not output generation",
+        "mine-voc": "route to mine-voc when audience is thin (no verbatims encoded yet) — copy-brief needs verbatim density to anchor hooks credibly"
+      },
+      "path": ".skills/skills/produce-copy-brief/SKILL.md"
+    },
+    {
+      "name": "produce-paid-angles",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "trouve les meilleurs angles pour {audience} {brand}",
+          "matrice angles {brand}",
+          "angles paid {audience}",
+          "brief créa de N angles",
+          "quels hooks tester sur {audience}"
+        ],
+        "en": [
+          "find the best angles for {audience} {brand}",
+          "paid angles {audience}",
+          "creative angles brief"
+        ]
+      },
+      "disambiguates_against": {
+        "produce-copy-brief": "route to produce-copy-brief when operator wants a full copywriter brief on ONE chosen angle (audience + angle + channel structured doc) — produce-paid-angles is the upstream ideation step",
+        "mine-voc": "route to mine-voc when audience profile is thin (no verbatims encoded yet) — paid-angles needs verbatim density to score, must capture first",
+        "mine-audience": "route to mine-audience when audience itself is not yet defined or split — paid-angles assumes audience encoded",
+        "ingest-resource": "route to ingest-resource when operator drops a single brief or doc — that's a one-off ingestion, not angle ideation"
+      },
+      "path": ".skills/skills/produce-paid-angles/SKILL.md"
+    },
+    {
       "name": "promote-learning",
       "type": "curator",
       "model": "sonnet",
       "subagent_safe": true,
       "mode": "proposed",
       "triggers": {
-        "fr": [],
+        "fr": [
+          "promote ce learning",
+          "ce learning est générique",
+          "ajoute ça à la KB",
+          "ce truc marche pour toutes les brands",
+          "learning vers KB",
+          "passe ça en shared"
+        ],
         "en": [
           "promote this learning",
           "make this learning shared",
           "add to KB",
-          "this applies to all brands"
+          "this applies to all brands",
+          "promote to shared"
         ]
       },
       "disambiguates_against": {},
@@ -250,8 +562,16 @@
       "subagent_safe": true,
       "mode": "none",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "propose un schema",
+          "draft le schema",
+          "génère le schema draft"
+        ],
+        "en": [
+          "propose schema",
+          "draft schema",
+          "generate schema draft"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/propose-schema-draft/SKILL.md"
@@ -263,7 +583,19 @@
       "subagent_safe": true,
       "mode": "none",
       "triggers": {
-        "fr": [],
+        "fr": [
+          "trouve",
+          "cherche",
+          "donne-moi",
+          "montre-moi",
+          "qu'est-ce qu'on a sur",
+          "quels frameworks",
+          "quel routing pour",
+          "contexte brand",
+          "compare brands",
+          "toutes les brands",
+          "cross-brand"
+        ],
         "en": [
           "find",
           "get",
@@ -283,7 +615,7 @@
       "name": "red-team",
       "type": "orchestrator",
       "model": "sonnet",
-      "subagent_safe": "false   # the skill is the panel chairman, it orchestrates",
+      "subagent_safe": false,
       "mode": "proposed",
       "triggers": {
         "fr": [
@@ -325,8 +657,16 @@
       "subagent_safe": true,
       "mode": "direct",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "register cette extension",
+          "enregistre dans l'index",
+          "flag pour adoption"
+        ],
+        "en": [
+          "register extension",
+          "register in index",
+          "flag for adoption"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/register-and-flag/SKILL.md"
@@ -362,8 +702,16 @@
       "subagent_safe": true,
       "mode": "direct",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "scaffold les fichiers",
+          "écris les fichiers de l'entité",
+          "crée les fichiers extension"
+        ],
+        "en": [
+          "scaffold entity files",
+          "write entity files",
+          "create extension files"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/scaffold-entity-files/SKILL.md"
@@ -382,7 +730,11 @@
           "nouveau type de données",
           "ajoute un sidecar",
           "track X cross sessions",
-          "scaffold"
+          "scaffold",
+          "extension operator",
+          "extension brand",
+          "encoder X côté opérateur",
+          "tracker X dans mon workspace"
         ],
         "en": [
           "scaffold extension",
@@ -390,7 +742,11 @@
           "new data type",
           "add sidecar",
           "scaffold a tracker for X",
-          "build extension"
+          "build extension",
+          "operator extension",
+          "brand extension",
+          "track X for myself",
+          "encode X for me"
         ]
       },
       "disambiguates_against": {},
@@ -403,8 +759,16 @@
       "subagent_safe": true,
       "mode": "direct",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "scaffold un skill stub",
+          "génère le stub du skill",
+          "crée le squelette du skill"
+        ],
+        "en": [
+          "scaffold skill stub",
+          "generate skill stub",
+          "create skill skeleton"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/scaffold-skill-stub/SKILL.md"
@@ -412,7 +776,7 @@
     {
       "name": "score-product-fit",
       "type": "producer",
-      "model": "haiku   # override: producer default is sonnet, but this is a bounded lookup+scoring pipeline that haiku handles deterministically",
+      "model": "haiku",
       "subagent_safe": true,
       "mode": "proposed",
       "triggers": {
@@ -464,12 +828,20 @@
       "subagent_safe": false,
       "mode": "direct",
       "triggers": {
-        "fr": [],
+        "fr": [
+          "configure cette brand",
+          "setup brand",
+          "nouvelle brand",
+          "ajoute une brand",
+          "crée le workspace pour",
+          "initialise une brand"
+        ],
         "en": [
           "setup brand",
           "configure brand",
           "new brand",
-          "onboard brand"
+          "create brand workspace",
+          "initialize brand"
         ]
       },
       "disambiguates_against": {
@@ -507,6 +879,32 @@
       "path": ".skills/skills/snapshot-brand/SKILL.md"
     },
     {
+      "name": "study-niche-marketdeepdive",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "deep dive le marché {niche}",
+          "étude marché secteur",
+          "audit stratégique de la niche",
+          "memo stratégique {niche}"
+        ],
+        "en": [
+          "market deep dive {niche}",
+          "strategic study {niche}",
+          "what's happening in {niche}"
+        ]
+      },
+      "disambiguates_against": {
+        "mine-vom": "route to mine-vom when operator wants market customer voice (vernacular, white-spaces from forum/review verbatim) — that's qualitative; deep-dive is structural/strategic",
+        "watch-competitors": "route to watch-competitors when operator wants recurring creative monitoring of named competitors — different cadence, different output",
+        "mine-voc": "route to mine-voc when operator wants brand-bound customer voice"
+      },
+      "path": ".skills/skills/study-niche-marketdeepdive/SKILL.md"
+    },
+    {
       "name": "update-workspace",
       "type": "orchestrator",
       "model": "sonnet",
@@ -539,21 +937,37 @@
       "subagent_safe": true,
       "mode": "none",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "valide le nom",
+          "check le naming",
+          "vérifie le nom de l'extension"
+        ],
+        "en": [
+          "validate naming",
+          "check name",
+          "verify extension name"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/validate-naming/SKILL.md"
     },
     {
       "name": "validate-output-coherence",
-      "type": "sub-skill",
+      "type": "shared",
       "model": "haiku",
       "subagent_safe": true,
       "mode": "none",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "valide la cohérence de l'output",
+          "check coherence",
+          "vérifie l'output contre la brand"
+        ],
+        "en": [
+          "validate output coherence",
+          "check coherence",
+          "verify output against brand"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/validate-output-coherence/SKILL.md"
@@ -565,12 +979,22 @@
       "subagent_safe": true,
       "mode": "none",
       "triggers": {
-        "fr": [],
+        "fr": [
+          "validate",
+          "audit ressources",
+          "check KB",
+          "health check",
+          "vérifie la cohérence",
+          "audit workspace",
+          "intégrité"
+        ],
         "en": [
           "validate",
-          "audit",
+          "audit resources",
           "check KB",
-          "health check"
+          "health check",
+          "audit workspace",
+          "integrity check"
         ]
       },
       "disambiguates_against": {
@@ -585,8 +1009,19 @@
       "subagent_safe": true,
       "mode": "none",
       "triggers": {
-        "fr": [],
-        "en": []
+        "fr": [
+          "valide le schema canon",
+          "check schema canon",
+          "vérifie la conformité canon"
+        ],
+        "en": [
+          "valide le schema canon",
+          "check schema canon",
+          "vérifie la conformité canon",
+          "validate schema canon",
+          "check schema canon",
+          "verify canon compliance"
+        ]
       },
       "disambiguates_against": {},
       "path": ".skills/skills/validate-schema-canon/SKILL.md"

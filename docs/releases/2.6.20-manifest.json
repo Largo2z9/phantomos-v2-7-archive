@@ -36,7 +36,7 @@
   "breaking_changes": false,
   "operator_impact": "preventive — existing drifted offers.json files need manual re-run of snapshot-brand to regenerate under v2 shape.",
   "tested_on": ["fresh instance /tmp/phantom-test-v2619 with write-to-context guard"],
-  "caught_by": "onboarding test on nooance-paris (discovered masque-led-elite-x600/offers.json corruption)",
+  "caught_by": "onboarding test on a beauty pilot test (discovered masque-led-elite-x600/offers.json corruption)",
   "known_gaps": [
     "No auto-migration for existing v1 offers files in live instances.",
     "validate-resources does not yet detect the schema-shape + _version mismatch (candidate for next release)."

@@ -3,7 +3,8 @@ name: score-product-fit
 type: producer
 version: "1.0.0"
 agent_id: score-product-fit@v1.0
-recommended_model: haiku   # override: producer default is sonnet, but this is a bounded lookup+scoring pipeline that haiku handles deterministically
+recommended_model: haiku
+reasoning_pattern: null
 description: >
   Evaluate product-audience fit by comparing spec.json against profile.json. Score 0-10, list strengths/gaps, identify language misalignment.
   Triggers FR: "evaluate le fit {product} × {audience}", "product-fit {brand}", "alignment {product} {audience}".

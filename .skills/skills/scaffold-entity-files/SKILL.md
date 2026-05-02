@@ -3,12 +3,15 @@ name: scaffold-entity-files
 type: curator
 version: "1.0.0"
 recommended_model: haiku
+reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Writes the physical files of a new custom entity
   (schema.json + README.md + optional example instance) or a sidecar file
   (`{entity}.extensions.json`) into the brand's workspace. All writes via mutation gate.
   Does not touch `.skills/` — the skill stub scaffold is handled by scaffold-skill-stub.
   Invoked by scaffold-extension Phase 7.
+  FR: "scaffold les fichiers" "écris les fichiers de l'entité" "crée les fichiers extension".
+  EN: "scaffold entity files" "write entity files" "create extension files".
 permissions:
   reads: [brand]
   writes: [brand.custom, brand.extensions]

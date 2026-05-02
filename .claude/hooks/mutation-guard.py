@@ -14,8 +14,8 @@ Enforces two orthogonal rules:
    by an agent or subagent. These are workspace code, not operator data.
    Only the human maintainer edits them via a text editor outside the
    Claude Code tool loop. This closes the scope-violation gap detected
-   in the v2.6.10 Onday live test (validate-resources subagent autonomously
-   patched build-brand-snapshot.py — fix was correct, method wasn't).
+   in the v2.6.10 e-commerce pilot live onboarding (validate-resources subagent
+   autonomously patched build-brand-snapshot.py, fix was correct, method wasn't).
 
 Exemptions:
 - brands/_TEMPLATE/* and brands/_EXAMPLE/* (template authoring is fine)

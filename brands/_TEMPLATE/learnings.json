@@ -20,7 +20,9 @@
     "entries[].status": "derived",
     "entries[].superseded_by": "derived",
     "entries[].genericity": "derived",
-    "entries[].promoted_to": "derived"
+    "entries[].promoted_to": "derived",
+    "entries[].*": "structured",
+    "entries": "structured"
   },
   "_notes": {
     "entries[].scope": "brand | platform | workspace — détermine où le learning s'applique",
@@ -29,6 +31,5 @@
     "entries[].status": "active | on-hold | obsolete | closed-wontretry | closed-success",
     "entries[].genericity": "brand | sector | universal — portée du learning"
   },
-
   "entries": []
 }

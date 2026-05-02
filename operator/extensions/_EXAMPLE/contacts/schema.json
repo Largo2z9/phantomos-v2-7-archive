@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "operator-contacts.schema.json",
+  "_version": "1.0",
+  "_schema": "operator_contacts",
+  "_field_types": {
+    "full_name": "stated",
+    "primary_email": "stated",
+    "primary_phone": "stated",
+    "linkedin": "stated",
+    "context_anchor": "stated",
+    "tags": "stated",
+    "last_touch": "derived",
+    "touch_history": "observed",
+    "notes": "stated",
+    "brand_refs": "stated",
+    "activity_refs": "stated"
+  },
+  "title": "Operator contacts entry",
+  "description": "Une fiche par contact dans la conscience de l'opérateur, tous registres confondus (pro, perso, famille, mentor, voisinage, hobby, santé). Cross-references brand_refs vers brands/{slug}/ et activity_refs vers d'autres extensions operator-scope (opportunities, projects, learning, hobbies) quand pertinent. Touch history append-only.",
+  "type": "object",
+  "required": [
+    "_version",
+    "_schema",
+    "meta",
+    "full_name",
+    "context_anchor"
+  ],
+  "properties": {
+    "_version": { "const": "1.0" },
+    "_schema": { "const": "operator_contacts" },
+    "_field_types": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["observed", "stated", "derived", "structured"]
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["slug", "created_at"],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "kebab-case slug, e.g. 'marc-dubois'"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "last_modified": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        }
+      }
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "primary_email": {
+      "type": ["string", "null"],
+      "format": "email"
+    },
+    "primary_phone": {
+      "type": ["string", "null"]
+    },
+    "linkedin": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "context_anchor": {
+      "type": "string",
+      "description": "One-sentence why this person is in your awareness. Free text. Pro, perso, famille, mentor, médecin, voisin, partenaire hobby, peu importe le registre. e.g. 'rencontré il y a deux ans, on partage un intérêt commun pour la lecture et on a déjà collaboré', 'ostéopathe que je vois tous les 3 mois', 'voisin du dessous avec qui on s'entraide ponctuellement'."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-form tags pour t'aider à filtrer. e.g. ['ami', 'lecture', 'paris'], ['santé', 'ostéo'], ['famille', 'cousin'], ['voisinage'], ['mentor'], ['expert-domaine-X']. Ta taxonomie."
+    },
+    "last_touch": {
+      "type": ["object", "null"],
+      "description": "Most recent interaction. Composed by the agent on read of touch_history.",
+      "properties": {
+        "observed_at": { "type": "string", "format": "date-time" },
+        "channel": {
+          "type": "string",
+          "enum": ["email", "call", "meeting", "linkedin", "whatsapp", "in_person", "other"]
+        },
+        "note": { "type": "string" }
+      }
+    },
+    "touch_history": {
+      "type": "array",
+      "description": "Append-only log of interactions. Agent surfaces gaps proactively.",
+      "items": {
+        "type": "object",
+        "required": ["observed_at", "channel"],
+        "properties": {
+          "observed_at": { "type": "string", "format": "date-time" },
+          "channel": {
+            "type": "string",
+            "enum": ["email", "call", "meeting", "linkedin", "whatsapp", "in_person", "other"]
+          },
+          "note": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Notes opérateur libre forme. e.g. 'préfère async sur Slack', 'allergique aux noix', 'parle anglais et espagnol', 'a un chien Poppy'."
+    },
+    "brand_refs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "description": "Cross-references vers les slugs de marque dans brands/. Vide si le contact n'est pas associé à une mission encodée."
+    },
+    "activity_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Cross-references vers d'autres extensions operator-scope (opportunities, projects, learning, hobbies, peu importe). Format : '{type}:{slug}'. Vide si le contact n'est lié à aucune activité tracked."
+    }
+  }
+}

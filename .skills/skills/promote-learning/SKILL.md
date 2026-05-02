@@ -3,14 +3,13 @@ name: promote-learning
 type: curator
 version: "1.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Promotes a brand-specific learning to the shared KB when it proves generic.
   Evaluates if a learning from brands/{slug}/learnings.json applies across brands,
   then routes it to the appropriate shared resource (convention, catalogue, framework, etc.).
-  Triggers: "promote ce learning", "ce learning est générique", "ajoute ça à la KB",
-  "ce truc marche pour toutes les brands", "learning → KB".
-  EN: "promote this learning", "make this learning shared", "add to KB",
-  "this applies to all brands".
+  FR: "promote ce learning" "ce learning est générique" "ajoute ça à la KB" "ce truc marche pour toutes les brands" "learning vers KB" "passe ça en shared".
+  EN: "promote this learning" "make this learning shared" "add to KB" "this applies to all brands" "promote to shared".
 permissions:
   reads: [learning]
   writes: [learning]

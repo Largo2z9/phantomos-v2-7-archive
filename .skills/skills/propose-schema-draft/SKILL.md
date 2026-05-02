@@ -3,12 +3,15 @@ name: propose-schema-draft
 type: producer
 version: "1.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Generates a canon-compliant JSON Schema draft
   for a new custom entity or sidecar, based on the captured intent and accepted reuse
   references. Follows `_version`, `_schema`, `_field_types` conventions. Uses patterns
   from `resources/schemas/` and `brands/_TEMPLATE/custom/_EXAMPLE/` as structural reference.
   Invoked by scaffold-extension Phase 3.
+  FR: "propose un schema" "draft le schema" "génère le schema draft".
+  EN: "propose schema" "draft schema" "generate schema draft".
 permissions:
   reads: [resource, brand]
   writes: []

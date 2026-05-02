@@ -3,13 +3,13 @@ name: validate-resources
 type: curator
 version: "1.1.0"
 recommended_model: haiku
+reasoning_pattern: null
 description: >
   Audits workspace integrity: shared resources + brand context files.
   Detects orphaned files, broken references, schema violations, stale entries,
   duplicate IDs, index drift, and brand status inconsistencies.
-  Triggers: "validate", "audit resources", "check KB", "health check",
-  or automatically at end of session.
-  EN: "validate", "audit", "check KB", "health check".
+  FR: "validate" "audit ressources" "check KB" "health check" "vérifie la cohérence" "audit workspace" "intégrité".
+  EN: "validate" "audit resources" "check KB" "health check" "audit workspace" "integrity check".
 permissions:
   reads: [brand, product, offer, profile, learning, strategy]
   writes: []

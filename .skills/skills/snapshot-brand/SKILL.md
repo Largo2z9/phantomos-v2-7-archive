@@ -3,6 +3,7 @@ name: snapshot-brand
 type: producer
 version: "1.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Automatically fills spec.json, offers.json and the base of profile.json
   from a product URL. Scrapes the page, asks 4 closed questions about the audience,
@@ -461,36 +462,65 @@ Fields intentionally left empty (for ingest-resource after):
 
 ---
 
-## Step 7 — Operator validation before save
+## Step 7 — Operator-facing synthesis (mandatory format)
 
-Before writing the files, show a summary of what will be saved:
+Before writing the files, deliver one **4-6 sentence analytical paragraph** that names what this product *is*, what *segment of the market it occupies*, and what *load-bearing decision the operator will make next* on this product. Use the schemas you just filled as **analytical vocabulary**, not as bullet points.
 
-```
-Here's what I extracted for {product_name}, confirm before I save:
+The paragraph must answer in implicit order, woven into prose:
 
-Product  : {name} — {price}€ — {category}
-Offers   : {N} offers detected ({types})
-Audience : {label} — {gender}, {age_range}
-Problem  : {primary_problem}
+1. **What this product really is** — beyond the category label. (*"not a sun stick, an anti-age stick disguised as sunscreen"*)
+2. **Who buys it and why** — pain + trigger + sophistication, in plain prose. Use `problems_solved`, `audience.pain.primary_problem`, `market_context.sophistication` as raw material.
+3. **What the offer architecture suggests** — pricing tier, subscription presence, bundle logic if any. Use `offer_groups[].offers[]` as raw material.
+4. **The 1-2 things you noticed that the operator likely did not** — flags, gaps between brand-stated and observation-based fields, market positioning surprises.
 
-Score    : {score}/100
+End with one of two close patterns, depending on operator signal:
 
-{if score < 70}
-Missing fields: {field1}, {field2}
-→ They stay empty. You can add them with "ingest".
+**Default close (operator hasn't signaled they want to skip validation):**
 
-Good? Want to change anything before I save?
-```
+> *"Save this snapshot, or want to correct anything?"*
 
-- **If the operator confirms** ("yes", "go", "spot on", "ok") → write spec.json + offers.json + profile.json.
-- **If the operator corrects** ("price is 39€", "audience is more men") → apply the correction, reshow the modified summary, wait for confirmation.
+**Trust-and-deepen close (operator has signaled they trust the synthesis and want to go deeper):**
+
+If the operator's reply to the synthesis carries trust signals (*"ok ça me va"*, *"go"*, *"trust c'est bon"*, *"valide tout"*), or if they explicitly ask for more depth, offer the deepening paths via AskUserQuestion (4 substantive options):
+
+> Where do you want to go from here?
+> - Validate point by point (15 min, you correct as we go)
+> - Voice of Customer — what your real customers say (15 min, mine-voc)
+> - Voice of Market — what the niche conversation reveals (25 min, mine-vom)
+> - Full deepening (VoC + VoM + cross-synthesis, ~45 min, deepen-brand-context)
+
+If none of those, the operator can also pull `study-niche-marketdeepdive` standalone (45 min strategic memo) — propose it only on direct ask, NOT in the default option set (cost asymmetry per v2.9.0 architecture decision).
+
+If the page was thin (`_snapshot.confidence_score` internal flag low), say so in prose inside the synthesis (*"the page didn't give me much beyond the basic spec — your hero benefits and the anti-age angle I'm inferring from product context, not direct copy"*) — never expose the score as a number, never list "missing fields" as a separate block.
+
+**Hard rules for the synthesis:**
+- **Pure prose only.** No bullet list, no field enumeration, no bold-section anchors (no `**Le pitch**\n...\n\n**La cible**\n...`), no numbered headings, no scores, no completion percentages, no "Marque. ... Hero. ... Audience. ..." templated paragraph openers.
+- Use schema field semantics as nouns and verbs (e.g. *"the trigger is X"*, not *"trigger_primary: X"*).
+- Never name a file, a path, a skill, a confidence number, or an internal flag.
+- If a schema field is null, do not mention it. The synthesis is what was learned, not what was missed.
+- Inferred attributes flagged inline with *"(à valider)"* or *"(I deduced this, validate when you can)"* — never as a separate "missing fields" block.
+- **Three movements, one blank line between each, no titles.** Movement 1 = what this product really is + who buys it and why (1-3 sentences). Movement 2 = what the offer architecture suggests + the market position (1-3 sentences). Movement 3 = the 1-2 things you noticed the operator likely did not (1-3 sentences). The blank lines provide visual breathing room. The titles are implicit — the structure carries itself through what each paragraph names. **Never add a bold heading or a label to mark each movement.**
+
+**Decisive test before sending:** read the synthesis as a stranger. If you see **bold section labels**, numbered headings, or `Field. content. Field. content.` templated openers, you reverted to form-fill. Rewrite as flowing prose where each paragraph names what it carries via its first sentence, not via a label above it.
+
+**Behavior on operator response:**
+- **Confirm** (*"yes"*, *"go"*, *"spot on"*, *"ok"*) → write spec.json + offers.json + profile.json.
+- **Correction** (*"price is 39€"*, *"audience is more men"*) → apply, regenerate the synthesis incorporating the correction, ask again.
 - **Never write files before explicit confirmation.**
 
 Once saved, run three silent post-writes before talking:
 
 1. **Append to `brands/{slug}/pending-validations.md § Context gate`** one `[ ]` line per inferred field that was stamped with `mode=proposed` during this run. Wording in the operator's language, plain-language source tag (`(inferred from site)`, `(deduced)`), never `source` / `confidence` / `mode` jargon. Typical entries: audience(s) inferred, positioning inferred, tone inferred, compliance gaps detected (e.g. missing contraindications on a medical device).
 2. **Trigger `validate-resources` silently** on the brand. This refreshes `status.json` (completeness per entity, freshness stamps, `wedge_complete`), rebuilds `learnings-index.json` if present, and re-runs the snapshot digest. Surface its result only if it flags MAJOR/CRITICAL — otherwise stay silent.
-3. **Invoke `validate-output-coherence`** on the operator-facing summary you are about to write (Task tool, model haiku, `subagent_safe: true`). Pass `output_text` = the draft summary, `brand_slug`, `entity_refs` = every product/audience/offer you reference. If the report returns `blocking_issues` → revise the summary to remove the contradiction, rerun the check; do not show anything to the operator until `ok: true`. Warnings are informational only — log them, ship the summary. This gate catches the class of bug where the agent narrates *"I flagged compliance_gap as CRITICAL"* while `spec.json#/compliance_gap` is actually `{}`.
+3. **Run `finalize-mutation-batch`** — single bash command, replaces the prior LLM-based coherence check (which was systematically skipped under load):
+
+   ```bash
+   python3 .skills/finalize-mutation-batch.py --brand-slug {slug}
+   ```
+
+   Reads `_field_types`, inspects every mutation written in this run, runs structural checks (unmapped paths, manual derived writes, tone misclassification, missing entity files), emits a `coherence_check` event so `turn-end-audit` sees the loop closed.
+
+   Exit code 2 = blocking issue → revise before shipping the summary. Exit code 0 with warnings = log them, ship. **Non-negotiable, mechanical, not skippable.**
 
 Then propose enrichment without waiting:
 
@@ -532,7 +562,7 @@ I sort and file automatically.
 - **Do not create audience folder** if Q1 + Q2 are both null, not enough to identify audience.
 - **Write modes.** Never call `write_to_context` on a whole file path with `mode=proposed` — the proposal wrapper stamps `_proposed/_source/_confidence` at the root object and corrupts consumers. Always scaffold the file in `mode=direct` (full structure with null placeholders), then stamp inferred fields one by one with `mode=proposed` using a JSONPointer fragment (e.g. `file.json#/pricing/price`). The tool enforces this guard since 2.6.20.
 - **Offers.json = v2 `offer_groups[]` only.** Never write the legacy flat `offers[]` at root. `_version: "2.0"` is mandatory. Single-product files use a group-of-1. Use `product_refs: [{slug, quantity}]`, not `product_ids`.
-- **No narrative claim about an entity field without `validate-output-coherence`.** Any operator-facing sentence that references a field in `spec.json`, `offers.json`, `profile.json`, or `brand.json` (e.g. *"I flagged X in the spec"*, *"the compliance gap is marked CRITICAL"*, *"contraindications list is now complete"*) MUST pass through `validate-output-coherence` first. Fabrication class bug — the sub-skill's fact-consistency check catches claims that contradict or invent the underlying data.
+- **`finalize-mutation-batch` is mandatory before any operator-facing summary.** Step 7 post-write #3 runs `python3 .skills/finalize-mutation-batch.py --brand-slug {slug}`. Mechanical Python primitive — no LLM negotiation, no skip path. Exit code 2 = blocking issue, MUST revise. Soft-prescribed `validate-output-coherence` LLM call (prior version) was skipped 100% of the time under load on the v2.7.1 stress test; this is the replacement.
 
 ---
 

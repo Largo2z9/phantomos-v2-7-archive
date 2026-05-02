@@ -3,6 +3,7 @@ name: check-existing-coverage
 type: curator
 version: "2.0.0"
 recommended_model: haiku
+reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Pre-build gate that checks whether the operator's intent
   can already be served by existing structures before scaffolding a new one. Scans five
@@ -11,6 +12,8 @@ description: >
   dimension matches, routes to the existing structure instead of building new. Scaffold only
   proceeds when the intent is genuinely new.
   Replaces the narrower `suggest-reuse-registries`. Invoked by scaffold-extension Phase 2.
+  FR: "check coverage" "vérifie si ça existe déjà" "y a déjà quelque chose pour ça" "check reuse".
+  EN: "check coverage" "is there already something for this" "check existing coverage" "check reuse".
 permissions:
   reads: [brand, resource, index]
   writes: []

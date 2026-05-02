@@ -20,6 +20,8 @@ And yet the other end of the shift is equally measurable. **95% of generative AI
 
 The study's diagnosis is clear: *"most GenAI systems do not retain feedback, adapt to context, or improve over time."* These pilots don't die because of the model. They die because their architecture keeps nothing.
 
+Recent improvements help (memory features in ChatGPT, dedicated workspaces in Projects and Custom GPTs, tool connectors via MCP), but they do not change the underlying gap: there is no discipline of structured, business-specific encoding owned by the operator and consumable by the agent across sessions. Conversational memory is generic by design. Methodology stays in human heads.
+
 Translation: **it is not a model problem. It is an architecture problem.**
 
 Everyone talks about the AaaS shift. Almost no one talks about why it is not happening. Because addressing that forces an uncomfortable recognition: the entry barrier of the agentic economy is not technological — it is methodological.
@@ -136,37 +138,31 @@ This distinction has precise operational implications. It is not enough to *depl
 
 ## 7. Three positions in the new economy
 
-What you do with the shift depends on who you are. Three positions are emerging in the next decade.
+What you do with the shift depends on who you are. The encoded operator stance applies directly to the current audience.
 
-**Encoded operator.** You hold the expertise. You encode your own craft in your own workspace. You go from eight to twenty clients without hiring. You decouple your pricing from billable hours. You sell outcome — deliverable, result — not time. Encoded craft becomes a compounding asset; unencoded craft stays billable-hour work.
+**Encoded operator.** You hold the expertise. You encode your own craft in your own workspace. You go from one to twenty brands without hiring. You decouple your pricing from billable hours. You sell outcome (deliverable, result) not time. Encoded craft becomes a compounding asset ; unencoded craft stays billable-hour work.
 
-**Encoding consultant.** You help other operators encode their craft. You are the modern analogue of the Forward Deployed Engineer that Palantir institutionalized ([a16z on Palantirization](https://a16z.com/the-palantirization-of-everything/)) — but applied to SMB, not Fortune 500. You come in for six to twelve weeks. You leave with an operational workspace, a method transferred, client autonomy. Your pricing is outcome-based, not hourly. Sarah Tavel at Benchmark phrases it: *"sell work, not software"* ([Tavel, 2024](https://www.sarahtavel.com/p/ai-startups-sell-work-not-software)).
-
-**Platform.** You provide the substrate on which the first two operate. Open source or semi-open. Monetization through hosted/managed, vertical packs, enterprise tier. Analogues: Vercel for web deployment, Supabase for backend, Obsidian for personal knowledge. You do not capture the value of individual use cases — you capture the value of the shared infrastructure.
-
-The three positions feed each other. Operators validate the method. Consultants spread it. The platform capitalizes and maintains coherence.
-
-### The auto-replacement tension
-
-The symmetry between the encoded operator and the encoding consultant looks elegant on paper and strains in contract. A consultant who encodes their method into a client's workspace over six months hands the client a process moat and a budget justification to end the retainer. The two positions are complementary in a mature market and antagonistic inside any specific engagement, unless the consultant operates with three discipline layers the product does not enforce on its own:
-
-- **Contractual licensing.** The workspace remains the consultant's intellectual property; the client receives a usage license bounded by the engagement. Terminate the retainer, terminate the license. Drafted in the service contract, not enforced by the tool in V1.
-- **Workspace separation.** One workspace encodes the consultant's proprietary method and templates — this is the moat and stays with the consultant. A second workspace per client derives from the first but does not merge back. Enforced by operator discipline, not by any skill.
-- **Outcome-based pricing.** When the consultant bills the result rather than the hours, auto-replacement becomes a feature rather than a bug. The client keeps the workspace; the consultant keeps the ongoing engagement for upgrades, new initiatives, and method evolution. A commercial posture shift, not a tool feature.
-
-These three mitigations are prerequisites, not options, for a consultant adopting PhantomOS without cannibalizing their own business. The product does not ship them. The operator does.
+For DTC paid acquisition operators, the current target audience, the encoded operator stance is immediate : your audiences, angles, creatives, advertorials, learnings live in the workspace, the agent operates them across every campaign and every brand you manage.
 
 ---
 
-## 8. What we build
+## 8. What distinguishes the system, lucidly
 
-PhantomOS is an agentic encoding substrate for digital-native SMB operators. Two levels, assumed.
+General-purpose AI tools (ChatGPT, Claude, Gemini) have made real recent progress on memory (memory features), dedicated spaces (Projects, Custom GPTs), and interoperability (MCP, native connectors). PhantomOS does not oppose memory to absence-of-memory. It opposes a **structured, craft-specific, operator-owned encoding** (entities, schemas, sourcing tags, methodology registries) to an opaque, vendor-proprietary memory that is not transposable from one tool to another.
 
-**V1 product — what ships.** An agentic workspace for DTC e-commerce, prosumer, small-team SaaS, online service, and creator operators. Deployable template, blank, versioned. Runs on Claude Code. Local-first, open-source friendly. Ships a minimal OS, a structured KB, a Context DB of six entities, and operator skills governed by a write contract.
+Four distinguishing properties hold :
 
-**Thesis — what we carry.** An agnostic receptacle for encoding any craft in the agentic era. Digital-native SMB is the first incarnation. The vocation is every craft operable by agents.
+1. **Structured craft-specific encoding.** Entities, schemas, sourcing tags, registries dedicated to the operator's craft. Not a generic opaque memory.
+2. **Writing discipline that turns corrections into persistent rules.** Each operator correction becomes a rule the agent applies in the next session. Not a note in a chat thread that gets forgotten.
+3. **Compound effect as a systemic property.** Each deliverable produced, each decision captured, increases the density of the system. The graph becomes more precise every week.
+4. **Vendor independence on the underlying AI.** The workspace is local, operator-owned, transposable. No dependency on pricing changes, policy changes, or capability shifts of a single editor.
 
-**Discipline.** For the thesis to stay falsifiable and not marketing, a binary extractibility test applies to every core feature. If replacing *brand* with *matter*, *creator*, *account*, or *venue* breaks, the feature goes into a vertical pack, not the core. This rule prevents the core from silently loading DTC assumptions while claiming universality.
+Two systemic properties at the foundation :
+
+- **Single centralized interface.** The workspace replaces switching cost across a dozen tools (Notion, Sheets, CRM, conversational AI tools, ad platforms) with one coherent environment. Time savings are not marginal, they are daily.
+- **Vendor independence.** The operator stays owner of their data, their method, their skills. The system is built to remain compatible regardless of the underlying AI model.
+
+Technical consensus converges on this point : *"as context windows become commoditized, competitive value shifts to how well structured the information within them becomes"* ([Atlan, 2026](https://atlan.com/know/llm-context-window-limitations/)).
 
 ---
 

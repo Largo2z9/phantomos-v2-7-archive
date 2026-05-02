@@ -1,0 +1,149 @@
+{
+  "_schema": "https://phantomos.ai/schemas/scoring-weights/v1.0",
+  "_version": "1.0.0",
+  "_canonical_source": "resources/frameworks/paid-angle-scoring.md",
+  "_field_types": {
+    "_schema": "structured",
+    "_version": "structured",
+    "_canonical_source": "structured",
+    "lenses": "declared",
+    "cluster_dedupe_rule": "declared",
+    "anchor_priority": "declared",
+    "anti_patterns": "declared"
+  },
+
+  "lenses": [
+    {
+      "id": "verbatim_density",
+      "label": "Verbatim density",
+      "weight_pct": 35,
+      "is_dominant": true,
+      "description": "Exact match in voice.key_expressions[] with sample_size >= 5 -> maximum. Semantic match in verbatim_quotes[] with high emotional weight -> strong. No anchor, formula-derived only -> low (cell survives only if no grounded alternative in cluster).",
+      "input_paths": [
+        "audiences/{slug}/profile.json#voice.key_expressions[]",
+        "audiences/{slug}/profile.json#verbatim_quotes[]"
+      ]
+    },
+    {
+      "id": "awareness_alignment",
+      "label": "Awareness-acquisition alignment",
+      "weight_pct": 25,
+      "is_dominant": false,
+      "description": "Cell awareness_stage x brand.market.awareness_distribution (or audience-level fallback) x strategy.current_focus.acquisition_focus. Cross-reference routing/awareness-angle-matrix.md to filter angles in the 'avoid' column for dominant awareness stage.",
+      "input_paths": [
+        "brand.json#market.awareness_distribution",
+        "audiences/{slug}/profile.json#awareness",
+        "strategy.json#current_focus.acquisition_focus",
+        "resources/routing/awareness-angle-matrix.md"
+      ]
+    },
+    {
+      "id": "emotional_resonance",
+      "label": "Emotional resonance",
+      "weight_pct": 20,
+      "is_dominant": false,
+      "description": "Cell emotion alignment with audience.psychology.jtbd.emotional_driver and psychology.emotions[] dominant.",
+      "input_paths": [
+        "audiences/{slug}/profile.json#psychology.jtbd.emotional_driver",
+        "audiences/{slug}/profile.json#psychology.emotions[]"
+      ]
+    },
+    {
+      "id": "objection_neutralization",
+      "label": "Objection neutralization",
+      "weight_pct": 20,
+      "is_dominant": false,
+      "description": "Cell objection x product.proofs.* strength match per proof-registry.md mapping. Clinical trial neutralizes scepticism, risk-reversal neutralizes price hesitation, press quote neutralizes trust gap. Unmapped objection -> flag un-neutralizable, drop cell.",
+      "input_paths": [
+        "products/{slug}/spec.json#proofs",
+        "resources/registries/proof-registry.md"
+      ]
+    },
+    {
+      "id": "placement_viability",
+      "label": "Placement viability",
+      "weight_pct": 0,
+      "is_dominant": false,
+      "is_binary_filter": true,
+      "description": "Binary filter, not weight. Cell hook length and format constraint per placement. Reels = 3s pattern interrupt. Stories = swipe-up curiosity. Feed UGC = identification. TikTok = native vernacular. Fail = drop cell. Pass = neutral (no point bonus).",
+      "input_paths": [
+        "operator/profile.json#context.stack[]"
+      ]
+    }
+  ],
+
+  "_weights_invariant": {
+    "sum_of_weights_pct": 100,
+    "verification": "verbatim_density (35) + awareness_alignment (25) + emotional_resonance (20) + objection_neutralization (20) = 100. placement_viability is a binary filter, not weighted."
+  },
+
+  "cluster_dedupe_rule": {
+    "similarity_test": "Two cells are similar when they share: same dominant pain (theme + emotion) AND same dominant objection AND same placement.",
+    "action": "Keep the highest-scored cell per cluster, drop the rest. When two cells differ only on placement (same pain + same objection + same emotion, Reels vs Stories), surface as ONE angle with two placement variants in the artifact footnote, NOT two separate rows."
+  },
+
+  "anchor_priority": {
+    "rule": "For each ranked cell, select the hook anchor in this priority. See paid-angle-scoring.md Section 4 for details.",
+    "priority_order": [
+      "exact_match_in_voice_key_expressions_with_sample_size_5_or_more",
+      "semantic_match_in_verbatim_quotes_high_emotional_weight",
+      "verbatim_quote_pointer_to_brand_assets_lower_weight",
+      "skill_author_derived_with_explicit_derived_tag_lowest"
+    ]
+  },
+
+  "output_caps": {
+    "default_top_n": 5,
+    "wide_test_top_n": 7,
+    "wide_test_trigger": "Top 3 cells score above the high-density threshold AND operator stated a wide-test objective ('je lance un test large', 'vague d'ouverture', 'sortir 7 angles a tester')."
+  },
+
+  "transverse_invariants": {
+    "voice_consistency_cross_block": {
+      "description": "On multi-block outputs (sequence of hooks for one campaign), persona + lexical_register stay stable +/- 1 step across all blocks. Drift = MAJOR violation, refuse-to-ship.",
+      "applies_when": "output > 1 block (e.g. multi-hook brief, sequence)"
+    },
+    "emotional_diversity_check": {
+      "description": "Top N angles must not collapse to the same emotional driver category. If top 5 are all loss-aversion-driven, the cluster filter has failed at the emotional-driver layer. Flag MAJOR, regenerate with explicit driver diversity constraint.",
+      "applies_when": "output count >= 3 angles"
+    }
+  },
+
+  "risk_bet_slot": {
+    "description": "Optional slot for breakthrough mode. When operator passes --mode=breakthrough, the output ranked table includes 5 safe + 1 risk_bet (max). The bet cell carries bet=true, anchor=null (verbatim-anchor suspended), hypothesis_to_test (declared in plain language by operator).",
+    "max_count": 1,
+    "default": "off",
+    "activation": "explicit operator opt-in via --mode=breakthrough flag",
+    "post_test_routing": "Validated -> promote to canon learning. Falsified -> [SUPERSEDED] in learnings.",
+    "see_also": "docs/system/canonical-matrix-reasoning.md §10bis"
+  },
+
+  "anti_patterns": [
+    {
+      "name": "improvised_weights",
+      "symptom": "Skill author overrides 35/25/20/20 with custom weights inline.",
+      "fix": "Refuse. Weights live in this file, versioned. To propose new weights, bump _version and add migration path."
+    },
+    {
+      "name": "score_leakage",
+      "symptom": "Numbers (87/100) surfaced to operator output.",
+      "fix": "Layer A trace only. Operator sees prose synthesis + ranked table without scores."
+    },
+    {
+      "name": "permutation_without_pivot",
+      "symptom": "Top 5 angles paraphrase the same emotional driver.",
+      "fix": "emotional_diversity_check post-rank, regenerate if violation."
+    }
+  ],
+
+  "deprecation_table": {},
+
+  "_change_log": [
+    {
+      "version": "1.0.0",
+      "date": "2026-04-26",
+      "session": "S44",
+      "change": "Initial externalization from paid-angle-scoring.md prose. Added voice_consistency_cross_block + emotional_diversity_check transverse invariants and risk_bet_slot for breakthrough mode."
+    }
+  ]
+}

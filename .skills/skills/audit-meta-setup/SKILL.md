@@ -3,6 +3,7 @@ name: audit-meta-setup
 type: producer
 version: "1.1.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Structured audit of a Meta Ads account setup. Two modes: API-driven (default when
   token available, factual data-backed audit) or declarative interview (fallback,

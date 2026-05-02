@@ -88,8 +88,12 @@ Skip to Milestone 8 directly in replay mode.
 
 **Path (a) — url-path mode**:
 1. Launch `snapshot-brand` as a subagent via Task tool. Do not wait.
-2. Announce: *"Scanning now. 3 to 5 min. Meanwhile, tell me who you are or ask me anything about this workspace."*
-3. Proceed to Milestone 3 in parallel.
+2. Announce in one turn what is happening AND collect operator context in flowing prose, not as separate questions:
+
+   > *"Scanning now, three to five min. While it runs, two things help me calibrate what comes next. First, what's the use case here — your own brand, a client, an agency portfolio, a test? Second, the stack you'd connect to this workspace if you keep using it (Shopify, Meta Ads, Klaviyo, Notion, Slack, Drive, others)?"*
+
+3. Capture both answers, write to `/operator/profile.json → identity.profile` and `/operator/profile.json → context.stack[]` via `write_to_context`. The Milestone 4 profile-type question becomes already-answered.
+4. Proceed to Milestone 3 + Milestone 5/6 in parallel with the scrape.
 
 **Path (b) — conversational-path mode**:
 1. Ask 2 to 3 targeted questions in sequence (one per turn): sector, hero product or core service, rough audience. Keep questions tight, conversational.
@@ -107,11 +111,13 @@ Write the selected mode to `/operator/awareness.json` as a transient field `tour
 
 ### Milestone 3. Blase (operator first name or chosen handle)
 
-Ask naturally during the background work or conversation phase. If the operator already dropped their name in Milestone 1 or 2, skip this milestone.
+**Ask early — within the same turn that announces the scrape and asks for context (Milestone 2 path-a) when possible.** The blase is a low-cost capture that should not appear as a post-script after the wow synthesis. If the operator already dropped their name in Milestone 1 or 2, skip this milestone entirely.
 
-Template (drop in a natural turn, not as a standalone):
+Wording, woven into the natural turn (never standalone):
 
-> How should I call you?
+> *"...by the way, how should I call you?"*
+
+If forgotten before the wow synthesis lands → ask in the same turn that delivers the synthesis, in the opening hook, not as a closing line. Never end the wow turn with a name request; that flattens the moment.
 
 Write to `/operator/profile.json → identity.name` via `write_to_context`.
 
@@ -132,11 +138,14 @@ Deliver as one coherent turn of flowing prose. **No section headers, no labels, 
 Substance to cover, in a natural order chosen by the agent based on how the conversation has flowed so far. Concrete guidance on **how to phrase**, not what labels to use:
 
 **1. Ground what PhantomOS is.**
-One or two sentences that anchor the mental model. Lexicon-grounded. No marketing decoration. Examples of **how it should sound** (not literal templates to copy, but tone references):
-- grounded: *"The way this is set up is basically a folder on your machine. An agent reads it every time you talk to it. Your brand lives inside it, as files. That's the whole mental model — not a dashboard, not a SaaS account."*
-- standard: *"Here the thing you work with is a local workspace. Your brand context lives in structured files in it. The agent reads the workspace on every request and writes back to it when you teach it something."*
-- dense: *"Technically it's an agentic workspace OS. One brand per workspace. An agent contract loaded on every session. Six versioned entities per brand. Every write is recorded in an append-only event log."*
-- technical: *"Stateful local-first agentic runtime, Claude Code as host, six-entity Context DB, mutation-gated writes, file-based."*
+One or two sentences that anchor the mental model. Lexicon-grounded. No marketing decoration. Adapt the example to the operator's profile detected (DTC marketer, consultant, coach, etc.) — the workspace is domain-agnostic, the example chosen should match what they do. Examples of **how it should sound** (not literal templates to copy, but tone references):
+
+- grounded (DTC operator) : *"The way this is set up is basically a folder on your machine. An agent reads it every time you talk to it. Your brand lives inside it, as files. That's the whole mental model — not a dashboard, not a SaaS account."*
+- grounded (consultant) : *"It's a folder on your machine where your method and your client playbooks live as structured files. An agent reads it every time you open a session — your tacit knowledge becomes operable, not just yours."*
+- standard (DTC operator) : *"Here the thing you work with is a local workspace. Your brand context lives in structured files in it. The agent reads the workspace on every request and writes back to it when you teach it something."*
+- standard (consultant) : *"You have a local workspace where your repeatable method, your frameworks, and your client engagements live in structured files. The agent reads it on every request and writes back when you correct or teach it something new."*
+- dense : *"Technically it's an agentic workspace OS. One context unit per workspace (brand, client, cohort, niche). An agent contract loaded on every session. Six versioned entities per context. Every write is recorded in an append-only event log."*
+- technical : *"Stateful local-first agentic runtime, Claude Code as host, six-entity Context DB, mutation-gated writes, file-based, domain-agnostic."*
 
 **2. Name the operator's frustration.**
 Weave into the prose, not as a separate "here is the problem" block. Pick two or three of these signals and merge them into a natural acknowledgement of what the operator has likely been through:
@@ -180,7 +189,21 @@ Add `skill`, `universal_entry_point`, and `tool_stack_integration` to `awareness
 
 **URL path**: when snapshot-brand returns, come back at a natural break in the conversation.
 
-> I have your brand pre-filled from the site. [Summary in 2-3 lines: identity, hero product, visible audience, active offers.] Want to validate together what's right and complete what's missing? 3-5 min.
+Surface the **synthesis paragraph** that snapshot-brand Step 7 generated (4-6 sentences using filled schemas as analytical vocabulary — what this product really is, who buys it and why, what the offer architecture suggests, the 1-2 things you noticed the operator likely did not). Do not re-summarize, do not enumerate. End with:
+
+> *"Want to validate and correct, or keep exploring first?"*
+
+Never produce a separate "1-2 lines" or bracketed list summary. The synthesis IS the wow moment.
+
+**Hard rule: do NOT cascade Milestones 5/6 (PhantomOS introduction + skill concept) immediately after the wow synthesis.** The synthesis must land alone. Re-pitching what PhantomOS is right after the wow dilutes the moment and reads as agent self-explanation. Milestones 5/6 belong **before** the scrape returns (during the scan window) or are **skipped entirely** if the operator signaled in Milestone 1/2 they already understand the model. If 5/6 were not delivered before Milestone 7, defer them to Milestone 8 expansions or to the operator's next pull. Never glue them to the synthesis turn.
+
+**Snapshot failure modes — fallback messaging.** Snapshot-brand may fail or return thin data. Three failure cases, three operator-facing handlings (always honest, always offers a path forward — never ends on apology):
+
+- **URL 404 / DNS error / paywalled** → *"L'URL ne répond pas (404 / accès restreint / DNS introuvable). Si t'as une autre URL pour cette marque ou si tu peux me coller la home en texte, je repars dessus. Sinon on bascule en mode conversational : tu me décris la marque en deux lignes et je construis depuis tes réponses."*
+- **JS-heavy SPA / scraping incomplet** → *"Le site est rendu côté JavaScript et mon scraper voit pas grand chose au-delà des balises de base. J'ai capté {X éléments} mais la moitié manque. Trois options : tu me colles le copy hero + 2-3 prix dans le chat, on connecte Chrome MCP pour un scrape complet, ou on bascule en mode conversational."*
+- **Page trop fine (sub-confidence threshold)** → *"La page est trop légère pour auto-snapshot ({score} %). Pas de quoi générer une fiche utile. Trois questions courtes me donnent ce qu'il faut : qu'est-ce que ce produit fait concrètement, qui l'achète, quel format / cure. Réponds, je construis."*
+
+Never close the wow turn on a pure apology ("désolé, j'ai pas pu"). Always pair the failure with a path the operator can take in the next turn.
 
 **Conversation path**: when the 2-3 profile questions are answered, deliver a synthesis.
 

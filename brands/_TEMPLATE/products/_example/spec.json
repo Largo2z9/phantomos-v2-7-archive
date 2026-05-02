@@ -150,9 +150,12 @@
     "specs.nutrition_facts.allergen_sources[]": "observed",
     "specs.nutrition_facts.nutri_score_grade": "structured",
     "specs.perishability.period_after_opening_months": "observed",
-    "specs.perishability.expiry_date_required": "observed"
+    "specs.perishability.expiry_date_required": "observed",
+    "meta.*": "structured",
+    "pricing.currency": "observed",
+    "description": "stated",
+    "identity.description": "stated"
   },
-
   "meta": {
     "name": "Example Product",
     "slug": "example-product",
@@ -163,7 +166,6 @@
       "status": "draft | partial | complete"
     }
   },
-
   "identity": {
     "type": "functional",
     "product_category": "physical",
@@ -199,7 +201,6 @@
       "licensing": "Optional. Null if no third-party IP. Object: {ip_holder: 'Warner Bros' | 'Disney' | etc, territories: ['FR', 'EU'] | ['worldwide'], royalty_pct: number|null, renewal_date: 'YYYY-MM-DD'|null, restrictions: string|null}. For products built on licensed IP (Harry Potter audio, Disney collabs, brand partnerships). Affects margin, availability, and marketing constraints."
     }
   },
-
   "specs": {
     "materials": [],
     "composition": [],
@@ -207,33 +208,19 @@
     "weight": null,
     "volume": null,
     "package_quantity": null,
-
     "device_features": [],
-
     "digital_specs": null,
-
     "service_specs": null,
-
     "perishability": null,
-
     "nutrition_facts": null,
-
     "posology": null,
-
     "contraindications": null,
-
     "origin": null,
-
     "production_method": null,
-
     "preparation": null,
-
     "external_databases": null,
-
     "target_suitability": null,
-
     "durability": null,
-
     "_notes": {
       "_block": "Fill what's relevant based on identity.product_category. physical→materials+composition. physical_electronic→materials+device_features. digital→digital_specs. service→service_specs. variants/weight/volume apply to physical* only.",
       "composition": "v1.8+: accepts string[] (legacy) OR array of objects {ingredient, pct, organic_certified, class, origin, inci}. class enum: active|filler|preservative|fragrance|colorant|emulsifier|binder|other. Mix allowed.",
@@ -245,50 +232,63 @@
       "external_databases": "v1.8+. Optional. Object: {open_food_facts_id, yuka_id, inci_beauty_id, ciqual_id, ean, gtin}. Enables automated third-party rating fetch. additionalProperties allowed for future DBs.",
       "target_suitability": "v1.8+. Optional. UNIVERSAL 'who is this for' container. Object: {skin_types[] (dry|oily|combination|sensitive|normal|mature|acne_prone|rosacea|eczema), hair_types[] (straight|wavy|curly|coily|fine|thick|dry|oily|damaged|colored|frizzy|thinning), body_areas[] (free: 'face'|'scalp'|'full_body'|'outdoor_trail'), use_cases[] (free: 'trail_running'|'daily_commute'), demographics[] (free: 'women_menopause'|'teens')}. Works for ALL categories: cosmetics, apparel, supplements. Null if untargeted.",
       "durability": "v1.8+. Optional. For durable goods (apparel, electronics, furniture). Object: {warranty_years, warranty_type: 'limited'|'lifetime'|'conditional'|'commercial', repairable, spare_parts_available, repair_program, lifespan_estimate, repairability_index (FR 2021+ electronics 0-10)}. Null for consumables.",
-      "perishability": "Optional. Null if product has no meaningful shelf life. Object: {shelf_life_days: {min, max}, peak_freshness_days: {start, end}, storage_conditions, freshness_guarantee, period_after_opening_months (EU Cosmetics PAO, v1.8+), expiry_date_required (v1.8+)}.",
+      "perishability": "Optional. Null if product has no meaningful shelf life. Object: {shelf_life_days: {min, max}, peak_freshness_days: {start, end}, storage_conditions: string, freshness_guarantee: string|null}. For flowers (5-7 days), fresh food, short-DLC cosmetics, meal kits. shelf_life_days = total usable life from delivery. peak_freshness_days = window of optimal quality (day 1-3 for flowers). freshness_guarantee = brand promise ('replace if wilted on arrival'). Impacts COGS modeling, inventory hold, refund logic.",
       "nutrition_facts": "Optional. For ingestible products (food, beverages, meal replacements, supplements). Object: {serving_size, calories, macros, micros[], allergens[] (EU14 + oats, v1.8), allergen_sources[] (derived: 'lanolin'|'gelatin'|'bee'|'latex', v1.8), dietary_tags[] (+clean_beauty|cruelty_free|chicory_based|caffeine_free|bio|raw, v1.8), nutri_score_grade (A-E, v1.8)}. Null if not ingestible.",
       "device_features": "Array of {feature, description, implementation}. For product_category=physical_electronic. Each entry = one capability of the device. Replaces composition[] for hardware products.",
       "digital_specs": "For product_category=digital. Object: {format: 'audio'|'video'|'pdf'|'app'|'course', delivery_method: 'download'|'streaming'|'usb_transfer'|'in_app', access_duration: 'permanent'|'1_year'|'subscription'|string, file_size: string|null, drm: true|false, platform_requirements: string|null}. Null if not digital.",
-      "service_specs": "For product_category=service. Object: {service_type: 'repair'|'consultation'|'coaching'|'installation'|'subscription_service', duration: string|null, coverage: string (what's included), conditions: string (eligibility/restrictions), delivery_method: 'in_person'|'remote'|'mail_in'|'on_site'}. Null if not service.",
-      "perishability": "Optional. Null if product has no meaningful shelf life. Object: {shelf_life_days: {min, max}, peak_freshness_days: {start, end}, storage_conditions: string, freshness_guarantee: string|null}. For flowers (5-7 days), fresh food, short-DLC cosmetics, meal kits. shelf_life_days = total usable life from delivery. peak_freshness_days = window of optimal quality (day 1-3 for flowers). freshness_guarantee = brand promise ('replace if wilted on arrival'). Impacts COGS modeling, inventory hold, refund logic."
+      "service_specs": "For product_category=service. Object: {service_type: 'repair'|'consultation'|'coaching'|'installation'|'subscription_service', duration: string|null, coverage: string (what's included), conditions: string (eligibility/restrictions), delivery_method: 'in_person'|'remote'|'mail_in'|'on_site'}. Null if not service."
     }
   },
-
   "active_principle": {
     "how_it_works": "",
     "active_element": "",
     "technical_differentiator": "",
     "_notes": "Raw R&D facts. What the founder/R&D explains. Storytelling is output, not source."
   },
-
   "unique_mechanism": {
     "name": null,
     "description": null,
     "_notes": "Branded solution name if exists (e.g. 'DermaPure'). Null if none — pipeline can propose."
   },
-
   "benefits": [
     {
       "benefit_id": "",
       "benefit": "",
       "measurable_outcome": "",
       "chain": [
-        { "level": "functional", "formulation": "" },
-        { "level": "emotional", "formulation": "" },
-        { "level": "identity", "formulation": "" }
+        {
+          "level": "functional",
+          "formulation": ""
+        },
+        {
+          "level": "emotional",
+          "formulation": ""
+        },
+        {
+          "level": "identity",
+          "formulation": ""
+        }
       ],
       "tags": []
     }
   ],
-
   "problems_solved": [
     {
       "problem_id": "",
       "problem": "",
       "chain": [
-        { "level": "surface", "formulation": "" },
-        { "level": "consequence", "formulation": "" },
-        { "level": "deep", "formulation": "" }
+        {
+          "level": "surface",
+          "formulation": ""
+        },
+        {
+          "level": "consequence",
+          "formulation": ""
+        },
+        {
+          "level": "deep",
+          "formulation": ""
+        }
       ],
       "frequency": null,
       "urgency": null,
@@ -307,12 +307,10 @@
       }
     }
   ],
-
   "promise": {
     "main": "",
     "variations": []
   },
-
   "proofs": {
     "social": {
       "rating": null,
@@ -333,13 +331,11 @@
       "studies": []
     }
   },
-
   "compliance": {
     "certifications": [],
     "safety_warnings": [],
     "allergen_info": []
   },
-
   "sensory_profile": {
     "fragrance_pyramid": {
       "top_notes": [],
@@ -360,7 +356,6 @@
       "sillage": "light | moderate | heavy | intimate"
     }
   },
-
   "sustainability": {
     "packaging_type": null,
     "eco_claims": [],
@@ -384,7 +379,6 @@
       "environmental_impact": "Quantified metrics when available. Null if not measured."
     }
   },
-
   "market_context": {
     "sophistication": "",
     "demonstrability": "",
@@ -399,14 +393,12 @@
       "trust_barrier": "low | medium | high"
     }
   },
-
   "competitive_comparison": [
     {
       "competitor_product": "",
       "feature": ""
     }
   ],
-
   "gift_economy": {
     "buyer_is_consumer": true,
     "buyer_benefits_chain": [],
@@ -417,7 +409,6 @@
       "recipient_benefits_chain": "Array of {level: 'functional'|'emotional'|'identity', formulation: string}. The experience of the person RECEIVING (surprise, delight, product utility)."
     }
   },
-
   "pricing": {
     "pricing_model": "fixed",
     "price": null,
@@ -435,6 +426,5 @@
       "breakeven_cpa": "Max CPA to stay profitable. Computed: price × gross_margin."
     }
   },
-
   "related_products": []
 }

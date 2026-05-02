@@ -3,11 +3,14 @@ name: check-cross-refs
 type: curator
 version: "1.0.0"
 recommended_model: haiku
+reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Walks declared cross-references in a proposed schema
   and verifies each target core entity (product, audience, offer, etc.) exists in the
   current workspace. Flags unresolved references before the extension is scaffolded.
   Invoked by scaffold-extension Phase 5.
+  FR: "check les cross-refs" "vérifie les références" "résous les cross_refs".
+  EN: "check cross-refs" "verify references" "resolve cross_refs".
 permissions:
   reads: [brand]
   writes: []

@@ -52,23 +52,9 @@ Never display tokens in output. Install deps: `pip install requests python-doten
 | Learnings | `learnings.json` | empty |
 | Strategy | `strategy.json` | empty |
 
-### Context Levels
+### Context state
 
-**Level 1. MVP** (agents can work):
-- [ ] `brand.json`. name, positioning, tone of voice
-- [ ] `products/{product}/spec.json`. hero product (name, price, benefits, problems_solved)
-- [ ] `audiences/{audience}/profile.json`. primary audience (who, pain points)
-
-**Level 2. Enriched** (targeted content):
-- [ ] Benefit/pain chains in products and audiences
-- [ ] Competitors (>=1) in brand.json
-- [ ] Offers (>=1) in products/{product}/offers.json
-- [ ] Tone details (banned_words, frequent_words)
-
-**Level 3. Operational** (after first sales):
-- [ ] Financials (AOV, revenue, margins)
-- [ ] Strategy (goals, targets, focus)
-- [ ] Seasonality
+Context completeness is a continuous state, not a checklist. The agent reads `_snapshot.md` (auto-regenerated on every mutation) to know what is currently knowable about this brand and what the next operator-shareable input would unlock. Three reference depths exist (basics / enriched / operational) but they are descriptive, not prescriptive — the agent never asks the operator to "fill the boxes". Full narrative reference: `docs/system/patterns.md § Context Levels`.
 
 ## How to Reference Resources
 

@@ -3,6 +3,7 @@ name: watch-competitors
 type: producer
 version: "1.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Analyse les publicités Meta des concurrents d'une brand et produit un rapport
   de veille créative avec les angles, mechanics, et signaux d'opportunité observés.

@@ -48,7 +48,7 @@ The agent economy misses the real lever when it thinks in one-shot prompts. The 
 
 ## 8. Product — What ships today
 
-One workspace per brand, one Agent Contract per workspace. A Context DB of six versioned entities — brand, product, offer, audience, learnings, strategy. Ten operator skills. A write contract gates every mutation. No dashboards, no UI, no real-time sync. Claude Code required.
+One workspace per brand, one Agent Contract per workspace. A Context DB of six versioned entities — brand, product, offer, audience, learnings, strategy. A library of operator skills covering setup, production, learning and audit — designed to scale from a day-one core to the full breadth as the workspace fills. A write contract gates every mutation. No dashboards, no UI, no real-time sync. Claude Code required.
 
 *Audience: anyone mid-evaluation who wants concrete before abstract.*
 

@@ -3,6 +3,7 @@ name: onboard-brand
 type: orchestrator
 version: "1.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Full-cycle brand onboarding orchestrator. Chains setup-brand (identity + structure)
   → snapshot (URL scan, background) → ingest-resource (docs collected during setup)
@@ -14,7 +15,7 @@ permissions:
   reads: [brand, product, offer, profile, learning, strategy]
   writes: [brand, product, offer, profile, learning]
   mode: proposed
-  subagent_safe: false   # this is the pilot, it orchestrates subagents
+  subagent_safe: false
 pipeline:
   preconditions: operator provides brand URL or brand name + intent to onboard from scratch
   postconditions: |
@@ -101,8 +102,13 @@ Spawn subagent with Task tool:
 
 **While snapshot runs**, continue conversation with operator (ask about any pasted docs, clarify intent, etc.). **NEVER** block the operator waiting for snapshot.
 
-**When snapshot returns** at a natural conversation break:
-> *"Snapshot done. [1-2 lines: hero product detected, audience inferred, offers found]. I keep going with integrity check."*
+**When snapshot returns** at a natural conversation break, surface the **synthesis paragraph** that snapshot-brand Step 7 generated (4-6 sentences using filled schemas as analytical vocabulary). Do not re-summarize, do not produce a "1-2 lines" recap.
+
+After the synthesis, offer the next move:
+
+> *"Want to validate and correct, or jump to the chantiers I'll set after the consistency pass?"*
+
+The integrity check (validate-resources) runs silently in parallel — no need to announce it as a discrete milestone. Surface only if it returns blocking issues.
 
 **If URL absent** → skip Phase 2.
 

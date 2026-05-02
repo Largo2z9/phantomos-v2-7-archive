@@ -4,9 +4,9 @@ From an empty clone to a first skill run on your brand: about fifteen minutes of
 
 ## Prerequisites
 
-- **Claude Code** installed and signed in — [claude.ai/code](https://claude.ai/code). A Claude Pro, Team, or Max subscription is required. Files stay on your machine; the agent calls the Anthropic API for inference.
-- **This workspace** cloned or downloaded to your machine. Open the root folder in Claude Code, not a subfolder — the agent loads its contracts from the whole tree.
-- **Your brand in mind** — the name, a one-line positioning, at least one product. If you have a public URL, drop it in the first message and the agent pre-fills from it.
+- **Claude Code** installed and signed in: [claude.ai/code](https://claude.ai/code). A Claude Pro, Team, or Max subscription is required. Files stay on your machine; the agent calls the Anthropic API for inference.
+- **This workspace** cloned or downloaded to your machine. Open the root folder in Claude Code, not a subfolder. The agent loads its contracts from the whole tree.
+- **Your brand in mind**: the name, a one-line positioning, at least one product. If you have a public URL, drop it in the first message and the agent pre-fills from it.
 
 No package to install. No JSON to touch.
 
@@ -16,9 +16,9 @@ PhantomOS reports workspace readiness on three levels. Each level unlocks a set 
 
 | Level | What the agent can produce at this level | What fills this level |
 |---|---|---|
-| **Level 1 — Base** | Generic copy, audit outlines, first-pass briefs calibrated on brand tone | Brand identity, hero product, primary audience |
-| **Level 2 — Targeted** | Calibrated creative, differentiated positioning, offer-aware copy | Competitor set, detailed benefits, active offers, audience pain and psychology |
-| **Level 3 — Operational** | Pacing decisions, scenario planning, P&L-aware recommendations | Financials, annual goals, seasonality, operational learnings |
+| **Level 1 · Base** | Generic copy, audit outlines, first-pass briefs calibrated on brand tone | Brand identity, hero product, primary audience |
+| **Level 2 · Targeted** | Calibrated creative, differentiated positioning, offer-aware copy | Competitor set, detailed benefits, active offers, audience pain and psychology |
+| **Level 3 · Operational** | Pacing decisions, scenario planning, P&L-aware recommendations | Financials, annual goals, seasonality, operational learnings |
 
 When you run `validate`, the agent reports your current level and lists what blocks the next one. You can operate productively at Level 1 from day one.
 
@@ -34,7 +34,7 @@ The agent asks for a handful of fields (name, language, sector), creates the fol
 
 > "Ingest this info on [your brand name]"
 
-Paste whatever you have — a brief, a positioning doc, a product sheet, or raw text describing your brand. The agent classifies, structures, and files.
+Paste whatever you have (a brief, a positioning doc, a product sheet, or raw text describing your brand). The agent classifies, structures, and files.
 
 Recommended order: brand first, then products, then customers. Customers reference products.
 
@@ -44,7 +44,7 @@ Recommended order: brand first, then products, then customers. Customers referen
 > "Ingest this customer profile for [your brand name]"
 > "Ingest this offer for [product name]"
 
-Paste raw. The agent does the rest. Add as many as you want, any time — no setup to redo.
+Paste raw. The agent does the rest. Add as many as you want, any time. No setup to redo.
 
 ### 4. Validate
 
@@ -64,13 +64,13 @@ No re-briefing. The agent pulls context automatically from the entities you fill
 
 ## What you can do next
 
-- **At any moment** — type `?` or `skills` and the agent shows what's available in your current context.
-- **Explore capabilities** — `capabilities.md` lists every skill with trigger phrases.
-- **Go deeper** — `../vision/prisms.md` for what PhantomOS is; `../system/architecture.md` for architecture.
+- **At any moment**: type `?` or `skills` and the agent shows what's available in your current context.
+- **Explore capabilities**: `capabilities.md` lists every skill with trigger phrases.
+- **Go deeper**: `../vision/prisms.md` for what PhantomOS is; `../system/architecture.md` for architecture.
 
-## When you need more than the six entities
+## When you need more than the default entities
 
-The workspace ships with six entities per brand — brand, product, offer, audience, learnings, strategy. If your work needs to capture something that does not fit (competitor ads over time, margin by channel, supplier lead times, customer cohorts, a quarterly report), just say so:
+The workspace ships with the default DTC paid entities per brand (brand, product, offer, audience, angle, learnings, strategy). If your work needs to capture something that does not fit (competitor ads over time, margin by channel, supplier lead times, customer cohorts, a quarterly report), just say so:
 
 > *"Monitor my competitors' Meta ads over time"*
 > *"Track my margin by channel"*
@@ -85,7 +85,7 @@ When the template is updated, you pull the new version in your workspace folder,
 
 > *"Update workspace"*
 
-The agent reads what changed, applies it, and reports. Your brand data, your captured learnings, your custom trackers, your connected credentials — all untouched. Only the template files and skills are refreshed. If a schema change requires a data migration, the agent walks you through it explicitly before touching anything.
+The agent reads what changed, applies it, and reports. Your brand data, your captured learnings, your custom trackers, your connected credentials: all untouched. Only the template files and skills are refreshed. If a schema change requires a data migration, the agent walks you through it explicitly before touching anything.
 
 ## Common questions
 
@@ -97,9 +97,9 @@ The agent reads what changed, applies it, and reports. Your brand data, your cap
 
 **Why is there a `_TEMPLATE/` folder in brands?** It's the blank copied when a new brand is created. Do not modify.
 
-**Where does the shared library come from?** You ingest it — proven methods, angles, templates — via `"Ingest this resource"`. Pre-filled knowledge packs by sector are planned.
+**Where does the shared library come from?** You ingest it (proven methods, angles, templates) via `"Ingest this resource"`. Pre-filled knowledge packs by sector are planned.
 
 ## Limits to know
 
-- **Single-operator.** One operator at a time per workspace. Multi-operator planned for V2.
+- **Single-operator.** One operator at a time per workspace. Multi-operator planned for a future iteration.
 - **Local only.** Files live on your machine. To switch machines, clone and re-auth credentials.

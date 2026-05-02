@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Connected sources",
+  "description": "Runtime state of external platform connections. Lives in operator/connected-sources.json (workspace scope) or brands/{slug}/connected-sources.json (brand scope). Distinct from resources/conventions/{platform}.json which describes how a platform works generically.",
+  "type": "object",
+  "required": ["meta", "sources"],
+  "properties": {
+    "_schema": { "type": "string", "const": "connected-sources" },
+    "_version": { "type": "string" },
+    "_field_types": { "type": "object", "additionalProperties": { "type": "string" } },
+    "meta": {
+      "type": "object",
+      "required": ["scope"],
+      "properties": {
+        "scope": { "type": "string", "enum": ["workspace", "brand"] },
+        "brand_slug": { "type": ["string", "null"], "description": "Required if scope=brand. Null if scope=workspace." },
+        "updated": { "type": "string", "format": "date-time" }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "description": "List of connected external platforms. Each entry references a convention by platform name.",
+      "items": {
+        "type": "object",
+        "required": ["platform", "type", "credentials_ref", "capabilities"],
+        "properties": {
+          "platform": {
+            "type": "string",
+            "description": "Platform identifier matching a convention file in resources/conventions/{platform}.json. Free string for unconventional platforms (custom convention scaffolded via connect-source skill)."
+          },
+          "type": {
+            "type": "string",
+            "enum": ["paid_ads", "analytics", "ecommerce", "email_sms", "attribution", "creative_intelligence", "crm", "custom"]
+          },
+          "account_id": {
+            "type": ["string", "null"],
+            "description": "Account or property identifier specific to this connection. Resolves to e.g. Meta ad_account_id, GA4 property_id, Shopify store_domain. Null if not applicable."
+          },
+          "credentials_ref": {
+            "type": "string",
+            "description": "Reference to credential storage. Format : 'credentials.env:{KEY_NAME}' or 'keychain:{service}:{key}'. Never store raw token here."
+          },
+          "capabilities": {
+            "type": "array",
+            "description": "Operations enabled on this connection.",
+            "items": { "type": "string", "enum": ["read", "write", "stream"] },
+            "minItems": 1
+          },
+          "resolves_to_workspace_auth": {
+            "type": "boolean",
+            "default": false,
+            "description": "True if this brand-level entry resolves authentication to a workspace-level entry (multi-tenant Meta BM, Klaviyo Partner, Shopify Partner). When true, credentials_ref points to operator/connected-sources.json entry."
+          },
+          "sync_status": {
+            "type": "string",
+            "enum": ["active", "stale", "error", "never_synced", "disabled"],
+            "default": "never_synced"
+          },
+          "last_sync": {
+            "type": ["string", "null"],
+            "format": "date-time"
+          },
+          "last_error": {
+            "type": ["string", "null"],
+            "description": "Last error message if sync_status=error. Cleared on successful sync."
+          },
+          "custom_fields": {
+            "type": "object",
+            "description": "Extension point for non-templated platforms. Free-form key-value storage for platform-specific metadata not in canonical convention.",
+            "additionalProperties": true
+          },
+          "added_at": { "type": "string", "format": "date-time" },
+          "_notes": { "type": "object" }
+        }
+      }
+    }
+  }
+}

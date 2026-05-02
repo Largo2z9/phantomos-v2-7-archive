@@ -3,12 +3,12 @@ name: setup-brand
 type: orchestrator
 version: "2.0.0"
 recommended_model: sonnet
+reasoning_pattern: null
 description: >
   Guided setup of a new brand in the workspace. Copies _TEMPLATE, sets slug,
   replaces placeholders, creates product and audience folders, initializes status.json.
-  Triggers: "configure cette brand", "setup brand", "nouvelle brand", "ajoute une brand",
-  "onboard brand", "crée le workspace pour".
-  EN: "setup brand", "configure brand", "new brand", "onboard brand".
+  FR: "configure cette brand" "setup brand" "nouvelle brand" "ajoute une brand" "crée le workspace pour" "initialise une brand".
+  EN: "setup brand" "configure brand" "new brand" "create brand workspace" "initialize brand".
 permissions:
   reads: [brand]
   writes: [brand, product, profile]
@@ -58,7 +58,7 @@ General rule: in onboarding, less is more. Every additional suggestion invites t
 - **Language**: if operator types in FR → default `fr`, no "fr or en?" question. If in EN → default `en`. Ask only if ambiguous (dense franglais or message too short for reliable detection).
 - **Sector**: if inferable from the product mentioned (*"niacinamide serum"* → skincare, *"melatonin gummies"* → sleep nutrition, *"steering wheel grip"* → auto/accessories) → infer silently, propose in acknowledge *"sector I'll set to 'skincare', tell me if it's something else"*. No open question.
 - **Products**: if already declared in previous turns → slug generated, skip the question. If not mentioned → ask the question once.
-- **Audience**: if already described → OK. If the operator hesitates ("I have a mix", "not sure") → DO NOT passively file it as "to dig later". Ask ONE adversarial question: *"Your last 10 orders, more like which of the two?"* — crystallizes instead of deferring.
+- **Audience**: if already described → OK. If the operator hesitates ("I have a mix", "not sure") → DO NOT passively file it as "to dig later". Ask ONE adversarial question that crystallizes the choice instead of deferring it. Match the framing to the operator's stage : if traffic exists, *"Your last 10 orders, more like which of the two?"*. If pre-launch or pre-traction (no orders yet), *"Among the two, which one do you see as your ideal first customer?"*. Never ask a question that assumes traffic when there is none.
 
 Binary rule: **if info known → zero question on that info**. An operator who gave 4 infos in 1 turn does not start over with 4 sequential questions.
 
@@ -238,7 +238,13 @@ You don't need to open a file, that's my job.
 
 ### What we specifically do here (post-scrape / post-setup)
 
-1. **Context recap** (operator language, short block format): identity, hero product, audience (flag "inferred, to validate"), detected offers, business stage if given. Before sending this recap to the operator, invoke `validate-output-coherence` (Task tool, haiku, `subagent_safe: true`) with `output_text` = the recap draft, `brand_slug`, and `entity_refs` covering every product/audience/offer mentioned. Revise until `ok: true` — never ship a recap that contradicts or fabricates against the files just written.
+1. **Context synthesis** (operator language, **4-6 sentences of prose, no block format, no enumeration, no field list**). Use the schemas filled by snapshot-brand as analytical vocabulary: name what this brand really is in market terms, who buys and why with the trigger and sophistication signal, what the offer architecture suggests about positioning, and the 1-2 things you noticed the operator likely did not (gaps between brand-stated and observation-based fields, surprises). Flag inferred fields inline with *"(à valider)"* / *"(to validate)"* tags, never as a separate "missing fields" list. Run BEFORE sending:
+
+   ```bash
+   python3 .skills/finalize-mutation-batch.py --brand-slug {slug}
+   ```
+
+   Mechanical Python primitive — exit code 2 = blocking issue, revise the synthesis. Exit 0 with warnings = log silently, ship. Non-negotiable.
 
 2. **Explicit blind spots** — detailed audience, past learnings, platform access, competitor benchmarks.
 

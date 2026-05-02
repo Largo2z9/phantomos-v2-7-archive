@@ -44,9 +44,10 @@
     "meta.tags": "structured",
     "meta.audience_type": "structured",
     "meta.validation_status": "structured",
-    "meta.product_id": "structured"
+    "meta.product_id": "structured",
+    "meta.*": "structured",
+    "pain.*": "structured"
   },
-
   "meta": {
     "name": "Example Audience",
     "slug": "example-audience",
@@ -65,18 +66,19 @@
       "scope": "broad | segment | micro. Broad = persona large (ex: 'femmes actives'). Segment = poche définie (ex: 'infirmières debout'). Micro = hyper-niche (ex: 'infirmières urgentistes nuit'). Max 3 niveaux : broad → segment → micro. Pas de sous-micro.",
       "parent_slug": "Slug de la poche parente dont celle-ci est une déclinaison. Null si poche racine. Permet la navigation broad → narrow sans arborescence dossier.",
       "overlap_with": "Array de slugs d'autres poches qui partagent des traits. Signal de chevauchement — le détail de l'overlap (quels champs se recoupent) sort dans le rapport de mining, pas ici.",
-      "product_id": "Primary product slug this audience is mapped to. Null = brand-level audience.",
+      "product_id": "Primary product slug this audience was discovered from / built for. Provenance only — multi-product mapping lives in pilotage docs, not here.",
       "tags": "Queryable labels with MANDATORY namespaces. Format: '{namespace}:{value}'. Namespaces autorisés : problem: | context: | profession: | awareness: | life_moment: | behavior:. Vocabulaire libre à l'intérieur du namespace. Ex: ['problem:foot-pain', 'context:standing-job', 'profession:nurse', 'awareness:solution-aware'].",
       "audience_type": "primary | secondary | discovered | assumed. 'discovered' = found via VoC mining (not anticipated). 'assumed' = inferred from product logic (not validated).",
-      "validation_status": "hypothesis | tested | validated | scaled | fatigued. Factual observable state. hypothesis = pas encore testée en campagne. tested = ad set lancé, résultats non-concluants. validated = CPA/ROAS confirmé viable. scaled = budget significatif alloué. fatigued = performance en déclin. Règle : hypothesis > 30 jours sans test → flag par validate-resources.",
-      "product_id": "Primary product slug this audience was discovered from / built for. Provenance only — multi-product mapping lives in pilotage docs, not here."
+      "validation_status": "hypothesis | tested | validated | scaled | fatigued. Factual observable state. hypothesis = pas encore testée en campagne. tested = ad set lancé, résultats non-concluants. validated = CPA/ROAS confirmé viable. scaled = budget significatif alloué. fatigued = performance en déclin. Règle : hypothesis > 30 jours sans test → flag par validate-resources."
     }
   },
-
   "identity": {
     "description": "",
     "archetype": "",
-    "age_range": { "min": null, "max": null },
+    "age_range": {
+      "min": null,
+      "max": null
+    },
     "gender": "",
     "profession_category": "",
     "income_level": "",
@@ -88,7 +90,6 @@
       "information_sources": "Where they research before buying: Reddit, TikTok, Amazon reviews, friends, blogs, YouTube..."
     }
   },
-
   "role": {
     "type": "",
     "proxy_link_id": null,
@@ -97,7 +98,6 @@
       "proxy_link_id": "Audience slug of the linked profile (buyer ↔ user)."
     }
   },
-
   "psychology": {
     "core_desire": "",
     "values": [],
@@ -123,7 +123,6 @@
       "goals": "What they want to achieve. Goals × benefits = communication core."
     }
   },
-
   "decision_process": {
     "awareness_trigger": "",
     "research_behavior": {
@@ -141,7 +140,6 @@
       "risk_tolerance": "impulsive | cautious | needs_consensus | waits_for_proof"
     }
   },
-
   "behavior": {
     "purchase_frequency": "",
     "conversion_timeline": "",
@@ -157,7 +155,6 @@
       "channel_preferences": "Where they discover and buy: social, search, email, marketplace, retail, referral"
     }
   },
-
   "voice": {
     "vocabulary_to_use": [],
     "vocabulary_to_avoid": [],
@@ -179,16 +176,24 @@
     ],
     "tone_register": ""
   },
-
   "pain_points": [
     {
       "ref": "",
       "priority": null,
       "formulation": "",
       "chain": [
-        { "level": "surface", "formulation": "" },
-        { "level": "consequence", "formulation": "" },
-        { "level": "deep", "formulation": "" }
+        {
+          "level": "surface",
+          "formulation": ""
+        },
+        {
+          "level": "consequence",
+          "formulation": ""
+        },
+        {
+          "level": "deep",
+          "formulation": ""
+        }
       ],
       "emotion": "",
       "trigger": "",
@@ -209,16 +214,24 @@
       }
     }
   ],
-
   "benefits": [
     {
       "ref": "",
       "priority": null,
       "formulation": "",
       "chain": [
-        { "level": "functional", "formulation": "" },
-        { "level": "emotional", "formulation": "" },
-        { "level": "identity", "formulation": "" }
+        {
+          "level": "functional",
+          "formulation": ""
+        },
+        {
+          "level": "emotional",
+          "formulation": ""
+        },
+        {
+          "level": "identity",
+          "formulation": ""
+        }
       ],
       "emotional_lever": "",
       "awareness_stage": "solution_aware",
@@ -235,7 +248,6 @@
       }
     }
   ],
-
   "objections": [
     {
       "type": "",
@@ -258,15 +270,11 @@
       }
     }
   ],
-
-
   "market_position": {
     "awareness_level": "",
     "sophistication_override": null,
     "_notes": "Override product-level sophistication if this audience diverges. Null = inherits."
   },
-
-
   "research_meta": {
     "confidence": null,
     "opportunity_score": null,

@@ -1,8 +1,9 @@
 ---
 name: validate-output-coherence
-type: sub-skill
+type: shared
 version: "1.0.0"
 recommended_model: haiku
+reasoning_pattern: null
 operator_facing: false
 invocable_by:
   - audit-meta-global
@@ -19,9 +20,12 @@ description: >
   by orchestrators and domain skills as a final gate. Returns a structured
   coherence report with warnings and blocking issues. Does NOT rewrite the
   output — only flags issues; caller decides whether to revise, ship, or block.
+  FR: "valide la cohérence de l'output" "check coherence" "vérifie l'output contre la brand".
+  EN: "validate output coherence" "check coherence" "verify output against brand".
 permissions:
   reads: [brand, product, offer, profile, learnings, strategy]
   writes: []
+  emits_events: [coherence_check]
   mode: none
   subagent_safe: true
 ---
@@ -111,6 +115,18 @@ Scan for :
 - Named competitors, partners, or creators — must exist in `brand.market.competitors[]` or be flagged as new.
 - Claims using superlatives ("best", "#1", "most effective") without source = `fabrication warning`.
 
+### Step 6 — Emit audit event (MANDATORY)
+
+Before returning the report to the caller, **YOU MUST** emit a `coherence_check` event so the `turn-end-audit` hook sees the skill ran:
+
+```bash
+python3 .skills/emit-event.py \
+  --kind coherence_check \
+  --payload '{"brand_slug":"{slug}","ok":{true|false},"warnings":{N},"blocking":{N},"entity_refs":[...]}'
+```
+
+Skipping this step means the hook treats any entity-field claim in the caller's output as **unchecked** and surfaces a warning on turn end, even if validation passed. Emission is part of the contract, not optional observability.
+
 ---
 
 ## Output
@@ -148,7 +164,8 @@ Structured JSON to stdout :
 - **Never fabricate brand facts to validate against.** If a brand field is empty or missing, the check is `indeterminate` (neither pass nor fail), surfaced in the report.
 - **Do not call LLM to "creatively interpret" whether a fact matches.** Literal comparison only, with a small tolerance for paraphrase. If unsure → flag as warning, let operator or caller decide.
 - **Severity discipline** — `blocking` is reserved for actual contradictions with brand facts or fabricated schema paths. Style drift and light tone mismatches are `warning`.
-- **Report only. Don't act.** No file writes, no mutations, no retries.
+- **Report only. Don't act.** No file writes, no mutations, no retries. The only exception is the mandatory `coherence_check` audit event (Step 6) which writes to `.phantom/context-engine-events.jsonl` via `.skills/emit-event.py`, not to brand JSON.
+- **Event emission is non-optional.** Step 6 closes the loop with `turn-end-audit`. Skipping it = hook surfaces a false "unchecked entity claim" warning on the caller's turn even when validation passed.
 
 ---
 
@@ -156,5 +173,7 @@ Structured JSON to stdout :
 
 - `docs/system/skill-resource-discovery.md` — explains where this skill fits in the skill execution flow
 - `.skills/discover-resources.py` — sibling primitive used by skills BEFORE calling this one
+- `.skills/emit-event.py` — audit event channel, invoked in Step 6 to log the `coherence_check` event
 - `.skills/write-to-context.py` — canonical mutation channel (this skill reads, never calls it)
+- `.claude/hooks/turn-end-audit.py` — reads `.phantom/context-engine-events.jsonl` for recent `coherence_check` events; surfaces warning if entity claim appears without one
 - `resources/sops/audit-meta-global.md` — example SOP whose orchestrator should invoke this skill on final output

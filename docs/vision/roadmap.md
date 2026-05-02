@@ -53,14 +53,14 @@ Impact. Gives the operator a reason to come back to the tool beyond onboarding (
 
 ---
 
-## P2+. V1.1 Diagnostics (system observability channel)
+## P2+. Diagnostics (system observability channel)
 
 **Context.** Past 10 external users, human debriefs do not scale. Need an automatic channel capturing **system dysfunctions** (not operator preferences. That is covered by `learn-from-session` -> `/operator/profile.json`).
 
 **Critical distinction.**
 - `/operator/profile.json` (shipped). Preferences, style, tools tested, personal anti-patterns.
 - `brands/{slug}/learnings.json` (shipped). Domain learnings (API workarounds, compliance, test results).
-- **`_system-issues/`** (to build in V1.1). Agent/skill/schema dysfunctions.
+- **`_system-issues/`** (to build later). Agent/skill/schema dysfunctions.
 
 ### 8 system issue types to log
 
@@ -79,9 +79,9 @@ Impact. Gives the operator a reason to come back to the tool beyond onboarding (
 
 ```
 _system-issues/
-  issues.jsonl          # append-only, 1 line = 1 anonymized dysfunction
-  config.json           # severity_threshold, opt-in sharing, retention days
-  reports/              # markdown bundles exportable on demand
+ issues.jsonl # append-only, 1 line = 1 anonymized dysfunction
+ config.json # severity_threshold, opt-in sharing, retention days
+ reports/ # markdown bundles exportable on demand
 ```
 
 ### 3 hooks to wire
@@ -97,14 +97,14 @@ Produces a markdown + jsonl bundle, **anonymized**, on operator demand. **Zero r
 Example entry:
 ```json
 {
-  "ts": "2026-04-18T14:32:00Z",
-  "type": "schema_violation",
-  "severity": "major",
-  "context": "setup-brand step 3",
-  "detected_by": "validate-resources check 11",
-  "detail": "cross-ref pain_point not found in spec",
-  "workflow_state": "brand_created+product_ingested+audience_ingested+validate_failed",
-  "session_tour": 14
+ "ts": "2026-04-18T14:32:00Z",
+ "type": "schema_violation",
+ "severity": "major",
+ "context": "setup-brand step 3",
+ "detected_by": "validate-resources check 11",
+ "detail": "cross-ref pain_point not found in spec",
+ "workflow_state": "brand_created+product_ingested+audience_ingested+validate_failed",
+ "session_tour": 14
 }
 ```
 
@@ -129,7 +129,7 @@ Product signal with no need to ask the user.
 ### Timing
 
 - **Current alpha (N=2)**. Skip. Human debrief is enough.
-- **Public V1 (10+ unknown users)**. Implement. ~2-3 days of code.
+- **Public release (10+ unknown users)**. Implement. ~2-3 days of code.
 - **Consulting client**. Add skill `share-with-consultant` that pushes to a controlled endpoint.
 
 ### Dependencies
@@ -167,7 +167,7 @@ No public benchmark compares PhantomOS against Claude Projects, ChatGPT Teams, o
 
 ### Extension layer — `scaffold-extension` orchestrator
 
-The extension layer is specified in `docs/system/extending.md` (custom entities, sidecar schemas, custom skills, external pipelines + three governance rules). V1 requires the operator to perform the four scaffolding steps manually. V1.x ships `scaffold-extension` as a builder orchestrator to collapse the manual path into a guided operator flow.
+The extension layer is specified in `docs/system/extending.md` (custom entities, sidecar schemas, custom skills, external pipelines + three governance rules). requires the operator to perform the four scaffolding steps manually. Future iteration ships `scaffold-extension` as a builder orchestrator to collapse the manual path into a guided operator flow.
 
 The orchestrator is **not** a single monolithic skill. It composes eight single-responsibility sub-skills, each with a bounded scope — intent analysis, registry reuse suggestion, schema drafting, naming validation, cross-reference checking, canon validation, file scaffolding, and index registration. Full decomposition in `docs/system/extending.md § Future`.
 
@@ -175,37 +175,39 @@ The orchestrator is **not** a single monolithic skill. It composes eight single-
 
 **Impact.** Removes the friction that currently pushes operators to hack around the workspace instead of extending it cleanly. Preserves the governance rules (schema, index, README) that keep extensions interoperable with the core. Unlocks the promotion path — extensions that prove value across operators can graduate to vertical packs or core.
 
-### Vertical packs for non-DTC profiles
-Identified in the ecosystem-fit audit (`docs/product/fit.md`). The Context DB today carries a DTC bias — `offers`, `products`, audience psychology with pain and benefit chains. Three vertical packs are planned to open PhantomOS to profiles where this bias becomes a misfit:
+### Vertical packs for non-DTC profiles (future+, conditional on demand)
 
-- **`consulting-core`** — replaces DTC-specific entities with `engagement`, `stakeholder`, `sow`, `milestone`, `deliverable`. Adds a `generate-client-deliverable` skill that exports markdown to a branded PDF, a `pipeline-review` skill for cross-engagement health, and a `productize-method` skill that scans the Skill Graph to propose packaging as service SKUs.
-- **`media-buyer-freelance`** — monthly retainer reporting skill, client dashboard export, cross-account benchmark library.
-- **`coach-expert-pack`** — knowledge productization for coaches and experts, with `methodology-map`, `cohort-curriculum`, and `productize-framework` skills.
+ships with the DTC paid acquisition kit. Vertical packs for other operator profiles are roadmap future+, conditioned on actual client demand from those segments (no anticipated build) :
 
-Impact. Removes the current misfit for senior consultants and coaches who productize knowledge (see `fit.md`).
+- **`consulting-core`** — replaces DTC-specific entities with `engagement`, `stakeholder`, `sow`, `milestone`, `deliverable`. Adds skills for client deliverables, pipeline review, methodology productization.
+- **`media-buyer-freelance`** — monthly retainer reporting, client dashboard export, cross-account benchmark library.
+- **`coach-expert-pack`** — knowledge productization for coaches and experts.
 
-### Multi-operator and client-facing layer (V1.x)
-Identified as the main blocker for agency adoption in the ecosystem audit. V1 is single-operator by design. V1.x adds:
+Impact. Opens PhantomOS to operator profiles outside DTC paid once demand from those segments is validated. Not a priority.
 
-- **Role-based access** on the workspace (owner, collaborator, read-only) with per-role permissions on skills and entities.
-- **Per-client read-only dashboard** — a static export that the agency can share with its client to show the encoded state of the brand.
-- **Licensing layer** for workspace delivered by a consultant to a client (usage scope, renewal tied to engagement).
-- **Simultaneous-session handling** on shared workspaces, with conflict resolution on `session-state.md` and `awareness.json`.
+### Multi-operator and client-facing layer (future)
 
-Impact. Unlocks agencies with 3+ operators, shared client delivery, and consultant-to-client handoff without ownership ambiguity.
+single-operator by design per workspace by design. Adds the multi-tenant layer for agency operators running multiple DTC clients in parallel :
+
+- **Role-based access** on the workspace (owner, collaborator, read-only).
+- **Per-client read-only dashboard** for the agency to share encoded state with its client.
+- **Workspace handoff layer** for retainer termination (export client substrate, transfer rules).
+- **Simultaneous-session handling** on shared workspaces, conflict resolution on `session-state.md` and `awareness.json`.
+
+Impact. Unlocks agencies with 3+ operators, shared client delivery, clean separation of agency vs client encoded data.
 
 ---
 
 ## Dependencies
 
 ```
-MCP server            -> independent
-Cross-brand query     -> MCP server (helps but non-blocking)
-Learning promotion    -> independent
-Monitoring            -> all-brands validate (shipped)
-Custom entities       -> core/custom namespace (helps but non-blocking)
-Batch ops             -> independent
-Brand-slug            -> independent (simple migration)
-Audience model v2.0   -> independent (blocks audit agents + segment-aware production)
-Agent category split  -> depends on Audience model v2.0 for mine-audience + score-product-fit
+MCP server -> independent
+Cross-brand query -> MCP server (helps but non-blocking)
+Learning promotion -> independent
+Monitoring -> all-brands validate (shipped)
+Custom entities -> core/custom namespace (helps but non-blocking)
+Batch ops -> independent
+Brand-slug -> independent (simple migration)
+Audience model v2.0 -> independent (blocks audit agents + segment-aware production)
+Agent category split -> depends on Audience model v2.0 for mine-audience + score-product-fit
 ```

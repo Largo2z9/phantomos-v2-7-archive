@@ -1,0 +1,78 @@
+{
+  "_schema": "convention",
+  "_version": "1.0",
+  "_field_types": {
+    "meta.*": "observed",
+    "access.*": "observed",
+    "operations[].*": "structured",
+    "naming_conventions.*": "structured",
+    "known_limitations[]": "observed",
+    "learned_rules[]": "observed"
+  },
+  "meta": {
+    "platform": "Klaviyo",
+    "category": "email",
+    "api_version": "2024-10-15",
+    "documentation_url": "https://developers.klaviyo.com/en/reference/api_overview",
+    "last_updated": ""
+  },
+  "access": {
+    "method": "api_rest",
+    "credentials_location": "brand",
+    "credential_keys": [
+      "KLAVIYO_PRIVATE_API_KEY",
+      "KLAVIYO_PUBLIC_API_KEY"
+    ],
+    "loading_pattern": "import requests\nheaders = {'Authorization': f'Klaviyo-API-Key {KLAVIYO_PRIVATE_API_KEY}', 'revision': '2024-10-15', 'accept': 'application/json'}",
+    "shared_token_note": "Une private key par compte Klaviyo. Pas de token partagé entre brands."
+  },
+  "rate_limits": {
+    "per_second": 75,
+    "per_hour": null,
+    "per_day": null,
+    "scope": "per_account",
+    "burst_strategy": "burst 700, sustain 75/s",
+    "backoff_on_429": "exponential"
+  },
+  "operations": [
+    {
+      "name": "list_flows",
+      "description": "List all flows in account (status, trigger)",
+      "endpoint_or_method": "GET /api/flows/",
+      "example": "?fields[flow]=name,status,trigger_type,created,updated",
+      "notes": "Trigger types : list trigger (welcome), event trigger (abandoned cart), date trigger (birthday)."
+    },
+    {
+      "name": "create_template",
+      "description": "Create an email template",
+      "endpoint_or_method": "POST /api/templates/",
+      "example": "{ data: { type: 'template', attributes: { name: 'welcome-J1', html: '<html>...</html>' } } }",
+      "notes": "Template != email send. Templates assigned to flow steps."
+    },
+    {
+      "name": "list_segments",
+      "description": "List segments (dynamic audience definitions)",
+      "endpoint_or_method": "GET /api/segments/",
+      "example": "?fields[segment]=name,definition,created,updated&filter=equals(is_active,true)",
+      "notes": "Segments are dynamic (re-evaluated continuously). Lists are static (manual).",
+      "rate_cost": null
+    }
+  ],
+  "naming_conventions": {
+    "flow_pattern": "{trigger}-{purpose}",
+    "flow_examples": ["welcome-J1-J3-J7", "abandoned-cart-J0-J1-J3", "winback-J30-J60-J90"],
+    "template_pattern": "{flow_short}-{step}",
+    "segment_pattern": "{audience}-{state}",
+    "segment_examples": ["customers-active-30d", "subscribers-non-converted"]
+  },
+  "known_limitations": [
+    "Template HTML must be Klaviyo-flavored (template tags, dynamic data).",
+    "Cannot trigger a flow programmatically ; only by event/list/date.",
+    "Webhook events post-purchase have ~5 min delay typically."
+  ],
+  "learned_rules": [
+    "Always test new flows in DRAFT mode with one personal address before activating.",
+    "Use UTM params consistently across flows for attribution tracking.",
+    "Suppression list : check before any email send to avoid sending to unsubscribed."
+  ]
+}

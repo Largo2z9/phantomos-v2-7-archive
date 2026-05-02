@@ -23,10 +23,23 @@ CONFIRM_PATTERNS = [
     r"\boui\b", r"\byes\b", r"\byep\b", r"\bok\b", r"\bgo\b", r"\bconfirm(e|é|ed)?\b",
     r"\bvalide\b", r"\bparfait\b", r"\bexact\b", r"\bcorrect\b", r"\byup\b",
     r"✓", r"👍", r"\bc'est bon\b", r"\bc bon\b",
+    # Franglais Largo
+    r"\bc good\b", r"\bnickel\b", r"\bdac\b", r"\bd'acc\b", r"\bcrème\b", r"\bclean\b",
+    r"\btop\b", r"\bcool\b", r"\bniquel\b", r"\bok c bon\b",
 ]
 REJECT_PATTERNS = [
     r"\bnon\b", r"\bno\b", r"\bnope\b", r"\bskip\b", r"\bpas\b.*\b(bon|ok|ça)\b",
     r"\breject(e|ed)?\b", r"\bfaux\b", r"\bincorrect\b", r"\bmauvais\b", r"\bpas du tout\b",
+    r"\bnan\b", r"\bstop\b", r"\bannule\b", r"\bpas ça\b",
+]
+# Nuance connectors — indicate a partial accept with embedded corrections.
+# When present, the response is a REFINE: agent must re-stage with corrections
+# integrated, then re-ask for clean confirmation.
+REFINE_PATTERNS = [
+    r"\bmais\b", r"\bsauf\b", r"\bplutôt\b", r"\bplutot\b", r"\bpar contre\b",
+    r"\bet dès\b", r"\bet des\b", r"\benlève\b", r"\benleve\b", r"\bajoute\b",
+    r"\brajoute\b", r"\bmodifie\b", r"\bchange\b", r"\bsauf que\b", r"\bpresque\b",
+    r"\bpresqu'\b", r"\bà part\b", r"\ba part\b", r"\bretire\b",
 ]
 
 
@@ -43,12 +56,21 @@ def find_workspace_root(start: Path) -> Path | None:
 
 def classify(text: str) -> str | None:
     lower = text.lower()
-    for p in CONFIRM_PATTERNS:
-        if re.search(p, lower):
-            return "confirm"
-    for p in REJECT_PATTERNS:
-        if re.search(p, lower):
-            return "reject"
+    has_confirm = any(re.search(p, lower) for p in CONFIRM_PATTERNS)
+    has_reject = any(re.search(p, lower) for p in REJECT_PATTERNS)
+    has_refine = any(re.search(p, lower) for p in REFINE_PATTERNS)
+
+    # Overlap rule: refine trumps confirm (conservative — partial accept with
+    # embedded corrections must be re-staged, not silently locked in).
+    if has_refine and has_confirm:
+        return "refine"
+    if has_confirm:
+        return "confirm"
+    if has_reject:
+        return "reject"
+    if has_refine:
+        # Refine without confirm = ambiguous corrective feedback, treat as refine
+        return "refine"
     return None
 
 
@@ -87,6 +109,13 @@ def resolve_brand(brand_dir: Path, prompt: str) -> str | None:
         "operator_text": prompt.strip()[:500],
     }
     state.setdefault("history", []).append(history_entry)
+
+    # Refine: keep pending, log decision, agent must re-stage with corrections
+    # integrated and re-ask for clean confirmation. Checkpoint NOT promoted.
+    if decision == "refine":
+        save_json(wf_path, state)
+        return f"{decision}:{checkpoint}" + (f":{product_slug}" if product_slug else "")
+
     state["pending"] = None
 
     if decision == "confirm":

@@ -2,13 +2,36 @@
 
 How an operator adds custom entities, sidecar schemas, custom skills, and external pipeline integrations without breaking the coherence of the workspace. This document defines the extension layer, its primitives, and the rules that keep extensions interoperable with the core.
 
-PhantomOS V1 ships with six entities per brand (brand, product, offer, audience, learnings, strategy) and a set of core skills. An operator who wants to encode competitor ad tracking, deeper financial cohorts, real-time scraped data, or any other domain-specific concept must not hack around the workspace. The extension layer gives them a canonical way to add their own layer while keeping the core stable and the whole workspace legible.
+PhantomOS V1 ships with six entities per brand (brand, product, offer, audience, learnings, strategy) and a set of core skills. An operator who wants to encode competitor ad tracking, deeper financial cohorts, real-time scraped data, contacts network, commercial pipeline, freelances roster, home automation devices, personal admin trackers, or any other domain-specific concept must not hack around the workspace. The extension layer gives them a canonical way to add their own layer while keeping the core stable and the whole workspace legible.
+
+## Three scopes
+
+Extensions live at three scopes. The scope determines where the extension lives on disk, what it cross-references, and which skills consume it.
+
+| Scope | Path root | What it encodes | Examples |
+|---|---|---|---|
+| **brand** | `brands/{slug}/custom/{type}/` | Anything specific to one mission. The extension is scoped to that brand's lifecycle. | competitor tracking, cohort financials for that product line, mission-specific creative tests, anything attached to the brand and its lifetime |
+| **operator** | `operator/extensions/{type}/` | Anything transversal to the operator's life and activities, hors-mission. Lives at the operator layer, agnostic of any specific brand. The operator decides the breadth (work, personal, family, home, learning, health, hobby, admin, civic, anything they want their assistant to compose on). | contacts network across all registers (pro, perso, famille, mentor, voisinage, partenaires hobby), opportunities en cours quel que soit le registre, prestataires récurrents (freelances, artisans, professionnels de santé), side projects et hobbies, domotique et gestion domicile, suivi santé, suivi lecture / apprentissage, finances perso, admin perso, créatif |
+| **workspace** | `resources/extensions/{type}/` | Anything shared cross-brand, transversal across every mission the operator runs. The extension is part of the operator's reusable canon. | méthodologies écrites par l'opérateur, registres de patterns observés cross-brand, benchmark tables, taxonomie de tags partagée, n'importe quoi qui s'applique à plusieurs marques |
+
+A type can coexist at multiple scopes. Example `vendors` (prestataires que l'opérateur réutilise, peu importe le domaine, freelances pro autant qu'artisans ou professionnels de santé) :
+
+- **operator scope** = tous les prestataires identifiés à un moment, tous registres confondus (pro et perso)
+- **brand scope sur une mission donnée** = le sous-ensemble engagé sur cette mission spécifique, avec contexte mission
+
+L'agent croise les scopes quand pertinent. Tu lui demandes *"qui dans mon réseau pourrait m'aider sur ce sujet"*, il regarde vendors operator-scope (qui je connais ?) et vendors brand-scope sur la mission active si applicable, propose l'intersection. Pareil pour un sujet perso : *"qui je connais qui s'y connaît en X"* fait la même mécanique sans aucun scope brand impliqué.
+
+PhantomOS ne refuse pas ce que l'opérateur veut encoder. L'opérateur décide souverainement ce qui mérite d'être systématisé dans son assistant. Le critère c'est si l'opérateur veut que l'agent compose avec cette dimension, pas si le système juge la dimension légitime ou non. Domotique, suivi santé, hobbies, admin perso, gestion famille, n'importe quoi.
 
 ## The four extension primitives
 
 ### 1. Custom entities
 
-A new data type, scoped per brand, lives under `brands/{slug}/custom/{entity_type}/`. Examples: `brands/karacare/custom/competitor_ads/`, `brands/stepprs/custom/pricing_watchlist/`, `brands/{slug}/custom/financial_cohorts/`.
+A new data type, scoped to one of the three scopes (brand, operator, workspace), lives at the corresponding path root.
+
+- **brand scope** : `brands/{slug}/custom/{entity_type}/`. Examples : `brands/karacare/custom/competitor_ads/`, `brands/{slug}/custom/financial_cohorts/`, `brands/{slug}/custom/{anything_specific_to_that_mission}/`.
+- **operator scope** : `operator/extensions/{entity_type}/`. Examples : `operator/extensions/contacts/`, `operator/extensions/opportunities/`, `operator/extensions/vendors/`, `operator/extensions/projects/`, `operator/extensions/home/`, `operator/extensions/health/`, `operator/extensions/learning/`, `operator/extensions/admin/`, ou n'importe quoi d'autre que l'opérateur décide d'encoder.
+- **workspace scope** : `resources/extensions/{entity_type}/`. Examples : `resources/extensions/personal_method_canon/`, `resources/extensions/cross_brand_benchmarks/`.
 
 Each custom entity type ships with:
 - One `schema.json` declaring the JSON Schema for instances of this type.
@@ -21,7 +44,7 @@ The core does not need to know about custom entities. They are discovered via co
 
 Extends a core entity with additional fields without modifying the core schema. Example: `brands/{slug}/brand.extensions.json` adds financial fields that the operator needs but which do not belong in the universal `brand` entity. The agent reads the sidecar alongside the core file and treats both as a single logical entity at read time.
 
-Sidecars are **append-only with respect to the core schema** — they add fields, never override or remove. The core `brand.json` stays stable; the operator builds on top. This applies to every core entity: `brand.extensions.json`, `{product_slug}/spec.extensions.json`, `{audience_slug}/profile.extensions.json`, and so on.
+Sidecars are **append-only with respect to the core schema**. They add fields, never override or remove. The core `brand.json` stays stable, the operator builds on top. This applies to every core entity (brand-scope sidecars : `brand.extensions.json`, `{product_slug}/spec.extensions.json`, `{audience_slug}/profile.extensions.json`, and so on) and to the operator profile (operator-scope sidecar : `operator/profile.extensions.json` extends `operator/profile.json` with fields you want about yourself that do not belong in the universal profile schema).
 
 **Sidecars are discovered by convention, not registered in `index.json`.** The agent walks each core entity file and checks for a matching `.extensions.json` sibling. If present, it reads both as a single merged view. This differs from custom entities, which require explicit `index.json` registration. The rule: custom entities are new types (registered), sidecars are extensions of existing types (convention).
 
@@ -100,7 +123,7 @@ In V1 the operator performs the four steps manually. A complete copy-paste-ready
 }
 ```
 
-**Extension entry format** (one per entity type):
+**Extension entry format** (one per entity type) :
 
 ```json
 {
@@ -114,34 +137,57 @@ In V1 the operator performs the four steps manually. A complete copy-paste-ready
       ],
       "owner_skill": "custom:scrape-competitor-pricing",
       "registered_at": "2026-04-19"
+    },
+    {
+      "type": "contacts",
+      "scope": "operator",
+      "schema": "operator/extensions/contacts/schema.json",
+      "cross_refs": [
+        "brand_refs → brands/{slug}/",
+        "activity_refs → operator/extensions/{type}/{slug}.json"
+      ],
+      "owner_skill": null,
+      "registered_at": "2026-04-27"
     }
   ]
 }
 ```
 
-Fields:
-- `type` — machine-readable name of the entity type. Must not collide with a core entity (`brand`, `product`, `offer`, `profile`, `learnings`, `strategy`).
-- `scope` — `brand` (per-brand instances) or `workspace` (cross-brand shared).
-- `schema` — path to the JSON Schema file.
-- `cross_refs` — declare dependencies on core entities so `validate-resources` can detect broken refs on rename or delete.
-- `owner_skill` — the skill that populates this entity. `null` if operator-maintained manually. Uses `custom:` prefix for custom skills, plain name for core skills.
-- `registered_at` — date string.
+Fields :
+- `type` : machine-readable name of the entity type. Must not collide with a core entity (`brand`, `product`, `offer`, `profile`, `learnings`, `strategy`).
+- `scope` : `brand` (per-brand instances), `operator` (transversal to the operator, hors-mission), or `workspace` (cross-brand shared canon).
+- `schema` : path to the JSON Schema file. Resolves under `brands/{slug}/custom/` for brand scope, under `operator/extensions/` for operator scope, under `resources/extensions/` for workspace scope.
+- `cross_refs` : declare dependencies on other entities so `validate-resources` can detect broken refs on rename or delete. Operator-scope cross-refs can target brands, other operator extensions, or workspace resources.
+- `owner_skill` : the skill that populates this entity. `null` if operator-maintained manually. Uses `custom:` prefix for custom skills, plain name for core skills.
+- `registered_at` : date string.
 
 ### Writing to custom entities
 
-All writes to custom entities go through the mutation gate, exactly like core entities. The field path convention for custom entities is:
+All writes to custom entities go through the mutation gate, exactly like core entities. The field path convention varies by scope :
 
-```
-custom.{entity_type}.{instance_slug}.{field_name}
-```
+- **brand scope** : `custom.{entity_type}.{instance_slug}.{field_name}` (resolves to `brands/{active_slug}/custom/{entity_type}/{instance_slug}.json`)
+- **operator scope** : `operator.{entity_type}.{instance_slug}.{field_name}` (resolves to `operator/extensions/{entity_type}/{instance_slug}.json`)
+- **workspace scope** : `workspace.{entity_type}.{instance_slug}.{field_name}` (resolves to `resources/extensions/{entity_type}/{instance_slug}.json`)
 
-Example invocation inside a custom skill:
+Example invocation inside a custom skill (brand scope) :
 
 ```
 write_to_context(
   field_path="custom.competitor_pricing.nike-airmax-97.observations[]",
   value={observed_at: "2026-04-19T10:00:00Z", price: 189.99, currency: "EUR"},
   source="scraper:nike.com",
+  confidence=0.95,
+  mode="direct"
+)
+```
+
+Example invocation (operator scope) :
+
+```
+write_to_context(
+  field_path="operator.contacts.marc-dubois.touch_history[]",
+  value={observed_at: "2026-04-27T14:30:00Z", channel: "email", note: "discussion sur sa lecture en cours"},
+  source="operator",
   confidence=0.95,
   mode="direct"
 )
