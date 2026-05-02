@@ -1,0 +1,10 @@
+{
+  "_schema": "connected-sources",
+  "_version": "1.0",
+  "meta": {
+    "scope": "workspace",
+    "brand_slug": null,
+    "updated": null
+  },
+  "sources": []
+}

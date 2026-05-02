@@ -2,6 +2,21 @@
 
 > Guidance for building business-domain skills (audit, setup, roadmap, CRO, SEO, creative brief, competitor scan, etc.) in PhantomOS. Counters the anti-pattern "code the skill's method first, figure out where the data comes from later". The correct order is : map domain variables → identify gaps vs existing schema → extend the schema via `scaffold-extension` → THEN code the method.
 
+## 0. Knowledge cartography vs data cartography
+
+Two complementary cartography axes serve the canonical verb `cartographier` (pipeline métier `cartographier → conceptualiser → modéliser → processiser → systémiser`, lexicon S51). Do not confuse them.
+
+| Axis | What it maps | Skill | When to use |
+|---|---|---|---|
+| **Data cartography** (this doc) | Domain variables → atomic fields → schema gaps → extension via `scaffold-extension` | `scaffold-extension` orchestrator + `analyze-extension-intent` sub-skill | Before coding a business-domain skill, when the substrate may not hold the variables the skill needs to read |
+| **Knowledge cartography** | Concepts core, leviers, débats, vocabulaire (mode `--learn <domaine>`) OR strategic READ-ONLY synthesis of an encoded brand (mode `--learn brand=<slug>`) | `cartograph` (D#380) | When the operator needs to understand a domain pedagogically, or to get a strategic briefing on an encoded brand without producing mutations |
+
+Both serve the canonical verb but at different layers. Data cartography prepares the substrate (where the data will live). Knowledge cartography uses the substrate (how to read it strategically) or operates without substrate (pedagogical maps).
+
+Composition pattern : on a new business-domain skill, knowledge cartography (`cartograph --learn <domaine>`) can precede data cartography (`scaffold-extension`) to build operator understanding before scaffolding new entities. Both can also feed `build-agent` Step 2b silent BUILD cartography (D#323) by clarifying intent and surfacing existing-coverage candidates.
+
+Cross-ref : `cartograph/SKILL.md`, D#323 (build-agent Step 2b), D#380 (cartograph creation).
+
 ## Why
 
 A business-domain skill is a context consumer. If the context lacks the required granularity, the skill produces generic output. Example : an `audit-offers` that looks only at `offers.json` misses brand-level mechanics (GWP, shipping, referral, loyalty, funnels) — it misses 50% of the audit surface and returns flat recommendations.

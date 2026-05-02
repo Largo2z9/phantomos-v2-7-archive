@@ -38,7 +38,7 @@ Last update : 2026-04-29.
 |---|---|
 | *"sors-moi des angles paid"*, *"angles for Meta ads"*, *"5 angles ranked"* | `produce-paid-angles` |
 | *"écris-moi un brief copywriter"*, *"copy brief on this audience"* | `produce-copy-brief` |
-| *"score cette offre", *"audit cette offre"*, *"l'offre tient ou pas ?"* | `produce-offer-scoring` (if exists, otherwise `score-product-fit`) |
+| *"score cette offre", *"audit cette offre"*, *"l'offre tient ou pas ?"* | `score-product-fit` |
 
 ---
 
@@ -60,7 +60,6 @@ Last update : 2026-04-29.
 | *"learn from session"*, *"persiste la session"*, *"end of day"* | `learn-from-session` (batch session capture) |
 | *"exporte cette conversation"*, *"archive cette session"* | `export-session` |
 | *"range ce document"*, *"range cette URL"*, *"ingest ça"* | `ingest-resource` |
-| *"crée un handoff pour une autre instance"* | `generate-handoff` |
 
 ---
 
@@ -72,7 +71,6 @@ Last update : 2026-04-29.
 | *"crée une extension"*, *"nouveau type de donnée"*, *"où je range cette donnée"* | `scaffold-extension` |
 | *"tracker X au fil du temps"*, *"j'ai une donnée nouvelle à ranger"*, *"ajoute un sidecar"* | `scaffold-extension` |
 | *"build un agent pour X"*, *"crée un skill custom"* | `build-agent` |
-| *"corrige ce skill"*, *"patch ce comportement"* | `correct-skill` |
 
 ---
 

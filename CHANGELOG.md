@@ -5,6 +5,22 @@
 
 ---
 
+## v2.13.0 — 2026-05-02 — connect-cockpit v1.1: registry-driven refactor
+
+**Why this release.** Previous v1.0 had per-platform subflows hardcoded in SKILL.md (200 lines). Adding a new source = SKILL.md edit + risk of drift across platforms. Registry pattern externalises platform specs to JSON · skill becomes platform-agnostic loop, registry becomes the single source of truth.
+
+**What shipped.**
+- `.skills/skills/connect-cockpit/connectors.json` (registry, 6 platforms). Per platform: label, tagline, admin_required, fields (with validate rules), fields_optional, where_to_find instructions verbatim, server_fallback list, ingest_method override (Snap = manual_cron not Airbyte), fallback_path (operator escape hatch).
+- `connect-cockpit/SKILL.md` refactored (~120 lines). Step 3 reads connectors.json fresh on invocation, loops over chosen platforms, applies registry-driven flow. Hard rule: NEVER hardcode platform fields in SKILL.md. NEVER ask for server_fallback fields.
+- Cockpit-side patch (`src/lib/airbyte/platforms.ts`): GOOGLE_DEVELOPER_TOKEN + GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET fall back to `process.env.*` if absent from payload. Operator now provides only customer_id + refresh_token for Google Ads.
+- Snap notes corrected throughout: self-serve via Supabase `account_credentials` encrypted store (cron Vercel iterates dynamically), zero Vercel redeploy. Decision #38 (env vars per brand) superseded by encrypted credentials store pattern.
+
+**Operator impact.** Adding a new platform (Klaviyo, Pinterest, X Ads, Reddit, etc.) is now a 1-entry JSON change. The skill auto-supports it. Prerequisites stays single source of truth (admin_required per platform, fields, where-to-find).
+
+**Architecture note.** This pattern is the substrate for any future "external integration" skill. Same shape: SKILL.md generic + JSON registry per integration domain. Mirrors how `resources/conventions/{platform}.json` works for PhantomOS-internal platform mapping.
+
+---
+
 ## v2.12.0 — 2026-05-02 — Cockpit data plumbing: connect-cockpit
 
 **Why this release.** Phantom workspace operators need to wire their brand to the Abyss cockpit dashboard (app.abyss-initiative.com) without manual Airbyte UI access or Supabase SQL. Cockpit-side endpoint `POST /api/operator/onboard-brand` already provisions sources end-to-end server-side. This release adds the workspace-side skill that wraps that endpoint conversationally.

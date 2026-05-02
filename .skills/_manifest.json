@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-02T14:13:54Z",
-  "_count": 41,
+  "_generated_at": "2026-05-02T16:39:01Z",
+  "_count": 42,
   "skills": [
     {
       "name": "analyze-extension-intent",
@@ -25,7 +25,7 @@
       "path": ".skills/skills/analyze-extension-intent/SKILL.md"
     },
     {
-      "name": "audit-meta-setup",
+      "name": "audit-meta-account",
       "type": "producer",
       "model": "sonnet",
       "subagent_safe": true,
@@ -46,7 +46,7 @@
       "disambiguates_against": {
         "validate-resources": "route to validate-resources when operator says 'audit' or 'check' without a platform context — that's a workspace integrity check, not a Meta platform audit"
       },
-      "path": ".skills/skills/audit-meta-setup/SKILL.md"
+      "path": ".skills/skills/audit-meta-account/SKILL.md"
     },
     {
       "name": "brief-day",
@@ -125,6 +125,39 @@
       "path": ".skills/skills/capture-learning/SKILL.md"
     },
     {
+      "name": "cartograph",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [
+          "cartographier {sujet}",
+          "carte stratégique {brand}",
+          "explique-moi {domaine}",
+          "comprends-moi {sujet}",
+          "je connais mal {brand}",
+          "synthèse {brand}"
+        ],
+        "en": [
+          "map {topic}",
+          "strategic map {brand}",
+          "explain {domain} to me",
+          "I don't know {brand} well",
+          "synthesize {brand}"
+        ]
+      },
+      "disambiguates_against": {
+        "snapshot-brand": "snapshot-brand pour extraction factuelle scrape ; cartograph pour synthèse READ-ONLY de l'encodé.",
+        "query-context": "query-context pour lecture data brute ciblée ; cartograph pour raisonnement cross-entités synthétique.",
+        "brief-day": "brief-day pour todos jour + état brand ; cartograph pour synthèse stratégique macro.",
+        "build-agent": "build-agent fait carto BUILD silencieuse Step 2b interne ; cartograph fait LEARN exposé autonome.",
+        "study-niche-marketdeepdive": "study-niche pour deep-dive marché WRITE 30-60 min ; cartograph pour READ-ONLY synthèse rapide.",
+        "deepen-brand-context": "deepen-brand-context pour enrichir context via mine-voc + mine-vom (WRITE) ; cartograph pour synthèse READ-ONLY de l'existant."
+      },
+      "path": ".skills/skills/cartograph/SKILL.md"
+    },
+    {
       "name": "check-cross-refs",
       "type": "curator",
       "model": "haiku",
@@ -170,7 +203,7 @@
     },
     {
       "name": "connect-cockpit",
-      "type": "builder",
+      "type": "orchestrator",
       "model": "sonnet",
       "subagent_safe": false,
       "mode": "direct",
@@ -194,7 +227,8 @@
       },
       "disambiguates_against": {
         "setup-brand": "route to setup-brand for the workspace folder structure (brand.json, products, audience). connect-cockpit assumes that's already done.",
-        "onboard-brand": "route to onboard-brand for the full 4-step pipeline (setup + URL scan + ingest + validate). connect-cockpit only handles the cockpit data plumbing."
+        "onboard-brand": "route to onboard-brand for the full 4-step pipeline (setup + URL scan + ingest + validate). connect-cockpit only handles the cockpit data plumbing.",
+        "connect-source": "route to connect-source to register a new platform convention in PhantomOS itself (resources/conventions/). connect-cockpit consumes existing conventions to feed the Abyss cockpit."
       },
       "path": ".skills/skills/connect-cockpit/SKILL.md"
     },
@@ -275,8 +309,7 @@
       },
       "disambiguates_against": {
         "capture-learning": "route to capture-learning when the operator wants to persist a single fact or insight as a structured learning entry. export-session captures the entire conversation as a transcript, not a learning.",
-        "ingest-resource": "route to ingest-resource when the operator brings external content (PDF, article, transcript from a different system) to integrate into the workspace knowledge layer. export-session is one-way out, ingest is one-way in.",
-        "generate-handoff": "route to generate-handoff when the operator needs a relay prompt to start a new session continuing this work. export-session is for archival, not continuity."
+        "ingest-resource": "route to ingest-resource when the operator brings external content (PDF, article, transcript from a different system) to integrate into the workspace knowledge layer. export-session is one-way out, ingest is one-way in."
       },
       "path": ".skills/skills/export-session/SKILL.md"
     },

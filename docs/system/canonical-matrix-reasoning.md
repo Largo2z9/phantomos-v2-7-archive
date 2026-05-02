@@ -313,7 +313,7 @@ This pattern was named after live red-team feedback (S44) that the original draf
 | `angles-biases-matrix.md` (canon) | generating template | 8 angles × 8 biais × 3 subtlety modes | Schwartz, Cialdini, Sugarman, Hopkins, Halbert | ⚠️ Modulator (subtlety) correctly placed. Verbatim anchor missing on cells. Status/Belonging/Insider correlation not flagged. | Add `voc_id` requirement per cell. Document axis correlations explicitly. |
 | `pattern-schema.json` + `compatibility-rules.json` | schema | 12 dim × 30 rules | Self-canonical | ✅ JSON Schema validatable. Severity tiered. | Test fixtures absent. |
 | Canon convergence clusters C1–C10 | meta-matrix | 10 convergences × media × audience (latent) | INDEX.md cross-cuts | 📋 Not yet sacralized as a macro-matrix. | Canonize as macro-matrix that constrains sub-matrices. |
-| `audit-meta-setup` | generating | 5 blocks × statut × impact × action | Meta convention canon | ✅ MECE strict, prescriptive. | Sub-block cardinality — verify on next audit. |
+| `audit-meta-account` | generating | 5 blocks × statut × impact × action | Meta convention canon | ✅ MECE strict, prescriptive. | Sub-block cardinality — verify on next audit. |
 | `score-product-fit` | generating | spec × profile × 3 scoring axes | Inline weights | ⚠️ Pondération hard-coded in SKILL.md. | Externalize to scoring framework. |
 
 **Key takeaways from the cartography:**

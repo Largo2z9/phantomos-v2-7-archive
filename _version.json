@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.12.0",
+  "template_version": "2.13.0",
   "released_at": "2026-05-02",
   "compatible_from": "2.0.0",
-  "summary": "New builder skill `connect-cockpit`. Branche une marque au dashboard cockpit Abyss via POST /api/operator/onboard-brand server-side. Provisionne Airbyte sources + Supabase rows pour 6 platforms (Shopify, Meta, TikTok, Snap, GA4, Google Ads bloque dev token). Subflow guided one-question-per-turn, runs apres setup-brand, complementaire a onboard-brand.",
-  "manifest": "docs/releases/2.12.0-manifest.json"
+  "summary": "connect-cockpit v1.1 · refactor registry-driven. Per-platform specs (required fields, where-to-find, server fallback) externalized to connectors.json registry. SKILL.md now platform-agnostic loop. Adding a new source (Klaviyo, Pinterest, X Ads, etc.) = 1 entry in connectors.json, no SKILL.md edit. Cockpit-side: GOOGLE_DEVELOPER_TOKEN + GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET fall back to process.env if absent from payload (Abyss app-level). Operator now provides only customer_id + refresh_token for Google Ads. Snap notes corrected: self-serve via DB encrypted credentials, no Vercel redeploy.",
+  "manifest": "docs/releases/2.13.0-manifest.json"
 }

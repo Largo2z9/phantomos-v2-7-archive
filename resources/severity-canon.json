@@ -56,7 +56,7 @@
 
   "consumers": [
     "skills/analyze-copy",
-    "skills/audit-meta-setup",
+    "skills/audit-meta-account",
     "skills/validate-resources",
     "frameworks/compatibility-rules.json",
     "frameworks/paid-angle-scoring-weights.json"

@@ -1,0 +1,34 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.13.0",
+  "released_at": "2026-05-02",
+  "session": "S46",
+  "category": "skill-refactor",
+  "summary": "connect-cockpit v1.1 refactor registry-driven. Per-platform subflows externalized from SKILL.md to connectors.json. Skill becomes platform-agnostic loop. Adding a new source = 1 JSON entry, no code edit.",
+  "decisions_locked": [],
+  "changes": [
+    {
+      "type": "skill-modified",
+      "path": ".skills/skills/connect-cockpit/SKILL.md",
+      "summary": "Bumped to 1.1.0. Removed hardcoded per-platform subflows (Shopify, Meta, TikTok, Snap, Google, GA4 sections, ~80 lines). Step 3 now reads connectors.json fresh on invocation and loops over chosen platforms. Hard rules added: NEVER hardcode platform fields, NEVER ask for server_fallback fields, ALWAYS read connectors.json fresh."
+    },
+    {
+      "type": "doc-added",
+      "path": ".skills/skills/connect-cockpit/connectors.json",
+      "summary": "Registry of 6 platforms (Shopify, Meta, TikTok, Snap, Google Ads, GA4). Per-entry: label, tagline, admin_required, fields with validate rules, fields_optional, where_to_find verbatim, server_fallback list, ingest_method override (Snap=manual_cron), fallback_path operator escape. _schema connectors-registry/1.0."
+    },
+    {
+      "type": "code-patched",
+      "path": "(cockpit) src/lib/airbyte/platforms.ts",
+      "summary": "google_ads.required reduced from 5 fields to 2 (GOOGLE_CUSTOMER_ID + GOOGLE_REFRESH_TOKEN). config builder now reads c.GOOGLE_DEVELOPER_TOKEN ?? process.env.GOOGLE_DEVELOPER_TOKEN ?? '' (and same for CLIENT_ID/SECRET). Operator no longer needs to provide app-level credentials. Backward compatible: existing payloads with all 5 fields continue to work."
+    }
+  ],
+  "skills_added": [],
+  "skills_modified": ["connect-cockpit"],
+  "skills_removed": [],
+  "docs_added": [".skills/skills/connect-cockpit/connectors.json"],
+  "docs_patched": [],
+  "infra_changes": [],
+  "operator_impact": "Onboarding a new client brand to the cockpit is now 2 fields for Google Ads (customer_id + refresh_token), plus admin reminder per platform. Adding a new connector type to the catalog is a 1 JSON entry change.",
+  "compatibility": "Backward-compatible. Existing `connect-cockpit` invocations work as before. Cockpit API accepts both old (5-field Google Ads payload) and new (2-field) shapes."
+}

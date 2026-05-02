@@ -20,7 +20,7 @@ From an empty clone to a first asset shipped : about thirty minutes.
 2. **Say hi.** On first run, the agent detects no brand is configured and starts onboarding. It asks the operator's DTC stack (Shopify, Klaviyo, Meta, TikTok, Google) and seniority on paid.
 3. **Drop the brand URL.** The agent scans for 3 to 5 minutes, pre-fills the brand at roughly 60% of Level 1 completeness, hands back for validation.
 4. **Connect the sources.** Meta Ads, TikTok Ads, Google Ads, Shopify, Klaviyo, GA4 : connect on demand as needed.
-5. **Run the first skill** : `audit-meta-setup` for a concrete setup diagnostic, or `produce-paid-angles` to generate a first angle batch from the encoded audiences.
+5. **Run the first skill** : `audit-meta-account` for a concrete setup diagnostic, or `produce-paid-angles` to generate a first angle batch from the encoded audiences.
 
 No package to install. Everything ships in this repo. Sessions can stop mid-setup and resume the next day. Nothing told to the agent is lost.
 

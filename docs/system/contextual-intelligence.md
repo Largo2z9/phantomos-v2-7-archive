@@ -71,7 +71,7 @@ The agent **never**:
 
 ### Skills (producer / orchestrator)
 
-- Producer skills (`snapshot-brand`, `audit-meta-setup`, `analyze-perf`) end on a **synthesis paragraph**, not a recap. Two-three sentences naming what is load-bearing for the operator's next move. The structural changes (mutations written, fields filled) live in the events log, not the operator output.
+- Producer skills (`snapshot-brand`, `audit-meta-account`, `analyze-perf`) end on a **synthesis paragraph**, not a recap. Two-three sentences naming what is load-bearing for the operator's next move. The structural changes (mutations written, fields filled) live in the events log, not the operator output.
 - Orchestrator skills (`onboard-brand`, `onboard-account`) propose **paths the operator can choose between**, sized by data density. *"Your catalogue has 30 SKUs. Want me to deep-dive the hero, the top 3, or surface the whole map first ?"* — not a fixed 4-step pipeline imposed.
 
 ### Hooks

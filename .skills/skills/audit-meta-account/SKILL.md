@@ -1,5 +1,5 @@
 ---
-name: audit-meta-setup
+name: audit-meta-account
 type: producer
 version: "1.1.0"
 recommended_model: sonnet
@@ -22,7 +22,7 @@ disambiguates_against:
   validate-resources: "route to validate-resources when operator says 'audit' or 'check' without a platform context — that's a workspace integrity check, not a Meta platform audit"
 ---
 
-# Skill: audit-meta-setup
+# Skill: audit-meta-account
 
 Senior media buyer account health check. Two modes based on API access. Observational findings, not blame. Zero questionnaire format when API is available.
 

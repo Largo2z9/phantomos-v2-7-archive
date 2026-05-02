@@ -26,7 +26,6 @@ pipeline:
 disambiguates_against:
   capture-learning: "route to capture-learning when the operator wants to persist a single fact or insight as a structured learning entry. export-session captures the entire conversation as a transcript, not a learning."
   ingest-resource: "route to ingest-resource when the operator brings external content (PDF, article, transcript from a different system) to integrate into the workspace knowledge layer. export-session is one-way out, ingest is one-way in."
-  generate-handoff: "route to generate-handoff when the operator needs a relay prompt to start a new session continuing this work. export-session is for archival, not continuity."
 ---
 
 ## Tone
@@ -133,7 +132,6 @@ Si la variable n'est pas définie, ne pas proposer. L'export reste local.
 - `~/.claude/projects/` · racine où Claude Code stocke les JSONL de session
 - `_sessions-archive/` · dossier de sortie par défaut dans le workspace
 - `capture-learning` · sister skill pour persister un fait ponctuel (pas une session entière)
-- `generate-handoff` · sister skill pour relayer une session vers une nouvelle instance (continuité, pas archivage)
 
 ---
 

@@ -82,7 +82,7 @@ PhantomOS skills declare a `recommended_model` and `subagent_safe` flag in their
 | `capture-learning` | haiku | ✅ | Simple classification + routing |
 | `snapshot-brand` | sonnet | ✅ | Brand inference from URL, parallelizable (setup-brand Step 0) |
 | `ingest-resource` | sonnet | ✅ | Doc classification + routing to right entity |
-| `audit-meta-setup` | sonnet | ✅ | Structured business audit on declared account |
+| `audit-meta-account` | sonnet | ✅ | Structured business audit on declared account |
 | `promote-learning` | sonnet | ✅ | Cross-brand learning promotion, deterministic matching |
 | `migrate-workspace` | sonnet | ✅ | Schema migration, documented transformations |
 | `setup-brand` | sonnet | ❌ | Interactive guide, needs full conversational context |
@@ -136,7 +136,7 @@ The `recommended_model` + `subagent_safe` pair is the contract. The agent **NEVE
 
 | Typology | Role | Binary test (if YES → this type) | Actual examples | Default model | Default `subagent_safe` | Default write mode |
 |---|---|---|---|---|---|---|
-| **Producer** | Builds a deliverable directly consumed by a human (operator, client, campaign output) | Is the output meant to be read/used by a human as-is, with no further skill in the pipeline? | `snapshot-brand`, `audit-meta-setup` | `sonnet` | `true` | `proposed` |
+| **Producer** | Builds a deliverable directly consumed by a human (operator, client, campaign output) | Is the output meant to be read/used by a human as-is, with no further skill in the pipeline? | `snapshot-brand`, `audit-meta-account` | `sonnet` | `true` | `proposed` |
 | **Curator** | Maintains or queries the workspace state, invoked **in pipeline by other skills** (backend) | Is the skill invoked primarily by other skills as part of a larger flow, not directly by the operator? | `query-context`, `validate-resources`, `ingest-resource`, `migrate-workspace`, `promote-learning` | `haiku` | `true` | `direct` or `none` |
 | **Capturer** | Turns the current conversation/session into persistent memory | Does the skill scan the current conversation to extract persistable knowledge (learnings, decisions, preferences)? | `capture-learning`, `learn-from-session` | `sonnet` | `false` (needs full session context) | `proposed` |
 | **Orchestrator** | Chains N ≥ 2 distinct named skills to reach one operator goal | Does the skill literally call 2+ other named skills as sub-steps (via Task tool or invocation)? | `setup-brand` | `sonnet` | `false` (it is the pilot) | indirect (via sub-skills) |
@@ -155,7 +155,7 @@ The `recommended_model` + `subagent_safe` pair is the contract. The agent **NEVE
 
 **Orchestrator vs skill-with-steps** — having numbered internal Steps does **NOT** make a skill an Orchestrator. The test is: *does it literally call N ≥ 2 named skills as sub-steps?*
 
-`audit-meta-setup` has Steps 1A/1B but calls no other skill → it is a Producer with internal structure. `setup-brand` calls `snapshot-brand` (Step 0) + chains Step 1-5 logic → Orchestrator.
+`audit-meta-account` has Steps 1A/1B but calls no other skill → it is a Producer with internal structure. `setup-brand` calls `snapshot-brand` (Step 0) + chains Step 1-5 logic → Orchestrator.
 
 ### Override rule
 

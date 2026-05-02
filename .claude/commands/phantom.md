@@ -106,7 +106,7 @@ Exemples :
 - Brand dormant > 60j → suggérer "archiver ou réactiver".
 - Tests fatiguing dans plusieurs brands → suggérer batch refresh.
 - Operator profile incomplet → suggérer densification.
-- Skill `audit-meta-setup` (ou équivalent) jamais run sur un brand actif → suggérer un audit.
+- Skill `audit-meta-account` (ou équivalent) jamais run sur un brand actif → suggérer un audit.
 - Niveau de contexte global moyen sub-L2 → suggérer densification d'un brand prioritaire.
 
 ---
