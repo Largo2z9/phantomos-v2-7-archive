@@ -1,0 +1,56 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.24.0",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "schema_evolution",
+  "summary": "Audience multi-product binding. meta.product_id (single, deprecated) replaced by meta.applies_to_products[] (array). Storage stays flat at brand-level, indexation becomes multidimensional. /phantom navigation reflects the binding everywhere (source of truth principle).",
+  "changes": [
+    {
+      "category": "schema",
+      "action": "evolved",
+      "files": ["resources/schemas/profile.schema.json", "brands/_TEMPLATE/audiences/_example/profile.json"],
+      "rationale": "meta.product_id (single string) was insufficient: audiences buying multiple products of the same brand had to choose one (lost info) or be marked detached (lost traceability). meta.applies_to_products[] (array of product slugs) handles all three cases: brand-wide ([]), mono-product (['hair-boost']), cross-product (['hair-boost', 'cellule-boost']). meta.product_id kept as deprecated, readers fall back if applies_to_products is empty."
+    },
+    {
+      "category": "skills",
+      "action": "added",
+      "files": [".skills/migrate-audience-applies-to.py"],
+      "rationale": "Idempotent migration script. Walks every brands/{slug}/audiences/{audience}/profile.json, converts meta.product_id (if set) → meta.applies_to_products = [product_id]. Handles null/empty/already-migrated cases. --dry-run flag for preview. Tested on phantomos-test (kara brand): 7 audiences detected as brand-wide (no product_id was set), 0 migrated, all OK."
+    },
+    {
+      "category": "commands",
+      "action": "extended",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode brand audiences row + entity-drill audiences + item-mode produit + item-mode audience",
+      "rationale": "Source of truth principle: /phantom reflects the binding everywhere. (1) Brand mode audiences row affiche un breakdown par produit (5 sur hair-boost, 3 sur cellule-boost, 0 brand-wide). (2) Entity-drill audiences ajoute '→ applies_to' par ligne. (3) Item-mode produit ajoute section AUDIENCES qui filtre celles dont applies_to_products contient {p}. (4) Item-mode audience ajoute section APPLIQUÉ AUX PRODUITS. Pas de mode CLI séparé /phantom {brand} {product} audiences (cap 3 niveaux respecté), le drill se fait via item-mode produit."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/snapshot-brand/SKILL.md"],
+      "section": "Step 5 Movement 3 (hierarchy) + Step 6 (field-level contract)",
+      "rationale": "Movement 3 ajoute une question opérateur post-validation hierarchy : multi-coche pour binder chaque audience à un ou plusieurs produits. Default = hero produit du run snapshot. Field-level contract Step 6 inclut maintenant meta.applies_to_products dans les fields que snapshot-brand peut écrire."
+    },
+    {
+      "category": "doctrine",
+      "action": "extended",
+      "files": ["docs/system/audience-cartography.md"],
+      "section": "Audience binding par produit (v2.24.0)",
+      "rationale": "Documente la sémantique du binding (vide / mono / cross-product), pourquoi storage flat plutôt que dossier produit/audiences/, comment l'opérateur navigue, comment Snapshot Step 5 Movement 3 demande le binding, et la backward compat."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/phantom-search.py"],
+      "rationale": "collect_text_fields walks already arrays, donc applies_to_products[] est indexé natif. Docstring updated pour signaler que /phantom search par slug produit retrouve les audiences taggées."
+    }
+  ],
+  "breaking_changes": [
+    "meta.product_id is now deprecated. Existing instances continue to work (fallback read). New writes via snapshot-brand or operator should use meta.applies_to_products[]. Skills consuming product_id directly should be updated to read applies_to_products first, fall back to product_id."
+  ],
+  "migrations": [
+    "Run `python3 .skills/migrate-audience-applies-to.py` once per workspace to convert meta.product_id → meta.applies_to_products. Idempotent. --dry-run for preview. On phantomos-test: 7 audiences detected as brand-wide (product_id was null), 0 actual conversions, all OK."
+  ],
+  "operator_impact": "Multi-produit géré nativement. Audience qui achète Hair Boost + Cellule Boost = un seul folder, taggée [\"hair-boost\", \"cellule-boost\"]. /phantom karacare products hair-boost rend la fiche produit AVEC les audiences cibles. /phantom karacare audiences chute-active rend l'audience AVEC les produits qu'elle achète. /phantom search hair-boost retrouve les audiences taggées. Snapshot pose la question multi-coche au moment de la cartographie."
+}

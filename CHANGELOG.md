@@ -5,6 +5,33 @@
 
 ---
 
+## v2.24.0 — 2026-05-03 — Audience multi-product binding
+
+**Why this release.** `meta.product_id` (single string) était insuffisant : une audience qui achète plusieurs produits de la même marque (ex: Karacare *chute-active* achète Hair Boost ET Cellule Boost) devait soit choisir un produit primary (perte d'info), soit rester non-taggée (perte de traçabilité). Pas d'arborescence visible audience → produit dans `/phantom`. Largo : *"audiences sous produits, ça doit s'appliquer partout, /phantom est source of truth"*.
+
+**Architectural choice : hybride.** Storage flat au niveau brand (pas de duplication, audience cross-product reste une seule entité), indexation multidimensionnelle via `meta.applies_to_products[]`. Pattern repris de Linear (tasks multi-projet) et GitHub (issues multi-repo).
+
+**What shipped.**
+
+- **Schema evolved.** `profile.schema.json` ajoute `meta.applies_to_products` (array of product slugs). `meta.product_id` reste mais est marqué `deprecated`. Sémantique : `[]` = brand-wide, `["x"]` = mono-produit, `["x", "y"]` = cross-product.
+- **Migration script** : `python3 .skills/migrate-audience-applies-to.py` (idempotent, `--dry-run` pour preview). Convertit `product_id: "x"` → `applies_to_products: ["x"]` pour les instances existantes.
+- **`/phantom` reflète le binding partout** :
+  - Mode brand : ligne audiences ajoute un breakdown par produit (`5 sur hair-boost, 3 sur cellule-boost, 0 brand-wide`).
+  - Entity-drill audiences : chaque ligne ajoute `→ applies_to`.
+  - Item-mode produit (`/phantom karacare products hair-boost`) : section AUDIENCES filtre celles dont `applies_to_products` contient `hair-boost`.
+  - Item-mode audience (`/phantom karacare audiences chute-active`) : section APPLIQUÉ AUX PRODUITS liste les bindings.
+  - `/phantom search hair-boost` : indexe `applies_to_products[]` natif, retrouve les audiences taggées.
+- **Snapshot-brand Step 5 Movement 3** ajoute une question opérateur multi-coche après la validation de la hiérarchie : *"Pour chaque audience, quel(s) produit(s) elle achète ?"*. Default = hero du run. Multi-coche = cross-product. Vide = brand-wide.
+- **`audience-cartography.md` doctrine étendue** avec la section *Audience binding par produit (v2.24.0)*.
+
+**Breaking changes.** `meta.product_id` deprecated. Existing instances continuent de fonctionner via fallback read. Skills consuming `product_id` directly devraient lire `applies_to_products` d'abord avec fallback sur `product_id`.
+
+**Migration.** `python3 .skills/migrate-audience-applies-to.py` une fois par workspace. Sur phantomos-test (kara brand) : 7 audiences brand-wide, 0 migration nécessaire.
+
+**Operator impact.** Multi-produit géré nativement, sans duplication. `/phantom` devient la source of truth visible : peu importe par où l'opérateur entre (par produit ou par audience), la relation est rendue. Pattern Silicon Valley : storage flat, indexation multidimensionnelle.
+
+---
+
 ## v2.23.0 — 2026-05-03 — /phantom comme File Explorer of Context
 
 **Why this release.** v2.21 a posé la navigation terminal-like. v2.22 a ajouté l'AskUserQuestion pour cliquer plutôt que taper. Largo a poussé le prochain cran : `/phantom` doit devenir un explorateur de contexte friendly, pas juste un cockpit. Référence mentale = ce que feraient des devs Silicon Valley s'ils designaient l'explorateur d'un OS de contexte (macOS Finder, VS Code Explorer, Linear, GitHub repo browser, Notion).

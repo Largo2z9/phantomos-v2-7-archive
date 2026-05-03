@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.23.0",
+  "template_version": "2.24.0",
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "/phantom devient un explorateur de contexte friendly (File Explorer of Context). Niveau 3 ajouté (item mode) pour preview d'un audience/angle/produit unique. 4 sous-modes utilitaires : /phantom search (grep cross-brand), /phantom recent (timeline mutations), /phantom todo (next-suggested cross-brand), /phantom ? (cheatsheet auto-générée). Breadcrumbs en header de chaque mode. Empty states pédagogiques systématiques (jamais juste 'rien à afficher', toujours un next move proposé). Status indicators enrichis (🔥 stale critique, ⏳ mining en cours, 🆕 créé < 24h). Footer hint discoverability. Helpers Python ajoutés : phantom-search.py et phantom-recent.py.",
-  "manifest": "docs/internal/releases/manifest/2.23.0-manifest.json"
+  "summary": "Audience multi-product binding. meta.product_id (single, deprecated) remplacé par meta.applies_to_products[] (array). Storage flat, indexation multidimensionnelle : audiences vivent au niveau brand, sont taggées multi-produit. /phantom navigation systémique : entity-drill audiences affiche '→ applies_to' par audience, item-mode produit liste les audiences cibles, item-mode audience liste les produits cibles, search indexe le binding. snapshot-brand Step 5 Movement 3 ajoute une question opérateur multi-coche pour le binding. audience-cartography.md doctrine étendue. Migration script .skills/migrate-audience-applies-to.py (idempotent, dry-run). meta.product_id reste lu en fallback.",
+  "manifest": "docs/internal/releases/manifest/2.24.0-manifest.json"
 }

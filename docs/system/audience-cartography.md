@@ -124,6 +124,7 @@ meta.scope             → broad | segment | micro
 meta.parent_slug       → null for mother, slug-of-mother for sub
 meta.validation_status → "hypothesis"
 meta.audience_type     → "primary" | "secondary" | "discovered" | "assumed"
+meta.applies_to_products → array of product slugs (multi-product binding, see § Audience binding par produit)
 meta.tags              → namespace-prefixed tags from page (e.g. "problem:hair-loss", "context:post-pregnancy")
 identity.gender        → male | female | all (only if explicit on page)
 identity.age_range     → {min, max} (only if explicit on page)
@@ -131,3 +132,24 @@ pain.primary_problem   → one-line problem statement in operator's language (on
 ```
 
 Everything else null until mine-voc runs.
+
+## Audience binding par produit (v2.24.0)
+
+Une audience vit au niveau brand (`brands/{slug}/audiences/{audience_slug}/profile.json`) mais elle est **indexée multi-produit** via `meta.applies_to_products[]`. Storage flat, indexation multidimensionnelle.
+
+**Sémantique du champ.**
+- `[]` (vide) : audience **brand-wide**, pertinente pour tous les produits ou pour la marque sans produit spécifique.
+- `["hair-boost"]` : audience **mono-produit**, achète uniquement Hair Boost.
+- `["hair-boost", "cellule-boost"]` : audience **cross-product**, achète plusieurs produits de la même marque.
+
+**Pourquoi pas un dossier `products/{p}/audiences/`** : multi-produit oblige à dupliquer ou symlink. Storage flat avec indexation = pas de duplication, et une audience cross-product reste une seule entité dans le système.
+
+**Comment l'opérateur navigue le binding.**
+- `/phantom {brand} audiences` : liste toutes les audiences du brand, chaque ligne affiche son `→ applies_to`.
+- `/phantom {brand} products {p}` : item-mode produit, section AUDIENCES filtre celles dont `applies_to_products` contient `{p}`.
+- `/phantom {brand} audiences {audience_slug}` : item-mode audience, section APPLIQUÉ AUX PRODUITS liste les bindings.
+- `/phantom search {keyword}` : indexe `applies_to_products[]`, donc taper un slug produit retrouve les audiences taggées.
+
+**Snapshot Step 5 Movement 3.** Lors de la cartographie hierarchy, demander pour chaque audience proposée *"cette audience achète quel(s) produit(s) ?"* (multi-coche). Default = le hero produit du run snapshot. Multiple = cross-product (acceptable). Vide acceptable = brand-wide générique.
+
+**Backward compatibility.** `meta.product_id` (single, deprecated v2.24.0) reste lu en fallback si `applies_to_products` est vide. Migration via `python3 .skills/migrate-audience-applies-to.py` (idempotent, dry-run avec `--dry-run`).

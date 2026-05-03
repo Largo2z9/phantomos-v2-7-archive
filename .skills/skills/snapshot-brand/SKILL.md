@@ -436,6 +436,25 @@ Single-question gate. Wait for operator confirmation. Once confirmed, scaffold t
 
 > *"Validé. Je grave les 5 audiences (2 groupes principaux + 3 sous-groupes). Tu peux les visualiser à tout moment en tapant `/phantom {brand_slug}` — ça te sort un cockpit avec la liste, le statut de chacune, et ce qu'il manque pour passer de l'hypothèse au validé."*
 
+**Avant le grave : binding produit.** Pour chaque audience validée (groupes principaux + sous-groupes), l'agent demande quel(s) produit(s) elle achète. C'est la passerelle multi-produit. Question opérateur-facing :
+
+> *"Dernière question avant que je grave : pour chaque audience, quel(s) produit(s) elle achète chez Karacare ? Tu peux cocher un seul, plusieurs, ou laisser vide si l'audience est plus large que tes produits actuels (genre une persona brand-wide qui pourrait acheter n'importe lequel).*
+>
+> *Mes hypothèses par défaut, à corriger franchement :*
+> *  pousse-projet → hair-boost (le hero, vise la pousse)*
+> *  pousse-jeune-adulte → hair-boost*
+> *  pousse-recovery → hair-boost*
+> *  chute-active → hair-boost + cellule-boost (les deux, c'est la cible naturelle du bundle)*
+> *  chute-post-grossesse → hair-boost + cellule-boost*
+> *  chute-stress-hormonal → hair-boost + cellule-boost*
+> *  chute-traction → hair-boost*
+>
+> *Tu valides cette répartition ou tu veux ajuster ?"*
+
+L'opérateur valide ou corrige. Encoder via `meta.applies_to_products: ["hair-boost"]` ou `["hair-boost", "cellule-boost"]` ou `[]` (brand-wide). Le champ `meta.product_id` legacy reste null (ne pas écrire ce champ pour les nouvelles audiences post-v2.24.0).
+
+Cette question débloque la navigation cross-référencée dans `/phantom` : *"voir les audiences sur hair-boost"* devient une commande naturelle (`/phantom karacare products hair-boost` rend la fiche produit avec les audiences cibles dessous).
+
 ### Movement 4 — Hand-off vers mine-voc (operator-facing)
 
 Before closing Step 5, explicitly tell the operator how the audience encoding will be **used next**. Anchors why the work matters and proposes the next skill. **Operator-facing language**: skill names are OK (the operator is learning the system), internal field names are NOT.
@@ -508,6 +527,7 @@ meta.scope             → broad | segment | micro
 meta.parent_slug       → null for mother, slug-of-mother for sub
 meta.validation_status → "hypothesis"
 meta.audience_type     → "primary" | "secondary"
+meta.applies_to_products → array of product slugs (multi-product binding, see audience-cartography.md § Audience binding par produit)
 meta.tags              → ["problem:hair-loss", "context:post-pregnancy", ...] (namespaced)
 identity.gender        → male | female | all (only if explicit on page)
 identity.age_range     → {min, max} (only if explicit on page)

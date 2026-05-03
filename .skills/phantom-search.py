@@ -70,7 +70,10 @@ def make_snippet(text: str, kw_re: re.Pattern, length: int = SNIPPET_LEN) -> str
 
 
 def collect_text_fields(doc, prefix: str = "") -> list[tuple[str, str]]:
-    """Walk a JSON doc, return [(path, text)] for every string leaf."""
+    """Walk a JSON doc, return [(path, text)] for every string leaf.
+    Includes string elements inside arrays (e.g. meta.applies_to_products[]
+    so /phantom search finds audiences by product slug).
+    """
     out = []
     if isinstance(doc, dict):
         for k, v in doc.items():

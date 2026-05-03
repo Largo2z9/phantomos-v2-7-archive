@@ -181,6 +181,16 @@ Exemples :
 
 Ordre d'affichage : brand, products, offers, audiences, angles, strategy, learnings.
 
+### Audience binding par produit (mode brand)
+
+Chaque audience peut être taggée avec `meta.applies_to_products[]` (slugs de produits qu'elle vise). Lors du rendering de la ligne audiences en mode brand, ajouter un breakdown par produit :
+
+```
+⚠ audiences           7 (5 sur hair-boost, 3 sur cellule-boost, 0 brand-wide)
+```
+
+Audiences avec `applies_to_products` vide = brand-wide (visible sur tous les produits). Audiences avec plusieurs slugs comptent dans plusieurs colonnes du breakdown. Si seul `meta.product_id` (legacy) est présent, le lire comme `[product_id]` pour le breakdown.
+
 ### Audience hierarchy (mode brand)
 
 When audiences are organized as mère / sous-audiences (introduced v2.19.0), expand the audiences row into an indented hierarchy view. Detect via `meta.parent_slug` in each `audiences/{slug}/profile.json`.
@@ -276,16 +286,25 @@ Then entity-specific body, then a single Next-suggested block specific to this e
 
 For each audience folder under `brands/{slug}/audiences/`:
 - Indented per `meta.parent_slug` (mother audiences flat, sub-audiences indented one level).
-- Per audience : `slug`, `scope`, `validation_label` (translated from `validation_status`), `pain_signal` (filled / empty), `voice_signal` (filled / empty), `objection_signal` (filled / empty), `last_updated`.
+- Per audience : `slug`, `scope`, `validation_label` (translated from `validation_status`), `pain_signal` (filled / empty), `voice_signal` (filled / empty), `objection_signal` (filled / empty), `applies_to` (produits ou `brand-wide`), `last_updated`.
 
 Format example :
 
 ```
-{slug}                     {scope}    {validation_label}    pain: {filled|vide}    voice: {filled|vide}    obj: {filled|vide}    last {time_ago}
+{slug}                     {scope}    {validation_label}    pain: {filled|vide}    voice: {filled|vide}    → {applies_to}    last {time_ago}
    ├─ {sub_slug}           ...
 ```
 
-End with paste-ready next-suggested specific to audience gaps (mine-voc on missing pain, validate hypothesis blocks, merge low-signal sub-audiences, etc.).
+`applies_to` formatting (lit `meta.applies_to_products[]`, fallback sur `meta.product_id` legacy si vide) :
+- non-empty → liste les slugs séparés par virgule (ex: `→ hair-boost, cellule-boost`)
+- empty + product_id null → `→ brand-wide`
+- empty + product_id set (legacy) → `→ {product_id}` avec astérisque
+
+End with paste-ready next-suggested : mine-voc sur missing pain, drill par produit `/phantom {brand} products {p}` pour filtrer, valider hypothesis blocks, merge low-signal sub-audiences.
+
+### Filtrage par produit (entity-drill audiences)
+
+Si l'opérateur tape `/phantom {brand} products {p_slug}` (item mode produit, voir plus bas), la fiche produit liste automatiquement les audiences dont `applies_to_products` contient `{p_slug}`. Pas de mode séparé `/phantom {brand} {product} audiences` (cap CLI à 3 niveaux). Le drill par produit se fait via item-mode produit.
 
 ### `angles` · list + status
 
@@ -371,6 +390,9 @@ HIÉRARCHIE
   Parent: {parent_slug ou "(racine)"}
   Sous-audiences: {liste des sous-slugs ou "aucune"}
 
+APPLIQUÉ AUX PRODUITS
+  {applies_to_products joint par ", " ou "(brand-wide, pas de produit ciblé)"}
+
 NEXT SUGGESTED (priorité)
   → Tape : `lance mine-voc sur {brand_slug} pour {item-slug}` (mining vide, prochaine étape logique)
   → Tape : `valide point par point l'audience {item-slug}` (corriger, rejeter, accepter)
@@ -398,7 +420,7 @@ NEXT SUGGESTED
 
 ### Pour `products/{slug}`
 
-Lecture : `brands/{brand}/products/{slug}/spec.json` + `offers.json`. Rendering :
+Lecture : `brands/{brand}/products/{slug}/spec.json` + `offers.json` + scan `brands/{brand}/audiences/*/profile.json` pour filtrer celles dont `meta.applies_to_products` contient `{slug}` (fallback sur `meta.product_id` legacy). Rendering :
 
 ```
 {NOM_PRODUIT} · {category}
@@ -412,10 +434,22 @@ BÉNÉFICES         {N encodés}
 PRIX              {pricing.price} {currency}
 OFFRES            {N actives} (cure 1m, 3m, 6m si dispo)
 
+AUDIENCES (qui achètent ce produit)
+{audience_lines}
+
 NEXT SUGGESTED
   → Tape : `densifie la spec {slug}` (champs manquants : {liste})
   → Tape : `audit l'offre {slug}` (vérifier cohérence prix/cure/économies)
 ```
+
+`audience_lines` : un par audience filtrée :
+```
+  · {audience_slug}    {scope}    {validation_label}    {applies_to_count} produits ciblés
+```
+
+`applies_to_count` : `mono` si `len(applies_to_products) == 1`, `cross-product (N)` si > 1, `legacy` si vide mais `product_id` set, `brand-wide` si vide. Permet à l'opérateur de voir quelles audiences sont spécifiques à ce produit vs partagées.
+
+Si aucune audience ne cible ce produit : *"Aucune audience taggée sur ce produit. Tape `tag audience X sur {slug}` pour binder, ou laisse en brand-wide."*
 
 ### AskUserQuestion (mode item)
 

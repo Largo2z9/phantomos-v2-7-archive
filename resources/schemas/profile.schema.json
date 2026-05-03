@@ -17,7 +17,8 @@
       "properties": {
         "name": { "type": "string" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]*$" },
-        "product_id": { "type": ["string", "null"] },
+        "product_id": { "type": ["string", "null"], "deprecated": true, "description": "DEPRECATED v2.24.0: use applies_to_products[] instead. Kept for backward compatibility; readers should fall back to it if applies_to_products is empty." },
+        "applies_to_products": { "type": "array", "items": { "type": "string" }, "description": "Slugs of products this audience applies to. Empty array = brand-wide audience (no specific product binding). Single element = mono-product audience. Multiple = cross-product audience. Drives /phantom navigation: /phantom {brand} products {p} surfaces audiences whose applies_to_products contains {p}." },
         "scope": { "type": "string", "enum": ["broad", "segment", "micro"] },
         "parent_slug": { "type": ["string", "null"] },
         "overlap_with": { "type": "array", "items": { "type": "string" } },
