@@ -199,7 +199,9 @@ For catalogues: check if same domain prefix exists in `id_prefixes`.
 6. **Never write before explicit confirmation.**
 7. **Respect _field_types**: Check the file's `_field_types` map. Never write strategy/decision data into context files. Derived fields should be computed, not manually filled. **If a written field doesn't exist in `_field_types`** → add it with the appropriate type (`raw` by default, unless clearly computed → `derived`). Never write an unmapped field without registering it.
 8. **Sync products_index**: When writing to `products/{slug}/spec.json`, check `brand.json.products_index[]`. If the product slug is not listed, add it with `name` from spec.meta.name and `role: "secondary"` (operator can change later).
-9. **Write via the canonical channel** (Bash, not pseudo-code) for every field:
+9. **Write via delegated encoding** (`encode-batch` sub-agent, Haiku) so the main thread stays responsive when the batch exceeds ~5 mutations. Producer (ingest-resource) extracts the semantic signals from the recap, packages them as observations, launches encode-batch via Task tool. Sub-agent maps each `semantic_kind` to a `field_path`, runs `write-to-context.py` per mutation, rebuilds the snapshot, runs `finalize-mutation-batch.py`. Returns a structured summary (mutations_count, files_touched, unmapped, finalize_exit_code).
+
+For batches ≤ 5 mutations, calling `write-to-context.py` directly inline is acceptable (sub-agent overhead not worth it):
 
 ```bash
 python3 .skills/write-to-context.py \
@@ -214,6 +216,7 @@ python3 .skills/write-to-context.py \
 - `--mode proposed` ONLY for dict values (stamps `_proposed/_source/_confidence` in-place). Scalars and arrays use `--mode direct` (metadata preserved in event log).
 - Writes to gated paths (`products/{slug}/spec.json`, `products/{slug}/offers.json`, `audiences/{slug}/profile.json`) require a resolved checkpoint — see `.skills/stage-proposal.py` and snapshot-brand Step 1/5 for the stage-then-ask pattern. If ingest-resource wants to write to a gated path without going through a preceding snapshot-brand run, stage a proposal first.
 - Edit, Write, `python -c json.dump`, `echo >`, `sed -i`, `tee` are all blocked by mutation-guard. Surface the script's error to the operator if it blocks; never bypass.
+- encode-batch full contract: `.skills/skills/encode-batch/SKILL.md`.
 
 10. **Store raw source** in `brands/{slug}/sources/` if applicable
 

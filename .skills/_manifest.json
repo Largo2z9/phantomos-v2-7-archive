@@ -1,6 +1,6 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-02T16:39:01Z",
+  "_generated_at": "2026-05-03T17:56:35Z",
   "_count": 42,
   "skills": [
     {
@@ -265,6 +265,30 @@
         "onboard-brand": "route to onboard-brand for the full setup pipeline from scratch — deepen-brand-context assumes snapshot is done"
       },
       "path": ".skills/skills/deepen-brand-context/SKILL.md"
+    },
+    {
+      "name": "encode-batch",
+      "type": "shared",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "encode batch",
+          "encode ces mutations",
+          "écrit le batch en arrière-plan"
+        ],
+        "en": [
+          "encode batch",
+          "encode mutations",
+          "background encode"
+        ]
+      },
+      "disambiguates_against": {
+        "finalize-mutation-batch": "finalize-mutation-batch is post-write structural check (Python primitive, no LLM). encode-batch is the write itself, Haiku-grade mapping observation → field_path → write_to_context call. Pipeline: producer extracts → encode-batch writes → finalize-mutation-batch verifies.",
+        "write-to-context": "write-to-context is the single-mutation primitive. encode-batch wraps N write-to-context calls in one delegated execution so the main thread stays responsive."
+      },
+      "path": ".skills/skills/encode-batch/SKILL.md"
     },
     {
       "name": "export-session",

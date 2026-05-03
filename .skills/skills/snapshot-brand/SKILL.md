@@ -209,15 +209,40 @@ Wait for answers. Generate spec.json from answers + partial scraped data. Do not
 
 ---
 
-## Step 3 — Generate spec.json
+## Step 3 — Generate spec.json (delegated encoding)
 
 Before generating, read `brands/{slug}/brand.json` → sections `tone_of_voice` and `positioning`.
 If these fields are filled → use the brand tone and positioning to align the product description.
 If `brand.json` is empty (first product) → generate from the page alone, without inference.
 
-Fill `brands/{slug}/products/{product_slug}/spec.json` with scraped data.
+**Encoding is delegated to `encode-batch` (Haiku sub-agent) so the main thread stays responsive.**
 
-Absolute rule: **never invent a field**. If the info isn't in the page → `null`. No creative inference.
+Build the observations list from scraped data, then launch encode-batch via Task tool:
+
+```
+Task tool call:
+  subagent_type: shared
+  skill: encode-batch
+  model: haiku
+  prompt: |
+    {
+      "brand_slug": "{slug}",
+      "target_entities": [
+        {"file_path": "brands/{slug}/products/{product_slug}/spec.json", "schema": "resources/schemas/spec.schema.json"}
+      ],
+      "observations": [
+        {"semantic_kind": "product_name", "raw_value": "{title}", "evidence": "scrape: products/{handle}.js title", "source": "scrape", "confidence_signal": "literal"},
+        {"semantic_kind": "product_category", "raw_value": "{product_type}", "evidence": "scrape: product_type", "source": "scrape", "confidence_signal": "literal"},
+        {"semantic_kind": "product_description", "raw_value": "{stripped body_html, max 500 chars}", "evidence": "scrape: body_html stripped", "source": "scrape", "confidence_signal": "literal"},
+        ... one observation per non-null scraped field ...
+      ],
+      "default_mode": "proposed"
+    }
+```
+
+Producer (snapshot-brand) extracts the semantic signals from the scrape. encode-batch maps each signal to a `field_path`, runs `write-to-context.py` per mutation, rebuilds the snapshot, runs `finalize-mutation-batch.py`. Returns a structured summary (not operator-facing).
+
+Absolute rule: **never invent a field**. If the info isn't in the page → don't include the observation. No creative inference. encode-batch refuses unmapped `semantic_kind` values rather than guessing.
 
 Fields filled from scraping:
 ```json
@@ -420,12 +445,14 @@ Extract gender + problem + age_range from the free answer. If still imprecise �
 
 ---
 
-## Step 6 — Generate profile.json (base)
+## Step 6 — Generate profile.json (base, delegated encoding)
 
 Fill `brands/{slug}/audiences/{audience_slug}/profile.json` with:
 - What comes directly from the product page (gender apparent in copy, problem addressed in title/description)
 - What comes from Q1-Q4 answers
 - Nothing else
+
+**Encoding delegated to `encode-batch` (same pattern as Step 3).** Producer assembles observations from Step 5 (audience_label, audience_gender, audience_age_range, pain_point if extracted, key_expression if any operator verbatim) and ships the payload to the encode-batch sub-agent. Sub-agent maps and writes; producer continues to Step 7 synthesis without blocking.
 
 ```json
 {

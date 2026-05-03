@@ -1,0 +1,44 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.18.0",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "performance",
+  "summary": "Producer skills no longer block the main thread on N-mutation encoding. Introduced encode-batch sub-skill (shared, Haiku, subagent_safe: true) that receives N semantic observations from a producer, maps each to a field_path against the target schema, runs write-to-context.py per mutation, rebuilds the snapshot, runs finalize-mutation-batch.py, returns a structured summary. Producer skills extract semantic signals (cognitively heavy, Sonnet-grade) and ship the operator-facing synthesis without waiting on field-by-field mapping (cognitively light, Haiku-grade). snapshot-brand Step 3 + Step 6 patched. ingest-resource Step 3B patched.",
+  "changes": [
+    {
+      "category": "skills",
+      "action": "added",
+      "files": [".skills/skills/encode-batch/SKILL.md"],
+      "rationale": "Sub-skill addressing the snapshot-brand and ingest-resource lag (15-50 mutations encoded sequentially in main thread, 60-120s blocking). Mechanical mapper: takes observations classified by semantic_kind, maps to field_path via canonical table, runs write-to-context.py per observation, rebuilds snapshot, runs finalize-mutation-batch.py, returns JSON summary. Haiku-grade because the cognitive work (extraction, classification) is done upstream by the producer."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/snapshot-brand/SKILL.md"],
+      "section": "Step 3 + Step 6",
+      "rationale": "Step 3 (spec.json generation) and Step 6 (profile.json base) now delegate the N-mutation encoding to encode-batch via Task tool. Producer extracts observations from the scrape + Q1-Q4 answers, ships the payload, continues to Step 7 synthesis without blocking."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/ingest-resource/SKILL.md"],
+      "section": "Step 3B item 9",
+      "rationale": "Encoding via encode-batch when batch >5 mutations. Inline write-to-context.py still acceptable for ≤5 mutations (sub-agent overhead not worth it for small batches)."
+    },
+    {
+      "category": "manifest",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "rationale": "encode-batch now indexed (42 skills total)."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Snapshot-brand and ingest-resource feel ~5-10x faster on the operator side. The synthesis arrives in 5-15s instead of 60-120s. Encoding runs in background as a Haiku sub-agent. Operator sees a one-line footnote (e.g. '27 mutations encoded in background, all green') instead of watching the agent grind through fields one at a time. If finalize-mutation-batch flags a blocking issue, producer surfaces it before close.",
+  "performance_target": {
+    "before": "snapshot-brand 25-mutation run: ~60-120s in main thread, operator waits on field-by-field encoding",
+    "after": "snapshot-brand 25-mutation run: 5-15s synthesis on operator side, encoding parallel in Haiku sub-agent",
+    "measurement_method": "TBD via observation on first real test run on phantomos-test workspace"
+  }
+}

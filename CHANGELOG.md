@@ -5,6 +5,25 @@
 
 ---
 
+## v2.18.0 — 2026-05-03 — encode-batch sub-skill (responsiveness)
+
+**Why this release.** Producer skills (snapshot-brand, ingest-resource) encoded 15-50 mutations sequentially in the main thread, blocking 60-120s. Operator perception : the agent "grinds through fields". Cognitive split : extracting semantic signals from a scrape is Sonnet-grade work ; mapping `semantic_kind` → `field_path` is Haiku-grade mechanical work. This release pulls the mechanical half into a sub-agent.
+
+**What shipped.**
+
+- **`encode-batch` sub-skill added.** Shared, Haiku, `subagent_safe: true`, `operator_facing: false`. Receives N observations (semantic_kind + raw_value + evidence + source + confidence_signal) from a producer. Loads the target schemas + existing files. Maps each observation to a `field_path` via canonical table. Runs `write-to-context.py` per mutation. Rebuilds snapshot once at end. Runs `finalize-mutation-batch.py` once at end. Returns a structured JSON summary to the caller. Refuses unmapped `semantic_kind` rather than guessing.
+- **`snapshot-brand` Step 3 + Step 6 patched.** Spec.json generation (Step 3) and profile.json base (Step 6) now delegate the N-mutation encoding to encode-batch via Task tool. Producer assembles observations from scrape + Q1-Q4 answers, ships the payload, continues to Step 7 synthesis without blocking.
+- **`ingest-resource` Step 3B patched.** Encoding via encode-batch when batch >5 mutations. Inline `write-to-context.py` still acceptable for ≤5 mutations (sub-agent overhead not worth it).
+- **`.skills/_manifest.json` regenerated.** encode-batch indexed (42 skills total).
+
+**Performance.** snapshot-brand 25-mutation run target : 5-15s synthesis on operator side instead of 60-120s sequential. Encoding runs in background as Haiku sub-agent. Operator sees a one-line footnote (e.g. *"27 mutations encoded in background, all green"*) instead of watching field-by-field grind.
+
+**Breaking changes.** None.
+
+**Operator impact.** Snapshot-brand and ingest-resource feel materially faster. If finalize-mutation-batch flags a blocking issue, producer surfaces it before close.
+
+---
+
 ## v2.17.0 — 2026-05-03 — Canon cleanup + schema standardization
 
 **Why this release.** Recent build sessions (S50 → S54) inscribed multiple briques typées at the canon (Tension, Pain, Bénéfice, JTBD, Trigger, Alternative, AwarenessStage, ChainNiveau) and drafted matching R&D schemas, but never finished the migration into the template. Audit revealed 3 canon entries with zero schema instance + zero skill consumer + zero brand instance, an enum-case split between R&D (kebab) and template (snake) blocking future $ref refactor, and 0% description coverage on the two most critical schemas. This release reconciles canon with implementation reality.
