@@ -132,9 +132,12 @@ ALLOWED_PATH_PATTERNS = [
     re.compile(r"^brands/[^/]+/products/[^/]+/spec\.json$"),
     re.compile(r"^brands/[^/]+/products/[^/]+/offers\.json$"),
     re.compile(r"^brands/[^/]+/audiences/[^/]+/profile\.json$"),
+    re.compile(r"^brands/[^/]+/angles/[^/]+\.json$"),
     re.compile(r"^brands/[^/]+/custom/.+\.json$"),
     re.compile(r"^brands/[^/]+/[^/]+\.extensions\.json$"),
     re.compile(r"^operator/[^/]+\.json$"),
+    # canon validations (v2.26.0+) — append-only validations[] from learn-from-session promotion.
+    re.compile(r"^resources/canon/[a-z-]+/[a-z-]+/[a-z0-9-]+\.json$"),
 ]
 
 

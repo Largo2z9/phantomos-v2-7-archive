@@ -74,6 +74,23 @@ Three branches:
 
 ---
 
+## Step 0bis — Load canon copy (v2.26.0+)
+
+**Avant Step 1**, charger l'atlas canon copy comme bibliothèque de référence pour la production. Les angles ne sont plus générés depuis le néant, ils sont composés en piochant dans des outils canon référencés.
+
+Read-only access aux fichiers `resources/canon/copy/{layer}/{tool}.json`. Couches utilisées par ce skill :
+- `frameworks` (AIDA, PAS, BAB, QUEST, FAB, 4Ps) : squelette structurel
+- `hooks` (curiosity-gap, contrarian, stat-choc, avant-apres, question-callout, confession) : ouverture
+- `angles` (mecanisme-unique, identite, retour-en-arriere, ennemi-commun, status-shift, contre-intuitif) : axe narratif
+- `niveaux-schwartz` (conscience, sophistication) : grille de pertinence
+- `archetypes-voix` (caregiver, sage, rebelle, amante, heros, homme-ordinaire) : registre
+
+Pour chaque outil canon lu, garder en mémoire : `id, when_works[], when_avoid[], combines_with{}`. Ces contraintes filtrent quels outils sont compatibles avec le contexte audience résolu en Step 0/1.
+
+**Lecture batch.** `python3 .skills/phantom-canon.py copy {layer}` retourne la liste des outils d'une couche. Itérer pour charger les couches utilisées. Cache en mémoire pour la durée du run.
+
+---
+
 ## Step 1 — Read encoded data
 
 Load the encoded substrate for this brand and this audience. Read silently — never narrate the loading.
@@ -277,6 +294,25 @@ Write the synthesis + ranked table as markdown to:
 `brands/{slug}/produced/paid-angles/{YYYY-MM-DD}-{audience-slug}.md`
 
 Pure deliverable. Copy-pasteable into Notion, Slack, a Google Doc, a brief sent to a copywriter. Header carries: brand name / audience label / date / angle count. Body carries the synthesis paragraph and the ranked table. Footer carries the citations row when verbatims were used (verbatim IDs referencing the original `voc/` corpus when relevant) — never inline scores, never field paths.
+
+**Canon lineage block (v2.26.0+).** Chaque angle dans le ranked table porte son lignage canon explicite. Format ligne par angle :
+
+```
+ANG-{N} · {angle name}
+  audience       {audience_slug}
+  Schwartz       {conscience_stage} × sophistication {wave}
+  hook           {hook_id}                 ← canon copy hooks
+  framework      {framework_id}            ← canon copy frameworks
+  angle narratif {angle_id}                ← canon copy angles
+  archetype voix {archetype_id}            ← canon copy archetypes-voix
+  pain cible     {pain extract from VoC}
+  proof primary  {proof extract from spec}
+  CTA            {offer_id or "à créer"}
+```
+
+Le lignage rend l'angle **traçable** : `/phantom karacare angles ANG-03` pourra rendre la chaîne compositionnelle lue à travers l'atlas. C'est aussi ce qui débloquera v2.27+ les vues `copy-matrix` et `copy-map`.
+
+**Persistence brand-side.** Le lignage canon est ALSO écrit dans `brands/{slug}/angles/{ANG-N}.json` avec le même schéma `{audience_slug, schwartz_conscience, schwartz_sophistication, hook_canon_id, framework_canon_id, angle_canon_id, archetype_canon_id, pain_extract, proof_primary, cta}`. Permet aux outils downstream (`/phantom karacare angles ANG-03`, `produce-copy-brief ANG-03`) de relire la composition.
 
 The next-step proposal lives in the conversational reply, NOT in the artifact file. The artifact is the pure deliverable; the conversational reply carries the reasoned next move.
 

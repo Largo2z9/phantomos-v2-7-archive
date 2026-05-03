@@ -92,6 +92,31 @@ Heuristic: stack with Meta + brand recent focus = paid acquisition → default M
 
 ---
 
+## Step 0bis — Load canon copy + angle lineage (v2.26.0+)
+
+**Avant Step 1**, charger l'atlas canon copy et lire le lignage canon de l'angle source si disponible.
+
+Si l'angle vient de `produce-paid-angles` v2.26.0+, son fichier `brands/{slug}/angles/{angle_id}.json` contient déjà :
+```
+{audience_slug, schwartz_conscience, schwartz_sophistication, hook_canon_id, framework_canon_id, angle_canon_id, archetype_canon_id, pain_extract, proof_primary, cta}
+```
+
+Lire ce lignage pour cadrer le brief : le hook est déjà choisi, le framework est déjà choisi, le registre voix est déjà choisi. Le brief étoffe ce que l'angle a posé, pas le reformule.
+
+**Couches canon consommées par ce skill** :
+- `frameworks` (déjà choisi par l'angle, le brief le respecte section par section)
+- `archetypes-voix` (registre maintenu sur tout le brief)
+- `formules-titres` (4U, how-to, listicle, secret, commande, question — pour les hooks variants Step 4)
+- `objections` (feel-felt-found, reframe-positif, pre-emption, comparaison-cout-inaction — pour la section objections)
+- `leads` (offer-led, mechanism-led, story-led, problem-led, proof-led — pour orienter l'ouverture du brief)
+- `formats-livrables` (UGC-ad, VSL, landing, email-sequence, ad-statique, advertorial — selon le channel)
+
+**Lecture batch.** `python3 .skills/phantom-canon.py copy {layer}` retourne la liste d'une couche. Cache en mémoire.
+
+Si l'angle n'a pas de lignage canon (angle pre-v2.26 ou produit hors skill), le brief assigne lui-même un hook/framework/archetype canon en se basant sur l'audience + le channel + le format livrable.
+
+---
+
 ## Step 1 — Read encoded data
 
 Load the substrate silently. Never narrate the loading.
@@ -164,6 +189,26 @@ Tone of the brief itself: agency-internal register. Technical OK. Jargon OK beca
 Each verbatim quoted with its `sample_size` context inline (*"redoutait le moment de s'habiller (8 mentions Trustpilot)"*). Gives the copywriter signal of how dense the verbatim is — high frequency = safe to lead with, low frequency = use as supporting beat.
 
 Reads like an agency document. No bullet enumeration of every audience field. No `Field: content. Field: content.` form-fill openers. The brief is prose-first inside each section, with named sections as the structure scaffold.
+
+**Canon lineage block (v2.26.0+).** En tête du brief, sous le header, un bloc explicite qui pose le lignage doctrinal du brief (5-7 lignes, agency-internal) :
+
+```
+LIGNAGE
+  audience cible       {audience_slug}
+  Schwartz             {conscience} × sophistication {wave}
+  framework            {framework_canon_id} (cf. canon copy frameworks)
+  hook principal       {hook_canon_id}
+  angle narratif       {angle_canon_id}
+  archetype voix       {archetype_canon_id}
+  type lead            {lead_canon_id}
+  format livrable      {format_canon_id}
+```
+
+Le copywriter lit le lignage avant le brief. Il sait quel framework respecter, quel registre voix tenir, quel hook ouvrir. Si le brief diverge du lignage en cours d'écriture, c'est un signal de friction (à flag dans la section *Notes*).
+
+**Section Objections du brief.** Référence un ou plusieurs `canon copy objections` à utiliser (feel-felt-found, reframe-positif, pre-emption, comparaison-cout-inaction). Ne pas inventer de pattern de gestion : piocher dans canon, citer la fiche.
+
+**Section Hook variants (Step 4).** Les variants utilisent `canon copy formules-titres` (4U, how-to, listicle, secret, commande, question) comme grille de génération. Chaque variant déclare implicitement quelle formule il suit.
 
 ---
 

@@ -138,9 +138,17 @@ Cache by `domain × week` to avoid re-scraping the same surface within seven day
 
 ---
 
-## Step 3 — 4-lens coding per verbatim
+## Step 3 — 4-lens coding per verbatim (+ canon tagging v2.26.0+)
 
 Apply `resources/frameworks/voc-coding.md` strictly. The order is the order; do not reshuffle.
+
+**Canon tagging additif.** Depuis v2.26.0, chaque verbatim qui passe le coding (i.e. propage à Layer B) est aussi tagué selon les outils canon copy pertinents. Cela enrichit la map et débloquera plus tard les vues `copy-matrix audience × stade-conscience`. Les tags canon ajoutés au verbatim Layer B :
+
+- `canon_schwartz_conscience_id` : un parmi `unaware | problem_aware | solution_aware | product_aware | most_aware` (cohérent avec le coding lens 3 ci-dessous, nommé par référence à `canon copy niveaux-schwartz conscience`).
+- `canon_emotion_id` : un terme issu du vocabulaire émotion canonique (espoir, peur, frustration, culpabilite, soulagement, fierte, envie, indignation, surprise, mefiance-eveillee, complicite, regret-anticipe, reconnaissance, appartenance, volonte). Si le verbatim ne porte pas d'émotion claire, laisser null.
+- `canon_objection_pattern_id` (uniquement si theme=objection) : un parmi les 4 patterns canon `feel-felt-found | reframe-positif | pre-emption | comparaison-cout-inaction` selon ce que la résolution implicite du verbatim suggère. Souvent null en mining (l'objection est posée, pas encore résolue).
+
+Ces tags sont écrits sur le verbatim dans le Layer A jsonl (`brands/{slug}/sources/voc/{run-date}/{platform}.jsonl`) et utilisés en Step 6 pour informer les routes Layer B.
 
 1. **Theme typology first.** Assign one or many themes from the closed list of seven (pain, benefit, objection, comparison, surprise, vocabulary, social-proof-signal). A verbatim that matches none stays in Layer A as raw evidence and does not propagate to Layer B. Multi-theme is normal — *"le produit est top mais la livraison est catastrophique"* carries benefit (product) plus pain (operational).
 

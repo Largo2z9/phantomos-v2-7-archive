@@ -1,0 +1,52 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.27.0",
+  "released_at": "2026-05-04",
+  "compatible_from": "2.0.0",
+  "type": "skill_evolution",
+  "summary": "Skills de production downstream consomment l'atlas canon copy (v2.26.0). 4 skills refondus + write-to-context allowlist étendue. L'atlas devient vivant via le mécanisme de promotion canon dans learn-from-session.",
+  "changes": [
+    {
+      "category": "skills",
+      "action": "refondu",
+      "files": [".skills/skills/produce-paid-angles/SKILL.md"],
+      "section": "Step 0bis (canon load) + Step 11 (canon lineage output)",
+      "rationale": "Step 0bis ajouté en tête : charge canon copy frameworks/hooks/angles/niveaux-schwartz/archetypes-voix au début du run, garde when_works/when_avoid/combines_with en mémoire pour filtrer les outils compatibles avec l'audience. Step 11 (Layer B operator artifact) augmenté : chaque angle dans le ranked table porte son lignage canon explicite (audience, Schwartz, hook_canon_id, framework_canon_id, angle_canon_id, archetype_canon_id, pain extract, proof, CTA). Persistance brand-side : brands/{slug}/angles/{ANG-N}.json contient le lignage structuré pour relecture downstream."
+    },
+    {
+      "category": "skills",
+      "action": "refondu",
+      "files": [".skills/skills/produce-copy-brief/SKILL.md"],
+      "section": "Step 0bis (lit lignage angle source + load canon) + Step 5 (bloc LIGNAGE + section objections + hook variants formules-titres)",
+      "rationale": "Step 0bis ajouté : lit le fichier angle (brands/{slug}/angles/{angle_id}.json) qui porte le lignage canon. Le brief étoffe ce que l'angle a posé (hook, framework, archetype) au lieu de re-trancher. Charge canon archetypes-voix + objections + leads + formats-livrables en mémoire. Step 5 (Brief composition) : ajout d'un bloc LIGNAGE en tête du brief (audience, Schwartz, framework, hook, angle, archetype, lead, format) pour cadrer le copywriter. Section Objections référence canon copy objections. Section Hook variants utilise canon copy formules-titres comme grille."
+    },
+    {
+      "category": "skills",
+      "action": "enrichi",
+      "files": [".skills/skills/mine-voc/SKILL.md"],
+      "section": "Step 3 (4-lens coding + canon tagging additif)",
+      "rationale": "Chaque verbatim qui passe le 4-lens coding est aussi tagué selon canon copy : canon_schwartz_conscience_id (cohérent avec lens 3), canon_emotion_id (vocabulary émotionnel canonique), canon_objection_pattern_id (uniquement si theme=objection, souvent null en mining). Tags écrits sur le verbatim Layer A. Permet plus tard les vues copy-matrix audience × stade-conscience générées automatiquement."
+    },
+    {
+      "category": "skills",
+      "action": "etendu",
+      "files": [".skills/skills/learn-from-session/SKILL.md"],
+      "section": "Critical distinction § Canon validation routing (v2.26.0+)",
+      "rationale": "Quand un learning concerne un outil canon copy utilisé en prod ET porte un signal d'outcome (ROAS, fatigue observée, validation opérateur), le skill propose une promotion canon : append d'une entry dans resources/canon/copy/{layer}/{tool}.json#/validations[]. Operator gate explicite avant écriture. Append-only (les validations historiques restent). Mécanisme qui transforme atlas générique en atlas vivant : /phantom canon copy hooks curiosity-gap rendra la fiche + l'historique brand-side."
+    },
+    {
+      "category": "infrastructure",
+      "action": "patched",
+      "files": [".skills/write-to-context.py"],
+      "section": "ALLOWED_PATH_PATTERNS",
+      "rationale": "Allowlist étendue pour autoriser les écritures sur (a) brands/{slug}/angles/{angle_id}.json (persistance lignage canon des angles produits par produce-paid-angles v2.27+), et (b) resources/canon/{atlas}/{layer}/{tool}.json (append validations[] via learn-from-session promotion). Sans cet ajout, les promotions canon seraient bloquées par le mutation gate."
+    }
+  ],
+  "breaking_changes": [
+    "produce-paid-angles output format change : ranked table augmenté avec bloc LIGNAGE par angle. Skills downstream (produce-copy-brief) doivent maintenant lire brands/{slug}/angles/{angle_id}.json pour le lignage. Si un angle pre-v2.27 (sans lignage) est consommé par produce-copy-brief, ce dernier assigne lui-même un canon (fallback degraded).",
+    "mine-voc verbatim Layer A schema augmenté avec canon_* tags. Skills consumers de la VoC raw qui parsaient les anciens champs continuent à fonctionner ; les nouveaux tags sont additifs."
+  ],
+  "migrations": [],
+  "operator_impact": "Production assistée par canon. produce-paid-angles ne génère plus depuis le néant — il pioche cohérent dans canon (filtres when_works/when_avoid). Chaque angle livré porte son lignage doctrinal traceable. produce-copy-brief respecte le lignage de l'angle. mine-voc tagge automatiquement les verbatims pour les futures vues croisées. learn-from-session permet de promouvoir un outil canon validé (avec opérateur gate) — l'atlas devient vivant brand par brand. /phantom canon copy hooks curiosity-gap rendra à terme l'historique des validations brand-side, c'est ça la valeur compound.",
+  "next_release_note": "v2.28 ou plus tard : extension à d'autres atlas (canon paid, canon brand, canon offer). Vues matricielles copy-matrix et copy-map. Mode compose wizard. Tout cela attend que le canon copy ait quelques mois de validations remontées pour mesurer la valeur réelle du compound."
+}

@@ -5,6 +5,30 @@
 
 ---
 
+## v2.27.0 — 2026-05-04 — Skills consomment le canon (atlas vivant)
+
+**Why this release.** v2.26.0 a posé l'atlas canon copy comme infrastructure. v2.27.0 fait le travail symétrique : les 4 skills de production downstream (produce-paid-angles, produce-copy-brief, mine-voc, learn-from-session) sont refondus pour **consommer** et **alimenter** ce canon. Sans ces patches, le canon resterait une bibliothèque morte. Avec, l'atlas devient vivant.
+
+**What shipped.**
+
+- **`produce-paid-angles` refondu.** Step 0bis charge canon copy frameworks/hooks/angles/niveaux-schwartz/archetypes-voix en début de run. Les outils sont filtrés par `when_works/when_avoid/combines_with` selon le contexte audience résolu. Step 11 (Layer B artifact) augmenté : chaque angle dans le ranked table porte son lignage canon explicite (audience, Schwartz, hook_canon_id, framework_canon_id, angle_canon_id, archetype_canon_id, pain extract, proof, CTA). Persistance brand-side : `brands/{slug}/angles/{ANG-N}.json` contient le lignage structuré pour relecture downstream.
+- **`produce-copy-brief` refondu.** Step 0bis lit le lignage de l'angle source (`brands/{slug}/angles/{angle_id}.json`). Le brief étoffe au lieu de re-trancher. Step 5 ajoute un bloc LIGNAGE en tête du brief (audience, Schwartz, framework, hook, angle, archetype, lead, format). Section Objections référence canon copy objections. Section Hook variants utilise canon copy formules-titres comme grille de génération.
+- **`mine-voc` enrichi avec canon tagging.** Chaque verbatim qui passe le 4-lens coding est aussi tagué selon canon copy : `canon_schwartz_conscience_id` (cohérent avec lens 3), `canon_emotion_id` (vocabulary émotionnel canonique), `canon_objection_pattern_id` (uniquement si theme=objection). Tags écrits sur le verbatim Layer A. Débloque plus tard les vues copy-matrix audience × stade-conscience.
+- **`learn-from-session` étendu — mécanisme de promotion canon.** Quand un learning concerne un outil canon utilisé en prod ET porte un signal d'outcome (ROAS, fatigue, validation opérateur), le skill propose une promotion canon : append d'une entry dans `resources/canon/copy/{layer}/{tool}.json#/validations[]`. Operator gate explicite. Append-only (validations historiques restent, datées). C'est ce qui transforme l'atlas générique en atlas vivant : `/phantom canon copy hooks curiosity-gap` rendra à terme la fiche + l'historique des validations brand-side.
+- **`write-to-context` allowlist étendue.** Autorise les écritures sur `brands/{slug}/angles/{angle_id}.json` (persistance lignage angles) et `resources/canon/{atlas}/{layer}/{tool}.json` (append validations[]). Sans cet ajout, les promotions canon seraient bloquées par le mutation gate.
+
+**Breaking changes (mineur).**
+
+- `produce-paid-angles` output format augmenté avec bloc LIGNAGE par angle. Skills consumers existants continuent de fonctionner, le lignage est additif.
+- `produce-copy-brief` lit maintenant `brands/{slug}/angles/{angle_id}.json`. Si l'angle est pre-v2.27 (sans lignage), le brief assigne lui-même un canon (fallback degraded).
+- `mine-voc` Layer A jsonl augmenté avec `canon_*` tags. Schema additif.
+
+**Operator impact.** Production assistée par canon. Les skills ne génèrent plus depuis le néant. Chaque angle, chaque brief, chaque verbatim est composé en piochant dans la doctrine partagée et porte sa traçabilité. learn-from-session permet de promouvoir au canon ce qui a marché en prod, ce qui rend l'atlas spécifique à l'opérateur après quelques mois d'utilisation.
+
+**Migration.** Aucune. Les skills patchés gèrent les fallbacks pour les artefacts pre-v2.27.
+
+---
+
 ## v2.26.0 — 2026-05-04 — Atlas canon copy v1 (fondation doctrine du métier)
 
 **Why this release.** Pendant une session test sur phantomos-test, l'opérateur a découvert un concept émergent : une cartographie compositionnelle des outils standards du copywriting, organisée en couches imbriquées. L'agent a sorti spontanément 11 couches (frameworks, hooks, angles, heuristiques de persuasion, niveaux Schwartz, archétypes de voix, formules de titres, objections, offres, leads, formats). Cette release transforme cette inspiration en **infrastructure** : 58 fiches outils encodées comme la doctrine partagée du métier, navigable via `/phantom canon`, et destinée à être consommée par les skills de production downstream.

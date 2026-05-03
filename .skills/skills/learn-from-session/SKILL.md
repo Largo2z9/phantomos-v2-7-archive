@@ -122,8 +122,38 @@ Each buffer entry must be **routed to the right file** based on what it concerns
 | Structural brand correction (tone, positioning, audience objection) | `brands/{slug}/brand.json` or `profile.json` direct (via ingest-resource) |
 | Strategic decision | `session-state.md → Active Decisions` |
 | Product friction / workflow bug | `todos.md → ## Flags` |
+| **Canon validation** (v2.26.0+) — tool canon validé/fatigué en prod sur ce brand | `resources/canon/copy/{layer}/{tool}.json#/validations[]` (append) |
 
 **Never mix**: an operator info does not go into brand.learnings, a brand fact does not go into operator/profile. Cross-contamination = structural bug.
+
+### Canon validation routing (v2.26.0+)
+
+Quand un learning concerne un **outil canon copy** utilisé en prod (hook, framework, angle, archétype, pattern d'objection, formule de titre), il est *aussi* (en plus du routing brand-side) **promu** vers le canon comme entrée `validations[]`. Mécanisme :
+
+1. **Détection.** Le learning mentionne un outil canon connu, ET un signal d'outcome (ROAS chiffré, fatigue observée, test posté, opérateur dit *"ça marche"* ou *"ça crame"*). Cas typiques :
+   - *"Le hook curiosity-gap fatigue en 2 sem sur audience chute-stress-hormonal sur Karacare"* → canon copy hooks curiosity-gap#validations[]
+   - *"Le framework BAB donne ROAS 4.2 sur chute-post-grossesse cure 3 mois, validé"* → canon copy frameworks bab#validations[]
+   - *"Pre-emption sur 'encore un produit miracle' valide bien sur Karacare cross-audiences"* → canon copy objections pre-emption#validations[]
+
+2. **Format de la validation entry** (schema canon-tool#validations[]) :
+   ```json
+   {
+     "brand_slug": "karacare",
+     "audience_slug": "chute-post-grossesse",
+     "outcome": "validated|fatigued|inconclusive|rejected",
+     "metric": "ROAS 4.2 over 14d",
+     "duration_days": 14,
+     "captured_at": "{ISO date}",
+     "captured_by": "operator|agent|test_result",
+     "note": "1-2 sentences contextual"
+   }
+   ```
+
+3. **Operator gate.** L'opérateur valide la promotion explicitement avant l'écriture canon. Format de validation à la fin du recap : *"Cette règle propose aussi une promotion canon : `canon copy {layer} {tool}` validé sur {brand}/{audience}. Tu confirmes la promotion canon ?"*. *Yes* → écriture canon + brand-side. *No* → brand-side seulement.
+
+4. **Append-only**. Les validations[] s'ajoutent, ne se remplacent jamais. Une fatigue ultérieure n'efface pas un succès passé : les deux entries coexistent, datées. C'est ce qui permet de voir l'évolution d'un outil dans le temps.
+
+**Pourquoi c'est important.** Sans ce mécanisme, l'atlas canon reste générique. Avec lui, l'atlas devient **vivant** : `/phantom canon copy hooks curiosity-gap` rend la fiche + l'historique des validations brand-side, l'opérateur voit ce qui a marché chez lui.
 
 ---
 
