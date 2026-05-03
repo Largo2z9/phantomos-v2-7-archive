@@ -1,0 +1,48 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.20.0",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "doctrine_amendment",
+  "summary": "Onboarding tour now explicitly names the daily commands (/phantom, /learn-from-session, /skills) and lays the operational bases the previous tour was evoking without naming them. Resolves S55+ live-test feedback: operator finished onboarding without knowing how to visualize the workspace, how to lock in a correction, or what the 'à valider' status meant. Skill-author structure unchanged; voice canon preserved (one-line command mentions, never a paragraph).",
+  "changes": [
+    {
+      "category": "commands",
+      "action": "patched",
+      "files": [".claude/commands/tour.md"],
+      "section": "Milestone 5 (compound mechanism)",
+      "rationale": "Tour evoked the compound (corrections become rules) without naming /learn-from-session. Operator finished onboarding knowing the abstract concept but not the concrete handle. Patch adds one paragraph after the centralization payoff that names /learn-from-session and frames it as 'manual lock when a point matters'."
+    },
+    {
+      "category": "commands",
+      "action": "patched",
+      "files": [".claude/commands/tour.md"],
+      "section": "Milestone 6 (skill concept)",
+      "rationale": "Mention of /skills was a single phrase, easy to miss. /phantom was never mentioned. Patch positions both as repeatable commands the operator can run anytime, with one-line clarifying what each one does. /phantom framed as 'cockpit de visualisation, read-only, pas de risque' to invite exploration."
+    },
+    {
+      "category": "commands",
+      "action": "patched",
+      "files": [".claude/commands/tour.md"],
+      "section": "Milestone 7 (wow moment)",
+      "rationale": "Post-snapshot synthesis was strong but left the operator without vocabulary for the next steps (correction pattern, visualization tool, audience status). Patch adds one bridge paragraph between the synthesis and the validation question that introduces (a) the correct/reject/validate pattern, (b) /phantom {brand_slug} for tree visualization, (c) the 'à valider' status as deliberate hypothesis-grade signal awaiting mine-voc confirmation. Single paragraph, no surcharge."
+    },
+    {
+      "category": "commands",
+      "action": "patched",
+      "files": [".claude/commands/tour.md"],
+      "section": "Milestone 8 (close — canon archetypes)",
+      "rationale": "Added 'Pipeline DTC paid acquisition' archetype to the reflective close composer's available angles. Surfaces snapshot → mine-voc → produce-paid-angles → produce-copy-brief as a coherent value chain when the operator profile is paid manager / agency / DTC media buyer. Audience-cartography.md added to silent reasoning step's source list."
+    },
+    {
+      "category": "commands",
+      "action": "patched",
+      "files": [".claude/commands/tour.md"],
+      "section": "Replay mode close",
+      "rationale": "Replay 4th option ('Just refreshing, thanks') ended the tour cleanly but left no actionable handles. Now accompanied by a one-line reminder of the three daily commands (/phantom, /skills, /learn-from-session) so operators returning briefly leave with a concrete next move regardless of whether they pursue an exploration path."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "First-session onboarding now hands the operator three concrete commands (/phantom, /skills, /learn-from-session) plus a vocabulary frame ('à valider' status, correction pattern, /phantom {brand} for tree visualization). Replay sessions surface the daily commands explicitly. Paid manager / agency profiles get a Pipeline DTC archetype available in the reflective close. Tour length grew from 388 to 401 lines (well under the 450-line cap)."
+}

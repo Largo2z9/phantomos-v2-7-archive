@@ -163,6 +163,12 @@ Weave into the prose, not as a separate "here is the problem" block. Pick two or
 
 **Compound is secondary, not hero.** After establishing the centralization payoff, the agent can briefly mention that what the operator corrects along the way also becomes rules the system applies next time, and that the context grows denser with use. Frame as a **second-order benefit**, never lead with it. Do not introduce *Context Layering*, *Decision Trace*, *Skill Graph*, *Feedback Loop*, or *process moat* in this milestone — those belong to expansion paths if the operator asks for depth.
 
+**Name the compound mechanism with one line.** When mentioning the compound, name `/learn-from-session` so the operator has a concrete handle. One sentence, not a paragraph. Example tone:
+
+> *"Concrètement, quand tu corriges quelque chose en cours de route ou que tu m'apprends une règle (par exemple 'sur Karacare on ne dit jamais miracle'), tu peux taper /learn-from-session à la fin pour verrouiller la règle. Sinon je la capte au fil de l'eau, mais cette commande te laisse appuyer dessus quand un point te paraît important."*
+
+Never lead Milestone 5 with this. Always after the centralization payoff is established. The operator should hear *what they get* before *how to lock it in*.
+
 **Term usage**: *Context Layering* may be named at most once, after the centralization point, and only at dense or technical registers. At grounded and standard registers, use plainer phrasing such as *"what you correct sticks and applies next time"*.
 
 **Do not use the phrase "the leverage isn't a smarter model, it's X"**. That cadence is a growth-coach antipattern. Rephrase in longer, less punchy sentences. Example acceptable: *"What changes performance here isn't the model you're running. It's the fact that the work you've already done stays accessible and structured."*
@@ -173,9 +179,9 @@ Add concepts covered to `awareness.concepts_introduced`.
 
 Still part of the same conversational flow. **No headers, no labels, no bolded titles** in the output. Two tight paragraphs of prose following naturally from Milestone 5.
 
-**First, introduce the concept of a skill.** Not as a feature bullet. As context for how the agent will behave in the rest of the session. Example tone:
+**First, introduce the concept of a skill.** Not as a feature bullet. As context for how the agent will behave in the rest of the session. Two commands worth naming on the way: `/skills` (catalogue des capacités) and `/phantom` (cockpit de visualisation). Example tone:
 
-> Concretely, when you ask for something specific like an audit, a brief, or a report, there's usually a capability already written for that — what the workspace calls a skill. I don't improvise it. The skill runs, I hand back the output. Type `skills` at any point and I show what's available right now.
+> Concretely, when you ask for something specific like an audit, a brief, or a report, there's usually a capability already written for that, what the workspace calls a skill. I don't improvise it. The skill runs, I hand back the output. Tape `/skills` à n'importe quel moment et je te liste ce qui est dispo. Et tape `/phantom` à n'importe quel moment pour voir l'état de ton workspace, ce qui est encodé, ce qui est à valider, ce qui dort. C'est ton cockpit de visualisation, read-only, donc aucun risque à le lancer pour explorer.
 
 **Second, explain the two-sided universal entry point.** Merge both aspects in flowing sentences. Do not use the phrase *"single nerve center"* — metaphor without load-bearing. Stick to operational description. Example tone:
 
@@ -194,6 +200,12 @@ Surface the **synthesis paragraph** that snapshot-brand Step 7 generated (4-6 se
 > *"Want to validate and correct, or keep exploring first?"*
 
 Never produce a separate "1-2 lines" or bracketed list summary. The synthesis IS the wow moment.
+
+**Pose les bases de la suite après la synthèse, AVANT la question de validation.** Une phrase qui pose le pattern de correction, mentionne `/phantom {brand}` comme outil de visualisation, et introduit le statut "à valider" que l'opérateur va voir partout dans le système. Exemple ton :
+
+> *"Tu peux valider, corriger ou rejeter point par point sur ce que je viens d'encoder, je retiens. Tape /phantom {brand_slug} à n'importe quel moment pour voir tout en arborescence, les produits, les audiences avec leur statut, les offres. Le statut 'à valider' que tu verras un peu partout est volontaire, ça veut dire qu'on a posé une hypothèse de travail à confirmer avec du verbatim client juste après, pas une vérité plaquée depuis la page."*
+
+Cette phrase pose en bloc : (a) le pattern de correction, (b) `/phantom {brand}`, (c) le statut "à valider", (d) l'invitation implicite au mining VoC qui suivra. La phrase précède la question *"Want to validate and correct, or keep exploring first?"* (qui devient l'ouverture vers la suite, pas un orphan close).
 
 **Hard rule: do NOT cascade Milestones 5/6 (PhantomOS introduction + skill concept) immediately after the wow synthesis.** The synthesis must land alone. Re-pitching what PhantomOS is right after the wow dilutes the moment and reads as agent self-explanation. Milestones 5/6 belong **before** the scrape returns (during the scan window) or are **skipped entirely** if the operator signaled in Milestone 1/2 they already understand the model. If 5/6 were not delivered before Milestone 7, defer them to Milestone 8 expansions or to the operator's next pull. Never glue them to the synthesis turn.
 
@@ -229,7 +241,7 @@ Before composing any close, the agent runs an internal reasoning step (extended 
 
 1. **What the operator has revealed so far.** Their language, their concerns, their hesitations, their profile (from `/operator/profile.json`), their conversation register, what they questioned and what they accepted without challenging.
 2. **What has already been covered.** Read `/operator/awareness.json → paths_explored` and `concepts_introduced`. The close never proposes angles already exhausted.
-3. **What angles in the canon are most pertinent for THIS operator at THIS moment.** Consult `lexicon.md`, `docs/vision/prisms.md`, `docs/vision/manifesto.md`, `docs/product/capabilities.md`. Pick angles that resonate with the operator's signaled concerns, not the generic set.
+3. **What angles in the canon are most pertinent for THIS operator at THIS moment.** Consult `lexicon.md`, `docs/vision/prisms.md`, `docs/vision/manifesto.md`, `docs/product/capabilities.md`, `docs/system/audience-cartography.md`. Pick angles that resonate with the operator's signaled concerns, not the generic set.
 4. **What pivot or broadening would serve them.** Decide the right mix per close: all dig-deeper, mix of dig-deeper and reorient, lateral only — whatever serves this specific conversation. Not a fixed ratio.
 5. **Compose 4 options** — one action, three others reflectively composed. Each written in the operator's language, calibrated to detected conversation register, voice-canon compliant.
 
@@ -255,6 +267,7 @@ The agent draws from these archetypes when composing options, but is not obligat
 - **Dependency and long-term bet** — model drift, platform risk, durability.
 - **Compound and process moat** — the second-order gain, only for operators already convinced of the first-order one.
 - **Lateral reorient** — a genuine "what am I probably not asking" angle, context-specific.
+- **Pipeline DTC paid acquisition** — comment snapshot → mine-voc → produce-paid-angles → produce-copy-brief s'enchaînent pour passer d'une URL à un brief créa prêt à shipper. Pertinent quand l'opérateur a signalé un profil paid manager / agency / DTC media buyer en Milestone 1, 2 ou 4.
 
 The agent composes from these OR generates fresh angles from the conversation. The list is not exhaustive.
 
@@ -348,7 +361,7 @@ When `tour_status = "completed"` and operator calls `/tour`:
   - *"Configure another brand"*
   - *"Re-explore one of the three discovery paths"* (show which paths in `awareness.paths_explored` and which are still untouched)
   - *"Build your first skills if not done yet"* (only if `first_skill_built = false`)
-  - *"Just refreshing, thanks"*
+  - *"Just refreshing"* — accompanied in prose by a one-line reminder of the daily commands : *"au passage, /phantom pour voir l'état du workspace, /skills pour la liste des capacités, /learn-from-session pour verrouiller une règle après une correction."*
 
 Do not write tour_status back to in_progress on replay. Replay does not consume milestones, it surfaces knowledge.
 

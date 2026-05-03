@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.19.1",
+  "template_version": "2.20.0",
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "snapshot-brand Step 5 wording sweep: operator-facing examples now use plain language (manières de découper / groupe principal / sous-groupe / à valider) instead of skill-author internal terms (cartography axis / mother audience / validation_status). Skill-author structure unchanged. /phantom mode brand extended with audience hierarchy view (tree of mother/sub with mining state). Closing of Movement 3 mentions /phantom {brand} to visualize the audiences. Resolves Largo wording feedback after live test on phantomos-test workspace.",
-  "manifest": "docs/internal/releases/manifest/2.19.1-manifest.json"
+  "summary": "Onboarding tour patched to name the daily commands (/phantom, /learn-from-session, /skills) explicitly and to lay the operational bases the tour was previously evoking without naming them. Milestone 5 names /learn-from-session as the compound mechanism. Milestone 6 names /phantom alongside /skills as cockpit + capabilities catalog. Milestone 7 (post-snapshot synthesis) introduces the correction pattern, /phantom {brand} as the visualization tool, and the 'à valider' status that the operator will see across the system. Milestone 8 close gains a Pipeline DTC archetype (snapshot → mine-voc → produce-paid-angles → produce-copy-brief) for paid manager / agency profiles. Replay mode close ends with a one-line reminder of the daily commands.",
+  "manifest": "docs/internal/releases/manifest/2.20.0-manifest.json"
 }

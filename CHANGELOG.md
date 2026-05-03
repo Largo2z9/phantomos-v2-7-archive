@@ -5,6 +5,26 @@
 
 ---
 
+## v2.20.0 — 2026-05-03 — Onboarding bases reposées
+
+**Why this release.** Live test on phantomos-test surfaced that the tour was evoking the compound (*"ce que tu corriges devient une règle"*) without naming `/learn-from-session`. It introduced skills (Milestone 6) without naming `/phantom`. The wow synthesis (Milestone 7) was strong but left the operator without a correction pattern, without a visualization tool, without a frame for the *à valider* status they were about to see across the system. Onboarding finished, operator had no concrete handles.
+
+**What shipped.**
+
+- **Milestone 5 names `/learn-from-session`.** One paragraph after the centralization payoff frames the command as the manual lock when a point matters. Compound mechanism stops being abstract.
+- **Milestone 6 names `/phantom` alongside `/skills`.** Both positioned as repeatable commands the operator can run anytime. `/phantom` framed as *"cockpit de visualisation, read-only, pas de risque"* to invite exploration without anxiety.
+- **Milestone 7 adds a bridge paragraph** between the synthesis and the validation question. Introduces in one block: the correct/reject/validate pattern, `/phantom {brand_slug}` for tree visualization, and the *à valider* status as deliberate hypothesis-grade signal awaiting mine-voc confirmation.
+- **Milestone 8 close gains the Pipeline DTC archetype.** Reflective close composer now has snapshot → mine-voc → produce-paid-angles → produce-copy-brief as a coherent value chain to surface when the operator profile is paid manager / agency / DTC media buyer. `audience-cartography.md` added to the silent reasoning step's source list.
+- **Replay mode close** ends the *Just refreshing* option with a one-line reminder of the three daily commands so operators returning briefly leave with concrete next moves.
+
+**Tour length** : 388 → 401 lines, well under the 450-line cap.
+
+**Breaking changes.** None.
+
+**Operator impact.** First-session onboarding hands over three concrete commands and a vocabulary frame instead of leaving the operator with abstract concepts. Replay sessions surface the daily commands explicitly. Paid profiles see a Pipeline DTC angle in the reflective close.
+
+---
+
 ## v2.19.1 — 2026-05-03 — Audience cartography wording polish
 
 **Why this patch.** Live operator feedback after v2.19.0: operator-facing copy was leaking skill-author vocabulary (*"cartography axis"*, *"mother audience"*, *"hand-off pédagogique"*, *"validation_status: hypothesis"*, *"hypothesis-grade"*). Too clinical, too internal. Skill-author structure was solid, the surface needed plain language.
