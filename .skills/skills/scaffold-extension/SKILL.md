@@ -70,7 +70,7 @@ Capture the operator's intent. Classify three dimensions :
 
 1. **Kind** : custom entity / sidecar / both / skill-only.
 2. **Scope** : brand (lié à une mission précise) / operator (transversal à l'opérateur, pro et perso confondus) / workspace (partagé cross-brand). Detect via natural cues :
-   - Brand-scope cues : *"sur Karacare"*, *"pour cette mission"*, *"dans cette marque"*, *"sur ce client"*, intent attaché à un brand_slug actif.
+   - Brand-scope cues : *"sur Northsense"*, *"pour cette mission"*, *"dans cette marque"*, *"sur ce client"*, intent attaché à un brand_slug actif.
    - Operator-scope cues : *"pour moi"*, *"mes contacts"*, *"ma domotique"*, *"mon suivi santé"*, *"mes lectures"*, *"mes prestataires globalement"*, *"mes projets perso"*, intent transversal à l'opérateur sans rattachement à une marque.
    - Workspace-scope cues : *"partagé entre toutes mes marques"*, *"canon perso transversal"*, *"benchmark cross-client"*, intent partagé multi-brand.
    - Ambiguous → AskUserQuestion 2-3 options binaires.

@@ -5,6 +5,26 @@
 
 ---
 
+## v2.15.0 — 2026-05-03 — Privacy and surface cleanup
+
+**Why this release.** Pre-broader-release pass to remove from the public template anything specific to a downstream extension (Abyss) and to anonymize any real client brand name still appearing in examples or doc text.
+
+**What shipped.**
+
+- **Real client names anonymized.** Across all examples, doc text, skill outputs, and manifests : `karacare → northsense`, `onday → vitatone`, `stepprs → peaktrek`, `lumya → glowco`, `moova → nestra`, `liv-happy-food → freshbite-foods`, `tortle → shellbrand`, `bloon → skyfloat`, `stride-up → acmeflow`. 34 files patched.
+- **Abyss-specific skill removed from public template.** `connect-cockpit` skill (data plumbing to a downstream Abyss cockpit dashboard) no longer ships in the public template. Lives in the Abyss extension repository instead.
+- **`docs/product/variant-map.md` simplified.** Now focuses on template versus operator instance, no longer exposes the existence of private downstream extensions or addons.
+- **Manifest cleanup.** `.skills/_manifest.json` regenerated post connect-cockpit removal. Disambiguation references to connect-cockpit swept across sibling skills.
+
+**Breaking changes.**
+
+- `connect-cockpit` skill removed (only relevant to Abyss extension users, who have the skill via that repository).
+- Hardcoded brand slug references in custom workflows need to update to the new canonical fictional names.
+
+**Operator impact.** Public template surface clean of real client identifiers and downstream-specific skills. Day-1 reading no longer surfaces private business context.
+
+---
+
 ## v2.14.0 — 2026-05-02 — Cleanup post-audit Red Team
 
 **Why this release.** Audit Red Team multi-perspective on the operator-facing surface revealed referenced skills that did not exist, internal jargon leaking to operator docs, manifesto starting with theory before reaching the DTC use case, and missing standard GitHub canon files. This release closes those gaps before broader release.
@@ -29,38 +49,6 @@
 - Release manifests moved : direct links to `docs/releases/X-manifest.json` should now point to `docs/internal/releases/manifest/X-manifest.json`.
 
 **Operator impact.** Surface more credible : referenced skills resolve, doctrine jargon hidden behind clear contributor banners, manifesto reaches the DTC operator immediately, agency workflows documented. Day-1 experience does not break on missing files.
-
----
-
-## v2.13.0 — 2026-05-02 — connect-cockpit v1.1: registry-driven refactor
-
-**Why this release.** Previous v1.0 had per-platform subflows hardcoded in SKILL.md (200 lines). Adding a new source = SKILL.md edit + risk of drift across platforms. Registry pattern externalises platform specs to JSON · skill becomes platform-agnostic loop, registry becomes the single source of truth.
-
-**What shipped.**
-- `.skills/skills/connect-cockpit/connectors.json` (registry, 6 platforms). Per platform: label, tagline, admin_required, fields (with validate rules), fields_optional, where_to_find instructions verbatim, server_fallback list, ingest_method override (Snap = manual_cron not Airbyte), fallback_path (operator escape hatch).
-- `connect-cockpit/SKILL.md` refactored (~120 lines). Step 3 reads connectors.json fresh on invocation, loops over chosen platforms, applies registry-driven flow. Hard rule: NEVER hardcode platform fields in SKILL.md. NEVER ask for server_fallback fields.
-- Cockpit-side patch (`src/lib/airbyte/platforms.ts`): GOOGLE_DEVELOPER_TOKEN + GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET fall back to `process.env.*` if absent from payload. Operator now provides only customer_id + refresh_token for Google Ads.
-- Snap notes corrected throughout: self-serve via Supabase `account_credentials` encrypted store (cron Vercel iterates dynamically), zero Vercel redeploy. Decision #38 (env vars per brand) superseded by encrypted credentials store pattern.
-
-**Operator impact.** Adding a new platform (Klaviyo, Pinterest, X Ads, Reddit, etc.) is now a 1-entry JSON change. The skill auto-supports it. Prerequisites stays single source of truth (admin_required per platform, fields, where-to-find).
-
-**Architecture note.** This pattern is the substrate for any future "external integration" skill. Same shape: SKILL.md generic + JSON registry per integration domain. Mirrors how `resources/conventions/{platform}.json` works for PhantomOS-internal platform mapping.
-
----
-
-## v2.12.0 — 2026-05-02 — Cockpit data plumbing: connect-cockpit
-
-**Why this release.** Phantom workspace operators need to wire their brand to the Abyss cockpit dashboard (app.abyss-initiative.com) without manual Airbyte UI access or Supabase SQL. Cockpit-side endpoint `POST /api/operator/onboard-brand` already provisions sources end-to-end server-side. This release adds the workspace-side skill that wraps that endpoint conversationally.
-
-**What shipped.**
-- `connect-cockpit` (builder Sonnet, subagent_safe: false, ~200 lines). Triggers FR/EN ("branche le cockpit", "connect cockpit"). 6-step guided flow: confirm brand identity, choose platforms, collect credentials per platform with concrete instructions where to fetch each token, POST to cockpit API, handle response (success / partial / failure), close with reasoned next-step.
-- 6 platforms supported via cockpit API: Shopify (self-serve), Meta Ads (self-serve, requires System User token), TikTok Ads (self-serve, requires Marketing API app), Snapchat Ads (self-serve, OAuth flow), GA4 (self-serve, Google OAuth without dev token). Google Ads marked blocked pending Google dev token approval (external action Largo).
-- Disambiguates against `setup-brand` (folder structure only) and `onboard-brand` (full 4-step setup + scan + ingest + validate). connect-cockpit is the data plumbing layer that runs after.
-- Hard rules: never expose payload IDs, never two questions per turn, never silent retry on failure, never hardcoded brand names in examples.
-
-**Operator impact.** Matteo and future Phantom operators can now onboard their client brands to the cockpit themselves via Claude Code. From workspace clone to live dashboard in 24h: setup-brand → connect-cockpit → first sync overnight.
-
-**Prerequisites.** `credentials_shared.env` must contain `ABYSS_OPERATOR_TOKEN` (provisioned by Largo via `onboard-operator` skill) and `ABYSS_API_BASE` (default `https://app.abyss-initiative.com`).
 
 ---
 

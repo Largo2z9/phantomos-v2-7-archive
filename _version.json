@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.14.0",
-  "released_at": "2026-05-02",
+  "template_version": "2.15.0",
+  "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "Cleanup post-audit Red Team. Operator-facing surface clarified : audit-meta-setup renamed to audit-meta-account, ghost skill references dropped, manifesto restructured with DTC use case upfront, multi-operator workaround for 2-5 person agencies documented, on-demand benchmark-tokens skill flagged as planned. GitHub canon files added (LICENSE MIT, CONTRIBUTING, CODE_OF_CONDUCT, .github templates). docs/internal/ structure clarified with explicit contributor banners, release manifests moved to docs/internal/releases/manifest/. Doctrine refs to internal sessions and decision IDs swept from docs/system/. Stubs added : connected-sources.json (workspace + brand), brands/_TEMPLATE/angles/.",
-  "manifest": "docs/internal/releases/manifest/2.14.0-manifest.json"
+  "summary": "Privacy and surface cleanup for public release. Real client names anonymized to fictional names across the template surface (skills, docs, doctrine, examples). Abyss-specific skill connect-cockpit and its release manifests removed (lives in the Abyss extension repository, not in the public template). variant-map.md simplified to focus on template versus operator instance, no mention of private extensions or addons.",
+  "manifest": "docs/internal/releases/manifest/2.15.0-manifest.json"
 }

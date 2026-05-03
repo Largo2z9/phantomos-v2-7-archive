@@ -61,20 +61,20 @@ If **multiple threads open across brands**, pick the most recent. Surface others
 **Template** (adapt to detected register):
 
 > **Where we stopped**
-> - Last active: Karacare, ~2 days ago
+> - Last active: Northsense, ~2 days ago
 > - Thread: running the Meta audit. We hit the access gate, I proposed token vs declarative mode. You didn't pick yet.
 >
 > **What's still in flight**
 > - 1 audit paused (above)
-> - Karacare inferred audience (Maghrebi/ME women) still marked "to review" in pending-validations
+> - Northsense inferred audience (Maghrebi/ME women) still marked "to review" in pending-validations
 >
 > **Aside (other brands)**
 > - {brand B} had a snapshot-brand queued but was waiting for URL confirmation. No change since.
 >
 > **Next action**
-> - Pick API vs declarative for Karacare Meta audit. 30 seconds. Then we're back in flight.
+> - Pick API vs declarative for Northsense Meta audit. 30 seconds. Then we're back in flight.
 
-**ALWAYS** close with `AskUserQuestion` tool: *"Resume Karacare Meta audit (pick access mode) / Switch brand / Show me what I missed last 7 days across all brands / Other"*.
+**ALWAYS** close with `AskUserQuestion` tool: *"Resume Northsense Meta audit (pick access mode) / Switch brand / Show me what I missed last 7 days across all brands / Other"*.
 
 ---
 

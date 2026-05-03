@@ -1,12 +1,12 @@
-# Session State — Lumya
+# Session State — Glowco
 
 > EXEMPLE — Montre à quoi ressemble un session-state.md rempli (nouveau format rolling log).
 
 ## Activity Log
 
 [2026-04-03 16:45] ingest: Complétion profil audience femmes-40-55 + 4 objections → audiences/femmes-40-55/profile.json | brand.json (competitors)
-[2026-04-03 15:20] validate: Audit complet Lumya — Niveau 1 ✅ complet, Niveau 2 partiel (offers manquantes) → status.json updated
-[2026-03-28 14:00] setup-brand: Brand Lumya configurée — identité, tone, produit hero creme-eclat, pricing 68€ → brand.json | products/creme-eclat/spec.json
+[2026-04-03 15:20] validate: Audit complet Glowco — Niveau 1 ✅ complet, Niveau 2 partiel (offers manquantes) → status.json updated
+[2026-03-28 14:00] setup-brand: Brand Glowco configurée — identité, tone, produit hero creme-eclat, pricing 68€ → brand.json | products/creme-eclat/spec.json
 
 ## Open Threads
 

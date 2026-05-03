@@ -29,7 +29,7 @@ PhantomOS ne refuse pas ce que l'opérateur veut encoder. L'opérateur décide s
 
 A new data type, scoped to one of the three scopes (brand, operator, workspace), lives at the corresponding path root.
 
-- **brand scope** : `brands/{slug}/custom/{entity_type}/`. Examples : `brands/karacare/custom/competitor_ads/`, `brands/{slug}/custom/financial_cohorts/`, `brands/{slug}/custom/{anything_specific_to_that_mission}/`.
+- **brand scope** : `brands/{slug}/custom/{entity_type}/`. Examples : `brands/northsense/custom/competitor_ads/`, `brands/{slug}/custom/financial_cohorts/`, `brands/{slug}/custom/{anything_specific_to_that_mission}/`.
 - **operator scope** : `operator/extensions/{entity_type}/`. Examples : `operator/extensions/contacts/`, `operator/extensions/opportunities/`, `operator/extensions/vendors/`, `operator/extensions/projects/`, `operator/extensions/home/`, `operator/extensions/health/`, `operator/extensions/learning/`, `operator/extensions/admin/`, ou n'importe quoi d'autre que l'opérateur décide d'encoder.
 - **workspace scope** : `resources/extensions/{entity_type}/`. Examples : `resources/extensions/personal_method_canon/`, `resources/extensions/cross_brand_benchmarks/`.
 
@@ -286,7 +286,7 @@ An operator wants to track competitor Meta ads with screenshot, detected angle, 
 
 **Step 4.** Add to brand `todos.md` a recurring note to review newly captured ads weekly.
 
-The core `brand.json` is untouched. The `angle-registry.md` is referenced, not duplicated. The agent can now be asked *"show me this week's new competitor ads on Karacare"* and it resolves the query through `query-context` without the core needing to know what a competitor ad is.
+The core `brand.json` is untouched. The `angle-registry.md` is referenced, not duplicated. The agent can now be asked *"show me this week's new competitor ads on Northsense"* and it resolves the query through `query-context` without the core needing to know what a competitor ad is.
 
 ## What the extension layer is not
 

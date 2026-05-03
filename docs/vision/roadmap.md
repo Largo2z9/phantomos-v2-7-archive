@@ -37,7 +37,7 @@ Downstream dependencies:
 - `offers.target_audience_id` may point to any tree level (root for broad ads, leaf for segment-aware production).
 - Production agents (copy, LP, ads, emails) read only `activation_state: active` nodes.
 
-Impact. Unlocks real audience granularity (kills the "1 audience / 44 orphan offers" gap a la stepprs), unlocks segment-aware downstream generation, redefines the Context Engine as "structured strategic intent" rather than objective market encyclopedia.
+Impact. Unlocks real audience granularity (kills the "1 audience / 44 orphan offers" gap a la peaktrek), unlocks segment-aware downstream generation, redefines the Context Engine as "structured strategic intent" rather than objective market encyclopedia.
 
 Promotion prerequisites. Red-team the draft + POC agent `mine-audience` on one brand + migrate existing `profile.json` files.
 

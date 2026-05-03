@@ -1,4 +1,4 @@
-# Todos — Lumya
+# Todos — Glowco
 
 > EXEMPLE — Fichier de suivi brand. Flags auto-maintenus par validate-resources.
 
@@ -18,6 +18,6 @@
 
 ## Archive
 
-- [x] Créer brand.json Lumya — done 2026-01-10
+- [x] Créer brand.json Glowco — done 2026-01-10
 - [x] Créer spec.json creme-eclat — done 2026-01-15
 - [x] Créer profile.json femmes-40-55 — done 2026-01-20

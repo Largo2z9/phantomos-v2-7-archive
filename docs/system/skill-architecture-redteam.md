@@ -121,7 +121,7 @@ Operators bend skills — batch mode, skip gates, conditional field selection. F
 `import-competitor-ad` violates the Layer 1 "owner-agnostic" principle. Rename `import-ad(owner: us|competitor)`.
 
 ### Compliance collision (cross-brand)
-Remixing an ad karacare → liv-happy-food silently ignores compliance claims (supplements ≠ food). Fix : `compliance-gate` primitive before brief output.
+Remixing an ad northsense → freshbite-foods silently ignores compliance claims (supplements ≠ food). Fix : `compliance-gate` primitive before brief output.
 
 ### Portfolio orchestrator tier missing (cross-brand)
 5th level above orchestrator : `portfolio-*` skills that fan out to brand orchestrators, aggregate with stats + outlier detection. Not just "loop single-brand orchestrator N times" (context explodes linearly).

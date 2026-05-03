@@ -27,7 +27,7 @@ Read-only query against the workspace. Three scopes:
 | Scope | Use case | Example |
 |-------|----------|---------|
 | `kb` | Search shared resources (Ressources/) | "angles for cold traffic" |
-| `brand` | Get single brand context | "full context for lumya" |
+| `brand` | Get single brand context | "full context for glowco" |
 | `all_brands` | Cross-brand filter, compare, aggregate | "which brands have LTV > 500" |
 
 ### Parameters
@@ -46,7 +46,7 @@ Read-only query against the workspace. Three scopes:
 ### Cross-brand query types
 
 - **Filter**: "quelles brands ont des offres actives?" → returns matching brands
-- **Compare**: "compare lumya vs moova" → side-by-side table
+- **Compare**: "compare glowco vs nestra" → side-by-side table
 - **Aggregate**: "portfolio overview" → totals, revenue range, completeness distribution
 
 ## Requirements

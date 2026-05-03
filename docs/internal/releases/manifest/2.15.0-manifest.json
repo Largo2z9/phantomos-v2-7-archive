@@ -1,0 +1,71 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.15.0",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "cleanup",
+  "summary": "Privacy and surface cleanup before broader public release. Real client names anonymized, Abyss-specific skill removed from public template, variant-map simplified.",
+  "changes": [
+    {
+      "category": "skill_removed",
+      "action": "removed",
+      "skill": "connect-cockpit",
+      "rationale": "Skill is specific to the Abyss data infrastructure (cockpit dashboard, Supabase, Airbyte). Lives in the Abyss extension repository, not in the public template."
+    },
+    {
+      "category": "client_anonymization",
+      "action": "renamed",
+      "mapping": {
+        "karacare": "northsense",
+        "onday": "vitatone",
+        "stepprs": "peaktrek",
+        "lumya": "glowco",
+        "moova": "nestra",
+        "liv-happy-food": "freshbite-foods",
+        "tortle": "shellbrand",
+        "bloon": "skyfloat",
+        "stride-up": "acmeflow"
+      },
+      "scope": "All examples, docs, skills, manifests across the workspace template surface.",
+      "rationale": "Public template should never expose the names of real client brands."
+    },
+    {
+      "category": "docs",
+      "action": "simplified",
+      "files": ["docs/product/variant-map.md"],
+      "rationale": "Original document mentioned the private Abyss repository and the private cockpit-pack addon. Simplified to focus on template versus operator instance, no exposure of private downstream variants."
+    },
+    {
+      "category": "manifest_removed",
+      "action": "removed",
+      "files": [
+        "docs/internal/releases/manifest/2.12.0-manifest.json",
+        "docs/internal/releases/manifest/2.13.0-manifest.json"
+      ],
+      "rationale": "Abyss-specific release manifests (connect-cockpit related). Tracked in the Abyss extension repository."
+    },
+    {
+      "category": "changelog",
+      "action": "removed_entries",
+      "entries": ["v2.13.0 connect-cockpit refactor", "v2.12.0 connect-cockpit ship"],
+      "rationale": "Abyss-specific release notes."
+    },
+    {
+      "category": "manifest",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "rationale": "connect-cockpit removed, disambiguates_against references swept across all sibling skills."
+    }
+  ],
+  "breaking_changes": [
+    {
+      "what": "Client name references in custom workflows",
+      "impact": "Operators or scripts that hardcoded references to specific brand slugs in earlier versions will need to update. New canonical fictional names: northsense, vitatone, peaktrek, glowco, nestra, freshbite-foods, shellbrand, skyfloat, acmeflow."
+    },
+    {
+      "what": "connect-cockpit skill removed from public template",
+      "impact": "Public template operators no longer see this skill. Operators on the Abyss extension still have it via that repository."
+    }
+  ],
+  "migrations": []
+}

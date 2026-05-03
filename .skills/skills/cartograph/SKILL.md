@@ -62,7 +62,7 @@ Outil pour comprendre avant d'agir. L'opérateur sort avec une carte mentale cla
 | Mode | Trigger | Pré-requis | Output canonique |
 |---|---|---|---|
 | `cartograph --learn <domaine>` | "explique-moi X", "carte de Y", "comprends-moi Z" | Aucun | Carte pédagogique : définition, leviers, pièges, débats, vocabulaire, 3 décisions actionnables |
-| `cartograph --learn brand=<slug>` | "carte stratégique brand X", "je connais mal cette brand", "synthèse Karacare" | snapshot fait + status.json#wedge_complete = true | Synthèse READ-ONLY : posé, gaps, attention, 3 décisions actionnables |
+| `cartograph --learn brand=<slug>` | "carte stratégique brand X", "je connais mal cette brand", "synthèse Northsense" | snapshot fait + status.json#wedge_complete = true | Synthèse READ-ONLY : posé, gaps, attention, 3 décisions actionnables |
 
 ## Hard Rules
 

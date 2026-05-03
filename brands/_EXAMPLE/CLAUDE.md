@@ -1,4 +1,4 @@
-# Brand: Lumya
+# Brand: Glowco
 
 > EXEMPLE — Brand fictive pour démonstration du workspace.
 > Auto-loaded when working in this brand folder.
@@ -11,8 +11,8 @@
 - **Credentials**: `credentials.env` (brand-level: Meta ad account, Shopify, Klaviyo, etc.)
 - **Shared tokens**: `../../credentials_shared.env` (workspace-level: Meta system token, Google OAuth, etc.)
 - **Meta Ads**: `act_1234567890` (pixel: `px_9876543210`)
-- **Shopify**: `lumya.myshopify.com`
-- **Klaviyo**: `KLV_lumya_main`
+- **Shopify**: `glowco.myshopify.com`
+- **Klaviyo**: `KLV_glowco_main`
 
 **Credentials manquants ?** Si `credentials.env` est absent ou vide, lire `config.json → integrations` pour savoir quelles plateformes ont été configurées. Pour chaque flag à `true` → guider la reconfiguration champ par champ. Dire à l'opérateur : "Tes accès {plateforme} manquent sur cette machine. Donne-moi {champ attendu}."
 

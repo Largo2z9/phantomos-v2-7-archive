@@ -100,7 +100,7 @@ The creator-led version avoids the DTC jargon "positioning / competitors / finan
 
 ## Step 0 — Async mode via URL (default if URL available)
 
-**Trigger**: the operator drops a site/store URL (*"https://brand.com"*, *"stepprs.com"*) in the first message, or picks (a) from the onboarding menu with URL provided.
+**Trigger**: the operator drops a site/store URL (*"https://brand.com"*, *"peaktrek.com"*) in the first message, or picks (a) from the onboarding menu with URL provided.
 
 **Mechanic**:
 

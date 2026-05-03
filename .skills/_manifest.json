@@ -202,37 +202,6 @@
       "path": ".skills/skills/check-existing-coverage/SKILL.md"
     },
     {
-      "name": "connect-cockpit",
-      "type": "orchestrator",
-      "model": "sonnet",
-      "subagent_safe": false,
-      "mode": "direct",
-      "triggers": {
-        "fr": [
-          "branche le cockpit",
-          "connecte le dashboard",
-          "active les data sources",
-          "setup cockpit",
-          "onboard cockpit",
-          "connecte cette marque au cockpit",
-          "branche les sources data"
-        ],
-        "en": [
-          "connect cockpit",
-          "wire dashboard",
-          "activate data sources",
-          "onboard cockpit",
-          "hook brand to cockpit dashboard"
-        ]
-      },
-      "disambiguates_against": {
-        "setup-brand": "route to setup-brand for the workspace folder structure (brand.json, products, audience). connect-cockpit assumes that's already done.",
-        "onboard-brand": "route to onboard-brand for the full 4-step pipeline (setup + URL scan + ingest + validate). connect-cockpit only handles the cockpit data plumbing.",
-        "connect-source": "route to connect-source to register a new platform convention in PhantomOS itself (resources/conventions/). connect-cockpit consumes existing conventions to feed the Abyss cockpit."
-      },
-      "path": ".skills/skills/connect-cockpit/SKILL.md"
-    },
-    {
       "name": "connect-source",
       "type": "orchestrator",
       "model": "sonnet",

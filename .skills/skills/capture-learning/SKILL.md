@@ -82,7 +82,7 @@ Format :
 
 Examples:
 - ❌ `fact: "Meta rejects ads with 'cure' claim"`, `reasoning: ""`
-- ✅ `fact: "Meta rejects ads with 'cure' claim"`, `reasoning: "Healthcare claim policy, enforced since Jan 2025 — confirmed via policy doc + 3 rejections this month on Karacare's supplement angles"`
+- ✅ `fact: "Meta rejects ads with 'cure' claim"`, `reasoning: "Healthcare claim policy, enforced since Jan 2025 — confirmed via policy doc + 3 rejections this month on Northsense's supplement angles"`
 
 If the operator can't articulate the why, **push back** : *"Je peux pas ranger ça sans le pourquoi. Qu'est-ce qui a causé ça, ou ce que ça révèle ?"*. If after push-back the operator insists → flag entry with `reasoning: "[captured without rationale — revisit on first application]"` and continue, but this is degraded mode.
 

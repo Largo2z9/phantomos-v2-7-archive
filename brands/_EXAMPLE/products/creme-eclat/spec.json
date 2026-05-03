@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE — Produit fictif Lumya. Montre à quoi ressemble un spec.json rempli.",
+  "$comment": "EXEMPLE — Produit fictif Glowco. Montre à quoi ressemble un spec.json rempli.",
   "_schema": "brand/L2-product",
   "_version": "1.8",
   "_field_types": {
@@ -24,7 +24,7 @@
   },
 
   "meta": {
-    "name": "Crème Éclat Lumya",
+    "name": "Crème Éclat Glowco",
     "slug": "creme-eclat",
     "status": "complete",
     "created": "2026-01-10",
@@ -37,7 +37,7 @@
     "product_type": "crème de jour",
     "tagline": "Concentration clinique. Résultats mesurables.",
     "positioning": "Le soin anti-âge qui tient ses promesses — formulé comme un soin médical, utilisable comme une crème quotidienne.",
-    "url": "https://lumya.fr/products/creme-eclat",
+    "url": "https://glowco.fr/products/creme-eclat",
     "google_product_category": "2548"
   },
 

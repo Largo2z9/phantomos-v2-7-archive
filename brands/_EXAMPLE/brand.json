@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE — Brand fictive Lumya. Montre à quoi ressemble un brand.json rempli, aligné sur _TEMPLATE.",
+  "$comment": "EXEMPLE — Brand fictive Glowco. Montre à quoi ressemble un brand.json rempli, aligné sur _TEMPLATE.",
   "_schema": "brand/L1-brand",
   "_version": "2.1",
   "_field_types": {
@@ -34,8 +34,8 @@
   },
   "purchase_driver": "pain",
   "meta": {
-    "name": "Lumya",
-    "slug": "lumya",
+    "name": "Glowco",
+    "slug": "glowco",
     "vertical": "skincare",
     "market": "FR",
     "stage": "growth",
@@ -49,7 +49,7 @@
     "updated": "2026-04-03"
   },
   "identity": {
-    "url": "https://lumya.fr",
+    "url": "https://glowco.fr",
     "tagline": "La peau que tu mérites, sans compromis.",
     "year_founded": 2022,
     "language": "fr",
@@ -58,7 +58,7 @@
     ],
     "brand_mission": "Rendre les soins anti-âge cliniquement efficaces accessibles aux femmes actives.",
     "brand_vision": "Devenir la référence DTC des soins visage à concentration clinique en France.",
-    "brand_story": "Fondée par une dermatologue lasse de voir ses patientes gaspiller de l'argent sur des crèmes inefficaces. Lumya est née d'une frustration professionnelle devenue mission.",
+    "brand_story": "Fondée par une dermatologue lasse de voir ses patientes gaspiller de l'argent sur des crèmes inefficaces. Glowco est née d'une frustration professionnelle devenue mission.",
     "brand_personality": [
       "experte",
       "accessible",
@@ -122,11 +122,11 @@
   },
   "social_media": {
     "instagram": {
-      "url": "https://instagram.com/lumya.skincare",
+      "url": "https://instagram.com/glowco.skincare",
       "followers": 24000
     },
     "tiktok": {
-      "url": "https://tiktok.com/@lumya.skincare",
+      "url": "https://tiktok.com/@glowco.skincare",
       "followers": 8500
     },
     "youtube": {
@@ -134,7 +134,7 @@
       "subscribers": null
     },
     "facebook": {
-      "url": "https://facebook.com/lumya.skincare",
+      "url": "https://facebook.com/glowco.skincare",
       "followers": 12000
     }
   },
@@ -156,11 +156,11 @@
       "active": false
     },
     "shopify": {
-      "store_url": "lumya.myshopify.com",
+      "store_url": "glowco.myshopify.com",
       "active": true
     },
     "klaviyo": {
-      "list_id": "KLV_lumya_main",
+      "list_id": "KLV_glowco_main",
       "active": true
     },
     "pinterest_ads": {
@@ -209,12 +209,12 @@
   "contacts": {
     "founder": {
       "name": "Sophie Renard",
-      "email": "sophie@lumya.fr",
+      "email": "sophie@glowco.fr",
       "role": "Fondatrice & CEO"
     },
     "marketing": {
       "name": "Julie Fabre",
-      "email": "julie@lumya.fr",
+      "email": "julie@glowco.fr",
       "role": "Freelance media buyer"
     },
     "operations": {
@@ -294,7 +294,7 @@
   "products_index": [
     {
       "slug": "creme-eclat",
-      "name": "Crème Éclat Lumya",
+      "name": "Crème Éclat Glowco",
       "role": "hero",
       "type": "sensory",
       "product_category": "physical",

@@ -145,12 +145,12 @@ Never count via flat `offers_doc.get("offers", [])` — that's the legacy v1.x p
     ```json
     {
       "learning_id": "LRN-001",
-      "brand_slug": "lumya",
+      "brand_slug": "glowco",
       "fact": "...",
       "tags": [...],
       "genericity": "sector",
       "tag_overlap_pct": 78,
-      "matching_brands": ["lumya", "moova"],
+      "matching_brands": ["glowco", "nestra"],
       "suggested_resource_type": "convention",
       "suggested_target": "conventions/meta-ads.json",
       "priority": "high",
@@ -270,7 +270,7 @@ Utilisable mais incomplet. Il manque {X} avant de lancer {action}.
 Pas utilisable tel quel. {raison en une phrase + action immédiate}.
 
 Exemples :
-Prêt. Tu peux bosser sur Lumya.
+Prêt. Tu peux bosser sur Glowco.
 Utilisable mais incomplet. Il manque le problème principal du client avant de lancer une campagne Meta.
 Pas utilisable tel quel. Ta fiche marque est vide. Lance setup-brand pour configurer la marque.
 ```
@@ -293,7 +293,7 @@ Tout ce qui suit (Summary, Auto-Fixed, Manual Action Required...) est affiché a
 ### Points à corriger manuellement
 - [données manquantes] {description opérateur — ex: "un champ n'est pas catalogué dans la fiche produit {produit}"} — {action exacte}
 - [référence cassée] {description — ex: "le profil audience référence un problème qui n'existe pas dans la fiche produit"} — vérifier que {ID} est bien présent dans {entité concernée en français}
-- [données vieilles] {entité concernée en français — ex: "stratégie Lumya"} pas mise à jour depuis {date} — ingest des mises à jour si disponibles
+- [données vieilles] {entité concernée en français — ex: "stratégie Glowco"} pas mise à jour depuis {date} — ingest des mises à jour si disponibles
 - [à décomposer] {ressource concernée en français} : {N} entrées, dépasse la limite recommandée — à découper en sous-listes si tu veux améliorer les performances
 - [fichier trop long] {fichier concerné en français} : {N} lignes — certaines sections peuvent être externalisées
 

@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE — Roadmap et targets annuels/mensuels pour Lumya.",
+  "$comment": "EXEMPLE — Roadmap et targets annuels/mensuels pour Glowco.",
   "_version": "1.1",
   "_field_types": {
     "annual_goals[].metric": "observed",

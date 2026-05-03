@@ -39,12 +39,12 @@ Extraire de l'input :
 
 | Dimension | Quoi | Exemple |
 |-----------|------|---------|
-| `scope` | kb, brand, all_brands, ou auto | "angles disponibles" → KB / "brief Lumya" → brand / "quelles brands ont LTV > 500" → all_brands |
+| `scope` | kb, brand, all_brands, ou auto | "angles disponibles" → KB / "brief Glowco" → brand / "quelles brands ont LTV > 500" → all_brands |
 | `type` | type de ressource cherché (optionnel) | catalogue, routing, framework, sop… |
 | `domain` | domaine métier | "messaging", "media buying", "CRO" |
 | `context` | situation d'usage qui guidera la sélection | "cold traffic Meta, audience problem-unaware" |
-| `brand_slug` | slug brand si scope = brand (optionnel si all_brands) | "lumya", "moova" |
-| `compare` | brand slugs à comparer (optionnel) | ["lumya", "moova"] |
+| `brand_slug` | slug brand si scope = brand (optionnel si all_brands) | "glowco", "nestra" |
+| `compare` | brand slugs à comparer (optionnel) | ["glowco", "nestra"] |
 
 **Scope detection:**
 - "brand X" ou slug explicite → `brand`
@@ -231,11 +231,11 @@ Suggestion: run ingest-resource to add relevant content.
 → retourne : `catalogues/angles.json` + `routing/awareness-angle.json`
 
 **Agent media buyer** prépare un brief brand :
-→ query("contexte complet brand lumya")
+→ query("contexte complet brand glowco")
 → retourne : `brand.json` + `spec.json` principal + `profile.json` principal
 
 **Agent copywriter** cherche le ton d'une brand :
-→ query("brand tone voice lumya")
+→ query("brand tone voice glowco")
 → retourne : `brand.json` → sections `identity` + `tone`
 
 **Agent performance** cherche les KPIs de référence :
@@ -247,7 +247,7 @@ Suggestion: run ingest-resource to add relevant content.
 → retourne : table avec brands filtrées, offers_missing flag
 
 **Operator compare** compare deux brands :
-→ query("compare lumya vs moova")
+→ query("compare glowco vs nestra")
 → retourne : table comparative (vertical, AOV, positioning, products, audiences, context level)
 
 **Agent portfolio** veut un résumé global :
@@ -276,7 +276,7 @@ query-context can be exposed as an MCP server tool for external agents (custom a
       },
       "brand_slug": {
         "type": "string",
-        "description": "Brand slug (required if scope=brand). Example: 'lumya'."
+        "description": "Brand slug (required if scope=brand). Example: 'glowco'."
       },
       "entity": {
         "type": "string",

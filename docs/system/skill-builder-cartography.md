@@ -93,9 +93,9 @@ Registration = discovery contract for future skills. A skill like `audit-offers`
 
 ---
 
-## Worked example 1 — `commercial_mechanics` (Karacare)
+## Worked example 1 — `commercial_mechanics` (Northsense)
 
-**Context** : the Karacare snapshot detected 5 site-wide commercial mechanics (Spring Days GWP at 80€, free shipping at 69€, 15/15€ referral, loyalty points program, clone handles `*_sca_clone_freegift` for gift funnel). No home in `offers.json` (product scope only).
+**Context** : the Northsense snapshot detected 5 site-wide commercial mechanics (Spring Days GWP at 80€, free shipping at 69€, 15/15€ referral, loyalty points program, clone handles `*_sca_clone_freegift` for gift funnel). No home in `offers.json` (product scope only).
 
 ### Phase 1 — Cartography
 
@@ -124,7 +124,7 @@ No home in the 6 core entities (brand / product / offer / profile / learning / s
 
 ### Phase 4 — Schema
 
-`brands/karacare/custom/commercial_mechanics/schema.json` :
+`brands/northsense/custom/commercial_mechanics/schema.json` :
 
 ```json
 {
@@ -167,7 +167,7 @@ No home in the 6 core entities (brand / product / offer / profile / learning / s
 
 ### Phase 5 — Registration
 
-Registered in `brands/karacare/index.json#/extensions[]` (see Phase 5 of the main pattern).
+Registered in `brands/northsense/index.json#/extensions[]` (see Phase 5 of the main pattern).
 
 ### What this unlocks
 

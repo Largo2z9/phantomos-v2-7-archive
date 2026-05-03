@@ -76,7 +76,7 @@ SOPs are resources (knowledge). Skills are code (execution). The line is clear.
 
 ### Scenario E — Orchestrator needs to discover which SOPs are relevant
 
-**Example** : operator says *"audit complet sur karacare"*. `audit-global` orchestrator must find all relevant SOPs.
+**Example** : operator says *"audit complet sur northsense"*. `audit-global` orchestrator must find all relevant SOPs.
 
 **What the system does** :
 

@@ -83,7 +83,7 @@
             "installments": []
           },
           "placement": "product_page",
-          "landing_page": "https://lumya.co/products/creme-eclat",
+          "landing_page": "https://glowco.co/products/creme-eclat",
           "active": true,
           "active_from": null,
           "active_until": null,
@@ -164,7 +164,7 @@
             ]
           },
           "placement": "product_page",
-          "landing_page": "https://lumya.co/products/creme-eclat",
+          "landing_page": "https://glowco.co/products/creme-eclat",
           "active": true,
           "active_from": null,
           "active_until": null,
@@ -227,7 +227,7 @@
           "incentives": {
             "gifts": [
               {
-                "name": "Tote bag Lumya édition limitée",
+                "name": "Tote bag Glowco édition limitée",
                 "value": 18,
                 "conditions": "Abonnés actifs depuis 3 mois",
                 "first_order_only": false,
@@ -279,7 +279,7 @@
             "installments": []
           },
           "placement": "product_page",
-          "landing_page": "https://lumya.co/products/creme-eclat",
+          "landing_page": "https://glowco.co/products/creme-eclat",
           "active": true,
           "active_from": null,
           "active_until": null,
@@ -361,7 +361,7 @@
             ]
           },
           "placement": "product_page",
-          "landing_page": "https://lumya.co/products/creme-eclat",
+          "landing_page": "https://glowco.co/products/creme-eclat",
           "active": true,
           "active_from": null,
           "active_until": null,

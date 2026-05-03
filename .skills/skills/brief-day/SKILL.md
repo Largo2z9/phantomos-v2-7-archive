@@ -59,22 +59,22 @@ Bucket detected signals:
 **Template** (adapt, never paste literally):
 
 > **Portfolio health**
-> - Karacare: Level 2 complete, last session 2 days ago. 1 flag (learnings_stale)
+> - Northsense: Level 2 complete, last session 2 days ago. 1 flag (learnings_stale)
 > - {brand B}: Level 1, last session today, clean
 > - {brand C}: Level 1 draft, 4 days idle, `access_missing Meta`
 >
 > **Needs your call (2)**
-> - Karacare inferred audience (Maghrebi/ME women) never validated, will contaminate next brief
+> - Northsense inferred audience (Maghrebi/ME women) never validated, will contaminate next brief
 > - {brand C} Meta access still pending client-side, blocking the audit you queued
 >
 > **Pattern I noticed**
 > - 2 of your 3 brands miss Meta credentials. Worth batching a client outreach?
 >
 > **Suggested next**
-> - Validate Karacare audience (15 min, unlocks brief-créa)
+> - Validate Northsense audience (15 min, unlocks brief-créa)
 > - Or skip to {brand B} if you prefer momentum
 
-**ALWAYS** close with smart suggests a/b/c/d using `AskUserQuestion` tool (load via `ToolSearch(select:AskUserQuestion)` if not loaded). Example options: *"Validate Karacare audience / Switch to {brand B} / Show full state of one brand / Other"*.
+**ALWAYS** close with smart suggests a/b/c/d using `AskUserQuestion` tool (load via `ToolSearch(select:AskUserQuestion)` if not loaded). Example options: *"Validate Northsense audience / Switch to {brand B} / Show full state of one brand / Other"*.
 
 ---
 

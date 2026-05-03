@@ -188,7 +188,7 @@ Problems raised by 2+ experts from different angles. These are absolute prioriti
 
 Disagreements between experts. Present both sides and rule: give your opinion on who is probably right, why, and in what context the other would be right. **The Chairman does not stay neutral, they arbitrate.**
 
-### 3. Final verdict — "What to do Monday morning"
+### 3. Final verdict — "What to do Mvitatone morning"
 
 Ranking of max 5 priority actions, ordered by severity:
 
@@ -198,7 +198,7 @@ Ranking of max 5 priority actions, ordered by severity:
 | 2 | 🟠 Important | ... | Expert 2 | ... |
 | ... | ... | ... | ... | ... |
 
-Each recommended action **YOU MUST** answer: *"What do I concretely do Monday morning?"*
+Each recommended action **YOU MUST** answer: *"What do I concretely do Mvitatone morning?"*
 - Who does what (person or role)
 - How long (hours, days, weeks)
 - Expected measurable outcome

@@ -47,7 +47,7 @@ Responsibility: scan full conversation → extract persistable elements → clas
 | Audit / review / diagnostic | Auditor → stakeholder |
 | Research / exploration | Head of research → sponsor |
 
-Posture drives register and priorities. A CTO says *"1 tech arbitrage: activate model routing or wait?"*. A project lead says *"3 items shipped, 1 blocker on access tokens, next up: test on Karacare"*. A CD says *"3 concepts delivered, 1 needs your call on tone"*.
+Posture drives register and priorities. A CTO says *"1 tech arbitrage: activate model routing or wait?"*. A project lead says *"3 items shipped, 1 blocker on access tokens, next up: test on Northsense"*. A CD says *"3 concepts delivered, 1 needs your call on tone"*.
 
 **ALWAYS apply, regardless of posture**:
 
@@ -446,7 +446,7 @@ Scan for knowledge-dense exchanges :
 Example :
 
 ```
-We discussed that the Karacare Spring Days GWP only works if AOV is above
+We discussed that the Northsense Spring Days GWP only works if AOV is above
 the threshold — business insight that would enrich
 `audit-meta-global.md § Layer 4 reasoning`.
 

@@ -86,7 +86,7 @@ Three moments where the operator must validate :
 
 The agent never creates a skill or SOP silently. On pattern detection :
 
-> "I noticed you did [pattern X] on Karacare and Cherico. Would formalizing that as a skill save you time ? I can propose (a) a simple skill, (b) a skill + SOP if it's broader, or (c) drop it for now."
+> "I noticed you did [pattern X] on Northsense and Cherico. Would formalizing that as a skill save you time ? I can propose (a) a simple skill, (b) a skill + SOP if it's broader, or (c) drop it for now."
 
 Operator accepts → agent starts the scaffolding phase. Operator refuses or "later" → agent logs in pending-validations.md, re-proposes after 2-3 additional repetitions.
 
@@ -96,7 +96,7 @@ Operator accepts → agent starts the scaffolding phase. Operator refuses or "la
 
 Example — orchestrator `audit-meta-global` at start :
 
-> "I'm about to run the full Meta audit on Karacare. Here's what's going to execute :
+> "I'm about to run the full Meta audit on Northsense. Here's what's going to execute :
 > - 40 checkpoints organized across 7 layers
 > - Estimate : 15-30 min, ~50-80k tokens
 > - Mini-skills called : check-pixel-deployment, check-capi-deployment, check-audience-exclusions, ... (full list below or on request)
@@ -145,13 +145,13 @@ Scan the conversation for :
 
 Example :
 
-> "We discussed during the session that the GWP Spring Days pattern at Karacare only performs if the average AOV is above the threshold — that's a business insight. Want me to add it to the reasoning layer of checkpoint 4.x in audit-meta-global, or as a separate framework ?"
+> "We discussed during the session that the GWP Spring Days pattern at Northsense only performs if the average AOV is above the threshold — that's a business insight. Want me to add it to the reasoning layer of checkpoint 4.x in audit-meta-global, or as a separate framework ?"
 
 ### Convention or rule promotion candidates
 
 If a learning on a specific brand is generalizable :
 
-> "Learning L-042 on Karacare ('Meta rejects efficacy claims without disclaimer in FR') is applicable to all supplement brands. Want me to promote it as a workspace-level convention ?"
+> "Learning L-042 on Northsense ('Meta rejects efficacy claims without disclaimer in FR') is applicable to all supplement brands. Want me to promote it as a workspace-level convention ?"
 
 ---
 

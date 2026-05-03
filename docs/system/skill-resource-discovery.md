@@ -61,7 +61,7 @@ From the primary reasoning + loaded schemas, the skill builds a keyword string f
 
 | Skill context | Derived keywords |
 |---|---|
-| Auditing Meta creatives for Karacare (supplements, femmes 30-50, FR) | `"audit creative supplements hair care femmes diversity FR angles"` |
+| Auditing Meta creatives for Northsense (supplements, femmes 30-50, FR) | `"audit creative supplements hair care femmes diversity FR angles"` |
 | Checking compliance claims for a cosmetics brand | `"cosmetics compliance claims EU EFSA beauty regulation"` |
 | Briefing an ad for a fashion brand targeting Gen-Z | `"brief ad fashion Gen-Z hook trends seasonal apparel"` |
 

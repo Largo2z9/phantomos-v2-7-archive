@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE — Audience fictive Lumya. Montre à quoi ressemble un profile.json rempli.",
+  "$comment": "EXEMPLE — Audience fictive Glowco. Montre à quoi ressemble un profile.json rempli.",
   "_schema": "brand/L3-audience",
   "_version": "1.2",
   "_field_types": {
@@ -201,6 +201,6 @@
   "research_meta": {
     "confidence": 78,
     "opportunity_score": 8,
-    "sources_used": ["120 avis Amazon vérifiés Lumya", "50 avis Trustpilot", "3 interviews clients", "Reddit r/SkincareAddiction FR"]
+    "sources_used": ["120 avis Amazon vérifiés Glowco", "50 avis Trustpilot", "3 interviews clients", "Reddit r/SkincareAddiction FR"]
   }
 }

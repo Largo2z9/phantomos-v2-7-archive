@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE — Index léger des learnings de Lumya. Auto-maintenu par learn-from-session et validate-resources. Ne jamais éditer manuellement — reconstruit depuis learnings.json sur validate.",
+  "$comment": "EXEMPLE — Index léger des learnings de Glowco. Auto-maintenu par learn-from-session et validate-resources. Ne jamais éditer manuellement — reconstruit depuis learnings.json sur validate.",
   "_version": "1.0",
 
   "entries": [

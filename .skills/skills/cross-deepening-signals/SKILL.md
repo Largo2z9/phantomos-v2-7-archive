@@ -107,7 +107,7 @@ Build the operator-facing synthesis. Strict prose-first, no bold-section anchors
 
 - **Movement 1** = the dominant signal. Typically Check 1 (validated audience) or Check 3 (high-confidence white-space) when either is strong. If both are strong, Movement 1 = whichever has the deeper evidence base.
 - **Movement 2** = the second-order insight. Typically Check 2 (vocabulary timing) or a contradiction surfaced between checks (e.g. VoC validates an audience that VoM shows the market doesn't address — moat opportunity).
-- **Movement 3** = the strategic priority for next 30 days based on confluence. The "what to do Monday morning" read.
+- **Movement 3** = the strategic priority for next 30 days based on confluence. The "what to do Mvitatone morning" read.
 
 Hard rule: 3-6 sentences per movement. Cap at 18 sentences total. Operator reads in 90 seconds. Concrete examples (real brand names, real verbatim fragments) preferred over abstract framing.
 

@@ -17,7 +17,7 @@ Check the user's argument :
 | empty, 1 brand encodé | **brand** : cockpit du seul brand existant |
 | empty, N brands encodés | **workspace** : vue multi-brand globale |
 | `workspace` ou `all` | **workspace** : forcé en vue globale même si N=1 |
-| brand slug (e.g. `/phantom onday`) | **brand** : cockpit détaillé du brand |
+| brand slug (e.g. `/phantom vitatone`) | **brand** : cockpit détaillé du brand |
 
 ---
 
@@ -90,9 +90,9 @@ Icônes :
 
 Exemples :
 ```
-🟢 onday              L2     1P / 5A / 8An / 3T    last 14h
-🟡 stepprs            L1     1P / 2A / 0An         last 6d
-⚪ karacare           L2     1P / 4A / 5An         last 47d
+🟢 vitatone              L2     1P / 5A / 8An / 3T    last 14h
+🟡 peaktrek            L1     1P / 2A / 0An         last 6d
+⚪ northsense           L2     1P / 4A / 5An         last 47d
 ```
 
 ### Cross-brand metrics
@@ -216,5 +216,5 @@ Actions doivent toujours nommer un skill ou un objet précis. Pas de conseil gé
 - **One screen output.** Workspace mode : 30 lignes max. Brand mode : 40-50 lignes max.
 - **Pas de jargon doctrine.** Pas de "SED", "CMR", "_field_types", "validation_status" en surface. Traduit en mots métier (validé / hypothèse / fatigué).
 - **Honest staleness.** Si une entité n'a pas été touchée depuis 90j, dis-le. Si snapshot date > 1h, regenère silencieusement avant d'afficher.
-- **Mode brand explicite gagne sur l'auto-détection.** `/phantom onday` force brand mode même si workspace a 1 brand.
+- **Mode brand explicite gagne sur l'auto-détection.** `/phantom vitatone` force brand mode même si workspace a 1 brand.
 - **Mode workspace forcé via `workspace` ou `all`.**

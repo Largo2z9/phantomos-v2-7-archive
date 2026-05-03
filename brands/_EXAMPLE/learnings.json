@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE — Learnings opérationnels accumulés pour Lumya.",
+  "$comment": "EXEMPLE — Learnings opérationnels accumulés pour Glowco.",
   "_version": "1.0",
   "_field_types": {
     "entries[].id": "derived",
@@ -17,7 +17,7 @@
   "entries": [
     {
       "id": "LRN-001",
-      "fact": "Les adsets Lumya avec advantage_audience activé ignorent les exclusions retargeting. Toujours passer advantage_audience: 0 avant de modifier le targeting.",
+      "fact": "Les adsets Glowco avec advantage_audience activé ignorent les exclusions retargeting. Toujours passer advantage_audience: 0 avant de modifier le targeting.",
       "platform": "meta_ads",
       "date": "2026-02-15",
       "source": "session — création campagne NC",
@@ -29,7 +29,7 @@
     },
     {
       "id": "LRN-002",
-      "fact": "Shopify Lumya : les commandes cadeau (tag 'gift') ont un AOV 2x plus élevé mais un taux de retour 3x supérieur. Exclure du calcul LTV standard.",
+      "fact": "Shopify Glowco : les commandes cadeau (tag 'gift') ont un AOV 2x plus élevé mais un taux de retour 3x supérieur. Exclure du calcul LTV standard.",
       "platform": "shopify",
       "date": "2026-03-02",
       "source": "analyse commandes Q1",
