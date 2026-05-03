@@ -15,17 +15,8 @@
     {
       "category": "client_anonymization",
       "action": "renamed",
-      "mapping": {
-        "karacare": "northsense",
-        "onday": "vitatone",
-        "stepprs": "peaktrek",
-        "lumya": "glowco",
-        "moova": "nestra",
-        "liv-happy-food": "freshbite-foods",
-        "tortle": "shellbrand",
-        "bloon": "skyfloat",
-        "stride-up": "acmeflow"
-      },
+      "summary": "9 real client brand slugs replaced with fictional names across the workspace template surface.",
+      "fictional_names_now_in_examples": ["northsense", "vitatone", "peaktrek", "glowco", "nestra", "freshbite-foods", "shellbrand", "skyfloat", "acmeflow"],
       "scope": "All examples, docs, skills, manifests across the workspace template surface.",
       "rationale": "Public template should never expose the names of real client brands."
     },

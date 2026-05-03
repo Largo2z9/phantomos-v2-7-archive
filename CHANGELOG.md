@@ -11,7 +11,7 @@
 
 **What shipped.**
 
-- **Real client names anonymized.** Across all examples, doc text, skill outputs, and manifests : `karacare → northsense`, `onday → vitatone`, `stepprs → peaktrek`, `lumya → glowco`, `moova → nestra`, `liv-happy-food → freshbite-foods`, `tortle → shellbrand`, `bloon → skyfloat`, `stride-up → acmeflow`. 34 files patched.
+- **Real client names anonymized.** All real client brand slugs replaced with fictional names across examples, doc text, skill outputs, and internal manifests. 9 brand identifiers swept across 34 files. Canonical fictional names used in shipped examples : northsense, vitatone, peaktrek, glowco, nestra, freshbite-foods, shellbrand, skyfloat, acmeflow.
 - **Abyss-specific skill removed from public template.** `connect-cockpit` skill (data plumbing to a downstream Abyss cockpit dashboard) no longer ships in the public template. Lives in the Abyss extension repository instead.
 - **`docs/product/variant-map.md` simplified.** Now focuses on template versus operator instance, no longer exposes the existence of private downstream extensions or addons.
 - **Manifest cleanup.** `.skills/_manifest.json` regenerated post connect-cockpit removal. Disambiguation references to connect-cockpit swept across sibling skills.
