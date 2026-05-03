@@ -1,0 +1,67 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "sage",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Sage",
+  "principle": "Voix qui sait, qui éclaire. Pédagogique, calme, autorité douce.",
+  "structure": "Vocabulaire technique accessible, structure démonstrative, sources citées.",
+  "gabarits": [
+    "Voilà ce que la science dit, sans le jargon.",
+    "Le mécanisme est simple : [explication claire]."
+  ],
+  "when_works": [
+    "catégories santé, sciences, éducation",
+    "audiences en recherche d'information vraie",
+    "marchés à sophistication 3+"
+  ],
+  "when_avoid": [
+    "produits émotionnels ou aspirationnels",
+    "audiences pressées (sage prend du temps)"
+  ],
+  "combines_with": {
+    "frameworks": [
+      "quest",
+      "fab"
+    ],
+    "leads": [
+      "mechanism-led",
+      "proof-led"
+    ],
+    "angles": [
+      "mecanisme-unique"
+    ]
+  },
+  "anti_patterns": [
+    "Sage qui devient prof ennuyeux",
+    "Sage condescendant"
+  ],
+  "examples": [
+    "Le cycle pilaire dure 3 à 6 ans en phase anagène. La cure cible cette phase, c'est pour ça qu'on parle 90 jours minimum."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

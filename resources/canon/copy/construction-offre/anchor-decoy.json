@@ -1,0 +1,63 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "anchor-decoy",
+  "atlas": "copy",
+  "layer": "construction-offre",
+  "name": "Anchor / Decoy",
+  "principle": "Présente une option chère (anchor) qui rend la cible visée plus attractive. Ou une option leurre (decoy) qui pousse vers le bundle.",
+  "structure": "3 prix : low / target / high. Le target devient le 'best value' relatif.",
+  "gabarits": [
+    "Cure 1 mois 39€ / Cure 3 mois 89€ (-25%) / Cure 6 mois 169€ (-30%)"
+  ],
+  "when_works": [
+    "e-commerce avec gammes",
+    "produits récurrents (cures, abonnements)",
+    "audiences price-sensitive"
+  ],
+  "when_avoid": [
+    "mono-produit sans gamme",
+    "audiences luxe (le decoy paraît cheap)"
+  ],
+  "combines_with": {
+    "formats": [
+      "landing",
+      "checkout"
+    ],
+    "leads": [
+      "offer-led"
+    ]
+  },
+  "anti_patterns": [
+    "3 options avec prix très proches (anchor non visible)",
+    "Decoy mal calibré (la cible n'apparaît pas comme deal)"
+  ],
+  "examples": [
+    "Hair Boost : 1 mois 29.90€ / 3 mois 69.90€ -22% / 6 mois 132.90€ -26% + bonus."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Behavioral economics",
+      "Ariely"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

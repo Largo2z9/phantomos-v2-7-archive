@@ -1,0 +1,73 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "status-shift",
+  "atlas": "copy",
+  "layer": "angles",
+  "name": "Status shift",
+  "principle": "Met en avant le changement de statut social ou de perception après transformation. Vise l'identité projetée.",
+  "structure": "Avant (statut perçu) → après (statut projeté) → produit comme catalyseur.",
+  "gabarits": [
+    "Avant on me disait [X]. Maintenant on me demande [Y].",
+    "[Trait extérieur] change tout : on te traite comme [statut nouveau]."
+  ],
+  "when_works": [
+    "audiences en quête de validation extérieure",
+    "produits beauté, fitness, mode",
+    "trafic chaud"
+  ],
+  "when_avoid": [
+    "audiences à valeurs internes fortes (rejettent la quête de statut)",
+    "marques à positionnement humble"
+  ],
+  "combines_with": {
+    "frameworks": [
+      "bab",
+      "4ps"
+    ],
+    "hooks": [
+      "avant-apres"
+    ],
+    "emotions": [
+      "fierte",
+      "envie"
+    ],
+    "formats": [
+      "UGC-ad",
+      "testimonial",
+      "ad-statique"
+    ]
+  },
+  "anti_patterns": [
+    "Status shift superficiel (cheap)",
+    "Trop centré sur le regard des autres (clivant)"
+  ],
+  "examples": [
+    "Mes collègues me demandent quel coiffeur je vois. Je leur dis : aucun, juste 90 jours de cure.",
+    "Avant j'attachais. Maintenant je laisse libre."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Status pyramid canon"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

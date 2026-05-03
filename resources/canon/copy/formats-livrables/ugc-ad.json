@@ -1,0 +1,68 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "ugc-ad",
+  "atlas": "copy",
+  "layer": "formats-livrables",
+  "name": "UGC ad",
+  "principle": "Vidéo selfie format mobile par créatrice ou customer. Effet authentique, low-fi, contourne les défenses publicitaires.",
+  "structure": "Hook 3 sec + situation relatable + démo/résultat + CTA. 15-60 sec.",
+  "gabarits": [
+    "[hook attention 3s] [contexte 5s] [résultat/démo 15s] [CTA 5s]"
+  ],
+  "when_works": [
+    "Meta, TikTok, Reels",
+    "audiences scrollers",
+    "marques DTC"
+  ],
+  "when_avoid": [
+    "B2B premium",
+    "audiences ultra-segmentées non-scrollers"
+  ],
+  "combines_with": {
+    "hooks": [
+      "confession",
+      "question-callout",
+      "avant-apres"
+    ],
+    "archetypes": [
+      "amante",
+      "caregiver",
+      "homme-ordinaire"
+    ],
+    "leads": [
+      "story-led"
+    ]
+  },
+  "anti_patterns": [
+    "UGC trop produit (perd le low-fi)",
+    "Hook qui prend 8 secondes"
+  ],
+  "examples": [
+    "Maman 32 ans face cam, brosse à la main, montre le résultat à 12 sem."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "DTC paid playbook 2024+"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

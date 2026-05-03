@@ -1,0 +1,68 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "urgence-rarete-temps",
+  "atlas": "copy",
+  "layer": "construction-offre",
+  "name": "Urgence / rareté temporelle",
+  "principle": "Active le FOMO via deadline visible. La rareté de temps déclenche l'action.",
+  "structure": "Annonce d'une fin claire (date, heure) + conséquence concrète (perte d'offre, retour au prix plein).",
+  "gabarits": [
+    "Offre [nom] valable jusqu'à [date heure]. Après : retour au prix plein.",
+    "Plus que [N] jours pour [bénéfice de l'offre]."
+  ],
+  "when_works": [
+    "closing",
+    "promotions saisonnières crédibles",
+    "trafic chaud"
+  ],
+  "when_avoid": [
+    "urgence permanente (cliquables fakes)",
+    "audiences anti-FOMO"
+  ],
+  "combines_with": {
+    "frameworks": [
+      "aida",
+      "4ps"
+    ],
+    "objections": [
+      "comparaison-cout-inaction"
+    ],
+    "formats": [
+      "email-sequence",
+      "ad-statique"
+    ]
+  },
+  "anti_patterns": [
+    "Countdown qui reset à chaque visite",
+    "Urgence sans raison crédible"
+  ],
+  "examples": [
+    "Offre Mother's Day Karacare : -15% sur la cure 3m + brosse offerte. Fin dimanche 18h."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Cialdini",
+      "DR canon"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

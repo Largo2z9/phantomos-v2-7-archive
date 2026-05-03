@@ -1,0 +1,67 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "story-led",
+  "atlas": "copy",
+  "layer": "leads",
+  "name": "Story-led",
+  "principle": "Ouvre sur une histoire (founder, customer, narrative). Bypass des défenses publicitaires par récit.",
+  "structure": "Anecdote concrète + bascule + apprentissage + offre.",
+  "gabarits": [
+    "Il y a [durée], [protagoniste] vivait [situation pénible]. Voilà ce qui a changé."
+  ],
+  "when_works": [
+    "UGC, founder, advertorial",
+    "marques humaines",
+    "tous stades sauf most-aware"
+  ],
+  "when_avoid": [
+    "B2B technique",
+    "audiences pressées"
+  ],
+  "combines_with": {
+    "hooks": [
+      "confession"
+    ],
+    "angles": [
+      "retour-en-arriere",
+      "identite"
+    ],
+    "archetypes": [
+      "caregiver",
+      "homme-ordinaire"
+    ]
+  },
+  "anti_patterns": [
+    "Histoire trop longue avant le point",
+    "Histoire qui n'enseigne rien"
+  ],
+  "examples": [
+    "Quand Jeanne a accouché de son 2e enfant, elle ne se reconnaissait plus dans le miroir. 6 mois plus tard..."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Halbert",
+      "Donald Miller"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

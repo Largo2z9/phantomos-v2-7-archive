@@ -1,0 +1,68 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "garantie-risk-reversal",
+  "atlas": "copy",
+  "layer": "construction-offre",
+  "name": "Garantie / risk reversal",
+  "principle": "Renverse le risque de l'acheteur vers le vendeur. Lève l'objection 'et si ça ne marche pas pour moi'.",
+  "structure": "Promesse garantie + condition simple + procédure de remboursement.",
+  "gabarits": [
+    "Tu testes [N jours]. Si tu ne vois rien, on rembourse intégralement.",
+    "Garantie [durée] : pas de résultat = remboursement automatique."
+  ],
+  "when_works": [
+    "produits à promesse mesurable",
+    "audiences sceptiques",
+    "produits chers"
+  ],
+  "when_avoid": [
+    "produits où le résultat est subjectif (esthétique pure)",
+    "marchés où le SAV ne suit pas"
+  ],
+  "combines_with": {
+    "objections": [
+      "pre-emption",
+      "comparaison-cout-inaction"
+    ],
+    "leads": [
+      "offer-led"
+    ],
+    "formats": [
+      "landing",
+      "checkout"
+    ]
+  },
+  "anti_patterns": [
+    "Garantie avec conditions cachées",
+    "Garantie courte sur produit à effet long (cure 3 mois, garantie 14j)"
+  ],
+  "examples": [
+    "Garantie 90 jours résultats : pas de freinage de chute visible ? Remboursement intégral, pas de questions."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Hormozi",
+      "Halbert"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

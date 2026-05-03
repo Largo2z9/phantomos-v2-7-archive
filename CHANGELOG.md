@@ -5,6 +5,43 @@
 
 ---
 
+## v2.26.0 — 2026-05-04 — Atlas canon copy v1 (fondation doctrine du métier)
+
+**Why this release.** Pendant une session test sur phantomos-test, l'opérateur a découvert un concept émergent : une cartographie compositionnelle des outils standards du copywriting, organisée en couches imbriquées. L'agent a sorti spontanément 11 couches (frameworks, hooks, angles, heuristiques de persuasion, niveaux Schwartz, archétypes de voix, formules de titres, objections, offres, leads, formats). Cette release transforme cette inspiration en **infrastructure** : 58 fiches outils encodées comme la doctrine partagée du métier, navigable via `/phantom canon`, et destinée à être consommée par les skills de production downstream.
+
+**What shipped.**
+
+- **Schema `canon-tool.schema.json`.** Standard format d'une fiche outil canon : `principle, structure, gabarits[], when_works[], when_avoid[], combines_with{frameworks, hooks, angles, emotions, archetypes, formats, objections, leads}, anti_patterns[], examples[], validations[] (append-only), lineage{source, references}`.
+- **Atlas canon copy v1 seedé.** 58 fiches dans `resources/canon/copy/{layer}/{tool}.json`. 11 couches :
+  - `frameworks` (6) : AIDA, PAS, BAB, QUEST, FAB, 4Ps
+  - `hooks` (6) : curiosity-gap, contrarian, stat-choc, avant-après, question-callout, confession
+  - `angles` (6) : mécanisme-unique, identité, retour-en-arrière, ennemi-commun, status-shift, contre-intuitif
+  - `heuristiques-persuasion` (7) : Cialdini × 7
+  - `niveaux-schwartz` (2) : conscience (5 stades) + sophistication (5 vagues)
+  - `archetypes-voix` (6) : caregiver, sage, rebelle, amante, héros, homme-ordinaire
+  - `formules-titres` (6) : 4U, how-to, listicle, secret, commande, question
+  - `objections` (4) : feel-felt-found, reframe-positif, pre-emption, comparaison-coût-inaction
+  - `construction-offre` (4) : anchor-decoy, bundle-stack, garantie-risk-reversal, urgence-rareté-temps
+  - `leads` (5) : offer-led, mechanism-led, story-led, problem-led, proof-led
+  - `formats-livrables` (6) : UGC-ad, VSL, landing, email-sequence, ad-statique, advertorial
+- **Mode `/phantom canon` à 4 niveaux.** atlas-index → layer-index → tools-in-layer → tool-card. Breadcrumbs systématiques. AskUserQuestion avec slot *"applique cet outil à un brand"*.
+- **Cheatsheet `/phantom ?` étendue** avec section CANON DU MÉTIER.
+- **Helpers Python.** `seed-canon-copy.py` (idempotent, --force, --dry-run) et `phantom-canon.py` (4 modes de lecture).
+
+**Pourquoi ça compte.** Avant cette release, les skills de production (`produce-paid-angles`, `produce-copy-brief`) généraient depuis le néant. Aucun référentiel doctrinal partagé. L'atlas canon devient la **bibliothèque commune** que ces skills vont consommer (v2.27+) et que l'opérateur peut consulter directement pour apprendre, piocher, ou valider une production existante.
+
+**Le mécanisme d'enrichissement** (à venir v2.28). Le champ `validations[]` est vide à la livraison. Il sera alimenté par `learn-from-session` quand l'opérateur valide un test : *"hook curiosity-gap testé sur Karacare/chute-post-grossesse, ROAS 4.2 sur 14j"* devient une entrée dans `canon copy hooks curiosity-gap#validations[]`. C'est ce qui transforme le canon générique en **canon vivant**.
+
+**Breaking changes.** None.
+
+**Operator impact.** L'opérateur a une bibliothèque structurée de la doctrine copy, navigable. `/phantom canon copy hooks curiosity-gap` rend la fiche complète. Pas encore de mode compose ni de matrices copy croisées (v2.27+). Pour l'instant, atlas en read-only, mais navigable comme un Finder.
+
+**Migration.** `python3 .skills/seed-canon-copy.py` une fois sur un workspace existant pour seed les 58 fiches.
+
+**Size note.** `phantom.md` 742 → 939 lignes. Au-dessus du cap 900 prévu. Si v2.27-v2.29 ajoutent encore du contenu, split obligatoire vers `.claude/commands/phantom-modes/`.
+
+---
+
 ## v2.24.0 — 2026-05-03 — Audience multi-product binding
 
 **Why this release.** `meta.product_id` (single string) était insuffisant : une audience qui achète plusieurs produits de la même marque (ex: Karacare *chute-active* achète Hair Boost ET Cellule Boost) devait soit choisir un produit primary (perte d'info), soit rester non-taggée (perte de traçabilité). Pas d'arborescence visible audience → produit dans `/phantom`. Largo : *"audiences sous produits, ça doit s'appliquer partout, /phantom est source of truth"*.

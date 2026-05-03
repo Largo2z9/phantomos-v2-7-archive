@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canon Tool Card",
+  "description": "Standard fiche format for any tool item inside resources/canon/{atlas}/{layer}/{tool}.json. Each canon tool is a navigable, composable, validatable item. Loaded by /phantom canon {atlas} {layer} {tool} drill mode.",
+  "type": "object",
+  "required": ["id", "atlas", "layer", "name", "principle"],
+  "properties": {
+    "_schema": { "type": "string", "const": "canon-tool/1.0" },
+    "_version": { "type": "string" },
+
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Tool slug, kebab-case. Unique within its layer." },
+    "atlas": { "type": "string", "enum": ["copy", "paid", "brand", "offer", "funnel", "cro", "email", "analytics", "mining"], "description": "Top-level atlas this tool belongs to. v2.26 ships copy only." },
+    "layer": { "type": "string", "description": "Layer slug within the atlas (e.g. 'hooks', 'frameworks', 'angles')." },
+    "name": { "type": "string", "description": "Human-readable display name." },
+
+    "principle": { "type": "string", "description": "1-3 sentences. What is this tool, what problem it solves." },
+    "structure": { "type": "string", "description": "How the tool is shaped, in plain words. Optional if principle is enough." },
+
+    "gabarits": { "type": "array", "items": { "type": "string" }, "description": "Concrete templates the operator can fill. 2-5 entries." },
+
+    "when_works": { "type": "array", "items": { "type": "string" }, "description": "Conditions under which the tool performs. Often references other canon items: 'stade conscience: problem-aware', 'sophistication: vague 3+', 'trafic: froid'." },
+    "when_avoid": { "type": "array", "items": { "type": "string" }, "description": "Anti-conditions. The opposite signals." },
+
+    "combines_with": {
+      "type": "object",
+      "description": "Cross-references to other canon items this tool composes well with. Drives compose mode and copy-matrix.",
+      "properties": {
+        "frameworks": { "type": "array", "items": { "type": "string" } },
+        "hooks": { "type": "array", "items": { "type": "string" } },
+        "angles": { "type": "array", "items": { "type": "string" } },
+        "emotions": { "type": "array", "items": { "type": "string" } },
+        "archetypes": { "type": "array", "items": { "type": "string" } },
+        "formats": { "type": "array", "items": { "type": "string" } },
+        "objections": { "type": "array", "items": { "type": "string" } },
+        "leads": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "anti_patterns": { "type": "array", "items": { "type": "string" }, "description": "Common misuses. Frame as 'X without Y' or 'X done lazy'." },
+
+    "examples": { "type": "array", "items": { "type": "string" }, "description": "Real-feeling concrete examples. 2-4 entries." },
+
+    "validations": {
+      "type": "array",
+      "description": "Append-only log of brand-side validations. Populated by learn-from-session promotion. Each entry is a contextualised signal that this tool worked or fatigued in a real run.",
+      "items": {
+        "type": "object",
+        "required": ["brand_slug", "audience_slug", "outcome", "captured_at"],
+        "properties": {
+          "brand_slug": { "type": "string" },
+          "audience_slug": { "type": "string" },
+          "outcome": { "type": "string", "enum": ["validated", "fatigued", "inconclusive", "rejected"] },
+          "metric": { "type": "string", "description": "Free-form: 'ROAS 4.2 over 14d', 'CTR 2.8% on 12k impressions', etc." },
+          "duration_days": { "type": ["integer", "null"] },
+          "captured_at": { "type": "string", "format": "date-time" },
+          "captured_by": { "type": "string", "enum": ["operator", "agent", "test_result"] },
+          "note": { "type": "string", "description": "Optional context, 1-2 sentences." }
+        }
+      }
+    },
+
+    "lineage": {
+      "type": "object",
+      "description": "Where this tool comes from. Helps audit doctrine.",
+      "properties": {
+        "source": { "type": "string", "description": "'public-doctrine' | 'extracted-from-prod' | 'operator-custom'" },
+        "references": { "type": "array", "items": { "type": "string" }, "description": "Canonical references (Schwartz, Cialdini, Halbert, etc.)" }
+      }
+    },
+
+    "_field_types": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Per-field type annotation: stated | derived | structured."
+    }
+  }
+}

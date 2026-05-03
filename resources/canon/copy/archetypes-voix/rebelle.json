@@ -1,0 +1,68 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "rebelle",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Rebelle",
+  "principle": "Voix qui s'oppose, qui casse les conventions. Tranchante, directe, parfois provocante.",
+  "structure": "Vocabulaire frontal, ton sec, contre-pieds explicites.",
+  "gabarits": [
+    "Arrête tout. Ce que tu fais empire le truc.",
+    "L'industrie te ment. Voilà la vérité."
+  ],
+  "when_works": [
+    "marques challengers",
+    "audiences frustrées",
+    "marchés saturés à sophistication 4+"
+  ],
+  "when_avoid": [
+    "audiences conservatrices",
+    "catégories régulées (rebelle paraît irresponsable)"
+  ],
+  "combines_with": {
+    "hooks": [
+      "contrarian",
+      "stat-choc"
+    ],
+    "angles": [
+      "ennemi-commun",
+      "contre-intuitif"
+    ],
+    "emotions": [
+      "indignation",
+      "soulagement"
+    ]
+  },
+  "anti_patterns": [
+    "Rebelle pour la pose (pas de fond)",
+    "Trop violent (devient repoussoir)"
+  ],
+  "examples": [
+    "Les shampoings 'anti-chute' ? La pire arnaque de la beauté. Voilà ce qui marche vraiment."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

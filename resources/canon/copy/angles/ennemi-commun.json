@@ -1,0 +1,77 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "ennemi-commun",
+  "atlas": "copy",
+  "layer": "angles",
+  "name": "Ennemi commun",
+  "principle": "Désigne un coupable extérieur (industrie, mythe, pratique) que l'audience peut détester ensemble. Lien tribal.",
+  "structure": "Nommer l'ennemi → montrer son méfait → positionner le produit comme alternative ou résistance.",
+  "gabarits": [
+    "L'industrie [X] te fait croire [mensonge]",
+    "Le vrai problème, ce n'est pas toi. C'est [système]."
+  ],
+  "when_works": [
+    "audiences avec frustration accumulée envers une catégorie",
+    "sophistication marché 3+",
+    "marques challengers"
+  ],
+  "when_avoid": [
+    "marques leaders (l'ennemi commun renvoie à elles)",
+    "audiences peu engagées émotionnellement sur le sujet"
+  ],
+  "combines_with": {
+    "hooks": [
+      "contrarian",
+      "stat-choc"
+    ],
+    "frameworks": [
+      "pas",
+      "quest"
+    ],
+    "emotions": [
+      "indignation",
+      "soulagement"
+    ],
+    "angles": [
+      "contre-intuitif"
+    ],
+    "formats": [
+      "VSL",
+      "advertorial"
+    ]
+  },
+  "anti_patterns": [
+    "Ennemi caricaturé (perd la crédibilité)",
+    "Ennemi sans alternative crédible (juste plainte)"
+  ],
+  "examples": [
+    "L'industrie capillaire vend des shampoings 'anti-chute' qui ne traitent que le cheveu. Le problème est interne.",
+    "On t'a dit 'mange bien, ça repousse'. Mensonge. La carence est métabolique, pas alimentaire."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Schwartz",
+      "Halbert"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

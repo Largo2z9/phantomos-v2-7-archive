@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.24.0",
-  "released_at": "2026-05-03",
+  "template_version": "2.26.0",
+  "released_at": "2026-05-04",
   "compatible_from": "2.0.0",
-  "summary": "Audience multi-product binding. meta.product_id (single, deprecated) remplacé par meta.applies_to_products[] (array). Storage flat, indexation multidimensionnelle : audiences vivent au niveau brand, sont taggées multi-produit. /phantom navigation systémique : entity-drill audiences affiche '→ applies_to' par audience, item-mode produit liste les audiences cibles, item-mode audience liste les produits cibles, search indexe le binding. snapshot-brand Step 5 Movement 3 ajoute une question opérateur multi-coche pour le binding. audience-cartography.md doctrine étendue. Migration script .skills/migrate-audience-applies-to.py (idempotent, dry-run). meta.product_id reste lu en fallback.",
-  "manifest": "docs/internal/releases/manifest/2.24.0-manifest.json"
+  "summary": "Atlas canon copy v1 seedé. 58 fiches outils standards de copywriting structurés en 11 couches (frameworks, hooks, angles, heuristiques de persuasion, niveaux Schwartz, archétypes de voix, formules de titres, traitement d'objection, construction d'offre, types de lead, formats livrables). Storage resources/canon/copy/{layer}/{tool}.json. Schema canon-tool.schema.json (principle, gabarits, when_works, when_avoid, combines_with, anti_patterns, examples, validations[], lineage). Mode /phantom canon avec 4 niveaux : atlas-index, layer-index, tools-in-layer, tool-card. Helpers phantom-canon.py et seed-canon-copy.py. Validations[] vide initialement, alimentées plus tard par learn-from-session promotion (v2.28+).",
+  "manifest": "docs/internal/releases/manifest/2.26.0-manifest.json"
 }

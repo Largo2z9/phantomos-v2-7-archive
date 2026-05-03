@@ -1,0 +1,75 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "identite",
+  "atlas": "copy",
+  "layer": "angles",
+  "name": "Identité",
+  "principle": "Cible un profil identitaire spécifique : 'pour les femmes qui...'. L'audience se reconnaît, l'achat devient affirmation de soi.",
+  "structure": "Phrase qualifiante précise + bénéfice qui matche cette identité.",
+  "gabarits": [
+    "Pour les [profil] qui [comportement/situation]",
+    "Si tu fais partie des [N%] qui [trait spécifique]"
+  ],
+  "when_works": [
+    "niches identitaires (mamans, sportifs, intellectuels, femmes voilées, etc.)",
+    "audiences à fort signal communautaire",
+    "trafic tiède à chaud"
+  ],
+  "when_avoid": [
+    "audiences mass-market sans identité spécifique partagée",
+    "marchés où segmentation identitaire vexe"
+  ],
+  "combines_with": {
+    "frameworks": [
+      "aida",
+      "quest"
+    ],
+    "hooks": [
+      "question-callout",
+      "confession"
+    ],
+    "emotions": [
+      "appartenance",
+      "fierte"
+    ],
+    "formats": [
+      "UGC-ad",
+      "ad-statique",
+      "email-sequence"
+    ]
+  },
+  "anti_patterns": [
+    "Identité trop large (perd la spécificité)",
+    "Identité forcée (l'audience ne se reconnaît pas)"
+  ],
+  "examples": [
+    "Pour les mamans qui ont vu leurs cheveux changer après bébé.",
+    "Pour les femmes voilées qui sentent leur cuir chevelu fragilisé."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Schwartz",
+      "DR canon"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

@@ -1,0 +1,64 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "reciprocite",
+  "atlas": "copy",
+  "layer": "heuristiques-persuasion",
+  "name": "Réciprocité",
+  "principle": "L'humain rend ce qu'on lui donne. Donner d'abord (valeur, info, échantillon) crée une dette psychologique vers l'achat.",
+  "structure": "Don gratuit substantiel → demande proportionnée plus tard.",
+  "gabarits": [
+    "[ressource gratuite] / [appel à l'action proportionné]"
+  ],
+  "when_works": [
+    "funnels lead-magnet",
+    "email nurture",
+    "trafic froid à éduquer"
+  ],
+  "when_avoid": [
+    "produits impulse buying",
+    "audiences habituées au gratuit générique (saturé)"
+  ],
+  "combines_with": {
+    "formats": [
+      "lead-magnet",
+      "email-sequence",
+      "VSL"
+    ],
+    "leads": [
+      "proof-led"
+    ]
+  },
+  "anti_patterns": [
+    "Don superficiel (perçu comme bait)",
+    "Demande disproportionnée après le don"
+  ],
+  "examples": [
+    "Guide PDF '7 erreurs en cure capillaire' → email day 7 cure 3 mois -10%",
+    "Diagnostic gratuit personnalisé → recommandation cure ciblée"
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Cialdini Influence"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

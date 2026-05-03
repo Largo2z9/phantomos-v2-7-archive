@@ -1,0 +1,67 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "how-to",
+  "atlas": "copy",
+  "layer": "formules-titres",
+  "name": "How-to",
+  "principle": "'Comment X sans Y'. Promesse pédagogique avec retrait d'obstacle. Très efficace SEO et hook curiosité.",
+  "structure": "Comment [obtenir résultat] sans [obstacle perçu].",
+  "gabarits": [
+    "Comment [X] sans [Y]",
+    "Comment [résultat] en [contrainte temporelle]"
+  ],
+  "when_works": [
+    "contenu éducatif, blog, advertorial",
+    "audiences problem-aware"
+  ],
+  "when_avoid": [
+    "copy émotionnel pur"
+  ],
+  "combines_with": {
+    "frameworks": [
+      "quest"
+    ],
+    "leads": [
+      "mechanism-led"
+    ],
+    "formats": [
+      "advertorial",
+      "landing",
+      "email-sequence"
+    ]
+  },
+  "anti_patterns": [
+    "How-to vague ('comment être heureux')",
+    "How-to qui n'est pas réellement actionnable dans le copy"
+  ],
+  "examples": [
+    "Comment freiner la chute post-partum sans hormones",
+    "Comment retrouver de la densité en 90 jours sans changer de routine"
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "DR canon",
+      "BuzzFeed playbook"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

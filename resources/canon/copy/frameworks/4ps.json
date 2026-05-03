@@ -1,0 +1,70 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "4ps",
+  "atlas": "copy",
+  "layer": "frameworks",
+  "name": "4Ps",
+  "principle": "Picture · Promise · Prove · Push. Frame visuel orienté action, plus émotionnel que AIDA. Halbert / Carlton style.",
+  "structure": "Picture (peindre la scène) → Promise (la transformation) → Prove (preuves) → Push (CTA urgent).",
+  "gabarits": [
+    "Imagine / Voilà ce qu'on te promet / Voilà comment on prouve / Voilà ce que tu fais maintenant",
+    "[scène vivante] / [bénéfice ultime] / [proof concret] / [CTA + urgence]"
+  ],
+  "when_works": [
+    "ads émotionnels",
+    "long-form persuasif",
+    "produits transformation visible"
+  ],
+  "when_avoid": [
+    "B2B technique",
+    "audiences sceptiques sur la promesse"
+  ],
+  "combines_with": {
+    "hooks": [
+      "avant-apres",
+      "transformation",
+      "social-proof-front"
+    ],
+    "angles": [
+      "status-shift",
+      "identite"
+    ],
+    "emotions": [
+      "espoir",
+      "envie"
+    ]
+  },
+  "anti_patterns": [
+    "Picture sans Promise (joli mais sans direction)",
+    "Push sans Prove (pression sans crédibilité)"
+  ],
+  "examples": [
+    "[P] Tu sors de la douche, t'as une serviette pleine de cheveux. [P] D'ici 12 semaines, plus aucun. [P] 60k clientes, ROAS 4x sur Trustpilot. [P] Cure 3 mois -10% jusqu'à dimanche."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Halbert",
+      "Carlton"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

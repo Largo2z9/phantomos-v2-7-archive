@@ -1,0 +1,64 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "mechanism-led",
+  "atlas": "copy",
+  "layer": "leads",
+  "name": "Mechanism-led",
+  "principle": "Ouvre sur l'explication du mécanisme unique du produit. Pour audience product-aware ou solution-aware en quête de différenciation.",
+  "structure": "Annonce du mécanisme + démonstration de pourquoi c'est différent.",
+  "gabarits": [
+    "Voilà pourquoi [produit] active [mécanisme] que [autres] ignorent."
+  ],
+  "when_works": [
+    "solution-aware, product-aware",
+    "marché sophistication 3+",
+    "VSL et long-form"
+  ],
+  "when_avoid": [
+    "unaware",
+    "trafic ultra-froid"
+  ],
+  "combines_with": {
+    "frameworks": [
+      "quest"
+    ],
+    "angles": [
+      "mecanisme-unique"
+    ],
+    "archetypes": [
+      "sage"
+    ]
+  },
+  "anti_patterns": [
+    "Mécanisme bidon",
+    "Trop technique"
+  ],
+  "examples": [
+    "Cellule Boost active la phase anagène. C'est ce que les vitamines classiques manquent."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Schwartz"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

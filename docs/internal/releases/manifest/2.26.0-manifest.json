@@ -1,0 +1,52 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.26.0",
+  "released_at": "2026-05-04",
+  "compatible_from": "2.0.0",
+  "type": "infrastructure",
+  "summary": "Atlas canon copy v1. Doctrine du métier copywriting structurée en 58 fiches outils, 11 couches, navigable via /phantom canon. Fondation pour la refonte des skills de production downstream (v2.27+ produce-paid-angles, mine-voc tagging, learn-from-session promotion).",
+  "changes": [
+    {
+      "category": "infrastructure",
+      "action": "added",
+      "files": ["resources/schemas/canon-tool.schema.json"],
+      "rationale": "Schema standard d'une fiche outil canon. 58 fiches conforment à ce schema. Champs : id, atlas, layer, name, principle, structure, gabarits[], when_works[], when_avoid[], combines_with{frameworks, hooks, angles, emotions, archetypes, formats, objections, leads}, anti_patterns[], examples[], validations[] (append-only, alimenté par learn-from-session), lineage{source, references}."
+    },
+    {
+      "category": "content",
+      "action": "seeded",
+      "files": ["resources/canon/copy/{layer}/{tool}.json (58 fichiers)"],
+      "rationale": "Atlas canon copy v1 seedé via .skills/seed-canon-copy.py. 11 couches : frameworks (6), hooks (6), angles (6), heuristiques-persuasion (7), niveaux-schwartz (2), archetypes-voix (6), formules-titres (6), objections (4), construction-offre (4), leads (5), formats-livrables (6). Source : doctrine publique acceptée (Schwartz, Cialdini, Halbert, Sugarman, Hormozi, Carlton, Jung archetypes, Ariely). Lineage tracé par fiche."
+    },
+    {
+      "category": "skills",
+      "action": "added",
+      "files": [".skills/seed-canon-copy.py"],
+      "rationale": "Script idempotent qui seed les 58 fiches. --force pour overwrite, --dry-run pour preview. Single source of truth pour le contenu canon v1 (data inline). Permet de réseed sur un nouveau workspace en une commande."
+    },
+    {
+      "category": "skills",
+      "action": "added",
+      "files": [".skills/phantom-canon.py"],
+      "rationale": "Helper Python pour /phantom canon mode. 4 niveaux : atlas-index, layer-index, tools-in-layer, tool-card. Lit le storage canon, retourne JSON structuré, l'agent rend selon le mode."
+    },
+    {
+      "category": "commands",
+      "action": "extended",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode canon (atlas du métier, workspace-level)",
+      "rationale": "Nouveau mode /phantom canon avec 4 niveaux de drill (atlas → layer → tool list → tool card). Breadcrumbs systématiques. AskUserQuestion avec slot 'applique cet outil à un brand' (déclenche produce-paid-angles avec hook={tool_id} si brand actif). Cheatsheet /phantom ? étendue avec section CANON DU MÉTIER."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [
+    "Une fois la release sync sur un workspace existant, lancer `python3 .skills/seed-canon-copy.py` pour seed l'atlas canon copy. Idempotent : skip files existants. Use --force pour réseed après mise à jour des fiches dans une release ultérieure."
+  ],
+  "operator_impact": "L'opérateur a maintenant un atlas du métier copywriting consultable depuis n'importe où dans son workspace. /phantom canon copy hooks curiosity-gap rend la fiche complète de l'outil (principe, gabarits, quand utiliser, quand éviter, combines_with, anti-patterns, exemples). Mécanisme d'enrichissement validations[] prêt pour les futures promotions par learn-from-session (v2.28+).",
+  "next_releases": [
+    "v2.27.0 : produce-paid-angles refondu pour consommer canon (output angles avec lignage doctrinal explicite : hook={tool_id}, framework={tool_id}, archetype-voix={tool_id}, etc.).",
+    "v2.28.0 : mine-voc tagging canon (chaque verbatim tagué avec Schwartz stage, émotion levier, type d'objection canon) + learn-from-session étendu pour promouvoir un outil canon vers validations[] avec contexte brand+audience+ROAS.",
+    "v2.29.0 : produce-copy-brief refondu (consommation canon, lignage de chaque section)."
+  ],
+  "size_note": "phantom.md 742 → 939 lignes. Au-dessus du cap 900 que j'avais mentionné dans v2.23. Pas urgent à splitter (sections claires), mais à réviser. Si v2.27/v2.28/v2.29 ajoutent encore du contenu phantom.md, split obligatoire vers .claude/commands/phantom-modes/{canon, search, recent, todo}.md."
+}

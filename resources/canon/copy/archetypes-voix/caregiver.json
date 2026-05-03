@@ -1,0 +1,69 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "caregiver",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Caregiver",
+  "principle": "Voix qui prend soin, rassure, accompagne. Bienveillante, douce, attentive.",
+  "structure": "Vocabulaire d'attention, ton calme, reconnaissance du pain.",
+  "gabarits": [
+    "Tu n'es pas seule. Voilà ce qui peut aider.",
+    "Prends soin de toi d'abord. La cure suit ton rythme."
+  ],
+  "when_works": [
+    "produits santé, soin, parenting, wellness",
+    "audiences vulnérables ou en transition"
+  ],
+  "when_avoid": [
+    "produits performance ou aspirationnels (trop mou)",
+    "audiences cyniques ou anti-marketing soft"
+  ],
+  "combines_with": {
+    "hooks": [
+      "confession",
+      "question-callout"
+    ],
+    "angles": [
+      "identite",
+      "retour-en-arriere"
+    ],
+    "emotions": [
+      "reconnaissance",
+      "espoir",
+      "soulagement"
+    ]
+  },
+  "anti_patterns": [
+    "Mou sans direction (voix qui n'incite à rien)",
+    "Maternant condescendant"
+  ],
+  "examples": [
+    "On sait que la chute post-grossesse est dure. La cure t'accompagne 3 mois, pas plus. Tu reprends la main."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes",
+      "Mark & Pearson Hero and Outlaw"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

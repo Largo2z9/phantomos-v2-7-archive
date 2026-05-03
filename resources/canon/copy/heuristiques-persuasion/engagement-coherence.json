@@ -1,0 +1,64 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "engagement-coherence",
+  "atlas": "copy",
+  "layer": "heuristiques-persuasion",
+  "name": "Engagement-cohérence",
+  "principle": "Une fois engagé sur petit, on se sent obligé de rester cohérent. Petit oui → grand oui.",
+  "structure": "Demande petite (clic, quiz, micro-commitment) → demande engageante (achat).",
+  "gabarits": [
+    "Quiz 30 sec → recommandation personnalisée → cure adaptée"
+  ],
+  "when_works": [
+    "quiz funnels",
+    "diagnostic personnalisé",
+    "trafic froid à qualifier"
+  ],
+  "when_avoid": [
+    "audiences pressées",
+    "marchés ultra-sophistiqués (quiz perçu obvious)"
+  ],
+  "combines_with": {
+    "formats": [
+      "quiz",
+      "VSL",
+      "landing"
+    ],
+    "leads": [
+      "problem-led"
+    ]
+  },
+  "anti_patterns": [
+    "Quiz qui force des oui artificiels",
+    "Engagement sans pertinence vers l'achat"
+  ],
+  "examples": [
+    "Diagnostic en 5 questions → 'voilà la cure pour ton profil' → checkout pré-rempli."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Cialdini Influence",
+      "Freedman & Fraser 1966"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

@@ -1,0 +1,73 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "mecanisme-unique",
+  "atlas": "copy",
+  "layer": "angles",
+  "name": "Mécanisme unique",
+  "principle": "Met en avant le 'pourquoi-ça-marche' que personne d'autre ne dit. Différencie en sortant du registre 'meilleurs ingrédients'.",
+  "structure": "Identifier le mécanisme physiologique/psychologique réel → l'expliquer simplement → montrer comment le produit l'active.",
+  "gabarits": [
+    "[Produit] active [mécanisme] que [concurrents] ignorent",
+    "La vraie raison pour laquelle [résultat] : [mécanisme]. Voici comment on l'active."
+  ],
+  "when_works": [
+    "sophistication marché 3-5",
+    "audience product-aware ou most-aware",
+    "produits avec un actif différenciant réel"
+  ],
+  "when_avoid": [
+    "sophistication 1-2 (pas besoin)",
+    "produits sans différenciation mécanique réelle"
+  ],
+  "combines_with": {
+    "frameworks": [
+      "quest",
+      "fab"
+    ],
+    "hooks": [
+      "curiosity-gap",
+      "contrarian"
+    ],
+    "leads": [
+      "mechanism-led"
+    ],
+    "formats": [
+      "VSL",
+      "landing",
+      "advertorial"
+    ]
+  },
+  "anti_patterns": [
+    "Mécanisme inventé qui ne tient pas à la lecture critique",
+    "Mécanisme trop technique (perd l'audience)"
+  ],
+  "examples": [
+    "Cellule Boost agit sur la phase anagène, pas sur le cuir chevelu. C'est pour ça que la repousse est durable.",
+    "La biotine seule ne suffit pas. Il faut le complexe B6+zinc pour que la kératine se forme."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Schwartz Breakthrough Advertising"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

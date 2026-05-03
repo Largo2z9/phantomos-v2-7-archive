@@ -1,0 +1,66 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "vsl",
+  "atlas": "copy",
+  "layer": "formats-livrables",
+  "name": "VSL",
+  "principle": "Video Sales Letter. 5-30 min de vidéo qui suit un script DR complet (qualify, problem, solution, proof, offer). Long mais converti fort.",
+  "structure": "QUEST framework étendu en vidéo. Voix-off + visuels supports.",
+  "gabarits": [
+    "Si tu es [profil], cette vidéo est pour toi / Voilà la situation / Ce que personne ne te dit / Voilà comment on règle ça / Voilà l'offre"
+  ],
+  "when_works": [
+    "produits à AOV moyen-élevé",
+    "audiences problem-aware sophistication 3+",
+    "remarketing"
+  ],
+  "when_avoid": [
+    "audiences pressées",
+    "produits impulse buying"
+  ],
+  "combines_with": {
+    "frameworks": [
+      "quest"
+    ],
+    "leads": [
+      "mechanism-led",
+      "story-led"
+    ],
+    "objections": [
+      "pre-emption"
+    ]
+  },
+  "anti_patterns": [
+    "VSL trop courte (sous-utilise le format)",
+    "VSL plate sans modulation rythmique"
+  ],
+  "examples": [
+    "VSL Karacare 12 min : qualifie mamans 28-45, raconte la chute post-partum, mécanisme cycle pilaire, témoignages, offre cure 6 mois."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "DR canon",
+      "Russell Brunson"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

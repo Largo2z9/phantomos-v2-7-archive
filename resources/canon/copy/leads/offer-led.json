@@ -1,0 +1,61 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "offer-led",
+  "atlas": "copy",
+  "layer": "leads",
+  "name": "Offer-led",
+  "principle": "Ouvre directement sur l'offre. Pour audience most-aware ou trafic chaud.",
+  "structure": "Annonce de l'offre + prix + deadline. Pas de pitch préalable.",
+  "gabarits": [
+    "Cure 3 mois Hair Boost à -25% jusqu'à dimanche."
+  ],
+  "when_works": [
+    "most-aware",
+    "retargeting",
+    "promotions courte durée"
+  ],
+  "when_avoid": [
+    "trafic froid",
+    "audiences problem-aware"
+  ],
+  "combines_with": {
+    "frameworks": [
+      "aida"
+    ],
+    "construction-offre": [
+      "urgence-rarete-temps",
+      "anchor-decoy"
+    ]
+  },
+  "anti_patterns": [
+    "Offer-led sur trafic froid (perd l'audience)"
+  ],
+  "examples": [
+    "30% sur la cure 6 mois jusqu'à dimanche minuit. Repousse 12 sem garantie."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "DR canon"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

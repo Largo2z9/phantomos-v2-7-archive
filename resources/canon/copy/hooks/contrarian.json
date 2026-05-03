@@ -1,0 +1,77 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "contrarian",
+  "atlas": "copy",
+  "layer": "hooks",
+  "name": "Contrarian",
+  "principle": "Prend le contre-pied d'une croyance dominante de l'audience. Crée du choc cognitif et positionne l'auteur comme insider.",
+  "structure": "Affirmation qui contredit le consensus → annonce d'une vérité cachée.",
+  "gabarits": [
+    "Arrête de [X], c'est ce qui empire [Y]",
+    "Tout le monde te dit [X]. C'est faux.",
+    "[Pratique populaire] = la pire chose pour [résultat]"
+  ],
+  "when_works": [
+    "sophistication marché 4+ (audience saturée des claims)",
+    "audiences problem-aware fatiguées des solutions classiques",
+    "positionnement de marque insider/authorité"
+  ],
+  "when_avoid": [
+    "audiences fragiles ou sceptiques (le choc devient agression)",
+    "sophistication 1-2 (consensus pas encore formé, contrarian sans cible)"
+  ],
+  "combines_with": {
+    "angles": [
+      "contre-intuitif",
+      "ennemi-commun"
+    ],
+    "frameworks": [
+      "pas",
+      "quest"
+    ],
+    "emotions": [
+      "surprise",
+      "indignation",
+      "soulagement"
+    ],
+    "formats": [
+      "VSL",
+      "ad-statique",
+      "advertorial"
+    ]
+  },
+  "anti_patterns": [
+    "Contre-pied gratuit non étayé (perd la crédibilité)",
+    "Trop violent (choc devient repoussoir)"
+  ],
+  "examples": [
+    "Arrête la biotine. C'est ce qui sature ton foie sans rien donner à tes cheveux.",
+    "Le shampoing à la kératine ? La pire chose pour la chute hormonale."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Halbert",
+      "Schwartz Breakthrough Advertising"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

@@ -1,0 +1,66 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "homme-ordinaire",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Homme ordinaire",
+  "principle": "Voix de tout le monde. Honnête, simple, sans piédestal. Pratique avant tout.",
+  "structure": "Vocabulaire courant, exemples du quotidien, ton casual.",
+  "gabarits": [
+    "Pas de magie. Ce qu'on a, c'est [X]. Et ça marche pour [profil].",
+    "Soyons honnêtes : [vérité brute]."
+  ],
+  "when_works": [
+    "audiences pragmatiques",
+    "marchés saturés des claims aspirationnels",
+    "trafic tiède"
+  ],
+  "when_avoid": [
+    "produits luxe ou aspirationnels",
+    "audiences en quête d'élévation"
+  ],
+  "combines_with": {
+    "hooks": [
+      "confession",
+      "question-callout"
+    ],
+    "frameworks": [
+      "bab"
+    ],
+    "emotions": [
+      "complicite"
+    ]
+  },
+  "anti_patterns": [
+    "Faux-modeste (perçu comme pose)",
+    "Trop plat (manque d'aspiration)"
+  ],
+  "examples": [
+    "On ne va pas te promettre la lune. Ce qu'on a, c'est une cure 3 mois qui marche pour 6 mamans sur 10."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

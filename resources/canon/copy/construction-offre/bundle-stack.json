@@ -1,0 +1,64 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "bundle-stack",
+  "atlas": "copy",
+  "layer": "construction-offre",
+  "name": "Bundle stack",
+  "principle": "Empile produits/bonus pour augmenter la valeur perçue tout en gardant un prix qui ressemble à du bargain.",
+  "structure": "Produit principal + accessoires + bonus information + garantie. Total perçu >> prix.",
+  "gabarits": [
+    "Cure 3 mois (89€) + brosse stimulante (15€) + guide PDF (gratuit) + garantie 60j = 89€"
+  ],
+  "when_works": [
+    "closing de funnel",
+    "saisonnalités (Black Friday, fête des Mères)",
+    "AOV à pousser"
+  ],
+  "when_avoid": [
+    "audiences habituées au bundle (saturé)",
+    "produits à AOV déjà élevé"
+  ],
+  "combines_with": {
+    "formats": [
+      "landing",
+      "checkout",
+      "VSL"
+    ],
+    "frameworks": [
+      "aida",
+      "4ps"
+    ]
+  },
+  "anti_patterns": [
+    "Bundle gonflé d'objets sans valeur",
+    "Bundle illisible (trop d'éléments)"
+  ],
+  "examples": [
+    "Cure Hair Boost + Cellule Boost + bonnet serviette + applicateur huile = 132.90€ au lieu de 167€."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Hormozi $100M Offers"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}
