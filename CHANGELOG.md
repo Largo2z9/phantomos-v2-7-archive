@@ -5,6 +5,20 @@
 
 ---
 
+## v2.16.0 — 2026-05-03 — Language doctrine amendment
+
+**Why this release.** Audit revealed 63 template files with FR-authored quoted agent-speech examples (illustrative *"the agent might say…"* snippets in skills, commands, doctrine). The previous rule (*"code blocks quoting agent speech in templates are EN baseline, translated live at runtime"*) was not enforced in practice and produced no operator-facing effect, runtime adapts to operator language regardless. The constraint had no value, only false debt.
+
+**What shipped.**
+
+- **`CLAUDE.md` § Language amended.** Quoted agent-speech examples inside skills, commands, and doctrine may now be authored in FR or EN. Template prose (doctrine, system docs, README, vision, product docs) remains EN baseline. Manifest trigger phrases stay bilingual FR + EN by design.
+
+**Breaking changes.** None.
+
+**Operator impact.** None. Quoted examples continue to render in operator language at runtime.
+
+---
+
 ## v2.15.1 — 2026-05-03 — Cross-doc cohérence cleanup
 
 **Why this release.** Post 2.15.0 audit surfaced 5 stale cross-references between docs and skills. No behavioral change, no schema bump. Cohérence patch only.

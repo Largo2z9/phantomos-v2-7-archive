@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.15.1",
+  "template_version": "2.16.0",
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "Cross-doc cohérence cleanup post 2.15.0. Stale references to renamed skill audit-meta-account swept across 5 files, broken release manifest path fixed in README, ghost skill correct-skill flagged [backlog, not shipped] in 3 doctrine docs, lexicon pointer to internal canon added on Connected source entry. No behavioral change.",
-  "manifest": "docs/internal/releases/manifest/2.15.1-manifest.json"
+  "summary": "Language doctrine clarified. Template prose stays EN baseline (doctrine, system docs, README, vision, product). Quoted agent-speech examples inside skills, commands, or doctrine may be FR or EN since runtime adapts to operator language regardless. Manifest triggers FR + EN bilingual by design. Aligns the rule with reality and removes the false EN-only constraint on illustrative quotes. No skill behavior change.",
+  "manifest": "docs/internal/releases/manifest/2.16.0-manifest.json"
 }

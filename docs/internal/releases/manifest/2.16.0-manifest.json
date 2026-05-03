@@ -1,0 +1,20 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.16.0",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "doctrine_amendment",
+  "summary": "Language doctrine in root CLAUDE.md amended. Previous rule said 'code blocks quoting agent speech in templates are EN baseline, translated live at runtime'. The EN-baseline constraint on illustrative quoted examples was not enforced in practice and produced no operator-visible effect (runtime adapts to operator language regardless). Rule now explicitly authorizes FR or EN for quoted agent-speech examples inside skills, commands, and doctrine. Template prose (doctrine, system docs, README, vision, product) remains EN baseline.",
+  "changes": [
+    {
+      "category": "doctrine",
+      "action": "amended",
+      "files": ["CLAUDE.md"],
+      "section": "Language",
+      "rationale": "63 template files contained FR-authored quoted agent-speech examples. Audit confirmed these have zero operator-facing impact (runtime translates anyway). Rule was a constraint without value. Amendment aligns doctrine with reality and removes false debt."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "None. Quoted examples in skills, commands, and doctrine continue to render in operator language at runtime."
+}

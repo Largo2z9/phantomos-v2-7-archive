@@ -35,7 +35,7 @@ Doctrine governance (promotion, amendment, retraction, conflict resolution): `do
 ---
 
 ## Language
-Template authored in EN. **ALWAYS** detect operator language at first message, persist to `/operator/profile.json → preferences.language`, adapt all operator-facing output (acks, questions, suggestions, summaries, errors, a/b/c/d). Schemas, JSON field names, paths, slugs, universal tech terms (brand, workspace, skill, agent, token, API) stay as-is regardless of operator language. Code blocks quoting agent speech in templates are EN baseline, translated live at runtime.
+Template prose authored in EN (doctrine, system docs, README, vision, product docs, schema descriptions). **ALWAYS** detect operator language at first message, persist to `/operator/profile.json → preferences.language`, adapt all operator-facing output (acks, questions, suggestions, summaries, errors, a/b/c/d) to that language. Schemas, JSON field names, paths, slugs, universal tech terms (brand, workspace, skill, agent, token, API) stay as-is regardless of operator language. **Quoted agent-speech examples inside skill files, commands, or doctrine** (illustrative *"the agent might say…"* snippets) may be authored in FR or EN ; runtime adapts to operator language regardless, so baseline language of the example is non-blocking. Trigger phrases in `.skills/_manifest.json` are bilingual FR + EN by design (operator may type either).
 
 ---
 
