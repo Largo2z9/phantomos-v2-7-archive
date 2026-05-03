@@ -12,6 +12,7 @@
 
     "meta": {
       "type": "object",
+      "description": "Identity card of the audience: name, slug, scope, parent/overlap relations, validation lifecycle.",
       "required": ["name", "slug"],
       "properties": {
         "name": { "type": "string" },
@@ -32,6 +33,7 @@
 
     "identity": {
       "type": "object",
+      "description": "Demographic and lifestyle baseline of the audience: who they are factually (age, gender, profession, income, lifestyle, information sources).",
       "properties": {
         "description": { "type": "string" },
         "archetype": { "type": "string" },
@@ -53,6 +55,7 @@
 
     "role": {
       "type": "object",
+      "description": "Audience role in the purchase decision (end user, buyer, influencer, gatekeeper). Distinguishes who uses from who pays from who recommends.",
       "properties": {
         "type": { "type": ["string", "null"], "enum": ["end_user", "buyer", "influencer", "gatekeeper", ""] },
         "proxy_link_id": { "type": ["string", "null"] },
@@ -62,6 +65,7 @@
 
     "psychology": {
       "type": "object",
+      "description": "Inner drivers of the audience: core desire, values, goals, limiting and facilitating beliefs, dominant emotions, social codes, life moments, and the Job To Be Done they hire the product for.",
       "properties": {
         "core_desire": { "type": "string" },
         "values": { "type": "array", "items": { "type": "string" } },
@@ -86,6 +90,7 @@
 
     "decision_process": {
       "type": "object",
+      "description": "How the audience moves from unawareness to purchase: what triggers awareness, where they research, what they evaluate, who they trust, what tips them into buying, how risk-tolerant they are.",
       "properties": {
         "awareness_trigger": { "type": "string" },
         "research_behavior": {
@@ -106,6 +111,7 @@
 
     "behavior": {
       "type": "object",
+      "description": "Observable purchase behavior: frequency, timeline from intent to checkout, dominant device, cart pattern, seasonal spikes, channel preferences. The factual side of how they buy.",
       "properties": {
         "purchase_frequency": { "type": ["string", "null"], "enum": ["one_time", "occasional", "regular", "subscription", ""] },
         "conversion_timeline": { "type": ["string", "null"], "enum": ["impulse", "short", "considered", "long", ""] },
@@ -119,6 +125,7 @@
 
     "voice": {
       "type": "object",
+      "description": "Language signature of the audience: vocabulary they use and avoid, recurring expressions sourced from voc, tone register expected. Drives copy that reads native to them.",
       "properties": {
         "vocabulary_to_use": { "type": "array", "items": { "type": "string" } },
         "vocabulary_to_avoid": { "type": "array", "items": { "type": "string" } },
@@ -148,6 +155,7 @@
 
     "pain_points": {
       "type": "array",
+      "description": "Problems this audience experiences that the product can address. Each pain has a depth chain (surface, consequence, deep), an associated emotion, a trigger context, and the awareness stage at which it becomes salient.",
       "items": {
         "type": "object",
         "properties": {
@@ -183,6 +191,7 @@
 
     "benefits": {
       "type": "array",
+      "description": "Gains this audience expects from the product. Each benefit has a depth chain (functional, emotional, identity), an emotional lever, and the awareness stage at which it lands.",
       "items": {
         "type": "object",
         "properties": {
@@ -217,6 +226,7 @@
 
     "objections": {
       "type": "array",
+      "description": "Reasons this audience hesitates to buy. Typed by category (price, skepticism, time, trust, urgency, efficacy, comparison), with frequency, severity, and the lifecycle stage at which it surfaces.",
       "items": {
         "type": "object",
         "properties": {
@@ -232,6 +242,7 @@
 
     "market_position": {
       "type": "object",
+      "description": "Where the audience sits in the market awareness landscape (overall awareness level, optional sophistication override). Macro counterpart to the pain/benefit awareness_stage.",
       "properties": {
         "awareness_level": { "type": "string" },
         "sophistication_override": { "type": ["string", "null"] },
@@ -241,6 +252,7 @@
 
     "research_meta": {
       "type": "object",
+      "description": "Provenance of this audience profile: confidence level of the encoding, opportunity score for prioritization, and the sources used to build it.",
       "properties": {
         "confidence": { "type": ["integer", "null"], "minimum": 0, "maximum": 100 },
         "opportunity_score": { "type": ["integer", "null"], "minimum": 1, "maximum": 10 },

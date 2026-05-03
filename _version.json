@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.16.0",
+  "template_version": "2.17.0",
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "Language doctrine clarified. Template prose stays EN baseline (doctrine, system docs, README, vision, product). Quoted agent-speech examples inside skills, commands, or doctrine may be FR or EN since runtime adapts to operator language regardless. Manifest triggers FR + EN bilingual by design. Aligns the rule with reality and removes the false EN-only constraint on illustrative quotes. No skill behavior change.",
-  "manifest": "docs/internal/releases/manifest/2.16.0-manifest.json"
+  "summary": "Canon métier briques typées trimmed from 8 to 5 (Tension, Alternative, Trigger dropped — zero schema instances, zero skill consumer). Snake_case enum convention enforced across R&D schemas. 100% description coverage on profile.schema.json + spec.schema.json top-level fields. Title casing standardized EN. Cartograph gains --incomplete mode. Snapshot-brand: 'Layer 2' renamed product detail page scraping (collision with doctrinal Layer 2), large-catalogue sampling rule added. Stress test panel 32.75/50 (threshold 35), shipped with documented limitations: Tension treated as runtime composition pattern, Antagonist roadmap'd, audit-meta-account v1.2 deferred.",
+  "manifest": "docs/internal/releases/manifest/2.17.0-manifest.json"
 }

@@ -70,6 +70,8 @@ Ask:
 | Product URL (`/products/{handle}`, `/p/`, `/shop/product/`) | Go direct → Step 2 |
 | Brand or homepage URL (`example-brand.com`, `example-brand.com/`) | Read HTML navigation FIRST (see "Hero detection" below). Only if nav gives no clear signal → try `{base_url}/products.json?limit=50` to list the catalogue. |
 | Collection URL (`/collections/{handle}`) | Try `{collection_url}/products.json?limit=50`. List products. Same flow as brand URL. |
+
+**Large catalogue (>1000 SKUs):** `products.json` is paginated 50 max per page; fully enumerating a 1000+ catalogue burns tokens and time. When the catalogue exceeds ~200 products (detected via collection counts in nav, or after first page if `products.json` returns 50 with continuation tokens), do NOT enumerate — sample: read pages 1, 2, and the most recent (sort by `published_at desc`) for hero candidates, surface the volume to the operator (*"this catalogue has 1000+ products, I'm sampling featured + hero, paste a specific URL if you want a different one"*), and let them choose. Snapshot remains one product per run.
 | Ambiguous URL (can't type) | Ask: "Is this the URL of a specific product or the brand homepage?" |
 
 One run = one product. If the operator wants several, relaunch the skill for each.
@@ -155,9 +157,9 @@ Extract from HTML (in this order of priority):
 4. Price: patterns `€X`, `$X`, `X.XX €` in the DOM
 5. Description: `<meta name="description">` + first visible paragraph
 
-**Layer 2 — product page HTML (after API, always):**
+**Product detail page scraping (HTML after API, always):**
 
-Even if Shopify JSON returns the data, read the product page HTML to capture what the API doesn't see:
+Even if Shopify JSON returns the data, read the product page HTML to capture what the API doesn't see (note: this is HTML scraping in complement to the API, not the doctrinal Layer 2 of connected tools):
 
 | Element | HTML location | Target field |
 |---|---|---|
@@ -548,7 +550,7 @@ I sort and file automatically.
 - **Never invent** a field not present in the page or answers. Null > approximation.
 - **Hero detection = nav HTML first, API second.** Some hero products are absent from `products.json`. The site nav is the source of truth, read the homepage HTML before any API call when the URL is a brand URL.
 - **Confirmation before scraping — always.** Show the detected product to the operator and wait for an explicit "go" before starting the scraping. Never assume.
-- **Shopify JSON API priority** over HTML for product data. Do not scrape HTML if `/products/{handle}.js` returns 200. Exception: Layer 2 (above-the-fold, reviews, quantity breaks) always runs in complement to the API.
+- **Shopify JSON API priority** over HTML for product data. Do not scrape HTML if `/products/{handle}.js` returns 200. Exception: product detail page scraping (above-the-fold, reviews, quantity breaks) always runs in complement to the API.
 - **Review triangulation mandatory.** Capture the 3 sources separately (native Shopify, onsite app, Trustpilot). Never use a single number without noting its source. Significant gap = flag `[review_source_conflict]`.
 - **Quantity breaks = app-driven, invisible to API.** If HTML shows per-quantity price tiers but API is flat → `type: "quantity_break"`, tiers null, ask the operator. Never invent tiers.
 - **Geo-detection.** API currency ≠ display currency → note both, flag `[geo_detection_active]`.

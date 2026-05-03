@@ -75,10 +75,6 @@ Faits opérationnels append-only : workarounds, compliance, résultats de tests.
 
 Briques typées centralement, référencées par les schemas au lieu d'être redéclarées dans chaque objet. Règle dure : type uniquement ce qui circule entre objets.
 
-### Tension
-
-Conflit interne ou externe que l'audience vit. Composée de Déclencheur + Obstacle + Alternative + Frustration. Circule dans Audience, Angle, Hook.
-
 ### Pain
 
 Souffrance identifiée. Profondeur typée par ChainNiveau : Pain, Symptom, Cause, Block. Circule dans Audience, Spec produit.
@@ -89,15 +85,7 @@ Gain identifié. Profondeur typée par ChainNiveau : Bénéfice, Outcome, Emotio
 
 ### JTBD
 
-Tâche que l'audience cherche à accomplir (Job To Be Done). Circule dans Audience, Strategy, Alternative.
-
-### Trigger
-
-Évènement déclencheur typé : situationnel, émotionnel, ou temporel. Inclut l'urgence comme variante temporelle. Circule dans Audience, Hook.
-
-### Alternative
-
-Solution concurrente que l'audience considère ou utilise. Typée en sous-types : Direct competitor, Substitut, Reframe. Porte un signal d'adoption sourcé (reviews, prix, usage). Circule dans Audience, Strategy, JTBD.
+Tâche que l'audience cherche à accomplir (Job To Be Done). Circule dans Audience, Strategy.
 
 ### AwarenessStage
 

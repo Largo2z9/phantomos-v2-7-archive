@@ -14,6 +14,7 @@
 
     "meta": {
       "type": "object",
+      "description": "Identity card of the product spec: name, slug, completeness status, timestamps.",
       "required": ["name", "slug"],
       "properties": {
         "name": { "type": "string" },
@@ -27,6 +28,7 @@
 
     "identity": {
       "type": "object",
+      "description": "What the product is at the surface level: category, niche, type, tagline, positioning, public URL, hero image, anti-features. Includes customization, co-creation, licensing, and external IDs (Shopify, Meta, GMC).",
       "properties": {
         "type": { "type": "string", "enum": ["functional", "sensory", "lifestyle"] },
         "product_category": { "type": "string", "enum": ["physical", "physical_electronic", "digital", "service"] },
@@ -90,6 +92,7 @@
 
     "specs": {
       "type": "object",
+      "description": "Physical and technical specifications: materials, composition, variants, weight/volume, device features, digital specs, service specs. Also includes regulated layers (nutrition facts, posology, contraindications) for ingestible or active products, plus origin, production method, durability, perishability.",
       "properties": {
         "materials": { "type": "array", "items": { "type": "string" } },
         "composition": {
@@ -358,6 +361,7 @@
 
     "active_principle": {
       "type": "object",
+      "description": "How the product works: the mechanism that delivers the outcome, the active element responsible, and the technical differentiator vs alternatives. Foundation for mechanism-reveal copy.",
       "properties": {
         "how_it_works": { "type": "string" },
         "active_element": { "type": "string" },
@@ -368,6 +372,7 @@
 
     "unique_mechanism": {
       "type": "object",
+      "description": "Branded or proprietary mechanism name (if any) with a one-line description. Distinct from the generic active principle. Used in proof and naming layers of copy.",
       "properties": {
         "name": { "type": ["string", "null"] },
         "description": { "type": ["string", "null"] },
@@ -377,6 +382,7 @@
 
     "benefits": {
       "type": "array",
+      "description": "Product-level gains the spec promises. Each benefit has a depth chain (functional, emotional, identity), a measurable outcome where applicable, and tags for filtering. Audience-side benefits live in profile.json.",
       "items": {
         "type": "object",
         "properties": {
@@ -400,6 +406,7 @@
 
     "problems_solved": {
       "type": "array",
+      "description": "Problems the product addresses, framed from the product side. Each problem has a depth chain (surface, consequence, deep), frequency and urgency scores, current alternatives buyers use, and verbatim quotes when sourced.",
       "items": {
         "type": "object",
         "properties": {
@@ -437,6 +444,7 @@
 
     "promise": {
       "type": "object",
+      "description": "Headline promise of the product in one sentence, plus alternative formulations. Source for hero LP, ad headline, email subject lines.",
       "properties": {
         "main": { "type": "string" },
         "variations": { "type": "array", "items": { "type": "string" } }
@@ -445,6 +453,7 @@
 
     "proofs": {
       "type": "object",
+      "description": "All evidence available to back the promise. Four buckets: social proof (rating, reviews, testimonials), authority (expert endorsements, awards, press), performance (quantifiable results, before/after), scientific (studies). Drives the proof selection layer of copy.",
       "properties": {
         "social": {
           "type": "object",
@@ -481,6 +490,7 @@
 
     "compliance": {
       "type": "object",
+      "description": "Regulatory and safety surface: certifications held, mandatory safety warnings, allergen information. Audited before publishing claims.",
       "properties": {
         "certifications": { "type": "array", "items": { "type": "string" } },
         "safety_warnings": { "type": "array", "items": { "type": "string" } },
@@ -490,6 +500,7 @@
 
     "sensory_profile": {
       "type": ["object", "null"],
+      "description": "Sensory experience descriptors for fragrance, taste, or feel products: fragrance pyramid, scent family, mood, occasion, longevity, sillage. Null if not applicable.",
       "properties": {
         "fragrance_pyramid": {
           "type": "object",
@@ -510,6 +521,7 @@
 
     "sustainability": {
       "type": ["object", "null"],
+      "description": "Environmental commitments: packaging, eco claims, certifications, refill program, environmental impact metrics (plastic saved, biodegradability, carbon footprint). Null if not a positioning axis.",
       "properties": {
         "packaging_type": { "type": ["string", "null"] },
         "eco_claims": { "type": "array", "items": { "type": "string" } },
@@ -536,6 +548,7 @@
 
     "market_context": {
       "type": "object",
+      "description": "Where the product sits in its category: sophistication of the market, demonstrability of the outcome, purchase cycle length, price sensitivity, trust barrier height. Inputs to angle selection and proof depth.",
       "properties": {
         "sophistication": { "type": ["string", "null"], "enum": ["nascent", "mature", "hyper_saturated", null, ""] },
         "demonstrability": { "type": ["string", "null"], "enum": ["visible", "measurable", "felt", null, ""] },
@@ -548,6 +561,7 @@
 
     "competitive_comparison": {
       "type": "array",
+      "description": "Feature-by-feature comparison against named competitor products. Source for comparative LP, comparison tables, and superiority claims.",
       "items": {
         "type": "object",
         "properties": {
@@ -559,6 +573,7 @@
 
     "gift_economy": {
       "type": ["object", "null"],
+      "description": "When buyer and recipient differ (gifts, B2B-to-end-user, family purchases). Captures both buyer-side benefits chain and recipient-side benefits chain. Null if buyer and recipient are the same.",
       "properties": {
         "buyer_is_consumer": { "type": "boolean", "default": true },
         "buyer_benefits_chain": {
@@ -587,6 +602,7 @@
 
     "pricing": {
       "type": "object",
+      "description": "Price economics of the product: pricing model (fixed, dynamic, quote), unit price or range, drivers of price variance, currency, COGS, gross margin, breakeven CPA. Inputs to offer engineering and paid acquisition modeling.",
       "properties": {
         "pricing_model": { "type": "string", "enum": ["fixed", "dynamic", "quote"], "default": "fixed" },
         "price": { "type": ["number", "null"] },
@@ -616,6 +632,10 @@
       }
     },
 
-    "related_products": { "type": "array", "items": { "type": "string" } }
+    "related_products": {
+      "type": "array",
+      "description": "Slugs of other products in the brand catalog that complement, replace, or upsell from this one. Source for bundle, upsell, and cross-sell logic.",
+      "items": { "type": "string" }
+    }
   }
 }

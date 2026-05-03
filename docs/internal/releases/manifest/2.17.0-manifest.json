@@ -1,0 +1,102 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.17.0",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "canon_cleanup",
+  "summary": "Canon métier briques typées trimmed from 8 to 5. Tension, Alternative, Trigger dropped (zero schema instances, zero skill consumer, zero brand instance). Snake_case enum convention enforced across R&D schemas (kebab-case migration). 100% description coverage on profile.schema.json + spec.schema.json top-level fields. Title casing standardized (EN, Title Case) on R&D schemas. Cartograph gains --incomplete mode for partial brand discovery. One typo fix in _TEMPLATE audience example. Stress test panel scored 32.75/50 (NO-GO threshold 35/50); ship accepted with documented limitations (Tension is a runtime composition pattern, not a stored brique — pattern documentation deferred to a future skill production cycle).",
+  "changes": [
+    {
+      "category": "canon",
+      "action": "removed",
+      "files": ["docs/internal/canon.md"],
+      "section": "Briques typées",
+      "rationale": "Tension, Alternative, Trigger were 100% doctrinal: zero R&D schema instances, zero skill consumers, zero brand workspace instances. Drop aligns canon with implementation reality. Final canon briques typées: Pain, Bénéfice, JTBD, AwarenessStage, ChainNiveau."
+    },
+    {
+      "category": "schemas",
+      "action": "deleted",
+      "files": [
+        "schemas/types/tension.schema.json (R&D)",
+        "schemas/types/alternative.schema.json (R&D)",
+        "schemas/types/trigger.schema.json (R&D)"
+      ],
+      "rationale": "R&D draft schemas matching the 3 dropped canon entries. Never consumed, never instantiated."
+    },
+    {
+      "category": "schemas",
+      "action": "migrated",
+      "files": [
+        "schemas/types/awareness-stage.schema.json (R&D)",
+        "schemas/types/pain.schema.json (R&D)",
+        "schemas/types/benefice.schema.json (R&D)",
+        "schemas/types/_source-meta-fragment.json (R&D)",
+        "schemas/types/chain-niveau.schema.json (R&D)",
+        "schemas/learnings.schema.json (R&D)",
+        "schemas/audience-v2.schema.json (R&D)",
+        "schemas/product-map.schema.json (R&D)",
+        "schemas/brand-position.schema.json (R&D)",
+        "resources/schemas/sop.schema.json (template)"
+      ],
+      "section": "enum values",
+      "rationale": "Snake_case enforced on enum values across R&D schemas. Resolves WS:profile (snake) vs R&D awareness-stage (kebab) split that blocked future $ref refactor. Examples: problem-aware → problem_aware, spec-produit → spec_produit, test-result → test_result, decision-trace → decision_trace, operator-statement → operator_statement, third-party → third_party, brand-filtered → brand_filtered, voix-off → voix_off."
+    },
+    {
+      "category": "schemas",
+      "action": "renamed",
+      "files": [
+        "schemas/types/awareness-stage.schema.json (title)",
+        "schemas/types/benefice.schema.json (title)",
+        "schemas/types/chain-niveau.schema.json (title)",
+        "schemas/brand-position.schema.json (title)"
+      ],
+      "rationale": "Title casing standardized to EN Title Case: 'AwarenessStage' → 'Awareness Stage', 'Bénéfice' → 'Benefit', 'ChainNiveau' → 'Chain Niveau', 'Position de marque' → 'Brand Position'. Matches template baseline EN convention."
+    },
+    {
+      "category": "schemas",
+      "action": "documented",
+      "files": [
+        "resources/schemas/profile.schema.json",
+        "resources/schemas/spec.schema.json"
+      ],
+      "rationale": "100% description coverage on top-level fields. profile.schema.json: 12 fields (meta, identity, role, psychology, decision_process, behavior, voice, pain_points, benefits, objections, market_position, research_meta). spec.schema.json: 17 fields (meta, identity, specs, active_principle, unique_mechanism, benefits, problems_solved, promise, proofs, compliance, sensory_profile, sustainability, market_context, competitive_comparison, gift_economy, pricing, related_products). Pre-cleanup coverage was 0%."
+    },
+    {
+      "category": "skills",
+      "action": "extended",
+      "files": [".skills/skills/cartograph/SKILL.md"],
+      "section": "Modes",
+      "rationale": "Added `cartograph --learn brand=<slug> --incomplete` mode: allows partial cartograph in brand mode without `wedge_complete: true` requirement. Outputs partial synthesis READ-ONLY with explicit warning + 3 prioritized completion decisions."
+    },
+    {
+      "category": "skills",
+      "action": "polished",
+      "files": [".skills/skills/snapshot-brand/SKILL.md"],
+      "rationale": "Renamed in-skill 'Layer 2 — product page HTML' → 'Product detail page scraping' to avoid collision with the doctrinal 'Layer 2 = APIs callable through skills' in root CLAUDE.md § Connected tools. Added large-catalogue (>200 SKUs) sampling rule: read pages 1, 2, recent-published instead of full enumeration; surface volume to operator + invite specific URL."
+    },
+    {
+      "category": "data",
+      "action": "fixed",
+      "files": ["brands/_TEMPLATE/audiences/_example/profile.json"],
+      "rationale": "Typo fix in tag namespace example: 'awareness:solution-aware' → 'awareness:solution_aware'. Aligns example with the snake_case enum convention enforced in profile.schema.json."
+    }
+  ],
+  "breaking_changes": [
+    "Any R&D draft consumer (none currently — drafts were uninstantiated) referencing kebab-case enum values must migrate to snake_case.",
+    "Canon entries Tension, Alternative, Trigger removed from docs/internal/canon.md. No template skill was consuming them; no migration path needed."
+  ],
+  "migrations": [],
+  "operator_impact": "None visible. Internal doctrine cleanup. Operators continue to see the same skill behaviors. Cartograph gains an explicit partial-output mode for early-stage brands.",
+  "stress_test": {
+    "score": 32.75,
+    "threshold": 35,
+    "verdict": "NO-GO threshold not met; ship accepted with documented limitations",
+    "report": "../../../../research/stress-test-cleanup-2026-05-03.md",
+    "documented_limitations": [
+      "Tension is treated as a runtime composition pattern (core_desire + beliefs_limiting + emotion), not a stored brique. Pattern documentation in framework (e.g. voc-coding.md) deferred to a future cold-acquisition copy production cycle.",
+      "Antagonist (positioning narrative concept) flagged as missing typed brique. Currently unstructured in brand.json#/positioning/differentiation. Roadmap'd for a future brand-strategy session.",
+      "audit-meta-account v1.1 covers ~70% of Meta health checks. Missing: CBO/ABO usage, DSA detection, Advantage+ shopping flag, multi-account per brand. Roadmap'd for v1.2.",
+      "produce-launch-bundle orchestrator (mine-voc → angles → briefs end-to-end) flagged by panel; deferred."
+    ]
+  }
+}

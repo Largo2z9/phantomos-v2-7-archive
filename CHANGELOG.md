@@ -5,6 +5,38 @@
 
 ---
 
+## v2.17.0 — 2026-05-03 — Canon cleanup + schema standardization
+
+**Why this release.** Recent build sessions (S50 → S54) inscribed multiple briques typées at the canon (Tension, Pain, Bénéfice, JTBD, Trigger, Alternative, AwarenessStage, ChainNiveau) and drafted matching R&D schemas, but never finished the migration into the template. Audit revealed 3 canon entries with zero schema instance + zero skill consumer + zero brand instance, an enum-case split between R&D (kebab) and template (snake) blocking future $ref refactor, and 0% description coverage on the two most critical schemas. This release reconciles canon with implementation reality.
+
+**What shipped.**
+
+- **Canon trimmed from 8 to 5 briques typées.** `docs/internal/canon.md` drops Tension, Alternative, Trigger entries (never instantiated, never consumed). Final canon: Pain, Bénéfice, JTBD, AwarenessStage, ChainNiveau.
+- **R&D draft schemas deleted** matching the dropped canon entries: `schemas/types/tension.schema.json`, `alternative.schema.json`, `trigger.schema.json`.
+- **Snake_case enum convention enforced across R&D schemas.** Migrated kebab-case enum values to snake_case in `awareness-stage.schema.json` (problem-aware → problem_aware, etc.), `pain.schema.json` + `benefice.schema.json` (spec-produit → spec_produit), `_source-meta-fragment.json` (operator-statement → operator_statement, third-party → third_party), `chain-niveau.schema.json`, `learnings.schema.json` (test-result → test_result, decision-trace → decision_trace), `audience-v2.schema.json`, `product-map.schema.json` (brand-filtered → brand_filtered), `brand-position.schema.json` (voix-off → voix_off), `resources/schemas/sop.schema.json` (3 enums migrated). Resolves the WS-vs-R&D split that blocked future type extraction in $ref form.
+- **Title casing standardized EN Title Case.** `AwarenessStage` → `Awareness Stage`, `Bénéfice` → `Benefit`, `ChainNiveau` → `Chain Niveau`, `Position de marque` → `Brand Position`. Matches template baseline EN convention.
+- **100% description coverage on profile + spec schemas.** `resources/schemas/profile.schema.json` documents 12 top-level fields. `resources/schemas/spec.schema.json` documents 17 top-level fields. Pre-cleanup coverage was 0%.
+- **`cartograph` gains `--incomplete` mode.** New row in Modes table: `cartograph --learn brand=<slug> --incomplete` allows partial cartograph in brand mode without `wedge_complete: true` requirement. Outputs partial synthesis READ-ONLY with explicit warning + 3 prioritized completion decisions.
+- **`snapshot-brand` polished.** Renamed in-skill section "Layer 2 — product page HTML" → "Product detail page scraping" to avoid collision with the doctrinal "Layer 2 = APIs callable through skills" defined in root `CLAUDE.md § Connected tools`. Added large-catalogue (>200 SKUs) sampling rule: instead of full enumeration of `products.json`, read pages 1, 2, recent-published, surface volume to operator, invite specific URL paste.
+- **Typo fix in `_TEMPLATE` audience example.** `brands/_TEMPLATE/audiences/_example/profile.json` line 70: `'awareness:solution-aware'` → `'awareness:solution_aware'`. Aligns example with snake_case enum convention.
+- **Stress test panel run.** 5-expert backdoor stress test (DTC operator, DR copywriter, brand strategist, schema architect, media buyer) scored 32.75/50 (threshold 35/50). NO-GO threshold not met; ship accepted with documented limitations. Full report: `05-projects/context-engine/research/stress-test-cleanup-2026-05-03.md` (R&D side, not template).
+
+**Documented limitations (panel feedback).**
+
+- **Tension treated as runtime composition pattern, not stored brique.** Convergence 3/4 experts flagged Tension drop as load-bearing for cold-acquisition DR copy. Resolution: Tension is a pattern of inference (composition of `psychology.core_desire` + `psychology.beliefs_limiting` + `pain_points[].emotion`), not a stored type. Pattern documentation in framework (e.g. `voc-coding.md`) deferred to a future cold-copy production cycle.
+- **Antagonist concept roadmap'd.** Brand strategist (25/50) flagged absence of typed positioning narrative brique. Currently lives unstructured in `brand.json#/positioning/differentiation`. Future extraction in `antagonist.schema.json` deferred to a brand-strategy session.
+- **`audit-meta-account` v1.1 covers ~70% of Meta health checks.** Missing CBO/ABO, DSA, Advantage+, multi-account. Roadmap'd v1.2.
+- **`produce-launch-bundle` orchestrator deferred.** Operators must currently chain `mine-voc → produce-paid-angles → produce-copy-brief` manually.
+
+**Breaking changes.**
+
+- Any R&D draft consumer (none currently — drafts were uninstantiated) referencing kebab-case enum values must migrate to snake_case.
+- Canon entries Tension, Alternative, Trigger removed. No template skill was consuming them.
+
+**Operator impact.** None visible. Internal doctrine cleanup. Operators continue to see the same skill behaviors. Cartograph gains an explicit partial-output mode for early-stage brands.
+
+---
+
 ## v2.16.0 — 2026-05-03 — Language doctrine amendment
 
 **Why this release.** Audit revealed 63 template files with FR-authored quoted agent-speech examples (illustrative *"the agent might say…"* snippets in skills, commands, doctrine). The previous rule (*"code blocks quoting agent speech in templates are EN baseline, translated live at runtime"*) was not enforced in practice and produced no operator-facing effect, runtime adapts to operator language regardless. The constraint had no value, only false debt.

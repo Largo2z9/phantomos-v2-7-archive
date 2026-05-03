@@ -67,7 +67,7 @@
       "parent_slug": "Slug de la poche parente dont celle-ci est une déclinaison. Null si poche racine. Permet la navigation broad → narrow sans arborescence dossier.",
       "overlap_with": "Array de slugs d'autres poches qui partagent des traits. Signal de chevauchement — le détail de l'overlap (quels champs se recoupent) sort dans le rapport de mining, pas ici.",
       "product_id": "Primary product slug this audience was discovered from / built for. Provenance only — multi-product mapping lives in pilotage docs, not here.",
-      "tags": "Queryable labels with MANDATORY namespaces. Format: '{namespace}:{value}'. Namespaces autorisés : problem: | context: | profession: | awareness: | life_moment: | behavior:. Vocabulaire libre à l'intérieur du namespace. Ex: ['problem:foot-pain', 'context:standing-job', 'profession:nurse', 'awareness:solution-aware'].",
+      "tags": "Queryable labels with MANDATORY namespaces. Format: '{namespace}:{value}'. Namespaces autorisés : problem: | context: | profession: | awareness: | life_moment: | behavior:. Vocabulaire libre à l'intérieur du namespace. Ex: ['problem:foot-pain', 'context:standing-job', 'profession:nurse', 'awareness:solution_aware'].",
       "audience_type": "primary | secondary | discovered | assumed. 'discovered' = found via VoC mining (not anticipated). 'assumed' = inferred from product logic (not validated).",
       "validation_status": "hypothesis | tested | validated | scaled | fatigued. Factual observable state. hypothesis = pas encore testée en campagne. tested = ad set lancé, résultats non-concluants. validated = CPA/ROAS confirmé viable. scaled = budget significatif alloué. fatigued = performance en déclin. Règle : hypothesis > 30 jours sans test → flag par validate-resources."
     }

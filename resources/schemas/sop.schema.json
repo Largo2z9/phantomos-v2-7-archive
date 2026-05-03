@@ -21,13 +21,13 @@
       "description": "High-level functional category. Used by orchestrators to discover relevant SOPs."
     },
     "scope": {
-      "enum": ["single-brand", "portfolio", "workspace", "platform-specific", "cross-channel"],
-      "description": "Level at which the SOP operates. single-brand = one brand at a time. portfolio = multiple brands via fan-out."
+      "enum": ["single_brand", "portfolio", "workspace", "platform_specific", "cross_channel"],
+      "description": "Level at which the SOP operates. single_brand = one brand at a time. portfolio = multiple brands via fan-out."
     },
     "platforms": {
       "type": "array",
       "items": {
-        "enum": ["meta", "google-ads", "tiktok", "pinterest", "snap", "shopify", "klaviyo", "email", "seo", "organic", "agnostic"]
+        "enum": ["meta", "google_ads", "tiktok", "pinterest", "snap", "shopify", "klaviyo", "email", "seo", "organic", "agnostic"]
       },
       "description": "Platforms the SOP touches. Agnostic = no platform dependency."
     },
@@ -57,7 +57,7 @@
         "type": "object",
         "properties": {
           "source_type": {
-            "enum": ["orchestrator", "operator-direct", "parent-sop", "scheduled", "event-triggered"]
+            "enum": ["orchestrator", "operator_direct", "parent_sop", "scheduled", "event_triggered"]
           },
           "source": {
             "type": "string",
