@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.19.0",
+  "template_version": "2.19.1",
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "snapshot-brand Step 5 rewritten as 4-movement audience cartography (raw observations → cartography axes → hierarchy mère/sous-audiences → hand-off pédagogique vers mine-voc). New doctrine doc audience-cartography.md. Field-level contract enforced: snapshot-brand fills only the cartography skeleton (meta, identity.gender, identity.age_range, pain.primary_problem). pain_points[], objections[], voice.key_expressions[], psychology.beliefs_*[] are mine-voc territory. Resolves S55 karacare regression where the agent collapsed seven audiences into one flat profile and forced the operator to rebuild the cartography by hand. Includes sync-test-workspace.sh script (R&D side) that excludes brands/ and operator/ from sync to prevent operator state loss.",
-  "manifest": "docs/internal/releases/manifest/2.19.0-manifest.json"
+  "summary": "snapshot-brand Step 5 wording sweep: operator-facing examples now use plain language (manières de découper / groupe principal / sous-groupe / à valider) instead of skill-author internal terms (cartography axis / mother audience / validation_status). Skill-author structure unchanged. /phantom mode brand extended with audience hierarchy view (tree of mother/sub with mining state). Closing of Movement 3 mentions /phantom {brand} to visualize the audiences. Resolves Largo wording feedback after live test on phantomos-test workspace.",
+  "manifest": "docs/internal/releases/manifest/2.19.1-manifest.json"
 }

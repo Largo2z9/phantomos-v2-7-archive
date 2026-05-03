@@ -5,6 +5,22 @@
 
 ---
 
+## v2.19.1 — 2026-05-03 — Audience cartography wording polish
+
+**Why this patch.** Live operator feedback after v2.19.0: operator-facing copy was leaking skill-author vocabulary (*"cartography axis"*, *"mother audience"*, *"hand-off pédagogique"*, *"validation_status: hypothesis"*, *"hypothesis-grade"*). Too clinical, too internal. Skill-author structure was solid, the surface needed plain language.
+
+**What shipped.**
+
+- **`snapshot-brand` Step 5 operator-facing examples rewritten in plain language.** *"manières de découper"* instead of *"cartography axes"*. *"groupe principal"* / *"sous-groupe"* instead of *"mother audience"* / *"sub-audience"*. *"à valider"* instead of *"hypothesis"*. *"hypothèse de travail"* instead of *"hypothesis-grade"*. The four Movement section headers stay in the skill file as structure for skill authors, but never leak in operator output.
+- **Movement 3 closing now mentions `/phantom {brand_slug}`** so the operator can visualize the encoded audiences anytime as a tree, not have to re-query.
+- **`/phantom` mode brand extended with hierarchical audience tree.** Renders the mère/sous structure with translated validation labels (`à valider` / `testée` / `validée` / `scalée` / `fatiguée`) and a coarse mining state (`vide` / `partiel` / `dense`). Never exposes `validation_status` enum or numeric percentages.
+
+**Breaking changes.** None.
+
+**Operator impact.** Snapshot conversation feels less clinical. The cockpit `/phantom {brand}` renders the audience cartography as a tree, matching the structure the operator just agreed to in Step 5.
+
+---
+
 ## v2.19.0 — 2026-05-03 — Audience cartography (4 movements)
 
 **Why this release.** Live test on the phantomos-test workspace surfaced a dominant friction in `snapshot-brand` Step 5: the agent collapsed what should have been seven audiences (2 mothers + 5 sub-audiences for Karacare) into a single flat *femmes-cheveux-fragiles* profile. The operator had to spend 6+ minutes manually rebuilding the cartography (proposing axes, hierarchy, sub-segmentation) that the agent should have proposed autonomously. Symptom of a deeper bug : Step 5 was form-fill, not cartography.

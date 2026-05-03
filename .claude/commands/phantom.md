@@ -170,6 +170,47 @@ Exemples :
 
 Ordre d'affichage : brand, products, offers, audiences, angles, strategy, learnings.
 
+### Audience hierarchy (mode brand)
+
+When audiences are organized as mère / sous-audiences (introduced v2.19.0), expand the audiences row into an indented hierarchy view. Detect via `meta.parent_slug` in each `audiences/{slug}/profile.json`.
+
+Format :
+
+```
+{icon} audiences         {N} groupes principaux + {M} sous-groupes
+   ├─ {parent_slug}      {scope}    {validation_label}    {fields_filled_pct}
+   │   ├─ {sub_slug}     {scope}    {validation_label}    {fields_filled_pct}
+   │   └─ {sub_slug}     {scope}    {validation_label}    {fields_filled_pct}
+   └─ {parent_slug}      {scope}    {validation_label}    {fields_filled_pct}
+       └─ {sub_slug}     {scope}    {validation_label}    {fields_filled_pct}
+```
+
+`validation_label` translation (NEVER expose `validation_status` enum directly to the operator):
+- `hypothesis` → `à valider`
+- `tested` → `testée`
+- `validated` → `validée`
+- `scaled` → `scalée`
+- `fatigued` → `fatiguée`
+
+`fields_filled_pct` is a coarse completeness signal: count non-null fields in `pain_points[]`, `voice.key_expressions[]`, `psychology.beliefs_*`, `objections[]` divided by expected. Surface as `mining: vide` (0%), `mining: partiel` (1-50%), `mining: dense` (>50%). NEVER expose the percentage as a number.
+
+Real example:
+
+```
+⚠ audiences           2 groupes + 5 sous-groupes (mining: vide)
+   ├─ pousse-projet         groupe    à valider    mining: vide
+   │   ├─ pousse-jeune-adulte  sous   à valider    mining: vide
+   │   └─ pousse-recovery      sous   à valider    mining: vide
+   └─ chute-active          groupe    à valider    mining: vide
+       ├─ chute-post-grossesse  sous  à valider    mining: vide
+       ├─ chute-hormonale-stress sous à valider    mining: vide
+       └─ chute-traction        sous  à valider    mining: vide
+```
+
+If `mining: vide` on most sub-groups, the *Next suggested* block should propose `mine-voc` as priority 1.
+
+If audiences exist but no parent_slug links (legacy flat structure), skip the hierarchy view and use the legacy single-line format.
+
 ### Connected sources lines (mode brand)
 
 Pour chaque source, format :

@@ -374,79 +374,89 @@ Price scraping always in a known context. The API returns the base currency (USD
 
 The agent does NOT extract `pain_points[]`, `psychology.beliefs_limiting[]`, `voice.key_expressions[]` from the product page. Those fields belong to `mine-voc` verbatim. snapshot-brand fills only the cartography skeleton listed in `audience-cartography.md § Field-level contract`.
 
-### Movement 1 — Raw observations
+### Movement 1 — Raw observations (operator-facing)
 
-Before any classification, name what the page literally said. No interpretation, just observation with source. Format:
+Before any classification, name what the page literally said. No interpretation, just observation with source. **Zero internal jargon in the operator output** : never say "Movement", "cartography axis", "validation_status", "hypothesis-grade", "field path". Plain words.
 
-> *"Voici ce que la page m'a dit, mot pour mot : la marque s'adresse à des femmes (mention `for her` ligne 14), évoque la chute (mot apparaît 8 fois dans le body), évoque la pousse (4 fois), pas de mention d'âge explicite, pas de mention de profession ou de contexte de vie. Les tags produit pointent sur biotine, post-grossesse, cheveux abîmés."*
+Format example:
 
-If the page is thin, say so explicitly:
-
-> *"La page n'a quasiment rien dit côté audience : juste une mention `for her` et deux tags génériques. Tout ce que je vais proposer en Movement 2 est hypothèse-grade et appelle ta correction."*
-
-Movement 1 is **never skipped**. Empty observations are a valid output and more useful than a fabricated profile.
-
-### Movement 2 — Cartography axes
-
-Propose 2 to 3 alternative axes for slicing the audience. Always mark one as the default hypothesis with a one-line rationale tied to a Movement 1 observation. Always invite the operator to override.
-
-Three canonical axes (full doctrine in `docs/system/audience-cartography.md § The four operator-facing movements § Movement 2`):
-
-- **Pain-driven** — slice by emotional state ("want to grow" vs "losing hair"). Dominant axis when pain register diverges by segment.
-- **Situational** — slice by life moment / context (post-grossesse vs stress longue durée). Dominant axis when the same pain has different trigger contexts.
-- **Demographic / cultural** — slice by who they are (voilées vs non voilées). Rarely the dominant axis for paid acquisition; usually a modulator within pain or situational.
-
-Format:
-
-> *"Trois manières de découper cette audience, je te donne les trois et tu me dis laquelle colle à ce que tu vois en perfs.*
+> *"Voilà ce que la page m'a dit côté audience, brut.*
 >
-> *Axe pain-driven : 'je veux pousser' vs 'je perds mes cheveux'. [why fits]*
+> *La marque s'adresse à des femmes (mention 'pour elle' visible plusieurs fois). Le mot 'chute' revient 8 fois dans la description. Le mot 'pousse' 4 fois. Pas d'âge cité, pas de profession, pas de contexte de vie. Les tags produit pointent sur biotine, post-grossesse, cheveux abîmés.*
 >
-> *Axe situationnel : 'post-grossesse' vs 'stress' vs 'saisonnier'. [why fits]*
+> *Trois signaux clairs (femmes, chute, pousse), le reste est silencieux. Je vais te proposer plusieurs manières de découper là-dedans, et tu trancheras."*
+
+If the page is thin, say so plainly:
+
+> *"La page m'a quasiment rien dit côté audience : juste 'pour elle' et deux tags génériques. Tout ce que je vais proposer après est à prendre comme une hypothèse de travail, pas une vérité. Tu corrigeras."*
+
+Movement 1 is **never skipped**. Empty observations are a valid output, and more useful than a fabricated profile.
+
+### Movement 2 — Découpages possibles (operator-facing)
+
+Propose 2 to 3 alternative ways to slice the audience. Always mark one as the default hypothesis with a one-line rationale tied to a Movement 1 observation. Always invite override. **Operator-facing language**: "manières de découper", "découpages", "axes". Never "cartography axes".
+
+The three canonical axes (skill-author vocabulary, NOT operator vocabulary):
+
+- **Pain-driven** — slice by emotional state. Dominant when pain register diverges by segment.
+- **Situational** — slice by life moment / context. Dominant when the same pain has different trigger contexts.
+- **Demographic / cultural** — slice by who they are. Rarely dominant for paid acquisition; usually a modulator within pain or situational.
+
+Operator-facing format example:
+
+> *"Trois manières de découper cette audience, je te les pose toutes les trois et tu me dis laquelle colle à ce que tu vois en perfs.*
 >
-> *Axe démographique : 'voilées' vs 'non voilées'. [why fits]*
+> *(1) Découpage par ressenti : 'je veux pousser' (longueur, densité, projet beauté positif) vs 'je perds mes cheveux' (chute active, charge émotionnelle, urgence). C'est le découpage qui colle quand le registre copy diverge fort entre les deux états.*
 >
-> *Mon hypothèse default à corriger franchement : axe X, parce que [Movement 1 observation]. Si tu vois autre chose en perfs, dis-le."*
+> *(2) Découpage par moment de vie : 'post-grossesse' vs 'stress longue durée' vs 'saisonnier'. Adapté quand le même pain est déclenché dans des contextes très différents.*
+>
+> *(3) Découpage par profil : 'voilées' vs 'non voilées'. Adapté quand le casting créa et le canal d'acquisition divergent par profil.*
+>
+> *Mon hypothèse à corriger franchement : (1) découpage par ressenti, parce que la page parle à la fois de chute et de pousse avec deux registres distincts (urgence vs projet). Si tu vois autre chose en perfs, dis-le."*
 
 Wait for the operator's choice before Movement 3.
 
-### Movement 3 — Hierarchy mère / sous-audiences
+### Movement 3 — Hierarchy proposée (operator-facing)
 
-Once the operator picks an axis, propose 2 to 3 **mother audiences** with 1 to 3 **sub-audiences** under each. Mother audiences carry the strategic positioning. Sub-audiences carry refinement that drives creative casting and channel choice.
+Once the operator picks an axis, propose 2 to 3 **groupes principaux** with 1 to 3 **sous-groupes** each. Skill-author terms: mother audiences and sub-audiences. **Operator-facing terms**: "groupe principal" et "sous-groupe", or just "groupe" et "sous". Never "mother audience", never `meta.parent_slug`, never "validation_status: hypothesis".
 
-All sub-audiences are marked `meta.validation_status: "hypothesis"`. They get enriched downstream by `mine-voc` (verbatim) and validated by `audit-meta-account` (paid performance).
+Operator-facing format example:
 
-Format:
-
-> *"Sur l'axe pain-driven que t'as choisi, voici la hiérarchie que je propose :*
+> *"Sur le découpage par ressenti que t'as choisi, voilà la structure que je propose, en deux niveaux.*
 >
-> *Mère 'pousse-projet' : longueur ou densité jugées insuffisantes, démarche beauté positive, pas d'urgence.*
-> *  Sous : pousse-jeune-adulte, pousse-recovery (post-coloration / post-lissage).*
+> *Groupe 1 : pousse-projet — longueur ou densité jugées insuffisantes, démarche beauté positive, pas d'urgence.*
+> *  Sous-groupes : pousse-jeune-adulte (18-30, projet esthétique), pousse-recovery (post-coloration ou post-lissage, casse récente).*
 >
-> *Mère 'chute-active' : chute en cours, charge émotionnelle, urgence.*
-> *  Sous : chute-post-grossesse, chute-hormonale-stress, chute-traction.*
+> *Groupe 2 : chute-active — chute en cours, charge émotionnelle, urgence.*
+> *  Sous-groupes : chute-post-grossesse (25-35, hormonal aigu), chute-hormonale-stress (22-32, diffuse longue durée), chute-traction (zones d'appui voile / tissages / tresses).*
 >
-> *Toutes les sous-audiences sont en hypothesis. mine-voc les enrichit avec du verbatim réel. Tu valides la hiérarchie, ou tu veux qu'on en garde moins en hypothèse pour démarrer plus serré ?"*
+> *Tous les sous-groupes sont à valider — c'est volontaire, ça veut dire qu'on les pose comme hypothèses de travail et qu'on les confirmera avec du vrai verbatim client juste après. Tu valides cette structure, ou tu veux qu'on en garde moins pour démarrer plus serré ?"*
 
-Single-question gate. Wait for operator confirmation.
+Single-question gate. Wait for operator confirmation. Once confirmed, scaffold the audience folders (Step 6) and explicitly tell the operator they can visualize the result via `/phantom {brand_slug}`.
 
-### Movement 4 — Hand-off pédagogique vers mine-voc
+> *"Validé. Je grave les 5 audiences (2 groupes principaux + 3 sous-groupes). Tu peux les visualiser à tout moment en tapant `/phantom {brand_slug}` — ça te sort un cockpit avec la liste, le statut de chacune, et ce qu'il manque pour passer de l'hypothèse au validé."*
 
-Before closing Step 5, explicitly tell the operator how the audience encoding will be **exploited downstream**. This is the pedagogy step. It anchors why the work matters and proposes the next skill.
+### Movement 4 — Hand-off vers mine-voc (operator-facing)
 
-Format:
+Before closing Step 5, explicitly tell the operator how the audience encoding will be **used next**. Anchors why the work matters and proposes the next skill. **Operator-facing language**: skill names are OK (the operator is learning the system), internal field names are NOT.
+
+Format example:
 
 > *"Voilà comment ces audiences vont servir à partir de maintenant.*
 >
-> *L'encodage qu'on vient de poser est volontairement minimal : un slug, un axe, une hypothèse. Deux skills l'enrichissent.*
+> *Ce qu'on vient de poser est volontairement minimal : un nom, un découpage, une hypothèse. Pas de pain_points détaillés, pas d'objections, pas de citations clientes. C'est exprès — ces fields-là, je ne vais pas les inventer depuis une page produit, ils doivent venir de ce que disent vraiment tes clientes.*
 >
-> *mine-voc lit Trustpilot, les widgets onsite, les threads Reddit pertinents et remplit pour chaque sous-audience les pain_points exacts (le vrai mot qu'elles utilisent), les objections récurrentes, les expressions clés. C'est ce qui passe les audiences de hypothesis-grade à validation-grade. ~30 min en background.*
+> *Deux skills enrichissent ça :*
 >
-> *produce-paid-angles consomme ensuite ces audiences enrichies pour te sortir un set d'angles ranked, prêts à brief créa. Sans mine-voc d'abord, les angles sortent au mot près de mon chapeau, pas de tes clientes.*
+> *mine-voc lit Trustpilot, les widgets onsite, les threads Reddit pertinents et remplit pour chaque sous-groupe les douleurs exactes (le vrai mot qu'elles utilisent), les objections récurrentes, les expressions clés. C'est ce qui passe les audiences de l'hypothèse à du validé sourcé. ~30 min en arrière-plan, tu n'attends pas.*
 >
-> *Mon avis : on lance mine-voc maintenant. Si t'as une deadline créa cette semaine et tu pousses direct sur les angles en hypothèse-grade, dis-le. T'as aussi des données existantes (reviews, analytics, support returns) à m'injecter avant mine-voc ? Si oui, donne-moi le fact le plus dense en 1-2 phrases."*
+> *produce-paid-angles consomme ensuite ces audiences enrichies pour sortir un set d'angles ranked, prêt à brief créa. Sans mine-voc d'abord, les angles sortent au mot près de mon chapeau, pas de tes clientes — c'est pour ça que je recommande l'ordre.*
+>
+> *Tu as aussi `/phantom {brand_slug}` à tout moment pour voir ces audiences avec leur niveau d'enrichissement.*
+>
+> *Mon avis : on lance mine-voc maintenant et on enchaîne sur les angles. Si t'as une deadline créa cette semaine et tu pousses direct sur les angles en hypothèse, dis-le, on ajuste. Et si t'as déjà des données existantes (reviews exportées, analytics, retours SAV) à m'injecter avant mine-voc, donne-moi le fact le plus dense en 1-2 phrases — ça nourrit le mining."*
 
-The closing question fuses Movement 4 with what was previously Step 5D (existing data probe). One question, three doors: lance mine-voc, push direct sur angles hypothesis-grade, ou existe data à injecter d'abord.
+The closing question fuses three options: lance mine-voc maintenant, pousse direct sur angles, ou existe data à injecter d'abord.
 
 ### Movement gate (technical)
 

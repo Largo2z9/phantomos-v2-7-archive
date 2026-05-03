@@ -1,0 +1,34 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.19.1",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "wording_polish",
+  "summary": "Patch on v2.19.0 audience cartography. Operator-facing examples in snapshot-brand Step 5 rewritten to remove internal jargon (cartography axis → manières de découper, mother audience → groupe principal, validation_status: hypothesis → à valider, hand-off pédagogique → no jargon). Skill-author structure (Movement 1/2/3/4 section headers) unchanged. /phantom mode brand extended with hierarchical audience tree view, exposing the mère/sous structure with translated validation labels and a coarse mining state. Movement 3 closing now explicitly proposes /phantom {brand_slug} so the operator can visualize the encoded audiences anytime.",
+  "changes": [
+    {
+      "category": "skills",
+      "action": "polished",
+      "files": [".skills/skills/snapshot-brand/SKILL.md"],
+      "section": "Step 5 operator-facing examples",
+      "rationale": "S55+ live test feedback: operator-facing copy was leaking skill-author vocabulary (Movement, cartography axis, hierarchy, hand-off pédagogique, validation_status: hypothesis, hypothesis-grade). Operator perception: too clinical, too internal. Rewrite swaps to plain language: manières de découper, découpage, groupe principal, sous-groupe, à valider, hypothèse de travail. The four Movement section headers remain in the SKILL.md for skill-author structure but never leak in the operator output."
+    },
+    {
+      "category": "commands",
+      "action": "extended",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode brand — Audience hierarchy",
+      "rationale": "v2.19.0 introduced mère/sous-audience hierarchy. /phantom mode brand previously rendered audiences as a single flat line. Now renders an indented tree (mère + sous) with translated validation labels (à valider / testée / validée / scalée / fatiguée) and a coarse mining state (vide / partiel / dense) — never exposing validation_status enum or numeric percentages. Operator can visualize the cartography at any moment via /phantom {brand_slug}."
+    },
+    {
+      "category": "skills",
+      "action": "polished",
+      "files": [".skills/skills/snapshot-brand/SKILL.md"],
+      "section": "Step 5 Movement 3 closing",
+      "rationale": "Explicit mention of /phantom {brand_slug} after hierarchy validation. Reinforces the cockpit pattern: encode once, visualize anytime, never re-ask."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Snapshot conversation feels less clinical. The operator hears 'trois manières de découper' instead of 'three cartography axes', 'à valider' instead of 'hypothesis', 'groupe principal / sous-groupe' instead of 'mother / sub-audience'. The cockpit `/phantom {brand}` now renders the audience cartography as a tree, which is what the operator expects after agreeing to the hierarchy in Step 5."
+}
