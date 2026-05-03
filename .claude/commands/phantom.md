@@ -334,3 +334,81 @@ If `{entity}` is unsupported (not in the list above), surface : *"Entité '{x}' 
 - **Workspace est le default.** `/phantom` sans argument lande toujours au niveau workspace (sauf bootstrap si 0 brand). L'opérateur drille explicitement via `/phantom {slug}`. Pattern terminal-like, jamais court-circuiter la navigation.
 - **Drill par étape, pas en bloc.** `/phantom {slug}` montre le brand. `/phantom {slug} {entity}` zoome sur une entité. Évite de tout dump en une fois ; économie de contexte ET de lisibilité.
 - **Next-suggested = paste-ready.** Toutes les actions surfacées dans NEXT SUGGESTED doivent être copiables verbatim dans le prompt suivant. Format : *"→ Tape : `{commande exacte}` ({why})"*. Jamais de conseil passif type *"Lancer mine-voc dès que possible"*.
+- **Navigation cliquable systématique.** Chaque rendering `/phantom` (workspace, brand, entity-drill) se conclut PAR un AskUserQuestion natif qui propose la navigation suivante. Voir section *Navigation interactive* ci-dessous.
+
+---
+
+## Navigation interactive (AskUserQuestion)
+
+Le terminal n'a pas de flèches haut/bas pour naviguer. AskUserQuestion compense : à chaque niveau, l'opérateur reçoit 4 options cliquables qui structurent la navigation comme dans un dossier imbriqué (drill plus profond, drill latéral, agir, remonter). Le rendering textuel reste · l'AskUserQuestion s'AJOUTE à la fin pour accélérer la navigation, jamais ne la remplace.
+
+### Contrat universel des 4 options
+
+Indépendamment du mode, le AskUserQuestion respecte la grammaire suivante :
+
+| Slot | Rôle | Source de l'option |
+|---|---|---|
+| 1 | **Drill vertical** : aller plus profond dans la hiérarchie courante | mode-spécifique (voir tableaux ci-dessous) |
+| 2 | **Drill vertical alternatif OU drill latéral** : autre branche au même niveau | mode-spécifique |
+| 3 | **Action top-priority** : la 1re ligne de NEXT SUGGESTED (paste-ready, déclenche la commande au clic) | dérivée du même calcul que NEXT SUGGESTED |
+| 4 | **Remonter d'un niveau OU exit** : navigation vers le parent | toujours présent, jamais omis |
+
+**Hard rule.** Le slot 4 est toujours un retour vers le niveau parent (ou exit en workspace mode). L'opérateur sait qu'il peut toujours remonter en 1 click, même s'il s'est égaré.
+
+### Workspace mode · slots concrets
+
+| Slot | Question rendue (FR) |
+|---|---|
+| 1 | *"Drill {brand_le_plus_actif}"* (brand avec last_session le plus récent) |
+| 2 | *"Drill {brand_en_alerte}"* (brand avec tests fatigués OU stale > 30j OU mining vide), ou si aucun : *"Drill {2e brand le plus actif}"* |
+| 3 | NEXT SUGGESTED top-priority cross-brand (paste-ready commande) |
+| 4 | *"Voir un autre brand / continuer"* (free-text fallback, l'opérateur peut taper `/phantom {autre_slug}`) |
+
+**Cas N=1 brand** : slots 1 + 3 + 4 only (3 options visibles). Slot 2 omis car redondant.
+
+### Brand mode · slots concrets
+
+| Slot | Question rendue (FR) |
+|---|---|
+| 1 | *"Drill audiences"* (entity-drill audiences) |
+| 2 | *"Drill {entity_la_plus_chargée}"* · celle avec le plus d'instances ou l'état le plus actif (typiquement `angles` ou `learnings`) |
+| 3 | NEXT SUGGESTED top-priority sur ce brand (paste-ready commande) |
+| 4 | *"Retour workspace"* (déclenche `/phantom`) |
+
+### Entity-drill mode · slots concrets
+
+| Slot | Question rendue (FR) |
+|---|---|
+| 1 | NEXT SUGGESTED top-priority spécifique à l'entité (paste-ready commande) |
+| 2 | NEXT SUGGESTED 2e-priority sur la même entité (paste-ready commande) |
+| 3 | *"Drill {entity_voisine}"* (autre entity-drill du même brand, choisie par pertinence : depuis audiences → angles, depuis angles → audiences, depuis products → offers, depuis learnings → strategy) |
+| 4 | *"Retour {brand_slug}"* (déclenche `/phantom {brand_slug}`) |
+
+### Saturation pattern
+
+Si la session courante a déjà déclenché 3 AskUserQuestion `/phantom` dans les 5 dernières minutes, le 4e rendu désactive le AskUserQuestion (rendering text-only). L'opérateur est en mode exploration profonde et le pattern interactif devient du bruit. Re-active après 5 min sans `/phantom` ou après un autre type de skill exécuté.
+
+### Formulation de l'AskUserQuestion
+
+Présenter les 4 slots dans cet ordre fixe (drill primaire, drill secondaire, action, retour). Phrasing court, jamais explicatif. Exemple sur brand mode karacare :
+
+```
+question: "Tu veux faire quoi ?"
+options:
+- "Drill audiences (7 audiences à valider)"
+- "Drill angles (5 hypothèses)"
+- "Lance mine-voc sur karacare"
+- "Retour workspace"
+```
+
+L'opérateur clique. L'agent exécute :
+- Slots 1, 2 → relance `/phantom {slug} {entity}` ou `/phantom`
+- Slot 3 → exécute la commande paste-ready (snapshot, mine-voc, audit, etc.)
+- Slot 4 → relance `/phantom` (workspace) ou `/phantom {slug}` (brand) selon le niveau parent.
+
+### Anti-patterns
+
+- **5 options ou plus.** Cap dur à 4. Si plus de candidats existent, dégrader vers free-text fallback (slot 4).
+- **Slot 4 absent.** L'opérateur doit toujours pouvoir remonter en 1 click. Jamais de cul-de-sac.
+- **Action non-paste-ready dans slot 3.** Le slot action déclenche une commande exécutable, pas un conseil. *"Pense à mine-voc"* est un anti-pattern.
+- **AskUserQuestion sans rendering text.** Le rendering reste TOUJOURS, l'AskUserQuestion vient APRÈS. Le rendering est l'information, l'AskUserQuestion est l'accélérateur de navigation.

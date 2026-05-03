@@ -1,0 +1,39 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.22.0",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "ux_enhancement",
+  "summary": "/phantom rendering now ends with an AskUserQuestion that structures navigation like a nested-folder explorer. Three navigation slots + one always-present 'remonter d'un niveau' slot. Operator clicks instead of types, friction tombe à 1 click pour drill ou agir. Rendering textuel intact, AskUserQuestion s'ajoute après.",
+  "changes": [
+    {
+      "category": "commands",
+      "action": "added",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Navigation interactive (AskUserQuestion)",
+      "rationale": "CLI has no up/down arrows for navigation. AskUserQuestion compensates by surfacing 4 native clickable options at the end of every /phantom rendering. Pattern: drill vertical primaire (slot 1), drill alternatif ou latéral (slot 2), action top-priority paste-ready (slot 3), remonter d'un niveau (slot 4). Slot 4 always present so operator never lands in a cul-de-sac. Pattern works at all 3 levels: workspace → brand → entity-drill, exactly like a nested-folder explorer."
+    },
+    {
+      "category": "commands",
+      "action": "patched",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Constraints",
+      "rationale": "Added 'navigation cliquable systématique' as a hard rule. Each /phantom rendering MUST conclude with an AskUserQuestion (subject to saturation pattern below)."
+    },
+    {
+      "category": "commands",
+      "action": "documented",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Navigation interactive § Saturation pattern",
+      "rationale": "If session has triggered 3 AskUserQuestion /phantom in the last 5 minutes, the 4th rendering disables the AskUserQuestion (text-only). Operator is in deep-exploration mode and the interactive pattern becomes noise. Re-activates after 5 min idle on /phantom or after another type of skill executes."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Cockpit gagne une navigation à 1 click au lieu de typing. /phantom (workspace) → click 'Drill karacare' → brand mode → click 'Drill audiences' → entity-drill audiences → click 'Lance mine-voc sur karacare' → l'agent exécute. À tout moment, slot 4 = 'Retour {parent}'. Friction navigation tombe à zéro. Le typing libre reste possible (l'AskUserQuestion ajoute, ne remplace pas).",
+  "voice_canon_check": {
+    "em_dashes": "0 in operator-facing strings",
+    "tone": "interactive, nested-folder mental model",
+    "doctrine_leak": "no internal terminology surfaced (no validation_status, no _field_types, no field_path, no skill internal names that aren't operator-facing)"
+  }
+}

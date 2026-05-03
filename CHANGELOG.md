@@ -5,6 +5,27 @@
 
 ---
 
+## v2.22.0 — 2026-05-03 — /phantom navigation interactive (AskUserQuestion)
+
+**Why this release.** Le CLI n'a pas de flèches haut/bas pour naviguer dans une arborescence comme dans un explorateur de fichiers. v2.21 a posé la navigation terminal-like (`/phantom`, `/phantom {slug}`, `/phantom {slug} {entity}`), mais chaque pas demandait à l'opérateur de re-taper la commande. Friction inutile sur un workflow de cockpit que l'opérateur consulte 5-10 fois par session.
+
+**What shipped.**
+
+- **`AskUserQuestion` ajouté à la fin de chaque rendering `/phantom`.** 4 options cliquables structurées comme un explorateur de dossier imbriqué. Slot 1 : drill vertical primaire. Slot 2 : drill alternatif ou latéral. Slot 3 : action top-priority (paste-ready, déclenchée au clic). Slot 4 : *Retour {parent}* (toujours présent, jamais omis).
+- **Slots concrets par mode** :
+  - Workspace : drill brand actif, drill brand en alerte, action cross-brand top, *Voir un autre brand*
+  - Brand : drill audiences, drill {entity la plus chargée}, action top sur ce brand, *Retour workspace*
+  - Entity-drill : action top sur l'entité, action 2 sur l'entité, drill entité voisine, *Retour {brand}*
+- **Saturation pattern.** Si la session a déjà déclenché 3 AskUserQuestion `/phantom` dans les 5 dernières minutes, le 4e rendering désactive l'AskUserQuestion (text-only). L'opérateur est en deep-exploration, le pattern devient bruit. Re-active après 5 min idle ou après un autre skill.
+
+**Hard rule** : le rendering textuel reste TOUJOURS, l'AskUserQuestion s'ajoute APRÈS. L'AskUserQuestion accélère, ne remplace pas.
+
+**Breaking changes.** None.
+
+**Operator impact.** Friction navigation tombe à 1 click. `/phantom` → click *Drill karacare* → brand mode → click *Drill audiences* → entity-drill → click *Lance mine-voc sur karacare* → l'agent exécute. À tout moment slot 4 = retour parent. Le typing libre reste possible.
+
+---
+
 ## v2.21.0 — 2026-05-03 — /phantom navigation terminal-like
 
 **Why this release.** Live test on phantomos-test surfaced a navigation regression: `/phantom` with a single brand was auto-jumping to brand mode (intended convenience), short-circuiting the operator's mental model. The operator never learned that a workspace level exists distinct from a brand level. Plus, the NEXT SUGGESTED blocks were conversational suggestions instead of runnable commands, forcing the operator to re-formulate every recommendation before acting.
