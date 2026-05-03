@@ -22,7 +22,7 @@ Without an authoring discipline, three failure modes accumulate:
 
 1. **Skill proliferation without governance.** A skill author with a fresh idea creates a sibling skill instead of extending an existing one. The catalogue bloats, mental model fragments, gates duplicate. Pattern named in `skill-creation-protocol.md` (extend > create), but isolated. Without SAD as a chapeau, the rule is easy to ignore.
 2. **Implicit contracts break composition.** A producer skill outputs a structure that the next skill in the chain expects ; if either drifts independently, the chain breaks silently. No `consumes:` declaration ties them ; no version compatibility check fires.
-3. **Failure modes are unhandled.** A skill that violates a CMR invariant at runtime (score leakage, missing modulator, axes correlation untreated) does so silently. Largo notices in review, files a `correct-skill` ticket. The doctrine is enforced human-in-the-loop, not systemically.
+3. **Failure modes are unhandled.** A skill that violates a CMR invariant at runtime (score leakage, missing modulator, axes correlation untreated) does so silently. Largo notices in review, files a `correct-skill` [backlog, not shipped] ticket. The doctrine is enforced human-in-the-loop, not systemically.
 
 SAD fixes all three: by codifying authoring rules, by formalizing composition contracts, by introducing a failure doctrine that routes invariant violations automatically.
 
@@ -98,7 +98,7 @@ Doctrines that lack a failure mode rely on Largo's review to catch violations. A
 - *Mechanical violation* (frontmatter missing, schema invalid) → refuse, surface to operator with redirect.
 - *Semantic violation* (style drift, score leak) → log as `capture-learning` candidate, surface to Largo as flag, do not block operator output.
 
-**6.3 — Cumulative pattern detection.** When the same skill produces ≥3 violations of the same type within a 7-day window, the violation graduates to a *pattern* and is auto-routed to `correct-skill` for hard rule integration.
+**6.3 — Cumulative pattern detection.** When the same skill produces ≥3 violations of the same type within a 7-day window, the violation graduates to a *pattern* and is auto-routed to `correct-skill` [backlog, not shipped] for hard rule integration.
 
 **6.4 — Operator transparency.** Operator sees only relevant flags ("audit-pass score plafonné à 8/10 — copy needs market validation before promoted to 9-10"). Internal mechanics (which rule, which violation count, which routing) stay in Layer A trace.
 

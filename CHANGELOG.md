@@ -5,6 +5,24 @@
 
 ---
 
+## v2.15.1 — 2026-05-03 — Cross-doc cohérence cleanup
+
+**Why this release.** Post 2.15.0 audit surfaced 5 stale cross-references between docs and skills. No behavioral change, no schema bump. Cohérence patch only.
+
+**What shipped.**
+
+- **Skill rename swept** : `audit-meta-setup` → `audit-meta-account` references closed in `.skills/INDEX.md`, `.skills/README.md`, `.skills/_manifest.json`, `.skills/skills/validate-resources/SKILL.md`, `.skills/skills/connect-source/SKILL.md`.
+- **Release manifest path fixed** : template `README.md` pointed to `docs/releases/{version}-manifest.json`. Real path is `docs/internal/releases/manifest/{version}-manifest.json`.
+- **Ghost skill flagged** : `correct-skill` was described as shipped in `docs/system/autonomous-correction-pattern.md`, `docs/system/pattern-detection-triggers.md`, `docs/system/skill-authoring-discipline.md`. Marked `[backlog, not shipped]` inline.
+- **Lexicon pointer added** : `Connected source` entry in `lexicon.md` now points to `docs/internal/canon.md` for full definition.
+- **Manifest regenerated** : `.skills/_manifest.json` rebuilt post rename sweep.
+
+**Breaking changes.** None.
+
+**Operator impact.** None. Documentation cohérence only.
+
+---
+
 ## v2.15.0 — 2026-05-03 — Privacy and surface cleanup
 
 **Why this release.** Pre-broader-release pass to remove from the public template anything specific to a downstream extension and to anonymize any real client brand name still appearing in examples or doc text.

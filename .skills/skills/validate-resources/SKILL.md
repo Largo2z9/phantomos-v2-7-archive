@@ -19,7 +19,7 @@ pipeline:
   preconditions: ingest-resource should have run at least once
   postconditions: none — agents can query after validate
 disambiguates_against:
-  audit-meta-setup: "route to audit-meta-setup when operator says 'audit' + platform context (Meta Ads) — that's a platform-specific audit, not a workspace integrity check"
+  audit-meta-account: "route to audit-meta-account when operator says 'audit' + platform context (Meta Ads) — that's a platform-specific audit, not a workspace integrity check"
 ---
 
 ## Tone

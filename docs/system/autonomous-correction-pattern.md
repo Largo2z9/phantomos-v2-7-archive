@@ -40,7 +40,7 @@ The operator never knows there was a refusal. Layer A trace records the correcti
 Not *"what should I do?"*. Always *"the gate refused for reason X. Two paths : either A (apply correction Y on input Z), or B (alternative interpretation). Which interpretation is correct ?"*. The operator gets to choose between concrete options, never asked to diagnose.
 
 **Step 6 — Log the pattern.**
-After 3 occurrences of the same refusal type within 7 days → flag as candidate for canon enum extension or schema patch. Pattern routes to `correct-skill` for permanent integration.
+After 3 occurrences of the same refusal type within 7 days → flag as candidate for canon enum extension or schema patch. Pattern routes to `correct-skill` [backlog, not shipped] for permanent integration.
 
 ---
 
@@ -51,7 +51,7 @@ After 3 occurrences of the same refusal type within 7 days → flag as candidate
 3. **Never panic-surface a single refusal.** First retry is autonomous. Surface only if retry fails or diagnosis is ambiguous.
 4. **When surfacing is necessary, always frame as binary or ternary options.** Never open-ended *"how should I handle this ?"*. The operator picks between concrete paths.
 5. **Always keep the refusal trace internal.** Layer A logs the refusal + correction. Operator output stays clean unless human input is genuinely required.
-6. **Pattern surveillance is mandatory.** ≥3 same-type refusals within 7 days → log as `category: system_friction` learning, route to `correct-skill` candidate.
+6. **Pattern surveillance is mandatory.** ≥3 same-type refusals within 7 days → log as `category: system_friction` learning, route to `correct-skill` [backlog, not shipped] candidate.
 7. **The agent is responsible for understanding the system, not the operator.** When a hook refuses, that is information the agent must process — never delegated to the operator who is not supposed to know the gate exists.
 
 ---
@@ -110,4 +110,4 @@ Agent action : retry would need a guess. Surface to operator with framed choice 
 
 - **Doctrine v1.0** — operational. Mandatory for all skills consuming gated primitives.
 - **First applications** : `mutation-guard` refusals, `write_to_context` enum classifier, `validate-resources` flagged outputs, hook PreToolUse refusals.
-- **Future extension** : pattern detection daemon (P1 backlog) will pre-flag recurring refusal patterns before they accumulate to `correct-skill` threshold.
+- **Future extension** : pattern detection daemon (P1 backlog) will pre-flag recurring refusal patterns before they accumulate to `correct-skill` [backlog, not shipped] threshold.

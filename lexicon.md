@@ -16,6 +16,8 @@ La marque que l'opérateur encode dans PhantomOS. Slug, identité courte, contac
 
 Plateforme externe connectée à PhantomOS pour pull data (analytics, perf, conversions) ou push assets (LP, ads, emails). Typée par catégorie : paid ads (Meta, TikTok, Google Ads), analytics (GA4, Shopify Analytics), e-commerce (Shopify, Stripe), email/SMS (Klaviyo, Postscript), attribution (TripleWhale, Northbeam), creative intelligence (Atria, Foreplay).
 
+*Full taxonomy and field reference : `docs/internal/canon.md`.*
+
 ## Audience
 
 Une cible identifiée pour la marque. Profil psychographique, pains, bénéfices, jobs to be done. Sourcée par observation (verbatims, reviews, threads) ou inférence. Hiérarchisable en cluster, sub-cluster, sub-sub-cluster.

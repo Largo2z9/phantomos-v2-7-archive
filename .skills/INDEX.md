@@ -46,7 +46,7 @@ Last update : 2026-04-29.
 
 | Operator says | Skill to invoke |
 |---|---|
-| *"audit le setup Meta"*, *"check les comptes pubs"* | `audit-meta-setup` |
+| *"audit le setup Meta"*, *"check les comptes pubs"* | `audit-meta-account` |
 | *"valide le workspace"*, *"check les ressources"*, *"y a quoi qui cloche"* | `validate-resources` |
 | *"audit la cohérence cross-docs"* | (sub-agent Explore on demand, no shipped skill) |
 

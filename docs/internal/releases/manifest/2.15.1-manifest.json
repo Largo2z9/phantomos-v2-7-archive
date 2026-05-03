@@ -1,0 +1,59 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.15.1",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "patch",
+  "summary": "Cross-doc cohérence cleanup post 2.15.0. No behavioral change. Stale references to renamed skill swept, dead release path corrected, ghost skill flagged as backlog, lexicon pointer added to internal canon.",
+  "changes": [
+    {
+      "category": "stale_reference",
+      "action": "renamed",
+      "from": "audit-meta-setup",
+      "to": "audit-meta-account",
+      "files": [
+        ".skills/INDEX.md",
+        ".skills/README.md",
+        ".skills/_manifest.json",
+        ".skills/skills/validate-resources/SKILL.md",
+        ".skills/skills/connect-source/SKILL.md"
+      ],
+      "rationale": "Skill folder was renamed in 2.14.0 but 5 files still cited the old name in cross-references and disambiguation blocks."
+    },
+    {
+      "category": "docs",
+      "action": "fixed_path",
+      "files": ["README.md"],
+      "from": "docs/releases/{version}-manifest.json",
+      "to": "docs/internal/releases/manifest/{version}-manifest.json",
+      "rationale": "Release manifests moved under docs/internal/ in earlier release. README pointer was stale (broken link)."
+    },
+    {
+      "category": "ghost_reference",
+      "action": "flagged_backlog",
+      "files": [
+        "docs/system/autonomous-correction-pattern.md",
+        "docs/system/pattern-detection-triggers.md",
+        "docs/system/skill-authoring-discipline.md"
+      ],
+      "skill": "correct-skill",
+      "rationale": "3 doctrine docs described correct-skill as if shipped. Skill is backlog only. Marked [backlog, not shipped] inline to prevent operator and author confusion."
+    },
+    {
+      "category": "docs",
+      "action": "added_pointer",
+      "files": ["lexicon.md"],
+      "entry": "Connected source",
+      "target": "docs/internal/canon.md",
+      "rationale": "Slim user-facing lexicon now points to internal canon for the full definition. Keeps lexicon thin without losing detail access."
+    },
+    {
+      "category": "manifest",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "rationale": "Rebuilt to reflect skill renames + sweep disambiguates_against blocks pointing at old name."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": []
+}

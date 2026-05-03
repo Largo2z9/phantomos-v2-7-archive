@@ -10,7 +10,7 @@
 
 The pattern detection daemon fills that gap. It runs implicitly every turn, watches for a small set of structured signals, buffers them silently, and surfaces or batches them when threshold is hit. The operator never sees the buffer ; they see the synthesis once a pattern is confirmed.
 
-This is what turns a series of micro-frictions into a learning, a series of cross-brand observations into a shareable canon candidate, a series of micro-violations into a `correct-skill` ticket — without requiring the operator to remember and flag each one manually.
+This is what turns a series of micro-frictions into a learning, a series of cross-brand observations into a shareable canon candidate, a series of micro-violations into a `correct-skill` [backlog, not shipped] ticket — without requiring the operator to remember and flag each one manually.
 
 ---
 
@@ -57,7 +57,7 @@ This is what turns a series of micro-frictions into a learning, a series of cros
 **Threshold rules :**
 
 - **≥2 same-type signals in the buffer** → flag for `learn-from-session` queue with *"pattern alert"* tag. Agent surfaces nothing immediately.
-- **≥3 same-type signals within 7 days across sessions** → escalate to `correct-skill` candidate. Agent flags to operator briefly (*"j'ai noté que [pattern] revient — tu veux qu'on encode une règle ?"*) and waits for confirm.
+- **≥3 same-type signals within 7 days across sessions** → escalate to `correct-skill` [backlog, not shipped] candidate. Agent flags to operator briefly (*"j'ai noté que [pattern] revient — tu veux qu'on encode une règle ?"*) and waits for confirm.
 - **1 signal of `decision_reversal` type** → surface immediately (single occurrence is high-cost). Operator decides if intentional or accidental.
 - **1 signal of `encoded_fact_drift` type** → surface immediately with framed options (*"the brand.json says X, you just said Y. Update the brand or keep the conversational version local ?"*).
 
@@ -95,7 +95,7 @@ The threshold is : *"would a senior operator reviewing this session say `we keep
 - `autonomous-correction-pattern.md` — also logs after 3 same-type refusals within 7 days. Both daemons feed the same pattern queue.
 - `voice.md` § Anti-patterns — pattern types to watch (acronym leak, score leakage, plumbing leak)
 - `contextual-intelligence.md` — the doctrine this daemon protects ; pattern detection is what keeps the contract alive across sessions
-- `delegation-pattern.md` — sister doctrine ; delegation frictions (run-away, blackhole, dump, premature) are flagged in the buffer here for `correct-skill` candidacy
+- `delegation-pattern.md` — sister doctrine ; delegation frictions (run-away, blackhole, dump, premature) are flagged in the buffer here for `correct-skill` [backlog, not shipped] candidacy
 
 ---
 

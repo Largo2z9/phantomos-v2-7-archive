@@ -57,7 +57,7 @@ PhantomOS ships incremental releases. When a new version is available, a direct 
 
 Operator data is preserved end-to-end : brand folders, operator settings, credentials, learnings. Only template files (skills, docs, schemas) are updated.
 
-Detail per release : `docs/releases/{version}-manifest.json`. Human-readable history : `CHANGELOG.md`.
+Detail per release : `docs/internal/releases/manifest/{version}-manifest.json`. Human-readable history : `CHANGELOG.md`.
 
 ## Going further
 

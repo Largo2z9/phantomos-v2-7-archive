@@ -123,7 +123,7 @@ End with one contextual next-step proposal :
 
 | Context | Suggestion |
 |---|---|
-| First connected source for this brand | *"Run audit-meta-setup to test the connection on a real audit."* |
+| First connected source for this brand | *"Run audit-meta-account to test the connection on a real audit."* |
 | Multi-tenant Meta BM, second brand | *"Run /phantom workspace pour voir tes brands connectés Meta."* |
 | New custom platform (untemplated) | *"Convention drafted at resources/conventions/{platform}.json. Run validate-resources to check schema compliance."* |
 | Klaviyo or email connected | *"Test le flow J+1 sur un account perso avant d'activer pour de vrai."* |

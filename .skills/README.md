@@ -32,7 +32,7 @@ Grouped by typology. Each typology drives default model + `subagent_safe` + perm
 | `produce-copy-brief` | Produce a copywriter brief for an audience × angle × channel, verbatim-anchored, operator-format-respected | sonnet | yes |
 | `score-product-fit` | Score product-audience fit and flag language gaps | haiku | yes |
 | `watch-competitors` | Watch competitor Meta ads and produce creative intel | sonnet | yes |
-| `audit-meta-setup` | Structured audit of a Meta Ads account (API or declarative) | sonnet | yes |
+| `audit-meta-account` | Structured audit of a Meta Ads account (API or declarative) | sonnet | yes |
 | `propose-schema-draft` | Sub-skill of scaffold-extension — generate canon-compliant JSON Schema draft | sonnet | yes |
 
 ### Curator (12) — read, classify, route, mutate context

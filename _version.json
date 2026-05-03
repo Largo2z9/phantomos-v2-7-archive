@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.15.0",
+  "template_version": "2.15.1",
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "Privacy and surface cleanup for public release. Real client names anonymized to fictional names across the template surface (skills, docs, doctrine, examples). Skill connect-cockpit removed from the public template (specific to a downstream extension, lives in that extension's repository). variant-map.md simplified to focus on template versus operator instance, no mention of private extensions or addons.",
-  "manifest": "docs/internal/releases/manifest/2.15.0-manifest.json"
+  "summary": "Cross-doc cohérence cleanup post 2.15.0. Stale references to renamed skill audit-meta-account swept across 5 files, broken release manifest path fixed in README, ghost skill correct-skill flagged [backlog, not shipped] in 3 doctrine docs, lexicon pointer to internal canon added on Connected source entry. No behavioral change.",
+  "manifest": "docs/internal/releases/manifest/2.15.1-manifest.json"
 }
