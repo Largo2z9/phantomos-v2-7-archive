@@ -9,15 +9,17 @@ Vue synthétique du workspace PhantomOS. Lecture seule, aucune mutation. Read to
 
 ## Mode detection
 
+Navigation pattern is **terminal-like**: `/phantom` lands at the workspace level (even with a single brand), `/phantom {slug}` drills into a brand, `/phantom {slug} {entity}` zooms further into a specific entity within a brand. The operator learns the system the way they learn `cd` and `ls`: top-down, never short-circuited.
+
 Check the user's argument :
 
 | Argument | Mode |
 |---|---|
 | empty (just `/phantom`), 0 brand encodé | **bootstrap** : message "tape /tour pour démarrer" |
-| empty, 1 brand encodé | **brand** : cockpit du seul brand existant |
-| empty, N brands encodés | **workspace** : vue multi-brand globale |
-| `workspace` ou `all` | **workspace** : forcé en vue globale même si N=1 |
+| empty, ≥1 brand encodé | **workspace** : always shows the workspace-level view, regardless of brand count. Operator drills explicitly via `/phantom {slug}`. |
+| `workspace` or `all` | **workspace** : alias, same as empty when ≥1 brand exists |
 | brand slug (e.g. `/phantom vitatone`) | **brand** : cockpit détaillé du brand |
+| brand slug + entity (e.g. `/phantom vitatone audiences`) | **entity-drill** : zoom dense sur une entité spécifique du brand |
 
 ---
 
@@ -102,12 +104,16 @@ Exemples :
 
 ### Next suggested workspace-level
 
-3 propositions max, ordonnées par priorité. Sources :
-- Brand dormant > 60j → suggérer "archiver ou réactiver".
-- Tests fatiguing dans plusieurs brands → suggérer batch refresh.
-- Operator profile incomplet → suggérer densification.
-- Skill `audit-meta-account` (ou équivalent) jamais run sur un brand actif → suggérer un audit.
-- Niveau de contexte global moyen sub-L2 → suggérer densification d'un brand prioritaire.
+3 propositions max, ordonnées par priorité. **Each line MUST be a paste-ready command, not a conversational suggestion.** Format : *"→ Tape : `{exact natural-language command}` ({why, in one short clause})"*. The operator copies the back-tick content into the next prompt and the agent picks it up.
+
+Sources :
+- Brand dormant > 60j → *"→ Tape : `archive {slug}` ({slug} sans activité depuis {N} jours)"*
+- Tests fatiguing dans plusieurs brands → *"→ Tape : `refresh angles fatigués sur {slug-le-plus-fatigué}` ({N} angles ROAS en chute)"*
+- Operator profile incomplet → *"→ Tape : `densifie mon profil opérateur` (3 champs manquants : stack actuelle, register, contexte macro)"*
+- Skill `audit-meta-account` jamais run sur un brand actif → *"→ Tape : `audit Meta sur {slug}` (token connecté, jamais audité)"*
+- Niveau de contexte global moyen sub-L2 → *"→ Tape : `enrichis le contexte de {slug}` (L1, le brand le plus en retard)"*
+
+Anti-pattern : *"→ Lancer un audit Meta dès que possible"* (passif, l'opérateur doit re-formuler). Always paste-ready, always specific.
 
 ---
 
@@ -233,29 +239,98 @@ Si `connected-sources.json` absent : afficher *"(non configurées, voir /skills 
 
 ### Next suggested (mode brand)
 
-3 propositions max, ordonnées par priorité décisionnelle. Sources :
-- Tests fatiguing → suggérer refresh angle ou nouveau test.
-- Audiences avec sourcing incomplet → suggérer mine-audience ou source manuel.
-- Stale > 14j sur entité critique → suggérer update.
-- Niveau de contexte sub-L2 → suggérer enrichissement vers L2.
-- Connected source non configurée mais pertinente → suggérer connection.
+3 propositions max, ordonnées par priorité décisionnelle. **Each line MUST be a paste-ready command**, not a conversational suggestion. Format : *"→ Tape : `{exact natural-language command}` ({why, one short clause})"*. The operator copies the back-tick content into the next prompt.
 
-Format :
+Sources :
+- Tests fatiguing → *"→ Tape : `refresh l'angle {angle_id}` (ROAS -42% sur 14j)"*
+- Audiences avec mining vide → *"→ Tape : `lance mine-voc sur {slug}` (7 audiences en hypothèse, aucun verbatim encore)"*
+- Stale > 14j sur entité critique → *"→ Tape : `mets à jour {entity}` (dernière modif il y a {N}j)"*
+- Niveau sub-L2 → *"→ Tape : `densifie le contexte de {slug}` ({N} fields manquants critiques)"*
+- Connected source non configurée mais pertinente → *"→ Tape : `connecte Meta Ads sur {slug}` (token attendu dans credentials.env)"*
+
+Anti-pattern : *"→ Lancer mine-voc dès que possible"* (passif, vague). Always paste-ready, always specific. The single back-tick wrap is a visual contract · the operator knows that what's inside the back-ticks is what they paste back.
+
+---
+
+## Mode entity-drill
+
+`/phantom {brand_slug} {entity}` zooms on one entity within the brand. Dense, no top-level KPIs, no connected sources, no other entity rows. The operator chose the entity so the rendering goes deeper than brand mode allows in 50 lines.
+
+Supported entities: `audiences`, `angles`, `products`, `offers`, `strategy`, `learnings`.
+
+### Common header (all entity drills)
+
 ```
-→ {action concrète}
-→ {action concrète}
-→ {action concrète}
+PHANTOMOS · brand: {brand_name} · {entity}
+══════════════════════════════════════════════
 ```
 
-Actions doivent toujours nommer un skill ou un objet précis. Pas de conseil générique.
+Then entity-specific body, then a single Next-suggested block specific to this entity (max 3 lines, paste-ready).
+
+### `audiences` · full hierarchy + per-audience completeness detail
+
+For each audience folder under `brands/{slug}/audiences/`:
+- Indented per `meta.parent_slug` (mother audiences flat, sub-audiences indented one level).
+- Per audience : `slug`, `scope`, `validation_label` (translated from `validation_status`), `pain_signal` (filled / empty), `voice_signal` (filled / empty), `objection_signal` (filled / empty), `last_updated`.
+
+Format example :
+
+```
+{slug}                     {scope}    {validation_label}    pain: {filled|vide}    voice: {filled|vide}    obj: {filled|vide}    last {time_ago}
+   ├─ {sub_slug}           ...
+```
+
+End with paste-ready next-suggested specific to audience gaps (mine-voc on missing pain, validate hypothesis blocks, merge low-signal sub-audiences, etc.).
+
+### `angles` · list + status
+
+Per angle in `brands/{slug}/angles/` :
+- `angle_id`, `name`, `audience_target`, `status` (draft / live / fatigued / paused), `roas` if test_result exists, `last_updated`.
+
+End with paste-ready commands : refresh fatigued, validate draft, archive paused.
+
+### `products` · list + completeness per spec
+
+Per product in `brands/{slug}/products/{slug}/spec.json` :
+- `slug`, `name`, `category`, `pricing_filled` (yes/no), `mechanism_filled` (yes/no), `composition_filled` (yes/no), `last_updated`.
+
+End with paste-ready : densify thinnest spec, snapshot a new product.
+
+### `offers` · table per product
+
+Per offer file `brands/{slug}/products/{p}/offers.json`, render the `offer_groups[].offers[]` :
+- `offer_id`, `name`, `type` (single / subscription / bundle / quantity_break / prepay), `price`, `savings_pct`, `active`.
+
+End with paste-ready : connect Shopify if missing, mark inactive offers, etc.
+
+### `strategy` · current focus + Q-target snapshot
+
+Read `strategy.json`. Render :
+- Annual goals (1-line each).
+- Current quarter focus.
+- Last update timestamp.
+
+End with paste-ready : update quarter focus, set new Q-target.
+
+### `learnings` · last 10 entries
+
+Per entry in `learnings.json#entries[]` (newest first, capped at 10) :
+- `id`, `kind` (test_result / workaround / compliance / observation / decision_trace), `fact` (truncated to 1 line), `created_at`.
+
+End with paste-ready : capture-learning on a recent observation, promote a learning to brand-level rule.
+
+### Hard rule for entity-drill
+
+If `{entity}` is unsupported (not in the list above), surface : *"Entité '{x}' pas reconnue. Disponibles : audiences, angles, products, offers, strategy, learnings. Tape `/phantom {brand}` pour la vue brand complète."*
 
 ---
 
 ## Constraints (tous modes)
 
 - **Read-only.** Aucune mutation. Si l'opérateur demande ensuite de fix quelque chose, propose le skill approprié, ne fais pas la mutation toi-même.
-- **One screen output.** Workspace mode : 30 lignes max. Brand mode : 40-50 lignes max.
+- **One screen output.** Workspace mode : 30 lignes max. Brand mode : 40-50 lignes max. Entity-drill mode : 50 lignes max.
 - **Pas de jargon doctrine.** Pas de "SED", "CMR", "_field_types", "validation_status" en surface. Traduit en mots métier (validé / hypothèse / fatigué).
 - **Honest staleness.** Si une entité n'a pas été touchée depuis 90j, dis-le. Si snapshot date > 1h, regenère silencieusement avant d'afficher.
-- **Mode brand explicite gagne sur l'auto-détection.** `/phantom vitatone` force brand mode même si workspace a 1 brand.
-- **Mode workspace forcé via `workspace` ou `all`.**
+- **Workspace est le default.** `/phantom` sans argument lande toujours au niveau workspace (sauf bootstrap si 0 brand). L'opérateur drille explicitement via `/phantom {slug}`. Pattern terminal-like, jamais court-circuiter la navigation.
+- **Drill par étape, pas en bloc.** `/phantom {slug}` montre le brand. `/phantom {slug} {entity}` zoome sur une entité. Évite de tout dump en une fois ; économie de contexte ET de lisibilité.
+- **Next-suggested = paste-ready.** Toutes les actions surfacées dans NEXT SUGGESTED doivent être copiables verbatim dans le prompt suivant. Format : *"→ Tape : `{commande exacte}` ({why})"*. Jamais de conseil passif type *"Lancer mine-voc dès que possible"*.

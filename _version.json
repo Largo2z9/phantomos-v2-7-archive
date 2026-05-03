@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.20.0",
+  "template_version": "2.21.0",
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "Onboarding tour patched to name the daily commands (/phantom, /learn-from-session, /skills) explicitly and to lay the operational bases the tour was previously evoking without naming them. Milestone 5 names /learn-from-session as the compound mechanism. Milestone 6 names /phantom alongside /skills as cockpit + capabilities catalog. Milestone 7 (post-snapshot synthesis) introduces the correction pattern, /phantom {brand} as the visualization tool, and the 'à valider' status that the operator will see across the system. Milestone 8 close gains a Pipeline DTC archetype (snapshot → mine-voc → produce-paid-angles → produce-copy-brief) for paid manager / agency profiles. Replay mode close ends with a one-line reminder of the daily commands.",
-  "manifest": "docs/internal/releases/manifest/2.20.0-manifest.json"
+  "summary": "/phantom navigation refactored terminal-like. /phantom (no arg) always lands at workspace level even with a single brand (previously short-circuited to brand mode when N=1). /phantom {slug} drills into a brand. /phantom {slug} {entity} new entity-drill mode (audiences/angles/products/offers/strategy/learnings) for dense per-entity zoom. NEXT SUGGESTED blocks across all modes now ship paste-ready commands (single back-tick wrap, copyable verbatim) instead of conversational suggestions. Operator learns the system the way they learn cd and ls : top-down, never short-circuited.",
+  "manifest": "docs/internal/releases/manifest/2.21.0-manifest.json"
 }

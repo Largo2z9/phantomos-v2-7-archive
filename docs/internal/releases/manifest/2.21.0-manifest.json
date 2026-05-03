@@ -1,0 +1,43 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.21.0",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "command_refactor",
+  "summary": "/phantom cockpit navigation refactored to a terminal-like pattern: /phantom always lands at workspace level (no more silent short-circuit to brand mode when N=1), /phantom {slug} drills into a brand, /phantom {slug} {entity} is the new entity-drill mode. NEXT SUGGESTED blocks across all modes now ship paste-ready commands.",
+  "changes": [
+    {
+      "category": "commands",
+      "action": "refactored",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode detection",
+      "rationale": "Previous behavior: with 1 brand, /phantom auto-jumped to brand mode (intended convenience). Live test feedback (Largo): the auto-jump short-circuits the operator's mental model. Operator never learns there is a workspace level distinct from a brand level. Fixed: /phantom (no arg) always renders the workspace view if at least one brand exists. The operator drills explicitly via /phantom {slug}. Mirrors terminal navigation where you cd into a folder rather than landing in it without choosing."
+    },
+    {
+      "category": "commands",
+      "action": "added",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode entity-drill",
+      "rationale": "/phantom {slug} {entity} new mode where the operator zooms on one entity (audiences, angles, products, offers, strategy, learnings) within a brand. Brand mode caps at 50 lines and dumps a summary across all entities ; entity-drill goes deeper on the chosen entity (full audience hierarchy with mining state per slot, full angles list with status and ROAS, full per-product spec completeness map, etc.). Avoids the 'tout afficher en bloc' regression and lets the operator surgically zoom."
+    },
+    {
+      "category": "commands",
+      "action": "patched",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Next suggested (workspace + brand modes)",
+      "rationale": "NEXT SUGGESTED was conversational ('Lancer mine-voc dès que possible'). Operator had to re-formulate the suggestion into a runnable prompt, friction. Now every line is paste-ready: → Tape : `lance mine-voc sur karacare` (7 audiences en hypothèse, aucun verbatim encore). The single back-tick wrap is a visual contract — what's inside the back-ticks is what the operator pastes back into the next prompt and the agent picks it up. Zero re-formulation cost."
+    },
+    {
+      "category": "commands",
+      "action": "patched",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Constraints",
+      "rationale": "Updated constraints to reflect the new navigation rules: workspace as default, drill explicit, entity-drill 50-line cap, paste-ready next-suggested as a hard rule across all modes."
+    }
+  ],
+  "breaking_changes": [
+    "/phantom with no arg used to drop directly into brand mode when only one brand existed. It now lands at workspace level always. Operators with single-brand setups will see one extra step (/phantom → /phantom {slug}) but learn the navigation explicitly."
+  ],
+  "migrations": [],
+  "operator_impact": "Cockpit navigation feels like a terminal. /phantom = ls workspace. /phantom {slug} = cd into a brand. /phantom {slug} audiences = ls audiences/ inside that brand. Operator learns the structure naturally instead of being teleported. NEXT SUGGESTED actions are now always copy-paste runnable. No friction between seeing the suggestion and executing it."
+}

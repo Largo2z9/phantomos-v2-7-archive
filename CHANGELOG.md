@@ -5,6 +5,23 @@
 
 ---
 
+## v2.21.0 — 2026-05-03 — /phantom navigation terminal-like
+
+**Why this release.** Live test on phantomos-test surfaced a navigation regression: `/phantom` with a single brand was auto-jumping to brand mode (intended convenience), short-circuiting the operator's mental model. The operator never learned that a workspace level exists distinct from a brand level. Plus, the NEXT SUGGESTED blocks were conversational suggestions instead of runnable commands, forcing the operator to re-formulate every recommendation before acting.
+
+**What shipped.**
+
+- **Workspace mode is the default.** `/phantom` (no arg) always lands at workspace level if ≥1 brand exists. The operator drills explicitly via `/phantom {slug}`. Mirrors terminal navigation : you `cd` into a folder rather than land in it without choosing.
+- **New mode entity-drill** : `/phantom {slug} {entity}` zooms on one entity within a brand. Supported entities : `audiences`, `angles`, `products`, `offers`, `strategy`, `learnings`. Brand mode caps at 50 lines and gives a summary across all entities ; entity-drill goes deeper on the chosen one (full audience hierarchy with mining state per slot, full angles list with status and ROAS, full per-product spec completeness map, etc.).
+- **NEXT SUGGESTED ships paste-ready commands** across all modes. Format : *"→ Tape : `lance mine-voc sur karacare` (7 audiences en hypothèse, aucun verbatim encore)"*. Single back-tick wrap as visual contract : what's inside is what the operator pastes back. Zero re-formulation cost between seeing the suggestion and running it.
+- **Em-dashes swept** from `phantom.md` per voice canon (replaced with `:` or `·` per context).
+
+**Breaking changes.** `/phantom` with no arg no longer auto-drops into brand mode when only one brand exists. Single-brand operators see one extra step (`/phantom` → `/phantom {slug}`) but learn the navigation explicitly.
+
+**Operator impact.** Cockpit feels like a terminal. `/phantom` = `ls workspace`. `/phantom {slug}` = `cd` into a brand. `/phantom {slug} audiences` = drill into the audiences of that brand. Operator learns the structure naturally. NEXT SUGGESTED actions are always copy-paste runnable.
+
+---
+
 ## v2.20.0 — 2026-05-03 — Onboarding bases reposées
 
 **Why this release.** Live test on phantomos-test surfaced that the tour was evoking the compound (*"ce que tu corriges devient une règle"*) without naming `/learn-from-session`. It introduced skills (Milestone 6) without naming `/phantom`. The wow synthesis (Milestone 7) was strong but left the operator without a correction pattern, without a visualization tool, without a frame for the *à valider* status they were about to see across the system. Onboarding finished, operator had no concrete handles.
