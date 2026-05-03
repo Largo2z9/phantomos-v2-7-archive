@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.22.0",
+  "template_version": "2.23.0",
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "/phantom navigation interactive via AskUserQuestion. Le terminal n'a pas de flèches haut/bas, AskUserQuestion compense : à chaque rendering /phantom (workspace, brand, entity-drill), 4 options cliquables structurent la navigation comme dans un dossier imbriqué. Slot 1 = drill vertical primaire. Slot 2 = drill alternatif ou latéral. Slot 3 = action top-priority (paste-ready commande déclenchée au clic). Slot 4 = remonter d'un niveau (toujours présent, jamais omis). Saturation pattern : si 3 AskUserQuestion /phantom dans 5 min, mode passif text-only. Le rendering textuel reste, l'AskUserQuestion s'ajoute après pour accélérer.",
-  "manifest": "docs/internal/releases/manifest/2.22.0-manifest.json"
+  "summary": "/phantom devient un explorateur de contexte friendly (File Explorer of Context). Niveau 3 ajouté (item mode) pour preview d'un audience/angle/produit unique. 4 sous-modes utilitaires : /phantom search (grep cross-brand), /phantom recent (timeline mutations), /phantom todo (next-suggested cross-brand), /phantom ? (cheatsheet auto-générée). Breadcrumbs en header de chaque mode. Empty states pédagogiques systématiques (jamais juste 'rien à afficher', toujours un next move proposé). Status indicators enrichis (🔥 stale critique, ⏳ mining en cours, 🆕 créé < 24h). Footer hint discoverability. Helpers Python ajoutés : phantom-search.py et phantom-recent.py.",
+  "manifest": "docs/internal/releases/manifest/2.23.0-manifest.json"
 }

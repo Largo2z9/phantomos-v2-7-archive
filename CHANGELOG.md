@@ -5,6 +5,32 @@
 
 ---
 
+## v2.23.0 — 2026-05-03 — /phantom comme File Explorer of Context
+
+**Why this release.** v2.21 a posé la navigation terminal-like. v2.22 a ajouté l'AskUserQuestion pour cliquer plutôt que taper. Largo a poussé le prochain cran : `/phantom` doit devenir un explorateur de contexte friendly, pas juste un cockpit. Référence mentale = ce que feraient des devs Silicon Valley s'ils designaient l'explorateur d'un OS de contexte (macOS Finder, VS Code Explorer, Linear, GitHub repo browser, Notion).
+
+**What shipped.**
+
+- **Niveau 3 ajouté : mode item.** `/phantom karacare audiences chute-active` rend UN item en preview human-readable (champs filled, hiérarchie parent/enfant, NEXT SUGGESTED action-spécifique). Métaphore : double-click sur un fichier dans Finder.
+- **4 sous-modes utilitaires :**
+  - `/phantom search "{keyword}"` : grep cross-brand sur slugs, names, voc, learnings (Cmd+P / Cmd+K).
+  - `/phantom recent [N]` : timeline des N dernières mutations depuis l'event log (Recent files / Activity feed).
+  - `/phantom todo` : agrégat cross-brand des next-suggested priorisés 🔥 / ⚡ / · (My tasks / TODO panel).
+  - `/phantom ?` ou `/phantom help` : cheatsheet auto-générée (Cmd+? help).
+- **Breadcrumbs en header** sur tous les modes : `workspace > karacare > audiences > chute-active`. L'opérateur sait toujours où il est.
+- **Empty states pédagogiques** systématiques. Un rendering vide ne rend jamais *"rien à afficher"*. Toujours un next move concret. 11 cas documentés.
+- **Status indicators enrichis** : `🔥` stale critique ou tests en chute libre, `⏳` mining/sync en cours, `🆕` créé < 24h.
+- **Footer hint discoverability** : ligne subtle en bas de chaque rendering rappelle `/phantom ?` et `/phantom search`. Skipped si l'opérateur a déjà tapé `/phantom ?`.
+- **Helpers Python** : `phantom-search.py` (cross-brand grep, ~140 lignes), `phantom-recent.py` (tail event log, ~110 lignes).
+
+**Breaking changes.** None.
+
+**Operator impact.** `/phantom` passe de cockpit d'état à explorateur de contexte. Friction navigation tombe au minimum CLI possible. Preview d'un item en 1 commande, search global cross-brand, activity feed, todo agrégé, cheatsheet à la demande.
+
+**Size note.** `phantom.md` 414 → 742 lignes. Au-dessus du cap 700 prévu. Pas urgent à splitter (fichier reste navigable), mais à surveiller. Si > 900 lignes, split vers `.claude/commands/phantom-modes/`.
+
+---
+
 ## v2.22.0 — 2026-05-03 — /phantom navigation interactive (AskUserQuestion)
 
 **Why this release.** Le CLI n'a pas de flèches haut/bas pour naviguer dans une arborescence comme dans un explorateur de fichiers. v2.21 a posé la navigation terminal-like (`/phantom`, `/phantom {slug}`, `/phantom {slug} {entity}`), mais chaque pas demandait à l'opérateur de re-taper la commande. Friction inutile sur un workflow de cockpit que l'opérateur consulte 5-10 fois par session.

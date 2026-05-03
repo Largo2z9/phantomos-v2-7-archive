@@ -1,0 +1,89 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.23.0",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "command_extension",
+  "summary": "/phantom devient un explorateur de contexte (File Explorer of Context). Patterns Silicon Valley repris : niveau item (file preview), search global (Cmd+P), recent activity (timeline), todo agrégé (cross-brand task panel), help cheatsheet, breadcrumbs, empty states pédagogiques, status indicators enrichis. Helpers Python ajoutés (phantom-search.py, phantom-recent.py).",
+  "changes": [
+    {
+      "category": "commands",
+      "action": "extended",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode item (niveau 3)",
+      "rationale": "Manquait le niveau le plus profond : drill UN item spécifique (audience chute-active, angle ANG-12, produit hair-boost). /phantom {brand} {entity} {item-slug} rend l'item en preview human-readable (champs filled, hiérarchie parent/enfant, NEXT SUGGESTED action-spécifique). Métaphore Finder : double-click sur un fichier ouvre la preview."
+    },
+    {
+      "category": "commands",
+      "action": "added",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode search",
+      "rationale": "/phantom search {keyword} grep cross-brand sur slugs, names, voc.key_expressions, learnings.fact, pain_points, etc. Métaphore Cmd+P (VS Code) / Cmd+K (Linear). Helper Python phantom-search.py implémente la recherche, top 20 matches retournés, AskUserQuestion drill cliquable sur les top 3."
+    },
+    {
+      "category": "commands",
+      "action": "added",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode recent",
+      "rationale": "/phantom recent [N] timeline des N dernières mutations cross-brand depuis .phantom/context-engine-events.jsonl (canonical event log). Helper phantom-recent.py tail-read le log et extrait brand_slug + entity. Métaphore : Recent files (Finder), Activity feed (GitHub)."
+    },
+    {
+      "category": "commands",
+      "action": "added",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode todo",
+      "rationale": "/phantom todo agrège les next-suggested top-priority cross-brand. Skip dormants > 60j. Top 5 affichés, priorisés par 🔥 (urgent) / ⚡ (à faire bientôt) / · (peut attendre). Métaphore : My tasks (Linear), TODO panel (VS Code)."
+    },
+    {
+      "category": "commands",
+      "action": "added",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode help (?)",
+      "rationale": "/phantom ? ou /phantom help cheatsheet auto-générée listant tous les modes avec exemples. Métaphore : Cmd+? macOS shortcut help. Discoverability sans bruit : footer subtle dans chaque rendering rappelle l'existence de /phantom ?."
+    },
+    {
+      "category": "commands",
+      "action": "patched",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Breadcrumbs en header",
+      "rationale": "Tous les modes commencent par un breadcrumb (workspace > karacare > audiences > chute-active) au-dessus du divider ══. L'opérateur sait toujours à quel niveau il est. P0 textuel, P1 (différé) cliquable cran par cran."
+    },
+    {
+      "category": "commands",
+      "action": "added",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Empty states pédagogiques",
+      "rationale": "Hard rule : un rendering vide ne rend jamais 'rien à afficher'. Toujours propose un next move concret. Table des 11 cas d'empty state documentée (brand sans produit, audience-drill vide, learnings vide, etc.). Métaphore : Linear / Notion / Stripe empty states qui guident vers la première action."
+    },
+    {
+      "category": "commands",
+      "action": "extended",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Status indicators enrichis",
+      "rationale": "Étend la table icônes existante (✓ ⚠ ✗ ○) avec 🔥 (stale critique > 90j ou tests en chute libre), ⏳ (mining/sync en cours), 🆕 (créé < 24h). Highlight des derniers ajouts et alertes critiques sans noyer les états neutres."
+    },
+    {
+      "category": "commands",
+      "action": "added",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Footer hint discoverability",
+      "rationale": "Chaque rendering termine par une ligne subtle '/phantom ? pour voir tous les modes · /phantom search pour chercher'. Skipped si l'opérateur a déjà tapé /phantom ? dans la session courante. Capable discoverability sans pollution."
+    },
+    {
+      "category": "skills",
+      "action": "added",
+      "files": [".skills/phantom-search.py"],
+      "rationale": "Helper Python ~140 lignes. Cross-brand grep case-insensitive sur tous les fichiers texte indexables (brand.json, spec.json, profile.json, learnings.json, strategy.json, angles/*.json). Cap 20 results. Returns JSON array [{path, type, brand_slug, slug, field, snippet}]. Réutilise pattern de build-brand-snapshot.py."
+    },
+    {
+      "category": "skills",
+      "action": "added",
+      "files": [".skills/phantom-recent.py"],
+      "rationale": "Helper Python ~110 lignes. Tail-read du .phantom/context-engine-events.jsonl, extrait brand_slug + entity du field path, retourne JSON array d'événements (ts, brand_slug, entity, action, source, confidence, mode, reason, path). Default N=10, max 50. Tail strategy : seek depuis la fin du fichier (chunk 64KB-ish) au lieu de read complet."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "/phantom passe de cockpit d'état à explorateur de contexte. L'opérateur peut maintenant : preview un audience spécifique en 1 commande (/phantom karacare audiences chute-active), chercher un mot-clé cross-brand (/phantom search 'post-grossesse'), voir l'activité récente (/phantom recent 20), agréger ses todos cross-brand (/phantom todo), apprendre tous les modes (/phantom ?). Empty states proposent toujours un next move. Status indicators enrichis surfacent les alertes (🔥) et les nouveautés (🆕). Friction navigation tombe au minimum CLI possible.",
+  "size_note": "phantom.md 414 → 742 lignes. Au-dessus du cap 700 prévu dans le plan. Pas urgent à splitter (fichier reste navigable, sections claires), mais à surveiller. Si > 900 lignes, split vers .claude/commands/phantom-modes/{search,recent,todo,help}.md."
+}

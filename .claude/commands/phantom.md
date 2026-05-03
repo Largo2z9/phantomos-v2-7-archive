@@ -20,6 +20,11 @@ Check the user's argument :
 | `workspace` or `all` | **workspace** : alias, same as empty when ≥1 brand exists |
 | brand slug (e.g. `/phantom vitatone`) | **brand** : cockpit détaillé du brand |
 | brand slug + entity (e.g. `/phantom vitatone audiences`) | **entity-drill** : zoom dense sur une entité spécifique du brand |
+| brand slug + entity + item (e.g. `/phantom karacare audiences chute-active`) | **item** : preview d'un item unique (audience, angle, product) |
+| `search {keyword}` (e.g. `/phantom search chute`) | **search** : grep cross-brand sur slugs, names, voc, learnings |
+| `recent` ou `recent {N}` | **recent** : timeline des N dernières mutations (default 10) |
+| `todo` | **todo** : vue agrégée des next-suggested cross-brand priorisés |
+| `?` ou `help` | **help** : cheatsheet auto-générée de tous les modes |
 
 ---
 
@@ -322,6 +327,329 @@ End with paste-ready : capture-learning on a recent observation, promote a learn
 ### Hard rule for entity-drill
 
 If `{entity}` is unsupported (not in the list above), surface : *"Entité '{x}' pas reconnue. Disponibles : audiences, angles, products, offers, strategy, learnings. Tape `/phantom {brand}` pour la vue brand complète."*
+
+---
+
+## Mode item (niveau 3)
+
+`/phantom {brand_slug} {entity} {item-slug}` zooms on ONE item inside an entity. Le rendering équivalent d'un *file preview* dans un Finder. Operator vient de drill quelque chose de spécifique : on déballe ce qu'on a, sans tout dump.
+
+Header breadcrumb obligatoire :
+
+```
+workspace > {brand_slug} > {entity} > {item-slug}
+══════════════════════════════════════════════
+```
+
+### Pour `audiences/{slug}`
+
+Lecture : `brands/{brand}/audiences/{item-slug}/profile.json`. Rendering human-readable :
+
+```
+{NOM} · {scope} · {validation_label}
+{Brève description si identity.description filled}
+
+PROFIL
+  Genre        {gender ou "non précisé"}
+  Tranche      {age_range ou "non précisée"}
+  Pain         {pain.primary_problem ou "à confirmer en mining"}
+  Émotions     {psychology.emotions[] ou "vide"}
+  Goals        {psychology.goals[] ou "vide"}
+
+VOIX (sourcée)
+  Vocabulaire à utiliser    {voice.vocabulary_to_use[] ou "vide"}
+  Vocabulaire à éviter      {voice.vocabulary_to_avoid[] ou "vide"}
+  Expressions clés          {N} captées (mining: {dense|partiel|vide})
+
+PAIN POINTS
+  {N} encodés ({M} sourcés). Top 3 par priorité affichés en 1 ligne chacun.
+
+OBJECTIONS
+  {N} encodées. Top 3 par fréquence affichées.
+
+HIÉRARCHIE
+  Parent: {parent_slug ou "(racine)"}
+  Sous-audiences: {liste des sous-slugs ou "aucune"}
+
+NEXT SUGGESTED (priorité)
+  → Tape : `lance mine-voc sur {brand_slug} pour {item-slug}` (mining vide, prochaine étape logique)
+  → Tape : `valide point par point l'audience {item-slug}` (corriger, rejeter, accepter)
+  → Tape : `produce-paid-angles {brand_slug} sur {item-slug}` (passe à la production hypothesis-grade)
+```
+
+### Pour `angles/{id}`
+
+Lecture : `brands/{brand}/angles/{id}.json` ou agrégat `brands/{brand}/angles.json`. Rendering :
+
+```
+{NOM_ANGLE} · {status} · {audience_target}
+{Synopsis 1-2 phrases}
+
+CIBLE              {audience_slug}
+PROMESSE           {promise ou "non posée"}
+PROOF / MÉCANIQUE  {mechanism ou "non posé"}
+HOOKS              {N} testés, {M} live, {K} fatigués
+TESTS              {ROAS si dispo, sinon "pas de test posté"}
+
+NEXT SUGGESTED
+  → Tape : `refresh l'angle {id}` ({raison liée au statut})
+  → Tape : `produce-copy-brief {brand_slug} sur l'angle {id}` (passer en brief créa)
+```
+
+### Pour `products/{slug}`
+
+Lecture : `brands/{brand}/products/{slug}/spec.json` + `offers.json`. Rendering :
+
+```
+{NOM_PRODUIT} · {category}
+{Description 1-2 lignes}
+
+PROMESSE          {promise.headline ou "non posée"}
+MÉCANISME         {unique_mechanism.name ou "non posé"}
+COMPOSITION       {N composants encodés / total attendus}
+PROBLÈMES RÉSOLUS {N encodés}
+BÉNÉFICES         {N encodés}
+PRIX              {pricing.price} {currency}
+OFFRES            {N actives} (cure 1m, 3m, 6m si dispo)
+
+NEXT SUGGESTED
+  → Tape : `densifie la spec {slug}` (champs manquants : {liste})
+  → Tape : `audit l'offre {slug}` (vérifier cohérence prix/cure/économies)
+```
+
+### AskUserQuestion (mode item)
+
+| Slot | Rôle |
+|---|---|
+| 1 | Action top-priority sur l'item (paste-ready) |
+| 2 | Action 2 (paste-ready) |
+| 3 | *"Drill {sibling}"* · un autre item du même entity-drill (typiquement le suivant alphabétique ou le voisin hiérarchique pour les audiences) |
+| 4 | *"Retour {entity}"* · relance `/phantom {brand} {entity}` |
+
+### Hard rule for item mode
+
+Si `{item-slug}` n'existe pas, surface : *"Item '{x}' pas trouvé dans `{entity}` de `{brand}`. Disponibles : {liste des slugs trouvés}. Tape `/phantom {brand} {entity}` pour la vue entity complète."*
+
+---
+
+## Mode search
+
+`/phantom search {keyword}` cherche le mot-clé cross-brand sur tous les champs textuels indexables (slugs, names, descriptions, voc.key_expressions, pain_points, learnings.fact, strategy.goals).
+
+Implémentation : invoquer `python3 .skills/phantom-search.py "{keyword}"` qui retourne un JSON array `[{path, type, brand_slug, slug, field, snippet}]`.
+
+Header breadcrumb :
+
+```
+workspace > search "{keyword}"
+══════════════════════════════════════════════
+{N} matches · cross-brand
+```
+
+Rendering : un block par match (cap 20 affichés, mention si plus existent) :
+
+```
+{type} · {brand_slug}/{slug}
+  {snippet avec keyword en gras ou highlight}
+  → Tape : `/phantom {brand_slug} {entity} {slug}` pour drill
+```
+
+Group par `brand_slug`. Ordre par pertinence (matches sur `meta.name` en haut, matches sur descriptions/snippets en bas).
+
+### AskUserQuestion (mode search)
+
+| Slot | Rôle |
+|---|---|
+| 1 | Drill 1er match (paste-ready `/phantom {brand} {entity} {slug}`) |
+| 2 | Drill 2e match |
+| 3 | Drill 3e match |
+| 4 | *"Retour workspace"* · relance `/phantom` |
+
+Si 0 match : empty state pédagogique : *"Aucun match pour '{keyword}'. Tape `/phantom search` avec un autre terme, ou `/phantom todo` pour voir ce qui est actif."* Pas d'AskUserQuestion dans ce cas.
+
+---
+
+## Mode recent
+
+`/phantom recent` ou `/phantom recent {N}` (default N=10, max 50) liste les dernières mutations cross-brand en timeline lisible.
+
+Implémentation : invoquer `python3 .skills/phantom-recent.py {N}` qui retourne un JSON array d'événements lus depuis `.phantom/context-engine-events.jsonl`.
+
+Header breadcrumb :
+
+```
+workspace > recent
+══════════════════════════════════════════════
+Dernières {N} mutations · cross-brand
+```
+
+Rendering : un par ligne (compact) :
+
+```
+{time_ago}    {brand_slug}    {entity}    {action} {field_extrait}
+                              → {reason si présent, sinon vide}
+```
+
+Exemple :
+```
+14h ago       karacare        audiences/chute-active     set meta.validation_status = "hypothesis"
+                                                         → validated hierarchy
+2d ago        vitatone        learnings                  append entry "test FB ad #3 ROAS 4.2"
+6d ago        karacare        brand                      set positioning.tagline
+```
+
+### AskUserQuestion (mode recent)
+
+| Slot | Rôle |
+|---|---|
+| 1 | Drill le brand le plus actif récent (paste-ready `/phantom {brand_slug}`) |
+| 2 | Drill l'entity la plus modifiée (paste-ready `/phantom {brand_slug} {entity}`) |
+| 3 | Drill un item du top match si pertinent |
+| 4 | *"Retour workspace"* |
+
+Si event log vide : *"Pas encore de mutations enregistrées. Reviens après ta première session de mining ou de snapshot."*
+
+---
+
+## Mode todo
+
+`/phantom todo` agrège les next-suggested top-priority de tous les brands actifs (skip dormants > 60j sauf `--all`). Vue cross-brand des actions à faire.
+
+Header breadcrumb :
+
+```
+workspace > todo
+══════════════════════════════════════════════
+{N} actions actives · {M} brands
+```
+
+Rendering (top 5 max) :
+
+```
+{priority_icon} [{brand_slug}] {action description}
+   → Tape : `{paste-ready commande}` ({why})
+```
+
+`priority_icon` : `🔥` (urgent : tests fatigués, brand stale > 30j sur entité critique), `⚡` (à faire bientôt : audiences en mining vide, angles draft), `·` (peut attendre).
+
+Exemple :
+```
+🔥 [vitatone] 2 angles ROAS en chute libre depuis 7j
+   → Tape : `refresh les angles fatigués sur vitatone`
+
+⚡ [karacare] 7 audiences en hypothèse, aucun verbatim encore
+   → Tape : `lance mine-voc sur karacare`
+
+⚡ [karacare] strategy.json sans focus Q2 posé
+   → Tape : `pose le focus Q2 de karacare`
+
+· [northsense] dormant depuis 47j, peut-être à archiver
+   → Tape : `archive northsense`
+```
+
+### AskUserQuestion (mode todo)
+
+| Slot | Rôle |
+|---|---|
+| 1 | Action 🔥 #1 (paste-ready) |
+| 2 | Action ⚡ #2 (paste-ready) |
+| 3 | *"Drill {brand_slug}"* du brand qui concentre le plus d'actions |
+| 4 | *"Retour workspace"* |
+
+Si 0 todo (workspace serein) : *"Tout est calme. Pas d'action urgente. Profite ou commence un nouveau brand."*
+
+---
+
+## Mode help (?)
+
+`/phantom ?` ou `/phantom help` rend une cheatsheet auto-générée. Court, dense.
+
+Format :
+
+```
+PHANTOMOS · /phantom cheatsheet
+══════════════════════════════════════════════
+NAVIGATION
+  /phantom                       vue workspace (default)
+  /phantom {brand}               cockpit du brand
+  /phantom {brand} {entity}      drill dense sur une entité
+  /phantom {brand} {entity} {item}   preview d'un item
+
+UTILITAIRES
+  /phantom search "{keyword}"    grep cross-brand
+  /phantom recent [N]            timeline des N dernières mutations (default 10)
+  /phantom todo                  next-suggested cross-brand priorisés
+  /phantom ?                     cette cheatsheet
+
+ENTITÉS DRILLABLES
+  audiences, angles, products, offers, strategy, learnings
+
+NAVIGATION RAPIDE
+  Chaque rendering termine par 4 boutons cliquables (drill, drill latéral, action, retour parent).
+  Slot 4 toujours = retour parent. Tu ne te perds jamais.
+
+EXEMPLES CONCRETS
+  /phantom karacare audiences chute-active
+  /phantom search "post-grossesse"
+  /phantom recent 20
+```
+
+Pas d'AskUserQuestion en mode help. C'est une référence, pas un point d'action.
+
+---
+
+## Empty states pédagogiques
+
+Quand un rendering rencontre du vide, ne rends pas du vide · propose le next move concret. Toujours.
+
+| Situation | Empty state output |
+|---|---|
+| Workspace mode, 0 brand | (déjà couvert par mode bootstrap) |
+| Brand mode, 0 produit | *"Pas encore de produit encodé sur `{brand}`. Tape `snapshot {brand} avec {url}` pour scaffold le hero produit."* |
+| Brand mode, 0 audience | *"Pas encore d'audience sur `{brand}`. Snapshot va proposer une cartographie. Sinon : `lance mine-voc sur {brand}` pour partir du verbatim client."* |
+| Entity-drill audiences, 0 audience | *"Pas d'audience encodée. Tape `/phantom {brand}` puis snapshot le hero pour scaffold les groupes principaux."* |
+| Entity-drill angles, 0 angle | *"Pas d'angle produit. Tape `produce-paid-angles {brand}` après mine-voc pour générer un set ranked."* |
+| Entity-drill learnings, 0 entry | *"Pas de learning capturé. Tape `/learn-from-session` après une correction pour verrouiller la première règle."* |
+| Entity-drill products, 0 produit | (idem brand mode 0 produit) |
+| Entity-drill offers, 0 offer | *"Pas d'offre. Snapshot du hero produit scaffold les offres depuis l'API ou demande au pixel."* |
+| Entity-drill strategy, 0 strategy | *"Pas de stratégie posée. Tape `pose le focus Q{n} sur {brand}` pour cadrer."* |
+| Item mode, slug introuvable | (déjà couvert par hard rule item mode) |
+| Search 0 match | (déjà couvert par mode search) |
+| Recent log vide | (déjà couvert par mode recent) |
+| Todo vide | (déjà couvert par mode todo) |
+
+Hard rule : **toujours offrir un next move dans l'empty state**. Jamais juste *"rien à afficher"*.
+
+---
+
+## Status indicators enrichis
+
+Étend la table d'icônes existante (mode brand, mode entity-drill, mode workspace) avec :
+
+| Icône | Sens |
+|---|---|
+| `✓` | encodé, frais (< 7j) |
+| `⚠` | encodé avec gaps ou stale (7-14j) |
+| `✗` | absent ou bloquant |
+| `○` | non connecté (sources) |
+| `🔥` | stale critique (> 90j) ou tests en chute libre |
+| `⏳` | mining ou sync en cours (background task active) |
+| `🆕` | créé < 24h (highlight des derniers ajouts) |
+
+Application : utiliser `🔥` quand un test ROAS chute ≥30% sur 14j ou quand un brand a > 90j sans activité. `⏳` quand `_mining_status: "running"` détecté ou un sub-agent background actif. `🆕` quand `meta.created_at` < 24h ou si jamais affiché à l'opérateur (track via `awareness.json#/items_seen[]`, futur P2).
+
+---
+
+## Footer hint discoverability
+
+À la fin de chaque rendering (workspace, brand, entity-drill, item, search, recent, todo), juste avant l'AskUserQuestion, insérer une ligne subtle :
+
+```
+─────
+`/phantom ?` pour voir tous les modes · `/phantom search` pour chercher
+```
+
+**Cap discoverability sans bruit.** Si l'opérateur a déjà tapé `/phantom ?` dans la session courante (track ephemeral), skip cette ligne. Sinon : présente, faible opacité visuelle.
 
 ---
 
