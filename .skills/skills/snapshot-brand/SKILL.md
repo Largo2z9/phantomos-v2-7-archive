@@ -368,80 +368,113 @@ Price scraping always in a known context. The API returns the base currency (USD
 
 ---
 
-## Step 5 — Audience detection + operator validation
+## Step 5 — Audience cartography (4 movements)
 
-**First infer from the page**, then ask for confirmation. Never start blank.
+**Doctrinal contract.** Read `docs/system/audience-cartography.md` before authoring or modifying this step. Step 5 runs four operator-facing movements in order: (1) raw observations, (2) cartography axes, (3) hierarchy mère/sous-audiences, (4) hand-off pédagogique vers `mine-voc`. Single-axis classification or flat audience output is a regression to form-fill and a violation of contextual intelligence doctrine.
 
-### Step 5A — Inference from product page
+The agent does NOT extract `pain_points[]`, `psychology.beliefs_limiting[]`, `voice.key_expressions[]` from the product page. Those fields belong to `mine-voc` verbatim. snapshot-brand fills only the cartography skeleton listed in `audience-cartography.md § Field-level contract`.
 
-Extract audience signals present in the scraped copy (Step 2):
+### Movement 1 — Raw observations
 
-| Signal | Source | Target field |
-|--------|--------|-------------|
-| Mentions of gender ("for her", "men's", "for women") | body_html, title | demographic.gender |
-| Mentions of age or life stage ("60+", "kids", "active adults") | body_html, tags | demographic.age_range |
-| Explicit problem in title or description ("foot pain", "plantar fasciitis") | title, body_html | pain.primary_problem |
-| Use context ("after long hours standing", "gym", "daily wear") | body_html | pain.context |
-| Product tags | tags[] | additional signals |
+Before any classification, name what the page literally said. No interpretation, just observation with source. Format:
 
-Build an **audience proposal**:
-```
-label       : {inferred or null}
-gender      : {inferred or null}
-age_range   : {inferred or null}
-problem     : {inferred or null}
-context     : {inferred or null}
-```
+> *"Voici ce que la page m'a dit, mot pour mot : la marque s'adresse à des femmes (mention `for her` ligne 14), évoque la chute (mot apparaît 8 fois dans le body), évoque la pousse (4 fois), pas de mention d'âge explicite, pas de mention de profession ou de contexte de vie. Les tags produit pointent sur biotine, post-grossesse, cheveux abîmés."*
 
-Absolute rule: if no clear signal in the page → leave null. Do not invent.
+If the page is thin, say so explicitly:
 
-### Step 5B — Stage + present the proposal + correct
+> *"La page n'a quasiment rien dit côté audience : juste une mention `for her` et deux tags génériques. Tout ce que je vais proposer en Movement 2 est hypothèse-grade et appelle ta correction."*
 
-Stage the proposal before presenting:
+Movement 1 is **never skipped**. Empty observations are a valid output and more useful than a fabricated profile.
+
+### Movement 2 — Cartography axes
+
+Propose 2 to 3 alternative axes for slicing the audience. Always mark one as the default hypothesis with a one-line rationale tied to a Movement 1 observation. Always invite the operator to override.
+
+Three canonical axes (full doctrine in `docs/system/audience-cartography.md § The four operator-facing movements § Movement 2`):
+
+- **Pain-driven** — slice by emotional state ("want to grow" vs "losing hair"). Dominant axis when pain register diverges by segment.
+- **Situational** — slice by life moment / context (post-grossesse vs stress longue durée). Dominant axis when the same pain has different trigger contexts.
+- **Demographic / cultural** — slice by who they are (voilées vs non voilées). Rarely the dominant axis for paid acquisition; usually a modulator within pain or situational.
+
+Format:
+
+> *"Trois manières de découper cette audience, je te donne les trois et tu me dis laquelle colle à ce que tu vois en perfs.*
+>
+> *Axe pain-driven : 'je veux pousser' vs 'je perds mes cheveux'. [why fits]*
+>
+> *Axe situationnel : 'post-grossesse' vs 'stress' vs 'saisonnier'. [why fits]*
+>
+> *Axe démographique : 'voilées' vs 'non voilées'. [why fits]*
+>
+> *Mon hypothèse default à corriger franchement : axe X, parce que [Movement 1 observation]. Si tu vois autre chose en perfs, dis-le."*
+
+Wait for the operator's choice before Movement 3.
+
+### Movement 3 — Hierarchy mère / sous-audiences
+
+Once the operator picks an axis, propose 2 to 3 **mother audiences** with 1 to 3 **sub-audiences** under each. Mother audiences carry the strategic positioning. Sub-audiences carry refinement that drives creative casting and channel choice.
+
+All sub-audiences are marked `meta.validation_status: "hypothesis"`. They get enriched downstream by `mine-voc` (verbatim) and validated by `audit-meta-account` (paid performance).
+
+Format:
+
+> *"Sur l'axe pain-driven que t'as choisi, voici la hiérarchie que je propose :*
+>
+> *Mère 'pousse-projet' : longueur ou densité jugées insuffisantes, démarche beauté positive, pas d'urgence.*
+> *  Sous : pousse-jeune-adulte, pousse-recovery (post-coloration / post-lissage).*
+>
+> *Mère 'chute-active' : chute en cours, charge émotionnelle, urgence.*
+> *  Sous : chute-post-grossesse, chute-hormonale-stress, chute-traction.*
+>
+> *Toutes les sous-audiences sont en hypothesis. mine-voc les enrichit avec du verbatim réel. Tu valides la hiérarchie, ou tu veux qu'on en garde moins en hypothèse pour démarrer plus serré ?"*
+
+Single-question gate. Wait for operator confirmation.
+
+### Movement 4 — Hand-off pédagogique vers mine-voc
+
+Before closing Step 5, explicitly tell the operator how the audience encoding will be **exploited downstream**. This is the pedagogy step. It anchors why the work matters and proposes the next skill.
+
+Format:
+
+> *"Voilà comment ces audiences vont servir à partir de maintenant.*
+>
+> *L'encodage qu'on vient de poser est volontairement minimal : un slug, un axe, une hypothèse. Deux skills l'enrichissent.*
+>
+> *mine-voc lit Trustpilot, les widgets onsite, les threads Reddit pertinents et remplit pour chaque sous-audience les pain_points exacts (le vrai mot qu'elles utilisent), les objections récurrentes, les expressions clés. C'est ce qui passe les audiences de hypothesis-grade à validation-grade. ~30 min en background.*
+>
+> *produce-paid-angles consomme ensuite ces audiences enrichies pour te sortir un set d'angles ranked, prêts à brief créa. Sans mine-voc d'abord, les angles sortent au mot près de mon chapeau, pas de tes clientes.*
+>
+> *Mon avis : on lance mine-voc maintenant. Si t'as une deadline créa cette semaine et tu pousses direct sur les angles en hypothèse-grade, dis-le. T'as aussi des données existantes (reviews, analytics, support returns) à m'injecter avant mine-voc ? Si oui, donne-moi le fact le plus dense en 1-2 phrases."*
+
+The closing question fuses Movement 4 with what was previously Step 5D (existing data probe). One question, three doors: lance mine-voc, push direct sur angles hypothesis-grade, ou existe data à injecter d'abord.
+
+### Movement gate (technical)
+
+Stage the proposal once Movement 3 is confirmed by the operator (after they pick the hierarchy). Movement 1 and Movement 2 are conversational, not gated:
 
 ```bash
 python3 .skills/stage-proposal.py \
   --brand {slug} \
   --checkpoint audience_q1q4_answered \
-  --summary "Audience proposal: {label} — {gender}, {age_range}, problem: {problem}"
+  --summary "Audience hierarchy: {N parents} ({slugs}) + {M sub-audiences} ({slugs}). Axis: {pain-driven|situational|demographic}."
 ```
 
-Display to the operator:
-```
-I detected on the page:
-→ Audience: {label or "not detected"}
-→ Gender: {gender or "not specified"}
-→ Age: {age_range or "not specified"}
-→ Main problem: {problem or "not specified"}
-→ Use context: {context or "not specified"}
-
-Close to your customers? Correct what's wrong, add what's missing.
-(Examples: "more women 35-55", "real problem is foot fatigue", "add: they are nurses")
-```
-
-**Wait for the operator turn.** The `checkpoint-resolver` hook resolves the pending:
-- Confirmation (`"oui"`, `"spot on"`, `"yes that's it"`) → `audience_q1q4_answered = true` → Step 6 write unlocked.
-- Rejection (`"non"`, `"not my customers"`) → pending cleared, re-infer, re-stage.
-- Free-form corrections (`"more women 35-55"`) → no automatic resolve. Apply the correction in memory, re-stage the updated proposal, re-ask.
-
-If the operator says "I don't know" or doesn't answer on a field → keep null, DO NOT invent.
+The `checkpoint-resolver` hook resolves the pending:
+- Confirmation (`"oui"`, `"go"`, `"valide"`) → `audience_q1q4_answered = true` → Step 6 write unlocked.
+- Rejection (`"non"`, `"on revoit"`) → pending cleared, re-propose hierarchy.
+- Free-form corrections (`"on enlève chute-traction"`) → no automatic resolve. Apply correction in memory, re-stage, re-ask.
 
 **Writing `audiences/{slug}/profile.json` is blocked by write-to-context until `audience_q1q4_answered = true`.**
 
-### Step 5C — Unique complementary question (if data missing)
+### Thin-page fallback
 
-If after 5B fields `gender` AND `primary_problem` are still null → ask **one single question**:
-> "In one sentence: who's your ideal customer and what problem do you solve for them?"
+If Movement 1 returns near-empty observations AND the operator skips Movement 2 (e.g. *"je sais pas, propose"*) → ask **one** single question:
 
-Extract gender + problem + age_range from the free answer. If still imprecise → null.
+> *"En une phrase : à qui tu vends et quel problème tu résous pour eux ?"*
 
-### Step 5D — Existing data
+Extract one mother audience from the answer. Skip Movement 3's sub-audiences entirely. Mark the single audience `validation_status: "hypothesis"`. Move to Movement 4. Resilience over completeness when the page is empty.
 
-> "Do you have data on your customers, reviews, analytics, support returns? If yes, give me the most important fact in 1-2 sentences."
-→ If yes with concrete fact → note in `data.operateur_note`
-→ If no → `data.data_available: false`
-
-**Final rule**: Do not create an audience folder if `gender` AND `primary_problem` are both null after 5B + 5C. Not enough to identify an audience.
+**Final rule**: Do not create an audience folder if both Movement 1 observations and Movement 2 operator input are empty. Block the write, surface the gap, suggest the operator paste a brief or run mine-voc on a competitor.
 
 ---
 
@@ -452,42 +485,28 @@ Fill `brands/{slug}/audiences/{audience_slug}/profile.json` with:
 - What comes from Q1-Q4 answers
 - Nothing else
 
-**Encoding delegated to `encode-batch` (same pattern as Step 3).** Producer assembles observations from Step 5 (audience_label, audience_gender, audience_age_range, pain_point if extracted, key_expression if any operator verbatim) and ships the payload to the encode-batch sub-agent. Sub-agent maps and writes; producer continues to Step 7 synthesis without blocking.
+**Hierarchy = N audience folders.** The Step 5 hierarchy validated by the operator typically yields 2-3 mother audiences + 1-3 sub-audiences each = 4-12 audience folders to scaffold. Scaffold each one. Mother audiences carry `meta.parent_slug: null` and `meta.scope: "broad"`. Sub-audiences carry `meta.parent_slug: "{mother-slug}"` and `meta.scope: "segment"` (or `"micro"` for hyper-niches).
 
-```json
-{
-  "meta": {
-    "slug": "{audience_slug}",
-    "updated": "{today}"
-  },
-  "identity": {
-    "label": "{inferred or corrected by operator}",
-    "demographic": {
-      "gender": "{5A/5B or null}",
-      "age_range": "{5A/5B or null}"
-    }
-  },
-  "pain": {
-    "primary_problem": "{5A/5B or null}",
-    "trigger_primary": null
-  },
-  "data": {
-    "data_available": "{5D boolean}",
-    "operateur_note": "{5D fact or null}"
-  },
-  "_snapshot": {
-    "source": "snapshot skill v1.0",
-    "completion_level": "surface — enrich with ingest-resource + VoC",
-    "missing": ["objections", "pain_chain", "psychographic", "awareness_level"]
-  }
-}
+**Encoding delegated to `encode-batch`.** Producer assembles per-audience observations from Step 5 (label, slug, scope, parent_slug, validation_status, gender, age_range, primary_problem, namespace-prefixed tags) and ships one encode-batch call per audience. Sub-agent maps and writes; producer continues to Step 7 synthesis without blocking.
+
+**Field-level contract.** snapshot-brand fills only the cartography skeleton (full doctrine in `docs/system/audience-cartography.md § Field-level contract`):
+
+```
+meta.name              → human-readable label
+meta.slug              → kebab-case slug
+meta.scope             → broad | segment | micro
+meta.parent_slug       → null for mother, slug-of-mother for sub
+meta.validation_status → "hypothesis"
+meta.audience_type     → "primary" | "secondary"
+meta.tags              → ["problem:hair-loss", "context:post-pregnancy", ...] (namespaced)
+identity.gender        → male | female | all (only if explicit on page)
+identity.age_range     → {min, max} (only if explicit on page)
+pain.primary_problem   → one-line statement (only if explicit on page or operator-stated)
 ```
 
-Fields intentionally left empty (for ingest-resource after):
-- `psychology.objections[]`
-- `psychology.awareness_level`
-- `pain.chain[]`
-- `behavior.*`
+Everything else stays null until `mine-voc` (verbatim → pain_points[].formulation, objections[], voice.key_expressions[], psychology.beliefs_limiting[]) or operator-driven enrichment.
+
+**Hard rule.** snapshot-brand NEVER fills `pain_points[]`, `psychology.beliefs_limiting[]`, `psychology.beliefs_facilitating[]`, `voice.key_expressions[]`, `objections[]`, `behavior.*`, `psychology.emotions[]`. Inferring those fields from a product page is hallucination, even when the page mentions emotional language. Those fields are mine-voc territory.
 
 ---
 

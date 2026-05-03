@@ -5,6 +5,24 @@
 
 ---
 
+## v2.19.0 — 2026-05-03 — Audience cartography (4 movements)
+
+**Why this release.** Live test on the phantomos-test workspace surfaced a dominant friction in `snapshot-brand` Step 5: the agent collapsed what should have been seven audiences (2 mothers + 5 sub-audiences for Karacare) into a single flat *femmes-cheveux-fragiles* profile. The operator had to spend 6+ minutes manually rebuilding the cartography (proposing axes, hierarchy, sub-segmentation) that the agent should have proposed autonomously. Symptom of a deeper bug : Step 5 was form-fill, not cartography.
+
+**What shipped.**
+
+- **`docs/system/audience-cartography.md` doctrine added.** Governs the contract for audience-mapping behavior across snapshot-brand, mine-voc, produce-paid-angles. Names the four movements, the three canonical axes (pain-driven, situational, demographic), the field-level contract, and the anti-patterns.
+- **`snapshot-brand` Step 5 rewritten as 4-movement audience cartography.** Movement 1 raw observations (never skipped, exposes thin pages), Movement 2 cartography axes (always 2-3 alternatives, default hypothesis tied to a Movement 1 observation), Movement 3 hierarchy mère/sous-audiences (default hierarchical, not flat), Movement 4 hand-off pédagogique vers mine-voc (anchors why the encoding matters, proposes the next skill).
+- **`snapshot-brand` Step 6 updated to scaffold N audience folders.** Mother audiences carry `meta.parent_slug: null` and `meta.scope: "broad"`. Sub-audiences carry `meta.parent_slug: "{mother-slug}"` and `meta.scope: "segment"` (or `"micro"` for hyper-niches). All sub-audiences `meta.validation_status: "hypothesis"` until mine-voc enriches them.
+- **Field-level contract enforced.** snapshot-brand fills only the cartography skeleton (`meta.*`, `identity.gender`, `identity.age_range`, `pain.primary_problem`). `pain_points[]`, `psychology.beliefs_*[]`, `voice.key_expressions[]`, `objections[]` are mine-voc territory. Inferring those from a product page is hallucination and is now explicitly forbidden.
+- **`CLAUDE.md` Reference list extended** with a pointer to `audience-cartography.md`.
+
+**Breaking changes.** snapshot-brand now produces N audience folders (typically 4-12) instead of 1. Skills downstream that assumed exactly one audience per snapshot run must iterate. mine-voc and produce-paid-angles already handle multi-audience input. Custom skills referencing *"the audience"* from snapshot output must be reviewed.
+
+**Operator impact.** Snapshot of a new brand delivers a structured cartography conversation instead of a fill-in-the-blanks form. Operator picks the cartography axis they see in performance data, gets a hierarchy proposed by default, and lands on Movement 4 with an explicit invitation to mine-voc. The 6-minute manual re-classification observed in the karacare live test becomes a 2-3 turn agent-driven proposal.
+
+---
+
 ## v2.18.0 — 2026-05-03 — encode-batch sub-skill (responsiveness)
 
 **Why this release.** Producer skills (snapshot-brand, ingest-resource) encoded 15-50 mutations sequentially in the main thread, blocking 60-120s. Operator perception : the agent "grinds through fields". Cognitive split : extracting semantic signals from a scrape is Sonnet-grade work ; mapping `semantic_kind` → `field_path` is Haiku-grade mechanical work. This release pulls the mechanical half into a sub-agent.

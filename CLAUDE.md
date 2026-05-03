@@ -203,6 +203,7 @@ Schemas in `resources/schemas/{type}.schema.json`. Central registry: `index.json
 - **Resource discovery** (FTS5 runtime pattern, priority rules, cost budget) → `docs/system/skill-resource-discovery.md`
 - **Lexicon** (canonical vocabulary) → `lexicon.md`
 - **Voice canon** (writing style, register, anti-patterns, heavy-skill gate, read before editing any doc) → `docs/system/voice.md`
+- **Audience cartography** (Step 5 of snapshot-brand: 4 movements, 3 axes, mère/sous-audiences, hand-off pédagogique vers mine-voc) → `docs/system/audience-cartography.md`
 - **Where does it go?**: `resources/guides/where-does-it-go.md`
 - **Capabilities map** (operator-facing): `docs/product/capabilities.md`
 - **Roadmap**: `docs/vision/roadmap.md`

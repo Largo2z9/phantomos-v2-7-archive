@@ -1,0 +1,44 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.19.0",
+  "released_at": "2026-05-03",
+  "compatible_from": "2.0.0",
+  "type": "doctrine_amendment",
+  "summary": "snapshot-brand Step 5 (audience detection) rewritten from a flat single-audience inference into a 4-movement cartography that proposes raw observations + 2-3 cartography axes + a mother/sub-audience hierarchy + an explicit pedagogical hand-off to mine-voc. New doctrine doc audience-cartography.md governs the contract. Field-level boundaries enforced: snapshot-brand fills only meta + identity.gender + identity.age_range + pain.primary_problem. Resolves S55 karacare regression where snapshot-brand collapsed seven audiences into one flat profile and forced the operator to rebuild the cartography by hand over 6+ minutes.",
+  "changes": [
+    {
+      "category": "doctrine",
+      "action": "added",
+      "files": ["docs/system/audience-cartography.md"],
+      "rationale": "Doctrine doc governing audience-mapping behavior across snapshot-brand, mine-voc, produce-paid-angles. Names the four movements (raw observations, cartography axes, hierarchy, hand-off pedagogy), the three canonical axes (pain-driven, situational, demographic), the field-level contract, and the anti-patterns (single-axis classification, flat audience list, confident hallucination on pain_points)."
+    },
+    {
+      "category": "skills",
+      "action": "rewritten",
+      "files": [".skills/skills/snapshot-brand/SKILL.md"],
+      "section": "Step 5 + Step 6 audience scaffolding",
+      "rationale": "Step 5 was a single-audience inference that produced form-fill output and forced the operator to rebuild cartographies manually. Now structured as 4 movements: Movement 1 raw observations (never skipped), Movement 2 cartography axes (always 2-3 alternatives with default hypothesis), Movement 3 hierarchy mère/sous-audiences (default = hierarchical not flat), Movement 4 hand-off pédagogique vers mine-voc (anchors why the encoding matters and proposes the next skill). Step 6 updated to scaffold N audience folders matching the validated hierarchy. Field-level contract enforces what snapshot-brand fills vs what stays null until mine-voc."
+    },
+    {
+      "category": "doctrine",
+      "action": "amended",
+      "files": ["CLAUDE.md"],
+      "section": "Reference (on-demand)",
+      "rationale": "Added pointer to audience-cartography.md alongside other on-demand doctrine docs."
+    },
+    {
+      "category": "tooling",
+      "action": "added_rd",
+      "files": ["05-projects/context-engine/sync-test-workspace.sh (R&D side, not template)"],
+      "rationale": "Sync script for ~/dev/phantomos-test that excludes brands/ and operator/ by default. Prevents the workspace-state-loss regression where a naked rsync --delete erased an in-progress karacare test setup. Provides explicit --reset flag for full template restore when starting fresh."
+    }
+  ],
+  "breaking_changes": [
+    "snapshot-brand now produces N audience folders (typically 4-12) instead of 1. Skills downstream that assumed exactly one audience per snapshot run must iterate over audiences/{slug}/ rather than hard-coding a single slug. mine-voc and produce-paid-angles already handle multi-audience input. Custom skills referencing 'the audience' from snapshot output must be reviewed."
+  ],
+  "migrations": [
+    "Existing brand workspaces with a single flat audience are not auto-migrated. Re-running snapshot-brand on the same hero product re-asks Step 5; the operator can refactor the existing flat audience into a hierarchy at that point (or run mine-voc-driven reorganization if available)."
+  ],
+  "operator_impact": "Snapshot of a new brand now delivers a structured cartography conversation instead of a fill-in-the-blanks. Operator picks the cartography axis they actually see in performance data, gets a hierarchy proposed by default, and lands on Movement 4 with an explicit invitation to mine-voc. Roughly 6 minutes of manual operator-driven re-classification (S55 karacare) becomes an agent-driven proposal in 2-3 turns.",
+  "doctrinal_lineage": "Extension of the contextual-intelligence master doctrine. Pattern-detection trigger that drove this release: S55 stress test panel (32.75/50) flagged operator usability as a friction zone; live test on phantomos-test surfaced the snapshot-brand audience step as the dominant friction (operator had to manually generate the cartography that the agent should have proposed)."
+}

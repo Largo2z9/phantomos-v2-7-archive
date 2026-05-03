@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.18.0",
+  "template_version": "2.19.0",
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "encode-batch sub-skill added (shared, Haiku, subagent_safe). Producer skills (snapshot-brand, ingest-resource) delegate their N-mutation encoding to a Haiku sub-agent so the main thread stays responsive while the batch runs in background. Mechanical mapping observation → field_path; semantic interpretation stays upstream in the producer. snapshot-brand Step 3 + Step 6 patched. ingest-resource Step 3B patched (inline still acceptable for ≤5 mutations). Performance target: 25-mutation snapshot ships synthesis in 5-15s instead of 60-120s sequential.",
-  "manifest": "docs/internal/releases/manifest/2.18.0-manifest.json"
+  "summary": "snapshot-brand Step 5 rewritten as 4-movement audience cartography (raw observations → cartography axes → hierarchy mère/sous-audiences → hand-off pédagogique vers mine-voc). New doctrine doc audience-cartography.md. Field-level contract enforced: snapshot-brand fills only the cartography skeleton (meta, identity.gender, identity.age_range, pain.primary_problem). pain_points[], objections[], voice.key_expressions[], psychology.beliefs_*[] are mine-voc territory. Resolves S55 karacare regression where the agent collapsed seven audiences into one flat profile and forced the operator to rebuild the cartography by hand. Includes sync-test-workspace.sh script (R&D side) that excludes brands/ and operator/ from sync to prevent operator state loss.",
+  "manifest": "docs/internal/releases/manifest/2.19.0-manifest.json"
 }
