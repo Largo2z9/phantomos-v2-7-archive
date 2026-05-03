@@ -4,13 +4,13 @@
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
   "type": "cleanup",
-  "summary": "Privacy and surface cleanup before broader public release. Real client names anonymized, Abyss-specific skill removed from public template, variant-map simplified.",
+  "summary": "Privacy and surface cleanup before broader public release. Real client names anonymized, downstream-extension-specific skill removed from public template, variant-map simplified.",
   "changes": [
     {
       "category": "skill_removed",
       "action": "removed",
       "skill": "connect-cockpit",
-      "rationale": "Skill is specific to the Abyss data infrastructure (cockpit dashboard, Supabase, Airbyte). Lives in the Abyss extension repository, not in the public template."
+      "rationale": "Skill is specific to a downstream data infrastructure extension. Lives in that extension's repository, not in the public template."
     },
     {
       "category": "client_anonymization",
@@ -24,7 +24,7 @@
       "category": "docs",
       "action": "simplified",
       "files": ["docs/product/variant-map.md"],
-      "rationale": "Original document mentioned the private Abyss repository and the private cockpit-pack addon. Simplified to focus on template versus operator instance, no exposure of private downstream variants."
+      "rationale": "Original document mentioned private downstream variants and addons. Simplified to focus on template versus operator instance."
     },
     {
       "category": "manifest_removed",
@@ -33,13 +33,13 @@
         "docs/internal/releases/manifest/2.12.0-manifest.json",
         "docs/internal/releases/manifest/2.13.0-manifest.json"
       ],
-      "rationale": "Abyss-specific release manifests (connect-cockpit related). Tracked in the Abyss extension repository."
+      "rationale": "Downstream-extension-specific release manifests (connect-cockpit related). Tracked in that extension's repository."
     },
     {
       "category": "changelog",
       "action": "removed_entries",
       "entries": ["v2.13.0 connect-cockpit refactor", "v2.12.0 connect-cockpit ship"],
-      "rationale": "Abyss-specific release notes."
+      "rationale": "Downstream-extension-specific release notes."
     },
     {
       "category": "manifest",
@@ -55,7 +55,7 @@
     },
     {
       "what": "connect-cockpit skill removed from public template",
-      "impact": "Public template operators no longer see this skill. Operators on the Abyss extension still have it via that repository."
+      "impact": "Public template operators no longer see this skill. Operators on a downstream extension that ships it still have it via that extension's repository."
     }
   ],
   "migrations": []

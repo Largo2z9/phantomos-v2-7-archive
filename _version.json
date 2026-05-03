@@ -3,6 +3,6 @@
   "template_version": "2.15.0",
   "released_at": "2026-05-03",
   "compatible_from": "2.0.0",
-  "summary": "Privacy and surface cleanup for public release. Real client names anonymized to fictional names across the template surface (skills, docs, doctrine, examples). Abyss-specific skill connect-cockpit and its release manifests removed (lives in the Abyss extension repository, not in the public template). variant-map.md simplified to focus on template versus operator instance, no mention of private extensions or addons.",
+  "summary": "Privacy and surface cleanup for public release. Real client names anonymized to fictional names across the template surface (skills, docs, doctrine, examples). Skill connect-cockpit removed from the public template (specific to a downstream extension, lives in that extension's repository). variant-map.md simplified to focus on template versus operator instance, no mention of private extensions or addons.",
   "manifest": "docs/internal/releases/manifest/2.15.0-manifest.json"
 }

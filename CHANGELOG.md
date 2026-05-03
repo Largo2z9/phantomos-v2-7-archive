@@ -7,18 +7,18 @@
 
 ## v2.15.0 — 2026-05-03 — Privacy and surface cleanup
 
-**Why this release.** Pre-broader-release pass to remove from the public template anything specific to a downstream extension (Abyss) and to anonymize any real client brand name still appearing in examples or doc text.
+**Why this release.** Pre-broader-release pass to remove from the public template anything specific to a downstream extension and to anonymize any real client brand name still appearing in examples or doc text.
 
 **What shipped.**
 
 - **Real client names anonymized.** All real client brand slugs replaced with fictional names across examples, doc text, skill outputs, and internal manifests. 9 brand identifiers swept across 34 files. Canonical fictional names used in shipped examples : northsense, vitatone, peaktrek, glowco, nestra, freshbite-foods, shellbrand, skyfloat, acmeflow.
-- **Abyss-specific skill removed from public template.** `connect-cockpit` skill (data plumbing to a downstream Abyss cockpit dashboard) no longer ships in the public template. Lives in the Abyss extension repository instead.
+- **Downstream-extension-specific skill removed from public template.** `connect-cockpit` skill (data plumbing to a downstream cockpit dashboard) no longer ships in the public template. Lives in the corresponding downstream extension repository instead.
 - **`docs/product/variant-map.md` simplified.** Now focuses on template versus operator instance, no longer exposes the existence of private downstream extensions or addons.
 - **Manifest cleanup.** `.skills/_manifest.json` regenerated post connect-cockpit removal. Disambiguation references to connect-cockpit swept across sibling skills.
 
 **Breaking changes.**
 
-- `connect-cockpit` skill removed (only relevant to Abyss extension users, who have the skill via that repository).
+- `connect-cockpit` skill removed from the public template (only relevant to downstream extension users, who have the skill via that extension's repository).
 - Hardcoded brand slug references in custom workflows need to update to the new canonical fictional names.
 
 **Operator impact.** Public template surface clean of real client identifiers and downstream-specific skills. Day-1 reading no longer surfaces private business context.
