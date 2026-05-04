@@ -5,6 +5,29 @@
 
 ---
 
+## v2.28.1 · 2026-05-04 · Patches v3.1 stress test compositionnel · 23 ads
+
+**Why this release.** Stress test compositionnel S55 sur 23 ads cross-typologies (cosméto FR, telehealth US, apparel UK, supplément FR, kids gear, skincare niche, accessoire tech, SaaS B2B, info-product, DTC fashion, kids smartwatch, public sector edu, B2B automotive, business coaching). 10 patches identifiés sans refonte. Référence équation compositionnelle v3.1 inscrite : `creative_statique = concept × execution ; concept = audience → insight → angle → mecanique ; execution = format × ton × craft × cta`.
+
+**What shipped (angle.schema.json v1.0 → v1.1, additif backward compat).**
+
+- **`intent`** (top-level) : 4 valeurs (DR / Brand / Hybrid / B2B_lead_gen). P7 patch — AD4 automotive industrial montre que B2B lead-gen a des KPI distincts (form-fill, MQL, SQL vs ROAS).
+- **`mecanique`** (top-level) : enum 16 valeurs. Ajouts par rapport au v3 : `curiosity_teaser` (P3, ad_056 rosacée — hook accusateur + visuel-preuve + payoff externalisé via swipe) et `emotional_reframe` (P8, AD5 coach business — ladder de futurs possibles, distinct de meme_cultural et statement).
+- **`insight`** (top-level) : objet { modalité (formulé/implicite/absent), status (déduit/validé/incertain), formulation }. Atom concept distinct de formula.tension (insight = vérité non-dite verbalisée vs tension = gap observable). Distribution observée : ~33% formulé, ~42% implicite, ~25% absent sur 23 ads.
+- **`seasonality_trigger`** (top-level) : metadata Concept optionnelle. P9 patch — AD1 back-to-school NL. Trigger temporel exogène (back-to-school, fête mères, BFCM, ramadan).
+- **`execution.craft_mode`** : product_only | with_overlay. P6 patch — AD3 robe DTC fashion : 3 axes Craft vides mais reach 4674 sur 7j. Sous-catégorie product_only valide pour catalog photo muet.
+- **`execution.longevity_signal`** : days_running + winner_proxy enum (evergreen/scaling/early/fatigued/indéterminé). P10 patch — days_running > 30 = winner proxy meilleur que reach absolu (qui corrèle avec budget plus que mérite intrinsèque). AD2 concours IT 48j evergreen.
+- **`execution.cta`** : modalité 4 valeurs (explicite, implicite_brand, absent_intentionnel, externalisé). P1 patch — hims_009 deep pass : CTA brand-led volontairement absent, distinct de externalisé. ~80% des ads observées ont CTA externalisé (norme paid social).
+- **`_equation_ref`** (top-level) : référence canonique inscrite pour tracer la doctrine compositionnelle v3.1 vers decisions.md largo-kb D#391.
+
+**Breaking changes.** Aucun. Tous champs additifs optionnels. Skills v2.27 (produce-paid-angles, produce-copy-brief, mine-voc, learn-from-session) non modifiés.
+
+**Operator impact.** Pas d'impact direct v2.28.1. La valeur arrive avec les skills futurs : (a) refacto produce-paid-angles pour produire les nouveaux champs en light pass (intent, mecanique enum 16, insight modalité, craft_mode, cta modalité 4), (b) skill `decompose-ad` qui consomme TrendTrack API et applique équation v3.1, (c) skill `track-competitor` qui orchestre.
+
+**Source empirique.** Stress test S55 documenté dans largo-kb decisions.md D#391. 23 ads décomposées via 5 vagues de sub-agents (light pass, deep pass, extension couverture, TrendTrack pull). Pipeline TrendTrack validé end-to-end (auth, lookup, ads/query, ads/{id}, media-url, download, décomposition automatisée).
+
+---
+
 ## v2.28.0 · 2026-05-04 · Schemas enrichis pour cartographie compositionnelle
 
 **Why this release.** v2.27.0 a branché les skills sur le canon copy. Pour aller plus loin (graphe spec ↔ mécanismes ↔ bénéfices many-to-many, formule angle récursive auditable, mouvement awareness IN/OUT explicite, cycle validation_status sur les angles), les schemas devaient évoluer. v2.28.0 livre cette évolution (additive, backward compat) sans toucher aux skills downstream. Les skills d'enrichissement deep (decompose-angle, map-mechanisms) viendront sur demande dans des releases ultérieures, suivant le pattern light pass / deep pass déjà éprouvé sur audiences (snapshot-brand puis mine-voc).

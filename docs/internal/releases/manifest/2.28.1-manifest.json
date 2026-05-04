@@ -1,0 +1,28 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.28.1",
+  "released_at": "2026-05-04",
+  "compatible_from": "2.0.0",
+  "type": "schema_evolution_minor",
+  "summary": "10 patches additifs sur angle.schema.json (v1.0 → v1.1) issus du stress test compositionnel sur 23 ads cross-typologies. Référence équation v3.1 inscrite. Aucune refonte structurelle, tous champs optionnels backward compat.",
+  "changes": [
+    {
+      "category": "schemas",
+      "action": "patched",
+      "files": ["resources/schemas/angle.schema.json"],
+      "section": "v1.0 → v1.1 — 10 patches P1-P10",
+      "rationale": "Stress test compositionnel S55 sur 23 ads (12 batch initial + 3 deep pass + 6 extension + 5 TrendTrack pull). 10 ajustements identifiés sans refonte. **P1 cta.modalité** : 4 valeurs au lieu de 2 (explicite, implicite_brand, absent_intentionnel, externalisé). hims_009 deep pass : CTA brand-led n'est ni externalisé ni oublié, il est volontairement absent. **P2 craft pondération** : Visuel × Verbal × Brand non équilibré par défaut, dépend de Intent × Mécanique. kara_015 deep pass : verbal pondère 70% en testimonial UGC DR. Pas codé en schema, à porter dans skill. **P3 mécanique curiosity_teaser** : ajout enum (15 valeurs). ad_056 rosacée : hook accusateur + visuel-preuve + payoff externalisé via swipe. Distinct de educational_diagram et listicle. **P4 atome irréductible** : doctrine 'changer cet élément ferait varier la perf' confirmée. hers_003 deep pass : le mot 'Gummy' juxtaposé à 'Rx Minoxidil' fait tout le travail. **P5 unfulfilled_mechanic flag** : ad_069 eczéma promet 3 gestes mais ne livre pas. Flag qualité, pas mécanique. À porter dans skill. **P6 craft_mode** : product_only | with_overlay. AD3 robe DTC : 3 axes Craft vides (verbal absent, brand absente, insight absent) mais reach 4674 sur 7j. Sous-catégorie product_only valide en DTC fashion. **P7 intent B2B_lead_gen** : 4 valeurs au lieu de 3. AD4 automotive industrial : KPI MQL/SQL différents de ROAS. **P8 mécanique emotional_reframe** : ajout enum (16 valeurs). AD5 coach business : ladder de futurs possibles, distinct de meme_cultural et statement. **P9 seasonality_trigger** : metadata Concept. AD1 back-to-school NL. Trigger temporel exogène. **P10 longevity_signal** : metadata Execution. days_running > 30 = winner proxy fort. AD2 concours IT 48j evergreen. Reach absolu trompeur (corrèle avec budget plus que mérite intrinsèque)."
+    },
+    {
+      "category": "schemas",
+      "action": "added",
+      "files": ["resources/schemas/angle.schema.json"],
+      "section": "_equation_ref top-level",
+      "rationale": "Référence canonique de l'équation compositionnelle v3.1 : creative_statique = concept × execution ; concept = audience → insight → angle → mecanique ; execution = format × ton × craft × cta. Validée empiriquement S55 sur 23 ads cross-typologies. Pointe vers decisions.md D#391 pour la trace empirique complète."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Pas d'impact opérateur direct v2.28.1 (additif). Skills downstream produce-paid-angles + produce-copy-brief continuent à fonctionner avec champs v1.0. Quand un skill consomme v1.1 (exemple futur decompose-ad), les champs P1-P10 deviennent disponibles pour décomposition richer (typage Intent + B2B, mécanique enum 16, insight séparé de tension, craft_mode pour DTC fashion, longevity_signal pour winner detection automatique, cta modalité 4 valeurs).",
+  "next_release_note": "v2.29+ : (a) refacto produce-paid-angles pour produire les nouveaux champs en light pass (intent, mecanique enum 16, insight modalité, craft_mode, cta modalité 4). (b) skill decompose-ad qui consomme TrendTrack API (ads/query + ads/{id} + media-url) et applique équation v3.1 sur les ads pulled (orchestration de ce qui a été fait à la main S55). (c) skill track-competitor qui orchestre lookup → ads/query → decompose-ad batch → persist brands/{slug}/competitive-intel/. Quand un atlas resources/canon/production/ (équations + matrices comme fiches typées) sera utile (4-5 équations différentes : creative video, brief, sales letter, email sequence), créer le canon dédié."
+}
