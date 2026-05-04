@@ -59,7 +59,11 @@ Toutes les audiences potentielles pour la marque, typées récursivement (cluste
 
 ### Carte angles
 
-Tous les angles d'attaque possibles, typés (Observation, Tension, Reframe, Bridge). Indépendante des audiences au stockage, croisée à la production seulement. À matérialiser dans `angles/{slug}/angle.json`.
+Tous les angles d'attaque possibles pour la marque. Schema : `angle.schema.json` v1.1+ (S55). Composition récursive `formula = Observation × Tension × Reframe × Bridge`, chaque composant avec `summary` (light pass) + atomes typés (deep pass : verbatim, source, sample_size, state_actual / state_desired / reason_blocked, perceptual_pivot, pivot_mechanism, spec_activated, benefit_served, promise_formulated). Origine typée par `origin_axis` (5 valeurs : audience-derived, product-derived, category-derived, brand-derived, temporal-cultural ; renommage v1.2 ex `source` polysémique). Mouvement explicite via `awareness_movement {in, out}` (règle compat dure : `awareness_in ≤ audience.awareness_dominant`). Cycle `meta.validation_status` : hypothesis → tested → validated → scaled → fatigued. Atomes additifs v1.1 : `intent` (DR / Brand / Hybrid / B2B_lead_gen), `mecanique` enum 16 valeurs, `insight` (modalité formulé/implicite/absent + status), `seasonality_trigger`. Indépendante des audiences au stockage, croisée à la production seulement. Matérialisée dans `brands/{slug}/angles/{ANG-N}.json`. Référence cross-doc : `docs/system/creative-formula.md`.
+
+### Creative (concept vs instance vs variant)
+
+Entité distincte de l'angle (en cours de matérialisation : `creative.schema.json`). Trois plans : **Concept** = objet intent persuasive (audience × insight × angle × mécanique), stable et transposable, identifié par `concept_id`. **Creative** = instance déployée d'un concept (1 créa = 1 fichier, statique / vidéo / UGC / advertorial). **Variant** = créa du même `concept_id` avec 1-2 variables changées. Encoded : `creative.schema.json#concept_id`, `#variant_of`, `#variant_axis`. Absorbe les blocs execution (format, ton, craft, cta), classification, atome irréductible. Référence cross-doc : `docs/system/creative-formula.md`.
 
 ### Stratégie
 
@@ -94,6 +98,16 @@ Niveau de conscience face au problème (Schwartz) : unaware, problem aware, solu
 ### ChainNiveau
 
 Chaîne de profondeur d'une brique. Pain : Symptom, Cause, Block. Bénéfice : Outcome, Emotion, Identity. Optionnelle par défaut, obligatoire en mode défensif.
+
+---
+
+## Atlas canon copy (v2.26+)
+
+Référentiel typé partagé du copywriting, ajouté en v2.26.0 comme infrastructure puis branché aux skills en v2.27.0 (atlas vivant). 11 couches × 58 fiches : frameworks, hooks, angles, niveaux-schwartz, archetypes-voix, formules-titres, objections, construction-offre, leads, formats-livrables, persuasion. Sources canoniques : Schwartz (Breakthrough Advertising), Cialdini, Halbert, Sugarman, Hormozi, Carlton, Jung. Storage : `resources/canon/copy/{layer}/{tool}.json`. Schema : `canon-tool/1.0`. **Mécanisme atlas vivant** : 4 skills (`produce-paid-angles`, `produce-copy-brief`, `mine-voc`, `learn-from-session`) **consomment** le canon (filtrage par `when_works/when_avoid/combines_with`) et **alimentent** via `validations[]` append-only (operator-gated promotion). L'atlas devient brand-spécifique au fil de l'usage. Doctrine complète : `docs/system/atlas-canon-copy.md`. Décisions : largo-kb D#382 (fondation), D#383 (consume + feed).
+
+## Mechanisms[] (spec)
+
+Brique typée du produit, élargie en v2.28.0 de mono (`unique_mechanism` scalaire) à many (`spec.schema.json#mechanisms[]`). Chaque mécanisme : `mechanism_id` (MEC-NN), `name`, `description`, `target` (cible biologique / cognitive / comportementale), `mode_of_action` (cofactor, antioxidant, adaptogen, probiotic, coenzyme, regulator, stimulant, inhibitor, structural, delivery, other), `time_window` (immediate, 7d, 14d, 30d, 60d, 90d+), `evidence_level` (clinical_cited, efsa_validated, efsa_partial, anecdotal, mechanistic_only), `market_sophistication` (low, medium, high), `triggered_by_specs[]`. Many-to-many spec ↔ mécanisme ↔ bénéfice. Light pass : `name` + `description` par `snapshot-brand`. Deep pass : champs typés par `map-mechanisms` (à shipper). **Ne pas confondre avec Mécanique (creative)** = device structural narratif d'une créa (registry `creative-mechanics-registry.md`, ~25-29 fiches typées). Deux concepts disjoints, deux plans distincts (chaîne causale produit vs device narratif créa).
 
 ---
 
@@ -389,5 +403,7 @@ Accord local stable, modifiable par décision. Exemple : `snake_case` en JSON, c
 - **Onboarding** : `workspace-template/GETTING_STARTED.md` (niveaux 1 à 3).
 
 ---
+
+*Mise à jour 2026-05-04 (S55). Ajouts post audit nomenclature + releases v2.26-v2.28.1 : Carte angles réécrite (formula récursive Obs × Tension × Reframe × Bridge, origin_axis 5 valeurs, awareness_movement, validation_status, atomes additifs v1.1) ; entité Creative (concept vs instance vs variant) ; section Atlas canon copy (11 couches × 58 fiches, mécanisme atlas vivant via validations[]) ; section Mechanisms[] spec (many v2.28, distinction nette vs Mécanique creative). Refs : largo-kb D#382, D#383, D#391.*
 
 *Dernière mise à jour : 2026-05-02 (S53). Renommé `lexicon.md` en `canon.md` pour distinguer canon interne (audience équipe et contributeurs, 58 entrées système + doctrines + disciplines + briques typées + méta-vocabulaire) du nouveau `lexicon.md` slim (audience opérateur DTC paid, 13 termes user-facing). Ajout `Connected source` au canon (générique multi-plateformes : paid ads + analytics + ecommerce + email + attribution + creative intelligence). Split déclenché par conversation externe Largo / Claude bureau qui a flag : "darkwriting" (over-documentation sans visibilité), lexicon inflation (35+ termes pour audience qui n'en comprend que 15-18), exposition acronymes doctrine en surface utilisateur, Voie A enrichie (DTC paid acquisition exclusivement V1 avec plateforme extensible pour autres métiers), moratoire sur nouvelle doctrine tant que pas d'opérateur DTC externe en prod. Historique S51 + S52 préservé : Lot 1 système (6) + Lot 2A doctrines (6) + Lot 2B disciplines (8) + Lot 2C pipeline métier (6) + Lot 4 réécriture sections existantes + Lot 5 patterns d'évolution (3) + Lot 6 méta-vocabulaire (4) + Lot 3A canon métier (24 entrées) avec audit Red Team 6 perspectives appliqué.*

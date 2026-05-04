@@ -1,0 +1,14 @@
+{
+  "$id": "validation-status.json",
+  "title": "Validation status (canon shared)",
+  "description": "Cycle de vie partagé pour entités testables (profile, angle, creative). Source canon : audit Phase B v2.29.0.",
+  "type": "string",
+  "enum": ["hypothesis", "tested", "validated", "scaled", "fatigued"],
+  "_meta": {
+    "hypothesis": "pas encore testé en campagne",
+    "tested": "ad set lancé, résultats inconclusifs",
+    "validated": "CPA/ROAS confirmé viable",
+    "scaled": "budget significatif alloué",
+    "fatigued": "performance en déclin"
+  }
+}

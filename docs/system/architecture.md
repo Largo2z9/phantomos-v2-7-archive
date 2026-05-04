@@ -131,6 +131,16 @@ Note: pre-v2.1 archives may still use the legacy labels `raw` (→ `observed`) a
 
 **Canon + binary decision tests + examples** : `docs/system/field-types.md`.
 
+## Cascade rules
+
+Some canonical fields cascade across entity levels (brand → audience_tree → profile). The downstream level stores a `derived` resolved value, computed from the upstream cascade. Skills read the resolved field first, fallback to the upstream canon if null.
+
+- **Pattern** : canon defined at brand level (default), optional override at audience_tree level (marketplaces with multi-sided populations), resolved at profile level as a `_field_types: derived` field.
+- **Field concerned today** : `purchase_driver` (brand → audience_tree → profile). See `docs/system/schemas/brand.md § Cascade purchase_driver` for the canonical doctrine.
+- **Future candidates** : `tone_register`, `target_geo`, `compliance_zone` and any field that varies by audience but defaults at brand level. Promote a field to cascade only when at least one tree-level or audience-level override exists in real workspaces (avoid premature cascade).
+- **Skills doctrine** : read the resolved (derived) value first, fallback to brand canon if null. Never edit a derived cascade field manually. Mutation of any upstream level (`brand.{field}` or `brand.audience_trees[].{field}`) must trigger recompute on the downstream profiles via mutation gate (skill `recompute-derived-fields` or hook).
+- **Cross-refs** : `docs/system/field-types.md` (sémantique derived), `docs/system/schemas/brand.md`, `docs/system/schemas/profile.md`.
+
 ## Data Nature: Reference vs Production
 
 | | Reference | Production |

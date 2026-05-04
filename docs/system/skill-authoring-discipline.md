@@ -83,6 +83,42 @@ Each pattern has its own composition rules, declared in the orchestrator's SKILL
 
 ---
 
+## 5bis. Bidirectional canon contract (v2.27+)
+
+**When applicable.** Any skill of `type: producer | curator` whose intent touches a domain that has an atlas canon (copywriting today, paid / brand / offer / funnel / cro / email / analytics / mining once shipped). The contract is bidirectional : the skill CONSUMES canon at production time, and IF it captures outcomes, it FEEDS canon via `validations[]` promotion. Skipping either side breaks the compound (atlas vivant) and re-introduces the drift the atlas was built to remove.
+
+**5bis.1 — Consume pattern (mandatory if the skill touches canon).** The skill loads relevant canon layers in Step 0bis, before production :
+1. Identify useful canon layers (frameworks, hooks, archétypes-voix, niveaux-schwartz, etc. for copy ; equivalent layers for other atlases when they ship).
+2. Load `resources/canon/{atlas}/{layer}/*.json` filtered by `when_works`, `when_avoid`, `combines_with`, against the runtime context (audience profile, brand voice, Schwartz stage, format).
+3. Hold the selected canon ids in working memory.
+4. At production time, tag the output with the selected `canon_*_id` in the LIGNAGE block (Layer B operator output). Lignage absent = output non-traçable = bug.
+
+**5bis.2 — Feed pattern (mandatory if the skill captures outcomes).** When the skill captures an outcome (perf media signal, operator validation, explicit correction), it proposes a promotion canon :
+1. Detect which canon tool was consumed in production (read the lignage on the output entity).
+2. If the outcome is a strong signal (positive or negative), draft an entry into `resources/canon/{atlas}/{layer}/{tool}.json#/validations[]` with brand, session, outcome.
+3. Operator gate explicit before write. Jamais auto-promote.
+4. Append-only. Historical validations persist, dated, never rewritten.
+
+**5bis.3 — Anti-patterns.**
+
+| Symptôme | Fix |
+|---|---|
+| Skill produces copy without Step 0bis canon load | Canon load mandatory ; SAD check on producer skill review |
+| `canon_*_id` absent from LIGNAGE output | Schema Layer B enforce canon fields ; missing field = refusable |
+| Skill writes `validations[]` without operator gate | `learn-from-session` is the canonical promotion path ; direct writes refused |
+| Hardcoding a canon tool in skill code instead of reading from canon | Convention-guard refuses hardcoded canon constants in `.skills/skills/**` |
+| Reading `combines_with` without checking `when_avoid` | Combination shipped contradictory ; lint to add |
+
+**5bis.4 — Reference implementations (v2.27).**
+- `produce-paid-angles` : Step 0bis canon load (frameworks, hooks, angles, niveaux-schwartz, archétypes-voix) + Step 11 LIGNAGE output + persistance brand-side `brands/{slug}/angles/{ANG-N}.json`.
+- `produce-copy-brief` : reads source angle lignage, prepends LIGNAGE block, consumes archétypes-voix + objections + leads + formats-livrables.
+- `mine-voc` : Step 3 4-lens coding with additive canon tagging on every Layer A verbatim (`canon_schwartz_conscience_id`, `canon_emotion_id`, `canon_objection_pattern_id`).
+- `learn-from-session` : feed pattern (canon promotion via `validations[]`, operator gate, append-only).
+
+Full atlas doctrine : `docs/system/atlas-canon-copy.md`. Decision lineage : `decisions.md` D#382 (atlas fondation), D#383 (schema `canon-tool/1.0`), D#391 (bidirectional contract).
+
+---
+
 ## 6. Failure doctrine — what happens when a Hard Rule is violated at runtime
 
 Doctrines that lack a failure mode rely on Largo's review to catch violations. At scale (20+ operators, hundreds of skill invocations per day), this breaks.
@@ -171,6 +207,7 @@ The skill author asks, in this order:
 - **`patterns.md`** — pre-existing input. Skill taxonomy + Model routing.
 - **`skill-authoring-toolkit.md`** — optional companion. Names the prompt engineering patterns that the doctrines apply implicitly (dense prompting principles, magic keywords curated, interaction patterns, upstream questioning). Levers not constraints. Cross-ref to `largo-kb/02-ai/prompting/` for full library.
 - **`extending.md`** — extension layer rules ; SED chapter that SAD references for custom skills.
+- **`atlas-canon-copy.md`** — atlas canon copy doctrine (11 layers, schema `canon-tool/1.0`, bidirectional contract). Referenced by SAD § 5bis. Decision lineage D#382 D#383 D#391.
 - **Hooks** — `mutation-guard`, `convention-guard`, `budget-warn`, `checkpoint-resolver`, `post-write-flush`, `turn-end-audit`, `invariant-violation-detector` (to add).
 
 ---

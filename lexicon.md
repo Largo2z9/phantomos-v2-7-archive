@@ -24,11 +24,67 @@ Une cible identifiée pour la marque. Profil psychographique, pains, bénéfices
 
 ## Angle
 
-Un axe d'attaque marketing. 4 types : Observation (un constat sourcé), Tension (un conflit interne audience), Reframe (un changement de cadrage), Bridge (un pont du connu vers la solution). Indépendant des audiences au stockage, croisé à la production.
+Un axe d'attaque marketing. Composé via une formule récursive Observation × Tension × Reframe × Bridge (chaque composant typé en sous-atomes). Origine typée par `origin_axis` (5 valeurs : audience-derived, product-derived, category-derived, brand-derived, temporal-cultural). Indépendant des audiences au stockage, croisé à la production. Schema : `angle.schema.json` v1.1+. Détails : `docs/system/creative-formula.md`.
 
 ## Creative
 
-Une publicité produite : statique, vidéo, UGC, advertorial. Liée à un angle, à une mécanique créa (témoignage, démonstration, podcast, skit, etc.) et à une audience cible. Performance trackée (CTR, CPM, ROAS).
+Une publicité produite : statique, vidéo, UGC, advertorial. Instance déployée d'un Concept (objet intent persuasive). Liée à un angle, à une mécanique créa (témoignage, démonstration, before-after, etc.) et à une audience cible. Performance trackée (CTR, CPM, ROAS).
+
+## Concept vs Creative vs Variant
+
+Concept = objet intent persuasive (audience × insight × angle × mécanique). Stable, transposable. Identifié par `concept_id`. Creative = instance déployée d'un concept (1 créa = 1 fichier). Variant = créa du même `concept_id` avec 1-2 variables changées. Encoded : `creative.schema.json#concept_id`, `#variant_of`, `#variant_axis`.
+
+## Insight
+
+Vérité non-dite verbalisée. Phrase que la cible pense mais n'a jamais entendue formulée. Distinct de pain_point (problème observable), tension (gap actuel/désiré), JTBD (job hiré au produit). Quatre plans MECE. Modalité : formulé · implicite · absent. Status : déduit (light pass) · validé (deep pass via VoC) · incertain. Encoded : `creative.schema.json#context.insight` + `angle.schema.json#insight`.
+
+## Pain_point
+
+Problème observable subi par l'audience. Visible dans verbatims VoC. Distinct de insight (révélation). Composant CONTEXTE de la formule canon V3 (`docs/system/creative-formula.md` §4.2).
+
+## Tension
+
+Gap entre état actuel et état désiré. Composant de la formule angle (Observation × Tension × Reframe × Bridge). Sous-atomes : `state_actual`, `state_desired`, `reason_blocked`. Distinct d'insight (qui verbalise la tension).
+
+## JTBD (Jobs To Be Done)
+
+Job que la cible "embauche" le produit pour accomplir. Framework Christensen. Distinct de pain_point (problème) et insight (vérité non-dite).
+
+## Mécanique (creative)
+
+Device structural narratif d'une créa. Ex : testimonial, before-after, problem_solution, comparison, demo, statement, curiosity_teaser, emotional_reframe. Source : `creative-mechanics-registry.md` (SSOT, ~25-29 fiches typées). Référencé par `creative.schema.json` et `angle.schema.json` par id (free string). **Ne pas confondre avec Mechanism (spec)** = chaîne causale produit (ex KSM-66 → cortisol).
+
+## Mechanism (spec)
+
+Chaîne causale entre une spec produit et un bénéfice. Champ typé : `target`, `mode_of_action`, `time_window`, `evidence_level`, `market_sophistication`, `triggered_by_specs[]`. Schema : `spec.schema.json#mechanisms[]` (v2.28 : mono → many). **Ne pas confondre avec Mécanique (creative)**.
+
+## Atlas canon copy
+
+Référentiel typé partagé de 11 couches × 58 fiches du copywriting (frameworks, hooks, angles, niveaux-schwartz, archetypes-voix, formules-titres, objections, construction-offre, leads, formats-livrables, persuasion). Sources : Schwartz, Cialdini, Halbert, Sugarman, Hormozi, Carlton, Jung. Storage : `resources/canon/copy/{layer}/{tool}.json`. Schema : `canon-tool/1.0`. Skills consume + feed via `validations[]` (atlas vivant brand-spécifique). Doctrine : `docs/system/atlas-canon-copy.md`. Releases : v2.26.0 (fondation) + v2.27.0 (skills branchés).
+
+## Atome irréductible
+
+Élément (mot, image, structure) sans lequel l'ad meurt. Test : *"si je retire/change cet atome, mesure-t-on un delta de performance ?"* Doctrine S55. Encoded : `creative.schema.json#atome_irreductible {element, delta_si_change}`. Distinct de `perceptual_pivot` (sous-couche `formula.reframe`) et `stop_scroller` (binôme hook + visual canon V3). Trois plans distincts.
+
+## Awareness stage
+
+Niveau de conscience (Schwartz) : unaware · problem-aware · solution-aware · product-aware · most-aware. 5 stages canoniques. Présent dans : `profile.schema` (`audience.market_position.awareness_level`), `angle.schema` (`lineage.awareness_stage` + `awareness_movement.in/out`), canon copy (`niveaux-schwartz/conscience.json`). Aligned cross-schemas (audit S55).
+
+## Schwartz
+
+Eugene Schwartz, Breakthrough Advertising (1966). Auteur du framework awareness × sophistication 5×5 utilisé canon copy. Le concept canonique est `awareness` (l'état de conscience), pas `schwartz` (l'auteur). Field name canonique : `awareness_stage` (pas `schwartz_conscience`).
+
+## Persona vs Audience
+
+Audience = canon. Cible globale, niveau macro. Stockée : `profile.schema.json`. Persona = alias surface opérateur (autorisé en mode parlé), avec sous-rôles buyer/user quand split (B2B, cadeau, pet, kids).
+
+## Origin_axis (angle)
+
+Source de l'angle : audience-derived · product-derived · category-derived · brand-derived · temporal-cultural. 5 valeurs canon V3. Renommage v1.2 (était `source` racine, polysémique). Distinct de `formula.observation.source` (citation Trustpilot/Reddit).
+
+## Lineage
+
+Chaîne d'IDs canon référencés par un output de skill. Data layer. Ex : `angle.lineage = {hook_canon_id, framework_canon_id, archetype_canon_id, ...}`. Distinct de l'intégrité compositionnelle (semantic layer doctrine) et de la validation chaîne (check mécanique `validate-resources`).
 
 ## Campagne
 
@@ -64,4 +120,6 @@ Comment un produit est présenté commercialement : prix, bundle, gifting, subsc
 
 ---
 
-*Dernière mise à jour : 2026-05-02 (S53). Lexicon opérateur slim créé en split du canon interne. 13 termes user-facing, vocabulaire métier classique DTC paid acquisition. Aucun jargon interne PhantomOS imposé. Canon complet (57+ entrées système, doctrines, disciplines, briques typées, méta-vocabulaire) déplacé dans `canon.md` pour audience équipe et contributeurs.*
+*Dernière mise à jour : 2026-05-04 (S55). Enrichissement post audit nomenclature S55 + releases v2.26-v2.28.1 : ajout 14 entrées (Concept vs Creative vs Variant, Insight, Pain_point, Tension, JTBD, Mécanique creative, Mechanism spec, Atlas canon copy, Atome irréductible, Awareness stage, Schwartz, Persona vs Audience, Origin_axis, Lineage). Distinctions MECE explicites : pain_point ≠ tension ≠ insight ≠ JTBD (4 plans), Mécanique creative ≠ Mechanism spec (2 plans disjoints), atome_irreductible ≠ perceptual_pivot ≠ stop_scroller (3 plans), Concept ≠ Creative ≠ Variant. Source : largo-kb decisions.md D#382, D#383, D#391.*
+
+*S53 (2026-05-02). Lexicon opérateur slim créé en split du canon interne. 13 termes user-facing, vocabulaire métier classique DTC paid acquisition. Aucun jargon interne PhantomOS imposé. Canon complet déplacé dans `canon.md` pour audience équipe et contributeurs.*

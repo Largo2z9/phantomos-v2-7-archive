@@ -2,16 +2,16 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "angle.schema.json",
   "title": "Angle (brand-side instance)",
-  "description": "Angle stored at brands/{slug}/angles/{ANG-N}.json. Produced by produce-paid-angles (light pass: lineage + meta) and enriched on demand by decompose-angle (deep pass: recursive formula). One file per angle. Many-to-many with audiences (an angle can serve multiple audiences with different mechanics).",
+  "description": "Angle = couche stratégique. Stored at brands/{slug}/angles/{ANG-N}.json. Produced by produce-paid-angles (light pass: lineage + meta) and enriched on demand by decompose-angle (deep pass: recursive formula). One file per angle. Many-to-many with audiences (an angle can serve multiple audiences with different mechanics). Une créa peut référencer un angle via creative.context.angle_ref. Évolution v1.1 → v1.2 : 8 champs (intent, mecanique, seasonality_trigger, execution.craft_mode, execution.longevity_signal, execution.cta) migrés vers creative.schema.json (D#391 audit S55). source renommé en origin_axis pour libérer le polysémique. lineage.schwartz_conscience renommé en lineage.awareness_stage pour cohérence avec awareness_movement.",
   "type": "object",
   "required": ["angle_id", "name", "audience_slug", "meta"],
   "properties": {
-    "_schema_version": { "const": "angle/1.1" },
+    "_schema_version": { "const": "angle/1.2" },
 
     "_equation_ref": {
       "type": "string",
-      "const": "creative_statique = concept × execution ; concept = audience → insight → angle → mecanique ; execution = format × ton × craft × cta",
-      "description": "Compositional equation v3.1 reference. Validated empirically on 23 ads cross-typologies (S55). 10 patches integrated (P1-P10). Source: largo-kb decisions.md D#391."
+      "const": "angle = couche stratégique du CONTEXTE dans creative_statique = NOYAU × CONTEXTE × MODIFIEURS (voir creative.schema.json)",
+      "description": "L'angle est UNE couche du CONTEXTE de l'équation v3.1. La structure complète vit dans creative.schema.json. Source canon: resources/templates/creative-formula.md. Validated empirically on 23 ads cross-typologies (S55)."
     },
 
     "angle_id": {
@@ -30,50 +30,10 @@
       "description": "Primary audience this angle was produced for. Matches a folder under brands/{slug}/audiences/. Cross-audience compatibility lives in compatibility[]."
     },
 
-    "source": {
+    "origin_axis": {
       "type": "string",
       "enum": ["audience-derived", "product-derived", "category-derived", "brand-derived", "temporal-cultural"],
-      "description": "Origin axis of the angle (5 sources). audience-derived = built from audience pain/desire. product-derived = built from spec/mechanism. category-derived = built from market context vs alternatives. brand-derived = built from brand identity/tone. temporal-cultural = built from a moment, trend, or cultural pivot. Inferred from the production trigger context."
-    },
-
-    "intent": {
-      "type": "string",
-      "enum": ["DR", "Brand", "Hybrid", "B2B_lead_gen"],
-      "description": "Concept-level intent tag (P7 patch v3.1). DR = direct response ecom (KPI: ROAS, CPP). Brand = brand-building, top-funnel awareness (KPI: reach, engagement, brand recall). Hybrid = DR with brand investment (KPI: ROAS + brand lift). B2B_lead_gen = B2B/SaaS funnel (KPI: form-fill, MQL, SQL). Conditions the fractale Hook×Body×CTA expectation: DR strict, Brand soft, Hybrid intermediate, B2B_lead_gen depends on stage."
-    },
-
-    "mecanique": {
-      "type": "string",
-      "enum": [
-        "before_after",
-        "problem_solution",
-        "pov",
-        "demo",
-        "listicle",
-        "comparison",
-        "testimonial",
-        "founder_talk",
-        "native_ui_mock",
-        "reveal",
-        "statement",
-        "meme_cultural",
-        "educational_diagram",
-        "day_in_life",
-        "curiosity_teaser",
-        "emotional_reframe"
-      ],
-      "description": "Narrative device (16 values, P3+P8 patches v3.1). The grammar that turns info into experience. Distinct from format (static vs video) and angle (fear vs desire). curiosity_teaser = hook accusateur + visuel-preuve + payoff externalisé via swipe (P3, ad 056 rosacée). emotional_reframe = ladder de futurs possibles, distinct de meme_cultural (visuel) et statement (plat) et problem_solution (rationnel) (P8, AD5 coach FR). Validated empirically on 23 ads cross-typologies."
-    },
-
-    "seasonality_trigger": {
-      "type": ["object", "null"],
-      "description": "Optional concept-level metadata (P9 patch v3.1). Temporal trigger that conditions the angle's relevance window. E.g. back-to-school, fête des mères, BFCM, ramadan, summer-launch. Null if angle is evergreen (not season-dependent).",
-      "properties": {
-        "trigger_name": { "type": "string", "description": "Canonical seasonality name. E.g. 'back-to-school', 'mothers-day', 'bfcm', 'ramadan'." },
-        "window_start": { "type": ["string", "null"], "format": "date" },
-        "window_end": { "type": ["string", "null"], "format": "date" },
-        "geography": { "type": "array", "items": { "type": "string" }, "description": "ISO country codes where this seasonality applies." }
-      }
+      "description": "Origin axis of the angle (5 sources). Renamed from 'source' in v1.2 to free that term for the polysemic use (formula.observation.source remains free to cite the verbatim source). audience-derived = built from audience pain/desire. product-derived = built from spec/mechanism. category-derived = built from market context vs alternatives. brand-derived = built from brand identity/tone. temporal-cultural = built from a moment, trend, or cultural pivot. Inferred from the production trigger context."
     },
 
     "awareness_movement": {
@@ -81,13 +41,11 @@
       "description": "Awareness state the angle ASSUMES at start (in) and AIMS to produce at end (out). Distinct from a static stage tag. If in == out, the angle validates. If in < out, the angle educates (more costly, more differentiating). If in > out, the angle regresses (deliberate re-funnel or error).",
       "properties": {
         "in": {
-          "type": "string",
-          "enum": ["unaware", "problem-aware", "solution-aware", "product-aware", "most-aware"],
+          "$ref": "_shared/awareness-stage.json",
           "description": "Awareness stage assumed at the start. Hard rule: must be ≤ audience.awareness_dominant for the angle to be playable on that audience."
         },
         "out": {
-          "type": "string",
-          "enum": ["unaware", "problem-aware", "solution-aware", "product-aware", "most-aware"],
+          "$ref": "_shared/awareness-stage.json",
           "description": "Awareness stage the angle aims to produce by the end."
         }
       },
@@ -98,7 +56,10 @@
       "type": "object",
       "description": "Flat canon lineage written by produce-paid-angles (v2.27 light pass). References resources/canon/copy/{layer}/{tool}.json entries.",
       "properties": {
-        "schwartz_conscience": { "type": "string", "enum": ["unaware", "problem-aware", "solution-aware", "product-aware", "most-aware"] },
+        "awareness_stage": {
+          "$ref": "_shared/awareness-stage.json",
+          "description": "Renamed from schwartz_conscience in v1.2 for coherence with awareness_movement. The canonical Schwartz awareness stage tagged for this angle's lineage."
+        },
         "schwartz_sophistication": { "type": "string", "enum": ["v1", "v2", "v3", "v4", "v5"] },
         "hook_canon_id": { "type": "string" },
         "framework_canon_id": { "type": "string" },
@@ -120,7 +81,7 @@
           "properties": {
             "summary": { "type": "string", "description": "Light pass: one-line phrasing of the observation." },
             "phenomenon": { "type": ["string", "null"], "description": "Deep pass: the observable behavior, situation, or fact." },
-            "source": { "type": ["string", "null"], "description": "Deep pass: where this observation comes from. E.g. 'Trustpilot karacare', 'Reddit r/HairCare', 'self-reported in audience VoM'." },
+            "source": { "type": ["string", "null"], "description": "Deep pass: where this observation comes from. E.g. 'Trustpilot karacare', 'Reddit r/HairCare', 'self-reported in audience VoM'. Free polysemic field by design (kept under formula.observation, distinct from top-level origin_axis)." },
             "sample_size": { "type": ["integer", "null"], "description": "Deep pass: how many verbatims or data points support this observation." },
             "_field_types": { "type": "object" }
           }
@@ -164,10 +125,10 @@
       "type": "object",
       "description": "Concept-level atom (distinct from formula.tension). Insight = the unspoken truth that the audience thinks but has never heard formulated. Tension = the observable gap; Insight = the verbalized revelation of that gap. Validated empirically: ~33% formulé, ~42% implicite, ~25% absent on 23 ads cross-typologies (S55).",
       "properties": {
-        "modalité": {
+        "modalite": {
           "type": "string",
           "enum": ["formulé", "implicite", "absent"],
-          "description": "formulé = the ad explicitly states the unspoken truth (rare, courageous). implicite = the ad echoes the insight without verbalizing it (common). absent = the ad runs on angle alone, no insight (acceptable, esp. on solution-aware/product-aware audiences)."
+          "description": "formulé = the ad explicitly states the unspoken truth (rare, courageous). implicite = the ad echoes the insight without verbalizing it (common). absent = the ad runs on angle alone, no insight (acceptable, esp. on solution-aware/product-aware audiences). Field renamed v1.2 from 'modalité' (accent) for snake_case strict ASCII compliance."
         },
         "status": {
           "type": "string",
@@ -176,50 +137,7 @@
         },
         "formulation": {
           "type": ["string", "null"],
-          "description": "The verbal formulation of the insight if modalité=formulé, or the inferred phrasing if modalité=implicite. Null if modalité=absent. Atom: a phrase the target thinks but has never heard formulated."
-        }
-      }
-    },
-
-    "execution": {
-      "type": "object",
-      "description": "Execution-side variables (P6 + P10 patches v3.1). Distinct from concept variables. Stable across format changes for a given concept.",
-      "properties": {
-        "craft_mode": {
-          "type": "string",
-          "enum": ["product_only", "with_overlay"],
-          "description": "P6 patch v3.1. product_only = catalog-style photo with no verbal overlay (DTC fashion default, e.g. AD3 party dress reach 4674). Insight-image and verbal-image become optional; copy carries 100% of the concept. with_overlay = at least one verbal layer on the image (hook, CTA, claim). Conditions the expectations for Craft.Verbal scoring."
-        },
-        "longevity_signal": {
-          "type": "object",
-          "description": "P10 patch v3.1. days_running > 30 = strong winner proxy. Better signal than absolute reach (which correlates with budget more than intrinsic merit).",
-          "properties": {
-            "days_running": { "type": ["integer", "null"] },
-            "first_seen_at": { "type": ["string", "null"], "format": "date" },
-            "last_seen_at": { "type": ["string", "null"], "format": "date" },
-            "winner_proxy": {
-              "type": "string",
-              "enum": ["evergreen", "scaling", "early", "fatigued", "indéterminé"],
-              "description": "Derived from days_running + reach trend. evergreen >30d active. scaling 7-30d with positive reach delta. early <7d. fatigued reach declining. indéterminé insufficient signal."
-            }
-          }
-        },
-        "cta": {
-          "type": "object",
-          "description": "P1 patch v3.1. CTA modalité (4 values, not 2). Extends previous cta.locus.",
-          "properties": {
-            "modalité": {
-              "type": "string",
-              "enum": ["explicite", "implicite_brand", "absent_intentionnel", "externalisé"],
-              "description": "explicite = verbal CTA on creative (Get started, Shop now, Apply). implicite_brand = brand recognition does the work, no verbal CTA needed (e.g. hims_009 logo as CTA). absent_intentionnel = deliberately no CTA (Brand-led statement, seasonal halo). externalisé = CTA delegated to platform/funnel/landing (paid social norm, ~80% of observed ads)."
-            },
-            "locus": {
-              "type": "string",
-              "enum": ["in-creative", "externalisé"],
-              "description": "Where the CTA physically lives. in-creative = visible on the asset itself. externalisé = on the platform UI (button), funnel landing, or downstream."
-            },
-            "formulation": { "type": ["string", "null"] }
-          }
+          "description": "The verbal formulation of the insight if modalite=formulé, or the inferred phrasing if modalite=implicite. Null if modalite=absent. Atom: a phrase the target thinks but has never heard formulated."
         }
       }
     },
@@ -248,8 +166,7 @@
       "required": ["validation_status", "created"],
       "properties": {
         "validation_status": {
-          "type": "string",
-          "enum": ["hypothesis", "tested", "validated", "scaled", "fatigued"],
+          "$ref": "_shared/validation-status.json",
           "description": "Lifecycle. hypothesis = not yet tested in campaign. tested = ad set launched, results inconclusive. validated = CPA/ROAS confirmed viable. scaled = significant budget allocated. fatigued = performance declining. Initialized to 'hypothesis' by produce-paid-angles. Updated by learn-from-session when outcome captured."
         },
         "created": { "type": "string", "format": "date" },

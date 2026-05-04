@@ -39,7 +39,9 @@ Pick the layer where your current work lives. The rest fills as work requires it
 - **Pick up where you left off** — clean resumption after absence, the agent reconstructs the last active thread.
 - Ingest briefs, docs, exports. The agent files them in the right layer.
 - Ask contextual questions (*"tone of brand X"*, *"customer objections Y"*) and get answers without re-setup.
-- Produce creative deliverables — hooks, angles, scripts, emails, landing copy — calibrated on brand context.
+- Produce creative deliverables, hooks, angles, scripts, emails, landing copy, calibrated on brand context.
+- **Atlas canon copy** (v2.26+). Shared typed registry, 11 layers × 58 fiches (frameworks, hooks, angles, awareness levels, voice archetypes, headline formulas, objections, offer construction, leads, deliverable formats, persuasion). Sources : Schwartz, Cialdini, Halbert, Sugarman, Hormozi, Carlton, Jung. Skills consume the registry at runtime AND feed it via `validations[]` append-only on operator-gated promotion. The atlas becomes brand-specific with use (living atlas).
+- **Production by canon composition** (v2.27+). `produce-paid-angles`, `produce-copy-brief`, `mine-voc`, `learn-from-session` operate by canon reference. Each output carries explicit lineage (audience, awareness stage, hook canon id, framework canon id, angle canon id, archetype canon id), enabling traceability and reproducibility across sessions.
 - Audit Meta configuration (pixel, attribution, account structure, naming, DSA).
 - **Adversarial review on any deliverable** — multi-expert panel challenges a plan, brief, strategy, or setup. Zero compliments, verdict with priority actions.
 - Capture learnings (API workarounds, compliance rules, observed patterns) and promote them when they become universal.

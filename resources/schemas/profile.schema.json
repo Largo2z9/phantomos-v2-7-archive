@@ -1,7 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Audience Profile",
-  "description": "Audience profile — deep psychographic and behavioral context, factual description of who they are. Lives in brands/{slug}/audiences/{audience}/profile.json.",
+  "description": "Audience profile — deep psychographic and behavioral context, factual description of who they are. Lives in brands/{slug}/audiences/{audience}/profile.json. v1.2+: persona_archetype + buyer_user_split (migrated from spec.gift_economy). Canon V3 §8.2.",
+  "_schema_version": "profile/1.3",
   "type": "object",
   "required": ["meta"],
   "properties": {
@@ -24,11 +25,52 @@
         "overlap_with": { "type": "array", "items": { "type": "string" } },
         "tags": { "type": "array", "items": { "type": "string" } },
         "audience_type": { "type": "string", "enum": ["primary", "secondary", "discovered", "assumed"] },
-        "validation_status": { "type": "string", "enum": ["hypothesis", "tested", "validated", "scaled", "fatigued"] },
+        "validation_status": { "$ref": "_shared/validation-status.json" },
         "status": { "type": "string", "enum": ["draft", "partial", "complete"] },
         "created": { "type": "string" },
         "updated": { "type": "string" },
         "_notes": { "type": "object" }
+      }
+    },
+
+    "purchase_driver": {
+      "type": ["string", "null"],
+      "description": "Resolved purchase driver from cascade brand → audience_tree → profile. _field_types = derived. Skills lookup d'abord profile.purchase_driver, fallback brand.purchase_driver si null. Audit Phase B v2.29.0 cascade documentation. Ne pas éditer manuellement (derived).",
+      "default": null
+    },
+
+    "persona_archetype": {
+      "type": "object",
+      "description": "Archetype de definition de l'audience. Audit Phase B v2.29.0 : audiences reelles combinent souvent 2-3 archetypes simultanement (ex 'femmes 30-45 [demographic] en chute post-grossesse [condition_based] soucieuses de naturalite [psychographic]'). Forcer un seul = perte d'info. Transformation en {primary obligatoire, secondary[] optionnel}. Affecte la mecanique narrative recommandee (problem_solution > demographic, testimonial > condition_based, day_in_life > psychographic). Reference canon V3 §8.2.",
+      "required": ["primary"],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "enum": ["demographic", "condition_based", "psychographic"],
+          "description": "Archetype dominant. Le seul obligatoire."
+        },
+        "secondary": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["demographic", "condition_based", "psychographic"]
+          },
+          "description": "Archetypes additionnels presents (audience hybride).",
+          "uniqueItems": true,
+          "maxItems": 2
+        }
+      }
+    },
+
+    "buyer_user_split": {
+      "type": "object",
+      "description": "Cas où l'acheteur n'est pas l'utilisateur du produit (cadeaux, B2B, pet, kids). Migration depuis spec.schema#gift_economy (S55 audit) car c'est une propriété d'audience, pas de produit.",
+      "properties": {
+        "is_split": { "type": "boolean" },
+        "buyer_role": { "type": ["string", "null"], "description": "Qui achète (ex 'parent', 'mari', 'manager', 'owner')." },
+        "user_role": { "type": ["string", "null"], "description": "Qui consomme/utilise (ex 'enfant 9-14', 'femme', 'employé', 'pet')." },
+        "buyer_emotions": { "type": "array", "items": { "type": "string" }, "description": "Émotions du buyer (générosité, crainte de mal choisir, fierté de bien faire). Pour copy buyer-side." },
+        "user_experience": { "type": "array", "items": { "type": "string" }, "description": "Expérience du user (surprise, utilité, plaisir). Pour copy user-side ou packaging." }
       }
     },
 
@@ -37,7 +79,7 @@
       "description": "Demographic and lifestyle baseline of the audience: who they are factually (age, gender, profession, income, lifestyle, information sources).",
       "properties": {
         "description": { "type": "string" },
-        "archetype": { "type": "string" },
+        "archetype": { "type": "string", "deprecated": true, "description": "DEPRECATED v2.29.0. Use `persona_archetype` enum (demographic/condition_based/psychographic). Will be removed in v2.31+. Free string legacy." },
         "age_range": {
           "type": "object",
           "properties": {
@@ -175,7 +217,7 @@
           },
           "emotion": { "type": "string" },
           "trigger": { "type": "string" },
-          "awareness_stage": { "type": "string", "enum": ["unaware", "problem_aware", "solution_aware", "product_aware", "most_aware"] },
+          "awareness_stage": { "$ref": "_shared/awareness-stage.json" },
           "_source_meta": {
             "type": "object",
             "properties": {
@@ -204,13 +246,13 @@
             "items": {
               "type": "object",
               "properties": {
-                "level": { "type": "string", "enum": ["functional", "emotional", "identity"] },
+                "level": { "$ref": "_shared/benefit-chain-level.json" },
                 "formulation": { "type": "string" }
               }
             }
           },
           "emotional_lever": { "type": "string" },
-          "awareness_stage": { "type": "string", "enum": ["unaware", "problem_aware", "solution_aware", "product_aware", "most_aware"] },
+          "awareness_stage": { "$ref": "_shared/awareness-stage.json" },
           "_source_meta": {
             "type": "object",
             "properties": {

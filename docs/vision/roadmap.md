@@ -4,6 +4,18 @@ Planned evolutions, prioritized P2 (next) and P3 (later). Shipped history lives 
 
 ---
 
+## Recently shipped (S55, May 2026)
+
+Anchored here for visibility ; full notes in [`../../CHANGELOG.md`](../../CHANGELOG.md). Refs : largo-kb `decisions.md` D#382, D#383, D#391.
+
+- **v2.26.0** · Atlas canon copy foundation. Typed registry of 11 layers × 58 fiches (frameworks, hooks, angles, niveaux-schwartz, archetypes-voix, formules-titres, objections, construction-offre, leads, formats-livrables, persuasion). Sources : Schwartz, Cialdini, Halbert, Sugarman, Hormozi, Carlton, Jung. Storage `resources/canon/copy/{layer}/{tool}.json`, schema `canon-tool/1.0`. D#382.
+- **v2.27.0** · Skills consume + feed canon (living atlas). 4 skills refactored : `produce-paid-angles` (Step 0bis loads canon, Step 11 emits explicit lineage), `produce-copy-brief` (reads angle lineage, brief enriches instead of re-deciding), `mine-voc` (verbatims tagged with canon Schwartz / emotion / objection ids), `learn-from-session` (operator-gated canon promotion via `validations[]` append-only). D#383.
+- **v2.28.0** · Schemas enriched for compositional cartography. `spec.schema.json#mechanisms[]` (mono to many, typed fields target / mode_of_action / time_window / evidence_level / market_sophistication / triggered_by_specs[]). `angle.schema.json` v1.0 created (formula recursive, origin enum 5 values, awareness_movement {in, out}, meta.validation_status cycle). Templates updated.
+- **v2.28.1** · Angle schema v1.1 (10 patches v3.1 from S55 stress test on 23 ads cross-typology). Additive backward-compat fields : `intent` (DR / Brand / Hybrid / B2B_lead_gen), `mecanique` enum 16 values (adds `curiosity_teaser` + `emotional_reframe`), `insight` object (modalité formulé/implicite/absent + status), `seasonality_trigger`, `execution.craft_mode`, `execution.longevity_signal`, `execution.cta` (4-value modality), `_equation_ref` (canonical reference `creative_statique = concept × execution`). D#391.
+- **v2.29.0 (next, planned)** · `creative.schema.json` materialization (concept vs instance vs variant entity, absorbing execution + classification + variant_of) + reconciliation v3 + v3.1 + nomenclature cleanup (audit S55 distinctions : pain_point ≠ tension ≠ insight ≠ JTBD, Mécanique creative ≠ Mechanism spec, atome_irreductible ≠ perceptual_pivot ≠ stop_scroller).
+
+---
+
 ## P2. Next
 
 ### Sector-scoped conventions

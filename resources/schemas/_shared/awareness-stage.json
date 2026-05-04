@@ -1,0 +1,10 @@
+{
+  "$id": "awareness-stage.json",
+  "title": "Awareness stage Schwartz (canon shared)",
+  "description": "5 stages Schwartz canoniques. Source canon copy : niveaux-schwartz/conscience.json. Référencé partout (profile, angle, brand). Audit Phase B v2.29.0.",
+  "type": "string",
+  "enum": ["unaware", "problem-aware", "solution-aware", "product-aware", "most-aware"],
+  "_meta": {
+    "doctrine_ref": "Eugene Schwartz, Breakthrough Advertising 1966"
+  }
+}

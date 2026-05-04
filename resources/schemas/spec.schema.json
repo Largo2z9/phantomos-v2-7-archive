@@ -2,7 +2,8 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Product Specification",
   "description": "Product specification — deep product knowledge, factual context. Lives in brands/{slug}/products/{product}/spec.json.",
-  "_template_version": "1.8",
+  "_template_version": "1.9",
+  "_schema_version": "spec/1.9",
   "type": "object",
   "required": ["meta"],
   "properties": {
@@ -32,7 +33,7 @@
       "properties": {
         "type": { "type": "string", "enum": ["functional", "sensory", "lifestyle"] },
         "product_category": { "type": "string", "enum": ["physical", "physical_electronic", "digital", "service"] },
-        "product_name": { "type": ["string", "null"] },
+        "product_name": { "type": ["string", "null"], "deprecated": true, "description": "DEPRECATED v2.29.0. Use `meta.name` (canon). Will be removed in v2.31+. Doublon legacy." },
         "category": { "type": "string" },
         "niche": { "type": "string" },
         "product_type": { "type": "string" },
@@ -372,7 +373,8 @@
 
     "unique_mechanism": {
       "type": "object",
-      "description": "DEPRECATED. Kept for backward compat. Use mechanisms[] instead. Branded or proprietary mechanism name (if any) with a one-line description.",
+      "deprecated": true,
+      "description": "DEPRECATED v2.29.0. Use `mechanisms[]` instead. Kept for backward compat. Will be removed in v2.31+. Branded or proprietary mechanism name (if any) with a one-line description.",
       "properties": {
         "name": { "type": ["string", "null"] },
         "description": { "type": ["string", "null"] },
@@ -416,7 +418,7 @@
             "items": {
               "type": "object",
               "properties": {
-                "level": { "type": "string", "enum": ["functional", "emotional", "identity"] },
+                "level": { "$ref": "_shared/benefit-chain-level.json" },
                 "formulation": { "type": "string" }
               }
             }
@@ -516,7 +518,7 @@
       "properties": {
         "certifications": { "type": "array", "items": { "type": "string" } },
         "safety_warnings": { "type": "array", "items": { "type": "string" } },
-        "allergen_info": { "type": "array", "items": { "type": "string" } }
+        "allergen_info": { "type": "array", "items": { "type": "string" }, "deprecated": true, "description": "DEPRECATED v2.29.0. Use `specs.nutrition_facts.allergens` (EU14 enum). Will be removed in v2.31+. Free string legacy." }
       }
     },
 
@@ -595,7 +597,8 @@
 
     "gift_economy": {
       "type": ["object", "null"],
-      "description": "When buyer and recipient differ (gifts, B2B-to-end-user, family purchases). Captures both buyer-side benefits chain and recipient-side benefits chain. Null if buyer and recipient are the same.",
+      "deprecated": true,
+      "description": "DEPRECATED v2.29.0 (S55). Cette propriété décrit une audience où buyer ≠ user, pas le produit. Migrer vers profile.json#buyer_user_split. Conservé pour backward compat (append-only). Skills downstream lire d'abord profile.buyer_user_split puis fallback spec.gift_economy. Original: when buyer and recipient differ (gifts, B2B-to-end-user, family purchases). Captures both buyer-side benefits chain and recipient-side benefits chain. Null if buyer and recipient are the same.",
       "properties": {
         "buyer_is_consumer": { "type": "boolean", "default": true },
         "buyer_benefits_chain": {

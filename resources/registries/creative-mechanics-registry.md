@@ -2,9 +2,11 @@
 
 > **TYPE:** Taxonomie — registre vivant
 > **CONSOMMÉ PAR:** hooks-generator, script-writer, brief-generator, creative-strategist, pattern-extractor
-> **SOURCE:** Retro-engineering 522 créas statiques (10 batches, 9 brands, 6 niches)
+> **SOURCE:** Retro-engineering 522 créas (10 batches, 9 brands, 6 niches) + stress test S55 (23 ads, mai 2026)
 > **DÉPEND DE:** `templates/creative-formula.md` (§5.1)
 > **FORMAT:** 1 fiche taggée par mécanique. Champs parsables par agent.
+
+> **Cross-ref :** `creative.schema.json#mecanique` et `angle.schema.json` v1.2 pointent vers ce registry par ID (free string). Ne pas hardcoder d'enum dans les schemas. Ce registry est la SSOT.
 
 ---
 
@@ -517,6 +519,76 @@
 
 ---
 
+## Claim Niches (curseur 5-10) · Ajouts S55
+
+### curiosity_teaser · Teaser Curiosité
+
+- **Définition:** Hook accusateur ou question ouverte + visuel-preuve, payoff externalisé (swipe, click, link in bio). La curiosité non résolue dans la créa EST le device.
+- **Curseur:** [6, 9]
+- **Mode:** CONCEPT
+- **Stop scroller:** co_dominant
+- **Angles:** [counter-intuitive, revelation, expertise]
+- **Proofs:** [press-logos, claim-science, social-proof-number]
+- **Awareness:** [problem_aware, solution_aware]
+- **Conditions:** [payoff_credible_post_swipe, audience_engagement_swipe, brand_peut_porter_open_loop]
+- **Anti-conditions:** [audience_unaware, payoff_decevant, contexte_zero_swipe]
+- **Variantes:** [hook_accusateur_visuel_preuve, question_visuelle_ouverte, fake_reveal]
+- **Piège:** Si le payoff post-swipe ne livre pas, l'open loop se retourne en backlash.
+- **Batches:** [B-S55-rosacee_056]
+
+---
+
+### emotional_reframe · Reframe Émotionnel
+
+- **Définition:** Ladder de futurs possibles (vie A vs vie B) ancrée émotionnellement. Distinct de meme_cultural (référence visuelle), statement (plat), problem_solution (rationnel). L'atome = la projection identitaire.
+- **Curseur:** [6, 9]
+- **Mode:** CONCEPT
+- **Stop scroller:** hook_dominant
+- **Angles:** [emotional-identity, transformation, barrier-removal]
+- **Proofs:** [customer-review, social-proof-number]
+- **Awareness:** [problem_aware, solution_aware, product_aware]
+- **Conditions:** [audience_identitaire, futurs_possibles_lisibles, ton_sincere]
+- **Anti-conditions:** [audience_rationnelle_pure, reframe_force_artificiel]
+- **Variantes:** [ladder_futurs, identite_avant_apres, refus_status_quo]
+- **Piège:** Si le reframe sonne moralisateur, l'audience décroche immédiatement.
+- **Batches:** [B-S55-coach_5k_FR]
+
+---
+
+### meme_cultural · Référence Culturelle / Meme
+
+- **Définition:** Référence culturelle, meme, ou code générationnel bridgé vers le produit. Le pattern interrupt par familiarité culturelle.
+- **Curseur:** [5, 8]
+- **Mode:** CONCEPT
+- **Stop scroller:** visual_dominant
+- **Angles:** [community, emotional-identity, counter-intuitive]
+- **Proofs:** [social-proof-number]
+- **Awareness:** [solution_aware, product_aware, most_aware]
+- **Conditions:** [meme_actuel_non_grille, audience_partage_code, bridge_produit_evident]
+- **Anti-conditions:** [meme_date_30j_plus, audience_hors_segment_culturel, bridge_force]
+- **Variantes:** [meme_format, reference_pop, code_generationnel]
+- **Piège:** Durée de vie courte. Un meme grillé devient cringe instantanément.
+- **Batches:** [B-S55]
+
+---
+
+### educational_diagram · Diagramme Pédagogique
+
+- **Définition:** Schéma, graph, ou diagramme comme device principal. Vulgarise un mécanisme complexe (biologique, mathématique, processuel) pour rendre le produit légitime.
+- **Curseur:** [6, 9]
+- **Mode:** CONCEPT
+- **Stop scroller:** co_dominant
+- **Angles:** [expertise, innovation, simplicity]
+- **Proofs:** [claim-science, clinical-trial, badge-tech]
+- **Awareness:** [problem_aware, solution_aware]
+- **Conditions:** [mecanisme_explicable_visuellement, audience_valorise_comprendre, produit_a_legitimer]
+- **Anti-conditions:** [mecanisme_trivial, audience_most_aware, diagramme_obscur]
+- **Variantes:** [schema_anatomique, graphe_courbe, flow_processus, infographie_compare]
+- **Piège:** Si le diagramme demande plus de 5 secondes de lecture, l'effort tue le scroll.
+- **Batches:** [B-S55]
+
+---
+
 ## Méta-règles
 
 - **1 mécanique par créa.** Si 2 devices coexistent → identifier primaire (structure layout) et secondaire (enrichit).
@@ -540,400 +612,64 @@
 
 ---
 
-*Dernière mise à jour : 2026-03-17 (Session 11 — 28 fiches taggées, 19 claim + 9 visual)*
-
-
----
-
-## Proposed — F5 Sandbox Batch 2026-04-10
-
-> Source : `research/f5-sandbox-promotion-batch.md` | Injected : 2026-04-13T20:29:22Z | Status : **_proposed** (review required)
+*Dernière mise à jour : 2026-05-04 (S55 reconciliation · 29 fiches actives = 23 claim + 9 visual)*
 
 ---
 
-### annonce-upgrade — [PROPOSED] Launch d'une V2 / nouvelle formule / évolution produit posit
+## Résolution batch PROPOSED (S55, 2026-05-04)
 
-- **Définition:** Launch d'une V2 / nouvelle formule / évolution produit positionnée comme amélioration explicite du précédent
-- **Catégorie:** announcement
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [innovation, expertise]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [im8, im8-extended, unbottled]
-- **Sample count:** 9
-- **Confidence:** 0.85
-- **Source:** sandbox/batch-04-im8, batch-05-im8-extended, batch-02-unbottled
-- **Notes:** Pattern fort supplément / beauté quand le produit a une V1 identifiable. Souvent couplé avec testimonial quote (anciens users valident upgrade).
-- **DTC era:** 2024-2026
-- **Proposal ID:** prop_mech_01
-- **_proposed:** true
+Les 15 mécaniques marquées PROPOSED issues du F5 Sandbox Batch (2026-04-10) ont été graduées. Statut final ci-dessous :
 
+| Proposed ID | Statut | Routing |
+|---|---|---|
+| `annonce-upgrade` | **MERGED** dans `launch-narrative` (variante `upgrade_v1_v2`) | Pas de fiche frère, variante existante suffit |
+| `cross-sell-companion` | **MERGED** dans `bundle-duo` (variante `duo_starter_maintenance`) | Logique de stack = bundle structuré |
+| `testimonial-quote` | **DUPLICATE** de fiche active existante | Fiche canon conservée, dupe drop |
+| `benefit-direct` | **DUPLICATE** de `direct-benefit` | Fiche canon conservée, dupe drop |
+| `promo-shipping` | **DROPPED** (modifieur `offer`, pas mécanique) | Encodé via `offer × stop_scroller`, pas device structurel |
+| `promo-occasion` | **DROPPED** (modifieur `occasion + offer`, pas mécanique) | Encodé via `occasion × offer`, pas device structurel |
+| `before-after` | **DUPLICATE** de fiche active existante | Fiche canon conservée, dupe drop |
+| `ugc-testimonial` | **MERGED** dans `ugc` (sous-type `selfie_mirror` ou `story_repost`) | Voir variantes existantes |
+| `focus-produit` | **PROMOTED** comme `product_focus` (voir ci-dessous) | Fiche minimale ajoutée |
+| `annonce-launch` | **MERGED** dans `launch-narrative` (variante `launch_produit` ou `restock`) | Pas de fiche frère |
+| `diagnostic-service` | **DUPLICATE** de fiche active existante | Fiche canon conservée, dupe drop |
+| `diagnostic` (education-pain) | **PROMOTED** comme `education_pain_loop` (voir ci-dessous) | Distinct de diagnostic existant (quiz/CTA), celui-ci = éducation pure sans CTA test |
+| `versus-old-new` | **MERGED** dans `versus` (variante `vs_ancienne_version`) | Variante existante suffit |
+| `celebrity-endorsement` | **DUPLICATE** de `celebrity` | Fiche canon conservée, dupe drop |
+| `safety-risk-mitigation` | **DROPPED** (proof stack, pas mécanique) | Encodé via `proof[regulatory, claim-science]`, pas device structurel |
 
----
+### product_focus · Hero Shot Produit
 
-### cross-sell-companion — [PROPOSED] Mise en avant d'un produit B comme compagnon nécessaire du p
-
-- **Définition:** Mise en avant d'un produit B comme compagnon nécessaire du produit A (stack logique, pas un simple upsell)
-- **Catégorie:** bundle
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [efficacité, expertise]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [hims-hers]
-- **Sample count:** 8
-- **Confidence:** 0.8
-- **Source:** sandbox/batch-09-10-hims-hers
-- **Notes:** Hims/Hers: GLP-1 + hair loss prevention, GLP-1 + nausée management. Le second produit répond à un side-effect du premier = bundle logique non-forcé.
-- **DTC era:** 2024-2026
-- **Proposal ID:** prop_mech_02
-- **_proposed:** true
-
-
----
-
-### testimonial-quote — [PROPOSED] Citation texte d'un utilisateur (vs vidéo UGC), format copy-
-
-- **Définition:** Citation texte d'un utilisateur (vs vidéo UGC), format copy-heavy
-- **Catégorie:** social-proof
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [transformation, expertise]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [im8, unbottled, spotminders, pilot-skincare-sub, hims-hers]
-- **Sample count:** 5
-- **Confidence:** 0.9
-- **Source:** sandbox cross-batch
-- **Notes:** À distinguer de UGC-testimonial (format vidéo face-cam). Testimonial quote = copy statique ou motion text.
-
-- **Proposal ID:** prop_mech_03
-- **_proposed:** true
-
-
----
-
-### benefit-direct — [PROPOSED] Mise en avant d'un bénéfice produit sans passer par un pain
-
-- **Définition:** Mise en avant d'un bénéfice produit sans passer par un pain (positive framing pur)
-- **Catégorie:** product-focus
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [transformation, efficacité]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
+- **Définition:** Créa centrée sur le produit (hero shot, packaging, features visuelles) sans narrative. La forme/finition produit porte la persuasion.
+- **Curseur:** [3, 6]
+- **Mode:** CONCEPT
+- **Stop scroller:** visual_dominant
+- **Angles:** [innovation, expertise, emotional-identity]
+- **Proofs:** [badge-tech, best-seller-badge, press-logos]
+- **Awareness:** [product_aware, most_aware]
+- **Conditions:** [produit_visually_distinctive, packaging_premium, scaling_evergreen]
+- **Anti-conditions:** [produit_visuellement_banal, audience_unaware, brand_inconnue]
+- **Variantes:** [hero_3d, packshot_stylise, feature_zoom, exploded_view]
+- **Piège:** Sur produit visuellement banal, le hero shot ne porte rien. Il faut un device additionnel.
 - **Batches:** [spotminders, im8]
-- **Sample count:** 3
-- **Confidence:** 0.75
-- **Source:** sandbox cross-batch
-- **Notes:** Complémentaire de 'benefit vs pain' : celui-ci assume que l'audience est desire-driven, pas pain-driven.
-
-- **Proposal ID:** prop_mech_04
-- **_proposed:** true
-
 
 ---
 
-### promo-shipping — [PROPOSED] Free shipping / shipping upgrade utilisé comme hook principa
+### education_pain_loop · Éducation Problème (sans CTA diagnostic)
 
-- **Définition:** Free shipping / shipping upgrade utilisé comme hook principal d'une creative
-- **Catégorie:** offer-framing
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [prix-valeur]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [spotminders, pilot-skincare-sub]
-- **Sample count:** 3
-- **Confidence:** 0.7
-- **Source:** sandbox cross-batch
-- **Notes:** Souvent combiné à un seuil d'order minimum. Plus efficace sur produits à CAC tendu / AOV mid-range.
-
-- **Proposal ID:** prop_mech_05
-- **_proposed:** true
-
-
----
-
-### promo-occasion — [PROPOSED] Promo saisonnière / calendrier (Black Friday, Summer Sale, a
-
-- **Définition:** Promo saisonnière / calendrier (Black Friday, Summer Sale, anniversaire brand, fête spécifique)
-- **Catégorie:** offer-framing
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [prix-valeur]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [unbottled, tao]
-- **Sample count:** 3
-- **Confidence:** 0.8
-- **Source:** sandbox cross-batch
-- **Notes:** Déclencheur = date externe, pas état produit. À différencier de promo-launch et promo-shipping.
-
-- **Proposal ID:** prop_mech_06
-- **_proposed:** true
-
-
----
-
-### before-after — [PROPOSED] Split-screen ou séquence montrant état initial (problème) pu
-
-- **Définition:** Split-screen ou séquence montrant état initial (problème) puis état final (résolu)
-- **Catégorie:** transformation-proof
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [transformation]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [unbottled]
-- **Sample count:** 2
-- **Confidence:** 0.9
-- **Source:** sandbox/batch-02-unbottled
-- **Notes:** Classique beauté/cosmétique. Efficace sur pain-driven avec preuve visuelle. Risque compliance sur supplément/health.
-
-- **Proposal ID:** prop_mech_07
-- **_proposed:** true
-
-
----
-
-### ugc-testimonial — [PROPOSED] User-generated content format : face-cam, setting informel,
-
-- **Définition:** User-generated content format : face-cam, setting informel, authentic tone
-- **Catégorie:** social-proof
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [transformation, contre-intuitif]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [naali, hims-hers]
-- **Sample count:** 2
-- **Confidence:** 0.85
-- **Source:** sandbox cross-batch
-- **Notes:** Distinct de testimonial-quote (text-only) et de celebrity-endorsement (scripted). UGC = feel unscripted, même si dirigé.
-
-- **Proposal ID:** prop_mech_08
-- **_proposed:** true
-
-
----
-
-### focus-produit — [PROPOSED] Creative centrée sur le produit lui-même (hero shot, packagi
-
-- **Définition:** Creative centrée sur le produit lui-même (hero shot, packaging, features visuelles), sans narrative
-- **Catégorie:** product-focus
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [innovation, expertise]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [spotminders, im8]
-- **Sample count:** 2
-- **Confidence:** 0.75
-- **Source:** sandbox cross-batch
-- **Notes:** Mécanique basique mais omise du registry actuel. Souvent utilisée en scaling sur produits visually distinctive.
-
-- **Proposal ID:** prop_mech_09
-- **_proposed:** true
-
-
----
-
-### annonce-launch — [PROPOSED] Moment-driven creative : 'now available', 'launching today',
-
-- **Définition:** Moment-driven creative : 'now available', 'launching today', 'back in stock', amplifiant un événement produit
-- **Catégorie:** announcement
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [innovation, urgence]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [im8, spotminders]
-- **Sample count:** 2
-- **Confidence:** 0.8
-- **Source:** sandbox cross-batch
-- **Notes:** À distinguer de annonce-upgrade (V2) : annonce-launch = premier drop ou re-stock, pas évolution.
-
-- **Proposal ID:** prop_mech_10
-- **_proposed:** true
-
-
----
-
-### diagnostic-service — [PROPOSED] CTA creative axée sur un diagnostic / consultation gratuite
-
-- **Définition:** CTA creative axée sur un diagnostic / consultation gratuite comme first step, pas sur le produit directement
-- **Catégorie:** service-led
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [expertise, sécurité]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [hims-hers]
-- **Sample count:** 2
-- **Confidence:** 0.85
-- **Source:** sandbox/batch-09-10-hims-hers
-- **Notes:** Pattern telehealth spécifique. Diagnostic = lead magnet, produit = downstream. Creative cache le produit derrière le funnel service.
-
-- **Proposal ID:** prop_mech_11
-- **_proposed:** true
-
-
----
-
-### diagnostic — [PROPOSED] Creative qui éduque sur le problème sans révéler immédiateme
-
-- **Définition:** Creative qui éduque sur le problème sans révéler immédiatement la solution — fait émerger la conscience du pain
-- **Catégorie:** education
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [expertise, contre-intuitif]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
+- **Définition:** Créa qui éduque sur le problème sans révéler immédiatement la solution. Fait émerger la conscience du pain. Distinct de `diagnostic` (qui invite à un quiz/test). Ici pas de CTA test, juste éducation pure.
+- **Curseur:** [5, 8]
+- **Mode:** CONCEPT
+- **Stop scroller:** co_dominant
+- **Angles:** [expertise, counter-intuitive, revelation]
+- **Proofs:** [claim-science, social-proof-number, press-logos]
+- **Awareness:** [unaware, problem_aware]
+- **Conditions:** [audience_unaware_a_eveiller, mecanisme_explicable, top_of_funnel]
+- **Anti-conditions:** [audience_solution_aware_plus, message_force_pivot_solution]
+- **Variantes:** [stat_revelatrice, mecanisme_cache, mythe_busted]
+- **Piège:** Si la créa pivote trop vite vers la solution, l'effet d'éveil casse.
 - **Batches:** [im8-extended]
-- **Sample count:** 21
-- **Confidence:** 0.9
-- **Source:** sandbox/batch-05-im8-extended
-- **Notes:** LA mécanique la plus fréquente du batch im8-extended. À vérifier si déjà dans le registry sous un autre nom. Si absent, c'est un trou majeur.
-
-- **Proposal ID:** prop_mech_12
-- **_proposed:** true
-
 
 ---
 
-### versus-old-new — [PROPOSED] Side-by-side de l'ancienne manière vs la nouvelle (avec le p
-
-- **Définition:** Side-by-side de l'ancienne manière vs la nouvelle (avec le produit)
-- **Catégorie:** comparison
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [innovation, contre-intuitif]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [spotminders]
-- **Sample count:** 2
-- **Confidence:** 0.75
-- **Source:** sandbox/batch-01-spotminders
-- **Notes:** Différent de before-after : versus = comparaison de méthode, before-after = comparaison d'état.
-
-- **Proposal ID:** prop_mech_13
-- **_proposed:** true
-
-
----
-
-### celebrity-endorsement — [PROPOSED] Figure publique reconnue valide ou utilise le produit de man
-
-- **Définition:** Figure publique reconnue valide ou utilise le produit de manière scripted
-- **Catégorie:** social-proof
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [expertise, transformation]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [im8]
-- **Sample count:** 6
-- **Confidence:** 0.9
-- **Source:** sandbox/batch-04-im8, batch-05-im8-extended
-- **Notes:** À distinguer de UGC / testimonial-quote. Celebrity = scripted, brand-funded, production value visible. Compliance à surveiller (disclosure).
-
-- **Proposal ID:** prop_mech_14
-- **_proposed:** true
-
-
----
-
-### safety-risk-mitigation — [PROPOSED] Messaging explicite sur la sécurité d'usage, certifications,
-
-- **Définition:** Messaging explicite sur la sécurité d'usage, certifications, tests cliniques
-- **Catégorie:** reassurance
-- **Curseur:** [TBD]
-- **Mode:** TBD
-- **Stop scroller:** TBD
-- **Angles:** [sécurité, expertise]
-- **Proofs:** [TBD]
-- **Awareness:** [TBD]
-- **Conditions:** [TBD]
-- **Anti-conditions:** [TBD]
-- **Variantes:** [TBD]
-- **Piège:** TBD
-- **Batches:** [spotminders]
-- **Sample count:** 3
-- **Confidence:** 0.7
-- **Source:** sandbox/batch-01-spotminders
-- **Notes:** Particulièrement pertinent sur wearable, supplément, beauté active ingredient. Tag sur angle sécurité observé 3x batch.
-
-- **Proposal ID:** prop_mech_15
-- **_proposed:** true
+*Comptage final canon : 29 mécaniques actives (23 claim + 9 visual − 3 dupes résolues + 4 ajouts S55 + 2 graduations PROPOSED). Plus aucune entrée PROPOSED ambiguë.*

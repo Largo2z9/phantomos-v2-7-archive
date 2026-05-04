@@ -28,8 +28,8 @@ requires:
   - brand.json#/identity/language (for ad copy review)
 
 precondition_checks:
-  - mini-skill: check-meta-access-valid
-  - mini-skill: check-pixel-id-present
+  - mini_skill: check-meta-access-valid
+  - mini_skill: check-pixel-id-present
 
 used_in_scenarios:
   - "new client onboarding audit (week 1 discovery)"

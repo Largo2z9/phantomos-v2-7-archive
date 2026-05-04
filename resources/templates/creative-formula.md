@@ -23,6 +23,8 @@ V3 résout ces 3 problèmes via :
 
 > **⚠️ Limite d'échantillon.** L'architecture V3 est solide (elle résout les 79 frictions identifiées). Mais les patterns par niche (curseur, mécaniques dominantes, ratios) sont des **hypothèses basées sur 522 créas / 9 brands**. Il faudrait significativement plus de data pour affirmer des lois par niche. Les observations spécifiques aux brands de l'échantillon sont isolées dans l'Annexe A.
 
+> **Stress test S55 (mai 2026, 23 ads cross-typologies).** La V3 a été stress-testée sur 23 ads diverses (cosméto, telehealth, apparel, supplément, kids gear, B2B SaaS, info-product, DTC fashion). 10 patches affinants identifiés sans refonte structurelle. La V3 tient. Patches intégrés : modalité insight (formulé / implicite / absent), intent 4 valeurs (DR · Brand · Hybrid · B2B_lead_gen), seasonality_trigger metadata, craft_mode (product_only / with_overlay), longevity_signal (days_running > reach absolu comme proxy winner), cta modalité 4 valeurs (explicite · implicite_brand · absent_intentionnel · externalisé). Voir `decisions.md D#391` (largo-kb) pour la trace empirique.
+
 ---
 
 ## 2. Classificateur de production (AVANT la formule)
@@ -48,7 +50,7 @@ Avant de décomposer une créa, déterminer son **mode de production**. Chaque m
 
 Le curseur détermine quels composants de la formule sont **obligatoires**, **optionnels**, ou **inapplicables** pour une créa donnée.
 
-Le curseur est évalué **par créa** (pas par niche). Mais en pratique, les créas d'une même brand/niche gravitent autour d'une zone du spectre.
+Le curseur est évalué **par créa** (pas par niche). Mais en pratique, les créas d'une même brand/niche gravitent autour d'une zone du spectre. Encodé brand-side dans `brand.json#creative_zone {min, max, dominant}` après N créas décomposées.
 
 ```
 0 ─────── 2 ─────── 5 ─────── 7 ─────── 10
@@ -76,7 +78,15 @@ DPA/DABA     retail       tech, skincare    pharma, tabou
 
 ## 4. Architecture 3 couches
 
-### COUCHE 1 — NOYAU (toujours présent, mais contenu variable selon curseur)
+### Équation maître V3
+
+```
+CREATIVE = NOYAU(mécanique × format × stop_scroller(hook_layer, visual_layer) × ton)
+        × CONTEXTE(angle[primary, secondary?] × pain_point × persona[type, buyer≠user?] × proof[layers])
+        × MODIFIEURS(occasion · situation · offer · destination · produit · mix_pillar · campaign · regulatory · variant_of)
+```
+
+### COUCHE 1 · NOYAU (toujours présent, mais contenu variable selon curseur)
 
 ```
 CREATIVE = mécanique × format × stop_scroller(hook_layer, visual_layer) × ton
@@ -89,7 +99,7 @@ CREATIVE = mécanique × format × stop_scroller(hook_layer, visual_layer) × to
 | **stop_scroller** | Ce qui arrête le scroll. Binôme hook (texte) + visual. | TOUJOURS (mais le ratio hook/visual glisse avec le curseur) |
 | **ton** | La voix. Comment on dit les choses. | TOUJOURS (seul composant stable 0→10) |
 
-### COUCHE 2 — CONTEXTE STRATÉGIQUE (présent sur les CONCEPTS, partiel sur TEMPLATES, absent sur ASSETS)
+### COUCHE 2 · CONTEXTE STRATÉGIQUE (présent sur les CONCEPTS, partiel sur TEMPLATES, absent sur ASSETS)
 
 ```
 × angle(primary, [secondary]) × pain_point × persona(type, [buyer≠user]) × proof(layers[])
@@ -102,7 +112,7 @@ CREATIVE = mécanique × format × stop_scroller(hook_layer, visual_layer) × to
 | **persona** | À qui on parle. Démographique ou condition-based. | OUI | OUI (mais souvent buyer ≠ user) |
 | **proof** | Couches de crédibilité empilées. | OUI (min 1 layer) | PARTIEL (badge, prix) |
 
-### COUCHE 3 — MODIFIEURS (optionnels, multiplicateurs contextuels)
+### COUCHE 3 · MODIFIEURS (optionnels, multiplicateurs contextuels)
 
 ```
 × [occasion] × [offer] × [destination] × [produit] × [mix] × [campaign] × [regulatory] × [variant_of]
@@ -122,13 +132,36 @@ CREATIVE = mécanique × format × stop_scroller(hook_layer, visual_layer) × to
 | **product_line_color** | Code couleur par gamme produit | Brands multi-produit avec système couleur |
 | **brand_equity_level** | low (besoin hook/angle/proof) → high (logo suffit) | Détermine le curseur |
 
+### §4.4 Patches v3.1 intégrés (issus stress test S55)
+
+10 patches affinants absorbés dans le canon V3 sans refonte structurelle. Source empirique : 23 ads cross-typologies (S55, mai 2026). Encodés dans `creative.schema.json` (en cours) et `angle.schema.json` v1.2.
+
+| Patch | Couche | Définition | Modalités |
+|---|---|---|---|
+| **intent** | Concept-level | Tag qui module la fractale Hook × Body × CTA. Mode persuasif global de la créa. | DR (direct response) · Brand · Hybrid · B2B_lead_gen |
+| **insight (modalité)** | Concept (couche distincte) | Vérité non-dite verbalisée. À distinguer de pain_point (problème observable subi), tension (gap actuel/désiré) et jtbd (job hiré au produit). Quatre plans MECE (clarification doctrinaire issue audit nomenclature S55). | formulé · implicite · absent |
+| **seasonality_trigger** | Concept (metadata temporelle) | Override d'occasion si déclencheur calendrier brand-spécifique (drop, anniversaire brand, fenêtre rituelle interne). | string · null |
+| **craft_mode** | Execution (Craft.Verbal) | Mode catalog photo muet vs avec overlay textuel. Module les obligatoires Craft.Verbal. | product_only · with_overlay |
+| **longevity_signal** | Performance (proxy winner) | Signal perf empirique. >30 jours = winner evergreen. Meilleur que reach absolu (qui corrèle avec budget plus que mérite intrinsèque). | days_running (int) + winner_proxy enum |
+| **cta (modalité)** | Execution (couche CTA) | Reconnaissance que ~80% du paid social externalise le CTA. La modalité prime sur la formulation. | explicite (CTA verbal in-creative) · implicite_brand (brand recognition fait CTA) · absent_intentionnel (Brand-led statement) · externalisé (CTA délégué plateforme/funnel) |
+
+**Doctrine MECE des couches concept** (clarification S55) :
+- **pain_point** = problème observable subi par la cible
+- **tension** = gap entre état actuel et état désiré
+- **insight** = vérité non-dite verbalisée par la créa
+- **jtbd** = job hiré au produit (progress)
+
+Ces quatre plans sont distincts. Une créa peut activer 1 à 4 plans simultanément. Confondre insight et pain_point = erreur fréquente détectée S55.
+
 ---
 
 ## 5. Registres associés (détail dans fichiers dédiés)
 
-### 5.1 Mécaniques créatives (19 identifiées)
+### 5.1 Mécaniques créatives (registry SSOT)
 
-→ `registries/creative-mechanics-registry.md` ✅ (28 fiches — S11)
+→ `registries/creative-mechanics-registry.md` (25-29 mécaniques canon, registry = SSOT)
+
+**Cross-ref schemas.** `angle.schema.json` v1.2 et `creative.schema.json` (en cours) pointent vers le registry par id (free string), pas enum hardcodé. Ne pas dupliquer la liste dans les schemas.
 
 **Claim niches (curseur 5-10) :**
 
@@ -153,6 +186,10 @@ CREATIVE = mécanique × format × stop_scroller(hook_layer, visual_layer) × to
 | founder-chat | Conversation simulée fondateur-client | B08 |
 | recipe-instructions | Mode d'emploi/recette comme ad | B08 |
 | bundle-duo | Regroupement de produits avec structure (jour/nuit, his/hers) | B01, B08 |
+| curiosity_teaser | Hook accusateur + visuel-preuve + payoff externalisé via swipe | B-S55 |
+| emotional_reframe | Ladder de futurs possibles (distinct meme_cultural et statement) | B-S55 |
+| meme_cultural | Référence culturelle/meme bridgée vers le produit | B-S55 |
+| educational_diagram | Diagramme/schéma pédagogique comme device principal | B-S55 |
 
 **Visual niches (curseur 0-4) :**
 
@@ -384,7 +421,20 @@ Les résultats détaillés par batch sont dans `sandbox/batch-XX/retro-engineeri
 
 ---
 
-## 10. Extension
+## 10 · Test atomique (atome irréductible)
+
+Pour chaque créa décomposée, identifier l'atome irréductible : l'élément (mot, image, structure) sans lequel l'ad meurt. Test : "si je retire/change cet atome, mesure-t-on un delta de performance ?"
+
+Exemples observés S55 :
+- hers Rx Minoxidil Hair Gummy : le mot "Gummy" juxtaposé à "Rx Minoxidil". Si remplacé par "Tablet" l'angle s'effondre.
+- BTB DAYS : "refuses des oui". Si remplacé par "n'as pas le budget" l'identitaire s'efface.
+- Karacare HairBoost : la cascade visuelle 3 flacons mirroring la timeline 3 mois.
+
+L'atome irréductible n'est pas toujours verbal. Il peut être : un mot, une structure compositionnelle, un focal point visuel, un chiffre, une juxtaposition, un ordre. Encodé dans `creative.schema.json#atome_irréductible {element, delta_si_changé}`.
+
+---
+
+## 11. Extension
 
 Pour enrichir la formule :
 1. Identifier une friction (composant manquant, classement impossible, ambiguïté)
@@ -395,7 +445,7 @@ Pour enrichir la formule :
 
 ---
 
-## 11. Frictions résolues par V3 (79 total)
+## 12. Frictions résolues par V3 (79 total)
 
 ### Résolues par le classificateur de production (3 modes)
 - F41 (formula collapse TAO), F42 (angle/PP absent fashion), F43 (template-based), F51 (DPA/DABA), F54 (brand comme seul signifiant), F56 (ratio assets/creatives)
@@ -451,5 +501,7 @@ Pour enrichir la formule :
 
 ---
 
-*Dernière mise à jour : 2026-03-16 (Session 10 — V3 Stabilization)*
-*Source échantillon : 522 créas statiques, 10 batches, 9 brands, 6 niches*
+*Dernière mise à jour : 2026-05-04 (S55 reconciliation · V3 + patches v3.1)*
+*Source échantillon canon : 522 créas statiques, 10 batches, 9 brands, 6 niches (V3 maître)*
+*Stress test : 23 ads cross-typologies (S55, mai 2026, 10 patches affinants intégrés)*
+*Trace empirique S55 : `largo-kb/decisions.md D#391`*

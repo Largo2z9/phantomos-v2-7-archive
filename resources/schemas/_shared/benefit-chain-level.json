@@ -1,0 +1,7 @@
+{
+  "$id": "benefit-chain-level.json",
+  "title": "Benefit chain level (canon shared)",
+  "description": "3 niveaux d'un bénéfice : functional (ce que ça produit), emotional (ce que ça fait ressentir), identity (qui ça permet d'être). Distinct de problem chain (surface/consequence/deep). Source canon. Audit Phase B v2.29.0.",
+  "type": "string",
+  "enum": ["functional", "emotional", "identity"]
+}

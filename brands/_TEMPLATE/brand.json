@@ -1,8 +1,9 @@
 {
   "$comment": "Brand identity + positioning + financials. Factual context, not strategy.",
   "_schema": "brand/L1-brand",
-  "_version": "2.1",
+  "_version": "2.2",
   "_changelog": {
+    "2.2": "S55: brand_equity_level (low/medium/high) + creative_zone (min/max/dominant 0-10) added. Determine viable copy/visual cursor and concept optionality. Canon V3 §3, §4.3.",
     "2.1": "S30d-close: purchase_driver added (brand-level default, cascades to audiences). audience_trees[] added (optional marketplaces). Per D#243, D#244, D#246, D#250.",
     "1.5": "S26e: No structural change to brand.json. Version bump for alignment with spec.json v1.5 (perishability, licensing, dynamic pricing, product_condition). All index-level fields unchanged.",
     "1.4": "S26d: products_index[].product_category added (physical|physical_electronic|digital|service). Discriminated union for product nature — enables index-level routing to correct spec blocks. Backward compatible: null = physical (default).",
@@ -51,7 +52,20 @@
     "audiences_index[].parent_slug": "structured",
     "audiences_index[].validation_status": "structured",
     "meta.*": "structured",
-    "audiences_index": "structured"
+    "audiences_index": "structured",
+    "brand_equity_level": "stated",
+    "creative_zone.min": "derived",
+    "creative_zone.max": "derived",
+    "creative_zone.dominant": "derived",
+    "creative_zone._observed_on_n_creatives": "derived"
+  },
+  "brand_equity_level": null,
+  "creative_zone": {
+    "min": null,
+    "max": null,
+    "dominant": null,
+    "_observed_on_n_creatives": 0,
+    "_notes": "Empty until N creatives have been decomposed. <10 = hypothesis. brand_equity_level: low = needs hook+angle+proof stacked, medium = hook or angle alone can carry, high = logo alone suffices. Canon V3 §3, §4.3."
   },
   "meta": {
     "name": "Example Brand",

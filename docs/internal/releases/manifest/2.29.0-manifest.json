@@ -1,0 +1,177 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.29.0",
+  "released_at": "2026-05-04",
+  "compatible_from": "2.0.0",
+  "type": "schema_evolution_major",
+  "summary": "Refonte structurelle des schemas brand creative (S55 Phase A, audit D#391). 7ème entité brand creative.schema.json créée (v1.0). Schemas patchés brand v2.2, profile v1.2, spec v1.9 (gift_economy deprecated), angle v1.2 (renommages source → origin_axis, lineage.schwartz_conscience → awareness_stage). Nomenclature snake_case strict appliquée. 6 docs explicatives par entité créées. Atlas canon copy doctrine inscrite. Bidirectional canon contract documenté. Lexicon enrichi 14 entrées. Additif strict, aucune migration data requise.",
+  "changes": [
+    {
+      "category": "schemas",
+      "action": "created",
+      "files": ["resources/schemas/creative.schema.json"],
+      "section": "creative.schema.json v1.0 (NEW, 7ème entité brand)",
+      "rationale": "Audit S55 Phase A D#391 a révélé que les 10 patches v3.1 shippés en v2.28.1 (intent, mecanique enum 16, insight modalité, craft_mode, longevity_signal, cta modalité 4, seasonality_trigger) étaient mal placés dans angle.schema.json. Ces fields ne sont pas du concept (audience → insight → angle → mecanique) mais de l'execution + composition d'un creative statique précis. Création de la 7ème entité brand creative comme home légitime : composition_equation (concept × execution), execution_axes (format, ton, craft, cta), longevity, performance_signals. Aligne le canon V3 (creative_statique = concept × execution) avec le schema substrate. Les fields restent disponibles via fallback dans angle.schema.json v1.2 pour backward compat skills v2.27-2.28.x."
+    },
+    {
+      "category": "schemas",
+      "action": "patched",
+      "files": ["resources/schemas/brand.schema.json"],
+      "section": "brand.schema.json v2.1 → v2.2",
+      "rationale": "Ajout brand_equity_level (enum: emerging / established / iconic) pour calibrer la posture Craft × Brand dans la composition creative. Ajout creative_zone (objet : positioning_register, visual_codes, voice_archetypes_canon[]) pour ancrer les axes Craft authorisés par brand au substrate niveau brand plutôt que de re-déduire à chaque skill run. Source : audit S55 sur 23 ads cross-typologies a montré que craft_mode (product_only vs with_overlay) et la pondération Visuel × Verbal × Brand dépendent du brand_equity_level. Cohérence canon : creative_zone pointe vers atlas canon copy archetypes-voix layer."
+    },
+    {
+      "category": "schemas",
+      "action": "patched",
+      "files": ["resources/schemas/profile.schema.json"],
+      "section": "profile.schema.json v1.1 → v1.2",
+      "rationale": "Ajout persona_archetype (référence fiche atlas canon copy archetypes-voix : caregiver, sage, rebelle, amante, héros, homme-ordinaire) au niveau audience profile pour permettre matching downstream entre profile.persona_archetype et brand.creative_zone.voice_archetypes_canon[]. Ajout buyer_user_split (objet : buyer_role, user_role, alignment, decision_axis) pour les cas où l'acheteur n'est pas l'utilisateur (ex: kids gear, B2B, gift). Source : audit S55 a révélé que produce-paid-angles output dégrade quand buyer ≠ user et que la confusion buyer/user est silencieuse dans le profile actuel."
+    },
+    {
+      "category": "schemas",
+      "action": "patched",
+      "files": ["resources/schemas/spec.schema.json"],
+      "section": "spec.schema.json v1.8 → v1.9 (gift_economy deprecated)",
+      "rationale": "Le field spec.gift_economy (positionnement gift vs self-purchase) est mal placé sur le product spec : c'est un attribut de buyer/user split (qui achète pour qui) qui appartient à l'audience profile. Migration vers profile.buyer_user_split.decision_axis (enum: self_purchase / gift / shared_household). Field gift_economy conservé en lecture (deprecation tag) pour backward compat skills v2.27-2.28.x. Removal cible v2.31+. Migration script idempotent fourni."
+    },
+    {
+      "category": "schemas",
+      "action": "patched",
+      "files": ["resources/schemas/angle.schema.json"],
+      "section": "angle.schema.json v1.1 → v1.2 (renommages structurels + simplification)",
+      "rationale": "Renommage source → origin_axis (enum: audience_derived / product_derived / category_derived / brand_derived / temporal_cultural). Le mot source était surchargé dans le canon (source de verbatim, source de scrape, source de l'angle). origin_axis explicite l'axe d'origine. Renommage lineage.schwartz_conscience → lineage.awareness_stage. schwartz_conscience portait jargon doctrinal copywriting. awareness_stage est canon V3 standard (5 stades : unaware, problem_aware, solution_aware, product_aware, most_aware). Simplification : fields execution.craft_mode + execution.longevity_signal + execution.cta migrés vers creative.schema.json (home légitime). Conservés en lecture sur angle.schema.json v1.2 (deprecated tag) pour backward compat skills v2.27-2.28.x. Removal cible v2.31+."
+    },
+    {
+      "category": "docs_new",
+      "action": "created",
+      "files": ["docs/system/atlas-canon-copy.md"],
+      "section": "Atlas canon copy doctrine inscrite",
+      "rationale": "Inscrit la doctrine de l'atlas canon copy (58 fiches outils sur 11 couches v2.26.0) comme infrastructure formelle : structure (canon-tool.schema.json), mécanisme d'enrichissement (validations[] append-only via learn-from-session), bidirectional canon contract (skills consomment + alimentent le canon), composition canon (canon × brand creative_zone × profile persona_archetype = composition reasoning). Documente le pattern atlas vivant pour les futurs canons (sales-letter-canon, vsl-canon, email-canon). Source S55 : décrit explicitement comment les 4 skills v2.27 consomment le canon copy et comment le canon vit après plusieurs mois d'utilisation opérateur."
+    },
+    {
+      "category": "docs_new",
+      "action": "created",
+      "files": [
+        "docs/system/schemas/README.md",
+        "docs/system/schemas/spec.md",
+        "docs/system/schemas/angle.md",
+        "docs/system/schemas/profile.md",
+        "docs/system/schemas/brand.md",
+        "docs/system/schemas/offer.md"
+      ],
+      "section": "6 docs explicatives par entité brand",
+      "rationale": "Chaque entité brand (spec, angle, profile, brand, offer) avait son JSON schema mais pas de doc humaine expliquant : sémantique des fields, distinctions MECE entre fields proches (ex: insight vs tension vs pain_point), trade-offs encodage, exemples cross-typologies, anti-patterns d'encodage. Les 6 docs comblent ce gap. README.md indexe + pose les conventions communes (snake_case, _field_types tagging, source/confidence sémantiques). Création atlas-canon-copy.md fait référence à ces docs pour le composition reasoning. Source S55 : audit a révélé que les skill authors (humains et agents) hallucinaient la sémantique des fields parce qu'aucune doc explicative n'existait."
+    },
+    {
+      "category": "docs_patched",
+      "action": "patched",
+      "files": ["docs/system/skill-authoring-discipline.md"],
+      "section": "§5bis Bidirectional canon contract",
+      "rationale": "Ajout section §5bis au SAD : tout skill producer/curator qui interagit avec un atlas canon doit déclarer son contrat bidirectionnel (consume_from + produce_to). consume_from : quelles couches canon le skill lit en input (ex: produce-paid-angles consume canon copy frameworks/hooks/angles). produce_to : quelles entries canon le skill peut alimenter en output via append validations[] (ex: learn-from-session produce_to canon copy {layer}/{tool}#validations[]). Sans ce contrat, l'atlas reste mort. Avec, il devient vivant. Encode le pattern v2.27 comme doctrine pour les futurs skills. Source S55 : pattern émergent observé sur 4 skills v2.27, formalisé en doctrine."
+    },
+    {
+      "category": "docs_patched",
+      "action": "patched",
+      "files": ["docs/system/creative-formula.md"],
+      "section": "Réconciliation v3 + v3.1",
+      "rationale": "creative-formula.md portait deux versions concurrentes (v3 ancien : creative = audience × angle × format ; v3.1 nouveau : creative_statique = concept × execution ; concept = audience → insight → angle → mecanique ; execution = format × ton × craft × cta). Réconciliation : v3.1 promu canonique, v3 archivé en bas de doc comme historique avec note de migration. Ajout section composition reasoning pointant vers atlas-canon-copy.md (composition canon × brand × profile). Source S55 : stress test 23 ads cross-typologies a validé v3.1 empiriquement (D#391)."
+    },
+    {
+      "category": "docs_patched",
+      "action": "patched",
+      "files": ["resources/canon/copy/_registry/creative-mechanics-registry.md"],
+      "section": "Graduation 4 PROPOSED + 4 ajouts S55",
+      "rationale": "4 mécaniques en statut PROPOSED depuis v2.24 graduées vers VALIDATED suite stress test S55 : curiosity_teaser (validé ad_056 rosacée), emotional_reframe (validé AD5 coach business), educational_diagram (validé sur 3 ads supplément), listicle (validé sur 2 ads info-product). Ajout 4 nouvelles mécaniques observées S55 en statut PROPOSED : ladder_of_futures, accusatory_hook, payoff_externalization, evergreen_winner_signal. Total registry : 16 VALIDATED + 4 PROPOSED. Source S55 D#391."
+    },
+    {
+      "category": "docs_patched",
+      "action": "patched",
+      "files": ["lexicon.md"],
+      "section": "14 entrées enrichies (vocabulaire canon V3)",
+      "rationale": "Lexicon enrichi pour clarifier distinctions MECE qui hallucinaient skills + opérateurs : Insight (vérité non-dite verbalisée) vs Pain_point (douleur observable) vs Tension (gap entre état actuel et désiré) vs JTBD (job-to-be-done fonctionnel/émotionnel/social). Mécanique (mécanisme compositionnel d'angle, enum 16) vs Mechanism (mécanisme produit biologique/cognitif/comportemental sur spec). Atlas (collection canon copy/sales-letter/vsl/email) vs Canon (référentiel doctrinal partagé). Atome irréductible (élément dont la modification ferait varier la perf). Awareness (5 stades canon V3) vs Sophistication (5 vagues marché). Origin_axis vs source. Brand_equity_level. Buyer_user_split. Persona_archetype. Composition reasoning. Bidirectional canon contract. 14 entrées au total. Source S55 : audit Phase A a révélé que ces 14 termes étaient soit absents soit ambigus."
+    },
+    {
+      "category": "docs_patched",
+      "action": "patched",
+      "files": ["docs/internal/canon.md"],
+      "section": "3 sections enrichies (atlas + composition + canon vivant)",
+      "rationale": "Section Atlas mise à jour pour pointer vers atlas-canon-copy.md doctrine. Section Composition reasoning ajoutée (comment canon × brand × profile compose un output 95% qualité, ref canonical-matrix-reasoning.md). Section Canon vivant ajoutée (mécanisme d'enrichissement bidirectional consume + produce, ref skill-authoring-discipline.md §5bis). Source S55."
+    },
+    {
+      "category": "docs_patched",
+      "action": "patched",
+      "files": ["docs/product/capabilities.md"],
+      "section": "Atlas + composition canon",
+      "rationale": "Mise à jour de la capabilities map operator-facing : section Atlas canon (navigation /phantom canon copy {layer} {tool}), section Composition (le système compose canon + brand + profile pour produire un output cohérent), traduction operator-friendly (zéro jargon doctrine). Source S55."
+    },
+    {
+      "category": "docs_patched",
+      "action": "patched",
+      "files": ["docs/vision/roadmap.md"],
+      "section": "Recently shipped section v2.29",
+      "rationale": "Mise à jour roadmap : entrée v2.29 dans Recently shipped (creative.schema 7ème entité, brand v2.2 creative_zone, profile v1.2 persona_archetype, atlas canon copy doctrine). Next up updated pour pointer v2.30+ skills consume nouveaux fields. Source S55."
+    },
+    {
+      "category": "nomenclature",
+      "action": "patched",
+      "files": [
+        "resources/schemas/angle.schema.json",
+        "resources/schemas/spec.schema.json",
+        "resources/schemas/profile.schema.json",
+        "resources/schemas/brand.schema.json",
+        "resources/schemas/creative.schema.json",
+        "brands/_TEMPLATE/products/_example/spec.json",
+        "brands/_EXAMPLE/products/creme-eclat/spec.json"
+      ],
+      "section": "snake_case strict sweep (7 fields)",
+      "rationale": "Nomenclature snake_case strict appliquée sur 7 fields qui portaient des accents ou camelCase. Renommages : modalité → modalite (cta.modalité, insight.modalité), atome_irréductible → atome_irreductible, mécanique → mecanique (déjà v2.28.1, confirmé v2.29), unfulfilled_mechanic → unfulfilled_mechanic_flag, schwartzConscience → schwartz_conscience (puis renommé awareness_stage), giftEconomy → gift_economy (puis deprecated v1.9), craftMode → craft_mode. Cohérence avec convention snake_case déjà appliquée sur 95% des fields. Backward compat : alias en lecture pour les 7 fields anciens via _aliases bloc top-level dans chaque schema."
+    },
+    {
+      "category": "nomenclature",
+      "action": "created",
+      "files": ["infra/migrations/migrate-nomenclature-v2-29.py"],
+      "section": "Migration script idempotent",
+      "rationale": "Script Python migrate-nomenclature-v2-29.py qui scanne tous les artefacts brands/{slug}/**.json et renomme les 7 fields snake_case-violating vers leur version snake_case canonique. Idempotent (peut être run N fois sans dommage). Dry-run par défaut (--apply pour exécution réelle). Logue chaque renommage avec path + before/after dans infra/migrations/logs/. Backward compat : si artefact lit l'ancien nom en runtime, fallback alias bloc dans schema résout. Source S55."
+    },
+    {
+      "category": "schemas_phase_b",
+      "action": "created",
+      "files": ["resources/schemas/_shared/validation-status.json", "resources/schemas/_shared/awareness-stage.json", "resources/schemas/_shared/benefit-chain-level.json"],
+      "section": "Action 1 Phase B : extraction $ref shared",
+      "rationale": "Audit Phase B (cohérence métier post-Phase A) a détecté HIGH severity : validation_status (5 valeurs cycle) répété verbatim dans profile + angle + creative · awareness_stage (5 stages Schwartz) répété 5 fois · benefit chain.level (functional/emotional/identity) répété sur spec.benefits + profile.benefits. Drift garanti sans SSOT. Solution : extraction en 3 fichiers _shared/ et substitution $ref dans les schemas consumers. 10 substitutions $ref totales appliquées. Cross-draft compatibility validée (draft-07 + draft 2020-12 supportent $ref relatif file-system)."
+    },
+    {
+      "category": "schemas_phase_b",
+      "action": "patched",
+      "files": ["resources/schemas/creative.schema.json", "resources/schemas/profile.schema.json"],
+      "section": "Action 2 + 4 Phase B : fix overlap creative + enrich enums",
+      "rationale": "Action 2 : creative.context.persona drop buyer_role + user_role (lookup canon via audience_slug → profile.buyer_user_split). buyer_user_split bool transformé en buyer_user_split_signal enum cache (none/gift/b2b_procurement/caregiver/pet) car bool cachait de la complexité. Action 4 : 3 enums enrichis (audit Phase B section C). craft_mode {product_only, with_overlay} → 3 valeurs avec minimal_brand_mark intermédiaire (cas Gymshark logo + 1 word badge). intent {DR, Brand, Hybrid, B2B_lead_gen} refondu en {DR, Brand, Hybrid, Lead_gen, Retention, Awareness} (B2B_lead_gen retiré, ajout Retention + Awareness) + audience_segment ajouté en dimension distincte (B2C/B2B/B2B2C/DTC/marketplace). persona_archetype string enum refondue en object {primary required, secondary[] maxItems:2} car audiences réelles combinent souvent 2-3 archétypes (ex 'femmes 30-45 [demographic] en chute post-grossesse [condition_based] soucieuses de naturalité [psychographic]'). Breaking implicite intent + persona_archetype mais creative.schema v1.0 sans data existante, profile.persona_archetype v1.2 ajouté Phase A même session sans propagation pilotes."
+    },
+    {
+      "category": "schemas_phase_b",
+      "action": "annotated",
+      "files": ["resources/schemas/spec.schema.json", "resources/schemas/profile.schema.json"],
+      "section": "Action 3 Phase B : 4 champs zombies marqués deprecated:true",
+      "rationale": "spec.unique_mechanism (déjà DEPRECATED en description, flag JSON Schema deprecated:true ajouté) · spec.identity.product_name (doublon spec.meta.name) · profile.identity.archetype (free string legacy, doublon profile.persona_archetype enum v1.2) · spec.compliance.allergen_info (free string legacy, doublon spec.specs.nutrition_facts.allergens enum EU14). Tous marqués deprecated:true + description prefix avec note v2.29.0 + plan removal v2.31+. Hygiène, pas de migration data."
+    },
+    {
+      "category": "docs_phase_b",
+      "action": "patched",
+      "files": ["docs/system/schemas/brand.md", "docs/system/schemas/profile.md", "docs/system/architecture.md", "resources/schemas/profile.schema.json"],
+      "section": "Action 5 Phase B : cascade purchase_driver doctrine",
+      "rationale": "Audit Phase B MED severity : brand.purchase_driver (default cascade) + brand.audience_trees[].purchase_driver (override tree-level) + profile non explicite. Skills downstream font merge à chaque appel = lookup répétitif + drift potentiel. Décision doctrinale : profile résout et stocke (preferred Option A). Champ profile.purchase_driver ajouté top-level avec _field_types: derived. Doctrine inscrite : skills lecture profile d'abord, fallback brand cascade si null. Mutation rule : ne jamais éditer manuellement (derived). Recompute via mutation gate à chaque mutation brand.purchase_driver ou audience_trees[].purchase_driver. Pattern documenté dans architecture.md § Cascade rules + brand.md + profile.md (extensible à futurs candidats : tone_register, target_geo, compliance_zone)."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [
+    {
+      "script": "infra/migrations/migrate-nomenclature-v2-29.py",
+      "scope": "brands/{slug}/**.json",
+      "mode": "idempotent, dry-run par défaut",
+      "trigger": "operator opt-in via python3 infra/migrations/migrate-nomenclature-v2-29.py --apply",
+      "fallback": "alias bloc top-level dans schemas patchés résout les anciens noms en lecture si migration non exécutée"
+    }
+  ],
+  "operator_impact": "Pas d'impact opérateur direct v2.29.0 (additif strict). Skills v2.27-2.28.x downstream (produce-paid-angles, produce-copy-brief, mine-voc, learn-from-session) continuent à fonctionner avec les anciens fields via alias bloc et deprecation tags backward compat. La valeur arrive avec v2.30+ : (a) refacto produce-paid-angles pour drop fields migrés vers creative.schema, (b) nouveau skill decompose-ad consomme creative.schema directement, (c) skills update pour utiliser awareness_stage au lieu de schwartz_conscience, origin_axis au lieu de source, persona_archetype matching brand.creative_zone.voice_archetypes_canon[]. Migration data brand-side optionnelle via migrate-nomenclature-v2-29.py (idempotent, dry-run par défaut).",
+  "next_release_note": "v2.30+ : (a) refacto produce-paid-angles pour drop fields execution.craft_mode + execution.longevity_signal + execution.cta migrés vers creative.schema. (b) nouveau skill decompose-ad consomme creative.schema directement (pulled depuis TrendTrack ou paste opérateur). (c) skills update pour utiliser awareness_stage au lieu de schwartz_conscience, origin_axis au lieu de source. (d) skill compose-creative qui orchestre canon × brand.creative_zone × profile.persona_archetype × creative.composition_equation pour générer un creative statique 95% qualité. (e) v2.31+ removal des fields deprecated (gift_economy sur spec, craft_mode/longevity_signal/cta sur angle)."
+}

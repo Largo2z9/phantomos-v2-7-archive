@@ -1,7 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Brand",
-  "description": "Per-brand identity, positioning, financials, market context. Lives in brands/{slug}/brand.json. v2.1+: purchase_driver default + audience_trees[] for marketplaces.",
+  "description": "Per-brand identity, positioning, financials, market context. Lives in brands/{slug}/brand.json. v2.1+: purchase_driver default + audience_trees[] for marketplaces. v2.2+: brand_equity_level + creative_zone (canon V3 §3, §4.3).",
+  "_schema_version": "brand/2.2",
   "type": "object",
   "required": ["meta", "identity", "positioning", "tone_of_voice", "platforms", "financials"],
   "properties": {
@@ -23,6 +24,23 @@
         "primary": { "type": "string", "enum": ["pain", "desire", "status", "utility", "identity"] },
         "secondary": { "type": "string", "enum": ["pain", "desire", "status", "utility", "identity"] },
         "ratio": { "type": "number", "minimum": 0, "maximum": 1, "description": "Weight of primary driver (0.5-1.0). Below 0.5 = invert primary/secondary." }
+      }
+    },
+
+    "brand_equity_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Force de reconnaissance brand. low = besoin hook + angle + proof empilés (BTB DAYS, brands < 6 mois). medium = hook ou angle peuvent porter seuls (Karacare, niches établies). high = logo seul suffit (Apple, Liquid Death). Détermine le curseur copy/visual viable et l'optionalité du concept dans creative.schema. Référence canon V3 §4.3."
+    },
+
+    "creative_zone": {
+      "type": "object",
+      "description": "Zone du curseur copy/visual 0-10 où les créas de cette brand gravitent. Observé empiriquement après N créas décomposées. Permet aux skills creative-strategist de calibrer leurs outputs. Référence canon V3 §3.",
+      "properties": {
+        "min": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "max": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "dominant": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Curseur médian observé. Sert de défaut pour produce-paid-angles." },
+        "_observed_on_n_creatives": { "type": "integer", "description": "Nombre de créas décomposées qui ont alimenté cette zone. <10 = hypothèse." }
       }
     },
 

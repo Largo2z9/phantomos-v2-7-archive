@@ -82,9 +82,9 @@
       "items": {
         "type": "object",
         "properties": {
-          "mini-skill": {
+          "mini_skill": {
             "type": "string",
-            "description": "Name of a mini-skill that validates a precondition before the SOP proceeds."
+            "description": "Name of a mini-skill that validates a precondition before the SOP proceeds. Field renamed v1.1 from 'mini-skill' (dash) for snake_case strict compliance. Note: in prose docs/skills, 'mini-skill' (dash) remains the canonical English noun; only the JSON field name uses underscore."
           }
         }
       },
