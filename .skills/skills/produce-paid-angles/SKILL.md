@@ -1,7 +1,7 @@
 ---
 name: produce-paid-angles
 type: producer
-version: "1.1.0"
+version: "1.2.0"
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: generating
@@ -47,6 +47,8 @@ disambiguates_against:
 
 # Skill: produce-paid-angles
 
+> **Changelog v1.2.0 (S55 · v2.29.0 alignment).** `awareness_stage` at `lineage.awareness_stage` (renamed from `schwartz_conscience` per `angle.schema.json` v1.2). `origin_axis` at top-level (renamed from `source`). Drop fields migrated to `creative.schema.json` v1.1 (`intent`, `mecanique`, `seasonality_trigger`, `execution.craft_mode`, `execution.longevity_signal`, `execution.cta`). Use `$ref` to `_shared/awareness-stage.json` for the canonical 5 Schwartz stages. Cross-refs: v2.29.0 manifest, D#391.
+
 Synthesizer, not fabricator. Reads encoded brand intelligence, reasons over a cartesian internally, ships a ranked angle table the operator can hand to a copywriter. The mechanism stays invisible. The operator sees ranked angles in plain language, hooks anchored in real customer voice, a synthesis that names why these top, and a reasoned next move grounded in what was just produced.
 
 ## Tone
@@ -74,7 +76,7 @@ Three branches:
 
 ---
 
-## Step 0bis — Load canon copy (v2.26.0+)
+## Step 0bis · Load canon copy (v2.26.0+, refacto v2.29.0)
 
 **Avant Step 1**, charger l'atlas canon copy comme bibliothèque de référence pour la production. Les angles ne sont plus générés depuis le néant, ils sont composés en piochant dans des outils canon référencés.
 
@@ -82,7 +84,7 @@ Read-only access aux fichiers `resources/canon/copy/{layer}/{tool}.json`. Couche
 - `frameworks` (AIDA, PAS, BAB, QUEST, FAB, 4Ps) : squelette structurel
 - `hooks` (curiosity-gap, contrarian, stat-choc, avant-apres, question-callout, confession) : ouverture
 - `angles` (mecanisme-unique, identite, retour-en-arriere, ennemi-commun, status-shift, contre-intuitif) : axe narratif
-- `niveaux-schwartz` (conscience, sophistication) : grille de pertinence
+- `niveaux-schwartz` (conscience, sophistication) : grille de pertinence · les 5 stages conscience canoniques sont définis dans `resources/canon/copy/_shared/awareness-stage.json` ($ref partagé v2.29.0), consommés via le field name `awareness_stage` (le terme Schwartz reste valide en surface opérateur, mais le field canonique est `awareness_stage`)
 - `archetypes-voix` (caregiver, sage, rebelle, amante, heros, homme-ordinaire) : registre
 
 Pour chaque outil canon lu, garder en mémoire : `id, when_works[], when_avoid[], combines_with{}`. Ces contraintes filtrent quels outils sont compatibles avec le contexte audience résolu en Step 0/1.
@@ -295,24 +297,56 @@ Write the synthesis + ranked table as markdown to:
 
 Pure deliverable. Copy-pasteable into Notion, Slack, a Google Doc, a brief sent to a copywriter. Header carries: brand name / audience label / date / angle count. Body carries the synthesis paragraph and the ranked table. Footer carries the citations row when verbatims were used (verbatim IDs referencing the original `voc/` corpus when relevant) — never inline scores, never field paths.
 
-**Canon lineage block (v2.26.0+).** Chaque angle dans le ranked table porte son lignage canon explicite. Format ligne par angle :
+**Canon lineage block (v2.26.0+, refacto v2.29.0).** Chaque angle dans le ranked table porte son lignage canon explicite. Format ligne par angle :
 
 ```
 ANG-{N} · {angle name}
-  audience       {audience_slug}
-  Schwartz       {conscience_stage} × sophistication {wave}
-  hook           {hook_id}                 ← canon copy hooks
-  framework      {framework_id}            ← canon copy frameworks
-  angle narratif {angle_id}                ← canon copy angles
-  archetype voix {archetype_id}            ← canon copy archetypes-voix
-  pain cible     {pain extract from VoC}
-  proof primary  {proof extract from spec}
-  CTA            {offer_id or "à créer"}
+  audience          {audience_slug}
+  awareness_stage   {awareness_stage}       ← _shared/awareness-stage.json (5 stages canon)
+  sophistication    {schwartz_sophistication wave v1-v5}
+  hook              {hook_canon_id}         ← canon copy hooks
+  framework         {framework_canon_id}    ← canon copy frameworks
+  angle narratif    {angle_canon_id}        ← canon copy angles
+  archetype voix    {archetype_canon_id}    ← canon copy archetypes-voix
+  pain cible        {pain_extract from VoC}
+  proof primary     {proof_primary from spec}
+  CTA               {cta or "à créer"}
 ```
 
-Le lignage rend l'angle **traçable** : `/phantom karacare angles ANG-03` pourra rendre la chaîne compositionnelle lue à travers l'atlas. C'est aussi ce qui débloquera v2.27+ les vues `copy-matrix` et `copy-map`.
+En surface opérateur (rendu human-readable), le terme *Schwartz* reste recevable comme référence auteur (*"Schwartz conscience: solution-aware"*). Le field name canonique côté schema/JSON est `awareness_stage`. Le lignage rend l'angle **traçable** : `/phantom karacare angles ANG-03` pourra rendre la chaîne compositionnelle lue à travers l'atlas. C'est aussi ce qui débloquera les vues `copy-matrix` et `copy-map`.
 
-**Persistence brand-side.** Le lignage canon est ALSO écrit dans `brands/{slug}/angles/{ANG-N}.json` avec le même schéma `{audience_slug, schwartz_conscience, schwartz_sophistication, hook_canon_id, framework_canon_id, angle_canon_id, archetype_canon_id, pain_extract, proof_primary, cta}`. Permet aux outils downstream (`/phantom karacare angles ANG-03`, `produce-copy-brief ANG-03`) de relire la composition.
+**Persistence brand-side (angle.schema v1.2).** Le lignage canon est ALSO écrit dans `brands/{slug}/angles/{ANG-N}.json` aligné sur `angle.schema.json` v1.2 :
+
+```json
+{
+  "_schema_version": "angle/1.2",
+  "angle_id": "ANG-NN",
+  "name": "...",
+  "audience_slug": "...",
+  "origin_axis": "audience-derived | product-derived | category-derived | brand-derived | temporal-cultural",
+  "awareness_movement": { "in": "...", "out": "..." },
+  "lineage": {
+    "awareness_stage": "...",
+    "schwartz_sophistication": "v1-v5",
+    "hook_canon_id": "...",
+    "framework_canon_id": "...",
+    "angle_canon_id": "...",
+    "archetype_canon_id": "...",
+    "pain_extract": "...",
+    "proof_primary": "...",
+    "cta": "..."
+  },
+  "formula": { "observation": {}, "tension": {}, "reframe": {}, "bridge": {} },
+  "insight": { "modalite": "formulé | implicite | absent", "status": "déduit | validé | incertain", "formulation": "..." },
+  "meta": { "validation_status": "hypothesis", "created": "YYYY-MM-DD" }
+}
+```
+
+Renommages v2.29.0 : `source` (top-level) devient `origin_axis` · `lineage.schwartz_conscience` devient `lineage.awareness_stage`. Le field `awareness_stage` consomme l'enum canonique de `_shared/awareness-stage.json` (5 stages).
+
+**Fields migrés vers creative.schema.json v1.1 (drop ici).** Les fields `intent`, `mecanique`, `seasonality_trigger`, `execution.craft_mode`, `execution.longevity_signal`, `execution.cta` ont été migrés de `angle.schema` vers `creative.schema` (7ème entité brand) en v2.29.0. **NE PAS les écrire dans `angles/{ANG-N}.json`.** Si le skill veut produire une créa instance complète (concept × execution), invoquer le skill `compose-creative` (futur v2.31+) ou écrire directement `brands/{slug}/creatives/{CREA-N}.json` aligné sur `creative.schema.json` v1.1, qui absorbe execution + classification + variant_of et référence l'angle parent via `variant_of.angle_id`.
+
+Permet aux outils downstream (`/phantom karacare angles ANG-03`, `produce-copy-brief ANG-03`) de relire la composition.
 
 The next-step proposal lives in the conversational reply, NOT in the artifact file. The artifact is the pure deliverable; the conversational reply carries the reasoned next move.
 
@@ -404,6 +438,10 @@ Focus modifiers are operator-facing additions (the operator can say *"angles pai
 - `.skills/write-to-context.py` — canonical mutation channel for any write to `learnings.json` if a pattern is detected during the run.
 - `docs/system/contextual-intelligence.md` — master doctrine. No orphan output rule, contextual reasoning, anti-patterns.
 - `docs/system/voice.md` — voice canon, register, banned phrases.
+- `resources/canon/copy/_shared/awareness-stage.json` · `$ref` partagé v2.29.0, 5 stages Schwartz canoniques. Source unique consommée par `lineage.awareness_stage` dans `angle.schema.json` v1.2.
+- `resources/schemas/angle.schema.json` (v1.2) · schema cible persistance brand-side. Renommages : `source` devient `origin_axis`, `lineage.schwartz_conscience` devient `lineage.awareness_stage`. 8 fields migrés vers creative.
+- `resources/schemas/creative.schema.json` (v1.1, NEW) · 7ème entité brand. Absorbe `intent`, `mecanique`, `seasonality_trigger`, `execution.*`, classification, `variant_of`. Si production créa instance complète, écrire ici (skill `compose-creative` v2.31+ ou direct).
+- v2.29.0 manifest + D#391 · refacto angle/creative split, gouvernance schemas.
 
 ---
 

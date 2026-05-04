@@ -1,7 +1,7 @@
 ---
 name: learn-from-session
 type: capturer
-version: "1.0.0"
+version: "1.0.1"
 recommended_model: sonnet
 reasoning_pattern: null
 description: >
@@ -125,6 +125,8 @@ Each buffer entry must be **routed to the right file** based on what it concerns
 | **Canon validation** (v2.26.0+) — tool canon validé/fatigué en prod sur ce brand | `resources/canon/copy/{layer}/{tool}.json#/validations[]` (append) |
 
 **Never mix**: an operator info does not go into brand.learnings, a brand fact does not go into operator/profile. Cross-contamination = structural bug.
+
+<!-- v2.29.0 alignment verify : routing canon validation lit `resources/canon/copy/{layer}/{tool}.json#/validations[]` côté template. Shape validations[] inchangée. Outputs produce-paid-angles structurés autour de angle.schema v1.2 (`awareness_stage` rename in angle.lineage, `origin_axis` field) sont consommés en mode boîte noire par le routage canon (le skill ne tagge pas explicitement ces fields, il route via brand_slug + audience_slug + outcome). No field-rename patch needed. -->
 
 ### Canon validation routing (v2.26.0+)
 

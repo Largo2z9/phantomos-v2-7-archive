@@ -1,7 +1,7 @@
 ---
 name: mine-voc
 type: producer
-version: "1.0.1"
+version: "1.0.2"
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: coding
@@ -139,6 +139,9 @@ Cache by `domain × week` to avoid re-scraping the same surface within seven day
 ---
 
 ## Step 3 — 4-lens coding per verbatim (+ canon tagging v2.26.0+)
+
+<!-- v2.29.0 alignment verify : awareness_stage rename in angle.lineage. Canon tagging field names unchanged (point vers fiches canon copy). Layer A `awareness_stage` field already aligned with `_shared/awareness-stage.json` $ref (5 valeurs canoniques `unaware | problem_aware | solution_aware | product_aware | most_aware`). -->
+
 
 Apply `resources/frameworks/voc-coding.md` strictly. The order is the order; do not reshuffle.
 
@@ -341,3 +344,5 @@ Three contexts surface this skill.
 ## Changelog
 
 - **1.0.0** (2026-04-24) — Initial spec. Four-lens coding consumes `voc-coding.md`. Layer A corpus + Layer B routed mutations. Step 0 first-party ask non-negotiable. Step 5 synthesis follows snapshot Step 7 canon strictly. Step 7 finalize-mutation-batch mandatory. Four `--focus` modes ship at v1. Sonnet for coding; Haiku A/B in v1.1.
+- **1.0.1** — Canon tagging additif (`canon_schwartz_conscience_id`, `canon_emotion_id`, `canon_objection_pattern_id`) on Layer B verbatims. Feeds copy-matrix audience x stade-conscience views.
+- **1.0.2** (v2.29.0 alignment verify) — `awareness_stage` rename confirmed in Layer A entry shape and profile routing (`pain_points[].awareness_stage` consumes `_shared/awareness-stage.json` $ref, 5 canoniques). Canon tagging field names unchanged: `canon_schwartz_conscience_id` reste tel quel car pointe vers la fiche canon copy `niveaux-schwartz/conscience.json`, pas vers l'enum `awareness_stage` d'`angle.lineage`. No structural patches needed beyond verify.

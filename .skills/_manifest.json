@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-03T17:56:35Z",
-  "_count": 42,
+  "_generated_at": "2026-05-04T23:23:46Z",
+  "_count": 43,
   "skills": [
     {
       "name": "analyze-extension-intent",
@@ -237,6 +237,36 @@
       },
       "disambiguates_against": {},
       "path": ".skills/skills/cross-deepening-signals/SKILL.md"
+    },
+    {
+      "name": "decompose-ad",
+      "type": "producer",
+      "model": "opus",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "decompose cette ad",
+          "analyse cette créa",
+          "que dit cette ad",
+          "decompose",
+          "reverse-engineer cette ad",
+          "decompose cette pub"
+        ],
+        "en": [
+          "decompose this ad",
+          "analyze this creative",
+          "decompose",
+          "reverse-engineer this ad"
+        ]
+      },
+      "disambiguates_against": {
+        "audit-meta-account": "route to audit-meta-account when operator wants to audit a full Meta account (KPI, structure campaigns, pixel, attribution), not a single ad. decompose-ad is one creative at a time.",
+        "produce-paid-angles": "route to produce-paid-angles when operator wants to PRODUCE angles (forward generation from brand intelligence). decompose-ad is reverse-engineering on an existing ad.",
+        "analyze-copy": "route to analyze-copy for long-form copy decomposition (VSL, sales letter, email). decompose-ad is single-ad creative, copy + visual + format coupled, equation v3.1.",
+        "watch-competitors": "route to watch-competitors for ongoing surveillance of a competitor library. decompose-ad is one ad, deep, persisted to creatives."
+      },
+      "path": ".skills/skills/decompose-ad/SKILL.md"
     },
     {
       "name": "deepen-brand-context",

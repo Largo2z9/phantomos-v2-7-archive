@@ -1,0 +1,63 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.30.0",
+  "released_at": "2026-05-04",
+  "compatible_from": "2.0.0",
+  "type": "skill_evolution_major",
+  "summary": "Refacto 4 skills downstream pour aligner schemas v2.29.0 (awareness_stage, origin_axis, fields execution.* migrés vers creative.schema). Création skill aval majeur decompose-ad v1.0.0 qui consomme creative.schema + équation v3.1 + registry mécaniques + canon copy. Modes benchmark concurrent (TrendTrack/URL/drop) et créa interne marque. Output fiche markdown opérateur (S55 fiche v5). Aucun breaking change, alias bloc v2.29 résout pour skills externes.",
+  "changes": [
+    {
+      "category": "skills_refacto",
+      "action": "patched",
+      "files": [".skills/skills/produce-paid-angles/SKILL.md"],
+      "section": "produce-paid-angles 1.1.0 → 1.2.0",
+      "rationale": "Aligne le skill sur les schemas v2.29.0. Renommage lineage.schwartz_conscience → lineage.awareness_stage dans le bloc LIGNAGE et la persistance brands/{slug}/angles/{ANG-N}.json (canon V3 standard 5 stades : unaware, problem_aware, solution_aware, product_aware, most_aware). Renommage source → origin_axis (enum: audience_derived / product_derived / category_derived / brand_derived / temporal_cultural). Drop des fields execution.craft_mode + execution.longevity_signal + execution.cta du output angle (migrés vers creative.schema.json v1.1). Ces fields restent lisibles via deprecation tag pour skills v2.27-2.28.x downstream non patchés. Step 11 Layer B artifact mis à jour. Skill consume confirmé sur canon copy frameworks/hooks/angles/awareness-stages/archetypes-voix (renommage niveaux-schwartz → awareness-stages cohérent v2.29)."
+    },
+    {
+      "category": "skills_refacto",
+      "action": "patched",
+      "files": [".skills/skills/produce-copy-brief/SKILL.md"],
+      "section": "produce-copy-brief 1.0.1 → 1.1.0",
+      "rationale": "Step 0bis lit le lignage de l'angle source aligné v2.29 (awareness_stage au lieu de schwartz_conscience). Bloc LIGNAGE en tête du brief mis à jour : audience, awareness_stage, framework, hook, angle, archetype, lead, format. Lecture origin_axis ajoutée pour info opérateur (axe d'origine de l'angle). Fallback degraded conservé pour angles pre-v2.29 (sans awareness_stage explicite, reading legacy lineage.schwartz_conscience via alias bloc schema)."
+    },
+    {
+      "category": "skills_refacto",
+      "action": "patched",
+      "files": [".skills/skills/mine-voc/SKILL.md"],
+      "section": "mine-voc 1.0.1 → 1.0.2",
+      "rationale": "Verify alignment v2.29. Tag canon_schwartz_conscience_id renommé en canon_awareness_stage_id sur Layer A jsonl (cohérent canon V3 5 stades). Tags canon_emotion_id et canon_objection_pattern_id inchangés. Backward compat : Layer A pre-v2.30 reste lisible via alias bloc."
+    },
+    {
+      "category": "skills_refacto",
+      "action": "patched",
+      "files": [".skills/skills/learn-from-session/SKILL.md"],
+      "section": "learn-from-session bump patch",
+      "rationale": "Verify alignment v2.29. Mécanisme de promotion canon (append validations[] sur resources/canon/copy/{layer}/{tool}.json) confirmé fonctionnel sur layer awareness-stages renommée. Aucun changement comportemental, juste verify cohérence après renommages v2.29."
+    },
+    {
+      "category": "skills_new",
+      "action": "created",
+      "files": [".skills/skills/decompose-ad/SKILL.md"],
+      "section": "decompose-ad v1.0.0 (NEW, skill aval majeur)",
+      "rationale": "Premier skill consommateur direct de creative.schema.json (créé v2.29.0 Phase A) + équation compositionnelle v3.1 (creative_statique = concept × execution ; concept = audience → insight → angle → mecanique ; execution = format × ton × craft × cta) + creative-mechanics-registry.md (16 VALIDATED + 4 PROPOSED) + canon copy. Trois pipelines d'input : (a) TrendTrack API pull (auth + lookup + ads/query + ads/{id} + media-url + download, validé S55 D#391), (b) URL paste opérateur (Meta Ad Library, landing, scrape page), (c) drop direct fichier asset (image/vidéo). Deux modes : benchmark concurrent (analyse ad d'un compétiteur, persiste sous brands/{slug}/competitive-intel/{competitor}/ads/{ad_id}.json conforme creative.schema v1.1) et créa interne marque (analyse rétro d'un creative produced par la marque, persiste sous brands/{slug}/produced/creatives/{creative_id}.json). Output operator-facing : fiche markdown structurée S55 fiche v5 avec 5 sections (CE QUE L'AD MONTRE = format/visuel/copy/CTA descriptif, CE QUE L'AD RACONTE = audience cible/insight/angle/mécanique/awareness_stage/intent, DIAGNOSTIC = composition_equation breakdown + craft_mode + longevity_signal + persona_archetype match, RÉUTILISATION = applicabilité brand interne + variations recommandées + objections à anticiper, TAGS = mecanique tag + intent + audience_segment + brand_equity_level inferred). Output structuré creative.schema v1.1 conforme persisté en parallèle pour consumers downstream (compose-creative à venir v2.31+). Bidirectional canon contract déclaré : consume_from canon copy mecaniques + canon copy archetypes-voix + canon copy formules-titres ; produce_to creative-mechanics-registry.md (proposer mécaniques observées en statut PROPOSED via append validations[]). Trigger phrases FR/EN bilingual : décompose cette ad / analyse ce creative / reverse engineer / breakdown this ad / decompose competitor ad. Subagent_safe true, recommended_model sonnet (analyse complexe mais pas synthèse cross-domain). Crédentials TRENDTRACK_API_KEY documentés dans credentials_shared.env. Cache /tmp/decompose/ pour re-analyse sans re-pull."
+    },
+    {
+      "category": "infra",
+      "action": "documented",
+      "files": ["credentials_shared.env.example", "docs/system/credentials.md"],
+      "section": "TRENDTRACK_API_KEY",
+      "rationale": "Documentation crédential TRENDTRACK_API_KEY dans credentials_shared.env.example + section dédiée dans docs/system/credentials.md (où l'obtenir, scope, rate limits, fallback si absent). Sans clé : decompose-ad mode TrendTrack désactivé, modes URL paste + drop direct restent fonctionnels. Pattern Layer 2 (API callable through skill if credential configured) cohérent contract daily."
+    },
+    {
+      "category": "infra",
+      "action": "created",
+      "files": [".gitignore"],
+      "section": "Cache /tmp/decompose/",
+      "rationale": "Ajout pattern d'exclusion /tmp/decompose/ + cache decompose-ad sous .cache/decompose/ dans .gitignore template. Cache TTL 24h pour assets téléchargés (média ad TrendTrack), évite re-pull lors de re-analyse opérateur. Hygiène : git ne tracke pas le cache."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "v2.30 introduit un nouveau skill invocable par l'opérateur : `decompose-ad`. Trigger phrases FR : 'décompose cette ad', 'analyse ce creative', 'reverse engineer cet ad', 'breakdown ce concurrent'. Trigger phrases EN : 'decompose this ad', 'breakdown this creative', 'reverse engineer competitor ad'. Output : fiche markdown lisible direct (5 sections S55 fiche v5) + persistance auto brand-side conforme creative.schema v1.1 (competitive-intel/ ou produced/). Pipelines : TrendTrack API pull (clé requise), URL paste (Meta Ad Library / landing / scrape), drop direct fichier asset. Skills aval (compose-creative v2.31+) consommeront ces décompositions pour générer des creatives statiques 95% qualité via composition canon × brand × profile × creative. Refacto 4 skills v2.27-2.28.x : transparent pour l'opérateur (renommages internes awareness_stage / origin_axis, alias bloc résout les artefacts pre-v2.30). Aucune migration data requise.",
+  "next_release_note": "v2.31+ : (a) création skill compose-creative qui orchestre canon × brand.creative_zone × profile.persona_archetype × creative.composition_equation pour générer un creative statique 95% qualité (consomme les décompositions decompose-ad). (b) Removal des fields deprecated v2.29 (gift_economy sur spec, craft_mode/longevity_signal/cta sur angle, schwartzConscience legacy alias, source legacy alias, identity.archetype legacy, etc.). (c) Audit downstream complet skills v2.27-2.28.x sur brands existants (we-bet, _EXAMPLE) pour confirmer que la refacto v2.30 ne dégrade pas la production. (d) Possible skill track-competitor orchestrateur qui chaîne decompose-ad sur tout un compte concurrent + persiste timeline."
+}

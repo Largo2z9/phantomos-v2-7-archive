@@ -1,7 +1,7 @@
 ---
 name: produce-copy-brief
 type: producer
-version: "1.0.1"
+version: "1.1.0"
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: generating
@@ -92,16 +92,34 @@ Heuristic: stack with Meta + brand recent focus = paid acquisition → default M
 
 ---
 
-## Step 0bis — Load canon copy + angle lineage (v2.26.0+)
+## Step 0bis — Load canon copy + angle lineage (v2.29.0+)
+
+> v1.1.0 (S55 v2.29.0 alignment) : LIGNAGE block uses `lineage.awareness_stage` (renamed from `schwartz_conscience`), `origin_axis` at top-level (renamed from `source`). Drop fields migrated to `creative.schema.json` (`intent`, `mecanique`, `craft_mode`, `execution.*`, `seasonality_trigger`). Optional `creative_id` input for execution-side context.
 
 **Avant Step 1**, charger l'atlas canon copy et lire le lignage canon de l'angle source si disponible.
 
-Si l'angle vient de `produce-paid-angles` v2.26.0+, son fichier `brands/{slug}/angles/{angle_id}.json` contient déjà :
+Si l'angle vient de `produce-paid-angles` v2.29.0+, son fichier `brands/{slug}/angles/{angle_id}.json` (cf. `resources/schemas/angle.schema.json` v1.2 + `_shared/awareness-stage.json`) contient le bloc `lineage` aligné v2.29 :
 ```
-{audience_slug, schwartz_conscience, schwartz_sophistication, hook_canon_id, framework_canon_id, angle_canon_id, archetype_canon_id, pain_extract, proof_primary, cta}
+{
+  audience_slug,
+  origin_axis,
+  lineage: {
+    awareness_stage,
+    schwartz_sophistication,
+    hook_canon_id,
+    framework_canon_id,
+    angle_canon_id,
+    archetype_canon_id,
+    pain_extract,
+    proof_primary,
+    cta
+  }
+}
 ```
 
 Lire ce lignage pour cadrer le brief : le hook est déjà choisi, le framework est déjà choisi, le registre voix est déjà choisi. Le brief étoffe ce que l'angle a posé, pas le reformule.
+
+**Note couches.** `intent`, `mecanique`, `craft_mode`, `execution.*`, `seasonality_trigger` ont migré vers `creative.schema.json` (couche execution, pas couche stratégique). L'angle pur suffit pour le brief. Si l'opérateur passe un `creative_id` en input (cas test/run d'un format précis), lire en plus `brands/{slug}/creatives/{creative_id}.json` pour récupérer `intent`, `mecanique`, `cta` et calibrer la section CTAs + Format constraints sur ce format spécifique. Sinon, brief opère sur angle pur.
 
 **Couches canon consommées par ce skill** :
 - `frameworks` (déjà choisi par l'angle, le brief le respecte section par section)
@@ -190,21 +208,25 @@ Each verbatim quoted with its `sample_size` context inline (*"redoutait le momen
 
 Reads like an agency document. No bullet enumeration of every audience field. No `Field: content. Field: content.` form-fill openers. The brief is prose-first inside each section, with named sections as the structure scaffold.
 
-**Canon lineage block (v2.26.0+).** En tête du brief, sous le header, un bloc explicite qui pose le lignage doctrinal du brief (5-7 lignes, agency-internal) :
+**Canon lineage block (v2.29.0+).** En tête du brief, sous le header, un bloc explicite qui pose le lignage doctrinal du brief (agency-internal, fields lus depuis `angle.json` v1.2) :
 
 ```
 LIGNAGE
-  audience cible       {audience_slug}
-  Schwartz             {conscience} × sophistication {wave}
-  framework            {framework_canon_id} (cf. canon copy frameworks)
-  hook principal       {hook_canon_id}
-  angle narratif       {angle_canon_id}
-  archetype voix       {archetype_canon_id}
-  type lead            {lead_canon_id}
-  format livrable      {format_canon_id}
+  audience       {audience_slug}
+  awareness      {lineage.awareness_stage} × sophistication {lineage.schwartz_sophistication}
+  origin axis    {origin_axis}
+  framework      {lineage.framework_canon_id}
+  hook           {lineage.hook_canon_id}
+  angle narratif {lineage.angle_canon_id}
+  archetype voix {lineage.archetype_canon_id}
+  pain cible     {lineage.pain_extract}
+  proof          {lineage.proof_primary}
+  CTA            {lineage.cta}
 ```
 
-Le copywriter lit le lignage avant le brief. Il sait quel framework respecter, quel registre voix tenir, quel hook ouvrir. Si le brief diverge du lignage en cours d'écriture, c'est un signal de friction (à flag dans la section *Notes*).
+Le copywriter lit le lignage avant le brief. Il sait quel framework respecter, quel registre voix tenir, quel hook ouvrir, quel pain ancrer, quel proof citer, quel CTA fermer. Si le brief diverge du lignage en cours d'écriture, c'est un signal de friction (à flag dans la section *Notes*).
+
+**Pas de `mecanique` ni `intent` dans LIGNAGE brief.** Ces dimensions vivent côté `creative.schema.json` (couche execution), pas angle. Si un `creative_id` a été passé en input (cf. Step 0bis), le brief peut surfacer `mecanique` + `intent` du creative dans la section *Format constraints*, mais jamais dans le bloc LIGNAGE qui reste strictement angle-level.
 
 **Section Objections du brief.** Référence un ou plusieurs `canon copy objections` à utiliser (feel-felt-found, reframe-positif, pre-emption, comparaison-cout-inaction). Ne pas inventer de pattern de gestion : piocher dans canon, citer la fiche.
 
@@ -325,6 +347,9 @@ The skill accepts a focus modifier for narrower runs. The operator says it in pl
 
 ## Cross-references
 
+- `resources/schemas/angle.schema.json` v1.2 — angle entity shape consumed by Step 0bis (`origin_axis`, `lineage.awareness_stage`, `lineage.*_canon_id`). v2.29.0 alignment, D#391.
+- `resources/schemas/creative.schema.json` — execution-layer entity. Optional read in Step 0bis if `creative_id` is passed in input. Holds `intent`, `mecanique`, `craft_mode`, `execution.*`, `seasonality_trigger` (migrated from angle).
+- `resources/schemas/_shared/awareness-stage.json` — shared `$ref` for `awareness_stage` enum (Schwartz conscience: unaware → most-aware), used by both angle and creative.
 - `resources/frameworks/voc-coding.md` — JTBD + Schwartz + theme typology + pain category lens. Mandatory read at first invocation.
 - `resources/registries/angle-registry.md` — angle naming canon, hook-lever lookup.
 - `resources/registries/proof-registry.md` — proof type matched to objection type. Drives the objections section proof matrix.

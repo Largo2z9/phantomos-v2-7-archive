@@ -5,6 +5,33 @@
 
 ---
 
+## v2.30.0 · 2026-05-04 · Skills downstream consomment v2.29 + skill aval majeur decompose-ad
+
+**Why this release.** v2.29.0 a refondu les schemas brand (creative.schema v1.0/v1.1 nouvelle 7ème entité, awareness_stage, origin_axis, persona_archetype object, buyer_user_split, fields execution.* migrés vers creative). v2.30 fait le travail symétrique côté skills : (1) refacto des 4 skills downstream pour aligner output sur les nouveaux schemas, (2) création du premier skill consommateur direct de creative.schema, `decompose-ad`, qui clôt la boucle équation v3.1 (creative_statique = concept × execution) en mode reverse engineering. Sans ces patches, les schemas v2.29 resteraient des contrats sans usage. Avec, l'opérateur peut décomposer ads concurrentes ou créatives internes et alimenter le canon mécaniques.
+
+**What shipped (skills refacto, 4 skills).**
+
+- **`produce-paid-angles` 1.1.0 → 1.2.0.** Renommage `lineage.schwartz_conscience` → `lineage.awareness_stage` dans bloc LIGNAGE et persistance `brands/{slug}/angles/{ANG-N}.json`. Renommage `source` → `origin_axis` (enum: audience_derived / product_derived / category_derived / brand_derived / temporal_cultural). Drop des fields `execution.craft_mode + execution.longevity_signal + execution.cta` du output angle (migrés vers creative.schema). Step 11 Layer B artifact mis à jour.
+- **`produce-copy-brief` 1.0.1 → 1.1.0.** Step 0bis lit lignage angle aligné v2.29 (awareness_stage). Bloc LIGNAGE en tête du brief mis à jour : audience, awareness_stage, framework, hook, angle, archetype, lead, format. Lecture origin_axis ajoutée. Fallback degraded conservé pour angles pre-v2.29 via alias bloc schema.
+- **`mine-voc` 1.0.1 → 1.0.2.** Tag Layer A `canon_schwartz_conscience_id` renommé `canon_awareness_stage_id`. Tags canon_emotion_id et canon_objection_pattern_id inchangés. Layer A pre-v2.30 reste lisible via alias.
+- **`learn-from-session` patch.** Verify alignment v2.29. Mécanisme de promotion canon (append validations[] sur resources/canon/copy/{layer}/{tool}.json) confirmé fonctionnel sur layer awareness-stages renommée. Aucun changement comportemental.
+
+**What shipped (skill new, decompose-ad v1.0.0).**
+
+- **`decompose-ad` v1.0.0 (NEW, skill aval majeur).** Premier consommateur direct de `creative.schema.json` v1.1 + équation compositionnelle v3.1 + `creative-mechanics-registry.md` (16 VALIDATED + 4 PROPOSED) + canon copy. **Trois pipelines d'input** : (a) TrendTrack API pull (auth + lookup + ads/query + ads/{id} + media-url + download, validé S55), (b) URL paste opérateur (Meta Ad Library, landing, scrape page), (c) drop direct fichier asset. **Deux modes** : benchmark concurrent (persiste `brands/{slug}/competitive-intel/{competitor}/ads/{ad_id}.json`) et créa interne marque (persiste `brands/{slug}/produced/creatives/{creative_id}.json`), tous deux conformes creative.schema v1.1. **Output operator-facing** : fiche markdown structurée S55 fiche v5 avec 5 sections : CE QUE L'AD MONTRE (format/visuel/copy/CTA descriptif), CE QUE L'AD RACONTE (audience cible/insight/angle/mécanique/awareness_stage/intent), DIAGNOSTIC (composition_equation breakdown + craft_mode + longevity_signal + persona_archetype match), RÉUTILISATION (applicabilité brand interne + variations recommandées + objections à anticiper), TAGS (mecanique + intent + audience_segment + brand_equity_level inferred). **Bidirectional canon contract** déclaré : consume_from canon copy mecaniques + archetypes-voix + formules-titres ; produce_to creative-mechanics-registry.md (proposer mécaniques observées en statut PROPOSED via append validations[]). Trigger phrases FR/EN bilingual.
+
+**Operator impact.** Nouveau skill invocable. Trigger FR : 'décompose cette ad', 'analyse ce creative', 'reverse engineer', 'breakdown ce concurrent'. Trigger EN : 'decompose this ad', 'breakdown this creative', 'reverse engineer competitor ad'. Format output : fiche markdown lisible direct + persistance auto brand-side. Pipelines TrendTrack (clé requise) / URL paste / drop fichier. Skills aval (compose-creative v2.31+) consommeront ces décompositions. Refacto 4 skills : transparent pour l'opérateur (renommages internes, alias bloc résout artefacts pre-v2.30). Aucune migration data requise.
+
+**Breaking changes.** Aucun. Refacto interne, alias bloc fallback v2.29 résout les anciens noms en lecture pour skills externes ou artefacts pre-v2.30. Skills v2.27-2.28.x downstream non patchés continuent à fonctionner.
+
+**Infra.** Documentation `TRENDTRACK_API_KEY` dans `credentials_shared.env.example` + section dédiée dans `docs/system/credentials.md` (où l'obtenir, scope, rate limits, fallback si absent). Sans clé : decompose-ad mode TrendTrack désactivé, modes URL paste + drop direct restent fonctionnels. Cache `/tmp/decompose/` (TTL 24h pour assets téléchargés) ajouté à `.gitignore` template.
+
+**Source empirique.** S55 fiche v5 spec validée Largo + decisions.md largo-kb D#391 (stress test 23 ads cross-typologies, validation pipeline TrendTrack end-to-end, équation compositionnelle v3.1). Cross-refs : v2.29.0 manifest (creative.schema, awareness_stage, origin_axis), creative-formula.md v3.1, atlas-canon-copy.md, skill-authoring-discipline.md §5bis (bidirectional canon contract).
+
+**Next up.** v2.31+ : skill `compose-creative` orchestrant canon × brand.creative_zone × profile.persona_archetype × creative.composition_equation pour générer un creative statique 95% qualité (consomme les décompositions decompose-ad). Removal fields deprecated v2.29 (gift_economy, craft_mode/longevity_signal/cta sur angle, alias legacy schwartzConscience/source/identity.archetype). Audit downstream complet sur brands existants (we-bet, _EXAMPLE).
+
+---
+
 ## v2.29.0 · 2026-05-04 · Refonte structurelle schemas brand creative · 7ème entité + nomenclature cleanup
 
 **Why this release.** Audit S55 Phase A (D#391) a révélé deux problèmes structurels. (1) Les 10 patches v3.1 shippés en v2.28.1 dans angle.schema.json (intent, mecanique enum 16, insight modalité, craft_mode, longevity_signal, cta modalité 4, seasonality_trigger) étaient mal placés : ces fields ne sont pas du concept (audience → insight → angle → mecanique) mais de l'execution + composition d'un creative statique. (2) La 7ème entité brand `creative` manquait alors que canon V3 (`creative_statique = concept × execution`) la rendait nécessaire. Refacto + alignement canon V3 + nomenclature snake_case cleanup + doc explicative manquante (atlas, schemas par entité). Additif strict, aucune migration data requise.
