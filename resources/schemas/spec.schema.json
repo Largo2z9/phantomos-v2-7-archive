@@ -372,11 +372,33 @@
 
     "unique_mechanism": {
       "type": "object",
-      "description": "Branded or proprietary mechanism name (if any) with a one-line description. Distinct from the generic active principle. Used in proof and naming layers of copy.",
+      "description": "DEPRECATED. Kept for backward compat. Use mechanisms[] instead. Branded or proprietary mechanism name (if any) with a one-line description.",
       "properties": {
         "name": { "type": ["string", "null"] },
         "description": { "type": ["string", "null"] },
         "_notes": { "type": "string" }
+      }
+    },
+
+    "mechanisms": {
+      "type": "array",
+      "description": "How the product delivers each outcome. A spec may activate multiple mechanisms (e.g. KSM-66 acts on cortisol AND energy AND sleep). Each mechanism is the typed causal chain between a spec ingredient/feature and a benefit. Snapshot extracts name + description (light pass). Deep enrichment (target, mode_of_action, time_window, evidence_level, market_sophistication) populated on demand via map-mechanisms skill.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "mechanism_id": { "type": "string", "description": "MEC-NN format. Stable id used for cross-references in benefits[].triggered_by[] and angles." },
+          "name": { "type": "string", "description": "Mechanism canonical name. E.g. 'Modulation cortisol stress', 'Production énergie cellulaire', 'Régénération follicule pileux'." },
+          "description": { "type": "string", "description": "One-line how-it-works. Plain language, no jargon dump." },
+          "target": { "type": ["string", "null"], "description": "Biological/cognitive/behavioral target. E.g. 'cortisol axis', 'mitochondrial energy', 'hair follicle stem cells', 'attention regulation'. Null if not yet enriched." },
+          "mode_of_action": { "type": ["string", "null"], "enum": [null, "cofactor", "antioxidant", "adaptogen", "probiotic", "coenzyme", "regulator", "stimulant", "inhibitor", "structural", "delivery", "other"], "description": "Type of action. Null until enriched." },
+          "time_window": { "type": ["string", "null"], "enum": [null, "immediate", "7d", "14d", "30d", "60d", "90d+"], "description": "Time to observable effect. Null until enriched." },
+          "evidence_level": { "type": ["string", "null"], "enum": [null, "clinical_cited", "efsa_validated", "efsa_partial", "anecdotal", "mechanistic_only"], "description": "Strength of proof for this specific mechanism on this product. Null until enriched." },
+          "market_sophistication": { "type": ["string", "null"], "enum": [null, "low", "medium", "high"], "description": "How well the target audience understands this mechanism. Low = educational territory available. High = saturated, need differentiation. Null until enriched." },
+          "triggered_by_specs": { "type": "array", "items": { "type": "string" }, "description": "Spec ingredient/feature ids that activate this mechanism. Many-to-many (1 mechanism can be triggered by multiple specs)." },
+          "_field_types": { "type": "object", "description": "Per-field source/confidence tags." },
+          "_notes": { "type": "string" }
+        },
+        "required": ["mechanism_id", "name"]
       }
     },
 

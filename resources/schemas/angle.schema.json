@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "angle.schema.json",
+  "title": "Angle (brand-side instance)",
+  "description": "Angle stored at brands/{slug}/angles/{ANG-N}.json. Produced by produce-paid-angles (light pass: lineage + meta) and enriched on demand by decompose-angle (deep pass: recursive formula). One file per angle. Many-to-many with audiences (an angle can serve multiple audiences with different mechanics).",
+  "type": "object",
+  "required": ["angle_id", "name", "audience_slug", "meta"],
+  "properties": {
+    "_schema_version": { "const": "angle/1.0" },
+
+    "angle_id": {
+      "type": "string",
+      "pattern": "^ANG-[0-9]{2,3}$",
+      "description": "ANG-NN format (ANG-01, ANG-12, ANG-103). Stable id, never reassigned."
+    },
+
+    "name": {
+      "type": "string",
+      "description": "Operator-facing label. E.g. 'Le miroir, encore', 'Vies plurielles', 'Le calcul caché'."
+    },
+
+    "audience_slug": {
+      "type": "string",
+      "description": "Primary audience this angle was produced for. Matches a folder under brands/{slug}/audiences/. Cross-audience compatibility lives in compatibility[]."
+    },
+
+    "source": {
+      "type": "string",
+      "enum": ["audience-derived", "product-derived", "category-derived", "brand-derived", "temporal-cultural"],
+      "description": "Origin axis of the angle (5 sources). audience-derived = built from audience pain/desire. product-derived = built from spec/mechanism. category-derived = built from market context vs alternatives. brand-derived = built from brand identity/tone. temporal-cultural = built from a moment, trend, or cultural pivot. Inferred from the production trigger context."
+    },
+
+    "awareness_movement": {
+      "type": "object",
+      "description": "Awareness state the angle ASSUMES at start (in) and AIMS to produce at end (out). Distinct from a static stage tag. If in == out, the angle validates. If in < out, the angle educates (more costly, more differentiating). If in > out, the angle regresses (deliberate re-funnel or error).",
+      "properties": {
+        "in": {
+          "type": "string",
+          "enum": ["unaware", "problem-aware", "solution-aware", "product-aware", "most-aware"],
+          "description": "Awareness stage assumed at the start. Hard rule: must be ≤ audience.awareness_dominant for the angle to be playable on that audience."
+        },
+        "out": {
+          "type": "string",
+          "enum": ["unaware", "problem-aware", "solution-aware", "product-aware", "most-aware"],
+          "description": "Awareness stage the angle aims to produce by the end."
+        }
+      },
+      "required": ["in", "out"]
+    },
+
+    "lineage": {
+      "type": "object",
+      "description": "Flat canon lineage written by produce-paid-angles (v2.27 light pass). References resources/canon/copy/{layer}/{tool}.json entries.",
+      "properties": {
+        "schwartz_conscience": { "type": "string", "enum": ["unaware", "problem-aware", "solution-aware", "product-aware", "most-aware"] },
+        "schwartz_sophistication": { "type": "string", "enum": ["v1", "v2", "v3", "v4", "v5"] },
+        "hook_canon_id": { "type": "string" },
+        "framework_canon_id": { "type": "string" },
+        "angle_canon_id": { "type": "string" },
+        "archetype_canon_id": { "type": "string" },
+        "pain_extract": { "type": "string" },
+        "proof_primary": { "type": "string" },
+        "cta": { "type": "string" }
+      }
+    },
+
+    "formula": {
+      "type": "object",
+      "description": "Compositional decomposition Angle = Observation + Tension + Reframe + Bridge. Light pass: components named (one-line each). Deep pass: each component decomposed to atoms (verbatim, source, sample_size, etc.) by decompose-angle skill. Atoms stop at observed or declared field types.",
+      "properties": {
+        "observation": {
+          "type": "object",
+          "description": "What the audience already perceives or could be shown. Atoms: phenomenon (what is observed), source (where it comes from), sample_size (how many).",
+          "properties": {
+            "summary": { "type": "string", "description": "Light pass: one-line phrasing of the observation." },
+            "phenomenon": { "type": ["string", "null"], "description": "Deep pass: the observable behavior, situation, or fact." },
+            "source": { "type": ["string", "null"], "description": "Deep pass: where this observation comes from. E.g. 'Trustpilot karacare', 'Reddit r/HairCare', 'self-reported in audience VoM'." },
+            "sample_size": { "type": ["integer", "null"], "description": "Deep pass: how many verbatims or data points support this observation." },
+            "_field_types": { "type": "object" }
+          }
+        },
+        "tension": {
+          "type": "object",
+          "description": "The gap between what is and what could be. Atoms: state_actual, state_desired, reason_blocked.",
+          "properties": {
+            "summary": { "type": "string", "description": "Light pass: one-line phrasing of the tension." },
+            "state_actual": { "type": ["string", "null"], "description": "Deep pass: what the audience experiences today." },
+            "state_desired": { "type": ["string", "null"], "description": "Deep pass: what the audience aspires to." },
+            "reason_blocked": { "type": ["string", "null"], "description": "Deep pass: why the gap is not closed (external obstacle, internal belief, lack of awareness)." },
+            "_field_types": { "type": "object" }
+          }
+        },
+        "reframe": {
+          "type": "object",
+          "description": "The perceptual pivot the angle proposes. Atoms: perceptual_pivot (before/after the shift), pivot_mechanism (why the shift makes sense).",
+          "properties": {
+            "summary": { "type": "string", "description": "Light pass: one-line phrasing of the reframe." },
+            "perceptual_pivot": { "type": ["string", "null"], "description": "Deep pass: before-vs-after of how the audience sees the situation." },
+            "pivot_mechanism": { "type": ["string", "null"], "description": "Deep pass: the rational or emotional lever that makes the pivot believable." },
+            "_field_types": { "type": "object" }
+          }
+        },
+        "bridge": {
+          "type": "object",
+          "description": "How the product fits into the reframed worldview. Atoms: spec_activated (which product feature), benefit_served (which outcome), promise_formulated (what the audience hears).",
+          "properties": {
+            "summary": { "type": "string", "description": "Light pass: one-line phrasing of the bridge." },
+            "spec_activated": { "type": ["string", "null"], "description": "Deep pass: spec id from products/{slug}/spec.json that this angle leverages." },
+            "benefit_served": { "type": ["string", "null"], "description": "Deep pass: benefit_id from spec.json#benefits[] that the angle promises." },
+            "promise_formulated": { "type": ["string", "null"], "description": "Deep pass: the exact promise wording the audience walks away with." },
+            "_field_types": { "type": "object" }
+          }
+        }
+      }
+    },
+
+    "compatibility": {
+      "type": "array",
+      "description": "Other audiences this angle could serve (cross-audience reuse). Empty by default. Populated when an angle proves transferable.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "audience_slug": { "type": "string" },
+          "fit": { "type": "string", "enum": ["strong", "moderate", "weak"] },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+
+    "intensity_levers": {
+      "type": "object",
+      "description": "Optional creative intensity dials (Big Idea framing, Mechanism Reveal, Stake Raising, etc.). Free-form, populated when relevant.",
+      "additionalProperties": true
+    },
+
+    "meta": {
+      "type": "object",
+      "required": ["validation_status", "created"],
+      "properties": {
+        "validation_status": {
+          "type": "string",
+          "enum": ["hypothesis", "tested", "validated", "scaled", "fatigued"],
+          "description": "Lifecycle. hypothesis = not yet tested in campaign. tested = ad set launched, results inconclusive. validated = CPA/ROAS confirmed viable. scaled = significant budget allocated. fatigued = performance declining. Initialized to 'hypothesis' by produce-paid-angles. Updated by learn-from-session when outcome captured."
+        },
+        "created": { "type": "string", "format": "date" },
+        "updated": { "type": "string", "format": "date" },
+        "created_by_skill": { "type": "string", "description": "Which skill generated this angle. E.g. 'produce-paid-angles'." },
+        "test_results": {
+          "type": "array",
+          "description": "Append-only log of test outcomes. Each entry references a campaign / ad set and the observed CPA/ROAS/CTR.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "date": { "type": "string", "format": "date" },
+              "platform": { "type": "string" },
+              "campaign_id": { "type": "string" },
+              "metric": { "type": "string" },
+              "value": { "type": ["number", "string"] },
+              "verdict": { "type": "string" }
+            }
+          }
+        },
+        "_field_types": { "type": "object" }
+      }
+    }
+  }
+}

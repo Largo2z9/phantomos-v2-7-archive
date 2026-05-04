@@ -7,6 +7,14 @@
     "specs.*": "observed",
     "active_principle.*": "observed",
     "unique_mechanism.*": "stated",
+    "mechanisms[].name": "stated",
+    "mechanisms[].description": "stated",
+    "mechanisms[].target": "stated",
+    "mechanisms[].mode_of_action": "structured",
+    "mechanisms[].time_window": "structured",
+    "mechanisms[].evidence_level": "structured",
+    "mechanisms[].market_sophistication": "structured",
+    "mechanisms[].triggered_by_specs": "structured",
     "benefits[].benefit": "stated",
     "benefits[].chain": "structured",
     "problems_solved[].problem": "structured",
@@ -57,6 +65,43 @@
     "name": "Complexe RVC3",
     "description": "La combinaison synergique Rétinol + Vitamine C + Peptides collagène à concentrations cliniques, encapsulée pour libération progressive et tolérance maximale."
   },
+
+  "mechanisms": [
+    {
+      "mechanism_id": "MEC-01",
+      "name": "Renouvellement cellulaire accéléré",
+      "description": "Le rétinol stimule le turnover des kératinocytes et la synthèse de collagène en profondeur.",
+      "target": "couche basale épiderme",
+      "mode_of_action": "regulator",
+      "time_window": "30d",
+      "evidence_level": "clinical_cited",
+      "market_sophistication": "medium",
+      "triggered_by_specs": ["Rétinol 0.5%"]
+    },
+    {
+      "mechanism_id": "MEC-02",
+      "name": "Inhibition mélanine + boost collagène",
+      "description": "La vitamine C stabilisée bloque la tyrosinase (taches) et active la prolyl-hydroxylase (collagène).",
+      "target": "mélanocytes + fibroblastes dermiques",
+      "mode_of_action": "antioxidant",
+      "time_window": "60d",
+      "evidence_level": "clinical_cited",
+      "market_sophistication": "medium",
+      "triggered_by_specs": ["Vitamine C stabilisée 15%"]
+    },
+    {
+      "mechanism_id": "MEC-03",
+      "name": "Comblement intra-dermique",
+      "description": "Les peptides + acide hyaluronique 3 poids moléculaires hydratent et comblent les rides depuis l'intérieur.",
+      "target": "matrice extracellulaire dermique",
+      "mode_of_action": "structural",
+      "time_window": "14d",
+      "evidence_level": "clinical_cited",
+      "market_sophistication": "high",
+      "triggered_by_specs": ["Peptides de collagène", "Acide hyaluronique 3 poids moléculaires"]
+    }
+  ],
+
 
   "benefits": [
     {

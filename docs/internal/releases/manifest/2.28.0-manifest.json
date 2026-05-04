@@ -1,0 +1,47 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.28.0",
+  "released_at": "2026-05-04",
+  "compatible_from": "2.0.0",
+  "type": "schema_evolution",
+  "summary": "Schemas enrichis pour la cartographie marketing compositionnelle. Mechanism passe de single object à array typé (target, mode_of_action, time_window, evidence_level, market_sophistication, triggered_by_specs). Angle gagne un schema dédié avec décomposition récursive Observation + Tension + Reframe + Bridge, tag source (5 valeurs), awareness_movement (mouvement IN/OUT, pas juste stage), validation_status cycle. Pattern light pass / deep pass : skills existants peuplent en pass légère, skills d'enrichissement (decompose-angle, map-mechanisms) viendront sur demande.",
+  "changes": [
+    {
+      "category": "schemas",
+      "action": "enrichi",
+      "files": ["resources/schemas/spec.schema.json"],
+      "section": "mechanisms[]",
+      "rationale": "Ajout de mechanisms[] (array) à côté de unique_mechanism (conservé pour backward compat). Chaque mécanisme typé : mechanism_id (MEC-NN), name, description, target (cible biologique/cognitive/comportementale), mode_of_action (cofactor/antioxidant/adaptogen/probiotic/coenzyme/regulator/stimulant/inhibitor/structural/delivery/other), time_window (immediate/7d/14d/30d/60d/90d+), evidence_level (clinical_cited/efsa_validated/efsa_partial/anecdotal/mechanistic_only), market_sophistication (low/medium/high), triggered_by_specs[]. Many-to-many : 1 spec peut activer N mécanismes, 1 mécanisme peut être activé par N specs. Rationale doctrine compositionnelle : KSM-66 active simultanément cortisol + énergie + sommeil + récupération. Le single object unique_mechanism écrasait cette richesse."
+    },
+    {
+      "category": "schemas",
+      "action": "create",
+      "files": ["resources/schemas/angle.schema.json"],
+      "section": "angle/1.0",
+      "rationale": "Nouveau schema dédié pour brands/{slug}/angles/{ANG-N}.json (le fichier était écrit par produce-paid-angles v2.27 sans schema formel). 4 enrichissements : (1) formula récursive Observation + Tension + Reframe + Bridge avec atomes (verbatim, source, sample_size, état_actuel/désiré, reason_blocked, perceptual_pivot, pivot_mechanism, spec_activated, benefit_served, promise_formulated). Light pass = summary one-line par composant. Deep pass = atomes via decompose-angle skill (à shipper). (2) Tag source enum : audience-derived / product-derived / category-derived / brand-derived / temporal-cultural. (3) awareness_movement {in, out} : mouvement explicite, permet règle compat dure awareness_in ≤ audience.awareness_dominant. (4) meta.validation_status : cycle hypothesis → tested → validated → scaled → fatigued, comme audiences. meta.test_results[] append-only pour log outcomes."
+    },
+    {
+      "category": "schemas",
+      "action": "enrichi",
+      "files": [
+        "brands/_TEMPLATE/products/_example/spec.json",
+        "brands/_EXAMPLE/products/creme-eclat/spec.json"
+      ],
+      "section": "mechanisms[] example",
+      "rationale": "Templates et exemples enrichis avec mechanisms[] pour refléter le nouveau schema. _EXAMPLE/creme-eclat porte 3 mécanismes typés (renouvellement cellulaire, inhibition mélanine, comblement intra-dermique) qui démontrent le pattern many-to-many (Acide hyaluronique + Peptides triggent MEC-03 ensemble)."
+    },
+    {
+      "category": "docs",
+      "action": "patched",
+      "files": ["brands/_TEMPLATE/angles/README.md"],
+      "section": "Schema + Status",
+      "rationale": "README angles documente le pattern light pass / deep pass. Pointe vers angle.schema.json shipped v2.28.0. Mentionne decompose-angle (à shipper) pour la passe deep. Skills downstream (produce-paid-angles, learn-from-session) restent producers du light pass."
+    }
+  ],
+  "breaking_changes": [
+    "spec.json schema additif uniquement. unique_mechanism conservé en backward compat (lecture). Skills downstream qui lisent unique_mechanism continuent à fonctionner. Skills qui consommeront mechanisms[] (futur map-mechanisms, futur produce-paid-angles enrichi) traiteront unique_mechanism comme fallback (single → mapped to mechanisms[0])."
+  ],
+  "migrations": [],
+  "operator_impact": "Pas d'impact opérateur direct v2.28 (additif). Permet aux prochaines releases de produire des angles avec décomposition formule récursive auditable et des produits avec graphe spec ↔ mécanismes ↔ bénéfices many-to-many. Concrètement : produce-paid-angles v2.28+ pourra remplir les summary one-line des composants Observation/Tension/Reframe/Bridge. decompose-angle (à shipper) pourra descendre aux atomes sur demande. snapshot-brand pourra extraire plusieurs mécanismes par produit (light pass), map-mechanisms (à shipper) enrichira target / mode / time_window sur demande.",
+  "next_release_note": "v2.29+ : refacto produce-paid-angles pour produire le formula light pass + tagger source + initialiser awareness_movement + meta.validation_status à hypothesis. Création decompose-angle (deep pass formula). Création map-mechanisms (deep pass mechanisms typés). Refacto snapshot-brand en orchestrateur appelant les sub-skills map-X invocables séparément (D#386)."
+}

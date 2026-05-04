@@ -5,6 +5,22 @@
 
 ---
 
+## v2.28.0 · 2026-05-04 · Schemas enrichis pour cartographie compositionnelle
+
+**Why this release.** v2.27.0 a branché les skills sur le canon copy. Pour aller plus loin (graphe spec ↔ mécanismes ↔ bénéfices many-to-many, formule angle récursive auditable, mouvement awareness IN/OUT explicite, cycle validation_status sur les angles), les schemas devaient évoluer. v2.28.0 livre cette évolution (additive, backward compat) sans toucher aux skills downstream. Les skills d'enrichissement deep (decompose-angle, map-mechanisms) viendront sur demande dans des releases ultérieures, suivant le pattern light pass / deep pass déjà éprouvé sur audiences (snapshot-brand puis mine-voc).
+
+**What shipped.**
+
+- **`spec.schema.json` enrichi.** Ajout de `mechanisms[]` (array typé) à côté de `unique_mechanism` (conservé pour backward compat). Chaque mécanisme : `mechanism_id` (MEC-NN), `name`, `description`, `target` (cible biologique/cognitive/comportementale), `mode_of_action` (cofactor / antioxidant / adaptogen / probiotic / coenzyme / regulator / stimulant / inhibitor / structural / delivery / other), `time_window` (immediate / 7d / 14d / 30d / 60d / 90d+), `evidence_level` (clinical_cited / efsa_validated / efsa_partial / anecdotal / mechanistic_only), `market_sophistication` (low / medium / high), `triggered_by_specs[]`. Many-to-many spec ↔ mécanisme ↔ bénéfice. Light pass : `name` + `description` par snapshot-brand. Deep pass : champs typés par `map-mechanisms` (à shipper) sur demande.
+- **`angle.schema.json` créé.** Schema formel dédié pour `brands/{slug}/angles/{ANG-N}.json` (jusqu'ici écrit par produce-paid-angles v2.27 sans schema). 4 enrichissements doctrine compositionnelle : (1) `formula` récursive Observation + Tension + Reframe + Bridge, chaque composant avec `summary` (light pass) + atomes (deep pass : verbatim, source, sample_size, state_actual / state_desired / reason_blocked, perceptual_pivot / pivot_mechanism, spec_activated / benefit_served / promise_formulated). (2) `source` enum : audience-derived / product-derived / category-derived / brand-derived / temporal-cultural. (3) `awareness_movement {in, out}` : mouvement explicite (pas juste stage statique), permet règle compat dure `awareness_in ≤ audience.awareness_dominant`. (4) `meta.validation_status` : cycle hypothesis → tested → validated → scaled → fatigued (existait sur audiences, étendu aux angles). `meta.test_results[]` append-only pour log outcomes.
+- **Templates et exemples mis à jour.** `_TEMPLATE/products/_example/spec.json` + `_EXAMPLE/products/creme-eclat/spec.json` portent désormais `mechanisms[]` avec _field_types corrects. _EXAMPLE creme-eclat illustre le pattern many-to-many (Peptides + Acide hyaluronique triggent ensemble MEC-03 comblement intra-dermique). `_TEMPLATE/angles/README.md` documente le pattern light pass / deep pass.
+
+**Breaking changes.** Aucun. Tout additif. `unique_mechanism` reste lu en fallback. Skills downstream non modifiés.
+
+**Operator impact.** Pas d'impact direct v2.28 (la valeur arrive avec les skills d'enrichissement futurs). Les prochaines releases (v2.29+) refondront produce-paid-angles pour produire le formula light pass + tagger source + initialiser awareness_movement + meta.validation_status à `hypothesis`. Création de `decompose-angle` (deep pass formula) et `map-mechanisms` (deep pass mechanisms typés). Refacto snapshot-brand en orchestrateur appelant les sub-skills `map-X` invocables séparément (D#386 largo-kb).
+
+---
+
 ## v2.27.0 — 2026-05-04 — Skills consomment le canon (atlas vivant)
 
 **Why this release.** v2.26.0 a posé l'atlas canon copy comme infrastructure. v2.27.0 fait le travail symétrique : les 4 skills de production downstream (produce-paid-angles, produce-copy-brief, mine-voc, learn-from-session) sont refondus pour **consommer** et **alimenter** ce canon. Sans ces patches, le canon resterait une bibliothèque morte. Avec, l'atlas devient vivant.
