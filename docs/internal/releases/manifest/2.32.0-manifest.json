@@ -1,0 +1,98 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.32.0",
+  "released_at": "2026-05-05",
+  "compatible_from": "2.0.0",
+  "type": "schema_evolution_minor",
+  "summary": "Audit cohérence globale post-Notion Stride-Up. 3 patches binarité parasite sur creative.schema (intent_mix multi-weighted, overlay_density orthogonal, validation-state composite avec confidence). Lexicon enrichi section Atlas 3 senses MECE. 3 skills reclassés taxonomy. Backward compat strict additif.",
+  "changes": [
+    {
+      "category": "schemas",
+      "action": "patched",
+      "files": ["resources/schemas/creative.schema.json"],
+      "section": "creative/1.1 → creative/1.2 · intent_mix",
+      "rationale": "Audit cohérence Phase B a détecté binarité parasite : intent enum 6 valeurs (DR/Brand/Hybrid/Lead_gen/Retention/Awareness) force unicité alors que créas réelles sont hybrides (DR 60% + Brand 40%). Hybrid était lossy (pas de poids). Patch additif : nouveau champ intent_mix {primary, secondary[] maxItems 2, weights{} sum 1.0 ±0.05}. intent legacy conservé alias deprecated. Mapping fallback : intent Hybrid → intent_mix {primary: DR, secondary: [Brand], weights: {DR: 0.5, Brand: 0.5}}. Skills v1.2+ écrivent intent_mix, lecteurs prefer intent_mix puis fallback intent."
+    },
+    {
+      "category": "schemas",
+      "action": "patched",
+      "files": ["resources/schemas/creative.schema.json"],
+      "section": "creative/1.2 · overlay_density + brand_mark_present",
+      "rationale": "craft_mode 3 valeurs (product_only/minimal_brand_mark/with_overlay) collapse 2 dimensions orthogonales : densité overlay verbal (continue) + brand_mark visibilité (booléen). Cas réels : 85% product purity + tiny logo tombe entre product_only et minimal_brand_mark. Patch : overlay_density 0.0-1.0 continue + brand_mark_present bool. craft_mode legacy conservé deprecated. Mapping fallback : product_only → {density: 0.0, mark: false}, minimal_brand_mark → {density: 0.1, mark: true}, with_overlay → {density: 0.6, mark: true}."
+    },
+    {
+      "category": "schemas",
+      "action": "created",
+      "files": ["resources/schemas/_shared/validation-state.json"],
+      "section": "validation-state composite shared (NEW)",
+      "rationale": "validation_status 5-stage cycle (hypothesis/tested/validated/scaled/fatigued) conflate lifecycle stage et confidence. Un tested peut être 0.3 inconclusive ou 0.85 stable, indistinguable. Stratégie : ne PAS inflater le shared enum existant. Création nouveau composite validation-state.json qui wrap status (via $ref validation-status) + confidence 0.0-1.0 + confidence_source enum 4 valeurs. Référencé via oneOf sur creative.meta.validation_status (legacy string OR composite object). validation-status.json standalone conservé pour entités sans confidence. Migration angle + profile reportée v2.33+ si besoin avéré."
+    },
+    {
+      "category": "schemas",
+      "action": "patched",
+      "files": ["resources/schemas/creative.schema.json"],
+      "section": "meta.validation_status oneOf migration",
+      "rationale": "creative.meta.validation_status migré de $ref validation-status.json simple vers oneOf [validation-status.json | validation-state.json]. Skills consumers acceptent les 2 shapes : string legacy ou object composite. Backward compat strict (aucun fichier existant cassé). Pattern lecture : if isinstance(vs, str) status=vs else status=vs.status."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/decompose-ad/SKILL.md"],
+      "section": "decompose-ad 1.1.0 → 1.2.0",
+      "rationale": "Skill aligned avec creative.schema v1.2. consumes.creative.schema min_version bumped 1.1.0 → 1.2.0. HR5ter ajouté · Write v1.2 fields on persist (intent_mix avec weights, overlay_density numérique, brand_mark_present bool, validation_status object si confidence connue). Lecture priorité intent_mix → fallback intent ; overlay_density → fallback craft_mode."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/produce-paid-angles/SKILL.md"],
+      "section": "produce-paid-angles 1.2.0 → 1.3.0",
+      "rationale": "Step 11 LIGNAGE étendu avec note v2.32. Lecture priorité intent_mix.primary + secondary + weights pour KPI verdict matrix. Fallback intent legacy si intent_mix absent. oneOf accepté pour validation_status (lecture string ou object). Skill peut lire les 2 shapes sans break."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/produce-copy-brief/SKILL.md"],
+      "section": "produce-copy-brief 1.1.0 → 1.2.0",
+      "rationale": "Step 0bis aligned · lit creative.intent_mix.primary + secondary + weights pour tone calibration (au lieu de intent legacy). validation_status oneOf accepté · si confidence < 0.4 surface footnote dans brief output (signal hypothèse non-stable)."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/validate-resources/SKILL.md"],
+      "section": "validate-resources alignment v1.2",
+      "rationale": "Bloc v2.32 alignment ajouté en tête. oneOf accepté sur creative.meta.validation_status (string legacy OU object composite). Pas de blocking validation sur intent vs intent_mix présence (les 2 acceptables). Pas de blocking sur craft_mode vs (overlay_density + brand_mark_present). Flag MINOR si gap réel (ni l'un ni l'autre, schema invalide)."
+    },
+    {
+      "category": "docs",
+      "action": "enriched",
+      "files": ["lexicon.md"],
+      "section": "Atlas, 3 senses MECE",
+      "rationale": "Audit Phase 1 a détecté que le mot atlas cohabite 3 sens distincts (atlas canon copy cross-brand v2.26, atlas vivant brand-spécifique v2.27 via validations[], atlas state modulator reporté D#390). Confusion opérateur risquée. Section ajoutée juste après entrée Atlas canon copy existante : 3 sous-sections claires + ligne distinction critique. Aucun rename structurel, juste clarification doctrinale."
+    },
+    {
+      "category": "docs",
+      "action": "patched",
+      "files": ["docs/system/atlas-canon-copy.md"],
+      "section": "Disclaimer top after H1",
+      "rationale": "Disclaimer 3 lignes ajouté immédiatement après le H1 pointant vers lexicon.md § Atlas 3 senses MECE. Précise que le doc couvre le sense 1 (référentiel cross-brand). Cross-ref bidirectionnelle avec lexicon."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/produce-paid-angles/SKILL.md", ".skills/skills/produce-copy-brief/SKILL.md", ".skills/skills/mine-voc/SKILL.md", ".skills/skills/learn-from-session/SKILL.md"],
+      "section": "Step 0/0bis atlas disclaimer",
+      "rationale": "1 ligne disclaimer ajoutée en tête de Step 0/0bis (ou section canon-load équivalente) clarifiant que les atlas refs dans le skill = atlas canon copy (sense 1). Brand-side enrichment via validations[] (sense 2). Cross-ref vers lexicon.md."
+    },
+    {
+      "category": "skills",
+      "action": "reclassified",
+      "files": [".skills/skills/cross-deepening-signals/SKILL.md", ".skills/skills/validate-output-coherence/SKILL.md", ".skills/skills/encode-batch/SKILL.md"],
+      "section": "Taxonomy reclassement v2.32",
+      "rationale": "3 skills reclassés post-audit Phase 1 cartography : cross-deepening-signals type shared → orchestrator (coordonne VoC × VoM signals, multi-input synthesis pattern orchestrator natif), validate-output-coherence type shared → curator (read outputs applies coherence rules governance role pas une primitive réutilisable), encode-batch mode proposed → direct (utilitaire interne write loop pas un proposal opérateur-facing). Manifest régénéré 43 skills présents."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Pas d'impact opérateur direct v2.32. La valeur arrive avec : (a) skills v2.32+ qui exploitent les nouveaux fields (intent_mix multi-weighted permet routage KPI orthogonal DR + Brand-lift, overlay_density continu permet scoring craft fin, validation-state composite permet capturing doute mid-cycle), (b) lexicon clarifié évite confusion opérateur sur le mot atlas, (c) reclassement skills aligne intuition opérateur sur le type (cross-deepening = orchestrator est plus juste que shared).",
+  "next_release_note": "v2.33 (foundation skills) : (a) skill define-specs mode hybride · auto-pull URL produit (réutilise snapshot-brand) + Q&A guidé operator input + sources upload (ingest-resource) avec validation gate · (b) skill profile-audience synthèse 8 dimensions canon V3 depuis mining outputs · (c) INDEX.md enrichi YAML front-matter (domain + phase + prerequisites + next steps) · (d) skill weight-dimensions parallèle. v2.34 production loop (compose-creative + recompose-creative + smart-suggest daemon learn-from-session). v2.35+ removal aliases deprecated (intent, craft_mode, validation_status string) après 2 cycles minimum."
+}

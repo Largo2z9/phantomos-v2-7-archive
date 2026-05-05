@@ -1,6 +1,6 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-05T19:50:57Z",
+  "_generated_at": "2026-05-05T21:35:29Z",
   "_count": 43,
   "skills": [
     {
@@ -219,7 +219,7 @@
     },
     {
       "name": "cross-deepening-signals",
-      "type": "shared",
+      "type": "orchestrator",
       "model": "sonnet",
       "subagent_safe": true,
       "mode": "none",
@@ -301,7 +301,7 @@
       "type": "shared",
       "model": "haiku",
       "subagent_safe": true,
-      "mode": "proposed",
+      "mode": "direct",
       "triggers": {
         "fr": [
           "encode batch",
@@ -1009,7 +1009,7 @@
     },
     {
       "name": "validate-output-coherence",
-      "type": "shared",
+      "type": "curator",
       "model": "haiku",
       "subagent_safe": true,
       "mode": "none",
@@ -1054,7 +1054,7 @@
         ]
       },
       "disambiguates_against": {
-        "audit-meta-account": "route to audit-meta-account when operator says 'audit' + platform context (Meta Ads) — that's a platform-specific audit, not a workspace integrity check"
+        "audit-meta-account": "route to audit-meta-account when operator says 'audit' + platform context (Meta Ads), that's a platform-specific audit, not a workspace integrity check"
       },
       "path": ".skills/skills/validate-resources/SKILL.md"
     },

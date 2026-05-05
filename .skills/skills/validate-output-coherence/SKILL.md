@@ -1,6 +1,6 @@
 ---
 name: validate-output-coherence
-type: shared
+type: curator
 version: "1.0.0"
 recommended_model: haiku
 reasoning_pattern: null
@@ -29,6 +29,8 @@ permissions:
   mode: none
   subagent_safe: true
 ---
+
+> v2.32 reclassement : type shared vers curator. Skill read outputs, applies coherence rules, governance role (pas une primitive de mutation/validation réutilisable).
 
 ## Tone
 

@@ -1,7 +1,7 @@
 ---
 name: produce-paid-angles
 type: producer
-version: "1.2.0"
+version: "1.3.0"
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: generating
@@ -19,6 +19,7 @@ consumes:
   - path: resources/templates/hook-formulas.md
     min_version: 1.0.0
 description: >
+  v1.3.0 (v2.32 alignment) : when reading creative.json instances, prefer intent_mix over intent and overlay_density + brand_mark_present over craft_mode. validation_status read via oneOf (legacy string OR composite object).
   Generates a ranked matrice copy of paid creative angles for an audience
   on a brand. Consumes encoded intelligence (verbatims, pains, objections,
   vernacular) from mine-voc / mine-vom Layer B. Internal cartesian product
@@ -77,6 +78,8 @@ Three branches:
 ---
 
 ## Step 0bis · Load canon copy (v2.26.0+, refacto v2.29.0)
+
+> **Atlas refs** dans cette skill = atlas canon copy (sense 1, référentiel cross-brand). Brand-side enrichment via `validations[]` (sense 2). Pour la distinction lexicale complète : `lexicon.md § Atlas, 3 senses MECE`.
 
 **Avant Step 1**, charger l'atlas canon copy comme bibliothèque de référence pour la production. Les angles ne sont plus générés depuis le néant, ils sont composés en piochant dans des outils canon référencés.
 

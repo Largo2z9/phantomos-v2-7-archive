@@ -1,7 +1,7 @@
 ---
 name: produce-copy-brief
 type: producer
-version: "1.1.0"
+version: "1.2.0"
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: generating
@@ -17,6 +17,7 @@ consumes:
   - path: resources/templates/hook-formulas.md
     min_version: 1.0.0
 description: >
+  v1.2.0 (v2.32 alignment) : when a creative_id is passed in input, reads creative.intent_mix in priority over intent for tone calibration. Also reads overlay_density + brand_mark_present (fallback craft_mode) and accepts validation_status oneOf shape.
   Produces a copywriter brief for an audience × chosen angle × channel.
   Consumes encoded brand intelligence (verbatims, pains, objections,
   vernacular, voice) from mine-voc Layer B + optional chosen angle from
@@ -94,6 +95,8 @@ Heuristic: stack with Meta + brand recent focus = paid acquisition → default M
 
 ## Step 0bis — Load canon copy + angle lineage (v2.29.0+)
 
+> **Atlas refs** dans cette skill = atlas canon copy (sense 1, référentiel cross-brand). Brand-side enrichment via `validations[]` (sense 2). Pour la distinction lexicale complète : `lexicon.md § Atlas, 3 senses MECE`.
+
 > v1.1.0 (S55 v2.29.0 alignment) : LIGNAGE block uses `lineage.awareness_stage` (renamed from `schwartz_conscience`), `origin_axis` at top-level (renamed from `source`). Drop fields migrated to `creative.schema.json` (`intent`, `mecanique`, `craft_mode`, `execution.*`, `seasonality_trigger`). Optional `creative_id` input for execution-side context.
 
 **Avant Step 1**, charger l'atlas canon copy et lire le lignage canon de l'angle source si disponible.
@@ -119,7 +122,9 @@ Si l'angle vient de `produce-paid-angles` v2.29.0+, son fichier `brands/{slug}/a
 
 Lire ce lignage pour cadrer le brief : le hook est déjà choisi, le framework est déjà choisi, le registre voix est déjà choisi. Le brief étoffe ce que l'angle a posé, pas le reformule.
 
-**Note couches.** `intent`, `mecanique`, `craft_mode`, `execution.*`, `seasonality_trigger` ont migré vers `creative.schema.json` (couche execution, pas couche stratégique). L'angle pur suffit pour le brief. Si l'opérateur passe un `creative_id` en input (cas test/run d'un format précis), lire en plus `brands/{slug}/creatives/{creative_id}.json` pour récupérer `intent`, `mecanique`, `cta` et calibrer la section CTAs + Format constraints sur ce format spécifique. Sinon, brief opère sur angle pur.
+**Note couches.** `intent`, `mecanique`, `craft_mode`, `execution.*`, `seasonality_trigger` ont migré vers `creative.schema.json` (couche execution, pas couche stratégique). L'angle pur suffit pour le brief. Si l'opérateur passe un `creative_id` en input (cas test/run d'un format précis), lire en plus `brands/{slug}/creatives/{creative_id}.json` pour récupérer `intent_mix` (priorité, fallback `intent` legacy si absent), `mecanique`, `cta`, `execution.overlay_density` + `execution.brand_mark_present` (fallback `craft_mode` si absent) et calibrer la section CTAs + Format constraints sur ce format spécifique. Sinon, brief opère sur angle pur.
+
+**v2.32 alignment, tone calibration.** Step 0bis lit `creative.intent_mix.primary` (et `secondary` + `weights` si présents) au lieu de `creative.intent` pour calibrer le ton du brief : un mix `{primary: DR, secondary: [Brand], weights: {DR: 0.6, Brand: 0.4}}` pondère le registre entre direct response (urgency, scarcity, CTA hard) et brand-lift (story, identity, association). Si `intent_mix` absent, dériver depuis `intent` legacy (`Hybrid` → `{primary: DR, secondary: [Brand], weights: {DR: 0.5, Brand: 0.5}}`). `validation_status` accepté sous les deux shapes (string legacy ou object composite avec `confidence`) ; si confidence basse (< 0.4), surfacer en footnote brief (*"creative source en confiance faible, brief reste valable, re-validation recommandée"*).
 
 **Couches canon consommées par ce skill** :
 - `frameworks` (déjà choisi par l'angle, le brief le respecte section par section)

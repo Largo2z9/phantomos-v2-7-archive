@@ -19,8 +19,14 @@ pipeline:
   preconditions: ingest-resource should have run at least once
   postconditions: none — agents can query after validate
 disambiguates_against:
-  audit-meta-account: "route to audit-meta-account when operator says 'audit' + platform context (Meta Ads) — that's a platform-specific audit, not a workspace integrity check"
+  audit-meta-account: "route to audit-meta-account when operator says 'audit' + platform context (Meta Ads), that's a platform-specific audit, not a workspace integrity check"
 ---
+
+## v2.32 alignment (creative.schema v1.2)
+
+- `meta.validation_status` accepts `oneOf [legacy ref | composite ref]`. Both shapes valid, no blocking on either. String form (legacy `validation-status.json`) and object form (`validation-state.json` with `status` + `confidence` + `confidence_source`) both pass.
+- Pas de blocking validation sur la présence de `intent` vs `intent_mix` : les deux acceptables. Idem `craft_mode` vs (`overlay_density` + `brand_mark_present`). Backward compat additif strict.
+- Flag MINOR (non-blocking) si un fichier `creative.json` v1.2 schema-version ne porte ni `intent_mix` ni `intent` (gap réel d'encoding). Idem si ni `overlay_density` ni `craft_mode`.
 
 ## Tone
 

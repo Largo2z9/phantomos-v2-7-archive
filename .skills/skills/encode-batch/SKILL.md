@@ -17,7 +17,7 @@ permissions:
   reads: [brand, product, profile, learning, strategy, schema]
   writes: [brand, product, profile, learning, strategy]
   emits_events: [coherence_check]
-  mode: proposed
+  mode: direct
   subagent_safe: true
 invocable_by:
   - snapshot-brand
@@ -29,6 +29,8 @@ disambiguates_against:
   finalize-mutation-batch: "finalize-mutation-batch is post-write structural check (Python primitive, no LLM). encode-batch is the write itself, Haiku-grade mapping observation → field_path → write_to_context call. Pipeline: producer extracts → encode-batch writes → finalize-mutation-batch verifies."
   write-to-context: "write-to-context is the single-mutation primitive. encode-batch wraps N write-to-context calls in one delegated execution so the main thread stays responsive."
 ---
+
+> v2.32 reclassement : mode proposed vers direct. Utilitaire interne write loop, pas un proposal opérateur-facing. Mode direct = exécution immédiate sans operator gate.
 
 ## Tone
 

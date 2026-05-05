@@ -62,6 +62,21 @@ Chaîne causale entre une spec produit et un bénéfice. Champ typé : `target`,
 
 Référentiel typé partagé de 11 couches × 58 fiches du copywriting (frameworks, hooks, angles, niveaux-schwartz, archetypes-voix, formules-titres, objections, construction-offre, leads, formats-livrables, persuasion). Sources : Schwartz, Cialdini, Halbert, Sugarman, Hormozi, Carlton, Jung. Storage : `resources/canon/copy/{layer}/{tool}.json`. Schema : `canon-tool/1.0`. Skills consume + feed via `validations[]` (atlas vivant brand-spécifique). Doctrine : `docs/system/atlas-canon-copy.md`. Releases : v2.26.0 (fondation) + v2.27.0 (skills branchés).
 
+## Atlas, 3 senses MECE
+
+Trois acceptions cohabitent. Lever ambiguïté avant tout output opérateur.
+
+### 1. Atlas canon copy (référentiel cross-brand, v2.26)
+Référentiel typé partagé, 11 couches × 58 fiches. Read-only ship. Doctrine copywriting partagée tous brands. Source : `docs/system/atlas-canon-copy.md`. Storage : `resources/canon/copy/{layer}/{tool}.json`. Schema : `canon-tool/1.0`.
+
+### 2. Atlas vivant brand-spécifique (boucle validations, v2.27)
+Mécanique compound · journal d'usage local enrichi par chaque output skill via `validations[]` append-only. Pas un référentiel, une trace empirique. Promotion via `learn-from-session` operator gate. Transforme atlas canon générique en atlas-validé brand-spécifique au fil de l'usage.
+
+### 3. Atlas state modulator (reporté D#390)
+Futur modulateur visuel d'état couche représentation. **PAS shippé v2.32**. Gated sur skill matrice représentation visuelle future. Ne pas exposer opérateur tant que non livré. Concept structurellement validé (vide/partiel/consolidé) mais sans implémentation code.
+
+**Distinction critique** : (1) est canon stable cross-brand, (2) est trace vivante par brand, (3) n'existe pas encore en code.
+
 ## Atome irréductible
 
 Élément (mot, image, structure) sans lequel l'ad meurt. Test : *"si je retire/change cet atome, mesure-t-on un delta de performance ?"* Doctrine S55. Encoded : `creative.schema.json#atome_irreductible {element, delta_si_change}`. Distinct de `perceptual_pivot` (sous-couche `formula.reframe`) et `stop_scroller` (binôme hook + visual canon V3). Trois plans distincts.

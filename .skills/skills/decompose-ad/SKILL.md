@@ -1,14 +1,15 @@
 ---
 name: decompose-ad
-version: 1.1.0
+version: 1.2.0
 type: producer
 recommended_model: opus
 reasoning_pattern: matrix-driven
 matrix_mode: decomposing
 description: >
+  v1.2.0 (v2.32 alignment) : reads intent_mix (fallback intent if absent) + overlay_density (fallback craft_mode) + meta.validation_status accepts both shapes.
   Decompose une ad (benchmark concurrent OU créa marque interne) en fiche structurée
   selon l'équation compositionnelle v3.1 (NOYAU x CONTEXTE x MODIFIEURS) et persiste
-  un instance creative.schema v1.1 brand-side. Reverse-engineering, pas génération.
+  un instance creative.schema v1.2 brand-side. Reverse-engineering, pas génération.
   Inputs supportés : drop image dans le chat (mode primaire), pull TrendTrack via
   ad_id (`facebook_NNN`) ou URL Meta Ads Library, URL externe (Insta, LinkedIn,
   Reddit) via WebFetch + screenshot fallback. Output operator-facing : fiche v5
@@ -31,7 +32,7 @@ consumes:
   - path: resources/registries/creative-mechanics-registry.md
     min_version: 1.0.0
   - path: resources/schemas/creative.schema.json
-    min_version: 1.1.0
+    min_version: 1.2.0
   - path: resources/schemas/_shared/awareness-stage.json
     min_version: 1.0.0
   - path: resources/canon/copy/niveaux-schwartz/*.json
@@ -197,6 +198,27 @@ Use the EXACT product shown in the reference image. CRITICAL VISUAL FIDELITY:
 ```
 
 QC post-gen : valider chaque `distinctive_features[]` présent dans le render. Échec sur 1+ feature → flag à l'opérateur + propose re-gen avec prompt renforcé.
+
+---
+
+## HR5ter · Write v1.2 fields on persist (v2.32 alignment)
+
+Quand le skill produit un output `creative.json` (HR8 persist), écrire les NOUVEAUX champs creative/1.2 en priorité, garder les anciens en lecture compat seulement.
+
+**Champs nouveaux à écrire (output side) :**
+
+- `intent_mix` (object) : `{primary, secondary?, weights?}`. Skip `weights` si pure (`primary` 100%). Si l'ad observée mélange (ex 60% DR + 40% brand-lift), encoder explicitement `weights: {DR: 0.6, Brand: 0.4}` (somme à 1.0 ± 0.05). Le champ legacy `intent` peut rester en miroir backward-compat (`intent_mix.primary` recopié), mais readers downstream préfèrent `intent_mix`.
+- `execution.overlay_density` (number 0.0-1.0) : densité overlay verbal continue. 0.0 photo produit pure, 0.1-0.3 minimal mark / sparse badge, 0.4-0.7 hook + claim layered, 0.8-1.0 verbal-dominated dense.
+- `execution.brand_mark_present` (bool) : logo/wordmark visible, orthogonal à `overlay_density`. Le legacy `craft_mode` peut rester en miroir (dérivé : `product_only` si density=0 et brand_mark_present=false ; `minimal_brand_mark` si density<0.3 et brand_mark_present=true ; `with_overlay` si density>=0.4).
+- `meta.validation_status` (object composite) : écrire la forme `{status, confidence, confidence_source}` (validation-state.json). Pour décompo benchmark, default `{status: "hypothesis", confidence: 0.5, confidence_source: "default"}`. Pour créa interne avec test_results déjà présents, dériver confidence (`derived_from_test_results`).
+
+**Lecture (input side) :**
+
+- Si `intent_mix` absent sur un fichier existant → fallback `intent` (Hybrid → `{primary: DR, secondary: [Brand], weights: {DR: 0.5, Brand: 0.5}}`).
+- Si `overlay_density` absent → fallback `craft_mode` (product_only → 0.0, minimal_brand_mark → 0.2, with_overlay → 0.6).
+- Si `validation_status` est string (legacy) → l'accepter via oneOf, traiter comme `{status: <string>}`.
+
+**Backward compat strict :** ne jamais supprimer les anciens champs en écriture, ne pas casser les fichiers v1.1 existants.
 
 ---
 

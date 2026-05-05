@@ -5,6 +5,44 @@
 
 ---
 
+## v2.32.0 · 2026-05-05 · Audit cohérence globale post-Notion · 3 patches binarité parasite + lexicon Atlas + reclassement skills
+
+**Why this release.** Audit cohérence globale post-absorption doctrine cartographie Notion Stride-Up (Onday). 3 risques détectés : (1) **binarité parasite** dans certains enums creative.schema qui force unicité alors que cas réels sont nuancés (intent forcé sur Hybrid alors que créa hybride DR+Brand 60/40, craft_mode 3 valeurs alors que densité overlay est continue, validation_status sans confidence orthogonal). (2) **flou terminologique** sur le mot polysémique "atlas" (3 sens cohabitent : canon copy v2.26, vivant brand-spécifique v2.27, state modulator reporté D#390). (3) **misalignments taxonomy** sur 3 skills (cross-deepening-signals shared mal classé, validate-output-coherence pas un primitif partagé, encode-batch mode proposed inutile).
+
+**What shipped (3 patches schemas creative.schema v1.1 → v1.2).**
+
+- **A1 · `intent_mix` multi-weighted** : nouveau champ `intent_mix {primary, secondary[] maxItems 2, weights{} sum 1.0 ±0.05}`. Capture créas hybrides sans collapse lossy. `intent` enum 6 valeurs conservé alias deprecated. Mapping fallback : Hybrid → primary DR + secondary [Brand] + weights {DR: 0.5, Brand: 0.5}.
+- **A2 · `overlay_density` orthogonal** : nouveau champ `overlay_density: 0.0-1.0` continue + `brand_mark_present: bool`. Découple les 2 dimensions du `craft_mode` 3 valeurs (densité verbal vs présence logo). craft_mode legacy deprecated.
+- **A3 · `_shared/validation-state.json` composite (NEW)** : wrap status (via $ref) + confidence 0.0-1.0 + confidence_source enum 4 valeurs. Référencé via `oneOf` sur `creative.meta.validation_status` (legacy string OU composite object). Permet `tested @ 0.3 inconclusive` vs `tested @ 0.85 stable`. Migration angle + profile reportée v2.33+.
+
+**What shipped (skills downstream alignés).**
+
+- `decompose-ad` 1.1.0 → 1.2.0 (HR5ter Write v1.2 fields on persist · lecture priorité nouveaux fields avec fallback)
+- `produce-paid-angles` 1.2.0 → 1.3.0 (Step 11 LIGNAGE étendu lecture intent_mix.primary + secondary + weights pour KPI verdict)
+- `produce-copy-brief` 1.1.0 → 1.2.0 (Step 0bis tone calibration via intent_mix · footnote brief si confidence < 0.4)
+- `validate-resources` aligned (oneOf accepté validation_status · pas de blocking sur intent legacy vs intent_mix)
+
+**What shipped (doctrine atlas).**
+
+- `lexicon.md` enrichi section **Atlas, 3 senses MECE** : (1) canon copy cross-brand référentiel v2.26 · (2) vivant brand-spécifique boucle validations[] v2.27 · (3) state modulator reporté D#390 jamais shippé.
+- `docs/system/atlas-canon-copy.md` disclaimer top après H1 pointant lexicon.
+- 4 SKILL.md (`produce-paid-angles`, `produce-copy-brief`, `mine-voc`, `learn-from-session`) Step 0bis disclaimer 1 ligne clarifiant atlas refs = canon copy (sense 1), brand-side va dans validations[] (sense 2).
+
+**What shipped (taxonomy skills reclassement).**
+
+- `cross-deepening-signals` type `shared` → `orchestrator` (coordonne VoC × VoM signals multi-input synthesis)
+- `validate-output-coherence` type `shared` → `curator` (governance role read outputs applies coherence rules)
+- `encode-batch` mode `proposed` → `direct` (utilitaire interne write loop pas un proposal)
+- Manifest régénéré · 43 skills présents
+
+**Breaking changes.** Aucun. Tout additif. Aliases legacy (intent, craft_mode, validation_status string) conservés 2 cycles minimum (removal v2.34 minimum).
+
+**Operator impact.** Pas direct v2.32. Valeur arrive : (a) skills v2.32+ exploitent nouveaux fields (routage KPI orthogonal DR+Brand-lift, scoring craft fin, capture doute mid-cycle), (b) lexicon évite confusion atlas, (c) reclassement aligne intuition opérateur sur type skill.
+
+**Source empirique.** Audit cohérence globale S55 documenté `/Users/guillaumevallee/.claude/plans/atlas-state-a-sert-sorted-goose.md` · 3 Explore agents (skills cartography 43 skills · schemas binarité 5 binarités parasites détectées · atlas semantic 76 fichiers cross-doc) + 1 Plan agent design v2.32 → v2.34 · approbation Largo.
+
+---
+
 ## v2.31.0 · 2026-05-05 · Visual identity schema · fidélité produit pipeline gen
 
 **Why this release.** Test E2E live S55 (Arata reverse-engineered → karacare cellule-boost via nano-banana-pro/edit + fal.ai) a révélé un gap structurel : sans packshot clean comme reference, le modèle régresse le label produit à chaque iter (kara[care] devient karaforz, kara|core, karacore...). 4 itérations ont échoué à préserver le label malgré prompts plus précis. La solution n'est pas dans le prompting, c'est dans l'asset reference : packshot studio clean + caractéristiques visuelles structurées.

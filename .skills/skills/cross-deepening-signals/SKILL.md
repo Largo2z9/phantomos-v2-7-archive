@@ -1,6 +1,6 @@
 ---
 name: cross-deepening-signals
-type: shared
+type: orchestrator
 version: "1.0.0"
 recommended_model: sonnet
 reasoning_pattern: null
@@ -24,6 +24,8 @@ invocable_by:
 ---
 
 # cross-deepening-signals
+
+> v2.32 reclassement : type shared vers orchestrator. Skill coordonne VoC x VoM signals (multi-input synthesis), pattern orchestrator natif. Pas un primitif réutilisable.
 
 Structured machine output for the orchestrator caller. Operator surface = the synthesis paragraph only, delivered upstream via deepen-brand-context. This skill does not write to brand entity files. It reads, analyzes, returns.
 

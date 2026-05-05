@@ -6,7 +6,7 @@
   "type": "object",
   "required": ["creative_id", "mode", "audience_slug", "meta"],
   "properties": {
-    "_schema_version": { "const": "creative/1.1" },
+    "_schema_version": { "const": "creative/1.2" },
 
     "_migration_notes": {
       "type": "string",
@@ -73,7 +73,22 @@
     "intent": {
       "type": "string",
       "enum": ["DR", "Brand", "Hybrid", "Lead_gen", "Retention", "Awareness"],
-      "description": "Concept-level intent tag. DR = direct response ecom (KPI ROAS, CPP). Brand = brand-building, top-funnel (KPI reach, engagement, brand recall). Hybrid = DR avec investissement brand (KPI ROAS + brand lift). Lead_gen = funnel quiz/email/form capture (KPI form-fill, MQL, SQL, leads). Retention = cible existing customers (KPI repeat purchase, LTV). Awareness = top-funnel pur (KPI reach, video views, brand recall). Audit Phase B v2.29.0 : refonte de `B2B_lead_gen` en `Lead_gen` + ajout dimension `audience_segment` separee pour B2B vs B2C distinction. Conditions la fractale Hook x Body x CTA expectation et les KPI verdict winner."
+      "description": "DEPRECATED v1.2: alias backward-compat. Read intent_mix.primary instead. Skills MAY still write intent; readers SHOULD prefer intent_mix when present. Concept-level intent tag. DR = direct response ecom (KPI ROAS, CPP). Brand = brand-building, top-funnel (KPI reach, engagement, brand recall). Hybrid = DR avec investissement brand (KPI ROAS + brand lift). Lead_gen = funnel quiz/email/form capture (KPI form-fill, MQL, SQL, leads). Retention = cible existing customers (KPI repeat purchase, LTV). Awareness = top-funnel pur (KPI reach, video views, brand recall). Audit Phase B v2.29.0 : refonte de `B2B_lead_gen` en `Lead_gen` + ajout dimension `audience_segment` separee pour B2B vs B2C distinction. Conditions la fractale Hook x Body x CTA expectation et les KPI verdict winner."
+    },
+
+    "intent_mix": {
+      "type": "object",
+      "description": "v1.2 multi-weighted intent. Captures real-world blend (e.g. 60% DR + 40% brand-lift). Backward compat: when intent_mix absent, derive from intent (Hybrid -> {primary: DR, secondary: [Brand], weights: {DR: 0.5, Brand: 0.5}}). Hybrid enum becomes a UI shortcut, no longer a unique semantic node.",
+      "properties": {
+        "primary": { "type": "string", "enum": ["DR", "Brand", "Lead_gen", "Retention", "Awareness"] },
+        "secondary": { "type": "array", "items": { "type": "string", "enum": ["DR", "Brand", "Lead_gen", "Retention", "Awareness"] }, "maxItems": 2 },
+        "weights": {
+          "type": "object",
+          "description": "Sum to 1.0 +/- 0.05. Skip if pure (primary only, weights = {primary: 1.0}).",
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      },
+      "required": ["primary"]
     },
 
     "audience_segment": {
@@ -257,7 +272,17 @@
         "craft_mode": {
           "type": "string",
           "enum": ["product_only", "minimal_brand_mark", "with_overlay"],
-          "description": "Mode de craft creative. product_only = catalog photo zero overlay verbal (DTC fashion default, e.g. AD3 robe DTC reach 4674). minimal_brand_mark = logo + 1 word badge ou wordmark uniquement (cas hybride observe Gymshark). with_overlay = au moins une couche verbale on the image (hook, CTA, claim). Conditionne les attentes Craft.Verbal scoring. Audit Phase B v2.29.0 ajout `minimal_brand_mark` valeur intermediaire."
+          "description": "DEPRECATED v1.2: derive from overlay_density + brand_mark_present. Kept for backward read compat. Mode de craft creative. product_only = catalog photo zero overlay verbal (DTC fashion default, e.g. AD3 robe DTC reach 4674). minimal_brand_mark = logo + 1 word badge ou wordmark uniquement (cas hybride observe Gymshark). with_overlay = au moins une couche verbale on the image (hook, CTA, claim). Conditionne les attentes Craft.Verbal scoring. Audit Phase B v2.29.0 ajout `minimal_brand_mark` valeur intermediaire."
+        },
+        "overlay_density": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "v1.2. Continuous density of verbal overlay on the asset. 0.0 = pure product photo zero overlay (catalog DTC fashion). 0.1-0.3 = minimal mark or sparse badge. 0.4-0.7 = standard hook + claim layered. 0.8-1.0 = dense verbal-dominated layout (text-heavy advertorial-like creative)."
+        },
+        "brand_mark_present": {
+          "type": "boolean",
+          "description": "v1.2. Logo/wordmark visible regardless of verbal density. Decoupled from overlay_density."
         },
         "craft": {
           "type": "object",
@@ -358,8 +383,11 @@
       "required": ["validation_status", "created"],
       "properties": {
         "validation_status": {
-          "$ref": "_shared/validation-status.json",
-          "description": "Lifecycle. hypothesis = not yet tested in campaign. tested = ad set launched, results inconclusive. validated = CPA/ROAS confirmed viable. scaled = significant budget allocated. fatigued = performance declining."
+          "description": "v1.2: accepts legacy string format (5-stage cycle alone) OR new composite format (validation-state.json with status + confidence). Skills MAY write either. Readers prefer composite. Lifecycle. hypothesis = not yet tested in campaign. tested = ad set launched, results inconclusive. validated = CPA/ROAS confirmed viable. scaled = significant budget allocated. fatigued = performance declining.",
+          "oneOf": [
+            { "$ref": "_shared/validation-status.json" },
+            { "$ref": "_shared/validation-state.json" }
+          ]
         },
         "created": { "type": "string", "format": "date" },
         "updated": { "type": "string", "format": "date" },

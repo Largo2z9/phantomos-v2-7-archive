@@ -140,6 +140,8 @@ Cache by `domain × week` to avoid re-scraping the same surface within seven day
 
 ## Step 3 — 4-lens coding per verbatim (+ canon tagging v2.26.0+)
 
+> **Atlas refs** dans cette skill = atlas canon copy (sense 1, référentiel cross-brand). Brand-side enrichment via `validations[]` (sense 2). Pour la distinction lexicale complète : `lexicon.md § Atlas, 3 senses MECE`.
+
 <!-- v2.29.0 alignment verify : awareness_stage rename in angle.lineage. Canon tagging field names unchanged (point vers fiches canon copy). Layer A `awareness_stage` field already aligned with `_shared/awareness-stage.json` $ref (5 valeurs canoniques `unaware | problem_aware | solution_aware | product_aware | most_aware`). -->
 
 

@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.31.0",
-  "released_at": "2026-05-04",
+  "template_version": "2.32.0",
+  "released_at": "2026-05-05",
   "compatible_from": "2.0.0",
-  "summary": "Visual identity schema (spec.schema.json v1.10) pour fiabilité produit dans pipelines de génération image. Bloc visual_identity ajouté à spec.schema avec packshots URLs studio-clean, color_palette hex codes, container shape/material/cap, content form/color/quantity, label wordmark/sub_label/ingredients/duration, distinctive_features non-négo. Skill decompose-ad v1.0.0 → v1.1.0 : HR2bis lookup visual_identity et inject packshot clean comme image_urls[0] à nano-banana-pro/edit (au lieu d screenshot ad bruité), HR5bis inject distinctive features + color palette + label wordmark dans prompt en hard constraints. Test live S55 valide : 5 régressions label kara[care] sur iter 1-4 résolues iter FINAL avec visual_identity (label correct + sub-label CELLULE BOOST + ingrédients lisibles + duration indicator présent + couleurs hex exactes). Backward compat additif strict.",
-  "manifest": "docs/internal/releases/manifest/2.30.0-manifest.json"
+  "summary": "Audit cohérence globale post-Notion Stride-Up. 3 patches binarité parasite sur creative.schema (v1.1 → v1.2) : (A1) intent_mix multi-weighted {primary, secondary[], weights} qui remplace force-unicité de l'enum 6 valeurs, supporte créas hybrides DR+Brand 60/40 sans lossy collapse. (A2) overlay_density 0.0-1.0 continue + brand_mark_present bool orthogonaux qui découplent les 2 dimensions du craft_mode 3 valeurs. (A3) validation-state.json composite shared (status + confidence 0.0-1.0 orthogonal + confidence_source) référencé via oneOf sur creative.meta.validation_status, supporte tested @ 0.3 vs tested @ 0.85. Lexicon enrichi section Atlas 3 senses MECE (canon copy / vivant brand-spécifique / state modulator reporté D#390). Disclaimers atlas-canon-copy.md + 4 SKILL.md downstream Step 0bis. 3 skills reclassés taxonomy : cross-deepening-signals shared → orchestrator, validate-output-coherence shared → curator, encode-batch mode proposed → direct. Skills downstream patchés : decompose-ad 1.1.0 → 1.2.0, produce-paid-angles 1.2.0 → 1.3.0, produce-copy-brief 1.1.0 → 1.2.0, validate-resources alignment v1.2 oneOf accepted. Backward compat strict additif, deprecated aliases intent + craft_mode + validation_status string conservés 2 cycles minimum.",
+  "manifest": "docs/internal/releases/manifest/2.32.0-manifest.json"
 }

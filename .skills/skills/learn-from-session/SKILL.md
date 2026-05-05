@@ -130,6 +130,8 @@ Each buffer entry must be **routed to the right file** based on what it concerns
 
 ### Canon validation routing (v2.26.0+)
 
+> **Atlas refs** dans cette skill = atlas canon copy (sense 1, référentiel cross-brand). Brand-side enrichment via `validations[]` (sense 2). Pour la distinction lexicale complète : `lexicon.md § Atlas, 3 senses MECE`.
+
 Quand un learning concerne un **outil canon copy** utilisé en prod (hook, framework, angle, archétype, pattern d'objection, formule de titre), il est *aussi* (en plus du routing brand-side) **promu** vers le canon comme entrée `validations[]`. Mécanisme :
 
 1. **Détection.** Le learning mentionne un outil canon connu, ET un signal d'outcome (ROAS chiffré, fatigue observée, test posté, opérateur dit *"ça marche"* ou *"ça crame"*). Cas typiques :

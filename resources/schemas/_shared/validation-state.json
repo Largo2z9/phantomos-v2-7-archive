@@ -1,0 +1,20 @@
+{
+  "$id": "validation-state.json",
+  "title": "Validation state composite (canon shared, v2.32)",
+  "description": "Composite validation: cycle stage (validation-status) + orthogonal confidence + source. Audit Phase B v2.32. Backward compat: validation-status.json keeps standalone existence for entities that don't need confidence. Use this composite via $ref when entity benefits from confidence tracking.",
+  "type": "object",
+  "properties": {
+    "status": { "$ref": "validation-status.json" },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Orthogonal to status. 0.0-0.3 weak signal. 0.4-0.7 moderate. 0.8-1.0 strong. A tested entity can be high or low confidence; a validated entity can lose confidence if recent perf wobbles."
+    },
+    "confidence_source": {
+      "type": "string",
+      "enum": ["operator_stated", "derived_from_test_results", "derived_from_longevity", "default"]
+    }
+  },
+  "required": ["status"]
+}
