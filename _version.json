@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.30.0",
+  "template_version": "2.31.0",
   "released_at": "2026-05-04",
   "compatible_from": "2.0.0",
-  "summary": "Refacto 4 skills downstream pour aligner schemas v2.29.0 (awareness_stage, origin_axis, drop fields execution.craft_mode + execution.longevity_signal + execution.cta migrés vers creative.schema). produce-paid-angles 1.1.0 → 1.2.0, produce-copy-brief 1.0.1 → 1.1.0 (LIGNAGE block updated), mine-voc 1.0.1 → 1.0.2, learn-from-session bump patch (verify alignment v2.29). Création skill aval majeur decompose-ad v1.0.0 : consomme creative.schema.json + équation v3.1 + registry mécaniques + canon copy. Modes benchmark concurrent (TrendTrack/URL/drop direct) et créa interne marque. Persistance brand-side conforme creative.schema v1.1 (competitive-intel/ ou produced/). Operator-facing : fiche markdown structurée S55 fiche v5 (CE QUE L'AD MONTRE / RACONTE / DIAGNOSTIC / RÉUTILISATION / TAGS). Aucun breaking change (refacto interne, alias bloc fallback v2.29 résout pour skills externes). Source : largo-kb decisions.md D#391 + S55 fiche v5.",
+  "summary": "Visual identity schema (spec.schema.json v1.10) pour fiabilité produit dans pipelines de génération image. Bloc visual_identity ajouté à spec.schema avec packshots URLs studio-clean, color_palette hex codes, container shape/material/cap, content form/color/quantity, label wordmark/sub_label/ingredients/duration, distinctive_features non-négo. Skill decompose-ad v1.0.0 → v1.1.0 : HR2bis lookup visual_identity et inject packshot clean comme image_urls[0] à nano-banana-pro/edit (au lieu d screenshot ad bruité), HR5bis inject distinctive features + color palette + label wordmark dans prompt en hard constraints. Test live S55 valide : 5 régressions label kara[care] sur iter 1-4 résolues iter FINAL avec visual_identity (label correct + sub-label CELLULE BOOST + ingrédients lisibles + duration indicator présent + couleurs hex exactes). Backward compat additif strict.",
   "manifest": "docs/internal/releases/manifest/2.30.0-manifest.json"
 }

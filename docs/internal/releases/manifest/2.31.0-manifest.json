@@ -1,0 +1,35 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.31.0",
+  "released_at": "2026-05-05",
+  "compatible_from": "2.0.0",
+  "type": "schema_evolution_minor",
+  "summary": "Visual identity schema · spec.schema.json v1.10 + decompose-ad SKILL.md v1.1. Audit S55 test E2E live a révélé que nano-banana-pro régresse le label produit (kara[care] devient karaforz, kara|core, karacore) à chaque iter sans packshot clean comme reference. Solution : nouveau bloc visual_identity dans spec.schema avec packshots URLs studio, color_palette hex codes, container/content/label structurés, distinctive_features non-négo. Skill decompose-ad consomme visual_identity en HR2bis (passe packshot clean comme image_urls[0]) + HR5bis (inject distinctive features dans prompt en hard constraints). Validation empirique : iter FINAL karacare cellule-boost respecte label kara[care] + sub-label CELLULE BOOST + ingrédients (Biotine + Vitamine E + Adiantum) + duration indicator + couleurs hex exactes (#6E1A1F bordeaux + #5C1B2E myrtille). Backward compat additif strict.",
+  "changes": [
+    {
+      "category": "schemas",
+      "action": "patched",
+      "files": ["resources/schemas/spec.schema.json"],
+      "section": "spec/1.9 → spec/1.10 · ajout visual_identity",
+      "rationale": "Nouveau bloc top-level visual_identity (additif optionnel). 7 sub-blocks : packshots (primary_front obligatoire pour gen pipeline + 5 autres angles optionnels), color_palette (5 hex codes patternés ^#[0-9A-Fa-f]{6}$), container (shape, material, cap_type, size_ml, transparency enum), content (form enum gummies/capsules/powder/liquid_serum/cream/tablets/drops + color_hex + shape + quantity_visible + flavor_or_scent), label (wordmark_text, wordmark_typography_hint, sub_label, ingredient_list_visible, ingredients_listed[], duration_indicator), distinctive_features[] non-négo, _field_types tags. Référencé par decompose-ad et futur compose-creative pour préserver fidélité produit pixel-level dans regen via nano-banana-pro/edit. Source : audit S55 visual fidelity gap."
+    },
+    {
+      "category": "templates",
+      "action": "patched",
+      "files": ["brands/_TEMPLATE/products/_example/spec.json", "brands/_EXAMPLE/products/creme-eclat/spec.json"],
+      "section": "Templates patchés v1.10",
+      "rationale": "_TEMPLATE patch : bloc visual_identity placeholder vide (toutes clés présentes, valeurs vides) avec _comment explicatif. _EXAMPLE patch : bloc visual_identity rempli pour creme-eclat (cosmétique premium fictif : airless pump frosted glass, palette cream/gold, wordmark minimal sans-serif, 4 distinctive_features). Sert de référence pattern pour opérateurs onboarding."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/decompose-ad/SKILL.md"],
+      "section": "decompose-ad v1.0.0 → v1.1.0",
+      "rationale": "Frontmatter consumes étendu (spec.json#visual_identity min v1.10). Nouvelle Hard Rule HR2bis (Lookup product visual identity avant gen) : si target_brand + target_product connus, lit spec.json#visual_identity, passe packshots.primary_front comme image_urls[0] à nano-banana-pro/edit (au lieu d ad screenshot bruité), inject distinctive_features[] + color_palette hex + label.wordmark_text en hard constraints prompt. Fallback warning si bloc absent. Nouvelle Hard Rule HR5bis (Inject visual_identity in prompt) : format prompt augmentation explicite avec container + content + label + color_palette + distinctive_features. Anti-patterns v1.1 ajoutés (4 nouveaux). Cross-refs schema visual_identity v1.10 + audit S55. Validation empirique iter FINAL karacare ✓."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Pas d'impact opérateur direct v2.31. Skills downstream qui ne lisent pas encore visual_identity continuent à fonctionner avec fallback ad screenshot bruité. La valeur arrive avec : (a) opérateurs qui remplissent visual_identity sur leurs brands (pull packshot Shopify CDN ou photoshoot studio + remplir distinctive_features), (b) skill compose-creative v2.32 (à shipper) qui orchestre canon × visual_identity × audience pour générer creative statique 95% qualité avec fidélité produit pixel-level, (c) skills futurs populate-visual-identity qui scrape automatiquement depuis URL produit Shopify/site brand.",
+  "next_release_note": "v2.32 : (a) skill compose-creative qui orchestre full pipeline canon × visual_identity × audience × creative.schema. (b) skill populate-visual-identity qui scrape Shopify products.json + extrait color palette automatique via image analysis + propose distinctive_features depuis visuel observé. (c) extension visual_identity pour typologies hors CPG (apparel : matière + coupe + fit + model_wear_styles, tech : form_factor + ports + screen_content, food : texture + plating, service : pas de visuel physique, marker explicit). v2.33+ removal fields deprecated (gift_economy spec, archetype identity profile)."
+}

@@ -1,6 +1,6 @@
 ---
 name: decompose-ad
-version: 1.0.0
+version: 1.1.0
 type: producer
 recommended_model: opus
 reasoning_pattern: matrix-driven
@@ -46,6 +46,9 @@ consumes:
     min_version: 1.0.0
   - path: brands/{slug}/audiences/{audience}/profile.json
     min_version: 1.0.0
+  - path: brands/{slug}/products/{product_slug}/spec.json#visual_identity
+    min_version: 1.10.0
+    note: visual identity assets (packshots, color_palette, container, content, label, distinctive_features) consumed for product fidelity in regen pipelines
 produces_validations_for:
   - resources/canon/copy/hooks/*.json
   - resources/canon/copy/angles/*.json
@@ -65,7 +68,9 @@ pipeline:
 
 # Skill: decompose-ad
 
-> **Reverse-engineer an ad.** v1.0.0 · S55 fiche v5 · creative.schema v1.1 · équation v3.1 · D#391.
+> **Reverse-engineer an ad.** v1.1.0 · S55 fiche v5 · creative.schema v1.1 · équation v3.1 · D#391.
+
+> **v1.1.0 (S55 v2.31 alignment)** : consume `spec.json#visual_identity` for product fidelity. Skill loads packshot clean URL + distinctive features in prompt to prevent label regression in regen (audit S55 : sans visual_identity, nano-banana-pro régresse `kara[care]` en `kara|core`, `karaforz`, `karacore` à chaque iter).
 
 Decomposeur, not generator. Lit une ad (visuel + copy verbatim), applique l'équation compositionnelle v3.1, persiste un instance creative.schema brand-side, rend une fiche structurée à l'opérateur en langage clair. Le mécanisme reste invisible (pas de field paths, pas de scores numériques, pas de noms internes). L'opérateur voit une fiche quatre sections et un bloc tags retrieval.
 
@@ -113,6 +118,25 @@ Skip si mode `manual_drop`.
 
 ---
 
+## HR2bis · Lookup product visual identity (avant gen)
+
+Si `mode == "internal_production"` ou `mode == "compose"` (skill `compose-creative` futur), ET si `target_brand` + `target_product_slug` connus :
+
+1. Read `brands/{target_brand}/products/{target_product_slug}/spec.json#visual_identity`.
+2. Si bloc présent et `packshots.primary_front` non-null :
+   - Use `packshots.primary_front` comme `image_urls[0]` dans payload `nano-banana-pro/edit` (au lieu d'un screenshot d'ad bruité).
+   - Inject `distinctive_features[]` dans le prompt en hard constraints (`MUST PRESERVE: ...`).
+   - Inject `color_palette` hex codes dans le prompt (`exact colors: container_primary #..., label_background #...`).
+   - Inject `label.wordmark_text` + `label.wordmark_typography_hint` (`label MUST read exactly "{wordmark_text}", never variants`).
+   - Inject `content` (form, color, shape, quantity_visible).
+3. Si bloc absent :
+   - Surface warning à l'opérateur : "spec.json#visual_identity manquant. Render fidelity dégradée. Run skill `populate-visual-identity` (futur) ou drop ad screenshot manuel comme reference".
+   - Continue avec ad screenshot bruité comme fallback.
+
+Rationale : sans packshot clean en input, nano-banana-pro hallucine le label sous 2 iter (cf. audit S55 régression `kara[care]`). Avec packshot + `distinctive_features` injecté, fidélité label peut atteindre 95%+.
+
+---
+
 ## HR3 · Lire image + copy
 
 1. Read tool sur le path local (image ou frame extraite).
@@ -153,6 +177,26 @@ Couche interprétation. Chaque inférence est ancrée dans observables Section 1
 **Mécanique.** Référence registry `resources/registries/creative-mechanics-registry.md`. Free-string `mecanique_id`. Si aucune ne fitte → `other` + flag `mecanique_proposal` (HR8). Affichage opérateur : nom registry + 1 phrase explicative.
 
 **Pivot du message.** Atome irréductible. Test "delta perf si retiré" : si on enlève cet élément, la créa perd >50% de son hook. Souvent un mot clé, un visuel signature, une stat chiffrée, un avant/après. Affichage opérateur : citation entre guillemets + 1 phrase de justification.
+
+---
+
+## HR5bis · Inject visual_identity in prompt (compose / regen phase)
+
+S'applique en aval (skill `compose-creative` futur, ou regen phase d'un skill orchestrateur consommant decompose-ad output). Si `visual_identity` chargé via HR2bis, format prompt augmentation :
+
+```
+Use the EXACT product shown in the reference image. CRITICAL VISUAL FIDELITY:
+- Container: {container.shape} {container.material} {container.cap_type}, {container.transparency}
+- Content: {content.quantity_visible} {content.form} color {content.color_hex} {content.shape}
+- Label: MUST read exactly '{label.wordmark_text}'. Sub-label: '{label.sub_label}'. Duration: '{label.duration_indicator}'.
+- Color palette: container {color_palette.container_primary}, label background {color_palette.label_background}, label text {color_palette.label_text}.
+- DISTINCTIVE FEATURES (do not modify):
+  - {distinctive_features[0]}
+  - {distinctive_features[1]}
+  - ...
+```
+
+QC post-gen : valider chaque `distinctive_features[]` présent dans le render. Échec sur 1+ feature → flag à l'opérateur + propose re-gen avec prompt renforcé.
 
 ---
 
@@ -284,6 +328,13 @@ TAGS RETRIEVAL
 4. **Field name leak.** Surface "intent: DR" ou "craft_mode: product_only" à l'opérateur. Règle : traduction systématique en langage métier ("type de campagne", "cadrage").
 5. **Pixel-counting.** Sur-décomposer chaque détail visuel sans hiérarchiser (audit S55 anti-pattern). Règle : Section 1 reste haut niveau (5-7 observables clés), pas inventaire exhaustif. La densité est dans Section 2 interprétation.
 
+### Anti-patterns v1.1 (visual_identity)
+
+6. **Skip visual_identity lookup.** Ignorer `spec.json#visual_identity` et passer ad screenshot bruité comme reference (régression label garantie sous 2 iter).
+7. **Hardcode distinctive_features dans le skill.** Modifier le prompt distinctive_features hardcodé dans le skill au lieu de lire `visual_identity` (drift inévitable cross-products).
+8. **Trust nano-banana-pro to guess label.** Supposer que nano-banana-pro va deviner correctement le label sans hard constraint dans le prompt.
+9. **Skip QC distinctive_features.** Skip la validation `distinctive_features[]` dans le QC post-gen.
+
 ---
 
 ## Edge cases
@@ -304,3 +355,5 @@ TAGS RETRIEVAL
 - Schwartz stages : `resources/schemas/_shared/awareness-stage.json`.
 - Audit S55 origine : D#391 (creative.schema absorption de 8 champs depuis angle.schema v1.1).
 - Sibling skills : `produce-paid-angles` (forward generation), `analyze-copy` (long-form), `watch-competitors` (surveillance), `audit-meta-account` (full account audit).
+- Visual identity schema : `resources/schemas/spec.schema.json#visual_identity` (v1.10+, S55 v2.31 extension).
+- Audit visual fidelity : `decisions.md` D#392 (S55 audit régression label `kara[care]`, prompt karacare → trigger HR2bis + HR5bis).

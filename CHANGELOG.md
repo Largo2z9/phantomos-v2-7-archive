@@ -5,6 +5,33 @@
 
 ---
 
+## v2.31.0 · 2026-05-05 · Visual identity schema · fidélité produit pipeline gen
+
+**Why this release.** Test E2E live S55 (Arata reverse-engineered → karacare cellule-boost via nano-banana-pro/edit + fal.ai) a révélé un gap structurel : sans packshot clean comme reference, le modèle régresse le label produit à chaque iter (kara[care] devient karaforz, kara|core, karacore...). 4 itérations ont échoué à préserver le label malgré prompts plus précis. La solution n'est pas dans le prompting, c'est dans l'asset reference : packshot studio clean + caractéristiques visuelles structurées.
+
+**What shipped.**
+
+- **`spec.schema.json` v1.9 → v1.10** · nouveau bloc `visual_identity` top-level (additif optionnel). 7 sub-blocks : `packshots` (primary_front + 5 autres angles), `color_palette` (5 hex codes patternés), `container` (shape · material · cap_type · transparency), `content` (form enum + color_hex + shape + quantity_visible + flavor_or_scent), `label` (wordmark_text · wordmark_typography_hint · sub_label · ingredients_listed · duration_indicator), `distinctive_features[]` non-négo, `_field_types` tags.
+- **`_TEMPLATE` + `_EXAMPLE`** · placeholder vide + exemple rempli (creme-eclat fictif airless pump cosmétique premium).
+- **`decompose-ad` SKILL.md v1.0.0 → v1.1.0** · HR2bis Lookup product visual identity avant gen (packshot clean comme image_urls[0] · distinctive_features + color_palette hex + wordmark en hard constraints). HR5bis Inject visual_identity in prompt. 4 anti-patterns v1.1 ajoutés.
+
+**Validation empirique S55.** Iter FINAL karacare cellule-boost vs iter 1-4 :
+
+| Élément | Sans visual_identity | Avec visual_identity |
+|---|---|---|
+| Label `kara[care]` | régressé (karaforz · kara\|core) | lisible et correct |
+| Couleur container | rouge corail inventé | bordeaux #6E1A1F (réel) |
+| Couleur gummies | rouge corail incorrect | myrtille #5C1B2E (réel) |
+| Sub-label CELLULE BOOST | absent | présent |
+| Ingrédients | absents | Biotine + Vitamine E + Adiantum |
+| Duration indicator | absent | 1 MOIS DE CURE ANTI-CHUTE 60 gummies |
+
+**Breaking changes.** Aucun. Tout additif.
+
+**Operator impact.** Pas direct v2.31. La valeur arrive avec opérateurs qui remplissent `visual_identity` sur leurs brands et avec skill `compose-creative` v2.32 (à shipper).
+
+---
+
 ## v2.30.0 · 2026-05-04 · Skills downstream consomment v2.29 + skill aval majeur decompose-ad
 
 **Why this release.** v2.29.0 a refondu les schemas brand (creative.schema v1.0/v1.1 nouvelle 7ème entité, awareness_stage, origin_axis, persona_archetype object, buyer_user_split, fields execution.* migrés vers creative). v2.30 fait le travail symétrique côté skills : (1) refacto des 4 skills downstream pour aligner output sur les nouveaux schemas, (2) création du premier skill consommateur direct de creative.schema, `decompose-ad`, qui clôt la boucle équation v3.1 (creative_statique = concept × execution) en mode reverse engineering. Sans ces patches, les schemas v2.29 resteraient des contrats sans usage. Avec, l'opérateur peut décomposer ads concurrentes ou créatives internes et alimenter le canon mécaniques.
