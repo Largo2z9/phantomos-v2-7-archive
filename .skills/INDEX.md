@@ -4,7 +4,50 @@ Operator-facing index of skills, grouped by what the operator wants to *do*, not
 
 The agent reads `_manifest.json` for routing details (frontmatter, triggers, model, subagent). This file is the human bridge from intent to skill name.
 
-Last update : 2026-04-29.
+Last update : 2026-05-04 (v2.33 enrichment : domain map + phase workflows + per-skill cards).
+
+---
+
+## Navigation par domaine
+
+| Domain | Skills | Phase doctrine |
+|---|---|---|
+| **onboarding** | setup-brand · onboard-brand · snapshot-brand · connect-source | P0 |
+| **cartography** | cartograph · query-context · brief-day · session-search · resume-session | P1-P2 (read-only) |
+| **product** | define-specs · weight-dimensions | P1 + P3 modulator |
+| **audience** | mine-voc · mine-vom · mine-audience · profile-audience | P2a |
+| **production** | produce-paid-angles · produce-copy-brief · decompose-ad | P2b-P5 |
+| **audit** | validate-resources · audit-meta-account · validate-output-coherence · validate-schema-canon · check-cross-refs · check-existing-coverage | ongoing |
+| **capture** | capture-learning · learn-from-session · export-session | ongoing |
+| **extensibility** | build-agent · scaffold-extension · scaffold-skill-stub · scaffold-entity-files | builder |
+| **support** | propose-schema-draft · ingest-resource · cross-deepening-signals · deepen-brand-context · encode-batch · finalize-mutation-batch · write-to-context · promote-learning | utility |
+
+> Note : navigation skills par domaine. Pour la doctrine cartographie compositionnelle complète (P0 vers P5), voir `docs/system/atlas-canon-copy.md` + `lexicon.md § Atlas` + `resources/templates/creative-formula.md`.
+
+---
+
+## Workflow type par phase
+
+**P0 · Onboarding brand**
+  setup-brand OU snapshot-brand vers cartograph (synthèse) vers mine-voc/mine-vom (audiences signals)
+
+**P1 · Product cartography**
+  define-specs (mode hybride : auto-pull URL + Q&A + sources) vers cartograph (synthèse)
+
+**P2a · Audience cartography**
+  mine-voc + mine-vom + mine-audience (mining raw) vers profile-audience (synthèse 8 dim)
+
+**P2b · Angle cartography**
+  produce-paid-angles (forward) OU decompose-ad (reverse benchmark) vers cartograph
+
+**P3 · Matrix + scoring**
+  weight-dimensions (compute coefficients) vers score-matrix (futur v2.34)
+
+**P4 · Brief structured**
+  produce-copy-brief (depuis angle.json + creative.json optional)
+
+**P5 · Creative production (visual)**
+  decompose-ad (reverse benchmark) vers compose-creative (futur v2.34) vers recompose-creative (futur v2.34)
 
 ---
 
@@ -107,6 +150,225 @@ Last update : 2026-04-29.
 If the operator's phrasing matches multiple intents (e.g. *"audit le contexte de cette marque"* could be `validate-resources` or `deepen-brand-context`), read the `disambiguates_against` block in the manifest entry of each candidate. If still ambiguous after that, ask one `AskUserQuestion` with 2 to 3 candidates.
 
 If no skill matches, do not invent one. Surface honestly that the requested operation does not have a shipped skill, and offer to scaffold one via `scaffold-extension` if it is structural enough to deserve persistence.
+
+---
+
+## Skill cards (mini-tables d'orientation)
+
+Chaque card situe un skill sur 4 axes : domain · phase · prerequisites · next steps. 46 skills (43 existants + 3 nouveaux v2.33).
+
+### onboarding
+
+**setup-brand**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| onboarding | P0 | aucun | snapshot-brand (auto-pull URL) ou define-specs (Q&A guidé) |
+
+**onboard-brand**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| onboarding | P0 | URL produit fournie | cartograph (synthèse) |
+
+**snapshot-brand**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| onboarding | P0 | URL produit fournie | define-specs (gaps non-scrapés) puis cartograph |
+
+**connect-source**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| onboarding | P0 | brand existante · credentials platform | ingest-resource (route flux) |
+
+### cartography
+
+**cartograph**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| cartography | P1-P2 (read-only) | brand.json + spec.json minimum | mine-voc OR produce-paid-angles |
+
+**query-context**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| cartography | ongoing (read-only) | brand encodée | n'importe quel producer skill |
+
+**brief-day**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| cartography | ongoing | session-state.md present | resume-session OU producer prochain |
+
+**session-search**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| cartography | ongoing | sessions archivées | resume-session si match |
+
+**resume-session**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| cartography | ongoing | session-state.md OR session export | enchaîner producer interrompu |
+
+### product
+
+**define-specs** (NEW v2.33)
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| product | P1 | brand.json existe | cartograph (synthèse) ou mine-voc (audience) |
+
+**weight-dimensions** (NEW v2.33)
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| product | P3 (modulator) | profile-audience populated · angles disponibles | score-matrix (futur v2.34) |
+
+### audience
+
+**mine-voc**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| audience | P2a | brand.json + spec.json | profile-audience (synthèse) |
+
+**mine-vom**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| audience | P2a | brand.json + spec.json | profile-audience (synthèse) |
+
+**mine-audience**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| audience | P2a | brand.json + spec.json | profile-audience (synthèse) |
+
+**profile-audience** (NEW v2.33)
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| audience | P2a | mine-voc OR mine-vom OR mine-audience tourné | produce-paid-angles (P2b) |
+
+### production
+
+**produce-paid-angles**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| production | P2b vers P4 | profile-audience + spec.json | produce-copy-brief OR decompose-ad |
+
+**produce-copy-brief**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| production | P4 | angle.json (depuis produce-paid-angles) · creative.json optional | livrable copywriter |
+
+**decompose-ad**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| production | P5 (reverse) | ad source (TrendTrack/URL/drop) + visual_identity (optional) | produce-paid-angles (forward) |
+
+### audit
+
+**validate-resources**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| audit | ongoing | brand encodée | corriger issues flagged |
+
+**audit-meta-account**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| audit | ongoing | credentials Meta + ad account ID | analyze-perf (Abyss side) |
+
+**validate-output-coherence**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| audit | ongoing (post-produce) | output producer disponible | re-run producer si invalide |
+
+**validate-schema-canon**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| audit | ongoing | schemas/ touchés récemment | promote schema OR fix drift |
+
+**check-cross-refs**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| audit | ongoing | docs cross-référencés | corriger broken refs |
+
+**check-existing-coverage**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| audit | ongoing (pré-create) | intention nouveau doc/skill | extend > create OU procéder |
+
+### capture
+
+**capture-learning**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| capture | ongoing | fait isolé à persister | learn-from-session en fin de jour |
+
+**learn-from-session**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| capture | ongoing (end-of-session) | session active avec signaux | export-session si archivage formel |
+
+**export-session**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| capture | ongoing | session significative à archiver | session-search future |
+
+### extensibility
+
+**build-agent**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| extensibility | builder | spec agent claire (manifest brief) | scaffold-skill-stub si skill custom |
+
+**scaffold-extension**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| extensibility | builder | besoin entité/sidecar nouveau | scaffold-entity-files OR scaffold-skill-stub |
+
+**scaffold-skill-stub**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| extensibility | builder | name + type + frontmatter triad décidés | rédiger SKILL.md complet |
+
+**scaffold-entity-files**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| extensibility | builder | extension scaffoldée (custom entity) | encode-batch first records |
+
+### support
+
+**propose-schema-draft**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| support | utility | besoin schéma nouveau | validate-schema-canon puis promote |
+
+**ingest-resource**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| support | utility | URL/doc/asset à ranger | validate-resources |
+
+**cross-deepening-signals**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| support | utility | mining VoC + VoM tournés | profile-audience |
+
+**deepen-brand-context**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| support | utility (orchestrator) | brand.json minimum | profile-audience |
+
+**encode-batch**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| support | utility | batch raw à encoder (mining/scrape) | finalize-mutation-batch |
+
+**finalize-mutation-batch**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| support | utility | encode-batch produced proposed mutations | accept/reject par opérateur |
+
+**write-to-context**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| support | utility (gate) | mutation prête | validate-resources auto |
+
+**promote-learning**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| support | utility | learning isolé récurrent | encode dans canon (schema/skill/doc) |
 
 ---
 

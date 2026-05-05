@@ -5,6 +5,32 @@
 
 ---
 
+## v2.33.0 · 2026-05-06 · Foundation skills · cartographie compositionnelle Phase 1-2 + INDEX navigation
+
+**Why this release.** Audit Phase 1 v2.32 a identifié 5 gaps doctrine (compose-creative · recompose-creative · define-specs · profile-audience · weight-dimensions). Foundation-first arbitrage Largo : ship d'abord les fondations Phase 1 et Phase 2 (define-specs · profile-audience · weight-dimensions) pour que la production loop v2.34 (compose-creative + recompose-creative + score-matrix) opère sur substrat solide. Pattern doctrine cartographie compositionnelle issu Notion Stride-Up · 4 arbres + matrice + modulateurs.
+
+**What shipped (3 skills nouveaux).**
+
+- **`define-specs` v1.0 (orchestrator hybrid mode)** · Phase 1 product cartography. 3 sources combinées : auto-pull URL produit (réutilise `snapshot-brand` Shopify products.json + WebFetch) · operator Q&A guidé pour gaps non-scrapés (max 3 questions/tour) · sources upload via `ingest-resource` (PDF brief, deck founder, CSV). Operator validation gate obligatoire avant `write_to_context`, jamais auto-write. _field_types tags par source (observed > declared > structured). Précision Largo · solution onboarding produits nascent/custom sans URL ou avec champs lacunaires.
+- **`profile-audience` v1.0 (orchestrator 8 dim canon V3)** · Phase 2a audience cartography. Synthétise mining outputs (mine-voc + mine-vom + mine-audience) en profil 8 dimensions : Purchase Driver · Problem Map · Benefit Stack · Mechanism · Market Context · Alternative Map · Identity Signals · Decision Process. Schwartz double-stage check (product_stage × emotional_stage). Pain points 3 niveaux (surface · consequence · deep). Tag verbatims sources. Conformité `profile.schema v1.3`.
+- **`weight-dimensions` v1.0 (producer modulator)** · Phase 3 scoring modulator (machine-facing, sous-skill du futur `score-matrix` v2.34). Calcule pondérations dimension audience → angle. Pour chaque (audience, angle) compatible · 8 weights sum 1.0 ±0.01 + dominant_top3. LLM-driven contextuel, biais initiaux par `origin_axis`. Persist `dimension_weights.json` brand-side.
+
+**What shipped (INDEX.md enrichi).**
+
+- `+261 lignes` (121 → 382). Navigation par 9 domaines (onboarding · cartography · product · audience · production · audit · capture · extensibility · support). Workflow type par phase P0 → P5 + ongoing. 37 skill cards mini-tables (domain · phase · prerequisites · next steps). Append-only, contenu existant préservé.
+
+**What shipped (manifest).**
+
+- Régénéré · 43 → 46 skills. Trigger phrases FR + EN ajoutées pour les 3 nouveaux skills.
+
+**Breaking changes.** Aucun. Skills nouveaux strictement additifs.
+
+**Operator impact.** Operator peut maintenant : (a) onboarder un produit sans URL ou avec gaps via `define-specs` (3 sources hybrides + validation gate), (b) synthétiser une audience structurée 8 dimensions canon depuis mining via `profile-audience`, (c) naviguer les 46 skills par domaine avec INDEX enriched (workflow par phase visible). Pipeline cartographie compositionnelle P0 → P3 désormais opérationnel.
+
+**Source empirique.** Plan v2.33 documenté `/Users/guillaumevallee/.claude/plans/atlas-state-a-sert-sorted-goose.md` · 4 mandats parallèles (3 skills + INDEX).
+
+---
+
 ## v2.32.0 · 2026-05-05 · Audit cohérence globale post-Notion · 3 patches binarité parasite + lexicon Atlas + reclassement skills
 
 **Why this release.** Audit cohérence globale post-absorption doctrine cartographie Notion Stride-Up (Onday). 3 risques détectés : (1) **binarité parasite** dans certains enums creative.schema qui force unicité alors que cas réels sont nuancés (intent forcé sur Hybrid alors que créa hybride DR+Brand 60/40, craft_mode 3 valeurs alors que densité overlay est continue, validation_status sans confidence orthogonal). (2) **flou terminologique** sur le mot polysémique "atlas" (3 sens cohabitent : canon copy v2.26, vivant brand-spécifique v2.27, state modulator reporté D#390). (3) **misalignments taxonomy** sur 3 skills (cross-deepening-signals shared mal classé, validate-output-coherence pas un primitif partagé, encode-batch mode proposed inutile).

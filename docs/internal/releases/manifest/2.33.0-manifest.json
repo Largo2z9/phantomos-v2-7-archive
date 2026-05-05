@@ -1,0 +1,49 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.33.0",
+  "released_at": "2026-05-06",
+  "compatible_from": "2.0.0",
+  "type": "skill_evolution_major",
+  "summary": "Foundation skills v2.33 · 3 nouveaux skills cartographie compositionnelle Phase 1-2 (define-specs hybrid · profile-audience 8 dim · weight-dimensions modulator) + INDEX.md enrichi navigation par domaine. Manifest 43 → 46 skills.",
+  "changes": [
+    {
+      "category": "skills",
+      "action": "created",
+      "files": [".skills/skills/define-specs/SKILL.md"],
+      "section": "define-specs v1.0 · orchestrator hybrid mode",
+      "rationale": "Phase 1 product cartography. Skill orchestrateur multi-input combinant 3 sources : (1) auto-pull URL produit via sub-skill snapshot-brand (Shopify products.json + WebFetch), (2) operator Q&A guidé pour gaps non-scrapés ou produits nascent/custom (max 3 questions par tour), (3) sources upload via sub-skill ingest-resource (PDF brief, deck founder, exports CSV). Operator validation gate obligatoire avant write_to_context (jamais auto-write). _field_types tags par source (observed auto-pull > declared operator > structured cross-source). Précision Largo S55 v2.33 · solution au gap onboarding produits sans URL ou avec champs lacunaires."
+    },
+    {
+      "category": "skills",
+      "action": "created",
+      "files": [".skills/skills/profile-audience/SKILL.md"],
+      "section": "profile-audience v1.0 · orchestrator 8 dim canon V3",
+      "rationale": "Phase 2a audience cartography. Skill orchestrateur qui synthétise mining outputs (mine-voc + mine-vom + mine-audience) en profil 8 dimensions canon V3 (Purchase Driver / Problem Map / Benefit Stack / Mechanism / Market Context / Alternative Map / Identity Signals / Decision Process). Schwartz double-stage check (product_stage × emotional_stage). Pain points 3 niveaux (surface · consequence · deep) chaîne identitaire. Tag verbatims sources. Operator validation gate avant write_to_context profile.json conforme schema v1.3. Source : Notion Stride-Up cartographie + creative-formula.md V3 + audit S55 doctrine compositionnelle."
+    },
+    {
+      "category": "skills",
+      "action": "created",
+      "files": [".skills/skills/weight-dimensions/SKILL.md"],
+      "section": "weight-dimensions v1.0 · producer modulator",
+      "rationale": "Phase 3 scoring modulator (préparation skill score-matrix v2.34). Skill producer machine-facing (operator_facing: false) qui calcule pondérations dimension audience → angle. Pour chaque (audience, angle) compatible, output 8 weights (sum 1.0 ±0.01) + dominant_top3 (cumul > 0.6). LLM-driven contextuel, jamais hardcoded. Biais initiaux par origin_axis (audience-derived → Purchase/Problem/Benefit pèsent +, product-derived → Mechanism/Market pèsent +, etc.). Persist brands/{slug}/audiences/{audience}/dimension_weights.json. Sera consommé par skill score-matrix futur (v2.34) qui multiplie Impact × Vitesse × Signal × dimension_relevance."
+    },
+    {
+      "category": "docs",
+      "action": "enriched",
+      "files": [".skills/INDEX.md"],
+      "section": "INDEX.md +261 lignes navigation domaine",
+      "rationale": "Audit Phase 1 cartographie skills a recommandé enriched INDEX.md vs nouveau mode /phantom skills. Choix retenu Largo : single source of truth + low friction. Sections ajoutées : (1) Navigation par 9 domaines (table domain → skills → phase doctrine), (2) Workflow type par phase P0 → P5 + ongoing, (3) 37 skill cards mini-tables (4 axes : domain · phase · prerequisites · next steps). Append-only, contenu existant préservé. Skills couverts : 43 existants + 3 nouveaux v2.33 = 46 total. 9 domaines : onboarding · cartography · product · audience · production · audit · capture · extensibility · support."
+    },
+    {
+      "category": "infrastructure",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "section": "Manifest 43 → 46 skills",
+      "rationale": "Régénération manifest via python3 .skills/build-manifest.py post-création des 3 nouveaux skills. Verified entries présents : define-specs (type orchestrator), profile-audience (type orchestrator), weight-dimensions (type producer)."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Operator peut maintenant : (a) onboarder un produit sans URL ou avec gaps via define-specs (3 sources hybrides + validation gate), (b) synthétiser une audience structurée 8 dimensions canon depuis mining via profile-audience, (c) naviguer les 46 skills par domaine avec INDEX.md enriched (workflow par phase visible). Pipeline cartographie compositionnelle P0 → P3 désormais opérationnel skill par skill (P4 + P5 visual production restent v2.34+). Trigger phrases FR + EN ajoutées au manifest pour les 3 nouveaux skills (define les specs / profil audience / pondère dimensions etc.).",
+  "next_release_note": "v2.34 (production loop) : (a) skill compose-creative producer P5 visual forward · génère creative (visuel + brief copy) depuis brief structuré ancré dans angle + audience + brand identity + visual_identity (consume creative.schema v1.2 + nano-banana-pro/edit + packshot clean). (b) skill recompose-creative · adapte créa testée à new audience / platform / variation. (c) skill score-matrix · consume weight-dimensions outputs + Impact/Vitesse/Signal × modulateurs brand pour priorisation territoires. (d) smart-suggest daemon dans learn-from-session Trigger 8 · post-skill completion surface next phase entry points."
+}

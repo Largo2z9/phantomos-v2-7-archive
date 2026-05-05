@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-05T21:35:29Z",
-  "_count": 43,
+  "_generated_at": "2026-05-05T22:23:35Z",
+  "_count": 46,
   "skills": [
     {
       "name": "analyze-extension-intent",
@@ -297,6 +297,23 @@
       "path": ".skills/skills/deepen-brand-context/SKILL.md"
     },
     {
+      "name": "define-specs",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "snapshot-brand": "snapshot-brand fait le scrape URL pur (auto). define-specs orchestre snapshot + Q&A operator + sources upload pour produits sans URL ou champs non-scrapés.",
+        "cartograph": "cartograph est READ-ONLY (synthèse strategique). define-specs WRITE (peuple spec.json).",
+        "propose-schema-draft": "propose-schema-draft crée nouveau schema canon (R&D). define-specs peuple un spec.json existant pour une brand."
+      },
+      "path": ".skills/skills/define-specs/SKILL.md"
+    },
+    {
       "name": "encode-batch",
       "type": "shared",
       "model": "haiku",
@@ -584,6 +601,19 @@
         "ingest-resource": "route to ingest-resource when operator drops a single brief or doc — that's a one-off ingestion, not angle ideation"
       },
       "path": ".skills/skills/produce-paid-angles/SKILL.md"
+    },
+    {
+      "name": "profile-audience",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/profile-audience/SKILL.md"
     },
     {
       "name": "promote-learning",
@@ -1104,6 +1134,19 @@
       },
       "disambiguates_against": {},
       "path": ".skills/skills/watch-competitors/SKILL.md"
+    },
+    {
+      "name": "weight-dimensions",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/weight-dimensions/SKILL.md"
     }
   ]
 }
