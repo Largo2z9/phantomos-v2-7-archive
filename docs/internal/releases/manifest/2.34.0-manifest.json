@@ -1,0 +1,49 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.34.0",
+  "released_at": "2026-05-06",
+  "compatible_from": "2.0.0",
+  "type": "skill_evolution_major",
+  "summary": "Production loop v2.34 · 3 nouveaux skills (compose-creative forward · recompose-creative adaptation · score-matrix P3 priorisation) + smart-suggest daemon Trigger 8 dans learn-from-session. Pipeline cartographie compositionnelle P0 → P5 opérationnel end-to-end. Manifest 46 → 49 skills.",
+  "changes": [
+    {
+      "category": "skills",
+      "action": "created",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "compose-creative v1.0 · producer FORWARD opus",
+      "rationale": "Phase 5 visual production forward (pendant de decompose-ad reverse). Génère creative (visuel + brief copy) depuis brief structuré ancré dans angle.formula + profile.json 8 dim + brand.creative_zone + spec.visual_identity. Pipeline : lookup pre-requis → assemblage compositionnel équation v3.1 NOYAU × CONTEXTE × MODIFIEURS → fal.ai nano-banana-pro/edit avec packshot clean + distinctive_features hard constraints + retry max 2 sur label régressé → persist creative.schema v1.2 conforme + JPG + brief markdown S55 fiche v5 forward. Operator-facing avec no-orphan-output reco contextuelle (test live OR variants A/B via recompose-creative)."
+    },
+    {
+      "category": "skills",
+      "action": "created",
+      "files": [".skills/skills/recompose-creative/SKILL.md"],
+      "section": "recompose-creative v1.0 · producer ADAPTATION opus",
+      "rationale": "Phase 5 visual adaptation. Adapte créa existante à 1 dimension changée parmi 5 axes : new_audience · new_platform (Meta → TikTok, IG Story, LinkedIn, YT Shorts) · new_format (image → carrousel, story → reel) · new_hook (variant A/B même visuel) · new_visual_treatment (variant scène, même hook). Discipline variant tracking : concept_id réutilisé + variant_of pointe creative source + variant_axis enum explicite. Lookup canon formats-livrables pour contraintes platform-specific (ratio, attention span, native UGC strength, etc.). Output side-by-side source vs variant avec 'WHAT CHANGED' explicit."
+    },
+    {
+      "category": "skills",
+      "action": "created",
+      "files": [".skills/skills/score-matrix/SKILL.md"],
+      "section": "score-matrix v1.0 · producer P3 priorisation",
+      "rationale": "Phase 3 matrice scoring canon Notion Stride-Up. Construit grille Sub-cluster × Source d'angle (5×5 max default cardinality maîtrisée). Pour chaque cellule compatible (awareness_movement.in ≤ awareness_dominant) : (a) score brut Impact×3 + Vitesse×2 + Signal×1 max 60 (LLM contextuel, pas hardcoded), (b) modulateurs brand 4 axes (stade × moment × marché × atlas) coefficient capped 0.5-2.0, (c) score dynamique = score brut × coefficient cumulé. Output ASCII matrice scorée + top 3-5 territoires (rang visible) + trous détectés (compatibles mais 0 angle activable, signal pour run produce-paid-angles) + cellules vierges. Persiste scoring/matrix-{date}.json. Fallback proxy brand_equity_level si strategic_context modulateurs absents (v2.35+ ajout)."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/learn-from-session/SKILL.md"],
+      "section": "Trigger 8 smart-suggest daemon (v2.34)",
+      "rationale": "Daemon silencieux post-skill completion. À chaque event skill_completed, évalue 3 critères (phase doctrine actuelle · skill complété · état brand snapshot) et surface une suggestion contextuelle dans le no-orphan-output du skill terminé si confidence > 0.7. Mapping 12+ entries skill terminé → next phase entry points : setup-brand → snapshot-brand/define-specs · snapshot-brand → define-specs/mine-voc · define-specs → cartograph/mine-voc · mine-* → profile-audience · profile-audience → produce-paid-angles · produce-paid-angles → produce-copy-brief/weight-dimensions · weight-dimensions → score-matrix · score-matrix → compose-creative top territoire · compose-creative → recompose-creative variants · decompose-ad → compose-creative forward. Stop rule 2-ignore consécutifs (anti-spam). Bump version learn-from-session 1.0.1 → 1.0.2."
+    },
+    {
+      "category": "infrastructure",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "section": "Manifest 46 → 49 skills",
+      "rationale": "Régénération manifest via python3 .skills/build-manifest.py post-création des 3 nouveaux skills v2.34. Verified : compose-creative (producer opus), recompose-creative (producer opus), score-matrix (producer sonnet) tous présents."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Pipeline cartographie compositionnelle P0 → P5 désormais opérationnel skill par skill. Operator peut maintenant : (a) générer une créa de zéro avec compose-creative depuis brief structuré (fidélité produit via visual_identity), (b) adapter une créa testée en variant cross-platform/audience/format avec recompose-creative (variant tracking via concept_id + variant_of), (c) prioriser les territoires de test avec score-matrix (top 3-5 cellules + trous détectés), (d) bénéficier des suggestions next phase via smart-suggest daemon dans learn-from-session (réduction friction nouveau opérateur). Triggers FR + EN ajoutés au manifest pour les 3 nouveaux skills.",
+  "next_release_note": "v2.35 (modulateurs strategic_context) : ajout brand.schema strategic_context (4 axes : stade brand · moment stratégique · contexte marché · état atlas) pour formaliser les modulateurs scoring (actuellement fallback proxy brand_equity_level). v2.36+ (atlas_state) : si skill matrice représentation visuelle scope, encoder atlas_state explicit (D#390 reporté). v2.37+ removal aliases deprecated (intent legacy, craft_mode legacy, validation_status string) après 2 cycles minimum."
+}

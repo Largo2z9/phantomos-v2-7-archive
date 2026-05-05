@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-05T22:23:35Z",
-  "_count": 46,
+  "_generated_at": "2026-05-05T22:32:08Z",
+  "_count": 49,
   "skills": [
     {
       "name": "analyze-extension-intent",
@@ -200,6 +200,24 @@
       },
       "disambiguates_against": {},
       "path": ".skills/skills/check-existing-coverage/SKILL.md"
+    },
+    {
+      "name": "compose-creative",
+      "type": "producer",
+      "model": "opus",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "decompose-ad": "decompose-ad fait du REVERSE (analyse ad existante). compose-creative fait du FORWARD (génère depuis brief).",
+        "produce-paid-angles": "produce-paid-angles produit des ANGLES (stratégie textuelle). compose-creative produit la CRÉA finale (visuel + brief copy).",
+        "produce-copy-brief": "produce-copy-brief écrit un BRIEF copy. compose-creative orchestre brief + visuel ensemble.",
+        "recompose-creative": "recompose-creative ADAPTE une créa existante (variant). compose-creative produit ex nihilo."
+      },
+      "path": ".skills/skills/compose-creative/SKILL.md"
     },
     {
       "name": "connect-source",
@@ -698,6 +716,38 @@
       "path": ".skills/skills/query-context/SKILL.md"
     },
     {
+      "name": "recompose-creative",
+      "type": "producer",
+      "model": "opus",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "adapte cette créa",
+          "version pour autre audience",
+          "déclinaison",
+          "variant créa",
+          "variante TikTok",
+          "version story",
+          "décline cette créa"
+        ],
+        "en": [
+          "adapt this creative",
+          "version for another audience",
+          "variant",
+          "tiktok version",
+          "story version",
+          "decline this creative"
+        ]
+      },
+      "disambiguates_against": {
+        "compose-creative": "compose-creative crée ex nihilo depuis brand intelligence + angle. recompose-creative ADAPTE un creative existant (1 dimension change, concept core préservé).",
+        "decompose-ad": "decompose-ad analyse une ad EXTERNE (reverse-engineering benchmark concurrent). recompose-creative adapte une créa INTERNE (mode internal_production, source CRT-N déjà persisté).",
+        "produce-paid-angles": "produce-paid-angles produit un nouveau ANGLE (forward generation depuis brand intelligence). recompose-creative garde l'angle, change autre dimension (audience/platform/format/hook/visual)."
+      },
+      "path": ".skills/skills/recompose-creative/SKILL.md"
+    },
+    {
       "name": "red-team",
       "type": "orchestrator",
       "model": "sonnet",
@@ -858,6 +908,19 @@
       },
       "disambiguates_against": {},
       "path": ".skills/skills/scaffold-skill-stub/SKILL.md"
+    },
+    {
+      "name": "score-matrix",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "path": ".skills/skills/score-matrix/SKILL.md"
     },
     {
       "name": "score-product-fit",

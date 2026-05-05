@@ -1,7 +1,7 @@
 ---
 name: learn-from-session
 type: capturer
-version: "1.0.1"
+version: "1.0.2"
 recommended_model: sonnet
 reasoning_pattern: null
 description: >
@@ -92,6 +92,72 @@ Every 5 turns, write a rolling line to `session-state.md` Activity Log with the 
 
 ### Trigger 6 — CLAUDE.md size check on every batch flush
 At every batch flush (Trigger 1 to 4), measure the size of root `CLAUDE.md` and of each active `brands/{slug}/CLAUDE.md`. Budgets: root ≤ 220 lines, brand ≤ 100 lines. If a file exceeds, add ONE line at the end of the flush recap: *"ℹ CLAUDE.md at {N} lines (budget 220), manual review recommended."* No auto-split, no structured proposal. Just a flag for the operator to arbitrate later. See `docs/system/agent-contracts.md § Size Policy` for the pre-write guardrail.
+
+### Trigger 8 · Smart-suggest daemon (v2.34+)
+
+> v1.0.2 (v2.34 alignment) : Trigger 8 smart-suggest daemon ajouté · post-skill completion surface next phase entry points contextuels.
+
+**Quand actif** : post-skill completion · monitoring patterns d'enchaînement opérateur · daemon silencieux.
+
+**Mécanique** : à chaque fin de skill (event `skill_completed` émis), le daemon évalue 3 critères :
+1. **Phase doctrine actuelle** (P0/P1/P2a/P2b/P3/P4/P5/ongoing)
+2. **Skill juste complété** (lookup mapping skill → next entry points logiques)
+3. **État brand actuel** (lookup brand snapshot · audiences populated ? angles disponibles ? matrice scorée ?)
+
+Si pattern matched et confidence > 0.7, surface une suggestion contextuelle DANS LE NO-ORPHAN-OUTPUT du skill terminé.
+
+**Mapping skill → next phase entry points** :
+
+| Skill terminé | Suggest next |
+|---|---|
+| `setup-brand` ou `onboard-brand` | `snapshot-brand` (URL) ou `define-specs` (Q&A) |
+| `snapshot-brand` | `define-specs` (combler gaps) ou `mine-voc` (audience signals) |
+| `define-specs` | `cartograph` (synthèse) ou `mine-voc` (audience start) |
+| `mine-voc` ou `mine-vom` ou `mine-audience` | `profile-audience` (synthèse 8 dim) |
+| `profile-audience` | `produce-paid-angles` (P2b · forward) ou `decompose-ad` (P2b · reverse benchmark) |
+| `produce-paid-angles` | `produce-copy-brief` (brief copy) ou `weight-dimensions` (préparation scoring) |
+| `produce-copy-brief` | `compose-creative` (production visuelle) ou test live |
+| `weight-dimensions` | `score-matrix` (priorisation territoires) |
+| `score-matrix` | `compose-creative` sur top territoire ou `produce-paid-angles` sur trou |
+| `compose-creative` | `recompose-creative` (variantes A/B) ou test live |
+| `recompose-creative` | test live A/B source vs variant |
+| `decompose-ad` | `compose-creative` (forward sur insights) ou `produce-paid-angles` (transposer mécanique) |
+
+**Format suggestion (operator-facing)** :
+
+Le skill terminé inclut dans son no-orphan-output un bloc compact :
+
+```
+→ Suggestion next step (smart-suggest)
+   {1 phrase contextuelle expliquant le choix}
+   Tape : `{trigger phrase suggéré}` ou `pause` pour autre chose
+```
+
+**Anti-patterns** :
+- Ne JAMAIS forcer la suggestion (operator peut toujours pivoter ou pauser)
+- Ne JAMAIS surface plus d'1 suggestion principale (max 1 backup en option silencieuse)
+- Ne JAMAIS suggest un skill dont les pré-requis ne sont pas remplis (vérifier brand snapshot d'abord)
+- Ne JAMAIS spam : si l'opérateur a déjà ignoré 2 suggestions consécutives, arrêter pour la session
+
+**Exemples concrets** :
+
+Après `snapshot-brand karacare` :
+```
+→ Suggestion next step
+   Brand snapshot OK. Pour cartographier l'audience, run mine-voc karacare
+   (capture verbatims clients) ou define-specs karacare cellule-boost
+   (combler les gaps non-scrapés).
+   Tape : `mine-voc karacare` ou `define-specs karacare cellule-boost`
+```
+
+Après `produce-paid-angles karacare sur chute-post-grossesse` :
+```
+→ Suggestion next step
+   3 angles ranked produits. Le top angle (ANG-03) peut être briefé
+   pour copy detail (produce-copy-brief) OU adapté en variant visual
+   (compose-creative) si tu veux directement la créa.
+   Tape : `produce-copy-brief ANG-03` ou `compose-creative ANG-03`
+```
 
 ## Flush format — recap before writing
 

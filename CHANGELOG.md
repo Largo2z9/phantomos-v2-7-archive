@@ -5,6 +5,45 @@
 
 ---
 
+## v2.34.0 · 2026-05-06 · Production loop · 3 skills P3+P5 + smart-suggest daemon · pipeline P0→P5 opérationnel
+
+**Why this release.** v2.33 a livré les fondations cartographie (Phase 1 product · Phase 2a audience · Phase 3 modulator). v2.34 ferme la production loop avec 3 skills · `compose-creative` (P5 forward) + `recompose-creative` (P5 adaptation) + `score-matrix` (P3 priorisation). Plus le smart-suggest daemon dans `learn-from-session` qui surface les next phase entry points contextuels post-skill. Pipeline compositionnel P0 → P5 désormais opérationnel skill par skill.
+
+**What shipped (3 skills nouveaux).**
+
+- **`compose-creative` v1.0 (producer FORWARD opus)** · Pendant forward de `decompose-ad`. Génère creative (visuel + brief copy) depuis brief structuré ancré dans `angle.formula` + `profile.json` 8 dim + `brand.creative_zone` + `spec.visual_identity`. Pipeline · lookup pre-requis → assemblage compositionnel équation v3.1 NOYAU × CONTEXTE × MODIFIEURS → fal.ai nano-banana-pro/edit avec packshot clean + distinctive_features hard constraints + retry max 2 sur label régressé → persist `creative.schema v1.2` conforme + JPG + brief markdown S55 fiche v5 forward.
+- **`recompose-creative` v1.0 (producer ADAPTATION opus)** · Adapte créa existante à 1 dimension changée parmi 5 axes : `new_audience` · `new_platform` (Meta → TikTok, IG Story, LinkedIn, YT Shorts) · `new_format` (image → carrousel, story → reel) · `new_hook` (A/B variant) · `new_visual_treatment` (variant scène). Discipline variant tracking · `concept_id` réutilisé + `variant_of` + `variant_axis` enum explicite. Lookup canon `formats-livrables` pour contraintes platform-specific.
+- **`score-matrix` v1.0 (producer P3 priorisation)** · Matrice Sub-cluster × Source d'angle (5×5 max default · cardinality maîtrisée canon Notion). Score brut Impact×3 + Vitesse×2 + Signal×1 (max 60) × modulateurs brand 4 axes (capped 0.5-2.0). Output ASCII matrice + top 3-5 territoires + trous détectés (compatibles mais 0 angle activable). Persiste `scoring/matrix-{date}.json`.
+
+**What shipped (smart-suggest daemon learn-from-session).**
+
+- `learn-from-session` 1.0.1 → 1.0.2 · Trigger 8 ajouté · daemon silencieux post-skill completion · 12+ mapping entries skill terminé → next phase entry points · stop rule 2-ignore consécutifs · surface dans no-orphan-output du skill terminé si confidence > 0.7.
+
+**What shipped (manifest).**
+
+- Régénéré · 46 → 49 skills.
+
+**Breaking changes.** Aucun. Skills nouveaux strictement additifs.
+
+**Operator impact.** Operator peut maintenant : (a) générer créa de zéro avec `compose-creative` depuis brief structuré (fidélité produit via visual_identity), (b) adapter créa testée en variants cross-platform/audience/format avec `recompose-creative` (variant tracking concept_id + variant_of), (c) prioriser territoires de test avec `score-matrix` (top 3-5 cellules + trous détectés), (d) bénéficier des suggestions next phase via smart-suggest daemon (réduction friction nouveau opérateur).
+
+**Pipeline cartographie compositionnelle · état v2.34.**
+
+```
+P0 onboarding         · setup-brand · onboard-brand · snapshot-brand · connect-source     ✓
+P1 product            · define-specs                                                       ✓
+P2a audience          · mine-voc · mine-vom · mine-audience · profile-audience            ✓
+P2b angle             · produce-paid-angles · decompose-ad                                ✓
+P3 matrix scoring     · weight-dimensions · score-matrix                                  ✓
+P4 brief structured   · produce-copy-brief                                                ✓
+P5 visual production  · compose-creative · recompose-creative · decompose-ad reverse      ✓
+ongoing               · learn-from-session smart-suggest daemon · validate-resources      ✓
+```
+
+**Source empirique.** Plan v2.34 documenté `/Users/guillaumevallee/.claude/plans/atlas-state-a-sert-sorted-goose.md` · 4 mandats parallèles (3 skills + Trigger 8 daemon).
+
+---
+
 ## v2.33.0 · 2026-05-06 · Foundation skills · cartographie compositionnelle Phase 1-2 + INDEX navigation
 
 **Why this release.** Audit Phase 1 v2.32 a identifié 5 gaps doctrine (compose-creative · recompose-creative · define-specs · profile-audience · weight-dimensions). Foundation-first arbitrage Largo : ship d'abord les fondations Phase 1 et Phase 2 (define-specs · profile-audience · weight-dimensions) pour que la production loop v2.34 (compose-creative + recompose-creative + score-matrix) opère sur substrat solide. Pattern doctrine cartographie compositionnelle issu Notion Stride-Up · 4 arbres + matrice + modulateurs.
