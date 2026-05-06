@@ -1,6 +1,6 @@
 ---
 name: compose-creative
-version: 1.0.0
+version: 1.0.1
 type: producer
 recommended_model: opus
 subagent_safe: true
@@ -8,7 +8,10 @@ mode: proposed
 operator_facing: true
 reasoning_pattern: matrix-driven
 matrix_mode: composing
+patch_notes:
+  v1.0.1: "v2.35 alignment. visual_identity path fallback (spec.json#visual_identity OR sibling visual_identity.json with _belongs_to pointer). HR1.4 + HR3.1 patched + consumes paths extended."
 description: >
+  v1.0.1 (v2.35 alignment) : visual_identity path fallback (spec.json#visual_identity OR sibling visual_identity.json).
   v1.0.0 (v2.34 ship production loop). Pendant FORWARD de decompose-ad (qui est REVERSE).
   Génère une créa (visuel via fal.ai nano-banana-pro/edit + brief copy markdown S55 fiche v5)
   depuis un brief structuré ancré dans canon × profil audience × angle × brand visual_identity.
@@ -45,7 +48,10 @@ consumes:
     note: brand_equity_level + creative_zone (curseur copy/visual)
   - path: brands/{slug}/products/{product_slug}/spec.json#visual_identity
     min_version: 1.10.0
-    note: packshots clean + color_palette + distinctive_features (S55 v2.31 extension)
+    note: "primary path. packshots clean + color_palette + distinctive_features (S55 v2.31 extension)"
+  - path: brands/{slug}/products/{product_slug}/visual_identity.json
+    min_version: 1.0.0
+    note: "fallback path (sibling). Convention legacy or import-product-visuals output. Verifier _belongs_to pointer = product_slug."
   - path: resources/canon/copy/hooks/*.json
     min_version: 1.0.0
   - path: resources/canon/copy/mecaniques/*.json
@@ -112,7 +118,11 @@ L'opérateur peut fournir l'input sous trois formes. Detection auto :
 1. `brands/{slug}/angles/{angle_id}.json` (formula + lineage canon).
 2. `brands/{slug}/audiences/{audience_slug}/profile.json` (8 dimensions + Schwartz + persona).
 3. `brands/{slug}/brand.json` (creative_zone + brand_equity_level + tone_of_voice).
-4. `brands/{slug}/products/{product_slug}/spec.json#visual_identity` (packshots clean + color_palette + distinctive_features + label.wordmark_text).
+4. `visual_identity` (packshots clean + color_palette + distinctive_features + label.wordmark_text). **Path lookup avec fallback :**
+   1. Tenter `brands/{slug}/products/{product_slug}/spec.json#visual_identity` (path canonique inline).
+   2. Si absent ou champ manquant, fallback `brands/{slug}/products/{product_slug}/visual_identity.json` (sibling). Verifier `_belongs_to` pointer = `product_slug` avant consume.
+   3. Si toujours absent ou les 2 paths donnent des champs vides, surface gracefully + suggest `define-specs` (canon path) ou `import-product-visuals` (futur skill, sibling path).
+   4. JAMAIS refuser bloquant si l'un des 2 paths donne quelque chose d'exploitable. Merge logique : sibling override inline si les 2 existent et divergent (sibling = source plus recente par convention import).
 5. `resources/canon/copy/*` (hooks, mecaniques, archetypes-voix, formules-titres).
 6. `resources/registries/creative-mechanics-registry.md` (SSOT mécaniques).
 
@@ -161,7 +171,10 @@ Assembler creative.schema v1.2 selon NOYAU × CONTEXTE × MODIFIEURS.
 
 Pipeline image gen :
 
-1. Récupère packshot clean URL depuis `spec.visual_identity.packshots.primary_front`.
+1. Récupère packshot clean URL depuis `visual_identity.packshots.primary_front`. **Path lookup avec fallback :**
+   1. Tenter `brands/{slug}/products/{product_slug}/spec.json#visual_identity.packshots.primary_front`.
+   2. Si absent, fallback `brands/{slug}/products/{product_slug}/visual_identity.json#packshots.primary_front` (sibling, verifier `_belongs_to` pointer).
+   3. Si les 2 paths absents ou null, refuse de composer (regression label garantie cf HR1.4).
 2. Construis prompt structuré :
    - Référence DNA visuel angle (mécanique narrative + scène depuis HR2 NOYAU).
    - Hard constraints `visual_identity` (non-négo) :
@@ -269,7 +282,7 @@ Une reco forte, pas trois équivalentes.
 
 ## HR7 · Anti-patterns
 
-1. **Compose sans visual_identity.** Régression label garantie sous 2 iter (audit S55 `kara[care]` → `karacare`). Refuse de composer si `packshots.primary_front` absent.
+1. **Compose sans visual_identity.** Régression label garantie sous 2 iter (audit S55 `kara[care]` → `karacare`). Refuse de composer si `packshots.primary_front` absent dans les 2 paths (spec.json#visual_identity ET sibling visual_identity.json).
 2. **Hardcoded mécanique.** Modifier le prompt mécanique hardcodé dans le skill au lieu de lookup canon registry SSOT. Drift inévitable cross-products.
 3. **Skip angle.formula validation.** NOYAU sans angle = creative null. Refuse de composer si `angle.json` absent ou `formula` vide.
 4. **Direct write produced/.** Mode `proposed` non-optionnel. Mutation gate via `write_to_context` obligatoire.

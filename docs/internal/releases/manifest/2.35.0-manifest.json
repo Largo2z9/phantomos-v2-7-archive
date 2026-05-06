@@ -1,0 +1,57 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.35.0",
+  "released_at": "2026-05-06",
+  "compatible_from": "2.0.0",
+  "type": "skill_evolution_minor",
+  "summary": "Cohérence runtime post tests isolés v2.34 · 2 vrais patches skills (compose-creative visual_identity path fallback · profile-audience brownfield seed) + 1 patch ops (provision-test-credentials.sh) + 2 faux positifs identifiés (mechanisms[] et creative_zone déjà présents schemas).",
+  "changes": [
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "compose-creative v1.0.0 → v1.0.1 · visual_identity path fallback",
+      "rationale": "Test isolé v2.34 a révélé convention drift entre design v1.10 (visual_identity inline dans spec.json) et workspace test (visual_identity.json sibling avec _belongs_to pointer). Skill refusait à tort sur le path manquant. Patch ajout fallback dual support : (1) tenter spec.json#visual_identity inline · (2) fallback brands/{slug}/products/{slug}/visual_identity.json sibling avec _belongs_to verification · (3) si les 2 absents surface gracefully + suggest define-specs ou import-product-visuals · (4) JAMAIS refuser bloquant si l'un donne quelque chose. Patché : HR1.4 lookup, HR3.1 packshot consume, HR7.1 anti-pattern, frontmatter consumes 2 paths déclarés."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/profile-audience/SKILL.md"],
+      "section": "profile-audience v1.0.0 → v1.0.1 · HR2.5 brownfield seed + HR7.1 merge strategy",
+      "rationale": "Test isolé v2.34 a révélé que skill ignore profile.json existant comme seed corpus → casse cas brownfield (audience pré-amorcée par opérateur ou skill antérieur, 1 verbatim PRB-02 déjà inliné dans kara/chute-post-grossesse). Patches : (HR2.5) Read existing profile.json as seed corpus · extraire voice.key_expressions[] + pain_points[] + benefits[] + identity.* · tag source existing_profile vs mine_voc/vom/audience · préserver validation_status >= validated. (HR7.1) Merge strategy explicite avant write_to_context · re-load profile.json actuel state of truth · preserve validated entries · append new mine_* entries · flag conflicts pour operator gate."
+    },
+    {
+      "category": "infrastructure",
+      "action": "created",
+      "files": ["provision-test-credentials.sh"],
+      "section": "Script ops sync credentials workspace-template → phantomos-test",
+      "rationale": "Test isolé v2.34 a révélé FAL_API_KEY (stockée v2.31 dans workspace-template/credentials_shared.env) jamais propagée vers phantomos-test (sync-test-workspace.sh exclut credentials_shared.env par sécurité raisonnable). Conséquence : skills downstream qui réfèrent FAL_API_KEY (compose-creative, recompose-creative) ne peuvent pas tourner en test workspace. Solution Option D · script provisioning séparé explicit operator gate. provision-test-credentials.sh : (a) check source exists, (b) backup target horodaté si exists, (c) cp source → target, (d) verify FAL_API_KEY presence post-sync. One-shot run effectué · FAL_API_KEY synced vers phantomos-test · backup 549 bytes préservé."
+    },
+    {
+      "category": "scripts",
+      "action": "patched",
+      "files": ["sync-test-workspace.sh"],
+      "section": "Note opérateur · routing vers provision-test-credentials.sh",
+      "rationale": "Commentaire 2-lignes ajouté juste avant le rsync command pour clarifier que credentials_shared.env est exclu par sécurité et que provisioning explicit se fait via ./provision-test-credentials.sh. Réduit friction nouveau opérateur qui run sync-test sans comprendre pourquoi credentials manquent."
+    },
+    {
+      "category": "audit",
+      "action": "verified",
+      "files": ["resources/schemas/spec.schema.json", "resources/schemas/brand.schema.json"],
+      "section": "Faux positifs B1 + B3 identifiés post-audit",
+      "rationale": "B1 (define-specs schema drift mechanisms[]) faux positif · spec.schema v1.9 contient déjà mechanisms[] array typé (line 385) avec mechanism_id + target + mode_of_action + time_window + evidence_level + market_sophistication + triggered_by_specs[]. define-specs SKILL.md HR4 référence correctement mechanisms[]. unique_mechanism legacy deprecated v2.29.0 mais coexiste pour backward compat. Pas de patch nécessaire. B3 (brand.schema creative_zone + brand_equity_level absents) faux positif · brand.schema v2.2 contient bien les 2 champs (lines 30-45). compose-creative SKILL.md HR1.3 + HR2 modifieurs alignés. Probable cause faux positif tests v2.34 : agent test a regardé un brand.json (instance) au lieu du brand.schema.json (definition), ou snapshot stale workspace test. Audit clos : pas de drift réel, pas de patch."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [
+    {
+      "script": "provision-test-credentials.sh",
+      "scope": "credentials_shared.env workspace-template → phantomos-test",
+      "mode": "explicit operator gate · backup horodaté avant overwrite",
+      "trigger": "operator runs ./provision-test-credentials.sh manually when needed (after key rotation, new key added in workspace-template, etc.)",
+      "fallback": "sync-test-workspace.sh continues to exclude credentials_shared.env (security)"
+    }
+  ],
+  "operator_impact": "Skills compose-creative + profile-audience désormais robustes en mode brownfield et convention drift visual_identity. Tests live pipeline P0 → P5 sur kara désormais réalistes (FAL_API_KEY dispo, brownfield handled, visual_identity dual path). Operator peut maintenant tenter compose-creative end-to-end sur kara/cellule-boost-anti-chute après run define-specs (compléter spec) + produce-paid-angles (créer 1 angle).",
+  "next_release_note": "v2.36+ patches mineurs identifiés · (a) decompose-ad + recompose-creative visual_identity path fallback (cohérence cross-skill avec compose-creative v1.0.1), (b) HR2.5 seed perf cap (max 10 conflicts surfaced per turn paginate restant) pour brownfield large, (c) existing_profile tag → mapped to structured (harmoniser canon _field_types enum), (d) spec.schema version label drift (define-specs SKILL frontmatter dit v1.10 mais schema réel v1.9). v2.37+ first end-to-end live test pipeline P0 → P5 sur kara avec capture frictions runtime + feed validations[] canon."
+}

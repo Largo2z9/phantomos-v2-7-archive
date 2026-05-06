@@ -1,6 +1,6 @@
 ---
 name: profile-audience
-version: 1.0.0
+version: 1.0.1
 type: orchestrator
 recommended_model: sonnet
 subagent_safe: true
@@ -65,6 +65,24 @@ Si aucun mining n'a tourné, surface warning :
 Read `brands/{slug}/audiences/_voc/{audience}/*` + `_vom/*` + `raw/*`.
 Aggrégate verbatims, key_expressions, pain points raw, benefits raw.
 Cache localement dans `/tmp/profile-audience/{audience}-mining-corpus.json`.
+
+### HR2.5 · Read existing profile.json as seed corpus (brownfield)
+
+v1.0.1 (v2.35 alignment) : HR2.5 brownfield seed (read existing profile.json as seed corpus, preserve validated entries) + HR7.1 merge strategy explicite (no auto-overwrite).
+
+Si `brands/{slug}/audiences/{audience_slug}/profile.json` existe et contient déjà des entries (verbatims inliné, pain_points populés, voice.key_expressions, etc.) :
+
+1. Read le profile.json existant comme seed
+2. Extraire :
+   - voice.key_expressions[] · verbatims pré-existants
+   - pain_points[] · chains 3 niveaux pré-existants
+   - benefits[] · chain functional/emotional/identity pré-existants
+   - identity.* · démographie pré-existante
+3. Merger avec mining corpus (HR2) si dispo
+4. Marquer chaque entry source : `existing_profile` (seed) vs `mine_voc/vom/audience` (fresh mining)
+5. Préserver `validation_status` existant des entries déjà validées (status >= validated)
+
+HR2.5 garantit le skill fonctionne en mode brownfield (audience pré-amorcée par opérateur ou skill antérieur) sans écraser ni perdre l'existant.
 
 ### HR3 · Synthesize 8 dimensions
 
@@ -131,6 +149,17 @@ Demander :
 Une fois validé, `write_to_context` sur `brands/{slug}/audiences/{audience_slug}/profile.json`.
 Conformité `profile.schema v1.3` obligatoire.
 Source : `derived` (skill orchestrator) + tag verbatims sources.
+
+### HR7.1 · Merge strategy explicite
+
+Avant write_to_context :
+
+1. Re-load profile.json actuel (state of truth at write time)
+2. Pour chaque entry du draft skill :
+   - Si entry source `existing_profile` + `validation_status >= validated` → preserve (skill ne touche pas)
+   - Si entry source `mine_*` + entry n'existe pas dans current profile → append
+   - Si entry source `mine_*` + entry existe dans current profile → flag conflict, surface à operator
+3. Operator gate explicite si conflits détectés
 
 ### HR8 · Output operator-facing
 

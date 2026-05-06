@@ -5,6 +5,29 @@
 
 ---
 
+## v2.35.0 · 2026-05-06 · Cohérence runtime · patches post-tests isolés v2.34
+
+**Why this release.** Tests isolés v2.34 sur kara test workspace ont révélé 5 frictions runtime cachées entre design skills v2.33-v2.34 et exécution réelle. v2.35 traite les vrais blockers (2 skills patches + 1 patch ops) et identifie les faux positifs (2 schemas déjà alignés) pour ne pas sur-patcher.
+
+**What shipped.**
+
+- **`compose-creative` v1.0.0 → v1.0.1** · visual_identity path fallback dual support. Skill ne refuse plus à tort sur convention drift entre design v1.10 (spec.json#visual_identity inline) et workspace test (sibling visual_identity.json avec _belongs_to pointer). Patché HR1.4 lookup, HR3.1 packshot consume, HR7.1 anti-pattern, frontmatter consumes 2 paths déclarés.
+- **`profile-audience` v1.0.0 → v1.0.1** · HR2.5 brownfield seed + HR7.1 merge strategy. Skill lit désormais profile.json existant comme seed corpus (extrait voice/pain_points/benefits/identity, tag source existing_profile, préserve validation_status >= validated). HR7.1 merge avant write : preserve validated, append new mine_*, flag conflicts pour operator gate.
+- **`provision-test-credentials.sh` (NEW script ops)** · sync explicit credentials_shared.env workspace-template → phantomos-test avec backup horodaté. FAL_API_KEY désormais disponible côté test. sync-test-workspace.sh commenté pour clarté opérateur.
+
+**Faux positifs identifiés (pas de patch).**
+
+- B1 · `define-specs` schema drift mechanisms[] · spec.schema v1.9 contient déjà mechanisms[] array typé. Aucun patch nécessaire.
+- B3 · brand.schema creative_zone + brand_equity_level · présents v2.2. Probable cause faux positif test : agent a regardé brand.json (instance) au lieu du brand.schema.json (definition), ou snapshot stale.
+
+**Breaking changes.** Aucun. Tout additif.
+
+**Operator impact.** Skills compose-creative + profile-audience désormais robustes en mode brownfield (audience/produit pré-amorcés) et convention drift visual_identity. Tests live pipeline P0 → P5 sur kara désormais réalistes (FAL_API_KEY dispo, brownfield handled, visual_identity dual path). Operator peut tenter compose-creative end-to-end sur kara/cellule-boost-anti-chute après run define-specs + produce-paid-angles.
+
+**Source empirique.** Tests isolés v2.34 documentés via 3 sub-agents (define-specs · profile-audience · compose-creative) sur kara test workspace. 5 blockers triés en 3 vrais patches + 2 faux positifs.
+
+---
+
 ## v2.34.0 · 2026-05-06 · Production loop · 3 skills P3+P5 + smart-suggest daemon · pipeline P0→P5 opérationnel
 
 **Why this release.** v2.33 a livré les fondations cartographie (Phase 1 product · Phase 2a audience · Phase 3 modulator). v2.34 ferme la production loop avec 3 skills · `compose-creative` (P5 forward) + `recompose-creative` (P5 adaptation) + `score-matrix` (P3 priorisation). Plus le smart-suggest daemon dans `learn-from-session` qui surface les next phase entry points contextuels post-skill. Pipeline compositionnel P0 → P5 désormais opérationnel skill par skill.
