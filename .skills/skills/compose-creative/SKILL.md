@@ -1,6 +1,6 @@
 ---
 name: compose-creative
-version: 1.0.1
+version: 1.0.2
 type: producer
 recommended_model: opus
 subagent_safe: true
@@ -9,6 +9,7 @@ operator_facing: true
 reasoning_pattern: matrix-driven
 matrix_mode: composing
 patch_notes:
+  v1.0.2: "v2.36 frictions runtime patch. HR3 step 3 explicit aspect_ratio param (4:5 default Meta feed). HR3.4 adaptive retry policy (max 3 retries scenes complexes vs 2 packshot only) + label_compositing_required flag forward to compose-overlay-text v2.37. HR3.5 post-gen aspect_ratio normalize via PIL crop centre si fal.ai output ratio differe target."
   v1.0.1: "v2.35 alignment. visual_identity path fallback (spec.json#visual_identity OR sibling visual_identity.json with _belongs_to pointer). HR1.4 + HR3.1 patched + consumes paths extended."
 description: >
   v1.0.1 (v2.35 alignment) : visual_identity path fallback (spec.json#visual_identity OR sibling visual_identity.json).
@@ -185,7 +186,12 @@ Pipeline image gen :
      - Distinctive features : `MUST PRESERVE: {distinctive_features[0]}. {distinctive_features[1]}. ...`.
    - Atmosphère depuis `brand.creative_zone` + `audience.identity_signals`.
    - Format `4:5 vertical Meta feed` default.
-3. POST `https://fal.run/fal-ai/nano-banana-pro/edit` avec `image_urls=[packshot_url]` + `prompt=<above>`. Auth header `Authorization: Key ${FAL_API_KEY}`.
+3. POST `https://fal.run/fal-ai/nano-banana-pro/edit` (endpoint exact, **PAS** `nano-banana/edit` qui ignore aspect_ratio et force 1:1) avec payload :
+   - `image_urls=[packshot_url]`
+   - `prompt=<above>`
+   - `aspect_ratio="4:5"` (default Meta feed, override possible via input opérateur). Enum supportée par endpoint : `auto, 21:9, 16:9, 3:2, 4:3, 5:4, 1:1, 4:5, 3:4, 2:3, 9:16`.
+   - `output_format="jpeg"`, `resolution="1K"` (default).
+   - Auth header `Authorization: Key ${FAL_API_KEY}`.
 4. Download résultat dans `/tmp/compose-creative/{brand}-{crt_id}.jpg`.
 5. Move final vers `brands/{brand}/produced/{CRT-N}.jpg`.
 
@@ -199,6 +205,48 @@ Pipeline image gen :
 - Valider chaque `distinctive_features[]` présent dans le render (lecture image + cross-check description).
 - Valider color_palette dominantes match (hex tolérance ±15%).
 - Échec sur 1+ feature → flag à l'opérateur + propose re-gen avec prompt renforcé.
+
+---
+
+## HR3.4 · Adaptive retry policy (v1.0.2)
+
+Calibrer `max_retry` selon complexité scène détectée à partir du prompt assemblé en HR3 :
+
+- **Scène simple** (packshot studio uniquement, pas de model, pas de scene context, pas de props multiples) → `max_retry = 2` (default historique).
+- **Scène complexe** (model + props multiples OU scene context narratif OU 2+ couches sub-label/duration_indicator/distinctive_features à préserver) → `max_retry = 3`.
+
+**Sub-label / duration_indicator regression handling :**
+
+Après les retries autorisés, si le wordmark principal (`label.wordmark_text`) est préservé MAIS le sub-label (`label.sub_label`) ou duration indicator (`label.duration_indicator`) reste flou ou illisible :
+1. NE PAS continuer à retry (gain marginal, brûle budget API).
+2. Persister la créa avec wordmark préservé.
+3. Set `meta.label_compositing_required: true` dans `creative.json`.
+4. Note dans brief markdown S55 fiche v5 (Section 1, ligne Branding) : *"Sub-label compositing externe recommandé — run `compose-overlay-text` (skill v2.37) pour overlay text crisp post-gen."*
+5. Flag explicite à l'opérateur dans la reco no-orphan : *"Wordmark préservé, sub-label régressé. Compositing PIL externe recommandé avant Meta ad approval — skill `compose-overlay-text` arrive en v2.37."*
+
+**Note v2.37 scope (futur) :** `compose-overlay-text` fera le compositing PIL post-gen pour overlay text crisp (sub-label, duration indicator, optional CTA badge). Hors scope v2.36 — la créa courante reste flag `label_compositing_required` jusqu'à shipping de la skill.
+
+---
+
+## HR3.5 · Post-gen aspect ratio normalize (v1.0.2)
+
+Defensive primitive : même si HR3 step 3 passe `aspect_ratio` explicite, certains endpoints fal.ai (cas où l'opérateur override sur `nano-banana/edit` sans `pro`, ou fallback API-side) peuvent retourner un ratio différent de la target.
+
+**Procédure post-download :**
+
+1. Lire dimensions image téléchargée (`/tmp/compose-creative/{brand}-{crt_id}.jpg`) via PIL.
+2. Calculer ratio actuel `current_ratio = width / height`.
+3. Calculer ratio target depuis param `aspect_ratio` envoyé en HR3 step 3 (ex `4:5` → `0.8`).
+4. Si écart `|current_ratio - target_ratio| > 0.02` :
+   - Crop centré via `PIL.Image.crop()` pour atteindre exactement le ratio target.
+   - Préserver hauteur ou largeur selon laquelle dimension contraint (crop la plus large).
+   - Sauvegarder over le fichier d'origine.
+   - Note dans brief markdown S55 fiche v5 (Section 1, ligne Visuel généré) : *"auto-cropped {current_ratio} → {target_ratio} post-gen"*.
+5. Si écart ≤ 0.02 → no-op, ratio déjà correct.
+
+**Pas de retry fal.ai sur mismatch ratio.** Crop PIL est déterministe et instantané, retry fal.ai = gain marginal + coût API.
+
+**Dépendance :** Python PIL (Pillow). Si absent dans l'env runtime, surface honnête à l'opérateur + persiste sans crop avec note `aspect_ratio_mismatch_unresolved` dans `meta`.
 
 ---
 

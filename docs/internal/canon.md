@@ -101,6 +101,10 @@ Chaîne de profondeur d'une brique. Pain : Symptom, Cause, Block. Bénéfice : O
 
 ---
 
+## Atlas brand (v2.36+)
+
+Concept canonique upstream pour cartographie holistique data e-commerce d'une brand. Composé de 6 entités core (brand · spec · offers · profile · learnings · strategy) + 3 dérivés (angles · creatives produced · scoring matrix). Navigable via `/phantom` cockpit. Distinct de atlas canon copy (sense 1, cross-brand référentiel). Doctrine complète : `docs/system/atlas-brand.md`.
+
 ## Atlas canon copy (v2.26+)
 
 Référentiel typé partagé du copywriting, ajouté en v2.26.0 comme infrastructure puis branché aux skills en v2.27.0 (atlas vivant). 11 couches × 58 fiches : frameworks, hooks, angles, niveaux-schwartz, archetypes-voix, formules-titres, objections, construction-offre, leads, formats-livrables, persuasion. Sources canoniques : Schwartz (Breakthrough Advertising), Cialdini, Halbert, Sugarman, Hormozi, Carlton, Jung. Storage : `resources/canon/copy/{layer}/{tool}.json`. Schema : `canon-tool/1.0`. **Mécanisme atlas vivant** : 4 skills (`produce-paid-angles`, `produce-copy-brief`, `mine-voc`, `learn-from-session`) **consomment** le canon (filtrage par `when_works/when_avoid/combines_with`) et **alimentent** via `validations[]` append-only (operator-gated promotion). L'atlas devient brand-spécifique au fil de l'usage. Doctrine complète : `docs/system/atlas-canon-copy.md`. Décisions : largo-kb D#382 (fondation), D#383 (consume + feed).

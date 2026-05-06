@@ -1,7 +1,7 @@
 ---
 name: produce-paid-angles
 type: producer
-version: "1.3.0"
+version: "1.4.0"
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: generating
@@ -19,6 +19,7 @@ consumes:
   - path: resources/templates/hook-formulas.md
     min_version: 1.0.0
 description: >
+  v1.4.0 (v2.36 frictions runtime patch) : HR4.5 verbatim density floor gate strict. AskUserQuestion explicit gate quand voice.key_expressions[] < 5 OR cumulative verbatim_quotes[] < 5 — pas de production sans operator response (a/b/c). Resoud anti-pattern mou v1.3.0 ou angles inferes shippaient avec flag inline sans gate explicite.
   v1.3.0 (v2.32 alignment) : when reading creative.json instances, prefer intent_mix over intent and overlay_density + brand_mark_present over craft_mode. validation_status read via oneOf (legacy string OR composite object).
   Generates a ranked matrice copy of paid creative angles for an audience
   on a brand. Consumes encoded intelligence (verbatims, pains, objections,
@@ -79,7 +80,7 @@ Three branches:
 
 ## Step 0bis · Load canon copy (v2.26.0+, refacto v2.29.0)
 
-> **Atlas refs** dans cette skill = atlas canon copy (sense 1, référentiel cross-brand). Brand-side enrichment via `validations[]` (sense 2). Pour la distinction lexicale complète : `lexicon.md § Atlas, 3 senses MECE`.
+> **Atlas refs** dans cette skill = atlas canon copy (sense 1, référentiel cross-brand doctrine copywriting). Brand-side enrichment via `validations[]` (sense 2 atlas vivant). Distinct de l'atlas brand (sense 4, cartographie holistique data brand) qui désigne la matière brand structurée navigable via `/phantom`. Pour la distinction lexicale complète : `lexicon.md § Atlas, 4 senses MECE`.
 
 **Avant Step 1**, charger l'atlas canon copy comme bibliothèque de référence pour la production. Les angles ne sont plus générés depuis le néant, ils sont composés en piochant dans des outils canon référencés.
 
@@ -404,6 +405,16 @@ Focus modifiers are operator-facing additions (the operator can say *"angles pai
 
 - **Never invent a verbatim attributed to customers.** Never paraphrase a verbatim and present it as a customer quote. Either real (sourced from `voice.key_expressions[]` or `verbatim_quotes[]`) or formula-flagged. The trust contract breaks irrecoverably on this rule.
 - **Verbatim density floor.** If `voice.key_expressions[]` < 5 OR cumulative `verbatim_quotes[]` < 5 → recommend `mine-voc` first, do not produce angles on inferred-only basis without explicit operator override.
+- **HR4.5 · Verbatim density floor gate (v1.4.0, append-only).** Si verbatim density floor déclenché en Step 1 (`voice.key_expressions[]` < 5 OR cumulative `verbatim_quotes[]` < 5), le skill **doit** émettre un AskUserQuestion explicit AVANT toute production. Pas de fallback silencieux sur "je flag inline et ship quand même". Format gate strict :
+  ```
+  Corpus thin · {N_verbatims} verbatim(s) seul(s) disponible(s) sur {audience_label}.
+  Trois moves possibles :
+  (a) Produire 3 angles inférés à 60% confidence (flag visible inline + lineage formula-derived).
+  (b) Refuser et router vers mine-voc d'abord (~20 min, on revient avec verbatims denses).
+  (c) Produire 1 angle ancré sur le seul verbatim disponible, autres en backup formula-derived flagués.
+  Tu choisis ?
+  ```
+  **Pas de production sans operator response explicit (a/b/c).** Override possible uniquement si l'opérateur a déclaré explicitement *"force, je sais que c'est inféré"* dans le tour précédent. Anti-pattern v1.3.0 résolu : auparavant, le skill shippait 3 angles inférés avec flag inline `(à valider, pas de verbatim direct)` sans gate, l'opérateur pouvait shipper sans réaliser que la matière n'était pas ancrée.
 - **Cap dimensions at 5 max.** Cartesian beyond 5 dilutes signal per scoring framework anti-pattern.
 - **Cluster filter mandatory.** Output never contains 2+ cells saying the same thing with different wording. Same pain + same objection + same placement = one angle, drop the rest.
 - **Score never exposed.** Operator sees ranked angles, not numbers. No `Score 73/100`, no percentage, no rating bar.

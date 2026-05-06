@@ -1,5 +1,7 @@
 # Atlas Canon Copy
 
+> **Note disambiguation v2.36** · "atlas" désigne 4 sens distincts en PhantomOS (cf `lexicon.md § Atlas, 4 senses MECE`). Ce document couvre le **sense 1 · atlas canon copy** (référentiel cross-brand doctrine copywriting, read-only, partagé tous brands). Pour la cartographie holistique data d'une brand spécifique (sense 4), voir `docs/system/atlas-brand.md`.
+
 > **Note terminologique** : "atlas" désigne 3 concepts distincts en PhantomOS. Ce document couvre **Atlas Canon Copy** (référentiel cross-brand doctrine, sense 1). Pour atlas vivant brand-spécifique (sense 2) et atlas state modulator reporté (sense 3), consulter `lexicon.md § Atlas, 3 senses MECE`.
 
 > Doctrine atlas canon copy. Référentiel typé partagé cross-brands. Fondation v2.26.0 (11 couches, 58 fiches seedées, schema `canon-tool/1.0`), boucle bidirectionnelle v2.27.0 (4 skills consume + feed). Décisions canon : D#382, D#383, D#391.

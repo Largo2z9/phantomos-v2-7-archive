@@ -62,9 +62,9 @@ Chaîne causale entre une spec produit et un bénéfice. Champ typé : `target`,
 
 Référentiel typé partagé de 11 couches × 58 fiches du copywriting (frameworks, hooks, angles, niveaux-schwartz, archetypes-voix, formules-titres, objections, construction-offre, leads, formats-livrables, persuasion). Sources : Schwartz, Cialdini, Halbert, Sugarman, Hormozi, Carlton, Jung. Storage : `resources/canon/copy/{layer}/{tool}.json`. Schema : `canon-tool/1.0`. Skills consume + feed via `validations[]` (atlas vivant brand-spécifique). Doctrine : `docs/system/atlas-canon-copy.md`. Releases : v2.26.0 (fondation) + v2.27.0 (skills branchés).
 
-## Atlas, 3 senses MECE
+## Atlas, 4 senses MECE
 
-Trois acceptions cohabitent. Lever ambiguïté avant tout output opérateur.
+Quatre acceptions cohabitent. Lever ambiguïté avant tout output opérateur.
 
 ### 1. Atlas canon copy (référentiel cross-brand, v2.26)
 Référentiel typé partagé, 11 couches × 58 fiches. Read-only ship. Doctrine copywriting partagée tous brands. Source : `docs/system/atlas-canon-copy.md`. Storage : `resources/canon/copy/{layer}/{tool}.json`. Schema : `canon-tool/1.0`.
@@ -75,7 +75,14 @@ Mécanique compound · journal d'usage local enrichi par chaque output skill via
 ### 3. Atlas state modulator (reporté D#390)
 Futur modulateur visuel d'état couche représentation. **PAS shippé v2.32**. Gated sur skill matrice représentation visuelle future. Ne pas exposer opérateur tant que non livré. Concept structurellement validé (vide/partiel/consolidé) mais sans implémentation code.
 
-**Distinction critique** : (1) est canon stable cross-brand, (2) est trace vivante par brand, (3) n'existe pas encore en code.
+### 4. Atlas brand · cartographie holistique data e-commerce (v2.36)
+La somme structurée audiences + products + angles + creatives + scoring + verbatims + tests d'une brand. Concept canonique upstream pour désigner toute la matière data e-commerce d'une brand. Équivaut Notion Stride-Up "Données Atlas" canonical UI label. Rendu via `/phantom kara` (mode brand) qui surface les 6 entités brand (brand · spec · offers · profile · learnings · strategy) + creatives produced + matrice scorée. Doctrine : `docs/system/atlas-brand.md`.
+
+**Distinction critique** :
+- Sense 1 (atlas canon copy) = référentiel cross-brand doctrine copywriting (read-only, partagé)
+- Sense 2 (atlas vivant) = mécanique compound validations[] DANS l'atlas brand
+- Sense 3 (atlas state) = modulateur reporté
+- **Sense 4 (atlas brand) = la cartographie elle-même** d'une brand spécifique (sa data holistique)
 
 ## Atome irréductible
 

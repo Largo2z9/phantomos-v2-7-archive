@@ -1,0 +1,71 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.36.0",
+  "released_at": "2026-05-04",
+  "compatible_from": "2.0.0",
+  "type": "doctrine_evolution_minor",
+  "summary": "Atlas canon upstream + parité Notion + frictions runtime · 3 axes patches doctrinaux et skills.",
+  "changes": [
+    {
+      "category": "doctrine",
+      "action": "elevated",
+      "files": [
+        "lexicon.md",
+        "docs/system/atlas-brand.md",
+        "docs/system/atlas-canon-copy.md",
+        "docs/internal/canon.md",
+        "docs/product/capabilities.md"
+      ],
+      "section": "Atlas brand (sense 4) canonique upstream cartographie holistique data e-commerce",
+      "rationale": "Largo demande élévation 'atlas' comme concept canonique fort upstream (équivalent Notion Stride-Up 'Données Atlas'). Audit sémantique préalable : 'atlas' déjà 3 senses MECE (canon copy v2.26 · vivant v2.27 · state reporté D#390). Pas d'autre terme candidat ('DNA' absent KB, 'snapshot' = digest pas concept, 'cartography' = audience-only). Décision : conserver 'atlas' canon avec disambiguation préfixée plutôt qu'introduire nouveau lexique. Patches : (1) lexicon.md `## Atlas, 3 senses MECE` → `## Atlas, 4 senses MECE` + sense 4 (atlas brand · cartographie holistique data e-commerce) ajouté. (2) docs/system/atlas-brand.md NEW (~750 mots, 9 sections) · doctrine complète : définition, 6 entités core + 3 dérivées, atlas vivant DANS atlas brand, navigation /phantom, distinction _snapshot.md, mécaniques d'enrichissement P0→P5, best practices, cross-refs. (3) atlas-canon-copy.md disclaimer disambiguation v2.36 inséré tête. (4) canon.md entry `## Atlas brand (v2.36+)` ajoutée avant `## Atlas canon copy`. (5) capabilities.md bullet atlas brand ajouté section 'What V1 ships today'. Backward compat additif sense 1/2/3 préservés."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [
+        ".skills/skills/produce-paid-angles/SKILL.md",
+        ".skills/skills/produce-copy-brief/SKILL.md",
+        ".skills/skills/mine-voc/SKILL.md",
+        ".skills/skills/learn-from-session/SKILL.md"
+      ],
+      "section": "4 SKILL.md disclaimer atlas Step 0bis · 3 senses → 4 senses",
+      "rationale": "Disclaimer existant v2.32 (`Atlas refs ici = canon copy (sense 1) [...] 3 senses MECE`) remplacé par version v2.36 mentionnant explicitement atlas brand (sense 4) et pointant `lexicon.md § Atlas, 4 senses MECE`. Replacement strict, Step 0bis pattern préservé. Cohérence cross-doc lexicon ↔ disclaimers vérifiée."
+    },
+    {
+      "category": "navigation",
+      "action": "enriched",
+      "files": [
+        ".claude/commands/phantom.md",
+        ".claude/commands/phantom-modes/canon.md",
+        ".claude/commands/phantom-modes/item.md"
+      ],
+      "section": "/phantom cockpit · 5 nouveaux modes + 2 drills produits + 3 patches gaps",
+      "rationale": "Parité Notion Stride-Up tableaux (5/9 → 9/9 atteint). Patches : (A1) Mode `/phantom {brand} briefs` drill DB Briefs créatifs · (A2) Mode `/phantom {brand} tests` drill DB Tests live + résultats · (A3) Mode `/phantom {brand} matrix` rend output score-matrix avec ASCII matrice scorée + top territoires + trous · (A4) Mode `/phantom {brand} atlas` vue d'ensemble cartographie holistique 6 entités core + 3 dérivées + atlas vivant cumulé · (A5) Mode `/phantom doctrine` rend doctrine cartographie compositionnelle (équation v3.1 NOYAU×CONTEXTE×MODIFIEURS + phases P0→P5). (C1) `/phantom {brand} products {p_slug} mechanisms` drill array mechanisms[] depuis spec.json. (C2) `/phantom {brand} products {p_slug} benefits` drill benefits[] chain functional/emotional/identity. (B1) profile-audience injecté entre mine-voc et produce-paid-angles dans NEXT SUGGESTED audience item. (B2) Mode `?/help` enrichi · ROUTING SKILLS goal-driven (INDEX.md) vs state-driven (/phantom). (B3) Slot SUGGESTIONS DAEMON ajouté mode workspace après NEXT SUGGESTED (lit pattern-detection buffer learn-from-session Trigger 8). Cap 900 lignes : phantom.md initial 939 → post-patches inline 1212 (dépasse) → split `Mode canon` (152 lignes) + `Mode item` (117 lignes) vers `phantom-modes/` → phantom.md final 958 lignes (sous cap 1000). 4 niveaux navigation préservés (workspace, brand, entity, item)."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "compose-creative v1.0.1 → v1.0.2 · fal.ai aspect_ratio + retry adaptative + post-gen crop fallback",
+      "rationale": "Friction 1 test live v2.35 : output fal.ai forcé 1:1 alors que aspect_ratio=4:5 demandé. Investigation : endpoint `nano-banana-pro/edit` existe et supporte aspect_ratio enum, mais runtime utilisait probablement `nano-banana/edit` (sans pro) qui ignore le param. Patches : (HR3 step 3) payload explicit `aspect_ratio=4:5` + `output_format=jpeg` + `resolution=1K`, warning explicit 'PAS nano-banana/edit qui force 1:1'. (HR3.4) retry policy adaptative · max_retry=2 scène simple, max_retry=3 scène complexe (model + props multiples + scene context OU 2+ couches sub-label/duration_indicator) · si label/sub-label régressé après retries → meta.label_compositing_required=true + note brief markdown + reco compose-overlay-text v2.37 future. (HR3.5) defense in depth · post-gen aspect ratio normalize via PIL crop centré si écart >0.02. Friction 3 sub-label compositing partiellement résolue (max_retry étendu) · résolution complète scope v2.37 skill compose-overlay-text dédié."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/produce-paid-angles/SKILL.md"],
+      "section": "produce-paid-angles v1.3.0 → v1.4.0 · HR4.5 verbatim density floor explicit gate",
+      "rationale": "Friction 2 test live v2.35 : skill shippait 3 angles inférés avec flag inline `(à valider, pas de verbatim direct)` malgré verbatim density < 5. Anti-pattern mou (flag visible mais pas bloquant). Patch HR4.5 : si verbatim_quotes cumulé sur audience cible < 5, AskUserQuestion explicit gate avec 3 options (a/b/c) · pas de production sans operator response explicit. Override seulement si opérateur a déclaré 'force inféré' dans tour précédent. Anti-pattern mou résolu, pattern AskUserQuestion gate généralisable à decompose-ad et compose-creative (candidat v2.37+)."
+    },
+    {
+      "category": "infrastructure",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "section": "Manifest skills regenerated · 49 skills",
+      "rationale": "Régénération manifest via `python3 .skills/build-manifest.py` post bump versions compose-creative + produce-paid-angles. Verified : 49 skills présents, no error, recommended_model + subagent_safe + triggers FR+EN cohérents."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Operator dispose désormais d'un terme canonique 'atlas brand' pour parler de la cartographie holistique data brand sans ambiguïté. Cockpit `/phantom` atteint parité Notion Stride-Up (9/9 tableaux navigables) avec briefs / tests / matrix / atlas / doctrine en surface plus drills mechanisms / benefits par produit. Pipeline E2E P0→P5 sur kara désormais : (a) compose-creative produit en 4:5 fidèle (post v2.36 fix aspect_ratio + retry adaptative scène complexe), (b) produce-paid-angles refuse de shipper sans gate explicit si corpus thin. Pattern compound learning préservé (atlas vivant validations[] continue à enrichir atlas canon copy DANS l'atlas brand). Backward compat strict additif.",
+  "next_release_note": "v2.37+ patches identifiés · (a) skill compose-overlay-text dédié PIL post-gen pour overlay text crisp (sub-label, duration indicator, optional CTA badge) · résout définitivement Friction 3 v2.35-v2.36. (b) Pattern AskUserQuestion gate HR4.5 généralisé à decompose-ad (gate quand ad source thin) et compose-creative (gate quand visual_identity partial). (c) Phase B audit sémantique sur roadmap.md + skill-authoring-discipline.md pour disambiguation atlas si exposition opérateur élevée. (d) phantom-modes/ split (canon + item) à reconnecter via loader explicit Read directive si signal opérateur drift fallback dégradé."
+}

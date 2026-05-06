@@ -95,7 +95,7 @@ Heuristic: stack with Meta + brand recent focus = paid acquisition → default M
 
 ## Step 0bis — Load canon copy + angle lineage (v2.29.0+)
 
-> **Atlas refs** dans cette skill = atlas canon copy (sense 1, référentiel cross-brand). Brand-side enrichment via `validations[]` (sense 2). Pour la distinction lexicale complète : `lexicon.md § Atlas, 3 senses MECE`.
+> **Atlas refs** dans cette skill = atlas canon copy (sense 1, référentiel cross-brand doctrine copywriting). Brand-side enrichment via `validations[]` (sense 2 atlas vivant). Distinct de l'atlas brand (sense 4, cartographie holistique data brand) qui désigne la matière brand structurée navigable via `/phantom`. Pour la distinction lexicale complète : `lexicon.md § Atlas, 4 senses MECE`.
 
 > v1.1.0 (S55 v2.29.0 alignment) : LIGNAGE block uses `lineage.awareness_stage` (renamed from `schwartz_conscience`), `origin_axis` at top-level (renamed from `source`). Drop fields migrated to `creative.schema.json` (`intent`, `mecanique`, `craft_mode`, `execution.*`, `seasonality_trigger`). Optional `creative_id` input for execution-side context.
 

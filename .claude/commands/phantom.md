@@ -29,6 +29,13 @@ Check the user's argument :
 | `canon {atlas}` | **canon-layers** : liste des couches d'un atlas (ex: `/phantom canon copy`) |
 | `canon {atlas} {layer}` | **canon-tools** : liste des outils d'une couche (ex: `/phantom canon copy hooks`) |
 | `canon {atlas} {layer} {tool}` | **canon-tool-card** : fiche détaillée d'un outil canon (ex: `/phantom canon copy hooks curiosity-gap`) |
+| `{brand} briefs` | **briefs-drill** : DB Briefs créatifs (liste, statut, lien angle source) |
+| `{brand} tests` | **tests-drill** : DB Tests live + résultats observés + verdict winner_proxy |
+| `{brand} matrix` | **matrix-drill** : output `score-matrix` (matrice scorée + top territoires + trous) |
+| `{brand} atlas` | **atlas-overview** : vue d'ensemble atlas brand (synthèse 6 entités + dérivés) |
+| `doctrine` | **doctrine** : rend doctrine cartographie compositionnelle (méthode + équation V3.1) |
+| `{brand} products {p_slug} mechanisms` | **mechanisms-drill** : array `mechanisms[]` typé depuis `spec.json` |
+| `{brand} products {p_slug} benefits` | **benefits-drill** : array `benefits[]` (chain functional/emotional/identity) |
 
 ---
 
@@ -80,9 +87,14 @@ Connected sources globales      {global_sources_summary}
 NEXT SUGGESTED (priorité)
 {suggested_actions}
 
+SUGGESTIONS DAEMON (smart-suggest learn-from-session Trigger 8)
+{daemon_patterns_or_silence}
+
 → Tape /phantom {brand_slug} pour drill sur un brand.
 → Tape /skills pour voir les capacités.
 ```
+
+`daemon_patterns_or_silence` lit le buffer pattern-detection (cross-skills, recurring frictions, decision reversals, encoded fact drift). Si présents, lister 1-3 patterns détectés sous forme paste-ready. Sinon afficher *"aucune suggestion daemon active"*. Source : `docs/system/pattern-detection-triggers.md`.
 
 ### Brand lines (mode workspace)
 
@@ -355,118 +367,11 @@ If `{entity}` is unsupported (not in the list above), surface : *"Entité '{x}' 
 
 ## Mode item (niveau 3)
 
+> **Split externe v2.36** : full spec rendering (audiences/{slug}, angles/{id}, products/{slug}) + AskUserQuestion + hard rule → `.claude/commands/phantom-modes/item.md`. Lire ce fichier quand l'opérateur tape `/phantom {brand} {entity} {item}`.
+
 `/phantom {brand_slug} {entity} {item-slug}` zooms on ONE item inside an entity. Le rendering équivalent d'un *file preview* dans un Finder. Operator vient de drill quelque chose de spécifique : on déballe ce qu'on a, sans tout dump.
 
-Header breadcrumb obligatoire :
-
-```
-workspace > {brand_slug} > {entity} > {item-slug}
-══════════════════════════════════════════════
-```
-
-### Pour `audiences/{slug}`
-
-Lecture : `brands/{brand}/audiences/{item-slug}/profile.json`. Rendering human-readable :
-
-```
-{NOM} · {scope} · {validation_label}
-{Brève description si identity.description filled}
-
-PROFIL
-  Genre        {gender ou "non précisé"}
-  Tranche      {age_range ou "non précisée"}
-  Pain         {pain.primary_problem ou "à confirmer en mining"}
-  Émotions     {psychology.emotions[] ou "vide"}
-  Goals        {psychology.goals[] ou "vide"}
-
-VOIX (sourcée)
-  Vocabulaire à utiliser    {voice.vocabulary_to_use[] ou "vide"}
-  Vocabulaire à éviter      {voice.vocabulary_to_avoid[] ou "vide"}
-  Expressions clés          {N} captées (mining: {dense|partiel|vide})
-
-PAIN POINTS
-  {N} encodés ({M} sourcés). Top 3 par priorité affichés en 1 ligne chacun.
-
-OBJECTIONS
-  {N} encodées. Top 3 par fréquence affichées.
-
-HIÉRARCHIE
-  Parent: {parent_slug ou "(racine)"}
-  Sous-audiences: {liste des sous-slugs ou "aucune"}
-
-APPLIQUÉ AUX PRODUITS
-  {applies_to_products joint par ", " ou "(brand-wide, pas de produit ciblé)"}
-
-NEXT SUGGESTED (priorité)
-  → Tape : `lance mine-voc sur {brand_slug} pour {item-slug}` (mining vide, prochaine étape logique)
-  → Tape : `valide point par point l'audience {item-slug}` (corriger, rejeter, accepter)
-  → Tape : `produce-paid-angles {brand_slug} sur {item-slug}` (passe à la production hypothesis-grade)
-```
-
-### Pour `angles/{id}`
-
-Lecture : `brands/{brand}/angles/{id}.json` ou agrégat `brands/{brand}/angles.json`. Rendering :
-
-```
-{NOM_ANGLE} · {status} · {audience_target}
-{Synopsis 1-2 phrases}
-
-CIBLE              {audience_slug}
-PROMESSE           {promise ou "non posée"}
-PROOF / MÉCANIQUE  {mechanism ou "non posé"}
-HOOKS              {N} testés, {M} live, {K} fatigués
-TESTS              {ROAS si dispo, sinon "pas de test posté"}
-
-NEXT SUGGESTED
-  → Tape : `refresh l'angle {id}` ({raison liée au statut})
-  → Tape : `produce-copy-brief {brand_slug} sur l'angle {id}` (passer en brief créa)
-```
-
-### Pour `products/{slug}`
-
-Lecture : `brands/{brand}/products/{slug}/spec.json` + `offers.json` + scan `brands/{brand}/audiences/*/profile.json` pour filtrer celles dont `meta.applies_to_products` contient `{slug}` (fallback sur `meta.product_id` legacy). Rendering :
-
-```
-{NOM_PRODUIT} · {category}
-{Description 1-2 lignes}
-
-PROMESSE          {promise.headline ou "non posée"}
-MÉCANISME         {unique_mechanism.name ou "non posé"}
-COMPOSITION       {N composants encodés / total attendus}
-PROBLÈMES RÉSOLUS {N encodés}
-BÉNÉFICES         {N encodés}
-PRIX              {pricing.price} {currency}
-OFFRES            {N actives} (cure 1m, 3m, 6m si dispo)
-
-AUDIENCES (qui achètent ce produit)
-{audience_lines}
-
-NEXT SUGGESTED
-  → Tape : `densifie la spec {slug}` (champs manquants : {liste})
-  → Tape : `audit l'offre {slug}` (vérifier cohérence prix/cure/économies)
-```
-
-`audience_lines` : un par audience filtrée :
-```
-  · {audience_slug}    {scope}    {validation_label}    {applies_to_count} produits ciblés
-```
-
-`applies_to_count` : `mono` si `len(applies_to_products) == 1`, `cross-product (N)` si > 1, `legacy` si vide mais `product_id` set, `brand-wide` si vide. Permet à l'opérateur de voir quelles audiences sont spécifiques à ce produit vs partagées.
-
-Si aucune audience ne cible ce produit : *"Aucune audience taggée sur ce produit. Tape `tag audience X sur {slug}` pour binder, ou laisse en brand-wide."*
-
-### AskUserQuestion (mode item)
-
-| Slot | Rôle |
-|---|---|
-| 1 | Action top-priority sur l'item (paste-ready) |
-| 2 | Action 2 (paste-ready) |
-| 3 | *"Drill {sibling}"* · un autre item du même entity-drill (typiquement le suivant alphabétique ou le voisin hiérarchique pour les audiences) |
-| 4 | *"Retour {entity}"* · relance `/phantom {brand} {entity}` |
-
-### Hard rule for item mode
-
-Si `{item-slug}` n'existe pas, surface : *"Item '{x}' pas trouvé dans `{entity}` de `{brand}`. Disponibles : {liste des slugs trouvés}. Tape `/phantom {brand} {entity}` pour la vue entity complète."*
+Bref : 3 entités drillables (`audiences/{slug}`, `angles/{id}`, `products/{slug}`), header breadcrumb obligatoire, AskUserQuestion 4 slots (action 1 / action 2 / drill sibling / retour entity), hard rule sur slug introuvable. Spec complète dans le split.
 
 ---
 
@@ -637,6 +542,10 @@ EXEMPLES CONCRETS
   /phantom search "post-grossesse"
   /phantom recent 20
   /phantom canon copy frameworks pas
+
+ROUTING SKILLS
+  Goal-driven (je veux X) ? consulter `.skills/INDEX.md` (skills par intent)
+  State-driven (je veux voir l'état Y) ? rester ici dans /phantom
 ```
 
 Pas d'AskUserQuestion en mode help. C'est une référence, pas un point d'action.
@@ -645,153 +554,263 @@ Pas d'AskUserQuestion en mode help. C'est une référence, pas un point d'action
 
 ## Mode canon (atlas du métier, workspace-level)
 
-`/phantom canon` ouvre l'**atlas du métier**, navigable comme une bibliothèque d'outils standards. Workspace-level, pas brand. Le canon est consulté par les skills de production (`produce-paid-angles`, `produce-copy-brief`, `mine-voc`) et navigable directement par l'opérateur pour apprendre / piocher / valider.
+> **Split externe v2.36** : full spec → `.claude/commands/phantom-modes/canon.md`. Lire ce fichier quand l'opérateur tape `/phantom canon[...]`. 4 sous-modes (`canon`, `canon {atlas}`, `canon {atlas} {layer}`, `canon {atlas} {layer} {tool}`), impl `python3 .skills/phantom-canon.py [atlas] [layer] [tool]`, AskUserQuestion 4 slots (drill voisin / drill couche / applique au brand / retour parent).
 
-Implémentation : invoquer `python3 .skills/phantom-canon.py [atlas] [layer] [tool]` qui retourne un JSON. L'agent rend selon le mode.
+---
 
-### canon-index (`/phantom canon`)
+## Mode briefs-drill
 
-Header breadcrumb :
+`/phantom {brand} briefs` rend la DB Briefs créatifs (briefs produits via `produce-copy-brief`). Workspace tabular, parité Notion Stride-Up.
 
-```
-workspace > canon
-══════════════════════════════════════════════
-Atlas du métier · {N} atlas disponibles
-```
-
-Rendering : un atlas par ligne avec count couches + tools.
-
-```
-✓ copy             11 couches · 58 outils    (frameworks, hooks, angles, persuasion, Schwartz, voix, titres, objections, offres, leads, formats)
-○ paid             à venir
-○ brand            à venir
-○ offer            à venir
-○ funnel           à venir
-○ cro              à venir
-○ email            à venir
-○ analytics        à venir
-○ mining           à venir
-```
-
-### canon-layers (`/phantom canon copy`)
+Lecture : `brands/{brand}/briefs/*.json` (ou agrégat `brands/{brand}/briefs.json`).
 
 Header breadcrumb :
 
 ```
-workspace > canon > copy
+workspace > {brand} > briefs
 ══════════════════════════════════════════════
-Atlas copywriting · 11 couches
+{N} briefs · {N_draft} draft · {N_shipped} shipped · {N_validated} validated
+
+BRIEFS RÉCENTS
+  [BRF-03] · 2026-05-06 · ANG-01 · post-grossesse · draft
+  [BRF-02] · 2026-05-04 · ANG-02 · stress hormonal · shipped
+  [BRF-01] · 2026-04-28 · ANG-04 · croissance-projet · validated
+  ...
+
+NEXT SUGGESTED
+  → Tape : `produce-copy-brief sur {brand} ANG-XX` (générer brief sur angle non-couvert)
+  → Tape : `audit briefs > 30j sans test` (briefs stale à promote ou archiver)
 ```
 
-Rendering : une couche par ligne avec count outils + 1-line description :
+Format ligne : `[brief_id] · {created_at} · {angle_id_source} · {audience_slug} · {status}`. Cap 10 plus récents. Cross-ref atlas via lien `angle_id_source` (drillable).
 
-```
-✓ frameworks                     6 outils   squelettes de pièce (AIDA, PAS, BAB, QUEST, FAB, 4Ps)
-✓ hooks                          6 outils   ouvertures 3 sec (curiosity-gap, contrarian, stat-choc, ...)
-✓ angles                         6 outils   axes narratifs (mécanisme-unique, identité, ennemi-commun, ...)
-✓ heuristiques-persuasion        7 outils   leviers cognitifs (Cialdini × 7)
-✓ niveaux-schwartz               2 outils   conscience + sophistication
-✓ archetypes-voix                6 outils   registres de marque (caregiver, sage, rebelle, amante, héros, ...)
-✓ formules-titres                6 outils   patterns de headlines (4U, how-to, listicle, secret, commande, question)
-✓ objections                     4 outils   patterns de gestion (feel-felt-found, reframe, pre-emption, comparaison)
-✓ construction-offre             4 outils   architectures d'offre (anchor-decoy, bundle-stack, garantie, urgence)
-✓ leads                          5 outils   types de lead (offer-led, mechanism-led, story-led, problem-led, proof-led)
-✓ formats-livrables              6 outils   types de livrable (UGC-ad, VSL, landing, email-séquence, ad-statique, advertorial)
-```
+---
 
-### canon-tools (`/phantom canon copy hooks`)
+## Mode tests-drill
+
+`/phantom {brand} tests` rend la DB Tests live + résultats observés + verdict `winner_proxy`.
+
+Lecture : `brands/{brand}/learnings.json#entries[]` filtré sur `kind: test_result`.
 
 Header breadcrumb :
 
 ```
-workspace > canon > copy > hooks
+workspace > {brand} > tests
 ══════════════════════════════════════════════
-Hooks · ouvertures 3 sec · 6 outils
+{N} tests · {N_live} live · {N_fatigued} fatigués · {N_winners} winners
+
+TESTS RÉCENTS
+  [TST-08] · live · BRF-03 · ANG-01 · ROAS 3.2 · spend 412€ · winner_proxy: pending
+  [TST-07] · fatigued · BRF-02 · ANG-02 · ROAS 1.4 (-38% 14j) · winner_proxy: no
+  [TST-06] · winner · BRF-01 · ANG-04 · ROAS 4.7 · scaled · winner_proxy: yes
+  ...
+
+NEXT SUGGESTED
+  → Tape : `refresh les angles fatigués sur {brand}` ({N} tests en chute)
+  → Tape : `promote winner TST-06 → angle scaled` (test confirmé, mettre à canon brand)
 ```
 
-Rendering : un outil par ligne avec id, name, et 1-line principle.
+Format ligne : `[test_id] · {status} · {brief_id} · {angle_id} · ROAS {value} · {spend} · winner_proxy: {yes|no|pending}`. Cap 10 plus récents.
 
-```
-· curiosity-gap        Crée un écart entre ce que le lecteur sait et ce qu'il devrait savoir.
-· contrarian           Prend le contre-pied d'une croyance dominante de l'audience.
-· stat-choc            Ouvre sur une stat surprenante qui valide implicitement le pain.
-· avant-apres          Ouvre sur le contraste visuel ou narratif avant/après.
-· question-callout     Pose une question qui qualifie l'audience cible.
-· confession           Ouvre sur un aveu personnel qui crée connexion + proof.
-```
+---
 
-### canon-tool-card (`/phantom canon copy hooks curiosity-gap`)
+## Mode matrix-drill
+
+`/phantom {brand} matrix` rend l'output `score-matrix` skill (matrice scorée par sub-cluster × dimension + top territoires + trous).
+
+Lecture : `brands/{brand}/matrix/latest.json` (output `weight-dimensions` + `score-matrix`).
 
 Header breadcrumb :
 
 ```
-workspace > canon > copy > hooks > curiosity-gap
+workspace > {brand} > matrix
 ══════════════════════════════════════════════
-HOOK · curiosity-gap                  famille: hooks
+Modulateurs : stade {growth} · marché {mature} · atlas {partiel}
+Coefficient cumulé : {1.1}
+
+┌───────────────────────────┬──────┬──────┬──────┬──────┬──────┐
+│ Sub-cluster               │ aud  │ prod │ cat  │ brand│ temp │
+├───────────────────────────┼──────┼──────┼──────┼──────┼──────┤
+│ chute-post-grossesse      │ 55🔥 │ 42   │ 38   │ 0    │ 28   │
+│ croissance-projet         │ 48   │ 52🔥 │ 0    │ 35   │ 0    │
+│ stress-hormonal           │ 32   │ 28   │ 41🔥 │ 0    │ 22   │
+└───────────────────────────┴──────┴──────┴──────┴──────┴──────┘
+
+TOP 3 TERRITOIRES
+  1. chute-post-grossesse × audience-derived  · 55  · ANG-01, ANG-03
+  2. croissance-projet × product-derived      · 52  · ANG-04
+  3. stress-hormonal × category-derived       · 41  · ANG-02
+
+TROUS DÉTECTÉS
+  · brand-derived sur chute-post-grossesse (0)
+  · category-derived sur croissance-projet (0)
+  · temporal-derived sur croissance-projet (0)
+
+NEXT SUGGESTED
+  → Tape : `produce-copy-brief sur top-1` (chute-post-grossesse × audience-derived, score 55)
+  → Tape : `produce-paid-angles {brand} pour combler trou brand-derived sur chute-post-grossesse`
 ```
 
-Rendering complet de la fiche, sections en majuscules :
+Icône `🔥` sur la cellule top par row. Légende dimensions : aud (audience-derived), prod (product-derived), cat (category-derived), brand (brand-derived), temp (temporal-derived).
+
+---
+
+## Mode atlas-overview
+
+`/phantom {brand} atlas` rend la vue d'ensemble atlas brand (synthèse 6 entités core + 3 dérivées + atlas vivant). Pédagogique pour onboarding nouveau opérateur.
+
+Lecture : `brands/{brand}/_snapshot.md` + `brand.json` + counts par entité.
+
+Header breadcrumb :
 
 ```
-PRINCIPE
-  {principle, 1-3 phrases}
+workspace > {brand} > atlas
+══════════════════════════════════════════════
+ATLAS BRAND {BRAND_NAME} · cartographie holistique data
 
-STRUCTURE
-  {structure}
+ENTITÉS CORE (6)
+  brand           ✓ identité posée · creative_zone défini · brand_equity_level {low|mid|high}
+  products ({N})  {product_slug_1} · {product_slug_2}
+  audiences ({N}) {audience_slug_1} · {audience_slug_2} · ... · {audience_slug_N}
+  offers          {N} offers configurées
+  learnings       {N} entries · {N_canon} canon promotions
+  strategy        focus {month_year} : {strategy.current_focus}
 
-GABARITS
-  · {gabarits[0]}
-  · {gabarits[1]}
-  ...
+ENTITÉS DÉRIVÉES (3)
+  angles          {N} angles produits
+  creatives       {N} creatives produced
+  matrix          dernier scoring : {date}
 
-QUAND ÇA MARCHE
-  · {when_works[0]}
-  · {when_works[1]}
-  ...
+ATLAS VIVANT (validations[] cumulées)
+  hooks canon          {N} validations
+  frameworks canon     {N}
+  archetypes canon     {N}
+  angles canon         {N}
+  formats canon        {N}
 
-QUAND ÉVITER
-  · {when_avoid[0]}
-  ...
-
-COMBINE BIEN AVEC
-  · frameworks: {combines_with.frameworks join}
-  · angles: {combines_with.angles join}
-  · emotions: {combines_with.emotions join}
-  · formats: {combines_with.formats join}
-
-ANTI-PATTERNS
-  · {anti_patterns[0]}
-  ...
-
-EXEMPLES
-  · {examples[0]}
-  ...
-
-VALIDATIONS
-  {N validations brand-side. Si 0 : "(aucune validation prod encodée. À promouvoir via learn-from-session quand un test confirme)"}
-  Sinon liste : "{brand_slug}/{audience_slug} → {outcome} · {metric} · {captured_at}"
-
-LINEAGE
-  Source : {lineage.source}
-  Référence : {lineage.references join}
+NEXT SUGGESTED
+  → Tape : `/phantom {brand} matrix` (priorisation territoires)
+  → Tape : `/phantom doctrine` (méthode cartographie compositionnelle)
 ```
 
-### AskUserQuestion (mode canon)
+Cross-ref vers `docs/system/atlas-brand.md` (doctrine atlas-brand). Slug brand en majuscules dans header.
 
-| Slot | Rôle |
-|---|---|
-| 1 | Drill un voisin pertinent (combines_with référencé) |
-| 2 | Drill un autre outil de la même couche |
-| 3 | Action : *"Applique cet outil à un brand"* (si brand actif détecté, déclenche `produce-paid-angles {brand} avec hook={tool_id}`) |
-| 4 | Retour parent (couche, atlas, ou workspace selon niveau) |
+---
 
-### Empty state canon
+## Mode doctrine
 
-Si l'atlas demandé n'existe pas : *"Atlas '{x}' pas encore seedé. Disponibles : copy. Tape `/phantom canon` pour la liste complète."*
+`/phantom doctrine` rend la doctrine cartographie compositionnelle. Equivalent Notion "Méthode & Doctrine". Vue pédago, workspace-level (transversal aux brands).
 
-Si la couche demandée n'existe pas : suggérer les couches existantes.
+Lecture : `docs/system/atlas-brand.md` + `resources/templates/creative-formula.md`.
 
-Si l'outil demandé n'existe pas : suggérer les outils existants dans la couche.
+Header breadcrumb :
+
+```
+workspace > doctrine
+══════════════════════════════════════════════
+DOCTRINE CARTOGRAPHIE COMPOSITIONNELLE
+
+Système génératif · 4 arbres + matrice + modulateurs + 7 disciplines + cycle validation
+
+PHASES PIPELINE P0 → P5
+  P0 onboarding         setup-brand · snapshot-brand · define-specs
+  P1 product            mechanisms[] · benefits[] · problems_solved[]
+  P2a audience          mine-voc · mine-vom · profile-audience (8 dim canon V3)
+  P2b angle             produce-paid-angles (formule Obs+Tension+Reframe+Bridge)
+  P3 matrix             weight-dimensions · score-matrix
+  P4 brief              produce-copy-brief
+  P5 visual             compose-creative · recompose-creative · decompose-ad
+
+EQUATION COMPOSITIONNELLE V3.1 CANON
+  creative = NOYAU(mécanique × format × stop_scroller × ton)
+           × CONTEXTE(angle × pain_point × persona × proof)
+           × MODIFIEURS(occasion · offer · destination · etc.)
+
+7 DISCIPLINES SOEURS
+  Contextual Intelligence · Schema Encoding · Canonical Matrix Reasoning
+  Skill Authoring · Provenance & Trust · Cartographie Compositionnelle
+  Doctrine Governance
+
+CYCLE VALIDATION (atlas vivant)
+  produce → test → learn-from-session → validations[] cumulées sur canon
+
+NEXT SUGGESTED
+  → Tape : `/phantom canon` (atlas du métier · 11 couches copy)
+  → Tape : `/phantom {brand} atlas` (vue brand-side de la doctrine appliquée)
+```
+
+Détails complets : `resources/templates/creative-formula.md`. Source canon : `docs/system/atlas-brand.md`.
+
+---
+
+## Mode mechanisms-drill
+
+`/phantom {brand} products {p_slug} mechanisms` rend l'array `mechanisms[]` typé depuis `spec.json`.
+
+Lecture : `brands/{brand}/products/{p_slug}/spec.json#mechanisms[]`.
+
+Header breadcrumb :
+
+```
+workspace > {brand} > products > {p_slug} > mechanisms
+══════════════════════════════════════════════
+{N} mécanismes typés
+
+MEC-01 modulation cortisol stress
+  cible           SN central, surrenales
+  mode action     adaptogène
+  fenêtre         21-30j
+  preuve          clinique citée
+  sophistication  faible
+  triggered_by    KSM-66
+
+MEC-02 ...
+
+NEXT SUGGESTED
+  → Tape : `map-mechanisms {brand}/{p_slug}` (deep pass enrichissement mécanismes)
+  → Tape : `densifie spec {p_slug}` (champs manquants si présents)
+```
+
+Format par mécanisme : id + nom court, puis 6 champs (cible, mode action, fenêtre, preuve, sophistication, triggered_by). Si `mechanisms[]` vide : empty state *"Pas de mécanisme encodé. Tape `map-mechanisms {brand}/{p_slug}` pour scaffold depuis la fiche produit."*
+
+---
+
+## Mode benefits-drill
+
+`/phantom {brand} products {p_slug} benefits` rend l'array `benefits[]` (chain functional → emotional → identity).
+
+Lecture : `brands/{brand}/products/{p_slug}/spec.json#benefits[]`.
+
+Header breadcrumb :
+
+```
+workspace > {brand} > products > {p_slug} > benefits
+══════════════════════════════════════════════
+{N} bénéfices encodés (chain functional/emotional/identity)
+
+BEN-01 cheveux denses visibles
+  layer         functional
+  trigger       MEC-01
+  fenêtre       60-90j
+  preuve        photo before/after
+  audience_fit  chute-active, chute-post-grossesse
+
+BEN-02 confiance retrouvée
+  layer         emotional
+  trigger       BEN-01
+  ...
+
+BEN-03 identité jeune mère épanouie
+  layer         identity
+  trigger       BEN-02
+  ...
+
+NEXT SUGGESTED
+  → Tape : `map-benefits {brand}/{p_slug}` (deep pass enrichissement chain)
+  → Tape : `audit benefits sans audience_fit` (benefits orphelins)
+```
+
+Format par benefit : id + nom court, puis 5 champs (layer, trigger, fenêtre, preuve, audience_fit). Layer = `functional|emotional|identity`. Si `benefits[]` vide : empty state similaire à mechanisms.
 
 ---
 
