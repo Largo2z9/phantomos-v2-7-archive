@@ -1,6 +1,6 @@
 ---
 name: weight-dimensions
-version: 1.0.0
+version: 1.1.0
 type: producer
 recommended_model: sonnet
 subagent_safe: true
@@ -31,6 +31,16 @@ permissions:
 pipeline:
   preconditions: ["profile.json existe avec 8 dimensions populated", "angles brand-side disponibles"]
   postconditions: ["dimension_weights.json présent", "sum weights = 1.0 ±0.01 par angle"]
+prerequisites:
+  - field: audiences/{slug}/profile.json#completeness
+    threshold: 0.7
+    level: L3
+    fallback: origin_axis_biais_initiaux
+    confidence_default: 0.5
+  - field: angles/{angle_id}.json
+    level: L1
+    auto_pull: read_angle_target
+    freshness_ttl_days: 30
 ---
 
 # weight-dimensions
@@ -40,6 +50,17 @@ Producer skill machine-facing. Pour une audience donnée, calcule le poids relat
 Non operator-facing par défaut. Exécuté en sous-skill par `score-matrix`. Si invoqué directement, surface vue compacte par audience.
 
 ## Hard Rules
+
+### Step 0bis · Prerequisite check (DRGFP v2.38)
+
+Avant calcul pondérations (Step 1), scanner prerequisites :
+
+1. Lookup `angles/{angle_id}.json` → required, L1 read silent
+2. Lookup `audiences/{slug}/profile.json#completeness` → si >= 0.7 → ponderation full canon V3 · si < 0.7 → L3 degraded · biais initiaux par origin_axis (audience-derived → Purchase/Problem/Benefit pèsent + · product-derived → Mechanism/Market pèsent + · etc.) · confidence 0.5 · flag _gaps
+
+Output 8 weights sum 1.0 ±0.01 + dominant_top3 + confidence calculé.
+
+Cross-ref doctrine : `docs/system/dependency-resolution-protocol.md`.
 
 ### HR1 · Load audience profile + angles list
 

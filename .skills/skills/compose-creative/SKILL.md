@@ -1,6 +1,6 @@
 ---
 name: compose-creative
-version: 1.0.2
+version: 1.1.0
 type: producer
 recommended_model: opus
 subagent_safe: true
@@ -75,6 +75,27 @@ produces_proposals_for:
   - brands/{slug}/produced/{CRT-N}.json
   - brands/{slug}/produced/{CRT-N}.jpg
   - brands/{slug}/produced/{CRT-N}.md
+prerequisites:
+  - field: angles/{angle_id}.json
+    level: L1
+    auto_pull: read_angle_target
+    freshness_ttl_days: 30
+  - field: products/{slug}/brief-{angle_id}.md
+    level: L1
+    auto_pull: read_brief_markdown
+    freshness_ttl_days: 30
+  - field: products/{slug}/visual_identity
+    level: L1
+    auto_pull: dual_path_inline_or_sibling
+    freshness_ttl_days: 90
+  - field: brand.creative_zone
+    level: L3
+    fallback: proxy_brand_personality
+    confidence_default: 0.6
+  - field: resources/canon/copy/formats-livrables
+    level: L1
+    auto_pull: read_canon_directory
+    freshness_ttl_days: 365
 permissions:
   reads: [brand, product, profile, angle, learning, strategy, canon_copy, registries]
   writes: [creative]
@@ -101,6 +122,18 @@ Posture créateur senior + collègue stratège. Pas inspecteur, pas générateur
 **Framework.** Équation compositionnelle v3.1 stress-tested S55. Source canon : `resources/templates/creative-formula.md`. SSOT mécaniques : `resources/registries/creative-mechanics-registry.md`. Free-string `mecanique_id` autorisé.
 
 **Pattern partagé avec decompose-ad.** Mode forward (input = brief stratégique, output = creative). Mode reverse = decompose-ad (input = ad existante, output = fiche). Cohérence cross-skill obligatoire sur fiche v5 layout.
+
+---
+
+## Step 0bis · Prerequisite check (DRGFP v2.38)
+
+Avant assemblage compositionnel (Step 1), scanner prerequisites :
+
+1. L1 silent · `angles/{angle_id}.json` (required) · `products/{slug}/visual_identity` (dual path inline OR sibling, HR1.4 v2.35 formalisé) · `resources/canon/copy/formats-livrables`
+2. L1 silent optionnel · `products/{slug}/brief-{angle_id}.md` (si présent, source de truth pour copy)
+3. L3 degraded · si `brand.creative_zone` absent → fallback `brand_personality` · confidence 0.6 · flag _gaps
+
+Output state map + confidence_chain[] init.
 
 ---
 

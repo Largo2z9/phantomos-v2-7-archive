@@ -118,6 +118,16 @@ Audit trail visible via `confidence_chain[]` (validation-state.json composite v2
 
 Doctrine complète : `docs/system/confidence-propagation.md`.
 
+## Dependency Resolution & Gap-Filling Protocol (DRGFP) (v2.38+)
+
+Doctrine canonique gap-filling appliquée au Step 0bis de chaque skill PhantomOS. 3 niveaux : L1 auto-fill silent (source authoritative dispo) · L2 ask-operator gate (choix stratégique requis) · L3 degraded + flag (output partial avec confidence). Routage binaire default L1 > L3 > L2.
+
+Frontmatter SKILL.md déclaratif `prerequisites[]` validé schema v2.37. Step 0bis prerequisite_check scanne et arbitre.
+
+Empêche silent corruption (L1 sans freshness), ask fatigue (L2 cumul), output flou (L3 sans audit trail). Couplé confidence-propagation v2.37 + canon-tool schema v1.1.
+
+Doctrine complète : `docs/system/dependency-resolution-protocol.md`.
+
 ## Campagne
 
 Structure paid sur une plateforme (Meta, TikTok, Google Ads). Contient ad sets (audiences) et ads (creatives). Track par budget, métriques de perf, objectif (acquisition, retargeting, retention).

@@ -1,6 +1,6 @@
 ---
 name: define-specs
-version: 1.0.0
+version: 1.1.0
 type: orchestrator
 recommended_model: sonnet
 subagent_safe: true
@@ -45,6 +45,25 @@ pipeline:
   postconditions:
     - "spec.json conforme spec.schema v1.10"
     - "operator validation gate passed"
+prerequisites:
+  - field: product.url
+    level: L1
+    auto_pull: shopify_products_api
+    freshness_ttl_days: 7
+  - field: operator.input_mode
+    level: L2
+    options:
+      - url_provided
+      - manual_qa
+      - sources_upload
+  - field: products/{slug}/sources/
+    level: L1
+    auto_pull: read_uploaded_files
+    freshness_ttl_days: 30
+  - field: products/{slug}/spec.json
+    level: L1
+    auto_pull: read_existing_spec_brownfield
+    freshness_ttl_days: 90
 ---
 
 ## Description
@@ -54,6 +73,19 @@ pipeline:
 Posture : éducateur + collègue. Tu rassembles la matière, tu proposes l'assemblage, l'opérateur valide ou corrige. Jamais d'auto-write silencieux. Jamais d'hallucination de champ sans source.
 
 ## Hard Rules
+
+### Step 0bis · Prerequisite check (DRGFP v2.38)
+
+Avant detection input mode (Step 1), scanner prerequisites :
+
+1. Lookup `product.url` (operator-fournie ou pré-existante brand) → si présente + freshness 7d OK → L1 auto_pull Shopify silent
+2. Lookup `products/{slug}/spec.json` brownfield existing → si présent + freshness 90d OK → read as seed silent
+3. Lookup `products/{slug}/sources/` upload files → si présents + freshness 30d OK → ingest-resource silent
+4. Si aucun des 3 résolus → L2 gate operator avec 3 options (url_provided / manual_qa / sources_upload)
+
+Output state map des inputs disponibles + confidence_chain[] init.
+
+Cross-ref doctrine : `docs/system/dependency-resolution-protocol.md`.
 
 ### HR1 · Detect input mode
 

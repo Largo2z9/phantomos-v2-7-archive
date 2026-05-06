@@ -1,6 +1,6 @@
 ---
 name: score-matrix
-version: 1.0.0
+version: 1.1.0
 type: producer
 recommended_model: sonnet
 subagent_safe: true
@@ -35,6 +35,23 @@ permissions:
 pipeline:
   preconditions: ["audiences populées avec dimension_weights", "angles compatibles disponibles", "brand modulateurs disponibles ou défauts"]
   postconditions: ["matrice scorée Sub-cluster × Source d'angle", "top 3-5 territoires identifiés", "trous identifiés pour exploration"]
+prerequisites:
+  - field: audiences/*/dimension_weights.json
+    level: L1
+    auto_pull: read_weight_outputs
+    freshness_ttl_days: 30
+  - field: brand.strategic_context
+    level: L3
+    fallback: proxy_brand_equity_level
+    confidence_default: 0.6
+  - field: audiences/*/profile.json
+    level: L1
+    auto_pull: read_audiences_profiles
+    freshness_ttl_days: 60
+  - field: angles/*.json
+    level: L1
+    auto_pull: read_brand_angles_existing
+    freshness_ttl_days: 90
 ---
 
 # score-matrix
@@ -44,6 +61,19 @@ Producer skill operator-facing. Clôt la Phase 3 doctrine cartographie. Consomme
 Cohérence cross-skill : sourcing weights précomputés via `weight-dimensions`, sources d'angle alignées canon V3 (`creative-formula.md`), compatibilité awareness verrouillée doctrine canonical-matrix-reasoning.
 
 ## Hard Rules
+
+### Step 0bis · Prerequisite check (DRGFP v2.38)
+
+Avant construction grille (Step 1), scanner prerequisites :
+
+1. Lookup `audiences/*/dimension_weights.json` → si présents → consume silent · sinon flag _gaps suggestion run weight-dimensions chain
+2. Lookup `audiences/*/profile.json` → required, L1 silent (au moins 1 audience nécessaire)
+3. Lookup `angles/*.json` brand existing → silent · cellules sans angle = trous détectés (signal output)
+4. Lookup `brand.strategic_context` → si présent → modulateurs full · si absent → L3 degraded · proxy `brand_equity_level` · confidence 0.6 · flag _gaps
+
+Output state map + confidence_chain[] init.
+
+Cross-ref doctrine : `docs/system/dependency-resolution-protocol.md`.
 
 ### HR1 · Construire la grille
 

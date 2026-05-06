@@ -1,7 +1,7 @@
 ---
 name: produce-paid-angles
 type: producer
-version: "1.4.0"
+version: "1.5.0"
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: generating
@@ -45,6 +45,38 @@ disambiguates_against:
   mine-voc: "route to mine-voc when audience profile is thin (no verbatims encoded yet) — paid-angles needs verbatim density to score, must capture first"
   mine-audience: "route to mine-audience when audience itself is not yet defined or split — paid-angles assumes audience encoded"
   ingest-resource: "route to ingest-resource when operator drops a single brief or doc — that's a one-off ingestion, not angle ideation"
+prerequisites:
+  - field: audiences/{slug}/profile.json
+    level: L1
+    auto_pull: read_audience_profile
+    freshness_ttl_days: 60
+  - field: audiences/{slug}/verbatim_density
+    threshold: 5
+    level: L2
+    options:
+      - force_inferred
+      - mine_voc_first
+      - hybrid_one_anchored
+  - field: brand.creative_zone
+    level: L3
+    fallback: proxy_brand_personality
+    confidence_default: 0.6
+  - field: resources/canon/copy/hooks
+    level: L1
+    auto_pull: read_canon_directory
+    freshness_ttl_days: 365
+  - field: resources/canon/copy/frameworks
+    level: L1
+    auto_pull: read_canon_directory
+    freshness_ttl_days: 365
+  - field: resources/canon/copy/archetypes-voix
+    level: L1
+    auto_pull: read_canon_directory
+    freshness_ttl_days: 365
+  - field: angles/*.json
+    level: L1
+    auto_pull: read_brand_angles_existing
+    freshness_ttl_days: 90
 ---
 
 # Skill: produce-paid-angles
@@ -78,7 +110,21 @@ Three branches:
 
 ---
 
-## Step 0bis · Load canon copy (v2.26.0+, refacto v2.29.0)
+## Step 0bis · Prerequisite check (DRGFP v2.38)
+
+Avant détection scope (Step 1), scanner prerequisites canon DRGFP :
+
+1. L1 silent · `audiences/{slug}/profile.json` (required input) · `resources/canon/copy/{hooks,frameworks,archetypes-voix}` · `angles/*.json` brand existing
+2. L2 gate (HR4.5 v2.36 formalisé) · si `audiences/{slug}/verbatim_density < 5` → AskUserQuestion 3 options (force_inferred · mine_voc_first · hybrid_one_anchored)
+3. L3 degraded · si `brand.creative_zone` absent → fallback `brand_personality` · confidence 0.6 · flag _gaps
+
+Output state map + confidence_chain[] init avec valeur dépendante de density réelle.
+
+Note · HR4.5 v2.36 reste opérante, le frontmatter prerequisites L2 est sa formalisation déclarative (cross-doc DRGFP cohérent).
+
+---
+
+## Step 0ter · Load canon copy (v2.26.0+, refacto v2.29.0)
 
 > **Atlas refs** dans cette skill = atlas canon copy (sense 1, référentiel cross-brand doctrine copywriting). Brand-side enrichment via `validations[]` (sense 2 atlas vivant). Distinct de l'atlas brand (sense 4, cartographie holistique data brand) qui désigne la matière brand structurée navigable via `/phantom`. Pour la distinction lexicale complète : `lexicon.md § Atlas, 4 senses MECE`.
 

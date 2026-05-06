@@ -1,7 +1,7 @@
 ---
 name: produce-copy-brief
 type: producer
-version: "1.2.0"
+version: "1.3.0"
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: generating
@@ -42,6 +42,23 @@ disambiguates_against:
   produce-paid-angles: "route to produce-paid-angles when operator wants ANGLE IDEATION (matrice ranked) — produce-copy-brief is the downstream brief generation on a chosen angle"
   ingest-resource: "route to ingest-resource when operator drops a brief reference doc to digest — that's input ingestion, not output generation"
   mine-voc: "route to mine-voc when audience is thin (no verbatims encoded yet) — copy-brief needs verbatim density to anchor hooks credibly"
+prerequisites:
+  - field: angles/{angle_id}.json
+    level: L1
+    auto_pull: read_angle_target
+    freshness_ttl_days: 30
+  - field: audiences/{slug}/profile.json
+    level: L1
+    auto_pull: read_audience_profile
+    freshness_ttl_days: 60
+  - field: resources/canon/copy/hooks
+    level: L1
+    auto_pull: read_canon_directory
+    freshness_ttl_days: 365
+  - field: brand.voice
+    level: L3
+    fallback: proxy_brand_personality
+    confidence_default: 0.6
 ---
 
 # Skill: produce-copy-brief
@@ -93,7 +110,18 @@ Heuristic: stack with Meta + brand recent focus = paid acquisition → default M
 
 ---
 
-## Step 0bis — Load canon copy + angle lineage (v2.29.0+)
+## Step 0bis · Prerequisite check (DRGFP v2.38)
+
+Avant assemblage brief (Step 1), scanner prerequisites :
+
+1. L1 silent · `angles/{angle_id}.json` (required) · `audiences/{slug}/profile.json` · `resources/canon/copy/hooks`
+2. L3 degraded · si `brand.voice` absent → fallback `brand_personality` · confidence 0.6 · flag _gaps
+
+Output state map + confidence_chain[] init.
+
+---
+
+## Step 0ter — Load canon copy + angle lineage (v2.29.0+)
 
 > **Atlas refs** dans cette skill = atlas canon copy (sense 1, référentiel cross-brand doctrine copywriting). Brand-side enrichment via `validations[]` (sense 2 atlas vivant). Distinct de l'atlas brand (sense 4, cartographie holistique data brand) qui désigne la matière brand structurée navigable via `/phantom`. Pour la distinction lexicale complète : `lexicon.md § Atlas, 4 senses MECE`.
 

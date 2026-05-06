@@ -1,6 +1,6 @@
 ---
 name: profile-audience
-version: 1.0.1
+version: 1.1.0
 type: orchestrator
 recommended_model: sonnet
 subagent_safe: true
@@ -45,6 +45,24 @@ pipeline:
     - "profile.json conforme profile.schema v1.3"
     - "8 dimensions populated"
     - "operator validation gate passed"
+prerequisites:
+  - field: audiences/{slug}/profile.json
+    level: L1
+    auto_pull: brownfield_seed_read
+    freshness_ttl_days: 90
+  - field: audiences/{slug}/mining-outputs/
+    level: L1
+    auto_pull: read_mining_outputs
+    freshness_ttl_days: 60
+  - field: audiences/{slug}/verbatim_density
+    threshold: 3
+    level: L3
+    fallback: infer_from_canon_archetype
+    confidence_default: 0.5
+  - field: resources/canon/copy/archetypes-voix
+    level: L1
+    auto_pull: read_canon_directory
+    freshness_ttl_days: 365
 ---
 
 # profile-audience
@@ -52,6 +70,19 @@ pipeline:
 Synthétise un sub-cluster d'audience en profil 8 dimensions canon V3. Consume les outputs de mining et produit `profile.json` conforme `profile.schema v1.3`. Operator-facing avec validation gate avant write.
 
 ## Hard Rules
+
+### Step 0bis · Prerequisite check (DRGFP v2.38)
+
+Avant lecture mining outputs (Step 1), scanner prerequisites :
+
+1. Lookup `audiences/{slug}/profile.json` brownfield existing → si présent + freshness 90d OK → seed corpus silent (HR2.5 v2.35 pattern)
+2. Lookup mining outputs (mine-voc, mine-vom, mine-audience) → si présents → consume silent
+3. Compter verbatim_density cumulé (existing seed + mining) → si < 3 → L3 degraded · fallback infer canon archetype · confidence 0.5 · flag _gaps
+4. Lookup canon archetypes-voix → silent always (cross-brand canon read)
+
+Output state map + confidence_chain[] init avec valeur dépendante de density actuelle.
+
+Cross-ref doctrine : `docs/system/dependency-resolution-protocol.md`.
 
 ### HR1 · Verify mining inputs available
 

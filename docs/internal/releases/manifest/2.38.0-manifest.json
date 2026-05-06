@@ -1,0 +1,56 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.38.0",
+  "released_at": "2026-05-04",
+  "compatible_from": "2.0.0",
+  "type": "doctrine_evolution_major",
+  "summary": "DRGFP doctrine canonique (Dependency Resolution & Gap-Filling Protocol) + migration 8 skills critiques au pattern · pipeline P0→P5 désormais robuste face aux gaps amont sans bricolage skill-par-skill.",
+  "changes": [
+    {
+      "category": "doctrine",
+      "action": "created",
+      "files": [
+        "docs/system/dependency-resolution-protocol.md",
+        "lexicon.md",
+        "docs/system/skill-authoring-discipline.md"
+      ],
+      "section": "DRGFP doctrine canonique 3 niveaux L1/L2/L3 + frontmatter declaratif",
+      "rationale": "Pipeline P0→P5 (specs → mechanisms → benefits → audiences → angles → score → brief → visual) a dépendance théorique séquentielle mais en réalité chaque skill rencontre gaps amont (brand fresh sans creative_zone, audience 1 verbatim au lieu 5+, spec sans visual_identity, strategy focus vide). Sans contrat canonique, chaque skill bricolait différemment (refus blocking · production silencieuse data inférée · AskUserQuestion à chaque step · auto-pull sans freshness check). Patches : (a) dependency-resolution-protocol.md créée 8 sections · 3 niveaux canoniques L1 auto-fill silent (source authoritative dispo, required auto_pull strategy + freshness_ttl_days) · L2 ask-operator gate (choix stratégique requis, options 2-4 binaires) · L3 degraded + flag (output partial validation_status hypothesis + confidence + _gaps[]). Routage binaire default L1>L3>L2 (L2 seulement si vraiment besoin operator arbitrage). Step 0bis prerequisite_check pattern. Operator surface translation v2.37 (L1/L2/L3 jamais exposés brut). Compound failure mode evité par couplage confidence-propagation v2.37 default min defensive + canon-tool v1.1 attribution+decay v2.37 + brand-isolation v2.37. (b) lexicon entry DRGFP positionnée après confidence propagation + cross-refs. (c) skill-authoring-discipline section 4 invariants ligne 2ter prerequisites array recommended v2.38, required v2.39+ pour producer/orchestrator. Drift frontmatter ↔ Step 0bis prose flag MAJOR (multi-source of truth interdit)."
+    },
+    {
+      "category": "skills",
+      "action": "migrated",
+      "files": [
+        ".skills/skills/define-specs/SKILL.md",
+        ".skills/skills/profile-audience/SKILL.md",
+        ".skills/skills/weight-dimensions/SKILL.md",
+        ".skills/skills/score-matrix/SKILL.md"
+      ],
+      "section": "Migration DRGFP vague 1 · 4 skills foundation/audience/scoring",
+      "rationale": "Migration au pattern DRGFP frontmatter prerequisites[] + Step 0bis prerequisite_check. (a) define-specs v1.0 → v1.1 · 4 prereqs (product.url L1 shopify_products_api freshness 7d · operator.input_mode L2 options url_provided/manual_qa/sources_upload · sources/ L1 read_uploaded_files freshness 30d · spec.json brownfield L1 freshness 90d) · Step 0bis avant Step 1 detection input mode. (b) profile-audience v1.0.1 → v1.1 · 4 prereqs (profile.json brownfield L1 freshness 90d HR2.5 v2.35 formalisé · mining-outputs L1 freshness 60d · verbatim_density threshold 3 L3 fallback canon archetype confidence 0.5 · canon archetypes-voix L1 freshness 365d) · Step 0bis avant Step 1. (c) weight-dimensions v1.0 → v1.1 · 2 prereqs (profile completeness threshold 0.7 L3 fallback origin_axis biais initiaux confidence 0.5 · angle.json L1 read_angle_target freshness 30d) · Step 0bis avant calcul pondérations. (d) score-matrix v1.0 → v1.1 · 4 prereqs (dimension_weights.json L1 freshness 30d · brand.strategic_context L3 fallback proxy_brand_equity_level confidence 0.6 v2.35 fallback formalisé · audiences profiles L1 freshness 60d · brand angles existing L1 freshness 90d) · Step 0bis avant construction grille. HR existing préservées prose. Backward compat strict additif."
+    },
+    {
+      "category": "skills",
+      "action": "migrated",
+      "files": [
+        ".skills/skills/produce-paid-angles/SKILL.md",
+        ".skills/skills/produce-copy-brief/SKILL.md",
+        ".skills/skills/compose-creative/SKILL.md",
+        ".skills/skills/recompose-creative/SKILL.md"
+      ],
+      "section": "Migration DRGFP vague 2 · 4 skills production",
+      "rationale": "Migration au pattern DRGFP frontmatter prerequisites[] + Step 0bis prerequisite_check. (a) produce-paid-angles v1.4 → v1.5 · 7 prereqs (profile L1 · verbatim_density threshold 5 L2 options force_inferred/mine_voc_first/hybrid_one_anchored HR4.5 v2.36 formalisé · creative_zone L3 fallback proxy_brand_personality confidence 0.6 · canon hooks L1 · canon frameworks L1 · canon archetypes-voix L1 · brand angles existing L1) · Step 0bis avant Step 1 préserve HR4.5 prose runtime cohérence. (b) produce-copy-brief v1.2 → v1.3 · 4 prereqs (angle.json L1 · profile L1 · canon hooks L1 · brand.voice L3 fallback proxy_brand_personality confidence 0.6) · Step 0bis avant assemblage brief. (c) compose-creative v1.0.2 → v1.1 · 5 prereqs (angle.json L1 · brief markdown L1 optional · visual_identity L1 dual_path_inline_or_sibling HR1.4 v2.35 formalisé · creative_zone L3 fallback · canon formats-livrables L1) · Step 0bis avant assemblage compositionnel préserve HR1.4+HR3.x+HR3.5 prose runtime. (d) recompose-creative v1.0 → v1.1 · 3 prereqs (creative_source L1 read_creative_source freshness 60d · variant_axis L2 options 4 audience/platform/hook/visual_treatment + 5e new_format reachable via HR1 prose · canon formats-livrables L1) · Step 0bis avant adaptation. Note schema v2.37 maxItems 4 sur L2 options · recompose 5e axe new_format reste accessible via HR1 enum existing prose, schema bump v2.39 maxItems 5 si demande explicite future. Backward compat strict additif."
+    },
+    {
+      "category": "infrastructure",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "section": "Manifest skills regenerated · 49 skills",
+      "rationale": "Régénération manifest via python3 .skills/build-manifest.py post-migration 8 skills (version bumps + Step 0bis ajouts). PyYAML strict parser v2.37 valide tous les frontmatters (shim flow-sequence backward compat couvre les `{slug}` paths non-quoted pré-existants). 49 skills présents, no warnings, no errors."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Pipeline P0→P5 désormais robuste face aux gaps amont sans bricolage skill-par-skill. Demain matin opérateur tape `/phantom kara doctrine` pour voir la méthode, puis lance produce-paid-angles · si verbatim density < 5 le skill demande arbitrage explicite (HR4.5 v2.36 formalisé en L2 gate) · si creative_zone vide le skill applique fallback proxy brand_personality avec flag visible (L3 degraded) · si canon copy chargeable le skill consume silently (L1 auto_pull). Pas de skill qui ship du data faux silencieusement (canon-tool schema v1.1 freshness + attribution v2.37) ni cross-brand contamination (brand-isolation v2.37). Confidence chain visible audit trail (confidence-propagation v2.37 default min). Couplage 4 doctrines v2.37+v2.38 = chain robuste. Backward compat strict additif partout, skills v2.37 sans prerequisites field fonctionnent avec defaults inferred.",
+  "next_release_note": "v2.39 consume-existing protocol · 3 lookups upstream (brand-side existing + canon copy + atlas vivant) avant production · dedup_strategy enum [embedding · axis_match · hook_id_match] + semantic_similarity_threshold 0.85 default + diversity_constraint max_share_per_canon_id 0.4 force explore/exploit anti lock-in. Migrer 4 producer skills au pattern (produce-paid-angles · produce-copy-brief · compose-creative · recompose-creative). Schema bump skill-prerequisites v2.39 maxItems 5 sur options L2 si besoin recompose 5e axe formalisé. v2.40 show-before-ask doctrine adaptive · 3 modes verbosité cold/warm/silent + cache intra-chain inter-skills + re-gate policy explicit + triage uniquement orchestrators ambigus (intent-clarity heuristic bypass). Phase 2 audit jargon scope autres modes phantom (briefs/tests/matrix/doctrine + phantom-modes/canon.md + item.md). Test live E2E kara post-DRGFP migration : lancer chain produce-paid-angles → produce-copy-brief → compose-creative et observer comportement gates DRGFP en conditions réelles."
+}

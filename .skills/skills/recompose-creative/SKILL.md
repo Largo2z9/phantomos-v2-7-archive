@@ -1,6 +1,6 @@
 ---
 name: recompose-creative
-version: 1.0.0
+version: 1.1.0
 type: producer
 recommended_model: opus
 subagent_safe: true
@@ -60,6 +60,22 @@ produces_proposals_for:
   - brands/{slug}/produced/{CRT-X}.json
   - brands/{slug}/produced/{CRT-X}.jpg
   - brands/{slug}/produced/{CRT-X}.md
+prerequisites:
+  - field: produced/{creative_id}.json
+    level: L1
+    auto_pull: read_creative_source
+    freshness_ttl_days: 60
+  - field: variant_axis
+    level: L2
+    options:
+      - new_audience
+      - new_platform
+      - new_hook
+      - new_visual_treatment
+  - field: resources/canon/copy/formats-livrables
+    level: L1
+    auto_pull: read_canon_directory
+    freshness_ttl_days: 365
 permissions:
   reads: [brand, product, profile, learning, creative, canon_copy, registries]
   writes: [creative]
@@ -90,6 +106,17 @@ Adaptateur, not generator. Lit un creative interne déjà persisté (CRT-N), cha
 ## Tone
 
 Posture collègue senior media buying qui décline une créa testée. Pas inventeur. La fiche est dense mais lisible : ce qui reste vs ce qui change, justification courte de l'adaptation, comparaison side-by-side. Aucun JSON brut, aucun field_path interne. Si une dimension n'est pas explicitement déclarée, AskUserQuestion pour la fixer avant tout pipeline visuel.
+
+## Step 0bis · Prerequisite check (DRGFP v2.38)
+
+Avant adaptation (Step 1), scanner prerequisites :
+
+1. L1 silent · `produced/{creative_id}.json` (required) · `resources/canon/copy/formats-livrables`
+2. L2 gate · `variant_axis` non spécifié → AskUserQuestion 5 options (new_audience / new_platform / new_format / new_hook / new_visual_treatment)
+
+Output state map + confidence_chain[] init avec variant_axis selected.
+
+---
 
 ## Hard Rules
 

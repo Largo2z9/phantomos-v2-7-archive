@@ -5,6 +5,36 @@
 
 ---
 
+## v2.38.0 · 2026-05-04 · DRGFP doctrine canonique + migration 8 skills
+
+**Why this release.** v2.37 a posé les garde-fous fondations (schema prerequisites, confidence propagation, isolation discipline, jargon translation, canon-tool v1.1 attribution+decay). v2.38 ship la doctrine consommable DRGFP (Dependency Resolution & Gap-Filling Protocol) qui formalise comment chaque skill arbitre ses gaps amont sans bricolage. Pipeline P0→P5 désormais robuste : si verbatim density < 5 le skill demande arbitrage explicite, si creative_zone vide il applique fallback proxy avec flag visible, si canon copy chargeable il consume silently. Pas de skill qui ship data faux silencieusement, pas de cross-brand contamination, confidence chain audit trail visible.
+
+**What shipped.**
+
+- **Doctrine `dependency-resolution-protocol.md` créée**. 3 niveaux canoniques appliqués au Step 0bis de chaque skill : **L1 auto-fill silent** (source authoritative dispo, required `auto_pull` strategy + `freshness_ttl_days`) · **L2 ask-operator gate** (choix stratégique requis, options 2-4 binaires) · **L3 degraded + flag** (output partial avec `validation_status: hypothesis` + `confidence: 0.X` + `_gaps[]`). Routage binaire default L1 > L3 > L2 (L2 seulement si vraiment besoin operator arbitrage). Frontmatter SKILL.md déclaratif `prerequisites[]` validé schema v2.37. Step 0bis prerequisite_check pattern canonisé. Operator surface translation v2.37 (L1/L2/L3 jamais exposés brut · `automatique/à toi/partiel`). Couplé confidence-propagation v2.37 (default min defensive) + canon-tool schema v1.1 v2.37 (attribution + decay) + brand-isolation v2.37.
+- **Lexicon entry DRGFP** + **skill-authoring-discipline section 4 invariants enrichie** (ligne 2ter `prerequisites: []` recommended v2.38, required v2.39+ producer/orchestrator). Drift frontmatter ↔ Step 0bis prose flag MAJOR finding (multi-source of truth interdit).
+- **8 skills migrés au pattern DRGFP** :
+
+  | Skill | Version | Prereqs | Notes |
+  |---|---|---|---|
+  | `define-specs` | 1.0 → 1.1 | 4 (L1×3, L2×1) | URL Shopify L1 freshness 7d · operator input_mode L2 3 options · sources upload L1 freshness 30d · brownfield spec L1 freshness 90d |
+  | `profile-audience` | 1.0.1 → 1.1 | 4 (L1×3, L3×1) | HR2.5 v2.35 formalisé brownfield seed · mining outputs · verbatim_density threshold 3 L3 fallback canon archetype |
+  | `weight-dimensions` | 1.0 → 1.1 | 2 (L1×1, L3×1) | profile completeness threshold 0.7 L3 fallback origin_axis biais initiaux |
+  | `score-matrix` | 1.0 → 1.1 | 4 (L1×3, L3×1) | strategic_context v2.35 fallback proxy brand_equity_level formalisé |
+  | `produce-paid-angles` | 1.4 → 1.5 | 7 (L1×5, L2×1, L3×1) | HR4.5 v2.36 verbatim density gate formalisé en L2 prereqs · canon hooks/frameworks/archetypes-voix L1 · brand angles existing L1 |
+  | `produce-copy-brief` | 1.2 → 1.3 | 4 (L1×3, L3×1) | angle target · profile · canon hooks · brand voice L3 fallback |
+  | `compose-creative` | 1.0.2 → 1.1 | 5 (L1×4, L3×1) | HR1.4 v2.35 visual_identity dual_path_inline_or_sibling formalisé · brief markdown optional L1 · canon formats-livrables L1 |
+  | `recompose-creative` | 1.0 → 1.1 | 3 (L1×2, L2×1) | creative_source L1 · variant_axis L2 4 options (5e new_format reachable via HR1 prose, schema bump v2.39 si besoin) · canon formats-livrables L1 |
+
+  Step 0bis prerequisite_check ajouté chaque skill avant Step 1 existant. HR existing préservées prose (cohérence runtime).
+- **Manifest skills regenerated** · 49 skills présents, PyYAML strict parser v2.37 valide tous frontmatters (shim flow-sequence backward compat couvre `{slug}` paths non-quoted pré-existants).
+
+**Operator impact.** Demain matin tu tapes `/phantom kara doctrine` pour voir la méthode, puis lance n'importe quel skill du pipeline P0→P5. Le skill arbitre ses gaps en transparence : auto-pull silent ce qu'il peut, te demande arbitrage explicite UNIQUEMENT sur choix stratégique, applique fallback degraded avec flag visible si output viable. Plus de "Atlas vivant validations[] cumulées" ou syntaxe `compose-creative kara cellule-boost ANG-01` cérémoniale (jargon translation v2.37 + DRGFP v2.38 = posture orchestrateur Jarvis canonisée). Backward compat strict additif partout.
+
+**Next.** v2.39 consume-existing protocol (3 lookups upstream brand-side + canon + atlas vivant · dedup_strategy + diversity_constraint anti lock-in). v2.40 show-before-ask adaptive (3 modes verbosité cold/warm/silent · cache intra-chain · triage orchestrators ambigus only). Test live E2E kara post-DRGFP : lancer chain produce-paid-angles → produce-copy-brief → compose-creative pour observer comportement gates en conditions réelles.
+
+---
+
 ## v2.37.0 · 2026-05-04 · Fondations garde-fous data + UX · post red team audit
 
 **Why this release.** Red team adversarial audit data + UX sur les 3 grosses doctrines proposées v2.37 (DRGFP gap-filling · consume-existing · show-before-ask) a identifié 7 vecteurs critiques de pollution silencieuse (silent corruption stale data, confidence cascade non-spec'd, frontmatter drift, atlas vivant lock-in winner précoce, validations pollution non-attribuée, cross-brand leak multi-clients, jargon leak operator-facing) + 7 frictions UX dont 2 critiques (cérémonial forcé sur intent explicite, jargon violation règle KB). Ship monolithique des 3 doctrines = compound failure mode. Décision : sequencer. Phase 1 fondations cette release (~6h plumbing + safeguards + 1 bug v2.36 corrigé). Phase 2-4 ship doctrines une à une avec garde-fous armés (v2.38-v2.40).
