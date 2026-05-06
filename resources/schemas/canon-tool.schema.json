@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Canon Tool Card",
-  "description": "Standard fiche format for any tool item inside resources/canon/{atlas}/{layer}/{tool}.json. Each canon tool is a navigable, composable, validatable item. Loaded by /phantom canon {atlas} {layer} {tool} drill mode.",
+  "description": "Standard fiche format for any tool item inside resources/canon/{atlas}/{layer}/{tool}.json. Each canon tool is a navigable, composable, validatable item. Loaded by /phantom canon {atlas} {layer} {tool} drill mode. Schema v1.1 (v2.37+) adds attribution_layer, validated_at, decay_ttl_days, _isolation_boundary, brand_slug as required on validations[] entries to block silent atlas pollution (red team A1, A4, A5, A7).",
   "type": "object",
   "required": ["id", "atlas", "layer", "name", "principle"],
   "properties": {
-    "_schema": { "type": "string", "const": "canon-tool/1.0" },
+    "_schema": { "type": "string", "const": "canon-tool/1.1" },
     "_version": { "type": "string" },
 
     "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Tool slug, kebab-case. Unique within its layer." },
@@ -42,19 +42,108 @@
 
     "validations": {
       "type": "array",
-      "description": "Append-only log of brand-side validations. Populated by learn-from-session promotion. Each entry is a contextualised signal that this tool worked or fatigued in a real run.",
+      "description": "Append-only log of brand-side validations. Populated by learn-from-session promotion. Each entry is a contextualised signal that this tool worked or fatigued in a real run. Schema v1.1 (v2.37+) enforces attribution_layer, validated_at, decay_ttl_days, brand_slug, _isolation_boundary on every NEW write to block silent pollution and lock-in (red team A1/A4/A5/A7). Entries written under v1.0 remain readable; missing fields treated as `unknown` for attribution and as `validated_at = captured_at fallback` for decay.",
       "items": {
         "type": "object",
-        "required": ["brand_slug", "audience_slug", "outcome", "captured_at"],
+        "required": [
+          "brand_slug",
+          "outcome",
+          "attribution_layer",
+          "validated_at",
+          "decay_ttl_days"
+        ],
         "properties": {
-          "brand_slug": { "type": "string" },
-          "audience_slug": { "type": "string" },
-          "outcome": { "type": "string", "enum": ["validated", "fatigued", "inconclusive", "rejected"] },
-          "metric": { "type": "string", "description": "Free-form: 'ROAS 4.2 over 14d', 'CTR 2.8% on 12k impressions', etc." },
-          "duration_days": { "type": ["integer", "null"] },
-          "captured_at": { "type": "string", "format": "date-time" },
-          "captured_by": { "type": "string", "enum": ["operator", "agent", "test_result"] },
-          "note": { "type": "string", "description": "Optional context, 1-2 sentences." }
+          "validation_id": {
+            "type": "string",
+            "pattern": "^VAL-[A-Z0-9-]+$",
+            "description": "v2.37+ stable identifier of the validation entry."
+          },
+          "brand_slug": {
+            "type": "string",
+            "description": "Brand qui a validé. Isolation boundary v2.37+ (red team A7 cross-contamination)."
+          },
+          "audience_slug": {
+            "type": "string",
+            "description": "Audience scope of the validation. Optional but recommended."
+          },
+          "outcome": {
+            "type": "string",
+            "enum": ["validated", "fatigued", "inconclusive", "rejected", "success", "neutral", "failed"],
+            "description": "Outcome of the test. v1.0 enum (validated/fatigued/inconclusive/rejected) preserved for backward compat read; v1.1 adds (success/neutral/failed) for finer-grained signals. Skill authors normalise to v1.1 vocabulary on new writes."
+          },
+          "attribution_layer": {
+            "type": "string",
+            "enum": [
+              "hook",
+              "angle",
+              "framework",
+              "archetype",
+              "format",
+              "targeting",
+              "budget",
+              "creative_execution",
+              "timing",
+              "unknown"
+            ],
+            "description": "v2.37+ REQUIS. À quoi est attribué le signal (success/failed). Bloque pollution atlas vivant par signaux non-imputables (red team A5). `unknown` autorisé mais déclenche operator gate avant write."
+          },
+          "validated_at": {
+            "type": "string",
+            "format": "date",
+            "description": "v2.37+ REQUIS. Date de la validation pour decay calculation (YYYY-MM-DD)."
+          },
+          "decay_ttl_days": {
+            "type": "integer",
+            "minimum": 30,
+            "default": 90,
+            "description": "v2.37+ REQUIS. TTL après lequel cette validation est considérée stale. Empêche lock-in monoculturel sur winners anciens (red team A4). Default 90 jours, override autorisé par skill (ex 30 jours pour formats TikTok fast-decay, 180 pour benefit chains slow-decay)."
+          },
+          "metric_observed": {
+            "type": "string",
+            "description": "Metric source (ex ROAS, CTR, watch_time)."
+          },
+          "metric_value": {
+            "type": "number"
+          },
+          "metric": {
+            "type": "string",
+            "description": "v1.0 free-form metric string. Preserved for backward compat read; v1.1 prefers metric_observed + metric_value."
+          },
+          "test_size": {
+            "type": "integer",
+            "description": "Taille échantillon test (impressions, sessions, etc.)."
+          },
+          "duration_days": {
+            "type": ["integer", "null"]
+          },
+          "context_snapshot": {
+            "type": "object",
+            "description": "État brand au moment validation (pour audit historique).",
+            "properties": {
+              "audience_slug": { "type": "string" },
+              "platform": { "type": "string" },
+              "season": { "type": "string" }
+            }
+          },
+          "captured_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "v1.0 timestamp. Preserved. v1.1 read fallback when validated_at absent."
+          },
+          "captured_by": {
+            "type": "string",
+            "enum": ["operator", "agent", "test_result"]
+          },
+          "note": {
+            "type": "string",
+            "description": "Optional context, 1-2 sentences."
+          },
+          "_isolation_boundary": {
+            "type": "string",
+            "const": "brand",
+            "default": "brand",
+            "description": "v2.37+ enforce brand-only scope. Empêche cross-contamination multi-brand (red team A7). Auto-set on write."
+          }
         }
       }
     },

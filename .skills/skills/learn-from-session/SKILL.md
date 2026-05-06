@@ -205,23 +205,61 @@ Quand un learning concerne un **outil canon copy** utilisé en prod (hook, frame
    - *"Le framework BAB donne ROAS 4.2 sur chute-post-grossesse cure 3 mois, validé"* → canon copy frameworks bab#validations[]
    - *"Pre-emption sur 'encore un produit miracle' valide bien sur Karacare cross-audiences"* → canon copy objections pre-emption#validations[]
 
-2. **Format de la validation entry** (schema canon-tool#validations[]) :
+2. **Format de la validation entry** (schema canon-tool/1.1, v2.37+) :
    ```json
    {
+     "validation_id": "VAL-{BRAND}-{YYYYMMDD}-{N}",
      "brand_slug": "karacare",
      "audience_slug": "chute-post-grossesse",
-     "outcome": "validated|fatigued|inconclusive|rejected",
-     "metric": "ROAS 4.2 over 14d",
-     "duration_days": 14,
-     "captured_at": "{ISO date}",
+     "outcome": "success|neutral|failed|fatigued",
+     "attribution_layer": "hook|angle|framework|archetype|format|targeting|budget|creative_execution|timing|unknown",
+     "validated_at": "YYYY-MM-DD",
+     "decay_ttl_days": 90,
+     "metric_observed": "ROAS",
+     "metric_value": 4.2,
+     "test_size": 12000,
+     "context_snapshot": {
+       "audience_slug": "chute-post-grossesse",
+       "platform": "meta",
+       "season": "Q2"
+     },
+     "captured_at": "{ISO date-time}",
      "captured_by": "operator|agent|test_result",
-     "note": "1-2 sentences contextual"
+     "note": "1-2 sentences contextual",
+     "_isolation_boundary": "brand"
    }
    ```
 
-3. **Operator gate.** L'opérateur valide la promotion explicitement avant l'écriture canon. Format de validation à la fin du recap : *"Cette règle propose aussi une promotion canon : `canon copy {layer} {tool}` validé sur {brand}/{audience}. Tu confirmes la promotion canon ?"*. *Yes* → écriture canon + brand-side. *No* → brand-side seulement.
+3. **Operator gate.** L'opérateur valide la promotion explicitement avant l'écriture canon. Format de validation à la fin du recap : *"Cette règle propose aussi une promotion canon : `canon copy {layer} {tool}` {outcome} sur {brand}/{audience}, attribué à {attribution_layer}, decay {decay_ttl_days}j. Tu confirmes la promotion canon ?"*. *Yes* → écriture canon + brand-side. *No* → brand-side seulement.
 
 4. **Append-only**. Les validations[] s'ajoutent, ne se remplacent jamais. Une fatigue ultérieure n'efface pas un succès passé : les deux entries coexistent, datées. C'est ce qui permet de voir l'évolution d'un outil dans le temps.
+
+### HR-Canon-V11 · Validations[] schema v1.1 enforcement (v2.37+)
+
+Tout append à `validations[]` (sur n'importe quel canon-tool) DOIT inclure :
+
+1. `attribution_layer` enum 10 valeurs (hook, angle, framework, archetype, format, targeting, budget, creative_execution, timing, unknown).
+2. `validated_at` date YYYY-MM-DD.
+3. `brand_slug` (isolation boundary v2.37+).
+4. `decay_ttl_days` (default 90 si non fourni par skill ou opérateur).
+5. `_isolation_boundary` auto-set à `"brand"`.
+
+Si `attribution_layer = "unknown"` → flag operator gate AskUserQuestion (proposer les 9 autres valeurs). Doit être désambigué avant write. Empêche pollution silencieuse atlas vivant par signaux non-imputables (red team A5).
+
+Cross-brand read sur `validations[]` interdit par défaut · scope `brand_only` enforced. Override seulement par operator gate explicit (red team A7).
+
+Backward compat lecture : entries v1.0 restent lisibles, `attribution_layer` absent → traité `"unknown"`, `validated_at` absent → fallback `captured_at`, `decay_ttl_days` absent → default 90. Mutation enforcement seulement sur new writes v2.37+.
+
+### HR-Canon-Decay · Decay filter au moment promotion (v2.37+)
+
+Avant tout promotion `validations[]` → atlas canon copy (sélection top signal, recommandation skill, recap operator) :
+
+1. Filter entries où `today > (validated_at + decay_ttl_days)` → state `stale`.
+2. Entries stale restent dans le log (append-only, jamais effacées) mais surfacées comme `stale` dans le recap operator.
+3. Si entry stale était top signal de promotion → require re-test ou explicit operator override.
+4. Promotion eligible **only** sur entries fresh + `outcome` ∈ {`success`, `validated`} + `min(confidence_chain) >= 0.7` (cf `docs/system/confidence-propagation.md`).
+
+Empêche atlas canon copy d'absorber des winners anciens devenus obsolètes (red team A4 lock-in).
 
 **Pourquoi c'est important.** Sans ce mécanisme, l'atlas canon reste générique. Avec lui, l'atlas devient **vivant** : `/phantom canon copy hooks curiosity-gap` rend la fiche + l'historique des validations brand-side, l'opérateur voit ce qui a marché chez lui.
 

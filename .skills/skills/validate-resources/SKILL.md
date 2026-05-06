@@ -208,6 +208,29 @@ Never count via flat `offers_doc.get("offers", [])` — that's the legacy v1.x p
 
 **Rationale**: with skill count growing over time, unenforced taxonomy drifts to irrelevance. Blocking validation keeps the typology load-bearing. See `docs/system/patterns.md § Skill Taxonomy § Enforcement`.
 
+### 13c. Brand Isolation Scope Enforcement (v2.37+)
+
+**HR · Brand isolation scope enforcement**
+
+Tout SKILL.md v2.37+ doit déclarer frontmatter `isolation_scope:` enum [brand_only, cross_brand_with_gate, workspace_global].
+
+Si absent → default `brand_only` appliqué auto + warning logged :
+```
+[SKILL-ISOLATION-DEFAULT] .skills/skills/{name}/SKILL.md → `isolation_scope:` absent. Default `brand_only` auto-appliqué. Déclarer explicitement pour silence le warning.
+```
+
+Si `workspace_global` → require justification dans description (infrastructure skills only · validate-resources, hygiene-audit, build-manifest). Justification absente → blocking error :
+```
+[SKILL-ISOLATION-UNJUSTIFIED] .skills/skills/{name}/SKILL.md → `isolation_scope: workspace_global` sans justification. Réservé infrastructure skills. Documenter raison dans description ou rétrograder à brand_only.
+```
+
+Si `cross_brand_with_gate` → require Step prose explicit qui mentionne AskUserQuestion gate sur cross-brand read. Gate absent → blocking error :
+```
+[SKILL-ISOLATION-GATE-MISSING] .skills/skills/{name}/SKILL.md → `isolation_scope: cross_brand_with_gate` sans Step prose AskUserQuestion gate explicit avant cross-brand read.
+```
+
+**Rationale** : empêche cross-contamination silencieuse multi-brand (red team finding A7). Critique en context agency multi-clients · NDAs interdisent cross-pollination data. Default `brand_only` est le filet de sécurité par défaut. Full doctrine `docs/system/brand-isolation-discipline.md`.
+
 ---
 
 ### 13. CLAUDE.md Size Audit
@@ -260,6 +283,41 @@ Flags potential sidecar semantic divergence with the core entity.
 - For every sidecar, list field names that could be semantic neighbors to core fields (heuristic match on substring or lexical similarity — `currency`, `locale`, `timezone`, `unit`, `language`, etc.).
 - Output as `INFO: sidecar field {x} may overlap with core field {y}, review manually`.
 - This check flags, does not block. Automated resolution of semantic divergence is pending V1.x.
+
+### 19. Frontmatter prerequisites schema validation (v2.37+)
+
+**HR-19** Si SKILL.md frontmatter contient un field `prerequisites:` :
+
+1. Charger `resources/schemas/skill-prerequisites.schema.json`
+2. Valider `frontmatter.prerequisites` contre le schema (JSON Draft-07, jsonschema lib)
+3. Si validation fail → MAJOR finding, skill REJECTED jusqu'à fix
+4. Vérifications additionnelles cross-doc :
+   - Chaque entry `prerequisites[i].field` doit être référencée dans le Step 0bis prose du même SKILL.md
+   - Si dérive frontmatter ↔ Step 0bis → MAJOR finding (multi-source of truth interdit)
+
+Backward compat : SKILL.md sans field `prerequisites:` passe silently (additif, pas requis). Bloque drift garanti à l'échelle (red team finding A3 v2.36).
+
+### 20. Operator vocabulary jargon lint (v2.37+)
+
+**HR-20** Scan tout SKILL.md prose example operator-facing (`output_format:`, vue ASCII templates, no_orphan_output, AskUserQuestion text, exemples opérateur quotés) pour tokens jargon listés dans `docs/system/operator-vocabulary-translation.md`.
+
+Patterns à flag (regex case-insensitive) sur prose hors backticks code :
+
+- `\batlas\s+(brand|vivant|canon)`
+- `\bcanon\s+(copy|tool)`
+- `\bvalidations\[\]`
+- `\bfiches\b` (sauf si dans backticks code)
+- `\bcouches\b` (sauf si dans backticks code)
+- `\barchetype\b` (sauf operator-facing context explicit)
+- `\bL[123]\s+(fallback|gate|degraded)`
+- `\bprerequisites\b` (sauf backticks code)
+- `\bconfidence_(chain|propagation)`
+
+Si match dans context operator-facing (no inline code/backticks) → MAJOR finding + suggested replacement from translation table (`docs/system/operator-vocabulary-translation.md § Mapping canonique`).
+
+Empêche jargon leak operator-facing (CRITICAL bug v2.36 red team Friction 5).
+
+Backward compat : skills v2.36 sans translation appliquée continuent à fonctionner mais sont flaggés warning par lint (additif strict).
 
 ---
 
@@ -468,6 +526,8 @@ Health: degraded
 - **Validate = autorité unique** sur status.json, workspace-status.json, cross-refs, et stats. Aucun autre skill n'écrit dans ces fichiers.
 - **Brand status.json is the only file validate writes in brands/** (+ todos.md flags)
 - **workspace-status.json is the only cross-brand aggregation file** — lives at workspace root
+- **HR-19 frontmatter prerequisites schema validation** — voir check 19. Tout SKILL.md avec un field `prerequisites:` MUST passer la validation contre `resources/schemas/skill-prerequisites.schema.json` ET maintenir la cohérence avec son Step 0bis prose. Frontmatter ↔ Step 0bis drift = MAJOR finding (multi-source of truth interdit, red team v2.36 A3).
+- **HR-20 operator vocabulary jargon lint** — voir check 20. Scan SKILL.md prose operator-facing pour tokens jargon (atlas brand/vivant/canon, validations[], fiches, couches, archetype, L1/L2/L3 fallback, etc.). Match hors backticks code → MAJOR finding + suggested replacement via `docs/system/operator-vocabulary-translation.md`. Empêche jargon leak operator (red team v2.36 Friction 5).
 
 ---
 

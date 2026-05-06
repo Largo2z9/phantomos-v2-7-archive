@@ -139,12 +139,61 @@ Après 2-3 mois d'usage cohérent, un brand a un canon validé empiriquement, pa
 
 - **v2.26.0** ✓ fondation 11 couches × 58 fiches seedées · schema `canon-tool/1.0` · D#382 D#383
 - **v2.27.0** ✓ 4 skills consume + feed (produce-paid-angles, produce-copy-brief, mine-voc, learn-from-session) · D#391
+- **v2.37.0** ✓ schema canon-tool v1.0 → v1.1 · attribution_layer + freshness/decay TTL + isolation boundary sur `validations[]` · adresse red team A1/A4/A5/A7. Cf §11.
 - **Différé** : autres atlas (paid, brand, offer, funnel, cro, email, analytics, mining). Décision : on attend 2-3 mois de prod sur canon copy d'abord, on capitalise les patterns d'authoring atlas, on généralise ensuite.
 - **Différé** : vues `matrix/copy-matrix/copy-map` tant que validations[] n'est pas peuplé en prod réelle.
 
 ---
 
-## 10 · Cross-refs
+## 11 · Schema v1.1 (v2.37+)
+
+> Patch fondation 3 v2.37 · attribution layer + freshness/decay TTL + isolation boundary sur `validations[]`. Adresse red team findings A1 (stale data injection), A4 (atlas vivant runaway lock-in), A5 (validations failed sans attribution imputable), A7 (cross-brand contamination).
+
+### 11.1 · Pourquoi v1.1
+
+Schema v1.0 acceptait des entries `validations[]` sans imputabilité ni decay. Trois failles structurelles :
+
+1. **A5 imputabilité.** `outcome: failed` sans `attribution_layer` pollue le canon · un échec ciblage est attribué à un échec de hook, le canon dégrade silencieusement.
+2. **A4 lock-in.** Un winner précoce alimente `validations[]`, le skill suivant le privilégie, monoculture s'installe sans relecture des outcomes plus récents ou de signaux contradictoires fraîchement captés.
+3. **A7 cross-contamination.** Un brand peut lire les `validations[]` d'un autre brand par défaut, le compound brand-side se mélange.
+
+### 11.2 · 5 fields requis sur entries v1.1
+
+| Field | Type | Rôle |
+|---|---|---|
+| `brand_slug` | string | Isolation boundary. Scope read = brand seul par défaut. Override via operator gate explicite uniquement. |
+| `attribution_layer` | enum 10 valeurs (`hook`, `angle`, `framework`, `archetype`, `format`, `targeting`, `budget`, `creative_execution`, `timing`, `unknown`) | À quoi est attribué le signal. `unknown` autorisé mais déclenche AskUserQuestion gate avant write. Bloque pollution atlas vivant par signaux non-imputables. |
+| `validated_at` | date `YYYY-MM-DD` | Date validation. Base du calcul decay. |
+| `decay_ttl_days` | integer >= 30 (default 90) | TTL stale. Override par skill autorisé (ex 30 jours formats TikTok fast-decay, 180 jours benefit chains slow-decay). |
+| `_isolation_boundary` | const `"brand"` | Auto-set on write. Enforce brand-only scope. |
+
+### 11.3 · Backward compat lecture
+
+Entries v1.0 existantes restent lisibles. Quand un consumer (skill, query) rencontre une entry v1.0 :
+- `attribution_layer` absent → traité comme `"unknown"`, signalé en lineage.
+- `validated_at` absent → fallback sur `captured_at` (v1.0 ISO date-time).
+- `decay_ttl_days` absent → default 90 jours appliqué pour le calcul stale.
+- `_isolation_boundary` absent → traité comme `"brand"`.
+
+Mutation enforcement (refus de write) **seulement sur new writes v2.37+**. Migration entries v1.0 non requise · tolerance lecture additive.
+
+### 11.4 · Decay filter au moment promotion
+
+`learn-from-session` (et tout consumer canon) filtre `validations[]` au moment où elles influencent une décision (promotion canon, sélection top signal, recommandation skill) :
+
+```
+si today > (validated_at + decay_ttl_days) → entry stale
+```
+
+Stale entries restent dans le log (append-only) mais sont surfacées comme `state: stale` dans le recap operator. Si une stale entry était top signal pour une promotion, opérateur doit re-tester ou override explicite.
+
+### 11.5 · Cross-ref
+
+Doctrine confidence chain (propagation, min-chain, gate >= 0.7) → `docs/system/confidence-propagation.md`. Decay s'articule avec confidence chain pour le filtre eligibility de promotion canon.
+
+---
+
+## 12 · Cross-refs
 
 - `resources/canon/copy/{layer}/{tool}.json` : location physique des fiches.
 - `resources/schemas/canon-tool.schema.json` : schema fiche, source de vérité.

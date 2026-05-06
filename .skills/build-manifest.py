@@ -18,73 +18,72 @@ import sys
 from pathlib import Path
 from datetime import datetime, timezone
 
+try:
+    import yaml
+except ImportError:
+    print(
+        "ERROR: PyYAML required. Install with: pip3 install --user pyyaml",
+        file=sys.stderr,
+    )
+    sys.exit(1)
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 SKILLS_DIR = SCRIPT_DIR / "skills"
 OUTPUT = SCRIPT_DIR / "_manifest.json"
 
+FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---\n", re.DOTALL)
+FLOW_SEQ_RE = re.compile(r"(\[)([^\[\]\n]*)(\])")
 
-def parse_frontmatter(text):
-    """Extract YAML frontmatter between --- delimiters. Returns dict or None."""
-    m = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
+
+def _quote_flow_items_with_braces(match):
+    """Coerce unquoted flow sequence items that contain `{` into quoted strings.
+
+    Backward compat shim: pre-PyYAML legacy SKILL.md files stored values like
+    `writes: [brands/{slug}/products/{slug}/spec.json via write_to_context]`
+    where the unquoted `{slug}` would be parsed by PyYAML as a nested flow
+    mapping and fail. The legacy regex parser tolerated this. We tolerate it
+    here too by quoting any flow-sequence item containing a brace, before
+    handing the block to yaml.safe_load.
+    """
+    open_b, body, close_b = match.group(1), match.group(2), match.group(3)
+    parts = [p.strip() for p in body.split(",")]
+    fixed = []
+    for p in parts:
+        if not p:
+            continue
+        if "{" in p and not (p.startswith('"') or p.startswith("'")):
+            # escape any embedded double quote, then wrap
+            p_escaped = p.replace('"', '\\"')
+            fixed.append(f'"{p_escaped}"')
+        else:
+            fixed.append(p)
+    return open_b + ", ".join(fixed) + close_b
+
+
+def _preprocess_frontmatter(block):
+    """Apply backward compat shims before yaml.safe_load."""
+    return FLOW_SEQ_RE.sub(_quote_flow_items_with_braces, block)
+
+
+def parse_frontmatter(text, skill_name=None):
+    """Strict YAML parse of frontmatter between --- delimiters.
+
+    Returns dict on success, None if no frontmatter or yaml error.
+    YAML errors are logged with skill name and the skill is skipped
+    (manifest build continues for the remaining skills).
+    """
+    m = FRONTMATTER_RE.match(text)
     if not m:
         return None
-    block = m.group(1)
-
-    data = {}
-    current_key = None
-    current_list = None
-    buffer_multiline = None
-    buffer_key = None
-
-    for raw in block.split("\n"):
-        line = raw.rstrip()
-        if not line or line.lstrip().startswith("#"):
-            continue
-
-        # Multi-line folded scalar `key: >`
-        if buffer_multiline is not None:
-            if re.match(r"^[A-Za-z_][A-Za-z0-9_]*:", line) and not line.startswith(" "):
-                data[buffer_key] = buffer_multiline.strip()
-                buffer_multiline = None
-                buffer_key = None
-            else:
-                buffer_multiline += " " + line.strip()
-                continue
-
-        m_kv = re.match(r"^([A-Za-z_][A-Za-z0-9_]*):\s*(.*)$", line)
-        if m_kv:
-            k, v = m_kv.group(1), m_kv.group(2).strip()
-            current_key = k
-            current_list = None
-            if v == ">" or v == "|":
-                buffer_multiline = ""
-                buffer_key = k
-                continue
-            if v.startswith("[") and v.endswith("]"):
-                data[k] = [x.strip() for x in v[1:-1].split(",") if x.strip()]
-                continue
-            if v == "":
-                data[k] = {}
-                current_list = None
-                continue
-            if v.lower() in ("true", "false"):
-                data[k] = v.lower() == "true"
-                continue
-            data[k] = v.strip('"').strip("'")
-        elif line.startswith("  ") and current_key and isinstance(data.get(current_key), dict):
-            m_nested = re.match(r"^\s+([A-Za-z_][A-Za-z0-9_-]*):\s*(.*)$", line)
-            if m_nested:
-                k, v = m_nested.group(1), m_nested.group(2).strip()
-                if v.startswith("[") and v.endswith("]"):
-                    data[current_key][k] = [x.strip() for x in v[1:-1].split(",") if x.strip()]
-                elif v.lower() in ("true", "false"):
-                    data[current_key][k] = v.lower() == "true"
-                else:
-                    data[current_key][k] = v.strip('"').strip("'")
-
-    if buffer_multiline is not None and buffer_key:
-        data[buffer_key] = buffer_multiline.strip()
-
+    block = _preprocess_frontmatter(m.group(1))
+    try:
+        data = yaml.safe_load(block)
+    except yaml.YAMLError as e:
+        label = skill_name or "<unknown>"
+        print(f"WARN: yaml parse error in {label}: {e}", file=sys.stderr)
+        return None
+    if not isinstance(data, dict):
+        return None
     return data
 
 
@@ -117,9 +116,9 @@ def build_manifest():
         except Exception as e:
             print(f"WARN: {skill_file}: {e}", file=sys.stderr)
             continue
-        fm = parse_frontmatter(text)
+        fm = parse_frontmatter(text, skill_name=skill_dir.name)
         if not fm:
-            print(f"WARN: no frontmatter in {skill_file}", file=sys.stderr)
+            print(f"WARN: no frontmatter or invalid yaml in {skill_file}", file=sys.stderr)
             continue
 
         perm = fm.get("permissions", {}) if isinstance(fm.get("permissions"), dict) else {}

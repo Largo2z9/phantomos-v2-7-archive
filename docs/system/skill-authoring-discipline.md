@@ -50,6 +50,7 @@ A skill satisfies SAD if and only if it carries:
 |---|---|---|
 | 1 | **`type:` declared** in frontmatter, valid taxonomy member (producer / curator / capturer / orchestrator / navigator / builder / shared). | Type drives default model, subagent_safe, permissions baseline. Type-missing skills are refused by `validate-resources`. |
 | 2 | **CMR-compliance frontmatter triad** — `reasoning_pattern: matrix-driven` (or `null` for explicit no-matrix), `matrix_mode: coding | generating | pipeline | hybrid` (when matrix-driven), `consumes: [{path, min_version}]`. | Makes CMR-compliance machine-verifiable. Skills without `reasoning_pattern` declared fail the SAD check. |
+| 2bis | **Isolation scope declared** (v2.37+) — `isolation_scope: brand_only | cross_brand_with_gate | workspace_global`. Default `brand_only` if absent (auto-applied + warning). `cross_brand_with_gate` requires explicit AskUserQuestion gate documented in Step prose. `workspace_global` reserved for infrastructure skills (validate-resources, hygiene-audit, build-manifest) and requires justification in description. Full doctrine `docs/system/brand-isolation-discipline.md`. | Empêche cross-contamination silencieuse data multi-brand (red team finding A7). Critique en context agency multi-clients. |
 | 3 | **Disambiguation declared** when triggers overlap with sibling skills. `disambiguates_against: {skill_name: routing_condition}` block in frontmatter. | When 2+ skills match an operator intent, the manifest entry's `disambiguates_against` resolves the routing. Without it, the agent guesses. |
 | 4 | **Hard rules numbered and explicit.** Each Hard Rule is a one-line, refusable invariant ("audit ≠ rewrite", "verbatim anchor required per cell", "score never exposed"). | Implicit rules drift. Numbered rules are auditable, refusable by hooks, traceable to violations. |
 | 5 | **Persistence path declared** when the skill writes artifacts. `Persistence: brands/{slug}/audits/{date}-{id}.md` or equivalent. | Operators expect to find what was produced. Skills that write nowhere or to ad-hoc paths break the workflow. |
@@ -208,6 +209,7 @@ The skill author asks, in this order:
 - **`skill-authoring-toolkit.md`** — optional companion. Names the prompt engineering patterns that the doctrines apply implicitly (dense prompting principles, magic keywords curated, interaction patterns, upstream questioning). Levers not constraints. Cross-ref to `largo-kb/02-ai/prompting/` for full library.
 - **`extending.md`** — extension layer rules ; SED chapter that SAD references for custom skills.
 - **`atlas-canon-copy.md`** — atlas canon copy doctrine (11 layers, schema `canon-tool/1.0`, bidirectional contract). Referenced by SAD § 5bis. Decision lineage D#382 D#383 D#391.
+- **`brand-isolation-discipline.md`** — doctrine isolation v2.37+. Frontmatter `isolation_scope` enum [brand_only, cross_brand_with_gate, workspace_global]. Default `brand_only` enforced. Empêche cross-contamination multi-brand (red team finding A7).
 - **Hooks** — `mutation-guard`, `convention-guard`, `budget-warn`, `checkpoint-resolver`, `post-write-flush`, `turn-end-audit`, `invariant-violation-detector` (to add).
 
 ---

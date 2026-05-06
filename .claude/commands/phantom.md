@@ -666,27 +666,27 @@ Header breadcrumb :
 ```
 workspace > {brand} > atlas
 ══════════════════════════════════════════════
-ATLAS BRAND {BRAND_NAME} · cartographie holistique data
+MATIÈRE BRAND {BRAND_NAME} · cartographie holistique
 
-ENTITÉS CORE (6)
-  brand           ✓ identité posée · creative_zone défini · brand_equity_level {low|mid|high}
+MATIÈRE BRAND (6)
+  brand           ✓ identité posée · zone créative définie · niveau brand {low|mid|high}
   products ({N})  {product_slug_1} · {product_slug_2}
   audiences ({N}) {audience_slug_1} · {audience_slug_2} · ... · {audience_slug_N}
-  offers          {N} offers configurées
-  learnings       {N} entries · {N_canon} canon promotions
+  offers          {N} offres configurées
+  learnings       {N} entrées · {N_canon} promues en référence
   strategy        focus {month_year} : {strategy.current_focus}
 
-ENTITÉS DÉRIVÉES (3)
-  angles          {N} angles produits
-  creatives       {N} creatives produced
-  matrix          dernier scoring : {date}
+PRODUCTIONS DÉRIVÉES (3)
+  angles produits          {N}
+  visuels produits         {N}
+  matrice priorisation     dernier run : {date}
 
-ATLAS VIVANT (validations[] cumulées)
-  hooks canon          {N} validations
-  frameworks canon     {N}
-  archetypes canon     {N}
-  angles canon         {N}
-  formats canon        {N}
+HISTORIQUE BRAND (ce qui a marché)
+  Accroches validées        {N}
+  Structures testées        {N}
+  Styles validés            {N}
+  Angles validés            {N}
+  Formats validés           {N}
 
 NEXT SUGGESTED
   → Tape : `/phantom {brand} matrix` (priorisation territoires)
@@ -694,6 +694,29 @@ NEXT SUGGESTED
 ```
 
 Cross-ref vers `docs/system/atlas-brand.md` (doctrine atlas-brand). Slug brand en majuscules dans header.
+
+### Mode atlas-overview · empty state (brand fresh)
+
+Si `brands/{brand}/_snapshot.md` indique tout à 0 (pas d'audiences cartographiées, pas de produits, pas d'angles), le mode atlas bascule sur empty state distinct au lieu de la vue 0/0/0/0 décourageante.
+
+Format empty state :
+
+```
+workspace > {brand}
+══════════════════════════════════════════════
+On démarre {BRAND_NAME}.
+
+Tu veux commencer par où ?
+
+  (a) Importer la matière qui existe (URL produit, brief PDF, deck founder)
+  (b) Mining audience initial (qui sont tes clients, qu'est-ce qu'ils disent)
+  (c) Cartographier ton offre (produits, mécanismes, bénéfices)
+  (d) Dis-moi ton point de départ, je m'adapte
+```
+
+Pas de "MATIÈRE ACTUELLE 0/0/0/0/0". Pas de "SIGNAL FORT" inventé. Posture propose action concrète.
+
+**Trigger detection** : `audiences count = 0 AND products count = 0 AND angles count = 0` → empty state. Sinon vue normale (même si brand partial · audiences ok mais 0 angles reste vue normale degraded).
 
 ---
 

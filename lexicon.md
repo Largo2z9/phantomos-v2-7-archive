@@ -108,6 +108,16 @@ Source de l'angle : audience-derived · product-derived · category-derived · b
 
 Chaîne d'IDs canon référencés par un output de skill. Data layer. Ex : `angle.lineage = {hook_canon_id, framework_canon_id, archetype_canon_id, ...}`. Distinct de l'intégrité compositionnelle (semantic layer doctrine) et de la validation chaîne (check mécanique `validate-resources`).
 
+## Confidence propagation (v2.37+)
+
+Algèbre canonique de propagation confidence cross-skill. Default `min` (defensive, conservative). Override par skill via frontmatter `confidence_propagation: {min|multiplicative|weighted_avg|passthrough|local_only}`.
+
+Empêche data loss silencieux du signal d'incertitude sur chain 4+ skills (red team finding A2 v2.36).
+
+Audit trail visible via `confidence_chain[]` (validation-state.json composite v2.32+).
+
+Doctrine complète : `docs/system/confidence-propagation.md`.
+
 ## Campagne
 
 Structure paid sur une plateforme (Meta, TikTok, Google Ads). Contient ad sets (audiences) et ads (creatives). Track par budget, métriques de perf, objectif (acquisition, retargeting, retention).

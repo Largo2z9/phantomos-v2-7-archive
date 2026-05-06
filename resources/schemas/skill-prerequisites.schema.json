@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "skill-prerequisites/1.0",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["field", "level"],
+    "properties": {
+      "field": {
+        "type": "string",
+        "description": "Path canonique de la dependance (ex brand.creative_zone, profile.verbatim_quotes, spec.visual_identity)"
+      },
+      "level": {
+        "type": "string",
+        "enum": ["L1", "L2", "L3"],
+        "description": "L1 auto-fill silent, L2 ask-operator gate, L3 degraded with flag"
+      },
+      "threshold": {
+        "type": ["number", "string"],
+        "description": "Seuil declencheur (ex 5 pour count, '>=0.7' pour confidence)"
+      },
+      "auto_pull": {
+        "type": "string",
+        "description": "Required si level=L1, strategie auto-pull (ex dual_path_inline_or_sibling, shopify_products_api, websearch_authoritative)"
+      },
+      "freshness_ttl_days": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "Required si level=L1, TTL au-dela duquel L1 degrade en L2 gate (defense contre stale data)"
+      },
+      "options": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 4,
+        "items": {"type": "string"},
+        "description": "Required si level=L2, 2-4 options binaires pour AskUserQuestion"
+      },
+      "fallback": {
+        "type": "string",
+        "description": "Required si level=L3, strategie fallback degraded (ex proxy brand_equity_level, last_known_good)"
+      },
+      "confidence_default": {
+        "type": "number",
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "description": "Required si level=L3, confidence par defaut quand fallback applique"
+      },
+      "cross_brand_required": {
+        "type": "boolean",
+        "default": false,
+        "description": "Optional v2.37+. Si true, force gate L2 AskUserQuestion pour reads cross-brand sur cette dependance. Bypass scope brand_only default. Doctrine docs/system/brand-isolation-discipline.md"
+      }
+    },
+    "allOf": [
+      {
+        "if": {"properties": {"level": {"const": "L1"}}},
+        "then": {"required": ["auto_pull", "freshness_ttl_days"]}
+      },
+      {
+        "if": {"properties": {"level": {"const": "L2"}}},
+        "then": {"required": ["options"]}
+      },
+      {
+        "if": {"properties": {"level": {"const": "L3"}}},
+        "then": {"required": ["fallback", "confidence_default"]}
+      }
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.37.0",
+  "released_at": "2026-05-04",
+  "compatible_from": "2.0.0",
+  "type": "foundations_safeguards",
+  "summary": "Phase 1 fondations garde-fous post red team audit v2.37 · 7 patches doctrinaux et schemas + lint rules avant ship DRGFP v2.38 / consume-existing v2.39 / show-before-ask v2.40.",
+  "changes": [
+    {
+      "category": "operator_ux",
+      "action": "patched",
+      "files": [
+        "docs/system/operator-vocabulary-translation.md",
+        ".claude/commands/phantom.md",
+        ".skills/skills/validate-resources/SKILL.md"
+      ],
+      "section": "Jargon translation operator-facing · bug critique v2.36 corrigé",
+      "rationale": "Red team UX finding 5 (CRITICAL) : `/phantom kara atlas` v2.36 affichait `Atlas vivant cumulé 9 validations`, `Canon copy chargé 58 fiches (11 couches · cross-brand)`, `archetypes canon`. Violation directe règle KB `no_jargon_to_operator` (CLAUDE.md root + memory user). Patches : (a) doctrine `operator-vocabulary-translation.md` créée · mapping table 18 entrées (atlas brand/vivant/canon → matière/historique/bibliothèque · validations[] → tests passés · fiches → entrées · couches → catégories · archetype voix → style de parole · _field_types → source · L1/L2/L3 → automatique/à toi/partiel · prerequisites → pré-requis · etc.) + output policy 4 étapes filter pre-render. (b) validate-resources HR-20 lint regex 9 patterns case-insensitive, scan SKILL.md outputs operator-facing, MAJOR finding si match hors backticks code, suggested replacement table-driven. (c) phantom.md mode atlas-overview rendu patché lignes 666-694 · ENTITÉS CORE → MATIÈRE BRAND, ENTITÉS DÉRIVÉES → PRODUCTIONS DÉRIVÉES, ATLAS VIVANT (validations[] cumulées) → HISTORIQUE BRAND (ce qui a marché), hooks/frameworks/archetypes canon → Accroches/Structures/Styles validés. Risque résiduel : modes briefs/tests/matrix/doctrine + phantom-modes/canon.md + item.md non audités ce patch, scope Phase 2 v2.38."
+    },
+    {
+      "category": "operator_ux",
+      "action": "added",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Empty state brand fresh distinct (mode atlas-overview)",
+      "rationale": "Red team UX finding 2 (HIGH) : Brand fresh 0 entités → vue MATIÈRE ACTUELLE = tout à 0/0/0/0/0 décourageant. Premier contact brand = first impression qui colle. Patch ligne 698 : trigger detection (audiences=0 AND products=0 AND angles=0) → bascule sur format alternative `On démarre {BRAND_NAME}` + 4 propositions concrètes (a) Importer matière qui existe URL/PDF/deck (b) Mining audience initial (c) Cartographier offre produits/mécanismes/bénéfices (d) Point de départ libre. Pas de SIGNAL FORT inventé sur data vide. Posture propose action concrète. Brand partial (audiences ok mais 0 angles) reste vue normale degraded, acceptable v2.37."
+    },
+    {
+      "category": "infrastructure",
+      "action": "patched",
+      "files": [".skills/build-manifest.py"],
+      "section": "YAML parser strict (regex → PyYAML safe_load) · bloque drift frontmatter",
+      "rationale": "Red team data finding A3 (HIGH) : .skills/build-manifest.py = regex line-by-line, PAS un parser YAML strict. Risque : nested arrays/objects dans frontmatter (ex prerequisites avec options inline) silently dropped ou misparsed. Multi-source of truth garanti à l'échelle 49+ skills. Patch : import yaml + yaml.safe_load(block) strict. _preprocess_frontmatter() shim auto-quotes flow-sequence items contenant `{` (4 SKILL.md legacy avec brace paths dans permissions.writes étaient silently misparsed par regex parser, instance concrète de A3). yaml.YAMLError caught, logged avec skill name, skill skipped, manifest build continues (fail-soft). Régen test : 49 skills présents, no warnings, no errors. Dépendance new : PyYAML 6.0.3 installé via pip3 --user. À documenter requirements.txt template-side release future."
+    },
+    {
+      "category": "schema",
+      "action": "created",
+      "files": [
+        "resources/schemas/skill-prerequisites.schema.json",
+        ".skills/skills/validate-resources/SKILL.md"
+      ],
+      "section": "skill-prerequisites schema strict + validate-resources HR-19 · prêt pour DRGFP v2.38",
+      "rationale": "Préparation ship DRGFP v2.38 sans drift garanti. Schema JSON Draft-07 strict pour valider futur frontmatter prerequisites field. 3 levels L1/L2/L3 enum + conditional required via allOf+if/then : L1 → required auto_pull + freshness_ttl_days · L2 → required options minItems 2 maxItems 4 · L3 → required fallback + confidence_default 0.0-1.0. validate-resources HR-19 (Check 19 + bullet Hard Rules) · valide chaque SKILL.md frontmatter prerequisites contre schema, refuse ship si validation fail, cross-doc check frontmatter ↔ Step 0bis prose (chaque prerequisites[i].field doit être référencé Step 0bis sinon MAJOR finding multi-source of truth interdit). Backward compat : SKILL.md sans prerequisites field passe silently (additif, pas requis v2.37)."
+    },
+    {
+      "category": "doctrine",
+      "action": "created",
+      "files": [
+        "docs/system/confidence-propagation.md",
+        "resources/schemas/_shared/validation-state.json",
+        "lexicon.md"
+      ],
+      "section": "Confidence propagation discipline · default min defensive + audit trail",
+      "rationale": "Red team data finding A2 (CRITICAL) : DRGFP L3 dit confidence 0.X sans algèbre. 4 skills chain @0.6 chacun → final affiché 0.6, réalité multiplicative 0.13. Chaque skill interprète différemment sans contrat canonique. Output shipped trompeur, atlas vivant pollué. Patches : (a) doctrine confidence-propagation.md créée · default obligatoire confidence_propagation: min defensive (output.confidence = min(all_input_confidences, my_local_confidence)) + 4 modes override (multiplicative, weighted_avg, passthrough, local_only) · audit trail confidence_chain[] visible · operator surface translation (>=0.8 high, 0.5-0.8 medium, <0.5 low avec weakest input flag) · atlas vivant feed promotion gate require min(chain) >= 0.7. (b) validation-state.json v2.32 → v2.33 additif · field confidence_chain[] optionnel + confidence_propagation enum optionnel. Backward compat strict (skills v2.36 sans frontmatter → default min appliqué silently + warning log). (c) lexicon entry Confidence propagation v2.37+ ajoutée."
+    },
+    {
+      "category": "schema",
+      "action": "patched",
+      "files": [
+        "resources/schemas/canon-tool.schema.json",
+        ".skills/skills/learn-from-session/SKILL.md",
+        "docs/system/atlas-canon-copy.md"
+      ],
+      "section": "canon-tool schema v1.0 → v1.1 · attribution + decay + isolation enforced",
+      "rationale": "Red team findings A1 + A4 + A5 (CRITICAL/HIGH) résolus : (A1) L1 auto-pull stale data non flagué · (A4) atlas vivant runaway lock-in winner précoce · (A5) validations[].outcome failed sans attribution = canon dégradé sur signal non-imputable. Patches : (a) canon-tool schema bumpé v1.0 → v1.1 · 5 fields requis sur validations[] : brand_slug (isolation), outcome enum élargi v1.0+v1.1 cohabitation, attribution_layer enum 10 (hook/angle/framework/archetype/format/targeting/budget/creative_execution/timing/unknown) REQUIS, validated_at date REQUIS, decay_ttl_days int min 30 default 90 REQUIS, _isolation_boundary const 'brand' auto-set. Nouveaux properties optionnels : validation_id pattern VAL-, metric_observed, metric_value, test_size, context_snapshot. Backward compat lecture : entries v1.0 lisibles avec defaults injectés (attribution_layer absent → 'unknown', validated_at absent → fallback captured_at, decay absent → default 90). (b) learn-from-session HR-Canon-V11 enforcement · attribution_layer = 'unknown' → AskUserQuestion gate avant write, mutation refuse missing fields, cross-brand read interdit défaut. (c) HR-Canon-Decay filter promotion · today > (validated_at + decay_ttl_days) → state stale, append-only préservé, surface recap, promotion eligible only sur fresh + outcome success/validated + min(confidence_chain) >= 0.7. (d) atlas-canon-copy.md section 11 Schema v1.1 + roadmap §9 v2.37.0 entry + cross-ref confidence-propagation. Existing v1.0 entries dans template : 0 (validations[] vides sur 58 canon tools seedés, zéro migration nécessaire)."
+    },
+    {
+      "category": "doctrine",
+      "action": "created",
+      "files": [
+        "docs/system/brand-isolation-discipline.md",
+        "docs/system/skill-authoring-discipline.md",
+        ".skills/skills/validate-resources/SKILL.md",
+        "resources/schemas/skill-prerequisites.schema.json"
+      ],
+      "section": "Brand isolation discipline · default brand_only enforced",
+      "rationale": "Red team finding A7 (MEDIUM-HIGH si agency multi-brand) : consume-existing protocol future v2.39 sans fence explicite permet skill curieux de lire brands/*/learnings.json ou brands/*/audiences/*/profile.json pour signal cross-brand. Privacy/segmentation client violée si agence multi-clients (NDAs). Patches : (a) doctrine brand-isolation-discipline.md créée · default obligatoire _isolation_boundary: brand enforced · exception canonique atlas canon copy (sense 1 cross-brand par design, lecture libre depuis n'importe quelle brand) · runtime enforcement 4 cas Read/Glob (current_brand silent · other_brand REFUS+gate · resources/canon silent · workspace_global infrastructure only) · validations[] cross-brand interdit (brand_slug requis, promotion canon copy require N>=3 brands distinctes). Operator surface zéro jargon (refus traduit AskUserQuestion 3 options). (b) skill-authoring-discipline section 4 invariants · ligne 2bis isolation_scope enum [brand_only, cross_brand_with_gate, workspace_global] avec règles enforcement. Section 10 cross-refs entrée ajoutée. (c) validate-resources Check 13c · 3 codes erreur SKILL-ISOLATION-DEFAULT (warning auto-default), SKILL-ISOLATION-UNJUSTIFIED (blocking workspace_global sans justification), SKILL-ISOLATION-GATE-MISSING (blocking cross_brand_with_gate sans AskUserQuestion gate). (d) prerequisites schema enrichi · field cross_brand_required bool default false optional. Runtime enforcement mutation-gate intercept hook = patch séparé futur (ce patch doctrine + validation only)."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [
+    {
+      "script": "build-manifest.py",
+      "scope": "regen manifest skills post-patch",
+      "mode": "auto",
+      "trigger": "build-manifest.py rerun",
+      "fallback": "fail-soft yaml.YAMLError → skip skill + log warning"
+    }
+  ],
+  "operator_impact": "Bug critique v2.36 corrigé : `/phantom kara atlas` ne leak plus jargon interne (atlas vivant, canon copy, validations, fiches, couches → vocabulaire opérateur). Empty state brand fresh propose actions concrètes au lieu de vue 0/0/0/0/0 décourageante. Au-delà du fix UX immédiat, le terrain est armé pour ship sans risk les 3 grosses doctrines v2.38-v2.40 (DRGFP, consume-existing, show-before-ask) sans ouvrir vecteurs pollution silencieuse data. Garde-fous data invisibles à l'opérateur mais empêchent : skills shipping data stale silencieuse (freshness TTL), confidence cascade affichée fausse (default min defensive + audit trail), atlas vivant runaway lock-in (decay 90j default + attribution 10 enum), cross-brand contamination multi-clients (default brand_only enforced + gate AskUserQuestion sur override). Backward compat strict additif partout, skills v2.36 fonctionnent.",
+  "next_release_note": "v2.38 DRGFP (Dependency Resolution & Gap-Filling Protocol) · 3 niveaux canoniques L1 auto-fill silent + L2 ask-operator gate + L3 degraded with flag + frontmatter prerequisites enforced via schema v2.37. Migrer 8 skills critiques au pattern (define-specs, profile-audience, produce-paid-angles, weight-dimensions, score-matrix, compose-creative, recompose-creative, produce-copy-brief). Test live E2E kara post-migration require mining-vom et profile-audience completion. v2.39 consume-existing protocol · 3 lookups upstream (brand-side existing + canon copy + atlas vivant) · dedup_strategy enum + semantic_similarity_threshold + diversity_constraint max_share_per_canon_id 0.4 (force explore/exploit anti lock-in). v2.40 show-before-ask doctrine adaptive · 3 modes verbosité (cold/warm/silent) + cache intra-chain inter-skills + re-gate policy explicit (continue/skip/abort sans interruption sauf decision structurelle) + triage uniquement orchestrators ambigus (intent-clarity heuristic bypass). Phase 2 audit jargon scope modes briefs/tests/matrix/doctrine + phantom-modes/canon.md + item.md."
+}

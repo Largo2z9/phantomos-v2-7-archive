@@ -1,7 +1,7 @@
 {
   "$id": "validation-state.json",
-  "title": "Validation state composite (canon shared, v2.32)",
-  "description": "Composite validation: cycle stage (validation-status) + orthogonal confidence + source. Audit Phase B v2.32. Backward compat: validation-status.json keeps standalone existence for entities that don't need confidence. Use this composite via $ref when entity benefits from confidence tracking.",
+  "title": "Validation state composite (canon shared, v2.33)",
+  "description": "Composite validation: cycle stage (validation-status) + orthogonal confidence + source + propagation audit trail (v2.37+). Audit Phase B v2.32, augmented v2.37 with confidence_chain[] + confidence_propagation. Backward compat: validation-status.json keeps standalone existence for entities that don't need confidence. Use this composite via $ref when entity benefits from confidence tracking. Fields confidence_chain[] and confidence_propagation are optional for backward compat with v2.36 outputs.",
   "type": "object",
   "properties": {
     "status": { "$ref": "validation-status.json" },
@@ -14,6 +14,25 @@
     "confidence_source": {
       "type": "string",
       "enum": ["operator_stated", "derived_from_test_results", "derived_from_longevity", "default"]
+    },
+    "confidence_chain": {
+      "type": "array",
+      "description": "Audit trail propagation cross-skill (v2.37+). Optionnel pour backward compat. Doctrine: docs/system/confidence-propagation.md.",
+      "items": {
+        "type": "object",
+        "required": ["skill", "value"],
+        "properties": {
+          "skill": { "type": "string" },
+          "level": { "type": "string", "enum": ["L1", "L2", "L3"] },
+          "value": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "confidence_propagation": {
+      "type": "string",
+      "enum": ["min", "multiplicative", "weighted_avg", "passthrough", "local_only"],
+      "description": "Mode de propagation appliqué (v2.37+). Default min. Doctrine: docs/system/confidence-propagation.md."
     }
   },
   "required": ["status"]
