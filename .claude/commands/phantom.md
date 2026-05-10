@@ -162,7 +162,7 @@ Vue détaillée d'un brand spécifique.
 ```
 PHANTOMOS · brand: {brand_name}
 ══════════════════════════════════════════════
-Substrat        L{level}/L3   {progress_bar}  {pct}% encodé
+Cartographie    {level}/3 niveaux   {progress_bar}  {pct}% rempli
 Dernière session                 {time_ago}
 Tests actifs                     {count} ({fatiguing_count} fatiguing)
 Backlog                          {hypothesis_count} hypothèses
@@ -216,12 +216,12 @@ When audiences are organized as mère / sous-audiences (introduced v2.19.0), exp
 Format :
 
 ```
-{icon} audiences         {N} groupes principaux + {M} sous-groupes
-   ├─ {parent_slug}      {scope}    {validation_label}    {fields_filled_pct}
-   │   ├─ {sub_slug}     {scope}    {validation_label}    {fields_filled_pct}
-   │   └─ {sub_slug}     {scope}    {validation_label}    {fields_filled_pct}
-   └─ {parent_slug}      {scope}    {validation_label}    {fields_filled_pct}
-       └─ {sub_slug}     {scope}    {validation_label}    {fields_filled_pct}
+{icon} audiences         {N} audiences mères + {M} poches
+   ├─ {parent_slug}      mère      {validation_label}    {fields_filled_pct}
+   │   ├─ {sub_slug}     poche     {validation_label}    {fields_filled_pct}
+   │   └─ {sub_slug}     poche     {validation_label}    {fields_filled_pct}
+   └─ {parent_slug}      mère      {validation_label}    {fields_filled_pct}
+       └─ {sub_slug}     poche     {validation_label}    {fields_filled_pct}
 ```
 
 `validation_label` translation (NEVER expose `validation_status` enum directly to the operator):
@@ -231,22 +231,22 @@ Format :
 - `scaled` → `scalée`
 - `fatigued` → `fatiguée`
 
-`fields_filled_pct` is a coarse completeness signal: count non-null fields in `pain_points[]`, `voice.key_expressions[]`, `psychology.beliefs_*`, `objections[]` divided by expected. Surface as `mining: vide` (0%), `mining: partiel` (1-50%), `mining: dense` (>50%). NEVER expose the percentage as a number.
+`fields_filled_pct` is a coarse completeness signal: count non-null fields in `pain_points[]`, `voice.key_expressions[]`, `psychology.beliefs_*`, `objections[]` divided by expected. Surface as `témoignages: vide` (0%), `témoignages: partiels` (1-50%), `témoignages: denses` (>50%). NEVER expose the percentage as a number.
 
 Real example:
 
 ```
-⚠ audiences           2 groupes + 5 sous-groupes (mining: vide)
-   ├─ pousse-projet         groupe    à valider    mining: vide
-   │   ├─ pousse-jeune-adulte  sous   à valider    mining: vide
-   │   └─ pousse-recovery      sous   à valider    mining: vide
-   └─ chute-active          groupe    à valider    mining: vide
-       ├─ chute-post-grossesse  sous  à valider    mining: vide
-       ├─ chute-hormonale-stress sous à valider    mining: vide
-       └─ chute-traction        sous  à valider    mining: vide
+⚠ audiences           2 audiences mères + 5 poches (témoignages: vide)
+   ├─ pousse-projet         mère     à valider    témoignages: vide
+   │   ├─ pousse-jeune-adulte  poche  à valider    témoignages: vide
+   │   └─ pousse-recovery      poche  à valider    témoignages: vide
+   └─ chute-active          mère     à valider    témoignages: vide
+       ├─ chute-post-grossesse  poche à valider    témoignages: vide
+       ├─ chute-hormonale-stress poche à valider   témoignages: vide
+       └─ chute-traction        poche à valider    témoignages: vide
 ```
 
-If `mining: vide` on most sub-groups, the *Next suggested* block should propose `mine-voc` as priority 1.
+If most poches show `témoignages: vide`, the *Next suggested* block should propose `récupère les témoignages clients` as priority 1.
 
 If audiences exist but no parent_slug links (legacy flat structure), skip the hierarchy view and use the legacy single-line format.
 
@@ -276,7 +276,7 @@ Si `connected-sources.json` absent : afficher *"(non configurées, voir /skills 
 
 Sources :
 - Tests fatiguing → *"→ Tape : `refresh l'angle {angle_id}` (ROAS -42% sur 14j)"*
-- Audiences avec mining vide → *"→ Tape : `lance mine-voc sur {slug}` (7 audiences en hypothèse, aucun verbatim encore)"*
+- Audiences avec témoignages vide → *"→ Tape : `récupère les témoignages clients sur {slug}` (7 audiences à valider, aucun témoignage encore)"*
 - Stale > 14j sur entité critique → *"→ Tape : `mets à jour {entity}` (dernière modif il y a {N}j)"*
 - Niveau sub-L2 → *"→ Tape : `densifie le contexte de {slug}` ({N} fields manquants critiques)"*
 - Connected source non configurée mais pertinente → *"→ Tape : `connecte Meta Ads sur {slug}` (token attendu dans credentials.env)"*
@@ -546,7 +546,7 @@ EXEMPLES CONCRETS
   /phantom canon copy frameworks pas
 
 ROUTING SKILLS
-  Goal-driven (je veux X) ? consulter `.skills/INDEX.md` (skills par intent)
+  Par intention (je veux X) ? consulter `.skills/INDEX.md` (skills par objectif)
   State-driven (je veux voir l'état Y) ? rester ici dans /phantom
 ```
 
@@ -865,7 +865,7 @@ Quand un rendering rencontre du vide, ne rends pas du vide · propose le next mo
 | Brand mode, 0 produit | *"Pas encore de produit encodé sur `{brand}`. Tape `snapshot {brand} avec {url}` pour scaffold le hero produit."* |
 | Brand mode, 0 audience | *"Pas encore d'audience sur `{brand}`. Snapshot va proposer une cartographie. Sinon : `lance mine-voc sur {brand}` pour partir du verbatim client."* |
 | Entity-drill audiences, 0 audience | *"Pas d'audience encodée. Tape `/phantom {brand}` puis snapshot le hero pour scaffold les groupes principaux."* |
-| Entity-drill angles, 0 angle | *"Pas d'angle produit. Tape `produce-paid-angles {brand}` après mine-voc pour générer un set ranked."* |
+| Entity-drill angles, 0 angle | *"Pas d'angle produit. Tape `crée des angles publicitaires {brand}` après récupération des témoignages pour générer un set priorisé."* |
 | Entity-drill learnings, 0 entry | *"Pas de learning capturé. Tape `/learn-from-session` après une correction pour verrouiller la première règle."* |
 | Entity-drill products, 0 produit | (idem brand mode 0 produit) |
 | Entity-drill offers, 0 offer | *"Pas d'offre. Snapshot du hero produit scaffold les offres depuis l'API ou demande au pixel."* |

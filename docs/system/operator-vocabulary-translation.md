@@ -73,6 +73,17 @@ Cette règle s'étend aux concepts canon : atlas, canon, validations, fiches, co
 | fatigued · scaled | fatigué · passé à l'échelle | fatigued · scaled |
 | MEC-01 · BEN-01 · triggered_by | mécanisme 1 · bénéfice 1 · déclenché par | mechanism 1 · benefit 1 · triggered by |
 | layer functional · emotional · identity | niveau fonctionnel · émotionnel · identitaire | functional · emotional · identity level |
+| Substrat L1/L3 · L{level}/L3 | Cartographie · {level}/3 niveaux | Coverage · level {N}/3 |
+| {pct}% encodé | {pct}% rempli | {pct}% filled |
+| groupe (audience hierarchy) | mère | mother audience |
+| sous (audience hierarchy) | poche | sub-audience |
+| mining vide · mining partiel · mining dense | témoignages vide · témoignages partiels · témoignages denses | testimonials empty · partial · dense |
+| draft · partial (product status) | ébauche · partiel | draft · partial |
+| {N}d ago · {N}w ago | il y a {N} jour(s) · il y a {N} semaine(s) | {N} day(s) ago · {N} week(s) ago |
+| Goal-driven (je veux X) | par intention (je veux X) | by intent (I want X) |
+| State-driven (je veux voir l'état Y) | par état (je veux voir Y) | by state (I want to see Y) |
+| fatiguing (tests count) | fatigués | fatiguing |
+| hypothèses count | à valider count | to-validate count |
 
 ## Output policy
 

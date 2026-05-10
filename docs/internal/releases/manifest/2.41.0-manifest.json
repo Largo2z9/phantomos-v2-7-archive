@@ -1,0 +1,35 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.41.0",
+  "released_at": "2026-05-10",
+  "compatible_from": "2.0.0",
+  "type": "ux_jargon_purge",
+  "summary": "Audit jargon pass 3 · mode cockpit brand patché (manqué scope v2.40 D) + cohérence vocabulaire mère/poche partout + 12 translations consolidées.",
+  "changes": [
+    {
+      "category": "navigation",
+      "action": "patched",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode `/phantom {brand}` brand cockpit · 6 leaks fixés",
+      "rationale": "Test live phantomos-test v2.40 a révélé que le mode cockpit brand (`/phantom {brand}` sans suffixe, brand-overview) n'avait pas été audité dans scope D v2.40 (qui couvrait canon/doctrine/matrix/atlas mais pas le brand-overview). Leaks détectés et fixés : (1) Format header · `Substrat L{level}/L3 {progress_bar} {pct}% encodé` → `Cartographie {level}/3 niveaux {progress_bar} {pct}% rempli`. (2) Audience hierarchy spec ligne 219-225 · `groupes principaux/sous-groupes` → `audiences mères/poches` · `groupe/sous` tags → `mère/poche` cohérent v2.40 Option 1 décidée par Largo. (3) Mining status labels · `mining: vide/partiel/dense` → `témoignages: vide/partiels/denses`. (4) Real example ligne 239-247 mis à jour cohérent. (5) Next suggested template ligne 279 · `lance mine-voc sur {slug}` → `récupère les témoignages clients sur {slug}`. (6) Anti-patterns table ligne 868 · `Tape produce-paid-angles {brand}` → `Tape crée des angles publicitaires {brand}` cohérent verbalisation v2.40."
+    },
+    {
+      "category": "navigation",
+      "action": "patched",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Mode `/phantom ?` ROUTING SKILLS · résidu Goal-driven fixé",
+      "rationale": "Test live a montré ROUTING SKILLS dans mode help avec `Goal-driven (je veux X) ?` et `State-driven (je veux voir l'état Y) ?` leak. Patché en `par intention (je veux X) ?` et `par état (je veux voir Y) ?` cohérent operator-facing. Note · `Goal-driven` est aussi un terme du framework cartography v2.39 (par un objectif) mais dans ce context du help il s'agit du routing skills mode, distinction préservée."
+    },
+    {
+      "category": "doctrine",
+      "action": "extended",
+      "files": ["docs/system/operator-vocabulary-translation.md"],
+      "section": "Translation table 50+ → 60+ entries · 12 mappings absorbés",
+      "rationale": "Translation table absorbe les 12 nouveaux mappings de l'audit pass 3 v2.41 · Substrat L1/L3 → Cartographie 1/3 niveaux · encodé → rempli · groupe → mère · sous → poche · mining vide/partiel/dense → témoignages vide/partiels/denses · draft/partial product status → ébauche/partiel · {N}d ago/{N}w ago → il y a {N} jour(s)/semaine(s) · Goal-driven → par intention · State-driven → par état · fatiguing tests → fatigués · hypothèses count → à valider count. Table devient référence canonique 60+ entries pour skill authors + lint validate-resources HR-20."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Mode cockpit brand `/phantom {brand}` désormais cohérent avec le reste de PhantomOS post-v2.40. Plus de Substrat L1/L3 / mining: partiel / groupe/sous / lance mine-voc sur kara exposés brut. Vocabulaire opérateur unifié partout · Cartographie 1/3 niveaux · audiences mères/poches · témoignages vide/partiels/denses · récupère les témoignages clients. Translation table 60+ entries source of truth cross-modes et skills authors. Backward compat strict additif.",
+  "next_release_note": "v2.42+ patches identifiés · (a) audit jargon pass 4 sur /phantom briefs + /phantom tests modes (BRF-XX, TST-XX, winner_proxy yes/no/pending, ROAS spend, kind test_result, fatigued/scaled exposés) + mechanisms-drill + benefits-drill modes (MEC-01/BEN-01/triggered_by/layer functional|emotional|identity). (b) SKILL.md output_format audit · 8 producer/orchestrator skills peuvent leak jargon dans column headers + status labels propres (produce-paid-angles, compose-creative, weight-dimensions, score-matrix, produce-copy-brief, mine-voc, mine-vom, profile-audience). (c) phantom-canon.py runtime · tool_id slug (curiosity-gap) vs display_name (écart-curiosité) séparé requis sinon ids backend leakent dans listes même avec translation table. (d) Runtime enforcement v2.42+ · build-manifest.py génère .skills/_jargon_bank.json lu pre-render filter par chaque skill operator-facing OU validate-resources HR-20 lint étendu scan automatique post-output 60+ regex. Pattern strict pour empêcher dérive future."
+}

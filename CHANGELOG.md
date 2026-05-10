@@ -5,6 +5,30 @@
 
 ---
 
+## v2.41.0 · 2026-05-10 · Audit jargon pass 3 · mode cockpit brand patché
+
+**Why this release.** Test live phantomos-test v2.40 a révélé que le mode cockpit brand (`/phantom {brand}` brand-overview sans suffixe) n'avait pas été audité dans scope D v2.40 (qui couvrait canon/doctrine/matrix/atlas). Conséquence · `/phantom Karacare` rendait `Substrat L1/L3`, `groupes/sous-groupes`, `mining: partiel`, `lance mine-voc sur kara` en violation cohérence v2.40 Option 1 décidée (mère/poche/niche partout). v2.41 corrige le scope manqué + résidu `Goal-driven` dans `/phantom ?` ROUTING SKILLS.
+
+**What shipped.**
+
+- **Mode `/phantom {brand}` brand cockpit patché (6 leaks fixés)** :
+  - `Substrat L{level}/L3 {pct}% encodé` → `Cartographie {level}/3 niveaux {pct}% rempli`
+  - `groupes principaux/sous-groupes` (audience hierarchy) → `audiences mères/poches`
+  - `groupe/sous` tags → `mère/poche` cohérent v2.40
+  - `mining: vide/partiel/dense` → `témoignages: vide/partiels/denses`
+  - Next suggested `lance mine-voc sur {slug}` → `récupère les témoignages clients sur {slug}`
+  - Anti-patterns table `Tape produce-paid-angles {brand}` → `Tape crée des angles publicitaires {brand}`
+- **Mode `/phantom ?` ROUTING SKILLS · résidu fixé** :
+  - `Goal-driven (je veux X) ?` → `par intention (je veux X) ?`
+  - `State-driven (je veux voir l'état Y) ?` → `par état (je veux voir Y) ?`
+- **Translation table 50+ → 60+ entries** · 12 nouveaux mappings absorbés (Substrat L1/L3 · encodé · groupe/sous · mining levels · draft/partial product status · time ago FR · Goal-driven/State-driven · fatiguing · hypothèses count). Table devient référence canonique 60+ entries pour skill authors + lint HR-20.
+
+**Operator impact.** Mode cockpit brand `/phantom {brand}` désormais cohérent avec le reste de PhantomOS. Vocabulaire opérateur unifié partout · `Cartographie 1/3 niveaux` · `audiences mères/poches` · `témoignages vide/partiels/denses` · `récupère les témoignages clients`. Translation table 60+ entries source of truth cross-modes. Backward compat strict additif.
+
+**Next.** v2.42+ · audit jargon pass 4 sur `/phantom briefs` + `/phantom tests` + drills mechanisms/benefits · SKILL.md output_format audit (8 producer/orchestrator skills) · phantom-canon.py runtime tool_id slug vs display_name séparé · enforcement runtime via `.skills/_jargon_bank.json` ou validate-resources HR-20 lint étendu scan automatique post-output.
+
+---
+
 ## v2.40.0 · 2026-05-10 · Audit jargon pass 2 · purge cohérente 6 modes phantom
 
 **Why this release.** v2.39 a shipé le framework cartography (4 questions, broad/segment/micro, Schwartz, pain/goal/identity-driven) mais n'a PAS étendu la translation table operator-vocabulary-translation v2.37. Conséquence · jargon leak dans les 2 nouveaux modes phantom. Largo a flag lors d'un test live · "il y a encore beaucoup de jargon qui pourrait être simplifié". Audit révèle aussi des leaks résiduels v2.36 sur 4 modes existants non audités depuis pose de la règle `no_jargon_to_operator` v2.37, dont une violation CRITIQUE · le mode `/phantom doctrine` exposait les 7 noms de doctrine (Contextual Intelligence, Schema Encoding, etc.) en violation directe de CLAUDE.md root règle absolue.
