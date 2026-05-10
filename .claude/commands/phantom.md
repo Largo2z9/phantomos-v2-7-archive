@@ -34,6 +34,8 @@ Check the user's argument :
 | `{brand} matrix` | **matrix-drill** : output `score-matrix` (matrice scorée + top territoires + trous) |
 | `{brand} atlas` | **atlas-overview** : vue d'ensemble atlas brand (synthèse 6 entités + dérivés) |
 | `doctrine` | **doctrine** : rend doctrine cartographie compositionnelle (méthode + équation V3.1) |
+| `doctrine audiences` | **doctrine-audiences** : framework cartographie audiences (4 questions) |
+| `{brand} audiences` | **audiences-tree** : arbre hiérarchie audiences + chevauchements |
 | `{brand} products {p_slug} mechanisms` | **mechanisms-drill** : array `mechanisms[]` typé depuis `spec.json` |
 | `{brand} products {p_slug} benefits` | **benefits-drill** : array `benefits[]` (chain functional/emotional/identity) |
 
@@ -763,6 +765,22 @@ NEXT SUGGESTED
 ```
 
 Détails complets : `resources/templates/creative-formula.md`. Source canon : `docs/system/atlas-brand.md`.
+
+---
+
+## Mode doctrine audiences
+
+> **Split externe** : full spec rendering du framework cartographie audiences (4 questions Q1-Q4 + pièges + Pareto) → `.claude/commands/phantom-modes/doctrine-audiences.md`. Lire ce fichier quand l'opérateur tape `/phantom doctrine audiences`.
+
+Bref : framework pédagogique 4 questions (porte d'entrée, granularité, Schwartz, chevauchements). Operator-facing, workspace-level. Cross-ref · `docs/doctrine/audience-cartography-framework.md`.
+
+---
+
+## Mode audiences-tree
+
+> **Split externe** : full spec rendering de l'arbre audiences brand-side (hiérarchie + chevauchements + gaps détectés + dégradation gracieuse) → `.claude/commands/phantom-modes/audiences-tree.md`. Lire ce fichier quand l'opérateur tape `/phantom {brand} audiences`.
+
+Bref : iterate `brands/{brand}/audiences/*/profile.json`, extract `meta.scope` + `meta.parent_slug` + `meta.overlap_with`, render arbre indenté par porte d'entrée + ligne chevauchements + bloc gaps. Override le mode entity-drill générique pour l'entité `audiences`. Le drill per-audience reste mode item via `/phantom {brand} audiences {slug}`.
 
 ---
 

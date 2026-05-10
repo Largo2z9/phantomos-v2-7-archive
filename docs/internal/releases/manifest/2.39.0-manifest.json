@@ -1,0 +1,42 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.39.0",
+  "released_at": "2026-05-10",
+  "compatible_from": "2.0.0",
+  "type": "doctrine_pedagogy_minor",
+  "summary": "Pédagogie audience cartography framework · 5 patches couplés en pyramide apprentissage progressif (doctrines + modes + skill enrichi).",
+  "changes": [
+    {
+      "category": "doctrine",
+      "action": "created",
+      "files": [
+        "docs/doctrine/audience-cartography-framework.md",
+        "docs/system/audience-cartography-doctrine.md"
+      ],
+      "section": "Audience cartography framework · doctrines operator + system",
+      "rationale": "Largo a découvert lors de session live kara que cartographier 7 audiences sans framework mental clair = cartographie potentiellement bricolée (audiences fantômes, redondantes, orphelines). Besoin · framework pédagogique simple applicable cross-brand par opérateurs marketeux non-PhantomOS-experts. Patches : (a) audience-cartography-framework.md operator-facing pédago ~1200 mots, 7 sections (pourquoi cartographier · 4 questions framework · model mental visuel · 3 pièges · loi Pareto · résumé · usage PhantomOS) · ton prof pédago DR-friendly, jargon-free, exemples hair care concrets. 4 questions canon : Q1 porte d'entrée (pain/goal/identity-driven), Q2 niveau granularité (broad/segment/micro · test 3/3 pour descendre · volume + pitch + offer divergents), Q3 stade Schwartz double (product-awareness × emotional-maturity), Q4 chevauchements (cousins révélant angles porteurs). Model mental · arbre généalogique avec cousins (branches verticales hiérarchie · liens horizontaux chevauchements · feuilles personas individuels). Loi Pareto 80% revenue brand = 2-3 audiences activées, jamais 7. (b) audience-cartography-doctrine.md system-side rigoureuse · spec skill author-facing · 5 invariants enforced (3 niveaux max no sous-micro · pas segment-orphelin sans broad parent · pas cycle overlap_with · test 3/3 strict sur micro · entry_door explicit enum). HR-X validate-resources spec'd 6 checks. Mutation gate skill profile-audience spec'd · 5 étapes mutate process. Cross-refs operator doc + doctrine governance + schema profile.json + skills consumers. Évolutions futures notes v2.40+ (entry_door schema enum strict · schwartz_stage_default · cartographie produits parallèle)."
+    },
+    {
+      "category": "navigation",
+      "action": "added",
+      "files": [
+        ".claude/commands/phantom.md",
+        ".claude/commands/phantom-modes/doctrine-audiences.md",
+        ".claude/commands/phantom-modes/audiences-tree.md"
+      ],
+      "section": "2 nouveaux modes · `/phantom doctrine audiences` + `/phantom {brand} audiences`",
+      "rationale": "Strates 2-3 de la pyramide pédagogique apprentissage. (a) `/phantom doctrine audiences` rend framework cartography consultable toujours · vue ASCII pédago avec 4 questions + 3 pièges + loi Pareto + next-suggested. Split externalisé phantom-modes/doctrine-audiences.md cohérent v2.36 split pattern. (b) `/phantom {brand} audiences` rend arbre hiérarchie audiences + chevauchements + gaps détectés visuellement depuis profile.json files. Lecture iterate brands/{brand}/audiences/*/profile.json · extract meta.scope + meta.parent_slug + meta.overlap_with + top pain + validation_status. Format · indenté par porte d'entrée (problem-driven/goal-driven), chevauchements bidirectionnels, gaps détectés (entry_door manquant, orphelines, fantômes, chevauchements à confirmer), next-suggested. Dégrade gracieusement si meta.parent_slug + meta.overlap_with vides → liste à plat + note relations non posées pointant vers `/phantom doctrine audiences`. Cap 1000 phantom.md respecté · 981 → 1085 inline puis split → 999 post-split (marge 1). Mode detection table updated 2 entries. Routing override · `{brand} audiences` spécifique audiences-tree gagne sur générique entity-drill par convention spécifique > générique."
+    },
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/profile-audience/SKILL.md"],
+      "section": "profile-audience v1.1.0 → v1.2.0 · Step 0ter framework awareness",
+      "rationale": "Strate 1 de la pyramide pédagogique · apprendre EN FAISANT. Skill profile-audience guide opérateur à appliquer framework 4 questions naturellement pendant cartographie. Pas overload bloc cérémonial · 4 micro-moments distribués dans flow naturel. Patch : Step 0ter ajouté APRÈS Step 0bis prerequisite_check DRGFP v2.38, AVANT HR1 Verify mining inputs. Q1 porte d'entrée en début Step 0ter (AskUserQuestion 3 options pain/goal/identity-driven · si operator hésite mix → flag potential audience-redondante Piège 2 framework). Q2 granularité ref Step 1 mining (inférer scope auto · si ambigu AskUserQuestion broad/segment/micro · si micro require justification 3/3 volume + pitch + offer divergent · si 0/3 ou 1/3 refuse + suggestion variation copy pas sous-audience). Q3 stade Schwartz ref Step 4 psychology (inférer 2 axes product-aware × emotional-maturity depuis verbatim + behaviour patterns · surface inference + AskUserQuestion validate). Q4 chevauchements ref Step 7 write final (scan brand-side existing audiences pour overlap pain_points + benefits + identity narrative similarity threshold 0.6 · surface 1-3 audiences cousines détectées · AskUserQuestion confirm/skip/manual). Cross-ref doctrine `docs/doctrine/audience-cartography-framework.md` ajoutée Step 0bis annoté. HR2.5 v2.35 brownfield seed prose intacte (lignes 100-116). HR7.1 v2.35 merge strategy prose intacte (lignes 184-193). Step 0bis DRGFP v2.38 prose intacte. Operator-facing translation · 3 notes ajoutées (porte d'entrée/niveau/audiences cousines) pour ne jamais exposer field names bruts (entry_door, scope, parent_slug, overlap_with). Bump frontmatter v1.1.0 → v1.2.0 + patch_notes."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Pyramide pédagogique 4 strates active immédiate. Strate 1 · opérateur apprend EN FAISANT via skill profile-audience qui pose 4 questions framework au bon moment dans flow naturel cartographie. Strate 2 · opérateur voit EN UN COUP D'ŒIL via /phantom kara audiences (arbre + chevauchements + gaps détectés). Strate 3 · opérateur approfondit À LA DEMANDE via /phantom doctrine audiences (framework complet pédago consultable). Strate 4 · system-side doctrine maintient cohérence skill authors. Opérateur jamais forcé à lire la doc · framework apparaît dans flow naturel. Modèle mental simple à retenir · une audience c'est une porte d'entrée + un niveau de granularité + un stade dans le funnel · ses chevauchements révèlent les angles porteurs · tu cartographies 7 mais tu actives 2-3. Backward compat strict additif partout · skills v2.38 sans framework awareness fonctionnent.",
+  "next_release_note": "v2.40+ patches identifiés · (a) profile.schema.json patch · enum strict meta.entry_door [pain_driven · goal_driven · identity_driven] + schwartz_stage_default · permet validation runtime non LLM-only. (b) validate-resources HR-X audience cartography hierarchy validation runtime implementation (6 checks spec'd v2.39 docrine system) · scope MAJOR finding sur orphelin segment, cycle overlap, micro sans 3/3 justification. (c) `/phantom doctrine audiences` extension · ajouter exemple appliqué cross-brand (we-bet, stepprs, kara) pour pédagogie comparée. (d) Doctrine cartographie produits parallèle (mêmes patterns appliqués à products) · v2.41+ scope. (e) Test live E2E kara post-v2.39 · lancer profile-audience kara sur chute-stress-hormonal pour observer Step 0ter framework awareness en conditions réelles + valider l'inférence LLM sur Q2-Q3-Q4."
+}

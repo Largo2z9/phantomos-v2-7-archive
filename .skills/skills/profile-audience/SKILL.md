@@ -1,6 +1,8 @@
 ---
 name: profile-audience
-version: 1.1.0
+version: 1.2.0
+patch_notes:
+  - "1.2.0 · v2.39+ · Step 0ter framework awareness (4 questions cartography pédagogie inline)"
 type: orchestrator
 recommended_model: sonnet
 subagent_safe: true
@@ -83,6 +85,100 @@ Avant lecture mining outputs (Step 1), scanner prerequisites :
 Output state map + confidence_chain[] init avec valeur dépendante de density actuelle.
 
 Cross-ref doctrine : `docs/system/dependency-resolution-protocol.md`.
+
+Note framework cartography · Step 0ter applique 4 questions framework (entry_door · scope · stade Schwartz · chevauchements). Cf `docs/doctrine/audience-cartography-framework.md`.
+
+### Step 0ter · Framework awareness (v2.39+)
+
+Application du framework cartography (4 questions canon · `docs/doctrine/audience-cartography-framework.md`).
+
+Au début de la cartographie · poser Q1 explicit (porte d'entrée). Les 3 autres questions sont posées au fil du flow (Step 1 niveau · Step 4 stade · Step 7 chevauchements).
+
+#### Q1 · Porte d'entrée
+
+AskUserQuestion :
+
+> Cette audience entre dans la catégorie {brand_category} par quelle porte ?
+> 
+> (a) Pain-driven · entre par un problème ressenti (ex chute, sec, gris)
+> (b) Goal-driven · entre par une ambition (ex longueur pour mariage, summer hair)
+> (c) Identity-driven · entre par qui elle est ou veut être (ex hijabi, sportive, mum)
+> 
+> 1 porte dominante. Si elle a 3 portes égales, c'est un mix mal séparé · à re-découper.
+
+Persister dans meta.entry_door enum [pain_driven · goal_driven · identity_driven].
+
+Si operator hésite ou répond "mix" → flag potential audience-redondante (Piège 2 framework) · suggestion · re-découper avant cartographier.
+
+Operator-facing · jamais exposer "entry_door" brut. Dire "porte d'entrée" en surface.
+
+#### Q2 · Niveau granularité (Step 1 mining)
+
+Inférer scope automatiquement depuis :
+- audience description scope (large/spécifique/hyper-niche)
+- verbatim count + diversity (si forte diversité = broad ; concentrée = segment ; ultra-spécifique = micro)
+- parent_slug détectable dans existing brand audiences
+
+Si ambiguïté → AskUserQuestion :
+
+> Niveau de granularité de cette audience ?
+> 
+> (a) Broad · audience mère, 500k+ actives, 1-3 par brand
+> (b) Segment · poche définie, 100-500k actives, 5-15 par broad
+> (c) Micro · hyper-niche, 20-100k actives, 0-3 par segment
+
+Si micro → require justification 3/3 :
+- volume_remaining_estimate (k actives)
+- pitch_divergent (oui/non + en quoi)
+- offer_divergent (oui/non + en quoi)
+
+Si 0/3 ou 1/3 → refuse + suggestion "c'est une variation copy, pas une sous-audience".
+
+Persister meta.scope + meta.parent_slug.
+
+Operator-facing · dire "niveau" et "audience mère", jamais "scope" ni "parent_slug" brut.
+
+#### Q3 · Stade Schwartz (Step 4 psychology block)
+
+Au moment de remplir block psychology · inférer 2 axes Schwartz depuis verbatim + behaviour patterns :
+- product-awareness (unaware → problem → solution → product → most-aware)
+- emotional-maturity (niant · résigné · en recherche · combatif · acceptant)
+
+Surface inference + AskUserQuestion validation :
+
+> Stade Schwartz inféré pour cette audience :
+> 
+> Product-awareness : {inferred_stage_product}
+> Emotional-maturity : {inferred_stage_emotional}
+> 
+> (a) Confirmer
+> (b) Ajuster product-awareness
+> (c) Ajuster emotional-maturity
+> (d) Ajuster les deux
+
+Persister psychology.awareness_stage_product + psychology.awareness_stage_emotional.
+
+#### Q4 · Chevauchements (Step 7 write final)
+
+Avant write_to_context final · scanner brand-side existing audiences pour chevauchements potentiels :
+- Pain_points overlap (similarity threshold 0.6)
+- Benefits overlap (similarity threshold 0.6)
+- Identity narrative overlap (semantic similarity)
+
+Surface les 1-3 audiences cousines détectées :
+
+> J'ai détecté chevauchement potentiel avec :
+> 
+>   {audience_X} · pain similaire {pain_overlap} (~{score}% match)
+>   {audience_Y} · benefit similaire {benefit_overlap} (~{score}% match)
+> 
+> (a) Confirmer ces chevauchements (write meta.overlap_with)
+> (b) Ne pas signaler ces chevauchements
+> (c) Ajouter d'autres chevauchements manuels
+
+Persister meta.overlap_with[] array slugs.
+
+Note pédagogique opérateur · les chevauchements ne disqualifient pas l'audience · ils révèlent les angles porteurs cousinés (cross-pollinisation copy). Operator-facing · dire "audiences cousines", jamais "overlap_with" brut.
 
 ### HR1 · Verify mining inputs available
 
