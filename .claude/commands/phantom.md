@@ -618,20 +618,20 @@ Format ligne : `[test_id] · {status} · {brief_id} · {angle_id} · ROAS {value
 
 ## Mode matrix-drill
 
-`/phantom {brand} matrix` rend l'output `score-matrix` skill (matrice scorée par sub-cluster × dimension + top territoires + trous).
+`/phantom {brand} matrix` rend la priorisation des territoires (sous-groupes × source d'angle + top territoires + trous).
 
-Lecture : `brands/{brand}/matrix/latest.json` (output `weight-dimensions` + `score-matrix`).
+Lecture (backend, paths agent) : `brands/{brand}/matrix/latest.json` (output `weight-dimensions` + `score-matrix`).
 
 Header breadcrumb :
 
 ```
-workspace > {brand} > matrix
+workspace > {brand} > priorisation
 ══════════════════════════════════════════════
-Modulateurs : stade {growth} · marché {mature} · atlas {partiel}
+Facteurs d'ajustement : stade {growth} · marché {mature} · historique {partiel}
 Coefficient cumulé : {1.1}
 
 ┌───────────────────────────┬──────┬──────┬──────┬──────┬──────┐
-│ Sub-cluster               │ aud  │ prod │ cat  │ brand│ temp │
+│ Sous-groupe audience      │ aud  │ prod │ cat  │ brand│ temp │
 ├───────────────────────────┼──────┼──────┼──────┼──────┼──────┤
 │ chute-post-grossesse      │ 55🔥 │ 42   │ 38   │ 0    │ 28   │
 │ croissance-projet         │ 48   │ 52🔥 │ 0    │ 35   │ 0    │
@@ -639,49 +639,49 @@ Coefficient cumulé : {1.1}
 └───────────────────────────┴──────┴──────┴──────┴──────┴──────┘
 
 TOP 3 TERRITOIRES
-  1. chute-post-grossesse × audience-derived  · 55  · ANG-01, ANG-03
-  2. croissance-projet × product-derived      · 52  · ANG-04
-  3. stress-hormonal × category-derived       · 41  · ANG-02
+  1. chute-post-grossesse × angle audience       · 55  · ANG-01, ANG-03
+  2. croissance-projet × angle produit           · 52  · ANG-04
+  3. stress-hormonal × angle catégorie           · 41  · ANG-02
 
 TROUS DÉTECTÉS
-  · brand-derived sur chute-post-grossesse (0)
-  · category-derived sur croissance-projet (0)
-  · temporal-derived sur croissance-projet (0)
+  · angle brand sur chute-post-grossesse (0)
+  · angle catégorie sur croissance-projet (0)
+  · angle moment sur croissance-projet (0)
 
 NEXT SUGGESTED
-  → Tape : `produce-copy-brief sur top-1` (chute-post-grossesse × audience-derived, score 55)
-  → Tape : `produce-paid-angles {brand} pour combler trou brand-derived sur chute-post-grossesse`
+  → Tape : `génère un brief copy sur le top-1` (chute-post-grossesse × angle audience, score 55)
+  → Tape : `crée des angles publicitaires {brand} pour combler le trou angle brand sur chute-post-grossesse`
 ```
 
-Icône `🔥` sur la cellule top par row. Légende dimensions : aud (audience-derived), prod (product-derived), cat (category-derived), brand (brand-derived), temp (temporal-derived).
+Icône `🔥` sur la cellule top par row. Légende colonnes (sources d'angle) : aud (depuis l'audience), prod (depuis le produit), cat (depuis la catégorie), brand (depuis la brand), temp (depuis un moment / saison).
 
 ---
 
 ## Mode atlas-overview
 
-`/phantom {brand} atlas` rend la vue d'ensemble atlas brand (synthèse 6 entités core + 3 dérivées + atlas vivant). Pédagogique pour onboarding nouveau opérateur.
+`/phantom {brand} atlas` rend la vue d'ensemble brand (synthèse 6 entités core + 3 dérivées + historique brand). Pédagogique pour onboarding nouveau opérateur.
 
-Lecture : `brands/{brand}/_snapshot.md` + `brand.json` + counts par entité.
+Lecture (backend, paths agent) : `brands/{brand}/_snapshot.md` + `brand.json` + counts par entité.
 
 Header breadcrumb :
 
 ```
 workspace > {brand} > atlas
 ══════════════════════════════════════════════
-MATIÈRE BRAND {BRAND_NAME} · cartographie holistique
+MATIÈRE BRAND {BRAND_NAME} · vue d'ensemble
 
 MATIÈRE BRAND (6)
-  brand           ✓ identité posée · zone créative définie · niveau brand {low|mid|high}
-  products ({N})  {product_slug_1} · {product_slug_2}
+  brand           ✓ identité posée · territoire créatif défini · niveau de notoriété {faible|moyen|fort}
+  produits ({N}) {product_slug_1} · {product_slug_2}
   audiences ({N}) {audience_slug_1} · {audience_slug_2} · ... · {audience_slug_N}
-  offers          {N} offres configurées
-  learnings       {N} entrées · {N_canon} promues en référence
-  strategy        focus {month_year} : {strategy.current_focus}
+  offres          {N} offres configurées
+  apprentissages  {N} entrées · {N_canon} promues en référence
+  stratégie       focus {month_year} : {strategy.current_focus}
 
 PRODUCTIONS DÉRIVÉES (3)
   angles produits          {N}
   visuels produits         {N}
-  matrice priorisation     dernier run : {date}
+  priorisation territoires dernière exécution : {date}
 
 HISTORIQUE BRAND (ce qui a marché)
   Accroches validées        {N}
@@ -691,11 +691,11 @@ HISTORIQUE BRAND (ce qui a marché)
   Formats validés           {N}
 
 NEXT SUGGESTED
-  → Tape : `/phantom {brand} matrix` (priorisation territoires)
-  → Tape : `/phantom doctrine` (méthode cartographie compositionnelle)
+  → Tape : `/phantom {brand} matrix` (priorisation des territoires)
+  → Tape : `/phantom doctrine` (méthode du système)
 ```
 
-Cross-ref vers `docs/system/atlas-brand.md` (doctrine atlas-brand). Slug brand en majuscules dans header.
+Cross-ref backend (instructions agent) : `docs/system/atlas-brand.md`. Slug brand en majuscules dans header. Ne pas exposer ce path à l'opérateur.
 
 ### Mode atlas-overview · empty state (brand fresh)
 
@@ -724,47 +724,47 @@ Pas de "MATIÈRE ACTUELLE 0/0/0/0/0". Pas de "SIGNAL FORT" inventé. Posture pro
 
 ## Mode doctrine
 
-`/phantom doctrine` rend la doctrine cartographie compositionnelle. Equivalent Notion "Méthode & Doctrine". Vue pédago, workspace-level (transversal aux brands).
+`/phantom doctrine` rend la méthode du système (cartographie + composition). Equivalent Notion "Méthode & Doctrine". Vue pédago, workspace-level (transversal aux brands).
 
-Lecture : `docs/system/atlas-brand.md` + `resources/templates/creative-formula.md`.
+Lecture (backend, paths agent) : `docs/system/atlas-brand.md` + `resources/templates/creative-formula.md`.
 
 Header breadcrumb :
 
 ```
 workspace > doctrine
 ══════════════════════════════════════════════
-DOCTRINE CARTOGRAPHIE COMPOSITIONNELLE
+MÉTHODE DU SYSTÈME · cartographier + composer
 
-Système génératif · 4 arbres + matrice + modulateurs + 7 disciplines + cycle validation
+Vue d'ensemble · arbres de connaissance + priorisation + facteurs d'ajustement + boucle d'apprentissage
 
-PHASES PIPELINE P0 → P5
-  P0 onboarding         setup-brand · snapshot-brand · define-specs
-  P1 product            mechanisms[] · benefits[] · problems_solved[]
-  P2a audience          mine-voc · mine-vom · profile-audience (8 dim canon V3)
-  P2b angle             produce-paid-angles (formule Obs+Tension+Reframe+Bridge)
-  P3 matrix             weight-dimensions · score-matrix
-  P4 brief              produce-copy-brief
-  P5 visual             compose-creative · recompose-creative · decompose-ad
+PARCOURS EN 6 ÉTAPES
+  Étape 1 démarrage          démarre une nouvelle brand · cartographie initiale · pose les specs
+  Étape 2 produit            mécanismes · bénéfices · problèmes résolus
+  Étape 3a audience          récupère témoignages clients · cartographie audience (8 dimensions)
+  Étape 3b angle             crée des angles publicitaires (Observation + Tension + Reframe + Bridge)
+  Étape 4 priorisation       calcule les priorités d'audience · priorise les territoires
+  Étape 5 brief              génère un brief copy
+  Étape 6 visuel             crée un visuel · adapte un visuel existant · décompose une pub existante
 
-EQUATION COMPOSITIONNELLE V3.1 CANON
-  creative = NOYAU(mécanique × format × stop_scroller × ton)
-           × CONTEXTE(angle × pain_point × persona × proof)
-           × MODIFIEURS(occasion · offer · destination · etc.)
+RECETTE CRÉATIVE
+  créa = NOYAU (mécanique × format × stop scroll × ton)
+       × CONTEXTE (angle × douleur × persona × preuve)
+       × MODIFICATEURS (occasion · offre · destination · etc.)
 
-7 DISCIPLINES SOEURS
-  Contextual Intelligence · Schema Encoding · Canonical Matrix Reasoning
-  Skill Authoring · Provenance & Trust · Cartographie Compositionnelle
-  Doctrine Governance
+7 PILIERS DU SYSTÈME
+  Le système repose sur 7 piliers internes (encodage rigoureux, production qualité,
+  création de skills, traçabilité, cartographie compositionnelle, gouvernance, intelligence contextuelle).
+  Tu en sens les effets, tu n'as jamais à les nommer.
 
-CYCLE VALIDATION (atlas vivant)
-  produce → test → learn-from-session → validations[] cumulées sur canon
+BOUCLE D'APPRENTISSAGE (historique brand vivant)
+  produire → tester → capturer ce qu'on a appris → tests passés cumulés sur la bibliothèque
 
 NEXT SUGGESTED
-  → Tape : `/phantom canon` (atlas du métier · 11 couches copy)
-  → Tape : `/phantom {brand} atlas` (vue brand-side de la doctrine appliquée)
+  → Tape : `/phantom canon` (bibliothèque métier · 11 chapitres copy)
+  → Tape : `/phantom {brand} atlas` (vue brand-side de la méthode appliquée)
 ```
 
-Détails complets : `resources/templates/creative-formula.md`. Source canon : `docs/system/atlas-brand.md`.
+Détails complets (backend) : `resources/templates/creative-formula.md`. Source méthode (backend) : `docs/system/atlas-brand.md`.
 
 ---
 

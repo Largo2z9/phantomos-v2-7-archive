@@ -1,0 +1,41 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.40.0",
+  "released_at": "2026-05-10",
+  "compatible_from": "2.0.0",
+  "type": "ux_jargon_purge",
+  "summary": "Audit jargon pass 2 · purge cohérente vocabulaire operator-facing sur 6 modes phantom + translation table consolidée 50+ entries.",
+  "changes": [
+    {
+      "category": "doctrine",
+      "action": "extended",
+      "files": ["docs/system/operator-vocabulary-translation.md"],
+      "section": "Translation table étendue 18 → 50+ entries",
+      "rationale": "v2.39 a shipé framework cartography (4 questions, broad/segment/micro, Schwartz, pain/goal/identity-driven) mais n'a PAS étendu la table operator-vocabulary-translation v2.37. Résultat · jargon leak dans modes phantom v2.39 + audit révèle leaks résiduels v2.36 modes. v2.40 consolide table avec 32 nouveaux mappings · termes framework v2.39 (10) + termes audit D v2.40 modes existants (22 incluant skill names verbalisés FR, sub-cluster, modulateurs, origin_axis 5 sources, brand_equity_level, creative_zone, canon-tool, winner_proxy, fatigued/scaled, MEC-01/BEN-01, layer functional/emotional/identity). Décision tranchée Largo · cohérence Option 1 audience mère/poche/niche (3 niveaux préservés, vocabulaire concret). Backward compat strict additif."
+    },
+    {
+      "category": "navigation",
+      "action": "patched",
+      "files": [
+        ".claude/commands/phantom-modes/doctrine-audiences.md",
+        ".claude/commands/phantom-modes/audiences-tree.md"
+      ],
+      "section": "2 modes v2.39 rendu sans jargon",
+      "rationale": "Patch B doctrine-audiences.md · 4 questions framework rendues sans jargon. Q1 pain-driven/goal-driven/identity-driven → par un problème/objectif/qui elle est avec exemples concrets (chute, longueur, hijabi). Q2 broad/segment/micro → audience mère/poche/niche avec descriptions accessibles. Q3 STADE SCHWARTZ → OÙ ELLE EN EST DANS SON PARCOURS, product-awareness × emotional-maturity → ce qu'elle sait du produit × où elle en est émotionnellement. Q4 chevauchements cousins révèlent angles porteurs. Pièges traduits (sous-division/hook ni offre différents). Pareto reformulé. Résumé 1 phrase ajouté. NEXT SUGGESTED operator-facing (cartographier nouvelle audience · voir le cours complet). Path docs/doctrine/audience-cartography-framework.md conservé en backend Lecture pas dans rendu. Patch C audiences-tree.md · entry_door leak fixé (violation directe no_jargon_to_operator v2.37). PROBLEM-DRIVEN/GOAL-DRIVEN → PAR UN PROBLÈME/PAR UN OBJECTIF. broad/segment → [mère]/[poche]. hypothèse → à valider. verbatims → témoignages clients. GAPS DÉTECTÉS → POINTS À COMPLÉTER. Q1/Q4 framework refs virées du rendu. lance mine-voc sur kara → récupère les témoignages clients. /phantom doctrine audiences → voir le cours complet. Graceful degradation préservée. Backend Lecture blocks intacts."
+    },
+    {
+      "category": "navigation",
+      "action": "patched",
+      "files": [
+        ".claude/commands/phantom-modes/canon.md",
+        ".claude/commands/phantom.md"
+      ],
+      "section": "Audit pass · 4 modes existants v2.36+ patchés (38 leaks fixés)",
+      "rationale": "Patch D · audit pass HR-20 lint sur modes v2.36+ révèle leaks résiduels non audités. (1) /phantom canon · 12 leaks fixés (atlas du métier → bibliothèque métier · couches → chapitres · frameworks/hooks/heuristiques-persuasion → squelettes/accroches/leviers persuasion · tool ids curiosity-gap → écart-curiosité · validations[] → tests passés cumulés · lineage → origine · anti-patterns → à éviter · combines_with → va bien avec · empty state pas encore seedé → pas encore disponible). (2) /phantom doctrine · 10+ leaks fixés dont CRITIQUE 7 DISCIPLINES SOEURS exposant noms doctrine Contextual Intelligence/Schema Encoding/Canonical Matrix Reasoning/Skill Authoring/Provenance & Trust/Doctrine Governance (violation directe CLAUDE.md root règle absolue 'NEVER expose doctrine names'). Remplacé par 7 PILIERS DU SYSTÈME avec liste reformulée en effets + ligne 'Tu en sens les effets, tu n'as jamais à les nommer'. Pipeline P0→P5 → parcours en 6 étapes. 12 skill names verbalisés FR. Équation v3.1 NOYAU × CONTEXTE × MODIFIEURS → recette créative noyau × contexte × modificateurs. Cycle validation atlas vivant → boucle d'apprentissage historique brand vivant. (3) /phantom {brand} matrix · 8 leaks fixés (sub-cluster → sous-groupe audience · modulateurs → facteurs d'ajustement · origin_axis 5 sources audience-derived/product-derived/category-derived/brand-derived/temporal-derived → angle audience/produit/catégorie/brand/moment · skill names dans NEXT SUGGESTED verbalisés). (4) /phantom {brand} atlas re-audit post-v2.37 · 8 leaks résiduels trouvés et fixés (atlas vivant → historique brand · cartographie holistique → vue d'ensemble · zone créative → territoire créatif · niveau brand low/mid/high → niveau de notoriété faible/moyen/fort · learnings → apprentissages · strategy → stratégie · matrice priorisation/dernier run → priorisation territoires/dernière exécution · /phantom doctrine méthode cartographie compositionnelle → méthode du système). Backend Lecture blocks scoping explicite '(backend, paths agent)' + 'Ne pas exposer à l'opérateur'. Cap 1000 phantom.md respecté · 999 lignes."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "6 modes phantom (3 v2.39 + 3 v2.36+) maintenant cohérents operator-facing. Plus de 'atlas vivant validations[] cumulées', 'pipeline P0→P5', '7 disciplines sœurs Contextual Intelligence', 'sub-cluster × origin_axis audience-derived', 'curiosity-gap framework couches fiches' exposés brut. Vocabulaire métier accessible · audience mère/poche/niche · par un problème/objectif/qui elle est · ce qu'elle sait du produit/où elle en est émotionnellement · 7 piliers du système (effets jamais nommés) · recette créative · parcours en 6 étapes · sous-groupe audience · facteurs d'ajustement · angle audience/produit/catégorie/brand/moment · historique brand · accroches/squelettes/leviers persuasion · à éviter · à valider · témoignages clients. Translation table 50+ entries devient source of truth pour skill authors et lint validate-resources HR-20 v2.37. Opérateur agency junior J3 peut maintenant lire les vues sans pop quiz vocabulary. Backward compat strict additif partout. Backend Lecture blocks intacts (paths absolus + field names techniques préservés pour instructions agent).",
+  "next_release_note": "v2.41+ patches identifiés post-audit · (a) /phantom briefs + /phantom tests modes audit jargon (BRF-XX, TST-XX, winner_proxy yes/no/pending, ROAS spend, kind test_result, fatigued/scaled exposés). (b) mode mechanisms-drill + benefits-drill audit (MEC-01/BEN-01/triggered_by/layer functional|emotional|identity exposés). (c) SKILL.md output_format audit · produce-paid-angles, compose-creative, weight-dimensions, score-matrix, produce-copy-brief, mine-voc, mine-vom, profile-audience peuvent leak du jargon dans leur output_format propre (column headers, status labels). (d) phantom-canon.py runtime · tool_id slug vs display_name séparé requis sinon ids backend (curiosity-gap, stat-choc) leakent dans listes même avec translation table. (e) Enforcement runtime · build-manifest.py génère .skills/_jargon_bank.json lu en pre-render filter par chaque skill operator-facing OU validate-resources HR-20 lint étendu scan automatique post-output 50+ regex. (f) Cohérence cross-modes [mère]/[poche]/[niche] doit aussi descendre dans skills outputs (profile-audience SKILL.md output_format)."
+}

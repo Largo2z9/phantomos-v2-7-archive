@@ -30,6 +30,49 @@ Cette règle s'étend aux concepts canon : atlas, canon, validations, fiches, co
 | validation_status hypothesis | non testé · à valider | not tested · to validate |
 | L1/L2/L3 fallback | automatique · à toi · partiel | auto · your call · partial |
 | prerequisites | pré-requis · dépendances | prerequisites · dependencies |
+| pain_driven · pain-driven | par un problème | problem-driven |
+| goal_driven · goal-driven | par un objectif | goal-driven |
+| identity_driven · identity-driven | par qui elle est | identity-driven |
+| broad (scope) | audience mère | broad audience |
+| segment (scope) | poche | segment |
+| micro (scope) | niche | niche |
+| entry_door | porte d'entrée | entry point |
+| parent_slug | audience parente | parent audience |
+| overlap_with | chevauchement avec | overlap with |
+| Schwartz · STADE SCHWARTZ | où elle en est dans son parcours | awareness stage |
+| product-awareness · awareness_stage_product | ce qu'elle sait du produit · étape produit | product awareness · product stage |
+| emotional-maturity · awareness_stage_emotional | où elle en est émotionnellement · étape émotionnelle | emotional maturity · emotional stage |
+| sophistication | maturité du marché | market sophistication |
+| audience-fantôme · audience-redondante · audience-orpheline | (operator-facing déjà) | ghost · redundant · orphan audience |
+| verbatim_density | richesse témoignages clients | client testimonial density |
+| mining (skill name) · mine-voc | récupération témoignages clients · récupère les témoignages clients | client testimonial mining · mine client testimonials |
+| profile-audience (skill name) | cartographier l'audience | map audience |
+| Q1/Q2/Q3/Q4 framework | question 1 · question 2 · question 3 · question 4 | question 1..4 |
+| 7 disciplines sœurs · Contextual Intelligence · Schema Encoding · Canonical Matrix Reasoning · Skill Authoring · Provenance & Trust · Doctrine Governance | 7 piliers du système (effets, jamais nommés) | 7 system pillars (effects only) |
+| équation v3.1 · NOYAU × CONTEXTE × MODIFIEURS | recette créative · noyau × contexte × modificateurs | creative recipe · core × context × modifiers |
+| pipeline P0 → P5 | parcours en 6 étapes | 6-step journey |
+| produce-paid-angles | crée des angles publicitaires | create paid angles |
+| produce-copy-brief | génère un brief copy | generate copy brief |
+| compose-creative | crée un visuel | compose visual |
+| recompose-creative | adapte un visuel existant | adapt existing visual |
+| decompose-ad | décompose une pub existante | decompose existing ad |
+| score-matrix | priorise les territoires | prioritize territories |
+| weight-dimensions | calcule les priorités d'audience | calculate audience priorities |
+| setup-brand · snapshot-brand | démarre une nouvelle brand · démarre un workspace brand | start new brand · start brand workspace |
+| sub-cluster | sous-groupe audience | audience sub-group |
+| dimension weights | pondérations dimensions | dimension weights |
+| modulateurs brand | facteurs d'ajustement brand | brand adjustment factors |
+| origin_axis · audience-derived · product-derived · category-derived · brand-derived · temporal-derived | source de l'angle · angle audience · angle produit · angle catégorie · angle brand · angle moment | angle source · audience/product/category/brand/temporal angle |
+| brand_equity_level · low/mid/high | niveau de notoriété · faible/moyen/fort | brand awareness level · low/medium/high |
+| creative_zone | territoire créatif | creative territory |
+| learnings | apprentissages | learnings |
+| strategy · current_focus | stratégie · focus actuel | strategy · current focus |
+| canon-tool · tool_id | référence métier · identifiant référence | business reference · reference ID |
+| cycle validation · atlas vivant | boucle d'apprentissage · historique brand | learning loop · brand track record |
+| winner_proxy yes/no/pending | gagnant probable · oui/non/en attente | likely winner · yes/no/pending |
+| fatigued · scaled | fatigué · passé à l'échelle | fatigued · scaled |
+| MEC-01 · BEN-01 · triggered_by | mécanisme 1 · bénéfice 1 · déclenché par | mechanism 1 · benefit 1 · triggered by |
+| layer functional · emotional · identity | niveau fonctionnel · émotionnel · identitaire | functional · emotional · identity level |
 
 ## Output policy
 

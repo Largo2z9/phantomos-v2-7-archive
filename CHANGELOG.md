@@ -5,6 +5,30 @@
 
 ---
 
+## v2.40.0 · 2026-05-10 · Audit jargon pass 2 · purge cohérente 6 modes phantom
+
+**Why this release.** v2.39 a shipé le framework cartography (4 questions, broad/segment/micro, Schwartz, pain/goal/identity-driven) mais n'a PAS étendu la translation table operator-vocabulary-translation v2.37. Conséquence · jargon leak dans les 2 nouveaux modes phantom. Largo a flag lors d'un test live · "il y a encore beaucoup de jargon qui pourrait être simplifié". Audit révèle aussi des leaks résiduels v2.36 sur 4 modes existants non audités depuis pose de la règle `no_jargon_to_operator` v2.37, dont une violation CRITIQUE · le mode `/phantom doctrine` exposait les 7 noms de doctrine (Contextual Intelligence, Schema Encoding, etc.) en violation directe de CLAUDE.md root règle absolue.
+
+**What shipped.**
+
+- **Translation table consolidée 18 → 50+ entries** · `docs/system/operator-vocabulary-translation.md`. Couvre désormais termes framework v2.39 (broad/segment/micro, Schwartz, pain/goal/identity-driven, entry_door, parent_slug, overlap_with, sophistication, verbatim_density, Q1-Q4 framework) + termes audit D v2.40 modes existants (skill names verbalisés FR, sub-cluster, modulateurs brand, origin_axis 5 sources, brand_equity_level, creative_zone, canon-tool, winner_proxy, fatigued/scaled, MEC-01/BEN-01, layer functional/emotional/identity).
+- **2 modes v2.39 patchés (rendu sans jargon)** :
+  - `/phantom doctrine audiences` · 4 questions framework rendues accessibles (par un problème/objectif/qui elle est · audience mère/poche/niche · où elle en est dans son parcours · ce qu'elle sait du produit × où elle en est émotionnellement)
+  - `/phantom {brand} audiences` · `entry_door` leak GAPS fixé (violation `no_jargon_to_operator` v2.37) · POINTS À COMPLÉTER · [mère]/[poche] · à valider/témoignages · NEXT SUGGESTED operator-facing (récupère les témoignages clients · pose les portes d'entrée · voir le cours complet)
+- **4 modes existants patchés (38 leaks fixés)** :
+  - `/phantom canon` · 12 leaks (atlas du métier → bibliothèque métier · couches → chapitres · frameworks/hooks → squelettes/accroches · validations[] → tests passés cumulés · lineage → origine · anti-patterns → à éviter)
+  - `/phantom doctrine` · 10+ leaks dont **CRITIQUE 7 DISCIPLINES SOEURS** exposant noms doctrine (Contextual Intelligence, Schema Encoding, Canonical Matrix Reasoning, Skill Authoring, Provenance & Trust, Doctrine Governance) violation directe CLAUDE.md root. Remplacé par `7 PILIERS DU SYSTÈME` reformulés en effets + ligne `Tu en sens les effets, tu n'as jamais à les nommer`. Pipeline P0→P5 → parcours 6 étapes. Équation v3.1 → recette créative. 12 skill names verbalisés FR.
+  - `/phantom {brand} matrix` · 8 leaks (sub-cluster → sous-groupe audience · modulateurs → facteurs ajustement · origin_axis 5 sources → angle audience/produit/catégorie/brand/moment)
+  - `/phantom {brand} atlas` re-audit post-v2.37 · 8 leaks résiduels (atlas vivant → historique brand · zone créative · niveau de notoriété · learnings → apprentissages · strategy → stratégie · matrice priorisation → priorisation territoires)
+- **Backend Lecture blocks préservés intacts** · paths absolus + field names techniques pour instructions agent. Scoping explicite `(backend, paths agent)` + `Ne pas exposer à l'opérateur`.
+- **Cap 1000 phantom.md respecté** · 999 lignes.
+
+**Operator impact.** 6 modes phantom maintenant cohérents operator-facing. Plus de `atlas vivant validations[] cumulées`, `pipeline P0→P5`, `7 disciplines sœurs Contextual Intelligence Schema Encoding`, `sub-cluster × origin_axis audience-derived`, `curiosity-gap framework couches fiches` exposés brut. Translation table 50+ entries devient source of truth pour skill authors et lint validate-resources HR-20 v2.37. Opérateur agency junior J3 peut lire les vues sans pop quiz vocabulary. Backward compat strict additif.
+
+**Next.** v2.41+ · audit jargon pass 3 sur `/phantom briefs` + `/phantom tests` modes (BRF-XX, TST-XX, winner_proxy, ROAS spend, fatigued/scaled exposés) · `/phantom mechanisms` + `/phantom benefits` drills (MEC-01/BEN-01/triggered_by/layer functional|emotional|identity) · SKILL.md output_format audit (produce-paid-angles, compose-creative, etc. peuvent leak jargon dans column headers + status labels) · phantom-canon.py runtime tool_id slug vs display_name séparé · enforcement runtime via build-manifest.py génère `.skills/_jargon_bank.json` lu pre-render filter par chaque skill.
+
+---
+
 ## v2.39.0 · 2026-05-10 · Pédagogie audience cartography framework
 
 **Why this release.** Lors d'une session live kara, Largo a flag que cartographier 7 audiences sans framework mental partagé = bricolage potentiel (audiences fantômes, redondantes, orphelines). Besoin · framework pédagogique simple applicable cross-brand par opérateurs marketeux non-PhantomOS-experts. v2.39 ship une pyramide d'apprentissage progressif en 4 strates où le framework apparaît dans le flow naturel, jamais comme onboarding cérémonial. Modèle mental simple à retenir · une audience c'est une porte d'entrée + un niveau de granularité + un stade dans le funnel · ses chevauchements révèlent les angles porteurs · tu cartographies 7 mais tu actives 2-3.
