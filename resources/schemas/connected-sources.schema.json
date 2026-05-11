@@ -2,11 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Connected sources",
   "description": "Runtime state of external platform connections. Lives in operator/connected-sources.json (workspace scope) or brands/{slug}/connected-sources.json (brand scope). Distinct from resources/conventions/{platform}.json which describes how a platform works generically.",
+  "_schema_version": "connected-sources/1.0",
+  "_changelog": {
+    "1.0": "v2.42 versioning cleanup: `_schema_version` field root ajouté (format `{name}/{semver}`) pour cohérence cross-schemas. Property `_schema` (const `connected-sources` sans num) conservée pour backward compat read. v1.0 baseline fixée à partir du shape existant (workspace + brand scopes, sources[] avec credentials_ref + capabilities + sync_status). Source canon: PATCH 2A v2.42."
+  },
   "type": "object",
   "required": ["meta", "sources"],
   "properties": {
-    "_schema": { "type": "string", "const": "connected-sources" },
-    "_version": { "type": "string" },
+    "_schema": { "type": "string", "const": "connected-sources", "description": "Backward compat alias of root `_schema_version`. New readers SHOULD read the root field." },
+    "_version": { "type": "string", "description": "Free-form instance version, owned by writer. Distinct from schema version." },
     "_field_types": { "type": "object", "additionalProperties": { "type": "string" } },
     "meta": {
       "type": "object",

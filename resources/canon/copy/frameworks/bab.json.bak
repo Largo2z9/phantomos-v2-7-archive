@@ -1,0 +1,70 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "bab",
+  "atlas": "copy",
+  "layer": "frameworks",
+  "name": "BAB",
+  "principle": "Before · After · Bridge. Frame visuel court : on peint l'avant, on peint l'après, on montre le pont entre les deux.",
+  "structure": "Before (réalité actuelle) → After (réalité visée) → Bridge (le mécanisme qui fait passer).",
+  "gabarits": [
+    "Avant / Après / Comment",
+    "Voilà où tu en es / Voilà où tu peux être / Voilà ce qui fait la bascule"
+  ],
+  "when_works": [
+    "formats courts (UGC, ad statique, hero LP)",
+    "audiences qui voient un résultat tangible (visuel, mesurable)",
+    "produits avec transformation visible"
+  ],
+  "when_avoid": [
+    "produits sans before/after clair (catégorie commodity)",
+    "audiences sceptiques sur la promesse de transformation"
+  ],
+  "combines_with": {
+    "hooks": [
+      "avant-apres",
+      "transformation"
+    ],
+    "angles": [
+      "mecanisme-unique",
+      "status-shift"
+    ],
+    "formats": [
+      "UGC-ad",
+      "ad-statique",
+      "testimonial"
+    ]
+  },
+  "anti_patterns": [
+    "After irréaliste (perd la crédibilité)",
+    "Bridge flou (pas de mécanisme nommé, juste 'ce produit')"
+  ],
+  "examples": [
+    "Cheveux fins, plats, casse à la racine / Cheveux denses, brillants, +6 cm / 90 jours de cure ciblée biotine + zinc.",
+    "Avant : 100 cheveux par brossage. Après : 10. Bridge : le complexe Cellule Boost agit sur la phase anagène."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Direct Response canon"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

@@ -3,10 +3,14 @@
   "$id": "angle.schema.json",
   "title": "Angle (brand-side instance)",
   "description": "Angle = couche stratégique. Stored at brands/{slug}/angles/{ANG-N}.json. Produced by produce-paid-angles (light pass: lineage + meta) and enriched on demand by decompose-angle (deep pass: recursive formula). One file per angle. Many-to-many with audiences (an angle can serve multiple audiences with different mechanics). Une créa peut référencer un angle via creative.context.angle_ref. Évolution v1.1 → v1.2 : 8 champs (intent, mecanique, seasonality_trigger, execution.craft_mode, execution.longevity_signal, execution.cta) migrés vers creative.schema.json (D#391 audit S55). source renommé en origin_axis pour libérer le polysémique. lineage.schwartz_conscience renommé en lineage.awareness_stage pour cohérence avec awareness_movement.",
+  "_schema_version": "angle/1.2",
+  "_changelog": {
+    "1.2": "v2.42 versioning cleanup: `_schema_version` field promu en root (format `{name}/{semver}`) pour cohérence cross-schemas. Property `_schema_version` const conservée pour backward compat read mais lecteurs doivent prendre la valeur root. Source canon: PATCH 2A v2.42."
+  },
   "type": "object",
   "required": ["angle_id", "name", "audience_slug", "meta"],
   "properties": {
-    "_schema_version": { "const": "angle/1.2" },
+    "_schema_version": { "const": "angle/1.2", "description": "Backward compat alias of root `_schema_version`. New readers SHOULD read the root field." },
 
     "_equation_ref": {
       "type": "string",

@@ -1,7 +1,10 @@
 ---
 name: learn-from-session
 type: capturer
-version: "1.0.2"
+version: "1.1.0"
+isolation_scope: workspace_global
+layer: 3
+patch_notes: "v2.42 PATCH 5 · Trigger 9 ajouté · promote learning to canon validation (bridge learnings.json brand-side → validations[] atlas vivant cross-brand). Operator-gate AskUserQuestion. Ferme bridge compound learning end-to-end. Capturer workspace_global justifié · peut promouvoir learning brand vers atlas vivant cross-brand après operator gate."
 recommended_model: sonnet
 reasoning_pattern: null
 description: >
@@ -158,6 +161,72 @@ Après `produce-paid-angles karacare sur chute-post-grossesse` :
    (compose-creative) si tu veux directement la créa.
    Tape : `produce-copy-brief ANG-03` ou `compose-creative ANG-03`
 ```
+
+### Trigger 9 · Promote learning to canon validation (v2.42+)
+
+> v1.1.0 (v2.42 PATCH 5) : Trigger 9 ajouté · bridge learnings.json brand-side → validations[] atlas vivant canon-tool cross-brand. Ferme bridge compound learning end-to-end (audit scope 8 finding S2026-05-11).
+
+**Quand actif** : daemon silencieux post-skill completion. Détecte si learning capturé brand-side est applicable cross-brand (canon promotion candidate). Pattern Largo flag explicit · un changement local doit alimenter le système global, sinon compound learning reste théorique.
+
+**Critères trigger** (tous obligatoires, AND) :
+
+1. Entry dans `brands/{slug}/learnings.json` avec :
+   - `status: "active"`
+   - `_confidence >= 0.7` (calculé via algèbre confidence-propagation)
+
+2. Pattern recurrence cross-brand observable :
+   - Learning mentionne canon-tool spécifique (hook framework, archetype, lead variant, mécanique, voc pattern)
+   - Outcome explicite (`success` / `neutral` / `failed`)
+   - N >= 3 brands distinctes auraient validé même tool (count via grep cross-brand sur learnings.json)
+   - Daemon scan une fois par flush (Trigger 1-4), pas par chaque write
+
+3. Operator-gate via `AskUserQuestion` :
+
+```
+J'ai détecté un apprentissage applicable cross-brand :
+- Brand source · {slug}
+- Canon-tool concerné · {hook/framework/archetype/lead-name}
+- Outcome · {success/neutral/failed}
+- Confidence · {0.X}
+
+Tu veux le promouvoir vers atlas vivant (validations[] sur canon-tool générique cross-brand) ?
+  (a) Oui · ajouter validation entry · partage cross-brand pour futures productions
+  (b) Non · garde local à cette brand
+  (c) Plus tard · pas maintenant
+```
+
+**Si (a) selected** · write `validations[]` entry conforme schema canon-tool/1.1 via `write_to_context` :
+
+```json
+{
+  "brand_slug": "{slug}",
+  "outcome": "success | neutral | failed",
+  "attribution_layer": "{layer où le tool a été utilisé : hook | lead | body | offer | cta}",
+  "validated_at": "{ISO timestamp}",
+  "decay_ttl_days": 90,
+  "_isolation_boundary": "brand",
+  "_confidence_source": "learn-from-session-trigger-9",
+  "_promoted_from": "brands/{slug}/learnings.json#/{learning_id}"
+}
+```
+
+Field_path target · `resources/canon/copy/{layer}/{tool}.json#/validations[]` (append-only, schema canon-tool/1.1).
+
+**Si (b)** · skip · learning reste local brand-side.
+
+**Si (c)** · buffer reprend au prochain flush (Trigger 1-4) si learning toujours `active` + confidence >= 0.7.
+
+**Empêche pollution canon** · gate operator-explicit obligatoire avant write atlas vivant. Pas de promotion silencieuse.
+
+**Ferme bridge compound learning end-to-end** · un changement local (brand learnings.json) alimente le système global (canon validations[]) après operator gate. Pattern doctrine Largo flag explicit S2026-05-11 finding "compound learning théorique pas matériel".
+
+**Cross-ref HR-Canon-Decay (v2.37)** · les entries promues via Trigger 9 sont consommées par le cycle HR-Canon-Decay (validate freshness via `decay_ttl_days`). Décay default 90 days. HR-Canon-Decay vérifie `validated_at + decay_ttl_days < now` à chaque validate-resources run · si expired, flag `[CANON-VALIDATION-STALE]` non-blocking (operator decide rebump ou archive).
+
+**Anti-patterns** :
+- Ne JAMAIS écrire `validations[]` sans operator gate (a) confirmation
+- Ne JAMAIS promouvoir learnings avec `_confidence < 0.7` (signal trop faible pour cross-brand impact)
+- Ne JAMAIS bypass schema canon-tool/1.1 validation (mutation gate enforce)
+- Ne JAMAIS spam · si operator répond (c) 2+ fois sur même learning, archiver learning entry avec tag `promote_skipped`
 
 ## Flush format — recap before writing
 

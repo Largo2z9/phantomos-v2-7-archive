@@ -1,47 +1,86 @@
 {
-  "_schema": "canon-tool/1.0",
+  "_schema": "canon-tool/1.1",
   "_version": "1.0",
   "id": "bundle-stack",
   "atlas": "copy",
   "layer": "construction-offre",
   "name": "Bundle stack",
-  "principle": "Empile produits/bonus pour augmenter la valeur perçue tout en gardant un prix qui ressemble à du bargain.",
-  "structure": "Produit principal + accessoires + bonus information + garantie. Total perçu >> prix.",
+  "principle": "Empile produit principal + accessoires utiles + bonus information + garantie pour gonfler la valeur perçue sans toucher au prix. Le lecteur sent qu'il reçoit 3x ce qu'il paie. Hormozi : la valeur perçue, c'est la somme des promesses sur le rapport prix.",
+  "structure": "Produit principal (le coeur) + 1-2 accessoires complémentaires (lien d'usage évident) + 1 bonus info ou outil (PDF, accès, calendrier) + garantie temporelle. Total perçu doit dépasser 2x le prix demandé sans paraître bluffé.",
   "gabarits": [
-    "Cure 3 mois (89€) + brosse stimulante (15€) + guide PDF (gratuit) + garantie 60j = 89€"
+    "Cure [durée] ([prix individuel]) + [accessoire complémentaire] ([valeur]) + [bonus info] (offert) + garantie [durée] = [prix bundle final].",
+    "Pack [nom] : [N produits liés] pour [prix bundle], soit [économie en %] vs séparé.",
+    "Tu prends [produit principal]. On ajoute [accessoire utile] + [bonus information] + [garantie]. Tout pour [prix].",
+    "[Produit core] inclut : [élément 1] + [élément 2] + [élément 3] + [élément 4]. Valeur cumulée [X€]. Tu paies [Y€]."
   ],
   "when_works": [
-    "closing de funnel",
-    "saisonnalités (Black Friday, fête des Mères)",
-    "AOV à pousser"
+    "closing de funnel, fin de VSL, page checkout",
+    "saisonnalités à forte intention (Black Friday, Mother's Day, fête des Pères)",
+    "AOV à pousser sur audience déjà éduquée",
+    "produits cures où l'accessoire amplifie l'usage (brosse, applicateur, planning)",
+    "marchés wellness où le rituel justifie le stack"
   ],
   "when_avoid": [
-    "audiences habituées au bundle (saturé)",
-    "produits à AOV déjà élevé"
+    "audiences habituées au bundle (saturation, devient bruit de fond)",
+    "produits à AOV déjà élevé (pas de marge perçue)",
+    "trafic froid sans pre-éducation (bundle paraît marketing-gonflé)",
+    "stack illisible avec 7+ éléments (perd la cohérence)",
+    "marques premium dont la valeur s'érode si l'offre paraît cheap-stacked"
   ],
   "combines_with": {
-    "formats": [
-      "landing",
-      "checkout",
-      "VSL"
+    "hooks": [
+      "avant-apres",
+      "stat-choc"
     ],
     "frameworks": [
       "aida",
-      "4ps"
+      "4ps",
+      "fab"
+    ],
+    "leads": [
+      "offer-led",
+      "transformation-led"
+    ],
+    "archetypes": [
+      "homme-ordinaire",
+      "amante"
+    ],
+    "construction-offre": [
+      "anchor-decoy",
+      "garantie-risk-reversal",
+      "urgence-rarete-temps"
+    ],
+    "formats": [
+      "landing-checkout",
+      "VSL",
+      "email-promo"
+    ],
+    "emotions": [
+      "envie",
+      "soulagement",
+      "fomo"
     ]
   },
   "anti_patterns": [
-    "Bundle gonflé d'objets sans valeur",
-    "Bundle illisible (trop d'éléments)"
+    "Bundle gonflé d'objets sans valeur d'usage réel (sticker, mug, tote bag)",
+    "Bundle illisible avec trop d'éléments (>5 items perd la digestibilité)",
+    "Valeur perçue artificielle (prix individuels gonflés vs réalité site)",
+    "Bonus information générique (PDF de 4 pages compté 47€)",
+    "Stack sans cohérence d'usage (les éléments ne s'utilisent pas ensemble)"
   ],
   "examples": [
-    "Cure Hair Boost + Cellule Boost + bonnet serviette + applicateur huile = 132.90€ au lieu de 167€."
+    "Cure Hair Boost 3 mois (89€) + brosse stimulante boar bristle (29€) + guide PDF nutrition cuir chevelu (gratuit) + garantie 60 jours résultats. Tout pour 89€. C'est la pile complète qu'une maman post-partum a besoin sur 90 jours.",
+    "Pack démarrage K18 : masque repair (75€) + leave-in (38€) + applicateur précis (offert) + carnet de routine 30 jours (offert). Valeur 113€, on te le fait à 67€. Le coffret repair complet à -40%.",
+    "Bundle Briogeo cure 3 mois afro-care : shampoing scalp revival (29€) + masque don't despair (35€) + sérum croissance (39€) + brosse détangle (19€) + guide routine 4c (offert). 122€ séparés, 79€ en pack avec garantie 90 jours.",
+    "Cure complète wellness Mielle Organics : huile de ricin pomegranate (15€) x3 mois + leave-in (22€) + brosse boar (24€) + e-book transition naturelle (offert). 91€ séparé, 59€ en pack avec frais port offerts."
   ],
   "validations": [],
   "lineage": {
     "source": "public-doctrine",
     "references": [
-      "Hormozi $100M Offers"
+      "Alex Hormozi $100M Offers",
+      "Russell Brunson value ladder",
+      "Halbert Boron Letters"
     ]
   },
   "_field_types": {

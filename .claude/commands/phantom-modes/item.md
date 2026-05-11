@@ -114,4 +114,8 @@ Si aucune audience ne cible ce produit : *"Aucune audience taggée sur ce produi
 
 Si `{item-slug}` n'existe pas, surface : *"Item '{x}' pas trouvé dans `{entity}` de `{brand}`. Disponibles : {liste des slugs trouvés}. Tape `/phantom {brand} {entity}` pour la vue entity complète."*
 
+### Post-render filter (v2.42+)
+
+Avant émission, appliquer le filtre jargon `.skills/_jargon_bank.json` selon le contrat universel défini dans `phantom.md § Post-render jargon filter`. Substitution forcée via `apply_jargon_filter(output_text, locale="fr")` si un token résiduel reste hors backticks (typique sur ce mode : `validation_status`, `pain_points`, `applies_to_products`, `winner_proxy`, `ROAS` reste tech detail acceptable).
+
 ---

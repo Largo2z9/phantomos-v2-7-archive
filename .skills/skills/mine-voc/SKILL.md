@@ -2,6 +2,8 @@
 name: mine-voc
 type: producer
 version: "1.0.2"
+isolation_scope: brand_only
+layer: 2
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: coding

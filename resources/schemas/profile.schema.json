@@ -1,8 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Audience Profile",
-  "description": "Audience profile — deep psychographic and behavioral context, factual description of who they are. Lives in brands/{slug}/audiences/{audience}/profile.json. v1.2+: persona_archetype + buyer_user_split (migrated from spec.gift_economy). Canon V3 §8.2.",
-  "_schema_version": "profile/1.3",
+  "description": "Audience profile — deep psychographic and behavioral context, factual description of who they are. Lives in brands/{slug}/audiences/{audience}/profile.json. v1.2+: persona_archetype + buyer_user_split (migrated from spec.gift_economy). v1.4 (v2.42): meta.entry_door enum strict (pain_driven|goal_driven|identity_driven) REQUIRED — closes spec-vs-schema drift from v2.39 framework. Canon V3 §8.2.",
+  "_schema_version": "profile/1.4",
+  "_changelog": {
+    "1.4": "v2.42-schema-alignment: meta.entry_door enum strict (pain_driven|goal_driven|identity_driven) ajouté + listé dans meta.required. Closes drift schema vs framework v2.39 (audience-cartography-framework.md Q1). Backward compat: lecture v1.0-v1.2 tolérée, defaults injectés par v2.42-schema-alignment.py.",
+    "1.3": "S55 audit: persona_archetype enum (demographic|condition_based|psychographic) avec secondary[] hybride, buyer_user_split migré depuis spec.gift_economy (proprieté audience pas produit), identity.archetype DEPRECATED.",
+    "1.2": "Initial post-S26 stable: meta.scope/parent_slug/overlap_with, validation_status lifecycle, tag namespaces enforced, key_expressions object[]."
+  },
   "type": "object",
   "required": ["meta"],
   "properties": {
@@ -13,8 +18,8 @@
 
     "meta": {
       "type": "object",
-      "description": "Identity card of the audience: name, slug, scope, parent/overlap relations, validation lifecycle.",
-      "required": ["name", "slug"],
+      "description": "Identity card of the audience: name, slug, scope, parent/overlap relations, validation lifecycle, entry_door (Q1 framework v2.39).",
+      "required": ["name", "slug", "entry_door"],
       "properties": {
         "name": { "type": "string" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]*$" },
@@ -26,6 +31,11 @@
         "tags": { "type": "array", "items": { "type": "string" } },
         "audience_type": { "type": "string", "enum": ["primary", "secondary", "discovered", "assumed"] },
         "validation_status": { "$ref": "_shared/validation-status.json" },
+        "entry_door": {
+          "type": ["string", "null"],
+          "enum": ["pain_driven", "goal_driven", "identity_driven", null],
+          "description": "Porte d'entrée canonique audience (Q1 framework v2.39) · cf docs/doctrine/audience-cartography-framework.md. null toléré transitoirement post-migration v2.42 si inference depuis tags impossible; operator gate doit la résoudre avant validation_status: validated."
+        },
         "status": { "type": "string", "enum": ["draft", "partial", "complete"] },
         "created": { "type": "string" },
         "updated": { "type": "string" },

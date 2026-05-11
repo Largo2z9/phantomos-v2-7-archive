@@ -1,0 +1,681 @@
+{
+  "_schema": "jargon-bank/1.0",
+  "_generated_at": "2026-05-11",
+  "_source": "docs/system/operator-vocabulary-translation.md",
+  "_total_entries": 71,
+  "entries": [
+    {
+      "internal": [
+        "atlas brand"
+      ],
+      "operator_fr": "matière brand · cartographie",
+      "operator_en": "brand cartography · brand data",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "atlas canon copy"
+      ],
+      "operator_fr": "bibliothèque copywriting partagée",
+      "operator_en": "shared copy library",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "atlas vivant"
+      ],
+      "operator_fr": "historique de ce qui a marché",
+      "operator_en": "track record · what worked",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "validations[]"
+      ],
+      "operator_fr": "tests passés · résultats observés",
+      "operator_en": "past tests · observed results",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "canon-tool"
+      ],
+      "operator_fr": "outil de référence",
+      "operator_en": "reference template",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "fiches (canon)"
+      ],
+      "operator_fr": "entrées · références",
+      "operator_en": "entries · references",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "couches (11)"
+      ],
+      "operator_fr": "catégories · familles",
+      "operator_en": "categories · families",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "archetype voix"
+      ],
+      "operator_fr": "style de parole",
+      "operator_en": "speaking style",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "hook (canon)"
+      ],
+      "operator_fr": "accroche · début",
+      "operator_en": "hook · opener",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "framework (canon)"
+      ],
+      "operator_fr": "structure · gabarit",
+      "operator_en": "structure · template",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "_field_types"
+      ],
+      "operator_fr": "source · provenance",
+      "operator_en": "source · origin",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "schema"
+      ],
+      "operator_fr": "structure · format",
+      "operator_en": "structure · format",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "entity"
+      ],
+      "operator_fr": "élément · bloc",
+      "operator_en": "item · block",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "confidence_chain"
+      ],
+      "operator_fr": "parcours certitude",
+      "operator_en": "confidence trail",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "isolation_scope brand_only"
+      ],
+      "operator_fr": "privé à cette brand",
+      "operator_en": "this brand only",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "validation_status hypothesis"
+      ],
+      "operator_fr": "non testé · à valider",
+      "operator_en": "not tested · to validate",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "L1/L2/L3 fallback"
+      ],
+      "operator_fr": "automatique · à toi · partiel",
+      "operator_en": "auto · your call · partial",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "prerequisites"
+      ],
+      "operator_fr": "pré-requis · dépendances",
+      "operator_en": "prerequisites · dependencies",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "pain_driven",
+        "pain-driven"
+      ],
+      "operator_fr": "par un problème",
+      "operator_en": "problem-driven",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "goal_driven",
+        "goal-driven"
+      ],
+      "operator_fr": "par un objectif",
+      "operator_en": "goal-driven",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "identity_driven",
+        "identity-driven"
+      ],
+      "operator_fr": "par qui elle est",
+      "operator_en": "identity-driven",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "broad (scope)"
+      ],
+      "operator_fr": "audience mère",
+      "operator_en": "broad audience",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "segment (scope)"
+      ],
+      "operator_fr": "poche",
+      "operator_en": "segment",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "micro (scope)"
+      ],
+      "operator_fr": "niche",
+      "operator_en": "niche",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "entry_door"
+      ],
+      "operator_fr": "porte d'entrée",
+      "operator_en": "entry point",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "parent_slug"
+      ],
+      "operator_fr": "audience parente",
+      "operator_en": "parent audience",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "overlap_with"
+      ],
+      "operator_fr": "chevauchement avec",
+      "operator_en": "overlap with",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "Schwartz",
+        "STADE SCHWARTZ"
+      ],
+      "operator_fr": "où elle en est dans son parcours",
+      "operator_en": "awareness stage",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "product-awareness",
+        "awareness_stage_product"
+      ],
+      "operator_fr": "ce qu'elle sait du produit · étape produit",
+      "operator_en": "product awareness · product stage",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "emotional-maturity",
+        "awareness_stage_emotional"
+      ],
+      "operator_fr": "où elle en est émotionnellement · étape émotionnelle",
+      "operator_en": "emotional maturity · emotional stage",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "sophistication"
+      ],
+      "operator_fr": "maturité du marché",
+      "operator_en": "market sophistication",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "verbatim_density"
+      ],
+      "operator_fr": "richesse témoignages clients",
+      "operator_en": "client testimonial density",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "mining (skill name)",
+        "mine-voc"
+      ],
+      "operator_fr": "récupération témoignages clients · récupère les témoignages clients",
+      "operator_en": "client testimonial mining · mine client testimonials",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "profile-audience (skill name)"
+      ],
+      "operator_fr": "cartographier l'audience",
+      "operator_en": "map audience",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "Q1/Q2/Q3/Q4 framework"
+      ],
+      "operator_fr": "question 1 · question 2 · question 3 · question 4",
+      "operator_en": "question 1..4",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "7 disciplines sœurs",
+        "Contextual Intelligence",
+        "Schema Encoding",
+        "Canonical Matrix Reasoning",
+        "Skill Authoring",
+        "Provenance & Trust",
+        "Doctrine Governance"
+      ],
+      "operator_fr": "7 piliers du système (effets, jamais nommés)",
+      "operator_en": "7 system pillars (effects only)",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "équation v3.1",
+        "NOYAU × CONTEXTE × MODIFIEURS"
+      ],
+      "operator_fr": "recette créative · noyau × contexte × modificateurs",
+      "operator_en": "creative recipe · core × context × modifiers",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "pipeline P0 → P5"
+      ],
+      "operator_fr": "parcours en 6 étapes",
+      "operator_en": "6-step journey",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "produce-paid-angles"
+      ],
+      "operator_fr": "crée des angles publicitaires",
+      "operator_en": "create paid angles",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "produce-copy-brief"
+      ],
+      "operator_fr": "génère un brief copy",
+      "operator_en": "generate copy brief",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "compose-creative"
+      ],
+      "operator_fr": "crée un visuel",
+      "operator_en": "compose visual",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "recompose-creative"
+      ],
+      "operator_fr": "adapte un visuel existant",
+      "operator_en": "adapt existing visual",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "decompose-ad"
+      ],
+      "operator_fr": "décompose une pub existante",
+      "operator_en": "decompose existing ad",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "score-matrix"
+      ],
+      "operator_fr": "priorise les territoires",
+      "operator_en": "prioritize territories",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "weight-dimensions"
+      ],
+      "operator_fr": "calcule les priorités d'audience",
+      "operator_en": "calculate audience priorities",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "setup-brand",
+        "snapshot-brand"
+      ],
+      "operator_fr": "démarre une nouvelle brand · démarre un workspace brand",
+      "operator_en": "start new brand · start brand workspace",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "sub-cluster"
+      ],
+      "operator_fr": "sous-groupe audience",
+      "operator_en": "audience sub-group",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "dimension weights"
+      ],
+      "operator_fr": "pondérations dimensions",
+      "operator_en": "dimension weights",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "modulateurs brand"
+      ],
+      "operator_fr": "facteurs d'ajustement brand",
+      "operator_en": "brand adjustment factors",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "origin_axis",
+        "audience-derived",
+        "product-derived",
+        "category-derived",
+        "brand-derived",
+        "temporal-derived"
+      ],
+      "operator_fr": "source de l'angle · angle audience · angle produit · angle catégorie · angle brand · angle moment",
+      "operator_en": "angle source · audience/product/category/brand/temporal angle",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "brand_equity_level",
+        "low/mid/high"
+      ],
+      "operator_fr": "niveau de notoriété · faible/moyen/fort",
+      "operator_en": "brand awareness level · low/medium/high",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "creative_zone"
+      ],
+      "operator_fr": "territoire créatif",
+      "operator_en": "creative territory",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "learnings"
+      ],
+      "operator_fr": "apprentissages",
+      "operator_en": "learnings",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "strategy",
+        "current_focus"
+      ],
+      "operator_fr": "stratégie · focus actuel",
+      "operator_en": "strategy · current focus",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "canon-tool",
+        "tool_id"
+      ],
+      "operator_fr": "référence métier · identifiant référence",
+      "operator_en": "business reference · reference ID",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "cycle validation",
+        "atlas vivant"
+      ],
+      "operator_fr": "boucle d'apprentissage · historique brand",
+      "operator_en": "learning loop · brand track record",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "winner_proxy yes/no/pending"
+      ],
+      "operator_fr": "gagnant probable · oui/non/en attente",
+      "operator_en": "likely winner · yes/no/pending",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "fatigued",
+        "scaled"
+      ],
+      "operator_fr": "fatigué · passé à l'échelle",
+      "operator_en": "fatigued · scaled",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "MEC-01",
+        "BEN-01",
+        "triggered_by"
+      ],
+      "operator_fr": "mécanisme 1 · bénéfice 1 · déclenché par",
+      "operator_en": "mechanism 1 · benefit 1 · triggered by",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "layer functional",
+        "emotional",
+        "identity"
+      ],
+      "operator_fr": "niveau fonctionnel · émotionnel · identitaire",
+      "operator_en": "functional · emotional · identity level",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "Substrat L1/L3",
+        "L{level}/L3"
+      ],
+      "operator_fr": "Cartographie · {level}/3 niveaux",
+      "operator_en": "Coverage · level {N}/3",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "{pct}% encodé"
+      ],
+      "operator_fr": "{pct}% rempli",
+      "operator_en": "{pct}% filled",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "groupe (audience hierarchy)"
+      ],
+      "operator_fr": "mère",
+      "operator_en": "mother audience",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "sous (audience hierarchy)"
+      ],
+      "operator_fr": "poche",
+      "operator_en": "sub-audience",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "mining vide",
+        "mining partiel",
+        "mining dense"
+      ],
+      "operator_fr": "témoignages vide · témoignages partiels · témoignages denses",
+      "operator_en": "testimonials empty · partial · dense",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "draft",
+        "partial (product status)"
+      ],
+      "operator_fr": "ébauche · partiel",
+      "operator_en": "draft · partial",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "{N}d ago",
+        "{N}w ago"
+      ],
+      "operator_fr": "il y a {N} jour(s) · il y a {N} semaine(s)",
+      "operator_en": "{N} day(s) ago · {N} week(s) ago",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "Goal-driven (je veux X)"
+      ],
+      "operator_fr": "par intention (je veux X)",
+      "operator_en": "by intent (I want X)",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "State-driven (je veux voir l'état Y)"
+      ],
+      "operator_fr": "par état (je veux voir Y)",
+      "operator_en": "by state (I want to see Y)",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "fatiguing (tests count)"
+      ],
+      "operator_fr": "fatigués",
+      "operator_en": "fatiguing",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "hypothèses count"
+      ],
+      "operator_fr": "à valider count",
+      "operator_en": "to-validate count",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    }
+  ]
+}

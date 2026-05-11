@@ -149,3 +149,7 @@ Si le domaine demandé n'existe pas : *"Domaine '{x}' pas encore disponible. Dis
 Si le chapitre demandé n'existe pas : suggérer les chapitres existants.
 
 Si l'outil demandé n'existe pas : suggérer les outils existants dans le chapitre.
+
+## Post-render filter (v2.42+)
+
+Avant émission, appliquer le filtre jargon `.skills/_jargon_bank.json` selon le contrat universel défini dans `phantom.md § Post-render jargon filter`. Les fiches canon mappent déjà beaucoup de termes (`hooks → accroches`, `frameworks → structures`, `gabarits`, `combines_with → va bien avec`), mais le filtre garantit que tout token résiduel (`atlas vivant`, `canon-tool`, `archetype voix`, `confidence_chain`) hors backticks code soit substitué via `apply_jargon_filter(output_text, locale="fr")`.

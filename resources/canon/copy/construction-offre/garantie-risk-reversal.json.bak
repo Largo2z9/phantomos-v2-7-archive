@@ -1,0 +1,108 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "garantie-risk-reversal",
+  "atlas": "copy",
+  "layer": "construction-offre",
+  "name": "Garantie / risk reversal",
+  "principle": "Renverse le risque de l'acheteur vers le vendeur. La garantie lève l'objection 'et si ça ne marche pas pour moi'. Plus elle est longue, claire et inconditionnelle, plus elle convertit (et plus elle signale que le produit tient). Hormozi : la garantie est le multiplicateur d'offre.",
+  "structure": "Promesse garantie nommée + durée + condition simple (idéalement sans condition) + procédure de remboursement sans friction. La garantie doit être un argument visible, pas un footer planqué.",
+  "gabarits": [
+    "Tu testes [N jours]. Si tu ne vois rien, on rembourse intégralement. Pas de justification.",
+    "Garantie [durée] résultats : pas de [bénéfice promis] visible ? Remboursement automatique sur simple demande.",
+    "[N] jours pour t'engager. Si à [milestone] tu n'as pas [résultat mesurable], on te rembourse + tu gardes [bonus].",
+    "Tu paies seulement si ça marche. Garantie [type] sans condition cachée."
+  ],
+  "when_works": [
+    "produits à promesse mesurable (cure, transformation, performance)",
+    "audiences sceptiques qui ont déjà été déçues dans la catégorie",
+    "produits chers où le risque perçu est un frein principal",
+    "produits cure longue (60-90j) où l'acheteur doit se projeter",
+    "marques challenger qui doivent compenser la moindre notoriété"
+  ],
+  "when_avoid": [
+    "produits où le résultat est subjectif (esthétique pure, parfum, plaisir)",
+    "marchés où le SAV ne suit pas opérationnellement (la garantie tue la marge)",
+    "produits jetables ou usage unique (garantie sans levier réel)",
+    "catégories où la garantie devient banale (perd son pouvoir différenciant)",
+    "marques luxe dont la garantie érode le positionnement statutaire"
+  ],
+  "combines_with": {
+    "hooks": [
+      "confession",
+      "stat-choc"
+    ],
+    "frameworks": [
+      "fab",
+      "aida",
+      "pas"
+    ],
+    "leads": [
+      "offer-led",
+      "proof-led"
+    ],
+    "archetypes": [
+      "homme-ordinaire",
+      "sage"
+    ],
+    "construction-offre": [
+      "bundle-stack",
+      "anchor-decoy",
+      "urgence-rarete-temps"
+    ],
+    "objections": [
+      "pre-emption",
+      "comparaison-cout-inaction"
+    ],
+    "formats": [
+      "landing-checkout",
+      "VSL",
+      "email-promo"
+    ],
+    "heuristiques-persuasion": [
+      "reciprocite",
+      "autorite",
+      "engagement-coherence"
+    ]
+  },
+  "anti_patterns": [
+    "Garantie avec conditions cachées (renvoyer dans 7j, justifier, prouver l'usage)",
+    "Garantie courte sur produit à effet long (cure 90j garantie 14j, incohérent)",
+    "Garantie en footer microscopique (l'audience ne la voit pas)",
+    "Garantie 'satisfait ou remboursé' générique sans précision",
+    "Procédure de retour friction-heavy (formulaire 6 champs + photo + ticket)"
+  ],
+  "examples": [
+    "Garantie 90 jours résultats Karacare : pas de freinage de chute visible à 12 semaines ? Remboursement intégral, pas de questions, formulaire 1 champ. Tu gardes les bonus.",
+    "Hairburst guarantee : 60 jours pour voir la différence. Si rien, tu nous renvoies les flacons restants et on rembourse. Pas de fine print, pas de délai d'examen.",
+    "Olaplex No.3 garantie satisfaction : 30 jours pour tester. Pas de transformation visible sur ton type de cheveu ? Remboursement sans renvoyer le produit, on apprend pour formuler mieux.",
+    "Function of Beauty: 14 jours essai. Si ton diagnostic personnalisé ne matche pas ton cheveu, retour + nouveau diagnostic offert. Le risque est sur nous, pas sur toi."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Alex Hormozi $100M Offers (risk reversal multiplier)",
+      "Gary Halbert iron-clad guarantee",
+      "Cialdini commitment-consistency",
+      "Joe Sugarman Adweek Copywriting Handbook"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

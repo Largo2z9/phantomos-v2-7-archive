@@ -31,6 +31,11 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 SKILLS_DIR = SCRIPT_DIR / "skills"
 OUTPUT = SCRIPT_DIR / "_manifest.json"
 
+# v2.42+ jargon bank generation
+WORKSPACE_ROOT = SCRIPT_DIR.parent
+JARGON_SOURCE = WORKSPACE_ROOT / "docs" / "system" / "operator-vocabulary-translation.md"
+JARGON_OUTPUT = SCRIPT_DIR / "_jargon_bank.json"
+
 FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---\n", re.DOTALL)
 FLOW_SEQ_RE = re.compile(r"(\[)([^\[\]\n]*)(\])")
 
@@ -101,6 +106,113 @@ def extract_triggers(description):
     return {"fr": fr, "en": en}
 
 
+# v2.42+ jargon bank parser
+# Parses the markdown table in operator-vocabulary-translation.md and emits
+# .skills/_jargon_bank.json for runtime post-render substitution in
+# phantom-modes outputs. See `apply-jargon-filter.py` for the wrapper.
+
+JARGON_TABLE_ROW_RE = re.compile(r"^\|(.+)\|(.+)\|(.+)\|\s*$")
+JARGON_SEPARATOR_RE = re.compile(r"^\s*\|?\s*[:\-\s|]+\s*\|?\s*$")
+
+
+def _split_variants(cell):
+    """Split a markdown cell into variants on `·` or `,` separators."""
+    if cell is None:
+        return []
+    text = cell.strip()
+    if not text:
+        return []
+    # Normalize separators: middle dot · is canonical, comma is fallback.
+    # Some rows use ` · ` and others use `,` — handle both.
+    parts = []
+    for chunk in text.split("·"):
+        for piece in chunk.split(","):
+            piece = piece.strip()
+            if piece:
+                parts.append(piece)
+    return parts
+
+
+def _is_header_or_separator(cells):
+    """Detect markdown table header / separator rows to skip them."""
+    joined = " ".join(cells).strip().lower()
+    if "interne" in joined and "operator" in joined:
+        return True
+    if all(JARGON_SEPARATOR_RE.match(c) for c in cells):
+        return True
+    if all(set(c.strip()) <= set("-: |") for c in cells):
+        return True
+    return False
+
+
+def build_jargon_bank():
+    """Parse operator-vocabulary-translation.md table into _jargon_bank.json.
+
+    Schema jargon-bank/1.0:
+      entries[]: {internal[], operator_fr, operator_en, case_sensitive, context}
+
+    Multi-variant `internal` allows the runtime filter to match any spelling
+    of a jargon token (atlas vivant / atlas-vivant / atlas_vivant). Operator
+    locale is selected at filter time (default FR).
+    """
+    if not JARGON_SOURCE.exists():
+        print(f"WARN: jargon source not found: {JARGON_SOURCE}", file=sys.stderr)
+        return
+
+    text = JARGON_SOURCE.read_text(encoding="utf-8")
+    entries = []
+    in_mapping_section = False
+
+    for line in text.splitlines():
+        # Track entry into the canonical mapping section
+        if line.strip().startswith("## Mapping canonique"):
+            in_mapping_section = True
+            continue
+        if in_mapping_section and line.strip().startswith("## "):
+            # Left the mapping section
+            in_mapping_section = False
+            continue
+        if not in_mapping_section:
+            continue
+
+        m = JARGON_TABLE_ROW_RE.match(line)
+        if not m:
+            continue
+
+        cells = [m.group(1), m.group(2), m.group(3)]
+        if _is_header_or_separator(cells):
+            continue
+
+        internal_variants = _split_variants(cells[0])
+        operator_fr = cells[1].strip()
+        operator_en = cells[2].strip()
+
+        if not internal_variants or not operator_fr:
+            continue
+
+        # Skip rows where internal already equals operator-facing (no-op rows)
+        if operator_fr.startswith("(operator-facing déjà)"):
+            continue
+
+        entries.append({
+            "internal": internal_variants,
+            "operator_fr": operator_fr,
+            "operator_en": operator_en,
+            "case_sensitive": False,
+            "context": "phantom-modes",
+        })
+
+    bank = {
+        "_schema": "jargon-bank/1.0",
+        "_generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "_source": "docs/system/operator-vocabulary-translation.md",
+        "_total_entries": len(entries),
+        "entries": entries,
+    }
+    JARGON_OUTPUT.write_text(json.dumps(bank, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"wrote {JARGON_OUTPUT} with {len(entries)} jargon entries")
+
+
 def build_manifest():
     entries = []
     for skill_dir in sorted(SKILLS_DIR.iterdir()):
@@ -131,6 +243,8 @@ def build_manifest():
             "mode": perm.get("mode", "direct"),
             "triggers": extract_triggers(fm.get("description", "")),
             "disambiguates_against": disamb,
+            "isolation_scope": fm.get("isolation_scope", "brand_only"),
+            "layer": fm.get("layer"),
             "path": f".skills/skills/{skill_dir.name}/SKILL.md",
         }
         entries.append(entry)
@@ -147,3 +261,4 @@ def build_manifest():
 
 if __name__ == "__main__":
     build_manifest()
+    build_jargon_bank()

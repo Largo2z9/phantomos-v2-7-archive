@@ -1,0 +1,42 @@
+{
+  "_doc": "Template MCP servers pour PhantomOS opérateur. Renommer en .mcp.json après config tokens, ou utiliser `claude mcp add` (recommandé). Setup guidé par le skill connect-mcp-server.",
+  "_canon_ref": "docs/system/connectivity-layering.md (Layer 1, MCP servers configurés au niveau Claude Code)",
+  "_layer": "Layer 1 (MCP servers, not shipped with template, depend on operator Claude Code setup)",
+  "_usage": "1) cp .mcp.json.example .mcp.json. 2) Fill env tokens via credentials_shared.env or shell exports. 3) Verify with `claude mcp list`. 4) Skill connect-mcp-server orchestre tout ça si tu préfères guidé.",
+  "mcpServers": {
+    "facebook-graph": {
+      "command": "npx",
+      "args": ["@anthropic-ai/mcp-server-facebook-graph"],
+      "env": {
+        "FACEBOOK_ACCESS_TOKEN": "${FACEBOOK_ACCESS_TOKEN}"
+      },
+      "_description": "Meta Graph API (Ads, Insights, Audiences). Used by audit-meta-account, list-accounts, routine-perf.",
+      "_credentials_ref": "credentials_shared.env → META_ACCESS_TOKEN (export as FACEBOOK_ACCESS_TOKEN before launch)."
+    },
+    "youtube-transcript": {
+      "command": "npx",
+      "args": ["@anthropic-ai/mcp-server-youtube-transcript"],
+      "_description": "YouTube transcript fetch. Used by mine-vom for video research.",
+      "_credentials_ref": "no token required (public transcripts)."
+    },
+    "supabase": {
+      "command": "npx",
+      "args": ["@supabase/mcp-server"],
+      "env": {
+        "SUPABASE_URL": "${SUPABASE_URL}",
+        "SUPABASE_ANON_KEY": "${SUPABASE_ANON_KEY}"
+      },
+      "_description": "Supabase MCP (Postgres SQL + auth + storage). Read/write workspace cockpit + analytics.",
+      "_credentials_ref": "credentials_shared.env → SUPABASE_URL + SUPABASE_ANON_KEY (project URL from Supabase dashboard)."
+    },
+    "google-calendar": {
+      "command": "npx",
+      "args": ["@google/mcp-server-calendar"],
+      "env": {
+        "GOOGLE_OAUTH_TOKEN": "${GOOGLE_OAUTH_TOKEN}"
+      },
+      "_description": "Google Calendar (read/write events). Used by brief-daily for daily briefing context.",
+      "_credentials_ref": "credentials_shared.env → GOOGLE_OAUTH_TOKEN (OAuth flow once, refresh handled by MCP server)."
+    }
+  }
+}

@@ -2,6 +2,8 @@
 name: setup-brand
 type: orchestrator
 version: "2.0.0"
+isolation_scope: brand_only
+layer: 3
 recommended_model: sonnet
 reasoning_pattern: null
 description: >

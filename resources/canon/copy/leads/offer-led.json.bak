@@ -1,0 +1,96 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "offer-led",
+  "atlas": "copy",
+  "layer": "leads",
+  "name": "Offer-led",
+  "principle": "Ouvre directement sur l'offre concrète (produit, prix, deadline, bonus). Pour audience most-aware ou trafic chaud qui n'a plus besoin d'être convaincu, juste activé. La promesse implicite : on respecte ton temps, voilà le deal.",
+  "structure": "Annonce immédiate de l'offre + structure de prix + rareté ou bonus + CTA. Pas de pitch, pas d'éducation, pas d'agitation. Le lead = l'offre.",
+  "gabarits": [
+    "[Produit + variant] à [prix] jusqu'à [deadline]. [Bonus si applicable]. [CTA].",
+    "Cure [durée] [marque] à -[X]% jusqu'à [date heure]. Après : retour au prix plein.",
+    "Bundle [composition] : [N éléments] pour [prix bundle] au lieu de [prix séparé]. Stock limité.",
+    "[Saisonnalité ou événement] : [offre] avec [bonus exclusif]. Valable [fenêtre]."
+  ],
+  "when_works": [
+    "most-aware (Schwartz 5), audience qui a déjà fait sa due diligence",
+    "retargeting visiteur produit, panier abandonné, email de relance",
+    "promotions courte durée à raison crédible (saisonnalité, événement)",
+    "trafic chaud post-VSL, post-advertorial, où l'audience cherche le bouton"
+  ],
+  "when_avoid": [
+    "trafic froid (perd l'audience, pas de raison de cliquer)",
+    "audiences problem-aware ou solution-aware qui ont besoin du pitch",
+    "produits à mécanisme complexe qui exige démonstration",
+    "marques premium dont la valeur s'érode par le discount-first"
+  ],
+  "combines_with": {
+    "hooks": [
+      "stat-choc",
+      "avant-apres"
+    ],
+    "frameworks": [
+      "aida",
+      "4ps"
+    ],
+    "archetypes": [
+      "homme-ordinaire",
+      "heros"
+    ],
+    "construction-offre": [
+      "urgence-rarete-temps",
+      "anchor-decoy",
+      "bundle-stack",
+      "garantie-risk-reversal"
+    ],
+    "formats": [
+      "email-promo",
+      "ad-statique",
+      "landing-checkout"
+    ],
+    "emotions": [
+      "fomo",
+      "envie",
+      "soulagement"
+    ]
+  },
+  "anti_patterns": [
+    "Offer-led sur trafic froid (l'offre arrive avant le besoin reconnu)",
+    "Discount permanent (déshabitue au plein tarif, érode la marque)",
+    "Urgence factice (deadline qui se reset à chaque visite)",
+    "Bundle bullshit (mocked-up valeur perçue gonflée artificiellement)",
+    "Offre sans bénéfice clarifié pour audience marginale"
+  ],
+  "examples": [
+    "Cure 3 mois Hair Boost à -25% jusqu'à dimanche 23h59. Brosse stimulante offerte dès 89€. Garantie 60 jours satisfait ou remboursé.",
+    "Mother's Day Karacare : cure 6 mois -30% + cosmétique cuir chevelu offert + livraison express. Fin dimanche soir, après c'est le tarif standard.",
+    "Black Week K18 : pack repair complet (masque + leave-in + brosse) à 67€ au lieu de 132€. Valable 7 jours. Stock pré-réservé pour les abonnées email."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "DR canon Halbert promo letter",
+      "Hormozi $100M Offers",
+      "Eugene Schwartz most-aware lead"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

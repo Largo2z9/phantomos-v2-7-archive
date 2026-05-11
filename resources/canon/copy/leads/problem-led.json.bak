@@ -1,0 +1,94 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "problem-led",
+  "atlas": "copy",
+  "layer": "leads",
+  "name": "Problem-led",
+  "principle": "Ouvre sur le pain de l'audience avec une précision qui déclenche la reconnaissance immédiate. Le lecteur se sent vu avant qu'on lui propose quoi que ce soit. Plus la description est concrète et sensorielle, plus la bascule est forte.",
+  "structure": "Description précise du pain dans son contexte vécu + amplification de la conséquence ignorée + bascule vers la voie de sortie. Le pain doit être nommé, pas suggéré.",
+  "gabarits": [
+    "Tu te lèves le matin et [scène concrète du pain]. Voilà ce qui se passe vraiment. Voilà ce qui aide.",
+    "[Description sensorielle précise]. C'est ça, [nom du problème]. Et c'est pas dans ta tête.",
+    "Si tu [comportement-symptôme observable], tu reconnais sûrement [conséquence ignorée].",
+    "On t'a dit que [croyance rassurante]. Six mois plus tard, [contre-réalité]. Voilà pourquoi."
+  ],
+  "when_works": [
+    "problem-aware, solution-aware (Schwartz 1-3)",
+    "trafic froid à tiède sur audience qui vit le pain quotidiennement",
+    "advertorial, VSL, sales letter long",
+    "produits qui adressent un pain non-stigmatisé exprimé en public"
+  ],
+  "when_avoid": [
+    "most-aware (le lecteur connaît son problème, perd patience à se le faire raconter)",
+    "audiences déjà éduquées qui veulent du closing",
+    "pains trop génériques (déclenche pas la reconnaissance)",
+    "produits hédoniques sans pain identifié"
+  ],
+  "combines_with": {
+    "hooks": [
+      "confession",
+      "question-callout",
+      "stat-choc"
+    ],
+    "frameworks": [
+      "pas",
+      "quest",
+      "bab"
+    ],
+    "archetypes": [
+      "caregiver",
+      "homme-ordinaire",
+      "rebelle"
+    ],
+    "angles": [
+      "retour-en-arriere",
+      "identite",
+      "ennemi-commun"
+    ],
+    "emotions": [
+      "frustration",
+      "soulagement",
+      "espoir",
+      "reconnaissance"
+    ]
+  },
+  "anti_patterns": [
+    "Pain trop générique qui ne touche personne (tu veux des cheveux plus forts ?)",
+    "Sauter sur la solution sans laisser le pain résonner",
+    "Pain inventé que l'audience ne vit pas (faux pain rejeté)",
+    "Trop d'amplification qui glisse vers la manipulation",
+    "Pain physique décrit sans dignité (transforme l'audience en victime caricaturale)"
+  ],
+  "examples": [
+    "Tu te lèves le matin et tu vois la touffe sur la brosse. Tu te dis que ça va passer. Six mois après, c'est pire, la repousse n'est pas là et tu commences à voir le cuir chevelu. Voilà ce qu'il fallait commencer dès la 6e semaine post-partum.",
+    "Tu sens la queue de cheval rétrécir. Le bandeau qui faisait deux tours en fait trois. Ce n'est pas dans ta tête. C'est la chute télogène, et elle a une fenêtre de réversibilité de 12 semaines.",
+    "Tu fais tout bien. Tu manges propre, tu dors, tu prends ta multivitamine. Et pourtant ça tombe. Voilà pourquoi la multivitamine ne suffit pas dans 70% des cas post-partum."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "DR canon problem-aware lead",
+      "Gary Halbert dollar bill letter",
+      "Eugene Schwartz problem-aware level"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

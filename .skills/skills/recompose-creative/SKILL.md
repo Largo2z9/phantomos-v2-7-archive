@@ -2,6 +2,8 @@
 name: recompose-creative
 version: 1.1.0
 type: producer
+isolation_scope: brand_only
+layer: 2
 recommended_model: opus
 subagent_safe: true
 mode: proposed

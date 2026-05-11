@@ -1,13 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Product Offers v2.0 DRAFT",
-  "description": "Commercial offers for a product — v2.0 design draft. Breaking changes from v1.8: flat offers[] wrapped in offer_groups[] with attribute inheritance (2-level, group → offer). Lives in brands/{slug}/products/{slug}/offers.json once validated.",
+  "title": "Product Offers",
+  "description": "Commercial offers for a product. Breaking from v1.8: flat offers[] wrapped in offer_groups[] with attribute inheritance (2-level, group then offer). v2.1 (v2.42): scope enum élargi (pre_cart conservé, post_cart ouvert) avec cross-ref funnel.schema.json pour stages funnel post-cart. Lives in brands/{slug}/products/{slug}/offers.json once validated.",
+  "_schema_version": "offer/2.1",
+  "_changelog": {
+    "2.1": "v2.42 cleanup: `_schema_version` field root standardisé (format `{name}/{semver}`, remplace `_version` const). Marker DRAFT retiré du title. `meta.scope` passé de const `pre_cart` à enum [`pre_cart`, `post_cart`] pour ouvrir aux funnel stages post-add-to-cart. Cross-ref ajouté vers funnel.schema.json (parent_offer_group). Backward compat strict: lecteurs anciens reçoivent toujours pre_cart par défaut, post_cart est additif. Source canon: PATCH 2A v2.42.",
+    "2.0": "Initial v2.0 (DRAFT pré-cleanup): flat offers[] wrapped in offer_groups[] avec attribute inheritance (2-level). 10 structural types (single|bundle|prepay|subscription|membership|gifting|seasonal|launch|digital|service). C2 membership, C3 intro_phases cascading, C4 early_access cohort_tiers, C5 personalization pointer, C6 commitment structuré, C8 referral product_refs structurés."
+  },
   "type": "object",
   "required": ["meta", "offer_groups"],
   "properties": {
     "$comment": { "type": "string" },
     "_schema": { "type": "string" },
-    "_version": { "type": "string", "const": "2.0" },
+    "_version": { "type": "string", "description": "Backward compat alias of root `_schema_version`. v2.0 instances écrivaient `2.0` ici; v2.1+ readers SHOULD read the root field. Writers MAY echo the semver portion for legacy tooling." },
     "_field_types": { "type": "object", "additionalProperties": { "type": "string" } },
 
     "meta": {
@@ -17,8 +22,31 @@
         "product_slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "scope": {
           "type": "string",
-          "const": "pre_cart",
-          "description": "v2.0: offers.json describes ONLY pre-add-to-cart merchandising (PDP offers, bundle builders, quiz results, subscription choices). Post-cart funnels (post-purchase upsell, thank-you cross-sell, order-confirmation bumps) live in funnel.json (future). Binary rule: if it's shown before the customer clicks add-to-cart, it's here. Otherwise, it's not."
+          "enum": ["pre_cart", "post_cart"],
+          "default": "pre_cart",
+          "description": "v2.1: enum élargi (was const `pre_cart` en v2.0). pre_cart = offers.json describes pre-add-to-cart merchandising (PDP offers, bundle builders, quiz results, subscription choices). post_cart = thank-you upsell, order-confirmation bumps, post-purchase cross-sell. Post-cart funnel stages structure vit dans funnel.schema.json (cross-ref via funnel.parent_offer_group). Binary rule: if it's shown before the customer clicks add-to-cart, scope=pre_cart. Otherwise scope=post_cart."
+        },
+        "post_cart": {
+          "type": ["object", "null"],
+          "description": "v2.1: placeholder pour métadonnées post-cart spécifiques quand scope=post_cart. Stages structurés (upsell, cross_sell, bump, down_sell, re_order_email) vivent dans funnel.schema.json. Ce bloc capture l'intention macro et le pointer funnel. Null tant que scope=pre_cart.",
+          "properties": {
+            "funnel_ref": {
+              "type": ["string", "null"],
+              "pattern": "^FUN-[0-9]{2,3}$",
+              "description": "Reference vers funnel_id dans brands/{slug}/products/{slug}/funnel.json (cf funnel.schema.json). Lien upstream offer ↔ funnel post-cart."
+            },
+            "default_position": {
+              "type": ["string", "null"],
+              "enum": ["thank_you", "order_confirmation", "post_purchase_email", "abandoned_cart", null],
+              "description": "Stage par défaut où cette offer apparaît dans le funnel. Override possible au niveau funnel.stages[]."
+            },
+            "expected_take_rate": {
+              "type": ["number", "null"],
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Taux de prise estimé/observé pour calibrage funnel economics."
+            }
+          }
         },
         "updated": { "type": "string" }
       }

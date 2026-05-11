@@ -3,10 +3,14 @@
   "$id": "creative.schema.json",
   "title": "Creative (brand-side instance, decomposed)",
   "description": "Une créa décomposée. Vit à brands/{slug}/creatives/{CRT-NN}.json (créa marque) ou brands/{slug}/competitive-intel/decomposed/{CRT-NN}.json (benchmark concurrent). Une créa = un fichier. Group variantes via concept_id + variant_of. Conforme au canon V3 (resources/templates/creative-formula.md) et à l'équation v3.1 stress-tested S55. Évolution: absorbe 8 champs migrés depuis angle.schema v1.1 (intent, mecanique, seasonality, craft_mode, longevity_signal, cta) audit S55 D#391.",
+  "_schema_version": "creative/1.2",
+  "_changelog": {
+    "1.2": "v2.42 versioning cleanup: `_schema_version` field promu en root (format `{name}/{semver}`) pour cohérence cross-schemas. Property `_schema_version` const conservée pour backward compat read. v1.2 (audit Phase B): intent_mix multi-weighted, audience_segment extracted, persona buyer_user_split_signal cache, craft_mode minimal_brand_mark, overlay_density continu, validation_status composite. Source canon: PATCH 2A v2.42."
+  },
   "type": "object",
   "required": ["creative_id", "mode", "audience_slug", "meta"],
   "properties": {
-    "_schema_version": { "const": "creative/1.2" },
+    "_schema_version": { "const": "creative/1.2", "description": "Backward compat alias of root `_schema_version`. New readers SHOULD read the root field." },
 
     "_migration_notes": {
       "type": "string",

@@ -14,11 +14,12 @@
 
 **Full doctrine + anti-patterns (read before designing any new skill or hook):** `docs/system/contextual-intelligence.md`.
 
-**Sub-doctrines (read when authoring or extending):** Contextual Intelligence is the master. Four operating disciplines serve it:
+**Sub-doctrines (read when authoring or extending):** Contextual Intelligence is the master. Five operating disciplines serve it:
 - **Substrate**, `docs/system/schema-encoding-discipline.md` (how to encode rigorously: mutation rule, _field_types, sourcing tags, triangulation, append-only, memory layers).
 - **Production**, `docs/system/canonical-matrix-reasoning.md` (how to produce 95% quality on intersectional outputs: schema + canon matrix, modulator/cell, cardinality cap, internal scoring).
 - **Authoring**, `docs/system/skill-authoring-discipline.md` (how to create/extend skills: type taxonomy, frontmatter triad, composition contracts, lifecycle, failure doctrine).
 - **Provenance**, `docs/system/provenance-trust-discipline-scope.md` (scope only, multi-operator, canon-as-product, marketplace skills ; full doctrine when triggers hit).
+- **Compositional Cartography**, `docs/system/compositional-cartography.md` (cartographier + composer outputs créatifs via équation v3.1 NOYAU × CONTEXTE × MODIFIEURS, 4 arbres + matrice + modulateurs, cycle validation atlas vivant ; implémentation domaine-spécifique de CMR au créatif).
 Doctrine governance (promotion, amendment, retraction, conflict resolution): `docs/system/doctrine-governance.md`.
 
 **Operator-facing rule absolue.** **NEVER** expose doctrine names (Contextual Intelligence, Schema Encoding Discipline, Canonical Matrix Reasoning, Skill Authoring Discipline, Provenance & Trust Discipline) or their acronyms in operator-facing output. Operators feel the *effects* (output 95% quality, agent that synthesizes instead of form-filling, reproducible across sessions); they never read the *names*. If an acronym leaks in operator output, that is a bug. Doctrine documents are for skill authors and contributors only, kept in `docs/system/` (not user-facing).
@@ -204,9 +205,12 @@ Schemas in `resources/schemas/{type}.schema.json`. Central registry: `index.json
 - **Lexicon** (canonical vocabulary) → `lexicon.md`
 - **Voice canon** (writing style, register, anti-patterns, heavy-skill gate, read before editing any doc) → `docs/system/voice.md`
 - **Audience cartography** (Step 5 of snapshot-brand: 4 movements, 3 axes, mère/sous-audiences, hand-off pédagogique vers mine-voc) → `docs/system/audience-cartography.md`
-- **Where does it go?**: `resources/guides/where-does-it-go.md`
-- **Capabilities map** (operator-facing): `docs/product/capabilities.md`
-- **Roadmap**: `docs/vision/roadmap.md`
+- **Operator vocabulary translation** (vocabulaire interne → operator-facing, 60+ mappings, driver lint HR-20) → `docs/system/operator-vocabulary-translation.md`
+- **DRGFP** (Dependency Resolution & Gap-Filling Protocol, 3 niveaux L1/L2/L3 gap-filling Step 0bis canon v2.38+) → `docs/system/dependency-resolution-protocol.md`
+- **Confidence propagation** (algèbre cascade confidence cross-skill, default min defensive, audit trail confidence_chain) → `docs/system/confidence-propagation.md`
+- **Brand isolation discipline** (default isolation_scope brand_only, exception canon copy cross-brand, privacy multi-clients) → `docs/system/brand-isolation-discipline.md`
+- **Pattern detection triggers** (registre canonique 8 triggers learn-from-session + smart-suggest daemon Trigger 8) → `docs/system/pattern-detection-triggers.md`
+- **Where does it go?**: `resources/guides/where-does-it-go.md` · **Capabilities map** (operator-facing): `docs/product/capabilities.md` · **Roadmap**: `docs/vision/roadmap.md`
 
 ---
 

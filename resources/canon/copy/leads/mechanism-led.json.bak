@@ -1,0 +1,91 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "mechanism-led",
+  "atlas": "copy",
+  "layer": "leads",
+  "name": "Mechanism-led",
+  "principle": "Ouvre sur l'explication du mécanisme unique du produit. Pour audience product-aware ou solution-aware qui a vu trop de claims génériques et qui cherche le détail qui fait la différence. Le mécanisme remplace la promesse.",
+  "structure": "Annonce du mécanisme nommé + démonstration de pourquoi c'est différent + ce que les autres approches ratent. La crédibilité vient du fait que le lecteur comprend pourquoi ça marche, pas juste qu'on le dit.",
+  "gabarits": [
+    "Voilà pourquoi [produit] active [mécanisme nommé] que [autres approches] ignorent.",
+    "[Mécanisme] est ce qui change tout. Voilà comment ça fonctionne, étape par étape.",
+    "La plupart traitent [symptôme]. Nous, on traite [cause via mécanisme].",
+    "Si tu as essayé [solution générique], voilà pourquoi ça n'a pas tenu. Et voilà ce que fait [mécanisme] à la place."
+  ],
+  "when_works": [
+    "solution-aware, product-aware (Schwartz 3-4)",
+    "marché sophistication 3+ saturé de claims simples",
+    "VSL, long-form, advertorial pédagogique",
+    "produits avec mécanisme actif identifiable (actif breveté, voie biologique, ingrédient signature)"
+  ],
+  "when_avoid": [
+    "audience unaware (pas de référent pour comprendre le mécanisme)",
+    "trafic ultra-froid sans pré-éducation",
+    "produits sans réel mécanisme différenciant (mécanisme bidon flagged comme manipulation)",
+    "formats courts qui ne laissent pas la place au déroulé pédagogique"
+  ],
+  "combines_with": {
+    "hooks": [
+      "curiosity-gap",
+      "stat-choc",
+      "contrarian"
+    ],
+    "frameworks": [
+      "quest",
+      "fab",
+      "aida"
+    ],
+    "archetypes": [
+      "sage",
+      "rebelle"
+    ],
+    "angles": [
+      "mecanisme-unique",
+      "contre-intuitif"
+    ],
+    "emotions": [
+      "soulagement",
+      "confiance",
+      "curiosite-eveillee"
+    ]
+  },
+  "anti_patterns": [
+    "Mécanisme bidon (mot fabriqué pour faire savant, sans réalité scientifique)",
+    "Trop technique sans traduction (perd 80% du lecteur)",
+    "Mécanisme sans preuve (claim non sourcé sur étude ou ingrédient identifiable)",
+    "Mécanisme noyé dans le mid-funnel (devrait porter le lead, pas y être enterré)",
+    "Copy qui parle du mécanisme sans démontrer pourquoi il bat les alternatives"
+  ],
+  "examples": [
+    "Cellule Boost active la phase anagène du follicule via KSM-66 ashwagandha à 600mg. C'est ce que les vitamines classiques manquent : elles nourrissent le cheveu déjà sorti, pas la cellule qui le produit.",
+    "Hims utilise la finastéride à 1mg parce que c'est la seule molécule qui bloque la 5-alpha-réductase de type II, l'enzyme qui transforme la testo en DHT et qui rétrécit le follicule. Tout le reste, c'est du soin de surface.",
+    "Olaplex Bond Repair reconstruit les liaisons disulfures internes de la fibre. Les masques classiques posent un film qui se lave. La liaison, elle, reste."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Eugene Schwartz Breakthrough Advertising",
+      "Gary Halbert mechanism claim",
+      "Stefan Georgi mechanism-first VSL"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

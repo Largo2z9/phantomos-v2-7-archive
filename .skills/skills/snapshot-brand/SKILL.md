@@ -2,6 +2,8 @@
 name: snapshot-brand
 type: producer
 version: "1.0.0"
+isolation_scope: brand_only
+layer: 2
 recommended_model: sonnet
 reasoning_pattern: null
 description: >

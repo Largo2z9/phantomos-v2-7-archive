@@ -1,0 +1,91 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "heros",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Héros",
+  "principle": "Voix qui motive à dépasser. Le Héros active la version meilleure du lecteur en lui rappelant qu'il peut décider, agir, transformer. Pas de complaisance pour la situation actuelle, pas de jugement non plus. Le moteur, c'est la volonté.",
+  "structure": "Vocabulaire d'effort, dépassement, victoire. Verbes forts (décider, agir, reprendre, reconquérir). Phrases courtes, rythme tendu. Toujours un appel à l'action implicite ou explicite.",
+  "gabarits": [
+    "Tu décides aujourd'hui. Le reste suit.",
+    "[N] jours pour reprendre la main sur [problème].",
+    "Tu n'attends pas que ça passe. Tu agis.",
+    "[Avant] tu subissais. [Après] tu choisis."
+  ],
+  "when_works": [
+    "fitness, performance, transformation visible, sport",
+    "audiences action-driven, autonomes, déjà engagées dans une démarche",
+    "trafic chaud, post-engagement, retargeting",
+    "marques challenger qui veulent créer un mouvement"
+  ],
+  "when_avoid": [
+    "audiences en détresse réelle (le Héros dur sur soi blesse)",
+    "produits soin doux ou wellness contemplatif",
+    "audiences senior ou vulnérables",
+    "catégories où l'effort n'est pas la promesse (luxe, indulgence)"
+  ],
+  "combines_with": {
+    "hooks": [
+      "avant-apres",
+      "stat-choc",
+      "question-callout"
+    ],
+    "frameworks": [
+      "bab",
+      "4ps",
+      "aida"
+    ],
+    "leads": [
+      "transformation-led",
+      "offer-led"
+    ],
+    "angles": [
+      "status-shift",
+      "transformation"
+    ],
+    "emotions": [
+      "fierte",
+      "volonte",
+      "determination"
+    ]
+  },
+  "anti_patterns": [
+    "Bro-talk déconnecté du registre marque",
+    "Héroïque déplacé sur audience vulnérable (chute post-grossesse, deuil capillaire)",
+    "Surcharge superlatifs (ULTIMATE BREAKTHROUGH MAXIMUM)",
+    "Promesse de transformation sans étape concrète (vide)",
+    "Ton militaire ou compétitif sur produit beauté/care"
+  ],
+  "examples": [
+    "Tu n'attends pas que ça passe. Tu agis. 90 jours, cure ciblée, repousse mesurée. Lashilé Beauty fait ce pari avec toi.",
+    "Hairburst le dit clairement : ton cheveu, tes règles. Tu reprends le contrôle dès aujourd'hui.",
+    "Le Père Lucien le savait : on ne reconquiert pas un cheveu en se plaignant. On le reconquiert en s'y mettant. 12 semaines, c'est ce qu'il faut."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes",
+      "Mark & Pearson Hero and Outlaw",
+      "Campbell hero's journey"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

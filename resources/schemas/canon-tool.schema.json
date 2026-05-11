@@ -2,11 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Canon Tool Card",
   "description": "Standard fiche format for any tool item inside resources/canon/{atlas}/{layer}/{tool}.json. Each canon tool is a navigable, composable, validatable item. Loaded by /phantom canon {atlas} {layer} {tool} drill mode. Schema v1.1 (v2.37+) adds attribution_layer, validated_at, decay_ttl_days, _isolation_boundary, brand_slug as required on validations[] entries to block silent atlas pollution (red team A1, A4, A5, A7).",
+  "_schema_version": "canon-tool/1.1",
+  "_changelog": {
+    "1.1": "v2.42 versioning cleanup: `_schema_version` field promu en root (format `{name}/{semver}`) pour cohérence cross-schemas. Properties `_schema` (legacy alias) + `_version` (free) conservées pour backward compat read. v1.1 (v2.37) ajoute attribution_layer, validated_at, decay_ttl_days, _isolation_boundary, brand_slug REQUIS sur validations[] (red team A1/A4/A5/A7). Source canon: PATCH 2A v2.42."
+  },
   "type": "object",
   "required": ["id", "atlas", "layer", "name", "principle"],
   "properties": {
-    "_schema": { "type": "string", "const": "canon-tool/1.1" },
-    "_version": { "type": "string" },
+    "_schema": { "type": "string", "const": "canon-tool/1.1", "description": "Backward compat alias of root `_schema_version`. New readers SHOULD read the root field." },
+    "_version": { "type": "string", "description": "Free-form tool version (distinct from schema version). Owned by skill that authored the canon item." },
 
     "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Tool slug, kebab-case. Unique within its layer." },
     "atlas": { "type": "string", "enum": ["copy", "paid", "brand", "offer", "funnel", "cro", "email", "analytics", "mining"], "description": "Top-level atlas this tool belongs to. v2.26 ships copy only." },

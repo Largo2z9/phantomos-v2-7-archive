@@ -1,0 +1,94 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "proof-led",
+  "atlas": "copy",
+  "layer": "leads",
+  "name": "Proof-led",
+  "principle": "Ouvre sur la preuve forte (témoignage, étude, before/after, chiffre vérifiable). Court-circuite le pitch en posant d'emblée l'autorité du résultat. Le lecteur n'a pas à être convaincu, on lui montre que d'autres l'ont déjà été.",
+  "structure": "Preuve forte (visuel, chiffre précis, témoignage profilé) + contextualisation (pourquoi ça marche, sous quelles conditions) + offre. La preuve doit précéder la promesse, jamais l'inverse.",
+  "gabarits": [
+    "[N précis] [audience profilée] ont [résultat mesuré] en [délai concret].",
+    "[Étude / publication] : [donnée brute]. Voilà ce que ça change concrètement.",
+    "Sandra, 34 ans, 4 mois post-partum : '[citation directe]'. Voilà ce qu'elle a pris.",
+    "Avant : [photo état initial]. Après [durée] : [photo état final]. Voilà la cure."
+  ],
+  "when_works": [
+    "trafic froid sceptique qui a vu trop de claims",
+    "marchés saturés où la preuve fait la différence",
+    "produits à transformation visible et mesurable",
+    "audiences product-aware qui comparent les options"
+  ],
+  "when_avoid": [
+    "produits sans preuve forte disponible (lancement, sans recul, sans étude)",
+    "audiences qui rejettent le statistique au profit du subjectif",
+    "catégories régulées où le claim chiffré déclenche compliance (santé sans étude clinique)",
+    "preuve marginale ou cherry-pickée qui se retournera"
+  ],
+  "combines_with": {
+    "hooks": [
+      "stat-choc",
+      "avant-apres",
+      "social-proof-front"
+    ],
+    "frameworks": [
+      "fab",
+      "aida"
+    ],
+    "archetypes": [
+      "sage",
+      "homme-ordinaire"
+    ],
+    "angles": [
+      "transformation",
+      "mecanisme-unique"
+    ],
+    "heuristiques-persuasion": [
+      "preuve-sociale",
+      "autorite"
+    ],
+    "emotions": [
+      "confiance",
+      "espoir",
+      "soulagement"
+    ]
+  },
+  "anti_patterns": [
+    "Preuve fabriquée (chiffres ronds suspects, témoignages génériques sans visage)",
+    "Preuve hors-contexte (résultat impressionnant mais sur population non-comparable)",
+    "Preuve unique (un seul témoignage pour porter tout le lead)",
+    "Étude citée sans méthodologie ni source vérifiable",
+    "Preuve qui sur-promet (les meilleurs cas comme moyenne attendue)"
+  ],
+  "examples": [
+    "63 247 mamans post-partum ont retrouvé leur densité avec la cure 3 mois Karacare. Étude interne 2024, échantillon documenté, repousse mesurée à la racine sur 12 semaines.",
+    "Étude clinique Phyto 2022, n=84 femmes 30-45 ans : densité +28% à 90 jours, chute divisée par 2.6. Voilà ce que mesure la dermo derrière les claims marketing.",
+    "Sarah, 32 ans, 4 mois post-partum, avis Trustpilot vérifié : 'Trois mois et la queue de cheval a retrouvé sa taille. La cure et c'est tout, j'ai rien fait d'autre.' Cure 90 jours Lashilé Beauty."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Robert Cialdini Influence (social proof, authority)",
+      "Eugene Schwartz proof-led copy",
+      "DR canon Halbert / Caples"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

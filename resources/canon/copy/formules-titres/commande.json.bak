@@ -1,0 +1,63 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "commande",
+  "atlas": "copy",
+  "layer": "formules-titres",
+  "name": "Commande / impératif",
+  "principle": "Ouvre par un verbe à l'impératif. Ton tranchant, direct, frontal.",
+  "structure": "Verbe à l'impératif + objet/cible.",
+  "gabarits": [
+    "Arrête de [pratique]",
+    "Lis ça avant de [action courante]"
+  ],
+  "when_works": [
+    "marques challengers, voix rebelle",
+    "audiences fatiguées du registre soft"
+  ],
+  "when_avoid": [
+    "marques caregiver (clash de voix)",
+    "audiences vulnérables"
+  ],
+  "combines_with": {
+    "angles": [
+      "contre-intuitif",
+      "ennemi-commun"
+    ],
+    "archetypes": [
+      "rebelle",
+      "heros"
+    ]
+  },
+  "anti_patterns": [
+    "Commande sans payoff",
+    "Trop militaire (perd la chaleur)"
+  ],
+  "examples": [
+    "Arrête ta cure de biotine. Tu sabote ta repousse."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "DR canon"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

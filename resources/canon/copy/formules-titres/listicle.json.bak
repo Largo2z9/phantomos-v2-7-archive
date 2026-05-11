@@ -1,0 +1,62 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "listicle",
+  "atlas": "copy",
+  "layer": "formules-titres",
+  "name": "Listicle",
+  "principle": "'7 façons de X'. Format à pourquoi neurologique : promesse de complétude, scannabilité.",
+  "structure": "Nombre + bénéfice + (optionnel) qualifier.",
+  "gabarits": [
+    "[N] façons de [résultat]",
+    "[N] erreurs à éviter pour [résultat]"
+  ],
+  "when_works": [
+    "contenu blog, advertorial, email",
+    "audiences scrollers",
+    "trafic froid"
+  ],
+  "when_avoid": [
+    "copy long-form profond (listicle reste surface)"
+  ],
+  "combines_with": {
+    "formats": [
+      "advertorial",
+      "blog",
+      "email-sequence"
+    ]
+  },
+  "anti_patterns": [
+    "Listicle dilué (5 points faibles vs 3 puissants)",
+    "Numéros forcés (5 quand 3 suffit)"
+  ],
+  "examples": [
+    "7 erreurs qui sabotent ta cure capillaire (et comment les éviter)",
+    "5 raisons pour lesquelles ta repousse stagne"
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "BuzzFeed",
+      "DR canon"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

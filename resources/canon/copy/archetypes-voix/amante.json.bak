@@ -1,0 +1,91 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "amante",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Amante",
+  "principle": "Voix sensuelle qui célèbre le corps, le plaisir, l'image. Chaleureuse, complice, tactile. L'Amante parle de la beauté comme d'une expérience vécue, pas d'un résultat à atteindre. Le plaisir d'être dans son corps précède la performance.",
+  "structure": "Vocabulaire sensoriel (toucher, voir, sentir, brillance, densité, tombé). Métaphores tactiles. Registre girl-talk complice. Phrases qui prennent leur temps, qui laissent respirer le plaisir.",
+  "gabarits": [
+    "Tu sens la différence dès le premier mois.",
+    "Le toucher, la densité, le tombé du cheveu. Tout change.",
+    "Ça commence par [sensation concrète]. Et ça ne s'arrête plus.",
+    "[Adjectif sensoriel], [adjectif sensoriel], [adjectif sensoriel]. C'est ça que tu cherches."
+  ],
+  "when_works": [
+    "beauté, parfum, intimité, sensorialité, soin haut de gamme",
+    "audiences féminines à fort registre esthétique",
+    "marques expérience plus que résultat (rituel, plaisir d'usage)",
+    "produits dont le succès se mesure aussi au geste"
+  ],
+  "when_avoid": [
+    "catégories cliniques ou médicales (dermo, post-partum technique)",
+    "audiences pressées par le résultat mesurable",
+    "produits compléments oraux sans dimension sensorielle",
+    "marchés performance pure (fitness, sport)"
+  ],
+  "combines_with": {
+    "hooks": [
+      "avant-apres",
+      "confession",
+      "question-callout"
+    ],
+    "frameworks": [
+      "aida",
+      "bab"
+    ],
+    "leads": [
+      "transformation-led",
+      "story-led"
+    ],
+    "angles": [
+      "status-shift",
+      "identite",
+      "rituel"
+    ],
+    "emotions": [
+      "envie",
+      "fierte",
+      "plaisir",
+      "complicite"
+    ]
+  },
+  "anti_patterns": [
+    "Sensualité plaquée qui paraît cheap (over-sexualisation gratuite)",
+    "Trop centré image au point de perdre la substance produit",
+    "Vocabulaire vague (luxueux, sublime, magique) sans ancrage tactile",
+    "Amante qui glisse vers objectification (le corps comme trophée)",
+    "Sensoriel sans bénéfice (pure ambiance, zéro promesse)"
+  ],
+  "examples": [
+    "Le cheveu reprend du corps. Tu le sens sous la main, tu le vois en photo, tu le touches sans avoir peur du nœud. Living Proof construit ses textures autour de cette sensation.",
+    "OUAI ne te dit pas ce que ça fait. OUAI te montre comment ça se sent. Le geste compte autant que le résultat.",
+    "Trois semaines, et ton miroir te répond autrement. Le tombé revient, la lumière s'accroche, tu te recoiffes du bout des doigts. C'est ce que Kérastase appelle un rituel."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes",
+      "Mark & Pearson Hero and Outlaw"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

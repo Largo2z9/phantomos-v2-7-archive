@@ -2,7 +2,11 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "sop.schema.json",
   "title": "SOP (Standard Operating Procedure) meta-schema",
-  "description": "Schema for Markdown SOPs stored in resources/sops/. An SOP is a methodology document: WHAT to check/do, in WHICH ORDER, with WHICH SEVERITY, and WHICH mini-skill executes each step. It does NOT contain execution logic — that lives in the mini-skills. An orchestrator skill reads an SOP and executes its sequence.",
+  "description": "Schema for Markdown SOPs stored in resources/sops/. An SOP is a methodology document: WHAT to check/do, in WHICH ORDER, with WHICH SEVERITY, and WHICH mini-skill executes each step. It does NOT contain execution logic, that lives in the mini-skills. An orchestrator skill reads an SOP and executes its sequence.",
+  "_schema_version": "sop/1.0",
+  "_changelog": {
+    "1.0": "v2.42 versioning cleanup: `_schema_version` field root ajouté (format `{name}/{semver}`) pour cohérence cross-schemas. Schema sop préexistait sans field versioning, baseline v1.0 fixée ici. SOPs versionnent leur contenu via `version` (semver pattern), distinct du schema version. Source canon: PATCH 2A v2.42."
+  },
   "type": "object",
   "note": "SOPs are stored as Markdown with YAML frontmatter. This JSON schema validates the frontmatter block. The body is free Markdown.",
   "required": ["name", "type", "scope", "version", "description", "invoked_by"],

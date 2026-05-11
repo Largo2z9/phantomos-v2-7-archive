@@ -1,0 +1,73 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "pas",
+  "atlas": "copy",
+  "layer": "frameworks",
+  "name": "PAS",
+  "principle": "Problem · Agitate · Solve. Frame de copy émotionnel : on identifie une douleur, on l'amplifie en la rendant tangible, puis on offre la résolution.",
+  "structure": "Problem (nommer) → Agitate (amplifier les conséquences) → Solve (la solution).",
+  "gabarits": [
+    "Tu vis [problème] ? / Voilà ce que ça te coûte vraiment / Voilà comment on règle ça",
+    "Le truc avec [problème] / [conséquences ignorées] / [solution]"
+  ],
+  "when_works": [
+    "audiences problem-aware ou solution-aware avec pain émotionnel fort",
+    "trafic froid à tiède",
+    "formats moyens à longs"
+  ],
+  "when_avoid": [
+    "audiences most-aware (déjà convaincu, agitate les ennuie)",
+    "marchés à sophistication 5+ (dramatisation perçue comme manipulation)"
+  ],
+  "combines_with": {
+    "hooks": [
+      "confession",
+      "question-callout",
+      "stat-choc"
+    ],
+    "angles": [
+      "ennemi-commun",
+      "retour-en-arriere"
+    ],
+    "emotions": [
+      "frustration",
+      "peur",
+      "culpabilite",
+      "espoir"
+    ]
+  },
+  "anti_patterns": [
+    "over-agitate sans solve crédible (manipulation perçue)",
+    "agitate sur un pain non-réel pour l'audience (faux pain)"
+  ],
+  "examples": [
+    "Tes cheveux tombent depuis l'accouchement. Tu te dis que ça va passer. 6 mois après c'est pire, et la repousse n'est pas là. Voilà ce qu'il fallait commencer dès la 6e semaine.",
+    "[P] La chute post-partum. [A] Si tu attends 3 mois sans rien faire, la perte de densité devient permanente. [S] Cure ciblée biotine + B6 + zinc démarrée tôt."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Halbert",
+      "Sugarman"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

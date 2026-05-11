@@ -2,6 +2,8 @@
 name: weight-dimensions
 version: 1.1.0
 type: producer
+isolation_scope: brand_only
+layer: 3
 recommended_model: sonnet
 subagent_safe: true
 mode: proposed

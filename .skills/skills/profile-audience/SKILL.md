@@ -4,6 +4,8 @@ version: 1.2.0
 patch_notes:
   - "1.2.0 · v2.39+ · Step 0ter framework awareness (4 questions cartography pédagogie inline)"
 type: orchestrator
+isolation_scope: brand_only
+layer: 3
 recommended_model: sonnet
 subagent_safe: true
 mode: proposed

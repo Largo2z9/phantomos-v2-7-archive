@@ -42,3 +42,7 @@ NEXT SUGGESTED
 ```
 
 Dégrade gracieusement · si `meta.parent_slug` + `meta.overlap_with` vides sur toutes les audiences, rendre liste à plat avec note *"relations non posées (audiences à plat sans hiérarchie). Consulter le cours complet pour comprendre comment les structurer."*. Si aucune audience encodée, renvoyer vers empty state entity-drill standard.
+
+### Post-render filter (v2.42+)
+
+Avant émission, appliquer le filtre jargon `.skills/_jargon_bank.json` selon le contrat universel défini dans `phantom.md § Post-render jargon filter`. Le rendu peut sortir verbatim si le mapping interne -> operator-facing du rendering ci-dessus est déjà appliqué (cf vocabulaire `mère/poche/niche`, `à valider`, `par un problème`, `audience-fantôme/orpheline`, `témoignages`). Si un token jargon résiduel reste détectable hors backticks code, substitution forcée via `apply_jargon_filter(output_text, locale="fr")`.

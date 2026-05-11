@@ -2,6 +2,8 @@
 name: produce-copy-brief
 type: producer
 version: "1.3.0"
+isolation_scope: brand_only
+layer: 3
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: generating

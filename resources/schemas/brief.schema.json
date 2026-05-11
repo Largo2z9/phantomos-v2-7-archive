@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "brief.schema.json",
+  "title": "Brief (markdown frontmatter)",
+  "description": "Schema canon pour frontmatter YAML de briefs markdown produits par produce-copy-brief. Lives in brands/{slug}/briefs/{BRF-NN}.md. Le frontmatter est validé par ce schema, le body markdown est libre. Cross-ref: angle_id ↔ angle.schema, audience_slug ↔ profile.schema, product_slug ↔ spec.schema. Briefs markdown existants pre-v2.42 vont valider si leur frontmatter porte au minimum brief_id + status + created (autres fields additifs optionnels, backward compat strict). v1.0 baseline shippée v2.42.",
+  "_schema_version": "brief/1.0",
+  "_changelog": {
+    "1.0": "v2.42 initial release. Schema canon dédié au frontmatter brief markdown. Closes gap où produce-copy-brief shippait des briefs sans frontmatter typé (skills consumers downstream ne savaient pas quels fields étaient garantis). v1.0 fields: brief_id (BRF-NN), angle_id (ref angles/), audience_slug (ref audiences/), product_slug (ref products/), creative_format enum, intent_mix (ref creative.schema), overlay_density 0-1, validation_status (ref _shared), confidence_chain[] (ref _shared/validation-state). Backward compat strict: tous les fields sauf brief_id + status + created sont optionnels, briefs existants valident. Body markdown libre. Source canon: PATCH 2A v2.42."
+  },
+  "type": "object",
+  "note": "Briefs are stored as Markdown with YAML frontmatter. This JSON schema validates the frontmatter block. The body is free Markdown.",
+  "required": ["brief_id", "status", "created"],
+  "properties": {
+    "$comment": { "type": "string" },
+    "_field_types": { "type": "object", "additionalProperties": { "type": "string" } },
+
+    "brief_id": {
+      "type": "string",
+      "pattern": "^BRF-[0-9]{2,3}$",
+      "description": "BRF-NN format (BRF-01, BRF-12, BRF-103). Stable id, never reassigned."
+    },
+
+    "angle_id": {
+      "type": ["string", "null"],
+      "pattern": "^ANG-[0-9]{2,3}$",
+      "description": "Référence vers brands/{slug}/angles/{angle_id}.json (cf angle.schema.json). Hard binding: l'angle doit exister pour brief production. Null seulement si brief explore une hypothèse pre-angle (rare)."
+    },
+
+    "audience_slug": {
+      "type": ["string", "null"],
+      "pattern": "^[a-z0-9-]*$",
+      "description": "Slug audience cible. Matches brands/{slug}/audiences/{audience_slug}/profile.json (cf profile.schema.json). Null si brief brand-wide."
+    },
+
+    "product_slug": {
+      "type": ["string", "null"],
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Slug produit cible. Matches brands/{slug}/products/{product_slug}/spec.json (cf spec.schema.json). Null si brief multi-product ou brand-only."
+    },
+
+    "creative_format": {
+      "type": "string",
+      "enum": ["image", "carousel", "story", "reel", "vsl", "landing", "email", "sms", "ad_copy", "blog"],
+      "description": "Format cible du livrable produit à partir du brief. image|carousel|story|reel = paid social formats. vsl = video sales letter. landing = landing page. email|sms = lifecycle. ad_copy = primary text ads. blog = SEO/content marketing. Conditionne sections obligatoires du body markdown (cf produce-copy-brief)."
+    },
+
+    "intent_mix": {
+      "type": ["object", "null"],
+      "description": "Reference vers creative.schema.intent_mix structure. Indique l'objectif persuasif dominant du brief. Backward compat: si null, déduire depuis creative_format (vsl/ad_copy → DR par défaut, blog → Awareness, etc.).",
+      "properties": {
+        "primary": {
+          "type": "string",
+          "enum": ["DR", "Brand", "Lead_gen", "Retention", "Awareness"]
+        },
+        "secondary": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["DR", "Brand", "Lead_gen", "Retention", "Awareness"]
+          },
+          "maxItems": 2
+        },
+        "weights": {
+          "type": "object",
+          "description": "Sum to 1.0 +/- 0.05. Optional.",
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      },
+      "required": ["primary"]
+    },
+
+    "overlay_density": {
+      "type": ["number", "null"],
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Reference vers creative.schema.execution.overlay_density. 0.0 = pure visual (no verbal layer briefé). 1.0 = pure copy. Calibre les attentes hook/body/CTA. Null = pas de contrainte overlay (operator-decided)."
+    },
+
+    "validation_status": {
+      "$ref": "_shared/validation-status.json",
+      "description": "Lifecycle brief. hypothesis = brief produit, créa pas encore produite. tested = créa lancée, signaux inconclusifs. validated = créa winner, brief reproductible. scaled = brief réplicable cross-audiences. fatigued = pattern brief saturé."
+    },
+
+    "confidence_chain": {
+      "type": "array",
+      "description": "Reference vers _shared/validation-state.json confidence_chain[]. Audit trail propagation cross-skill (qui a contribué quelle info au brief, à quel niveau L1/L2/L3, avec quelle valeur 0-1). Optionnel pour backward compat.",
+      "items": {
+        "type": "object",
+        "required": ["skill", "value"],
+        "properties": {
+          "skill": { "type": "string", "description": "Skill qui a contribué (e.g. mine-voc, produce-paid-angles, produce-copy-brief)." },
+          "level": { "type": "string", "enum": ["L1", "L2", "L3"] },
+          "value": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "source": { "type": "string" }
+        }
+      }
+    },
+
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "Date de création du brief (YYYY-MM-DD). Required."
+    },
+
+    "updated": {
+      "type": "string",
+      "format": "date",
+      "description": "Date de dernière modification."
+    },
+
+    "status": {
+      "type": "string",
+      "enum": ["draft", "ready", "in_review", "approved", "shipped", "archived"],
+      "description": "Workflow status du brief. draft = en cours d'écriture. ready = brief complet, prêt review. in_review = lecture operator/équipe en cours. approved = validé, envoyé en production. shipped = créa produite et lancée. archived = brief inactif (replaced ou deprecated)."
+    },
+
+    "created_by_skill": {
+      "type": "string",
+      "description": "Skill qui a généré le brief. E.g. 'produce-copy-brief'."
+    },
+
+    "ticket_id": {
+      "type": ["string", "null"],
+      "description": "Optional. Référence vers ticket brands/{slug}/tickets/{ticket_id}.json si brief produit via long deliverable workflow."
+    },
+
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free tags pour filtering. E.g. ['bfcm', 'cold-traffic', 'high-confidence', 'verbatim-anchored']."
+    }
+  },
+  "additionalProperties": true,
+  "examples": [
+    {
+      "brief_id": "BRF-12",
+      "angle_id": "ANG-08",
+      "audience_slug": "tired-mothers",
+      "product_slug": "energizing-gummies",
+      "creative_format": "vsl",
+      "intent_mix": {
+        "primary": "DR",
+        "secondary": ["Brand"],
+        "weights": { "DR": 0.7, "Brand": 0.3 }
+      },
+      "overlay_density": 0.6,
+      "validation_status": "hypothesis",
+      "confidence_chain": [
+        { "skill": "mine-voc", "level": "L1", "value": 0.85, "source": "Reddit r/mommit n=128" },
+        { "skill": "produce-paid-angles", "level": "L2", "value": 0.75, "source": "audience-derived" },
+        { "skill": "produce-copy-brief", "level": "L1", "value": 0.8, "source": "angle ANG-08" }
+      ],
+      "created": "2026-05-06",
+      "status": "ready",
+      "created_by_skill": "produce-copy-brief",
+      "tags": ["cold-traffic", "verbatim-anchored"]
+    }
+  ]
+}

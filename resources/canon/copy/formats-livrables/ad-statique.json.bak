@@ -1,0 +1,63 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "ad-statique",
+  "atlas": "copy",
+  "layer": "formats-livrables",
+  "name": "Ad statique",
+  "principle": "Image fixe optimisée scroll-stop. 1 message clair, hierarchie visuelle nette.",
+  "structure": "Visuel stop-scrolling + headline 4U + sous-texte court + CTA.",
+  "gabarits": [
+    "[Visuel before/after ou scène pain] / [headline 4U] / [CTA 3 mots]"
+  ],
+  "when_works": [
+    "Meta, Pinterest, display",
+    "complément aux UGC",
+    "remarketing"
+  ],
+  "when_avoid": [
+    "TikTok native (vidéo dominante)",
+    "audiences ultra-scroll-blind"
+  ],
+  "combines_with": {
+    "hooks": [
+      "avant-apres",
+      "stat-choc"
+    ],
+    "formules-titres": [
+      "4u",
+      "how-to"
+    ]
+  },
+  "anti_patterns": [
+    "Visuel trop branding pas assez stop",
+    "Trop de texte"
+  ],
+  "examples": [
+    "Visuel maman se brossant les cheveux + headline 'Retrouve ta densité en 90 jours' + bouton 'Voir la cure'."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Meta playbook"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

@@ -1,0 +1,101 @@
+{
+  "_schema": "canon-tool/1.0",
+  "_version": "1.0",
+  "id": "urgence-rarete-temps",
+  "atlas": "copy",
+  "layer": "construction-offre",
+  "name": "Urgence / rareté temporelle",
+  "principle": "Active le FOMO via deadline visible et conséquence concrète. La rareté de temps ferme la fenêtre de procrastination. Pour être crédible, l'urgence doit avoir une raison nommable (saison, lancement, événement). L'urgence permanente détruit la confiance.",
+  "structure": "Annonce d'une fin claire (date, heure) + conséquence concrète à la fermeture (retour prix plein, perte du bonus, indisponibilité stock) + rappel raison de la deadline. Idéalement countdown visible sur landing/email.",
+  "gabarits": [
+    "Offre [nom] valable jusqu'à [date heure précise]. Après : retour au prix plein.",
+    "Plus que [N jours] pour [bénéfice de l'offre]. La fenêtre se ferme [date].",
+    "[Événement saisonnier] : [offre] jusqu'à [date]. Stock limité à [N unités].",
+    "Tu as jusqu'à [deadline] pour [action]. Passé [date], [conséquence] et c'est terminé pour cette saison."
+  ],
+  "when_works": [
+    "closing avec deadline saisonnière crédible (Mother's Day, Black Friday, fête des Pères, Boxing Day)",
+    "promotions courte durée avec raison nommée (lancement, anniversaire marque, fin de saison)",
+    "trafic chaud, retargeting panier abandonné, dernière séquence email",
+    "produits abonnement où la deadline est un cycle (livraison du 15, prochaine session)"
+  ],
+  "when_avoid": [
+    "urgence permanente qui devient bruit de fond (countdown perpétuel)",
+    "audiences anti-FOMO ou âgées qui détectent la pression",
+    "marchés régulés (santé) où la pression est mal perçue",
+    "marques premium qui érodent leur statut avec urgence répétée",
+    "produits où la deadline n'a pas de raison vraisemblable"
+  ],
+  "combines_with": {
+    "hooks": [
+      "stat-choc"
+    ],
+    "frameworks": [
+      "aida",
+      "4ps"
+    ],
+    "leads": [
+      "offer-led"
+    ],
+    "archetypes": [
+      "heros",
+      "homme-ordinaire"
+    ],
+    "construction-offre": [
+      "bundle-stack",
+      "anchor-decoy",
+      "garantie-risk-reversal"
+    ],
+    "objections": [
+      "comparaison-cout-inaction"
+    ],
+    "formats": [
+      "email-sequence",
+      "ad-statique",
+      "landing-checkout"
+    ],
+    "heuristiques-persuasion": [
+      "rarete",
+      "engagement-coherence"
+    ]
+  },
+  "anti_patterns": [
+    "Countdown qui reset à chaque visite (détecté, casse la confiance)",
+    "Urgence sans raison crédible (deadline arbitraire, audience la nomme)",
+    "Urgence permanente normalisée (chaque semaine c'est la dernière chance)",
+    "Stock limité jamais épuisé (audience teste, déprécie le claim)",
+    "Pression trop forte sur catégorie sensible (santé, vulnérabilité)"
+  ],
+  "examples": [
+    "Offre Mother's Day Karacare : -15% sur la cure 3 mois + brosse offerte. Fin dimanche 18h. Après, retour au tarif standard et plus de bonus brosse.",
+    "Lancement K18 Bond Repair 2026 : pack découverte à -30% pour les 500 premiers. Stock pré-réservé sur newsletter, ouverture publique vendredi 9h. Quand c'est parti, c'est parti pour la saison.",
+    "Black Week Olaplex : 7 jours de -30% sur la routine complète, à partir du lundi 9h. Vendredi 23h59, retour aux tarifs standards et fin du bonus livraison express.",
+    "Cure Kérastase Premiere : prix de pré-commande -20% + consultation diagnostic offerte jusqu'au 15. Lancement officiel le 16, tarif full price et fin du bonus diagnostic."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Robert Cialdini Influence (scarcity)",
+      "Kahneman loss aversion",
+      "DR canon Halbert deadline copy"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-03T22:47:19.842805Z"
+}

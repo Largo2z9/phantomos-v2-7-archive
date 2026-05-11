@@ -1,6 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "skill-prerequisites/1.0",
+  "_schema_version": "skill-prerequisites/1.0",
+  "title": "Skill prerequisites contract",
+  "description": "Array contract de pre-conditions L1/L2/L3 lue par les skills depuis leur frontmatter. L1 auto-fill silent, L2 ask-operator gate, L3 degraded with flag. Schema porte le versioning via root `_schema_version` (cohérent cross-schemas v2.42+). `$id` ancien `skill-prerequisites/1.0` conservé pour backward compat lookup.",
+  "_changelog": {
+    "1.0": "v2.42 versioning cleanup: `_schema_version` field root ajouté pour cohérence cross-schemas. `$id` versionné (skill-prerequisites/1.0) conservé en plus pour backward compat lookup. v1.0 baseline: 3 niveaux L1/L2/L3 avec champs conditionnels (auto_pull+freshness_ttl_days pour L1, options pour L2, fallback+confidence_default pour L3). v2.37 augmenté avec cross_brand_required. Source canon: PATCH 2A v2.42."
+  },
   "type": "array",
   "items": {
     "type": "object",

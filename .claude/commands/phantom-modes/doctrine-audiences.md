@@ -54,3 +54,7 @@ NEXT SUGGESTED
 ```
 
 Cross-ref doctrine complète (backend, instructions agent) · `docs/doctrine/audience-cartography-framework.md`. Ne pas exposer ce path à l'opérateur ; pointer vers `voir le cours complet`.
+
+### Post-render filter (v2.42+)
+
+Avant émission, appliquer le filtre jargon `.skills/_jargon_bank.json` selon le contrat universel défini dans `phantom.md § Post-render jargon filter`. Si un token jargon résiduel reste détectable hors backticks code (ex : "Schwartz" non substitué en "où elle en est dans son parcours"), substitution forcée via `apply_jargon_filter(output_text, locale="fr")`.

@@ -1,7 +1,10 @@
 ---
 name: validate-resources
 type: curator
-version: "1.1.0"
+version: "1.3.0"
+isolation_scope: workspace_global
+layer: 3
+patch_notes: "v2.42 · HR-21 + Check 21 audience cartography hierarchy enforcement runtime (v2.39 doctrine matérialisée). v2.42 PATCH 5 · Check 13c isolation_scope enforcement updated (default brand_only auto, gate AskUserQuestion, justification workspace_global) + Check 13d layer frontmatter enforcement (enum 1/2/3, layer 1 MCP, layer 2 APIs+credentials, layer 3 shipped infra). Infrastructure curator workspace_global justifié · valide tous skills cross-brand pour intégrité runtime."
 recommended_model: haiku
 reasoning_pattern: null
 description: >
@@ -208,28 +211,109 @@ Never count via flat `offers_doc.get("offers", [])` — that's the legacy v1.x p
 
 **Rationale**: with skill count growing over time, unenforced taxonomy drifts to irrelevance. Blocking validation keeps the typology load-bearing. See `docs/system/patterns.md § Skill Taxonomy § Enforcement`.
 
-### 13c. Brand Isolation Scope Enforcement (v2.37+)
+### 13c. Skill isolation_scope frontmatter enforcement (v2.37+, runtime v2.42)
 
-**HR · Brand isolation scope enforcement**
+**HR · Brand isolation scope enforcement runtime**
 
-Tout SKILL.md v2.37+ doit déclarer frontmatter `isolation_scope:` enum [brand_only, cross_brand_with_gate, workspace_global].
+Pour chaque `SKILL.md` sous `.skills/skills/{name}/`, parser frontmatter YAML et appliquer algorithme :
 
-Si absent → default `brand_only` appliqué auto + warning logged :
+```
+for skill_md in glob(".skills/skills/*/SKILL.md"):
+    fm = parse_yaml_frontmatter(skill_md)
+    iso = fm.get("isolation_scope")
+
+    # Step 1 · presence check
+    if iso is None:
+        iso = "brand_only"  # auto-applied default
+        emit(SKILL-ISOLATION-DEFAULT, severity=warning, skill=skill_md.parent.name)
+    elif iso not in {"brand_only", "cross_brand_with_gate", "workspace_global"}:
+        emit(SKILL-ISOLATION-ENUM-INVALID, severity=major, skill=skill_md.parent.name, value=iso)
+        continue
+
+    # Step 2 · workspace_global justification
+    if iso == "workspace_global":
+        desc = fm.get("description", "") + " " + fm.get("patch_notes", "")
+        justified = any(token in desc.lower() for token in [
+            "infrastructure", "workspace_global justifié", "cross-brand", "atlas vivant",
+            "validates all", "validate tous", "promote", "promotion canon"
+        ])
+        if not justified:
+            emit(SKILL-ISOLATION-UNJUSTIFIED, severity=major, skill=skill_md.parent.name)
+
+    # Step 3 · cross_brand_with_gate gate prose check
+    if iso == "cross_brand_with_gate":
+        body = read_body_after_frontmatter(skill_md)
+        if "AskUserQuestion" not in body or "cross-brand" not in body.lower():
+            emit(SKILL-ISOLATION-GATE-MISSING, severity=major, skill=skill_md.parent.name)
+```
+
+Error codes :
 ```
 [SKILL-ISOLATION-DEFAULT] .skills/skills/{name}/SKILL.md → `isolation_scope:` absent. Default `brand_only` auto-appliqué. Déclarer explicitement pour silence le warning.
-```
 
-Si `workspace_global` → require justification dans description (infrastructure skills only · validate-resources, hygiene-audit, build-manifest). Justification absente → blocking error :
-```
-[SKILL-ISOLATION-UNJUSTIFIED] .skills/skills/{name}/SKILL.md → `isolation_scope: workspace_global` sans justification. Réservé infrastructure skills. Documenter raison dans description ou rétrograder à brand_only.
-```
+[SKILL-ISOLATION-ENUM-INVALID] .skills/skills/{name}/SKILL.md → `isolation_scope: {value}` invalide. Valeurs autorisées : {brand_only, cross_brand_with_gate, workspace_global}.
 
-Si `cross_brand_with_gate` → require Step prose explicit qui mentionne AskUserQuestion gate sur cross-brand read. Gate absent → blocking error :
-```
-[SKILL-ISOLATION-GATE-MISSING] .skills/skills/{name}/SKILL.md → `isolation_scope: cross_brand_with_gate` sans Step prose AskUserQuestion gate explicit avant cross-brand read.
+[SKILL-ISOLATION-UNJUSTIFIED] .skills/skills/{name}/SKILL.md → `isolation_scope: workspace_global` sans justification. Réservé infrastructure skills. Documenter raison dans description ou patch_notes, ou rétrograder à brand_only.
+
+[SKILL-ISOLATION-GATE-MISSING] .skills/skills/{name}/SKILL.md → `isolation_scope: cross_brand_with_gate` sans AskUserQuestion gate explicit dans Step prose avant cross-brand read.
 ```
 
 **Rationale** : empêche cross-contamination silencieuse multi-brand (red team finding A7). Critique en context agency multi-clients · NDAs interdisent cross-pollination data. Default `brand_only` est le filet de sécurité par défaut. Full doctrine `docs/system/brand-isolation-discipline.md`.
+
+---
+
+### 13d. Skill layer frontmatter enforcement (v2.42+)
+
+**HR · Connectivity layer enforcement runtime**
+
+Pour chaque `SKILL.md` sous `.skills/skills/{name}/`, parser frontmatter et appliquer algorithme :
+
+```
+for skill_md in glob(".skills/skills/*/SKILL.md"):
+    fm = parse_yaml_frontmatter(skill_md)
+    layer = fm.get("layer")
+
+    # Step 1 · presence check
+    if layer is None:
+        emit(SKILL-LAYER-MISSING, severity=major, skill=skill_md.parent.name)
+        continue
+
+    # Step 2 · enum check
+    if layer not in {1, 2, 3}:
+        emit(SKILL-LAYER-ENUM-INVALID, severity=major, skill=skill_md.parent.name, value=layer)
+        continue
+
+    # Step 3 · layer coherence check
+    body = read_body_after_frontmatter(skill_md)
+    perms = fm.get("permissions", {})
+    if layer == 1:
+        # MCP servers requis → frontmatter ou body mentionne MCP
+        if "mcp" not in (str(fm) + body).lower():
+            emit(SKILL-LAYER-1-MCP-NOT-FOUND, severity=minor, skill=skill_md.parent.name)
+    elif layer == 2:
+        # APIs callable requis → mention credentials.env ou env var
+        signals = ["credentials.env", "credentials_shared", "fal.ai", "trendtrack", "shopify", "meta api", "graph api", "WebFetch", "scrape"]
+        if not any(s in (str(fm) + body).lower() for s in [s.lower() for s in signals]):
+            emit(SKILL-LAYER-2-API-NOT-FOUND, severity=minor, skill=skill_md.parent.name)
+    elif layer == 3:
+        # Shipped infra → no external deps mention requis (best-effort)
+        pass  # tolerant · layer 3 default catégorie
+```
+
+Error codes :
+```
+[SKILL-LAYER-MISSING] .skills/skills/{name}/SKILL.md → `layer:` absent. Required enum {1, 2, 3}. Layer 1 = MCP server requis, layer 2 = API callable via credentials, layer 3 = shipped infra (no external deps).
+
+[SKILL-LAYER-ENUM-INVALID] .skills/skills/{name}/SKILL.md → `layer: {value}` invalide. Valeurs autorisées : {1, 2, 3}.
+
+[SKILL-LAYER-1-MCP-NOT-FOUND] .skills/skills/{name}/SKILL.md → `layer: 1` déclaré mais aucune mention MCP server dans frontmatter ou body. Documenter MCP requirement.
+
+[SKILL-LAYER-2-API-NOT-FOUND] .skills/skills/{name}/SKILL.md → `layer: 2` déclaré mais aucune mention API/credentials/scrape dans frontmatter ou body. Documenter source ou rétrograder à layer 3.
+```
+
+**Rationale** : trois layers (MCP / API callable / shipped infra) sont déclaratives doctrine `docs/system/connectivity-layering.md` (Patch 4A canon). Sans enforcement frontmatter, operator setup et template ship surface divergent silencieusement. Layer frontmatter rend la cartographie auditable et machine-checkable. Backward compat additif strict · skills v2.41- continuent à passer avec warning auto-default.
+
+Cross-ref · canon `docs/system/connectivity-layering.md`.
 
 ---
 
@@ -318,6 +402,105 @@ Si match dans context operator-facing (no inline code/backticks) → MAJOR findi
 Empêche jargon leak operator-facing (CRITICAL bug v2.36 red team Friction 5).
 
 Backward compat : skills v2.36 sans translation appliquée continuent à fonctionner mais sont flaggés warning par lint (additif strict).
+
+### 21. Audience cartography hierarchy enforcement (v2.42+)
+
+**HR-21** matérialise les 5 invariants doctrine `docs/system/audience-cartography-doctrine.md` (v2.39) en checks runtime sur chaque `brands/{slug}/audiences/{audience_slug}/profile.json`.
+
+Pour chaque profile.json :
+
+1. **scope_enum_strict** · parse `meta.scope` · MUST be in enum `{broad, segment, micro}` · refuse legacy values `{mother, sub}` (migré v2.42). Match legacy → MAJOR finding "Legacy scope value (mother/sub) detected, migrate to broad/segment/micro per doctrine v2.42".
+
+2. **parent_slug_required** · if scope ∈ `{segment, micro}` · verify `meta.parent_slug` is non-null AND points to existing audience slug under same `brands/{slug}/audiences/` (filesystem walk). If null or unresolved → MAJOR finding "Audience-orpheline: scope={scope} without resolvable parent_slug".
+
+3. **overlap_with_acyclic** · scan `meta.overlap_with[]` array across all audiences of the brand · build directed graph (node = audience_slug, edge = each entry in `overlap_with[]`) · run DFS cycle detection · if cycle present → MAJOR finding "Audience-redondante: cycle in overlap_with: {A} → {B} → ... → {A}".
+
+4. **micro_3_of_3_justification** · if scope=micro · verify frontmatter OR meta declares all three fields per doctrine framework Q2 (3/3 test):
+   - `volume_remaining_estimate` (numeric, k actives, minimum 20)
+   - `pitch_divergent` (bool, MUST be true)
+   - `offer_divergent` (bool, MUST be true)
+   If 0/3, 1/3, or 2/3 → MAJOR finding "Audience-fantôme suspect: micro scope without 3/3 justification (volume + pitch_divergent + offer_divergent per Invariant 2 doctrine v2.39)".
+
+5. **entry_door_enum_strict** · parse `meta.entry_door` · MUST be in enum `{pain_driven, goal_driven, identity_driven}` · if null, missing, or unknown value → MAJOR finding "Audience without entry door (Invariant 3 doctrine v2.39 Q1 framework)".
+
+6. **isolation_boundary_brand_const** · verify `meta._isolation_boundary` present AND equals literal `"brand"` (string const) per Invariant 5 isolation discipline v2.37 · if missing → auto-fix (write `"brand"`) + log INFO · if present with different value → MAJOR finding "Isolation boundary violated: expected const 'brand', got {value}".
+
+**Algorithms pseudo-code:**
+
+```python
+# Check 21 main loop
+for brand_slug in brands_iter():
+    audiences = walk(f"brands/{brand_slug}/audiences/*/profile.json")
+    audience_index = {a.slug: a for a in audiences}
+    overlap_graph = build_directed_graph(audiences)  # node=slug, edge=overlap_with[]
+
+    for audience in audiences:
+        meta = audience.get("meta", {})
+
+        # 1. scope enum
+        scope = meta.get("scope")
+        if scope in {"mother", "sub"}:
+            findings.append(major(audience, "Legacy scope value (mother/sub)"))
+        elif scope not in {"broad", "segment", "micro"}:
+            findings.append(major(audience, f"Invalid scope: {scope}"))
+
+        # 2. parent_slug for segment/micro
+        if scope in {"segment", "micro"}:
+            parent = meta.get("parent_slug")
+            if not parent or parent not in audience_index:
+                findings.append(major(audience, "Audience-orpheline: unresolved parent_slug"))
+
+        # 4. micro 3/3 justification
+        if scope == "micro":
+            score = sum([
+                isinstance(meta.get("volume_remaining_estimate"), (int, float)) and meta["volume_remaining_estimate"] >= 20,
+                meta.get("pitch_divergent") is True,
+                meta.get("offer_divergent") is True,
+            ])
+            if score < 3:
+                findings.append(major(audience, f"Audience-fantôme suspect: micro {score}/3 justification"))
+
+        # 5. entry_door enum
+        entry = meta.get("entry_door")
+        if entry not in {"pain_driven", "goal_driven", "identity_driven"}:
+            findings.append(major(audience, "Audience without entry door (Q1 framework v2.39)"))
+
+        # 6. _isolation_boundary const "brand"
+        boundary = meta.get("_isolation_boundary")
+        if boundary is None:
+            auto_fix(audience, "meta._isolation_boundary", "brand")
+        elif boundary != "brand":
+            findings.append(major(audience, f"Isolation boundary violated: expected 'brand', got {boundary}"))
+
+    # 3. cycle detection on overlap_with graph
+    cycles = detect_cycles_dfs(overlap_graph)
+    for cycle in cycles:
+        findings.append(major(brand_slug, f"Audience-redondante: cycle {' → '.join(cycle)} → {cycle[0]}"))
+```
+
+All findings reference doctrine doc `docs/system/audience-cartography-doctrine.md` Invariants 1-5 with `suggested_fix` pointing to the matching invariant section.
+
+**Audit JSON output enriched** · per-brand object adds:
+
+```json
+{
+  "audience_cartography": {
+    "n_audiences_validated": 7,
+    "n_violations_by_invariant": {
+      "invariant_1_scope_enum": 0,
+      "invariant_2_parent_required": 1,
+      "invariant_3_overlap_acyclic": 0,
+      "invariant_4_micro_3_of_3": 2,
+      "invariant_5_entry_door": 1,
+      "invariant_6_isolation_boundary": 0
+    },
+    "suggested_fixes_count": 4,
+    "auto_fixed_count": 1
+  }
+}
+```
+
+Empêche les 3 pièges canon doctrine v2.39 · audience-fantôme (micro sans justification 3/3), audience-redondante (cycle overlap_with), audience-orpheline (segment/micro sans parent résolvable).
 
 ---
 
@@ -528,6 +711,21 @@ Health: degraded
 - **workspace-status.json is the only cross-brand aggregation file** — lives at workspace root
 - **HR-19 frontmatter prerequisites schema validation** — voir check 19. Tout SKILL.md avec un field `prerequisites:` MUST passer la validation contre `resources/schemas/skill-prerequisites.schema.json` ET maintenir la cohérence avec son Step 0bis prose. Frontmatter ↔ Step 0bis drift = MAJOR finding (multi-source of truth interdit, red team v2.36 A3).
 - **HR-20 operator vocabulary jargon lint** — voir check 20. Scan SKILL.md prose operator-facing pour tokens jargon (atlas brand/vivant/canon, validations[], fiches, couches, archetype, L1/L2/L3 fallback, etc.). Match hors backticks code → MAJOR finding + suggested replacement via `docs/system/operator-vocabulary-translation.md`. Empêche jargon leak operator (red team v2.36 Friction 5).
+
+### HR-21 · Audience cartography hierarchy validation (v2.42+)
+
+Pour chaque profile.json sous `brands/{slug}/audiences/` ·
+
+1. **meta.scope enum strict** · valeurs autorisées `broad | segment | micro` · refuse legacy `mother | sub` (migré v2.42)
+2. **Segment + micro require parent_slug** · si scope ∈ {segment, micro} alors meta.parent_slug doit pointer vers une audience existante
+3. **overlap_with non-cyclique** · scanner meta.overlap_with[] · si A → B → A (cycle) détecté → MAJOR finding
+4. **Micro require justification 3/3** · si scope=micro, frontmatter doit déclarer `volume_remaining_estimate` + `pitch_divergent: bool` + `offer_divergent: bool` (test 3/3 doctrine framework Q2)
+5. **meta.entry_door requis + enum strict** · valeurs `pain_driven | goal_driven | identity_driven` · si absent ou null → MAJOR finding
+6. **_isolation_boundary const "brand"** · forcer présence + valeur `brand` sur tous profile.json (isolation discipline v2.37)
+
+Violations → MAJOR finding + suggested fix pointing vers `docs/system/audience-cartography-doctrine.md` Invariants 1-5.
+
+Empêche audience-fantôme / audience-redondante / audience-orpheline (3 pièges canon doctrine v2.39).
 
 ---
 

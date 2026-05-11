@@ -910,11 +910,21 @@ Application : utiliser `🔥` quand un test ROAS chute ≥30% sur 14j ou quand u
 
 ---
 
+## Post-render jargon filter (v2.42+)
+
+**Scope** : tous les modes `/phantom` operator-facing (workspace, brand, entity-drill, item, search, recent, todo, atlas-overview, briefs-drill, tests-drill, matrix-drill, mechanisms-drill, benefits-drill, doctrine, doctrine-audiences, audiences-tree, canon-*). Coverage v2.42 phantom-modes only ; SKILL.md `output_format` : pass futur.
+
+**Contrat avant émission** : (1) charger `.skills/_jargon_bank.json` (généré par `build-manifest.py` depuis `docs/system/operator-vocabulary-translation.md`, schema `jargon-bank/1.0`, 60+ entries). (2) Pour chaque entry `context: phantom-modes`, scanner le rendu, match case-insensitive longest-first sur les variants `internal[]`. (3) Substituer par `operator_fr` (default) ou `operator_en` (si `operator/profile.json#preferences.language` = en). (4) **Préserver** code fenced ```, inline `backticks`, markdown, JSON paths comme tech detail. (5) Token jargon résiduel hors backticks détecté → log warning + substitution forcée.
+
+**Invocation** : `python3 .skills/apply-jargon-filter.py --locale fr` (stdin/stdout), ou import `from apply_jargon_filter import apply_jargon_filter`. Si infra non invoquée, agent applique la substitution mentalement post-render.
+
+---
+
 ## Constraints (tous modes)
 
 - **Read-only.** Aucune mutation. Si l'opérateur demande ensuite de fix quelque chose, propose le skill approprié, ne fais pas la mutation toi-même.
 - **One screen output.** Workspace mode : 30 lignes max. Brand mode : 40-50 lignes max. Entity-drill mode : 50 lignes max.
-- **Pas de jargon doctrine.** Pas de "SED", "CMR", "_field_types", "validation_status" en surface. Traduit en mots métier (validé / hypothèse / fatigué).
+- **Pas de jargon doctrine.** Filtre `_jargon_bank.json` post-render v2.42+ (cf section *Post-render jargon filter*). Traduit en mots métier (validé / hypothèse / fatigué).
 - **Honest staleness.** Si une entité n'a pas été touchée depuis 90j, dis-le. Si snapshot date > 1h, regenère silencieusement avant d'afficher.
 - **Workspace est le default.** `/phantom` sans argument lande toujours au niveau workspace (sauf bootstrap si 0 brand). L'opérateur drille explicitement via `/phantom {slug}`. Pattern terminal-like, jamais court-circuiter la navigation.
 - **Drill par étape, pas en bloc.** `/phantom {slug}` montre le brand. `/phantom {slug} {entity}` zoome sur une entité. Évite de tout dump en une fois ; économie de contexte ET de lisibilité.

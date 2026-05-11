@@ -1,49 +1,74 @@
 {
-  "_schema": "canon-tool/1.0",
+  "_schema": "canon-tool/1.1",
   "_version": "1.0",
   "id": "homme-ordinaire",
   "atlas": "copy",
   "layer": "archetypes-voix",
   "name": "Homme ordinaire",
-  "principle": "Voix de tout le monde. Honnête, simple, sans piédestal. Pratique avant tout.",
-  "structure": "Vocabulaire courant, exemples du quotidien, ton casual.",
+  "principle": "Voix de tout le monde. Honnête, simple, sans piédestal. L'Homme ordinaire ne se met pas au-dessus de l'audience, il parle d'égal à égal. Pratique avant tout. Sa force, c'est la crédibilité du familier.",
+  "structure": "Vocabulaire courant, exemples du quotidien, ton casual. Phrases qui pourraient venir d'un ami au café. Pas de superlatifs, pas de jargon marketing. L'honnêteté comme posture.",
   "gabarits": [
     "Pas de magie. Ce qu'on a, c'est [X]. Et ça marche pour [profil].",
-    "Soyons honnêtes : [vérité brute]."
+    "Soyons honnêtes : [vérité brute].",
+    "On ne va pas te promettre [hyperbole]. Voilà ce qu'on peut faire.",
+    "[Comparaison quotidienne accessible]. C'est tout."
   ],
   "when_works": [
-    "audiences pragmatiques",
+    "audiences pragmatiques, blasées du marketing",
     "marchés saturés des claims aspirationnels",
-    "trafic tiède"
+    "trafic tiède qui veut du concret",
+    "marques DTC qui se positionnent contre le luxe creux"
   ],
   "when_avoid": [
-    "produits luxe ou aspirationnels",
-    "audiences en quête d'élévation"
+    "produits luxe ou aspirationnels (le ton détruit la promesse)",
+    "audiences en quête d'élévation ou de transformation aspirationnelle",
+    "catégories où la prouesse fait partie de la valeur (high-tech, sport elite)",
+    "marques qui survendent leur niche premium"
   ],
   "combines_with": {
     "hooks": [
       "confession",
-      "question-callout"
+      "question-callout",
+      "contrarian"
     ],
     "frameworks": [
-      "bab"
+      "bab",
+      "pas",
+      "fab"
+    ],
+    "leads": [
+      "story-led",
+      "problem-led"
+    ],
+    "angles": [
+      "honnetete",
+      "communaute"
     ],
     "emotions": [
-      "complicite"
+      "complicite",
+      "soulagement",
+      "confiance"
     ]
   },
   "anti_patterns": [
-    "Faux-modeste (perçu comme pose)",
-    "Trop plat (manque d'aspiration)"
+    "Faux-modeste (perçu comme pose vendeuse déguisée)",
+    "Trop plat (manque d'aspiration, on s'endort)",
+    "Honnêteté qui devient excuse (notre produit n'est pas terrible mais...)",
+    "Familiarité forcée (on essaie d'être casual mais ça sonne corporate)",
+    "Anti-marketing tellement marketing que ça inverse"
   ],
   "examples": [
-    "On ne va pas te promettre la lune. Ce qu'on a, c'est une cure 3 mois qui marche pour 6 mamans sur 10."
+    "On ne va pas te promettre la lune. Ce qu'on a, c'est une cure 3 mois qui marche pour 6 mamans sur 10. Les 4 autres, on rembourse. C'est l'angle Function of Beauty d'avant le hype.",
+    "Soyons honnêtes : 90% des compléments cheveux contiennent le même actif. Ce qui change, c'est le dosage et qui paye le marketing.",
+    "Pas de fioritures. La cure est efficace si tu la prends 3 mois. Sinon, c'est pas la peine. On préfère te le dire avant que tu commandes."
   ],
   "validations": [],
   "lineage": {
     "source": "public-doctrine",
     "references": [
-      "Jung archetypes"
+      "Jung archetypes",
+      "Mark & Pearson Hero and Outlaw",
+      "Halbert plain-folks DR"
     ]
   },
   "_field_types": {
