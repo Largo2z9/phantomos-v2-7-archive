@@ -1,0 +1,62 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.43.0",
+  "released_at": "2026-05-11",
+  "compatible_from": "2.0.0",
+  "type": "fidelity_visual",
+  "summary": "Chantier 1 fidélité visuelle · 4 patches résolvent 3 frictions runtime fal.ai cycle USAGE v2.43 (wordmark régression · drop accents FR · sub-text flou).",
+  "changes": [
+    {
+      "category": "schemas",
+      "action": "patched",
+      "files": ["resources/schemas/visual_identity.schema.json v1.0 → v1.1"],
+      "section": "F4 · visual_identity.schema v1.1 · 3 nouveaux blocs additifs",
+      "rationale": "v2.42 ship visual_identity.schema v1.0 référençait packshots URL CDN externe · dépendance fragile + qualité variable. v2.43 ajoute 3 blocs canon · (1) assets_canonical{} catalog haute résolution local source (packshot_front/back/3_4/top + lifestyle[] · path+resolution+format+background+captured_at requis). (2) logo_svg{} path vectoriel + variants enum 6 (primary/monochrome_black/monochrome_white/horizontal/vertical/icon). (3) wordmark_pattern regex strict validation post-gen (ex kara `^kara\\[care\\]$` brackets mandatory). Backward compat strict v1.0 (sans nouveaux blocs) passe schema. additionalProperties true sur color_palette/container/content/label/meta pour accommoder noms champs alternatifs brand kara existing (container_primary, form, color_hex, sub_label vs primary_hex/form_factor canon)."
+    },
+    {
+      "category": "doctrine",
+      "action": "created",
+      "files": ["docs/system/visual-identity-discipline.md NEW"],
+      "section": "F1 · Doctrine Visual Identity Discipline",
+      "rationale": "Doctrine canon v2.43+ ~700 mots · le problème (drift observé wordmark Karacare karaforz régression occasionnelle nano-banana-pro/edit · drop accents médecin→medecin Voilà→Voila CRT-01 v2.43) → 3 piliers canon (catalog assets produit-level haute résolution · logo SVG brand-level vectoriel · wordmark pattern regex validation runtime) → consumers (compose-creative HR1.4 v2.43+ priorité assets_canonical local > CDN · compose-overlay-text v2.43 NEW PIL composite · decompose-ad reverse-engineering reference assets_canonical) → migration brand pré-v2.43 (6 étapes · créer assets/ folder · upload sources canon haute résolution · update visual_identity.json v1.0→v1.1 · brand-level assets/ avec logo.svg) → fallback graceful (warning logged operator-facing translation 'source haute résolution manquante, gen dégradée' · zéro exposition technique) → cross-refs (schema v1.1 · compositional-cartography v2.42 · schema-encoding-discipline · canonical-matrix-reasoning · operator-vocabulary-translation) → anti-patterns. Em-dash free."
+    },
+    {
+      "category": "structure",
+      "action": "created",
+      "files": [
+        "brands/kara/products/cellule-boost-anti-chute/assets/ NEW (4 packshots placeholders + README upload guidelines)",
+        "brands/kara/assets/ NEW (logo.svg + 5 variants + palette-reference.png + README + _brand-guidelines.md)",
+        "brands/kara/products/cellule-boost-anti-chute/visual_identity.json updated v1.0 → v1.1",
+        "brands/kara/brand.json patched _assets_canonical_path"
+      ],
+      "section": "F1 · Catalog assets canon kara live + F2 · Logo SVG canon kara live",
+      "rationale": "Structure produit-level (assets/ folder par produit) · 4 packshots minimum (front · back · 3-4 · top) + lifestyle optionnel · placeholders 1×1 transparent OR extract CDN sous-résolution 1784×1784 (front cellule-boost) · README upload guidelines (sources canon haute résolution ≥2000×2000 sRGB transparent prioritaire · upload manuel Largo OR pull Shopify CDN fallback flag _fallback_to_cdn). Structure brand-level (assets/) · logo.svg placeholder bordeaux #6E1A1F text node sans-serif basic + 5 variants SVG (primary · monochrome-black #000 · monochrome-white #FFF · horizontal · vertical) · palette-reference.png 800×200 PIL render 3 swatches (bordeaux #6E1A1F + myrtille #5C1B2E + blanc #FFFFFF) + labels hex · README workflow upload source officielle + variants enumeration · _brand-guidelines.md (anti-patterns logo · placement canon bottom-right padding 24-48px scale 8-12% · validation runtime 3 checks regex wordmark + palette ±5% + cv2 region detection). visual_identity.json kara v1.1 conforme · assets_canonical peuplé 4 slots avec _fallback_to_cdn true (3 sur 4 placeholder pendant upload Largo source officielle) · logo_svg path brand-level 'assets/logo.svg' + 5 variants _canonical false (placeholders stubs) · wordmark_pattern regex `^kara\\[care\\]$` set. brand.json _assets_canonical_path 'assets/' pointer."
+    },
+    {
+      "category": "skills",
+      "action": "created",
+      "files": [".skills/skills/compose-overlay-text/SKILL.md v1.0.0 NEW"],
+      "section": "F3 · Skill compose-overlay-text v1.0.0 NEW",
+      "rationale": "Skill producer NEW v2.43 · résout 3 frictions runtime fal.ai nano-banana-pro/edit observées cycle USAGE · (1) wordmark régression caractère par caractère (kara[care] → karaforz observed v2.36 · retry 3/3 nécessaire). (2) drop accents français overlay text (médecin → medecin · Voilà → Voila observed v2.43 CRT-01). (3) sub-text flou trust badges parfois illisibles 1K resolution. Frontmatter · type producer · isolation_scope brand_only · layer 3 · DRGFP v2.38 4 prerequisites (creative source JPG L1 · logo.svg L1 freshness 365d · visual_identity.json v1.1 L1 freshness 90d · overlay_spec L2 3 options logo_only/logo_and_sub_text/full_recompose). HR1-6 · (HR1) inputs canon obligatoires avec L3 degraded graceful · (HR2) PIL TrueType UTF-8 accents preserved é è ê à â ù û ç ï î ô œ æ · font path fallback cross-OS (macOS Helvetica.ttc · Linux Inter/DejaVu · Windows arial.ttf) · (HR3) SVG composite cairosvg.svg2png preserve vectorielle scalability + paste alpha channel · position canonique bottom-right padding 32px scale 10% · (HR4) wordmark validation post-composite OCR pytesseract preferred OR SSIM skimage fallback >=0.92 · retry 3x adjustments si fail · (HR5) trust badges precision triangle (left · right · top center) · semi-transparent white #FFFFFFAA OR bordeaux #6E1A1F · sans-serif bold · max 3 mots par badge · (HR6) operator-facing translation 9 mappings (PIL composite → fix logo précis post-gen · cairosvg → rendu vectoriel · wordmark_pattern regex → validation wordmark canon · alpha channel → transparence · etc.). Steps 0bis-7 · prerequisite_check DRGFP · imports PIL+cairosvg dependencies graceful · svg_to_png conversion · composite_logo bottom-right canon · composite_badges UTF-8 preserved · validate_wordmark OCR/SSIM · save output + meta update via write_to_context (mutation rule canon respected) · no orphan output 4-6 lignes operateur summary. Cross-refs · visual_identity.schema v1.1 + logo.svg canonique + compose-creative v1.1.0 HR3.4 retry policy existing (compose-overlay-text complète, ne remplace pas) + visual-identity-discipline.md + compositional-cartography.md v2.42. Compound learning hook documenté · si validation systématique wordmark pass N>20 · feed learn-from-session Trigger 9 pour atlas vivant validations (canon-tool wordmark_pattern + position bottom-right confirmed canon)."
+    },
+    {
+      "category": "infrastructure",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "section": "Manifest skills regenerated · 54 skills",
+      "rationale": "Régénération manifest via python3 .skills/build-manifest.py post-création compose-overlay-text · 53 → 54 skills. PyYAML strict parser v2.37 valide frontmatter compose-overlay-text. _jargon_bank.json préservé 71 entries v2.42."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [
+    {
+      "scope": "brand-level + product-level catalog assets",
+      "mode": "manuel · operator upload sources canon haute résolution OR pull Shopify CDN highres si dispo",
+      "trigger": "operator drop SVG officielle + packshots haute résolution dans brands/{slug}/assets/ + brands/{slug}/products/{slug}/assets/",
+      "current_status_kara": "placeholders SVG + 1×1 transparent PNG (3 slots) + extract CDN sous-résolution 1784×1784 (front cellule-boost) · upload manuel attendu",
+      "fallback_graceful": "compose-creative dégrade vers packshots CDN URL existing si assets_canonical absent · warning logged · zéro exposition technique opérateur"
+    }
+  ],
+  "operator_impact": "Pipeline production creative fidélité visuelle solide pre-batch system. compose-creative v1.1.0 (v2.42) + compose-overlay-text v1.0.0 (v2.43) chain ferme · génération fal.ai (compose-creative) puis fix post-gen PIL (compose-overlay-text) logo SVG canon caractère par caractère + sub-text UTF-8 accents préservés + wordmark validation regex strict. Frictions runtime cycle USAGE v2.43 sur CRT-01 ANG-02 kara résolues structurellement · plus de wordmark régression silencieuse · plus de drop accents · trust badges crisp lisibles. visual_identity.json v1.1 conforme assets_canonical + logo_svg + wordmark_pattern. Doctrine visual-identity-discipline.md doctrine canon system-side cross-ref compositional-cartography. Backward compat strict additif partout · brand kara existing pré-v2.43 non touché hors assets/ nouveau · skills v2.42 existing préservés. Manifest 53 → 54 skills. Migration brand pré-v2.43 documentée 6 étapes (doctrine § Migration).",
+  "next_release_note": "v2.44+ chantier 2 format stockage batch · 5 patches identifiés · (B1) creative-batch.schema.json v1.0 (manifest batch · timeline · objectifs · matrices source · N créas) · (B2) organisation hiérarchique products/{slug}/produced/batches/BATCH-XX-{date}/ avec naming CRT-NN-ANG-AA-PER-BB-MEC-CC.jpg drill multi-axe · (B3) skill produce-batch-creatives NEW orchestrator (input matrice score-matrix + N angles + M personas + P mécaniques · génération parallèle 5 fal.ai calls simultanés max · output batch directory + manifest + sidecars) · (B4) skill index-batch + mode /phantom kara batches NEW (table batch · count créas · lifecycle states draft/generated/approved/shipped/tested/winner/fatigued/archived · feed atlas vivant Trigger 9) · (B5) creative.schema v1.2 → v1.3 (lifecycle_state enum + test_results[] · winner_proxy · CTR · conversion attribution). Total ~12h. Plus · upload sources officielles Largo logo SVG + packshots haute résolution remplaçant placeholders v2.43 (action manuelle · pas patch). Plus · skill pull-shopify-cdn-highres v2.45+ pour automatiser extract CDN haute fidélité quand dispo."
+}

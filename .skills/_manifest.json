@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-11T20:23:44Z",
-  "_count": 53,
+  "_generated_at": "2026-05-11T21:28:11Z",
+  "_count": 54,
   "skills": [
     {
       "name": "analyze-copy",
@@ -270,6 +270,24 @@
       "isolation_scope": "brand_only",
       "layer": 2,
       "path": ".skills/skills/compose-creative/SKILL.md"
+    },
+    {
+      "name": "compose-overlay-text",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "compose-creative": "compose-creative genere le visuel via fal.ai. compose-overlay-text intervient APRES pour fix logo + sub-text avec PIL.",
+        "recompose-creative": "recompose-creative cree variants (audience/platform/format). compose-overlay-text fixe la qualite d'un creative existant."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 3,
+      "path": ".skills/skills/compose-overlay-text/SKILL.md"
     },
     {
       "name": "connect-mcp-server",

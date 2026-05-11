@@ -5,6 +5,28 @@
 
 ---
 
+## v2.43.0 · 2026-05-11 · Chantier 1 fidélité visuelle
+
+**Why this release.** Cycle USAGE v2.43 sur kara/cellule-boost-anti-chute (premier test live E2E pipeline production post-cleanup v2.42) a livré CRT-01 ANG-02 avec succès (wordmark kara[care] préservé · 3 trust badges lisibles · mood mum-friendly correct). Mais 3 frictions runtime fal.ai nano-banana-pro/edit observées · (1) wordmark régression occasionnelle caractère par caractère (karaforz vu v2.36 · 3/3 retry parfois nécessaire). (2) drop accents français overlay text (médecin → medecin · Voilà → Voila sur CRT-01). (3) sub-text trust badges parfois flous 1K resolution. Largo a tranché chantier 1 fidélité visuelle avant batch scaling · catalog assets canon haute résolution par produit + logo SVG canonique brand + skill PIL post-gen composite.
+
+**What shipped.** 4 patches couplés (~8h cumulé · 3 agents parallèles).
+
+- **visual_identity.schema v1.0 → v1.1** · 3 nouveaux blocs additifs · `assets_canonical{}` catalog haute résolution local source (packshot_front/back/3_4/top + lifestyle[] requis path+resolution+format+background+captured_at) · `logo_svg{}` path vectoriel + variants enum 6 (primary/monochrome-black/monochrome-white/horizontal/vertical/icon) · `wordmark_pattern` regex strict validation runtime post-gen. Backward compat strict v1.0 préservé + additionalProperties true sous-objets pour accommoder noms champs alternatifs brand kara existing.
+- **Doctrine `docs/system/visual-identity-discipline.md` créée** · ~700 mots · 3 piliers (catalog assets produit + logo SVG brand + wordmark regex) · consumers (compose-creative HR1.4 v2.43+ priorité local > CDN + compose-overlay-text v2.43 NEW + decompose-ad reference) · migration 6 étapes pré-v2.43 · fallback graceful warning operator-facing translation.
+- **Structure assets/ kara live** ·
+  - Produit-level · `brands/kara/products/cellule-boost-anti-chute/assets/` (4 packshots placeholders · front 1784×1784 CDN extract · 3 slots transparent 1×1 attendant upload Largo) + README workflow upload
+  - Brand-level · `brands/kara/assets/` (logo.svg placeholder bordeaux #6E1A1F + 5 variants SVG + palette-reference.png 800×200 PIL render 3 swatches + README workflow + _brand-guidelines.md anti-patterns + placement canon bottom-right)
+  - `visual_identity.json` kara updated v1.0 → v1.1 (assets_canonical peuplé · logo_svg path · wordmark_pattern `^kara\[care\]$`)
+  - `brand.json` patched `_assets_canonical_path: "assets/"`
+- **Skill `compose-overlay-text` v1.0.0 NEW** · type producer · isolation_scope brand_only · layer 3 · DRGFP v2.38 4 prerequisites (creative source L1 · logo.svg L1 · visual_identity v1.1 L1 · overlay_spec L2 3 options). HR1-6 · PIL TrueType UTF-8 accents preserved (é è ê à â ù û ç ï î ô œ æ) avec font path fallback cross-OS · SVG composite cairosvg.svg2png + alpha channel · position canonique bottom-right padding 32px scale 10% · wordmark validation OCR pytesseract preferred OR SSIM skimage fallback ≥0.92 · retry 3x adjustments · trust badges precision triangle. Steps 0bis-7 avec write_to_context mutation rule canon respected. Cross-refs visual_identity.schema v1.1 + logo.svg + compose-creative v1.1.0 HR3.4 (complète, ne remplace pas) + compositional-cartography v2.42.
+- **Manifest regen** · 53 → 54 skills · PyYAML strict valide tous frontmatters.
+
+**Operator impact.** Pipeline production creative fidélité visuelle solide avant batch scaling (chantier 2 v2.44+). Chain v2.42 + v2.43 ferme · compose-creative génère via fal.ai puis compose-overlay-text fix post-gen PIL · logo SVG caractère par caractère préservé + sub-text UTF-8 accents préservés + wordmark validation regex strict. 3 frictions runtime CRT-01 résolues structurellement · plus de wordmark régression silencieuse · plus de drop accents · trust badges crisp lisibles. Brand kara existing pré-v2.43 non touché hors assets/ nouveau · upload manuel Largo source officielle logo SVG + packshots haute résolution attendu (placeholders fonctionnels en attendant). Backward compat strict additif.
+
+**Next.** v2.44+ chantier 2 format stockage batch (~12h · 5 patches) · creative-batch.schema.json · organisation hiérarchique batches/BATCH-XX/ + naming CRT-NN-ANG-AA-PER-BB-MEC-CC.jpg drill multi-axe · skill produce-batch-creatives orchestrator parallèle (5 fal.ai simultanés max) · skill index-batch + mode /phantom kara batches · creative.schema v1.3 lifecycle_state + test_results. Plus actions manuelles · upload sources officielles Largo logo SVG + packshots haute résolution remplaçant placeholders v2.43. Plus v2.45+ skill pull-shopify-cdn-highres pour automatiser extract CDN haute fidélité.
+
+---
+
 ## v2.42.0 · 2026-05-11 · Cleanup massif cycle matérialisation
 
 **Why this release.** Audit cartographique 10 scopes (session 2026-05-11) a révélé pattern systémique · PhantomOS v2.41 doctrine-mûr (5/5) mais runtime-jeune (2/5). 8 cycles releases v2.34-v2.41 ont produit doctrines/schemas/skills sans matérialisation runtime correspondante. Drifts accumulés · canon-tool v1.1 spec'd v2.37 mais 58/58 fiches en v1.0 · profile.schema v1.3 spec'd v2.39 mais kara live v1.2 avec mother/sub legacy · meta.entry_door spec'd jamais dans schema · HR-X audience cartography 6 checks spec'd jamais codés · etc. Largo a tranché "go clean tout" · résoudre l'arriéré en cycle dédié AVANT premier test live E2E pipeline.

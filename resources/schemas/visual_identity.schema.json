@@ -2,10 +2,11 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "visual_identity.schema.json",
   "title": "Visual Identity (sidecar)",
-  "description": "Schema canon pour visual identity d'un product. Sidecar typé. Lives in brands/{slug}/products/{product_slug}/visual_identity.json (sibling de spec.json). Source: avant v2.42, visual_identity vivait inline spec.json ou comme sidecar non-typé. Cette baseline v1.0 lock le shape (packshots + color_palette + container + content + label + distinctive_features) pour AI gen hard-constraints et audit consistency. Le block reste lisible inline dans spec.schema.json (backward read), mais nouveau writes recommended dans sidecar dédié pour navigation et taille.",
-  "_schema_version": "visual_identity/1.0",
+  "description": "Schema canon pour visual identity d'un product. Sidecar typé. Lives in brands/{slug}/products/{product_slug}/visual_identity.json (sibling de spec.json). Source: avant v2.42, visual_identity vivait inline spec.json ou comme sidecar non-typé. Baseline v1.0 lock le shape (packshots + color_palette + container + content + label + distinctive_features) pour AI gen hard-constraints et audit consistency. v1.1 v2.43 enrichit avec assets_canonical (catalog haute résolution local source) + logo_svg (vectoriel post-gen overlay) + wordmark_pattern (regex validation runtime). Le block reste lisible inline dans spec.schema.json (backward read), mais nouveau writes recommended dans sidecar dédié pour navigation et taille.",
+  "_schema_version": "visual_identity/1.1",
   "_changelog": {
-    "1.0": "v2.42 initial release. Schema canon dédié au visual identity sidecar product. Closes gap où visual_identity était soit inline spec.json soit sibling file sans schema typé (skills consumers AI gen ne savaient pas quelles propriétés étaient garanties). v1.0 shape: packshots (primary_front/back + lifestyle[] + cdn_paths[]), color_palette (primary_hex + secondary_hex[] + accent_hex[]), container (material/shape/dimensions/color), content (form_factor enum + quantity + unit), label (wordmark + claim + regulatory + placement + font_family), distinctive_features[] (hard constraints AI gen). Cross-ref skill-prerequisites.schema.json: skills consumers déclarant L1 prerequisite `spec.visual_identity` doivent migrer vers `visual_identity` path (sidecar) ou conserver lecture inline. Backward compat strict: lecteurs anciens lisent inline spec.json, sidecar additif. Source canon: PATCH 2A v2.42."
+    "1.0": "v2.42 initial release. Schema canon dédié au visual identity sidecar product. Closes gap où visual_identity était soit inline spec.json soit sibling file sans schema typé (skills consumers AI gen ne savaient pas quelles propriétés étaient garanties). v1.0 shape: packshots (primary_front/back + lifestyle[] + cdn_paths[]), color_palette (primary_hex + secondary_hex[] + accent_hex[]), container (material/shape/dimensions/color), content (form_factor enum + quantity + unit), label (wordmark + claim + regulatory + placement + font_family), distinctive_features[] (hard constraints AI gen). Cross-ref skill-prerequisites.schema.json: skills consumers déclarant L1 prerequisite `spec.visual_identity` doivent migrer vers `visual_identity` path (sidecar) ou conserver lecture inline. Backward compat strict: lecteurs anciens lisent inline spec.json, sidecar additif. Source canon: PATCH 2A v2.42.",
+    "1.1": "v2.43 enrichment. Ajout 3 blocs additifs pour fidélité visuelle compose-creative: (a) assets_canonical{} catalog haute résolution local source priorité sur URL CDN externe (packshot_front/back/3_4/top + packshot_lifestyle[]), (b) logo_svg{} référence vectorielle brand pour overlay PIL post-gen précis caractère par caractère (path + variants[] primary/monochrome_black/monochrome_white/horizontal/vertical/icon), (c) wordmark_pattern regex strict validation wordmark post-gen (ex Karacare '^kara\\[care\\]$' brackets mandatory, trigger HR3.4 retry compose-creative si broken). Backward compat strict additif: tous les fields v1.0 préservés (packshots URL CDN + color_palette + container + content + label + distinctive_features). Consumers: compose-creative v2.43+ HR1.4 priorité assets_canonical local > packshots.cdn_paths, compose-overlay-text v2.43 NEW PIL composite logo SVG + wordmark validation. Source canon: PATCH F1+F4 v2.43."
   },
   "type": "object",
   "required": ["_belongs_to", "meta"],
@@ -20,7 +21,7 @@
 
     "packshots": {
       "type": "object",
-      "description": "Photographies produit canoniques. primary_front et primary_back sont les deux vues hero utilisées par défaut. lifestyle[] = contextual product-in-use shots. cdn_paths[] = absolute URLs déployées (Cloudinary, Shopify CDN, S3) référençables par creative.schema execution et skill-driven AI gen.",
+      "description": "Photographies produit canoniques. primary_front et primary_back sont les deux vues hero utilisées par défaut. lifestyle[] = contextual product-in-use shots. cdn_paths[] = absolute URLs déployées (Cloudinary, Shopify CDN, S3) référençables par creative.schema execution et skill-driven AI gen. v2.43: fallback / backward compat vs assets_canonical haute résolution local (priorité assets_canonical si présent).",
       "properties": {
         "primary_front": {
           "type": ["string", "null"],
@@ -43,6 +44,117 @@
       }
     },
 
+    "assets_canonical": {
+      "type": "object",
+      "description": "Catalog assets canonique haute résolution par produit. Sources locales (PNG/JPG/WEBP haute def) priorité sur URL CDN externe (packshots field). Permet fidélité gen + fallback graceful vers CDN si absent. v2.43+. Consumers: compose-creative HR1.4 (priorité local > CDN), compose-overlay-text PIL composite, decompose-ad reverse-engineering fidélité analyse.",
+      "properties": {
+        "packshot_front": {
+          "type": "object",
+          "description": "Slot canon face produit, packshot pur centré. Slot principal hero.",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Path relative depuis brand root. Ex: 'products/cellule-boost-anti-chute/assets/packshot-canonical-front.png'."
+            },
+            "resolution": {
+              "type": "string",
+              "pattern": "^[0-9]+x[0-9]+$",
+              "description": "Résolution image source. Format strict 'WIDTHxHEIGHT'. Ex: '2048x2048'. Min recommandé 2000x2000."
+            },
+            "format": {
+              "type": "string",
+              "enum": ["png", "jpg", "webp"],
+              "description": "Format fichier. png prioritaire (fond transparent), jpg fond blanc pur, webp moderne."
+            },
+            "background": {
+              "type": "string",
+              "enum": ["transparent", "white", "neutral", "lifestyle"],
+              "description": "Type fond image source. transparent prioritaire (permet composite flexible), white = #FFFFFF pur, neutral = fond uni neutre non blanc, lifestyle = mise en scène context."
+            },
+            "captured_at": {
+              "type": "string",
+              "format": "date",
+              "description": "Date capture studio (YYYY-MM-DD). Permet rotation assets si re-shoot."
+            },
+            "_canonical": {
+              "type": "boolean",
+              "default": true,
+              "description": "Flag canon source. true = source pure validée Largo. false = placeholder en attente upload."
+            },
+            "_fallback_to_cdn": {
+              "type": "boolean",
+              "default": false,
+              "description": "Flag fallback. true = path placeholder ou basse résolution, compose-creative doit dégrader vers packshots.cdn_paths jusqu'à upload haute résolution."
+            }
+          },
+          "required": ["path", "resolution", "format", "background"]
+        },
+        "packshot_back": {
+          "type": "object",
+          "description": "Slot canon dos produit, texte composition/regulatory lisible. Ref: $ref vers packshot_front shape.",
+          "$ref": "#/properties/assets_canonical/properties/packshot_front"
+        },
+        "packshot_3_4": {
+          "type": "object",
+          "description": "Slot canon 3/4 perspective produit, texture/matériau visible. Ref: $ref vers packshot_front shape.",
+          "$ref": "#/properties/assets_canonical/properties/packshot_front"
+        },
+        "packshot_top": {
+          "type": "object",
+          "description": "Slot canon vue de haut produit, scale relative et top cap. Ref: $ref vers packshot_front shape.",
+          "$ref": "#/properties/assets_canonical/properties/packshot_front"
+        },
+        "packshot_lifestyle": {
+          "type": "array",
+          "description": "Slots canon lifestyle context (produit main qui prend gummy, table petit-déj, scene de vie). Ordered: index 0 = hero lifestyle préféré.",
+          "items": {
+            "$ref": "#/properties/assets_canonical/properties/packshot_front"
+          }
+        }
+      }
+    },
+
+    "logo_svg": {
+      "type": "object",
+      "description": "Logo brand source vectorielle SVG. Pour overlay PIL post-gen précis caractère par caractère (préserve accents typographiques, brackets, kerning custom). Permet wordmark validation runtime + composite logo crisp sur creative gen. v2.43+. Note: vit aussi cross-brand au niveau brand-level (brands/{slug}/assets/logo.svg) référencé via _belongs_to. Champ logo_svg sidecar product = override produit-spécifique si logo varie par SKU (rare).",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path relative depuis brand root. Ex: 'assets/logo.svg' (brand-level) ou 'products/{slug}/assets/logo-override.svg' (produit override)."
+        },
+        "variants": {
+          "type": "array",
+          "description": "Variantes logo brand (primary, monochrome, horizontal/vertical, icon). Ordered par usage fréquence.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "enum": ["primary", "monochrome_black", "monochrome_white", "horizontal", "vertical", "icon"],
+                "description": "Variante canonique. primary = logo standard couleur. monochrome_black/white = aplats pour fonds clairs/sombres. horizontal/vertical = orientation layout. icon = pictogramme isolé sans wordmark."
+              },
+              "path": {
+                "type": "string",
+                "description": "Path relative variant fichier SVG."
+              }
+            },
+            "required": ["name", "path"]
+          }
+        },
+        "_canonical": {
+          "type": "boolean",
+          "default": true,
+          "description": "Flag canon source. true = SVG source pure validée Largo. false = placeholder en attente."
+        }
+      },
+      "required": ["path"]
+    },
+
+    "wordmark_pattern": {
+      "type": "string",
+      "description": "Regex strict validation wordmark caractère par caractère post-gen compose-creative. Permet HR3.4 retry compose-creative si pattern broken (gen dérive sur wordmark complexe). Ex Karacare = '^kara\\[care\\]$' (brackets mandatory autour de 'care'). Ex marque sans brackets = '^[A-Z][a-z]+\\+?$'. Regex compilée runtime: si match wordmark détecté OCR creative gen → pass. Si broken (ex 'karaforz', 'karacore') → trigger retry avec contrainte renforcée. v2.43+."
+    },
+
     "color_palette": {
       "type": "object",
       "description": "Palette couleur produit (distincte de brand.tone_of_voice.color_palette qui est brand-level). primary_hex = couleur dominante du packaging. secondary_hex[] = couleurs secondaires (accents, gradients). accent_hex[] = couleurs spot pour highlights et CTAs visuels.",
@@ -62,7 +174,8 @@
           "items": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
           "description": "Couleurs accent pour highlights, CTAs visuels, badges."
         }
-      }
+      },
+      "additionalProperties": true
     },
 
     "container": {
@@ -85,7 +198,8 @@
           "type": ["string", "null"],
           "description": "Couleur dominante du contenant (distincte de l'étiquette). E.g. 'amber transparent', 'opaque white', 'matte black'. Pour AI gen container rendering."
         }
-      }
+      },
+      "additionalProperties": true
     },
 
     "content": {
@@ -110,7 +224,8 @@
           "type": ["integer", "null"],
           "description": "Nombre de doses/portions par contenant. Calculé ou déclaré. Permet de dériver duration estimée à dosage standard."
         }
-      }
+      },
+      "additionalProperties": true
     },
 
     "label": {
@@ -139,7 +254,8 @@
           "type": ["string", "null"],
           "description": "Famille typographique principale de l'étiquette. E.g. 'Helvetica Neue Bold', 'GT Sectra Display', 'custom-serif'. Source pour design system et AI gen consistency."
         }
-      }
+      },
+      "additionalProperties": true
     },
 
     "distinctive_features": {
@@ -167,7 +283,8 @@
         "updated": { "type": "string", "format": "date" },
         "created_by_skill": { "type": "string", "description": "Skill qui a généré ou consolidé visual identity. E.g. 'capture-visual-identity', 'snapshot-brand'." },
         "_field_types": { "type": "object" }
-      }
+      },
+      "additionalProperties": true
     }
   },
   "examples": [
@@ -182,6 +299,32 @@
           "https://cdn.shopify.com/.../packshot-back.png"
         ]
       },
+      "assets_canonical": {
+        "packshot_front": {
+          "path": "products/energizing-gummies/assets/packshot-canonical-front.png",
+          "resolution": "2048x2048",
+          "format": "png",
+          "background": "transparent",
+          "captured_at": "2026-05-06",
+          "_canonical": true
+        },
+        "packshot_back": {
+          "path": "products/energizing-gummies/assets/packshot-canonical-back.png",
+          "resolution": "2048x2048",
+          "format": "png",
+          "background": "transparent",
+          "_canonical": true
+        }
+      },
+      "logo_svg": {
+        "path": "assets/logo.svg",
+        "variants": [
+          { "name": "primary", "path": "assets/logo-variants/logo-primary.svg" },
+          { "name": "monochrome_black", "path": "assets/logo-variants/logo-monochrome-black.svg" }
+        ],
+        "_canonical": true
+      },
+      "wordmark_pattern": "^ENERGIZE$",
       "color_palette": {
         "primary_hex": "#1A3A8F",
         "secondary_hex": ["#F2C94C", "#FFFFFF"],
