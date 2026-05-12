@@ -252,7 +252,7 @@ Trigger event qui déclenche l'achat.
 ### HR4 · Cross-validate Schwartz double-stage
 
 Pour chaque sub-cluster, identifier :
-- `product_stage` : niveau Schwartz produit-spécifique (ex `product_aware` sur kara)
+- `product_stage` : niveau Schwartz produit-spécifique (ex `product_aware` sur une brand donnée)
 - `emotional_stage` : niveau émotionnel orthogonal (ex `pain-active` vs `solution-seeking`)
 
 Note : peut différer (cf D#384 multi-product binding · audit S55).

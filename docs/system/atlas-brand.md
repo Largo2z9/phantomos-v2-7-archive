@@ -37,14 +37,14 @@ Distinction critique :
 ## Navigation atlas brand · `/phantom`
 
 L'atlas brand est navigable via `/phantom` (cockpit principal) :
-- `/phantom kara` (mode brand) · vue état global atlas (substrat L1/L3, mutations recent, next-suggested)
-- `/phantom kara audiences` · drill entité audiences
-- `/phantom kara audiences chute-post-grossesse` · drill item profil 8 dim
-- `/phantom kara products` · drill products
-- `/phantom kara angles` · drill angles
-- `/phantom kara creatives` · drill creatives produced (v2.36 si shippé)
-- `/phantom kara matrix` · drill scoring matrice (v2.36 si shippé)
-- `/phantom kara briefs` · drill briefs et tests (v2.36 si shippé)
+- `/phantom {brand_slug}` (mode brand) · vue état global atlas (substrat L1/L3, mutations recent, next-suggested)
+- `/phantom {brand_slug} audiences` · drill entité audiences
+- `/phantom {brand_slug} audiences {audience_slug}` · drill item profil 8 dim
+- `/phantom {brand_slug} products` · drill products
+- `/phantom {brand_slug} angles` · drill angles
+- `/phantom {brand_slug} creatives` · drill creatives produced (v2.36 si shippé)
+- `/phantom {brand_slug} matrix` · drill scoring matrice (v2.36 si shippé)
+- `/phantom {brand_slug} briefs` · drill briefs et tests (v2.36 si shippé)
 
 ## Distinction vs `_snapshot.md`
 

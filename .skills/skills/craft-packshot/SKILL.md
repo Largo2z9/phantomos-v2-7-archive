@@ -62,7 +62,7 @@ description: >
   produit hardcoded). Prompt naturel français court (langue maternelle opérateur · 50-300 chars max), pas
   redécrire ce que le model voit dans l'image attachée. Operator gate validation Step 5 obligatoire avant
   flag _canonical: true. Save asset packshot canonical réutilisable par compose-creative downstream.
-  Pattern stress-testé S55 v2.44 sur cellule-boost gen v10 (silhouette préservée + text verbatim + 8/8 pass
+  Pattern stress-testé S55 v2.44 sur {product_slug} gen v10 (silhouette préservée + text verbatim + 8/8 pass
   · 1 attempt vs 9 échouées sur endpoint legacy nano-banana-pro/edit).
 disambiguates_against:
   compose-creative: "compose-creative consume canonical packshot pour générer pub paid social. craft-packshot CRÉE le canonical packshot upstream (asset source of truth)."
@@ -84,8 +84,8 @@ produces_proposals_for:
   - brands/{slug}/products/{slug}/assets/packshot-canonical-{angle}-{date}-gen-v{N}.png
   - brands/{slug}/products/{slug}/visual_identity.json#assets_canonical
 patch_notes:
-  v1.0.0: "v2.44 ship schema-driven canonical packshot generation. Workflow scrape → score → pick source → upload fal.ai → compose prompt depuis schémas → gen IA → quality assessment 8 critères → operator gate → persist canonical. Stress-testé S55 sur vitamines-hair-boost gen v2 (8/8 pass · Goût myrtille & framboise restored verbatim · zero hallucination cert badge text · all French diacritics preserved). Pattern schema-driven généralisable cross-produit même brand et cross-brand sous condition visual_identity v1.1+ populated."
-  v1.1.0: "v2.44 swap endpoint nano-banana-pro/edit (Gemini 2.5 Flash Image legacy) → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025). Prompt template naturel français court (langue maternelle opérateur · 50-300 chars max · une seule variable container.shape · le reste constant · le model voit l'image attachée donc pas besoin de redécrire produit/couleur/matériaux/text label) vs verbeux corporate v1.0 (4000+ chars 16 variables). Stress-testé cellule-boost gen v10 · 1 attempt vs 9 échouées endpoint legacy (silhouette bouteille réinventée OR text gibberish). 2 nouveaux HR · HR-ANTI-VERBOSE (prompt minimum viable) + HR-MODEL-VERSIONING (verify latest endpoint version dispo pre-call). Doctrine sœur · docs/system/model-versioning-canon.md v2.44 NEW."
+  v1.0.0: "v2.44 ship schema-driven canonical packshot generation. Workflow scrape → score → pick source → upload fal.ai → compose prompt depuis schémas → gen IA → quality assessment 8 critères → operator gate → persist canonical. Stress-testé S55 sur {product_slug} gen v2 (8/8 pass · text verbatim restored · zero hallucination cert badge text · all French diacritics preserved). Pattern schema-driven généralisable cross-produit même brand et cross-brand sous condition visual_identity v1.1+ populated."
+  v1.1.0: "v2.44 swap endpoint nano-banana-pro/edit (Gemini 2.5 Flash Image legacy) → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025). Prompt template naturel français court (langue maternelle opérateur · 50-300 chars max · une seule variable container.shape · le reste constant · le model voit l'image attachée donc pas besoin de redécrire produit/couleur/matériaux/text label) vs verbeux corporate v1.0 (4000+ chars 16 variables). Stress-testé {product_slug} gen v10 · 1 attempt vs 9 échouées endpoint legacy (silhouette bouteille réinventée OR text gibberish). 2 nouveaux HR · HR-ANTI-VERBOSE (prompt minimum viable) + HR-MODEL-VERSIONING (verify latest endpoint version dispo pre-call). Doctrine sœur · docs/system/model-versioning-canon.md v2.44 NEW."
 ---
 
 # Skill: craft-packshot
@@ -132,7 +132,7 @@ Output state map + confidence_chain[] init.
 - Optionnel (ex `sensory_profile.scent_family` pour produit functional) → skip dans prompt sans flag.
 - Required pour ce produit (ex `visual_identity.container.material`) → L3 degraded mode, flag opérateur gate (*"je n'ai pas X dans ta fiche, je continue avec valeur par défaut Y ou tu remplis d'abord ?"*).
 
-**Anti-pattern.** Skill avec branche `if brand == "kara" then prompt_kara else if brand == "shanty" then prompt_shanty`. Drift cross-produit inévitable, scaling cassé. Pattern schema-driven valide aux tests Phase 1 v2.44 stress-test.
+**Anti-pattern.** Skill avec branche `if brand == "brand_a" then prompt_a else if brand == "brand_b" then prompt_b`. Drift cross-produit inévitable, scaling cassé. Pattern schema-driven valide aux tests Phase 1 v2.44 stress-test.
 
 ---
 
@@ -200,7 +200,7 @@ Prompt MUST inclure explicitement :
 - Section `NEGATIVE INSTRUCTIONS` avec mots à NE PAS render (anti-faux-français : NO marble, NO frumboise, NO inventés diacritics).
 - `"All {brand_language} diacritics preserved character-by-character (é è ê à â ù û ç î ï ô œ æ)"`.
 
-**Sans ces 4 blocs anti-hallucination, le pattern régresse.** Audit S55 v2.44 vitamines-hair-boost gen v1 → `Goût myrtille & framboise` rendu `marble & frumboise` (hallucination textuelle). Gen v2 avec ces 4 blocs ajoutés → 8/8 pass.
+**Sans ces 4 blocs anti-hallucination, le pattern régresse.** Audit S55 v2.44 test brand workspace gen v1 → flavor text rendu en quasi-anglicismes (hallucination textuelle sur diacritics français). Gen v2 avec ces 4 blocs ajoutés → 8/8 pass.
 
 ---
 
@@ -369,7 +369,7 @@ Source pickée:
 
 Prompt brief (résumé non-jargon):
   {1-2 lignes résumé · ex "studio packshot fond blanc pur, label verbatim
-   kara[care] + CELLULE BOOST + composition Biotine·Vitamine E·Adiantum,
+   wordmark with brackets + product name + composition list,
    accents FR préservés, anti-hallucination strict"}
 
 Packshot généré:
@@ -481,4 +481,4 @@ Operator-facing summary final :
 - DRGFP : `docs/system/dependency-resolution-protocol.md` v2.38+ (L1/L2/L3 gap-filling Step 0bis canon).
 - Sibling skills : `compose-creative` (consume canonical packshot downstream), `compose-overlay-text` (PIL post-gen raffine MODIFIEURS), `define-specs` (encode visual_identity prerequisite), `import-product-visuals` (futur skill v2.4X upload bulk multi-angles).
 - Doctrines : `docs/system/contextual-intelligence.md` (operator-facing rule absolue), `docs/system/schema-encoding-discipline.md` (substrate canon SED v2.X · schema-driven obligatoire HR1), `docs/system/canonical-matrix-reasoning.md` (production discipline · craft-packshot = NOYAU producer asset canon réutilisable), `docs/system/model-versioning-canon.md` v2.44 NEW (HR-MODEL-VERSIONING canon · vérifier latest endpoint version dispo pre-call API externe).
-- Audit ref · S55 v2.44 stress test cellule-boost gen v10 nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025) · silhouette préservée + text verbatim + 8/8 pass · 1 attempt vs 9 attempts échouées sur endpoint legacy `nano-banana-pro/edit` (Gemini 2.5 Flash Image · silhouette bouteille réinventée OR text gibberish). Pattern v1.1 swap endpoint + prompt naturel français court résout cycle complet · operator Largo validé canon 2026-05-12.
+- Audit ref · S55 v2.44 stress test {product_slug} gen v10 nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025) · silhouette préservée + text verbatim + 8/8 pass · 1 attempt vs 9 attempts échouées sur endpoint legacy `nano-banana-pro/edit` (Gemini 2.5 Flash Image · silhouette bouteille réinventée OR text gibberish). Pattern v1.1 swap endpoint + prompt naturel français court résout cycle complet · operator validé canon 2026-05-12.

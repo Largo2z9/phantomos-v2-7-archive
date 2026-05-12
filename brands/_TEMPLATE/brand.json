@@ -326,5 +326,11 @@
       "validation_status": "hypothesis",
       "_notes": "Read-only index. Source of truth = audiences/{slug}/profile.json. Gives agents a flat view of all audience pockets without opening each file. validate-resources checks index ↔ folders consistency."
     }
-  ]
+  ],
+  "strategic_context": {
+    "stage": null,
+    "momentum": null,
+    "market": null,
+    "atlas_state": null
+  }
 }

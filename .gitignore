@@ -3,5 +3,9 @@
 *.env
 **/*.env
 
+# Backup files
+*.bak
+**/*.bak
+
 # Runtime outputs
 _validation-report.json

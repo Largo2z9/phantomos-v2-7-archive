@@ -5,6 +5,24 @@
 
 ---
 
+## v2.45.0 · 2026-05-12 · Ship-readiness cleanup brand-agnostic
+
+**Why this release.** Audit ship-readiness a révélé template public GitHub Largo2z9/phantomos contenait leaks données test brand-side (Karacare hardcoded canon copy + skills + doctrines · credentials physique présent · 58 .bak résidus migration v2.42 · .context-agents.yaml owner hardcoded). Opérateur agency cloning repo voyait "ce template a été testé sur Karacare" · cassait promesse brand-agnostic. v2.45 clean ship-ready pour redistribution publique.
+
+**What shipped.**
+
+- **P0 sécurité** · `credentials_shared.env` physique supprimé · keys jamais committed · gitignore confirmed.
+- **P1 cleanliness** · 58 fichiers `.bak` migration v2.42 supprimés + gitignore `*.bak` · `.context-agents.yaml` owner `largo` × 6 → `operator` · `brands/_EXAMPLE` v2.1 → v2.2 + `_TEMPLATE` strategic_context parity.
+- **P2 anonymisation canon copy** · 18 fiches patchées · Karacare → Glowco × 11 · Hair Boost → Glow Boost × 5 · Cellule Boost → Cell Boost × 4. Substance pédagogique 100% préservée.
+- **P2 anonymisation skills + doctrines** · 13 fichiers · 38 occurrences `kara` → `{brand_slug}` placeholder template canon. 9 SKILL.md + 4 doctrines docs/system. Leçons techniques préservées (wordmark brackets pattern · audit S55 · cycle prompt simple · model versioning · 8 critères quality · audience hierarchy).
+- **Manifest regen** · 55 skills + 71 jargon entries · 0 warning.
+
+**Operator impact.** Template ship-ready distribuable GitHub sans leak données test. Opérateur clone repo voit template brand-agnostic · canon Glowco fictif · skills `{brand_slug}` placeholder · doctrines anonymes. 55 skills + 17 doctrines + canon copywriting 11 chapitres × 58 fiches opérables. `credentials_shared.env.example` template fourni.
+
+**Next.** v2.46+ · skills consumers nano-banana-pro/edit → nano-banana-2/edit (compose-creative · recompose-creative · decompose-ad) · adapt doctrine model-versioning-canon less strict · craft-packshot UX bootstrap · cross-brand test non hair-care · validate-resources runtime HR-21 + HR external_apis · CHANGELOG narrative anonymisation pass P3 deferred.
+
+---
+
 ## v2.44.0 · 2026-05-12 · craft-packshot v1.1 endpoint swap + doctrine model-versioning-canon
 
 **Why this release.** Cycle USAGE v2.44 stress test cellule-boost canonical packshot a livré 9 attempts échouées sur endpoint legacy `fal-ai/nano-banana-pro/edit` (Gemini 2.5 Flash Image · pre-novembre 2025) avant que swap vers `fal-ai/nano-banana-2/edit` (Gemini 3 Pro Image · canon novembre 2025) résolve en 1 attempt avec prompt naturel français court. Pattern récurrent · v1-v2 nano-banana-pro/edit régressait silhouette bouteille (pot trapu hors fidélité brand) OR text fidelity (digit swap 1→2 sur duration · plural drop conçus→conçu sur subtitle). v3-v8 endpoints openai régressaient silhouette drift. v9 nano-banana-pro/edit good silhouette préservée mais pas max canon · text drift mineur. v10 nano-banana-2/edit canon novembre 2025 (Gemini 3 Pro Image) résout silhouette + text + 8/8 quality check pass en 1 attempt avec brief minimal naturel. Apprentissage canon · le canon de novembre 2025 n'était plus le canon de mai 2026 pour skills PhantomOS · drift silencieux entre release modèle vendor et adoption skill.

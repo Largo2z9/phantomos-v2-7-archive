@@ -167,7 +167,7 @@ Logo SVG composite via cairosvg + PIL :
 
 Apres composite, valider wordmark_pattern regex (visual_identity.json v1.1) sur region logo :
 
-- Path 1 (preferred) · OCR region logo via pytesseract si dispo runtime. Match regex compile depuis `visual_identity.wordmark_pattern` (ex Karacare `^kara\[care\]$`).
+- Path 1 (preferred) · OCR region logo via pytesseract si dispo runtime. Match regex compile depuis `visual_identity.wordmark_pattern` (ex wordmark with brackets `^example\[brand\]$`).
 - Path 2 (fallback) · structural similarity SSIM vs SVG source apres rasterize equivalente. Threshold `>=0.92` pass.
 
 Si validation echoue (regex no-match OU SSIM < 0.92) :
@@ -277,7 +277,7 @@ def composite_badges(creative_img, badges_spec, font_path, font_size=24):
         text = badge["text"]  # accents preserves via UTF-8
         position = badge["position"]
         bg_color = badge.get("bg_color", (255, 255, 255, 200))
-        text_color = badge.get("text_color", (110, 26, 31, 255))  # bordeaux kara
+        text_color = badge.get("text_color", (110, 26, 31, 255))  # bordeaux brand
 
         # Background pill
         bbox = draw.textbbox(position, text, font=font)

@@ -1,0 +1,70 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.45.0",
+  "released_at": "2026-05-12",
+  "compatible_from": "2.0.0",
+  "type": "ship_readiness_cleanup",
+  "summary": "Cleanup brand-agnostic · template public GitHub-ready · P0 sécurité + P1 cleanliness + P2 anonymisation.",
+  "changes": [
+    {
+      "category": "security",
+      "action": "removed",
+      "files": ["credentials_shared.env (physique workspace-template/)"],
+      "section": "P0 · credentials physique supprimé",
+      "rationale": "credentials_shared.env contenait FAL_API_KEY + OPENAI_API_KEY + TRENDTRACK_API_KEY actives. Jamais committed (gitignored v2.35 *.env pattern strict) mais présent physiquement = leak risk si clone/rsync workspace template. Supprimé physiquement. Garde uniquement credentials_shared.env.example template sans clés. gitignore *.env + **/*.env patterns confirmés. Keys jamais commit · pas de rotation nécessaire."
+    },
+    {
+      "category": "cleanliness",
+      "action": "removed",
+      "files": ["resources/canon/copy/**/*.json.bak (58 fichiers)"],
+      "section": "P1 · 58 fichiers .bak migration v2.42 supprimés",
+      "rationale": "58 fichiers .bak créés v2.42 migration canon-tool v1.0 → v1.1 · resilience backup pre-migration · maintenant inutiles. Polluaient git tree + grep cross-search. Suppression physique + gitignore *.bak pattern ajouté pour bloquer commits accidentels futurs. Note · ces .bak étaient committed dans git history pre-v2.45 · présents history même après git rm · acceptable (juste snapshots JSON pre-migration · pas de secrets)."
+    },
+    {
+      "category": "cleanliness",
+      "action": "patched",
+      "files": [".context-agents.yaml"],
+      "section": "P1 · .context-agents.yaml owner: \"largo\" × 6 → \"operator\"",
+      "rationale": ".context-agents.yaml hardcode owner: \"largo\" × 6 (3 actifs + 3 commentés future agents). Violation memory user skills_generic_vs_personal · fichier structurant générique du template doit être operator-agnostic. Replace par owner: \"operator\". Scan post-patch · 0 mention \"largo\" restante."
+    },
+    {
+      "category": "data_migration",
+      "action": "migrated",
+      "files": ["brands/_EXAMPLE/brand.json (v2.1 → v2.2)", "brands/_TEMPLATE/brand.json (v2.2 strategic_context parity)"],
+      "section": "P1 · _EXAMPLE + _TEMPLATE parité v2.2",
+      "rationale": "_EXAMPLE brand.json v2.1 drift vs _TEMPLATE v2.2 detected audit ship-ready. Migration _EXAMPLE → v2.2 · ajout creative_zone + brand_equity_level + strategic_context (4 axes modulateurs scoring) + _field_types extension. _TEMPLATE/brand.json manquait strategic_context (vs _EXAMPLE v2.2 plein) · parity ajoutée. Cohérence schema v2.2 strict entre _TEMPLATE et _EXAMPLE confirmée."
+    },
+    {
+      "category": "anonymisation_canon",
+      "action": "patched",
+      "files": ["resources/canon/copy/**/*.json (18 fiches)"],
+      "section": "P2 · canon copy 18 fiches anonymisées brand-agnostic",
+      "rationale": "Audit ship-ready a flag 7 fiches contiennent Karacare hardcoded · scan exhaustif révèle 10 fiches Karacare + 8 fiches sub-products Hair Boost/Cellule Boost = 18 fiches total. Anonymisation Karacare → Glowco × 11 (brand fictive déjà utilisée _EXAMPLE workspace template · cohérence canonique). Hair Boost → Glow Boost × 5 (sub-product vitamins). Cellule Boost → Cell Boost × 4 (sub-product mechanism). Substance pédagogique 100% préservée · registre DR-aggressive post-grossesse maintenu · sourcing canon Schwartz/Halbert/Hormozi intact · structure exemples qualify→understand→educate · before-after-bridge · mécanisme-unique-vs-soin-de-surface inchangée. Validation post-replace · 0 résiduel kara/Karacare/kara[care] dans resources/canon/copy/."
+    },
+    {
+      "category": "anonymisation_skills_doctrines",
+      "action": "patched",
+      "files": [".skills/skills/learn-from-session/SKILL.md (8 refs)", ".skills/skills/compose-creative/SKILL.md (3)", ".skills/skills/decompose-ad/SKILL.md (3)", ".skills/skills/compose-overlay-text/SKILL.md (2)", ".skills/skills/craft-packshot/SKILL.md (2)", ".skills/skills/produce-paid-angles/SKILL.md (2)", ".skills/skills/snapshot-brand/SKILL.md (2)", ".skills/skills/profile-audience/SKILL.md (1)", ".skills/skills/recompose-creative/SKILL.md (1)", "docs/system/atlas-brand.md (8)", "docs/system/visual-identity-discipline.md (3)", "docs/system/audience-cartography.md (2)", "docs/system/operator-vocabulary-translation.md (1)"],
+      "section": "P2 · 13 fichiers skills + doctrines anonymisés (38 occurrences kara)",
+      "rationale": "Audit ship-ready a flag 9 SKILL.md (worst learn-from-session 8x) + 4 doctrines docs/system mentionnent kara · template doit être brand-agnostic distribution publique. Pattern canonique adopté · {brand_slug} placeholder template (déjà utilisé 30+ occurrences existing skills query-context/scaffold-extension/ingest-resource/decompose-ad/snapshot-brand/compose-creative cohérent) vs examplebrand (zéro occurrence préexistante · risque drift terminologique). Replacements · kara → {brand_slug} ou {brand_name} selon contexte · Karacare → wordmark with brackets prose pédagogique (preserve leçon technique sans nommer marque) · kara[care] regex → example[brand] · cellule-boost → {product_slug} · vitamines-hair-boost → {product_slug} ou test brand workspace. Leçons techniques 100% préservées · pattern wordmark brackets · audit S55 régression label · cycle prompt simple vs verbeux · model versioning canon novembre 2025 · 8 critères quality assessment · mère/sous-audience hierarchy. Validation post-anonymisation · 0 résultat grep kara/Karacare dans skills/ + docs/system/ + docs/doctrine/."
+    },
+    {
+      "category": "infrastructure",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "section": "Manifest regen post-anonymisation",
+      "rationale": "Régénération manifest via python3 .skills/build-manifest.py post-patches skills · 55 skills présents + 71 jargon entries · 0 warning PyYAML strict parser · cohérence frontmatter validée."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [
+    {
+      "scope": "brands/_EXAMPLE + _TEMPLATE",
+      "mode": "schema parity v2.2",
+      "trigger": "ship release v2.45.0",
+      "fallback": "_EXAMPLE backward compat read v2.1 entries existing"
+    }
+  ],
+  "operator_impact": "Template PhantomOS v2.45 ship-ready distribuable publiquement sur GitHub (Largo2z9/phantomos) sans leak données test brand-side. Nouveau opérateur agency qui clone le repo voit template brand-agnostic · canon copy avec marque fictive Glowco · skills avec {brand_slug} placeholder · doctrines anonymes. Substance pédagogique préservée · leçons techniques visibles · workflow opérationnel intact (55 skills + 17 doctrines + canon copywriting 11 chapitres × 58 fiches). credentials_shared.env.example template fourni · opérateur drop ses tokens. Backward compat strict additif partout.",
+  "next_release_note": "v2.46+ patches identifiés · (a) Skills consumers nano-banana-pro/edit migration vers nano-banana-2/edit (compose-creative · recompose-creative · decompose-ad) · doctrine model-versioning-canon v2.44 spec'd · runtime 1/4 actuellement. (b) Adapt doctrine model-versioning-canon · enlever obligation auto_upgrade + version_check_url runtime · garder annotation version_canon_date · pragma less strict (Largo session 2026-05-12 feedback). (c) craft-packshot UX bootstrap · chain setup-brand → define-specs → craft-packshot quand schemas absents (non juste flag missing). (d) Cross-brand test workflow craft-packshot · valider sur produit autre brand non hair-care (skincare · supplement · food) · confirm pattern schema-driven généralise. (e) validate-resources runtime · HR-21 audience cartography hierarchy + HR-X external_apis · spec'd doctrine pas codé · drift permanent v2.39-v2.45. (f) CHANGELOG narrative anonymisation pass · scope P3 deferred (mention historique kara acceptable transparent · refactor v2.46+ si signal opérateur fort)."
+}

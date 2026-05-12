@@ -4,10 +4,10 @@
 
 ## Le problème
 
-PhantomOS génère creatives via fal.ai (compose-creative skill). Sans sources canoniques haute résolution, la génération dérive. Packshots flous. Logos régressés. Wordmarks broken (kara[care] retourné en karaforz, karacore, kara|core). Le schéma v1.0 référençait uniquement les packshots via URL CDN externe (`packshots.primary_front`, `packshots.cdn_paths[]`) , dépendance fragile sur qualité variable Shopify CDN et résolutions hétérogènes.
+PhantomOS génère creatives via fal.ai (compose-creative skill). Sans sources canoniques haute résolution, la génération dérive. Packshots flous. Logos régressés. Wordmarks broken (un wordmark with brackets retourné en variantes sans brackets, caractères corrompus, séparateurs altérés). Le schéma v1.0 référençait uniquement les packshots via URL CDN externe (`packshots.primary_front`, `packshots.cdn_paths[]`) , dépendance fragile sur qualité variable Shopify CDN et résolutions hétérogènes.
 
 Conséquences observées en cycle USAGE post v2.42 ship ·
-- Wordmark Karacare drift sur 30%+ des gens compose-creative
+- Wordmark with brackets drift sur 30%+ des gens compose-creative
 - Couleurs label régressées (bordeaux dévié vers brun)
 - Packshot front net mais composite logo overlay flou (vectoriel absent en input)
 - Lifestyle gen totalement inventé (pas de référence catalog)
@@ -56,7 +56,7 @@ Strict validation wordmark caractère par caractère post-gen compose-creative. 
 - Broken (drift caractère) → trigger HR3.4 retry compose-creative avec contrainte renforcée
 
 Exemples ·
-- Karacare · `^kara\[care\]$` (brackets mandatory autour de "care")
+- Wordmark with brackets · `^example\[brand\]$` (brackets mandatory autour du segment central)
 - Marque sans brackets simple · `^[A-Z][a-z]+\+?$` (capital first, optionnel +)
 - Marque avec espace · `^ENERGIZE GUMMIES$`
 

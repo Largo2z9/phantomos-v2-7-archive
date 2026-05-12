@@ -18,7 +18,7 @@ agents:
     allowed_entities: [profile]
     allowed_modes: [proposed]
     max_confidence: 0.85
-    owner: "largo"
+    owner: "operator"
     description: >
       Scrape voice-of-market (Reddit, Trustpilot, Meta Ads Library) for a product.
       Mine pain points, desires, objections, and voice markers.
@@ -28,7 +28,7 @@ agents:
     allowed_entities: [learning]
     allowed_modes: [proposed]
     max_confidence: 0.85
-    owner: "largo"
+    owner: "operator"
     description: >
       Analyze fit between product (spec.json) and audience (profile.json).
       Compute fit score 0–10, identify gaps, propose strategic priority.
@@ -53,7 +53,7 @@ agents:
     allowed_entities: [brand, product, offer, profile, learning, strategy]
     allowed_modes: [proposed]
     max_confidence: 0.9
-    owner: "largo"
+    owner: "operator"
     description: "Registered playbooks / orchestrators. Execute multi-step workflows with proposal mode."
 
   # ============================================================================
@@ -64,19 +64,19 @@ agents:
   #   allowed_entities: [learning]
   #   allowed_modes: [proposed]
   #   max_confidence: 0.75
-  #   owner: "largo"
+  #   owner: "operator"
   #   description: "Monitor competitor Meta ads + pricing, flag changes."
   #
   # - id_pattern: "trend-watcher@*"
   #   allowed_entities: [profile]
   #   allowed_modes: [proposed]
   #   max_confidence: 0.7
-  #   owner: "largo"
+  #   owner: "operator"
   #   description: "Track Google Trends + Reddit trending topics related to brand category."
   #
   # - id_pattern: "freshness-checker@*"
   #   allowed_entities: [brand, product, profile]
   #   allowed_modes: [proposed]
   #   max_confidence: 1.0
-  #   owner: "largo"
+  #   owner: "operator"
   #   description: "Detect stale entities (last_updated > 60d), flag for refresh."

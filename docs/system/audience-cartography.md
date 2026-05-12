@@ -4,7 +4,7 @@
 
 ## The problem this solves
 
-A product page does not tell the agent who buys the product. It tells the agent what the product is. Naively scraping a page and outputting "Audience: women, problem: hair loss" is form-fill, not cartography. The operator ends up tearing the classification apart and rebuilding it manually (S55 karacare test: operator had to re-do the entire audience hierarchy because the agent had collapsed seven audiences into one flat "femmes-cheveux-fragiles").
+A product page does not tell the agent who buys the product. It tells the agent what the product is. Naively scraping a page and outputting "Audience: women, problem: hair loss" is form-fill, not cartography. The operator ends up tearing the classification apart and rebuilding it manually (S55 brand-side test workspace: operator had to re-do the entire audience hierarchy because the agent had collapsed seven audiences into one flat "femmes-cheveux-fragiles").
 
 The fix is not better extraction. It is a different posture. The agent presents **observations**, then proposes **multiple cartographies**, then offers a **hierarchy by default**, then hands off to the next skill with **explicit pedagogy** about how the audience encoding will be exploited downstream.
 
@@ -89,7 +89,7 @@ The old Step 5 (1.x) ran:
 3. Single complementary question if missing data (Step 5C)
 4. Existing data probe (Step 5D)
 
-It produced a flat single audience with no axis declaration, no hierarchy, no hand-off pedagogy. It systematically forced the operator to rebuild the cartography by hand. The S55 karacare test exposed this in 6+ minutes of operator-driven re-classification ("femme magrébine voilée 18-30" → "deux audiences mères + 3 sous"), which is exactly the work the agent should have done autonomously by proposing 3 axes upfront.
+It produced a flat single audience with no axis declaration, no hierarchy, no hand-off pedagogy. It systematically forced the operator to rebuild the cartography by hand. The S55 brand-side test workspace exposed this in 6+ minutes of operator-driven re-classification (a single flat persona → "deux audiences mères + 3 sous"), which is exactly the work the agent should have done autonomously by proposing 3 axes upfront.
 
 ## What stays unchanged
 

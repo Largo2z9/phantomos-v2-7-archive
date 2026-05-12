@@ -1,7 +1,7 @@
 {
   "$comment": "EXEMPLE — Brand fictive Glowco. Montre à quoi ressemble un brand.json rempli, aligné sur _TEMPLATE.",
   "_schema": "brand/L1-brand",
-  "_version": "2.1",
+  "_version": "2.2",
   "_field_types": {
     "identity.*": "stated",
     "positioning.*": "stated",
@@ -30,7 +30,29 @@
     "market.competitors[].primary_channel": "structured",
     "market.competitors[].positioning": "structured",
     "market.awareness_distribution.*": "structured",
-    "market.regulatory.*": "observed"
+    "market.regulatory.*": "observed",
+    "brand_equity_level": "stated",
+    "creative_zone.min": "derived",
+    "creative_zone.max": "derived",
+    "creative_zone.dominant": "derived",
+    "creative_zone._observed_on_n_creatives": "derived",
+    "strategic_context.stage": "structured",
+    "strategic_context.momentum": "structured",
+    "strategic_context.market": "structured",
+    "strategic_context.atlas_state": "structured"
+  },
+  "brand_equity_level": null,
+  "creative_zone": {
+    "min": null,
+    "max": null,
+    "dominant": null,
+    "_observed_on_n_creatives": 0
+  },
+  "strategic_context": {
+    "stage": null,
+    "momentum": null,
+    "market": null,
+    "atlas_state": null
   },
   "purchase_driver": "pain",
   "meta": {
@@ -312,6 +334,7 @@
     }
   ],
   "_changelog": {
+    "2.2": "v2.42-schema-alignment: creative_zone + brand_equity_level + strategic_context placeholders. 4 axes modulateurs scoring brand-level. Backward compat: null = pas observé.",
     "2.1": "S30d-close: purchase_driver added (brand-level default, cascades to audiences). audience_trees[] added (optional marketplaces). Per D#243, D#244, D#246, D#250."
   }
 }

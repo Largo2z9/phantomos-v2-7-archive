@@ -365,7 +365,7 @@ ANG-{N} · {angle name}
   CTA               {cta or "à créer"}
 ```
 
-En surface opérateur (rendu human-readable), le terme *Schwartz* reste recevable comme référence auteur (*"Schwartz conscience: solution-aware"*). Le field name canonique côté schema/JSON est `awareness_stage`. Le lignage rend l'angle **traçable** : `/phantom karacare angles ANG-03` pourra rendre la chaîne compositionnelle lue à travers l'atlas. C'est aussi ce qui débloquera les vues `copy-matrix` et `copy-map`.
+En surface opérateur (rendu human-readable), le terme *Schwartz* reste recevable comme référence auteur (*"Schwartz conscience: solution-aware"*). Le field name canonique côté schema/JSON est `awareness_stage`. Le lignage rend l'angle **traçable** : `/phantom {brand_slug} angles ANG-03` pourra rendre la chaîne compositionnelle lue à travers l'atlas. C'est aussi ce qui débloquera les vues `copy-matrix` et `copy-map`.
 
 **Persistence brand-side (angle.schema v1.2).** Le lignage canon est ALSO écrit dans `brands/{slug}/angles/{ANG-N}.json` aligné sur `angle.schema.json` v1.2 :
 
@@ -398,7 +398,7 @@ Renommages v2.29.0 : `source` (top-level) devient `origin_axis` · `lineage.schw
 
 **Fields migrés vers creative.schema.json v1.1 (drop ici).** Les fields `intent`, `mecanique`, `seasonality_trigger`, `execution.craft_mode`, `execution.longevity_signal`, `execution.cta` ont été migrés de `angle.schema` vers `creative.schema` (7ème entité brand) en v2.29.0. **NE PAS les écrire dans `angles/{ANG-N}.json`.** Si le skill veut produire une créa instance complète (concept × execution), invoquer le skill `compose-creative` (futur v2.31+) ou écrire directement `brands/{slug}/creatives/{CREA-N}.json` aligné sur `creative.schema.json` v1.1, qui absorbe execution + classification + variant_of et référence l'angle parent via `variant_of.angle_id`.
 
-Permet aux outils downstream (`/phantom karacare angles ANG-03`, `produce-copy-brief ANG-03`) de relire la composition.
+Permet aux outils downstream (`/phantom {brand_slug} angles ANG-03`, `produce-copy-brief ANG-03`) de relire la composition.
 
 The next-step proposal lives in the conversational reply, NOT in the artifact file. The artifact is the pure deliverable; the conversational reply carries the reasoned next move.
 

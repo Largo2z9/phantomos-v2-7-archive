@@ -21,7 +21,7 @@ description: >
   Assemblage compositionnel selon équation v3.1 (NOYAU x CONTEXTE x MODIFIEURS).
   Persiste creative.schema v1.2 + JPG local + brief markdown.
   Inputs supportés : (audience_slug, angle_id, product_slug optional), ou hypothèse from
-  scratch ("produit angle pour kara post-grossesse" sans angle_id, le skill propose 2-3
+  scratch ("produit angle pour {brand_slug} post-grossesse" sans angle_id, le skill propose 2-3
   angles depuis profile.json + canon copy).
 triggers_fr:
   - "compose une créa"
@@ -365,7 +365,7 @@ Une reco forte, pas trois équivalentes.
 
 ## HR7 · Anti-patterns
 
-1. **Compose sans visual_identity.** Régression label garantie sous 2 iter (audit S55 `kara[care]` → `karacare`). Refuse de composer si `packshots.primary_front` absent dans les 2 paths (spec.json#visual_identity ET sibling visual_identity.json).
+1. **Compose sans visual_identity.** Régression label garantie sous 2 iter (audit S55 wordmark with brackets dégradé en variant sans brackets sur brand test workspace). Refuse de composer si `packshots.primary_front` absent dans les 2 paths (spec.json#visual_identity ET sibling visual_identity.json).
 2. **Hardcoded mécanique.** Modifier le prompt mécanique hardcodé dans le skill au lieu de lookup canon registry SSOT. Drift inévitable cross-products.
 3. **Skip angle.formula validation.** NOYAU sans angle = creative null. Refuse de composer si `angle.json` absent ou `formula` vide.
 4. **Direct write produced/.** Mode `proposed` non-optionnel. Mutation gate via `write_to_context` obligatoire.
@@ -466,6 +466,6 @@ source             internal_production
 - SSOT mécaniques : `resources/registries/creative-mechanics-registry.md`.
 - Schwartz stages : `resources/schemas/_shared/awareness-stage.json`.
 - Visual identity schema : `resources/schemas/spec.schema.json#visual_identity` (v1.10+, S55 v2.31 extension).
-- Audit visual fidelity : `decisions.md` D#392 (S55 audit régression label `kara[care]`).
+- Audit visual fidelity : `decisions.md` D#392 (S55 audit régression label wordmark with brackets).
 - Sibling skills : `decompose-ad` (REVERSE pattern, fiche v5 layout source), `produce-paid-angles` (forward angles textuels), `produce-copy-brief` (brief copy seul), `recompose-creative` (variant existant), `define-specs` (visual_identity prerequisite), `profile-audience` (profile prerequisite).
 - Doctrines : `docs/system/canonical-matrix-reasoning.md` (production discipline), `docs/system/skill-authoring-discipline.md` (frontmatter triad), `docs/system/contextual-intelligence.md` (operator-facing rule absolue).

@@ -144,16 +144,16 @@ Le skill terminé inclut dans son no-orphan-output un bloc compact :
 
 **Exemples concrets** :
 
-Après `snapshot-brand karacare` :
+Après `snapshot-brand {brand_slug}` :
 ```
 → Suggestion next step
-   Brand snapshot OK. Pour cartographier l'audience, run mine-voc karacare
-   (capture verbatims clients) ou define-specs karacare cellule-boost
+   Brand snapshot OK. Pour cartographier l'audience, run mine-voc {brand_slug}
+   (capture verbatims clients) ou define-specs {brand_slug} {product_slug}
    (combler les gaps non-scrapés).
-   Tape : `mine-voc karacare` ou `define-specs karacare cellule-boost`
+   Tape : `mine-voc {brand_slug}` ou `define-specs {brand_slug} {product_slug}`
 ```
 
-Après `produce-paid-angles karacare sur chute-post-grossesse` :
+Après `produce-paid-angles {brand_slug} sur chute-post-grossesse` :
 ```
 → Suggestion next step
    3 angles ranked produits. Le top angle (ANG-03) peut être briefé
@@ -270,15 +270,15 @@ Each buffer entry must be **routed to the right file** based on what it concerns
 Quand un learning concerne un **outil canon copy** utilisé en prod (hook, framework, angle, archétype, pattern d'objection, formule de titre), il est *aussi* (en plus du routing brand-side) **promu** vers le canon comme entrée `validations[]`. Mécanisme :
 
 1. **Détection.** Le learning mentionne un outil canon connu, ET un signal d'outcome (ROAS chiffré, fatigue observée, test posté, opérateur dit *"ça marche"* ou *"ça crame"*). Cas typiques :
-   - *"Le hook curiosity-gap fatigue en 2 sem sur audience chute-stress-hormonal sur Karacare"* → canon copy hooks curiosity-gap#validations[]
+   - *"Le hook curiosity-gap fatigue en 2 sem sur audience chute-stress-hormonal sur {brand_slug}"* → canon copy hooks curiosity-gap#validations[]
    - *"Le framework BAB donne ROAS 4.2 sur chute-post-grossesse cure 3 mois, validé"* → canon copy frameworks bab#validations[]
-   - *"Pre-emption sur 'encore un produit miracle' valide bien sur Karacare cross-audiences"* → canon copy objections pre-emption#validations[]
+   - *"Pre-emption sur 'encore un produit miracle' valide bien sur {brand_slug} cross-audiences"* → canon copy objections pre-emption#validations[]
 
 2. **Format de la validation entry** (schema canon-tool/1.1, v2.37+) :
    ```json
    {
      "validation_id": "VAL-{BRAND}-{YYYYMMDD}-{N}",
-     "brand_slug": "karacare",
+     "brand_slug": "{brand_slug}",
      "audience_slug": "chute-post-grossesse",
      "outcome": "success|neutral|failed|fatigued",
      "attribution_layer": "hook|angle|framework|archetype|format|targeting|budget|creative_execution|timing|unknown",

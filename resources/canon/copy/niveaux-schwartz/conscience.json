@@ -46,7 +46,7 @@
     "Copy most-aware appliqué à audience unaware (perd l'attention)"
   ],
   "examples": [
-    "unaware : 'Tu sais combien de cheveux tu perds par jour ?' / problem-aware : 'La chute post-grossesse est plus longue qu'on dit' / solution-aware : 'Toutes les cures ne se valent pas' / product-aware : 'Pourquoi Cellule Boost est différent' / most-aware : 'Cure 3 mois -10% jusqu'à dimanche'."
+    "unaware : 'Tu sais combien de cheveux tu perds par jour ?' / problem-aware : 'La chute post-grossesse est plus longue qu'on dit' / solution-aware : 'Toutes les cures ne se valent pas' / product-aware : 'Pourquoi Cell Boost est différent' / most-aware : 'Cure 3 mois -10% jusqu'à dimanche'."
   ],
   "validations": [],
   "lineage": {

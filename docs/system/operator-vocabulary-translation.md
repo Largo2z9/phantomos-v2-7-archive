@@ -95,7 +95,7 @@ Tout texte opérateur-facing :
 
 ## Examples
 
-**Avant (v2.36 actuel `/phantom kara atlas`)** :
+**Avant (v2.36 actuel `/phantom {brand_slug} atlas`)** :
 ```
 ATLAS VIVANT (validations[] cumulées)
   hooks canon          0

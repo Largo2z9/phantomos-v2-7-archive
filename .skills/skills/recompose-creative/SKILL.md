@@ -184,7 +184,7 @@ Pipeline mirror compose-creative HR3 (FAL nano-banana-pro), prompt ajusté pour 
   CRITICAL change : {variant_axis_payload}.
   Product fidelity : {distinctive_features from spec.visual_identity}.
   ```
-- **Retry** : max 2 si label produit régresse (audit S55, sans visual_identity nano-banana-pro régresse `kara[care]` en `karacore`, etc.). Au 3e échec, surfacer à l'opérateur.
+- **Retry** : max 2 si label produit régresse (audit S55, sans visual_identity nano-banana-pro régresse un wordmark with brackets en variantes sans brackets ou caractères corrompus). Au 3e échec, surfacer à l'opérateur.
 
 ### HR5 · Generate variant brief markdown
 

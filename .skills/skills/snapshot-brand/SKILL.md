@@ -440,7 +440,7 @@ Single-question gate. Wait for operator confirmation. Once confirmed, scaffold t
 
 **Avant le grave : binding produit.** Pour chaque audience validée (groupes principaux + sous-groupes), l'agent demande quel(s) produit(s) elle achète. C'est la passerelle multi-produit. Question opérateur-facing :
 
-> *"Dernière question avant que je grave : pour chaque audience, quel(s) produit(s) elle achète chez Karacare ? Tu peux cocher un seul, plusieurs, ou laisser vide si l'audience est plus large que tes produits actuels (genre une persona brand-wide qui pourrait acheter n'importe lequel).*
+> *"Dernière question avant que je grave : pour chaque audience, quel(s) produit(s) elle achète chez {brand_name} ? Tu peux cocher un seul, plusieurs, ou laisser vide si l'audience est plus large que tes produits actuels (genre une persona brand-wide qui pourrait acheter n'importe lequel).*
 >
 > *Mes hypothèses par défaut, à corriger franchement :*
 > *  pousse-projet → hair-boost (le hero, vise la pousse)*
@@ -455,7 +455,7 @@ Single-question gate. Wait for operator confirmation. Once confirmed, scaffold t
 
 L'opérateur valide ou corrige. Encoder via `meta.applies_to_products: ["hair-boost"]` ou `["hair-boost", "cellule-boost"]` ou `[]` (brand-wide). Le champ `meta.product_id` legacy reste null (ne pas écrire ce champ pour les nouvelles audiences post-v2.24.0).
 
-Cette question débloque la navigation cross-référencée dans `/phantom` : *"voir les audiences sur hair-boost"* devient une commande naturelle (`/phantom karacare products hair-boost` rend la fiche produit avec les audiences cibles dessous).
+Cette question débloque la navigation cross-référencée dans `/phantom` : *"voir les audiences sur hair-boost"* devient une commande naturelle (`/phantom {brand_slug} products hair-boost` rend la fiche produit avec les audiences cibles dessous).
 
 ### Movement 4 — Hand-off vers mine-voc (operator-facing)
 

@@ -73,7 +73,7 @@ pipeline:
 
 > **Reverse-engineer an ad.** v1.1.0 · S55 fiche v5 · creative.schema v1.1 · équation v3.1 · D#391.
 
-> **v1.1.0 (S55 v2.31 alignment)** : consume `spec.json#visual_identity` for product fidelity. Skill loads packshot clean URL + distinctive features in prompt to prevent label regression in regen (audit S55 : sans visual_identity, nano-banana-pro régresse `kara[care]` en `kara|core`, `karaforz`, `karacore` à chaque iter).
+> **v1.1.0 (S55 v2.31 alignment)** : consume `spec.json#visual_identity` for product fidelity. Skill loads packshot clean URL + distinctive features in prompt to prevent label regression in regen (audit S55 : sans visual_identity, nano-banana-pro régresse un wordmark with brackets en variantes sans brackets ou caractères corrompus à chaque iter).
 
 Decomposeur, not generator. Lit une ad (visuel + copy verbatim), applique l'équation compositionnelle v3.1, persiste un instance creative.schema brand-side, rend une fiche structurée à l'opérateur en langage clair. Le mécanisme reste invisible (pas de field paths, pas de scores numériques, pas de noms internes). L'opérateur voit une fiche quatre sections et un bloc tags retrieval.
 
@@ -136,7 +136,7 @@ Si `mode == "internal_production"` ou `mode == "compose"` (skill `compose-creati
    - Surface warning à l'opérateur : "spec.json#visual_identity manquant. Render fidelity dégradée. Run skill `populate-visual-identity` (futur) ou drop ad screenshot manuel comme reference".
    - Continue avec ad screenshot bruité comme fallback.
 
-Rationale : sans packshot clean en input, nano-banana-pro hallucine le label sous 2 iter (cf. audit S55 régression `kara[care]`). Avec packshot + `distinctive_features` injecté, fidélité label peut atteindre 95%+.
+Rationale : sans packshot clean en input, nano-banana-pro hallucine le label sous 2 iter (cf. audit S55 régression wordmark with brackets). Avec packshot + `distinctive_features` injecté, fidélité label peut atteindre 95%+.
 
 ---
 
@@ -380,4 +380,4 @@ TAGS RETRIEVAL
 - Audit S55 origine : D#391 (creative.schema absorption de 8 champs depuis angle.schema v1.1).
 - Sibling skills : `produce-paid-angles` (forward generation), `analyze-copy` (long-form), `watch-competitors` (surveillance), `audit-meta-account` (full account audit).
 - Visual identity schema : `resources/schemas/spec.schema.json#visual_identity` (v1.10+, S55 v2.31 extension).
-- Audit visual fidelity : `decisions.md` D#392 (S55 audit régression label `kara[care]`, prompt karacare → trigger HR2bis + HR5bis).
+- Audit visual fidelity : `decisions.md` D#392 (S55 audit régression label wordmark with brackets, prompt brand-side → trigger HR2bis + HR5bis).
