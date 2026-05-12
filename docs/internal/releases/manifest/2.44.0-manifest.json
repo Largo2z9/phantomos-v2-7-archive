@@ -1,0 +1,83 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.44.0",
+  "released_at": "2026-05-12",
+  "compatible_from": "2.0.0",
+  "type": "endpoint_swap_doctrine_canon",
+  "summary": "craft-packshot v1.0 → v1.1 swap endpoint nano-banana-pro/edit (Gemini 2.5 Flash Image legacy) → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025) + doctrine model-versioning-canon NEW + canonical packshot cellule-boost validé Largo après 10 attempts cumulés (9 échouées endpoints legacy · 1 résolu nano-banana-2).",
+  "changes": [
+    {
+      "category": "skills",
+      "action": "patched",
+      "files": [".skills/skills/craft-packshot/SKILL.md v1.0.0 → v1.1.0"],
+      "section": "S1 · craft-packshot v1.1 endpoint swap + 2 nouveaux HR",
+      "rationale": "Swap endpoint default `fal-ai/nano-banana-pro/edit` (Gemini 2.5 Flash Image legacy · pre-novembre 2025) → `fal-ai/nano-banana-2/edit` (Gemini 3 Pro Image · canon novembre 2025). Frontmatter `permissions.external_apis[]` ajouté avec contract `provider · endpoint · model_family · version_check_url · version_canon_date · replaced_legacy · auto_upgrade`. 2 nouveaux HR · (HR-ANTI-VERBOSE) prompt minimum viable 50-300 chars langue maternelle opérateur · pas redécrire ce que le model voit dans l'image attachée · style `photoshoot professionnel · uniquement le produit · belle lumière` suffit. (HR-MODEL-VERSIONING) verify latest endpoint version dispo pre-call · `nano-banana-2/edit > nano-banana-pro/edit > nano-banana/edit` · vérifier fal.ai/models avant lancer gen IA. Step 2 prompt composition refactor · 16 variables verbose v1.0 (4000+ chars) → 1 variable v1.1 (~250 chars · une seule variable `container.shape` · le reste constant · le model voit l'image source attachée donc pas besoin de redécrire produit/couleur/matériaux/text label/ingrédients/cert badges). Step 3 fal.ai call URL swap. Step 6 sidecar metadata schema update (`_generated_via_endpoint`, `_generation_endpoint_model_family`). HR4 anti-hallucination text marqué LEGACY · v1.1 délègue au model via image attachée. patch_notes v1.1.0 entry ajoutée. Cross-refs ajoute `docs/system/model-versioning-canon.md` v2.44 NEW. Audit ref · S55 stress test cellule-boost gen v10 nano-banana-2/edit · silhouette préservée + text verbatim + 8/8 pass · 1 attempt vs 9 attempts échouées sur endpoint legacy (silhouette bouteille réinventée OR text gibberish)."
+    },
+    {
+      "category": "doctrine",
+      "action": "created",
+      "files": ["docs/system/model-versioning-canon.md NEW"],
+      "section": "D1 · Doctrine Model Versioning Canon",
+      "rationale": "Doctrine canon v2.44+ ~500 mots · le problème (PhantomOS skills hardcodent endpoints API externes · drift silencieux entre release modèle vendor et adoption skill · cycle USAGE v2.44 cellule-boost a livré 9 attempts échouées sur endpoint legacy nano-banana-pro/edit avant que swap nano-banana-2/edit résolve 1 attempt) → règle canon (verification pre-call · frontmatter SKILL.md required fields permissions.external_apis[] avec provider/endpoint/model_family/version_check_url/version_canon_date/replaced_legacy/auto_upgrade · naming convention versions fal.ai/openai/anthropic · audit log requirements endpoint+version+upgrade flag+comparison metric) → application v2.44 (craft-packshot v1.1 swap fait · cellule-boost canon validé audit ref) + TODO migrations skills consumers v2.45+ (compose-creative · recompose-creative · decompose-ad check trendtrack endpoint spécifique) → cross-refs (skill-authoring-discipline frontmatter permissions canon · compositional-cartography production loop canon · visual-identity-discipline v2.43 chantier 1 fidélité). Em-dash free."
+    },
+    {
+      "category": "live_workspace_data",
+      "action": "updated",
+      "files": [
+        "brands/kara/products/cellule-boost-anti-chute/visual_identity.json (live brand data)",
+        "brands/kara/products/cellule-boost-anti-chute/assets/README.md (live brand data)"
+      ],
+      "section": "L1 · Canonical packshot cellule-boost validated Largo",
+      "rationale": "Live workspace update (pas commit dans workspace-template · live brand data). `visual_identity.json` assets_canonical.packshot_front updated · `_canonical: true` + `_validated_by_operator: true` + `_validated_at: 2026-05-12` + `_operator_decision_2026-05-12: validated` + `_generated_via_endpoint: fal-ai/nano-banana-2/edit` + `_generation_endpoint_model_family: gemini_3_pro_image_novembre_2025` + `_generation_attempts: 10` + `_final_version: v10`. `_archive_gen_attempts[]` 10 entries audit trail · v1-v2 nano-banana-pro/edit échouées (digit swap + plural drop · silhouette bouteille réinventée) · v3-v8 openai endpoints échouées (silhouette drift) · v9 nano-banana-pro/edit good pas max canon · v10 nano-banana-2/edit VALIDATED. README.md assets section `canonical_packshot_validated_2026-05-12` avec path canonical + endpoint utilisé + prompt naturel français Largo style v10 (~250 chars · `Mets-moi ce produit sur un photoshoot professionnel bien au centre avec une belle lumière, uniquement le produit, rien d'autre, le pot et tous les détails sur le produit sur le packaging.`) + 10 attempts summary table + apprentissage canon novembre 2025 + archive_gen_attempts_v1_v9_legacy. État actuel des slots updated · v10-nb2.png canon validated 2048×2048 (back/3-4/top placeholders à uploader OR re-run craft-packshot v1.1)."
+    },
+    {
+      "category": "release_files",
+      "action": "patched",
+      "files": ["_version.json (2.43.0 → 2.44.0)", "CHANGELOG.md (entry v2.44.0 prepended)"],
+      "section": "R1 · Release files bump",
+      "rationale": "_version.json template_version 2.43.0 → 2.44.0 · released_at 2026-05-12 · summary ship craft-packshot v1.1 endpoint swap + doctrine model-versioning-canon + canonical packshot cellule-boost validé. CHANGELOG.md entry v2.44.0 prepended (newest at top) · sections Why/What/Operator impact/Next standard. Manifest reference 2.44.0-manifest.json."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [
+    {
+      "skill": "compose-creative",
+      "scope": "v2.45+",
+      "action": "swap endpoint default fal-ai/nano-banana-pro/edit → fal-ai/nano-banana-2/edit + ajouter frontmatter permissions.external_apis[]",
+      "blocker": false,
+      "note": "compose-creative v1.1.0 fonctionne encore sur nano-banana-pro/edit · pas blocker v2.44 ship · scope v2.45+ chantier 2 endpoint swap consumers"
+    },
+    {
+      "skill": "recompose-creative",
+      "scope": "v2.45+",
+      "action": "check endpoint utilisé · si nano-banana-pro/edit swap vers nano-banana-2/edit + ajouter frontmatter permissions.external_apis[]",
+      "blocker": false,
+      "note": "scope v2.45+"
+    },
+    {
+      "skill": "decompose-ad",
+      "scope": "v2.45+",
+      "action": "check endpoint utilisé · si TrendTrack legacy spécifique vérifier latest version dispo · sinon swap vers nano-banana-2/edit + ajouter frontmatter permissions.external_apis[]",
+      "blocker": false,
+      "note": "decompose-ad utilise potentiellement endpoint TrendTrack spécifique · à vérifier scope v2.45+"
+    }
+  ],
+  "operator_impact": "Packshot canon cellule-boost ship-ready (canonical_packshot_validated_2026-05-12 · `packshot-canonical-front-2026-05-12-gen-v10-nb2.png` 2048×2048 4.5 MB · operator Largo approved 2026-05-12). Futurs gen via nano-banana-2 (Gemini 3 Pro Image) plus fidèle sur silhouette contenant + text verbatim. Prompt template naturel français court (50-300 chars · langue opérateur · 1 variable container.shape) remplace verbose corporate 4000+ chars 16 variables · Gemini 3 Pro Image répond mieux à brief minimum viable. Doctrine model-versioning-canon (workspace-template/docs/system/) codifie règle canon vérifier latest endpoint version avant call API externe · applique à tous skills consumers API externe scope v2.45+. Skills consumers nano-banana-pro/edit (compose-creative, recompose-creative, decompose-ad) non migrés v2.44 · scope v2.45+ chantier endpoint swap consumers.",
+  "next_release_note": "v2.45+ swap compose-creative + recompose-creative + decompose-ad endpoints vers nano-banana-2/edit (sauf si TrendTrack legacy spécifique pour decompose-ad). Plus production hairboost canon à refaire avec nano-banana-2 (canon actuel hairboost utilise nano-banana-pro legacy v2). Plus runtime enforcement validate-resources HR-X v2.45+ scan permissions.external_apis[] frontmatter required pour skills qui call API externe. Plus 3-4 angle assets cellule-boost manquants (back · 3/4 · top · close-up) · scope future craft-packshot v1.1 runs Mode A scrape carousel autre asset OR Mode B upload local.",
+  "skills_affected": [
+    {
+      "skill": "craft-packshot",
+      "version_before": "1.0.0",
+      "version_after": "1.1.0",
+      "change_type": "endpoint_swap_plus_prompt_simplification"
+    }
+  ],
+  "doctrines_affected": [
+    {
+      "doctrine": "model-versioning-canon",
+      "version_before": null,
+      "version_after": "v2.44 NEW",
+      "change_type": "created"
+    }
+  ]
+}

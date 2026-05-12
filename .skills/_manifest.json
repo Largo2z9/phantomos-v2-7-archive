@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-11T21:28:11Z",
-  "_count": 54,
+  "_generated_at": "2026-05-12T19:44:43Z",
+  "_count": 55,
   "skills": [
     {
       "name": "analyze-copy",
@@ -367,6 +367,25 @@
       "isolation_scope": "workspace_global",
       "layer": 3,
       "path": ".skills/skills/correct-skill/SKILL.md"
+    },
+    {
+      "name": "craft-packshot",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "compose-creative": "compose-creative consume canonical packshot pour générer pub paid social. craft-packshot CRÉE le canonical packshot upstream (asset source of truth).",
+        "compose-overlay-text": "compose-overlay-text fix logo + sub-text PIL post-gen sur creative pub. craft-packshot crée le packshot SOURCE upstream brand-level.",
+        "define-specs": "define-specs encode visual_identity.json (label, container, content). craft-packshot consume visual_identity puis produit l'asset packshot canonique."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/craft-packshot/SKILL.md"
     },
     {
       "name": "create-skill",
