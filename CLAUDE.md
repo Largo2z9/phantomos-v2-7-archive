@@ -14,13 +14,16 @@
 
 **Full doctrine + anti-patterns (read before designing any new skill or hook):** `docs/system/contextual-intelligence.md`.
 
-**Sub-doctrines (read when authoring or extending):** Contextual Intelligence is the master. Five operating disciplines serve it:
+**Sub-doctrines (read when authoring or extending):** Contextual Intelligence is the master. Six operating disciplines serve it:
+- **Investigation Posture**, `docs/system/investigation-posture.md` (cartographier avant affirmer · confidence chain explicit · drill-down macro = opérateur · 5 sections obligatoires sur tout output stratégique · observé / déduit / inconnu / leviers / close ouvert).
 - **Substrate**, `docs/system/schema-encoding-discipline.md` (how to encode rigorously: mutation rule, _field_types, sourcing tags, triangulation, append-only, memory layers).
 - **Production**, `docs/system/canonical-matrix-reasoning.md` (how to produce 95% quality on intersectional outputs: schema + canon matrix, modulator/cell, cardinality cap, internal scoring).
 - **Authoring**, `docs/system/skill-authoring-discipline.md` (how to create/extend skills: type taxonomy, frontmatter triad, composition contracts, lifecycle, failure doctrine).
 - **Provenance**, `docs/system/provenance-trust-discipline-scope.md` (scope only, multi-operator, canon-as-product, marketplace skills ; full doctrine when triggers hit).
 - **Compositional Cartography**, `docs/system/compositional-cartography.md` (cartographier + composer outputs créatifs via équation v3.1 NOYAU × CONTEXTE × MODIFIEURS, 4 arbres + matrice + modulateurs, cycle validation atlas vivant ; implémentation domaine-spécifique de CMR au créatif).
 Doctrine governance (promotion, amendment, retraction, conflict resolution): `docs/system/doctrine-governance.md`.
+
+**Investigation posture · règle absolue.** Tout skill produisant une synthèse stratégique (snapshot-brand Movement 3-4, profile-audience, produce-paid-angles, brief-day, audit-meta-account, analyst-perf, decompose-ad, produce-copy-brief, etc.) DOIT structurer son output en 5 sections explicites · **Observé** (faits sourcés) · **Déduit** (hypothèses avec confidence chain · forte / moyenne / faible / TRÈS faible) · **Inconnu** (variables non observables à creuser) · **Leviers** (skills / actions / sources pour lever les inconnues) · **Close ouvert** (UNE question macro · opérateur arbitre où creuser). JAMAIS affirmer une hypothèse comme un fait. JAMAIS inventer des personas / audiences présentés comme analytiques sans data verbatim. JAMAIS clôturer la conversation avec une synthèse complète · l'agent ouvre la porte au drill-down. Full doctrine `docs/system/investigation-posture.md`.
 
 **Operator-facing rule absolue.** **NEVER** expose doctrine names (Contextual Intelligence, Schema Encoding Discipline, Canonical Matrix Reasoning, Skill Authoring Discipline, Provenance & Trust Discipline) or their acronyms in operator-facing output. Operators feel the *effects* (output 95% quality, agent that synthesizes instead of form-filling, reproducible across sessions); they never read the *names*. If an acronym leaks in operator output, that is a bug. Doctrine documents are for skill authors and contributors only, kept in `docs/system/` (not user-facing).
 

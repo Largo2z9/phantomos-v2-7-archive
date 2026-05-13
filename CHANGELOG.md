@@ -7,6 +7,22 @@
 
 ---
 
+## v2.54.0 · 2026-05-13 · Doctrine investigation posture + refactor 4 skills stratégiques
+
+**Why** · test live opérateur sur cas réel (snapshot-brand Housswood) a révélé défaut systémique de posture · l'agent affirme des hypothèses comme des faits, invente des personas présentés comme analytiques, ferme la conversation avec synthèse complète au lieu d'ouvrir le drill-down. Posture canon · "Cartographier avant affirmer" doit être encadrée doctrinalement.
+
+**What** ·
+- Doctrine NEW · `docs/system/investigation-posture.md` (6e sous-doctrine de Contextual Intelligence · cartographier avant affirmer · confidence chain explicit · drill-down macro = opérateur · 5 sections obligatoires Observé / Déduit / Inconnu / Leviers / Close ouvert)
+- CLAUDE.md root · règle absolue ajoutée + cross-ref doctrine
+- `snapshot-brand` v1.0.1 → v1.1.0 · Movement 3-4 refactor en 5 sections doctrine
+- `profile-audience` v1.2.0 → v1.3.0 · audiences présentées comme hypothèses avec confidence chain (TRÈS faible par défaut sans mine-voc)
+- `produce-paid-angles` v1.5.0 → v1.6.0 · angles avec confidence chain inheritée audience+brand · colonne Confiance ranked table · close drill-down macro
+- `brief-day` v1.1.0 → v1.2.0 · état descriptif + posture observé/déduit + "À explorer si pertinent" remplace "À noter"
+
+**Backward compat strict additif** · skills mécanismes inchangés, seul le rendu operator-facing porte maintenant la posture investigation. Manifest skills regen 56 skills.
+
+---
+
 ## v2.53.0 · 2026-05-13 · Refactor ton sérieux et professionnel · commandes + skills outputs
 
 **Why.** Test live opérateur a révélé tonalité gamifiée colloquial dans les outputs des commandes phantom (catégories `I want to...`, verbes directifs `Tape /`, caps lock excessif `SKILLS DISPONIBLES`/`CATÉGORIES`/`NEXT SUGGESTED`). PhantomOS cible opérateurs business pros (vibecoder marketeux DTC, growth lead, agency). Le ton doit refléter cette posture, pas un wizard tutoriel.

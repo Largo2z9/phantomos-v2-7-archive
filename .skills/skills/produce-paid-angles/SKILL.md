@@ -1,7 +1,7 @@
 ---
 name: produce-paid-angles
 type: producer
-version: "1.5.0"
+version: "1.6.0"
 isolation_scope: brand_only
 layer: 3
 recommended_model: sonnet
@@ -21,6 +21,7 @@ consumes:
   - path: resources/templates/hook-formulas.md
     min_version: 1.0.0
 description: >
+  v1.6.0 (v2.54 investigation posture refactor) : angles présentés avec confidence chain inheritée audience+brand en surface opérateur. Chaque angle porte derived_from_audience_confidence + derived_from_brand_confidence + claim_confidence agrégée (min des deux héritages). Ranked table colonne `Confiance` ajoutée. Close ouvre drill-down macro · test ces angles tels quels OU upgrade confidence audience source d'abord. Préserve équation Obs+Tension+Reframe+Bridge, lineage canon copy, scoring framework. Refacto uniquement la posture surface · angles avec confidence chain visible vs recommandations stratégiques posées. Cross-ref docs/system/investigation-posture.md.
   v1.4.0 (v2.36 frictions runtime patch) : HR4.5 verbatim density floor gate strict. AskUserQuestion explicit gate quand voice.key_expressions[] < 5 OR cumulative verbatim_quotes[] < 5 — pas de production sans operator response (a/b/c). Resoud anti-pattern mou v1.3.0 ou angles inferes shippaient avec flag inline sans gate explicite.
   v1.3.0 (v2.32 alignment) : when reading creative.json instances, prefer intent_mix over intent and overlay_density + brand_mark_present over craft_mode. validation_status read via oneOf (legacy string OR composite object).
   Generates a ranked matrice copy of paid creative angles for an audience
@@ -29,8 +30,8 @@ description: >
   of audience × awareness × emotion × objection × placement, scored per
   paid-angle-scoring framework, filtered, clustered. Operator-facing output:
   ranked table 3-5 angles (up to 7 if signal density high), each with hook
-  verbatim-anchored + emotion + objection + placement reco. Synthesis
-  paragraph naming why these rank top + reasoned next-step proposal.
+  verbatim-anchored + emotion + objection + placement reco + confidence chain inheritée. Synthesis
+  paragraph naming why these rank top + close drill-down macro.
   FR: "trouve les meilleurs angles pour {audience} {brand}", "matrice angles {brand}", "angles paid {audience}", "brief créa de N angles", "quels hooks tester sur {audience}".
   EN: "find the best angles for {audience} {brand}", "paid angles {audience}", "creative angles brief".
 permissions:
@@ -262,51 +263,76 @@ Each shipped hook passes the `resources/quality-specs/hook-quality-spec.md` 5-cr
 
 ---
 
-## Step 9 — Operator-facing output (synthesis + table + next-step)
+## Step 9 — Operator-facing output (synthesis + table + close drill-down, v2.54)
 
-Apply snapshot-brand Step 7 voice canon STRICTLY for the surrounding prose. The structure below is the visible deliverable.
+Apply snapshot-brand Step 7 v2.54 doctrine investigation-posture STRICTLY. Angles dérivent d'hypothèses (audience source, brand source) · leur confidence chain est héritée, doit être visible en surface, jamais cachée.
 
-### Synthesis paragraph (3-5 sentences, prose-first)
+### Confidence chain inheritée (v2.54 NEW)
 
-What makes the top angles load-bearing for this audience and this brand. What separates the top 2 from the rest of the ranked set. The verbatim density signal — explicit when the corpus is rich, explicit when it is thin (*"angles 1-3 ancrés sur verbatims VoC denses; angles 4-5 inférés, à valider sur premiers tests"*). The cohort emotional dominant that drives the ranking.
+Pour chaque angle, le skill calcule la confidence agrégée selon · 
 
-**Hard rules for the synthesis:**
-- Pure prose. No bullets, no bold-section anchors (no `**Le pitch**\n...\n\n**La cible**\n...`), no numbered headings, no field enumeration.
-- Schema field semantics as analytical vocabulary, never as JSON path mentions. Say *"the trigger that locks the angle is X"*, never *"trigger_primary: X"*.
-- Never expose scores, never list "5 dimensions analyzed", never mention cartesian, clustering, or framework names.
-- Inferred hooks flagged inline (*"à valider, pas de verbatim direct"*) — never as a separate "missing" block.
-- Three implicit movements (top picks → priority recommendation → backup or trade-off), one blank line between, no titles.
+**`derived_from_audience_confidence`** · héritée du `profile.json#meta.validation_status` de l'audience source · si audience portée comme hypothèse `TRÈS faible` (zéro mining) → propagation `TRÈS faible`. Si audience portée `moyenne` ou `forte` (mine-voc tourné, verbatim_density >= 5) → propagation niveau correspondant.
 
-**Decisive test before shipping:** read the synthesis as a stranger to the brand. If you see bold section labels, numbered headings, or `Field. content. Field. content.` openers, you reverted to form-fill — rewrite as flowing prose where each paragraph names what it carries via its first sentence, not via a label above it.
+**`derived_from_brand_confidence`** · héritée du `brand.json` état Observé/Déduit selon doctrine investigation-posture · sourcing direct du scrape (positioning revendiqué site, tone of voice direct) = `forte` · inférence agent (sophistication estimée, market position déduit) = `moyenne` ou `faible`.
 
-### Ranked table (markdown, 5 or 6 columns)
+**`claim_confidence`** · agrégat = MIN des deux héritages (algèbre conservative cross-skill, per `docs/system/confidence-propagation.md`). Un angle ne peut pas être plus fiable que l'audience ou la brand sur laquelle il est dérivé.
 
-Headers: `# / Angle / Hook / Émotion mobilisée / Objection neutralisée / Placement reco`
+Persister dans Layer A trace + dans `angles/{ANG-N}.json#lineage` (nouveaux fields v1.3 schema).
 
-Each row:
-- `#` — rank position (1, 2, 3...).
-- `Angle` — operator-language, evocative, 2-3 words. *"Miroir post-grossesse"*, *"Ras-le-bol des régimes"*, *"Verdict balance"*. Anchored in the dominant verbatim cluster of the cell. Maps to `angle-registry.md` taxonomy when a registry entry fits, brand-specific naming when it does not.
-- `Hook` — verbatim-anchored where possible (in quotes), or formula-derived (no quotes, no anchor mention).
-- `Émotion mobilisée` — 1-2 plain words. *"Identitaire"*, *"Délivrance"*, *"Soulagement"*, *"Frustration accumulée"*. Never `emotional_driver:identity`.
-- `Objection neutralisée` — 1-line, verbatim-anchored when possible (in quotes from `objections[].formulation`).
-- `Placement reco` — 1 word. *"Reels"*, *"Stories"*, *"Feed UGC"*, *"TikTok"*. Never `awareness_stage:problem-aware|placement:reels` jargon.
+### Synthesis paragraph (3-5 sentences, prose-first, posture analyste)
 
-**Cap:** 5 rows by default, 7 when signal density justifies. Below 5 only when corpus thin and synthesis explains why.
+Ce qui rend les top angles load-bearing pour cette audience et cette brand. Ce qui sépare les top 2 du reste du ranked set. **La confidence chain en signal explicite** · si l'audience source est hypothèse `TRÈS faible` (pas de mine-voc), le synthesis le dit clairement · *"Ces 5 angles dérivent d'une audience portée en hypothèse intuition (zéro verbatim client mining-sourced), ils sont à tester avec budget calibré, pas à scaler avant validation terrain."* Si audience est `forte` (mine-voc dense + analytics convergents), le synthesis le dit aussi · *"Audience source validée terrain (mine-voc sur 28 verbatims), angles 1-3 ancrés direct sur expressions clientes."*
 
-**Banned:** column headers in jargon, cells with internal labels, scores in any column, field paths anywhere.
+**Hard rules synthesis** ·
+- Posture analyste, pas marketer. Pas de copywriting narratif déguisé en analyse (anti-pattern AP-3 doctrine).
+- Mentionne EXPLICITEMENT la confidence chain inheritée dans la prose (1 phrase au minimum).
+- Si claim_confidence `TRÈS faible` ou `faible` agrégé → signal explicit "à tester sur budget calibré, pas à scaler".
+- JAMAIS exposer scores numériques, JAMAIS lister "5 dimensions analyzed", JAMAIS mention cartesian / clustering / framework names.
+- Inférés flag inline (*"à valider, pas de verbatim direct"*) selon HR4.5 v2.36 gate.
 
-### Reasoned next-step proposal (per no-orphan-output doctrine)
+### Ranked table (markdown, 6 ou 7 colonnes v2.54)
 
-One strong recommendation surfaced as a posture, not a question. Grounded in (a) the operator's stated objective if known from `operator/profile.json#context.usage_goal` or recent turns, (b) what was just produced, (c) what producer skills are currently runnable on this brand state.
+Headers · `# / Angle / Hook / Émotion mobilisée / Objection neutralisée / Placement reco / Confiance`
 
-Examples of valid next-step formulations:
+Each row ·
+- `#` · rank position (1, 2, 3...).
+- `Angle` · operator-language, evocative, 2-3 words. *"Miroir post-grossesse"*, *"Ras-le-bol des régimes"*, *"Verdict balance"*. Anchored in the dominant verbatim cluster of the cell. Maps to `angle-registry.md` taxonomy when a registry entry fits, brand-specific naming when it does not.
+- `Hook` · verbatim-anchored where possible (in quotes), or formula-derived (no quotes, no anchor mention).
+- `Émotion mobilisée` · 1-2 plain words. *"Identitaire"*, *"Délivrance"*, *"Soulagement"*, *"Frustration accumulée"*. Never `emotional_driver:identity`.
+- `Objection neutralisée` · 1-line, verbatim-anchored when possible (in quotes from `objections[].formulation`).
+- `Placement reco` · 1 word. *"Reels"*, *"Stories"*, *"Feed UGC"*, *"TikTok"*. Never `awareness_stage:problem-aware|placement:reels` jargon.
+- **`Confiance` (v2.54 NEW)** · `claim_confidence` agrégée en qualitatif (`forte / moyenne / faible / TRÈS faible`) + 1-mot motif source si pertinent. Exemples · *"forte"*, *"moyenne"*, *"faible (hérite audience hypothèse)"*, *"TRÈS faible (audience non-validée)"*.
 
-- *"Le move qui paie le plus là c'est de sortir un brief copywriter sur l'angle #1 — 15 min, je pars sur les 3 hook variants + opening body + CTA family avec les verbatims captés. On y va ?"* — primary path when operator stated brief production as next objective.
-- *"Je peux runner mine-vom pour aller chercher comment le marché formule ces objections — ça affinerait l'angle #3 dont la cible est sceptique. ~25 min, te donnera le vernacular concurrentiel et les white spaces. Sinon tu prends les 5 angles tels quels et tu lances ?"* — when objection neutralization strength is medium and VoM not yet done.
-- *"Tu peux directement passer ces 5 angles à ton copywriter — ils sont calibrés sur les verbatims, pas besoin d'expansion supplémentaire de mon côté."* — when operator stated brief outsourcing or angles are the deliverable per se.
-- *"L'angle #4 a un verbatim faible — si tu veux le tester quand même, je sors un brief en flaguant l'inférence. Sinon on le garde en réserve pour vague 2 et je brief les 3 premiers."* — when ranked set has uneven anchor strength.
+**Cap** · 5 rows by default, 7 when signal density justifies. Below 5 only when corpus thin and synthesis explains why.
 
-1-2 alternatives only when genuinely useful. Never a flat menu. Never the same three proposals every time. Never *"voilà tes angles, autre chose ?"* — that fails the doctrine.
+**Banned** · column headers in jargon, cells with internal labels, scores numériques in any column, field paths anywhere.
+
+**Format ligne enrichi v2.54 (operator-facing)** ·
+
+```
+| # | Angle | Hook | Émotion | Objection | Placement | Confiance |
+| 1 | Miroir post-grossesse | "Je ne pouvais plus voir mon reflet" | Identitaire | "J'ai déjà tout essayé" | Reels | moyenne (audience mine-voc partiel) |
+| 2 | Ballonnement permanent | "Toujours ballonnée, le ventre gonflé même à jeun" | Inconfort | "Trop cher pour 1-3 kg" | Stories | forte (verbatim direct) |
+| 3 | Ras-le-bol des régimes | "Frustration, échec, culpabilité, la boucle" | Délivrance | "C'est juste du marketing" | Feed UGC | moyenne |
+| 4 | Verdict balance | "Le moment où tu montes et tu sais déjà" | Anticipation négative | "Ça marche pour les autres" | Reels | faible (formula-derived) |
+| 5 | Confiance retrouvée | "Remettre la robe rangée il y a 2 ans" | Aspiration | "Je vais reprendre après" | TikTok | TRÈS faible (audience non-validée) |
+```
+
+### Close drill-down macro (v2.54 doctrine investigation-posture)
+
+Anti-pattern AP-5 BANNI · close affirmatif qui ferme la conversation (*"On y va ?"*, *"Tu veux que je sorte un brief copywriter ?"*). Toujours close ouvert drill-down macro · UNE question · opérateur arbitre.
+
+Format close canonique v2.54 ·
+
+> Sur ces {N} angles, deux moves possibles selon ta confiance dans l'audience source ·
+>
+> A · Test ces angles tels quels (claim_confidence agrégée actuelle · {moyenne | faible | TRÈS faible}) · brief créa, budget test calibré (~{X}€ par angle), 5-7 jours data minimum avant verdict. Pertinent si t'as une deadline qui te force à tester sur intuition.
+> B · Upgrade confidence audience source d'abord (~8-12 min écoute clients · récupère verbatims réels · re-rank les angles avec confidence agrégée upgraded à `moyenne` ou `forte`). Pertinent si pas de deadline serrée, posent la fondation et tu lances avec angles ancrés.
+> C · {3e option si pertinente · ex "Sortir un brief copywriter sur le seul angle confidence `forte` (#2 Ballonnement) et garder les autres en backup vague 2"}
+>
+> Mon avis · {reco macro adaptive · si claim_confidence majoritairement `TRÈS faible` → B critique avant scale · si majoritairement `moyenne` ou `forte` → A valide direct sur premiers tests}.
+
+L'opérateur arbitre · l'agent enchaîne le drill-down sur l'axe choisi (silencieusement vers mine-voc OR produce-copy-brief OR autre selon choix).
 
 ---
 
@@ -314,12 +340,16 @@ Examples of valid next-step formulations:
 
 Write to `brands/{slug}/sources/produced-angles/{YYYY-MM-DD}/scoring-trace.jsonl`. One line per cell scored. Audit substrate, never auto-loaded into context, never surfaced unless the operator asks *"pourquoi cet angle ranke premier"*.
 
+Trace inclut (v2.54) la confidence chain inheritée par angle ·
+
 ```json
 {
   "id": "PA-001",
   "run_id": "pa-2026-04-24-001",
   "produced_at": "2026-04-24T14:32:00Z",
   "audience_anchor": "femmes-30-55-minceur",
+  "audience_source_confidence": "forte",
+  "brand_source_confidence": "forte",
   "dimensions_active": ["pain.emotion", "objection.type", "placement"],
   "cartesian_size": 72,
   "filtered_to": 8,
@@ -330,12 +360,33 @@ Write to `brands/{slug}/sources/produced-angles/{YYYY-MM-DD}/scoring-trace.jsonl
       "angle_name": "Miroir post-grossesse",
       "score": 87,
       "verbatim_anchor_id": "VOC-trustpilot-7a2x",
-      "anchor_type": "exact_match"
+      "anchor_type": "exact_match",
+      "derived_from_audience_confidence": "forte",
+      "derived_from_brand_confidence": "forte",
+      "claim_confidence": "forte"
     }
   ],
   "scoring_breakdown_per_cell": [...]
 }
 ```
+
+**Calcul `claim_confidence` (v2.54 algèbre conservative cross-skill)** ·
+
+```python
+def aggregate_claim_confidence(audience_conf, brand_conf, anchor_type):
+    levels = ["TRÈS faible", "faible", "moyenne", "forte"]
+    aud_idx = levels.index(audience_conf)
+    brand_idx = levels.index(brand_conf)
+    base = levels[min(aud_idx, brand_idx)]
+    
+    # Anchor type modulator (formula-derived downgrade 1 level if claim > faible)
+    if anchor_type == "formula_derived" and levels.index(base) > 1:
+        base = levels[levels.index(base) - 1]
+    
+    return base
+```
+
+Un angle ne peut pas être plus fiable que l'audience ou la brand sur laquelle il est dérivé (algèbre conservative, anti-pattern AP-1 doctrine évité).
 
 The trace is queryable post-hoc. It is the proof that no verbatim was fabricated, the substrate for the next pass to learn from this run, and the audit trail when angle quality is challenged downstream.
 
@@ -367,7 +418,7 @@ ANG-{N} · {angle name}
 
 En surface opérateur (rendu human-readable), le terme *Schwartz* reste recevable comme référence auteur (*"Schwartz conscience: solution-aware"*). Le field name canonique côté schema/JSON est `awareness_stage`. Le lignage rend l'angle **traçable** : `/phantom {brand_slug} angles ANG-03` pourra rendre la chaîne compositionnelle lue à travers l'atlas. C'est aussi ce qui débloquera les vues `copy-matrix` et `copy-map`.
 
-**Persistence brand-side (angle.schema v1.2).** Le lignage canon est ALSO écrit dans `brands/{slug}/angles/{ANG-N}.json` aligné sur `angle.schema.json` v1.2 :
+**Persistence brand-side (angle.schema v1.2+).** Le lignage canon est ALSO écrit dans `brands/{slug}/angles/{ANG-N}.json` aligné sur `angle.schema.json` v1.2, enrichi v2.54 avec confidence chain inheritée ·
 
 ```json
 {
@@ -386,13 +437,18 @@ En surface opérateur (rendu human-readable), le terme *Schwartz* reste recevabl
     "archetype_canon_id": "...",
     "pain_extract": "...",
     "proof_primary": "...",
-    "cta": "..."
+    "cta": "...",
+    "derived_from_audience_confidence": "forte | moyenne | faible | TRÈS faible",
+    "derived_from_brand_confidence": "forte | moyenne | faible | TRÈS faible",
+    "claim_confidence": "forte | moyenne | faible | TRÈS faible"
   },
   "formula": { "observation": {}, "tension": {}, "reframe": {}, "bridge": {} },
   "insight": { "modalite": "formulé | implicite | absent", "status": "déduit | validé | incertain", "formulation": "..." },
   "meta": { "validation_status": "hypothesis", "created": "YYYY-MM-DD" }
 }
 ```
+
+Les 3 fields `derived_from_audience_confidence`, `derived_from_brand_confidence`, `claim_confidence` (v2.54 doctrine investigation-posture) permettent au downstream `/phantom {brand_slug} angles ANG-NN` de rendre l'angle avec sa fiabilité héritée explicite, et à `produce-copy-brief` d'hériter à son tour la confidence chain dans le brief créa downstream.
 
 Renommages v2.29.0 : `source` (top-level) devient `origin_axis` · `lineage.schwartz_conscience` devient `lineage.awareness_stage`. Le field `awareness_stage` consomme l'enum canonique de `_shared/awareness-stage.json` (5 stages).
 
@@ -486,6 +542,8 @@ Focus modifiers are operator-facing additions (the operator can say *"angles pai
 
 ## Cross-references
 
+- `docs/system/investigation-posture.md` (v2.54 doctrine canon) · cartographier avant affirmer · confidence chain explicit · angles portent confidence inheritée audience+brand en surface · close drill-down macro · opérateur arbitre (test direct vs upgrade audience source).
+- `docs/system/confidence-propagation.md` · algèbre cascade confidence cross-skill (audience → angle → brief créa · MIN conservative).
 - `resources/frameworks/paid-angle-scoring.md` — analytical canon. Mandatory read at first invocation. Codifies the five-lens scoring and the cluster-deduplication rule.
 - `resources/registries/angle-registry.md` — angle taxonomy reference (14 angle types). Cell labels map to registry entries when possible.
 - `resources/registries/proof-registry.md` — objection-neutralization mapping (which proof type defuses which objection).
@@ -513,21 +571,24 @@ What the operator sees in the terminal after triggering *"trouve les meilleurs a
 
 ---
 
-Sur la femme minceur okr, ce qui sort en premier c'est trois ressorts qui ne se chevauchent pas: le miroir post-grossesse qui touche l'identitaire, le ballonnement permanent qui touche l'inconfort quotidien, et le ras-le-bol des régimes qui touche la délivrance. Les deux suivants — le verdict balance et la confiance retrouvée — élargissent sur la projection sociale et sur l'angle bénéfice direct, utiles si tu testes large.
+Sur la femme minceur okr, audience source mine-voc tourné (28 verbatims, validation `forte` côté pain principal "ras-le-bol des régimes" et "miroir post-grossesse"). Brand source positioning Observé direct (revendiqué site, tone confirmé), `forte` aussi. Les angles 1-3 héritent claim_confidence `forte`, ancrés sur verbatims VoC denses. Les angles 4-5 sont formula-derived (pas de verbatim direct dans le corpus), héritent `moyenne` agrégée · à valider sur premiers tests.
 
-Le move premier sur ton lancement jeudi c'est l'angle miroir en Reels: verbatim dense, objection scepticisme neutralisée par tes avis Trustpilot, format Reels qui matche ton stack. L'angle ballonnement en Stories est le backup à promouvoir si le miroir fatigue après une semaine. Garde le ras-le-bol des régimes pour une vague 2, il convertit moins haut mais retient plus longtemps.
+Le move premier sur ton lancement c'est l'angle miroir en Reels · verbatim dense, objection scepticisme neutralisée par tes avis Trustpilot, format Reels qui matche ton stack. L'angle ballonnement en Stories est le backup à promouvoir si le miroir fatigue après une semaine. Garde le ras-le-bol des régimes pour une vague 2, il convertit moins haut mais retient plus longtemps.
 
-| # | Angle | Hook | Émotion mobilisée | Objection neutralisée | Placement reco |
-|---|---|---|---|---|---|
-| 1 | Miroir post-grossesse | "Je ne pouvais plus voir mon reflet" | Identitaire | "J'ai déjà tout essayé" | Reels |
-| 2 | Ballonnement permanent | "Toujours ballonnée, le ventre gonflé même à jeun" | Inconfort quotidien | "Trop cher pour 1-3 kg" | Stories |
-| 3 | Ras-le-bol des régimes | "Frustration, échec, culpabilité, la boucle de tous les régimes" | Délivrance | "C'est juste du marketing" | Feed UGC |
-| 4 | Verdict balance | "Le moment où tu montes sur la balance et tu sais déjà" | Anticipation négative | "Ça marche pour les autres, pas pour moi" | Reels |
-| 5 | Confiance retrouvée | "Remettre la robe que tu as rangée il y a 2 ans" | Aspiration projetée | "Je vais reprendre dès que j'arrête" | TikTok |
+| # | Angle | Hook | Émotion mobilisée | Objection neutralisée | Placement reco | Confiance |
+|---|---|---|---|---|---|---|
+| 1 | Miroir post-grossesse | "Je ne pouvais plus voir mon reflet" | Identitaire | "J'ai déjà tout essayé" | Reels | forte (verbatim direct) |
+| 2 | Ballonnement permanent | "Toujours ballonnée, le ventre gonflé même à jeun" | Inconfort quotidien | "Trop cher pour 1-3 kg" | Stories | forte |
+| 3 | Ras-le-bol des régimes | "Frustration, échec, culpabilité, la boucle de tous les régimes" | Délivrance | "C'est juste du marketing" | Feed UGC | forte |
+| 4 | Verdict balance | "Le moment où tu montes sur la balance et tu sais déjà" | Anticipation négative | "Ça marche pour les autres, pas pour moi" | Reels | moyenne (formula-derived) |
+| 5 | Confiance retrouvée | "Remettre la robe que tu as rangée il y a 2 ans" | Aspiration projetée | "Je vais reprendre dès que j'arrête" | TikTok | moyenne (formula-derived) |
 
-*(angles 1-3 ancrés sur verbatims VoC denses; angles 4-5 inférés, à valider sur premiers tests)*
+Sur ces 5 angles, deux moves possibles ·
 
-Le move utile derrière ça c'est de sortir un brief copywriter sur l'angle miroir pour ton lancement jeudi: 15 min, je pars sur les 3 hook variants + opening body + CTA family. On y va, ou tu préfères que je creuse la voix marché sur le segment minceur d'abord (mine-vom, ~25 min, te donnera le vernacular concurrentiel et les white spaces) ?
+A · Test ces angles tels quels (les 3 premiers `forte`, les 2 derniers `moyenne` à tester sur budget calibré · ~50-100€ par angle, 5-7 jours data minimum avant verdict). Pertinent si t'as ton lancement jeudi.
+B · Upgrade les angles 4-5 d'abord · pousser mine-voc sur les pains "verdict balance" et "confiance retrouvée" (~10 min, capture verbatim direct s'il existe dans le corpus). Pertinent si tu veux 5 angles tous ancrés avant de scaler.
+
+Mon avis · A direct, tes 3 premiers angles sont solides et calibrés sur verbatims. Les 2 derniers serviront de variants secondaires, et tu auras les data réelles après 7 jours pour décider de les killer ou de les pousser. Pas besoin de re-mining avant.
 
 ---
 

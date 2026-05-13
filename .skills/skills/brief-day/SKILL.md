@@ -1,7 +1,7 @@
 ---
 name: brief-day
 type: navigator
-version: "1.1.0"
+version: "1.2.0"
 recommended_model: haiku
 reasoning_pattern: null
 description: >
@@ -21,6 +21,7 @@ pipeline:
 patch_notes:
   v1.0.0: "v2.39 ship navigator briefing. Read silencieux status.json + pending-validations + todos + learnings + profile + session-state cross-brands · classify health/needs-call/flags/next · output exécutif 5-7 bullets max + AskUserQuestion close. Anti-pattern strict · jamais propose Producer/Orchestrator skill sans demande explicite, jamais file paths/D# en surface, jamais brief >10 bullets quel que soit complexité portfolio."
   v1.1.0: "v2.51 enrichment · État brand info système 3 niveaux descriptif (pull-not-push cohérent v2.50). Section État brand structurée Identité (setup-once · setup brand + audiences) / Inventaire (produits avec spec+photo officielle + assets brand-level logo/badge/mascotte/pattern) / Atlas vivant (angles testés + campagnes encodées par usage terrain). Chaque item · label langage métier opérateur (photo officielle pas packshot, brand pas slug) + état OK/pas encore renseigné + hint passif si pertinent (récupérable depuis ton site / à drop manuellement / se construit au fil des campagnes). Sous-section optionnelle À noter max 2 items gaps fort impact downstream · drop si brand en très bon état. Strict no · pourcentage, level N, completion %, capability menu, jamais nommer skills (craft-packshot, import-asset), jamais flags techniques (_canonical, _validated_by_operator). Posture descriptive neutre · opérateur lit, comprend, décide. Bridge schema visual_identity v1.2 nouveaux slots (assets_canonical · logo_canonical + badge_canonical + mascotte_canonical + pattern_canonical)."
+  v1.2.0: "v2.54 investigation posture mode allégé · chaque item de l'État brand 3 niveaux signale sa nature observé directement (data Supabase / scan brand.json sourced) vs déduit (inférence partielle agent sur l'état). Sous-section optionnelle réécrite À explorer si pertinent (max 2 items, drill-down options Pour creuser X on peut faire Y) au lieu de À noter qui pouvait sonner injonctif. Close macro · UNE question Sur quoi veux-tu te focus aujourd'hui ? · opérateur arbitre. Préserve format 3 niveaux v2.51. Refacto uniquement posture · ajouter confidence observé/déduit + reformuler À noter en À explorer si pertinent + close drill-down macro. Cross-ref docs/system/investigation-posture.md."
 ---
 
 # Skill: brief-day
@@ -61,51 +62,58 @@ Bucket detected signals:
 - **Flags across portfolio**: cross-brand patterns (e.g. 3 brands missing Meta credentials, 2 brands with learnings_stale flag)
 - **Next action suggestions** (2-3 max, ranked by impact)
 
-## Step 2bis — Compose État brand · info système (silent, then surface)
+## Step 2bis — Compose État brand · info système (silent, then surface · v2.54 posture investigation allégée)
 
 **Quand surface.** Si l'opérateur a une seule brand active OU est focalisé sur une brand (last activity < 7 jours, ou brand explicitement mentionnée). Sinon, prefer le format portfolio multi-brands de Step 3 standard et garde l'état brand pour drill explicite.
 
-**Hiérarchie 3 niveaux** (ordre canonique, jamais inversé) :
+**Doctrinal contract v2.54.** brief-day est un cas particulier · c'est de l'**état descriptif** (cartographie de ce qui est rempli vs vide), pas de la synthèse stratégique. La doctrine investigation-posture s'applique en mode allégé · chaque item signale sa nature (observé directement vs déduit), la sous-section "À noter" devient "À explorer si pertinent" (drill-down options, pas injonction), close macro UNE question.
+
+**Posture observé / déduit par item** ·
+- `observé directement` (data Supabase status.json, scan brand.json sourcé, audience_index Supabase, learnings.json structurés) → item présenté tel quel, pas de flag explicite (default · le système est sourced).
+- `déduit` (inférence agent sur l'état · ex "audiences inférées non-validées", "brand a mascotte récurrente mais slot vide", "spec partielle nécessite enrichissement") → marquer explicitement `(déduit)` en suffixe sur le label item.
+
+**Hiérarchie 3 niveaux** (ordre canonique, jamais inversé) ·
 
 ### Niveau 1 — Identité brand (setup-once)
 
 Ce qui définit qui est la brand. Setup une fois, stable ensuite.
 
-- **Setup** · "complet" (si `wedge_complete: true`) OR "partiel" (si `draft`/`partial`) OR "pas encore engagé" (si `empty`)
-- **Audiences** · "N mappées (1 mère, N-1 sous-audiences)" si `audiences_index` populé. Sinon "pas encore mappées · se construit avec setup-brand"
+- **Setup** · "complet" (si `wedge_complete: true`) OR "partiel" (si `draft`/`partial`) OR "pas encore engagé" (si `empty`) · observé directement (status.json sourced)
+- **Audiences** · "N mappées (1 mère, N-1 sous-audiences)" si `audiences_index` populé. Sinon "pas encore mappées · se construit avec setup-brand". Si certaines audiences sont `validation_status: hypothesis` → ajouter `(N audiences encore en hypothèse · déduit, pas validées terrain)`.
 
 ### Niveau 2 — Inventaire produits & assets (ajouts continus)
 
 Ce dont la brand dispose pour produire des créa. Bouge avec chaque ajout.
 
-- **Produits** · "N (Display Name A, Display Name B, +K)" si N≤3 nommer tous, sinon top 3 + "+K autres". Pour chaque produit hero (top 2-3) :
-  - "{Display Name} · spec complète · photo officielle prête" si `spec.json` `complete` AND `visual_identity.assets_canonical.packshot_front._canonical: true`
+- **Produits** · "N (Display Name A, Display Name B, +K)" si N≤3 nommer tous, sinon top 3 + "+K autres". Pour chaque produit hero (top 2-3) ·
+  - "{Display Name} · spec complète · photo officielle prête" si `spec.json` `complete` AND `visual_identity.assets_canonical.packshot_front._canonical: true` (observé directement)
   - "{Display Name} · spec complète · pas encore de photo officielle" + hint passif "récupérable depuis ton site OU à drop" si spec OK mais packshot absent
-  - "{Display Name} · spec partielle" si spec incomplète
-- **Assets brand** (brand-level, cross-products) :
+  - "{Display Name} · spec partielle (déduit · enrichissement upstream nécessaire)" si spec incomplète
+- **Assets brand** (brand-level, cross-products) ·
   - **Logo** · "OK" si `visual_identity.assets_canonical.logo_canonical.path` présent. Sinon "pas encore renseigné · récupérable depuis ton site"
   - **Badges** · "N renseignés ({slug_humain_A}, {slug_humain_B})" si `badge_canonical{}` non-vide. Sinon "pas encore renseignés"
-  - **Mascotte** · "OK" si présente, "pas applicable" si brand n'a pas de mascotte selon identité (default), "pas encore renseignée" si brand a mascotte récurrente mais slot vide
+  - **Mascotte** · "OK" si présente, "pas applicable" si brand n'a pas de mascotte selon identité (default), "pas encore renseignée (déduit · si brand a mascotte récurrente)" si brand a mascotte récurrente mais slot vide
   - **Patterns** · "N renseignés" si `pattern_canonical{}` non-vide. Sinon "pas encore renseignés"
 
 ### Niveau 3 — Atlas vivant (earned par usage)
 
 Ce que la brand a appris en lançant des campagnes. Se construit avec le temps, pas avec setup.
 
-- **Angles testés** · "N hypothèses · K validés terrain" si `angles/` populé OR `learnings.json` contient angle_hypothesis entries. Sinon "0 angles encodés · se construit au fil des campagnes"
-- **Campagnes lancées** · "N résultats encodés" si `learnings.json` contient campaign_result entries. Sinon "0 résultats encodés · se construit au fil des campagnes"
+- **Angles testés** · "N hypothèses · K validés terrain" si `angles/` populé OR `learnings.json` contient angle_hypothesis entries (observé · learnings.json sourced). Sinon "0 angles encodés · se construit au fil des campagnes".
+- **Campagnes lancées** · "N résultats encodés" si `learnings.json` contient campaign_result entries (observé). Sinon "0 résultats encodés · se construit au fil des campagnes".
 
-### Sous-section optionnelle — "À noter (si pertinent pour toi)"
+### Sous-section optionnelle — "À explorer si pertinent" (v2.54 remplace "À noter")
 
-Max **2 items** courts, gaps fort impact downstream. Posture info, jamais push. Drop entièrement si brand en très bon état.
+Max **2 items** courts, drill-down options pour gaps fort impact downstream. Posture · drill-down options à arbitrer par l'opérateur, jamais injonction. Drop entièrement si brand en très bon état OU si rien d'actionnable.
 
-Triggers acceptables (signal → 1-line surface) :
-- Produit avec spec complète mais pas de photo officielle → "Tu n'as pas encore de photo officielle pour {Display Name} · sur tes prochaines pubs {Display Name}, le produit peut bouger légèrement."
-- 0 résultats campagnes encodés ET angles testés > 0 → "0 résultats campagnes encodés · pour l'instant tes angles sont en hypothèse, le système ne peut pas encore prioriser ce qui marche vs ce qui rate."
-- Logo brand absent ET >1 produit avec photo officielle → "Pas de logo brand renseigné · tes pubs ne pourront pas être brandées pixel-exact tant que ce n'est pas là."
-- Audiences inférées jamais validées ET deliverable planifié → "Tes audiences sont inférées mais pas validées · ce qui sera produit pour elles peut dériver."
+Format canonique v2.54 (drill-down option · "Pour creuser X, on peut faire Y") ·
 
-**Jamais** dépasser 2 items. **Jamais** nommer skill en surface (`craft-packshot`, `import-asset`, `setup-brand`, etc.). **Jamais** flag technique (`_canonical`, `_validated_by_operator`, `audiences_index`). **Jamais** injonction (`tu dois`, `il faut`, `complete ceci`).
+- Produit avec spec complète mais pas de photo officielle → "Pour préparer tes prochaines pubs {Display Name} avec produit pixel-exact, on peut récupérer la photo depuis ton site ou tu drop manuellement."
+- 0 résultats campagnes encodés ET angles testés > 0 → "Pour passer tes angles d'hypothèse à validés terrain, il faut encoder les résultats de campagnes déjà lancées (ou attendre les premiers tests)."
+- Logo brand absent ET >1 produit avec photo officielle → "Pour brander tes pubs pixel-exact, on peut récupérer le logo depuis ton site."
+- Audiences inférées jamais validées ET deliverable planifié → "Pour passer tes audiences d'hypothèse à validées avant de produire, on peut lancer une écoute clients réelle (~8-12 min)."
+
+**Jamais** dépasser 2 items. **Jamais** nommer skill en surface (`craft-packshot`, `import-asset`, `setup-brand`, `mine-voc`, etc.). **Jamais** flag technique (`_canonical`, `_validated_by_operator`, `audiences_index`). **Jamais** injonction (`tu dois`, `il faut`, `complete ceci`). **Jamais** "À noter" en wording (v2.51 ←) · toujours "À explorer si pertinent" en wording v2.54.
 
 ## Step 3 — Deliver the brief
 
@@ -129,13 +137,13 @@ Triggers acceptables (signal → 1-line surface) :
 > - Validate Northsense audience (15 min, unlocks brief-créa)
 > - Or skip to {brand B} if you prefer momentum
 
-**Template focus mono-brand** (adapt, never paste literally) :
+**Template focus mono-brand** (adapt, never paste literally · v2.54 posture investigation allégée) ·
 
 > **État brand · Glowco**
 >
 > Identité
 >   Setup · complet
->   Audiences · 3 mappées (1 mère, 2 sous-audiences)
+>   Audiences · 3 mappées (1 mère, 2 sous-audiences) · (3 audiences encore en hypothèse · déduit, pas validées terrain)
 >
 > Inventaire
 >   Produits · 3 (Cell Boost, Glow Boost, +1)
@@ -151,11 +159,17 @@ Triggers acceptables (signal → 1-line surface) :
 >   Angles testés · 5 hypothèses · 0 validés terrain
 >   Campagnes lancées · 0 résultats encodés
 >
-> À noter (si pertinent pour toi)
->   - Tu n'as pas encore de photo officielle pour Glow Boost · sur tes prochaines pubs Glow Boost, le produit peut bouger légèrement.
->   - 0 résultats campagnes encodés · pour l'instant tes angles sont en hypothèse, le système ne peut pas encore prioriser ce qui marche vs ce qui rate.
+> À explorer si pertinent
+>   - Pour préparer tes prochaines pubs Glow Boost avec produit pixel-exact, on peut récupérer la photo depuis ton site ou tu drop manuellement.
+>   - Pour passer tes audiences d'hypothèse à validées avant de produire des angles paid, on peut lancer une écoute clients réelle (~8-12 min).
+>
+> Sur quoi veux-tu te focus aujourd'hui ?
 
-**ALWAYS** close with smart suggests a/b/c/d using `AskUserQuestion` tool (load via `ToolSearch(select:AskUserQuestion)` if not loaded). Example options: *"Validate Northsense audience / Switch to {brand B} / Show full state of one brand / Other"*.
+**ALWAYS** close avec UNE question macro drill-down (v2.54 investigation posture · anti-pattern AP-5 BANNI · close affirmatif qui ferme la conversation). Format canonique ·
+
+> Sur quoi veux-tu te focus aujourd'hui ?
+
+Use `AskUserQuestion` tool pour smart suggests si pertinent · load via `ToolSearch(select:AskUserQuestion)` if not loaded. Options proposées dérivées de l'état brand observé · ex pour Glowco au-dessus · *"Photo officielle Glow Boost / Écoute clients audiences / Switch brand / Autre"*. Anti-pattern · jamais options génériques pre-templated, toujours adaptive selon état observé.
 
 ---
 
@@ -166,16 +180,28 @@ Triggers acceptables (signal → 1-line surface) :
 - **NEVER** list all brands if portfolio > 5. Summarize: "{5 active, 2 need attention, see show-progress for full list}".
 - **NEVER** give a brief longer than 10 bullets, regardless of workspace complexity. Pare down ruthlessly.
 - **NEVER** surface pourcentage, "X/Y completed", "level N", capability menu ("tu peux faire X") dans l'État brand section. Posture descriptive info-system, pas push.
-- **NEVER** nommer un skill (`craft-packshot`, `import-asset`, `setup-brand`, `mine-voc`, etc.) en surface dans l'État brand ou la sous-section À noter. Le système est invisible, l'opérateur ne lit que langage métier.
+- **NEVER** nommer un skill (`craft-packshot`, `import-asset`, `setup-brand`, `mine-voc`, etc.) en surface dans l'État brand ou la sous-section À explorer si pertinent. Le système est invisible, l'opérateur ne lit que langage métier.
 - **NEVER** flag technique en surface (`_canonical`, `_validated_by_operator`, `assets_canonical`, `audiences_index`, `wedge_complete`). L'opérateur lit "photo officielle prête" pas "packshot canonical validated".
-- **NEVER** injonction dans l'État brand (`tu dois`, `il faut`, `complete ceci`, `manque ceci`). Soft offer indirecte uniquement : "récupérable depuis ton site" (= hint passif).
-- **NEVER** plus de 2 items dans la sous-section À noter. Si rien à signaler, drop entièrement la sous-section.
+- **NEVER** injonction dans l'État brand (`tu dois`, `il faut`, `complete ceci`, `manque ceci`). Soft offer indirecte uniquement · "récupérable depuis ton site" (= hint passif), "Pour creuser X, on peut faire Y" (= drill-down option v2.54).
+- **NEVER** plus de 2 items dans la sous-section À explorer si pertinent. Si rien à signaler, drop entièrement la sous-section.
+- **NEVER** wording "À noter" (v2.51 ←) · toujours "À explorer si pertinent" (v2.54+) en wording cohérent doctrine investigation-posture.
+- **NEVER** close affirmatif qui ferme la conversation (*"Other actions ?"*, *"Anything else ?"*, *"Validate Northsense audience or move on?"*) · anti-pattern AP-5 doctrine investigation-posture BANNI. Toujours close macro UNE question · *"Sur quoi veux-tu te focus aujourd'hui ?"* + AskUserQuestion adaptive options.
+- **NEVER** présenter items déduits comme observés. Si "audiences inférées non-validées", suffixer `(déduit)` explicite. Anti-pattern AP-1 doctrine BANNI · affirmer une hypothèse comme un fait, même en cartographie d'état.
 
 ## Edge cases
 
 - **Zero brands** → redirect: *"No brand configured yet. Run setup-brand or drop a URL."*
-- **Single brand** → format État brand 3 niveaux (Step 2bis), pas de Portfolio health. Plus sous-section À noter max 2 items si pertinent. Drop section À noter entièrement si brand en très bon état.
-- **Brand fraîchement setup, 0 produits encore** → Identité OK, Inventaire `Produits · pas encore renseigné · se construit avec ajout produit`, Atlas vivant `0 angles encodés · se construit au fil des campagnes`. Pas de sous-section À noter (rien d'actionnable encore).
+- **Single brand** → format État brand 3 niveaux (Step 2bis), pas de Portfolio health. Plus sous-section À explorer si pertinent max 2 items si pertinent. Drop section À explorer entièrement si brand en très bon état OU rien d'actionnable.
+- **Brand fraîchement setup, 0 produits encore** → Identité OK, Inventaire `Produits · pas encore renseigné · se construit avec ajout produit`, Atlas vivant `0 angles encodés · se construit au fil des campagnes`. Pas de sous-section À explorer (rien d'actionnable encore).
 - **Brand sans visual_identity.json** → tous slots assets brand `pas encore renseigné · récupérable depuis ton site` (logo, badges, patterns) ou `pas applicable` (mascotte default).
 - **Operator just landed, no session-state.md** → treat as fresh start, mention "welcome back" once if > 3 days since last activity
 - **Mode detected from operator/profile.json.preferences.conversation_register** → (1) grounded = more explanation of what each item means, (4) technical = pure bullet points zero fluff
+
+---
+
+## Cross-refs
+
+- `docs/system/investigation-posture.md` (v2.54 doctrine canon) · cartographier avant affirmer · mode allégé pour brief-day · état descriptif observé / déduit · "À explorer si pertinent" remplace "À noter" · close macro UNE question.
+- `docs/system/contextual-intelligence.md` · master doctrine, no orphan output, jargon zéro en surface.
+- `docs/system/operator-vocabulary-translation.md` · canonical translations interne → operator-facing.
+- `resources/schemas/visual_identity.schema.json` v1.2 · slots assets_canonical (logo, badges, mascotte, patterns).

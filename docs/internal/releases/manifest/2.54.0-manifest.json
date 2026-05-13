@@ -1,0 +1,94 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.54.0",
+  "released_at": "2026-05-13",
+  "compatible_from": "2.0.0",
+  "type": "doctrine_canon_new_plus_skills_refactor_posture",
+  "summary": "Test live opérateur sur cas réel (snapshot-brand Housswood, 6 min scan, préparation pitch client demain) a révélé défaut systémique de posture · l'agent affirme des hypothèses comme des faits (3 audiences inventées présentées comme analytiques, projection ROAS posée comme un fait, copywriting narratif déguisé en analyse), ferme la conversation avec synthèse complète au lieu d'ouvrir le drill-down (close affirmatif `Je passe au tableau de projection chiffrée ?`). Posture canon `Cartographier avant affirmer` encadrée doctrinalement v2.54. Doctrine NEW investigation-posture.md (6e sous-doctrine de Contextual Intelligence). 4 skills stratégiques refactorés operator-facing surface · snapshot-brand, profile-audience, produce-paid-angles, brief-day. Backward compat strict additif · skills mécanismes inchangés, seul le rendu operator-facing porte maintenant la posture investigation (5 sections obligatoires Observé / Déduit / Inconnu / Leviers / Close ouvert · confidence chain explicit · drill-down macro = opérateur).",
+  "changes": [
+    {
+      "category": "new_doctrine_canon",
+      "action": "created",
+      "files": [
+        "docs/system/investigation-posture.md"
+      ],
+      "section": "Bloc 1 · Doctrine canon NEW investigation-posture (6e sous-doctrine Contextual Intelligence)",
+      "rationale": "Doctrine fondamentale v2.54+ encadrant la posture cognitive de tout skill produisant une synthèse stratégique. Tout output stratégique commence par cartographier le connu, déclare ses hypothèses avec confidence chain explicite, identifie les inconnus, propose des leviers d'investigation à l'opérateur. JAMAIS affirmer comme un fait ce qui est une hypothèse. L'opérateur arbitre au macro ce qu'on creuse. Sœur de contextual-intelligence.md · master dit `trust the model` sur le semantic layer, investigation-posture dit `the model investigates before it affirms`. Structure · 5 sections obligatoires (Observé · Déduit · Inconnu · Leviers · Close ouvert) · confidence chain (forte 5+ indicateurs convergents · moyenne 3-5 · faible 1-2 · TRÈS faible intuition modèle sans support). Anti-patterns explicites · AP-1 affirmation d'hypothèse comme fait · AP-2 personas inventés présentés comme analytiques · AP-3 copywriting narratif déguisé en analyse · AP-4 conclusion sans investigation · AP-5 close affirmatif qui ferme la conversation · AP-6 prose narrative continue sans structure. Application cross-skills v2.54 priorité · snapshot-brand · profile-audience · produce-paid-angles · brief-day. Propagation v2.55+ · audit-meta-account · analyst-perf · decompose-ad · produce-copy-brief."
+    },
+    {
+      "category": "root_claude_md_doctrine_anchor",
+      "action": "patched",
+      "files": [
+        "CLAUDE.md"
+      ],
+      "section": "Bloc 2 · Root CLAUDE.md règle absolue investigation posture + cross-ref doctrine",
+      "rationale": "Ajouté investigation-posture.md à la liste des sub-doctrines (6e) après contextual-intelligence.md master. Règle absolue inline · `Tout skill produisant une synthèse stratégique DOIT structurer son output en 5 sections explicites · Observé · Déduit · Inconnu · Leviers · Close ouvert. JAMAIS affirmer une hypothèse comme un fait. JAMAIS inventer des personas / audiences présentés comme analytiques sans data verbatim. JAMAIS clôturer la conversation avec une synthèse complète · l'agent ouvre la porte au drill-down`. Liste skills concernés explicite (snapshot-brand Movement 3-4, profile-audience, produce-paid-angles, brief-day, audit-meta-account, analyst-perf, decompose-ad, produce-copy-brief)."
+    },
+    {
+      "category": "skill_refactor_synthesis_5_sections",
+      "action": "patched",
+      "files": [
+        ".skills/skills/snapshot-brand/SKILL.md"
+      ],
+      "section": "Bloc 3 · snapshot-brand v1.0.1 → v1.1.0 · Step 7 3-movements prose → 5 sections doctrine",
+      "rationale": "Step 7 (Operator-facing synthesis) refactor complet · remplacement du pattern `3-movements prose synthesis` (qui mélangeait Observé + Déduit + projection comme des faits confiants) par 5 sections explicites doctrine investigation-posture · Section 1 Observé (faits sourcés scrape + Q&A opérateur · chaque fait avec ancrage source · bloc explicite `Pas observé directement` listant variables non accessibles depuis scan) · Section 2 Déduit (3-5 hypothèses formulées comme questions à l'opérateur avec confidence chain explicite forte/moyenne/faible/TRÈS faible + indicateurs sources · audiences DEFAULT TRÈS faible sans mining client réel) · Section 3 Inconnu (variables critiques non observables · liste explicite) · Section 4 Leviers (drill-down options par axe · langage métier opérateur · jamais nommer skill interne) · Section 5 Close ouvert (UNE question macro priorité drill-down · reco macro explicite · opérateur arbitre A/B/C/D). Préserve mécanismes scraping (Shopify JSON + HTML fallback) + persistance entities (spec.json/offers.json/profile.json). Decisive test before sending v2.54 · 3 tests binaires AP-1 / AP-2 / AP-5 à passer avant ship. Cross-ref doctrine + downstream skills mine-voc/mine-vom/produce-paid-angles."
+    },
+    {
+      "category": "skill_refactor_audience_as_hypothesis",
+      "action": "patched",
+      "files": [
+        ".skills/skills/profile-audience/SKILL.md"
+      ],
+      "section": "Bloc 4 · profile-audience v1.2.0 → v1.3.0 · audiences comme hypothèses avec confidence chain explicite",
+      "rationale": "HR6 (Surface draft profile à operator) refactor complet · de `vue opérateur structurée par dimension` à posture investigation. Chaque audience proposée porte structure obligatoire · Hypothèse identifiée (nom court) · Confidence (forte/moyenne/faible/TRÈS faible explicite calibrée sur mining réel · TRÈS faible DEFAULT sans mine-voc) · Indicateurs sources (copy site / influence partners / déclaration opérateur / verbatims mine-voc si dispo) · Validation requise (ce qui upgrade confidence) · Anti-pattern à respecter (si TRÈS faible · flag explicite OBLIGATOIREMENT à valider avant utilisation stratégique budget/brief créa/positioning). HR8 (Output operator-facing) close drill-down macro UNE question · A lance écoute clients maintenant ~8-12 min OR B valide intuitivement et continue downstream porte confidence héritée OR C injecte data existante. Operator output template restructuré · chaque dimension porte sa confidence par défaut quand pas de mining. Anti-pattern AP-2 doctrine BANNI · personas inventés présentés comme analytiques. Préserve mécanismes 8 dimensions + Schwartz double-stage + problem_map 3 niveaux + Step 0ter 4 questions framework. Cross-ref doctrine + confidence-propagation."
+    },
+    {
+      "category": "skill_refactor_confidence_chain_inheritance",
+      "action": "patched",
+      "files": [
+        ".skills/skills/produce-paid-angles/SKILL.md"
+      ],
+      "section": "Bloc 5 · produce-paid-angles v1.5.0 → v1.6.0 · confidence chain inheritée audience+brand · colonne Confiance ranked table",
+      "rationale": "Step 9 (Operator-facing output) refactor · ajout de la confidence chain inheritée par angle en surface opérateur. Pour chaque angle produit, calcul agrégé · derived_from_audience_confidence (héritée profile.json validation_status · TRÈS faible si audience hypothèse sans mining) + derived_from_brand_confidence (héritée brand.json Observé/Déduit selon doctrine) → claim_confidence (MIN conservative des deux héritages · algèbre cross-skill per docs/system/confidence-propagation.md · anchor formula-derived downgrade 1 level). Ranked table v2.54 ajoute colonne 7e `Confiance` qualitative (forte/moyenne/faible/TRÈS faible + 1-mot motif source). Close drill-down macro v2.54 · A test ces angles tels quels avec budget calibré · B upgrade confidence audience source d'abord ~8-12 min · C produire brief sur le seul angle confidence forte. Mon avis reco macro adaptive selon claim_confidence majoritaire. Layer A scoring trace enrichi avec audience_source_confidence + brand_source_confidence + claim_confidence par angle. Angle.schema lineage enrichi avec 3 nouveaux fields confidence. Préserve équation Obs+Tension+Reframe+Bridge, lineage canon copy, 5-lens scoring framework, cluster filter, finalize-mutation-batch. Anti-pattern AP-5 doctrine BANNI · close affirmatif `On y va ?`. Cross-ref doctrine investigation-posture + confidence-propagation."
+    },
+    {
+      "category": "skill_refactor_state_descriptive_observed_deduced",
+      "action": "patched",
+      "files": [
+        ".skills/skills/brief-day/SKILL.md"
+      ],
+      "section": "Bloc 6 · brief-day v1.1.0 → v1.2.0 · état descriptif + observé/déduit + À explorer si pertinent remplace À noter",
+      "rationale": "Step 2bis (Compose État brand · info système) refactor mode allégé doctrine investigation-posture · chaque item de l'État brand 3 niveaux (Identité / Inventaire / Atlas vivant v2.51) signale sa nature observé directement (data Supabase status.json sourcé, scan brand.json, audience_index, learnings.json) vs déduit (inférence agent · audiences inférées non-validées, spec partielle nécessite enrichissement, mascotte récurrente mais slot vide). Items déduits suffixés `(déduit)` explicite. Sous-section optionnelle réécrite · `À noter (si pertinent pour toi)` v2.51 → `À explorer si pertinent` v2.54 · max 2 items drill-down options format `Pour creuser X, on peut faire Y` au lieu de constats qui pouvaient sonner injonctif. Close macro UNE question canonique · `Sur quoi veux-tu te focus aujourd'hui ?` + AskUserQuestion adaptive options dérivées de l'état observé. Step 4 (What this skill NEVER does) enrichi · NEVER wording `À noter`, NEVER close affirmatif, NEVER présenter items déduits comme observés. Préserve format 3 niveaux v2.51 + bridge schema visual_identity v1.2 + mécanismes scan parallèle workspace. Anti-pattern AP-5 doctrine BANNI · close affirmatif qui ferme la conversation. Cross-ref doctrine investigation-posture."
+    },
+    {
+      "category": "manifest_regen",
+      "action": "regenerated",
+      "files": [
+        ".skills/_manifest.json",
+        ".skills/_jargon_bank.json"
+      ],
+      "section": "Bloc 7 · Manifest skills + jargon bank régénérés post-refactor",
+      "rationale": "python3 .skills/build-manifest.py · 56 skills indexés (inchangés en count, refactor uniquement operator-facing surface des 4 skills cibles v2.54) · 71 jargon entries inchangés en count (vocabulaire technique interne stable, le refactor v2.54 a touché les templates output operator-facing pas les jargons systèmes)."
+    }
+  ],
+  "files_patched_total": "6 (doctrine NEW 1 · CLAUDE.md root patch 1 · skills patched 4 · manifest regen 2)",
+  "patterns_introduced": {
+    "5_sections_doctrine_obligatory": "Observé / Déduit / Inconnu / Leviers / Close ouvert · structure cross-skill stratégique synthesis",
+    "confidence_chain_explicit": "forte / moyenne / faible / TRÈS faible qualitatifs uniquement en surface opérateur · jamais nombre 0.6 / 73%",
+    "drill_down_macro_operator_arbitre": "Close UNE question macro · opérateur choisit axe investigation · pas menu décoratif equal-weight sans reco",
+    "confidence_inheritance_cross_skill": "produce-paid-angles hérite profile-audience + brand · MIN conservative algèbre per confidence-propagation",
+    "observed_vs_deduced_state_signaling": "brief-day items suffixés (déduit) quand inférence agent vs observé direct sourcé · transparence cartographie d'état",
+    "a_explorer_si_pertinent_remplace_a_noter": "Drop wording injonctif · drill-down options format Pour creuser X on peut faire Y · operator-arbitre soft"
+  },
+  "antipatterns_eliminated": {
+    "AP1_hypothese_comme_fait": "snapshot-brand Movement 3 prose `leur volume est plafonné par leur calendrier de drops` posé comme fait → Section 2 Déduit hypothèse formulée comme question avec confidence + indicateurs sources",
+    "AP2_personas_inventes_analytiques": "profile-audience 3 audiences présentées comme analytiques sans data verbatim → audiences portées comme hypothèses confidence TRÈS faible avec validation OBLIGATOIRE flag avant utilisation stratégique",
+    "AP3_copywriting_narratif_deguise_analyse": "snapshot-brand Movement 3 prose marketing `C'est pas une marque de mobilier enfant, c'est une réponse artisanale` → Section 1 Observé positioning revendiqué site avec sources + Section 2 hypothèse driver achat confidence faible à valider verbatim",
+    "AP4_conclusion_sans_investigation": "snapshot-brand projection ROAS break-even 3.3 posée → Section 2 projection conditionnelle gross margin assumed 30% + sensibilité 25%→4.0 / 45%→2.2",
+    "AP5_close_affirmatif_ferme_conversation": "snapshot-brand `Je passe au tableau de projection chiffrée ?` + brief-day `Other actions ?` + produce-paid-angles `On y va ?` → Close ouvert UNE question macro drill-down avec reco",
+    "AP6_prose_narrative_continue": "snapshot-brand 3 pages prose mélangeant observé + déduit + projection + reco → 5 sections explicites avec rôle distinct"
+  },
+  "operator_impact": "Test live re-trigger snapshot-brand sur cas réel (Housswood ou autre) devrait maintenant produire · Section 1 Observé liste structurée faits sourcés scan + bloc Pas observé directement + Section 2 Déduit hypothèses confidence chain explicite (audience hypothèse TRÈS faible flaggée OBLIGATOIREMENT à valider) + Section 3 Inconnu variables critiques liste + Section 4 Leviers options drill-down par axe langage métier + Section 5 Close UNE question macro reco. Profile-audience sur audience hypothesis sans mine-voc → structure obligatoire Hypothèse + Confidence + Indicateurs + Validation requise + Anti-pattern flag. Produce-paid-angles → ranked table 7 colonnes avec Confiance qualitative · close drill-down macro A test calibré vs B upgrade audience first. Brief-day → état 3 niveaux avec items suffixés (déduit) + À explorer si pertinent + close Sur quoi veux-tu te focus aujourd'hui ?",
+  "backward_compat": "strict_additif. Skills mécanismes inchangés (scraping snapshot-brand, 8 dimensions profile-audience, 5-lens scoring produce-paid-angles, scan workspace brief-day). Schemas inchangés (angle.schema lineage ajoute 3 fields confidence en additif, pas de breaking). Field paths inchangés. Manifest skills count 56 inchangé. Triggers commandes inchangés. Seul le rendu operator-facing surface des 4 skills porte maintenant la posture investigation v2.54.",
+  "next_release_note": "v2.55+ patches identifiés · (a) propagation posture investigation aux 4 skills v2.55+ (audit-meta-account · analyst-perf · decompose-ad · produce-copy-brief) selon section Application cross-skills de investigation-posture.md. (b) audit cross-skill cohérence confidence-chain inheritage downstream (produce-copy-brief hérite produce-paid-angles claim_confidence par angle · brief créa porte la fiabilité héritée). (c) éventuelle ajout `_field_types` substrate enrichissement avec hypothesis_status discriminator · permettrait machine-enforced posture investigation cross-mutation."
+}

@@ -1,8 +1,9 @@
 ---
 name: profile-audience
-version: 1.2.0
+version: 1.3.0
 patch_notes:
   - "1.2.0 · v2.39+ · Step 0ter framework awareness (4 questions cartography pédagogie inline)"
+  - "1.3.0 · v2.54 investigation posture refactor surface · audiences présentées comme hypothèses avec confidence chain explicite (TRÈS faible par défaut sans mine-voc · faible 1-2 indicateurs site · moyenne mine-voc partiel · forte mine-voc + analytics convergents). Operator output template HR6 + HR8 restructurés · chaque audience porte hypothèse / confidence / indicateurs sources / validation requise / anti-pattern à respecter. Skill termine sur close drill-down macro · lancer mine-voc maintenant vs valider intuitivement et continuer. Préserve mécanismes 8 dimensions Schwartz double-stage problem_map. Refacto uniquement la posture surface · présentation comme hypothèse vs persona analytique. Cross-ref docs/system/investigation-posture.md."
 type: orchestrator
 isolation_scope: brand_only
 layer: 3
@@ -266,12 +267,36 @@ Pour chaque pain principal, décomposer chaîne :
 
 Tag verbatims sources pour chaque niveau.
 
-### HR6 · Surface draft profile à operator avec validation gate
+### HR6 · Surface draft profile à operator (posture investigation, v2.54+)
 
-Présenter en vue opérateur structurée par dimension (8 sections claires).
-Demander :
+**Doctrinal contract.** Présenter en posture **hypothèse**, pas conclusion analytique. Chaque audience structurée porte sa confidence chain explicite per `docs/system/investigation-posture.md`. Anti-pattern AP-2 doctrine BANNI · personas inventés présentés comme analytiques sans data verbatim client. Quand le mining n'a pas tourné (ou tourné partiellement), l'output doit signaler explicitement que l'audience est sur du sable.
 
-> Voici l'audience structurée. Tu valides en bloc, ou tu veux affiner une dimension ?
+**Confidence chain explicit par audience** ·
+
+| Niveau confidence | Indicateurs requis | Formulation cible operator |
+|---|---|---|
+| `forte` | Mine-voc + analytics audience convergents + verbatims 10+ par pain principal | "Pattern confirmé · {audience}" |
+| `moyenne` | Mine-voc partiel (5-10 verbatims) + indicateurs site convergents | "Hypothèse soutenue · {N} indicateurs" |
+| `faible` | 1-2 indicateurs site OR opérateur déclaré sans mining | "Hypothèse à valider · {indicateur}" |
+| `TRÈS faible` | Intuition modèle sur copy / partenaires / vocabulaire site, zéro verbatim client | "Intuition seulement · à valider OBLIGATOIREMENT avant utilisation stratégique" |
+
+Default sans mine-voc · confidence `TRÈS faible`. Le skill DOIT explicitement flagguer ces audiences comme non-utilisables comme fondation à une décision budget / brief créa / positioning.
+
+**Structure operator output par audience** ·
+
+Pour CHAQUE audience proposée, structure obligatoire (anti-pattern · persona analytique présenté sans confidence chain) ·
+
+- **Hypothèse identifiée · {nom audience court}** (titre)
+- **Confidence** · {forte / moyenne / faible / TRÈS faible}
+- **Indicateurs sources** · {ce qui justifie l'hypothèse · copy site / influence partners profile / déclaration opérateur / verbatims si mining tourné}
+- **Validation requise** · {ce qui doit être fait pour upgrader à `forte` · ex "mine-voc sur Trustpilot + analytics audience"}
+- **Anti-pattern à respecter** · si confidence `TRÈS faible`, flag explicite "OBLIGATOIREMENT à valider via mining client réel avant utilisation stratégique (décision budget / brief créa / positioning)"
+
+Demander macro arbitrage :
+
+> Voici les audiences structurées en hypothèses. Confidence chain visible par audience. Pour passer ces audiences de hypothèse `TRÈS faible` ou `faible` à `validée` · veux-tu lancer une écoute clients réelle maintenant (~8-12 min de mining sur Trustpilot + forums niche pour récupérer les vrais verbatims) ou tu valides intuitivement et on continue, en sachant que ce qui sera produit downstream (angles, brief créa) portera cette confidence-là ?
+
+L'opérateur arbitre · `lance écoute clients` → trigger mine-voc silencieusement OR `valide et continue` → préserver les audiences en hypothèse + propager confidence chain downstream.
 
 ### HR7 · Persist via mutation gate
 
@@ -290,12 +315,29 @@ Avant write_to_context :
    - Si entry source `mine_*` + entry existe dans current profile → flag conflict, surface à operator
 3. Operator gate explicite si conflits détectés
 
-### HR8 · Output operator-facing
+### HR8 · Output operator-facing (close drill-down macro, v2.54+)
 
-Vue lisible profile + next-step :
-- Pas d'angles produits → suggest `produce-paid-angles`
-- Sub-cluster `validation_status: hypothesis` (default), suggest A/B test
-- Si confidence low (peu de verbatims), warn et suggest plus de mining
+Vue lisible profile · chaque audience portée comme hypothèse avec confidence chain explicite per HR6 refactor.
+
+**Close obligatoire · UNE question macro drill-down** (anti-pattern AP-5 doctrine · close affirmatif qui ferme la conversation `Je passe au next step ?` → BANNI).
+
+Format close canonique v2.54 ·
+
+> Pour passer ces audiences de hypothèse `TRÈS faible` à validée terrain, ce qui débloque la suite (angles paid, brief créa) avec une fondation sourcée ·
+>
+> A · Lance l'écoute clients maintenant ({~8-12 min} sur Trustpilot + forums niche · récupère les vrais verbatims · upgrade confidence à `moyenne` ou `forte` selon densité corpus)
+> B · Valide intuitivement et on continue · ce qui sera produit downstream (angles, brief créa) portera la confidence `TRÈS faible` héritée (à tester avec budget calibré, pas all-in)
+> C · Tu m'injectes des données existantes que t'as déjà (reviews exportées, analytics audience, retours SAV) en 1-2 phrases denses, je les intègre et on re-évalue confidence
+>
+> Mon avis · {recommandation macro adaptive · si verbatim_density < 3 → A en premier critique pour fondation downstream · sinon B valide si confidence `moyenne` déjà sur l'audience}.
+
+L'opérateur arbitre macro. Pas de menu décoratif, UNE question avec reco.
+
+**Anti-patterns surface operator** ·
+- JAMAIS exposer `confidence` comme un nombre (0.6, 0.4) en surface. Qualitatifs uniquement (`TRÈS faible / faible / moyenne / forte`).
+- JAMAIS exposer field path interne (`meta.entry_door`, `psychology.awareness_stage_product`, `validation_status: hypothesis`) en surface. Reformuler en langage métier.
+- JAMAIS nommer skill (`mine-voc`, `produce-paid-angles`) en surface · routing silencieux à l'agent après choix opérateur.
+- JAMAIS afficher persona inventé comme analytique (anti-pattern AP-2 doctrine). Toujours flaggué hypothèse avec confidence chain.
 
 ### HR9 · Anti-patterns
 
@@ -305,61 +347,96 @@ Vue lisible profile + next-step :
 - Ne JAMAIS auto-write sans operator validation gate
 - Ne JAMAIS exposer JSON brut à l'opérateur
 
-## Operator output template
+## Operator output template (v2.54 investigation posture)
+
+Template canonique post-v2.54 · chaque audience portée comme hypothèse avec confidence chain explicite. Anti-pattern AP-2 doctrine BANNI · personas inventés présentés comme analytiques sans data verbatim.
 
 ```
-═══════════════════════════════════════════════════════════════
-{BRAND} · {AUDIENCE_SLUG} · DRAFT PROFILE
-═══════════════════════════════════════════════════════════════
+{BRAND} · {AUDIENCE_SLUG} · HYPOTHÈSE STRUCTURÉE
 
-[1] PURCHASE DRIVER
-  Dominant driver  {driver}
-  Source verbatims {n} citations
+Hypothèse identifiée · {nom audience court}
+Confidence · {forte | moyenne | faible | TRÈS faible}
+Indicateurs sources · {ce qui justifie · copy site / influence partners / déclaration opérateur / verbatims mine-voc si dispo}
+Validation requise · {ce qui doit être fait pour upgrader · ex "mine-voc Trustpilot + analytics audience"}
+{Si confidence TRÈS faible · ligne flag explicite "OBLIGATOIREMENT à valider avant utilisation stratégique (budget / brief créa / positioning)"}
 
-[2] PROBLEM MAP
-  Pain principal   {pain}
-  Fréquence        {frequency}
-  Intensity        {intensity}
-  Surface          "{verbatim}"
-  Consequence      {consequence}
-  Deep             {deep_meaning}
+─────────────────────────────────────────────
 
-[3] BENEFIT STACK
-  Top bénéfices recherchés
+[1] Purchase driver (hypothèse)
+  Dominant driver inféré  {driver}
+  Indicateurs             {N} citations verbatim si dispo, OR signaux site si pas de mining
+  À valider               {ce qui upgrade confidence sur ce driver}
+
+[2] Problem map (hypothèse)
+  Pain principal inféré  {pain}
+  Fréquence              {frequency} ({confidence sur freq})
+  Intensity              {intensity}
+  Surface (1er niveau)   "{verbatim si dispo}" OR "à capturer via mining"
+  Consequence (2e)       {consequence inférée}
+  Deep (3e identitaire)  {deep_meaning inféré · confidence TRÈS faible si pas de mining}
+
+[3] Benefit stack (hypothèse)
+  Top bénéfices inférés
     1. {benefit_1} (functional → emotional → identity)
     2. ...
+  Indicateurs              {sources mining si dispo}
 
-[4] MECHANISM (audience-side belief)
-  La cible pense que la solution doit fonctionner via : {mechanism_belief}
+[4] Mechanism · audience-side belief (hypothèse)
+  La cible pense que la solution doit fonctionner via · {mechanism_belief}
+  Confidence sur ce belief · {niveau}
+  À valider                · {comment vérifier · ex "mine-voc reviews concurrence + forums"}
 
-[5] MARKET CONTEXT
-  Schwartz sophistication  {1-5}
-  Awareness stage          {stage}
-  Product awareness        {product/solution/problem/unaware}
-  Emotional stage          {pain-active / solution-seeking / etc.}
+[5] Market context (déduit · confidence variable)
+  Schwartz sophistication inféré  {1-5} ({confidence})
+  Awareness stage dominant       {stage} ({confidence})
+  Product awareness              {product/solution/problem/unaware}
+  Emotional stage                {pain-active / solution-seeking / etc.}
+  Indicateurs                    {sources mining OR signaux site}
 
-[6] ALTERNATIVE MAP
-  Solutions essayées avant
-    - {alt_1} : pourquoi insuffisant : {reason}
-    - {alt_2} : ...
+[6] Alternative map (hypothèse)
+  Solutions essayées avant inférées
+    - {alt_1} · pourquoi insuffisant inféré · {reason}
+    - {alt_2} · ...
+  À valider · verbatims forums/reviews pour confirmer les vraies alternatives essayées
 
-[7] IDENTITY SIGNALS
-  Mode de vie  {signals}
-  Valeurs      {values}
-  Références   {cultural_refs}
+[7] Identity signals (hypothèse · confidence DEFAULT TRÈS faible sans data verbatim)
+  Mode de vie inféré   {signals depuis copy + partners}
+  Valeurs inférées     {values revendiquées site}
+  Références inférées  {cultural_refs depuis ton + casting}
+  À valider · mine-voc + scan vernaculaire forums niche
 
-[8] DECISION PROCESS
-  Path achat       {path}
-  Decision makers  {makers}
-  Trigger event    {trigger}
+[8] Decision process (hypothèse)
+  Path achat inféré    {path}
+  Decision makers      {makers · confidence}
+  Trigger event inféré {trigger}
+  À valider · verbatims "comment as-tu connu" / "qu'est-ce qui t'a fait acheter"
 
-→ Tu valides en bloc, tu affines une dimension, ou tu poses une question ?
+─────────────────────────────────────────────
+
+Close · UNE question macro drill-down
+
+Pour upgrader cette audience de hypothèse {confidence actuelle} à validée terrain ·
+
+A · Lance l'écoute clients (~8-12 min · mining Trustpilot + forums · récupère verbatims réels · upgrade à `moyenne` ou `forte`)
+B · Valide intuitivement et continue · downstream porte confidence `{actuelle}` héritée
+C · Injecte data existante (reviews exportées, analytics, retours SAV · 1-2 phrases denses)
+
+Mon avis · {reco macro adaptive selon verbatim_density actuelle}.
 ```
+
+**Hard rules template** ·
+- Chaque dimension porte sa confidence par défaut quand pas de mining.
+- Anti-pattern · présenter `[2] Problem map · Pain principal · "Je perds mes cheveux"` comme un fait alors que zéro verbatim n'a été récupéré. Toujours signaler "inféré" + indicateurs sources + à valider.
+- Anti-pattern · close affirmatif (*"Tu valides en bloc ?"*) → BANNI. Toujours close drill-down macro avec UNE question A/B/C + reco.
 
 ## Cross-references
 
-- `resources/canon/copy/niveaux-schwartz/*` (sophistication 1-5, awareness stages)
-- `resources/schemas/profile.schema.json` v1.3 (`persona_archetype`, `buyer_user_split`, `purchase_driver` derived)
-- `resources/canon/copy/creative-formula.md` V3 (8 dimensions canon)
-- Notion Stride-Up cartographie audience (doctrine sœur)
-- D#384 multi-product binding (audit S55) sur Schwartz double-stage
+- `docs/system/investigation-posture.md` (v2.54 doctrine canon) · cartographier avant affirmer · confidence chain explicit · audiences comme hypothèses (TRÈS faible par défaut sans mine-voc) · close drill-down macro · opérateur arbitre.
+- `docs/system/contextual-intelligence.md` · master doctrine, no orphan output, jargon zéro en surface.
+- `docs/system/audience-cartography.md` · doctrinal contract cartography (mère / sous-audiences, 4 movements).
+- `docs/doctrine/audience-cartography-framework.md` · 4 questions framework canon Step 0ter.
+- `docs/system/confidence-propagation.md` · algèbre cascade confidence cross-skill (audience → angle → brief créa).
+- `resources/canon/copy/niveaux-schwartz/*` (sophistication 1-5, awareness stages).
+- `resources/schemas/profile.schema.json` v1.3 (`persona_archetype`, `buyer_user_split`, `purchase_driver` derived).
+- `resources/canon/copy/creative-formula.md` V3 (8 dimensions canon).
+- D#384 multi-product binding (audit S55) sur Schwartz double-stage.

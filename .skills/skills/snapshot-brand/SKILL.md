@@ -1,13 +1,14 @@
 ---
 name: snapshot-brand
 type: producer
-version: "1.0.1"
+version: "1.1.0"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
 reasoning_pattern: null
 patch_notes:
   v1.0.1: "v2.51 operator-fiche-output canonique template applied · trust-and-deepen close + Movement 4 hand-off refactor langage métier. Close menu post-synthesis · drop skill names en parenthèses (mine-voc, mine-vom, deepen-brand-context) → descriptions plain language uniquement (15 min validation guidée / 15 min écoute clients / 25 min écoute marché / 45 min full). Movement 4 hand-off Step 5 · drop wording `mine-voc fait X` / `produce-paid-angles consomme Y` → langage métier accessible (`écoute clients Trustpilot et forums` au lieu de nommer skill, `set d'angles ranked prêt brief créa` au lieu de `produce-paid-angles consume`). Cohérent template canonique resources/templates/operator-fiche-output.md."
+  v1.1.0: "v2.54 investigation posture refactor Step 7 · drop 3-movements prose synthesis (mélangait observé + déduit + projection comme des faits). Step 7 restructuré en 5 sections doctrine canon · Observé (faits sourcés scrape + Q&A opérateur) · Déduit (hypothèses avec confidence chain forte/moyenne/faible/TRÈS faible + indicateurs sources, formulées comme questions) · Inconnu (variables non observables à creuser) · Leviers (skills/actions/sources pour lever les inconnues, options drill-down macro) · Close ouvert (UNE question macro priorité drill-down · opérateur arbitre). Préserve mécanismes scraping + persistance spec.json/offers.json/profile.json. Refacto uniquement la synthèse operator-facing post-scrape. Cross-ref doctrine docs/system/investigation-posture.md."
 description: >
   Automatically fills spec.json, offers.json and the base of profile.json
   from a product URL. Scrapes the page, asks 4 closed questions about the audience,
@@ -546,42 +547,150 @@ Everything else stays null until `mine-voc` (verbatim → pain_points[].formulat
 
 ---
 
-## Step 7 — Operator-facing synthesis (mandatory format)
+## Step 7 — Operator-facing synthesis (5 sections doctrine, v2.54+)
 
-Before writing the files, deliver one **4-6 sentence analytical paragraph** that names what this product *is*, what *segment of the market it occupies*, and what *load-bearing decision the operator will make next* on this product. Use the schemas you just filled as **analytical vocabulary**, not as bullet points.
+**Doctrinal contract.** Before writing files, deliver the synthesis structured in 5 explicit sections per `docs/system/investigation-posture.md`. Cartographier avant affirmer · jamais affirmer une hypothèse comme un fait · jamais inventer des audiences/positionings présentés comme analytiques · ouvrir le drill-down macro, ne pas le fermer.
 
-The paragraph must answer in implicit order, woven into prose:
+The 5 sections replace the prior 3-movements prose pattern (v1.0.1 ←) which mixed observed + deduced + projection as confident assertions. Reading the synthesis now lands like an analyst's note · faits sourcés, hypothèses avec confidence chain, inconnus listés, leviers proposés, opérateur arbitre.
 
-1. **What this product really is** — beyond the category label. (*"not a sun stick, an anti-age stick disguised as sunscreen"*)
-2. **Who buys it and why** — pain + trigger + sophistication, in plain prose. Use `problems_solved`, `audience.pain.primary_problem`, `market_context.sophistication` as raw material.
-3. **What the offer architecture suggests** — pricing tier, subscription presence, bundle logic if any. Use `offer_groups[].offers[]` as raw material.
-4. **The 1-2 things you noticed that the operator likely did not** — flags, gaps between brand-stated and observation-based fields, market positioning surprises.
+### Section 1 · Observé (faits sourcés)
 
-End with one of two close patterns, depending on operator signal:
+Structured list of what scrape + Q&A actually revealed. Each fact carries its source. Pure observation, zero interpretation.
 
-**Default close (operator hasn't signaled they want to skip validation):**
+Format example (FR · canonique v2.54) ·
 
-> *"Save this snapshot, or want to correct anything?"*
+> *Observé · scan {URL} ({date}, {durée scan})*
+>
+> *Produit hero · {product_name}, prix {price}{currency} ({variant info if any})*
+> *Catégorie · {product_type from API or HTML}*
+> *Description site · {1-line summary stripped body_html}*
+> *Preuves exposées sur fiche · {trust badges / authority claims observés ou "aucune visible"}*
+> *Preuves sociales revendiquées · {claims trouvés site type "X familles", "Y reviews"}*
+> *Reviews widget embarqué · {Judge.me / Loox / Okendo détecté} OR "aucun widget vérifié"*
+> *Offres détectées · {N offres · types · paliers de prix}*
+> *Plateforme · {Shopify confirmed / HTML scraping fallback}*
+> *Capture opérateur (Q&A audience) · {Q1 verbatim} · {Q2 verbatim} · {Q3 verbatim} · {Q4 verbatim}*
+>
+> *Pas observé directement (ne pas affirmer) · {liste explicite · audience démographique réelle, gross margin, base mail, plateforme analytics, structure paid, base trafic, autres selon scan}*
 
-**Trust-and-deepen close (operator has signaled they trust the synthesis and want to go deeper):**
+**Hard rules Section 1** ·
+- Liste à puces ou format structuré. JAMAIS prose narrative.
+- Chaque fait avec son ancrage source (scrape URL · API Shopify · HTML · Q&A opérateur · widget vérifié).
+- Bloc explicite "Pas observé directement" liste les variables non accessibles depuis le scan (anti-pattern AP-4 doctrine · affirmer ce qu'on n'a pas observé).
+- Zéro adjectif évaluatif (*"impressionnant"*, *"unique"*, *"premium"*). Faits bruts uniquement.
 
-If the operator's reply to the synthesis carries trust signals (*"ok ça me va"*, *"go"*, *"trust c'est bon"*, *"valide tout"*), or if they explicitly ask for more depth, offer the deepening paths via AskUserQuestion. Plain language descriptions only, zero skill names in parenthèses (operator-facing rule absolue · cf root CLAUDE.md):
+### Section 2 · Déduit (hypothèses avec confidence chain)
 
-> Si tu veux, on peut creuser ·
-> - Soit en validant point par point ce que je viens d'écrire (15 min, tu corriges au fur et à mesure)
-> - Soit en allant chercher ce que tes vrais clients disent sur Trustpilot et les forums (15 min)
-> - Soit en regardant la conversation plus large dans la niche (25 min)
-> - Soit les deux (45 min)
+3-5 hypotheses derived from Observé + sector knowledge. Each hypothesis carries · titre court · confidence explicite · indicateurs sources · question à l'opérateur (jamais conclusion posée).
 
-(EN equivalent for English operators):
+Confidence chain · `forte` (5+ indicateurs convergents internes + externes), `moyenne` (3-5 indicateurs convergents majoritairement internes), `faible` (1-2 indicateurs partiels), `TRÈS faible` (intuition modèle sans support externe).
 
-> Where do you want to go from here?
-> - Validate point by point (15 min, you correct as we go)
-> - Listen to what your real customers say on Trustpilot and forums (15 min)
-> - Look at the broader conversation in your niche (25 min)
-> - Both, with cross-synthesis (45 min)
+Format example (FR · canonique v2.54) ·
 
-Si l'opérateur veut un strategic memo standalone (45 min · approfondissement niche), proposer uniquement sur demande directe, JAMAIS dans le set d'options par défaut (cost asymmetry per v2.9.0 architecture decision). Le routing interne (vers `mine-voc` / `mine-vom` / `deepen-brand-context` / `study-niche-marketdeepdive`) se fait silencieusement à l'agent · operator ne voit jamais ces noms en surface.
+> *Déduit · {N} hypothèses à valider*
+>
+> *H1 · {hypothèse courte 1 ligne}*
+> *  Confidence · {forte | moyenne | faible | TRÈS faible}*
+> *  Indicateurs · {ce qui justifie l'hypothèse · 2-4 signaux observés}*
+> *  À valider · {question(s) opérateur · jamais affirmation}*
+>
+> *H2 · {hypothèse courte}*
+> *  Confidence · {niveau}*
+> *  Indicateurs · {signaux}*
+> *  À valider · {question}*
+>
+> *(... H3, H4, H5 selon densité corpus ...)*
+>
+> *Hypothèses avec confidence TRÈS faible · à valider OBLIGATOIREMENT avant utilisation stratégique (décision budget / positioning / brief créa). Intuition modèle, pas data terrain.*
+
+**Hard rules Section 2** ·
+- Chaque hypothèse formulée comme question, jamais comme conclusion posée.
+- Confidence chain explicite et calibrée selon indicateurs réels (anti-pattern AP-1 doctrine · affirmer une hypothèse comme un fait).
+- Hypothèses audience (qui achète) · confidence DEFAULT `TRÈS faible` sans mining client réel (anti-pattern AP-2 · personas inventés présentés comme analytiques). Indicateurs site / copy / partenaires influence = signaux faibles, JAMAIS sourced.
+- Si projection chiffrée (ROAS, gross margin assumé, break-even) · marquer `projection conditionnelle` + variable assumed + sensibilité.
+
+### Section 3 · Inconnu (variables non observables)
+
+Explicit list of variables critiques pour la stratégie qui ne peuvent pas être levées depuis le scan initial. Pas de deviner ces variables. Liste explicite.
+
+Format example (FR · canonique v2.54) ·
+
+> *Inconnu · {N} variables à creuser*
+>
+> *1. {variable critique 1} → {méthode pour lever}*
+> *2. {variable 2} → {méthode}*
+> *3. {variable 3} → {méthode}*
+> *(... typiquement 5-8 variables sur un scan brand neuf ...)*
+
+Typical inconnus list (adapter selon brand) ·
+- Audience démographique réelle (vs hypothèses copy site)
+- Gross margin réelle
+- Taux conversion + abandon panier par page
+- Plateforme email + segmentation existante
+- Search volume FR/EN sur les keywords cibles
+- Compétitif paid · qui run sur la niche
+- Stack analytics installé (GA4, Hotjar, Mixpanel, etc.)
+- Volume CA actuel + AOV historique + ROAS break-even réel
+
+### Section 4 · Leviers (drill-down options · opérateur arbitre)
+
+Pour chaque inconnue importante, quel skill / action permet de la lever. Options par axe d'investigation. Pas de "voici le plan complet", l'opérateur arbitre où on dépense le temps.
+
+Format example (FR · canonique v2.54) ·
+
+> *Leviers · {N} axes d'investigation prioritaires*
+>
+> *Axe A · {nom axe humain · ex Audience réelle} (lève {H#} + Inconnu {#})*
+> *  → {action 1 en langage métier · ex "écoute clients Trustpilot + forums maternité"} ({durée})*
+> *  → {action 2 si pertinent · ex "cross-référence avec analytics si dispo"}*
+>
+> *Axe B · {nom axe · ex Structure économique} (lève {H#} + Inconnu {#})*
+> *  → {action · ex "1 question opérateur · gross margin, AOV, distribution"} ({durée})*
+> *  → {action · ex "calibrage ROAS targets après"}*
+>
+> *Axe C · {nom axe · ex Structure paid compétitive} (lève Inconnu {#})*
+> *  → {action · ex "audit compte Meta si dispo OU scan Meta Ads Library sur la niche"} ({durée})*
+>
+> *Axe D · {nom axe · ex Preuve sociale terrain} (lève {H#})*
+> *  → {action · ex "écoute reviews Google + influenceurs déjà collaborateurs"} ({durée})*
+
+**Hard rules Section 4** ·
+- Action en langage métier opérateur. JAMAIS nommer le skill interne (`mine-voc`, `audit-meta-account`, `mine-vom`) en surface · operator-facing rule absolue cf root CLAUDE.md.
+- Routing interne vers les skills se fait silencieusement à l'agent après le choix opérateur.
+- Durée estimée pour chaque action (donne à l'opérateur la matière pour arbitrer).
+
+### Section 5 · Close ouvert (UNE question macro)
+
+L'output se termine par UNE question macro sur la priorité de drill-down. Pas de "voici le plan", pas de "je passe au next step", l'opérateur arbitre.
+
+Format example (FR · canonique v2.54) ·
+
+> *On a {N} axes d'investigation. Pour {contexte si connu · ex "ton pitch demain", "ton lancement jeudi", "ta prochaine décision"}, lequel veux-tu creuser en priorité ?*
+>
+> *A · {nom axe} ({durée totale}, {pourquoi critique en 1 ligne})*
+> *B · {nom axe} ({durée}, {pourquoi})*
+> *C · {nom axe} ({durée}, {pourquoi})*
+> *D · {nom axe} ({durée}, {pourquoi})*
+>
+> *Mon avis · {recommandation macro · ex "A + B en premier (45 min total, posent la fondation), C/D si temps avant le call"}.*
+
+L'opérateur dit `A` ou `A+B` ou autre. L'agent enchaîne le drill-down sur l'axe choisi en respectant à nouveau les 5 sections (cycle itératif).
+
+(EN equivalent · adapt to operator language detected) ·
+
+> *We have {N} investigation axes. For {context if known}, which one do you want to drill in priority?*
+>
+> *A · {axis name} ({duration}, {why critical 1 line})*
+> *B · {axis name} ({duration}, {why})*
+> *C · {axis name} ({duration}, {why})*
+> *D · {axis name} ({duration}, {why})*
+>
+> *My take · {macro recommendation}.*
+
+**Hard rules Section 5** ·
+- UNE question macro · pas de menu de 6 options non priorisées.
+- Reco macro explicite (anti-pattern · 4 options equal-weight sans opinion).
+- Anti-pattern AP-5 doctrine · close affirmatif qui ferme la conversation (*"Je passe au tableau de projection chiffrée ?"*) → BANNI. Close ouvre toujours le drill-down macro.
 
 **Visual assets soft mention (v2.50 · pull-not-push pattern) :**
 
@@ -615,17 +724,19 @@ Si operator répond négatif ou pivote (*"non merci"*, *"plus tard"*, *"on verra
 
 Rationale · onboarding completion (jauge "brand prête à X%" backlog v2.51+) consume canonical assets as one dimension of brand readiness. v2.50 ships the soft mention upstream so the operator becomes aware of the path without pressure, and the actual import is triggered later when a downstream skill (e.g. `compose-creative` mode layered) needs the asset and offers to fetch it then. v2.51 ajoute le bridge code câblé pour que l'option (a) "Récupère depuis site" déclenche concrètement import-asset Mode C sans que l'agent improvise les params.
 
-If the page was thin (`_snapshot.confidence_score` internal flag low), say so in prose inside the synthesis (*"the page didn't give me much beyond the basic spec — your hero benefits and the anti-age angle I'm inferring from product context, not direct copy"*) — never expose the score as a number, never list "missing fields" as a separate block.
+If the page was thin (`_snapshot.confidence_score` internal flag low), say so explicitly in Section 1 (Observé) · list reduit + bloc "Pas observé directement" enrichi. JAMAIS exposer le score comme un nombre. La thin-page se reflète dans la Section 2 (Déduit) · hypothèses majoritairement `faible` ou `TRÈS faible` avec validation OBLIGATOIRE flag.
 
-**Hard rules for the synthesis:**
-- **Pure prose only.** No bullet list, no field enumeration, no bold-section anchors (no `**Le pitch**\n...\n\n**La cible**\n...`), no numbered headings, no scores, no completion percentages, no "Marque. ... Hero. ... Audience. ..." templated paragraph openers.
-- Use schema field semantics as nouns and verbs (e.g. *"the trigger is X"*, not *"trigger_primary: X"*).
-- Never name a file, a path, a skill, a confidence number, or an internal flag.
-- If a schema field is null, do not mention it. The synthesis is what was learned, not what was missed.
-- Inferred attributes flagged inline with *"(à valider)"* or *"(I deduced this, validate when you can)"* — never as a separate "missing fields" block.
-- **Three movements, one blank line between each, no titles.** Movement 1 = what this product really is + who buys it and why (1-3 sentences). Movement 2 = what the offer architecture suggests + the market position (1-3 sentences). Movement 3 = the 1-2 things you noticed the operator likely did not (1-3 sentences). The blank lines provide visual breathing room. The titles are implicit — the structure carries itself through what each paragraph names. **Never add a bold heading or a label to mark each movement.**
+**Hard rules cross-section** ·
+- **5 sections explicites, jamais fusionnées en prose continue.** Anti-pattern AP-6 doctrine · prose narrative continue qui mélange Observé + Déduit + projection + reco.
+- Each section a son rôle distinct · Observé = faits sourcés · Déduit = hypothèses avec confidence · Inconnu = variables à creuser · Leviers = options drill-down · Close ouvert = UNE question macro.
+- Use schema field semantics as analytical vocabulary (e.g. *"le pain principal observé est X"*, not *"pain_points[].formulation: X"*).
+- **NEVER name a file, a path, a skill, a confidence number (0.7, 73%), or an internal flag in operator surface.** Confidence chain exposed as `forte / moyenne / faible / TRÈS faible` qualitatifs uniquement.
+- Anti-pattern AP-3 doctrine BANNI · copywriting narratif déguisé en analyse (*"C'est pas une marque de mobilier enfant, c'est une réponse artisanale à une contradiction..."*) → toujours réécrire en posture analyste · faits + indicateurs + hypothèse formulée comme question.
 
-**Decisive test before sending:** read the synthesis as a stranger. If you see **bold section labels**, numbered headings, or `Field. content. Field. content.` templated openers, you reverted to form-fill. Rewrite as flowing prose where each paragraph names what it carries via its first sentence, not via a label above it.
+**Decisive test before sending** · read the synthesis as a stranger to the brand. Test binaire ·
+- (1) Est-ce qu'une affirmation prose mélange dans la même phrase observé + déduit sans signaler la nature ? Si oui → AP-1 violation, réécrire en Section 1 (Observé) vs Section 2 (Déduit) séparées.
+- (2) Y a-t-il une audience / persona présenté comme analytique sans data verbatim ? Si oui → AP-2 violation, downgrade à hypothèse Section 2 confidence `TRÈS faible` avec flag validation OBLIGATOIRE.
+- (3) Le close affirme-t-il *"Je passe au next step"* / *"Save this snapshot"* / *"Want anything else"* ? Si oui → AP-5 violation, réécrire en Section 5 (Close ouvert) avec UNE question macro drill-down.
 
 **Behavior on operator response:**
 - **Confirm** (*"yes"*, *"go"*, *"spot on"*, *"ok"*) → write spec.json + offers.json + profile.json.
@@ -723,3 +834,16 @@ The `_TEMPLATE` is at v1.8. When scraping a product page, you must look for and 
 - `offer_groups[].offers[].tags[]` — free tags at offer level (v2 schema; legacy `offers[].tags[]` is v1.x).
 
 **Automatic stamping:** each entity file carries its own `_version` field matching the schema it was built against. Current baseline (read live from `_TEMPLATE`): `brand.json _version=2.1`, `products/{slug}/spec.json _version=1.8`, `products/{slug}/offers.json _version=2.0`, `audiences/{slug}/profile.json _version=1.2`. After a fresh scaffold via `cp -r _TEMPLATE brands/{slug}`, these values are inherited automatically. Never hardcode version expectations — always read from `_TEMPLATE` first.
+
+---
+
+## Cross-refs
+
+- `docs/system/investigation-posture.md` (v2.54 doctrine canon) · cartographier avant affirmer · confidence chain explicit · drill-down macro = opérateur · 5 sections obligatoires Step 7 (Observé / Déduit / Inconnu / Leviers / Close ouvert).
+- `docs/system/contextual-intelligence.md` · master doctrine, no orphan output, jargon zéro en surface opérateur.
+- `docs/system/audience-cartography.md` · doctrinal contract Step 5 (4 movements audience).
+- `docs/system/voice.md` · voice canon, register, banned phrases.
+- `resources/templates/operator-fiche-output.md` · canonical template fiche output.
+- `.skills/skills/mine-voc/SKILL.md` · downstream pour lever hypothèses audience confidence `TRÈS faible`.
+- `.skills/skills/mine-vom/SKILL.md` · downstream pour lever inconnus vernacular marché + compétitif.
+- `.skills/skills/produce-paid-angles/SKILL.md` · downstream pour produire angles avec confidence chain héritée audience + brand.
