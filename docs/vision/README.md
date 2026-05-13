@@ -10,7 +10,7 @@ Public-facing narrative. Why PhantomOS exists, what it argues, what it ships nex
 
 ## Who this is for
 
-Anyone evaluating PhantomOS — investors, operators still deciding, consultants curious about the method, journalists, future contributors. Also Largo in six months, reading his own thesis to check it still holds.
+Anyone evaluating PhantomOS — investors, operators still deciding, consultants curious about the method, journalists, future contributors. Also the maintainer in six months, reading their own thesis to check it still holds.
 
 ## Conventions
 

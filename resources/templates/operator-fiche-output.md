@@ -51,7 +51,7 @@ Format général ·
 |---|---|---|
 | compose-creative | Pub n°{N} | `Pub n°17` |
 | recompose-creative | Variante de la pub n°{N_source} | `Variante de la pub n°12` |
-| craft-packshot | Photo officielle produit · {product_humain} | `Photo officielle · Cellule Boost` |
+| craft-packshot | Photo officielle produit · {product_humain} | `Photo officielle · Cell Boost` |
 | import-asset | Asset ajouté · {label_humain} | `Asset · Logo brand` ou `Asset · Badge "100% Plantes Naturelles"` |
 | decompose-ad | Analyse pub · {source_humaine} | `Analyse pub · concurrent` ou `Analyse pub · interne n°17` |
 | compose-overlay-text | Pub n°{N} · texte/logo affiné | `Pub n°17 · texte affiné` |
@@ -140,7 +140,7 @@ Type          {plain · "direct response avec touche brand"}
 Concept       {plain · "variante du concept 'frustration soins surface'"}
 ```
 
-Pas de `concept_id: cpt_kara_chute_001`, `variant_of: cpt_kara_chute_000`, `intent_mix: {primary: DR}`. Plain language only.
+Pas de `concept_id: cpt_brand_audience_001`, `variant_of: cpt_brand_audience_000`, `intent_mix: {primary: DR}`. Plain language only.
 
 **Pattern recommandé** · NE PAS rendre cette section par défaut. Elle vit en JSON dans le fichier persisté (creative.json) pour retrieval programmatique. Operator ne la voit pas.
 

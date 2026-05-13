@@ -85,7 +85,7 @@
           "properties": {
             "summary": { "type": "string", "description": "Light pass: one-line phrasing of the observation." },
             "phenomenon": { "type": ["string", "null"], "description": "Deep pass: the observable behavior, situation, or fact." },
-            "source": { "type": ["string", "null"], "description": "Deep pass: where this observation comes from. E.g. 'Trustpilot karacare', 'Reddit r/HairCare', 'self-reported in audience VoM'. Free polysemic field by design (kept under formula.observation, distinct from top-level origin_axis)." },
+            "source": { "type": ["string", "null"], "description": "Deep pass: where this observation comes from. E.g. 'Trustpilot {brand_slug}', 'Reddit r/HairCare', 'self-reported in audience VoM'. Free polysemic field by design (kept under formula.observation, distinct from top-level origin_axis)." },
             "sample_size": { "type": ["integer", "null"], "description": "Deep pass: how many verbatims or data points support this observation." },
             "_field_types": { "type": "object" }
           }

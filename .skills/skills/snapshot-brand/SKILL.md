@@ -112,7 +112,7 @@ After detection, stage the proposal BEFORE asking the operator. The stage call r
 3. **Wait for the operator turn.** The `checkpoint-resolver` hook reads their reply and resolves the pending proposal:
    - `"oui"`, `"yes"`, `"go"`, `"ok"`, `"valide"` etc. → `confirmed_products` gains `{slug}` → Step 2 unlocked.
    - `"non"`, `"no"`, `"pas bon"`, correction like `"non, it's X"` → rejection logged, pending cleared → re-detect, re-stage with the corrected product, re-ask.
-   - Free-form correction without confirm/reject marker (`"Hair Boost"`) → no automatic resolution. Clear pending manually by re-staging with the corrected slug (pending existing blocks new stage — surface gracefully to the operator).
+   - Free-form correction without confirm/reject marker (`"Glow Boost"`) → no automatic resolution. Clear pending manually by re-staging with the corrected slug (pending existing blocks new stage — surface gracefully to the operator).
 4. **Never start scraping until stage-proposal is resolved.** Writing `products/{slug}/spec.json` or `products/{slug}/offers.json` without the slug in `confirmed_products` is blocked by the write-to-context gate.
 
 **Validate the retained product URL:**
@@ -445,19 +445,19 @@ Single-question gate. Wait for operator confirmation. Once confirmed, scaffold t
 > *"Dernière question avant que je grave : pour chaque audience, quel(s) produit(s) elle achète chez {brand_name} ? Tu peux cocher un seul, plusieurs, ou laisser vide si l'audience est plus large que tes produits actuels (genre une persona brand-wide qui pourrait acheter n'importe lequel).*
 >
 > *Mes hypothèses par défaut, à corriger franchement :*
-> *  pousse-projet → hair-boost (le hero, vise la pousse)*
-> *  pousse-jeune-adulte → hair-boost*
-> *  pousse-recovery → hair-boost*
-> *  chute-active → hair-boost + cellule-boost (les deux, c'est la cible naturelle du bundle)*
-> *  chute-post-grossesse → hair-boost + cellule-boost*
-> *  chute-stress-hormonal → hair-boost + cellule-boost*
-> *  chute-traction → hair-boost*
+> *  pousse-projet → glow-boost (le hero, vise la pousse)*
+> *  pousse-jeune-adulte → glow-boost*
+> *  pousse-recovery → glow-boost*
+> *  chute-active → glow-boost + cell-boost (les deux, c'est la cible naturelle du bundle)*
+> *  chute-post-grossesse → glow-boost + cell-boost*
+> *  chute-stress-hormonal → glow-boost + cell-boost*
+> *  chute-traction → glow-boost*
 >
 > *Tu valides cette répartition ou tu veux ajuster ?"*
 
-L'opérateur valide ou corrige. Encoder via `meta.applies_to_products: ["hair-boost"]` ou `["hair-boost", "cellule-boost"]` ou `[]` (brand-wide). Le champ `meta.product_id` legacy reste null (ne pas écrire ce champ pour les nouvelles audiences post-v2.24.0).
+L'opérateur valide ou corrige. Encoder via `meta.applies_to_products: ["glow-boost"]` ou `["glow-boost", "cell-boost"]` ou `[]` (brand-wide). Le champ `meta.product_id` legacy reste null (ne pas écrire ce champ pour les nouvelles audiences post-v2.24.0).
 
-Cette question débloque la navigation cross-référencée dans `/phantom` : *"voir les audiences sur hair-boost"* devient une commande naturelle (`/phantom {brand_slug} products hair-boost` rend la fiche produit avec les audiences cibles dessous).
+Cette question débloque la navigation cross-référencée dans `/phantom` : *"voir les audiences sur glow-boost"* devient une commande naturelle (`/phantom {brand_slug} products glow-boost` rend la fiche produit avec les audiences cibles dessous).
 
 ### Movement 4 — Hand-off vers approfondissement (operator-facing)
 

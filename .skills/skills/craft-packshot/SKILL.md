@@ -212,7 +212,7 @@ Pour chaque gen output, table critère par critère :
 | # | Critère | Source |
 |---|---|---|
 | 1 | Wordmark verbatim selon `wordmark_pattern` regex | visual_identity.label.wordmark_text |
-| 2 | Sub-label verbatim (CELLULE BOOST, HAIR BOOST, etc.) | visual_identity.label.sub_label |
+| 2 | Sub-label verbatim (CELL BOOST, GLOW BOOST, etc.) | visual_identity.label.sub_label |
 | 3 | Composition list verbatim avec separators · | visual_identity.label.ingredients_listed |
 | 4 | Duration indicator verbatim ("1 MOIS DE CURE · 60 gummies") | visual_identity.label.duration_indicator |
 | 5 | Cert badge sans hallucination text (round shape OK, text legible OR clean blank) | visual_identity.distinctive_features |
@@ -315,7 +315,7 @@ final_prompt = prompt_template.format(**variables)
 
 **Validation pre-call** · `final_prompt` length 50-300 chars (zone validée gen v10 · ~250 chars). Si > 300 = trop verbose, simplifier. Si < 50 = trop vague, vérifier `container.shape` rempli dans `visual_identity.json`.
 
-**Locale switch.** Si `brand.identity.language ≠ FR`, traduire template dans langue opérateur. Default · FR (template Largo style). EN equivalent · *"Put this product in a professional photoshoot, well-centered with beautiful lighting, only the product, nothing else, the {container_shape} and all the product details on the packaging."*
+**Locale switch.** Si `brand.identity.language ≠ FR`, traduire template dans langue opérateur. Default · FR (template style direct). EN equivalent · *"Put this product in a professional photoshoot, well-centered with beautiful lighting, only the product, nothing else, the {container_shape} and all the product details on the packaging."*
 
 ### Step 3 · fal.ai call
 
@@ -476,7 +476,7 @@ Flag MAJOR/CRITICAL à l'opérateur si remonte. Sinon silent. Cohérent doctrine
 - **Brand sans website.** `brand.identity.website` null → Mode A impossible. Bascule Mode B (upload local) ou ask opérateur URL produit explicite.
 - **Carousel masquée derrière JS rendering.** Si `grep` sur HTML statique trouve 0 image, propose Mode B upload OR utilise Puppeteer/Playwright si dispo via MCP (à clarifier opérateur).
 - **Visual_identity.label.elements[] absent.** L3 degraded · helper `_build_label_elements_from_schema(vi)` reconstruit depuis `label.wordmark_text`, `label.sub_label`, `label.ingredients_listed`, `label.duration_indicator`. Si tous absents = refuse, surface "fiche visuelle trop vide, run `define-specs` d'abord".
-- **Cert badge zone très complexe.** Si visual_identity flag cert_badge particulier avec arc text détaillé, ajouter precision element dans label_elements_iteration avec spelling literal de l'arc text (cf hairboost gen v2 `Minéraux · Plantes · Vitamines`).
+- **Cert badge zone très complexe.** Si visual_identity flag cert_badge particulier avec arc text détaillé, ajouter precision element dans label_elements_iteration avec spelling literal de l'arc text (ex `Minéraux · Plantes · Vitamines`).
 - **FAL_API_KEY manquant.** Surface honnête : *"je n'ai pas accès à fal.ai sur ton workspace. Drop le token dans credentials.env racine, ou utilise Mode B upload manuel"*. Refuse de continuer.
 - **Source carousel max 1500×1500 only.** Continue avec source < 2000×2000 (acceptable pour gen IA upscale via nano-banana-pro/edit qui scale to 2K output anyway), flag note dans sidecar `_source_resolution_under_target`.
 

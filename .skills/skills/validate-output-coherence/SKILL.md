@@ -62,7 +62,7 @@ The caller MUST provide :
 
 - `output_text` — the text or structured output about to be shown to the operator
 - `brand_slug` — which brand's facts to validate against
-- `entity_refs` — list of entities the output draws from (e.g., `["brand", "products/hair-boost", "audiences/core"]`). Loaded for comparison.
+- `entity_refs` — list of entities the output draws from (e.g., `["brand", "products/glow-boost", "audiences/core"]`). Loaded for comparison.
 - `resource_refs` *(optional)* — list of resources cited in the output (paths from `discover-resources` results). Used for sourcing checks.
 - `severity_threshold` *(optional, default `warning`)* — `warning` surfaces everything; `blocking` only flags severe issues that should halt shipment.
 

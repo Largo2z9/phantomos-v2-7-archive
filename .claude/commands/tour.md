@@ -165,7 +165,7 @@ Weave into the prose, not as a separate "here is the problem" block. Pick two or
 
 **Name the compound mechanism with one line.** When mentioning the compound, name `/learn-from-session` so the operator has a concrete handle. One sentence, not a paragraph. Example tone:
 
-> *"Concrètement, quand tu corriges quelque chose en cours de route ou que tu m'apprends une règle (par exemple 'sur Karacare on ne dit jamais miracle'), tu peux taper /learn-from-session à la fin pour verrouiller la règle. Sinon je la capte au fil de l'eau, mais cette commande te laisse appuyer dessus quand un point te paraît important."*
+> *"Concrètement, quand tu corriges quelque chose en cours de route ou que tu m'apprends une règle (par exemple 'sur Glowco on ne dit jamais miracle'), tu peux taper /learn-from-session à la fin pour verrouiller la règle. Sinon je la capte au fil de l'eau, mais cette commande te laisse appuyer dessus quand un point te paraît important."*
 
 Never lead Milestone 5 with this. Always after the centralization payoff is established. The operator should hear *what they get* before *how to lock it in*.
 

@@ -131,16 +131,16 @@ Triggers acceptables (signal → 1-line surface) :
 
 **Template focus mono-brand** (adapt, never paste literally) :
 
-> **État brand · Karacare**
+> **État brand · Glowco**
 >
 > Identité
 >   Setup · complet
 >   Audiences · 3 mappées (1 mère, 2 sous-audiences)
 >
 > Inventaire
->   Produits · 3 (Cellule Boost, Hair Boost, +1)
->     Cellule Boost · spec complète · photo officielle prête
->     Hair Boost · spec complète · pas encore de photo officielle (récupérable depuis ton site OU à drop)
+>   Produits · 3 (Cell Boost, Glow Boost, +1)
+>     Cell Boost · spec complète · photo officielle prête
+>     Glow Boost · spec complète · pas encore de photo officielle (récupérable depuis ton site OU à drop)
 >   Assets brand
 >     Logo · pas encore renseigné · récupérable depuis ton site
 >     Badges · pas encore renseignés
@@ -152,7 +152,7 @@ Triggers acceptables (signal → 1-line surface) :
 >   Campagnes lancées · 0 résultats encodés
 >
 > À noter (si pertinent pour toi)
->   - Tu n'as pas encore de photo officielle pour Hair Boost · sur tes prochaines pubs Hair Boost, le produit peut bouger légèrement.
+>   - Tu n'as pas encore de photo officielle pour Glow Boost · sur tes prochaines pubs Glow Boost, le produit peut bouger légèrement.
 >   - 0 résultats campagnes encodés · pour l'instant tes angles sont en hypothèse, le système ne peut pas encore prioriser ce qui marche vs ce qui rate.
 
 **ALWAYS** close with smart suggests a/b/c/d using `AskUserQuestion` tool (load via `ToolSearch(select:AskUserQuestion)` if not loaded). Example options: *"Validate Northsense audience / Switch to {brand B} / Show full state of one brand / Other"*.

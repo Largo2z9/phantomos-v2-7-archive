@@ -139,4 +139,4 @@ Si la variable n'est pas définie, ne pas proposer. L'export reste local.
 
 - **v1.0** · ship 2026-04-29.
 - **Suivi** : si un repo `phantomos-sessions-archive` est créé et configuré dans `credentials_shared.env`, le push automatique devient une option fin de Step 4.
-- **Pattern detection** : sessions exportées peuvent être analysées par un futur skill `audit-friction-patterns` côté build largo-kb pour identifier patterns récurrents (questionnaire avant action, sycophant pavlov, vouvoiement raté, etc.) et patcher la doctrine.
+- **Pattern detection** : sessions exportées peuvent être analysées par un futur skill `audit-friction-patterns` côté build operator-kb pour identifier patterns récurrents (questionnaire avant action, sycophant pavlov, vouvoiement raté, etc.) et patcher la doctrine.

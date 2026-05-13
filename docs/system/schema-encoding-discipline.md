@@ -81,12 +81,12 @@ The temporal layer of SED has its own structure. Three memory layers, never mixe
 
 | Name | Symptom | Fix |
 |---|---|---|
-| **Direct Edit on brand JSON** | An author bypassing `write_to_context` because "the gate doesn't cover my case". | Surface the gap to Largo. Extend the gate. NEVER hand-edit. |
+| **Direct Edit on brand JSON** | An author bypassing `write_to_context` because "the gate doesn't cover my case". | Surface the gap to the maintainer. Extend the gate. NEVER hand-edit. |
 | **Free-text where canon exists** | `tone: "rassurant et chaleureux mais pas trop direct"` instead of `tone: ["reassuring", "warm"]` from a controlled vocabulary. | Externalize the vocabulary in a registry, switch the field to enum. |
 | **Untyped field** | A field carrying value but no `_field_types` tag. | Tag at write time. The agent cannot reason about provenance otherwise. |
 | **Singleton-as-canon** | One verbatim, one operator declaration → brand truth. | Triangulation rule. Singletons flagged as hypothesis. |
 | **Snapshot drift** | Operator asks "what's the brand status?" — agent reads JSONs directly because snapshot is stale. | Hard rule: rebuild snapshot after every write to entity JSON. |
-| **Memory cross-contamination** | An operator preference written into brand JSON ("Largo prefers concise output" — wrong layer). | Strict separation enforcement. The memory layer is determined by the *subject* of the fact, not the *trigger* of the write. |
+| **Memory cross-contamination** | An operator preference written into brand JSON ("operator prefers concise output" — wrong layer). | Strict separation enforcement. The memory layer is determined by the *subject* of the fact, not the *trigger* of the write. |
 | **Learnings overwrite** | A learning "corrected" by editing the original entry. | Append-only. New entry [SUPERSEDES Lxxx]. Old entry retains for audit. |
 | **Schema drift** | Custom extension diverges from core schema patterns (no `_version`, no `_field_types`). | Extension layer governance — same rules as core. |
 | **Convention drift** | Skill-author hardcodes a Meta API field name that conflicts with `resources/conventions/meta.json`. | Always read conventions before platform interaction. |
@@ -188,7 +188,7 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 ## 12. Status
 
 - **Draft v0.1** — research zone, Build mode, .
-- **Promotion criterion** — to be reviewed by Largo, then promoted to `workspace-template/docs/system/schema-encoding-discipline.md` once cross-references with CMR / SAD / PTD scope are validated and the 11 sub-disciplines previously scattered are confirmed consolidated.
+- **Promotion criterion** — to be reviewed by the maintainer, then promoted to `workspace-template/docs/system/schema-encoding-discipline.md` once cross-references with CMR / SAD / PTD scope are validated and the 11 sub-disciplines previously scattered are confirmed consolidated.
 - **First applications** — patches to extension layer governance, sourcing-tag enforcement on legacy brand JSONs, triangulation-rule surface in `validate-resources` output.
 
 ---

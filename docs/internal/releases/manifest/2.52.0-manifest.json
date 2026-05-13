@@ -1,0 +1,105 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.52.0",
+  "released_at": "2026-05-13",
+  "compatible_from": "2.0.0",
+  "type": "cleanup_brand_identity_agnostic",
+  "summary": "Sprint v2.46-v2.51 a ré-introduit du brand-side (Karacare / Cellule Boost / Hair Boost) dans 12+ fichiers du canon distribuable alors que v2.45 avait fait un premier cleanup. v2.52 ré-applique le cleanup systémique sur tous les fichiers identifiés par audit qualité préalable. Substance pédagogique intacte, backward compat strict additif.",
+  "changes": [
+    {
+      "category": "brand_side_substitution",
+      "action": "patched",
+      "files": [
+        "resources/templates/operator-fiche-output.md",
+        ".skills/skills/brief-day/SKILL.md",
+        ".claude/commands/phantom.md",
+        ".skills/skills/snapshot-brand/SKILL.md",
+        "resources/schemas/visual_identity.schema.json",
+        "resources/schemas/angle.schema.json",
+        "resources/schemas/brand.schema.json",
+        "resources/templates/creative-formula.md",
+        "resources/templates/hook-formulas.md",
+        ".claude/commands/tour.md",
+        "docs/system/audience-cartography.md",
+        "docs/system/model-versioning-canon.md",
+        "lexicon.md",
+        ".skills/skills/ingest-resource/SKILL.md",
+        ".skills/skills/compose-creative/SKILL.md",
+        ".skills/skills/import-asset/SKILL.md",
+        ".skills/skills/validate-output-coherence/SKILL.md",
+        ".skills/skills/compose-overlay-text/SKILL.md",
+        ".skills/skills/craft-packshot/SKILL.md"
+      ],
+      "section": "Bloc 1 · Substitution brand-side cohérente v2.45 cleanup convention",
+      "rationale": "Sprint v2.46-v2.51 a ré-introduit Karacare / Hair Boost / Cellule Boost dans le canon distribuable. Substitutions appliquées · Karacare → Glowco (cohérent v2.45 cleanup), Hair Boost / hair-boost / HairBoost → Glow Boost / glow-boost / GlowBoost, Cellule Boost / cellule-boost / cellule-boost-anti-chute → Cell Boost / cell-boost (slug court canon v2.45+). Cross-files cohérence préservée · si hair-boost replacé par glow-boost dans un fichier, le replacement est strict cross-references (audience-cartography binding, phantom.md drill examples, snapshot-brand audience binding hypothesis, schemas examples). Substance pédagogique intacte · exemples conceptuels (audience binding multi-product, asset slot canonical, wordmark pattern regex) restent valides avec brand fictive."
+    },
+    {
+      "category": "identity_anonymization",
+      "action": "patched",
+      "files": [
+        "CONTRIBUTING.md",
+        "docs/system/provenance-trust-discipline-scope.md",
+        "docs/system/skill-authoring-discipline.md",
+        "docs/system/skill-authoring-toolkit.md",
+        "docs/vision/roadmap.md",
+        "docs/vision/README.md",
+        "docs/vision/offering-deployment.md",
+        "docs/system/voice.md",
+        "docs/system/agent-contracts.md",
+        "docs/system/canonical-matrix-reasoning.md",
+        "docs/system/doctrine-governance.md",
+        "docs/system/atlas-canon-copy.md",
+        "docs/system/schema-encoding-discipline.md",
+        "docs/internal/canon.md",
+        ".skills/skills/export-session/SKILL.md",
+        ".skills/skills/learn-from-session/SKILL.md",
+        ".skills/skills/compose-creative/SKILL.md",
+        ".skills/skills/craft-packshot/SKILL.md",
+        "resources/schemas/visual_identity.schema.json",
+        "resources/frameworks/paid-angle-scoring.md",
+        "CHANGELOG.md"
+      ],
+      "section": "Bloc 2 · Anonymization identité Largo + paths perso + cross-refs largo-kb",
+      "rationale": "Substitutions appliquées · GitHub author org (CONTRIBUTING.md clone URL) → <your-org>/phantomos placeholder · paths absolus perso (CHANGELOG sources empiriques) → /Users/<operator>/... anonyme · cross-refs vers KB locale auteur (skill-authoring toolkit/discipline, roadmap, canon, lexicon) → operator-kb générique · Mattéo + Largo + future operators share a brand workspace (Abyss agency model) → Operator A + Operator B + future operators share a brand workspace (multi-operator agency model) · mentions du maintainer en surface texte (doctrines / skills / schemas / vision) → the maintainer / the operator / operator selon contexte (ex 'reviewed by [maintainer]' → 'reviewed by the maintainer', '[maintainer] flag explicit' → 'operator flag explicit', 'source validée [maintainer]' → 'source validée operator', '[maintainer] prefers concise output' → 'operator prefers concise output'). Doctrine substance préservée · pattern matching, registry vocab, contributor workflow inchangé."
+    },
+    {
+      "category": "abyss_to_agency_generic",
+      "action": "patched",
+      "files": [
+        ".skills/INDEX.md"
+      ],
+      "section": "Bloc 3 · Abyss → agency generic",
+      "rationale": "Mention `analyze-perf (Abyss side)` dans INDEX.md ligne 328 → `analyze-perf (agency side)` générique multi-deployer."
+    },
+    {
+      "category": "manifest_historical_scrub",
+      "action": "patched",
+      "files": [
+        "docs/internal/releases/manifest/2.45.0-manifest.json",
+        "docs/internal/releases/manifest/2.11.0-manifest.json"
+      ],
+      "section": "Bloc 4 · Manifests historiques scrub identity (volume limité, P3 selon brief)",
+      "rationale": "2.45.0-manifest ligne 68 `Largo2z9/phantomos` → `<your-org>/phantomos`. 2.11.0-manifest ligne 77 `analyze-copy/SKILL.md (largo-kb scope)` → `(operator kb scope)`. Manifests historiques v2.43-v2.51 conservés avec mentions brand-side internes (Karacare/Hair Boost/Cellule Boost) comme audit trail release pipeline · pas operator-facing · acceptable transparent (note CHANGELOG en tête)."
+    },
+    {
+      "category": "changelog_note_historical",
+      "action": "added",
+      "files": ["CHANGELOG.md"],
+      "section": "Bloc 5 · Note historique en tête CHANGELOG + entry v2.52",
+      "rationale": "Note explicite en haut du CHANGELOG · 'Historical brand references (Karacare, Hair Boost, Cellule Boost) kept in CHANGELOG entries below for traceability of internal stress tests. They have been scrubbed from the canon-distributable surface (skills, schemas, doctrines, templates) per v2.52 cleanup pass.' Entry v2.52 ajoutée en tête sous note. Décision · scrubber les paths perso absolus auteur (sensible exposure) MAIS GARDER les mentions historiques Karacare/Hair Boost/Cellule Boost dans le corps CHANGELOG (sinon CHANGELOG devient incohérent vs réalité commits + audit trail interne perdu)."
+    }
+  ],
+  "files_scrubbed_total": "40+ (cross-pillar · skills 9 + docs system 11 + docs vision 3 + docs internal 1 + resources schemas 3 + resources templates 3 + resources frameworks 1 + commands 2 + root CONTRIBUTING / CHANGELOG / lexicon + manifests historiques 2)",
+  "files_tolerated_transparents": "CHANGELOG.md entries v2.43-v2.51 (mentions historiques brand-side gardées pour traçabilité stress tests internes · note explicite en tête CHANGELOG) + docs/internal/releases/manifest/2.43.0-manifest.json through 2.51.0-manifest.json (audit trail release pipeline interne, pas operator-facing, acceptable transparent)",
+  "audit_verification": {
+    "brand_leaks_canon_surface": 0,
+    "identity_leaks_canon_surface": 0,
+    "abyss_leaks_canon_surface": 0,
+    "personal_paths_changelog": 0,
+    "historical_brand_changelog": 17,
+    "historical_brand_manifests": 38
+  },
+  "operator_impact": "Template PhantomOS v2.52 ship-ready distribuable publiquement sur GitHub <your-org>/phantomos OR transmissible au collectif agency (Abyss model) sans leak. Nouveau opérateur agency qui clone le repo voit template brand-agnostic + identité-agnostic · canon copy avec marque fictive Glowco · skills avec {brand_slug} placeholder · doctrines anonymes (the maintainer / the operator) · cross-refs operator-kb génériques. Substance pédagogique préservée. Workflow opérationnel intact (56 skills + 17 doctrines + canon copywriting 11 chapitres × 58 fiches). Backward compat strict additif.",
+  "backward_compat": "strict_additif. Aucun breaking change. Substance préservée. Manifest skills regen 56 skills. Tests existing skills pass post-scrub car aucun field path / enum / schema modifié · uniquement labels descriptifs + exemples illustratifs.",
+  "next_release_note": "v2.53+ patches identifiés · (a) audit profond manifests historiques v2.43-v2.51 si signal opérateur fort pour parfaire l'anonymisation audit trail (currently tolérés transparents). (b) CHANGELOG narrative anonymization full pass si signal opérateur fort (currently keep historical references with note en tête). (c) onboarding test workspace template sur opérateur agency externe inconnu pour valider zéro leak résiduel hors canon surface. (d) éventuelle convention `tolerated_brand_references` registry pour exemples futurs validés (Glowco / Cell Boost / Glow Boost · brand fictive officielle PhantomOS canon)."
+}

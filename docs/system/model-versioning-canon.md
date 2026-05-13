@@ -6,7 +6,7 @@
 
 PhantomOS skills hardcodent les endpoints API externes dans frontmatter `permissions.external_apis[]`. Exemple v2.43 · `compose-creative` et `craft-packshot` utilisaient `fal-ai/nano-banana-pro/edit` (Gemini 2.5 Flash Image · pre-novembre 2025). En novembre 2025, Google a release Gemini 3 Pro Image (fal endpoint `nano-banana-2/edit`) · meilleur · text fidelity supérieur · material preservation native. Skills PhantomOS continuaient à utiliser endpoint legacy · résultats sub-optimaux.
 
-Cycle USAGE v2.44 stress test cellule-boost a livré 9 attempts échouées sur endpoint legacy (silhouette bouteille réinventée OR text gibberish) avant que swap vers `nano-banana-2/edit` résolve en 1 attempt avec prompt naturel français court. Apprentissage canon · le canon de novembre 2025 n'était plus le canon de mai 2026. Drift silencieux entre release modèle et adoption skill.
+Cycle USAGE v2.44 stress test produit canon a livré 9 attempts échouées sur endpoint legacy (silhouette bouteille réinventée OR text gibberish) avant que swap vers `nano-banana-2/edit` résolve en 1 attempt avec prompt naturel français court. Apprentissage canon · le canon de novembre 2025 n'était plus le canon de mai 2026. Drift silencieux entre release modèle et adoption skill.
 
 ## Règle canon pragma v2.46
 
@@ -74,7 +74,7 @@ Pattern equivalent autres vendors ·
 ## Application historique
 
 - v2.44 ship doctrine initiale (runtime check + frontmatter)
-- v2.44 craft-packshot v1.1 swap nano-banana-pro → nano-banana-2 (stress test cellule-boost 1 attempt vs 9 échouées)
+- v2.44 craft-packshot v1.1 swap nano-banana-pro → nano-banana-2 (stress test produit canon 1 attempt vs 9 échouées)
 - v2.46 doctrine pragma adapt · drop runtime check, audit manuel périodique
 - v2.46 migration consumers cohérence ·
   - `compose-creative` v1.1 → v1.2 swap nano-banana-2
@@ -90,7 +90,7 @@ Pattern equivalent autres vendors ·
 
 ## Rationale pragma (NEW v2.46)
 
-Largo feedback session 2026-05-12 · "hardcoder un endpoint c'est pas hyper fou". L'objectif est éviter le drift silencieux (v2.43 vs v2.44 fail cellule-boost), pas builder un système enforcement runtime. Frontmatter annotation + audit manuel 3-6 mois = même outcome sans complexité runtime. Trade-off ·
+Operator feedback session 2026-05-12 · "hardcoder un endpoint c'est pas hyper fou". L'objectif est éviter le drift silencieux (v2.43 vs v2.44 fail produit canon), pas builder un système enforcement runtime. Frontmatter annotation + audit manuel 3-6 mois = même outcome sans complexité runtime. Trade-off ·
 
 | Approche | Drift detection | Runtime cost | Risk |
 |---|---|---|---|

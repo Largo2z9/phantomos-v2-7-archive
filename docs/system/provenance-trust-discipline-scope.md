@@ -8,7 +8,7 @@
 
 Three converging trajectories make PTD indispensable within 6-12 months of authoring this scope:
 
-**1.1 — Multi-operator workspaces.** PhantomOS today assumes a single operator per workspace (file locking V1.x, single semantic-trust arbiter per CI). When Mattéo + Largo + future operators share a brand workspace (Abyss agency model), the question becomes: who wrote this fact, who owns the canon, who has read access, who can mutate. SED carries `actor_id` events ; PTD carries the trust layer above that.
+**1.1 — Multi-operator workspaces.** PhantomOS today assumes a single operator per workspace (file locking V1.x, single semantic-trust arbiter per CI). When Operator A + Operator B + future operators share a brand workspace (multi-operator agency model), the question becomes: who wrote this fact, who owns the canon, who has read access, who can mutate. SED carries `actor_id` events ; PTD carries the trust layer above that.
 
 **1.2 — Canon as product (knowledge packs).** Roadmap V2 envisions canon (copywriting-canon, future skincare-FR-pack, gambling-FR-pack) as a vendable asset. Versioning, licensing, watermarking, IP attribution, deprecation forced by vendor — none of these fit in SED (substrate) or CMR (production mechanism). They need a discipline of *who owns and who is allowed to consume*.
 
@@ -86,7 +86,7 @@ PTD remains in scope-only state until **at least one** of the following hits:
 
 **5.2 — 1st knowledge pack vendor-shipped.** A canon pack is sold (or licensed) to an external party. Versioning, watermarking, license tracking become operational concerns.
 
-**5.3 — 1st third-party skill contributed.** An author outside Largo's direct authoring contributes a skill installed in any workspace. Signing, provenance, sandbox become operational concerns.
+**5.3 — 1st third-party skill contributed.** An author outside the maintainer's direct authoring contributes a skill installed in any workspace. Signing, provenance, sandbox become operational concerns.
 
 When any of these triggers, PTD scope is upgraded to full doctrine drafted in `research/provenance-trust-discipline-2026-XX-XX.md`, then promoted Release once invariants stabilize.
 
@@ -111,7 +111,7 @@ Even before PTD ships full, three anti-patterns are flagged by the scope:
 
 ## 7. Open questions (to be resolved at graduation)
 
-1. **Linux Foundation steward model vs Palantir vendor-controlled** for canon governance. Steward = elected maintainers, transparent process, slower iteration. Vendor-controlled = Largo as canon authority, fast iteration, single point of failure. PTD must arbitrate before marketplace ships.
+1. **Linux Foundation steward model vs Palantir vendor-controlled** for canon governance. Steward = elected maintainers, transparent process, slower iteration. Vendor-controlled = maintainer as canon authority, fast iteration, single point of failure. PTD must arbitrate before marketplace ships.
 
 2. **Bayesian prior updates from cross-brand learning.** When `mine-vom` runs on 50 DTC brands, the dataset of "Porter forces actually activated" forms a Bayesian prior. Should this *replace* the per-brand activation test (faster, may kill specificity) or *update* the prior while preserving per-brand override (slower, more correct) ? PTD's view: trust requires the operator to retain override, prior is a *suggestion*, never a *replacement*.
 

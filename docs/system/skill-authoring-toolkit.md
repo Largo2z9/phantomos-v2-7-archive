@@ -36,7 +36,7 @@ When the situation calls for them. Not a checklist.
 | Operator surface | *surface*, *flag*, *anchor*, *recommend* |
 | Reasoning posture | *reason step by step*, *macro then micro*, *load-bearing*, *first-principles* |
 
-Curated subset of `largo-kb/02-ai/prompting/magic-keywords.md` (full 115+ keyword library). Use any verb that fits ; do not force one because it is on the list.
+Curated subset of `operator-kb/02-ai/prompting/magic-keywords.md` (full 115+ keyword library). Use any verb that fits ; do not force one because it is on the list.
 
 ---
 
@@ -52,13 +52,13 @@ Five techniques you will see across PhantomOS skills, named here so they are rec
 
 **Adversarial review.** The `red-team` skill ; multi-prism audits with explicit refusal-by-default. Use when a deliverable needs hostile pressure-testing before ship.
 
-**Upstream questioning.** Before answering the operator's literal question, map one level above (intention, constraint, blind spot) and let that frame the answer. Already coded as Expert Relay in the project root and as intention detection in `contextual-intelligence.md`. Source : `largo-kb/02-ai/prompting/upstream-questioning.md`.
+**Upstream questioning.** Before answering the operator's literal question, map one level above (intention, constraint, blind spot) and let that frame the answer. Already coded as Expert Relay in the project root and as intention detection in `contextual-intelligence.md`. Source : `operator-kb/02-ai/prompting/upstream-questioning.md`.
 
 ---
 
 ## Going deeper
 
-This document covers the patterns visibly applied in PhantomOS V1. The full prompt engineering library — including dense prompting full process, P.A.R.O framework, the 75-technique interaction modifier catalog, structured context design, prompt transformation workshop — lives in `largo-kb/02-ai/prompting/` and `largo-kb/02-ai/context/`. External reference : the GHOSTY skill (origin).
+This document covers the patterns visibly applied in PhantomOS V1. The full prompt engineering library — including dense prompting full process, P.A.R.O framework, the 75-technique interaction modifier catalog, structured context design, prompt transformation workshop — lives in `operator-kb/02-ai/prompting/` and `operator-kb/02-ai/context/`. External reference : the GHOSTY skill (origin).
 
 Skill authors who want to push their craft further should read the sources directly. This toolkit is a curated entry point, not a substitute.
 

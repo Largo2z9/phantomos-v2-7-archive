@@ -123,7 +123,7 @@ Layer B captures the operator-facing artifact at `brands/{slug}/produced/paid-an
 
 ## 7. Calibration over time
 
-The skill ships at v1.0 with the weights specified in § 2: verbatim 0.35, emotion 0.20, objection 0.20, awareness 0.25. The weights are an opinionated default, not a measured optimum. After roughly five production runs across diverse brands (one DTC supplement, one skincare, one fashion, two adjacent verticals), the operator or Largo can tune weights based on observed angle-test performance — which angles converted, which dropped, which the operator over-ruled at brief stage.
+The skill ships at v1.0 with the weights specified in § 2: verbatim 0.35, emotion 0.20, objection 0.20, awareness 0.25. The weights are an opinionated default, not a measured optimum. After roughly five production runs across diverse brands (one DTC supplement, one skincare, one fashion, two adjacent verticals), the operator or maintainer can tune weights based on observed angle-test performance — which angles converted, which dropped, which the operator over-ruled at brief stage.
 
 Calibration captures as entries in `learnings.json` with the field `framework: paid-angle-scoring, version: 1.0 → 1.1`, an explicit weight diff (*"verbatim 0.35 → 0.40, awareness 0.25 → 0.20"*), and the run IDs that justified the change. Framework versioning increments at this doc's header on every weight change. A v1.1 framework with logged justification beats a v1.0 framework that drifted in unlogged head-canon.
 

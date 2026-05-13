@@ -20,7 +20,7 @@ Check the user's argument :
 | `workspace` or `all` | **workspace** : alias, same as empty when ≥1 brand exists |
 | brand slug (e.g. `/phantom vitatone`) | **brand** : cockpit détaillé du brand |
 | brand slug + entity (e.g. `/phantom vitatone audiences`) | **entity-drill** : zoom dense sur une entité spécifique du brand |
-| brand slug + entity + item (e.g. `/phantom karacare audiences chute-active`) | **item** : preview d'un item unique (audience, angle, product) |
+| brand slug + entity + item (e.g. `/phantom glowco audiences chute-active`) | **item** : preview d'un item unique (audience, angle, product) |
 | `search {keyword}` (e.g. `/phantom search chute`) | **search** : grep cross-brand sur slugs, names, voc, learnings |
 | `recent` ou `recent {N}` | **recent** : timeline des N dernières mutations (default 10) |
 | `todo` | **todo** : vue agrégée des next-suggested cross-brand priorisés |
@@ -204,7 +204,7 @@ Ordre d'affichage : brand, products, offers, audiences, angles, strategy, learni
 Chaque audience peut être taggée avec `meta.applies_to_products[]` (slugs de produits qu'elle vise). Lors du rendering de la ligne audiences en mode brand, ajouter un breakdown par produit :
 
 ```
-⚠ audiences           7 (5 sur hair-boost, 3 sur cellule-boost, 0 brand-wide)
+⚠ audiences           7 (5 sur glow-boost, 3 sur cell-boost, 0 brand-wide)
 ```
 
 Audiences avec `applies_to_products` vide = brand-wide (visible sur tous les produits). Audiences avec plusieurs slugs comptent dans plusieurs colonnes du breakdown. Si seul `meta.product_id` (legacy) est présent, le lire comme `[product_id]` pour le breakdown.
@@ -314,7 +314,7 @@ Format example :
 ```
 
 `applies_to` formatting (lit `meta.applies_to_products[]`, fallback sur `meta.product_id` legacy si vide) :
-- non-empty → liste les slugs séparés par virgule (ex: `→ hair-boost, cellule-boost`)
+- non-empty → liste les slugs séparés par virgule (ex: `→ glow-boost, cell-boost`)
 - empty + product_id null → `→ brand-wide`
 - empty + product_id set (legacy) → `→ {product_id}` avec astérisque
 
@@ -437,10 +437,10 @@ Rendering : un par ligne (compact) :
 
 Exemple :
 ```
-14h ago       karacare        audiences/chute-active     set meta.validation_status = "hypothesis"
+14h ago       glowco          audiences/chute-active     set meta.validation_status = "hypothesis"
                                                          → validated hierarchy
 2d ago        vitatone        learnings                  append entry "test FB ad #3 ROAS 4.2"
-6d ago        karacare        brand                      set positioning.tagline
+6d ago        glowco          brand                      set positioning.tagline
 ```
 
 ### AskUserQuestion (mode recent)
@@ -482,11 +482,11 @@ Exemple :
 🔥 [vitatone] 2 angles ROAS en chute libre depuis 7j
    → Tape : `refresh les angles fatigués sur vitatone`
 
-⚡ [karacare] 7 audiences en hypothèse, aucun verbatim encore
-   → Tape : `lance mine-voc sur karacare`
+⚡ [glowco] 7 audiences en hypothèse, aucun verbatim encore
+   → Tape : `lance mine-voc sur glowco`
 
-⚡ [karacare] strategy.json sans focus Q2 posé
-   → Tape : `pose le focus Q2 de karacare`
+⚡ [glowco] strategy.json sans focus Q2 posé
+   → Tape : `pose le focus Q2 de glowco`
 
 · [northsense] dormant depuis 47j, peut-être à archiver
    → Tape : `archive northsense`
@@ -540,7 +540,7 @@ NAVIGATION RAPIDE
   Slot 4 toujours = retour parent. Tu ne te perds jamais.
 
 EXEMPLES CONCRETS
-  /phantom karacare audiences chute-active
+  /phantom glowco audiences chute-active
   /phantom search "post-grossesse"
   /phantom recent 20
   /phantom canon copy frameworks pas
@@ -985,14 +985,14 @@ Si la session courante a déjà déclenché 3 AskUserQuestion `/phantom` dans le
 
 ### Formulation de l'AskUserQuestion
 
-Présenter les 4 slots dans cet ordre fixe (drill primaire, drill secondaire, action, retour). Phrasing court, jamais explicatif. Exemple sur brand mode karacare :
+Présenter les 4 slots dans cet ordre fixe (drill primaire, drill secondaire, action, retour). Phrasing court, jamais explicatif. Exemple sur brand mode glowco :
 
 ```
 question: "Tu veux faire quoi ?"
 options:
 - "Drill audiences (7 audiences à valider)"
 - "Drill angles (5 hypothèses)"
-- "Lance mine-voc sur karacare"
+- "Lance mine-voc sur glowco"
 - "Retour workspace"
 ```
 

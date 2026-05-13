@@ -23,7 +23,7 @@ V3 résout ces 3 problèmes via :
 
 > **⚠️ Limite d'échantillon.** L'architecture V3 est solide (elle résout les 79 frictions identifiées). Mais les patterns par niche (curseur, mécaniques dominantes, ratios) sont des **hypothèses basées sur 522 créas / 9 brands**. Il faudrait significativement plus de data pour affirmer des lois par niche. Les observations spécifiques aux brands de l'échantillon sont isolées dans l'Annexe A.
 
-> **Stress test S55 (mai 2026, 23 ads cross-typologies).** La V3 a été stress-testée sur 23 ads diverses (cosméto, telehealth, apparel, supplément, kids gear, B2B SaaS, info-product, DTC fashion). 10 patches affinants identifiés sans refonte structurelle. La V3 tient. Patches intégrés : modalité insight (formulé / implicite / absent), intent 4 valeurs (DR · Brand · Hybrid · B2B_lead_gen), seasonality_trigger metadata, craft_mode (product_only / with_overlay), longevity_signal (days_running > reach absolu comme proxy winner), cta modalité 4 valeurs (explicite · implicite_brand · absent_intentionnel · externalisé). Voir `decisions.md D#391` (largo-kb) pour la trace empirique.
+> **Stress test S55 (mai 2026, 23 ads cross-typologies).** La V3 a été stress-testée sur 23 ads diverses (cosméto, telehealth, apparel, supplément, kids gear, B2B SaaS, info-product, DTC fashion). 10 patches affinants identifiés sans refonte structurelle. La V3 tient. Patches intégrés : modalité insight (formulé / implicite / absent), intent 4 valeurs (DR · Brand · Hybrid · B2B_lead_gen), seasonality_trigger metadata, craft_mode (product_only / with_overlay), longevity_signal (days_running > reach absolu comme proxy winner), cta modalité 4 valeurs (explicite · implicite_brand · absent_intentionnel · externalisé). Voir `decisions.md D#391` pour la trace empirique.
 
 ---
 
@@ -428,7 +428,7 @@ Pour chaque créa décomposée, identifier l'atome irréductible : l'élément (
 Exemples observés S55 :
 - hers Rx Minoxidil Hair Gummy : le mot "Gummy" juxtaposé à "Rx Minoxidil". Si remplacé par "Tablet" l'angle s'effondre.
 - BTB DAYS : "refuses des oui". Si remplacé par "n'as pas le budget" l'identitaire s'efface.
-- Karacare HairBoost : la cascade visuelle 3 flacons mirroring la timeline 3 mois.
+- Glowco GlowBoost : la cascade visuelle 3 flacons mirroring la timeline 3 mois.
 
 L'atome irréductible n'est pas toujours verbal. Il peut être : un mot, une structure compositionnelle, un focal point visuel, un chiffre, une juxtaposition, un ordre. Encodé dans `creative.schema.json#atome_irréductible {element, delta_si_changé}`.
 
@@ -504,4 +504,4 @@ Pour enrichir la formule :
 *Dernière mise à jour : 2026-05-04 (S55 reconciliation · V3 + patches v3.1)*
 *Source échantillon canon : 522 créas statiques, 10 batches, 9 brands, 6 niches (V3 maître)*
 *Stress test : 23 ads cross-typologies (S55, mai 2026, 10 patches affinants intégrés)*
-*Trace empirique S55 : `largo-kb/decisions.md D#391`*
+*Trace empirique S55 : `decisions.md D#391`*

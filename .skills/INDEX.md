@@ -325,7 +325,7 @@ Chaque card situe un skill sur 4 axes : domain · phase · prerequisites · next
 **audit-meta-account**
 | Domain | Phase | Prerequisites | Next steps |
 |---|---|---|---|
-| audit | ongoing | credentials Meta + ad account ID | analyze-perf (Abyss side) |
+| audit | ongoing | credentials Meta + ad account ID | analyze-perf (agency side) |
 
 **validate-output-coherence**
 | Domain | Phase | Prerequisites | Next steps |

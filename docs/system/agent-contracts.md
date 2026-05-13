@@ -15,7 +15,7 @@
 | **Data** (`brand.json`, `profile.json`, Context DB) | Facts, state, structured brand knowledge | On-demand via skills (query-context, Read) | Skills (ingest, setup-brand, write_to_context) | Mutated on events |
 | **Reference doc** (`docs/system/architecture.md`, `patterns.md`) | Deep technique, rationale, taxonomies | On-demand (agent reads when pointer hit) | Curated commits only | Stable, versioned |
 
-Rule: if the agent needs it **every session** regardless of task → Contract. If it's a **fact about Largo/the brand/project state** → Memory or Data. If it's **"how we do X"** technique consulted occasionally → Reference.
+Rule: if the agent needs it **every session** regardless of task → Contract. If it's a **fact about the operator/the brand/project state** → Memory or Data. If it's **"how we do X"** technique consulted occasionally → Reference.
 
 ### Contract types (taxonomy)
 

@@ -1,6 +1,6 @@
 # Skill Authoring Discipline (SAD) — Operating Doctrine
 
-> Working draft — R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` in Release mode. **SAD is the meta-discipline above SED + CMR.** It governs how skills consuming the substrate (SED) and the production mechanism (CMR) are created, evolve, compose, and fail safely. Without SAD, skill authors re-invent gates session-to-session, doctrines drift in the absence of governance, and the system depends on Largo's mental arbitration to stay coherent.
+> Working draft — R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` in Release mode. **SAD is the meta-discipline above SED + CMR.** It governs how skills consuming the substrate (SED) and the production mechanism (CMR) are created, evolve, compose, and fail safely. Without SAD, skill authors re-invent gates session-to-session, doctrines drift in the absence of governance, and the system depends on the maintainer's mental arbitration to stay coherent.
 
 ---
 
@@ -22,7 +22,7 @@ Without an authoring discipline, three failure modes accumulate:
 
 1. **Skill proliferation without governance.** A skill author with a fresh idea creates a sibling skill instead of extending an existing one. The catalogue bloats, mental model fragments, gates duplicate. Pattern named in `skill-creation-protocol.md` (extend > create), but isolated. Without SAD as a chapeau, the rule is easy to ignore.
 2. **Implicit contracts break composition.** A producer skill outputs a structure that the next skill in the chain expects ; if either drifts independently, the chain breaks silently. No `consumes:` declaration ties them ; no version compatibility check fires.
-3. **Failure modes are unhandled.** A skill that violates a CMR invariant at runtime (score leakage, missing modulator, axes correlation untreated) does so silently. Largo notices in review, files a `correct-skill` [backlog, not shipped] ticket. The doctrine is enforced human-in-the-loop, not systemically.
+3. **Failure modes are unhandled.** A skill that violates a CMR invariant at runtime (score leakage, missing modulator, axes correlation untreated) does so silently. The maintainer notices in review, files a `correct-skill` [backlog, not shipped] ticket. The doctrine is enforced human-in-the-loop, not systemically.
 
 SAD fixes all three: by codifying authoring rules, by formalizing composition contracts, by introducing a failure doctrine that routes invariant violations automatically.
 
@@ -123,7 +123,7 @@ Full atlas doctrine : `docs/system/atlas-canon-copy.md`. Decision lineage : `dec
 
 ## 6. Failure doctrine — what happens when a Hard Rule is violated at runtime
 
-Doctrines that lack a failure mode rely on Largo's review to catch violations. At scale (20+ operators, hundreds of skill invocations per day), this breaks.
+Doctrines that lack a failure mode rely on the maintainer's review to catch violations. At scale (20+ operators, hundreds of skill invocations per day), this breaks.
 
 **6.1 — Invariant-violation hook.** A new hook (`invariant-violation-detector.py`) inspects skill outputs at end-of-turn. It looks for canonical violations:
 - Score leakage (numbers like `87/100` or `density: 4.2/5` in operator-facing output)
@@ -134,7 +134,7 @@ Doctrines that lack a failure mode rely on Largo's review to catch violations. A
 
 **6.2 — Routing on violation.**
 - *Mechanical violation* (frontmatter missing, schema invalid) → refuse, surface to operator with redirect.
-- *Semantic violation* (style drift, score leak) → log as `capture-learning` candidate, surface to Largo as flag, do not block operator output.
+- *Semantic violation* (style drift, score leak) → log as `capture-learning` candidate, surface to the operator as flag, do not block operator output.
 
 **6.3 — Cumulative pattern detection.** When the same skill produces ≥3 violations of the same type within a 7-day window, the violation graduates to a *pattern* and is auto-routed to `correct-skill` [backlog, not shipped] for hard rule integration.
 
@@ -207,7 +207,7 @@ The skill author asks, in this order:
 - **`skill-resource-discovery.md`** — pre-existing input. FTS5 runtime + priority rules.
 - **`sop-skill-conversion.md`** — pre-existing input. Methodology vs execution separation.
 - **`patterns.md`** — pre-existing input. Skill taxonomy + Model routing.
-- **`skill-authoring-toolkit.md`** — optional companion. Names the prompt engineering patterns that the doctrines apply implicitly (dense prompting principles, magic keywords curated, interaction patterns, upstream questioning). Levers not constraints. Cross-ref to `largo-kb/02-ai/prompting/` for full library.
+- **`skill-authoring-toolkit.md`** — optional companion. Names the prompt engineering patterns that the doctrines apply implicitly (dense prompting principles, magic keywords curated, interaction patterns, upstream questioning). Levers not constraints. Cross-ref to `operator-kb/02-ai/prompting/` for full library.
 - **`extending.md`** — extension layer rules ; SED chapter that SAD references for custom skills.
 - **`atlas-canon-copy.md`** — atlas canon copy doctrine (11 layers, schema `canon-tool/1.0`, bidirectional contract). Referenced by SAD § 5bis. Decision lineage D#382 D#383 D#391.
 - **`brand-isolation-discipline.md`** — doctrine isolation v2.37+. Frontmatter `isolation_scope` enum [brand_only, cross_brand_with_gate, workspace_global]. Default `brand_only` enforced. Empêche cross-contamination multi-brand (red team finding A7).
@@ -240,7 +240,7 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 ## 12. Status
 
 - **Draft v0.1** — research zone, Build mode, .
-- **Promotion criterion** — to be reviewed by Largo, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` once cross-references with CI / SED / CMR / PTD scope are validated and the 5 pre-existing skill-* docs are confirmed consolidated as referenced inputs (not deprecated, kept as detail references).
+- **Promotion criterion** — to be reviewed by the maintainer, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` once cross-references with CI / SED / CMR / PTD scope are validated and the 5 pre-existing skill-* docs are confirmed consolidated as referenced inputs (not deprecated, kept as detail references).
 - **First applications** — frontmatter triad pass on 6 CMR-adjacent skills, mass `reasoning_pattern: null` declaration on 49 non-matrix skills, invariant-violation-detector hook draft, catalogue size measurement.
 
 ---

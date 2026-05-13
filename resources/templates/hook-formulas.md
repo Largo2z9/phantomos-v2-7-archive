@@ -100,7 +100,7 @@ Un hook = les 3 premières secondes (vidéo) ou la première ligne (texte). 80% 
 **Exemples :**
 - "Il y a 3 mois je perdais des touffes. Aujourd'hui mes cheveux ont doublé de volume."
 - "Janvier : je n'osais plus attacher mes cheveux. Avril : regarde ça."
-- "3 mois de Hair Boost. Le miroir ne ment pas."
+- "3 mois de Glow Boost. Le miroir ne ment pas."
 
 ---
 

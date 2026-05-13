@@ -359,7 +359,7 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 
 ## 13. Status
 
-- **Draft** — research zone, Build mode. To be reviewed by Largo, iterated, then promoted to `workspace-template/docs/system/canonical-matrix-reasoning.md` in Release mode.
+- **Draft** — research zone, Build mode. To be reviewed by the maintainer, iterated, then promoted to `workspace-template/docs/system/canonical-matrix-reasoning.md` in Release mode.
 - **Implementation roadmap** — Phase 3 of the cadrage: audit each producer/curator/orchestrator skill against §5 invariants, scope patches, ship v2.10.x batch.
 - **First applications** — refactor `analyze-copy` with modulator macro. Patch `angles-biases-matrix` with verbatim anchoring. Canonize C1–C10 macro-matrix. Externalize `paid-angle-scoring` weights to JSON.
 

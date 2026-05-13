@@ -166,7 +166,7 @@ Après `produce-paid-angles {brand_slug} sur chute-post-grossesse` :
 
 > v1.1.0 (v2.42 PATCH 5) : Trigger 9 ajouté · bridge learnings.json brand-side → validations[] atlas vivant canon-tool cross-brand. Ferme bridge compound learning end-to-end (audit scope 8 finding S2026-05-11).
 
-**Quand actif** : daemon silencieux post-skill completion. Détecte si learning capturé brand-side est applicable cross-brand (canon promotion candidate). Pattern Largo flag explicit · un changement local doit alimenter le système global, sinon compound learning reste théorique.
+**Quand actif** : daemon silencieux post-skill completion. Détecte si learning capturé brand-side est applicable cross-brand (canon promotion candidate). Pattern operator flag explicit · un changement local doit alimenter le système global, sinon compound learning reste théorique.
 
 **Critères trigger** (tous obligatoires, AND) :
 
@@ -221,7 +221,7 @@ Field_path target · `resources/canon/copy/{layer}/{tool}.json#/validations[]` (
 
 **Empêche pollution canon** · gate operator-explicit obligatoire avant write atlas vivant. Pas de promotion silencieuse.
 
-**Ferme bridge compound learning end-to-end** · un changement local (brand learnings.json) alimente le système global (canon validations[]) après operator gate. Pattern doctrine Largo flag explicit S2026-05-11 finding "compound learning théorique pas matériel".
+**Ferme bridge compound learning end-to-end** · un changement local (brand learnings.json) alimente le système global (canon validations[]) après operator gate. Pattern doctrine operator flag explicit S2026-05-11 finding "compound learning théorique pas matériel".
 
 **Cross-ref HR-Canon-Decay (v2.37)** · les entries promues via Trigger 9 sont consommées par le cycle HR-Canon-Decay (validate freshness via `decay_ttl_days`). Décay default 90 days. HR-Canon-Decay vérifie `validated_at + decay_ttl_days < now` à chaque validate-resources run · si expired, flag `[CANON-VALIDATION-STALE]` non-blocking (operator decide rebump ou archive).
 

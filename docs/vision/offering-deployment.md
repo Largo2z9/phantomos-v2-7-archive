@@ -1,6 +1,6 @@
 # Offering & Deployment
 
-> Méthodologie commerciale et roadmap de packaging pour PhantomOS. Audience interne (Largo, futurs collaborateurs) + partenaires commerciaux qui veulent comprendre comment le produit se vend et se déploie. Ce document n'est pas une offre commerciale finalisée : il documente le cadre dans lequel les offres se structurent et la manière dont chaque déploiement client est mené. Il s'enrichit au fur et à mesure que les premiers clients commerciaux signent et que les vertical packs matures.
+> Méthodologie commerciale et roadmap de packaging pour PhantomOS. Audience interne (maintainer, futurs collaborateurs) + partenaires commerciaux qui veulent comprendre comment le produit se vend et se déploie. Ce document n'est pas une offre commerciale finalisée : il documente le cadre dans lequel les offres se structurent et la manière dont chaque déploiement client est mené. Il s'enrichit au fur et à mesure que les premiers clients commerciaux signent et que les vertical packs matures.
 
 ---
 
@@ -26,7 +26,7 @@ Quatre principes structurent toute offre PhantomOS, présents et futurs.
 
 **Les vertical packs additionnels seront proposés à mesure qu'ils matures.** Consulting, media buying, coaching, créateurs codifiables, recherche appliquée. Chacun nécessite un canon métier encodé + un set de skills production scaffolded + au moins un pilote client validé. Pas de vertical pack speculatif : chaque pack se justifie par une demande mesurée et une instance de référence en production.
 
-**Le consulting d'encodage est une offre humaine adjacente.** Quand un opérateur n'a pas le temps ou les compétences de poser son propre encodage, un déploiement assisté (Largo ou un Forward Deployed Operator formé) accélère l'onboarding. C'est un service, pas un produit : facturé séparément, optionnel, avec un livrable défini (workspace opérationnel + méthode encodée + autonomie client à la sortie). Cette offre matérialise ce que Palantir formalise sous le terme *Forward Deployed Engineer*, transposé au scale SMB.
+**Le consulting d'encodage est une offre humaine adjacente.** Quand un opérateur n'a pas le temps ou les compétences de poser son propre encodage, un déploiement assisté (maintainer ou un Forward Deployed Operator formé) accélère l'onboarding. C'est un service, pas un produit : facturé séparément, optionnel, avec un livrable défini (workspace opérationnel + méthode encodée + autonomie client à la sortie). Cette offre matérialise ce que Palantir formalise sous le terme *Forward Deployed Engineer*, transposé au scale SMB.
 
 **Le licensing client-side reste en attente du framework de provenance.** Tant que la doctrine *Provenance & Trust* n'est pas écrite (déclenchée par 2e opérateur connecté, 1er knowledge pack vendu, ou 1er skill tiers), aucune offre formelle de licensing ne sort. Les patterns intermédiaires sont opérés par discipline contractuelle, pas par mécanique produit. Voir section 6.
 
@@ -51,8 +51,8 @@ Ces profils correspondent au best fit documenté dans `fit.md`. Out of scope : a
 
 **À finaliser quand le premier client commercial signe.** Posture : pas de pricing arrêté ex ante. Trois principes guident la décision finale :
 
-1. Pricing ancré sur la valeur opérée (output de l'environnement, pas heures de Largo). Cohérent avec la posture *sell work, not software* (Tavel) et la nature compounding du workspace.
-2. Distinguer **le produit** (l'environnement, abonnement ou licence) de **le service** (consulting d'encodage, ponctuel ou retainer). Mélanger les deux dans une seule facture brouille l'unit economics et empêche la scalabilité hors Largo.
+1. Pricing ancré sur la valeur opérée (output de l'environnement, pas heures du maintainer). Cohérent avec la posture *sell work, not software* (Tavel) et la nature compounding du workspace.
+2. Distinguer **le produit** (l'environnement, abonnement ou licence) de **le service** (consulting d'encodage, ponctuel ou retainer). Mélanger les deux dans une seule facture brouille l'unit economics et empêche la scalabilité hors maintainer.
 3. Tester deux ou trois modèles sur les premiers clients (one-time setup + abonnement vs retainer mensuel tout-inclus vs outcome-based) avant de figer une grille publique. Le premier modèle est un instrument d'apprentissage, pas une décision irréversible.
 
 Le pricing initial indicatif (ordre de grandeur uniquement, à valider) : déploiement initial encadré + abonnement workspace + consulting d'enrichissement optionnel. Ne pas publier de grille sur le site avant le 3e client signé sur le même modèle.

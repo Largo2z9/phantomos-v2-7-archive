@@ -74,7 +74,7 @@
     },
     {
       "type": "skill-added",
-      "path": ".claude/skills/analyze-copy/SKILL.md (largo-kb scope)",
+      "path": ".claude/skills/analyze-copy/SKILL.md (operator kb scope)",
       "summary": "v0.1 audit-only producer Sonnet subagent_safe. Refacto S44: frontmatter triad CMR (matrix_mode: hybrid coding+generating), modulator macro Schwartz awareness × sophistication + persona/register, selective activation of 12 dimensions, tempo dimension, voice consistency cross-block, Hard Rules 9-12 (sourcing-mort cap, voice consistency, tempo, breakthrough mode opt-in)."
     },
     {

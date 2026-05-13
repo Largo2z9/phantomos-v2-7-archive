@@ -11,7 +11,7 @@ PhantomOS doctrines are not finished documents. They are living rules. Without e
 - Amendments happen silently (someone edits `contextual-intelligence.md` directly, the change is lost in git history without a decision trace).
 - New doctrines proliferate without criteria (every author who senses a gap drafts a new doctrine, the architecture diluteates into jargon-stack).
 - Retractions are unsafe (a doctrine someone depended on disappears, downstream skills break).
-- Conflicts between doctrines are arbitrated mentally by Largo (CI says trust, SED says enforce — which wins?).
+- Conflicts between doctrines are arbitrated mentally by the maintainer (CI says trust, SED says enforce — which wins?).
 
 This meta-process names the rules. It is short. It is append-only. It mirrors the discipline imposed on `decisions.md` (D# verrouillé, [SUPERSEDED Sxx], no deletion) applied to the doctrines themselves.
 
@@ -40,7 +40,7 @@ Amending a binding doctrine **never** edits the original silently. It follows:
 4. **Consumer re-test** — surface a re-test list of skills consuming the amended doctrine. Test fixtures must pass post-amendment.
 5. **Sync derived workspaces** — if breaking change, follow Build vs Release governance for the propagation.
 
-The amendment doctrine is itself amendable by amendment. The recursion stops at the first amendment by convention — amendments to the amendment doctrine require Largo + 2 senior reviewers.
+The amendment doctrine is itself amendable by amendment. The recursion stops at the first amendment by convention — amendments to the amendment doctrine require the maintainer + 2 senior reviewers.
 
 ---
 
@@ -76,7 +76,7 @@ When two doctrines appear to conflict, the resolution follows this priority:
 - *CMR vs SAD* — CMR wins on output quality (matrix invariants), SAD wins on authoring procedure (extend before create, type taxonomy).
 - *PTD vs others* — PTD acts as constraint stacked on top once shipped. PTD does not override but adds requirements.
 
-When conflict is genuinely irreducible : route to Largo. Decision logged in `decisions.md`, doctrine cross-references updated to clarify the boundary.
+When conflict is genuinely irreducible : route to the maintainer. Decision logged in `decisions.md`, doctrine cross-references updated to clarify the boundary.
 
 ---
 
@@ -131,7 +131,7 @@ A doctrine can change without skills changing. A skill can change without doctri
 | **Silent edit of binding doctrine** | Author updates `contextual-intelligence.md` directly without D#. | Pre-commit hook refuses changes to bound doctrine without paired D# entry. |
 | **Doctrine proliferation** | Every gap → new doctrine, jargon-stack accumulates. | Sub-corpus default rule. Doctrine-add gate (§6). |
 | **Retraction by deletion** | Author deletes a doctrine instead of `[DEPRECATED]` window. | Refused by hook. Append-only enforcement. |
-| **Conflict resolution by tribal knowledge** | "Largo would say SED wins here" — mental arbitration. | §5 conflict table explicit. New conflict types add a row to the table. |
+| **Conflict resolution by tribal knowledge** | "the maintainer would say SED wins here" — mental arbitration. | §5 conflict table explicit. New conflict types add a row to the table. |
 | **Promotion under pressure** | Draft promoted to Release before ≥3 instances + extractibility test. | §2 criterion enforced — no promotion under deadline. |
 | **Versioning skipped** | Doctrine file in Release without `_doctrine_version`. | Schema validation refuses. |
 

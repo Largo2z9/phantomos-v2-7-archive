@@ -327,7 +327,7 @@ What's still missing:
 Next step: "{suggested ingest command for highest-impact missing field}"
 ```
 
-Rule: zero JSON path in the operator diff. Name entities in natural language (e.g. "your customer profile", "the Hair Boost product sheet"). Paths stay in CHANGELOG only.
+Rule: zero JSON path in the operator diff. Name entities in natural language (e.g. "your customer profile", "the Glow Boost product sheet"). Paths stay in CHANGELOG only.
 
 ### Format — Shared Resource
 

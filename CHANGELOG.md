@@ -2,6 +2,20 @@
 
 > Auto-maintained by skills (ingest-resource, validate-resources, setup-brand).
 > Never edit manually. Newest entries at top.
+>
+> **Note.** Historical brand references (Karacare, Hair Boost, Cellule Boost) kept in CHANGELOG entries below for traceability of internal stress tests. They have been scrubbed from the canon-distributable surface (skills, schemas, doctrines, templates) per v2.52 cleanup pass.
+
+---
+
+## v2.52.0 · 2026-05-13 · Scrub leaks brand-agnostic + identité-agnostic post-sprint v2.51
+
+**Why.** Sprint v2.46-v2.51 a ré-introduit du brand-side (Karacare / Cellule Boost / Hair Boost) dans 12+ fichiers du canon distribuable, alors que v2.45 avait fait un premier cleanup. v2.52 ré-applique le cleanup systémique sur tous les fichiers identifiés par audit qualité préalable.
+
+**What.** Scrubbed brand references (Karacare, Hair Boost, Cellule Boost) to fictitious brand (Glowco, Glow Boost, Cell Boost), GitHub org placeholder, personal absolute paths to anonymized form, named co-operators to generic (Operator A + Operator B), agency-specific surface to generic (agency side), maintainer name references in doctrines / skills / schemas to neutral (`the operator` / `the maintainer` / `operator`) per contextual fit. Cross-files cohérence préservée. Substance pédagogique intacte.
+
+**Files patched.** `resources/templates/operator-fiche-output.md`, `.skills/skills/brief-day/SKILL.md`, `.claude/commands/phantom.md`, `.skills/skills/snapshot-brand/SKILL.md`, `CONTRIBUTING.md`, `resources/schemas/visual_identity.schema.json`, `resources/schemas/angle.schema.json`, `resources/schemas/brand.schema.json`, `resources/templates/creative-formula.md`, `resources/templates/hook-formulas.md`, `.claude/commands/tour.md`, `docs/system/audience-cartography.md`, `docs/system/model-versioning-canon.md`, `docs/system/provenance-trust-discipline-scope.md`, `lexicon.md`, `.skills/INDEX.md`, `.skills/skills/export-session/SKILL.md`, `.skills/skills/ingest-resource/SKILL.md`, `.skills/skills/compose-creative/SKILL.md`, `.skills/skills/import-asset/SKILL.md`, `.skills/skills/validate-output-coherence/SKILL.md`, `.skills/skills/compose-overlay-text/SKILL.md`, `.skills/skills/craft-packshot/SKILL.md`, `.skills/skills/learn-from-session/SKILL.md`, `docs/system/skill-authoring-discipline.md`, `docs/system/skill-authoring-toolkit.md`, `docs/vision/roadmap.md`, `docs/vision/README.md`, `docs/vision/offering-deployment.md`, `docs/system/voice.md`, `docs/system/agent-contracts.md`, `docs/system/canonical-matrix-reasoning.md`, `docs/system/doctrine-governance.md`, `docs/system/atlas-canon-copy.md`, `docs/system/schema-encoding-discipline.md`, `docs/internal/canon.md`, `docs/internal/releases/manifest/2.45.0-manifest.json`, `docs/internal/releases/manifest/2.11.0-manifest.json`, `resources/frameworks/paid-angle-scoring.md`, `CHANGELOG.md` (paths perso scrubbés + note historique en tête).
+
+**Backward compat.** Strict additif. Substance préservée. Manifest skills regen 56 skills.
 
 ---
 
@@ -397,7 +411,7 @@ P5 visual production  · compose-creative · recompose-creative · decompose-ad 
 ongoing               · learn-from-session smart-suggest daemon · validate-resources      ✓
 ```
 
-**Source empirique.** Plan v2.34 documenté `/Users/guillaumevallee/.claude/plans/atlas-state-a-sert-sorted-goose.md` · 4 mandats parallèles (3 skills + Trigger 8 daemon).
+**Source empirique.** Plan v2.34 documenté `/Users/<operator>/.claude/plans/atlas-state-a-sert-sorted-goose.md` · 4 mandats parallèles (3 skills + Trigger 8 daemon).
 
 ---
 
@@ -423,7 +437,7 @@ ongoing               · learn-from-session smart-suggest daemon · validate-res
 
 **Operator impact.** Operator peut maintenant : (a) onboarder un produit sans URL ou avec gaps via `define-specs` (3 sources hybrides + validation gate), (b) synthétiser une audience structurée 8 dimensions canon depuis mining via `profile-audience`, (c) naviguer les 46 skills par domaine avec INDEX enriched (workflow par phase visible). Pipeline cartographie compositionnelle P0 → P3 désormais opérationnel.
 
-**Source empirique.** Plan v2.33 documenté `/Users/guillaumevallee/.claude/plans/atlas-state-a-sert-sorted-goose.md` · 4 mandats parallèles (3 skills + INDEX).
+**Source empirique.** Plan v2.33 documenté `/Users/<operator>/.claude/plans/atlas-state-a-sert-sorted-goose.md` · 4 mandats parallèles (3 skills + INDEX).
 
 ---
 
@@ -461,7 +475,7 @@ ongoing               · learn-from-session smart-suggest daemon · validate-res
 
 **Operator impact.** Pas direct v2.32. Valeur arrive : (a) skills v2.32+ exploitent nouveaux fields (routage KPI orthogonal DR+Brand-lift, scoring craft fin, capture doute mid-cycle), (b) lexicon évite confusion atlas, (c) reclassement aligne intuition opérateur sur type skill.
 
-**Source empirique.** Audit cohérence globale S55 documenté `/Users/guillaumevallee/.claude/plans/atlas-state-a-sert-sorted-goose.md` · 3 Explore agents (skills cartography 43 skills · schemas binarité 5 binarités parasites détectées · atlas semantic 76 fichiers cross-doc) + 1 Plan agent design v2.32 → v2.34 · approbation Largo.
+**Source empirique.** Audit cohérence globale S55 documenté `/Users/<operator>/.claude/plans/atlas-state-a-sert-sorted-goose.md` · 3 Explore agents (skills cartography 43 skills · schemas binarité 5 binarités parasites détectées · atlas semantic 76 fichiers cross-doc) + 1 Plan agent design v2.32 → v2.34 · approbation Largo.
 
 ---
 

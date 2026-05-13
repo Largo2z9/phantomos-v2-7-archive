@@ -30,7 +30,7 @@
     "brand_equity_level": {
       "type": "string",
       "enum": ["low", "medium", "high"],
-      "description": "Force de reconnaissance brand. low = besoin hook + angle + proof empilés (BTB DAYS, brands < 6 mois). medium = hook ou angle peuvent porter seuls (Karacare, niches établies). high = logo seul suffit (Apple, Liquid Death). Détermine le curseur copy/visual viable et l'optionalité du concept dans creative.schema. Référence canon V3 §4.3."
+      "description": "Force de reconnaissance brand. low = besoin hook + angle + proof empilés (brands < 6 mois). medium = hook ou angle peuvent porter seuls (niches établies). high = logo seul suffit (Apple, Liquid Death). Détermine le curseur copy/visual viable et l'optionalité du concept dans creative.schema. Référence canon V3 §4.3."
     },
 
     "creative_zone": {

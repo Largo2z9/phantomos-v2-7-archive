@@ -6,7 +6,7 @@ Planned evolutions, prioritized P2 (next) and P3 (later). Shipped history lives 
 
 ## Recently shipped (S55, May 2026)
 
-Anchored here for visibility ; full notes in [`../../CHANGELOG.md`](../../CHANGELOG.md). Refs : largo-kb `decisions.md` D#382, D#383, D#391.
+Anchored here for visibility ; full notes in [`../../CHANGELOG.md`](../../CHANGELOG.md). Refs : `decisions.md` D#382, D#383, D#391.
 
 - **v2.26.0** · Atlas canon copy foundation. Typed registry of 11 layers × 58 fiches (frameworks, hooks, angles, niveaux-schwartz, archetypes-voix, formules-titres, objections, construction-offre, leads, formats-livrables, persuasion). Sources : Schwartz, Cialdini, Halbert, Sugarman, Hormozi, Carlton, Jung. Storage `resources/canon/copy/{layer}/{tool}.json`, schema `canon-tool/1.0`. D#382.
 - **v2.27.0** · Skills consume + feed canon (living atlas). 4 skills refactored : `produce-paid-angles` (Step 0bis loads canon, Step 11 emits explicit lineage), `produce-copy-brief` (reads angle lineage, brief enriches instead of re-deciding), `mine-voc` (verbatims tagged with canon Schwartz / emotion / objection ids), `learn-from-session` (operator-gated canon promotion via `validations[]` append-only). D#383.

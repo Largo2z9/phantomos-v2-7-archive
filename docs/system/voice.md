@@ -16,7 +16,7 @@ The canon is short on purpose. It locks the axes that matter and leaves the rest
 
 **The reader is an operator.** Technical, competent, short on time. Assume they know what a brand is, what a skill is, what an agent contract is — and reach for `lexicon.md` when they don't. Never re-explain canonical concepts mid-document.
 
-**Write for distribution.** PhantomOS ships to operators who are not Largo, not French, and not versed in the heist thematic. Every doc is authored as if a stranger will read it on first open. Context unfolds through naming and structure, not through a foreword.
+**Write for distribution.** PhantomOS ships to operators who are not the maintainer, not French, and not versed in the heist thematic. Every doc is authored as if a stranger will read it on first open. Context unfolds through naming and structure, not through a foreword.
 
 **Durability over cleverness.** A punchline is only worth writing if it is still right in six months. Dated hype, seasonal references, and self-congratulatory framing rot fast. Declarative neutral sentences age well.
 

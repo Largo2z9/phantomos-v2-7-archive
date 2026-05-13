@@ -139,8 +139,8 @@ Une audience vit au niveau brand (`brands/{slug}/audiences/{audience_slug}/profi
 
 **Sémantique du champ.**
 - `[]` (vide) : audience **brand-wide**, pertinente pour tous les produits ou pour la marque sans produit spécifique.
-- `["hair-boost"]` : audience **mono-produit**, achète uniquement Hair Boost.
-- `["hair-boost", "cellule-boost"]` : audience **cross-product**, achète plusieurs produits de la même marque.
+- `["glow-boost"]` : audience **mono-produit**, achète uniquement Glow Boost.
+- `["glow-boost", "cell-boost"]` : audience **cross-product**, achète plusieurs produits de la même marque.
 
 **Pourquoi pas un dossier `products/{p}/audiences/`** : multi-produit oblige à dupliquer ou symlink. Storage flat avec indexation = pas de duplication, et une audience cross-product reste une seule entité dans le système.
 

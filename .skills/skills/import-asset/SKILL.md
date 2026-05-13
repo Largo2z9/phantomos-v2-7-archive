@@ -189,7 +189,7 @@ Determine target path selon scope ·
 
 **Product-level scope (override produit-spécifique, rare)** ·
 - Target · `brands/{slug}/products/{slug}/assets/{asset_type}-override-{YYYYMMDD}.{ext}`
-- Ex · `brands/glowco/products/cellule-boost/assets/logo-override-20260513.png` (si SKU a un logo spécifique différent du brand-level)
+- Ex · `brands/glowco/products/cell-boost/assets/logo-override-20260513.png` (si SKU a un logo spécifique différent du brand-level)
 
 Default · brand-level scope. Switch product-level si operator declare explicit "override pour ce produit" OR si visual_identity.json sidecar product déjà a un slot peuplé qui diverge brand-level.
 

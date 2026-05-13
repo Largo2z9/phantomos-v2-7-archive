@@ -76,7 +76,7 @@ Mécanique compound · journal d'usage local enrichi par chaque output skill via
 Futur modulateur visuel d'état couche représentation. **PAS shippé v2.32**. Gated sur skill matrice représentation visuelle future. Ne pas exposer opérateur tant que non livré. Concept structurellement validé (vide/partiel/consolidé) mais sans implémentation code.
 
 ### 4. Atlas brand · cartographie holistique data e-commerce (v2.36)
-La somme structurée audiences + products + angles + creatives + scoring + verbatims + tests d'une brand. Concept canonique upstream pour désigner toute la matière data e-commerce d'une brand. Équivaut Notion Stride-Up "Données Atlas" canonical UI label. Rendu via `/phantom kara` (mode brand) qui surface les 6 entités brand (brand · spec · offers · profile · learnings · strategy) + creatives produced + matrice scorée. Doctrine : `docs/system/atlas-brand.md`.
+La somme structurée audiences + products + angles + creatives + scoring + verbatims + tests d'une brand. Concept canonique upstream pour désigner toute la matière data e-commerce d'une brand. Équivaut Notion Stride-Up "Données Atlas" canonical UI label. Rendu via `/phantom {brand_slug}` (mode brand) qui surface les 6 entités brand (brand · spec · offers · profile · learnings · strategy) + creatives produced + matrice scorée. Doctrine : `docs/system/atlas-brand.md`.
 
 **Distinction critique** :
 - Sense 1 (atlas canon copy) = référentiel cross-brand doctrine copywriting (read-only, partagé)
@@ -162,6 +162,6 @@ Comment un produit est présenté commercialement : prix, bundle, gifting, subsc
 
 ---
 
-*Dernière mise à jour : 2026-05-04 (S55). Enrichissement post audit nomenclature S55 + releases v2.26-v2.28.1 : ajout 14 entrées (Concept vs Creative vs Variant, Insight, Pain_point, Tension, JTBD, Mécanique creative, Mechanism spec, Atlas canon copy, Atome irréductible, Awareness stage, Schwartz, Persona vs Audience, Origin_axis, Lineage). Distinctions MECE explicites : pain_point ≠ tension ≠ insight ≠ JTBD (4 plans), Mécanique creative ≠ Mechanism spec (2 plans disjoints), atome_irreductible ≠ perceptual_pivot ≠ stop_scroller (3 plans), Concept ≠ Creative ≠ Variant. Source : largo-kb decisions.md D#382, D#383, D#391.*
+*Dernière mise à jour : 2026-05-04 (S55). Enrichissement post audit nomenclature S55 + releases v2.26-v2.28.1 : ajout 14 entrées (Concept vs Creative vs Variant, Insight, Pain_point, Tension, JTBD, Mécanique creative, Mechanism spec, Atlas canon copy, Atome irréductible, Awareness stage, Schwartz, Persona vs Audience, Origin_axis, Lineage). Distinctions MECE explicites : pain_point ≠ tension ≠ insight ≠ JTBD (4 plans), Mécanique creative ≠ Mechanism spec (2 plans disjoints), atome_irreductible ≠ perceptual_pivot ≠ stop_scroller (3 plans), Concept ≠ Creative ≠ Variant. Source : decisions.md D#382, D#383, D#391.*
 
 *S53 (2026-05-02). Lexicon opérateur slim créé en split du canon interne. 13 termes user-facing, vocabulaire métier classique DTC paid acquisition. Aucun jargon interne PhantomOS imposé. Canon complet déplacé dans `canon.md` pour audience équipe et contributeurs.*

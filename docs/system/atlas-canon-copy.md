@@ -87,7 +87,7 @@ Output taggé : un brief produit liste explicitement `audience`, `schwartz_stage
 
 ### 5.2 · Feed pattern (skills alimentent canon)
 
-`learn-from-session` est le skill canonique de promotion canon. Quand une session capture un outcome (ROAS, fatigue créa, validation opérateur explicite, correction Largo), le skill détecte quel outil canon a été utilisé en prod, et propose une entry dans `resources/canon/copy/{layer}/{tool}.json#/validations[]`.
+`learn-from-session` est le skill canonique de promotion canon. Quand une session capture un outcome (ROAS, fatigue créa, validation opérateur explicite, correction opérateur), le skill détecte quel outil canon a été utilisé en prod, et propose une entry dans `resources/canon/copy/{layer}/{tool}.json#/validations[]`.
 
 Trois invariants :
 1. **Operator gate explicite.** Jamais auto-promote. La promotion canon attend confirmation avant écriture.

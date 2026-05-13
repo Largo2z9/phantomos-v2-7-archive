@@ -6,7 +6,7 @@
   "_schema_version": "visual_identity/1.2",
   "_changelog": {
     "1.0": "v2.42 initial release. Schema canon dédié au visual identity sidecar product. Closes gap où visual_identity était soit inline spec.json soit sibling file sans schema typé (skills consumers AI gen ne savaient pas quelles propriétés étaient garanties). v1.0 shape: packshots (primary_front/back + lifestyle[] + cdn_paths[]), color_palette (primary_hex + secondary_hex[] + accent_hex[]), container (material/shape/dimensions/color), content (form_factor enum + quantity + unit), label (wordmark + claim + regulatory + placement + font_family), distinctive_features[] (hard constraints AI gen). Cross-ref skill-prerequisites.schema.json: skills consumers déclarant L1 prerequisite `spec.visual_identity` doivent migrer vers `visual_identity` path (sidecar) ou conserver lecture inline. Backward compat strict: lecteurs anciens lisent inline spec.json, sidecar additif. Source canon: PATCH 2A v2.42.",
-    "1.1": "v2.43 enrichment. Ajout 3 blocs additifs pour fidélité visuelle compose-creative: (a) assets_canonical{} catalog haute résolution local source priorité sur URL CDN externe (packshot_front/back/3_4/top + packshot_lifestyle[]), (b) logo_svg{} référence vectorielle brand pour overlay PIL post-gen précis caractère par caractère (path + variants[] primary/monochrome_black/monochrome_white/horizontal/vertical/icon), (c) wordmark_pattern regex strict validation wordmark post-gen (ex Karacare '^kara\\[care\\]$' brackets mandatory, trigger HR3.4 retry compose-creative si broken). Backward compat strict additif: tous les fields v1.0 préservés (packshots URL CDN + color_palette + container + content + label + distinctive_features). Consumers: compose-creative v2.43+ HR1.4 priorité assets_canonical local > packshots.cdn_paths, compose-overlay-text v2.43 NEW PIL composite logo SVG + wordmark validation. Source canon: PATCH F1+F4 v2.43.",
+    "1.1": "v2.43 enrichment. Ajout 3 blocs additifs pour fidélité visuelle compose-creative: (a) assets_canonical{} catalog haute résolution local source priorité sur URL CDN externe (packshot_front/back/3_4/top + packshot_lifestyle[]), (b) logo_svg{} référence vectorielle brand pour overlay PIL post-gen précis caractère par caractère (path + variants[] primary/monochrome_black/monochrome_white/horizontal/vertical/icon), (c) wordmark_pattern regex strict validation wordmark post-gen (ex BrandX '^brandX$' brackets si applicable, trigger HR3.4 retry compose-creative si broken). Backward compat strict additif: tous les fields v1.0 préservés (packshots URL CDN + color_palette + container + content + label + distinctive_features). Consumers: compose-creative v2.43+ HR1.4 priorité assets_canonical local > packshots.cdn_paths, compose-overlay-text v2.43 NEW PIL composite logo SVG + wordmark validation. Source canon: PATCH F1+F4 v2.43.",
     "1.2": "v2.48 multi-asset canonisation extension. Ajout 4 nouveaux slots dans assets_canonical{} (extension naturelle existant packshot_*): (a) logo_canonical (PNG haute-res complément vectoriel logo_svg · PIL composite simple sans cairosvg dependency · variants enum primary/monochrome_black/white/horizontal/vertical/icon en raster), (b) badge_canonical{} additionalProperties keys libres slug-style cert_plantes_naturelles/bio_eu/made_in_france/vegan_society etc · claim_text verbatim + regulatory_authority pour audit, (c) mascotte_canonical optionnel si brand a mascotte récurrente · variants poses neutral/happy/pointing/holding-product, (d) pattern_canonical{} additionalProperties keys libres slug-style wave_pattern_primary/texture_natural_beige/gradient_brand_sunset · tile_repeat bool + dominant_color_hex matching tone scène. Tous slots cohérent pattern packshot_front shape (path + resolution + format + background + _canonical + _validated_by_operator gate operator). Brand-level scope typique (cross-products) avec override produit-spécifique possible via path products/{slug}/assets/. Backward compat strict additif: tous fields v1.0/v1.1 préservés. Consumers: compose-creative v1.3+ HR3b layered multi-layer paste (packshot + logo + badge order), compose-overlay-text PIL composite extension multi-source, skill import-asset v2.48 NEW orchestrator drop+tag+validate operator-gate. Source canon: PATCH v2.48."
   },
   "type": "object",
@@ -55,7 +55,7 @@
           "properties": {
             "path": {
               "type": "string",
-              "description": "Path relative depuis brand root. Ex: 'products/cellule-boost-anti-chute/assets/packshot-canonical-front.png'."
+              "description": "Path relative depuis brand root. Ex: 'products/{product_slug}/assets/packshot-canonical-front.png'."
             },
             "resolution": {
               "type": "string",
@@ -80,7 +80,7 @@
             "_canonical": {
               "type": "boolean",
               "default": true,
-              "description": "Flag canon source. true = source pure validée Largo. false = placeholder en attente upload."
+              "description": "Flag canon source. true = source pure validée operator. false = placeholder en attente upload."
             },
             "_fallback_to_cdn": {
               "type": "boolean",
@@ -173,7 +173,7 @@
         },
         "badge_canonical": {
           "type": "object",
-          "description": "Slots canon badges produit ou brand (certifications, ingrédients claims, made in France, bio, vegan, cruelty-free, etc.). Keys libres slug-style (ex 'cert_plantes_naturelles', 'bio_eu', 'made_in_france', 'vegan_society'). Permet réutilisation cross-pubs identique (cert plantes affichée sur 10 pubs cellule-boost = même asset pixel-exact). v1.2+. Consumers · compose-creative HR3b layered multi-layer paste (position top-left ou bottom-right selon angle), compose-overlay-text PIL composite. Brand-level scope typique (badges réutilisés cross-products) avec override produit-spécifique possible.",
+          "description": "Slots canon badges produit ou brand (certifications, ingrédients claims, made in France, bio, vegan, cruelty-free, etc.). Keys libres slug-style (ex 'cert_plantes_naturelles', 'bio_eu', 'made_in_france', 'vegan_society'). Permet réutilisation cross-pubs identique (même cert affichée sur N pubs du même produit = même asset pixel-exact). v1.2+. Consumers · compose-creative HR3b layered multi-layer paste (position top-left ou bottom-right selon angle), compose-overlay-text PIL composite. Brand-level scope typique (badges réutilisés cross-products) avec override produit-spécifique possible.",
           "additionalProperties": {
             "type": "object",
             "properties": {
@@ -333,7 +333,7 @@
         "_canonical": {
           "type": "boolean",
           "default": true,
-          "description": "Flag canon source. true = SVG source pure validée Largo. false = placeholder en attente."
+          "description": "Flag canon source. true = SVG source pure validée operator. false = placeholder en attente."
         }
       },
       "required": ["path"]
@@ -341,7 +341,7 @@
 
     "wordmark_pattern": {
       "type": "string",
-      "description": "Regex strict validation wordmark caractère par caractère post-gen compose-creative. Permet HR3.4 retry compose-creative si pattern broken (gen dérive sur wordmark complexe). Ex Karacare = '^kara\\[care\\]$' (brackets mandatory autour de 'care'). Ex marque sans brackets = '^[A-Z][a-z]+\\+?$'. Regex compilée runtime: si match wordmark détecté OCR creative gen → pass. Si broken (ex 'karaforz', 'karacore') → trigger retry avec contrainte renforcée. v2.43+."
+      "description": "Regex strict validation wordmark caractère par caractère post-gen compose-creative. Permet HR3.4 retry compose-creative si pattern broken (gen dérive sur wordmark complexe). Ex marque avec brackets typographiques = '^brand\\[suffix\\]$' (brackets mandatory autour du suffixe). Ex marque sans brackets = '^[A-Z][a-z]+\\+?$'. Regex compilée runtime: si match wordmark détecté OCR creative gen → pass. Si broken (variantes typographiques cassées) → trigger retry avec contrainte renforcée. v2.43+."
     },
 
     "color_palette": {

@@ -180,7 +180,7 @@ Si validation echoue (regex no-match OU SSIM < 0.92) :
 
 ## HR5 · Trust badges precision triangle
 
-Si overlay_spec inclut sub-text trust badges (cas creative v2.43 typique cellule-boost ANG-02) :
+Si overlay_spec inclut sub-text trust badges (cas creative v2.43 typique cell-boost ANG-02) :
 
 - 3 badges position triangle : left (x=0.15*w, y=0.85*h) · right (x=0.85*w, y=0.85*h) · top center (x=0.5*w, y=0.10*h).
 - Badge size : 15% width creative each.
