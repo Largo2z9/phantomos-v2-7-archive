@@ -19,22 +19,22 @@ Check the user's argument :
 
 ## Mode menu, default
 
-1. Read `.skills/INDEX.md`. Parse the H2 headings (`## I want to...`) as categories.
+1. Read `.skills/INDEX.md`. Parse the H2 headings (`## Domaine ...`) as categories.
 2. For each category, count the skills listed in the markdown table below the heading.
 3. Read `.skills/_manifest.json`. Mark each skill that has a path containing `/custom/` with a `[custom]` tag.
 4. Render the menu :
 
 ```
-SKILLS DISPONIBLES (N total, M custom)
+Skills disponibles · {N} fonctions actives, {M} custom.
 
-CATÉGORIES
-  [1] {category 1 name}     ({count} skills)
-  [2] {category 2 name}     ({count} skills)
+Domaines fonctionnels ·
+  1. {category 1 name}     ({count} fonctions)
+  2. {category 2 name}     ({count} fonctions)
   ...
-  [N] {category N name}     ({count} skills)
+  N. {category N name}     ({count} fonctions)
 
-Tape /skills {numero} pour voir les skills d'une catégorie.
-Tape /skills {mot-clé} pour chercher par nom ou intent.
+Pour explorer un domaine · `/skills <numéro>`
+Pour chercher par nom · `/skills <mot-clé>`
 ```
 
 Use the categories *exactly* as they appear in `.skills/INDEX.md` H2 headings. Do not invent. Do not reorder.
@@ -46,14 +46,14 @@ Use the categories *exactly* as they appear in `.skills/INDEX.md` H2 headings. D
 3. Render the skills in that category, with one-line description :
 
 ```
-{Category name}, {count} skills
+{Category name} · {count} fonctions
 
   {skill-name-1}     {operator-says-trigger}
   {skill-name-2}     {operator-says-trigger}
   ...
   {skill-name-N}     {operator-says-trigger}
 
-Tape un nom de skill pour voir son trigger complet et son output.
+Pour voir le trigger complet et l'output d'une fonction · taper son nom.
 ```
 
 For each skill, find the matching frontmatter block in `.skills/_manifest.json` (by `name` field). Add `[custom]` tag at the end of the line if `path` contains `/custom/`. Use the `triggers` field of the manifest entry, not the operator-says column from INDEX.md (the manifest is the source of truth for triggers, INDEX.md is the human bridge).
@@ -65,21 +65,21 @@ For each skill, find the matching frontmatter block in `.skills/_manifest.json` 
 3. Render matching skills in a flat list :
 
 ```
-SKILLS MATCHING "{keyword}", {count} hits
+Résultats pour "{keyword}" · {count} fonctions
 
   {skill-name-1}     {short trigger}     [{category from INDEX.md if findable}]
   {skill-name-2}     {short trigger}     [{category}]
   ...
 
-Tape /skills {numero} pour browser par catégorie.
+Pour naviguer par catégorie · `/skills <numéro>`
 ```
 
 If no match, render :
 ```
-Aucun skill ne match "{keyword}".
+Aucune fonction ne correspond à "{keyword}".
 
-Catégories disponibles : ...
-Tape /skills pour voir le menu complet.
+Catégories disponibles · ...
+Pour voir le menu complet · `/skills`.
 ```
 
 ## Constraints
@@ -87,4 +87,4 @@ Tape /skills pour voir le menu complet.
 - **Read-only.** This command never mutates anything. Just read INDEX.md and _manifest.json.
 - **No agent invention.** Skill names, categories, triggers come from the source files. Never paraphrase or invent.
 - **Custom skills first-class.** Skills under `.skills/skills/custom/` are listed alongside shipped skills, just tagged `[custom]`. Treat them as equally valid.
-- **One screen output.** Aim for output that fits in one terminal screen. If a category has more than 15 skills, paginate or note "tape /skills {numero} {keyword}" pour filtrer.
+- **One screen output.** Aim for output that fits in one terminal screen. If a category has more than 15 skills, paginate or note "pour filtrer · `/skills <numéro> <mot-clé>`".

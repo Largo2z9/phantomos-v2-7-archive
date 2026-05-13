@@ -7,6 +7,37 @@
 
 ---
 
+## v2.53.0 · 2026-05-13 · Refactor ton sérieux et professionnel · commandes + skills outputs
+
+**Why.** Test live opérateur a révélé tonalité gamifiée colloquial dans les outputs des commandes phantom (catégories `I want to...`, verbes directifs `Tape /`, caps lock excessif `SKILLS DISPONIBLES`/`CATÉGORIES`/`NEXT SUGGESTED`). PhantomOS cible opérateurs business pros (vibecoder marketeux DTC, growth lead, agency). Le ton doit refléter cette posture, pas un wizard tutoriel.
+
+**What.** Audit complet et patches systémiques sur tous les fichiers operator-facing du canon distribuable. Patterns appliqués ·
+- Catégories business posées substantives (`Configuration brand et workspace`, `Analyse audience et marché`, `Production créative et copywriting`, etc.) vs `I want to set up...` colloquial.
+- Verbes neutres en français pro (`Pour explorer ·`, `Pour démarrer ·`, `Actions prioritaires`) vs `Tape /skills`, `→ Tape :` directifs.
+- Hiérarchie sérieuse title case (`Skills disponibles`, `Sources connectées`, `Entités`, `Actions prioritaires`, `Top 3 territoires`, `Trous détectés`) vs caps lock brut.
+- Empty states reformulés en posture pro (`Aucun produit encodé sur ...`, `Stratégie non posée. Pour cadrer le focus ·`) vs `Pas encore de produit...`, `Tape X...`.
+- AskUserQuestion phrasing recalibré (`Prochaine étape ?`, `Explorer audiences`) vs `Tu veux faire quoi ?`, `Drill audiences`.
+- Vocabulaire cohérent · `fonction` dans les listes catégorisées (langage métier business), `skill` reste en contexte technique de routing. `brand`, `workspace`, `compose` conservés (termes pro standards).
+
+**Files patched.**
+- `.claude/commands/skills.md` (mode menu, drill, search, constraints refactor complet).
+- `.claude/commands/phantom.md` (bootstrap, workspace, brand, entity-drill, search, recent, todo, help, briefs-drill, tests-drill, matrix-drill, atlas-overview, doctrine, mechanisms-drill, benefits-drill, empty states, footer hint, AskUserQuestion patterns).
+- `.claude/commands/phantom-modes/item.md` (audiences/angles/products rendering + AskUserQuestion + hard rule).
+- `.claude/commands/phantom-modes/canon.md` (canon-tool-card sections + AskUserQuestion + empty state).
+- `.claude/commands/phantom-modes/audiences-tree.md` (arbre + chevauchements + points à compléter + actions).
+- `.claude/commands/phantom-modes/doctrine-audiences.md` (Q1-Q4 + pièges + Pareto + résumé + actions).
+- `.claude/commands/tour.md` (Milestone 6 commande natural language + Milestone 7 wow follow-up + Milestone replay daily commands reminder).
+- `.skills/INDEX.md` (9 catégories H2 renommées + section visual + section ambiguous intent).
+- `.skills/skills/snapshot-brand/SKILL.md` (Movement 3 close natural language).
+- `.skills/skills/define-specs/SKILL.md` (operator output template fiche full refactor).
+- `.skills/skills/recompose-creative/SKILL.md` (sections fiche title case).
+- `.skills/skills/decompose-ad/SKILL.md` (sections fiche 4 blocs + Tags retrieval).
+- `.skills/skills/produce-copy-brief/SKILL.md` (bloc Lignage title case).
+
+**Backward compat.** Strict additif. Triggers commands inchangés (`/phantom`, `/skills`, `/tour`). Aucune cassure fonctionnelle, juste rendu refactoré. Manifest skills regen 56 skills.
+
+---
+
 ## v2.52.0 · 2026-05-13 · Scrub leaks brand-agnostic + identité-agnostic post-sprint v2.51
 
 **Why.** Sprint v2.46-v2.51 a ré-introduit du brand-side (Karacare / Cellule Boost / Hair Boost) dans 12+ fichiers du canon distribuable, alors que v2.45 avait fait un premier cleanup. v2.52 ré-applique le cleanup systémique sur tous les fichiers identifiés par audit qualité préalable.

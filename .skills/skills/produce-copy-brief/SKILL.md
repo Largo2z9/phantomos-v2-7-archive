@@ -246,7 +246,7 @@ Reads like an agency document. No bullet enumeration of every audience field. No
 **Canon lineage block (v2.29.0+).** En tête du brief, sous le header, un bloc explicite qui pose le lignage doctrinal du brief (agency-internal, fields lus depuis `angle.json` v1.2) :
 
 ```
-LIGNAGE
+Lignage
   audience       {audience_slug}
   awareness      {lineage.awareness_stage} × sophistication {lineage.schwartz_sophistication}
   origin axis    {origin_axis}
@@ -261,7 +261,7 @@ LIGNAGE
 
 Le copywriter lit le lignage avant le brief. Il sait quel framework respecter, quel registre voix tenir, quel hook ouvrir, quel pain ancrer, quel proof citer, quel CTA fermer. Si le brief diverge du lignage en cours d'écriture, c'est un signal de friction (à flag dans la section *Notes*).
 
-**Pas de `mecanique` ni `intent` dans LIGNAGE brief.** Ces dimensions vivent côté `creative.schema.json` (couche execution), pas angle. Si un `creative_id` a été passé en input (cf. Step 0bis), le brief peut surfacer `mecanique` + `intent` du creative dans la section *Format constraints*, mais jamais dans le bloc LIGNAGE qui reste strictement angle-level.
+**Pas de `mecanique` ni `intent` dans le bloc Lignage du brief.** Ces dimensions vivent côté `creative.schema.json` (couche execution), pas angle. Si un `creative_id` a été passé en input (cf. Step 0bis), le brief peut surfacer `mecanique` + `intent` du creative dans la section *Format constraints*, mais jamais dans le bloc Lignage qui reste strictement angle-level.
 
 **Section Objections du brief.** Référence un ou plusieurs `canon copy objections` à utiliser (feel-felt-found, reframe-positif, pre-emption, comparaison-cout-inaction). Ne pas inventer de pattern de gestion : piocher dans canon, citer la fiche.
 

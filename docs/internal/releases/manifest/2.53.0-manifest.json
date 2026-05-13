@@ -1,0 +1,92 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.53.0",
+  "released_at": "2026-05-13",
+  "compatible_from": "2.0.0",
+  "type": "refactor_tone_operator_facing",
+  "summary": "Test live opérateur a révélé tonalité gamifiée colloquial dans les outputs des commandes phantom (catégories `I want to...`, verbes directifs `Tape /`, caps lock excessif `SKILLS DISPONIBLES`/`CATÉGORIES`/`NEXT SUGGESTED`). PhantomOS cible opérateurs business pros (vibecoder marketeux DTC, growth lead, agency). Le ton doit refléter cette posture, pas un wizard tutoriel. Audit complet et patches systémiques sur tous les fichiers operator-facing du canon distribuable. Backward compat strict additif · triggers commands inchangés, aucune cassure fonctionnelle, juste rendu refactoré.",
+  "changes": [
+    {
+      "category": "category_naming_refactor",
+      "action": "patched",
+      "files": [
+        ".skills/INDEX.md",
+        ".claude/commands/skills.md"
+      ],
+      "section": "Bloc 1 · Catégories business posées substantives vs `I want to ...` colloquial",
+      "rationale": "Remplacement systématique des 9+1 H2 headings dans INDEX.md · `I want to set up a new brand or workspace` → `Configuration brand et workspace`, `I want to understand the audience or the market` → `Analyse audience et marché`, `I want to produce a paid creative or copy` → `Production créative et copywriting`, `I want to audit something` → `Audit et diagnostic`, `I want to capture or persist something` → `Capture et persistance`, `I want to extend or build something new` → `Extension et build`, `I want to navigate or resume` → `Navigation et reprise de session`, `I want to migrate or upgrade` → `Migration et upgrade`, `I want to connect an external tool` → `Connexion outils externes`, `Producing a paid creative (visual + copy)` → `Production créative visuel et copy`, `When the intent is ambiguous` → `Intention ambiguë`. Pattern général · `I want to X` colloquial wizard → nom business posé substantif. Cohérent avec posture PhantomOS operator pro DTC. Triggers natural language operator (`*\"I want to prepare an official photo of my product\"*` colonne `Operator says`) conservés intacts par design bilingue FR+EN."
+    },
+    {
+      "category": "directive_verb_refactor",
+      "action": "patched",
+      "files": [
+        ".claude/commands/skills.md",
+        ".claude/commands/phantom.md",
+        ".claude/commands/phantom-modes/item.md",
+        ".claude/commands/phantom-modes/canon.md",
+        ".claude/commands/phantom-modes/audiences-tree.md",
+        ".claude/commands/phantom-modes/doctrine-audiences.md",
+        ".claude/commands/tour.md",
+        ".skills/skills/snapshot-brand/SKILL.md"
+      ],
+      "section": "Bloc 2 · Verbes directifs colloquial `Tape /` → forme pro neutre",
+      "rationale": "Remplacement systémique des 40+ occurrences de `Tape /...` / `→ Tape :` patterns. Skills.md mode menu · `Tape /skills {numero} pour voir les skills d'une catégorie.` → `Pour explorer un domaine · /skills <numéro>`. Phantom.md bootstrap + workspace + brand modes · `→ Tape /phantom {brand_slug} pour drill` → `Pour explorer un brand · /phantom <brand_slug>`. NEXT SUGGESTED blocks cross-modes · `→ Tape : commande` → `· commande` (bullet point neutre). Empty states · `Tape X pour scaffold` → `Pour scaffold · X` ou `Lancer X pour ...`. Tour.md Milestone 6/7/replay · `Tape /skills à n'importe quel moment` → `/skills à tout moment liste...`. Snapshot-brand Movement 3 close · `Tu peux les visualiser à tout moment en tapant /phantom {brand_slug}` → `La commande /phantom {brand_slug} ouvre à tout moment le cockpit`. Cohérent avec posture operator pro · l'agent recommande l'action via syntaxe sérieuse, pas un manuel tutoriel basique."
+    },
+    {
+      "category": "caps_lock_hierarchy_refactor",
+      "action": "patched",
+      "files": [
+        ".claude/commands/phantom.md",
+        ".claude/commands/phantom-modes/item.md",
+        ".claude/commands/phantom-modes/canon.md",
+        ".claude/commands/phantom-modes/audiences-tree.md",
+        ".claude/commands/phantom-modes/doctrine-audiences.md",
+        ".skills/skills/define-specs/SKILL.md",
+        ".skills/skills/recompose-creative/SKILL.md",
+        ".skills/skills/decompose-ad/SKILL.md",
+        ".skills/skills/produce-copy-brief/SKILL.md"
+      ],
+      "section": "Bloc 3 · Caps lock brut → title case hiérarchie sérieuse",
+      "rationale": "Remplacement systémique des labels de section caps lock par title case dans tous les templates operator-facing. Phantom.md · `PHANTOMOS WORKSPACE` → `PhantomOS · workspace`, `PHANTOMOS · brand: {brand_name}` → `PhantomOS · brand : {brand_name}`, `ENTITIES` → `Entités`, `CONNECTED SOURCES` → `Sources connectées`, `NEXT SUGGESTED (priorité)` → `Actions prioritaires`, `BRANDS ({count})` → `Brands ({count})`, `CROSS-BRAND` → `Cross-brand`, `SUGGESTIONS DAEMON` → `Suggestions automatiques`, `NAVIGATION` / `UTILITAIRES` / `NAVIGATION RAPIDE` / `EXEMPLES CONCRETS` / `ROUTING SKILLS` → title case. Mode atlas-overview · `MATIÈRE BRAND` / `PRODUCTIONS DÉRIVÉES` / `HISTORIQUE BRAND` → title case. Mode doctrine · `MÉTHODE DU SYSTÈME` / `PARCOURS EN 6 ÉTAPES` / `7 PILIERS DU SYSTÈME` / `BOUCLE D'APPRENTISSAGE` → title case. Mode briefs-drill / tests-drill / matrix-drill → idem. Item.md · `PROFIL` / `VOIX (sourcée)` / `PAIN POINTS` / `OBJECTIONS` / `HIÉRARCHIE` / `APPLIQUÉ AUX PRODUITS` / `NEXT SUGGESTED` → title case. Canon.md · `PRINCIPE` / `STRUCTURE` / `GABARITS` / `QUAND ÇA MARCHE` / `QUAND ÉVITER` / `VA BIEN AVEC` / `À ÉVITER` / `EXEMPLES` / `TESTS PASSÉS CUMULÉS` / `ORIGINE` → title case. Audiences-tree.md · `ARBRE AUDIENCES` / `CHEVAUCHEMENTS DÉCLARÉS` / `POINTS À COMPLÉTER` → title case. Doctrine-audiences.md · `COMMENT CARTOGRAPHIER LES AUDIENCES` / `Q1 · PORTE D'ENTRÉE` / `PIÈGES À ÉVITER` / `LOI DE PARETO` / `LE RÉSUMÉ EN 1 PHRASE` → title case. Define-specs.md · operator output template fiche `IDENTITÉ` / `SPECS` / `MÉCANISMES` / `BÉNÉFICES` / `PROBLÈMES RÉSOLUS` / `PRICING` / `VISUAL IDENTITY` / `GAPS DÉTECTÉS` → title case + remplacement `→ Tu valides en bloc, tu corriges un champ, ou tu poses une question ?` → `Validation requise · valider en bloc, corriger un champ, ou poser une question ?`. Recompose-creative.md · `CE QUI RESTE` / `CE QUI CHANGE` / `COMPARAISON` → title case. Decompose-ad.md fiche v5 4 blocs · `1 · CE QUE L'AD MONTRE` / `2 · CE QUE L'AD RACONTE` / `3 · DIAGNOSTIC` / `4 · RÉUTILISATION` / `TAGS RETRIEVAL` → title case. Produce-copy-brief.md · bloc `LIGNAGE` → `Lignage`. Cohérent avec posture operator pro · hiérarchie sérieuse vs style brut/tutoriel."
+    },
+    {
+      "category": "empty_states_repositioning",
+      "action": "patched",
+      "files": [
+        ".claude/commands/phantom.md",
+        ".claude/commands/phantom-modes/item.md"
+      ],
+      "section": "Bloc 4 · Empty states reformulés posture pro",
+      "rationale": "Phantom.md table empty states · `Pas encore de produit encodé sur ...` → `Aucun produit encodé sur ...`, `Tape snapshot X pour scaffold` → `Pour scaffold le hero produit · snapshot X`. Phantom.md atlas empty state · `On démarre {BRAND_NAME}. Tu veux commencer par où ?` + `(d) Dis-moi ton point de départ, je m'adapte` → `Démarrage de {brand_name}. Par où commencer ?` + `(d) Adapter selon ton point de départ`. Item.md hard rule · `Item '{x}' pas trouvé dans ... Tape /phantom X pour la vue` → `Item '{x}' introuvable dans ... Pour la vue entity complète · /phantom X`."
+    },
+    {
+      "category": "askquestion_phrasing_recalibration",
+      "action": "patched",
+      "files": [
+        ".claude/commands/phantom.md",
+        ".claude/commands/phantom-modes/item.md",
+        ".claude/commands/phantom-modes/canon.md"
+      ],
+      "section": "Bloc 5 · AskUserQuestion phrasing recalibré",
+      "rationale": "Phantom.md exemple brand mode glowco · `question: \"Tu veux faire quoi ?\"` + `\"Drill audiences (7 audiences à valider)\"` + `\"Lance mine-voc sur glowco\"` → `question : \"Prochaine étape ?\"` + `\"Explorer audiences (7 audiences à valider)\"` + `\"Lancer mine-voc sur glowco\"`. Tables slots concrets workspace/brand/entity-drill · `Drill {brand_le_plus_actif}` / `Drill audiences` / `Drill {entity_voisine}` → `Explorer {brand_le_plus_actif}` / `Explorer audiences` / `Explorer {entity_voisine}`. Item.md · `Drill {sibling}` → `Explorer {sibling}`. Canon.md · `Drill un outil voisin` → `Explorer un outil voisin`, `Drill un autre outil` → `Explorer un autre outil`, `Action : Applique cet outil à un brand` → `Action : Appliquer cet outil à un brand`."
+    },
+    {
+      "category": "vocabulary_consistency",
+      "action": "patched",
+      "files": [
+        ".claude/commands/skills.md"
+      ],
+      "section": "Bloc 6 · Vocabulaire cohérent fonction vs skill",
+      "rationale": "Skills.md mode menu · `SKILLS DISPONIBLES (N total, M custom)` → `Skills disponibles · N fonctions actives, M custom.`. Mode drill · `{Category name}, {count} skills` → `{Category name} · {count} fonctions`. Mode search · `SKILLS MATCHING \"{keyword}\", {count} hits` → `Résultats pour \"{keyword}\" · {count} fonctions`. Empty no match · `Aucun skill ne match \"{keyword}\"` → `Aucune fonction ne correspond à \"{keyword}\"`. Le terme `fonction` est utilisé dans les listes catégorisées (langage métier business accessible pour un opérateur DTC marketeux), `skill` reste en contexte technique de routing/manifest/disambiguation. `brand`, `workspace`, `compose-creative`, `recompose-creative` conservés (termes pro standards reconnus en français business)."
+    }
+  ],
+  "files_patched_total": "13 (cross-pillar · commands 7 · skills 5 · INDEX 1)",
+  "patterns_eliminated": {
+    "i_want_to_colloquial": "9 H2 + 1 visual + 1 ambiguous · INDEX.md complete",
+    "tape_directive_verb": "40+ occurrences cross commands + skills · zero residual operator-facing",
+    "caps_lock_brut_labels": "75+ section labels cross phantom modes + 5 skills fiches operator templates · title case applied"
+  },
+  "operator_impact": "Template PhantomOS v2.53 ship-ready avec rendu cohérent sérieux et professionnel. Opérateur business pro (vibecoder DTC, growth lead, agency) reçoit un output qui reflète sa posture · pas un wizard tutoriel ni un menu colloquial. Aucune cassure fonctionnelle · les triggers commandes (`/phantom`, `/skills`, `/tour`) restent identiques, juste le rendu visible côté operator est refactoré. Manifest skills regen 56 skills inchangés en logique.",
+  "backward_compat": "strict_additif. Aucun breaking change fonctionnel. Triggers commandes inchangés. Schemas inchangés. Field paths inchangés. Logique skills inchangée. Manifest skills regen 56 skills.",
+  "next_release_note": "v2.54+ patches identifiés · (a) audit skills audit-meta-account / mine-voc / mine-vom / profile-audience / produce-paid-angles operator output templates pour application title case + suppression Tape résiduel (le pass actuel a couvert les fiches v2.51 + plus exposés mais pas tous les skills 56 exhaustivement). (b) audit docs/system/*.md pour cohérence ton si tu fais reading externe (sub-doctrines internes restent agent-facing tech). (c) éventuelle validation `_jargon_bank.json` enrichi pour catcher Tape/CAPS dérive runtime via apply-jargon-filter.py post-render."
+}

@@ -15,7 +15,7 @@ Check the user's argument :
 
 | Argument | Mode |
 |---|---|
-| empty (just `/phantom`), 0 brand encodé | **bootstrap** : message "tape /tour pour démarrer" |
+| empty (just `/phantom`), 0 brand encodé | **bootstrap** : message d'amorce vers `/tour` |
 | empty, ≥1 brand encodé | **workspace** : always shows the workspace-level view, regardless of brand count. Operator drills explicitly via `/phantom {slug}`. |
 | `workspace` or `all` | **workspace** : alias, same as empty when ≥1 brand exists |
 | brand slug (e.g. `/phantom vitatone`) | **brand** : cockpit détaillé du brand |
@@ -44,12 +44,12 @@ Check the user's argument :
 ## Mode bootstrap
 
 ```
-PHANTOMOS · workspace vide
+PhantomOS · workspace vide
 ══════════════════════════════════════════════
 Aucun brand encodé pour l'instant.
 
-→ Tape /tour pour démarrer le setup d'un premier brand.
-→ Tape /skills pour voir les capacités disponibles.
+Pour démarrer le setup d'un premier brand · `/tour`
+Pour parcourir les fonctions disponibles · `/skills`
 ```
 
 Stop ici.
@@ -73,27 +73,27 @@ Vue globale du workspace, multi-brand + opérateur + capacités.
 ### Format de rendu workspace
 
 ```
-PHANTOMOS WORKSPACE
+PhantomOS · workspace
 ══════════════════════════════════════════════
-Operator        {operator_name_or_id}
-Capacités       {N} skills ({M} custom)
+Opérateur       {operator_name_or_id}
+Fonctions       {N} actives ({M} custom)
 Dernière session                {time_ago}
 
-BRANDS ({count})
+Brands ({count})
 {brand_lines}
 
-CROSS-BRAND
+Cross-brand
 Tests actifs                    {total_active_tests}
-Connected sources globales      {global_sources_summary}
+Sources connectées globales     {global_sources_summary}
 
-NEXT SUGGESTED (priorité)
+Actions prioritaires
 {suggested_actions}
 
-SUGGESTIONS DAEMON (smart-suggest learn-from-session Trigger 8)
+Suggestions automatiques
 {daemon_patterns_or_silence}
 
-→ Tape /phantom {brand_slug} pour drill sur un brand.
-→ Tape /skills pour voir les capacités.
+Pour explorer un brand · `/phantom <brand_slug>`
+Pour les fonctions disponibles · `/skills`
 ```
 
 `daemon_patterns_or_silence` lit le buffer pattern-detection (cross-skills, recurring frictions, decision reversals, encoded fact drift). Si présents, lister 1-3 patterns détectés sous forme paste-ready. Sinon afficher *"aucune suggestion daemon active"*. Source : `docs/system/pattern-detection-triggers.md`.
@@ -127,16 +127,16 @@ Exemples :
 
 ### Next suggested workspace-level
 
-3 propositions max, ordonnées par priorité. **Each line MUST be a paste-ready command, not a conversational suggestion.** Format : *"→ Tape : `{exact natural-language command}` ({why, in one short clause})"*. The operator copies the back-tick content into the next prompt and the agent picks it up.
+3 propositions max, ordonnées par priorité. **Each line MUST be a paste-ready command, not a conversational suggestion.** Format : *"  · `{exact natural-language command}` ({why, in one short clause})"*. The operator copies the back-tick content into the next prompt and the agent picks it up.
 
 Sources :
-- Brand dormant > 60j → *"→ Tape : `archive {slug}` ({slug} sans activité depuis {N} jours)"*
-- Tests fatiguing dans plusieurs brands → *"→ Tape : `refresh angles fatigués sur {slug-le-plus-fatigué}` ({N} angles ROAS en chute)"*
-- Operator profile incomplet → *"→ Tape : `densifie mon profil opérateur` (3 champs manquants : stack actuelle, register, contexte macro)"*
-- Skill `audit-meta-account` jamais run sur un brand actif → *"→ Tape : `audit Meta sur {slug}` (token connecté, jamais audité)"*
-- Niveau de contexte global moyen sub-L2 → *"→ Tape : `enrichis le contexte de {slug}` (L1, le brand le plus en retard)"*
+- Brand dormant > 60j → *"  · `archive {slug}` ({slug} sans activité depuis {N} jours)"*
+- Tests fatiguing dans plusieurs brands → *"  · `refresh angles fatigués sur {slug-le-plus-fatigué}` ({N} angles ROAS en chute)"*
+- Operator profile incomplet → *"  · `densifie mon profil opérateur` (3 champs manquants : stack actuelle, register, contexte macro)"*
+- Skill `audit-meta-account` jamais run sur un brand actif → *"  · `audit Meta sur {slug}` (token connecté, jamais audité)"*
+- Niveau de contexte global moyen sub-L2 → *"  · `enrichis le contexte de {slug}` (L1, le brand le plus en retard)"*
 
-Anti-pattern : *"→ Lancer un audit Meta dès que possible"* (passif, l'opérateur doit re-formuler). Always paste-ready, always specific.
+Anti-pattern : *"  · Lancer un audit Meta dès que possible"* (passif, l'opérateur doit re-formuler). Always paste-ready, always specific.
 
 ---
 
@@ -160,20 +160,20 @@ Vue détaillée d'un brand spécifique.
 ### Format de rendu brand
 
 ```
-PHANTOMOS · brand: {brand_name}
+PhantomOS · brand : {brand_name}
 ══════════════════════════════════════════════
 Cartographie    {level}/3 niveaux   {progress_bar}  {pct}% rempli
 Dernière session                 {time_ago}
-Tests actifs                     {count} ({fatiguing_count} fatiguing)
+Tests actifs                     {count} ({fatiguing_count} fatigués)
 Backlog                          {hypothesis_count} hypothèses
 
-ENTITIES
+Entités
 {entity_status_lines}
 
-CONNECTED SOURCES
+Sources connectées
 {connected_sources_lines}
 
-NEXT SUGGESTED (priorité)
+Actions prioritaires
 {suggested_actions}
 ```
 
@@ -268,20 +268,20 @@ Exemples :
 - `⚠ Klaviyo             synced 9d ago`
 - `○ TikTok Ads          not connected`
 
-Si `connected-sources.json` absent : afficher *"(non configurées, voir /skills connect)"*.
+Si `connected-sources.json` absent : afficher *"(sources non configurées, `/skills connect` pour connecter)"*.
 
 ### Next suggested (mode brand)
 
-3 propositions max, ordonnées par priorité décisionnelle. **Each line MUST be a paste-ready command**, not a conversational suggestion. Format : *"→ Tape : `{exact natural-language command}` ({why, one short clause})"*. The operator copies the back-tick content into the next prompt.
+3 propositions max, ordonnées par priorité décisionnelle. **Each line MUST be a paste-ready command**, not a conversational suggestion. Format : *"  · `{exact natural-language command}` ({why, one short clause})"*. The operator copies the back-tick content into the next prompt.
 
 Sources :
-- Tests fatiguing → *"→ Tape : `refresh l'angle {angle_id}` (ROAS -42% sur 14j)"*
-- Audiences avec témoignages vide → *"→ Tape : `récupère les témoignages clients sur {slug}` (7 audiences à valider, aucun témoignage encore)"*
-- Stale > 14j sur entité critique → *"→ Tape : `mets à jour {entity}` (dernière modif il y a {N}j)"*
-- Niveau sub-L2 → *"→ Tape : `densifie le contexte de {slug}` ({N} fields manquants critiques)"*
-- Connected source non configurée mais pertinente → *"→ Tape : `connecte Meta Ads sur {slug}` (token attendu dans credentials.env)"*
+- Tests fatiguing → *"  · `refresh l'angle {angle_id}` (ROAS -42% sur 14j)"*
+- Audiences avec témoignages vide → *"  · `récupère les témoignages clients sur {slug}` (7 audiences à valider, aucun témoignage encore)"*
+- Stale > 14j sur entité critique → *"  · `mets à jour {entity}` (dernière modif il y a {N}j)"*
+- Niveau sub-L2 → *"  · `densifie le contexte de {slug}` ({N} champs manquants critiques)"*
+- Connected source non configurée mais pertinente → *"  · `connecte Meta Ads sur {slug}` (token attendu dans credentials.env)"*
 
-Anti-pattern : *"→ Lancer mine-voc dès que possible"* (passif, vague). Always paste-ready, always specific. The single back-tick wrap is a visual contract · the operator knows that what's inside the back-ticks is what they paste back.
+Anti-pattern : *"  · Lancer mine-voc dès que possible"* (passif, vague). Always paste-ready, always specific. The single back-tick wrap is a visual contract · the operator knows that what's inside the back-ticks is what they paste back.
 
 ---
 
@@ -294,7 +294,7 @@ Supported entities: `audiences`, `angles`, `products`, `offers`, `strategy`, `le
 ### Common header (all entity drills)
 
 ```
-PHANTOMOS · brand: {brand_name} · {entity}
+PhantomOS · brand : {brand_name} · {entity}
 ══════════════════════════════════════════════
 ```
 
@@ -363,7 +363,7 @@ End with paste-ready : capture-learning on a recent observation, promote a learn
 
 ### Hard rule for entity-drill
 
-If `{entity}` is unsupported (not in the list above), surface : *"Entité '{x}' pas reconnue. Disponibles : audiences, angles, products, offers, strategy, learnings. Tape `/phantom {brand}` pour la vue brand complète."*
+If `{entity}` is unsupported (not in the list above), surface : *"Entité '{x}' non reconnue. Disponibles · audiences, angles, products, offers, strategy, learnings. Pour la vue brand complète · `/phantom {brand}`."*
 
 ---
 
@@ -396,7 +396,7 @@ Rendering : un block par match (cap 20 affichés, mention si plus existent) :
 ```
 {type} · {brand_slug}/{slug}
   {snippet avec keyword en gras ou highlight}
-  → Tape : `/phantom {brand_slug} {entity} {slug}` pour drill
+  Pour explorer · `/phantom {brand_slug} {entity} {slug}`
 ```
 
 Group par `brand_slug`. Ordre par pertinence (matches sur `meta.name` en haut, matches sur descriptions/snippets en bas).
@@ -410,7 +410,7 @@ Group par `brand_slug`. Ordre par pertinence (matches sur `meta.name` en haut, m
 | 3 | Drill 3e match |
 | 4 | *"Retour workspace"* · relance `/phantom` |
 
-Si 0 match : empty state pédagogique : *"Aucun match pour '{keyword}'. Tape `/phantom search` avec un autre terme, ou `/phantom todo` pour voir ce qui est actif."* Pas d'AskUserQuestion dans ce cas.
+Si 0 match : empty state pédagogique : *"Aucun résultat pour '{keyword}'. Essayer un autre terme avec `/phantom search`, ou consulter les actions en cours avec `/phantom todo`."* Pas d'AskUserQuestion dans ce cas.
 
 ---
 
@@ -452,7 +452,7 @@ Exemple :
 | 3 | Drill un item du top match si pertinent |
 | 4 | *"Retour workspace"* |
 
-Si event log vide : *"Pas encore de mutations enregistrées. Reviens après ta première session de mining ou de snapshot."*
+Si event log vide : *"Aucune mutation enregistrée pour l'instant. Revenir après la première session de mining ou de snapshot."*
 
 ---
 
@@ -472,7 +472,7 @@ Rendering (top 5 max) :
 
 ```
 {priority_icon} [{brand_slug}] {action description}
-   → Tape : `{paste-ready commande}` ({why})
+   · `{paste-ready commande}` ({why})
 ```
 
 `priority_icon` : `🔥` (urgent : tests fatigués, brand stale > 30j sur entité critique), `⚡` (à faire bientôt : audiences en mining vide, angles draft), `·` (peut attendre).
@@ -480,16 +480,16 @@ Rendering (top 5 max) :
 Exemple :
 ```
 🔥 [vitatone] 2 angles ROAS en chute libre depuis 7j
-   → Tape : `refresh les angles fatigués sur vitatone`
+   · `refresh les angles fatigués sur vitatone`
 
 ⚡ [glowco] 7 audiences en hypothèse, aucun verbatim encore
-   → Tape : `lance mine-voc sur glowco`
+   · `lance mine-voc sur glowco`
 
 ⚡ [glowco] strategy.json sans focus Q2 posé
-   → Tape : `pose le focus Q2 de glowco`
+   · `pose le focus Q2 de glowco`
 
 · [northsense] dormant depuis 47j, peut-être à archiver
-   → Tape : `archive northsense`
+   · `archive northsense`
 ```
 
 ### AskUserQuestion (mode todo)
@@ -501,7 +501,7 @@ Exemple :
 | 3 | *"Drill {brand_slug}"* du brand qui concentre le plus d'actions |
 | 4 | *"Retour workspace"* |
 
-Si 0 todo (workspace serein) : *"Tout est calme. Pas d'action urgente. Profite ou commence un nouveau brand."*
+Si 0 todo (workspace serein) : *"Aucune action urgente en cours. Profiter du calme, ou démarrer un nouveau brand."*
 
 ---
 
@@ -512,42 +512,42 @@ Si 0 todo (workspace serein) : *"Tout est calme. Pas d'action urgente. Profite o
 Format :
 
 ```
-PHANTOMOS · /phantom cheatsheet
+PhantomOS · /phantom · vue d'ensemble des modes
 ══════════════════════════════════════════════
-NAVIGATION
-  /phantom                       vue workspace (default)
-  /phantom {brand}               cockpit du brand
-  /phantom {brand} {entity}      drill dense sur une entité
-  /phantom {brand} {entity} {item}   preview d'un item
+Navigation
+  /phantom                            vue workspace (défaut)
+  /phantom {brand}                    cockpit du brand
+  /phantom {brand} {entity}           drill dense sur une entité
+  /phantom {brand} {entity} {item}    preview d'un item
 
-UTILITAIRES
-  /phantom search "{keyword}"    grep cross-brand
-  /phantom recent [N]            timeline des N dernières mutations (default 10)
-  /phantom todo                  next-suggested cross-brand priorisés
-  /phantom ?                     cette cheatsheet
+Utilitaires
+  /phantom search "{keyword}"         recherche cross-brand
+  /phantom recent [N]                 timeline des N dernières mutations (défaut 10)
+  /phantom todo                       actions cross-brand priorisées
+  /phantom ?                          cette vue
 
-CANON DU MÉTIER (workspace-level)
-  /phantom canon                 atlas du métier (copy, et autres à venir)
-  /phantom canon copy            11 couches de copywriting
-  /phantom canon copy hooks      6 outils de hook
+Référence métier (workspace-level)
+  /phantom canon                      bibliothèque métier (copy, et autres à venir)
+  /phantom canon copy                 11 couches de copywriting
+  /phantom canon copy hooks           6 outils de hook
   /phantom canon copy hooks curiosity-gap   fiche détaillée
 
-ENTITÉS DRILLABLES
+Entités drillables
   audiences, angles, products, offers, strategy, learnings
 
-NAVIGATION RAPIDE
+Navigation rapide
   Chaque rendering termine par 4 boutons cliquables (drill, drill latéral, action, retour parent).
-  Slot 4 toujours = retour parent. Tu ne te perds jamais.
+  Le slot 4 ramène toujours au niveau parent, aucun cul-de-sac.
 
-EXEMPLES CONCRETS
+Exemples concrets
   /phantom glowco audiences chute-active
   /phantom search "post-grossesse"
   /phantom recent 20
   /phantom canon copy frameworks pas
 
-ROUTING SKILLS
-  Par intention (je veux X) ? consulter `.skills/INDEX.md` (skills par objectif)
-  State-driven (je veux voir l'état Y) ? rester ici dans /phantom
+Routing fonctions
+  Recherche par intention · consulter `.skills/INDEX.md` (fonctions par objectif)
+  Recherche par état · rester dans /phantom
 ```
 
 Pas d'AskUserQuestion en mode help. C'est une référence, pas un point d'action.
@@ -571,17 +571,17 @@ Header breadcrumb :
 ```
 workspace > {brand} > briefs
 ══════════════════════════════════════════════
-{N} briefs · {N_draft} draft · {N_shipped} shipped · {N_validated} validated
+{N} briefs · {N_draft} draft · {N_shipped} shipped · {N_validated} validés
 
-BRIEFS RÉCENTS
+Briefs récents
   [BRF-03] · 2026-05-06 · ANG-01 · post-grossesse · draft
   [BRF-02] · 2026-05-04 · ANG-02 · stress hormonal · shipped
-  [BRF-01] · 2026-04-28 · ANG-04 · croissance-projet · validated
+  [BRF-01] · 2026-04-28 · ANG-04 · croissance-projet · validé
   ...
 
-NEXT SUGGESTED
-  → Tape : `produce-copy-brief sur {brand} ANG-XX` (générer brief sur angle non-couvert)
-  → Tape : `audit briefs > 30j sans test` (briefs stale à promote ou archiver)
+Actions prioritaires
+  · `produce-copy-brief sur {brand} ANG-XX` (générer brief sur angle non-couvert)
+  · `audit briefs > 30j sans test` (briefs stale à promouvoir ou archiver)
 ```
 
 Format ligne : `[brief_id] · {created_at} · {angle_id_source} · {audience_slug} · {status}`. Cap 10 plus récents. Cross-ref atlas via lien `angle_id_source` (drillable).
@@ -599,17 +599,17 @@ Header breadcrumb :
 ```
 workspace > {brand} > tests
 ══════════════════════════════════════════════
-{N} tests · {N_live} live · {N_fatigued} fatigués · {N_winners} winners
+{N} tests · {N_live} live · {N_fatigued} fatigués · {N_winners} gagnants
 
-TESTS RÉCENTS
-  [TST-08] · live · BRF-03 · ANG-01 · ROAS 3.2 · spend 412€ · winner_proxy: pending
-  [TST-07] · fatigued · BRF-02 · ANG-02 · ROAS 1.4 (-38% 14j) · winner_proxy: no
-  [TST-06] · winner · BRF-01 · ANG-04 · ROAS 4.7 · scaled · winner_proxy: yes
+Tests récents
+  [TST-08] · live · BRF-03 · ANG-01 · ROAS 3.2 · spend 412€ · gagnant : en attente
+  [TST-07] · fatigué · BRF-02 · ANG-02 · ROAS 1.4 (-38% 14j) · gagnant : non
+  [TST-06] · gagnant · BRF-01 · ANG-04 · ROAS 4.7 · scalé · gagnant : oui
   ...
 
-NEXT SUGGESTED
-  → Tape : `refresh les angles fatigués sur {brand}` ({N} tests en chute)
-  → Tape : `promote winner TST-06 → angle scaled` (test confirmé, mettre à canon brand)
+Actions prioritaires
+  · `refresh les angles fatigués sur {brand}` ({N} tests en chute)
+  · `promote winner TST-06 → angle scaled` (test confirmé, à intégrer au canon brand)
 ```
 
 Format ligne : `[test_id] · {status} · {brief_id} · {angle_id} · ROAS {value} · {spend} · winner_proxy: {yes|no|pending}`. Cap 10 plus récents.
@@ -638,19 +638,19 @@ Coefficient cumulé : {1.1}
 │ stress-hormonal           │ 32   │ 28   │ 41🔥 │ 0    │ 22   │
 └───────────────────────────┴──────┴──────┴──────┴──────┴──────┘
 
-TOP 3 TERRITOIRES
+Top 3 territoires
   1. chute-post-grossesse × angle audience       · 55  · ANG-01, ANG-03
   2. croissance-projet × angle produit           · 52  · ANG-04
   3. stress-hormonal × angle catégorie           · 41  · ANG-02
 
-TROUS DÉTECTÉS
+Trous détectés
   · angle brand sur chute-post-grossesse (0)
   · angle catégorie sur croissance-projet (0)
   · angle moment sur croissance-projet (0)
 
-NEXT SUGGESTED
-  → Tape : `génère un brief copy sur le top-1` (chute-post-grossesse × angle audience, score 55)
-  → Tape : `crée des angles publicitaires {brand} pour combler le trou angle brand sur chute-post-grossesse`
+Actions prioritaires
+  · `génère un brief copy sur le top-1` (chute-post-grossesse × angle audience, score 55)
+  · `crée des angles publicitaires {brand} pour combler le trou angle brand sur chute-post-grossesse`
 ```
 
 Icône `🔥` sur la cellule top par row. Légende colonnes (sources d'angle) : aud (depuis l'audience), prod (depuis le produit), cat (depuis la catégorie), brand (depuis la brand), temp (depuis un moment / saison).
@@ -668,9 +668,9 @@ Header breadcrumb :
 ```
 workspace > {brand} > atlas
 ══════════════════════════════════════════════
-MATIÈRE BRAND {BRAND_NAME} · vue d'ensemble
+Matière brand {brand_name} · vue d'ensemble
 
-MATIÈRE BRAND (6)
+Matière brand (6)
   brand           ✓ identité posée · territoire créatif défini · niveau de notoriété {faible|moyen|fort}
   produits ({N}) {product_slug_1} · {product_slug_2}
   audiences ({N}) {audience_slug_1} · {audience_slug_2} · ... · {audience_slug_N}
@@ -678,21 +678,21 @@ MATIÈRE BRAND (6)
   apprentissages  {N} entrées · {N_canon} promues en référence
   stratégie       focus {month_year} : {strategy.current_focus}
 
-PRODUCTIONS DÉRIVÉES (3)
+Productions dérivées (3)
   angles produits          {N}
   visuels produits         {N}
-  priorisation territoires dernière exécution : {date}
+  priorisation territoires · dernière exécution : {date}
 
-HISTORIQUE BRAND (ce qui a marché)
+Historique brand (ce qui a marché)
   Accroches validées        {N}
   Structures testées        {N}
   Styles validés            {N}
   Angles validés            {N}
   Formats validés           {N}
 
-NEXT SUGGESTED
-  → Tape : `/phantom {brand} matrix` (priorisation des territoires)
-  → Tape : `/phantom doctrine` (méthode du système)
+Actions prioritaires
+  · `/phantom {brand} matrix` (priorisation des territoires)
+  · `/phantom doctrine` (méthode du système)
 ```
 
 Cross-ref backend (instructions agent) : `docs/system/atlas-brand.md`. Slug brand en majuscules dans header. Ne pas exposer ce path à l'opérateur.
@@ -706,14 +706,14 @@ Format empty state :
 ```
 workspace > {brand}
 ══════════════════════════════════════════════
-On démarre {BRAND_NAME}.
+Démarrage de {brand_name}.
 
-Tu veux commencer par où ?
+Par où commencer ?
 
-  (a) Importer la matière qui existe (URL produit, brief PDF, deck founder)
-  (b) Mining audience initial (qui sont tes clients, qu'est-ce qu'ils disent)
-  (c) Cartographier ton offre (produits, mécanismes, bénéfices)
-  (d) Dis-moi ton point de départ, je m'adapte
+  (a) Importer la matière existante (URL produit, brief PDF, deck founder)
+  (b) Mining audience initial (clients ciblés, verbatims captés)
+  (c) Cartographier l'offre (produits, mécanismes, bénéfices)
+  (d) Adapter selon ton point de départ
 ```
 
 Pas de "MATIÈRE ACTUELLE 0/0/0/0/0". Pas de "SIGNAL FORT" inventé. Posture propose action concrète.
@@ -733,35 +733,35 @@ Header breadcrumb :
 ```
 workspace > doctrine
 ══════════════════════════════════════════════
-MÉTHODE DU SYSTÈME · cartographier + composer
+Méthode du système · cartographier + composer
 
 Vue d'ensemble · arbres de connaissance + priorisation + facteurs d'ajustement + boucle d'apprentissage
 
-PARCOURS EN 6 ÉTAPES
-  Étape 1 démarrage          démarre une nouvelle brand · cartographie initiale · pose les specs
+Parcours en 6 étapes
+  Étape 1 démarrage          démarrer une nouvelle brand · cartographie initiale · poser les specs
   Étape 2 produit            mécanismes · bénéfices · problèmes résolus
-  Étape 3a audience          récupère témoignages clients · cartographie audience (8 dimensions)
-  Étape 3b angle             crée des angles publicitaires (Observation + Tension + Reframe + Bridge)
-  Étape 4 priorisation       calcule les priorités d'audience · priorise les territoires
-  Étape 5 brief              génère un brief copy
-  Étape 6 visuel             crée un visuel · adapte un visuel existant · décompose une pub existante
+  Étape 3a audience          récupérer les témoignages clients · cartographie audience (8 dimensions)
+  Étape 3b angle             créer des angles publicitaires (Observation + Tension + Reframe + Bridge)
+  Étape 4 priorisation       calculer les priorités d'audience · prioriser les territoires
+  Étape 5 brief              générer un brief copy
+  Étape 6 visuel             créer un visuel · adapter un visuel existant · décomposer une pub existante
 
-RECETTE CRÉATIVE
+Recette créative
   créa = NOYAU (mécanique × format × stop scroll × ton)
        × CONTEXTE (angle × douleur × persona × preuve)
        × MODIFICATEURS (occasion · offre · destination · etc.)
 
-7 PILIERS DU SYSTÈME
+7 piliers du système
   Le système repose sur 7 piliers internes (encodage rigoureux, production qualité,
   création de skills, traçabilité, cartographie compositionnelle, gouvernance, intelligence contextuelle).
-  Tu en sens les effets, tu n'as jamais à les nommer.
+  L'opérateur en perçoit les effets, sans avoir à les nommer.
 
-BOUCLE D'APPRENTISSAGE (historique brand vivant)
+Boucle d'apprentissage (historique brand vivant)
   produire → tester → capturer ce qu'on a appris → tests passés cumulés sur la bibliothèque
 
-NEXT SUGGESTED
-  → Tape : `/phantom canon` (bibliothèque métier · 11 chapitres copy)
-  → Tape : `/phantom {brand} atlas` (vue brand-side de la méthode appliquée)
+Actions prioritaires
+  · `/phantom canon` (bibliothèque métier · 11 chapitres copy)
+  · `/phantom {brand} atlas` (vue brand-side de la méthode appliquée)
 ```
 
 Détails complets (backend) : `resources/templates/creative-formula.md`. Source méthode (backend) : `docs/system/atlas-brand.md`.
@@ -807,12 +807,12 @@ MEC-01 modulation cortisol stress
 
 MEC-02 ...
 
-NEXT SUGGESTED
-  → Tape : `map-mechanisms {brand}/{p_slug}` (deep pass enrichissement mécanismes)
-  → Tape : `densifie spec {p_slug}` (champs manquants si présents)
+Actions prioritaires
+  · `map-mechanisms {brand}/{p_slug}` (enrichissement profond des mécanismes)
+  · `densifie spec {p_slug}` (champs manquants si présents)
 ```
 
-Format par mécanisme : id + nom court, puis 6 champs (cible, mode action, fenêtre, preuve, sophistication, triggered_by). Si `mechanisms[]` vide : empty state *"Pas de mécanisme encodé. Tape `map-mechanisms {brand}/{p_slug}` pour scaffold depuis la fiche produit."*
+Format par mécanisme : id + nom court, puis 6 champs (cible, mode action, fenêtre, preuve, sophistication, triggered_by). Si `mechanisms[]` vide : empty state *"Aucun mécanisme encodé. Lancer `map-mechanisms {brand}/{p_slug}` pour scaffold depuis la fiche produit."*
 
 ---
 
@@ -846,9 +846,9 @@ BEN-03 identité jeune mère épanouie
   trigger       BEN-02
   ...
 
-NEXT SUGGESTED
-  → Tape : `map-benefits {brand}/{p_slug}` (deep pass enrichissement chain)
-  → Tape : `audit benefits sans audience_fit` (benefits orphelins)
+Actions prioritaires
+  · `map-benefits {brand}/{p_slug}` (enrichissement profond de la chaîne)
+  · `audit benefits sans audience_fit` (benefits orphelins)
 ```
 
 Format par benefit : id + nom court, puis 5 champs (layer, trigger, fenêtre, preuve, audience_fit). Layer = `functional|emotional|identity`. Si `benefits[]` vide : empty state similaire à mechanisms.
@@ -862,14 +862,14 @@ Quand un rendering rencontre du vide, ne rends pas du vide · propose le next mo
 | Situation | Empty state output |
 |---|---|
 | Workspace mode, 0 brand | (déjà couvert par mode bootstrap) |
-| Brand mode, 0 produit | *"Pas encore de produit encodé sur `{brand}`. Tape `snapshot {brand} avec {url}` pour scaffold le hero produit."* |
-| Brand mode, 0 audience | *"Pas encore d'audience sur `{brand}`. Snapshot va proposer une cartographie. Sinon : `lance mine-voc sur {brand}` pour partir du verbatim client."* |
-| Entity-drill audiences, 0 audience | *"Pas d'audience encodée. Tape `/phantom {brand}` puis snapshot le hero pour scaffold les groupes principaux."* |
-| Entity-drill angles, 0 angle | *"Pas d'angle produit. Tape `crée des angles publicitaires {brand}` après récupération des témoignages pour générer un set priorisé."* |
-| Entity-drill learnings, 0 entry | *"Pas de learning capturé. Tape `/learn-from-session` après une correction pour verrouiller la première règle."* |
+| Brand mode, 0 produit | *"Aucun produit encodé sur `{brand}`. Pour scaffold le hero produit · `snapshot {brand} avec {url}`."* |
+| Brand mode, 0 audience | *"Aucune audience sur `{brand}`. Le snapshot propose une cartographie. Sinon · `lance mine-voc sur {brand}` pour partir du verbatim client."* |
+| Entity-drill audiences, 0 audience | *"Aucune audience encodée. Passer par `/phantom {brand}` puis snapshot le hero pour scaffold les groupes principaux."* |
+| Entity-drill angles, 0 angle | *"Aucun angle produit. Après récupération des témoignages · `crée des angles publicitaires {brand}` pour générer un set priorisé."* |
+| Entity-drill learnings, 0 entry | *"Aucun learning capturé. Après une correction · `/learn-from-session` pour verrouiller la première règle."* |
 | Entity-drill products, 0 produit | (idem brand mode 0 produit) |
-| Entity-drill offers, 0 offer | *"Pas d'offre. Snapshot du hero produit scaffold les offres depuis l'API ou demande au pixel."* |
-| Entity-drill strategy, 0 strategy | *"Pas de stratégie posée. Tape `pose le focus Q{n} sur {brand}` pour cadrer."* |
+| Entity-drill offers, 0 offer | *"Aucune offre. Le snapshot du hero produit scaffold les offres depuis l'API ou demande au pixel."* |
+| Entity-drill strategy, 0 strategy | *"Stratégie non posée. Pour cadrer le focus · `pose le focus Q{n} sur {brand}`."* |
 | Item mode, slug introuvable | (déjà couvert par hard rule item mode) |
 | Search 0 match | (déjà couvert par mode search) |
 | Recent log vide | (déjà couvert par mode recent) |
@@ -903,7 +903,7 @@ Application : utiliser `🔥` quand un test ROAS chute ≥30% sur 14j ou quand u
 
 ```
 ─────
-`/phantom ?` pour voir tous les modes · `/phantom search` pour chercher
+`/phantom ?` pour les modes disponibles · `/phantom search` pour rechercher
 ```
 
 **Cap discoverability sans bruit.** Si l'opérateur a déjà tapé `/phantom ?` dans la session courante (track ephemeral), skip cette ligne. Sinon : présente, faible opacité visuelle.
@@ -928,7 +928,7 @@ Application : utiliser `🔥` quand un test ROAS chute ≥30% sur 14j ou quand u
 - **Honest staleness.** Si une entité n'a pas été touchée depuis 90j, dis-le. Si snapshot date > 1h, regenère silencieusement avant d'afficher.
 - **Workspace est le default.** `/phantom` sans argument lande toujours au niveau workspace (sauf bootstrap si 0 brand). L'opérateur drille explicitement via `/phantom {slug}`. Pattern terminal-like, jamais court-circuiter la navigation.
 - **Drill par étape, pas en bloc.** `/phantom {slug}` montre le brand. `/phantom {slug} {entity}` zoome sur une entité. Évite de tout dump en une fois ; économie de contexte ET de lisibilité.
-- **Next-suggested = paste-ready.** Toutes les actions surfacées dans NEXT SUGGESTED doivent être copiables verbatim dans le prompt suivant. Format : *"→ Tape : `{commande exacte}` ({why})"*. Jamais de conseil passif type *"Lancer mine-voc dès que possible"*.
+- **Next-suggested = paste-ready.** Toutes les actions surfacées dans Actions prioritaires doivent être copiables verbatim dans le prompt suivant. Format : *"  · `{commande exacte}` ({why})"*. Jamais de conseil passif type *"Lancer mine-voc dès que possible"*.
 - **Navigation cliquable systématique.** Chaque rendering `/phantom` (workspace, brand, entity-drill) se conclut PAR un AskUserQuestion natif qui propose la navigation suivante. Voir section *Navigation interactive* ci-dessous.
 
 ---
@@ -954,10 +954,10 @@ Indépendamment du mode, le AskUserQuestion respecte la grammaire suivante :
 
 | Slot | Question rendue (FR) |
 |---|---|
-| 1 | *"Drill {brand_le_plus_actif}"* (brand avec last_session le plus récent) |
-| 2 | *"Drill {brand_en_alerte}"* (brand avec tests fatigués OU stale > 30j OU mining vide), ou si aucun : *"Drill {2e brand le plus actif}"* |
-| 3 | NEXT SUGGESTED top-priority cross-brand (paste-ready commande) |
-| 4 | *"Voir un autre brand / continuer"* (free-text fallback, l'opérateur peut taper `/phantom {autre_slug}`) |
+| 1 | *"Explorer {brand_le_plus_actif}"* (brand avec last_session le plus récent) |
+| 2 | *"Explorer {brand_en_alerte}"* (brand avec tests fatigués OU stale > 30j OU mining vide), ou si aucun : *"Explorer {2e brand le plus actif}"* |
+| 3 | Actions prioritaires top-priority cross-brand (paste-ready commande) |
+| 4 | *"Voir un autre brand / continuer"* (free-text fallback, possibilité de taper `/phantom {autre_slug}`) |
 
 **Cas N=1 brand** : slots 1 + 3 + 4 only (3 options visibles). Slot 2 omis car redondant.
 
@@ -965,18 +965,18 @@ Indépendamment du mode, le AskUserQuestion respecte la grammaire suivante :
 
 | Slot | Question rendue (FR) |
 |---|---|
-| 1 | *"Drill audiences"* (entity-drill audiences) |
-| 2 | *"Drill {entity_la_plus_chargée}"* · celle avec le plus d'instances ou l'état le plus actif (typiquement `angles` ou `learnings`) |
-| 3 | NEXT SUGGESTED top-priority sur ce brand (paste-ready commande) |
+| 1 | *"Explorer audiences"* (entity-drill audiences) |
+| 2 | *"Explorer {entity_la_plus_chargée}"* · celle avec le plus d'instances ou l'état le plus actif (typiquement `angles` ou `learnings`) |
+| 3 | Action prioritaire sur ce brand (paste-ready commande) |
 | 4 | *"Retour workspace"* (déclenche `/phantom`) |
 
 ### Entity-drill mode · slots concrets
 
 | Slot | Question rendue (FR) |
 |---|---|
-| 1 | NEXT SUGGESTED top-priority spécifique à l'entité (paste-ready commande) |
-| 2 | NEXT SUGGESTED 2e-priority sur la même entité (paste-ready commande) |
-| 3 | *"Drill {entity_voisine}"* (autre entity-drill du même brand, choisie par pertinence : depuis audiences → angles, depuis angles → audiences, depuis products → offers, depuis learnings → strategy) |
+| 1 | Action prioritaire spécifique à l'entité (paste-ready commande) |
+| 2 | Action 2e-priority sur la même entité (paste-ready commande) |
+| 3 | *"Explorer {entity_voisine}"* (autre entity-drill du même brand, choisie par pertinence : depuis audiences → angles, depuis angles → audiences, depuis products → offers, depuis learnings → strategy) |
 | 4 | *"Retour {brand_slug}"* (déclenche `/phantom {brand_slug}`) |
 
 ### Saturation pattern
@@ -988,11 +988,11 @@ Si la session courante a déjà déclenché 3 AskUserQuestion `/phantom` dans le
 Présenter les 4 slots dans cet ordre fixe (drill primaire, drill secondaire, action, retour). Phrasing court, jamais explicatif. Exemple sur brand mode glowco :
 
 ```
-question: "Tu veux faire quoi ?"
-options:
-- "Drill audiences (7 audiences à valider)"
-- "Drill angles (5 hypothèses)"
-- "Lance mine-voc sur glowco"
+question : "Prochaine étape ?"
+options :
+- "Explorer audiences (7 audiences à valider)"
+- "Explorer angles (5 hypothèses)"
+- "Lancer mine-voc sur glowco"
 - "Retour workspace"
 ```
 
@@ -1006,4 +1006,4 @@ L'opérateur clique. L'agent exécute :
 - **5 options ou plus.** Cap dur à 4. Si plus de candidats existent, dégrader vers free-text fallback (slot 4).
 - **Slot 4 absent.** L'opérateur doit toujours pouvoir remonter en 1 click. Jamais de cul-de-sac.
 - **Action non-paste-ready dans slot 3.** Le slot action déclenche une commande exécutable, pas un conseil. *"Pense à mine-voc"* est un anti-pattern.
-- **AskUserQuestion sans rendering text.** Le rendering reste TOUJOURS, l'AskUserQuestion vient APRÈS. Le rendering est l'information, l'AskUserQuestion est l'accélérateur de navigation.
+- **AskUserQuestion sans rendering text.** Le rendering reste TOUJOURS, l'AskUserQuestion vient APRÈS. Le rendering porte l'information, l'AskUserQuestion accélère la navigation.

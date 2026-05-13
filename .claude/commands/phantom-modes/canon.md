@@ -84,51 +84,51 @@ Header breadcrumb :
 ```
 workspace > canon > copy > accroches > écart-curiosité
 ══════════════════════════════════════════════
-ACCROCHE · écart-curiosité                  catégorie : accroches
+Accroche · écart-curiosité                  catégorie : accroches
 ```
 
-Rendering complet de la fiche, sections en majuscules :
+Rendering complet de la fiche :
 
 ```
-PRINCIPE
+Principe
   {principle, 1-3 phrases}
 
-STRUCTURE
+Structure
   {structure}
 
-GABARITS
+Gabarits
   · {gabarits[0]}
   · {gabarits[1]}
   ...
 
-QUAND ÇA MARCHE
+Quand ça marche
   · {when_works[0]}
   · {when_works[1]}
   ...
 
-QUAND ÉVITER
+Quand éviter
   · {when_avoid[0]}
   ...
 
-VA BIEN AVEC
+Va bien avec
   · squelettes : {combines_with.frameworks join}
   · angles : {combines_with.angles join}
   · émotions : {combines_with.emotions join}
   · formats : {combines_with.formats join}
 
-À ÉVITER
+À éviter
   · {anti_patterns[0]}
   ...
 
-EXEMPLES
+Exemples
   · {examples[0]}
   ...
 
-TESTS PASSÉS CUMULÉS
+Tests passés cumulés
   {N tests cumulés brand-side. Si 0 : "(aucun test confirmé. Sera ajouté quand learn-from-session capture un test concluant)"}
   Sinon liste : "{brand_slug}/{audience_slug} → {outcome} · {metric} · {captured_at}"
 
-ORIGINE
+Origine
   Source : {lineage.source}
   Référence : {lineage.references join}
 ```
@@ -137,14 +137,14 @@ ORIGINE
 
 | Slot | Rôle |
 |---|---|
-| 1 | Drill un outil voisin pertinent (lit `combines_with` côté backend, surface intitulé "va bien avec X") |
-| 2 | Drill un autre outil du même chapitre |
-| 3 | Action : *"Applique cet outil à un brand"* (si brand actif détecté, déclenche le skill crée des angles publicitaires pour ce brand avec l'outil pré-sélectionné) |
+| 1 | Explorer un outil voisin pertinent (lit `combines_with` côté backend, surface intitulé "va bien avec X") |
+| 2 | Explorer un autre outil du même chapitre |
+| 3 | Action : *"Appliquer cet outil à un brand"* (si brand actif détecté, déclenche le skill crée des angles publicitaires pour ce brand avec l'outil pré-sélectionné) |
 | 4 | Retour parent (chapitre, domaine, ou workspace selon niveau) |
 
 ## Empty state canon
 
-Si le domaine demandé n'existe pas : *"Domaine '{x}' pas encore disponible. Disponibles : copy. Tape `/phantom canon` pour la liste complète."*
+Si le domaine demandé n'existe pas : *"Domaine '{x}' pas encore disponible. Disponibles · copy. Pour la liste complète · `/phantom canon`."*
 
 Si le chapitre demandé n'existe pas : suggérer les chapitres existants.
 

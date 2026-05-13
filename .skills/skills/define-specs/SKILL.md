@@ -194,52 +194,52 @@ Format no-orphan-output : 1 reco forte + 1 ou 2 chemins backup si genuinely usef
 
 ```
 ═══════════════════════════════════════════════════════════════
-{BRAND} · {PRODUCT_NAME} · DRAFT SPEC
+{brand_humain} · Fiche produit · {product_name}
 ═══════════════════════════════════════════════════════════════
 
-IDENTITÉ
+Identité
   Catégorie         {category} (observé)
   Niche             {niche}
   Type              {type}
   Tagline           {tagline} (déclaré)
   Positionnement    {positioning}
 
-SPECS
+Specs
   Matériaux         {materials}
   Composition       {composition}
   Format            {format}
   Volume / Quantité {volume}
 
-MÉCANISMES (chaîne causale spec → bénéfice)
+Mécanismes (chaîne causale spec → bénéfice)
   · {mechanism_1.name} · cible {target} · fenêtre {time_window}
   · {mechanism_2.name} ...
 
-BÉNÉFICES (chaîne functional → emotional → identity)
+Bénéfices (chaîne functional → emotional → identity)
   BNF-01 {benefit_name}
     functional   {chain.functional}
     emotional    {chain.emotional}
     identity     {chain.identity}
   ...
 
-PROBLÈMES RÉSOLUS
+Problèmes résolus
   PRB-01 {problem} (verbatim sources : {n})
   ...
 
-PRICING
+Pricing
   Prix          {price} {currency}
   Modèle        {pricing_model}
 
-VISUAL IDENTITY
+Identité visuelle
   Packshot      {packshot_url} (observé Shopify)
   Couleurs      container {hex} · label {hex} · content {hex}
   Label         {wordmark} · {sub_label}
   Distinctive   {features[]}
 
-GAPS DÉTECTÉS
+Gaps détectés
   · {champ_1} : pas couvert (proposer Q&A ?)
   · {champ_2} : conflit auto-pull vs operator (résoudre ?)
 
-→ Tu valides en bloc, tu corriges un champ, ou tu poses une question ?
+Validation requise · valider en bloc, corriger un champ, ou poser une question ?
 ```
 
 ## Cross-refs

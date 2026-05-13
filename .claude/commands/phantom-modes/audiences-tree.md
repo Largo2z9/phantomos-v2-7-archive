@@ -9,36 +9,36 @@ Format :
 ```
 workspace > {brand} > audiences
 ══════════════════════════════════════════════
-ARBRE AUDIENCES {BRAND} · {N} cartographiées ({N_mother} mères + {N_sub} sous-groupes)
+Arbre audiences {brand} · {N} cartographiées ({N_mother} mères + {N_sub} sous-groupes)
 
-PAR UN PROBLÈME (chute) · porte d'entrée non posée
+Par un problème (chute) · porte d'entrée non posée
   ├── chute-active                     [mère]       à valider · {N} témoignages
   │     ├── chute-post-grossesse       [poche]      à valider · {N} témoignages
   │     ├── chute-stress-hormonal      [poche]      à valider · {N} témoignages
   │     └── chute-traction             [poche]      à valider · {N} témoignages
   
-PAR UN OBJECTIF (croissance) · porte d'entrée non posée
+Par un objectif (croissance) · porte d'entrée non posée
   └── croissance-projet                [mère]       à valider · {N} témoignages
         ├── pousse-jeune-adulte        [poche]      à valider · {N} témoignages
         └── pousse-recovery            [poche]      à valider · {N} témoignages
 
-CHEVAUCHEMENTS DÉCLARÉS
+Chevauchements déclarés
   aucun chevauchement posé · relations cousines à mapper
 
-POINTS À COMPLÉTER
+Points à compléter
   ⚠ {X}/{N} audiences sans porte d'entrée déclarée
   ⚠ {N} audience-orpheline · {OK ou détail mère manquante}
   ⚠ {N} audience-fantôme · {OK ou détail}
   ⚠ Verbatims clients à consolider (mining encore léger)
   ⚠ Chevauchements à poser entre audiences
 
-NEXT SUGGESTED
-  → Tape : `récupère les témoignages clients` (consolider verbatims, mining)
-  → Tape : `pose les portes d'entrée` (qualifier les audiences)
-  → Tape : `voir le cours complet` (revoir le framework)
+Actions prioritaires
+  · `récupère les témoignages clients` (consolider verbatims, mining)
+  · `pose les portes d'entrée` (qualifier les audiences)
+  · `voir le cours complet` (revoir le framework)
 
 ─────
-`/phantom ?` pour voir tous les modes · `/phantom search` pour chercher
+`/phantom ?` pour les modes disponibles · `/phantom search` pour rechercher
 ```
 
 Dégrade gracieusement · si `meta.parent_slug` + `meta.overlap_with` vides sur toutes les audiences, rendre liste à plat avec note *"relations non posées (audiences à plat sans hiérarchie). Consulter le cours complet pour comprendre comment les structurer."*. Si aucune audience encodée, renvoyer vers empty state entity-drill standard.

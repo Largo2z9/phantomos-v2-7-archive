@@ -274,14 +274,14 @@ Réf canonique · `resources/templates/operator-fiche-output.md`. Header plain l
 {date YYYY-MM-DD} · {1 phrase plain language · ex "même concept, audience changée pour femmes 45-55 ménopause"}
 
 ───────────────────────────────────────────────────────────────
-CE QUI RESTE
+Ce qui reste
 ───────────────────────────────────────────────────────────────
 Mécanique          {nom métier · ex "before-after-bridge"}
 Ton                {plain · ex "direct response avec touche brand"}
 Hook texte         "{verbatim hook · si retenu}"
 
 ───────────────────────────────────────────────────────────────
-CE QUI CHANGE
+Ce qui change
 ───────────────────────────────────────────────────────────────
 Dimension          {plain · ex "audience cible" ou "plateforme" ou "format" ou "hook texte" ou "traitement visuel"}
 Avant              {plain · ex "femmes 30-45 post-grossesse"}
@@ -289,7 +289,7 @@ Après              {plain · ex "femmes 45-55 ménopause"}
 Pourquoi           {1 phrase justif · ex "trigger émotionnel différent, registre copy à recalibrer"}
 
 ───────────────────────────────────────────────────────────────
-COMPARAISON
+Comparaison
 ───────────────────────────────────────────────────────────────
                    PUB n°{N_source}        VARIANTE n°{N_variant}
 Cible              {old_audience}          {new_audience}

@@ -55,7 +55,7 @@ Last update : 2026-05-04 (v2.33 enrichment : domain map + phase workflows + per-
 
 ---
 
-## I want to set up a new brand or workspace
+## Configuration brand et workspace
 
 | Operator says | Skill to invoke |
 |---|---|
@@ -66,7 +66,7 @@ Last update : 2026-05-04 (v2.33 enrichment : domain map + phase workflows + per-
 
 ---
 
-## I want to understand the audience or the market
+## Analyse audience et marché
 
 | Operator says | Skill to invoke |
 |---|---|
@@ -79,7 +79,7 @@ Last update : 2026-05-04 (v2.33 enrichment : domain map + phase workflows + per-
 
 ---
 
-## I want to produce a paid creative or copy
+## Production créative et copywriting
 
 | Operator says | Skill to invoke |
 |---|---|
@@ -89,7 +89,7 @@ Last update : 2026-05-04 (v2.33 enrichment : domain map + phase workflows + per-
 
 ---
 
-## Producing a paid creative (visual + copy)
+## Production créative visuel et copy
 
 Visual pipeline. The operator describes intent in plain language ; the agent routes to one of the 6 visual production skills. Canon : photo officielle + assets de marque sont préparés **une fois**, le compositeur réutilise sur chaque pub suivante.
 
@@ -118,7 +118,7 @@ snapshot-brand vers craft-packshot (1 fois par produit)
 
 ---
 
-## I want to audit something
+## Audit et diagnostic
 
 | Operator says | Skill to invoke |
 |---|---|
@@ -128,7 +128,7 @@ snapshot-brand vers craft-packshot (1 fois par produit)
 
 ---
 
-## I want to capture or persist something
+## Capture et persistance
 
 | Operator says | Skill to invoke |
 |---|---|
@@ -139,7 +139,7 @@ snapshot-brand vers craft-packshot (1 fois par produit)
 
 ---
 
-## I want to extend or build something new
+## Extension et build
 
 | Operator says | Skill to invoke |
 |---|---|
@@ -150,7 +150,7 @@ snapshot-brand vers craft-packshot (1 fois par produit)
 
 ---
 
-## I want to navigate or resume
+## Navigation et reprise de session
 
 | Operator says | Skill to invoke |
 |---|---|
@@ -160,7 +160,7 @@ snapshot-brand vers craft-packshot (1 fois par produit)
 
 ---
 
-## I want to migrate or upgrade
+## Migration et upgrade
 
 | Operator says | Skill to invoke |
 |---|---|
@@ -168,7 +168,7 @@ snapshot-brand vers craft-packshot (1 fois par produit)
 
 ---
 
-## I want to connect an external tool
+## Connexion outils externes
 
 | Operator says | Skill to invoke |
 |---|---|
@@ -178,7 +178,7 @@ snapshot-brand vers craft-packshot (1 fois par produit)
 
 ---
 
-## When the intent is ambiguous
+## Intention ambiguë
 
 If the operator's phrasing matches multiple intents (e.g. *"audit le contexte de cette marque"* could be `validate-resources` or `deepen-brand-context`), read the `disambiguates_against` block in the manifest entry of each candidate. If still ambiguous after that, ask one `AskUserQuestion` with 2 to 3 candidates.
 

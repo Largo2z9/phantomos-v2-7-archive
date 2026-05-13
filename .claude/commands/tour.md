@@ -181,7 +181,7 @@ Still part of the same conversational flow. **No headers, no labels, no bolded t
 
 **First, introduce the concept of a skill.** Not as a feature bullet. As context for how the agent will behave in the rest of the session. Two commands worth naming on the way: `/skills` (catalogue des capacités) and `/phantom` (cockpit de visualisation). Example tone:
 
-> Concretely, when you ask for something specific like an audit, a brief, or a report, there's usually a capability already written for that, what the workspace calls a skill. I don't improvise it. The skill runs, I hand back the output. Tape `/skills` à n'importe quel moment et je te liste ce qui est dispo. Et tape `/phantom` à n'importe quel moment pour voir l'état de ton workspace, ce qui est encodé, ce qui est à valider, ce qui dort. C'est ton cockpit de visualisation, read-only, donc aucun risque à le lancer pour explorer.
+> Concretely, when you ask for something specific like an audit, a brief, or a report, there's usually a capability already written for that, what the workspace calls a skill. I don't improvise it. The skill runs, I hand back the output. `/skills` à tout moment liste ce qui est disponible. `/phantom` à tout moment ouvre la vue d'état du workspace, ce qui est encodé, ce qui est à valider, ce qui dort. C'est le cockpit de visualisation, read-only, sans risque à explorer.
 
 **Second, explain the two-sided universal entry point.** Merge both aspects in flowing sentences. Do not use the phrase *"single nerve center"* — metaphor without load-bearing. Stick to operational description. Example tone:
 
@@ -203,7 +203,7 @@ Never produce a separate "1-2 lines" or bracketed list summary. The synthesis IS
 
 **Pose les bases de la suite après la synthèse, AVANT la question de validation.** Une phrase qui pose le pattern de correction, mentionne `/phantom {brand}` comme outil de visualisation, et introduit le statut "à valider" que l'opérateur va voir partout dans le système. Exemple ton :
 
-> *"Tu peux valider, corriger ou rejeter point par point sur ce que je viens d'encoder, je retiens. Tape /phantom {brand_slug} à n'importe quel moment pour voir tout en arborescence, les produits, les audiences avec leur statut, les offres. Le statut 'à valider' que tu verras un peu partout est volontaire, ça veut dire qu'on a posé une hypothèse de travail à confirmer avec du verbatim client juste après, pas une vérité plaquée depuis la page."*
+> *"Tu peux valider, corriger ou rejeter point par point ce que je viens d'encoder, je retiens. La commande `/phantom {brand_slug}` ouvre à tout moment la vue arborescente : produits, audiences avec leur statut, offres. Le statut 'à valider' que tu verras un peu partout est volontaire : c'est une hypothèse de travail à confirmer avec du verbatim client juste après, pas une vérité plaquée depuis la page."*
 
 Cette phrase pose en bloc : (a) le pattern de correction, (b) `/phantom {brand}`, (c) le statut "à valider", (d) l'invitation implicite au mining VoC qui suivra. La phrase précède la question *"Want to validate and correct, or keep exploring first?"* (qui devient l'ouverture vers la suite, pas un orphan close).
 
@@ -362,7 +362,7 @@ When `tour_status = "completed"` and operator calls `/tour`:
   - *"Configure another brand"*
   - *"Re-explore one of the three discovery paths"* (show which paths in `awareness.paths_explored` and which are still untouched)
   - *"Build your first skills if not done yet"* (only if `first_skill_built = false`)
-  - *"Just refreshing"* — accompanied in prose by a one-line reminder of the daily commands : *"au passage, /phantom pour voir l'état du workspace, /skills pour la liste des capacités, /learn-from-session pour verrouiller une règle après une correction."*
+  - *"Just refreshing"* — accompanied in prose by a one-line reminder of the daily commands : *"au passage · `/phantom` pour la vue d'état du workspace, `/skills` pour la liste des fonctions, `/learn-from-session` pour verrouiller une règle après une correction."*
 
 Do not write tour_status back to in_progress on replay. Replay does not consume milestones, it surfaces knowledge.
 

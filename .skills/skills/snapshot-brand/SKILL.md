@@ -438,7 +438,7 @@ Operator-facing format example:
 
 Single-question gate. Wait for operator confirmation. Once confirmed, scaffold the audience folders (Step 6) and explicitly tell the operator they can visualize the result via `/phantom {brand_slug}`.
 
-> *"Validé. Je grave les 5 audiences (2 groupes principaux + 3 sous-groupes). Tu peux les visualiser à tout moment en tapant `/phantom {brand_slug}` — ça te sort un cockpit avec la liste, le statut de chacune, et ce qu'il manque pour passer de l'hypothèse au validé."*
+> *"Validé. Je grave les 5 audiences (2 groupes principaux + 3 sous-groupes). La commande `/phantom {brand_slug}` ouvre à tout moment le cockpit avec la liste, le statut de chacune, et ce qu'il manque pour passer de l'hypothèse au validé."*
 
 **Avant le grave : binding produit.** Pour chaque audience validée (groupes principaux + sous-groupes), l'agent demande quel(s) produit(s) elle achète. C'est la passerelle multi-produit. Question opérateur-facing :
 

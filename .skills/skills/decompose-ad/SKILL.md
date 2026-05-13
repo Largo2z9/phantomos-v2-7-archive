@@ -312,7 +312,7 @@ Réf canonique · `resources/templates/operator-fiche-output.md`. Header plain l
 {date YYYY-MM-DD} · décomposition de la pub {concurrent | interne n°N} · {langue} · {annee}
 
 ───────────────────────────────────────────────────────────────
-1 · CE QUE L'AD MONTRE (observable, ground truth)
+1 · Ce que l'ad montre (observable, ground truth)
 ───────────────────────────────────────────────────────────────
 Format             {format}
 Hook visuel        {description objective}
@@ -323,7 +323,7 @@ Branding visible   {logo, packshot, couleur, font}
 Performance        {trendtrack data ou -}
 
 ───────────────────────────────────────────────────────────────
-2 · CE QUE L'AD RACONTE (interprété, équation v3.1)
+2 · Ce que l'ad raconte (interprété, équation v3.1)
 ───────────────────────────────────────────────────────────────
 Cible              {persona phrase ou -}
 Niveau conscience  {schwartz stage phrase}
@@ -333,7 +333,7 @@ Mécanique          {nom registry} · {1 phrase}
 Pivot du message   "{atome}" · {1 phrase justif}
 
 ───────────────────────────────────────────────────────────────
-3 · DIAGNOSTIC
+3 · Diagnostic
 ───────────────────────────────────────────────────────────────
 Cohérence chaîne   {verdict + 1 phrase}
 Score arrêt scroll {N} / 5 · {1 phrase}
@@ -345,7 +345,7 @@ Risques            · {bullet}
                    · {bullet}
 
 ───────────────────────────────────────────────────────────────
-4 · RÉUTILISATION
+4 · Réutilisation
 ───────────────────────────────────────────────────────────────
 Amélioration       {1-2 phrases actionnables}
 Transposable sur   · {brand_1} · {adaptation}
@@ -353,7 +353,7 @@ Transposable sur   · {brand_1} · {adaptation}
 Concept-mère       {concept_id} {· variant_of: parent si applicable}
 
 ───────────────────────────────────────────────────────────────
-TAGS RETRIEVAL
+Tags retrieval
 ───────────────────────────────────────────────────────────────
 {bloc tags 16 lignes snake_case}
 
