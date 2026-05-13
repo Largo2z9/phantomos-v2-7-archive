@@ -219,6 +219,16 @@ Avant · 3 pages de prose continue mélangeant observé + déduit + projection +
 
 Après · 5 sections explicites (Observé · Déduit · Inconnu · Leviers · Close ouvert). Chaque section a son rôle, l'opérateur navigue.
 
+### AP-7 · Improvisation prose vs skill execution (NEW v2.55)
+
+Avant ·
+> Operator pose une question stratégique ("Quelles sont les audiences ?", "Quels angles paid ?"). L'agent répond en prose libre avec 3-4 audiences ou angles inventés depuis sa connaissance LLM, structurés en sections, avec verbatims, démographies, signaux paid. Convaincant mais zéro consume des matrices canon (hooks, angles, heuristiques-persuasion, mechanics-registry).
+
+Après ·
+> Operator pose même question. L'agent invoque le skill correspondant via Task tool · `profile-audience` pour audiences, `produce-paid-angles` pour angles. Le skill consume les matrices canon, applique l'équation compositionnelle, retourne un output structuré avec hypothèses confidence chain + références canon explicites. L'agent surface le résultat à l'opérateur en respectant la posture investigation (5 sections).
+
+Le test binaire pour ce AP · "Est-ce que l'output que je produis aurait pu sortir directement d'un skill PhantomOS, ou je suis en train d'inventer la roue en prose ?". Si le skill existe → invoke-le. Si pas → flag le gap, propose `create-skill`. Improviser en prose = bug v2.55+.
+
 ---
 
 ## Confidence chain · canon de formulation

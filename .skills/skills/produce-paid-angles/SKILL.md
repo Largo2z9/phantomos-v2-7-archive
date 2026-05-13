@@ -1,7 +1,7 @@
 ---
 name: produce-paid-angles
 type: producer
-version: "1.6.0"
+version: "1.6.1"
 isolation_scope: brand_only
 layer: 3
 recommended_model: sonnet
@@ -20,7 +20,22 @@ consumes:
     min_version: 1.0.0
   - path: resources/templates/hook-formulas.md
     min_version: 1.0.0
+  - path: resources/canon/copy/hooks/*
+    min_version: 1.0.0
+  - path: resources/canon/copy/angles/*
+    min_version: 1.0.0
+  - path: resources/canon/copy/frameworks/*
+    min_version: 1.0.0
+  - path: resources/canon/copy/niveaux-schwartz/*
+    min_version: 1.0.0
+  - path: resources/canon/copy/archetypes-voix/*
+    min_version: 1.0.0
+  - path: resources/canon/copy/heuristiques-persuasion/*
+    min_version: 1.0.0
+  - path: resources/canon/copy/_shared/awareness-stage.json
+    min_version: 1.0.0
 description: >
+  v1.6.1 (v2.55 audit consume canon matrices) : frontmatter consumes: enrichi avec resources/canon/copy/{hooks,angles,frameworks,niveaux-schwartz,archetypes-voix,heuristiques-persuasion,_shared/awareness-stage.json}. Aligne déclaration consumes: avec Step 0ter qui lit déjà ces matrices via phantom-canon.py. Master doctrine PhantomOS reasons over a business universe ré-activé · canon dormant = output générique averaged-LLM. Mécanismes inchangés.
   v1.6.0 (v2.54 investigation posture refactor) : angles présentés avec confidence chain inheritée audience+brand en surface opérateur. Chaque angle porte derived_from_audience_confidence + derived_from_brand_confidence + claim_confidence agrégée (min des deux héritages). Ranked table colonne `Confiance` ajoutée. Close ouvre drill-down macro · test ces angles tels quels OU upgrade confidence audience source d'abord. Préserve équation Obs+Tension+Reframe+Bridge, lineage canon copy, scoring framework. Refacto uniquement la posture surface · angles avec confidence chain visible vs recommandations stratégiques posées. Cross-ref docs/system/investigation-posture.md.
   v1.4.0 (v2.36 frictions runtime patch) : HR4.5 verbatim density floor gate strict. AskUserQuestion explicit gate quand voice.key_expressions[] < 5 OR cumulative verbatim_quotes[] < 5 — pas de production sans operator response (a/b/c). Resoud anti-pattern mou v1.3.0 ou angles inferes shippaient avec flag inline sans gate explicite.
   v1.3.0 (v2.32 alignment) : when reading creative.json instances, prefer intent_mix over intent and overlay_density + brand_mark_present over craft_mode. validation_status read via oneOf (legacy string OR composite object).

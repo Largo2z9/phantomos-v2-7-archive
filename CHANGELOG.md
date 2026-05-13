@@ -7,6 +7,19 @@
 
 ---
 
+## v2.55.0 · 2026-05-14 · Skill routing systémique · matrices canon réactivées
+
+**Why** · test live opérateur post-v2.54 a révélé que l'agent improvise des outputs stratégiques (audiences, angles, positionnement) en prose libre depuis sa connaissance LLM, au lieu d'invoquer les skills correspondants qui consomment les matrices canon (hooks, angles, heuristiques-persuasion, mechanics-registry, formats-livrables). Le master doctrine "PhantomOS reasons over a business universe" est contourné · l'univers encodé reste dormant.
+
+**What** ·
+- CLAUDE.md root · règle absolue v2.55 "Skill routing systémique" · mapping output → skill explicite · exception conversation libre · jamais improviser en prose, toujours invoquer skill si applicable.
+- Doctrine investigation-posture · AP-7 NEW "Improvisation prose vs skill execution" · test binaire pour catcher le bug.
+- Audit consume canon matrices · profile-audience v1.3.0 → v1.3.1 (consumes: enrichi archetypes-voix/heuristiques-persuasion/creative-formula.md · HR0bis NEW Load canon matrices + cross-product canon × audience obligatoire HR3 Dimensions 1/6/7) · produce-paid-angles v1.6.0 → v1.6.1 (consumes: enrichi canon copy hooks/angles/frameworks/niveaux-schwartz/archetypes-voix/heuristiques-persuasion · aligne avec Step 0ter déjà fonctionnel).
+
+**Backward compat strict** · skills inchangés mécaniquement, juste l'agent root est forcé de les invoquer au lieu de freestyle.
+
+---
+
 ## v2.54.0 · 2026-05-13 · Doctrine investigation posture + refactor 4 skills stratégiques
 
 **Why** · test live opérateur sur cas réel (snapshot-brand Housswood) a révélé défaut systémique de posture · l'agent affirme des hypothèses comme des faits, invente des personas présentés comme analytiques, ferme la conversation avec synthèse complète au lieu d'ouvrir le drill-down. Posture canon · "Cartographier avant affirmer" doit être encadrée doctrinalement.

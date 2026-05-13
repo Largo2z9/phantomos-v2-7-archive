@@ -1,9 +1,10 @@
 ---
 name: profile-audience
-version: 1.3.0
+version: 1.3.1
 patch_notes:
   - "1.2.0 · v2.39+ · Step 0ter framework awareness (4 questions cartography pédagogie inline)"
   - "1.3.0 · v2.54 investigation posture refactor surface · audiences présentées comme hypothèses avec confidence chain explicite (TRÈS faible par défaut sans mine-voc · faible 1-2 indicateurs site · moyenne mine-voc partiel · forte mine-voc + analytics convergents). Operator output template HR6 + HR8 restructurés · chaque audience porte hypothèse / confidence / indicateurs sources / validation requise / anti-pattern à respecter. Skill termine sur close drill-down macro · lancer mine-voc maintenant vs valider intuitivement et continuer. Préserve mécanismes 8 dimensions Schwartz double-stage problem_map. Refacto uniquement la posture surface · présentation comme hypothèse vs persona analytique. Cross-ref docs/system/investigation-posture.md."
+  - "1.3.1 · v2.55 audit consume canon matrices · consumes: enrichi (archetypes-voix, heuristiques-persuasion, creative-formula.md) + HR0bis NEW Load canon matrices force lecture batch via phantom-canon.py + cross-product canon × audience obligatoire en HR3 Dimensions 1/6/7 (canon_ref cité Layer A trace + profile.json#lineage). Aligne déclaration consumes: avec ce que les Steps lisent réellement. Anti-pattern banni · halluciner archetype ou biais audience-side sans mapping canon. Master doctrine ré-activé · PhantomOS reasons over a business universe, canon dormant = output générique averaged-LLM."
 type: orchestrator
 isolation_scope: brand_only
 layer: 3
@@ -34,7 +35,10 @@ consumes:
   - brands/{slug}/audiences/_vom/* (mine-vom outputs)
   - brands/{slug}/audiences/{audience}/raw/* (mine-audience outputs)
   - resources/schemas/profile.schema.json (target)
-  - resources/canon/copy/niveaux-schwartz/* (awareness stages reference)
+  - resources/canon/copy/niveaux-schwartz/* (awareness stages reference · Schwartz double-stage Step Q3 + HR4)
+  - resources/canon/copy/archetypes-voix/* (voix archetype matrice canon · cross-pollination identité audience HR3 Dimension 7)
+  - resources/canon/copy/heuristiques-persuasion/* (biais cognitifs canon · informe purchase_driver HR3 Dimension 1 + objections psychology)
+  - resources/canon/copy/creative-formula.md (8 dimensions canon V3 · contrat HR3)
 produces_validations_for: []
 produces_proposals_for:
   - brands/{slug}/audiences/{audience_slug}/profile.json
@@ -182,6 +186,21 @@ Surface les 1-3 audiences cousines détectées :
 Persister meta.overlap_with[] array slugs.
 
 Note pédagogique opérateur · les chevauchements ne disqualifient pas l'audience · ils révèlent les angles porteurs cousinés (cross-pollinisation copy). Operator-facing · dire "audiences cousines", jamais "overlap_with" brut.
+
+### HR0bis · Load canon matrices (v2.55 routing systémique)
+
+Avant HR1 (mining inputs), **force la lecture** des matrices canon copy déclarées en `consumes:`. Skill ne fonctionne pas en mode prose libre déduit de connaissance LLM · il consume canon. Si canon est dormant → output générique averaged-LLM, contourne le master doctrine `PhantomOS reasons over a business universe`.
+
+Lecture batch via `python3 .skills/phantom-canon.py copy {layer}` pour chaque couche utilisée par ce skill ·
+
+1. **`niveaux-schwartz`** · les 5 stages product_awareness + 5 stages emotional_maturity canoniques (Step Q3 + HR4 Schwartz double-stage). Cache en mémoire pour la durée du run.
+2. **`archetypes-voix`** · 6+ archetypes canon (caregiver, sage, rebelle, amante, heros, homme-ordinaire). Cross-référencé en HR3 Dimension 7 (Identity Signals) pour mapper l'archetype audience-side à un archetype canon, pas inventer.
+3. **`heuristiques-persuasion`** · biais cognitifs canon (loss-aversion, social-proof, scarcity, anchoring, reciprocity, authority, etc.). Cross-référencé en HR3 Dimension 1 (Purchase Driver) + Dimension 6 (Alternative Map · pourquoi insuffisant) pour informer le mapping psychology audience-side.
+4. **`creative-formula.md` V3** · contrat 8 dimensions canon. Validé que les 8 dimensions HR3 mappent strictement aux 8 dimensions canon V3.
+
+Pour chaque outil canon lu, garder en mémoire · `id, when_works[], when_avoid[], combines_with{}`. Ces contraintes filtrent quels archetypes/biais sont compatibles avec le contexte audience résolu en Step 0bis/0ter.
+
+Cross-product canon × audience obligatoire en HR3 · chaque Dimension 1/6/7 cite explicitement le canon_ref utilisé (archetype_canon_id, biais_canon_id) dans Layer A trace + profile.json#lineage. Anti-pattern v2.55 banni · halluciner un archetype audience-side ("caregiver overprotecteur") sans le mapper au canon archetypes-voix.
 
 ### HR1 · Verify mining inputs available
 

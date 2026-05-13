@@ -25,6 +25,30 @@ Doctrine governance (promotion, amendment, retraction, conflict resolution): `do
 
 **Investigation posture · règle absolue.** Tout skill produisant une synthèse stratégique (snapshot-brand Movement 3-4, profile-audience, produce-paid-angles, brief-day, audit-meta-account, analyst-perf, decompose-ad, produce-copy-brief, etc.) DOIT structurer son output en 5 sections explicites · **Observé** (faits sourcés) · **Déduit** (hypothèses avec confidence chain · forte / moyenne / faible / TRÈS faible) · **Inconnu** (variables non observables à creuser) · **Leviers** (skills / actions / sources pour lever les inconnues) · **Close ouvert** (UNE question macro · opérateur arbitre où creuser). JAMAIS affirmer une hypothèse comme un fait. JAMAIS inventer des personas / audiences présentés comme analytiques sans data verbatim. JAMAIS clôturer la conversation avec une synthèse complète · l'agent ouvre la porte au drill-down. Full doctrine `docs/system/investigation-posture.md`.
 
+**Skill routing · règle absolue (v2.55).** Sur tout output stratégique (audiences, angles paid, positionnement, brief copy, projection paid, brand analysis, creative briefs, recommandations stratégiques), l'agent DOIT invoquer le skill correspondant via Task tool, JAMAIS improviser en prose libre depuis sa connaissance LLM. Le skill consume les matrices canon (hooks, angles, heuristiques-persuasion, creative-mechanics-registry, niveaux-schwartz, formats-livrables) qui restent dormantes en mode prose. Mapping output → skill ·
+
+- Output audiences (personas, segments, cartographie) → `profile-audience`
+- Output angles paid (formula Obs+Tension+Reframe+Bridge) → `produce-paid-angles`
+- Output brief copy (écrit court ou long, structure persuasion) → `produce-copy-brief`
+- Output visual creative (composition pub) → `compose-creative`
+- Output adaptation creative existant → `recompose-creative`
+- Output reverse-engineering ad concurrente → `decompose-ad`
+- Output brand state ou état workspace → `brief-day`
+- Output snapshot brand depuis URL → `snapshot-brand`
+- Output canonical packshot → `craft-packshot`
+- Output import asset brand → `import-asset`
+- Output VoC verbatims mining → `mine-voc`
+- Output cartographie produit → `define-specs`
+- Output audit performance compte Meta → `audit-meta-account`
+- Output prioritisation territoires → `score-matrix`
+- Output learning persistence → `learn-from-session` ou `capture-learning`
+
+Si le skill n'existe pas pour un output demandé, l'agent flag le gap explicitement à l'opérateur et propose de créer le skill via `create-skill`. Il ne remplit JAMAIS le gap par freestyle prose.
+
+**Exception** · conversation libre (questions, clarifications, debug, doctrine discussion) reste en prose libre. La règle s'applique au contenu stratégique livré, pas au dialogue conversationnel.
+
+Full doctrine · `docs/system/canonical-matrix-reasoning.md` + `docs/system/skill-routing-discipline.md` (NEW à créer si gap).
+
 **Operator-facing rule absolue.** **NEVER** expose doctrine names (Contextual Intelligence, Schema Encoding Discipline, Canonical Matrix Reasoning, Skill Authoring Discipline, Provenance & Trust Discipline) or their acronyms in operator-facing output. Operators feel the *effects* (output 95% quality, agent that synthesizes instead of form-filling, reproducible across sessions); they never read the *names*. If an acronym leaks in operator output, that is a bug. Doctrine documents are for skill authors and contributors only, kept in `docs/system/` (not user-facing).
 
 ---
