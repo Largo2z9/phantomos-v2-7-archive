@@ -5,6 +5,119 @@
 
 ---
 
+## v2.51.0 · 2026-05-13 · Red team UX audit response · 7 fixes systémiques
+
+**Why this release.** 3 agents red team en parallèle ont audité (jargon résiduel + edge cases + mental model) et convergé sur 3 patterns systémiques · (A) doctrine vs implémentation drift · les templates legacy ship `═══ COMPOSE CREATIVE · CRT-12 ═══`, gates `flag _validated_by_operator: true + _canonical: true`, blocs `TAGS RETRIEVAL` quasi-JSON, alors que les mêmes skills déclarent HR6 interdisant ces leaks · (B) skills v1.1 récents (craft-packshot, import-asset) ont skippé conventions canon · pas de validate-resources post-write, pas de stage-proposal mid-gate, pas d'applicability check, bridges documentés en prose mais jamais câblés Task tool params · (C) pipeline visuelle invisible · 7 cycles v2.44 → v2.50 shippés mais `capabilities.md` "Image generation out of scope", `INDEX.md` section production 0 skill visuel, `tour.md` archetype DTC paid s'arrête à brief copy. Marketeux pilote DTC quittait en pensant "PhantomOS fait que des angles textuels, je rebricole Midjourney".
+
+**What shipped.** 7 fixes en série ·
+
+- **Bloc 1 · Discoverability pipeline visuelle** · `capabilities.md` drop "Image generation out of scope" + nouvelle section "Production créa visuelle" 5 bullets langage métier · `INDEX.md` section production enrichie 6 skills visuels + nouvelle section bilingue "Producing a paid creative" + 5 skill cards · `tour.md` Milestone 5 mental model étendu (assets visuels couche additive) + Milestone 8 archetype DTC pipeline visuel split.
+- **Bloc 2 · Template canonique opérateur-facing unifié NEW** · `resources/templates/operator-fiche-output.md` doctrine référence cross-skills · règles cardinales anti-jargon · structure 7 sections (header / description / interprétation / diagnostic / metadata backstage / gate / footer) · mappings vocabulaire canonique · process check 5 critères avant ship fiche.
+- **Bloc 3 · Cleanup gates jargon 7 skills** · `compose-creative` v1.4.2 (header "Pub n°{N}" + sections 1-3 plain language + drop bloc TAGS RETRIEVAL) · `recompose-creative` v1.2.1 (HR1 drop enum (new_audience)/(new_platform) parenthèses) · `craft-packshot` v1.2.0 (gate Step 5 français accessible drop flag _validated_by_operator) · `import-asset` v1.2.0 (HR7 Step C.4 drop buckets cap-lock + prose) · `compose-overlay-text` v1.0.1 (drop "Wordmark canon" + drop menu Next) · `decompose-ad` v1.3.1 (header "Analyse pub") · `snapshot-brand` v1.0.1 (drop skill names trust-and-deepen + Movement 4 hand-off métier).
+- **Bloc 4 · Bridges câblés Task tool params concrets** · `compose-creative` HR3b Step 3b.2 + Step 3b.5 sections "Bridge code v2.51 NEW" explicites (params Task tool subagent_type / prompt / wait completion / re-read sidecar) · `snapshot-brand` visual mention bridge pour option positive operator response. Pull-not-push v2.50 désormais effectivement câblé, plus de prose orpheline.
+- **Bloc 5 · validate-resources post-write hooks** · `craft-packshot` Step 8 NEW + `import-asset` Step 5bis NEW · symétrie compose-creative + snapshot-brand + define-specs post-mutation conventions doctrine root CLAUDE.md ligne 168.
+- **Bloc 6 · brief-day v1.0 → v1.1 brand-state proactive** · Step 2bis NEW État brand info système 3 niveaux (Identité brand · Inventaire produits & assets · Atlas vivant) + sous-section optionnelle "À noter" max 2 items gaps fort impact · Step 4 garde-fous 5 stricts (pas de % / pas skill names surface / pas flags techniques / pas injonction / max 2 items À noter) + edge cases.
+- **Bloc 7 · learn-from-session Trigger 9 reformulation** · drop "atlas vivant" + "validations[]" + "canon-tool générique cross-brand" AskUserQuestion · langage métier mappings (tool_humain / outcome_humain / layer_humain) · "partage cross-brand" vs "garde local" en plain.
+- **Manifest regen** · 56 skills · PyYAML 0 warning.
+
+**Operator impact.** Sprint UX systémique · pattern A doctrine vs implémentation drift fixé · pattern B skills v1.1 récents alignés conventions canon · pattern C pipeline visuelle découvrable. Workflow opérateur novice désormais cohérent bout-en-bout · tour mentionne assets visuels comme couche additive · capabilities + INDEX font découvrir pipeline · snapshot-brand offre récupération visuels post-setup · compose-creative HR3b soft offers câblées si packshot manque · multi-layer si logo/badge manque · brief-day proactive état brand info système · gates 7 skills refactorés français accessible. Backward compat strict additif.
+
+**Next.** v2.52+ · (a) Test live workflow complet sur brand cliente. (b) Niveler 3 chapitres canon copy sous-développés. (c) HR-21/HR-22 runtime port validate-resources. (d) Recovery state mid-gate persistence stage-proposal.py. (e) Cap N candidats Mode C extract_from_url page riche. (f) import-asset applicability check service/digital. (g) JS-rendered pages Playwright fallback. (h) Cross-ref disambiguates_against compose-creative ↔ compose-overlay-text. (i) Layered advanced SAM 2 + auto-tone match. (j) Bulk import folder workflow.
+
+---
+
+## v2.50.0 · 2026-05-13 · UX pull-not-push pattern systémique (jamais forcer user, soft offer quand asset manque)
+
+**Why this release.** Pattern v2.48-v2.49 fonctionne fonctionnellement mais UX flag opérateur · skills nommés en surface (`import-asset Mode C extract_from_url`, `craft-packshot`), gates "run X d'abord" push opérateur sur action interne, refus bloquant quand asset manque vs offer alternatives. Feedback Largo session 2026-05-13 · *"Faut jamais forcer l'utilisateur. Par contre, effectivement s'il veut utiliser d'autres skills qui ont besoin de ça, bah ça se déclenche. Ça peut être un skill en bout de chaîne, évidemment, ça peut être présenté dans les skills, etc., dans les next step quand tu as une bande ta marque, etc."* v2.50 ship pattern UX systémique pull-not-push · soft offer 1 ligne quand asset canonique manque downstream, langage métier zéro jargon, operator décide rythme.
+
+**What shipped.** 3 patches couplés ·
+
+- **Bloc 1** · `.skills/skills/snapshot-brand/SKILL.md` · HR no-orphan close · Visual assets soft mention NEW (v2.50). Après synthesis (default OR trust-and-deepen), si brand n'a pas d'assets visuels canonisés, ajout 1 ligne soft · *"Si tu veux préparer tes visuels (logo, badges) pour les pubs, on peut le faire en récupérant depuis ton site."* Rules anti-push strict · 1 ligne max, jamais menu, jamais nommer skill, drop si déjà canonisé, operator skip sans relance.
+- **Bloc 2** · `.skills/skills/compose-creative/SKILL.md` v1.4.0 → v1.4.1 · HR-COMPOSITE decision rule + HR3b Step 3b.2 lookup canonical packshot · refactor refus bloquant → soft offer 3 options · *"Pour faire la pub en photo studio (produit pixel-exact), il me faut une photo officielle du {product_name}. Trois options · (a) Tu as un fichier en local ? Drop-le. (b) Je peux la récupérer depuis ton site et la préparer (1-2 min). (c) Je génère en mode classique (le produit peut bouger légèrement vs photo officielle)."* Jamais nommer le skill craft-packshot ni "mode layered" en surface.
+- **Bloc 3** · `.skills/skills/compose-creative/SKILL.md` HR3b Step 3b.5 multi-layer paste · build créa avec layers disponibles puis surface gap à operator avec soft offer 4 options · (a) récupère depuis site auto, (b) drop fichier(s) local, (c) skip cette pub OK, (d) skip toujours flag preference. meta.composite_layers_missing[] log additif.
+- **Manifest regen** · 56 skills · PyYAML strict 0 warning.
+
+**Operator impact.** Pattern UX systémique pull-not-push appliqué cross-skills · jamais forcer, soft offer 1 ligne quand asset manque downstream, langage métier. Workflow · (1) `snapshot-brand` synthesis + soft mention 1 ligne optionnelle visuels, operator skip OU drop si pertinent. (2) `compose-creative` layered + asset manque · 3 options sans bloquer. (3) Multi-layer + layers manquants · build avec dispo + soft offer 4 options fin pipeline. Backward compat strict additif · skills lèvent gracefully gap, jamais hard refuse.
+
+**Backlog v2.51+ · jauge complétion brand.** Documenté · *"ma brand est prête à X%"* agrège 6 entités core (brand, product, offers, audience, learnings, strategy) + assets canoniques (packshot, logo, badge, mascotte, pattern). Visible via `?`, `capabilities`, `brief-day` (skills existants). Touche `status.json` schema + brief-day + query-context. Chantier structurant dédié v2.51+, pas dans v2.50.
+
+**Next.** v2.51+ · (a) Jauge complétion brand structurant ~4-6h. (b) Test live workflow complet bout-en-bout sur kara karacare URL. (c) JS-rendered pages Playwright fallback. (d) Niveler 3 chapitres canon copy reporté. (e) HR-21/HR-22 runtime port. (f) capabilities.md jargon pass 4.
+
+---
+
+## v2.49.0 · 2026-05-13 · import-asset v1.1 Mode C extract_from_url (auto-extract visual assets from page)
+
+**Why this release.** v2.48 ship import-asset v1.0 supporte Mode A drop fichier local + Mode B URL download fichier direct. Mais opérationnellement, drop N fichiers un par un est friction · pour une nouvelle brand, operator a 1 URL site et veut chopper tous les assets en 1 run. v2.49 ship Mode C extract_from_url · operator fournit URL page brand, skill scrape + extract auto multi-candidats logo + badges + payment_methods + patterns via heuristics path/class/alt, présente par type à operator gate validation. Pattern stress-testé S55 sur fincutmen.com (Shopify Hydrogen oxygen-v2 theme) · 6 candidats extraits, workflow validé bout-en-bout.
+
+**What shipped.**
+
+- **Bloc 1** · `.skills/skills/import-asset/SKILL.md` v1.0.0 → v1.1.0 · Mode C ajout L2 gate asset_file_path options + asset_type enum étendu `auto_multi` + nouveau prereq `brand_url` L2 + frontmatter bash_allowlist étendu (curl + grep + magick + convert) + emits_events `assets_extracted_from_url` NEW.
+- **Bloc 2** · HR7 dedicated section · 4 sub-steps détaillés. Step C.1 scrape HTML via curl User-Agent moderne. Step C.2 extract candidats par type via heuristics tableau exhaustif (6 asset types détectables · logo + badge_trust + badge_cert + badge_origin + payment_method + pattern). Step C.3 download + rasterize SVG fallback chain (magick > convert > cairosvg > inspect code). Step C.4 present par type à operator gate avec render PNG paths SVG candidats.
+- **Bloc 3** · Bridge auto-chain optionnel documenté · snapshot-brand → import-asset Mode C post-setup pour nouvelle brand visuels en chain. Operator gate explicit, pas auto-execute.
+- **Stress test S55** · fincutmen.com Shopify Hydrogen theme · 6 candidats extraits (2 logos brand SVG variants primary+white via `/oxygen-v2/.../assets/logo_*.svg` + Trustpilot wordmark+stars + payment_methods footer SVG + banner hero false-positive rejected via operator visual gate Step 5). False-positive handling validé · path token semantique pas garantie · operator visual gate Step 5 reste BLOCKER (banner_francais.png matched 'francais' heuristic mais image = banner hero).
+- **Manifest regen** · 56 skills (no skill ajouté, juste extension).
+
+**Operator impact.** Workflow recommandé v2.49 · (1) `snapshot-brand` scrape site pour text claims (existant), (2) `import-asset extract_from_url asset_type: auto_multi brand_url: {url}` extract tous types visuels en 1 run, (3) operator gate visual chaque candidat (validate/reject/re-tag/skip), (4) skill import dans slot canonical schema v1.2. Avantages · drop bulk N assets en 1 flow vs N runs séparés · heuristics path/class/alt validés stress test sur thèmes Shopify Hydrogen modernes · rasterize SVG fallback chain robust · false-positive handling explicit. Limites documentées · heuristics path-based ne capturent pas tout · pages JS-rendered nécessitent Playwright fallback hors scope v2.49.
+
+**Next.** v2.50+ · (a) Test live workflow complet v2.44+v2.47+v2.48+v2.49 bout-en-bout sur kara karacare URL. (b) JS-rendered pages support Playwright/Puppeteer fallback. (c) Niveler 3 chapitres canon copy reporté. (d) HR-21/HR-22 runtime port. (e) capabilities.md jargon pass 4. (f) Heuristics extended cross-themes (Webflow, Wix, custom).
+
+---
+
+## v2.48.0 · 2026-05-13 · Multi-asset canonisation extension (logo + badge + mascotte + pattern)
+
+**Why this release.** v2.47 ship compose-creative layered compositing v1.3 résout text fidelity blocker via packshot canon. Mais pattern limité au packshot seulement · si pub veut afficher aussi logo brand + badge cert plantes + mascotte cohérence brand, aujourd'hui ils sont décrits en prompt (drift inévitable) au lieu d'être collés pixel-exact comme le packshot. Intuition Largo · scaler le pattern canonical asset à TOUS les assets brand réutilisables cross-pubs.
+
+**What shipped.** 3 livraisons couplées ·
+
+- **Bloc 1** · `resources/schemas/visual_identity.schema.json` v1.1 → v1.2 · ajout 4 slots additifs dans `assets_canonical{}` · (a) `logo_canonical` PNG haute-res complément vectoriel logo_svg (variants enum primary/monochrome/horizontal/vertical/icon), (b) `badge_canonical{}` additionalProperties slug-style (cert_plantes_naturelles, bio_eu, made_in_france, vegan_society) avec claim_text verbatim + regulatory_authority, (c) `mascotte_canonical` optionnel avec variants poses, (d) `pattern_canonical{}` additionalProperties slug-style (wave_pattern_primary, etc) avec tile_repeat bool + dominant_color_hex. Tous slots cohérent shape packshot_front (path + resolution + format + background + flags canonical/validated). Backward compat strict additif.
+- **Bloc 2** · `.skills/skills/import-asset/SKILL.md` v1.0.0 NEW orchestrator non-génératif · pattern symétrique craft-packshot v1.1 mais sans génération IA (brands fournissent leurs assets en général). 6 steps · detect type → lookup slot → file copy canonical rename → quality assessment 5 critères (resolution thresholds par type + format + background pixel sampling + crispness extrema + content match operator visual) → operator validation gate BLOCKER → persist sidecar mutation convention v2.44. asset_type enum logo/badge/mascotte/pattern/packshot_variant. Triggers FR+EN bilingues.
+- **Bloc 3** · `.skills/skills/compose-creative/SKILL.md` v1.3.0 → v1.4.0 · multi-layer paste HR3b Step 3b.5 NEW. `composite_layers[]` input array ordered, default ['packshot'] (single-layer fallback). Extensions · ['packshot', 'logo'] · ['packshot', 'badge:slug'] · ['packshot', 'logo', 'badge:slug']. Order = z-index render. Layer defaults · packshot scale 0.65 center 0.62 shadow enabled · logo scale 0.12 right 0.92 bottom-right shadow disabled · badge scale 0.10 left 0.10 top-left shadow disabled. Operator override granular. `multi_layer_composite()` PIL function · loop layers + resolve slot path + white-to-alpha threshold + paste ordered + soft shadow conditional.
+- **Manifest regen** · 56 skills (55 v2.47 + import-asset NEW v1.0.0) · PyYAML strict 0 warning.
+
+**Operator impact.** Pipeline complet ads pixel-exact branded désormais opérable bout-en-bout · (1) `craft-packshot` canonise le packshot upstream (déjà v2.44+v2.47 sur cellule-boost), (2) `import-asset` drop logo + badge + mascotte + patterns, chaque asset tag slot canon + _validated_by_operator gate, (3) `compose-creative composite_mode: layered composite_layers: ['packshot', 'logo', 'badge:cert_plantes_naturelles']` génère ad complet branded pixel-exact en 1 attempt. Réutilisation cross-pubs · 1 canonisation upstream → N déclinaisons publicitaires downstream sans regen produit ou re-extraction logo/badge. Avantages · text fidelity 100% sur tous les éléments visuels canonisés · pas de retry budget burned · pipeline déterministe sur assets, stochastique uniquement sur scène · cohérence brand absolue cross-pubs. Limite documentée · scène composition complexe (model holding produit) · fallback full_regen avec perte fidélité branding · trade-off operator selon priorité.
+
+**Next.** v2.49+ · (a) Test live cross-brand v2.48 workflow complet sur kara cellule-boost (canonical packshot validé + drop logo + drop badge cert plantes + lancer layered multi-layer). (b) Niveler 3 chapitres canon copy (reporté v2.46+v2.47). (c) HR-21/HR-22 runtime port. (d) capabilities.md jargon pass 4. (e) Multi-layer advanced · SAM 2 segmentation auto · auto-tone match lighting consistency entre layers. (f) Bulk import folder workflow.
+
+---
+
+## v2.47.0 · 2026-05-13 · compose-creative v1.3 layered compositing mode (studio photographer pattern)
+
+**Why this release.** Problème historique label regression sur full_regen pipeline (text fidelity drift sur sub-label fin, badge plantes, claim certification, composition list). v1.2 résolu partiellement par endpoint swap nano-banana-2 (text preservation natif amélioré Gemini 3 Pro) mais pas absolu. HR3.4 retry exhausted flag `label_compositing_required` historiquement orphan (compose-overlay-text v2.43 fait text overlay PIL post-gen mais pas packshot collage). v2.47 ship la solution canonique · layered compositing mode · pattern studio photographer · packshot canon pixel-exact (craft-packshot v1.1 upstream) + scène séparée nano-banana-2 + PIL composite paste. Text fidelity 100% garantie via substrat canonisé. Memory `extend_before_create` · extension compose-creative v1.2 → v1.3 plutôt que skill frère · single mental model 'compose a creative' avec branche `composite_mode` interne.
+
+**What shipped.**
+
+- **Bloc 1** · `compose-creative` v1.2.0 → v1.3.0 · version bump + patch_notes v1.3.0 + description étendue.
+- **Bloc 2** · `HR-COMPOSITE` doctrine section · decision rule full_regen vs layered · 4 signaux trigger (operator explicit · canonical asset disponible · fidélité critique product_category supplement/cosmetic/food/pharma · auto-trigger retry exhausted HR3.4).
+- **Bloc 3** · `HR3b` pipeline layered compositing 3 sous-steps · 3b.1 génération scène-only via nano-banana-2 prompt explicit no-product · 3b.2 lookup canonical packshot path + verify _validated_by_operator + _canonical · 3b.3 PIL composite paste code Python inline (scale_factor 0.65 · position center 0.62 · shadow_blur 35 · opacity 0.35) avec soft drop shadow + white bg threshold to alpha.
+- **Bloc 4** · `HR1` input detection · composite_mode option orthogonale aux 3 modes existants · detection auto via phrase signaux ou product_category trigger.
+- **Bloc 5** · `HR3.4` retry exhausted handling v1.3+ · auto-trigger layered mode si canonical asset disponible (vs persister régression v1.2-).
+- **Bloc 6** · Frontmatter prerequisites · ajout L2 lookup `assets_canonical.{slot}` · Cross-refs sibling skills étendus (craft-packshot + compose-overlay-text complémentaires) + doctrines (visual-identity-discipline v2.43+).
+- **Manifest regen** · 55 skills · PyYAML strict 0 warning.
+
+**Operator impact.** Workflow recommandé v2.47 · (1) run `craft-packshot` pour canoniser asset packshot validé 8/8 quality, (2) run `compose-creative` avec `composite_mode: layered` pour générer pubs paid social avec packshot pixel-exact + scène variée. Pattern reusable · 1 canonisation upstream → N déclinaisons publicitaires downstream sans regen produit. Avantages · text fidelity 100% (substrat validé opérateur) · pas de retry budget burned · pipeline déterministe sur produit. Limites documentées · composition narrative limitée (packshot pas dans main de model OU interaction physique réaliste · fallback full_regen pour ces cas). Decision rule HR-COMPOSITE automatic ou operator explicit. Backward compat strict · full_regen reste default. PIL inline pattern cohérent compose-overlay-text v2.43.
+
+**Next.** v2.48+ · (a) Test live cross-brand v2.47 layered sur kara cellule-boost + brand non hair-care pour confirmer pattern généralise. (b) Niveler 3 chapitres canon copy sous-développés (v2.46 reporté). (c) HR-21 + HR-22 runtime validate-resources port. (d) capabilities.md jargon pass 4. (e) Layered advanced · SAM 2 segmentation si fond non-white · auto-tone match lighting.
+
+---
+
+## v2.46.0 · 2026-05-13 · Endpoint migration nano-banana-2/edit cohérence cross-skill + doctrine model-versioning-canon pragma adapt
+
+**Why this release.** v2.44 ship craft-packshot v1.1 swap nano-banana-pro/edit → nano-banana-2/edit (Gemini 2.5 → Gemini 3 Pro Image canon novembre 2025) sur le upstream brand-level. Cycle USAGE validé canon (cellule-boost 1 attempt vs 9 échouées endpoint legacy · silhouette + text fidelity supérieurs). Les 3 skills downstream consumers restaient sur endpoint legacy · drift cohérence cross-pipeline visuel. v2.46 propage le swap end-to-end. Doctrine model-versioning-canon v2.44 ship initial exigeait runtime check obligatoire avant tout call API externe · trop strict, ralentit, peut planter (URL down, parser breakage). v2.46 pragma adapt · drop runtime check, keep frontmatter annotation, audit manuel périodique 3-6 mois. Trade-off documenté · même outcome (drift detection) sans complexité runtime.
+
+**What shipped.**
+
+- **Bloc 1** · `compose-creative` v1.1.0 → v1.2.0 · swap nano-banana-pro/edit → nano-banana-2/edit · frontmatter permissions.external_apis[] déclaré · HR3 section title + step 3 URL · cross-refs doctrine model-versioning-canon.
+- **Bloc 2** · `recompose-creative` v1.1.0 → v1.2.0 · swap identique · patch_notes section ajoutée · HR4 pipeline mirror compose-creative HR3 référence endpoint canon · retry policy commentaire mis à jour (pattern préservé Gemini 3 Pro avec marges plus généreuses text fidelity natif).
+- **Bloc 3** · `decompose-ad` v1.2.0 → v1.3.0 · reverse-engineering pas de gen direct mais référence endpoint canon downstream HR2bis Lookup product visual identity · frontmatter permissions.external_apis[] déclaré (fal.ai + trendtrack) · anti-pattern 8 reformulé pattern audit S55 reste valide même avec Gemini 3 Pro.
+- **Bloc 4** · `docs/system/model-versioning-canon.md` v2.44 → pragma adapt v2.46 · drop runtime check obligatoire (auto_upgrade obligatoire dropped) · keep frontmatter annotation obligatoire · add audit manuel périodique 3-6 mois protocol · audit log runtime optionnel · rationale pragma section + trade-off table documentés · cohérent feedback Largo session 2026-05-12 "hardcoder c'est pas hyper fou".
+- **Manifest regen** · python3 .skills/build-manifest.py · 55 skills · PyYAML strict 0 warning attendu.
+
+**Operator impact.** Skills pipeline visuel complet désormais sur Gemini 3 Pro Image (nano-banana-2/edit) cohérent end-to-end · craft-packshot (asset canon upstream v2.44) + compose-creative + recompose-creative + decompose-ad. Text fidelity natif et material preservation supérieurs vs endpoint legacy Gemini 2.5 (1 attempt typique vs cycles retry historiques). Doctrine model-versioning-canon pragma · operator audit manuel tous les 3-6 mois suffit, pas de runtime check qui peut bloquer ship. Backward compat strict additif · endpoint legacy en replaced_legacy field pour audit trail. Aucune migration data nécessaire.
+
+**Next.** v2.47+ · (a) Pipeline product shot fidèle layered compositing optionnel · packshot canon pixel-exact + scène générée + collage PIL pour cas critiques sub-label fin / badge plantes / claim · pattern studio photographer · résout HR3.4 label_compositing_required flag actuellement orphan. (b) Niveler 3 chapitres canon copy sous-développés (archetypes-voix · leads · construction-offre). (c) HR-21 audience cartography 3 invariants paper-only port vers validate-resources runtime. (d) HR-22 external_apis frontmatter validation runtime (cross-skills check). (e) capabilities.md jargon pass 4.
+
+---
+
 ## v2.45.0 · 2026-05-12 · Ship-readiness cleanup brand-agnostic
 
 **Why this release.** Audit ship-readiness a révélé template public GitHub Largo2z9/phantomos contenait leaks données test brand-side (Karacare hardcoded canon copy + skills + doctrines · credentials physique présent · 58 .bak résidus migration v2.42 · .context-agents.yaml owner hardcoded). Opérateur agency cloning repo voyait "ce template a été testé sur Karacare" · cassait promesse brand-agnostic. v2.45 clean ship-ready pour redistribution publique.

@@ -1,0 +1,49 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.46.0",
+  "released_at": "2026-05-13",
+  "compatible_from": "2.0.0",
+  "type": "endpoint_migration_and_doctrine_pragma",
+  "summary": "Endpoint migration nano-banana-2/edit cohérence cross-skill (compose-creative + recompose-creative + decompose-ad) + doctrine model-versioning-canon pragma adapt (drop runtime check obligatoire, keep frontmatter annotation + audit manuel 3-6 mois).",
+  "changes": [
+    {
+      "category": "skill_endpoint_migration",
+      "action": "patched",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "Bloc 1 · compose-creative v1.1.0 → v1.2.0",
+      "rationale": "Swap endpoint legacy nano-banana-pro/edit (Gemini 2.5 Flash Image) → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025). Cohérent craft-packshot v1.1 upstream (S55 v2.44 stress test cellule-boost · 1 attempt vs 9 échouées endpoint legacy sur silhouette + text fidelity). Frontmatter permissions.external_apis[] déclaré · provider + endpoint + version_check_url + version_canon_date + replaced_legacy + auto_upgrade false. Description bumped. HR3 section title + endpoint URL step 3 swap. Cross-refs ajout doctrine model-versioning-canon + audit v2.46 endpoint migration."
+    },
+    {
+      "category": "skill_endpoint_migration",
+      "action": "patched",
+      "files": [".skills/skills/recompose-creative/SKILL.md"],
+      "section": "Bloc 2 · recompose-creative v1.1.0 → v1.2.0",
+      "rationale": "Swap identique compose-creative. patch_notes section ajoutée (n'existait pas avant). Frontmatter permissions.external_apis[] déclaré. HR4 pipeline mirror compose-creative HR3 référence endpoint canon nano-banana-2/edit. HR4 retry policy commentaire mis à jour (audit S55 v2.34 endpoint legacy · pattern préservé avec nano-banana-2 mais marges plus généreuses text fidelity natif)."
+    },
+    {
+      "category": "skill_endpoint_reference",
+      "action": "patched",
+      "files": [".skills/skills/decompose-ad/SKILL.md"],
+      "section": "Bloc 3 · decompose-ad v1.2.0 → v1.3.0",
+      "rationale": "decompose-ad reste reverse-engineering (pas de gen direct), mais HR2bis Lookup product visual identity référence endpoint canonique pour compose mode downstream + anti-pattern label hallucination context. Frontmatter permissions.external_apis[] déclaré · fal.ai + trendtrack (independent migration). Anti-pattern 8 trust image gen model to guess label reformulé pattern audit S55 reste valide même avec Gemini 3 Pro Image. Description + patch_notes ajoutés."
+    },
+    {
+      "category": "doctrine_pragma_adapt",
+      "action": "patched",
+      "files": ["docs/system/model-versioning-canon.md"],
+      "section": "Bloc 4 · doctrine model-versioning-canon v2.44 ship → v2.46 pragma adapt",
+      "rationale": "Drop runtime check obligatoire (était spec'd v2.44 · trop strict, ralentit chaque call, peut planter sur URL down ou parser breakage). Keep frontmatter annotation (obligatoire) · provider, endpoint, model_family, version_check_url (audit manuel pas runtime), version_canon_date, replaced_legacy, auto_upgrade=false toujours. Add audit manuel périodique tous les 3-6 mois · grep frontmatter cross-skills, check vendor docs, ticket migration si nouvelle release, documenter audit/{YYYY-MM}.md. Audit log runtime devient optionnel pas blocker. Rationale pragma section ajoutée · trade-off documenté annotation+audit manuel = même outcome sans complexité runtime, drift window 3-6 mois acceptable. Cohérent feedback Largo session 2026-05-12 'hardcoder c'est pas hyper fou'."
+    },
+    {
+      "category": "infrastructure",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "section": "Manifest regen post-patches skills",
+      "rationale": "Régénération manifest via python3 .skills/build-manifest.py post-patches compose-creative v1.2.0 + recompose-creative v1.2.0 + decompose-ad v1.3.0. PyYAML strict parser · 0 warning attendu. Cohérence frontmatter validée."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Skills pipeline visuel complet désormais sur Gemini 3 Pro Image (nano-banana-2/edit) cohérent end-to-end · craft-packshot (asset canon upstream v2.44) + compose-creative (génération paid social) + recompose-creative (variantes existant) + decompose-ad (reverse + reference endpoint downstream). Text fidelity natif et material preservation supérieurs vs endpoint legacy Gemini 2.5 (1 attempt typique vs cycles retry historiques). Doctrine model-versioning-canon pragma · operator audit manuel tous les 3-6 mois suffit, pas de runtime check qui peut bloquer ship. Backward compat strict additif · endpoint legacy en replaced_legacy field pour audit trail. Aucune migration data nécessaire · skills swap interne, schemas creative.schema/visual_identity.schema inchangés.",
+  "next_release_note": "v2.47+ chantiers identifiés (priorisés audit ship-readiness session 2026-05-12) · (a) Pipeline product shot fidèle layered compositing optionnel · packshot canon pixel-exact + scène générée nano-banana-2 + collage PIL pour cas critiques sub-label fin / badge plantes / claim · pattern studio photographer · résout HR3.4 label_compositing_required flag actuellement orphan. (b) Niveler 3 chapitres canon copy sous-développés (archetypes-voix · leads · construction-offre). (c) HR-21 audience cartography 3 invariants paper-only port vers validate-resources runtime. (d) HR-22 external_apis frontmatter validation runtime (cross-skills check schema permissions.external_apis[] présent si bash_allowlist contient curl). (e) capabilities.md jargon pass 4 (public-facing doc heavily jargon-leaked audit ship-readiness)."
+}

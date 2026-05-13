@@ -1,0 +1,42 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.49.0",
+  "released_at": "2026-05-13",
+  "compatible_from": "2.0.0",
+  "type": "feature_addition_url_extraction",
+  "summary": "import-asset v1.0.0 → v1.1.0 · Mode C extract_from_url NEW · auto-extraction multi-candidats (logo + badges + payment_methods + patterns) depuis URL page brand. Pattern stress-testé S55 fincutmen.com workflow validé.",
+  "changes": [
+    {
+      "category": "skill_extension",
+      "action": "patched",
+      "files": [".skills/skills/import-asset/SKILL.md"],
+      "section": "Bloc 1 · import-asset v1.0.0 → v1.1.0 · Mode C extract_from_url + HR7 dedicated section",
+      "rationale": "Extension skill plutôt que skill frère (memory extend_before_create · single mental model 'import an asset' avec branche modes acquisition interne). v1.1.0 ajoute Mode C dans Step 0bis L2 gate asset_file_path options · operator_drop_local_path (Mode A existant) · operator_provides_url_download (Mode B existant) · extract_from_url (Mode C NEW). asset_type enum étendu avec auto_multi (Mode C itère tous types détectés). Nouveau prereq brand_url L2 gate (required si Mode C). Frontmatter bash_allowlist étendu · curl + grep + magick + convert ajoutés (pour scrape HTML + rasterize SVG fallback). Frontmatter emits_events étendu · assets_extracted_from_url NEW event. HR7 NEW dedicated section · 4 sub-steps détaillés (Step C.1 scrape HTML curl User-Agent moderne · Step C.2 extract candidats par type via heuristics tableau exhaustif path/class/alt · Step C.3 download + rasterize SVG fallback chain magick>convert>cairosvg>inspect code · Step C.4 present operator gate par type avec render PNG paths SVG candidats pour Preview macOS). Hard Rules récap étendue HR7 entry. Step 1 File acquisition étendu Mode C description. Cross-refs sibling skills étendus · snapshot-brand bridge auto-chain optionnel. Patch_notes v1.1.0 entry détaillé."
+    },
+    {
+      "category": "doctrine_in_skill",
+      "action": "added",
+      "files": [".skills/skills/import-asset/SKILL.md"],
+      "section": "Bloc 2 · Heuristics path/class/alt par type asset documenté",
+      "rationale": "Tableau heuristics exhaustif documenté dans HR7 Step C.2 · 6 asset types détectables (logo + badge_trust + badge_cert + badge_origin + payment_method + pattern) avec patterns regex par catégorie. Heuristics validées S55 fincutmen test · logo path containing 'logo' OR class containing 'logo' OR alt='logo' · badge_trust path containing 'trustpilot|trustbadge|trust_pilot|stars-|rating-' (third-party trust badges stockés dans badge_canonical avec slug semantic trustpilot_wordmark/trustpilot_stars_5) · badge_cert containing 'cert|certif|approved|guarantee|garanti|vegan|organic|bio|eco_|cruelty_free' · badge_origin containing 'made_in_|origine_|francais|french|fab_' (caveat false-positive operator visual gate BLOCKER · banner_francais.png fincutmen test matched francais heuristic mais image = banner hero produits pas badge Made in France) · payment_method containing 'payment|payments_method|stripe|visa|mastercard|paypal|apple_pay|google_pay' (footer methods stockés badge_canonical OR pattern_canonical selon usage downstream) · pattern containing 'pattern|texture|bg_|background_|hero_|banner_' (hero backgrounds + textures · operator gate aggressif false-positive frequents). Acceptance thresholds documentés par type (logo SVG > PNG > WEBP prioritaire vectoriel, etc.). False-positive handling explicit · path token suggère semantique pas garantie · operator visual gate Step 5 reste BLOCKER (validé par fincutmen test où heuristic match path token mais visual revealed false-positive)."
+    },
+    {
+      "category": "bridge_auto_chain",
+      "action": "added",
+      "files": [".skills/skills/import-asset/SKILL.md"],
+      "section": "Bloc 3 · Bridge auto-chain optionnel snapshot-brand → import-asset Mode C",
+      "rationale": "Documenté pattern bridge optionnel dans HR7 fin section. Si operator vient de run snapshot-brand (qui scrape brand.identity.website + populate brand.json) et brand_assets sont vides (no logo/badge canon importé), snapshot-brand peut auto-suggest import-asset Mode C en fin de session via no orphan output reco · 'Brand setup complet sur {brand}. Tu veux que je lance import-asset Mode C extract_from_url sur ton site pour chopper logo + badges en chain ?'. Bridge optionnel · operator gate explicit. Pas auto-execute silencieux. Cohérent canonical no-orphan-output pattern + operator-facing rule absolue (jamais auto-execute structurel sans gate)."
+    },
+    {
+      "category": "infrastructure",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "section": "Manifest regen post v2.49 (import-asset v1.1)",
+      "rationale": "Régénération manifest via python3 .skills/build-manifest.py post-patch import-asset v1.0.0 → v1.1.0 · 56 skills attendus (pas de skill ajouté, juste extension). PyYAML strict parser · 0 warning attendu. Cohérence frontmatter validée."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "import-asset désormais supporte 3 modes acquisition · Mode A drop fichier local (existant), Mode B URL download fichier direct (existant), Mode C extract_from_url NEW · operator fournit URL page brand (homepage OR product page), skill scrape + extract multi-candidats logo + badges + payment_methods + patterns automatiquement. Workflow recommandé v2.49 · (1) `snapshot-brand` scrape site brand pour text claims + populate brand.json (existant), (2) `import-asset extract_from_url asset_type: auto_multi brand_url: {url}` extract tous types visuels en 1 run, (3) operator gate visual chaque candidat par type (validate/reject/re-tag/skip), (4) skill import dans slot canonical schema v1.2 chacun. Bridge auto-chain optionnel · snapshot-brand peut suggest import-asset Mode C post-setup. Avantages · drop bulk N assets en 1 flow vs N runs séparés · heuristics path/class/alt validés stress test sur thèmes Shopify Hydrogen modernes · rasterize SVG fallback chain robust (magick > convert > cairosvg > inspect code) · false-positive handling explicit via operator visual gate Step 5 BLOCKER. Limites documentées · heuristics path-based ne capturent pas tout (badges inline images sans token semantic dans URL · brands custom theme non-standard · pages JS-rendered nécessitent Playwright/Puppeteer hors scope v2.49). Pattern stress-testé fincutmen.com Shopify oxygen-v2 theme · 6 candidats extraits avec 1 false-positive rejected via visual gate (validé robustness approche).",
+  "next_release_note": "v2.50+ chantiers identifiés · (a) Test live cross-brand v2.49 Mode C workflow complet sur kara karacare.fr URL · scrape + auto-extract logo + badges karacare + import dans workspace test + compose-creative layered multi-layer ad branded complet · validation pipeline bout-en-bout v2.44+v2.47+v2.48+v2.49. (b) JS-rendered pages support · Playwright OR Puppeteer fallback si curl HTML statique retourne 0 candidats (signal Cloudflare challenge OR React/Vue client-render). (c) Niveler 3 chapitres canon copy sous-développés (archetypes-voix · leads · construction-offre) reporté v2.46-v2.49. (d) HR-21 audience cartography 3 invariants paper-only port vers validate-resources runtime. (e) HR-22 external_apis frontmatter validation runtime. (f) capabilities.md jargon pass 4. (g) Heuristics extended · learn patterns by scraping diverse themes (Webflow, Wix, custom-built, headless commerce React) pour étendre coverage path/class signatures."
+}

@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-12T20:44:12Z",
-  "_count": 55,
+  "_generated_at": "2026-05-13T17:27:48Z",
+  "_count": 56,
   "skills": [
     {
       "name": "analyze-copy",
@@ -565,6 +565,25 @@
       "isolation_scope": "brand_only",
       "layer": null,
       "path": ".skills/skills/export-session/SKILL.md"
+    },
+    {
+      "name": "import-asset",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "craft-packshot": "craft-packshot GÉNÈRE un packshot via fal.ai (besoin = brand n'a pas de photo studio). import-asset STORE un asset déjà fourni (logo SVG/PNG, badge cert PNG, mascotte). Si operator a juste besoin de stocker · import-asset. Si génération nécessaire · craft-packshot.",
+        "define-specs": "define-specs encode visual_identity.json fields textuels (label, container, content, distinctive_features). import-asset peuple visual_identity.assets_canonical avec fichiers images.",
+        "setup-brand": "setup-brand fait le scrape initial brand + populate brand.json. import-asset opère post-setup pour ajouter assets visuels canon."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 3,
+      "path": ".skills/skills/import-asset/SKILL.md"
     },
     {
       "name": "ingest-resource",

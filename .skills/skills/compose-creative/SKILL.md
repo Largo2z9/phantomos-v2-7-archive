@@ -1,6 +1,6 @@
 ---
 name: compose-creative
-version: 1.1.0
+version: 1.4.2
 type: producer
 isolation_scope: brand_only
 layer: 2
@@ -11,12 +11,20 @@ operator_facing: true
 reasoning_pattern: matrix-driven
 matrix_mode: composing
 patch_notes:
+  v1.4.2: "v2.51 operator-fiche-output canonique template applied · header + gate + footer refactor langage métier. Operator output template (HR6) refactor selon canonique resources/templates/operator-fiche-output.md · header `═══ {BRAND_HUMAIN} · Pub n°{N} ═══` + sous-titre plain language (drop `COMPOSE CREATIVE · CRT-N`). Section 1 / Section 2 / Section 3 réécrites plain language (drop `format: static_image | ratio: 4:5` JSON-style, drop `intent_mix` enum, drop `craft_mode density=0.6`, drop `concept_id: cpt_kara_chute_001`). Bloc `TAGS RETRIEVAL` retiré du template rendu operator (vit backstage dans creative.json pour retrieval programmatique). Footer · 1 reco soft offer 1 ligne max, pas menu. HR3.4 retry wording `compositing externe recommandé v2.35` clean → wording métier. HR-COMPOSITE soft offers wording cohérent canonique sans nommer skills."
+  v1.4.1: "v2.50 UX patch · pull-not-push pattern systémique. HR-COMPOSITE decision rule (signal 2 canonical asset disponible) · soft offer au lieu de refuser quand asset manque · operator a 3 choix · (a) drop fichier local, (b) fetch from URL via bridge, (c) fallback full_regen. HR3b Step 3b.2 lookup canonical packshot · idem soft offer 3 options, jamais nommer skill craft-packshot ni layered en surface. HR3b Step 3b.5 multi-layer paste · build créa avec layers disponibles puis surface gap à operator en fin de pipeline avec soft offer 4 options (récupère site / drop fichier / skip cette pub / skip toujours). meta.composite_layers_missing[] log additif. Cohérent feedback Largo session 2026-05-13 · jamais forcer user, pull naturel via downstream skill quand asset demandé manque, soft surface 1 ligne max."
+  v1.4.0: "v2.48 multi-layer paste extension HR3b Step 3b.5 NEW · packshot + logo + badge en couches ordered pour ads complets branded pixel-exact. composite_layers[] input array · default ['packshot'] (Step 3b.3 standard single-layer) · extensions ['packshot', 'logo'] / ['packshot', 'badge:cert_plantes_naturelles'] / ['packshot', 'logo', 'badge:cert_plantes_naturelles']. Order = z-index render (premier paste = derrière, dernier = devant). Layer defaults · packshot scale 0.65 position center 0.62 shadow enabled · logo scale 0.12 position right 0.92 bottom-right shadow disabled · badge scale 0.10 position left 0.10 top-left shadow disabled. Operator override granular via dict {type, slug, variant, position, scale, shadow}. Multi_layer_composite() PIL function added · loop layers + resolve slot path depuis visual_identity.assets_canonical v1.2 nouveaux slots (logo_canonical + badge_canonical{}) + white-to-alpha threshold + paste ordered + soft shadow conditional. Workflow recommandé · craft-packshot upstream + import-asset logo+badge + compose-creative layered multi-layer. Bridge v2.48 visual_identity schema v1.2 nouveaux slots downstream consumer."
+  v1.3.0: "v2.47 layered compositing mode · pattern studio photographer. Nouveau composite_mode input option · full_regen (default historique, nano-banana-2 régénère scène + produit) OR layered (NEW · scène générée séparément sans produit + packshot canon collé pixel-exact via PIL paste + soft drop shadow). HR-COMPOSITE section · decision rule quand layered (fidélité critique sub-label fin / badge plantes / claim · canonical packshot validé _canonical: true present · operator request explicit OR auto-trigger si retry exhausted HR3.4). HR3b pipeline 3 steps · scene-only gen + lookup canonical asset + PIL composite. Résout HR3.4 label_compositing_required flag historiquement orphan (compose-overlay-text v2.43 fait text overlay, pas packshot collage). Cohérent canonical assets pipeline · craft-packshot v1.1 upstream produit l'asset · compose-creative v1.3 layered le consomme downstream. Frontmatter inputs étendu · composite_mode enum."
+  v1.2.0: "v2.46 endpoint migration nano-banana-pro/edit (Gemini 2.5 Flash Image legacy) → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025). Cohérent craft-packshot v1.1 upstream (v2.44 stress test 1 attempt vs 9 échouées endpoint legacy sur silhouette + text fidelity). Frontmatter permissions.external_apis[] déclare provider + endpoint + version_check_url + version_canon_date + replaced_legacy. HR3 step 3 URL swap + meta.endpoint_used log audit trail. Cross-ref doctrine model-versioning-canon v2.44."
   v1.0.2: "v2.36 frictions runtime patch. HR3 step 3 explicit aspect_ratio param (4:5 default Meta feed). HR3.4 adaptive retry policy (max 3 retries scenes complexes vs 2 packshot only) + label_compositing_required flag forward to compose-overlay-text v2.37. HR3.5 post-gen aspect_ratio normalize via PIL crop centre si fal.ai output ratio differe target."
   v1.0.1: "v2.35 alignment. visual_identity path fallback (spec.json#visual_identity OR sibling visual_identity.json with _belongs_to pointer). HR1.4 + HR3.1 patched + consumes paths extended."
 description: >
+  v1.4.0 (v2.48) : multi-layer paste extension HR3b Step 3b.5 · composite_layers[] ordered packshot + logo + badge en couches pour ads complets branded pixel-exact.
+  v1.3.0 (v2.47) : composite_mode input option · full_regen (default) OR layered (pattern studio photographer · packshot canon collé pixel-exact via PIL paste post-gen scene-only).
+  v1.2.0 (v2.46) : endpoint nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025) cohérent craft-packshot v1.1.
   v1.0.1 (v2.35 alignment) : visual_identity path fallback (spec.json#visual_identity OR sibling visual_identity.json).
   v1.0.0 (v2.34 ship production loop). Pendant FORWARD de decompose-ad (qui est REVERSE).
-  Génère une créa (visuel via fal.ai nano-banana-pro/edit + brief copy markdown S55 fiche v5)
+  Génère une créa (visuel via fal.ai nano-banana-2/edit + brief copy markdown S55 fiche v5)
   depuis un brief structuré ancré dans canon × profil audience × angle × brand visual_identity.
   Assemblage compositionnel selon équation v3.1 (NOYAU x CONTEXTE x MODIFIEURS).
   Persiste creative.schema v1.2 + JPG local + brief markdown.
@@ -90,6 +98,10 @@ prerequisites:
     level: L1
     auto_pull: dual_path_inline_or_sibling
     freshness_ttl_days: 90
+  - field: products/{slug}/visual_identity.assets_canonical.{slot}
+    level: L2
+    note: "v1.3 layered mode prerequisite · lookup canonical packshot path validated_by_operator + _canonical true · si absent, layered impossible et fallback full_regen"
+    freshness_ttl_days: 90
   - field: brand.creative_zone
     level: L3
     fallback: proxy_brand_personality
@@ -102,6 +114,14 @@ permissions:
   reads: [brand, product, profile, angle, learning, strategy, canon_copy, registries]
   writes: [creative]
   emits_events: [creative_composed, visual_generated, brief_written, mecanique_proposal_flag]
+  external_apis:
+    - provider: "fal.ai"
+      endpoint: "fal-ai/nano-banana-2/edit"
+      model_family: "gemini_3_pro_image_novembre_2025"
+      version_check_url: "https://fal.ai/models?keywords=banana"
+      version_canon_date: "2025-11"
+      replaced_legacy: "fal-ai/nano-banana-pro/edit (v1.0.x · Gemini 2.5 Flash Image)"
+      auto_upgrade: false
 pipeline:
   preconditions: "angle.json existe avec lineage canon. profile.json 8 dimensions populated. spec.json#visual_identity populated avec primary_front packshot. credentials FAL_API_KEY présent dans credentials_shared.env."
   postconditions: "creative.json conforme creative.schema v1.2 persisté. JPG local persisté dans produced/. brief markdown S55 fiche v5 forward rendu à l'opérateur. Validation silencieuse via validate-resources."
@@ -111,7 +131,7 @@ pipeline:
 
 > **Compose a creative forward.** v1.0.0 · S55 fiche v5 forward · creative.schema v1.2 · équation v3.1 · pendant FORWARD de decompose-ad.
 
-Producer, not decomposer. Lit (angle × audience × brand × product visual_identity × canon copy), applique l'équation compositionnelle v3.1 en mode forward, génère un visuel via fal.ai nano-banana-pro/edit, écrit un brief copy markdown S55 fiche v5, persiste un creative.schema v1.2 brand-side. Le mécanisme reste invisible (pas de field paths, pas de scores numériques, pas de noms internes). L'opérateur voit une fiche quatre sections forward, un JPG local, et un bloc tags retrieval.
+Producer, not decomposer. Lit (angle × audience × brand × product visual_identity × canon copy), applique l'équation compositionnelle v3.1 en mode forward, génère un visuel via fal.ai nano-banana-2/edit (v2.46 canon, Gemini 3 Pro Image), écrit un brief copy markdown S55 fiche v5, persiste un creative.schema v1.2 brand-side. Le mécanisme reste invisible (pas de field paths, pas de scores numériques, pas de noms internes). L'opérateur voit une fiche quatre sections forward, un JPG local, et un bloc tags retrieval.
 
 ## Tone
 
@@ -148,6 +168,13 @@ L'opérateur peut fournir l'input sous trois formes. Detection auto :
 | `(audience_slug, angle_id, product_slug)` explicite | forward_direct | Load tous les pre-requis, pipeline complet |
 | `(audience_slug, angle_id)` sans product_slug | forward_direct | Lookup product principal de la marque, pipeline complet |
 | `(audience_slug, product_slug)` sans angle_id | hypothesis_from_scratch | Skill propose 2-3 angles depuis profile.json + canon copy avant de composer |
+
+**Composite mode (NEW v1.3) · option orthogonale aux inputs ci-dessus.**
+
+Operator peut ajouter `composite_mode` au input · `full_regen` (default · pipeline HR3 standard) OR `layered` (pipeline HR3b · scène séparée + packshot canon collé PIL). Decision rule détaillée HR-COMPOSITE. Detection signaux ·
+- Phrase explicite "studio photographer", "packshot canon", "fidélité critique", "preserve packshot", "mode layered", "composite mode" → `layered`
+- Spec.identity.product_category ∈ {supplement, cosmetic, food, pharma} ET visual_identity.assets_canonical.{slot}._validated_by_operator: true → suggest `layered` avec AskUserQuestion gate
+- Sinon · `full_regen` default
 
 **Read pre-requisites obligatoires :**
 
@@ -203,7 +230,9 @@ Assembler creative.schema v1.2 selon NOYAU × CONTEXTE × MODIFIEURS.
 
 ---
 
-## HR3 · Génération visuelle via fal.ai nano-banana-pro/edit
+## HR3 · Génération visuelle via fal.ai nano-banana-2/edit
+
+Endpoint canon · `fal-ai/nano-banana-2/edit` (Gemini 3 Pro Image · canon novembre 2025 · supérieur vs `nano-banana-pro/edit` legacy Gemini 2.5 Flash Image qui régressait silhouette OR text fidelity). Cohérent craft-packshot v1.1 upstream qui valide ce pattern (S55 v2.44 stress test · 1 attempt vs 9 échouées endpoint legacy). Doctrine sœur · `docs/system/model-versioning-canon.md`.
 
 Pipeline image gen :
 
@@ -221,11 +250,11 @@ Pipeline image gen :
      - Distinctive features : `MUST PRESERVE: {distinctive_features[0]}. {distinctive_features[1]}. ...`.
    - Atmosphère depuis `brand.creative_zone` + `audience.identity_signals`.
    - Format `4:5 vertical Meta feed` default.
-3. POST `https://fal.run/fal-ai/nano-banana-pro/edit` (endpoint exact, **PAS** `nano-banana/edit` qui ignore aspect_ratio et force 1:1) avec payload :
+3. POST `https://fal.run/fal-ai/nano-banana-2/edit` (endpoint canon v2.46, **PAS** `nano-banana-pro/edit` legacy v1.0.x ni `nano-banana/edit` v0 qui ignore aspect_ratio) avec payload :
    - `image_urls=[packshot_url]`
    - `prompt=<above>`
    - `aspect_ratio="4:5"` (default Meta feed, override possible via input opérateur). Enum supportée par endpoint : `auto, 21:9, 16:9, 3:2, 4:3, 5:4, 1:1, 4:5, 3:4, 2:3, 9:16`.
-   - `output_format="jpeg"`, `resolution="1K"` (default).
+   - `output_format="jpeg"`, `resolution="1K"` (default Meta feed, override `2K` si haute fidélité requise).
    - Auth header `Authorization: Key ${FAL_API_KEY}`.
 4. Download résultat dans `/tmp/compose-creative/{brand}-{crt_id}.jpg`.
 5. Move final vers `brands/{brand}/produced/{CRT-N}.jpg`.
@@ -233,7 +262,7 @@ Pipeline image gen :
 **Retry logic label preservation :**
 
 - Si gen retourne visuel avec label régressé (wordmark différent du `label.wordmark_text`), retry max 2 fois avec prompt renforcé `"PRESERVE EXACTLY label artwork from reference image. Wordmark text MUST be '{label.wordmark_text}' character-for-character. NO variants, NO substitutions."`.
-- Si toujours régressé après 3 iter total, flag warning à l'opérateur + persiste avec note `"label compositing externe recommandé v2.35"`.
+- Si toujours régressé après 3 iter total, flag warning à l'opérateur en langage métier (cf HR3.4 soft offer) + persiste avec note technique backstage `meta.label_compositing_required: true`.
 
 **QC post-gen :**
 
@@ -254,18 +283,20 @@ Calibrer `max_retry` selon complexité scène détectée à partir du prompt ass
 
 Après les retries autorisés, si le wordmark principal (`label.wordmark_text`) est préservé MAIS le sub-label (`label.sub_label`) ou duration indicator (`label.duration_indicator`) reste flou ou illisible :
 1. NE PAS continuer à retry (gain marginal, brûle budget API).
-2. Persister la créa avec wordmark préservé.
-3. Set `meta.label_compositing_required: true` dans `creative.json`.
-4. Note dans brief markdown S55 fiche v5 (Section 1, ligne Branding) : *"Sub-label compositing externe recommandé — run `compose-overlay-text` (skill v2.37) pour overlay text crisp post-gen."*
-5. Flag explicite à l'opérateur dans la reco no-orphan : *"Wordmark préservé, sub-label régressé. Compositing PIL externe recommandé avant Meta ad approval — skill `compose-overlay-text` arrive en v2.37."*
+2. **v1.3+ auto-trigger layered mode si canonical asset disponible** · check `visual_identity.assets_canonical.{slot}._validated_by_operator: true` · si oui, redéclencher pipeline en `composite_mode: layered` (HR3b) plutôt que persister régression. Solution canonique au problème historique.
+3. Si pas de canonical asset · persister la créa avec wordmark préservé + set `meta.label_compositing_required: true` dans `creative.json`.
+4. Note dans brief markdown S55 fiche v5 (Section 1, ligne Branding), langage métier · *"Petit texte sous le logo flou sur le packshot. Si on canonise une fois la photo produit officielle, ça sera net sur toutes les pubs suivantes."*
+5. Flag explicite opérateur reco no-orphan, langage métier, soft offer · *"Logo principal préservé, mais le petit texte sous le logo est flou. Si tu veux, on peut canoniser le packshot une fois et le réutiliser sur toutes tes pubs (net garanti)."*
 
-**Note v2.37 scope (futur) :** `compose-overlay-text` fera le compositing PIL post-gen pour overlay text crisp (sub-label, duration indicator, optional CTA badge). Hors scope v2.36 — la créa courante reste flag `label_compositing_required` jusqu'à shipping de la skill.
+**Anti-pattern UX prose** · JAMAIS nommer `craft-packshot`, `compose-overlay-text`, `mode layered`, `HR3b`, `compositing` en surface operator. Soft offer + langage métier · "canoniser la photo produit", "réutiliser sur toutes tes pubs", "net garanti".
+
+**Note v2.43+ scope shipped :** `compose-overlay-text` v2.43 fait le compositing PIL text overlay post-gen (sub-label, duration indicator, optional CTA badge). v2.47 ajoute layered mode HR3b in-skill · packshot collage pixel-exact upstream du text overlay (canonical asset + scène séparée). Deux outils complémentaires · layered = packshot, overlay-text = text crisp.
 
 ---
 
 ## HR3.5 · Post-gen aspect ratio normalize (v1.0.2)
 
-Defensive primitive : même si HR3 step 3 passe `aspect_ratio` explicite, certains endpoints fal.ai (cas où l'opérateur override sur `nano-banana/edit` sans `pro`, ou fallback API-side) peuvent retourner un ratio différent de la target.
+Defensive primitive : même si HR3 step 3 passe `aspect_ratio` explicite, certains endpoints fal.ai (cas où l'opérateur override sur `nano-banana/edit` v0 sans suffixe, ou fallback API-side) peuvent retourner un ratio différent de la target.
 
 **Procédure post-download :**
 
@@ -282,6 +313,375 @@ Defensive primitive : même si HR3 step 3 passe `aspect_ratio` explicite, certai
 **Pas de retry fal.ai sur mismatch ratio.** Crop PIL est déterministe et instantané, retry fal.ai = gain marginal + coût API.
 
 **Dépendance :** Python PIL (Pillow). Si absent dans l'env runtime, surface honnête à l'opérateur + persiste sans crop avec note `aspect_ratio_mismatch_unresolved` dans `meta`.
+
+---
+
+## HR-COMPOSITE · Mode selection full_regen vs layered (NEW v1.3)
+
+Deux modes pour le pipeline visuel · `full_regen` (default historique HR3) régénère scène ET produit dans un seul call nano-banana-2. `layered` (NEW v1.3 · pattern studio photographer) sépare en 2 phases · scène générée sans produit + packshot canon collé pixel-exact via PIL paste.
+
+**Decision rule.** Choisir `layered` si :
+
+1. **Operator request explicite** · input contient `composite_mode: layered` OR phrase "studio photographer", "packshot canon", "fidélité critique", "preserve packshot".
+2. **Canonical asset disponible** · `visual_identity.assets_canonical.{slot}._validated_by_operator: true` AND `_canonical: true` AND path file exists. Sans canonical asset → soft offer pull-not-push pattern (v2.50 NEW) · *"Pour faire ça en mode photo studio (packshot pixel-exact), j'aurais besoin d'une photo officielle du produit. Si tu en as une, drop-la. Si tu veux que je la prépare depuis ton site, dis-moi. Sinon je génère en mode classique (le produit peut bouger légèrement)."*. Operator décide · drop fichier OR fetch from URL OR fallback full_regen. Pas de "run craft-packshot d'abord" en surface (jargon skill name).
+3. **Fidélité critique flag** · spec.identity.product_category ∈ {supplement, cosmetic, food, pharma} avec sub-label fin / badge plantes / claim certification / composition list visible. Ces produits = text fidelity blocker.
+4. **Auto-trigger retry exhausted** · HR3.4 retry policy a flag `label_compositing_required: true` après 3 iter sur full_regen. Au lieu de surfacer opérateur "compositing externe recommandé" comme v1.2, v1.3 auto-trigger `layered` sur retry si canonical asset disponible (transparent fallback).
+
+Choisir `full_regen` si :
+
+1. Pas de canonical asset (craft-packshot pas encore run sur ce produit).
+2. Scène narrative complexe avec produit en main de model OR en interaction physique (layered casse l'illusion · packshot collé ne tient pas dans une main convaincante).
+3. Operator preference declared `composite_mode: full_regen`.
+
+**Trade-off.** `layered` garantit packshot pixel-exact (substrat canonisé craft-packshot) MAIS scène autour générée sans produit peut sembler artificielle si la composition exigerait interaction (main qui tient, table contact réaliste, etc.). `full_regen` garantit cohérence visuelle scène-produit MAIS risque drift label (notre problème historique). Choisir selon priorité brand · text fidelity blocker → layered, narrative cohérence → full_regen.
+
+**No false binary.** `layered` n'est pas "meilleur que" `full_regen` · c'est une alternative selon contexte produit. Pour packshot studio simple (90% des paid social Meta feed e-com), `layered` gagne. Pour lifestyle UGC narratif, `full_regen` gagne.
+
+---
+
+## HR3b · Pipeline layered compositing (NEW v1.3)
+
+Activer si HR-COMPOSITE décide `composite_mode: layered`. Sinon skip et utiliser HR3 standard.
+
+### Step 3b.1 · Génération scène-only via nano-banana-2
+
+Prompt explicit "no product" pour générer background scène sans le produit ·
+
+```
+Empty professional photoshoot studio scene, soft lighting from the left,
+{brand.atmosphere or audience.identity_signals depuis HR2 NOYAU},
+clean composition with negative space center-bottom for product placement,
+{angle.formula.tension surface en background context},
+NO product, NO bottle, NO container, NO label, NO text overlay.
+Format 4:5 vertical Meta feed.
+```
+
+Override aspect_ratio + resolution depuis input opérateur ou défauts HR3 step 3.
+
+POST `https://fal.run/fal-ai/nano-banana-2/edit` MAIS sans `image_urls[]` (pure generation, pas edit) OR avec `image_urls=[]` ET prompt no-product explicite. Si endpoint refuse empty image_urls, fallback `nano-banana-2/text-to-image` (non-edit variant) si dispo, ELSE pass un mood reference scène vide pertinent.
+
+Download résultat dans `/tmp/compose-creative/{brand}-{crt_id}-scene.jpg`.
+
+### Step 3b.2 · Lookup canonical packshot path
+
+1. Read `brands/{slug}/products/{product_slug}/visual_identity.json#assets_canonical.{slot}` (slot default `front`).
+2. Verify `_validated_by_operator: true` AND `_canonical: true` AND `path` exists on filesystem.
+3. Si absent ou flag false → **soft offer pull-not-push (v2.50)** au lieu de refuser. Langage métier, jamais nommer le skill ·
+
+   > *"Pour faire la pub en photo studio (produit pixel-exact), il me faut une photo officielle du {product_name}. Trois options ·*
+   > *(a) Tu as un fichier en local ? Drop-le.*
+   > *(b) Je peux la récupérer depuis ton site et la préparer (1-2 min).*
+   > *(c) Je génère en mode classique (le produit peut bouger légèrement vs photo officielle)."*
+
+   Operator décide. Skill chain l'option choisie. Jamais bloquant.
+
+   **Bridge code (v2.51 NEW · câblage explicite Task tool params)** ·
+
+   Selon la réponse operator, l'agent invoke concrètement ·
+
+   - **Option (a) drop fichier local** · operator drop path absolu d'un fichier image. Skill consume direct ·
+     ```
+     Lecture du fichier path operator + verify format (png/webp/jpg) + verify resolution (min 2048x2048 recommandé).
+     Persist via Edit/Write dans visual_identity.json#assets_canonical.packshot_front avec _validated_by_operator: true uniquement APRÈS gate explicit operator validation Step 5 craft-packshot symétrique.
+     Si quality assessment 8 critères < 6/8 pass · surface warning operator + propose re-upload.
+     ```
+
+   - **Option (b) récupère depuis ton site** · invoke `craft-packshot` skill via Task tool · params concrets ·
+     ```
+     Task tool invocation ·
+     - description · "Génère packshot canonique {product_humain}"
+     - subagent_type · "general-purpose" (le skill craft-packshot recommended_model: sonnet, subagent_safe: true)
+     - prompt · "Run craft-packshot pour {brand_slug}/{product_slug}. Mode scrape_from_official_site. Brand URL · {brand.identity.website}. Aspect ratio · 1:1. Resolution · 2K. Output path canonique · brands/{brand_slug}/products/{product_slug}/assets/packshot-canonical-front-{date}-gen-v1.png. Skill flow standard 7 steps · scrape carousel → score → pick source → compose prompt → fal.ai nano-banana-2/edit → quality 8 critères → operator gate Step 5 → persist visual_identity.json. Return absolute path canonical asset post-validation."
+     ```
+     Wait completion. Re-read `visual_identity.json#assets_canonical.packshot_front` post-completion. Si `_validated_by_operator: true` AND path file exists · continue pipeline Step 3b.3 layered composite. Si operator a rejected dans craft-packshot Step 5 gate · fallback option (c).
+
+   - **Option (c) génère en mode classique** · fallback `composite_mode: full_regen` · skip HR3b layered, route vers HR3 standard pipeline.
+
+5. Path absolu canonical asset · `brands/{slug}/products/{product_slug}/{path}` (relative dans visual_identity.json).
+
+### Step 3b.3 · PIL composite paste + soft drop shadow
+
+```python
+from PIL import Image, ImageFilter
+import os
+
+def layered_composite(
+    scene_path,
+    packshot_path,
+    output_path,
+    scale_factor=0.65,
+    position=("center", 0.62),
+    shadow_offset=(0, 20),
+    shadow_blur=35,
+    shadow_opacity=0.35
+):
+    """
+    scene_path · jpg scene-only (Step 3b.1 output)
+    packshot_path · png canonical packshot (Step 3b.2 lookup)
+    scale_factor · packshot height / scene height (0.0-1.0, default 0.65)
+    position · (horizontal, vertical_pct) · horizontal ∈ {center, left, right} ou int px, vertical_pct ∈ 0.0-1.0
+    shadow_offset · (dx, dy) px shadow displacement
+    shadow_blur · gaussian blur radius shadow
+    shadow_opacity · 0.0-1.0 shadow alpha
+    """
+    scene = Image.open(scene_path).convert("RGBA")
+    packshot = Image.open(packshot_path).convert("RGBA")
+
+    # Threshold white background to alpha if packshot has white bg (canonical asset convention)
+    if packshot.mode == "RGBA":
+        data = packshot.getdata()
+        new_data = []
+        for px in data:
+            r, g, b, a = px
+            if r > 245 and g > 245 and b > 245:
+                new_data.append((r, g, b, 0))
+            else:
+                new_data.append((r, g, b, a))
+        packshot.putdata(new_data)
+
+    # Resize packshot to target height
+    target_height = int(scene.size[1] * scale_factor)
+    aspect = packshot.size[0] / packshot.size[1]
+    target_width = int(target_height * aspect)
+    packshot_resized = packshot.resize((target_width, target_height), Image.LANCZOS)
+
+    # Position
+    horizontal, vertical_pct = position
+    if horizontal == "center":
+        x = (scene.size[0] - target_width) // 2
+    elif horizontal == "left":
+        x = int(scene.size[0] * 0.15)
+    elif horizontal == "right":
+        x = int(scene.size[0] * 0.85) - target_width
+    else:
+        x = int(horizontal)
+    y = int(scene.size[1] * vertical_pct) - target_height // 2
+
+    # Generate soft drop shadow
+    shadow = Image.new("RGBA", scene.size, (0, 0, 0, 0))
+    shadow_mask = packshot_resized.split()[3] if packshot_resized.mode == "RGBA" else None
+    if shadow_mask:
+        shadow_layer = Image.new("RGBA", packshot_resized.size, (0, 0, 0, int(255 * shadow_opacity)))
+        shadow.paste(shadow_layer, (x + shadow_offset[0], y + shadow_offset[1]), shadow_mask)
+        shadow = shadow.filter(ImageFilter.GaussianBlur(shadow_blur))
+
+    # Composite · scene + shadow + packshot
+    composite = Image.alpha_composite(scene, shadow)
+    composite.paste(packshot_resized, (x, y), packshot_resized)
+
+    # Convert RGBA → RGB for jpeg save
+    composite_rgb = Image.new("RGB", composite.size, (255, 255, 255))
+    composite_rgb.paste(composite, mask=composite.split()[3] if composite.mode == "RGBA" else None)
+    composite_rgb.save(output_path, "JPEG", quality=92)
+
+    return output_path
+```
+
+Defaults tuning ·
+- `scale_factor: 0.65` · packshot occupe 65% hauteur scène, laisse air respiration top
+- `position: ("center", 0.62)` · centré horizontalement, légèrement bas (règle des tiers)
+- `shadow_offset: (0, 20)` · ombre légère décalée bas
+- `shadow_blur: 35` · doux, pas hard edge
+- `shadow_opacity: 0.35` · subtle, pas dramatique
+
+Override possibles via operator input ou angle.formula.observation context (ex angle "produit en main" → layered probablement pas optimal, fallback HR3 full_regen).
+
+### Step 3b.4 · Output composite
+
+Save final composite dans `/tmp/compose-creative/{brand}-{crt_id}.jpg` (replace scene-only temp file). Path final downstream HR3 step 5 standard (move vers `brands/{brand}/produced/{CRT-N}.jpg`).
+
+Note dans `meta` ·
+- `composite_mode: "layered"`
+- `composite_scene_endpoint: "fal-ai/nano-banana-2/edit"`
+- `composite_canonical_asset_path: <relative path>`
+- `composite_canonical_asset_validated_at: <date depuis visual_identity.json>`
+- `composite_params: {scale_factor, position, shadow_offset, shadow_blur, shadow_opacity}`
+
+**Avantage layered.** Text fidelity 100% (packshot canonisé craft-packshot · 8/8 quality check pass déjà validé opérateur). Pas de retry budget burned sur label preservation. Pipeline déterministe sur produit · stochastique uniquement sur scène.
+
+**Limite layered.** Composition narrative limitée · packshot ne peut pas tenir convaincante dans main de model OU être en interaction physique réaliste avec props scène. Pour ces cas, fallback HR3 full_regen.
+
+### Step 3b.5 · Multi-layer paste optional (NEW v1.4 · packshot + logo + badge)
+
+Si `visual_identity.assets_canonical` contient aussi `logo_canonical._validated_by_operator: true` AND/OR `badge_canonical.{slug}._validated_by_operator: true`, layered mode supporte multi-layer paste pour ad complet branded pixel-exact.
+
+**Input opérateur** · `composite_layers[]` array ordered, default `["packshot"]` (Step 3b.3 standard single-layer). Extensions ·
+- `["packshot", "logo"]` · packshot center-bottom + logo bottom-right
+- `["packshot", "badge:cert_plantes_naturelles"]` · packshot + badge top-left
+- `["packshot", "logo", "badge:cert_plantes_naturelles"]` · les 3 ensembles
+- Order = z-index render (premier paste = derrière, dernier = devant)
+
+**Layer config defaults** ·
+
+| Layer | Slot lookup | Default position | Default scale | Shadow |
+|---|---|---|---|---|
+| `packshot` | assets_canonical.packshot_front | (center, 0.62) | 0.65 (% scene height) | enabled (offset 0,20 · blur 35 · opacity 0.35) |
+| `logo` | assets_canonical.logo_canonical | (right, 0.92) bottom-right | 0.12 | disabled (logos = no shadow typiquement) |
+| `badge:{slug}` | assets_canonical.badge_canonical.{slug} | (left, 0.10) top-left | 0.10 | disabled |
+
+Operator peut override chaque param via input dict ·
+```
+composite_layers: [
+  {"type": "packshot", "scale": 0.7},
+  {"type": "logo", "variant": "monochrome_white", "position": ["right", 0.95]},
+  {"type": "badge", "slug": "cert_plantes_naturelles", "position": ["left", 0.08], "scale": 0.12}
+]
+```
+
+**Extension PIL code** ·
+
+```python
+def multi_layer_composite(
+    scene_path,
+    layers_config,
+    output_path,
+    visual_identity_assets_canonical
+):
+    """
+    scene_path · jpg scene-only output Step 3b.1
+    layers_config · array ordered de {type, slug, variant, position, scale, shadow}
+    visual_identity_assets_canonical · dict des assets canonical lus depuis visual_identity.json
+    """
+    scene = Image.open(scene_path).convert("RGBA")
+    composite = scene.copy()
+
+    for layer in layers_config:
+        layer_type = layer["type"]
+
+        # Resolve slot path
+        if layer_type == "packshot":
+            slot = visual_identity_assets_canonical.get("packshot_front", {})
+            asset_path = slot.get("path")
+        elif layer_type == "logo":
+            slot = visual_identity_assets_canonical.get("logo_canonical", {})
+            variant_name = layer.get("variant", "primary")
+            asset_path = next(
+                (v["path"] for v in slot.get("variants", []) if v["name"] == variant_name),
+                slot.get("path")
+            )
+        elif layer_type == "badge":
+            badges = visual_identity_assets_canonical.get("badge_canonical", {})
+            slug = layer["slug"]
+            slot = badges.get(slug, {})
+            asset_path = slot.get("path")
+        else:
+            continue  # unknown layer type skipped
+
+        if not asset_path:
+            # Slot empty · soft offer pull-not-push pattern v2.50
+            # Avant skip silencieux v1.4, maintenant v1.4.1+ surface gap à operator
+            # avec offer fetch from URL OR drop OR skip
+            missing_layers.append({
+                "type": layer_type,
+                "slug": layer.get("slug"),
+                "variant": layer.get("variant"),
+                "humain_label": _humain_label_from_layer(layer_type, layer)
+            })
+            continue  # skip ce layer pour l'instant, on surface après tous les layers
+
+        # Load + apply white→alpha threshold (canonical asset convention)
+        asset = Image.open(asset_path).convert("RGBA")
+        if slot.get("background") == "white":
+            data = asset.getdata()
+            new_data = [(r, g, b, 0) if (r > 245 and g > 245 and b > 245) else (r, g, b, a) for r, g, b, a in data]
+            asset.putdata(new_data)
+
+        # Resolve params (operator override > defaults per layer type)
+        defaults = {
+            "packshot": {"scale": 0.65, "position": ["center", 0.62], "shadow": True},
+            "logo": {"scale": 0.12, "position": ["right", 0.92], "shadow": False},
+            "badge": {"scale": 0.10, "position": ["left", 0.10], "shadow": False}
+        }
+        cfg = {**defaults[layer_type], **layer}
+
+        # Resize
+        target_height = int(scene.size[1] * cfg["scale"])
+        aspect = asset.size[0] / asset.size[1]
+        target_width = int(target_height * aspect)
+        asset_resized = asset.resize((target_width, target_height), Image.LANCZOS)
+
+        # Position
+        horizontal, vertical_pct = cfg["position"]
+        if horizontal == "center":
+            x = (scene.size[0] - target_width) // 2
+        elif horizontal == "left":
+            x = int(scene.size[0] * 0.05)
+        elif horizontal == "right":
+            x = int(scene.size[0] * 0.95) - target_width
+        else:
+            x = int(horizontal)
+        y = int(scene.size[1] * vertical_pct) - target_height // 2
+
+        # Shadow if enabled
+        if cfg["shadow"]:
+            shadow_layer = Image.new("RGBA", asset_resized.size, (0, 0, 0, int(255 * 0.35)))
+            shadow_canvas = Image.new("RGBA", scene.size, (0, 0, 0, 0))
+            shadow_canvas.paste(shadow_layer, (x, y + 20), asset_resized.split()[3])
+            shadow_canvas = shadow_canvas.filter(ImageFilter.GaussianBlur(35))
+            composite = Image.alpha_composite(composite, shadow_canvas)
+
+        # Paste layer
+        composite.paste(asset_resized, (x, y), asset_resized)
+
+    # Convert RGBA → RGB for jpeg save
+    composite_rgb = Image.new("RGB", composite.size, (255, 255, 255))
+    composite_rgb.paste(composite, mask=composite.split()[3] if composite.mode == "RGBA" else None)
+    composite_rgb.save(output_path, "JPEG", quality=92)
+
+    return output_path
+```
+
+**Missing layers handling (v2.50 NEW · soft offer pull-not-push)** ·
+
+Si `multi_layer_composite()` rencontre un layer dont le slot canonique est vide (ex operator demande `composite_layers: ['packshot', 'logo', 'badge:cert_plantes_naturelles']` mais `logo_canonical` empty), v1.4.1+ pattern · build la créa avec les layers disponibles, puis surface gap à operator avec soft offer en fin de pipeline ·
+
+> *"Pub générée avec ton packshot. J'ai pas trouvé ton logo brand ni le badge "cert plantes naturelles" en version officielle. Si tu veux, je peux les récupérer depuis ton site (1-2 min) pour les ajouter cette pub et toutes les suivantes."*
+
+Operator décide ·
+- (a) **Récupère depuis le site** · skill chain l'import des assets manquants puis re-compose
+- (b) **Drop fichier(s) local** · skill consume immédiatement et re-compose
+- (c) **Skip pour cette pub** · la créa actuelle est OK comme ça
+- (d) **Skip pour toujours** · ces layers ne sont pas pertinents pour cette brand (flag opérateur preference, plus de relance)
+
+Pas blocking. Pas refuser. Pas push. Soft offer 1 fois, operator passe à autre chose si pas pertinent. Jamais nommer les skills (import-asset / extract_from_url) en surface.
+
+**Bridge code (v2.51 NEW · câblage explicite Task tool params)** ·
+
+Selon réponse operator, l'agent invoke concrètement ·
+
+- **Option (a) Récupère depuis le site** · pour chaque layer manquant dans `composite_layers_missing[]`, invoke `import-asset` skill via Task tool · params concrets ·
+  ```
+  Task tool invocation par layer manquant ·
+  - description · "Récupère {label_humain_layer} depuis site brand"
+  - subagent_type · "general-purpose" (import-asset recommended_model: sonnet, subagent_safe: true)
+  - prompt · "Run import-asset Mode C extract_from_url pour {brand_slug}. Brand URL · {brand.identity.website}. Asset type · {layer.type} (logo OU badge selon layer demandé). Pour badge · slug {layer.slug} (ex cert_plantes_naturelles). Mode C workflow standard 4 sub-steps (C.1 scrape HTML, C.2 extract candidats heuristics par type, C.3 download + rasterize SVG fallback chain, C.4 operator gate validation). Return path canonical asset post-validation."
+  ```
+  Wait completion par layer. Re-read `visual_identity.json#assets_canonical.{slot}` post-completion. Si peuplé + validé · re-trigger `multi_layer_composite()` pour re-compose la pub avec les layers maintenant disponibles. Si operator rejected dans import-asset HR4 gate · skip ce layer pour cette pub (l'overlay sera incomplet pour cette créa, OK).
+
+- **Option (b) Drop fichier(s) local** · pour chaque layer manquant, AskUserQuestion path absolu fichier. Pour chaque fichier dropé, invoke `import-asset` Mode A direct · ·
+  ```
+  Task tool ·
+  - prompt · "Run import-asset Mode A operator_drop_local_path pour {brand_slug}. Asset type · {layer.type}. Slug si applicable · {layer.slug}. File path · {operator_drop_path}. Quality assessment 5 critères + operator gate HR4."
+  ```
+  Wait completion. Re-trigger multi_layer_composite() avec layers maintenant peuplés.
+
+- **Option (c) Skip pour cette pub** · finalize la créa actuelle telle quelle (build sans layers manquants). Meta `composite_layers_missing[]` log pour audit. No re-compose.
+
+- **Option (d) Skip pour toujours** · flag dans `brands/{slug}/brand.json#preferences.composite_layers_skip` array avec entries `{type, slug}`. Future invocations compose-creative layered ne re-proposent plus ces layers pour cette brand. Finalize créa actuelle. Cohérent operator decision · pas tous les brands ont logo/badge pertinents.
+
+Pas de "run import-asset Mode C" en surface operator. Le bridge code ci-dessus est instruction agent-facing pour câblage runtime, jamais leak operator.
+
+**Meta logged additif** ·
+- `composite_layers: [...]` (array ordered des layers appliqués avec params résolus)
+- `composite_layers_assets_paths: [...]` (paths absolus pour audit)
+- `composite_layers_missing: [...]` (array layers demandés mais slot vide, surface à operator v2.50+)
+
+**Workflow recommandé v2.48** ·
+1. `craft-packshot` upstream → canonical packshot validé
+2. `import-asset` pour logo + badge cert plantes
+3. `compose-creative composite_mode: layered composite_layers: [packshot, logo, badge:cert_plantes_naturelles]` → ad complet pixel-exact branded
+
+Avantage multi-layer · pubs avec branding complet (packshot + logo + badge cert) tous pixel-exact, réutilisation cross-pubs sans regen. Limite · si scene a composition complexe (model holding produit), packshot collé tient pas. Fallback `composite_mode: full_regen` pour ces cas (mais perd fidélité branding).
 
 ---
 
@@ -352,12 +752,14 @@ Conforme creative.schema v1.2 :
 
 Render fiche markdown selon format S55 fiche v5 forward (template ci-dessous). Vocabulaire opérateur uniquement, pas plumbing. Pas `intent_mix: {primary: DR}`, dire `Type de campagne : direct response`. Pas `overlay_density: 0.6`, dire `Cadrage : hook + claim layered sur packshot`.
 
-**No orphan output.** Terminer sur 1 reco actionnable forte ancrée sur ce qui vient d'être composé.
+**No orphan output.** Terminer sur 1 reco douce (soft offer) ancrée sur ce qui vient d'être composé. Langage métier zéro jargon technique, jamais nommer de skill ni concept interne.
 
-- Confidence ≥ 0.5 + chaîne cohérente : suggest tester maintenant (plateforme + audience cible recommandée).
-- Confidence < 0.5 (hypothèse non-validée) : suggest A/B avec 2 angles concurrents (run `compose-creative` sur angle alternatif).
-- Variantes du concept : suggest `recompose-creative` pour photo_swap / hook_swap / persona_split.
-- Visual_identity packshot manque : lien vers run `define-specs`.
+- Chaîne cohérente · *"Cette créa est cohérente. Si tu veux, on peut la tester sur Meta avec ton audience principale."*
+- Hypothèse non-validée · *"Pas encore certain que cet angle va marcher. Si tu veux, on peut tester 2 angles en parallèle pour voir lequel performe."*
+- Variantes possibles · *"Si tu veux, on peut décliner cette créa (autre hook, autre persona, autre plateforme) sans tout refaire."*
+- Photo produit manque · *"Il manque une photo officielle du produit pour vraiment bien faire. Si tu en as une, drop-la, sinon on peut la générer."*
+
+**Anti-pattern UX prose** · JAMAIS nommer `compose-creative`, `recompose-creative`, `define-specs`, `photo_swap`, `hook_swap`, `persona_split`, `Visual_identity` en surface operator. Soft offer langue métier · "tester", "décliner", "drop-la", "photo officielle".
 
 Une reco forte, pas trois équivalentes.
 
@@ -369,7 +771,7 @@ Une reco forte, pas trois équivalentes.
 2. **Hardcoded mécanique.** Modifier le prompt mécanique hardcodé dans le skill au lieu de lookup canon registry SSOT. Drift inévitable cross-products.
 3. **Skip angle.formula validation.** NOYAU sans angle = creative null. Refuse de composer si `angle.json` absent ou `formula` vide.
 4. **Direct write produced/.** Mode `proposed` non-optionnel. Mutation gate via `write_to_context` obligatoire.
-5. **Regen >3 iter pour label preservation.** Basculer compositing externe v2.35, ne pas brûler API budget en boucle.
+5. **Regen >3 iter pour label preservation.** Basculer en mode layered (HR-COMPOSITE) si canonical asset dispo, sinon flag opérateur en langage métier (HR3.4). Ne pas brûler API budget en boucle.
 6. **JSON brut leak.** Surface `intent_mix: {primary: DR, weights: {DR: 0.6}}` à l'opérateur. Règle : traduction systématique en langage métier.
 7. **Plumbing leak.** Surface `field_path`, `source`, `confidence`, `mode` à l'opérateur. Règle : opérateur voit `observé / déduit / déclaré / incertain`, jamais numbers.
 8. **Doctrine name leak.** Surface `canonical-matrix-reasoning`, `Contextual Intelligence`, `Schema Encoding Discipline` à l'opérateur. Règle : opérateur sent les effets, pas les noms.
@@ -380,71 +782,61 @@ Une reco forte, pas trois équivalentes.
 
 ## Operator output template
 
-### Fiche v5 forward template
+### Fiche canonique v2.51 forward template
+
+Réf canonique · `resources/templates/operator-fiche-output.md`. Header plain language, body en vocabulaire métier, footer soft offer 1 ligne max. Bloc retrieval `concept_id`/`variant_of`/`intent_mix` persiste en backstage (creative.json) mais n'apparaît PAS dans le rendu operator.
 
 ```
 ═══════════════════════════════════════════════════════════════
-{BRAND} · COMPOSE CREATIVE · {CRT-N}
+{BRAND_HUMAIN} · Pub n°{N}
 ═══════════════════════════════════════════════════════════════
-{audience_slug} · angle {angle_id} · {date}
+{date YYYY-MM-DD} · {1 phrase plain language qui décrit la pub · ex "pub direct response Meta carrousel pour audience post-grossesse"}
 
 ───────────────────────────────────────────────────────────────
-1 · CE QUE LA CRÉA VA MONTRER
+1 · CE QUE LA PUB MONTRE
 ───────────────────────────────────────────────────────────────
-Format             {format} · {ratio} · {language}
-Hook visuel        {scene_description}
-Hook texte         "{hook_text}"
-Body               {body_description ou -}
-CTA texte          "{cta_text}"
-Branding           {brand_visibility}
-Visuel généré      /tmp/compose-creative/{...}.jpg → produced/{CRT-N}.jpg
+Format             {plain · ex "carrousel · 4:5 · français" ou "image statique · 1:1 · anglais"}
+Accroche visuelle  {description scène en prose · 1-2 lignes}
+Accroche texte     "{verbatim hook · max 8 mots}"
+Corps              {description body · 1 ligne · ou — si pas de body}
+Bouton             "{verbatim CTA}"
+Branding           {plain · ex "Logo en bas à droite · photo officielle du produit centrée"}
+Photo générée      ouvre dans Preview · open {path}
 
 ───────────────────────────────────────────────────────────────
-2 · CE QUE LA CRÉA RACONTE
+2 · CE QUE LA PUB RACONTE
 ───────────────────────────────────────────────────────────────
-Cible              {audience_summary depuis profile}
-Niveau conscience  {schwartz double-stage}
-Vérité non-dite    "{insight}" ({modalité}) ou -
-Angle d'attaque    {levier · contre quoi · promesse}
-Mécanique          {nom registry} · {1 phrase}
-Pivot du concept   "{atome_irreductible}" · {1 phrase justif}
+Cible              {1 phrase plain · ex "femmes 35-45 post-grossesse, chute de cheveux + sentiment perte d'identité"}
+Niveau conscience  {plain · ex "consciente du problème, pas encore du produit"}
+Vérité non-dite    "{verbatim insight}" · {formulée | implicite | absente}
+Angle              {1 phrase plain · ex "frustration des soins de surface"}
+Type de campagne   {plain · "direct response" ou "branding" ou "direct response avec touche brand (priorité direct response)"}
+Mécanique          {nom métier · ex "before-after-bridge"} · {1 phrase explicative}
+Pivot du concept   "{atome irréductible}" · {1 phrase justif}
 
 ───────────────────────────────────────────────────────────────
-3 · DIAGNOSTIC PRÉDICTIF
+3 · DIAGNOSTIC
 ───────────────────────────────────────────────────────────────
-Cohérence chaîne   audience → insight     {tient | tension | casse}
-                   insight → angle        {tient | tension | casse}
-                   angle → mécanique      {tient | tension | casse}
-                   mécanique → craft      {tient | tension | casse}
-Score prédictif    {N} / 5 · {1 phrase}
-Forces             · {bullet}
-                   · {bullet}
-                   · {bullet}
-Risques            · {bullet}
-                   · {bullet}
-                   · {bullet}
+Cohérence          {plain · ex "tient · la mécanique reflète l'insight, l'angle est cohérent avec la cible"}
+Score arrêt-scroll {★★★★☆ · 1-5 stars · 1 phrase courte}
+Forces             · {observable concret · ex "rupture pattern Meta feed via cadrage carré sur visage"}
+                   · {observable}
+                   · {observable}
+Risques            · {observable · ex "claim 'cliniquement testé' nécessite preuve attachée"}
+                   · {observable}
+                   · {observable}
 
 ───────────────────────────────────────────────────────────────
-TAGS RETRIEVAL
-───────────────────────────────────────────────────────────────
-brand              {brand_slug}
-niche              {niche}
-audience           {audience_summary}
-mode               {concept | template | asset}
-mecanique          {registry_id}
-intent_mix         primary={primary} secondary={secondary[]} weights={...}
-craft_mode         density={overlay_density} mark={brand_mark_present}
-format             {format}
-trigger            {evergreen | seasonal trigger}
-geographie         {geo}
-annee              {year}
-concept_id         {cpt_id}
-variant_of         {parent_concept_id ou null}
-source             internal_production
-
-───────────────────────────────────────────────────────────────
-{1 reco actionnable contextuelle, 1-2 phrases}
+{1 reco soft offer 1 ligne max · ex "Si tu veux, on peut la tester en live sur Meta avec ton audience principale."}
 ```
+
+**Backstage (creative.json, NON rendu operator)** · `concept_id`, `variant_of`, `variant_axis`, `intent_mix`, `execution.overlay_density`, `execution.brand_mark_present`, `tags.source`, `meta.validation_status`, etc. Vivent dans le JSON persisté pour retrieval programmatique et audit · operator ne les voit pas.
+
+**Validation pre-ship fiche** ·
+1. Header ne contient pas `COMPOSE CREATIVE`, `CRT-N`, `variant_axis`, `concept_id`
+2. Body ne contient pas `intent_mix: {...}`, `overlay_density: 0.6`, `craft_mode`, field paths JSON
+3. Footer · 1 phrase soft offer max, jamais menu (a)/(b)/(c), jamais "Tape commande X"
+4. Vocabulaire cohérent avec `resources/templates/operator-fiche-output.md § Mappings vocabulaire`
 
 ---
 
@@ -453,8 +845,8 @@ source             internal_production
 - **Hypothesis from scratch (pas d'angle_id).** Skill propose 2-3 angles candidats depuis `profile.problem_map` + `canon/copy/formules-titres`. Demande validation opérateur AVANT pipeline gen. Ne compose jamais sur angle inventé sans gate.
 - **Multi-products brand.** Si `product_slug` absent et marque a 2+ produits, demande choix opérateur (1 question AskUserQuestion). Ne devine pas.
 - **Visual_identity partiel.** `primary_front` présent mais `distinctive_features[]` vide → continue, flag confidence dégradée. `primary_front` absent → refuse.
-- **fal.ai API down ou rate limit.** Surface honnête, propose retry ETA + path manuel (compositing externe). Ne tente pas mock.
-- **Label régressé après 3 iter.** Persiste creative.json + JPG avec note `label_compositing_required: true` dans meta. Flag à l'opérateur, suggest v2.35 compositing externe.
+- **fal.ai API down ou rate limit.** Surface honnête, propose retry ETA + langage métier soft offer. Ne tente pas mock.
+- **Label régressé après 3 iter.** Persiste creative.json + JPG avec note `label_compositing_required: true` dans meta (backstage). Flag à l'opérateur en langage métier HR3.4 (soft offer · canoniser la photo produit pour text fidelity garantie).
 - **Concept variant.** Si opérateur déclare "comme CRT-12 mais hook différent", set `variant_of: {parent_concept_id}` + `variant_axis: hook_swap`. Lineage préservé.
 
 ---
@@ -467,5 +859,7 @@ source             internal_production
 - Schwartz stages : `resources/schemas/_shared/awareness-stage.json`.
 - Visual identity schema : `resources/schemas/spec.schema.json#visual_identity` (v1.10+, S55 v2.31 extension).
 - Audit visual fidelity : `decisions.md` D#392 (S55 audit régression label wordmark with brackets).
-- Sibling skills : `decompose-ad` (REVERSE pattern, fiche v5 layout source), `produce-paid-angles` (forward angles textuels), `produce-copy-brief` (brief copy seul), `recompose-creative` (variant existant), `define-specs` (visual_identity prerequisite), `profile-audience` (profile prerequisite).
-- Doctrines : `docs/system/canonical-matrix-reasoning.md` (production discipline), `docs/system/skill-authoring-discipline.md` (frontmatter triad), `docs/system/contextual-intelligence.md` (operator-facing rule absolue).
+- Sibling skills : `decompose-ad` (REVERSE pattern, fiche v5 layout source), `produce-paid-angles` (forward angles textuels), `produce-copy-brief` (brief copy seul), `recompose-creative` (variant existant), `define-specs` (visual_identity prerequisite), `profile-audience` (profile prerequisite), `craft-packshot` v1.1+ (canonical asset upstream pour mode `layered` HR3b · v2.47), `compose-overlay-text` v2.43+ (text overlay PIL post-gen · complémentaire à layered packshot).
+- Doctrines : `docs/system/canonical-matrix-reasoning.md` (production discipline), `docs/system/skill-authoring-discipline.md` (frontmatter triad), `docs/system/contextual-intelligence.md` (operator-facing rule absolue), `docs/system/model-versioning-canon.md` v2.44+ (endpoint canon nano-banana-2/edit, frontmatter permissions.external_apis[] obligatoire), `docs/system/visual-identity-discipline.md` v2.43+ (canonical assets + wordmark_pattern).
+- Audit v2.46 endpoint migration : craft-packshot v1.1 upstream (S55 v2.44 stress test cellule-boost gen v10 · 1 attempt vs 9 échouées nano-banana-pro legacy) · pattern stress-testé puis propagé downstream consumers.
+- Pattern v2.47 layered compositing · packshot canon (craft-packshot) + scène séparée nano-banana-2 + PIL composite paste · résout problème historique label regression sans burn budget API retry · text fidelity garantie 100% via substrat canonisé.

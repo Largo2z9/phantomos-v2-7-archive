@@ -1,11 +1,13 @@
 ---
 name: snapshot-brand
 type: producer
-version: "1.0.0"
+version: "1.0.1"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
 reasoning_pattern: null
+patch_notes:
+  v1.0.1: "v2.51 operator-fiche-output canonique template applied · trust-and-deepen close + Movement 4 hand-off refactor langage métier. Close menu post-synthesis · drop skill names en parenthèses (mine-voc, mine-vom, deepen-brand-context) → descriptions plain language uniquement (15 min validation guidée / 15 min écoute clients / 25 min écoute marché / 45 min full). Movement 4 hand-off Step 5 · drop wording `mine-voc fait X` / `produce-paid-angles consomme Y` → langage métier accessible (`écoute clients Trustpilot et forums` au lieu de nommer skill, `set d'angles ranked prêt brief créa` au lieu de `produce-paid-angles consume`). Cohérent template canonique resources/templates/operator-fiche-output.md."
 description: >
   Automatically fills spec.json, offers.json and the base of profile.json
   from a product URL. Scrapes the page, asks 4 closed questions about the audience,
@@ -457,27 +459,29 @@ L'opérateur valide ou corrige. Encoder via `meta.applies_to_products: ["hair-bo
 
 Cette question débloque la navigation cross-référencée dans `/phantom` : *"voir les audiences sur hair-boost"* devient une commande naturelle (`/phantom {brand_slug} products hair-boost` rend la fiche produit avec les audiences cibles dessous).
 
-### Movement 4 — Hand-off vers mine-voc (operator-facing)
+### Movement 4 — Hand-off vers approfondissement (operator-facing)
 
-Before closing Step 5, explicitly tell the operator how the audience encoding will be **used next**. Anchors why the work matters and proposes the next skill. **Operator-facing language**: skill names are OK (the operator is learning the system), internal field names are NOT.
+Before closing Step 5, explicitly tell the operator how the audience encoding will be **used next**. Anchors why the work matters and proposes the next move in plain language métier · jamais nommer les skills internes en surface operator.
 
-Format example:
+Format example (FR · canonique v2.51) ·
 
 > *"Voilà comment ces audiences vont servir à partir de maintenant.*
 >
-> *Ce qu'on vient de poser est volontairement minimal : un nom, un découpage, une hypothèse. Pas de pain_points détaillés, pas d'objections, pas de citations clientes. C'est exprès — ces fields-là, je ne vais pas les inventer depuis une page produit, ils doivent venir de ce que disent vraiment tes clientes.*
+> *Ce qu'on vient de poser est volontairement minimal · un nom, un découpage, une hypothèse. Pas de douleurs détaillées, pas d'objections, pas de citations clientes. C'est exprès — ces choses-là, je ne vais pas les inventer depuis une page produit, ils doivent venir de ce que disent vraiment tes clientes.*
 >
-> *Deux skills enrichissent ça :*
+> *Deux étapes enrichissent ça naturellement ·*
 >
-> *mine-voc lit Trustpilot, les widgets onsite, les threads Reddit pertinents et remplit pour chaque sous-groupe les douleurs exactes (le vrai mot qu'elles utilisent), les objections récurrentes, les expressions clés. C'est ce qui passe les audiences de l'hypothèse à du validé sourcé. ~30 min en arrière-plan, tu n'attends pas.*
+> *D'abord, on va écouter tes vrais clients · Trustpilot, widgets onsite, threads Reddit pertinents. On remplit pour chaque sous-groupe les douleurs exactes (le vrai mot qu'elles utilisent), les objections récurrentes, les expressions clés. C'est ce qui passe les audiences de l'hypothèse au validé sourcé. ~30 min en arrière-plan, tu n'attends pas.*
 >
-> *produce-paid-angles consomme ensuite ces audiences enrichies pour sortir un set d'angles ranked, prêt à brief créa. Sans mine-voc d'abord, les angles sortent au mot près de mon chapeau, pas de tes clientes — c'est pour ça que je recommande l'ordre.*
+> *Ensuite, on consomme ces audiences enrichies pour sortir un set d'angles ranked, prêt à brief créa. Sans l'écoute clients d'abord, les angles sortent au mot près de mon chapeau, pas de tes clientes · c'est pour ça que je recommande cet ordre.*
 >
 > *Tu as aussi `/phantom {brand_slug}` à tout moment pour voir ces audiences avec leur niveau d'enrichissement.*
 >
-> *Mon avis : on lance mine-voc maintenant et on enchaîne sur les angles. Si t'as une deadline créa cette semaine et tu pousses direct sur les angles en hypothèse, dis-le, on ajuste. Et si t'as déjà des données existantes (reviews exportées, analytics, retours SAV) à m'injecter avant mine-voc, donne-moi le fact le plus dense en 1-2 phrases — ça nourrit le mining."*
+> *Mon avis · on lance l'écoute clients maintenant et on enchaîne sur les angles. Si t'as une deadline créa cette semaine et tu pousses direct sur les angles en hypothèse, dis-le, on ajuste. Et si t'as déjà des données existantes (reviews exportées, analytics, retours SAV) à m'injecter avant, donne-moi le fact le plus dense en 1-2 phrases · ça nourrit le travail."*
 
-The closing question fuses three options: lance mine-voc maintenant, pousse direct sur angles, ou existe data à injecter d'abord.
+The closing question fuses three options · lance l'écoute clients maintenant, pousse direct sur angles, ou existe data à injecter d'abord. Routing interne (vers `mine-voc` → `produce-paid-angles`) se fait silencieusement à l'agent · operator ne voit jamais ces skill names en surface.
+
+**Anti-pattern UX** · JAMAIS dire `mine-voc fait X` ou `produce-paid-angles consomme Y` en prose operator. Reformuler en langue métier · *"on va écouter tes vrais clients"*, *"on consomme ces audiences enrichies pour sortir un set d'angles"*, soft offer chemin recommandé.
 
 ### Movement gate (technical)
 
@@ -561,15 +565,55 @@ End with one of two close patterns, depending on operator signal:
 
 **Trust-and-deepen close (operator has signaled they trust the synthesis and want to go deeper):**
 
-If the operator's reply to the synthesis carries trust signals (*"ok ça me va"*, *"go"*, *"trust c'est bon"*, *"valide tout"*), or if they explicitly ask for more depth, offer the deepening paths via AskUserQuestion (4 substantive options):
+If the operator's reply to the synthesis carries trust signals (*"ok ça me va"*, *"go"*, *"trust c'est bon"*, *"valide tout"*), or if they explicitly ask for more depth, offer the deepening paths via AskUserQuestion. Plain language descriptions only, zero skill names in parenthèses (operator-facing rule absolue · cf root CLAUDE.md):
+
+> Si tu veux, on peut creuser ·
+> - Soit en validant point par point ce que je viens d'écrire (15 min, tu corriges au fur et à mesure)
+> - Soit en allant chercher ce que tes vrais clients disent sur Trustpilot et les forums (15 min)
+> - Soit en regardant la conversation plus large dans la niche (25 min)
+> - Soit les deux (45 min)
+
+(EN equivalent for English operators):
 
 > Where do you want to go from here?
 > - Validate point by point (15 min, you correct as we go)
-> - Voice of Customer — what your real customers say (15 min, mine-voc)
-> - Voice of Market — what the niche conversation reveals (25 min, mine-vom)
-> - Full deepening (VoC + VoM + cross-synthesis, ~45 min, deepen-brand-context)
+> - Listen to what your real customers say on Trustpilot and forums (15 min)
+> - Look at the broader conversation in your niche (25 min)
+> - Both, with cross-synthesis (45 min)
 
-If none of those, the operator can also pull `study-niche-marketdeepdive` standalone (45 min strategic memo) — propose it only on direct ask, NOT in the default option set (cost asymmetry per v2.9.0 architecture decision).
+Si l'opérateur veut un strategic memo standalone (45 min · approfondissement niche), proposer uniquement sur demande directe, JAMAIS dans le set d'options par défaut (cost asymmetry per v2.9.0 architecture decision). Le routing interne (vers `mine-voc` / `mine-vom` / `deepen-brand-context` / `study-niche-marketdeepdive`) se fait silencieusement à l'agent · operator ne voit jamais ces noms en surface.
+
+**Visual assets soft mention (v2.50 · pull-not-push pattern) :**
+
+After the synthesis (default close OR trust-and-deepen close), if the brand has no visual assets canonized yet (brand-level `assets_canonical.logo_canonical` empty AND no `badge_canonical` entries AND no `mascotte_canonical`), add **at most one short line** mentioning visual assets as a *purely optional* next path the operator can pull when relevant downstream :
+
+> *"Si tu veux préparer tes visuels (logo, badges) pour les pubs, on peut le faire en récupérant depuis ton site."*
+
+Rules (strict, anti-push) :
+- One line max. Never a menu, never bullets, never a "tape commande X" suffix.
+- Never name the skill (`import-asset`, `extract_from_url`) in operator prose.
+- Posture · *soft offer*, not directive. Use "Si tu veux" / "If you want" framing.
+- If operator skips or pivots, the agent moves on without relance. No "are you sure?", no "this is recommended".
+- Drop the line entirely if assets already canonized (no value-add to repeat).
+
+**Bridge code (v2.51 NEW · câblage explicite Task tool params)** ·
+
+Si operator répond positivement (*"oui"*, *"go"*, *"vas-y"*, *"OK"* après la mention visuelle), invoke `import-asset` skill via Task tool · params concrets ·
+
+```
+Task tool invocation ·
+- description · "Récupère assets visuels brand depuis site"
+- subagent_type · "general-purpose" (import-asset recommended_model: sonnet, subagent_safe: true)
+- prompt · "Run import-asset Mode C extract_from_url pour {brand_slug}. Brand URL · {brand.identity.website} (depuis brand.json post-snapshot). Asset type · auto_multi (skill itère sur tous types détectés · logo + badges + payment_methods + patterns). Workflow standard HR7 4 sub-steps (C.1 scrape HTML curl User-Agent moderne, C.2 extract candidats heuristics par type, C.3 download + rasterize SVG fallback chain magick > convert > cairosvg, C.4 operator gate validation par type). Return inventory peuplé visual_identity.json#assets_canonical post-validation."
+```
+
+Wait completion. Skill retourne inventaire des assets canonisés. Snapshot-brand continue son no-orphan close standard (deep paths Voice of Customer / Voice of Market / etc.) sans relance sur les visuels (operator a déjà décidé).
+
+Si operator répond négatif ou pivote (*"non merci"*, *"plus tard"*, *"on verra après"*, OU change directement de sujet), agent abandon silencieusement la mention visuelle. Pas de relance, pas de "are you sure?".
+
+**Bridge code reste instruction agent-facing**, jamais leak operator. L'operator voit uniquement la mention soft 1 ligne et son own choice.
+
+Rationale · onboarding completion (jauge "brand prête à X%" backlog v2.51+) consume canonical assets as one dimension of brand readiness. v2.50 ships the soft mention upstream so the operator becomes aware of the path without pressure, and the actual import is triggered later when a downstream skill (e.g. `compose-creative` mode layered) needs the asset and offers to fetch it then. v2.51 ajoute le bridge code câblé pour que l'option (a) "Récupère depuis site" déclenche concrètement import-asset Mode C sans que l'agent improvise les params.
 
 If the page was thin (`_snapshot.confidence_score` internal flag low), say so in prose inside the synthesis (*"the page didn't give me much beyond the basic spec — your hero benefits and the anti-age angle I'm inferring from product context, not direct copy"*) — never expose the score as a number, never list "missing fields" as a separate block.
 

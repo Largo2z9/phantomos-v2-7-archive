@@ -144,8 +144,8 @@ One or two sentences that anchor the mental model. Lexicon-grounded. No marketin
 - grounded (consultant) : *"It's a folder on your machine where your method and your client playbooks live as structured files. An agent reads it every time you open a session — your tacit knowledge becomes operable, not just yours."*
 - standard (DTC operator) : *"Here the thing you work with is a local workspace. Your brand context lives in structured files in it. The agent reads the workspace on every request and writes back to it when you teach it something."*
 - standard (consultant) : *"You have a local workspace where your repeatable method, your frameworks, and your client engagements live in structured files. The agent reads it on every request and writes back when you correct or teach it something new."*
-- dense : *"Technically it's an agentic workspace OS. One context unit per workspace (brand, client, cohort, niche). An agent contract loaded on every session. Six versioned entities per context. Every write is recorded in an append-only event log."*
-- technical : *"Stateful local-first agentic runtime, Claude Code as host, six-entity Context DB, mutation-gated writes, file-based, domain-agnostic."*
+- dense : *"Technically it's an agentic workspace OS. One context unit per workspace (brand, client, cohort, niche). An agent contract loaded on every session. Six versioned entities per context (brand, products, offers, audience, learnings, strategy), plus les assets visuels (photos produit officielles, logo brand, badges certifications) que tu peux apporter ou que je peux préparer pour toi à partir de ton site. Every write is recorded in an append-only event log."*
+- technical : *"Stateful local-first agentic runtime, Claude Code as host, six-entity Context DB + visual-assets layer (canon packshots, brand assets), mutation-gated writes, file-based, domain-agnostic."*
 
 **2. Name the operator's frustration.**
 Weave into the prose, not as a separate "here is the problem" block. Pick two or three of these signals and merge them into a natural acknowledgement of what the operator has likely been through:
@@ -267,7 +267,8 @@ The agent draws from these archetypes when composing options, but is not obligat
 - **Dependency and long-term bet** — model drift, platform risk, durability.
 - **Compound and process moat** — the second-order gain, only for operators already convinced of the first-order one.
 - **Lateral reorient** — a genuine "what am I probably not asking" angle, context-specific.
-- **Pipeline DTC paid acquisition** — comment snapshot → mine-voc → produce-paid-angles → produce-copy-brief s'enchaînent pour passer d'une URL à un brief créa prêt à shipper. Pertinent quand l'opérateur a signalé un profil paid manager / agency / DTC media buyer en Milestone 1, 2 ou 4.
+- **Pipeline DTC paid acquisition (textuel)** — comment snapshot → mine-voc → produce-paid-angles → produce-copy-brief s'enchaînent pour passer d'une URL à un brief créa prêt à shipper. Pertinent quand l'opérateur a signalé un profil paid manager / agency / DTC media buyer en Milestone 1, 2 ou 4.
+- **Pipeline DTC visuel + copy complet** — comment snapshot → mine-voc → produce-paid-angles → produce-copy-brief → craft-packshot/import-asset → compose-creative s'enchaînent pour passer d'une URL à une créa visuel + brief copy prête à shipper sur Meta, branding et photo produit pixel-exact. La photo produit canon et les assets brand (logo, badges) sont préparés une fois et réutilisés sur chaque pub suivante, plus de dérive visuelle d'une ad à l'autre. Pertinent quand l'opérateur a signalé un profil DTC paid / agency / e-com en Milestone 1, 2 ou 4 et veut voir jusqu'où la pipeline va (créa shippable, pas juste brief).
 
 The agent composes from these OR generates fresh angles from the conversation. The list is not exhaustive.
 

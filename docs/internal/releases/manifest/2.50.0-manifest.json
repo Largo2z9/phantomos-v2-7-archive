@@ -1,0 +1,49 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.50.0",
+  "released_at": "2026-05-13",
+  "compatible_from": "2.0.0",
+  "type": "ux_patch_pull_not_push",
+  "summary": "UX pull-not-push pattern systémique · jamais forcer user, soft offer 1 ligne quand asset canonique manque downstream, langage métier zéro jargon technique. 3 patches couplés.",
+  "changes": [
+    {
+      "category": "skill_ux_patch",
+      "action": "patched",
+      "files": [".skills/skills/snapshot-brand/SKILL.md"],
+      "section": "Bloc 1 · snapshot-brand HR no-orphan close · Visual assets soft mention v2.50 NEW",
+      "rationale": "Après synthesis (default close OU trust-and-deepen close), si la brand n'a pas d'assets visuels canonisés (brand-level logo_canonical empty + no badge_canonical entries + no mascotte_canonical), ajout 1 ligne soft mention · 'Si tu veux préparer tes visuels (logo, badges) pour les pubs, on peut le faire en récupérant depuis ton site.' Rules strict anti-push · 1 ligne max · jamais menu/bullets · jamais nommer le skill (import-asset / extract_from_url) en operator prose · posture soft offer 'Si tu veux' framing · drop la ligne si assets déjà canonisés (no value-add to repeat) · operator skip/pivot OK sans relance ('are you sure?' / 'recommended' = anti-pattern). Rationale documenté · onboarding completion jauge (backlog v2.51+ 'ma brand est prête à X%') consume canonical assets as one dimension of brand readiness · v2.50 ship soft mention upstream pour awareness sans pression, import reste pull naturel downstream quand downstream skill needs it. Cohérent feedback Largo session 2026-05-13 · jamais forcer user, pull naturel via downstream."
+    },
+    {
+      "category": "skill_ux_patch",
+      "action": "patched",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "Bloc 2 · compose-creative v1.4.0 → v1.4.1 · HR-COMPOSITE + HR3b Step 3b.2 soft offer pull-not-push",
+      "rationale": "HR-COMPOSITE decision rule signal 2 'canonical asset disponible' · avant v1.4 refus + flag 'run craft-packshot d'abord' (jargon skill name surface operator) · v1.4.1+ pattern soft offer 3 options operator · (a) drop fichier local, (b) fetch from URL via bridge, (c) fallback full_regen mode classique. Jamais bloquant, jamais nommer le skill. HR3b Step 3b.2 lookup canonical packshot · idem refactor · 3 options surface en langage métier · 'Pour faire la pub en photo studio (produit pixel-exact), il me faut une photo officielle du {product_name}. Trois options · (a) Tu as un fichier en local ? Drop-le. (b) Je peux la récupérer depuis ton site et la préparer (1-2 min). (c) Je génère en mode classique (le produit peut bouger légèrement vs photo officielle).'. Skill chain l'option choisie · drop handling OR fetch from URL OR fallback HR3 full_regen. Pas blocking, pas refuser, pas push."
+    },
+    {
+      "category": "skill_ux_patch",
+      "action": "patched",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "Bloc 3 · compose-creative HR3b Step 3b.5 multi-layer missing assets soft offer",
+      "rationale": "Si multi_layer_composite() rencontre un layer dont le slot canonique est vide (ex composite_layers: ['packshot', 'logo', 'badge:cert_plantes_naturelles'] mais logo_canonical empty), v1.4.0 skip silencieux. v1.4.1+ pattern · build créa avec layers disponibles puis surface gap à operator en fin de pipeline avec soft offer 4 options · (a) récupère depuis site (chain auto via bridge), (b) drop fichier(s) local, (c) skip cette pub la créa actuelle est OK comme ça, (d) skip toujours flag opérateur preference plus de relance pour ces layers cette brand. Soft offer 1 fois operator passe à autre chose si pas pertinent. Jamais nommer skills (import-asset / extract_from_url) en surface. Meta logged additif composite_layers_missing[] array layers demandés mais slot vide pour audit + pattern detection downstream."
+    },
+    {
+      "category": "backlog_documented",
+      "action": "added",
+      "files": ["_version.json", "CHANGELOG.md"],
+      "section": "Backlog v2.51+ · jauge complétion brand",
+      "rationale": "Documenté pour v2.51+ · jauge complétion brand 'ma brand est prête à X%' agrège (1) 6 entités core (brand, product, offers, audience, learnings, strategy) + (2) assets canoniques (packshot, logo, badge, mascotte, pattern). Visible quand user demande ?, capabilities, brief-day (skills déjà existants pour montrer l'état). Touche status.json schema + brief-day SKILL.md + query-context SKILL.md. Chantier structurant, à spec après · pas dans v2.50. Cohérent feedback Largo 'on avait parlé de potentiellement un tout doux jour en boarding fin genre pour voir le niveau de complétion'."
+    },
+    {
+      "category": "infrastructure",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "section": "Manifest regen post v2.50",
+      "rationale": "Régénération manifest via python3 .skills/build-manifest.py post-patches snapshot-brand + compose-creative v1.4.1. 56 skills · PyYAML strict parser · 0 warning attendu."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "Pattern UX systémique pull-not-push appliqué cross-skills · jamais forcer user, soft offer 1 ligne quand asset canonique manque downstream, langage métier zéro jargon. Workflow utilisateur · (1) Setup brand via snapshot-brand · synthesis close + soft mention 1 ligne optionnelle 'Si tu veux préparer tes visuels...', operator skip OU drop si pertinent. (2) Lancement pub via compose-creative · si layered mode + asset manque, skill propose 3 options (drop local / fetch site / fallback classique) sans bloquer. (3) Multi-layer pub avec layers manquants · build créa avec dispo + soft offer 4 options fin de pipeline (récupère / drop / skip / flag toujours skip). Backward compat strict additif · skills lèvent gracefully gap, jamais hard refuse. Onboarding completion jauge backlog v2.51+ structurant chantier dédié pour livrer 'brand prête à X%' visualisation. Cohérent règle UX · operator décide rythme, agent surface options en langage métier sans push.",
+  "next_release_note": "v2.51+ chantiers identifiés priorisés · (a) Jauge complétion brand 'ma brand est prête à X%' · spec dédié structurant · agrège 6 entities core + assets canoniques · touche status.json schema + brief-day SKILL.md + query-context SKILL.md · estimation ~4-6h. (b) Test live workflow complet v2.44+v2.47+v2.48+v2.49+v2.50 bout-en-bout sur kara karacare réelle URL · valider pull-not-push pattern + soft offers en conditions production. (c) JS-rendered pages support Playwright/Puppeteer fallback pour import-asset Mode C (Cloudflare challenge ou React/Vue client-render). (d) Niveler 3 chapitres canon copy sous-développés (archetypes-voix · leads · construction-offre) reporté v2.46-v2.50. (e) HR-21 audience cartography 3 invariants paper-only port vers validate-resources runtime. (f) HR-22 external_apis frontmatter validation runtime. (g) capabilities.md jargon pass 4."
+}

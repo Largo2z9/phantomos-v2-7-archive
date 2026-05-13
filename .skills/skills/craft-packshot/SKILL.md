@@ -6,7 +6,7 @@ subagent_safe: true
 operator_facing: true
 isolation_scope: brand_only
 layer: 2
-version: 1.1.0
+version: 1.2.0
 mode: proposed
 triggers_fr:
   - "crée packshot canon"
@@ -86,6 +86,7 @@ produces_proposals_for:
 patch_notes:
   v1.0.0: "v2.44 ship schema-driven canonical packshot generation. Workflow scrape → score → pick source → upload fal.ai → compose prompt depuis schémas → gen IA → quality assessment 8 critères → operator gate → persist canonical. Stress-testé S55 sur {product_slug} gen v2 (8/8 pass · text verbatim restored · zero hallucination cert badge text · all French diacritics preserved). Pattern schema-driven généralisable cross-produit même brand et cross-brand sous condition visual_identity v1.1+ populated."
   v1.1.0: "v2.44 swap endpoint nano-banana-pro/edit (Gemini 2.5 Flash Image legacy) → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025). Prompt template naturel français court (langue maternelle opérateur · 50-300 chars max · une seule variable container.shape · le reste constant · le model voit l'image attachée donc pas besoin de redécrire produit/couleur/matériaux/text label) vs verbeux corporate v1.0 (4000+ chars 16 variables). Stress-testé {product_slug} gen v10 · 1 attempt vs 9 échouées endpoint legacy (silhouette bouteille réinventée OR text gibberish). 2 nouveaux HR · HR-ANTI-VERBOSE (prompt minimum viable) + HR-MODEL-VERSIONING (verify latest endpoint version dispo pre-call). Doctrine sœur · docs/system/model-versioning-canon.md v2.44 NEW."
+  v1.2.0: "v2.51 operator-fiche-output canonique template applied · header + gate + footer refactor langage métier. Step 5 operator validation gate refactor selon canonique resources/templates/operator-fiche-output.md · header `═══ {BRAND} · {PRODUCT} · CRAFT PACKSHOT · GEN v{N} ═══` → `═══ {BRAND_HUMAIN} · Photo officielle · {product_humain} ═══` + sous-titre plain language `version {N}, prête pour ta validation`. Drop `{endpoint} · latency {N}s · resolution {WxH}` technical metadata sous-ligne (vit backstage sidecar). `Source pickée:` → `Source utilisée ·`, `Prompt brief (résumé non-jargon):` → `Brief utilisé ·`. Gate options refactor · `(a) Validé canon · flag _validated_by_operator: true + _canonical: true` → `(a) Validé · je marque comme version officielle de ta photo produit`, `(b) Retry · ajustements prompt spécifiques` → `(b) Re-essayer · ajustements (précise quoi)`, `(c) Re-pick source autre asset carousel` → `(c) Autre source · je re-pick une photo différente du carrousel`. Header gate `GATE OPERATEUR · choisir` → `À toi de valider`."
 ---
 
 # Skill: craft-packshot
@@ -356,49 +357,48 @@ Output table dense (cf HR5 above).
 
 ### Step 5 · Operator validation gate (CRITIQUE · BLOCKER canon)
 
-Surface à l'opérateur :
+Surface à l'opérateur selon template canonique `resources/templates/operator-fiche-output.md`. Plain language, zéro jargon plumbing ·
 
 ```
 ═══════════════════════════════════════════════════════════════
-{BRAND} · {PRODUCT} · CRAFT PACKSHOT · GEN v{N}
+{BRAND_HUMAIN} · Photo officielle · {product_humain}
 ═══════════════════════════════════════════════════════════════
-{date} · {endpoint} · latency {N}s · resolution {WxH}
+{date YYYY-MM-DD} · version {N}, prête pour ta validation
 
-Source pickée:
-  {source_path} · {resolution} · score {N}/5 · {1 line justif}
+Source utilisée ·
+  {source_filename} · {resolution} · {1 ligne plain language · ex "meilleure version
+  du carrousel produit, vue de face, fond propre"}
 
-Prompt brief (résumé non-jargon):
-  {1-2 lignes résumé · ex "studio packshot fond blanc pur, label verbatim
-   wordmark with brackets + product name + composition list,
-   accents FR préservés, anti-hallucination strict"}
+Brief utilisé ·
+  {1-2 lignes plain language · ex "photoshoot studio fond blanc pur, label conservé
+  caractère par caractère, accents français préservés, aucune invention textuelle"}
 
-Packshot généré:
-  {output_path}
+Photo générée · ouvre dans Preview · open {output_path}
 
-Quality check 8 points:
-  1. Wordmark verbatim         {pass | fail}
-  2. Sub-pill verbatim          {pass | fail}
-  3. Composition liste verbatim {pass | fail}
-  4. Duration mention exact     {pass | fail}
-  5. Cert badge no hallucination{pass | pass_partial | fail}
-  6. Accents FR préservés       {pass | fail}
-  7. Container fidèle           {pass | fail}
-  8. Background pur blanc       {pass | fail}
+Check qualité 8 points ·
+  1. Logo principal             {ok | à revoir}
+  2. Sous-titre du logo         {ok | à revoir}
+  3. Liste composition          {ok | à revoir}
+  4. Mention durée              {ok | à revoir}
+  5. Badge certification        {ok | acceptable | à revoir}
+  6. Accents français           {ok | à revoir}
+  7. Forme du produit           {ok | à revoir}
+  8. Fond blanc propre          {ok | à revoir}
 
-  Verdict: {N}/8 pass {· avec pass_partial cert badge si applicable}
+  Verdict · {N}/8
 
-  Résiduel: {1-2 lignes si pass_partial ou regression mineure · ex
-   "faint helix ghost visible through bottle glass · minor not blocker"}
+  Note · {1-2 lignes si applicable · ex "tout bon · juste un léger reflet dans le verre
+  du contenant, pas bloquant"}
 
 ───────────────────────────────────────────────────────────────
-GATE OPERATEUR · choisir
+À toi de valider
 ───────────────────────────────────────────────────────────────
-(a) Validé canon · flag _validated_by_operator: true + _canonical: true
-(b) Retry · ajustements prompt spécifiques (préciser quoi)
-(c) Re-pick source autre asset carousel
+(a) Validé · je marque comme version officielle de ta photo produit
+(b) Re-essayer · ajustements (précise quoi)
+(c) Autre source · je re-pick une photo différente du carrousel
 ```
 
-JAMAIS auto-flag `_canonical: true` sans réponse opérateur explicite (cf HR2).
+JAMAIS auto-flag `_canonical: true` sans réponse opérateur explicite (cf HR2). JAMAIS exposer `{endpoint}`, `latency`, `_validated_by_operator: true + _canonical: true`, scores numériques verbatim style `score 4/5`, sidecar field paths à l'opérateur. Tous les flags techniques persistent en backstage dans `visual_identity.json` (cf Step 6 update fields).
 
 ### Step 6 · Update visual_identity.json sidecar + README
 
@@ -429,17 +429,29 @@ Si Step 5 validé option (a) :
 
 **README.md update** section `## generated_canonical_assets_{date}` avec table gen v{N} | path | status | endpoint | latency | prompt_resume.
 
-### Step 7 · No orphan output
+### Step 7 · No orphan output (langage métier · zéro jargon · soft offer 1 ligne)
 
-Operator-facing summary final :
+Operator-facing summary final ·
 
-- Packshot canon ready · path absolu pour ouvrir Preview macOS (`open {path}`).
-- 1 reco actionnable forte contextuelle :
-  - Si seul angle front généré → suggest générer 3/4 et back depuis même skill (Step 1 mode A re-pick autre carousel asset).
-  - Si tous angles déjà validés → suggest test `compose-creative` avec audience + angle pour matérialiser une pub depuis ce canon.
-  - Si autre produit même brand pas encore canonalisé → suggest `craft-packshot` sur ce produit (pattern schema-driven généralise).
+- Photo officielle du produit prête · ouvre la dans Preview macOS (`open {path}`).
+- 1 reco douce contextuelle, soft offer · jamais menu, jamais nommer le skill ·
+  - Si seul angle front généré → *"Si tu veux, on peut aussi préparer la vue 3/4 et la vue arrière pour avoir une photothèque complète."*
+  - Si tous angles validés → *"Si tu veux, on peut tester une pub avec cette photo officielle."*
+  - Si autre produit même brand pas encore préparé → *"Si pertinent, on peut faire pareil pour {autre_product_humain} (1 fois et c'est réutilisable sur toutes ses pubs)."*
 
-**No orphan close.** Pas de "Done. Want anything else?". Pas de menu hardcoded.
+**No orphan close.** Pas de "Done. Want anything else?". Pas de menu hardcoded. Soft offer 1 ligne max.
+
+### Step 8 · Trigger validate-resources silently post-write (v2.51 NEW)
+
+Après Step 6 persist visual_identity.json sidecar update, trigger `validate-resources` silencieusement sur la brand · même pattern que compose-creative + snapshot-brand post-mutation.
+
+```bash
+# Silent validation pass
+python3 .skills/build-brand-snapshot.py {brand_slug}
+# validate-resources via Task tool (subagent_safe: true permet inline)
+```
+
+Flag MAJOR/CRITICAL à l'opérateur si remonte. Sinon silent. Cohérent doctrine root CLAUDE.md ligne 168 *"ALWAYS after any write under brands/{slug}/custom/ or {entity}.extensions.json : trigger validate-resources on that brand silently."* Évite drift schema sidecar silencieux post-mutation.
 
 ---
 

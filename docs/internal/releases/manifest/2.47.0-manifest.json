@@ -1,0 +1,63 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.47.0",
+  "released_at": "2026-05-13",
+  "compatible_from": "2.0.0",
+  "type": "feature_addition_layered_compositing",
+  "summary": "compose-creative v1.3 layered compositing mode · extension skill v1.2 → v1.3 (memory extend_before_create) · pattern studio photographer · packshot canon pixel-exact + scène séparée nano-banana-2 + PIL composite paste · résout problème historique label regression sans burn budget API retry.",
+  "changes": [
+    {
+      "category": "skill_feature_extension",
+      "action": "patched",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "Bloc 1 · compose-creative v1.2.0 → v1.3.0 · layered compositing mode",
+      "rationale": "Extension skill plutôt que skill frère (memory extend_before_create · single mental model 'compose a creative' avec branche composite_mode interne · évite fragmentation gate + duplication logic). Version bump v1.2 → v1.3 + patch_notes v1.3.0 entry. Description étendue mentionne composite_mode input option. Frontmatter prerequisites · ajout L2 lookup `products/{slug}/visual_identity.assets_canonical.{slot}` (layered mode prerequisite check)."
+    },
+    {
+      "category": "doctrine_in_skill",
+      "action": "added",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "Bloc 2 · HR-COMPOSITE decision rule section",
+      "rationale": "Nouveau section HR-COMPOSITE · decision rule full_regen vs layered. 4 signaux trigger pour layered · (1) operator request explicite via phrase 'studio photographer' / 'packshot canon' / 'fidélité critique' / 'preserve packshot' OR input `composite_mode: layered`. (2) Canonical asset disponible · `visual_identity.assets_canonical.{slot}._validated_by_operator: true` AND `_canonical: true` AND path file exists. Sans canonical asset · layered impossible et fallback full_regen avec flag opérateur 'run craft-packshot d'abord'. (3) Fidélité critique flag · spec.identity.product_category ∈ {supplement, cosmetic, food, pharma} avec text fidelity blocker (sub-label fin / badge plantes / claim certification / composition list). (4) Auto-trigger retry exhausted · HR3.4 v1.3+ redéclenche layered mode si canonical asset disponible vs persister régression v1.2-. Trade-off documenté · layered = packshot pixel-exact mais scène artificielle si composition narrative complexe · full_regen = cohérence scène-produit mais risk drift label · no false binary · choisir selon priorité brand."
+    },
+    {
+      "category": "pipeline_new",
+      "action": "added",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "Bloc 3 · HR3b pipeline layered compositing 3 sous-steps",
+      "rationale": "Nouveau pipeline HR3b alternative à HR3 standard. Step 3b.1 · génération scène-only via nano-banana-2 prompt explicit 'Empty professional photoshoot studio scene, NO product, NO bottle, NO container, NO label, NO text overlay'. Step 3b.2 · lookup canonical packshot path depuis visual_identity.assets_canonical.{slot} + verify _validated_by_operator + _canonical + path exists · refuse layered si flags false ou path absent. Step 3b.3 · PIL composite paste · code Python inline dans SKILL.md (pattern cohérent compose-overlay-text v2.43 inline) · fonction layered_composite avec args scene_path + packshot_path + output_path + scale_factor + position + shadow_offset + shadow_blur + shadow_opacity. Defaults tuning · scale_factor 0.65 packshot occupe 65% hauteur scène · position (center, 0.62) règle des tiers · shadow_offset (0, 20) + shadow_blur 35 + shadow_opacity 0.35 doux subtle. White background threshold to alpha si packshot RGBA avec white bg (convention craft-packshot canonical asset). RGBA → RGB conversion pour jpeg save quality 92. Meta logged · composite_mode + composite_scene_endpoint + composite_canonical_asset_path + composite_canonical_asset_validated_at + composite_params."
+    },
+    {
+      "category": "input_detection",
+      "action": "extended",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "Bloc 4 · HR1 input detection composite_mode option orthogonale",
+      "rationale": "HR1 detection table étendue avec composite_mode option orthogonale aux 3 modes existants (forward_direct (audience+angle+product) · forward_direct (audience+angle) · hypothesis_from_scratch (audience+product). Detection signaux automatic · phrase explicite 'studio photographer' / 'packshot canon' / 'fidélité critique' / 'preserve packshot' / 'mode layered' / 'composite mode' → layered. Spec.identity.product_category ∈ {supplement, cosmetic, food, pharma} ET canonical asset présent → suggest layered avec AskUserQuestion gate. Sinon · full_regen default."
+    },
+    {
+      "category": "retry_policy_upgrade",
+      "action": "patched",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "Bloc 5 · HR3.4 retry exhausted handling v1.3+ auto-trigger layered",
+      "rationale": "HR3.4 sub-label / duration_indicator regression handling upgraded v1.3+. Avant v1.2 · persister créa avec label régressé + flag label_compositing_required: true + reco compose-overlay-text. v1.3+ · check si canonical asset disponible · si oui, auto-trigger layered mode HR3b plutôt que persister régression (solution canonique au problème historique · text fidelity 100% via substrat canonisé). Si pas de canonical asset · fallback comportement v1.2 (persist régressé + reco compose-overlay-text OR craft-packshot d'abord). Reco no-orphan opérateur étendue · 2 paths explicit · (a) canoniser packshot via craft-packshot + relancer mode layered (recommandé), (b) compositing text overlay via compose-overlay-text. Compose-overlay-text v2.43 + layered HR3b v2.47 = deux outils complémentaires (layered = packshot, overlay-text = text crisp)."
+    },
+    {
+      "category": "cross_refs_extension",
+      "action": "patched",
+      "files": [".skills/skills/compose-creative/SKILL.md"],
+      "section": "Bloc 6 · Cross-refs sibling skills + doctrines étendus",
+      "rationale": "Cross-refs section enrichie avec sibling skills layered-related · craft-packshot v1.1+ (canonical asset upstream pour mode layered HR3b) · compose-overlay-text v2.43+ (text overlay PIL post-gen, complémentaire à layered packshot). Doctrines étendues · ajout visual-identity-discipline v2.43+ (canonical assets + wordmark_pattern). Pattern v2.47 layered compositing documenté · packshot canon (craft-packshot) + scène séparée nano-banana-2 + PIL composite paste · résout problème historique label regression sans burn budget API retry · text fidelity garantie 100% via substrat canonisé."
+    },
+    {
+      "category": "infrastructure",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json"],
+      "section": "Manifest regen post v2.47 patch",
+      "rationale": "Régénération manifest via python3 .skills/build-manifest.py post-patch compose-creative v1.3.0 + frontmatter prerequisites étendu + patch_notes v1.3.0. PyYAML strict parser · 0 warning attendu."
+    }
+  ],
+  "breaking_changes": [],
+  "migrations": [],
+  "operator_impact": "compose-creative v1.3 ajoute mode layered compositing pour cas fidélité critique (supplement / cosmetic / food / pharma avec sub-label fin · badge plantes · claim · composition list). Pipeline 2 phases · (1) scène générée séparément sans produit via nano-banana-2 (pattern studio photographer · background only), (2) packshot canonisé craft-packshot collé pixel-exact via PIL paste avec soft drop shadow. Avantages · text fidelity 100% garantie (substrat canonisé validé 8/8 quality opérateur) · pas de retry budget burned sur label preservation · pipeline déterministe sur produit, stochastique uniquement sur scène. Limites · composition narrative limitée (packshot ne tient pas dans main de model OU interaction physique réaliste · fallback full_regen pour ces cas). Decision rule HR-COMPOSITE · operator explicit request OR canonical asset disponible + fidélité critique product_category OR auto-trigger retry exhausted. Backward compat strict · full_regen reste default · layered opt-in via composite_mode input OR auto-trigger conditions. Workflow recommandé · 1) run craft-packshot pour canoniser asset, 2) run compose-creative avec composite_mode: layered pour générer pubs avec packshot pixel-exact + scène variée. Pattern reusable · 1 canonisation packshot upstream → N déclinaisons publicitaires downstream sans regen produit. Cross-brand généralisation · pattern schema-driven, fonctionne sur tout produit physique avec visual_identity.json v1.1+ populated + canonical asset validé.",
+  "next_release_note": "v2.48+ chantiers identifiés · (a) Test live cross-brand v2.47 layered sur kara cellule-boost (canonical asset déjà validé) + autre brand non hair-care pour confirmer pattern généralise. (b) Niveler 3 chapitres canon copy sous-développés (archetypes-voix · leads · construction-offre) v2.46 reporté. (c) HR-21 audience cartography 3 invariants paper-only port vers validate-resources runtime. (d) HR-22 external_apis frontmatter validation runtime (cross-skills check schema permissions.external_apis[] présent si bash_allowlist contient curl). (e) capabilities.md jargon pass 4 (public-facing doc heavily jargon-leaked audit ship-readiness). (f) Layered mode advanced · SAM 2 segmentation packshot si fond non-white pur · auto-tone match lighting consistency · interaction physique cas-limites (vapeur, ombres complexes)."
+}

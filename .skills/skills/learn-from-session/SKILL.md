@@ -180,20 +180,23 @@ Après `produce-paid-angles {brand_slug} sur chute-post-grossesse` :
    - N >= 3 brands distinctes auraient validé même tool (count via grep cross-brand sur learnings.json)
    - Daemon scan une fois par flush (Trigger 1-4), pas par chaque write
 
-3. Operator-gate via `AskUserQuestion` :
+3. Operator-gate via `AskUserQuestion`, en langage métier zéro jargon doctrine ·
 
 ```
-J'ai détecté un apprentissage applicable cross-brand :
-- Brand source · {slug}
-- Canon-tool concerné · {hook/framework/archetype/lead-name}
-- Outcome · {success/neutral/failed}
-- Confidence · {0.X}
-
-Tu veux le promouvoir vers atlas vivant (validations[] sur canon-tool générique cross-brand) ?
-  (a) Oui · ajouter validation entry · partage cross-brand pour futures productions
+J'ai vu un truc qui pourrait servir au-delà de {brand_humain} ·
+- Sur {brand_humain}, on a découvert que {tool_humain} marche {outcome_humain} sur {layer_humain}.
+- Tu veux que je le partage avec tes autres brands (ou futures brands) pour qu'on parte avec ce signal d'office ?
+  (a) Oui · partage cross-brand
   (b) Non · garde local à cette brand
-  (c) Plus tard · pas maintenant
+  (c) Plus tard
 ```
+
+**Mappings operator-facing (anti-jargon)** ·
+- `{tool_humain}` · *"l'accroche du type 'X'"* / *"la structure 'Y'"* / *"le style 'Z'"* (PAS `{hook|framework|archetype}` enum)
+- `{outcome_humain}` · *"très bien"* / *"correctement"* / *"pas bien"* (PAS `success|neutral|failed`)
+- `{layer_humain}` · *"les accroches"* / *"les leads"* / *"les corps"* / *"les offres"* / *"les CTA"* (PAS `hook|lead|body|offer|cta` enum)
+
+**JAMAIS exposer** · "atlas vivant", "validations[]", "canon-tool", "_confidence", "0.7", "promote", "promouvoir" en surface operator. Vocabulaire doctrine reste interne agent-facing.
 
 **Si (a) selected** · write `validations[]` entry conforme schema canon-tool/1.1 via `write_to_context` :
 

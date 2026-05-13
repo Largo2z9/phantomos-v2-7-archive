@@ -1,13 +1,17 @@
 ---
 name: decompose-ad
-version: 1.2.0
+version: 1.3.1
 type: producer
 isolation_scope: brand_only
 layer: 2
 recommended_model: opus
 reasoning_pattern: matrix-driven
 matrix_mode: decomposing
+patch_notes:
+  v1.3.1: "v2.51 operator-fiche-output canonique template applied · header fiche v5 refactor langage métier. Header `{TITRE COURT} · {BRAND}` → `{BRAND_HUMAIN} · Analyse pub · {source_humaine}` (selon canonique resources/templates/operator-fiche-output.md mapping). Sous-titre 1 ligne plain language `décomposition de la pub {concurrent | interne n°N}`. Body sections 1-4 préservées (déjà plain language), TAGS RETRIEVAL bloc préservé (mode reverse-engineering · l'opérateur peut vouloir voir comment c'est encodé). Footer · 1 reco soft offer 1 ligne max."
+  v1.3.0: "v2.46 endpoint reference migration nano-banana-pro/edit → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025). decompose-ad reste reverse-engineering (pas de gen direct), mais HR2bis référence endpoint canonique pour compose mode downstream + anti-pattern label hallucination context. Frontmatter permissions.external_apis[] déclaré. Cohérent compose-creative v1.2 + recompose-creative v1.2 + craft-packshot v1.1 upstream. Cross-ref doctrine model-versioning-canon v2.44."
 description: >
+  v1.3.0 (v2.46 alignment) : HR2bis + anti-pattern reference endpoint canon nano-banana-2/edit cohérent compose/recompose/craft-packshot.
   v1.2.0 (v2.32 alignment) : reads intent_mix (fallback intent if absent) + overlay_density (fallback craft_mode) + meta.validation_status accepts both shapes.
   Decompose une ad (benchmark concurrent OU créa marque interne) en fiche structurée
   selon l'équation compositionnelle v3.1 (NOYAU x CONTEXTE x MODIFIEURS) et persiste
@@ -28,6 +32,19 @@ permissions:
   emits_events: [coherence_check, mecanique_proposal_flag]
   mode: proposed
   subagent_safe: true
+  external_apis:
+    - provider: "fal.ai"
+      endpoint: "fal-ai/nano-banana-2/edit"
+      model_family: "gemini_3_pro_image_novembre_2025"
+      version_check_url: "https://fal.ai/models?keywords=banana"
+      version_canon_date: "2025-11"
+      replaced_legacy: "fal-ai/nano-banana-pro/edit (v1.0.x-v1.2.x · Gemini 2.5 Flash Image)"
+      auto_upgrade: false
+      note: "Endpoint référencé pour compose mode downstream (HR2bis lookup visual_identity packshot input). decompose-ad lui-même reste reverse-engineering, pas de gen direct."
+    - provider: "trendtrack"
+      endpoint: "trendtrack_pull_ad"
+      version_canon_date: "2025-08"
+      note: "TrendTrack pull mode (HR1 lookup ad_id facebook_NNN). Indépendant fal.ai migration."
 consumes:
   - path: resources/templates/creative-formula.md
     min_version: 3.1.0
@@ -127,7 +144,7 @@ Si `mode == "internal_production"` ou `mode == "compose"` (skill `compose-creati
 
 1. Read `brands/{target_brand}/products/{target_product_slug}/spec.json#visual_identity`.
 2. Si bloc présent et `packshots.primary_front` non-null :
-   - Use `packshots.primary_front` comme `image_urls[0]` dans payload `nano-banana-pro/edit` (au lieu d'un screenshot d'ad bruité).
+   - Use `packshots.primary_front` comme `image_urls[0]` dans payload `nano-banana-2/edit` (canon v2.46, au lieu d'un screenshot d'ad bruité).
    - Inject `distinctive_features[]` dans le prompt en hard constraints (`MUST PRESERVE: ...`).
    - Inject `color_palette` hex codes dans le prompt (`exact colors: container_primary #..., label_background #...`).
    - Inject `label.wordmark_text` + `label.wordmark_typography_hint` (`label MUST read exactly "{wordmark_text}", never variants`).
@@ -136,7 +153,7 @@ Si `mode == "internal_production"` ou `mode == "compose"` (skill `compose-creati
    - Surface warning à l'opérateur : "spec.json#visual_identity manquant. Render fidelity dégradée. Run skill `populate-visual-identity` (futur) ou drop ad screenshot manuel comme reference".
    - Continue avec ad screenshot bruité comme fallback.
 
-Rationale : sans packshot clean en input, nano-banana-pro hallucine le label sous 2 iter (cf. audit S55 régression wordmark with brackets). Avec packshot + `distinctive_features` injecté, fidélité label peut atteindre 95%+.
+Rationale : sans packshot clean en input, le model image gen hallucine le label sous 2 iter (cf. audit S55 régression wordmark with brackets sur endpoint legacy nano-banana-pro). Avec packshot + `distinctive_features` injecté + endpoint canon nano-banana-2 (Gemini 3 Pro Image text fidelity natif), fidélité label peut atteindre 95%+.
 
 ---
 
@@ -284,13 +301,15 @@ Render fiche markdown selon format S55 fiche v5 (template ci-dessous). Vocabulai
 
 **No orphan output.** Terminer sur 1 reco actionnable, pas de menu (a)/(b)/(c). Reco ancrée sur ce qui vient d'être décomposé : transposer concept sur autre brand active, lancer `produce-paid-angles` sur l'audience matchée pour générer 5 variantes du NOYAU, ou flag mecanique_proposal pour enrichir le registry. Une reco forte, pas trois équivalentes.
 
-### Fiche v5 template
+### Fiche v5 template (canonique v2.51)
+
+Réf canonique · `resources/templates/operator-fiche-output.md`. Header plain language `Analyse pub · {source_humaine}` (canonique mapping table). Source humaine = `concurrent` pour benchmark, `interne n°{N}` pour créa marque opérée.
 
 ```
 ═══════════════════════════════════════════════════════════════
-{TITRE COURT} · {BRAND}
+{BRAND_HUMAIN} · Analyse pub · {source_humaine}
 ═══════════════════════════════════════════════════════════════
-{type_produit} · {langue} · {annee}
+{date YYYY-MM-DD} · décomposition de la pub {concurrent | interne n°N} · {langue} · {annee}
 
 ───────────────────────────────────────────────────────────────
 1 · CE QUE L'AD MONTRE (observable, ground truth)
@@ -356,7 +375,7 @@ TAGS RETRIEVAL
 
 6. **Skip visual_identity lookup.** Ignorer `spec.json#visual_identity` et passer ad screenshot bruité comme reference (régression label garantie sous 2 iter).
 7. **Hardcode distinctive_features dans le skill.** Modifier le prompt distinctive_features hardcodé dans le skill au lieu de lire `visual_identity` (drift inévitable cross-products).
-8. **Trust nano-banana-pro to guess label.** Supposer que nano-banana-pro va deviner correctement le label sans hard constraint dans le prompt.
+8. **Trust image gen model to guess label.** Supposer que le model image gen (nano-banana-2 ou legacy) va deviner correctement le label sans hard constraint dans le prompt. Pattern audit S55 reste valide même avec Gemini 3 Pro Image · text preservation natif meilleur mais pas absolu.
 9. **Skip QC distinctive_features.** Skip la validation `distinctive_features[]` dans le QC post-gen.
 
 ---

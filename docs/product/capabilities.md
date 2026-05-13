@@ -25,7 +25,7 @@ Current version: V1.
 |---|---|---|---|
 | **Strategy & Macro** | Brand identity, positioning, annual roadmap, portfolio, strategic learnings | Goal tracking, auto-generated investor updates, risk registry | Scenario planning, forecasting |
 | **Research & Analysis** | Product/brand scan, doc ingestion, Meta setup audit | Full voice of customer (Reddit, Trustpilot, YouTube), market comparatives, competitor ads tracking | Social listening, trend detection |
-| **Production & Creative** | Briefs, copy, concepts, hooks, emails, landing copy (via custom assistant) | Per-channel production capability library | Visual generation |
+| **Production & Creative** | Briefs, copy, concepts, hooks, emails, landing copy, **visuel paid composé en couches (packshot officiel + logo + badges, pixel-exact)** | Per-channel production capability library | Video generation, motion design |
 | **Ops & Iteration** | Learning capture, session relay, environment validation, platform setup audit | Daily KPI dashboard, LTV/CAC cohort, creative fatigue detection, A/B test tracking, auto weekly reporting | Attribution reconciliation, anomaly detection |
 
 Pick the layer where your current work lives. The rest fills as work requires it.
@@ -62,14 +62,25 @@ As soon as you connect Meta Ads, Shopify, Klaviyo, Google Ads, GA4, ClickUp, Not
 
 In V1 you get the context substrate and the core skills. The agent can be asked to build new skills against the connected primitives as needs come up.
 
+## Production créa visuelle
+
+PhantomOS produit la créa visuelle de tes campagnes paid, sans repasser par un designer pour chaque variation. Le principe : tu prépares **une fois** les briques canon de ta marque (photo produit officielle, logo, badges, mascotte, patterns), ensuite le système les compose en couches sur chaque nouvelle pub. Pixel-exact, sans dérive de marque, sans regénérer le produit à chaque ad.
+
+- **Génère une fois la photo officielle de ton produit, réutilise-la partout.** Tu donnes ton produit en input, PhantomOS te sort un packshot canon que tu valides. Sur toutes tes pubs suivantes, le système réutilise cette photo intacte au lieu d'en regénérer une variante différente à chaque fois. Plus de dérive visuelle entre deux ads de la même campagne.
+- **Importe tes assets de marque une fois, ils servent partout.** Logo, badges (certif bio, made in France, awards), mascotte, patterns de fond. Tu apportes le fichier ou tu pointes ton site, PhantomOS canonise et range. Les pubs suivantes les utilisent automatiquement, pas de re-upload à chaque création.
+- **Récupère ton logo et tes badges depuis ton site web automatiquement.** Si tu n'as pas tes fichiers sous la main, PhantomOS va les chercher sur ton site, identifie ce qui est logo / badge / certification, et importe le tout dans ton workspace.
+- **Génère une pub complète (visuel + brief copy) en une opération.** Tu choisis l'angle, le système compose : packshot officiel + logo + badges en couches, pixel-exact, plus le brief copy aligné. Tu obtiens un livrable Meta-ready, branding consistant d'une ad à l'autre.
+- **Décompose une pub d'un concurrent (ou la tienne) pour comprendre ce qui marche.** Tu donnes une ad existante, PhantomOS la décompose en briques (angle, hook, mécanique créative, structure visuelle). Tu récupères les patterns transposables sans copier.
+
+L'enjeu derrière : tu sors du loop *"chaque ad redessine le produit depuis zéro et le branding dérive"*. La photo officielle et les assets canon sont des **constantes** dans ta pipeline, les couches sémantiques (angle, audience, hook) sont les **variables**. Tu scales le volume sans casser la cohérence visuelle.
+
 ## What stays out of scope
 
-- Image analysis (visual consistency between landing pages and ads, moodboards).
 - Real-time social trends (TikTok, Instagram).
 - Live social listening community.
-- Video or graphic design generation.
+- Video editing and motion design.
 
-These blocks are handled by native specialized tools (Motion, Foreplay, Triple Whale, Midjourney). PhantomOS does not compete on that surface.
+These blocks are handled by native specialized tools (Motion, Foreplay, Triple Whale, CapCut). PhantomOS does not compete on that surface.
 
 ## Workflows you can build on top
 

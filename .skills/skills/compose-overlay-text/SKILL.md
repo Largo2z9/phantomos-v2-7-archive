@@ -6,7 +6,7 @@ subagent_safe: true
 operator_facing: false
 isolation_scope: brand_only
 layer: 3
-version: 1.0.0
+version: 1.0.1
 mode: proposed
 reasoning_pattern: matrix-driven
 triggers_fr:
@@ -71,6 +71,7 @@ produces_proposals_for:
   - brands/{slug}/products/{slug}/produced/{creative_id}-overlay-{timestamp}.jpg
   - brands/{slug}/products/{slug}/produced/{creative_id}.json
 patch_notes:
+  v1.0.1: "v2.51 operator-fiche-output canonique template applied · footer + close refactor langage métier. Step 7 close drop `Wordmark canon valide` → `logo nickel et lisible` (langue opérateur, drop doctrine name leak `canon`). Drop menu `Next · tester live, ou adapter variants pour autre audience, ou refaire si tu vois un detail` → soft offer 1 ligne max · *Si tu veux, on peut la tester en live*. Cohérent template canonique resources/templates/operator-fiche-output.md footer rule (1 reco soft offer max, jamais menu, jamais nommer skill `recompose-creative` en surface)."
   v1.0.0: "v2.43 ship skill PIL post-gen composite resout 3 frictions runtime fal.ai (wordmark regression caractere par caractere, drop accents francais sub-text, badges trust flous). Composite logo SVG vectoriel via cairosvg + sub-text TrueType UTF-8 preserve. Validation wordmark_pattern regex OCR/SSIM. Complete compose-creative HR3.4 retry policy existing, ne remplace pas."
 ---
 
@@ -354,22 +355,24 @@ Update `{creative_id}.json` meta via `write_to_context` (jamais Edit/Write JSON 
 }
 ```
 
-### Step 7 · No orphan output
+### Step 7 · No orphan output (canonique v2.51)
 
-Operator-facing summary final (4-6 lignes max, HR6 translation applied) :
+Operator-facing summary final (3-5 lignes max, HR6 translation applied, langue métier zéro jargon, soft offer 1 ligne) ·
 
-- Composite reussi : creative source + version avec logo precis + sub-text accents crisp.
-- Validation wordmark canon : pass / fail (jamais "regex match", jamais "OCR score").
-- Badges trust nets si applicable (preview operateur).
-- Next suggested · ouvrir test live OU adapter variants via recompose-creative OU refaire si validation failed.
+- Composite reussi · pub source + version avec logo precis + sub-text accents crisp.
+- Validation logo · `logo nickel et lisible` (préservé caractère par caractère) ou `à revoir` si validation echoue.
+- Badges trust nets si applicable (preview operateur · `open {path}`).
+- Footer · 1 soft offer 1 ligne max, jamais menu, jamais nommer skill (`recompose-creative`) en surface.
 
-Format example :
+Format example ·
 
 ```
-Logo precis applique en bas a droite. Wordmark canon valide. Badges accents francais nets (Livraison 48h · Garantie 100% · Made in France).
+Logo précis appliqué en bas à droite. Logo nickel et lisible, préservé caractère par caractère. Badges accents français nets (Livraison 48h · Garantie 100% · Made in France).
 
-Next · tester live, ou adapter variants pour autre audience, ou refaire si tu vois un detail.
+Si tu veux, on peut la tester en live.
 ```
+
+**Anti-pattern UX prose** · JAMAIS dire `Wordmark canon valide` (doctrine name leak), JAMAIS menu `Next · A, ou B, ou C`, JAMAIS nommer le skill `recompose-creative` en surface operator. Reformuler en langue métier accessible · *"logo nickel et lisible"*, *"préservé caractère par caractère"*, soft offer *"Si tu veux, on peut..."*.
 
 ---
 

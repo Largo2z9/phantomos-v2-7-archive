@@ -1,6 +1,6 @@
 ---
 name: recompose-creative
-version: 1.1.0
+version: 1.2.1
 type: producer
 isolation_scope: brand_only
 layer: 2
@@ -8,6 +8,9 @@ recommended_model: opus
 subagent_safe: true
 mode: proposed
 operator_facing: true
+patch_notes:
+  v1.2.1: "v2.51 operator-fiche-output canonique template applied · header + gate + footer refactor langage métier. HR1 menu variant_axis refactor · drop enum technique `(new_audience) / (new_platform : Meta → TikTok)` entre parenthèses, plain language seulement. Operator output template header refactor · `RECOMPOSE · CRT-N → CRT-X · variant_axis: hook_swap` → `═══ {BRAND_HUMAIN} · Variante de la pub n°{N_source} ═══` + sous-titre plain language. Body refactor selon canonique resources/templates/operator-fiche-output.md (drop `concept_id`, `variant_of`, `variant_axis` en surface · vit en backstage creative.json). Footer · 1 reco soft offer 1 ligne max."
+  v1.2.0: "v2.46 endpoint migration nano-banana-pro/edit (Gemini 2.5 Flash Image legacy) → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025). Cohérent compose-creative v1.2 + craft-packshot v1.1 upstream. Frontmatter permissions.external_apis[] déclare provider + endpoint + version_check_url + version_canon_date + replaced_legacy. HR4 prompt structure pipeline mirror nano-banana-2/edit · pattern adapt-from-source preservation-first préservé. Cross-ref doctrine model-versioning-canon v2.44."
 description: >
   v1.0.0 (v2.34 ship production loop) : 3e skill P5 visual aux côtés de decompose-ad
   (reverse) et compose-creative (forward). Adapte une créa interne testée (ou
@@ -84,6 +87,14 @@ permissions:
   emits_events: [creative_recomposed, variant_generated]
   mode: proposed
   subagent_safe: true
+  external_apis:
+    - provider: "fal.ai"
+      endpoint: "fal-ai/nano-banana-2/edit"
+      model_family: "gemini_3_pro_image_novembre_2025"
+      version_check_url: "https://fal.ai/models?keywords=banana"
+      version_canon_date: "2025-11"
+      replaced_legacy: "fal-ai/nano-banana-pro/edit (v1.0.x · Gemini 2.5 Flash Image)"
+      auto_upgrade: false
 pipeline:
   preconditions: |
     creative source CRT-N existe sous brands/{slug}/produced/.
@@ -124,18 +135,20 @@ Output state map + confidence_chain[] init avec variant_axis selected.
 
 ### HR1 · Identify variant axis explicit
 
-Skill exige opérateur précise QUELLE dimension change. Surface au démarrage en langage clair :
+Skill exige opérateur précise QUELLE dimension change. Surface au démarrage en langage clair, zéro enum technique entre parenthèses ·
 
 ```
-Quelle dimension tu veux changer ?
-(a) audience cible        (new_audience)
-(b) plateforme            (new_platform : Meta → TikTok, etc.)
-(c) format                (new_format : image → carrousel, story → reel)
-(d) hook copy             (variant A/B même visuel)
-(e) traitement visuel     (variant scène, même hook)
+Tu veux changer quoi sur cette créa ? Une seule chose à la fois ·
+(a) l'audience cible
+(b) la plateforme (par exemple Meta → TikTok)
+(c) le format (image → carrousel, story → reel)
+(d) le hook copy (variant A/B même visuel)
+(e) le traitement visuel (variant scène, même hook)
 ```
 
-Si l'opérateur reste ambigu ou tente de changer 2+ dimensions, AskUserQuestion mandatoire. Rappel : 2+ dimensions change = route compose-creative (nouveau concept), pas recompose-creative.
+Si l'opérateur reste ambigu ou tente de changer 2+ dimensions, AskUserQuestion mandatoire. Rappel · 2+ dimensions change = route compose-creative (nouveau concept), pas recompose-creative.
+
+**Backstage mapping (NON surface operator)** · le choix opérateur (a)-(e) mappe sur `variant_axis` enum technique persisté dans creative.json (`new_audience`, `new_platform`, `new_format`, `hook_swap`, `visual_treatment_swap`). Cet enum reste backstage pour retrieval programmatique · operator ne le voit jamais.
 
 ### HR2 · Load creative source + identify what stays vs changes
 
@@ -171,7 +184,7 @@ Adapter les fields creative.schema concernés (`format.type`, `format.ratio`, `s
 
 ### HR4 · Génération visuelle adaptée (preservation-first)
 
-Pipeline mirror compose-creative HR3 (FAL nano-banana-pro), prompt ajusté pour préserver le concept core :
+Pipeline mirror compose-creative HR3 (FAL nano-banana-2/edit canon v2.46), prompt ajusté pour préserver le concept core :
 
 - **Référence visuel original** : image_urls inclut `/tmp/compose-creative/{CRT_source}.jpg` (ou path persisté `brands/{slug}/produced/{CRT_source}.jpg`)
 - **Référence packshot** : image_urls inclut `spec.visual_identity.packshots.primary_front` clean URL
@@ -184,7 +197,7 @@ Pipeline mirror compose-creative HR3 (FAL nano-banana-pro), prompt ajusté pour 
   CRITICAL change : {variant_axis_payload}.
   Product fidelity : {distinctive_features from spec.visual_identity}.
   ```
-- **Retry** : max 2 si label produit régresse (audit S55, sans visual_identity nano-banana-pro régresse un wordmark with brackets en variantes sans brackets ou caractères corrompus). Au 3e échec, surfacer à l'opérateur.
+- **Retry** : max 2 si label produit régresse (audit S55 v2.34 sur endpoint legacy nano-banana-pro/edit · sans visual_identity le model régressait wordmark with brackets en variantes sans brackets ou caractères corrompus · pattern préservé avec nano-banana-2/edit mais marges plus généreuses sur text fidelity natif). Au 3e échec, surfacer à l'opérateur.
 
 ### HR5 · Generate variant brief markdown
 
@@ -252,50 +265,50 @@ Vue compacte side-by-side source vs variant. Reco no-orphan-output finale :
 
 ## Operator output template
 
+Réf canonique · `resources/templates/operator-fiche-output.md`. Header plain language, body en vocabulaire métier, footer soft offer 1 ligne max. Bloc `concept_id` / `variant_of` / `variant_axis` persiste en backstage (creative.json) · operator ne le voit jamais.
+
 ```
 ═══════════════════════════════════════════════════════════════
-{BRAND} · RECOMPOSE · {CRT-N source} → {CRT-X variant}
+{BRAND_HUMAIN} · Variante de la pub n°{N_source}
 ═══════════════════════════════════════════════════════════════
-variant_axis : {axis}                                {date}
+{date YYYY-MM-DD} · {1 phrase plain language · ex "même concept, audience changée pour femmes 45-55 ménopause"}
 
 ───────────────────────────────────────────────────────────────
-RESTE INCHANGÉ
+CE QUI RESTE
 ───────────────────────────────────────────────────────────────
-concept_id         {cpt_id}
-mécanique          {mechanic}
-ton                {ton}
-intent_mix         {primary, secondary, weights}
-hook (si retain)   "{hook_text}"
+Mécanique          {nom métier · ex "before-after-bridge"}
+Ton                {plain · ex "direct response avec touche brand"}
+Hook texte         "{verbatim hook · si retenu}"
 
 ───────────────────────────────────────────────────────────────
 CE QUI CHANGE
 ───────────────────────────────────────────────────────────────
-Source             {old_value}
-Variant            {new_value}
-Justification      {why_this_change}
+Dimension          {plain · ex "audience cible" ou "plateforme" ou "format" ou "hook texte" ou "traitement visuel"}
+Avant              {plain · ex "femmes 30-45 post-grossesse"}
+Après              {plain · ex "femmes 45-55 ménopause"}
+Pourquoi           {1 phrase justif · ex "trigger émotionnel différent, registre copy à recalibrer"}
 
 ───────────────────────────────────────────────────────────────
-COMPARAISON SIDE-BY-SIDE
+COMPARAISON
 ───────────────────────────────────────────────────────────────
-                    SOURCE (CRT-N)         VARIANT (CRT-X)
-audience            {old_audience}         {new_audience}
-platform            {old_platform}         {new_platform}
-format              {old_format}           {new_format}
-ratio               {old_ratio}            {new_ratio}
-[autres si changent]
+                   PUB n°{N_source}        VARIANTE n°{N_variant}
+Cible              {old_audience}          {new_audience}
+Plateforme         {old_platform}          {new_platform}
+Format             {old_format}            {new_format}
+{autres si changent}
+
+Photo générée      ouvre dans Preview · open {path}
 
 ───────────────────────────────────────────────────────────────
-ARTEFACTS PERSISTÉS
-───────────────────────────────────────────────────────────────
-JSON               brands/{slug}/produced/{CRT-X}.json
-JPG                brands/{slug}/produced/{CRT-X}.jpg
-Brief              brands/{slug}/produced/{CRT-X}.md
-
-───────────────────────────────────────────────────────────────
-PROCHAIN MOVE
-───────────────────────────────────────────────────────────────
-{reco no-orphan-output : a/b test, 2 autres axes, score-matrix}
+{1 reco soft offer 1 ligne max · ex "Si tu veux, on peut tester A/B la source vs la variante."}
 ```
+
+**Backstage (creative.json, NON rendu operator)** · `concept_id` (réutilisé source), `variant_of: {creative_id_source}`, `variant_axis` enum, `meta.validation_status`, `tags.source: internal_production`. Vivent dans le JSON pour retrieval programmatique · operator ne les voit jamais.
+
+**Validation pre-ship fiche** ·
+1. Header ne contient pas `RECOMPOSE`, `CRT-N → CRT-X`, `variant_axis:`, `concept_id`
+2. Body ne contient pas `intent_mix: {...}`, `variant_of`, field paths JSON
+3. Footer · 1 phrase soft offer max, jamais menu, jamais nommer skill `score-matrix` en surface
 
 ## Cross-refs
 

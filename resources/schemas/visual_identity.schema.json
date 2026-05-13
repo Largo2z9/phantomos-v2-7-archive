@@ -2,11 +2,12 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "visual_identity.schema.json",
   "title": "Visual Identity (sidecar)",
-  "description": "Schema canon pour visual identity d'un product. Sidecar typé. Lives in brands/{slug}/products/{product_slug}/visual_identity.json (sibling de spec.json). Source: avant v2.42, visual_identity vivait inline spec.json ou comme sidecar non-typé. Baseline v1.0 lock le shape (packshots + color_palette + container + content + label + distinctive_features) pour AI gen hard-constraints et audit consistency. v1.1 v2.43 enrichit avec assets_canonical (catalog haute résolution local source) + logo_svg (vectoriel post-gen overlay) + wordmark_pattern (regex validation runtime). Le block reste lisible inline dans spec.schema.json (backward read), mais nouveau writes recommended dans sidecar dédié pour navigation et taille.",
-  "_schema_version": "visual_identity/1.1",
+  "description": "Schema canon pour visual identity d'un product. Sidecar typé. Lives in brands/{slug}/products/{product_slug}/visual_identity.json (sibling de spec.json). Source: avant v2.42, visual_identity vivait inline spec.json ou comme sidecar non-typé. Baseline v1.0 lock le shape (packshots + color_palette + container + content + label + distinctive_features) pour AI gen hard-constraints et audit consistency. v1.1 v2.43 enrichit avec assets_canonical (catalog haute résolution local source) + logo_svg (vectoriel post-gen overlay) + wordmark_pattern (regex validation runtime). v1.2 v2.48 étend assets_canonical avec multi-types (logo_canonical PNG raster + badge_canonical{} cert/claims slots + mascotte_canonical optionnel + pattern_canonical{} backgrounds/textures) pour réutilisation cross-pubs · 1 canonisation upstream → N déclinaisons publicitaires. Le block reste lisible inline dans spec.schema.json (backward read), mais nouveau writes recommended dans sidecar dédié pour navigation et taille.",
+  "_schema_version": "visual_identity/1.2",
   "_changelog": {
     "1.0": "v2.42 initial release. Schema canon dédié au visual identity sidecar product. Closes gap où visual_identity était soit inline spec.json soit sibling file sans schema typé (skills consumers AI gen ne savaient pas quelles propriétés étaient garanties). v1.0 shape: packshots (primary_front/back + lifestyle[] + cdn_paths[]), color_palette (primary_hex + secondary_hex[] + accent_hex[]), container (material/shape/dimensions/color), content (form_factor enum + quantity + unit), label (wordmark + claim + regulatory + placement + font_family), distinctive_features[] (hard constraints AI gen). Cross-ref skill-prerequisites.schema.json: skills consumers déclarant L1 prerequisite `spec.visual_identity` doivent migrer vers `visual_identity` path (sidecar) ou conserver lecture inline. Backward compat strict: lecteurs anciens lisent inline spec.json, sidecar additif. Source canon: PATCH 2A v2.42.",
-    "1.1": "v2.43 enrichment. Ajout 3 blocs additifs pour fidélité visuelle compose-creative: (a) assets_canonical{} catalog haute résolution local source priorité sur URL CDN externe (packshot_front/back/3_4/top + packshot_lifestyle[]), (b) logo_svg{} référence vectorielle brand pour overlay PIL post-gen précis caractère par caractère (path + variants[] primary/monochrome_black/monochrome_white/horizontal/vertical/icon), (c) wordmark_pattern regex strict validation wordmark post-gen (ex Karacare '^kara\\[care\\]$' brackets mandatory, trigger HR3.4 retry compose-creative si broken). Backward compat strict additif: tous les fields v1.0 préservés (packshots URL CDN + color_palette + container + content + label + distinctive_features). Consumers: compose-creative v2.43+ HR1.4 priorité assets_canonical local > packshots.cdn_paths, compose-overlay-text v2.43 NEW PIL composite logo SVG + wordmark validation. Source canon: PATCH F1+F4 v2.43."
+    "1.1": "v2.43 enrichment. Ajout 3 blocs additifs pour fidélité visuelle compose-creative: (a) assets_canonical{} catalog haute résolution local source priorité sur URL CDN externe (packshot_front/back/3_4/top + packshot_lifestyle[]), (b) logo_svg{} référence vectorielle brand pour overlay PIL post-gen précis caractère par caractère (path + variants[] primary/monochrome_black/monochrome_white/horizontal/vertical/icon), (c) wordmark_pattern regex strict validation wordmark post-gen (ex Karacare '^kara\\[care\\]$' brackets mandatory, trigger HR3.4 retry compose-creative si broken). Backward compat strict additif: tous les fields v1.0 préservés (packshots URL CDN + color_palette + container + content + label + distinctive_features). Consumers: compose-creative v2.43+ HR1.4 priorité assets_canonical local > packshots.cdn_paths, compose-overlay-text v2.43 NEW PIL composite logo SVG + wordmark validation. Source canon: PATCH F1+F4 v2.43.",
+    "1.2": "v2.48 multi-asset canonisation extension. Ajout 4 nouveaux slots dans assets_canonical{} (extension naturelle existant packshot_*): (a) logo_canonical (PNG haute-res complément vectoriel logo_svg · PIL composite simple sans cairosvg dependency · variants enum primary/monochrome_black/white/horizontal/vertical/icon en raster), (b) badge_canonical{} additionalProperties keys libres slug-style cert_plantes_naturelles/bio_eu/made_in_france/vegan_society etc · claim_text verbatim + regulatory_authority pour audit, (c) mascotte_canonical optionnel si brand a mascotte récurrente · variants poses neutral/happy/pointing/holding-product, (d) pattern_canonical{} additionalProperties keys libres slug-style wave_pattern_primary/texture_natural_beige/gradient_brand_sunset · tile_repeat bool + dominant_color_hex matching tone scène. Tous slots cohérent pattern packshot_front shape (path + resolution + format + background + _canonical + _validated_by_operator gate operator). Brand-level scope typique (cross-products) avec override produit-spécifique possible via path products/{slug}/assets/. Backward compat strict additif: tous fields v1.0/v1.1 préservés. Consumers: compose-creative v1.3+ HR3b layered multi-layer paste (packshot + logo + badge order), compose-overlay-text PIL composite extension multi-source, skill import-asset v2.48 NEW orchestrator drop+tag+validate operator-gate. Source canon: PATCH v2.48."
   },
   "type": "object",
   "required": ["_belongs_to", "meta"],
@@ -109,6 +110,194 @@
           "description": "Slots canon lifestyle context (produit main qui prend gummy, table petit-déj, scene de vie). Ordered: index 0 = hero lifestyle préféré.",
           "items": {
             "$ref": "#/properties/assets_canonical/properties/packshot_front"
+          }
+        },
+        "logo_canonical": {
+          "type": "object",
+          "description": "Slot canon brand logo en rasterized haute résolution PNG (complément vectoriel logo_svg). Permet PIL composite simple direct sans cairosvg dependency, utile pour layered compositing multi-layer compose-creative HR3b v1.3+. v1.2+. Brand-level scope (cross-products de la même brand) · path référencé depuis brands/{slug}/assets/ typiquement. Variants array supporte primary + monochrome black/white + horizontal/vertical orientations.",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Path relative depuis brand root. Ex: 'assets/logo-primary-2048x.png' (brand-level) ou 'products/{slug}/assets/logo-override.png' (override produit-spécifique rare)."
+            },
+            "resolution": {
+              "type": "string",
+              "pattern": "^[0-9]+x[0-9]+$",
+              "description": "Résolution image source. Format strict 'WIDTHxHEIGHT'. Ex: '2048x512' (horizontal wordmark) ou '1024x1024' (icon square). Min recommandé 1024 dimension longue pour scale propre."
+            },
+            "format": {
+              "type": "string",
+              "enum": ["png", "webp"],
+              "description": "Format fichier rasterized. png prioritaire (alpha channel pour transparency, compositing flexible). webp moderne alternative compressée."
+            },
+            "background": {
+              "type": "string",
+              "enum": ["transparent", "white"],
+              "description": "Type fond. transparent prioritaire (compositing flexible), white = #FFFFFF pur fallback si transparent indisponible."
+            },
+            "variants": {
+              "type": "array",
+              "description": "Variantes logo rasterized par usage. Ordered par fréquence. Cohérent logo_svg.variants enum mais en raster.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "enum": ["primary", "monochrome_black", "monochrome_white", "horizontal", "vertical", "icon"],
+                    "description": "Variante canonique. primary = couleur standard. monochrome_black/white = aplats fonds clairs/sombres. horizontal/vertical = orientation layout. icon = pictogramme sans wordmark."
+                  },
+                  "path": {
+                    "type": "string",
+                    "description": "Path relative variant fichier PNG."
+                  },
+                  "resolution": {
+                    "type": "string",
+                    "pattern": "^[0-9]+x[0-9]+$"
+                  }
+                },
+                "required": ["name", "path"]
+              }
+            },
+            "_canonical": {
+              "type": "boolean",
+              "default": true,
+              "description": "Flag canon source. true = PNG haute-res source pure validée operator. false = placeholder en attente."
+            },
+            "_validated_by_operator": {
+              "type": "boolean",
+              "default": false,
+              "description": "Gate operator explicit avant flag canonical (cohérent craft-packshot HR2). Skill import-asset v2.48 valide via Step 5 gate."
+            }
+          },
+          "required": ["path", "resolution", "format", "background"]
+        },
+        "badge_canonical": {
+          "type": "object",
+          "description": "Slots canon badges produit ou brand (certifications, ingrédients claims, made in France, bio, vegan, cruelty-free, etc.). Keys libres slug-style (ex 'cert_plantes_naturelles', 'bio_eu', 'made_in_france', 'vegan_society'). Permet réutilisation cross-pubs identique (cert plantes affichée sur 10 pubs cellule-boost = même asset pixel-exact). v1.2+. Consumers · compose-creative HR3b layered multi-layer paste (position top-left ou bottom-right selon angle), compose-overlay-text PIL composite. Brand-level scope typique (badges réutilisés cross-products) avec override produit-spécifique possible.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "Path relative depuis brand root. Ex: 'assets/badges/cert-plantes-naturelles.png'."
+              },
+              "resolution": {
+                "type": "string",
+                "pattern": "^[0-9]+x[0-9]+$",
+                "description": "Résolution badge source. Min recommandé 512x512 pour scale propre composite."
+              },
+              "format": {
+                "type": "string",
+                "enum": ["png", "webp"],
+                "description": "png prioritaire pour transparence + crispness texte badge."
+              },
+              "background": {
+                "type": "string",
+                "enum": ["transparent", "white"],
+                "description": "transparent prioritaire."
+              },
+              "claim_text": {
+                "type": ["string", "null"],
+                "description": "Texte verbatim affiché sur le badge (ex '100% Plantes Naturelles', 'Vegan Society', 'Made in France'). Pour audit + retrieval search."
+              },
+              "regulatory_authority": {
+                "type": ["string", "null"],
+                "description": "Source officielle si applicable (ex 'EU Organic', 'Vegan Society UK', 'Origine France Garantie'). Null si self-declared brand."
+              },
+              "_canonical": {
+                "type": "boolean",
+                "default": true
+              },
+              "_validated_by_operator": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": ["path", "resolution", "format", "background"]
+          }
+        },
+        "mascotte_canonical": {
+          "type": "object",
+          "description": "Slot canon mascotte brand si applicable (personnage récurrent, avatar, illustration brand identity). Optionnel · majorité des brands DTC n'ont pas de mascotte. Si présent · réutilisé cross-pubs pour continuité visuelle. v1.2+. Brand-level scope.",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Path relative. Ex: 'assets/mascotte-primary.png'."
+            },
+            "resolution": {
+              "type": "string",
+              "pattern": "^[0-9]+x[0-9]+$"
+            },
+            "format": {
+              "type": "string",
+              "enum": ["png", "webp"]
+            },
+            "background": {
+              "type": "string",
+              "enum": ["transparent", "white"]
+            },
+            "variants": {
+              "type": "array",
+              "description": "Poses ou expressions variantes mascotte (neutral, happy, pointing, holding-product, etc.). Ordered hero first.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "path": { "type": "string" }
+                },
+                "required": ["name", "path"]
+              }
+            },
+            "_canonical": {
+              "type": "boolean",
+              "default": true
+            },
+            "_validated_by_operator": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "required": ["path", "resolution", "format", "background"]
+        },
+        "pattern_canonical": {
+          "type": "object",
+          "description": "Slots canon patterns/textures backgrounds brand (motifs répétitifs, textures organiques, gradients signature). Keys libres slug-style (ex 'wave_pattern_primary', 'texture_natural_beige', 'gradient_brand_sunset'). Permet PIL paste comme overlay background ou compose-creative scene-only generation prompt enrichi. v1.2+. Brand-level scope.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "Path relative. Ex: 'assets/patterns/wave-primary-2048.png'."
+              },
+              "resolution": {
+                "type": "string",
+                "pattern": "^[0-9]+x[0-9]+$"
+              },
+              "format": {
+                "type": "string",
+                "enum": ["png", "webp", "jpg"]
+              },
+              "tile_repeat": {
+                "type": "boolean",
+                "default": false,
+                "description": "true si pattern tile-able (peut être tessellé sans seam visible). false si artwork standalone (gradient unique, hero texture).",
+                "default": false
+              },
+              "dominant_color_hex": {
+                "type": ["string", "null"],
+                "pattern": "^#[0-9A-Fa-f]{6}$",
+                "description": "Couleur dominante pattern pour matching tone scène."
+              },
+              "_canonical": {
+                "type": "boolean",
+                "default": true
+              },
+              "_validated_by_operator": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": ["path", "resolution", "format"]
           }
         }
       }

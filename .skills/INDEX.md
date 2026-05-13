@@ -16,7 +16,7 @@ Last update : 2026-05-04 (v2.33 enrichment : domain map + phase workflows + per-
 | **cartography** | cartograph · query-context · brief-day · session-search · resume-session | P1-P2 (read-only) |
 | **product** | define-specs · weight-dimensions | P1 + P3 modulator |
 | **audience** | mine-voc · mine-vom · mine-audience · profile-audience | P2a |
-| **production** | produce-paid-angles · produce-copy-brief · decompose-ad | P2b-P5 |
+| **production** | produce-paid-angles · produce-copy-brief · decompose-ad · craft-packshot · import-asset · compose-creative · recompose-creative · compose-overlay-text | P2b-P5 |
 | **audit** | validate-resources · audit-meta-account · validate-output-coherence · validate-schema-canon · check-cross-refs · check-existing-coverage | ongoing |
 | **capture** | capture-learning · learn-from-session · export-session | ongoing |
 | **extensibility** | build-agent · scaffold-extension · scaffold-skill-stub · scaffold-entity-files | builder |
@@ -47,7 +47,11 @@ Last update : 2026-05-04 (v2.33 enrichment : domain map + phase workflows + per-
   produce-copy-brief (depuis angle.json + creative.json optional)
 
 **P5 · Creative production (visual)**
-  decompose-ad (reverse benchmark) vers compose-creative (futur v2.34) vers recompose-creative (futur v2.34)
+  craft-packshot (1 fois par produit, photo officielle canon) + import-asset (1 fois par logo / badge / mascotte / pattern)
+  vers compose-creative (composition layered visuel + brief copy, pixel-exact)
+  vers recompose-creative (adaptation audience / platform)
+  vers compose-overlay-text (post-processing overlay)
+  decompose-ad (reverse benchmark depuis ad concurrente, feed parallèle)
 
 ---
 
@@ -82,6 +86,35 @@ Last update : 2026-05-04 (v2.33 enrichment : domain map + phase workflows + per-
 | *"sors-moi des angles paid"*, *"angles for Meta ads"*, *"5 angles ranked"* | `produce-paid-angles` |
 | *"écris-moi un brief copywriter"*, *"copy brief on this audience"* | `produce-copy-brief` |
 | *"score cette offre", *"audit cette offre"*, *"l'offre tient ou pas ?"* | `score-product-fit` |
+
+---
+
+## Producing a paid creative (visual + copy)
+
+Visual pipeline. The operator describes intent in plain language ; the agent routes to one of the 6 visual production skills. Canon : photo officielle + assets de marque sont préparés **une fois**, le compositeur réutilise sur chaque pub suivante.
+
+| Operator says | Skill to invoke |
+|---|---|
+| *"I want to prepare an official photo of my product"*, *"Je veux préparer la photo officielle de mon produit"*, *"packshot canon"*, *"photo produit officielle réutilisable"* | `craft-packshot` |
+| *"I want to import my brand logo / certif badges / mascotte / background patterns"*, *"Je veux importer mon logo de marque / mes badges certif / ma mascotte / mes patterns"*, *"canonise mon logo"*, *"importe les badges depuis mon site"* | `import-asset` |
+| *"I want to generate a complete branded ad (visual + copy)"*, *"Je veux générer une pub complète (visuel + copy)"*, *"compose la créa Meta-ready"*, *"sors-moi une ad layered pixel-exact"* | `compose-creative` |
+| *"I want to adapt an existing ad to another audience/platform"*, *"Je veux adapter une pub existante à une autre audience / plateforme"*, *"recompose cette créa sur l'audience B"* | `recompose-creative` |
+| *"I want to decompose a competitor ad to understand what works"*, *"Je veux décomposer une pub concurrente pour comprendre ce qui marche"*, *"analyse cette ad TrendTrack"*, *"reverse cette créa"* | `decompose-ad` |
+| *"I want to fix text/logo overlay on a generated ad (post-processing)"*, *"Je veux corriger l'overlay texte / logo sur une créa générée"*, *"retouche la baseline et le badge sur cette ad"* | `compose-overlay-text` |
+
+**Workflow canonique visuel + copy** (P0 vers P5) :
+
+```
+snapshot-brand vers craft-packshot (1 fois par produit)
+              vers import-asset (1 fois par asset brand)
+              vers mine-voc vers produce-paid-angles vers produce-copy-brief
+              vers compose-creative (visuel + brief copy en une opération)
+              [iteration]
+              vers recompose-creative (adapter sur autre audience / platform)
+              vers compose-overlay-text (post-processing si overlay drift)
+```
+
+`decompose-ad` reverse-benchmark depuis une pub concurrente, peut feed `produce-paid-angles` en parallèle.
 
 ---
 
@@ -256,6 +289,31 @@ Chaque card situe un skill sur 4 axes : domain · phase · prerequisites · next
 | Domain | Phase | Prerequisites | Next steps |
 |---|---|---|---|
 | production | P5 (reverse) | ad source (TrendTrack/URL/drop) + visual_identity (optional) | produce-paid-angles (forward) |
+
+**craft-packshot**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| production | P5 (visual) | spec.json + photo produit brut (1 source) | compose-creative (réutilise packshot canon) |
+
+**import-asset**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| production | P5 (visual) | asset fichier OU URL site brand | compose-creative (réutilise asset canon) |
+
+**compose-creative**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| production | P5 (visual) | packshot canon + assets canon + angle.json + audience profile | recompose-creative (adapter) OR compose-overlay-text (post-process) |
+
+**recompose-creative**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| production | P5 (visual) | créa existante (compose-creative output) + nouvelle audience/platform | compose-overlay-text si overlay drift |
+
+**compose-overlay-text**
+| Domain | Phase | Prerequisites | Next steps |
+|---|---|---|---|
+| production | P5 (visual, post-process) | créa générée + overlay drift identifié | livrable Meta-ready |
 
 ### audit
 
