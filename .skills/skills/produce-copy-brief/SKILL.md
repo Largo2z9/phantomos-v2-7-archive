@@ -1,7 +1,7 @@
 ---
 name: produce-copy-brief
 type: producer
-version: "1.3.0"
+version: "1.4.0"
 isolation_scope: brand_only
 layer: 3
 recommended_model: sonnet
@@ -19,6 +19,7 @@ consumes:
   - path: resources/templates/hook-formulas.md
     min_version: 1.0.0
 description: >
+  v1.4.0 (v2.56 brief.schema activation) : Step 6bis NEW · stage Layer C frontmatter conforme brief.schema v1.0 (BRF-NN id, angle_id ref, audience_slug, product_slug, creative_format enum, intent_mix object, overlay_density, brand_mark_present, validation_status, confidence_chain, status hypothesis, created date). Storage path migré vers `brands/{slug}/briefs/{BRF-NN}.md` (canon brief.schema). Old path `produced/copy-briefs/` deprecated mais lecture backward compat. Closes schema orphan v2.42 (brief.schema designed jamais activée runtime). Downstream skills (compose-creative, recompose-creative, audit-creative-output) consument désormais des briefs au frontmatter typé canonique.
   v1.2.0 (v2.32 alignment) : when a creative_id is passed in input, reads creative.intent_mix in priority over intent for tone calibration. Also reads overlay_density + brand_mark_present (fallback craft_mode) and accepts validation_status oneOf shape.
   Produces a copywriter brief for an audience × chosen angle × channel.
   Consumes encoded brand intelligence (verbatims, pains, objections,
@@ -39,7 +40,7 @@ permissions:
   subagent_safe: true
 pipeline:
   preconditions: brand exists with at least one audience profile.json containing pain_points, objections, voice.key_expressions. Ideally mine-voc has run on the audience. If chained from produce-paid-angles, an angle is pre-selected.
-  postconditions: brief artifact in produced/copy-briefs/{date}-{audience-slug}-{angle-slug}-{channel}.md, generation trace in sources/produced-briefs/{date}/, learnings appended if pattern detected, finalize-mutation-batch event emitted.
+  postconditions: brief artifact in brands/{slug}/briefs/{BRF-NN}.md (frontmatter YAML conforme brief.schema v1.0 + body markdown libre), generation trace in sources/produced-briefs/{date}/, learnings appended if pattern detected, finalize-mutation-batch event emitted. Legacy path produced/copy-briefs/{date}-{audience-slug}-{angle-slug}-{channel}.md deprecated v1.4.0 (lecture backward compat preserved).
 disambiguates_against:
   produce-paid-angles: "route to produce-paid-angles when operator wants ANGLE IDEATION (matrice ranked) — produce-copy-brief is the downstream brief generation on a chosen angle"
   ingest-resource: "route to ingest-resource when operator drops a brief reference doc to digest — that's input ingestion, not output generation"
@@ -291,9 +292,75 @@ Le copywriter lit le lignage avant le brief. Il sait quel framework respecter, q
 
 Audit substrate. Operator never reads it. Downstream skills (`audit-creative-output`, `learn-from-session`) read it to detect patterns.
 
-**Layer B — brief artifact** at `brands/{slug}/produced/copy-briefs/{YYYY-MM-DD}-{audience-slug}-{angle-slug}-{channel}.md`. Markdown clean, copy-pasteable into Notion / Slack / Doc / email for copywriter delivery.
+**Layer B — brief artifact** at `brands/{slug}/briefs/{BRF-NN}.md` (canon brief.schema v1.0 path, v1.4.0+). Markdown clean copy-pasteable into Notion / Slack / Doc / email for copywriter delivery. Legacy path `brands/{slug}/produced/copy-briefs/{YYYY-MM-DD}-{audience-slug}-{angle-slug}-{channel}.md` deprecated mais lecture backward compat preserved pour briefs pre-v1.4.0.
 
 The next-step proposal lives in the conversational reply, NOT in the artifact file. The artifact is the pure deliverable. The agent commentary carries the reasoned next move.
+
+---
+
+## Step 6bis — Stage Layer C frontmatter brief.schema v1.0 (v1.4.0 NEW)
+
+Avant write de l'artifact Step 6 Layer B, compose le frontmatter YAML conforme `resources/schemas/brief.schema.json` v1.0 et prepend-le au markdown du brief.
+
+**Génération BRF-NN id.** Scan `brands/{slug}/briefs/*.md`, prendre next dans la séquence BRF-NN (BRF-01, BRF-02, ..., BRF-N+1). Stable, never reassigned.
+
+**Composition frontmatter.** Fields canon brief.schema v1.0 ·
+
+```yaml
+---
+brief_id: BRF-NN
+angle_id: ANG-NN              # ref brands/{slug}/angles/{angle_id}.json
+audience_slug: {slug}         # ref brands/{slug}/audiences/{slug}/profile.json
+product_slug: {slug}          # ref brands/{slug}/products/{slug}/spec.json (null si brand-wide)
+creative_format: meta_ad      # enum: image|carousel|story|reel|vsl|landing|email|sms|ad_copy|blog
+intent_mix:                   # ref creative.schema.intent_mix shape
+  primary: DR
+  secondary: [Brand]
+  weights: { DR: 0.6, Brand: 0.4 }
+overlay_density: 0.5           # 0-1 si creative_id passé en input, sinon null
+brand_mark_present: true       # bool si creative_id passé, sinon null
+validation_status:             # ref _shared/validation-status
+  state: hypothesis
+  confidence: 0.7
+confidence_chain:              # ref _shared/validation-state
+  - source: audience_mine_voc
+    confidence: forte
+  - source: angle_canon_lineage
+    confidence: forte
+status: draft                  # required brief.schema v1.0
+created: 2026-MM-DD            # required brief.schema v1.0
+language: fr                   # operator preference
+_field_types:
+  brief_id: structured
+  angle_id: structured
+  audience_slug: structured
+  intent_mix: derived
+  validation_status: derived
+  confidence_chain: derived
+  status: stated
+---
+
+# Body markdown libre · section structure per Step 5
+{body_markdown_per_step_5}
+```
+
+**Stage via stage-proposal.** Le brief markdown complet (frontmatter + body) est staged via :
+
+```bash
+python3 .skills/stage-proposal.py \
+  --brand-slug {slug} \
+  --field-path "briefs/{BRF-NN}" \
+  --value-file /tmp/brief-{BRF-NN}.md \
+  --source produce-copy-brief \
+  --confidence 0.85 \
+  --mode proposed
+```
+
+Opérateur valide via `pending-validations.md` workflow (accept/reject/correct) selon mutation gate canonical.
+
+**Validation downstream.** `validate-resources` skill (haiku subagent) check frontmatter conforme brief.schema v1.0 post-write. Si invalid → blocking error surfacé via investigation-posture Inconnu section.
+
+**Hard rule activation (v1.4.0).** Tout brief produit en v1.4.0+ DOIT porter frontmatter brief.schema v1.0. Briefs pre-v1.4.0 sans frontmatter restent valides en lecture (backward compat strict) mais flagués _legacy par audit-creative-output downstream pour migration optionnelle.
 
 ---
 
@@ -377,11 +444,13 @@ The skill accepts a focus modifier for narrower runs. The operator says it in pl
 - **Sample_size context preserved in brief.** *"redoutait le moment de s'habiller (8 mentions)"* gives the copywriter signal of how dense the verbatim is. Naked verbatims without frequency context lose signal — the copywriter cannot tell what to lead with.
 - **Hook quality spec mandatory.** Every shipped hook passes the 5-criterion test at ≥ 4/5. Below threshold → retry once with a different anchor or drop. Non-negotiable.
 - **Direct response only in v1.** Brand storytelling briefs, manifesto pieces, founder-narrative content live under a separate skill type. The agency standard encoded here is direct response: pain → solution → proof → CTA.
+- **Brief frontmatter brief.schema v1.0 mandatory (v1.4.0+).** Step 6bis stage frontmatter YAML conforme brief.schema v1.0 (brief_id BRF-NN + angle_id + audience_slug + creative_format + intent_mix + validation_status + status + created required). Storage canonical path `brands/{slug}/briefs/{BRF-NN}.md`. Legacy path `produced/copy-briefs/` deprecated v1.4.0 mais lecture backward compat. Briefs sans frontmatter post-v1.4.0 = doctrine violation, refuse to ship.
 
 ---
 
 ## Cross-references
 
+- `resources/schemas/brief.schema.json` v1.0 — canon schema frontmatter YAML briefs v1.4.0+. Required fields: brief_id (BRF-NN), status, created. Optional fields: angle_id, audience_slug, product_slug, creative_format, intent_mix, overlay_density, brand_mark_present, validation_status, confidence_chain. Storage `brands/{slug}/briefs/{BRF-NN}.md`. Activé Step 6bis v1.4.0.
 - `resources/schemas/angle.schema.json` v1.2 — angle entity shape consumed by Step 0bis (`origin_axis`, `lineage.awareness_stage`, `lineage.*_canon_id`). v2.29.0 alignment, D#391.
 - `resources/schemas/creative.schema.json` — execution-layer entity. Optional read in Step 0bis if `creative_id` is passed in input. Holds `intent`, `mecanique`, `craft_mode`, `execution.*`, `seasonality_trigger` (migrated from angle).
 - `resources/schemas/_shared/awareness-stage.json` — shared `$ref` for `awareness_stage` enum (Schwartz conscience: unaware → most-aware), used by both angle and creative.

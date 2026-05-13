@@ -115,3 +115,23 @@ The return on setup is not instant for every profile. The honest curve depends o
 **Operator comfort with Claude Code.** Initial setup uses Claude Code (a command-line interface) for around fifteen minutes via a guided flow. After that, the web app and the desktop app work against the same workspace, with zero re-setup. An operator with no terminal experience encounters one short guided session on day one, then the surface choice is theirs.
 
 See [`fit.md`](fit.md) for a full audit of best fit, conditional fit, and misfit profiles.
+
+## Scénarios Notion ↔ PhantomOS
+
+PhantomOS expose un bridge bidirectionnel optionnel avec Notion via le skill `sync-notion-atlas` (Layer 1 MCP, opt-in). Notion sert d'UI navigable pour les opérateurs qui préfèrent une interface tabulaire, PhantomOS reste la source of truth canonique. Doctrine complète · `docs/system/notion-bridge-doctrine.md`.
+
+**Scénario 1 · Onboard from Notion existant.** L'opérateur a déjà peuplé son workspace Notion (manuellement ou via collab agency) avec les 11 collections canon (Produits · Personae · Pain Points · Angles · etc.). Commande `/sync-notion-atlas {brand_slug} --mode=pull {notion_url}` · le bridge ingère les rows Notion, applique les mappings cross-platform, stage chaque mutation en mode proposed côté PhantomOS, valide silencieusement, surface synthesis 5 sections. L'opérateur accepte via `pending-validations.md`. Cycle complet en 5-10 minutes selon volume.
+
+**Scénario 2 · Export atlas vers Notion pour client review.** L'opérateur a peuplé PhantomOS via `build-atlas-complete` ou skills individuels. Pour exposer le state en UI navigable pour client agency ou collab externe · `/sync-notion-atlas {brand_slug} --mode=push {notion_parent_url}` · le bridge crée les 11 databases Notion sous le canvas parent, populate les rows depuis les JSON brand, set les relations cross-collections. URL workspace Notion partagée au client en 3-5 minutes.
+
+**Scénario 3 · Workflow 4-zones in Notion → push PhantomOS.** L'opérateur préfère raisonner en UI Notion (drill-down persona × pain points × angles activables filtré). Il bosse en Notion, ajoute des angles, valide des audiences, met à jour le roadmap. En fin de session · `--mode=push` (si PhantomOS antérieur) ou `--mode=pull` (si Notion canon de session). PhantomOS ingère le travail opérateur, les skills downstream (produce-paid-angles, compose-creative) consument la nouvelle matière.
+
+**Scénario 4 · Audit gap Notion vs PhantomOS.** L'opérateur veut vérifier ce qui diverge entre les 2 systèmes après une période d'édition double. `--mode=diff` (v2.59+) compare row par row, surface les conflits, liste les divergences. L'opérateur arbitre par item · garder Notion · garder PhantomOS · merger.
+
+**Scénario 5 · Friction tracking Notion → push.** Les opérateurs Abyss collectif loggent les frictions usage (verbatims clients, retours support) directement dans Notion sous la collection Frictions usage. `--mode=pull` ingère les frictions dans `brands/{slug}/frictions/{FRC-NN}.json` (schema canon v1.0). Skills downstream (produce-paid-angles, score-matrix) consument les frictions pour prioriser les territoires qui adressent les pains réels.
+
+**Scénario 6 · Roadmap planning Notion → consume score-matrix.** L'opérateur veut planifier les angles à produire sur 30/60/90j. Il peuple `Roadmap [angles/audiences]` dans Notion (timeline + Mix + statuts production). `--mode=pull` ingère dans `brands/{slug}/roadmap.json`. Le skill `score-matrix` consume le roadmap pour scorer les territoires en cours/à venir, surface top-3 priorités opérationnelles. La roadmap Notion devient la source de la matrice scorée PhantomOS.
+
+**Scénario 7 · Brief créa start Notion → execute PhantomOS.** L'opérateur a sélectionné un angle prioritaire dans Notion (Angle filtré par persona) et veut générer le brief créa + visuels. Au lieu de freestyler dans Notion · `/creative-brief-composer {brand_slug} {angle_id}` côté PhantomOS · chain produce-copy-brief + compose-creative + variants. Le brief généré peut ensuite être push back en Notion via `--mode=push` partial (collection Full funnel Meta uniquement).
+
+**Scénario 8 · Abyss collectif sync 5 brands Notion vers single PhantomOS.** Largo gère Abyss collectif avec 5-10 brands clients, chaque brand a son workspace Notion. Isolation `brand_only` strict respectée · 1 sync per brand · `/sync-notion-atlas brand-a --mode=pull {notion_url_a}`, puis `/sync-notion-atlas brand-b --mode=pull {notion_url_b}`, etc. Le bridge ne fuit JAMAIS de data cross-brand. L'opérateur peut ensuite tourner les skills agency cross-brand (analyse de patterns transverses, promotion learnings cross-brand) côté PhantomOS qui agrège les 5 instances localement sans dépendance Notion runtime.

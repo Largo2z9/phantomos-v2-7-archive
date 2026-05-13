@@ -7,6 +7,45 @@
 
 ---
 
+## v2.56.0 · 2026-05-15 · Notion stride-up alignment · schemas + orchestrators + bridge doctrine
+
+**Why** · audit Phase 1 quantifie gap 70% coverage workspace stride-up canvas `Onday` (11 collections opérationnalisant doctrine compositional-cartography 4 arbres + matrice + modulateurs · Produits/Specs/Mécanismes/Bénéfices/Personae/Pain Points/Angles/Objections/Frictions usage/Roadmap/Full funnel Meta). Principe canon · PhantomOS = source of truth, Notion = UI optionnelle pour opérateurs préférant interface tabulaire navigable. Bridge bidirectionnel scalable pour Abyss collectif cross-brands sans freestyle.
+
+**What** ·
+
+**Schemas (Bloc 1 P0)** ·
+- `friction.schema.json` NEW v1.0 · FRC-NN id pattern · category enum (physical/emotional/friction_ux/logistical/cognitive) · severity_score 1-10 · customer_evidence[] · cross_refs vers objection_ids[] + pain_point_ids[] · storage `brands/{slug}/frictions/{FRC-NN}.json`.
+- `roadmap.schema.json` NEW v1.0 · RDM-{brand_slug} id · phases (phase_id, name, dates, status, priorities) · mix axis enum (audience/angle/product/funnel/creative) · production_status · relations cross-refs angles/audiences/products/creatives · storage `brands/{slug}/roadmap.json` (brand-wide).
+- `spec.schema` v1.9 → v1.10 · benefits enrichis (`emotional_signal` + `latency_min`/`latency_max` + `evidence_verbatim`) · mechanism `duration` · meta `validation_status` $ref _shared.
+- `profile.schema` v1.4 → v1.6 · pain_category enum cohérent friction.schema · objections enrichis (`severity_score` 1-10 + `response_counter` + `derived_angle_refs`).
+- `offer.schema` v2.1 → v2.2 + `brand.schema` v2.2 → v2.3 · meta `validation_status` uniformisé ($ref _shared composite).
+
+**Skills + orchestrators (Bloc 2 P0)** ·
+- `build-atlas-complete` NEW v1.0 (orchestrator) · pipeline P0-P5 complet · chain 9 sub-skills (setup → snapshot → deepen → profile-audience → weight-dimensions → produce-paid-angles → score-matrix → produce-copy-brief → compose-creative) · Gate A/B operator validate · 5 sections investigation-posture close · pattern miroir onboard-brand.
+- `produce-paid-matrix` NEW v1.0 (orchestrator) · zone 3→4 chain produce-paid-angles → weight-dimensions → score-matrix · output top-3 territoires stars qualitatives, scoring chiffré jamais exposé opérateur (anti-pattern BCG CMR §7) · pattern miroir deepen-brand-context.
+- `creative-brief-composer` NEW v1.0 (orchestrator) · zone 4 creative path · selection angle ID → produce-copy-brief → compose-creative N variants (cap 5 parallèle) · operator gate validate brief avant push créa · pattern miroir onboard-brand Step 4-5.
+- `produce-copy-brief` v1.3 → v1.4 · Step 6bis NEW Layer C frontmatter brief.schema v1.0 staged via stage-proposal.py · storage path canonical migré vers `brands/{slug}/briefs/{BRF-NN}.md` · brief.schema orphan v2.42 activée runtime.
+- `produce-paid-angles` v1.6.1 → v1.7 · encart pivot audiences fin Step 9 ranked table · matérialise capability Notion zone 3→4 filter-by-persona observée workspace stride-up · pas de skill fork standalone (extend_before_create).
+
+**Notion bridge bidirectionnel (Bloc 3 P1 Phase A)** ·
+- `sync-notion-atlas` NEW v1.0 (orchestrator Layer 1) · Phase A pull-only MVP · input `{brand_slug}` + `{notion_workspace_url}` · DRGFP MCP Notion gate · canvas discovery + 11 collections query · mapping Notion → PhantomOS via 7 schemas canon · stage proposals via stage-proposal.py mode proposed · validate-resources silent post-stage · synthesis 5 sections investigation-posture · `--mode=push` Phase B stub v2.58 · `--mode=diff` deferred P2 · isolation_scope brand_only · stateless idempotent.
+
+**Doctrine + docs (Bloc 4 P2)** ·
+- `docs/system/notion-bridge-doctrine.md` NEW · principe PhantomOS=truth + Notion=UI · mappings 11 collections détaillés · tags universels Notion source/confidence/validation_status mapping vers PhantomOS `_field_types` · workflow opérateur pull/push/diff · edge cases (property mismatch, deleted rows, dual-writes, isolation) · positioning Layer 1 · anti-patterns · cross-refs.
+- `docs/system/compositional-cartography.md` patché · cross-ref ajouté vers notion-bridge-doctrine.md dans §Cross-refs (Notion stride-up = implémentation canonique de référence 4 arbres + matrice + modulateurs).
+- `docs/system/schema-encoding-discipline.md` patché · §13 NEW Schema evolutions registry · entrée v2.56 documente Bloc 1 schemas changes + décisions design SED-side + activation runtime brief.schema + bridge sync external.
+- `docs/product/capabilities.md` patché · §Scénarios Notion ↔ PhantomOS NEW · 8 scenarios opérateur (onboard from Notion existant, export atlas vers Notion review client, workflow 4-zones in Notion → push, audit gap, friction tracking, roadmap planning, brief créa start Notion, Abyss collectif sync 5 brands).
+- `.mcp.json.example` patché · entry `notion` mcpServers (npx @notionhq/notion-mcp-server, env NOTION_API_KEY, _description used by sync-notion-atlas, _credentials_ref).
+
+**Backward compat strict additif** ·
+- Tous schema bumps additifs · nouvelles properties optional, validation existing instances OK.
+- Skills nouveaux n'override aucun existant.
+- brief.schema activation ne casse pas briefs pre-v2.42 (lecture backward compat preserved).
+- Notion bridge opt-in · zéro impact si MCP Notion absent côté opérateur.
+- Manifest skills regen · 56 → 60 skills (+3 orchestrators Bloc 2 · build-atlas-complete, produce-paid-matrix, creative-brief-composer · +1 sync-notion-atlas Bloc 3 Layer 1).
+
+---
+
 ## v2.55.0 · 2026-05-14 · Skill routing systémique · matrices canon réactivées
 
 **Why** · test live opérateur post-v2.54 a révélé que l'agent improvise des outputs stratégiques (audiences, angles, positionnement) en prose libre depuis sa connaissance LLM, au lieu d'invoquer les skills correspondants qui consomment les matrices canon (hooks, angles, heuristiques-persuasion, mechanics-registry, formats-livrables). Le master doctrine "PhantomOS reasons over a business universe" est contourné · l'univers encodé reste dormant.

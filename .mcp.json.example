@@ -37,6 +37,15 @@
       },
       "_description": "Google Calendar (read/write events). Used by brief-daily for daily briefing context.",
       "_credentials_ref": "credentials_shared.env → GOOGLE_OAUTH_TOKEN (OAuth flow once, refresh handled by MCP server)."
+    },
+    "notion": {
+      "command": "npx",
+      "args": ["@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_API_KEY": "${NOTION_API_KEY}"
+      },
+      "_description": "Notion API (fetch, search, create, update pages/databases). Used by sync-notion-atlas for bidirectional bridge PhantomOS ↔ Notion workspace. Doctrine canon: docs/system/notion-bridge-doctrine.md.",
+      "_credentials_ref": "credentials_shared.env → NOTION_API_KEY (integration token, scope: workspace integration with read+write on target databases)."
     }
   }
 }

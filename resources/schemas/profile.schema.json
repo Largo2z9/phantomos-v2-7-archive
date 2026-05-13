@@ -2,8 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Audience Profile",
   "description": "Audience profile — deep psychographic and behavioral context, factual description of who they are. Lives in brands/{slug}/audiences/{audience}/profile.json. v1.2+: persona_archetype + buyer_user_split (migrated from spec.gift_economy). v1.4 (v2.42): meta.entry_door enum strict (pain_driven|goal_driven|identity_driven) REQUIRED — closes spec-vs-schema drift from v2.39 framework. Canon V3 §8.2.",
-  "_schema_version": "profile/1.4",
+  "_schema_version": "profile/1.6",
   "_changelog": {
+    "1.6": "v2.56 Notion stride-up parity · pain_category enum taxonomy (cohérent friction.schema) · objections enrichis (severity_score + response_counter + derived_angle_refs). Backward compat strict additif.",
     "1.4": "v2.42-schema-alignment: meta.entry_door enum strict (pain_driven|goal_driven|identity_driven) ajouté + listé dans meta.required. Closes drift schema vs framework v2.39 (audience-cartography-framework.md Q1). Backward compat: lecture v1.0-v1.2 tolérée, defaults injectés par v2.42-schema-alignment.py.",
     "1.3": "S55 audit: persona_archetype enum (demographic|condition_based|psychographic) avec secondary[] hybride, buyer_user_split migré depuis spec.gift_economy (proprieté audience pas produit), identity.archetype DEPRECATED.",
     "1.2": "Initial post-S26 stable: meta.scope/parent_slug/overlap_with, validation_status lifecycle, tag namespaces enforced, key_expressions object[]."
@@ -215,6 +216,11 @@
           "ref": { "type": "string" },
           "priority": { "type": ["integer", "null"] },
           "formulation": { "type": "string" },
+          "pain_category": {
+            "type": "string",
+            "enum": ["physical", "emotional", "friction_ux", "logistical", "cognitive", "social_status"],
+            "description": "Taxonomy canonique cohérente avec friction.schema · physical (douleur corps), emotional (anxiété, doute), friction_ux (galère d'usage), logistical (livraison/timing), cognitive (compréhension/décision), social_status (image)"
+          },
           "chain": {
             "type": "array",
             "items": {
@@ -287,6 +293,24 @@
           "formulation": { "type": "string" },
           "frequency": { "type": ["integer", "null"], "minimum": 1, "maximum": 10 },
           "severity": { "type": ["string", "null"], "enum": ["low", "medium", "high", ""] },
+          "severity_score": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10,
+            "description": "Sévérité de l'objection · 10 = blocker absolu, 1 = nuisance mineure"
+          },
+          "response_counter": {
+            "type": "string",
+            "description": "Counter-réponse opérateur · ex 'preuve sociale 665 avis Google', 'garantie 60j satisfait remboursé'"
+          },
+          "derived_angle_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^ANG-\\d{2,3}$"
+            },
+            "description": "Refs des angles qui traitent cette objection · cross-ref vers angles/{ANG-NN}.json"
+          },
           "lifecycle_stage": { "type": ["string", "null"], "enum": ["awareness", "consideration", "decision", "post_purchase", ""] },
           "_notes": { "type": "object" }
         }

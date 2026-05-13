@@ -1,7 +1,7 @@
 ---
 name: produce-paid-angles
 type: producer
-version: "1.6.1"
+version: "1.7.0"
 isolation_scope: brand_only
 layer: 3
 recommended_model: sonnet
@@ -35,6 +35,7 @@ consumes:
   - path: resources/canon/copy/_shared/awareness-stage.json
     min_version: 1.0.0
 description: >
+  v1.7.0 (v2.56 Notion zone 3→4 filter-by-persona extension) : Step 11 artifact ajoute encart pivot fin de table · `Pour pivoter sur une autre audience, relance avec {audience_slug_other}` avec liste des autres `brands/{slug}/audiences/*/profile.json` cartographiées. Couvre opérationnellement le pattern Notion zone 3→4 filter-by-persona observé dans workspace stride-up. Pas de skill standalone `filter-angles-by-persona` (anti-pattern fork) · ce skill est déjà multi-audience friendly via input `{audience_slug}`. L'encart matérialise la capacité existing.
   v1.6.1 (v2.55 audit consume canon matrices) : frontmatter consumes: enrichi avec resources/canon/copy/{hooks,angles,frameworks,niveaux-schwartz,archetypes-voix,heuristiques-persuasion,_shared/awareness-stage.json}. Aligne déclaration consumes: avec Step 0ter qui lit déjà ces matrices via phantom-canon.py. Master doctrine PhantomOS reasons over a business universe ré-activé · canon dormant = output générique averaged-LLM. Mécanismes inchangés.
   v1.6.0 (v2.54 investigation posture refactor) : angles présentés avec confidence chain inheritée audience+brand en surface opérateur. Chaque angle porte derived_from_audience_confidence + derived_from_brand_confidence + claim_confidence agrégée (min des deux héritages). Ranked table colonne `Confiance` ajoutée. Close ouvre drill-down macro · test ces angles tels quels OU upgrade confidence audience source d'abord. Préserve équation Obs+Tension+Reframe+Bridge, lineage canon copy, scoring framework. Refacto uniquement la posture surface · angles avec confidence chain visible vs recommandations stratégiques posées. Cross-ref docs/system/investigation-posture.md.
   v1.4.0 (v2.36 frictions runtime patch) : HR4.5 verbatim density floor gate strict. AskUserQuestion explicit gate quand voice.key_expressions[] < 5 OR cumulative verbatim_quotes[] < 5 — pas de production sans operator response (a/b/c). Resoud anti-pattern mou v1.3.0 ou angles inferes shippaient avec flag inline sans gate explicite.
@@ -332,6 +333,27 @@ Each row ·
 | 4 | Verdict balance | "Le moment où tu montes et tu sais déjà" | Anticipation négative | "Ça marche pour les autres" | Reels | faible (formula-derived) |
 | 5 | Confiance retrouvée | "Remettre la robe rangée il y a 2 ans" | Aspiration | "Je vais reprendre après" | TikTok | TRÈS faible (audience non-validée) |
 ```
+
+### Encart pivot audiences (v1.7.0 NEW)
+
+Après le ranked table, avant le close drill-down, insérer un encart court qui matérialise la capacité de pivoter sur d'autres audiences cartographiées de la brand. Scan `brands/{slug}/audiences/*/profile.json` (exclusif audience source actuelle), surface les 3-5 autres audiences candidates avec leur `identity.label` operator-language.
+
+Format encart ·
+
+```
+Pour pivoter sur une autre audience cette brand · relance avec ·
+- {audience_label_2} ({audience_slug_2}) · {dominant_pain_extract_short}
+- {audience_label_3} ({audience_slug_3}) · {dominant_pain_extract_short}
+- {audience_label_4} ({audience_slug_4}) · {dominant_pain_extract_short}
+
+Audience absente du listing ? `mine-audience` pour la cartographier d'abord, ou `profile-audience` pour la coder à la main.
+```
+
+**Hard rules encart** ·
+- Surface uniquement si 2+ autres audiences existent dans `brands/{slug}/audiences/`. Si solo audience brand, encart skipped (pas de pivot disponible).
+- Cap 5 audiences max pour scannabilité. Au-delà, "et N autres audiences cartographiées" hint.
+- Operator-language labels (`identity.label`), jamais slugs purs ou JSON paths.
+- Couvre le pattern Notion zone 3→4 filter-by-persona observé workspace stride-up (Décision v2.56 routing systémique).
 
 ### Close drill-down macro (v2.54 doctrine investigation-posture)
 

@@ -2,7 +2,10 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Brand",
   "description": "Per-brand identity, positioning, financials, market context. Lives in brands/{slug}/brand.json. v2.1+: purchase_driver default + audience_trees[] for marketplaces. v2.2+: brand_equity_level + creative_zone (canon V3 §3, §4.3).",
-  "_schema_version": "brand/2.2",
+  "_schema_version": "brand/2.3",
+  "_changelog": {
+    "2.3": "v2.56 Notion stride-up parity · meta.validation_status $ref _shared/validation-status (composite avec meta.status existant). Backward compat strict additif."
+  },
   "type": "object",
   "required": ["meta", "identity", "positioning", "tone_of_voice", "platforms", "financials"],
   "properties": {
@@ -71,6 +74,10 @@
         "market": { "type": "string" },
         "stage": { "type": "string", "enum": ["launch", "growth", "scale", "mature", "decline"] },
         "status": { "type": "string", "enum": ["onboarding", "active", "paused", "churned"] },
+        "validation_status": {
+          "$ref": "_shared/validation-status.json",
+          "description": "État de validation cartographie brand · hypothesis/tested/validated/scaled/fatigued"
+        },
         "owner": { "type": "string" },
         "team": { "type": "array", "items": { "type": "string" } },
         "created": { "type": "string", "format": "date" },

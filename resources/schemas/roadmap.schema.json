@@ -1,0 +1,213 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "roadmap.schema.json",
+  "title": "Roadmap (brand-wide instance)",
+  "description": "Roadmap = matrice production brand-wide. Un seul roadmap par brand (cohérent avec Notion stride-up 'Roadmap [angles/audiences]' par workspace, pas par axe). Stored at brands/{slug}/roadmap.json (singleton, distinct du pattern par-instance angles/frictions). Closes the Notion stride-up parity gap (Roadmap 50% coverage pre-v2.56). Cross-ref doctrine : compositional-cartography.md (roadmap = matrice production des outputs créatifs, axe orthogonal au substrate canon ; alimente la planification de NOYAU × CONTEXTE × MODIFIEURS dans le temps). phases[] capture l'horizon temporel (sprints, cycles), mix[] capture la pondération stratégique par axe (audience / angle / product / funnel / creative), production_status[] capture l'état concret de chaque livrable. relations agrège les ids cross-référencés pour query rapide. v1.0 baseline shippée v2.56.",
+  "_schema_version": "roadmap/1.0",
+  "_changelog": {
+    "1.0": "v2.56 initial release · Notion stride-up parity Roadmap angles/audiences. Closes le gap où aucun schema canon ne capturait la matrice production brand-wide (planning par phase, pondération mix, statut par livrable). v1.0 fields : roadmap_id (RDM-{brand_slug}), meta (validation_status ref _shared + _source enum), phases[] (timeline avec status enum), mix[] (pondération weight 0-1 par axis enum 5 valeurs), production_status[] (état par livrable cross-entity), relations (agrégat ids angle/audience/product/creative). Storage singleton brands/{slug}/roadmap.json (distinct pattern par-instance des autres schemas, justifié par modèle Notion stride-up 'un roadmap par workspace'). Backward compat : N/A (nouveau schema). Source canon : Notion stride-up gap analysis v2.56."
+  },
+  "type": "object",
+  "required": ["roadmap_id", "meta", "phases"],
+  "properties": {
+    "_schema_version": {
+      "const": "roadmap/1.0",
+      "description": "Backward compat alias of root `_schema_version`. New readers SHOULD read the root field."
+    },
+
+    "roadmap_id": {
+      "type": "string",
+      "pattern": "^RDM-[a-z0-9-]+$",
+      "description": "RDM-{brand_slug} format. One roadmap per brand, id mirrors the brand slug for unambiguous resolution. E.g. 'RDM-stepprs', 'RDM-we-bet'. Pattern accepts lowercase, digits, dashes (matches brand slug convention)."
+    },
+
+    "phases": {
+      "type": "array",
+      "description": "Temporal segmentation of the roadmap. Each phase = one planning horizon (sprint, quarter, season). Order matters (chronological). Phases can overlap if explicitly modeled by dates.",
+      "items": {
+        "type": "object",
+        "required": ["phase_id", "name", "status"],
+        "properties": {
+          "phase_id": {
+            "type": "string",
+            "pattern": "^PHS-[0-9]{2,3}$",
+            "description": "PHS-NN format. Stable, never reassigned. Used as foreign key from production_status[].phase_ref (if added in future versions)."
+          },
+          "name": {
+            "type": "string",
+            "description": "Operator-facing label. E.g. 'Q3 2026 Launch', 'Sprint 14 Retention', 'Saison automne'."
+          },
+          "dates": {
+            "type": "object",
+            "description": "Phase boundaries. Both optional (open-ended phase = ongoing, no end).",
+            "properties": {
+              "start": { "type": ["string", "null"], "format": "date" },
+              "end": { "type": ["string", "null"], "format": "date" }
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Backlog", "Committed", "In production", "Live", "Done", "Cancelled"],
+            "description": "Phase-level status (aggregate). Backlog = identified, not committed. Committed = scoped + scheduled. In production = work actively underway. Live = active in-market. Done = completed and archived. Cancelled = abandoned (kept for historical record)."
+          },
+          "priorities": {
+            "type": "array",
+            "description": "Free-form priority labels for this phase. E.g. ['retention', 'wedge-anti-tampering', 'cohort-Q3-2025']. Operator-defined, no enum (taxonomy emerges from usage).",
+            "items": { "type": "string" }
+          },
+          "notes": {
+            "type": "string",
+            "description": "Operator notes / context / dependencies. Free-form."
+          }
+        }
+      }
+    },
+
+    "mix": {
+      "type": "array",
+      "description": "Strategic weighting per axis. Captures the pondération across audience / angle / product / funnel / creative. Sum of weights per axis SHOULD approach 1.0 for normalized mix, but not enforced (operator may model partial mix). Used by produce-paid-angles, score-matrix to bias output toward declared priorities.",
+      "items": {
+        "type": "object",
+        "required": ["mix_id", "weight", "axis"],
+        "properties": {
+          "mix_id": {
+            "type": "string",
+            "pattern": "^MIX-[0-9]{2,3}$",
+            "description": "MIX-NN format. Stable, never reassigned."
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Strategic weight 0.0-1.0. 0 = deprioritized. 1 = exclusive focus. Mid values = relative emphasis. Operator-stated or skill-derived from past performance."
+          },
+          "axis": {
+            "type": "string",
+            "enum": ["audience", "angle", "product", "funnel", "creative"],
+            "description": "Which dimension this mix entry weighs. audience = profile slug emphasis. angle = ANG-NN emphasis. product = product slug emphasis. funnel = funnel stage (TOF/MOF/BOF) emphasis. creative = creative typology emphasis."
+          },
+          "target_id": {
+            "type": ["string", "null"],
+            "description": "Optional reference to the specific entity weighted. E.g. axis=audience + target_id='dad-protective-of-daughters'. Null = axis-level weighting (e.g. 'angles weight 0.4 globally vs audiences weight 0.6')."
+          },
+          "rationale": {
+            "type": "string",
+            "description": "Operator notes on why this weighting. Free-form."
+          }
+        }
+      }
+    },
+
+    "production_status": {
+      "type": "array",
+      "description": "Concrete production state per deliverable. One entry per entity in production. Used to surface 'what's live / what's stuck / what's coming' at a glance. Operator-facing dashboard renders this directly.",
+      "items": {
+        "type": "object",
+        "required": ["entity_type", "entity_id", "status"],
+        "properties": {
+          "entity_type": {
+            "type": "string",
+            "enum": ["angle", "audience", "product", "creative", "funnel"],
+            "description": "Which canon entity this production line tracks. Matches the schema names (angle.schema.json, profile.schema.json, spec.schema.json, creative.schema.json, funnel.schema.json)."
+          },
+          "entity_id": {
+            "type": "string",
+            "description": "Id of the tracked entity. ANG-NN for angle, audience slug for audience, product slug for product, CRE-NN for creative, funnel id for funnel. Pattern not enforced here (delegated to referenced schema)."
+          },
+          "target_date": {
+            "type": ["string", "null"],
+            "format": "date",
+            "description": "Committed delivery date. Null = no commitment yet."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Backlog", "Committed", "In production", "Live", "Done", "Cancelled"],
+            "description": "Production lifecycle. Backlog = identified, not started. Committed = scheduled, brief locked. In production = being built. Live = shipped, running. Done = archived (deprecated, replaced, or saturated). Cancelled = abandoned."
+          },
+          "phase_ref": {
+            "type": ["string", "null"],
+            "pattern": "^PHS-[0-9]{2,3}$",
+            "description": "Optional reference to a phase[].phase_id. Ties this deliverable to a planning horizon."
+          },
+          "owner": {
+            "type": ["string", "null"],
+            "description": "Operator or team member accountable. Free-form."
+          },
+          "blockers": {
+            "type": "array",
+            "description": "Active blockers (asset missing, validation pending, dependency on other entity). Free-form strings.",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+
+    "relations": {
+      "type": "object",
+      "description": "Aggregated cross-references across the roadmap. Enables fast lookup ('what entities does this roadmap touch ?') without scanning production_status[]. Auto-derivable from production_status + mix but kept as denormalized view for read performance.",
+      "properties": {
+        "angle_ids": {
+          "type": "array",
+          "description": "All angle ids referenced anywhere in the roadmap.",
+          "items": { "type": "string", "pattern": "^ANG-[0-9]{2,3}$" }
+        },
+        "audience_slugs": {
+          "type": "array",
+          "description": "All audience slugs referenced anywhere in the roadmap.",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+        },
+        "product_slugs": {
+          "type": "array",
+          "description": "All product slugs referenced anywhere in the roadmap.",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+        },
+        "creative_ids": {
+          "type": "array",
+          "description": "All creative ids referenced anywhere in the roadmap.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "meta": {
+      "type": "object",
+      "required": ["validation_status", "_source"],
+      "properties": {
+        "validation_status": {
+          "$ref": "_shared/validation-status.json",
+          "description": "Lifecycle of the roadmap-as-encoded-entity. hypothesis = draft plan, not committed. tested = phase 1 underway. validated = phase 1 shipped + measured. scaled = roadmap actively driving production rhythm. fatigued = obsolete, awaiting refresh."
+        },
+        "_source": {
+          "type": "string",
+          "enum": ["observed", "inferred", "declared"],
+          "description": "Where the roadmap came from. observed = derived from actual production cadence (campaigns shipped, briefs produced). inferred = agent-deduced from brand stage + strategy.json. declared = operator stated explicitly (planning session, intake interview). Auto-tagged from semantic signal; never exposed to operator with this literal label (operator sees 'observé / déduit / déclaré' translation per HR-20)."
+        },
+        "created": {
+          "type": "string",
+          "format": "date",
+          "description": "First encoded date."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date",
+          "description": "Last meaningful mutation date."
+        },
+        "created_by_skill": {
+          "type": "string",
+          "description": "Which skill generated this roadmap. E.g. 'plan-roadmap', 'snapshot-brand', 'manual' (operator-entered via Notion-like UI)."
+        },
+        "horizon": {
+          "type": "string",
+          "enum": ["sprint", "quarter", "semester", "annual", "rolling"],
+          "description": "Planning rhythm. Operator preference. Influences how phases[] are typically sized."
+        }
+      }
+    },
+
+    "_field_types": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Per-field type tag (observed | stated | derived | structured). Drives mutation guard. Reference: docs/system/field-types.md."
+    }
+  }
+}

@@ -193,4 +193,31 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 
 ---
 
+## 13. Schema evolutions registry
+
+Registre canonique des évolutions schemas par release. Toute mutation `resources/schemas/*.json` doit apparaître ici (bump version, NEW schema, patch additif, $ref refactor). Append-only.
+
+### v2.56 (2026-05-12) · Notion stride-up alignment
+
+Driver · audit Phase 1 quantifie gap 70% coverage Notion 11 collections workspace `Onday`. PhantomOS implémente la doctrine `compositional-cartography.md` (4 arbres + matrice + modulateurs), Notion stride-up en est l'instance opérationnelle de référence. Bloc 1 comble 2 schemas manquants + 5 patches additifs, backward compat strict (toutes properties optional, validation existing instances OK).
+
+| Schema | Action | Version | Diff |
+|---|---|---|---|
+| `friction.schema.json` | NEW | v1.0 | NEW entity. FRC-NN id pattern. Category enum (physical/emotional/friction_ux/logistical/cognitive). severity_score 1-10. customer_evidence[]. cross_refs vers objection_ids[] + pain_point_ids[]. Storage `brands/{slug}/frictions/{FRC-NN}.json`. Cross-ref doctrine compositional-cartography §"État atlas · couverture verbatims". |
+| `roadmap.schema.json` | NEW | v1.0 | NEW entity. RDM-{brand_slug} id pattern. phases[] (phase_id, name, dates, status, priorities[]). mix[] (mix_id, weight 0-1, axis enum [audience, angle, product, funnel, creative]). production_status[]. relations cross-refs angles/audiences/products/creatives. Storage `brands/{slug}/roadmap.json` (brand-wide). |
+| `spec.schema.json` | patch additif | v1.9 → v1.10 | benefits.items.properties · `emotional_signal` (string) + `latency_min`/`latency_max` (integer jours) + `evidence_verbatim[]`. mechanisms.items.properties · `duration` (string délai d'effet). meta · `validation_status` ($ref `_shared/validation-status.json`). |
+| `profile.schema.json` | patch additif | v1.4 → v1.6 | pain_benefit_chain.items · `pain_category` enum (physical/emotional/friction_ux/logistical/cognitive/social_status, cohérent friction.schema). objections.items enrichi · `severity_score` 1-10 + `response_counter` (string) + `derived_angle_refs[]`. |
+| `offer.schema.json` | patch additif | v2.1 → v2.2 | meta · `validation_status` ($ref `_shared/validation-status.json`). |
+| `brand.schema.json` | patch additif | v2.2 → v2.3 | meta · `validation_status` ($ref `_shared/validation-status.json`). |
+
+**Décision design SED-side** · NE PAS dupliquer `meta.source / meta.confidence` sur chaque schema. Le pattern `_field_types` per-field (observed/stated/derived/structured · cf section 5 + `field-types.md`) couvre déjà la sémantique source canon. Seul `meta.validation_status` est ajouté en composite uniforme (hypothesis/tested/validated/scaled/fatigued) via `$ref _shared/validation-status.json`, parce qu'il indique l'état de validation terrain (orthogonal à source canonique).
+
+**Décision design SED-side · pas de objection.schema dédié** · 60% fragmenté volontaire. Doctrine compositional-cartography §4 confirme · objection n'est pas un arbre cartographique standalone, elle est consumée par profile (terrain audience) + angle (lever neutralization). Enrichissement profile.objections suffit. Anti-pattern cardinality dispersion évité.
+
+**Activation runtime** · brief.schema v1.0 (shippé v2.42, orphan jusqu'à v2.56) activée via produce-copy-brief v1.4.0 Step 6bis. Storage canonical migré vers `brands/{slug}/briefs/{BRF-NN}.md`. Legacy path `produced/copy-briefs/` deprecated mais lecture backward compat.
+
+**Bridge sync external (Layer 1 MCP)** · schemas v2.56 sont consommés par `sync-notion-atlas` skill v1.0.0 (pull-only MVP Phase A) pour synchronisation bidirectionnelle PhantomOS ↔ Notion workspace. Doctrine canonique de ce bridge · `docs/system/notion-bridge-doctrine.md`.
+
+---
+
 *Doctrine — consolidates 11 previously-scattered sub-disciplines (mutation rule, _field_types, _version semver, sourcing tags, triangulation, validation runtime, append-only conventions, snapshot/manifest regen, conventions plateforme, extension layer, memory & observability) into one named discipline. Sister to CMR, SAD, PTD scope under CI master.*

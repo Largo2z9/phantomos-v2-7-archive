@@ -2,8 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Product Specification",
   "description": "Product specification — deep product knowledge, factual context. Lives in brands/{slug}/products/{product}/spec.json.",
-  "_template_version": "1.9",
-  "_schema_version": "spec/1.9",
+  "_template_version": "1.10",
+  "_schema_version": "spec/1.10",
+  "_changelog": {
+    "1.10": "v2.56 Notion stride-up parity : benefits enrichis (emotional_signal + latency_min/max + evidence_verbatim) · mechanism.duration ajouté · meta.validation_status $ref _shared. Backward compat strict additif."
+  },
   "type": "object",
   "required": ["meta"],
   "properties": {
@@ -21,6 +24,10 @@
         "name": { "type": "string" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]*$" },
         "status": { "type": "string", "enum": ["draft", "partial", "complete"] },
+        "validation_status": {
+          "$ref": "_shared/validation-status.json",
+          "description": "État de validation de la spec produit : hypothesis / tested / validated / scaled / fatigued. Cohérent atlas vivant canon-tool (alignement v2.56 Notion stride-up parity)."
+        },
         "created": { "type": "string" },
         "updated": { "type": "string" },
         "_notes": { "type": "object" }
@@ -394,6 +401,7 @@
           "target": { "type": ["string", "null"], "description": "Biological/cognitive/behavioral target. E.g. 'cortisol axis', 'mitochondrial energy', 'hair follicle stem cells', 'attention regulation'. Null if not yet enriched." },
           "mode_of_action": { "type": ["string", "null"], "enum": [null, "cofactor", "antioxidant", "adaptogen", "probiotic", "coenzyme", "regulator", "stimulant", "inhibitor", "structural", "delivery", "other"], "description": "Type of action. Null until enriched." },
           "time_window": { "type": ["string", "null"], "enum": [null, "immediate", "7d", "14d", "30d", "60d", "90d+"], "description": "Time to observable effect. Null until enriched." },
+          "duration": { "type": "string", "description": "Délai d'effet observable. Ex '15 minutes', '3 jours', '2 semaines'. Distinct de `time_window` enum existant : granularité opérateur libre, formulation naturelle." },
           "evidence_level": { "type": ["string", "null"], "enum": [null, "clinical_cited", "efsa_validated", "efsa_partial", "anecdotal", "mechanistic_only"], "description": "Strength of proof for this specific mechanism on this product. Null until enriched." },
           "market_sophistication": { "type": ["string", "null"], "enum": [null, "low", "medium", "high"], "description": "How well the target audience understands this mechanism. Low = educational territory available. High = saturated, need differentiation. Null until enriched." },
           "triggered_by_specs": { "type": "array", "items": { "type": "string" }, "description": "Spec ingredient/feature ids that activate this mechanism. Many-to-many (1 mechanism can be triggered by multiple specs)." },
@@ -423,7 +431,22 @@
               }
             }
           },
-          "tags": { "type": "array", "items": { "type": "string" } }
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "emotional_signal": { "type": "string", "description": "Signal émotionnel ressenti par l'utilisateur. Ex 'sentiment de retrouver son sommeil', 'fierté autonomie enfant'." },
+          "latency_min": { "type": "integer", "description": "Délai minimum avant effet observable, en jours." },
+          "latency_max": { "type": "integer", "description": "Délai maximum avant effet observable, en jours." },
+          "evidence_verbatim": {
+            "type": "array",
+            "description": "Quotes clients sourcées qui attestent du bénéfice.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": { "type": "string" },
+                "platform": { "type": "string" },
+                "source_url": { "type": "string" }
+              }
+            }
+          }
         }
       }
     },

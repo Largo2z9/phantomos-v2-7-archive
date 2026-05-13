@@ -2,8 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Product Offers",
   "description": "Commercial offers for a product. Breaking from v1.8: flat offers[] wrapped in offer_groups[] with attribute inheritance (2-level, group then offer). v2.1 (v2.42): scope enum élargi (pre_cart conservé, post_cart ouvert) avec cross-ref funnel.schema.json pour stages funnel post-cart. Lives in brands/{slug}/products/{slug}/offers.json once validated.",
-  "_schema_version": "offer/2.1",
+  "_schema_version": "offer/2.2",
   "_changelog": {
+    "2.2": "v2.56 Notion stride-up parity · meta.validation_status $ref _shared/validation-status. Backward compat strict additif.",
     "2.1": "v2.42 cleanup: `_schema_version` field root standardisé (format `{name}/{semver}`, remplace `_version` const). Marker DRAFT retiré du title. `meta.scope` passé de const `pre_cart` à enum [`pre_cart`, `post_cart`] pour ouvrir aux funnel stages post-add-to-cart. Cross-ref ajouté vers funnel.schema.json (parent_offer_group). Backward compat strict: lecteurs anciens reçoivent toujours pre_cart par défaut, post_cart est additif. Source canon: PATCH 2A v2.42.",
     "2.0": "Initial v2.0 (DRAFT pré-cleanup): flat offers[] wrapped in offer_groups[] avec attribute inheritance (2-level). 10 structural types (single|bundle|prepay|subscription|membership|gifting|seasonal|launch|digital|service). C2 membership, C3 intro_phases cascading, C4 early_access cohort_tiers, C5 personalization pointer, C6 commitment structuré, C8 referral product_refs structurés."
   },
@@ -47,6 +48,10 @@
               "description": "Taux de prise estimé/observé pour calibrage funnel economics."
             }
           }
+        },
+        "validation_status": {
+          "$ref": "_shared/validation-status.json",
+          "description": "État de validation de l'offre · hypothesis/tested/validated/scaled/fatigued cohérent atlas vivant"
         },
         "updated": { "type": "string" }
       }

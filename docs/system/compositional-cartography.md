@@ -114,6 +114,7 @@ Plus **Extractibility test** · frame de validation transverse appliqué aux dis
 - `docs/system/audience-cartography-doctrine.md` · cartographie audiences spécifique (3 niveaux, invariants validate-resources).
 - `docs/doctrine/audience-cartography-framework.md` · operator-facing 4 questions canon.
 - `docs/system/doctrine-governance.md` · processus évolution doctrines.
+- `docs/system/notion-bridge-doctrine.md` · implémentation Notion canonique de référence · sync bidirectionnel via `sync-notion-atlas` skill · le système Notion stride-up workspace implémente opérationnellement les 4 arbres + matrice + modulateurs codifiés ici.
 
 ---
 

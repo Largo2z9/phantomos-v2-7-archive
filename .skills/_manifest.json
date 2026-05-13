@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-13T21:41:52Z",
-  "_count": 56,
+  "_generated_at": "2026-05-13T22:56:22Z",
+  "_count": 60,
   "skills": [
     {
       "name": "analyze-copy",
@@ -139,6 +139,40 @@
       "isolation_scope": "brand_only",
       "layer": null,
       "path": ".skills/skills/build-agent/SKILL.md"
+    },
+    {
+      "name": "build-atlas-complete",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [
+          "génère l'atlas complet de {brand}",
+          "build atlas {brand}",
+          "lance le pipeline complet",
+          "construis tout pour {brand}",
+          "atlas complet from scratch"
+        ],
+        "en": [
+          "build complete atlas",
+          "generate full atlas {brand}",
+          "build everything for {brand}",
+          "run full pipeline",
+          "full atlas from scratch"
+        ]
+      },
+      "disambiguates_against": {
+        "onboard-brand": "route to onboard-brand when operator wants only the structural setup + snapshot + integrity check (no audiences/angles/briefs/créas). onboard-brand stops at the 'context loaded' gate.",
+        "deepen-brand-context": "route to deepen-brand-context when operator wants only VoC + VoM mining on a snapshotted brand (no audiences/angles/briefs/créas downstream).",
+        "setup-brand": "route to setup-brand for initial identity/structure only.",
+        "snapshot-brand": "route to snapshot-brand for URL scrape only on an existing brand.",
+        "profile-audience": "route to profile-audience standalone when operator wants audiences only, not the full strategic atlas.",
+        "score-matrix": "route to score-matrix standalone when atlas is already populated and operator wants only territory prioritization."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/build-atlas-complete/SKILL.md"
     },
     {
       "name": "capture-learning",
@@ -417,6 +451,26 @@
       "isolation_scope": "workspace_global",
       "layer": 3,
       "path": ".skills/skills/create-skill/SKILL.md"
+    },
+    {
+      "name": "creative-brief-composer",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "produce-copy-brief": "route to produce-copy-brief alone when operator wants ONLY a brief artifact, no visual creative downstream. creative-brief-composer chains brief → N visual variants in one pass.",
+        "compose-creative": "route to compose-creative alone when operator already has a brief artifact and wants only visual variants. creative-brief-composer regenerates brief upstream of variants.",
+        "produce-paid-angles": "route to produce-paid-angles when operator needs ANGLE IDEATION (matrice ranked). creative-brief-composer is downstream, angle is already selected.",
+        "recompose-creative": "route to recompose-creative when adapting an existing creative variant. creative-brief-composer produces ex nihilo from angle."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/creative-brief-composer/SKILL.md"
     },
     {
       "name": "cross-deepening-signals",
@@ -851,6 +905,28 @@
       "isolation_scope": "brand_only",
       "layer": 3,
       "path": ".skills/skills/produce-paid-angles/SKILL.md"
+    },
+    {
+      "name": "produce-paid-matrix",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "produce-paid-angles": "route directly to produce-paid-angles when operator wants ranked angles for ONE audience only (single-audience scope, ~15 min). produce-paid-matrix orchestrates the brand-wide matrice across all top audiences.",
+        "score-matrix": "route directly to score-matrix when operator wants ONLY the scoring matrice and dimension_weights + angles already exist on brand (e.g. re-score after brand modulators changed). produce-paid-matrix runs the full upstream pipeline first.",
+        "weight-dimensions": "route directly to weight-dimensions when operator wants ONLY pondérations dimensions for a specific audience × angle pair (debug or audit). Sub-skill of this orchestrator, never operator-facing alone.",
+        "deepen-brand-context": "deepen-brand-context handles brand intelligence deepening (VoC + VoM). produce-paid-matrix consumes that intelligence to produce the paid pitch matrice. Different layers: deepen = encode, paid-matrix = produce.",
+        "produce-copy-brief": "produce-copy-brief turns ONE chosen angle into a copywriter brief (downstream production). produce-paid-matrix is upstream prioritisation: which audience × source territories to invest first, before any copy brief.",
+        "onboard-brand": "onboard-brand sets up the brand from scratch. produce-paid-matrix assumes setup complete and ≥ 2 audiences encodées."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/produce-paid-matrix/SKILL.md"
     },
     {
       "name": "profile-audience",
@@ -1318,6 +1394,36 @@
       "isolation_scope": "brand_only",
       "layer": null,
       "path": ".skills/skills/study-niche-marketdeepdive/SKILL.md"
+    },
+    {
+      "name": "sync-notion-atlas",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "sync notion atlas {brand_slug}",
+          "pull notion vers phantom",
+          "import notion vers {brand_slug}",
+          "synchronise mon notion avec phantom",
+          "tire mon atlas notion dans phantom"
+        ],
+        "en": [
+          "sync notion atlas",
+          "pull notion to phantom",
+          "import from notion",
+          "sync workspace from notion"
+        ]
+      },
+      "disambiguates_against": {
+        "snapshot-brand": "route to snapshot-brand quand l'opérateur fournit une URL e-commerce brand (scrape direct PDP / homepage / collection). sync-notion-atlas est UPSTREAM différent · pull depuis workspace Notion structuré opérateur, pas scrape brand publique. Pas la même source, pas la même richesse data.",
+        "import-asset": "route to import-asset pour assets visuels individuels (logo, badges, mascotte) ou par auto_multi sur une brand URL. sync-notion-atlas couvre la data structurée canon des 11 collections, pas les assets binaires.",
+        "ingest-resource": "route to ingest-resource pour docs ponctuels (brief PDF, transcript interview, copy doc, reviews export). sync-notion-atlas couvre le workspace Notion systémique 11 collections inter-reliées, pas l'enrichissement par document isolé."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 1,
+      "path": ".skills/skills/sync-notion-atlas/SKILL.md"
     },
     {
       "name": "update-workspace",
