@@ -1,7 +1,7 @@
 ---
 name: produce-strategy
 type: orchestrator
-version: "1.0.0"
+version: "1.0.1"
 recommended_model: sonnet
 subagent_safe: false
 operator_facing: true
@@ -25,6 +25,7 @@ triggers_en:
   - "set strategic focus {brand}"
   - "produce strategy {brand}"
 description: >
+  v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (dtc-operator-playbook). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.0 baseline orchestrateur cadrage stratégique brand. Interactive flow Q&A · annual_goals
   (GOAL-NN) · current_focus quarter + acquisition_focus · channels/audiences/products
   prioritized · budget_allocation · constraints (CST-NN). Stage proposals via mutation gate.
@@ -52,6 +53,7 @@ consumes:
     min_version: 1.0.0
   - path: resources/schemas/strategy.schema.json
     min_version: 1.0.0
+  - path: docs/doctrine/dtc-operator-playbook.md
 produces_proposals_for:
   - brands/{slug}/strategy.json
 pipeline:

@@ -1,6 +1,6 @@
 ---
 name: score-matrix
-version: 1.1.0
+version: 1.1.1
 type: producer
 isolation_scope: brand_only
 layer: 3
@@ -22,12 +22,15 @@ triggers_en:
 disambiguates_against:
   - weight-dimensions: "weight-dimensions calcule pondérations dimensions audience → angle (input). score-matrix CONSOMME ces weights pour scoring final matrice."
   - produce-paid-angles: "produce-paid-angles produit des angles individuels. score-matrix priorise les COMBINAISONS audience × angle."
+description: >
+  v1.1.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (territoires-prioritisation). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
 consumes:
   - brands/{slug}/audiences/*/profile.json (sub-clusters)
   - brands/{slug}/audiences/*/dimension_weights.json (weight-dimensions output)
   - brands/{slug}/angles/*.json (angles populated)
   - brands/{slug}/brand.json (modulateurs strategic_context · à ajouter v2.35 ou via brand_equity_level + creative_zone proxy)
   - resources/canon/copy/* (référentiels)
+  - path: docs/doctrine/territoires-prioritisation-doctrine.md
 produces_proposals_for:
   - brands/{slug}/scoring/matrix-{date}.json (matrice scorée + top territoires)
 permissions:

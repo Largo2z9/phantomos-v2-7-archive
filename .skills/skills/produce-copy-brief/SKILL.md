@@ -1,7 +1,7 @@
 ---
 name: produce-copy-brief
 type: producer
-version: "1.4.0"
+version: "1.4.1"
 isolation_scope: brand_only
 layer: 3
 recommended_model: sonnet
@@ -18,7 +18,13 @@ consumes:
     min_version: 1.0.0
   - path: resources/templates/hook-formulas.md
     min_version: 1.0.0
+  - path: docs/doctrine/angle-anatomy-doctrine.md
+  - path: docs/doctrine/hooks-method-doctrine.md
+  - path: docs/doctrine/objections-mapping-doctrine.md
+  - path: docs/doctrine/pain-benefit-chain-doctrine.md
+  - path: docs/doctrine/breakthrough-advertising-5-stages.md
 description: >
+  v1.4.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, objections-mapping, pain-benefit-chain, breakthrough-advertising-5-stages). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.4.0 (v2.56 brief.schema activation) : Step 6bis NEW · stage Layer C frontmatter conforme brief.schema v1.0 (BRF-NN id, angle_id ref, audience_slug, product_slug, creative_format enum, intent_mix object, overlay_density, brand_mark_present, validation_status, confidence_chain, status hypothesis, created date). Storage path migré vers `brands/{slug}/briefs/{BRF-NN}.md` (canon brief.schema). Old path `produced/copy-briefs/` deprecated mais lecture backward compat. Closes schema orphan v2.42 (brief.schema designed jamais activée runtime). Downstream skills (compose-creative, recompose-creative, audit-creative-output) consument désormais des briefs au frontmatter typé canonique.
   v1.2.0 (v2.32 alignment) : when a creative_id is passed in input, reads creative.intent_mix in priority over intent for tone calibration. Also reads overlay_density + brand_mark_present (fallback craft_mode) and accepts validation_status oneOf shape.
   Produces a copywriter brief for an audience × chosen angle × channel.

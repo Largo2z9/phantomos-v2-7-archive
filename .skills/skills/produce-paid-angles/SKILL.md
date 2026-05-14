@@ -1,7 +1,7 @@
 ---
 name: produce-paid-angles
 type: producer
-version: "1.8.0"
+version: "1.8.1"
 isolation_scope: brand_only
 layer: 3
 recommended_model: sonnet
@@ -34,7 +34,13 @@ consumes:
     min_version: 1.0.0
   - path: resources/canon/copy/_shared/awareness-stage.json
     min_version: 1.0.0
+  - path: docs/doctrine/angle-anatomy-doctrine.md
+  - path: docs/doctrine/hooks-method-doctrine.md
+  - path: docs/doctrine/breakthrough-advertising-5-stages.md
+  - path: docs/doctrine/objections-mapping-doctrine.md
+  - path: docs/doctrine/audiences-cartography-doctrine.md
 description: >
+  v1.8.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, breakthrough-advertising-5-stages, objections-mapping, audiences-cartography). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.8.0 (v2.58 coverage extend) · objections.response_counter + derived_angle_refs back-ref auto-persist · angle.compatibility[] cross-audience persist (extension encart v1.7.0). Closes 3 orphans audit v2.57.
   v1.7.0 (v2.56 Notion zone 3→4 filter-by-persona extension) : Step 11 artifact ajoute encart pivot fin de table · `Pour pivoter sur une autre audience, relance avec {audience_slug_other}` avec liste des autres `brands/{slug}/audiences/*/profile.json` cartographiées. Couvre opérationnellement le pattern Notion zone 3→4 filter-by-persona observé dans workspace stride-up. Pas de skill standalone `filter-angles-by-persona` (anti-pattern fork) · ce skill est déjà multi-audience friendly via input `{audience_slug}`. L'encart matérialise la capacité existing.
   v1.6.1 (v2.55 audit consume canon matrices) : frontmatter consumes: enrichi avec resources/canon/copy/{hooks,angles,frameworks,niveaux-schwartz,archetypes-voix,heuristiques-persuasion,_shared/awareness-stage.json}. Aligne déclaration consumes: avec Step 0ter qui lit déjà ces matrices via phantom-canon.py. Master doctrine PhantomOS reasons over a business universe ré-activé · canon dormant = output générique averaged-LLM. Mécanismes inchangés.

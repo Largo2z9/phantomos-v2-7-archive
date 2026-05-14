@@ -1,6 +1,6 @@
 ---
 name: decompose-ad
-version: 1.3.1
+version: 1.3.2
 type: producer
 isolation_scope: brand_only
 layer: 2
@@ -11,6 +11,7 @@ patch_notes:
   v1.3.1: "v2.51 operator-fiche-output canonique template applied · header fiche v5 refactor langage métier. Header `{TITRE COURT} · {BRAND}` → `{BRAND_HUMAIN} · Analyse pub · {source_humaine}` (selon canonique resources/templates/operator-fiche-output.md mapping). Sous-titre 1 ligne plain language `décomposition de la pub {concurrent | interne n°N}`. Body sections 1-4 préservées (déjà plain language), TAGS RETRIEVAL bloc préservé (mode reverse-engineering · l'opérateur peut vouloir voir comment c'est encodé). Footer · 1 reco soft offer 1 ligne max."
   v1.3.0: "v2.46 endpoint reference migration nano-banana-pro/edit → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025). decompose-ad reste reverse-engineering (pas de gen direct), mais HR2bis référence endpoint canonique pour compose mode downstream + anti-pattern label hallucination context. Frontmatter permissions.external_apis[] déclaré. Cohérent compose-creative v1.2 + recompose-creative v1.2 + craft-packshot v1.1 upstream. Cross-ref doctrine model-versioning-canon v2.44."
 description: >
+  v1.3.2 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.3.0 (v2.46 alignment) : HR2bis + anti-pattern reference endpoint canon nano-banana-2/edit cohérent compose/recompose/craft-packshot.
   v1.2.0 (v2.32 alignment) : reads intent_mix (fallback intent if absent) + overlay_density (fallback craft_mode) + meta.validation_status accepts both shapes.
   Decompose une ad (benchmark concurrent OU créa marque interne) en fiche structurée
@@ -69,6 +70,8 @@ consumes:
   - path: brands/{slug}/products/{product_slug}/spec.json#visual_identity
     min_version: 1.10.0
     note: visual identity assets (packshots, color_palette, container, content, label, distinctive_features) consumed for product fidelity in regen pipelines
+  - path: docs/doctrine/angle-anatomy-doctrine.md
+  - path: docs/doctrine/hooks-method-doctrine.md
 produces_validations_for:
   - resources/canon/copy/hooks/*.json
   - resources/canon/copy/angles/*.json

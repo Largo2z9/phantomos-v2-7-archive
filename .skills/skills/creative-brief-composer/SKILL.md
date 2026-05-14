@@ -1,7 +1,7 @@
 ---
 name: creative-brief-composer
 type: orchestrator
-version: "1.0.0"
+version: "1.0.1"
 recommended_model: sonnet
 subagent_safe: false
 mode: proposed
@@ -12,6 +12,7 @@ reasoning_pattern: null
 patch_notes:
   v1.0.0: "v2.56 ship · résout gap orchestration Scenario 2 audit Phase 1. L'opérateur a sélectionné un angle prioritaire (via produce-paid-angles ou choix manuel) et veut matérialiser : brief structuré + 2-3 variants créa visuels Meta-ready. Chaîne produce-copy-brief → operator gate validate → compose-creative × N (parallèle ou séquentiel selon load). Orchestrateur pur, ne ré-implémente jamais la logique des sub-skills. Pattern Step 4-5 mirror onboard-brand (gate operator validate then push N variants). Cross-ref compositional-cartography.md §3 équation v3.1, investigation-posture.md output 5 sections."
 description: >
+  v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, objections-mapping, pain-benefit-chain). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   Full-cycle creative materialization orchestrator. L'opérateur a sélectionné un angle prioritaire
   et veut générer brief structuré + 2-3 variants créa visuels Meta-ready en une seule passe.
   Chaîne : produce-copy-brief (brief artifact frontmatter brief.schema v1.0) → operator gate validate
@@ -56,6 +57,10 @@ consumes:
   - path: resources/registries/creative-mechanics-registry.md
     min_version: 1.0.0
     note: mécaniques creative pour ranking variants
+  - path: docs/doctrine/angle-anatomy-doctrine.md
+  - path: docs/doctrine/hooks-method-doctrine.md
+  - path: docs/doctrine/objections-mapping-doctrine.md
+  - path: docs/doctrine/pain-benefit-chain-doctrine.md
 produces_proposals_for:
   - brands/{slug}/briefs/{BRF-NN}.md
   - brands/{slug}/creatives/{CRT-NN}.json

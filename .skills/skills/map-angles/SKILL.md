@@ -1,7 +1,7 @@
 ---
 name: map-angles
 type: producer
-version: 1.0.0
+version: 1.0.1
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -10,7 +10,9 @@ mode: proposed
 operator_facing: true
 patch_notes:
   - "1.0.0 (S55 · v2.58 · D#386 canon) · NEW atomique cartography. Extraction OR refonte produce-paid-angles · scaffold portfolio angles brand-wide (light pass formula + lineage canon) sans deep production matrix scoring. Invocable séparément pour refresh cartographie angles sans relancer le full pipeline produce-paid-angles. Cross-product audience × axis origin cartographié, scaffold N angles light pass avec lineage canon obligatoire. Cross-ref D#386."
+  - "1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, breakthrough-advertising-5-stages, audiences-cartography). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
 description: |
+  v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, breakthrough-advertising-5-stages, audiences-cartography). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.0.0 (S55 · v2.58 · D#386 canon) · Atomique cartography extraction.
   Cartographie le PORTFOLIO angles brand-wide depuis audiences cartographiées · scaffold N angles ANG-NN.json light pass (formula 4 components + lineage canon obligatoire) sans deep production matrix scoring. Invocable séparément pour refresh cartographie angles sans relancer le full pipeline produce-paid-angles. Distinct produce-paid-angles qui scoring + ranks + close drill-down matrix · map-angles scaffold le PORTFOLIO depuis cross-product audience × axis origin (audience-derived · product-derived · category-derived · brand-derived · temporal-cultural).
 triggers_fr:
@@ -41,6 +43,9 @@ consumes:
   - resources/canon/copy/_shared/awareness-stage.json (5 stages canon $ref shared)
   - docs/system/compositional-cartography.md (canon doctrine formula 4 components)
   - docs/system/canonical-matrix-reasoning.md (canon CMR · canon × audience cross-product)
+  - path: docs/doctrine/angle-anatomy-doctrine.md
+  - path: docs/doctrine/breakthrough-advertising-5-stages.md
+  - path: docs/doctrine/audiences-cartography-doctrine.md
 produces_proposals_for:
   - brands/{slug}/angles/{ANG-NN}.json (light pass scaffold · formula text + lineage canon + meta hypothesis)
 permissions:

@@ -1,14 +1,16 @@
 ---
 name: mine-vom
 type: producer
-version: "1.1.0"
+version: "1.1.1"
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: coding
 consumes:
   - path: resources/frameworks/vom-mining.md
     min_version: 1.0.0
+  - path: docs/doctrine/breakthrough-advertising-5-stages.md
 description: >
+  v1.1.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.1.0 (v2.58 coverage extend) · brand.market.awareness_distribution write-side · brand.market.regulatory write-side · brand.seasonality write-side · spec.competitive_comparison feature-by-feature write-side. Closes 4 orphans audit v2.57.
   Voice of Market mining. Captures what the broader niche says — competitors'
   customer reviews, niche community forums (Reddit subs, niche Discord),

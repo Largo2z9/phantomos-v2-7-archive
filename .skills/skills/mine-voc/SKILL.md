@@ -1,7 +1,7 @@
 ---
 name: mine-voc
 type: producer
-version: "1.1.0"
+version: "1.1.1"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -10,7 +10,10 @@ matrix_mode: coding
 consumes:
   - path: resources/frameworks/voc-coding.md
     min_version: 1.0.0
+  - path: docs/doctrine/pain-benefit-chain-doctrine.md
+  - path: docs/doctrine/objections-mapping-doctrine.md
 description: >
+  v1.1.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (pain-benefit-chain, objections-mapping). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.1.0 (v2.58 coverage extend) · benefits emotional_signal + latency_min/max + evidence_verbatim staging (v1.10 NEW fields activated) · pain_id PNT-NN + objection_id OBJ-NN stable generation (v1.7 NEW canonical IDs · fixe faille cross-ref friction). Closes 3 orphans audit v2.57.
   Voice of Customer mining. Captures what real customers say about THIS brand
   from native review widgets, Trustpilot, Reddit threads, app stores, forums.

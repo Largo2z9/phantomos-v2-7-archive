@@ -1,0 +1,72 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.61.0",
+  "released_at": "2026-05-15",
+  "compatible_from": "2.0.0",
+  "type": "cross_link_skills_consume_doctrine_layer",
+  "summary": "v2.60 a ship 8 docs canon doctrine copywriting/strategy. v2.61 cross-link 20 skills frontmatter consumes: avec refs docs/doctrine/ via 2 agents parallèle. Pattern miroir existing paid-angle-scoring.md consume. Skills consument désormais doctrines canon runtime pour informer production sans dépendre schemas exacts. Coverage 50+ refs cumulées cross-skills.",
+  "changes": [
+    {
+      "category": "skills_consume_doctrine_creative_paid",
+      "action": "patched",
+      "files": [
+        ".skills/skills/produce-paid-angles/SKILL.md",
+        ".skills/skills/produce-copy-brief/SKILL.md",
+        ".skills/skills/compose-creative/SKILL.md",
+        ".skills/skills/recompose-creative/SKILL.md",
+        ".skills/skills/decompose-ad/SKILL.md",
+        ".skills/skills/decompose-angle/SKILL.md",
+        ".skills/skills/creative-brief-composer/SKILL.md",
+        ".skills/skills/score-matrix/SKILL.md",
+        ".skills/skills/produce-paid-matrix/SKILL.md",
+        ".skills/skills/weight-dimensions/SKILL.md"
+      ],
+      "section": "Agent A · 10 skills creative + paid · consumes enrichi docs/doctrine/",
+      "rationale": "Skills creative + paid bumped patch level avec docs/doctrine/ refs · produce-paid-angles v1.8.1 (5 doctrines) · produce-copy-brief v1.4.1 (5) · compose-creative v1.4.3 (4) · recompose-creative v1.2.2 (2) · decompose-ad v1.3.2 (2) · decompose-angle v1.0.1 (2) · creative-brief-composer v1.0.1 (4) · score-matrix v1.1.1 (1) · produce-paid-matrix v1.0.1 (2) · weight-dimensions v1.1.1 (1). Pattern simplifié sans min_version pour docs/doctrine/. Existing consumes preserved intacts."
+    },
+    {
+      "category": "skills_consume_doctrine_audiences_mining_orchestration",
+      "action": "patched",
+      "files": [
+        ".skills/skills/profile-audience/SKILL.md",
+        ".skills/skills/mine-voc/SKILL.md",
+        ".skills/skills/mine-vom/SKILL.md",
+        ".skills/skills/snapshot-brand/SKILL.md",
+        ".skills/skills/map-mechanisms/SKILL.md",
+        ".skills/skills/map-benefits/SKILL.md",
+        ".skills/skills/map-audiences/SKILL.md",
+        ".skills/skills/map-angles/SKILL.md",
+        ".skills/skills/build-atlas-complete/SKILL.md",
+        ".skills/skills/produce-strategy/SKILL.md"
+      ],
+      "section": "Agent B · 10 skills audiences + mining + orchestration · consumes enrichi docs/doctrine/",
+      "rationale": "Skills audiences/mining/orchestration bumped patch level avec docs/doctrine/ refs · profile-audience v1.4.1 (4 doctrines) · mine-voc v1.1.1 (2) · mine-vom v1.1.1 (1) · snapshot-brand v1.3.1 (2, consumes section créée) · map-mechanisms v1.0.1 (1, consumes section créée) · map-benefits v1.0.1 (1) · map-audiences v1.0.1 (2) · map-angles v1.0.1 (3) · build-atlas-complete v1.0.2 (5) · produce-strategy v1.0.1 (1). Existing consumes preserved intacts."
+    },
+    {
+      "category": "manifest_regen",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json", ".skills/_jargon_bank.json"],
+      "section": "Manifest skills regen post-patches",
+      "rationale": "python3 .skills/build-manifest.py · 67 skills indexés (count inchangé v2.60 · rename frontmatter, pas skill add)."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md", "docs/internal/releases/manifest/2.61.0-manifest.json"],
+      "section": "Version bump v2.60 → v2.61 + CHANGELOG + manifest NEW",
+      "rationale": "Bump template_version 2.60.0 → 2.61.0. released_at 2026-05-15."
+    }
+  ],
+  "files_patched_total": "23 files (20 skills patched + _version + CHANGELOG + manifest + 2 manifests regen)",
+  "patterns_introduced": {
+    "skills_consume_doctrine_canonical_pattern": "Pattern canon v2.61 · skills consume docs/doctrine/ refs en frontmatter pour informer production sans dépendre schemas exacts. Vocabulaire canon copywriting/strategy aligné cross-skills (e.g. tous les skills qui produisent angles consument angle-anatomy-doctrine.md · cohérence garantie). Distinction · resources/frameworks/*.md = framework technique versionné · docs/doctrine/*.md = doctrine conceptuelle non-versionnée. Skills consume les 2 selon use case.",
+    "simplified_consume_docs_doctrine_no_min_version": "Refs docs/doctrine/ dans skills consumes: utilisent pattern simplifié (path only, sans min_version). Vs resources/frameworks/*.md qui gardent min_version (canon existing). Raison · doctrines docs/doctrine/ pas versionnées au header (NEW v2.60), pattern future si besoin (v2.62+ optional)."
+  },
+  "antipatterns_eliminated": {
+    "doctrines_consultees_pas_consumees_runtime": "v2.60 ship doctrines mais runtime not actively consumed by skills · doctrines = consultation opérateur-facing seulement, pas informant production. v2.61 cross-link via consumes runtime · skills consument doctrines pour informer production. Vocabulaire canon cohérent cross-skills.",
+    "vocabulaire_canon_drift_cross_skills": "Avant v2.61 · skills qui produisent angles peuvent utiliser vocabulaire différent (1 skill dit 'reframe', autre dit 'pivot', autre dit 'transformation'). v2.61 cross-link tous les skills angle-producing à angle-anatomy-doctrine.md canon · vocabulaire OTRB (Observation + Tension + Reframe + Bridge) cohérent garanti."
+  },
+  "operator_impact": "Skills consument désormais doctrines canon runtime · production canonical-informed (e.g. produce-paid-angles consume angle-anatomy + hooks-method + objections-mapping + audiences-cartography + breakthrough-advertising-5-stages = 5 doctrines canon informent la production). Vocabulaire copywriting/strategy aligned cross-skills · cohérence garantie. Audit trail doctrinaire · si un angle/brief sort sub-optimal, on peut tracer si skill a bien consumed les bonnes doctrines.",
+  "backward_compat": "strict_additif_pur. Existing consumes refs (resources/frameworks/, resources/registries/, etc.) preserved intacts avec min_version. Steps existing intacts. 2 skills sans consumes initial ont eu la section créée (snapshot-brand · map-mechanisms). 2 skills sans description ont eu description courte ajoutée (score-matrix · weight-dimensions). Manifest skills 67 inchangé (rename frontmatter, pas skill add). Aucune migration data, aucun schema bump.",
+  "next_release_note": "v2.62+ patches identifiés · (a) Add _version header sur 8 doctrine docs (e.g. _version: 1.0.0) pour cohérence canon · skills consumes pourraient ensuite use min_version (current pattern simplifié sans min_version). (b) Test live cas réel · valide que skills consume doctrines runtime affecte réellement la production (e.g. produce-paid-angles utilise OTRB canon vocabulaire vs improvisation). (c) Translation EN docs/doctrine/ pour opérateurs anglophones post-validation FR. (d) Cross-link docs/doctrine/ → resources/canon/copy/ outils atomiques pour drill-down (pattern hierarchical doctrine → atomic tools). (e) Skills tier-up · si un skill consume 5+ doctrines, considérer si trop de surface · refactor split ou doctrine consolidation."
+}

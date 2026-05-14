@@ -1,7 +1,7 @@
 ---
 name: map-audiences
 type: producer
-version: 1.0.0
+version: 1.0.1
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -10,7 +10,9 @@ mode: proposed
 operator_facing: true
 patch_notes:
   - "1.0.0 (S55 · v2.58 · D#386 canon) · NEW atomique cartography. Extraction depuis snapshot-brand Step 5 (audience cartography movement) en skill standalone invocable séparément. Permet refresh audiences sans relancer le full snapshot. Cartographie 3 niveaux (broad → segment → micro) respect doctrine audience-cartography. Distinct profile-audience (qui drill UNE audience deep 8 dimensions) · map-audiences scaffold le PORTFOLIO audiences brand-wide. Cross-ref D#386."
+  - "1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (audiences-cartography, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
 description: |
+  v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (audiences-cartography, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.0.0 (S55 · v2.58 · D#386 canon) · Atomique cartography extraction.
   Cartographie le PORTFOLIO audiences brand-wide en appliquant le framework 4 questions canon (porte d'entrée · niveau granularité · stade Schwartz · chevauchements). Scaffold N audiences mères + sous-poches via mutation gate avec validation_status hypothesis par défaut. Invocable séparément pour refresh cartographie audiences sans relancer le full snapshot. Distinct profile-audience qui drill UNE audience en deep 8 dimensions · map-audiences pose la carte brand-wide light pass.
 triggers_fr:
@@ -36,6 +38,8 @@ consumes:
   - resources/canon/copy/archetypes-voix/* (archetypes canon · informe persona_archetype hypothesis)
   - docs/system/audience-cartography-doctrine.md (canon 3 niveaux · invariants enforcement)
   - docs/doctrine/audience-cartography-framework.md (4 questions canon)
+  - path: docs/doctrine/audiences-cartography-doctrine.md
+  - path: docs/doctrine/breakthrough-advertising-5-stages.md
 produces_proposals_for:
   - brands/{slug}/audiences/{audience_slug}/profile.json (light pass scaffold · meta + identity light)
 permissions:

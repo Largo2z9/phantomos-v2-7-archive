@@ -1,6 +1,6 @@
 ---
 name: compose-creative
-version: 1.4.2
+version: 1.4.3
 type: producer
 isolation_scope: brand_only
 layer: 2
@@ -19,6 +19,7 @@ patch_notes:
   v1.0.2: "v2.36 frictions runtime patch. HR3 step 3 explicit aspect_ratio param (4:5 default Meta feed). HR3.4 adaptive retry policy (max 3 retries scenes complexes vs 2 packshot only) + label_compositing_required flag forward to compose-overlay-text v2.37. HR3.5 post-gen aspect_ratio normalize via PIL crop centre si fal.ai output ratio differe target."
   v1.0.1: "v2.35 alignment. visual_identity path fallback (spec.json#visual_identity OR sibling visual_identity.json with _belongs_to pointer). HR1.4 + HR3.1 patched + consumes paths extended."
 description: >
+  v1.4.3 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, pain-benefit-chain, breakthrough-advertising-5-stages). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.4.0 (v2.48) : multi-layer paste extension HR3b Step 3b.5 · composite_layers[] ordered packshot + logo + badge en couches pour ads complets branded pixel-exact.
   v1.3.0 (v2.47) : composite_mode input option · full_regen (default) OR layered (pattern studio photographer · packshot canon collé pixel-exact via PIL paste post-gen scene-only).
   v1.2.0 (v2.46) : endpoint nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025) cohérent craft-packshot v1.1.
@@ -77,6 +78,10 @@ consumes:
     min_version: 1.0.0
   - path: resources/schemas/creative.schema.json
     min_version: 1.2.0
+  - path: docs/doctrine/angle-anatomy-doctrine.md
+  - path: docs/doctrine/hooks-method-doctrine.md
+  - path: docs/doctrine/pain-benefit-chain-doctrine.md
+  - path: docs/doctrine/breakthrough-advertising-5-stages.md
 produces_validations_for:
   - resources/canon/copy/hooks/*.json
   - resources/canon/copy/mecaniques/*.json

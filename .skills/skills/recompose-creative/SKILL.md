@@ -1,6 +1,6 @@
 ---
 name: recompose-creative
-version: 1.2.1
+version: 1.2.2
 type: producer
 isolation_scope: brand_only
 layer: 2
@@ -12,6 +12,7 @@ patch_notes:
   v1.2.1: "v2.51 operator-fiche-output canonique template applied · header + gate + footer refactor langage métier. HR1 menu variant_axis refactor · drop enum technique `(new_audience) / (new_platform : Meta → TikTok)` entre parenthèses, plain language seulement. Operator output template header refactor · `RECOMPOSE · CRT-N → CRT-X · variant_axis: hook_swap` → `═══ {BRAND_HUMAIN} · Variante de la pub n°{N_source} ═══` + sous-titre plain language. Body refactor selon canonique resources/templates/operator-fiche-output.md (drop `concept_id`, `variant_of`, `variant_axis` en surface · vit en backstage creative.json). Footer · 1 reco soft offer 1 ligne max."
   v1.2.0: "v2.46 endpoint migration nano-banana-pro/edit (Gemini 2.5 Flash Image legacy) → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025). Cohérent compose-creative v1.2 + craft-packshot v1.1 upstream. Frontmatter permissions.external_apis[] déclare provider + endpoint + version_check_url + version_canon_date + replaced_legacy. HR4 prompt structure pipeline mirror nano-banana-2/edit · pattern adapt-from-source preservation-first préservé. Cross-ref doctrine model-versioning-canon v2.44."
 description: >
+  v1.2.2 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.0.0 (v2.34 ship production loop) : 3e skill P5 visual aux côtés de decompose-ad
   (reverse) et compose-creative (forward). Adapte une créa interne testée (ou
   hypothesis) en variante alignée sur UNE dimension changée : new_audience,
@@ -61,6 +62,8 @@ consumes:
   - path: resources/canon/copy/formats-livrables/*.json
     min_version: 1.0.0
     note: requis si variant_axis = new_platform ou new_format (lookup contraintes ratio/durée/ton)
+  - path: docs/doctrine/angle-anatomy-doctrine.md
+  - path: docs/doctrine/hooks-method-doctrine.md
 produces_proposals_for:
   - brands/{slug}/produced/{CRT-X}.json
   - brands/{slug}/produced/{CRT-X}.jpg

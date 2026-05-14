@@ -1,7 +1,7 @@
 ---
 name: map-mechanisms
 type: producer
-version: "1.0.0"
+version: "1.0.1"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -16,7 +16,10 @@ triggers_en:
   - "map mechanisms"
   - "deep dive mechanisms"
   - "enrich mechanisms {product}"
+consumes:
+  - path: docs/doctrine/pain-benefit-chain-doctrine.md
 description: >
+  v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (pain-benefit-chain). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.0.0 (D#386 canon S55 atomique deep enrichment). Sub-skill cartographie atlas brand
   posé D#386. Reçoit en input le `spec.mechanisms[]` light pass produit par `snapshot-brand`
   (mechanism_id + name + description) et l'enrichit en deep pass avec 7 deep fields atomiques ·

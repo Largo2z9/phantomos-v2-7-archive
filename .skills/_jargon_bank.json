@@ -760,16 +760,6 @@
       "operator_en": "TOF/MOF/BOF",
       "case_sensitive": false,
       "context": "phantom-modes"
-    },
-    {
-      "internal": [
-        "infra",
-        "infra/"
-      ],
-      "operator_fr": "opérations",
-      "operator_en": "operations",
-      "context": "phantom-modes",
-      "rationale": "v2.59 rename · infra/ folder déprécié, devient operations/. Wording opérateur-facing aligné canon pro (cf D#399)."
     }
   ]
 }

@@ -1,7 +1,7 @@
 ---
 name: produce-paid-matrix
 type: orchestrator
-version: "1.0.0"
+version: "1.0.1"
 recommended_model: sonnet
 subagent_safe: false
 operator_facing: true
@@ -21,6 +21,7 @@ triggers_en:
   - "rank paid territories"
   - "score angles by audience"
 description: >
+  v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (territoires-prioritisation, audiences-cartography). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.0.0 (v2.56 ship · audit Phase 1 Scenario 1 gap résolu) · orchestrator chairman qui chain
   produce-paid-angles → weight-dimensions → score-matrix pour produire la matrice paid
   DTC complète d'une marque. Scope · pitch paid sur brand X (cas canon Scenario 1
@@ -55,6 +56,8 @@ consumes:
     min_version: 1.0.0
   - path: resources/frameworks/paid-angle-scoring.md
     min_version: 1.0.0
+  - path: docs/doctrine/territoires-prioritisation-doctrine.md
+  - path: docs/doctrine/audiences-cartography-doctrine.md
 produces_proposals_for:
   - brands/{slug}/angles/*.json (via produce-paid-angles sub-skill)
   - brands/{slug}/audiences/*/dimension_weights.json (via weight-dimensions sub-skill)

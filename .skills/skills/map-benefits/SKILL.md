@@ -1,7 +1,7 @@
 ---
 name: map-benefits
 type: producer
-version: "1.0.0"
+version: "1.0.1"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -9,7 +9,9 @@ reasoning_pattern: null
 operator_facing: true
 patch_notes:
   v1.0.0: "v2.58 NEW · D#386 canon S55 mappers atomiques. Sub-skill atomique deep enrichment spec.benefits[] · chain functional → emotional → identity complete + v1.10 NEW fields activés (emotional_signal, latency_min/max, evidence_verbatim). Distinct mine-voc (qui mine verbatims pour anchor evidence_verbatim) ET snapshot-brand (light pass benefits surface). map-benefits structure deep chain compositionnelle canon doctrine compositional-cartography."
+  v1.0.1: "v2.61 doctrine consume · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (pain-benefit-chain). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
 description: >
+  v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (pain-benefit-chain). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.0.0 (v2.58 D#386 NEW) · Sub-skill atomique cartographie deep enrichment des bénéfices produit `spec.benefits[]`. Chain compositionnelle functional → emotional → identity complete + v1.10 NEW fields (emotional_signal text · latency_min/max jours · evidence_verbatim[] anchored quotes). Distinct de mine-voc qui mine les verbatims Layer B · map-benefits structure deep chain et cross-link benefit ↔ mechanism ↔ audience. Distinct snapshot-brand light pass surface · map-benefits drill-down compositionnel. Invocable séparément par l'opérateur (`map-benefits ma-gelule`) ou orchestré par snapshot-brand.
   FR · "map-benefits {product}", "chaine fonctionnel-émotionnel-identitaire", "approfondis les bénéfices", "détaille la chain bénéfices".
   EN · "map benefits", "deep dive benefits chain", "detail benefit chain".
@@ -41,6 +43,7 @@ consumes:
   - brands/{slug}/voc/*.json (output mine-voc Layer B)
   - resources/canon/copy/heuristiques-persuasion/*.json
   - resources/schemas/spec.schema.json
+  - path: docs/doctrine/pain-benefit-chain-doctrine.md
 produces_proposals_for:
   - brands/{slug}/products/{p_slug}/spec.json#/benefits
 pipeline:

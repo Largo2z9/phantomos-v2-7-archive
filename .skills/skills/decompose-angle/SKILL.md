@@ -1,7 +1,7 @@
 ---
 name: decompose-angle
 type: producer
-version: "1.0.0"
+version: "1.0.1"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -17,6 +17,7 @@ triggers_en:
   - "deep dive angle"
   - "enrich angle formula"
 description: >
+  v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.0.0 (angle.schema v1.2 design intent honored). Sub-skill atomique deep enrichment
   de `brands/{slug}/angles/{ANG-NN}.json` · light pass formula (Observation + Tension +
   Reframe + Bridge, one-line summary chacun) produit par `produce-paid-angles` → deep pass
@@ -28,6 +29,9 @@ description: >
   DOIT référencer `spec.mechanism_id` OR `spec.benefit_id` existant, jamais inventer.
   FR · "décompose l'angle {ANG-NN}", "approfondis cet angle", "deep dive angle {ANG-NN}", "décortique l'angle"
   EN · "decompose angle", "deep dive angle", "enrich angle formula"
+consumes:
+  - path: docs/doctrine/angle-anatomy-doctrine.md
+  - path: docs/doctrine/hooks-method-doctrine.md
 permissions:
   reads: [brand, product, profile]
   writes: [learning]

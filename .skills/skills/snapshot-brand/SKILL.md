@@ -1,7 +1,7 @@
 ---
 name: snapshot-brand
 type: producer
-version: "1.3.0"
+version: "1.3.1"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -11,7 +11,9 @@ patch_notes:
   v1.1.0: "v2.54 investigation posture refactor Step 7 · drop 3-movements prose synthesis (mélangait observé + déduit + projection comme des faits). Step 7 restructuré en 5 sections doctrine canon · Observé (faits sourcés scrape + Q&A opérateur) · Déduit (hypothèses avec confidence chain forte/moyenne/faible/TRÈS faible + indicateurs sources, formulées comme questions) · Inconnu (variables non observables à creuser) · Leviers (skills/actions/sources pour lever les inconnues, options drill-down macro) · Close ouvert (UNE question macro priorité drill-down · opérateur arbitre). Préserve mécanismes scraping + persistance spec.json/offers.json/profile.json. Refacto uniquement la synthèse operator-facing post-scrape. Cross-ref doctrine docs/system/investigation-posture.md."
   v1.2.0: "v2.57 alignment · auto-detect business_model heuristique scrape · stage proposal via mutation gate · surface contextuel + AskUserQuestion si ambiguous. Nouveau Step 2bis intercalé entre platform detection (Step 2) et generate spec.json (Step 3) · compute physical_locations + services_detected + products_detected + subscription_signals + marketplace_signals depuis URL scrape data, classify via priority rules en enum (DTC | service | hybrid | subscription | marketplace), stage proposal brand.json#/identity/business_model (mode=proposed, confidence 0.7, source=agent) + business_model_signals object pour traçabilité sourcing, surface contextuel 1 ligne dans Step 7 Section 1 (Observé), fallback AskUserQuestion 4 options si ambigu (products + services tous deux non-zero mais < 3 chacun). Backward compat · brands pre-v2.57 sans business_model.scraped → next snapshot-brand run détecte et stage proposal. Brands setup déjà v2.6 manuelle restent inchangées tant qu'opérateur ne re-snapshot pas."
   v1.3.0: "v2.58 coverage extend · 4 sub-steps additifs strict pour combler orphans audit v2.57. (1) Step 7 sub-step · compute brand.brand_equity_level enum (low/medium/high) depuis heuristique financials.monthly_revenue + proofs.press_mentions + market.sophistication, stage via mutation gate confidence 0.6. (2) Step 7 sub-step · init brand.creative_zone {min, max, dominant, _observed_on_n_creatives:0} depuis identity.brand_personality + tone_of_voice.register + sector heuristique, stage confidence 0.5 (incrémenté ultérieurement par decompose-ad cumul). (3) Step 2/3 HTML scraping extend · scanner spec.sustainability.eco_claims[] + certifications[] + packaging_type (confidence 0.7 si claim explicit PDP, 0.4 si déduit visuellement). (4) Step 4 offers extraction · auto-calc spec.pricing.price_per_unit (value=price÷pack_quantity, unit depuis specs.weight/volume/package_quantity, currency depuis pricing.currency, confidence 0.9 calcul mathématique direct). Backward compat strict · Steps 0-7 existing intacts, sub-steps additifs uniquement. Closes 4 orphans audit v2.57."
+  v1.3.1: "v2.61 doctrine consume · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (breakthrough-advertising-5-stages, audiences-cartography). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
 description: >
+  v1.3.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (breakthrough-advertising-5-stages, audiences-cartography). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.3.0 (v2.58 coverage extend) · 4 sub-steps additifs · brand_equity_level heuristic auto · creative_zone init heuristic · sustainability HTML scraping (eco_claims, certifications, packaging_type) · price_per_unit auto-calc depuis variants. Closes 4 orphans audit v2.57.
   v1.2.0 (v2.57 alignment) · auto-detect business_model heuristique scrape · stage proposal via mutation gate · surface contextuel + AskUserQuestion si ambiguous.
   Automatically fills spec.json, offers.json and the base of profile.json
@@ -26,6 +28,9 @@ permissions:
   writes: [product, offer, profile]
   mode: proposed
   subagent_safe: true
+consumes:
+  - path: docs/doctrine/breakthrough-advertising-5-stages.md
+  - path: docs/doctrine/audiences-cartography-doctrine.md
 pipeline:
   preconditions: brands/{slug}/ must exist (run setup-brand if needed)
   postconditions: run validate-resources to check completeness, ingest-resource to enrich

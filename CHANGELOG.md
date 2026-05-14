@@ -7,6 +7,64 @@
 
 ---
 
+## v2.61.0 · 2026-05-15 · Cross-link skills consume doctrine layer · 20 skills patches additifs
+
+**Why** · v2.60 a ship 8 docs canon doctrine copywriting/strategy sous `docs/doctrine/`. Pour qu'elles soient activement utilisées runtime par les skills (pas seulement consultées opérateur-facing), faut cross-link via frontmatter `consumes:`. Pattern miroir existing `paid-angle-scoring.md` consume.
+
+**What** · 2 agents parallèle ont patché 20 skills frontmatter `consumes:` enrichi avec refs `docs/doctrine/` selon mapping table canonique. Bump version patch level chacun. Backward compat strict additif (Steps existing intacts, juste consumes enrichi).
+
+**Mapping skills × doctrines consume**
+
+| Skill | Bump | Doctrines consume added |
+|---|---|---|
+| `produce-paid-angles` | v1.8.0 → v1.8.1 | angle-anatomy + hooks-method + breakthrough-advertising-5-stages + objections-mapping + audiences-cartography |
+| `produce-copy-brief` | v1.4.0 → v1.4.1 | angle-anatomy + hooks-method + objections-mapping + pain-benefit-chain + breakthrough-advertising-5-stages |
+| `compose-creative` | v1.4.2 → v1.4.3 | angle-anatomy + hooks-method + pain-benefit-chain + breakthrough-advertising-5-stages |
+| `recompose-creative` | v1.2.1 → v1.2.2 | angle-anatomy + hooks-method |
+| `decompose-ad` | v1.3.1 → v1.3.2 | angle-anatomy + hooks-method |
+| `decompose-angle` | v1.0.0 → v1.0.1 | angle-anatomy + hooks-method |
+| `creative-brief-composer` | v1.0.0 → v1.0.1 | angle-anatomy + hooks-method + objections-mapping + pain-benefit-chain |
+| `score-matrix` | v1.1.0 → v1.1.1 | territoires-prioritisation |
+| `produce-paid-matrix` | v1.0.0 → v1.0.1 | territoires-prioritisation + audiences-cartography |
+| `weight-dimensions` | v1.1.0 → v1.1.1 | territoires-prioritisation |
+| `profile-audience` | v1.4.0 → v1.4.1 | audiences-cartography + objections-mapping + pain-benefit-chain + breakthrough-advertising-5-stages |
+| `mine-voc` | v1.1.0 → v1.1.1 | pain-benefit-chain + objections-mapping |
+| `mine-vom` | v1.1.0 → v1.1.1 | breakthrough-advertising-5-stages |
+| `snapshot-brand` | v1.3.0 → v1.3.1 | breakthrough-advertising-5-stages + audiences-cartography |
+| `map-mechanisms` | v1.0.0 → v1.0.1 | pain-benefit-chain |
+| `map-benefits` | v1.0.0 → v1.0.1 | pain-benefit-chain |
+| `map-audiences` | v1.0.0 → v1.0.1 | audiences-cartography + breakthrough-advertising-5-stages |
+| `map-angles` | v1.0.0 → v1.0.1 | angle-anatomy + breakthrough-advertising-5-stages + audiences-cartography |
+| `build-atlas-complete` | v1.0.1 → v1.0.2 | dtc-operator-playbook + audiences-cartography + angle-anatomy + hooks-method + breakthrough-advertising-5-stages |
+| `produce-strategy` | v1.0.0 → v1.0.1 | dtc-operator-playbook |
+
+**Coverage runtime** · 20 skills consument désormais doctrines canon pour informer production. Total · 50+ refs `docs/doctrine/` cumulées cross-skills.
+
+**Pattern simplifié v2.61** ·
+
+```yaml
+consumes:
+  - path: docs/doctrine/{doc-name}.md
+```
+
+Pas de min_version pour `docs/doctrine/` refs (vs `resources/frameworks/*.md` qui gardent min_version). Pattern existing preserved.
+
+**Skills consume doctrines pour quoi faire** ·
+
+- Production canonical-informed sans dépendre des schemas exacts
+- Vocabulaire canon copywriting/strategy aligné cross-skills (e.g. tous les skills qui produisent angles consument même `angle-anatomy-doctrine.md` · cohérence garantie)
+- Pédagogie embedded · skills ouverts à un nouveau opérateur peuvent référencer doctrines pour expliquer méthode (vs jargon technique opaque)
+- Audit trail doctrinaire · si un angle/brief sort sub-optimal, on peut tracer · skill a-t-il bien consumed les bonnes doctrines ?
+
+**Backward compat strict additif** ·
+- Existing consumes refs (resources/frameworks/, resources/registries/, etc.) preserved intacts avec min_version
+- Steps existing intacts, juste consumes enrichi
+- 2 skills sans consumes initial (snapshot-brand · map-mechanisms) ont eu la section créée
+- 2 skills sans description (score-matrix · weight-dimensions) ont eu description courte ajoutée
+- Manifest skills 67 inchangé (rename frontmatter, pas skill add)
+
+---
+
 ## v2.60.0 · 2026-05-15 · Doctrine layer copywriting/strategy · 8 NEW docs canon pro métier
 
 **Why** · Largo a demandé une layer doctrine pour équipes marketing/copywriting/creative strategy · concepts métier sans dépendance schemas PhantomOS · lisibles par copywriter freelance ou creative strategist qui n'a jamais entendu parler de PhantomOS. Niveau bibliothèque marketeux pro · canon Schwartz/Sugarman/Halbert/Caples/Cialdini/Hormozi/Dunford/Brunson/Miller/Heath/Kahneman/Christensen.

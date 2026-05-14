@@ -1,7 +1,7 @@
 ---
 name: build-atlas-complete
 type: orchestrator
-version: "1.0.0"
+version: "1.0.2"
 recommended_model: sonnet
 reasoning_pattern: null
 mode: proposed
@@ -10,6 +10,7 @@ subagent_safe: false
 isolation_scope: brand_only
 layer: 2
 description: >
+  v1.0.2 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (dtc-operator-playbook, audiences-cartography, angle-anatomy, hooks-method, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   Full-cycle atlas builder. Chains the 9-phase canon pipeline end-to-end on a
   blank or partially-built brand to produce the complete strategic atlas
   (specs + offers + audiences + angles + territoires scorés + briefs copy +
@@ -50,6 +51,11 @@ consumes:
   - resources/catalogues/creative-mechanics-registry.json
   - resources/catalogues/hooks.json
   - resources/catalogues/angles.json
+  - path: docs/doctrine/dtc-operator-playbook.md
+  - path: docs/doctrine/audiences-cartography-doctrine.md
+  - path: docs/doctrine/angle-anatomy-doctrine.md
+  - path: docs/doctrine/hooks-method-doctrine.md
+  - path: docs/doctrine/breakthrough-advertising-5-stages.md
 produces_proposals_for:
   - brands/{slug}/spec.json
   - brands/{slug}/products/*/offers.json
@@ -86,6 +92,8 @@ patch_notes:
     - "v2.58 patch · canonical strategy.json path (was strategy/roadmap.json non-canon) · scoring matrix path aligned brands/{slug}/scoring/matrix-{date}.json (was strategy/score-matrix.json)"
     - "Closes dette technique runtime · strategy.schema v1.0 NEW shipped v2.58 canonical entity activée"
     - "produce-strategy v1.0.0 NEW orchestrator invokable en post-Phase 10 close si l'opérateur veut cadrer le focus Q{n} sur la brand atlas-complete · cycle stratégique distinct de la phase score-matrix"
+  v1.0.2:
+    - "v2.61 doctrine consume · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (dtc-operator-playbook, audiences-cartography, angle-anatomy, hooks-method, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
 ---
 
 # Skill: build-atlas-complete

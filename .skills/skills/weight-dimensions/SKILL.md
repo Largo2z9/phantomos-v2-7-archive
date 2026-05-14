@@ -1,6 +1,6 @@
 ---
 name: weight-dimensions
-version: 1.1.0
+version: 1.1.1
 type: producer
 isolation_scope: brand_only
 layer: 3
@@ -19,10 +19,13 @@ triggers_en:
 disambiguates_against:
   - profile-audience: "profile-audience structure les 8 dimensions raw. weight-dimensions PONDÈRE leur relevance par angle."
   - score-matrix: "score-matrix (futur v2.34) consomme weight-dimensions pour compute scoring final."
+description: >
+  v1.1.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (territoires-prioritisation). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
 consumes:
   - brands/{slug}/audiences/{audience}/profile.json (8 dimensions structurées)
   - brands/{slug}/angles/{angle}.json (formula + lineage)
   - resources/canon/copy/* (référentiel angle types)
+  - path: docs/doctrine/territoires-prioritisation-doctrine.md
 produces_validations_for: []
 produces_proposals_for:
   - brands/{slug}/audiences/{audience}/dimension_weights.json (cache)
