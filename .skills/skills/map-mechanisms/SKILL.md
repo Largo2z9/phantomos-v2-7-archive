@@ -1,7 +1,7 @@
 ---
 name: map-mechanisms
 type: producer
-version: "1.1.0"
+version: "1.2.0"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -18,8 +18,10 @@ triggers_en:
   - "enrich mechanisms {product}"
 consumes:
   - path: docs/doctrine/pain-benefit-chain-doctrine.md
+  - path: brands/{slug}/audiences/*/pain_points/*.json
   - path: brands/{slug}/pain_points/*.json
 description: >
+  v1.2.0 (v2.64 ontologie sémantique pure lecture) · BREAKING refactor read pattern · lit pain_points depuis SUB-AUDIENCE (`brands/{slug}/audiences/*/pain_points/*.json`) pour mapping `mechanism.triggered_by` → pain au lieu de top-level v2.63 OR sub-field profile legacy. Cross-audience natif · un mechanism qui résout un pain owned par audience_A sert sémantiquement audience_A (pas de array affected_audiences[] requis · l'appartenance précède le tracking). Backward compat strict additif · read fallback top-level v2.63 + profile sub-fields v1.7 preserved.
   v1.1.0 (v2.63 ontologie pure lecture) · BREAKING refactor read pattern · lit pain_points depuis COLLECTION TOP-LEVEL séparée `brands/{slug}/pain_points/*.json` pour mapping `mechanism.triggered_by` → pain au lieu de sub-field `profile.pain_points[]` legacy. Profile schema v2.0 BREAKING · read fallback preserved pour brownfield v1.7.
   v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (pain-benefit-chain). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.0.0 (D#386 canon S55 atomique deep enrichment). Sub-skill cartographie atlas brand
@@ -59,11 +61,11 @@ prerequisites:
     level: L1
     threshold: 1
     block_if_missing: true
-  - field: brands/{slug}/pain_points/*.json
+  - field: brands/{slug}/audiences/*/pain_points/*.json
     level: L2
-    auto_pull: read_pain_points_collection
+    auto_pull: read_pain_points_sub_audience
     freshness_ttl_days: 90
-    fallback: read_profile_pain_points_legacy
+    fallback: read_pain_points_top_level_then_profile_legacy
 ---
 
 # Skill · map-mechanisms
@@ -117,7 +119,7 @@ Stop. Ne pas inventer des mechanisms pour satisfaire la requête.
 
 ---
 
-## Step 1 · Read encoded data (v1.1.0 v2.63 ontologie pure · read pain_points top-level collection)
+## Step 1 · Read encoded data (v1.2.0 v2.64 ontologie sémantique pure · read pain_points sub-audience)
 
 Load silently ·
 
@@ -128,12 +130,13 @@ Load silently ·
   - `mechanisms[]` light pass (input principal)
   - `proofs.scientific` (refs clinical si dispo)
   - `proofs.authority` (mentions presse, certifications)
-- **`brands/{slug}/pain_points/*.json` (v1.1.0 v2.63 collection top-level)** · scan tous les pain_points top-level pour mapping `mechanism.triggered_by` → pain (quels pains canon le mechanism résout-il ?). Filter optional par product · pain_points avec `affected_products` contains `{p_slug}` OR vide (brand-wide). Cross-audience natif · un mechanism qui résout PNT-12 sert toutes les audiences listées dans PNT-12.affected_audiences[].
-- **Backward compat fallback** · si `brands/{slug}/pain_points/` vide OR absent, fallback lecture `brands/{slug}/audiences/*/profile.json#/pain_points[]` legacy v1.7 brownfield (scan tous les profile.json + aggrégat pain_points par audience).
+- **`brands/{slug}/audiences/*/pain_points/*.json` (v1.2.0 v2.64 sub-audience)** · scan tous les pain_points sub-audience cross-audiences pour mapping `mechanism.triggered_by` → pain (quels pains canon le mechanism résout-il ?). Path déclare audience parente (owned natif). Filter optional par product · pain_points avec `affected_products` contains `{p_slug}` OR vide (brand-wide). Un mechanism qui résout PNT-12 owned par audience_A sert sémantiquement audience_A (cross-ref direct via parent path, pas array affected_audiences[]).
+- **Backward compat fallback v2.63** · si `brands/{slug}/audiences/*/pain_points/` vide OR absent, fallback lecture `brands/{slug}/pain_points/*.json` top-level v2.63 (avec affected_audiences[] array). Cross-audience natif top-level · un mechanism qui résout PNT-12 sert toutes les audiences listées dans PNT-12.affected_audiences[].
+- **Backward compat fallback v1.7** · si top-level vide aussi, fallback lecture `brands/{slug}/audiences/*/profile.json#/pain_points[]` legacy v1.7 brownfield (scan tous les profile.json + aggrégat pain_points par audience).
 
 Pour chaque mechanism light pass, noter ce qui est déjà observable depuis le scrape · name, description, optional `target` ou `mode_of_action` si snapshot l'a tagué partiellement.
 
-Pour chaque pain_point lu (top-level OR fallback legacy), garder mapping `pain_id` → `formulation` + `pain_category` + `affected_audiences[]` pour cross-ref Step 2 (mechanism.triggered_by → pain_id resolution).
+Pour chaque pain_point lu (sub-audience OR fallback chain), garder mapping `pain_id` → `formulation` + `pain_category` + `audience_owner_slug` (depuis parent path) pour cross-ref Step 2 (mechanism.triggered_by → pain_id resolution).
 
 ---
 

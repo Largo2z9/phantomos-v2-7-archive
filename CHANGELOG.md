@@ -7,6 +7,54 @@
 
 ---
 
+## v2.64.0 · 2026-05-15 · BREAKING · Sémantique pure · pain/objection sub-audience + friction sub-product
+
+**Why** · Largo a recadré v2.63 · "Le menu doit simplement mettre en miroir les schémas. L'interface suit la storage path · pas dur." v2.63 top-level brand-wide était un compromis opérationnel canon Notion (UI tableau facilité filter cross-entity) · pas sémantique vraie. Sémantique pure ·
+- Pain = expression subjective AUDIENCE-specific
+- Objection = expression subjective AUDIENCE-specific
+- Friction = observation objective PRODUCT-specific usage
+
+v2.64 réconcilie · storage paths suivent ontologie pure · menu /phantom reflète auto via parent path structure · 2 NEW entity-drill modes v2.63 (pain-points-drill + objections-drill) deviennent redondants → supprimés.
+
+**What** · 3 agents parallèle · 134 mentions canonical cumulées sub-parent paths ·
+
+**Schemas (Agent A · 3 minor patches + migration + SED)** ·
+- `pain_points.schema` v1.0 → v1.1 · description storage path `brands/{slug}/audiences/{audience_slug}/pain_points/{PNT-NN}.json` · `also_affects_audiences[]` array NEW optional (cross-refs canonical primary owner pattern pour pain shared)
+- `objections.schema` v1.0 → v1.1 · description storage path `brands/{slug}/audiences/{audience_slug}/objections/{OBJ-NN}.json` · `also_affects_audiences[]` idem
+- `friction.schema` v1.2 → v1.3 · description storage path `brands/{slug}/products/{product_slug}/frictions/{FRC-NN}.json` · `affects_audiences[]` cross-refs preserved
+- NEW migration script `operations/migrations/v2.64-subfolder-collections.py` · idempotent · scan top-level v2.63 paths · move vers sub-parent locations · populate `also_affects_audiences[]` si N>1 · backups zip horodatés · events log · re-run safe
+- SED §13 v2.64 sub-table · 4 décisions design SED-side (sémantique pure storage location · canon Notion compromis opérationnel reconnu · also_affects_audiences[] canonical primary owner pattern · migration idempotent)
+
+**Skills (Agent B · 13 patches paths sub-parent)** ·
+
+Mining/audiences (5) · mine-voc v1.2.0 → v1.3.0 · profile-audience v1.5.0 → v1.6.0 · map-audiences v1.1.0 → v1.2.0 · map-mechanisms v1.1.0 → v1.2.0 · map-benefits v1.1.0 → v1.2.0
+
+Paid/creative/orchestration (8) · produce-paid-angles v1.9.0 → v1.10.0 · produce-copy-brief v1.5.0 → v1.6.0 · compose-creative v1.5.0 → v1.6.0 · decompose-ad v1.4.0 → v1.5.0 · decompose-angle v1.1.0 → v1.2.0 · creative-brief-composer v1.1.0 → v1.2.0 · build-atlas-complete v1.1.0 → v1.2.0 · produce-paid-matrix v1.1.0 → v1.2.0
+
+Patterns appliqués · `produces_proposals_for` frontmatter updated paths canonical sub-parent · `consumes` frontmatter idem · backward compat fallback chain top-level v2.63 + profile v1.7 legacy preserved cross-skills.
+
+**Rendering (Agent C · /phantom + 3 doctrines + tour.md)** ·
+
+- `/phantom.md` · SUPPRESSION 2 NEW entity-drill modes redondants v2.63 (pain-points-drill + objections-drill) · drill audience expose pain + objections natif sub-folder auto · drill audience **360° complete** (9 schemas pertinents · profile OWNED + pain_points + objections sub-folders + 6 cross-refs inbound angles/creatives/briefs/frictions/learnings/roadmap) · drill product **360° complete** (10 schemas · spec + offers + funnel + frictions sub-folder + visual_identity OWNED + 5 cross-refs inbound)
+- 3 doctrines mises à jour · audiences-cartography + objections-mapping + pain-benefit-chain · sections L'enjeu/Cross-refs/Sources reformulées sub-parent storage
+- tour.md M6 cleanup · 2 entries v2.63 (`drill pain-points top-level` + `drill objections top-level`) remplacées par `drill audience complète 360°` + `drill product complet 360°`
+
+**Coverage drill 360° par entité** ·
+- Drill audience · 9/15 schemas pertinents (60%) · profile owned + pain_points sub + objections sub + 6 cross-refs inbound
+- Drill product · 10/15 schemas pertinents (67%) · spec/offers/funnel owned + frictions sub + visual_identity + 5 cross-refs inbound
+- Vs v2.63 · drill exposait seulement profile (7%) ou spec+offers (13%) · **sous-utilisation massive corrigée**
+
+**Backward compat strict additif sur lecture** ·
+- Skills lisent sub-parent en priorité + fallback transparent top-level v2.63 + profile v1.7 sub-fields legacy si sub-parent absents
+- Brands pre-v2.64 valident sans migration · runtime auto-fallback chain preserve
+- Migration script idempotent re-run safe pour upgrade volontaire
+
+**Stats** · 13 skills patches + 3 schemas patches + 1 NEW migration script + 5 docs updates (phantom + 3 doctrines + tour.md) · 134 mentions canonical sub-parent cumulées. Manifest 67 skills inchangé.
+
+**D#403 captured** · ontologie sémantique pure discipline · storage location reflète appartenance sémantique vraie (pain/objection sub-audience · friction sub-product) · menu miroir auto via path structure · canon Notion compromis opérationnel séparé de canon PhantomOS ontologique.
+
+---
+
 ## v2.63.0 · 2026-05-15 · BREAKING · Ontologie pure refactor · pain_points + objections collections top-level
 
 **Why** · Largo a flag inconsistance ontologique v2.62 · friction.schema était collection top-level (v2.56) MAIS pain_points + objections étaient sub-fields `profile.json` legacy v1.4. Les 3 sub-tensions client (pain + objection + friction) doivent être au même niveau ontologique. Canon Notion stride-up workspace les met en 3 collections séparées (parité stricte). v2.63 résout · refactor complet ontologie pure · 3 collections orthogonales avec cross-refs canonical PNT-NN/OBJ-NN/FRC-NN.

@@ -1,0 +1,84 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.64.0",
+  "released_at": "2026-05-15",
+  "compatible_from": "2.0.0",
+  "type": "breaking_semantique_pure_pain_objection_sub_audience_friction_sub_product",
+  "summary": "Largo recadré · v2.63 top-level brand-wide était compromis opérationnel canon Notion UI · pas sémantique vraie. v2.64 réconcilie · pain_points + objections SUB-AUDIENCE (expression audience-specific) · friction SUB-PRODUCT (product-specific usage observation). Menu /phantom miroir auto via storage path structure. 2 NEW entity-drill modes v2.63 redondants supprimés. 3 agents parallèle · 134 mentions canonical sub-parent cumulées. Coverage drill 360° · 60-67% schemas pertinents par entité (vs 7-13% v2.63 sous-utilisation).",
+  "changes": [
+    {
+      "category": "schemas_v264_sub_parent_locations",
+      "action": "patched",
+      "files": [
+        "resources/schemas/pain_points.schema.json",
+        "resources/schemas/objections.schema.json",
+        "resources/schemas/friction.schema.json",
+        "operations/migrations/v2.64-subfolder-collections.py",
+        "docs/system/schema-encoding-discipline.md"
+      ],
+      "section": "Agent A · 3 schemas minor patches + migration + SED §13 v2.64",
+      "rationale": "pain_points v1.0 → v1.1 + objections v1.0 → v1.1 + friction v1.2 → v1.3 · description storage paths sub-parent locations · also_affects_audiences[] arrays NEW pour pain shared cross-audiences canonical primary owner. Migration script idempotent · backups · events log · re-run safe."
+    },
+    {
+      "category": "skills_v264_paths_sub_parent",
+      "action": "patched",
+      "files": [
+        ".skills/skills/mine-voc/SKILL.md",
+        ".skills/skills/profile-audience/SKILL.md",
+        ".skills/skills/map-audiences/SKILL.md",
+        ".skills/skills/map-mechanisms/SKILL.md",
+        ".skills/skills/map-benefits/SKILL.md",
+        ".skills/skills/produce-paid-angles/SKILL.md",
+        ".skills/skills/produce-copy-brief/SKILL.md",
+        ".skills/skills/compose-creative/SKILL.md",
+        ".skills/skills/decompose-ad/SKILL.md",
+        ".skills/skills/decompose-angle/SKILL.md",
+        ".skills/skills/creative-brief-composer/SKILL.md",
+        ".skills/skills/build-atlas-complete/SKILL.md",
+        ".skills/skills/produce-paid-matrix/SKILL.md"
+      ],
+      "section": "Agent B · 13 skills paths sub-parent refactor",
+      "rationale": "5 mining/audiences (mine-voc v1.3 · profile-audience v1.6 · map-audiences v1.2 · map-mechanisms v1.2 · map-benefits v1.2) + 8 paid/creative/orchestration (produce-paid-angles v1.10 · produce-copy-brief v1.6 · compose-creative v1.6 · decompose-ad v1.5 · decompose-angle v1.2 · creative-brief-composer v1.2 · build-atlas-complete v1.2 · produce-paid-matrix v1.2). produces_proposals_for + consumes paths canonical sub-parent (audiences/{slug}/pain_points/ + audiences/{slug}/objections/ + products/{slug}/frictions/). 100 mentions cumulées paths sub-parent. Backward compat fallback chain top-level v2.63 + profile v1.7 legacy preserved."
+    },
+    {
+      "category": "rendering_v264_phantom_360_drill_doctrines_tour",
+      "action": "patched",
+      "files": [
+        ".claude/commands/phantom.md",
+        "docs/doctrine/audiences-cartography-doctrine.md",
+        "docs/doctrine/objections-mapping-doctrine.md",
+        "docs/doctrine/pain-benefit-chain-doctrine.md",
+        ".claude/commands/tour.md"
+      ],
+      "section": "Agent C · /phantom drill 360° + 3 doctrines + tour.md cleanup",
+      "rationale": "phantom.md · SUPPRESSION 2 NEW entity-drill modes redondants v2.63 (pain-points-drill + objections-drill) · drill audience 360° (9 schemas) + drill product 360° (10 schemas) · WORKSPACE NAVIGATION nest pain/objection sub audiences · frictions sub products. 3 doctrines updates sub-parent storage. tour.md M6 entries v2.63 remplacées drill 360° patterns. 34 mentions cumulées canonical paths + 360° drill."
+    },
+    {
+      "category": "manifest_regen",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json", ".skills/_jargon_bank.json"],
+      "section": "Manifest skills regen post-patches v2.64",
+      "rationale": "python3 .skills/build-manifest.py · 67 skills inchangé."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md", "docs/internal/releases/manifest/2.64.0-manifest.json"],
+      "section": "Version bump v2.63 → v2.64 BREAKING + CHANGELOG + manifest NEW",
+      "rationale": "Bump template_version 2.63.0 → 2.64.0 BREAKING (storage paths changes). released_at 2026-05-15."
+    }
+  ],
+  "files_patched_total": "22 files (3 patches schemas + 1 NEW migration script + SED §13 + 13 skills patches + 5 docs/rendering updates + _version + CHANGELOG + manifest + 2 manifests regen)",
+  "patterns_introduced": {
+    "semantique_pure_storage_location_reflects_ownership": "Pattern canon v2.64 · storage path location reflète sémantique vraie d'ownership. Pain/objection sub-audience (expression audience-specific subjective). Friction sub-product (product-specific usage observation). Pas canon Notion stride-up compromis opérationnel top-level UI tableau. Menu /phantom miroir auto via parent path structure (drill audience expose all sub-folders natif).",
+    "also_affects_audiences_canonical_primary_owner": "Pattern canon v2.64 · pain shared cross-audiences · canonical entry stocké primary owner audience + cross-refs `also_affects_audiences[]` array vers autres audiences impactées. Évite duplication. Préserve canonical ID PNT-NN global unique.",
+    "drill_360_per_entity_full_schema_coverage": "Pattern canon v2.64 · drill entity expose TOUS schemas pertinents cette entité (60-67% coverage par drill). Audience-drill = profile owned + pain sub + objection sub + 6 cross-refs inbound · product-drill = spec/offers/funnel/visual_identity owned + frictions sub + 5 cross-refs inbound. Vs sous-utilisation v2.63 (7-13% per drill). Workspace global reste 100% schemas utilisés (vue ensemble)."
+  },
+  "antipatterns_eliminated": {
+    "canon_notion_top_level_compromis_operationnel_imposait_semantique_impure": "v2.63 ship 2 NEW entity-drill modes top-level (pain-points-drill + objections-drill) suivant canon Notion stride-up. v2.64 reconnaît · canon Notion top-level = compromis opérationnel UI tableau filter facilité, pas sémantique pure. v2.64 réconcilie sémantique (sub-parent ownership) + canonical IDs preserved globaux. 2 NEW modes redondants supprimés.",
+    "drill_entity_sous_utilisation_schemas_pertinents": "v2.63 drill audience exposait seulement profile (7%) · drill product spec + offers (13%). Sous-utilisation massive. v2.64 drill 360° per entity expose TOUS schemas pertinents cross-refs inbound + owned + sub-folders (60-67% per drill). Audience-centric / product-centric vue exhaustive."
+  },
+  "operator_impact": "Operator drill `/phantom sentage audiences stress-pro` voit désormais 360° complete · profile complet (12 sub-fields) + pain_points sub-folder (3 PNT-NN entries owned natif) + objections sub-folder (4 OBJ-NN owned) + cross-refs inbound angles dérivés (3) + briefs (1) + créas (5) + frictions impactant (1) + tests results (2) + roadmap priorisations (1). Idem drill product expose tous schemas pertinents 360°. Menu /phantom mode brand · audiences section nest pain + objections naturellement · ligne produits nest frictions naturellement. Pas besoin de modes entity-drill dédiés top-level (redondants supprimés). Workspace global reste 100% schemas utilisés.",
+  "backward_compat": "strict_additif_sur_lecture. Skills lisent sub-parent en priorité + fallback transparent chain · top-level v2.63 paths · profile v1.7 sub-fields legacy. Brands pre-v2.64 valident sans migration · runtime auto-fallback preserve. Migration script idempotent re-run safe pour upgrade volontaire (backup zip top-level dirs avant move + events log). CHANGELOG historique + manifests releases 2.29-v2.63 préservés. Manifest skills count 67 inchangé.",
+  "next_release_note": "v2.65+ patches identifiés · (a) Validate runtime · validate-resources check cohérence storage paths sub-parent (pas pain_points/ top-level + audiences/{slug}/pain_points/ simultanés = inconsistent). (b) Jauge complétude atlas refactor cohérent v2.64 ontologie pure (drill 360° per entity = base scoring). (c) Test live cas réel · run migration script sur brand test workspace · valider migration paths preserve cohérence. (d) Doctrine SED §14 NEW · ontologie sémantique pure pattern (storage location = appartenance sémantique vraie) · pattern reproductible futures entités. (e) Cleanup top-level v2.63 paths après période transition (deprecate top-level v2.66+ si zero usage observed)."
+}

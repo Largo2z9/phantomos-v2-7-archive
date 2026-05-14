@@ -1,6 +1,6 @@
 ---
 name: decompose-ad
-version: 1.4.0
+version: 1.5.0
 type: producer
 isolation_scope: brand_only
 layer: 2
@@ -8,10 +8,12 @@ recommended_model: opus
 reasoning_pattern: matrix-driven
 matrix_mode: decomposing
 patch_notes:
+  v1.5.0: "v2.64 ontologie sémantique pure pain_points + objections sub-audience · HR5 section 2 refactor · si reverse-engineer mentionne pain ou objection détectée dans ad concurrente sur même audience que brand opérée (signal cross-applicable, internal_production mode), link vers `audiences/{audience_slug}/pain_points/{PNT-NN}.json` ou `audiences/{audience_slug}/objections/{OBJ-NN}.json` canonical sub-audience IF match observable. Sinon (ad externe pure, pas d'audience match), note descriptive sans canonical ref. HR8 persist · creative.json#context.pain_point_ref + objection_ref canonical sub-audience persistés SI link applicable. Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved."
   v1.4.0: "v2.63 ontologie pure pain_points + objections collections top-level · HR5 section 2 refactor · si reverse-engineer mentionne pain ou objection détectée dans ad concurrente sur même audience que brand opérée (signal cross-applicable, internal_production mode), link vers `pain_points/{PNT-NN}.json` ou `objections/{OBJ-NN}.json` canonical IF match observable cross-audience. Sinon (ad externe pure, pas d'audience match avec brand opérée), note descriptive sans canonical ref (l'ad concurrente n'est pas notre canonical · observation pure, pas mutation cross-graph). HR8 persist · creative.json#context.pain_point_ref + objection_ref canonical IDs persistés SI link applicable, sinon null + text legacy. Backward compat preserved (pre-v2.63 brands route fallback profile sub-fields legacy)."
   v1.3.1: "v2.51 operator-fiche-output canonique template applied · header fiche v5 refactor langage métier. Header `{TITRE COURT} · {BRAND}` → `{BRAND_HUMAIN} · Analyse pub · {source_humaine}` (selon canonique resources/templates/operator-fiche-output.md mapping). Sous-titre 1 ligne plain language `décomposition de la pub {concurrent | interne n°N}`. Body sections 1-4 préservées (déjà plain language), TAGS RETRIEVAL bloc préservé (mode reverse-engineering · l'opérateur peut vouloir voir comment c'est encodé). Footer · 1 reco soft offer 1 ligne max."
   v1.3.0: "v2.46 endpoint reference migration nano-banana-pro/edit → nano-banana-2/edit (Gemini 3 Pro Image canon novembre 2025). decompose-ad reste reverse-engineering (pas de gen direct), mais HR2bis référence endpoint canonique pour compose mode downstream + anti-pattern label hallucination context. Frontmatter permissions.external_apis[] déclaré. Cohérent compose-creative v1.2 + recompose-creative v1.2 + craft-packshot v1.1 upstream. Cross-ref doctrine model-versioning-canon v2.44."
 description: >
+  v1.5.0 (v2.64 ontologie sémantique pure · pain_points + objections sub-audience) · reverse-engineer benchmark ad concurrente · si reverse-engineer mentionne pain ou objection détectée dans ad concurrente sur même audience que brand opérée, link vers `audiences/{audience_slug}/pain_points/*.json` ou `audiences/{audience_slug}/objections/*.json` sub-audience canonical SI applicable. Sinon · note descriptive sans canonical ref. Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved.
   v1.4.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · reverse-engineer benchmark ad concurrente · si reverse-engineer mentionne pain ou objection détectée dans ad concurrente, link vers `pain_points/*.json` ou `objections/*.json` collections SI applicable (ad sur même audience que brand opérée, signal cross-applicable). Sinon · note descriptive sans canonical ref (ad concurrente = pas notre canonical, observation pure). Backward compat preserved.
   v1.3.2 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.3.0 (v2.46 alignment) : HR2bis + anti-pattern reference endpoint canon nano-banana-2/edit cohérent compose/recompose/craft-packshot.
@@ -203,11 +205,12 @@ Couche interprétation. Chaque inférence est ancrée dans observables Section 1
 
 **Pivot du message.** Atome irréductible. Test "delta perf si retiré" : si on enlève cet élément, la créa perd >50% de son hook. Souvent un mot clé, un visuel signature, une stat chiffrée, un avant/après. Affichage opérateur : citation entre guillemets + 1 phrase de justification.
 
-**Canonical link pain + objection (v1.4.0 NEW · v2.63 ontologie pure).** Si l'ad reverse-engineered mentionne un pain ou une objection détectée, evaluate cross-applicable signal ·
+**Canonical link pain + objection (v1.5.0 · v2.64 ontologie sémantique pure).** Si l'ad reverse-engineered mentionne un pain ou une objection détectée, evaluate cross-applicable signal ·
 
-- **Mode `internal_production` ET audience match brand opérée** · si pain/objection observé matche sémantiquement un PNT-NN ou OBJ-NN dans `pain_points/*.json` OR `objections/*.json` filtered audience, link canonical · stage `creative.json#context.pain_point_ref: "PNT-NN"` + `context.objection_ref: "OBJ-NN"` dans persist HR8. Surface opérateur en fiche · *"Pain mobilisé · PNT-03 (ras-le-bol des régimes, déjà cartographié dans ton atlas)"*.
+- **Mode `internal_production` ET audience match brand opérée** · si pain/objection observé matche sémantiquement un PNT-NN ou OBJ-NN dans `audiences/{audience_slug}/pain_points/*.json` OR `audiences/{audience_slug}/objections/*.json` sub-audience, link canonical · stage `creative.json#context.pain_point_ref: "PNT-NN"` + `context.objection_ref: "OBJ-NN"` dans persist HR8. Surface opérateur en fiche · *"Pain mobilisé · PNT-03 (ras-le-bol des régimes, déjà cartographié dans ton atlas)"*.
 - **Mode `external_benchmark` ou `trendtrack_pull` (ad concurrente)** · l'ad concurrente n'est pas notre canonical, observation pure. Note descriptive sans canonical ref · stage `creative.json#context.pain_point_ref: null` + `context.pain_point_text: "{verbatim observé}"` inline. Surface opérateur · *"Pain mobilisé observé · 'frustration accumulée régimes' (pas dans ton atlas, signal concurrent)"*.
-- **Backward compat (pre-v2.63 brands)** · si `pain_points/` ou `objections/` collections top-level absentes, fallback observation pure (mode external_benchmark behavior par défaut). Pas de mutation cross-graph forcée.
+- **Backward compat (v2.63 brands)** · si sub-audience pain_points/objections vides, fallback top-level `pain_points/*.json` + `objections/*.json` filtered by affected_audiences[].
+- **Backward compat (pre-v2.63 brands)** · si top-level vide aussi, fallback observation pure (mode external_benchmark behavior par défaut). Pas de mutation cross-graph forcée.
 
 Cohérent règle d'isolation `brand_only` doctrine · le reverse-engineering d'une ad externe ne pollue jamais le canon brand · seul un internal_production avec audience match peut enrichir le graph.
 

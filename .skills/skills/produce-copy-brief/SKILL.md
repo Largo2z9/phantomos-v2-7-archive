@@ -1,7 +1,7 @@
 ---
 name: produce-copy-brief
 type: producer
-version: "1.5.0"
+version: "1.6.0"
 isolation_scope: brand_only
 layer: 3
 recommended_model: sonnet
@@ -24,6 +24,7 @@ consumes:
   - path: docs/doctrine/pain-benefit-chain-doctrine.md
   - path: docs/doctrine/breakthrough-advertising-5-stages.md
 description: >
+  v1.6.0 (v2.64 ontologie sémantique pure · pain_points + objections sub-audience) · Step 1 read encoded data refactor · pain_points lus depuis `audiences/{audience-slug}/pain_points/*.json` (sub-audience NEW v2.64 · owned natif par parent path) · objections lues depuis `audiences/{audience-slug}/objections/*.json` (sub-audience NEW v2.64). Section "Objections to neutralize" du brief cite désormais OBJ-NN canonical IDs depuis sub-audience. Section "Pain to activate" cite PNT-NN canonical sub-audience. Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved.
   v1.5.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · Step 1 read encoded data refactor · pain_points lus depuis `pain_points/*.json filtered by affected_audiences contains audience_slug` (collection top-level NEW v2.63) · objections lues depuis `objections/*.json filtered idem`. Section "Objections to neutralize" du brief cite désormais OBJ-NN canonical IDs + cross-ref objections collection. Section "Pain to activate" cite PNT-NN canonical + cross-ref pain_points collection. Backward compat lecture profile.pain_points[] + profile.objections[] legacy preserved (pre-v2.63 brands).
   v1.4.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, objections-mapping, pain-benefit-chain, breakthrough-advertising-5-stages). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.4.0 (v2.56 brief.schema activation) : Step 6bis NEW · stage Layer C frontmatter conforme brief.schema v1.0 (BRF-NN id, angle_id ref, audience_slug, product_slug, creative_format enum, intent_mix object, overlay_density, brand_mark_present, validation_status, confidence_chain, status hypothesis, created date). Storage path migré vers `brands/{slug}/briefs/{BRF-NN}.md` (canon brief.schema). Old path `produced/copy-briefs/` deprecated mais lecture backward compat. Closes schema orphan v2.42 (brief.schema designed jamais activée runtime). Downstream skills (compose-creative, recompose-creative, audit-creative-output) consument désormais des briefs au frontmatter typé canonique.
@@ -178,20 +179,22 @@ Si l'angle n'a pas de lignage canon (angle pre-v2.26 ou produit hors skill), le 
 
 ---
 
-## Step 1 — Read encoded data (v1.5.0 ontologie pure)
+## Step 1 — Read encoded data (v1.6.0 ontologie sémantique pure)
 
 Load the substrate silently. Never narrate the loading.
 
-**Collections top-level v2.63 (NEW · ontologie pure)** ·
+**Sub-audience v2.64 (NEW · ontologie sémantique pure)** ·
 
-- `brands/{slug}/pain_points/*.json` filtered by `affected_audiences[]` contains `{audience-slug}` — pain canon entity (PNT-NN id, formulation, chain functional→emotional→identity, emotion, trigger, awareness_stage, verbatim_quotes[], severity, lifecycle_stage, confidence_chain, derived_angle_refs[]). Source de vérité pour section "Pain to activate" du brief.
-- `brands/{slug}/objections/*.json` filtered by `affected_audiences[]` contains `{audience-slug}` — objection canon entity (OBJ-NN id, formulation, type, frequency, severity, lifecycle_stage, response_counter, derived_angle_refs[]). Source de vérité pour section "Objections to neutralize" du brief.
+- `brands/{slug}/audiences/{audience-slug}/pain_points/*.json` — pain canon entity owned natif par parent path (PNT-NN id, formulation, chain functional→emotional→identity, emotion, trigger, awareness_stage, verbatim_quotes[], severity, lifecycle_stage, confidence_chain, derived_angle_refs[]). Source de vérité pour section "Pain to activate" du brief.
+- `brands/{slug}/audiences/{audience-slug}/objections/*.json` — objection canon entity owned natif (OBJ-NN id, formulation, type, frequency, severity, lifecycle_stage, response_counter, derived_angle_refs[]). Source de vérité pour section "Objections to neutralize" du brief.
 
-**Backward compat lecture (pre-v2.63 brands)** · si `brands/{slug}/pain_points/` ET `brands/{slug}/objections/` n'existent pas comme directories, fallback `audiences/{audience-slug}/profile.json#pain_points[]` + `profile.json#objections[]` (legacy sub-fields). Skill ne refuse jamais sur ce point, route transparent.
+**Backward compat lecture (v2.63 brands)** · si `brands/{slug}/audiences/{audience-slug}/pain_points/` ET `audiences/{audience-slug}/objections/` n'existent pas, fallback top-level `brands/{slug}/pain_points/*.json` + `brands/{slug}/objections/*.json` filtered by `affected_audiences[]` contains `{audience-slug}`.
+
+**Backward compat lecture (pre-v2.63 brands)** · si top-level v2.63 absent aussi, fallback `audiences/{audience-slug}/profile.json#pain_points[]` + `profile.json#objections[]` (legacy sub-fields v1.7). Skill ne refuse jamais sur ce point, route transparent.
 
 **Audience profile (toujours lu)** ·
 
-- `brands/{slug}/audiences/{audience-slug}/profile.json` — `voice.key_expressions[]` (text, frequency, sample_size, platform), `voice.vocabulary_to_avoid[]`, `voice.tone_register`, `psychology.jtbd.{primary, context, emotional_driver}`, `decision_process.trust_anchors[]`, `market_position.awareness_level`, demographics. **Note v2.63** · `pain_points[]` + `objections[]` sub-fields legacy preserved en lecture pour backward compat, mais collections top-level prennent priorité si présentes.
+- `brands/{slug}/audiences/{audience-slug}/profile.json` — `voice.key_expressions[]` (text, frequency, sample_size, platform), `voice.vocabulary_to_avoid[]`, `voice.tone_register`, `psychology.jtbd.{primary, context, emotional_driver}`, `decision_process.trust_anchors[]`, `market_position.awareness_level`, demographics. **Note v2.64** · `pain_points[]` + `objections[]` sub-fields legacy preserved en lecture pour backward compat, mais sub-audience collections prennent priorité si présentes.
 - `brands/{slug}/products/{hero}/spec.json` — `identity.{name, niche, positioning}`, `unique_mechanism`, `problems_solved[]` with `verbatim_quotes[]`, `benefits[].chain` (functional → emotional → identity), `proofs.{social, authority, performance, scientific}`, `compliance`, `market_context.{sophistication, demonstrability, trust_barrier}`.
 - `brands/{slug}/products/{hero}/offers.json` — active offer matching the channel, or active offer general if not channel-specific. Pricing, urgency, bonus, duration tier.
 - `brands/{slug}/brand.json` — `tone_of_voice.{style, register, banned_words, frequent_words}`, `positioning`, `market.*` if VoM has run (vernacular, white-spaces).

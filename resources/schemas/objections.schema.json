@@ -2,9 +2,10 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "objections.schema.json",
   "title": "Objection (audience-specific barrage achat)",
-  "description": "Objection ressentie par audience(s) lors du parcours achat. v1.0 baseline ship v2.63 · refactor ontologie pure · extracted from profile.objections[] legacy v1.7. Cross-refs affected_audiences[]. Same pattern que friction + pain_points · top-level collection.",
-  "_schema_version": "objections/1.0",
+  "description": "v1.1 alignment · sub-audience storage v2.64. Objection ressentie par audience(s) lors du parcours achat. Storage: brands/{slug}/audiences/{audience_slug}/objections/{OBJ-NN}.json (NEW v2.64 · sub-audience sémantique pure · objection est expression audience-specific). Cross-refs audiences additionnelles via also_affects_audiences[] quand objection shared cross-audiences (canonical entry stocké chez primary owner audience). v1.0 baseline ship v2.63 · refactor ontologie pure · extracted from profile.objections[] legacy v1.7. Same pattern que friction + pain_points · top-level collection à l'origine, sub-audience location post-v2.64.",
+  "_schema_version": "objections/1.1",
   "_changelog": {
+    "1.1": "v2.64 BREAKING storage path · sub-audience location · sémantique pure (objection = expression audience-specific). Migration via operations/migrations/v2.64-subfolder-collections.py idempotent. also_affects_audiences[] cross-refs ajoutés pour objection shared scenarios.",
     "1.0": "v2.63 baseline. Extracted from profile.objections[] legacy v1.7 (BREAKING). Top-level collection canonical. OBJ-NN id pattern."
   },
   "type": "object",
@@ -41,6 +42,11 @@
       "type": "array",
       "items": { "type": "string" },
       "description": "Audience slugs cross-ref"
+    },
+    "also_affects_audiences": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "v1.1 (v2.64) optional · cross-refs vers AUTRES audiences qui partagent cette objection canonical (pour éviter duplication si objection shared cross-audiences). Canonical entry stocké chez primary owner audience (1ère dans affected_audiences[]) · also_affects_audiences[] liste les audiences additionnelles qui partagent l'objection. Permet join-style queries cross-audience sans dupliquer le fichier."
     },
     "affected_products": {
       "type": "array",

@@ -2,9 +2,10 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "pain_points.schema.json",
   "title": "Pain Point (audience-specific)",
-  "description": "Pain point ressenti par audience(s). v1.0 baseline ship v2.63 · refactor ontologie pure · extracted from profile.pain_points[] legacy v1.7. Cross-refs audiences via affected_audiences[]. Same pattern que friction · top-level collection.",
-  "_schema_version": "pain_points/1.0",
+  "description": "v1.1 alignment · sub-audience storage v2.64. Pain point ressenti par audience(s). Storage: brands/{slug}/audiences/{audience_slug}/pain_points/{PNT-NN}.json (NEW v2.64 · sub-audience sémantique pure · pain_point est expression audience-specific). Cross-refs audiences additionnelles via also_affects_audiences[] quand pain shared cross-audiences (canonical entry stocké chez primary owner audience). v1.0 baseline ship v2.63 · refactor ontologie pure · extracted from profile.pain_points[] legacy v1.7. Same pattern que friction · top-level collection à l'origine, sub-audience location post-v2.64.",
+  "_schema_version": "pain_points/1.1",
   "_changelog": {
+    "1.1": "v2.64 BREAKING storage path · sub-audience location · sémantique pure (pain = expression audience-specific). Migration via operations/migrations/v2.64-subfolder-collections.py idempotent. also_affects_audiences[] cross-refs ajoutés pour pain shared scenarios.",
     "1.0": "v2.63 baseline. Extracted from profile.pain_points[] legacy v1.7 (BREAKING). Now top-level collection canonical. PNT-NN id pattern. Cross-refs affected_audiences[] + affected_products[] (cohérence friction). Closes ontologie inconsistance (friction top-level mais pain sub-field legacy)."
   },
   "type": "object",
@@ -48,6 +49,11 @@
       "type": "array",
       "items": { "type": "string" },
       "description": "Audience slugs · cross-ref vers brands/{slug}/audiences/{slug}/profile.json"
+    },
+    "also_affects_audiences": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "v1.1 (v2.64) optional · cross-refs vers AUTRES audiences qui partagent ce pain canonical (pour éviter duplication si pain shared cross-audiences). Canonical entry stocké chez primary owner audience (1ère dans affected_audiences[]) · also_affects_audiences[] liste les audiences additionnelles qui partagent le pain. Permet join-style queries cross-audience sans dupliquer le fichier."
     },
     "affected_products": {
       "type": "array",

@@ -12,7 +12,7 @@ Une audience opérable se définit par trois variables imbriquées · une porte 
 
 Cette doctrine propose une méthode de cartographie en 3 niveaux (broad → segment → micro) et 4 questions canon qui forcent le passage de la démographie à l'audience opérable. Sortie · une carte 3-5 mères × 8-15 sous-poches par marque, exploitable en paid, en copy, en CRM, en product.
 
-**Ontologie pure v2.63 · pain_points + objections deviennent collections séparées top-level.** L'audience reste l'entité root cartographiée par cette doctrine (porte d'entrée + stage + sub-cluster), mais ses pain_points et objections ne sont PAS des sub-fields dans `audience.profile.json`. Ce sont des entités sœurs canonical (`brands/{brand}/pain_points/PNT-NN.json` et `brands/{brand}/objections/OBJ-NN.json`), cross-référencées par audience via `affected_audiences[]`. Parité ontologique avec frictions (déjà top-level depuis v2.57). Permet visibility cross-audience d'un même pain ou d'une même objection (e.g. PNT-01 "sommeil profond perturbé" affecte stress-pro + post-partum + senior-insomnie simultanément, encodé 1 fois canonical avec cross-refs). Voir doctrines sœurs · `pain-benefit-chain-doctrine.md` (PNT-NN canon) et `objections-mapping-doctrine.md` (OBJ-NN canon).
+**Ontologie pure v2.64 · pain_points + objections sont OWNED sub-folders audiences/{slug}/.** L'audience est l'entité root cartographiée par cette doctrine (porte d'entrée + stage + sub-cluster), et ses pain_points + objections vivent dans des sub-folders OWNED audience-specific · `brands/{brand}/audiences/{slug}/pain_points/PNT-NN.json` + `brands/{brand}/audiences/{slug}/objections/OBJ-NN.json`. Storage path · sémantique pure (expression subjective audience-specific). Le v2.63 status quo (collections top-level brand-wide séparées) deprecated · le canon Notion stride-up était un compromis opérationnel UI, pas sémantique pure. Sémantiquement, un pain ou une objection sont l'expression subjective d'une audience donnée · même formulation canonique peut diverger entre stress-pro et post-partum (severity, lifecycle, counter-pattern). Le storage OWNED sub-folder rend cette propriété explicite. Voir doctrines sœurs · `pain-benefit-chain-doctrine.md` (PNT-NN canon) et `objections-mapping-doctrine.md` (OBJ-NN canon).
 
 ## Les principes canon
 
@@ -132,18 +132,18 @@ Workflow opérateur cartographie en 6 étapes ·
 
 Output canon · un document 1 page par mère (porte d'entrée, taille estimée, 2-4 sous-poches, distribution stages, chevauchements). 3-5 documents pour une marque mature.
 
-## Cross-refs · collections top-level orthogonales (v2.63)
+## Cross-refs · sub-folders OWNED audience-specific + shared via cross-refs (v2.64)
 
-L'audience cartographiée par cette doctrine est l'entité root, mais ses sub-tensions (pain_points, objections, frictions) sont des collections sœurs top-level cross-référencées. Les 3 collections sont orthogonales · un même audience peut être impactée par N pain_points, N objections, N frictions, encodées 1 fois canonical.
+L'audience cartographiée par cette doctrine est l'entité root, et ses sub-tensions (pain_points, objections) sont des sub-folders OWNED dans le dossier audience (audience-specific). Les frictions vivent en sub-folder OWNED des produits (product-specific). Storage paths sémantique pure ·
 
-| Collection | Path canonical | ID format | Doctrine source |
+| Collection | Path canonical OWNED | ID format | Doctrine source |
 |---|---|---|---|
 | `audiences/` | `brands/{brand}/audiences/{slug}/profile.json` | slug | `audiences-cartography-doctrine.md` (ce fichier) |
-| `pain_points/` | `brands/{brand}/pain_points/{PNT-NN}.json` | PNT-NN | `pain-benefit-chain-doctrine.md` |
-| `objections/` | `brands/{brand}/objections/{OBJ-NN}.json` | OBJ-NN | `objections-mapping-doctrine.md` |
-| `frictions/` | `brands/{brand}/frictions/{FRC-NN}.json` | FRC-NN | (encodage runtime usage) |
+| `pain_points/` (sub-audience) | `brands/{brand}/audiences/{slug}/pain_points/{PNT-NN}.json` | PNT-NN | `pain-benefit-chain-doctrine.md` |
+| `objections/` (sub-audience) | `brands/{brand}/audiences/{slug}/objections/{OBJ-NN}.json` | OBJ-NN | `objections-mapping-doctrine.md` |
+| `frictions/` (sub-product) | `brands/{brand}/products/{slug}/frictions/{FRC-NN}.json` | FRC-NN | (encodage runtime usage produit) |
 
-Cross-refs canonical · chaque pain_point/objection/friction porte `affected_audiences[]` (array de slugs audience). Chaque audience est filtrable cross-collection · `/phantom {brand} audiences {slug}` rend les angles dérivés + frictions affecting + pain_points + objections cross-référencés. Voir `/phantom {brand} pain-points` et `/phantom {brand} objections` pour drill cross-audiences canonical.
+Cross-refs canonical · les pain_points + objections shared entre plusieurs audiences sont stockés audience-specific dans le primary owner, avec `also_affects_audiences[]` array (slugs autres audiences impactées). Si PNT-01 "sommeil profond perturbé" affecte stress-pro + post-partum + senior-insomnie, encodé dans audience primary (typiquement stress-pro) avec `also_affects_audiences: [post-partum, senior-insomnie]`. Évite duplication, expose visibility cross-audience explicite. Drill audience-specific via `/phantom {brand} audiences {slug}` (entity-drill 360° expose profile + pain_points + objections inline + cross-refs inbound).
 
 ## Exemples concrets · cas pratiques cross-niches
 

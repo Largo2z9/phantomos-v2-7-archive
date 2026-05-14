@@ -12,7 +12,7 @@ Le canon Direct Response (Sugarman, Halbert, Caples, Hormozi) traite ce problèm
 
 Cette doctrine propose une grille mentale en trois axes · 7 types d'objection × 4 lifecycle stages × 6 neutralization patterns canon. Sortie · une cartographie top-3 objections par audience, severity-scored, lifecycle-positioned, pattern-matched.
 
-**Ontologie pure v2.63 · objections sont désormais collection top-level canonical (OBJ-NN).** Les objections ne sont PAS des sub-fields dans `audience.profile.json`. Elles vivent comme entités sœurs canonical (`brands/{brand}/objections/OBJ-NN.json`), cross-référencées par audience via `affected_audiences[]`. Parité ontologique avec pain_points (PNT-NN) et frictions (FRC-NN), tous top-level depuis v2.63. Permet visibility cross-audience d'une même objection (e.g. OBJ-01 "trop cher" affecte stress-pro + post-partum simultanément, encodé 1 fois canonical avec cross-refs · 1 fiche source de vérité, pas de duplication par audience). Drill cross-audiences via `/phantom {brand} objections` · drill item via `/phantom {brand} objections {OBJ-NN}`.
+**Ontologie pure v2.64 · objections sont sub-folder OWNED dans audiences/{slug}/objections/.** Une objection est l'expression subjective d'une audience donnée · même formulation canonique ("trop cher", "déjà essayé") peut diverger entre stress-pro et post-partum (severity, lifecycle stage dominant, counter-pattern matché). Le storage OWNED sub-audience rend cette propriété sémantique explicite. Les objections ne sont PAS des sub-fields dans `audience.profile.json` ni des entités top-level brand-wide (v2.63 deprecated). Elles vivent comme entités OWNED dans le sub-folder · `brands/{brand}/audiences/{slug}/objections/OBJ-NN.json`. Cross-refs canonical · objections shared entre plusieurs audiences sont stockées primary owner avec `also_affects_audiences[]` array (slugs autres audiences impactées). Évite duplication, expose visibility cross-audience explicite. Drill audience-drill expose objections inline 360° via `/phantom {brand} audiences {slug}` · drill item via `/phantom {brand} audiences {slug}/objections/{OBJ-NN}`.
 
 ## Les principes canon
 
@@ -67,7 +67,7 @@ Erreur classique · feel-felt-found sur objection price. Miss. Le prospect ne re
 
 ## La méthode · 7 types × 4 lifecycle × 6 patterns
 
-**Canonical IDs (v2.63)** · chaque objection cartographiée porte un ID canonical `OBJ-NN` (numérique zero-padded, ex · OBJ-01, OBJ-12), cohérent avec la convention `PNT-NN` (pain_points) et `FRC-NN` (frictions). Le canonical ID permet · (a) cross-refs explicites depuis `angle.lineage.objection_ref` (angle dérivé via reframe), `pain_point.related_objection_refs`, `friction.cross_refs.objection_ids` · (b) drill canonical via `/phantom {brand} objections {OBJ-NN}` · (c) traçabilité historique long-terme (l'OBJ-NN reste stable, même si la formulation évolue). Storage canonique · `brands/{brand}/objections/{OBJ-NN}.json` (1 fichier par objection canonical, pas de duplication par audience).
+**Canonical IDs (v2.64)** · chaque objection cartographiée porte un ID canonical `OBJ-NN` (numérique zero-padded, ex · OBJ-01, OBJ-12), cohérent avec la convention `PNT-NN` (pain_points sub-audience) et `FRC-NN` (frictions sub-product). Le canonical ID permet · (a) cross-refs explicites depuis `angle.lineage.objection_ref` (angle dérivé via reframe), `pain_point.related_objection_refs`, `friction.cross_refs.objection_ids` · (b) drill canonical via `/phantom {brand} audiences {slug}/objections/{OBJ-NN}` (audience-specific sub-folder OWNED) · (c) traçabilité historique long-terme (l'OBJ-NN reste stable, même si la formulation évolue). **Storage v2.64** · `brands/{brand}/audiences/{slug}/objections/{OBJ-NN}.json` (sub-folder OWNED audience-specific). Objection shared entre plusieurs audiences · stockée primary owner avec `also_affects_audiences[]` array (évite duplication, expose visibility cross-audience explicite).
 
 ### Les 7 types d'objection canon
 
@@ -396,15 +396,15 @@ Pour chaque produit / audience / asset clé, valider ·
 
 ## Sources et lectures
 
-**Canon Notion stride-up · workspace 3 collections sub-tensions parité (v2.63)**
+**Ontologie pure v2.64 · sub-folders OWNED + cross-refs**
 
-L'implémentation PhantomOS v2.63 aligne le canon doctrinal Notion stride-up workspace · 3 collections sub-tensions séparées en parité ontologique cross-audiences ·
+L'implémentation PhantomOS v2.64 abandonne le canon Notion stride-up workspace v2.63 (3 collections top-level brand-wide) au profit de l'ontologie sémantique pure · sub-folders OWNED audience-specific et product-specific ·
 
-- `pain_points/` (PNT-NN) · canon `pain-benefit-chain-doctrine.md`
-- `objections/` (OBJ-NN) · canon `objections-mapping-doctrine.md` (ce fichier)
-- `frictions/` (FRC-NN) · canon runtime usage encodage
+- `audiences/{slug}/pain_points/` (PNT-NN sub-audience OWNED) · canon `pain-benefit-chain-doctrine.md`
+- `audiences/{slug}/objections/` (OBJ-NN sub-audience OWNED) · canon `objections-mapping-doctrine.md` (ce fichier)
+- `products/{slug}/frictions/` (FRC-NN sub-product OWNED) · canon runtime usage encodage
 
-Les 3 collections sont orthogonales (un même audience peut être impactée par N pain_points, N objections, N frictions). Chaque entité canonical porte `affected_audiences[]` pour permettre visibility cross-audience sans duplication. Cross-refs explicites entre collections (e.g. `objection.related_pain_point_refs[]`, `pain_point.related_objection_refs[]`). Pattern stride-up consume par les skills downstream · `produce-paid-angles` (objection → angle reframe), `produce-copy-brief` (objection → counter-pattern matched), `compose-creative` (cross-refs objection × audience × angle).
+Le canon stride-up Notion était un compromis opérationnel UI (visibility cross-audience facilitée par flat top-level), pas sémantique pure. Sémantiquement, pain + objections = expression subjective audience-specific (severity, lifecycle, counter-pattern divergent par audience), frictions = usage product-specific. Le storage OWNED rend cette propriété explicite. Cross-refs explicites entre entities (e.g. `objection.related_pain_point_refs[]`, `pain_point.related_objection_refs[]`, `also_affects_audiences[]` pour shared entries). Pattern consume par les skills downstream · `produce-paid-angles` (objection → angle reframe), `produce-copy-brief` (objection → counter-pattern matched), `compose-creative` (cross-refs objection × audience × angle).
 
 **Canon historique**
 

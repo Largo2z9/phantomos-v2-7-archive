@@ -1,7 +1,7 @@
 ---
 name: mine-voc
 type: producer
-version: "1.2.0"
+version: "1.3.0"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -13,6 +13,7 @@ consumes:
   - path: docs/doctrine/pain-benefit-chain-doctrine.md
   - path: docs/doctrine/objections-mapping-doctrine.md
 description: >
+  v1.3.0 (v2.64 ontologie sémantique pure) · pain_points + objections passent en SUB-AUDIENCE · stage `brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json` entités complètes (owned natif par l'audience). Generation IDs PNT-NN/OBJ-NN scan désormais `brands/{slug}/audiences/*/pain_points/*.json` filesystem (incrémental cross-audiences). Pattern · pain et objection appartiennent sémantiquement à une audience · sub-parent path canonical (au lieu de top-level v2.63 avec affected_audiences[] array). Backward compat strict additif · lecture fallback `brands/{slug}/pain_points/*.json` + `brands/{slug}/objections/*.json` top-level v2.63 si sub-parent vide OR absent. Profile sub-fields legacy v1.7 read fallback aussi preserved.
   v1.2.0 (v2.63 ontologie pure) · pain_points + objections passent en COLLECTIONS top-level séparées · stage `brands/{slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/objections/{OBJ-NN}.json` entités complètes avec `affected_audiences: [a_slug]`. BREAKING profile.json schema v2.0 (sub-fields legacy `profile.pain_points[]` / `profile.objections[]` DEPRECATED en write · read backward compat preserved). Pattern miroir friction.schema (top-level collection). Cross-audience reference natif via affected_audiences[].
   v1.1.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (pain-benefit-chain, objections-mapping). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.1.0 (v2.58 coverage extend) · benefits emotional_signal + latency_min/max + evidence_verbatim staging (v1.10 NEW fields activated) · pain_id PNT-NN + objection_id OBJ-NN stable generation (v1.7 NEW canonical IDs · fixe faille cross-ref friction). Closes 3 orphans audit v2.57.
@@ -32,11 +33,13 @@ permissions:
   mode: proposed
   subagent_safe: true
 produces_proposals_for:
-  - brands/{slug}/pain_points/{PNT-NN}.json
-  - brands/{slug}/objections/{OBJ-NN}.json
+  - brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json
+  - brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json
   - brands/{slug}/products/{p_slug}/spec.json#/problems_solved
   - brands/{slug}/products/{p_slug}/spec.json#/benefits
   - brands/{slug}/audiences/{a_slug}/profile.json#/voice/key_expressions
+  - brands/{slug}/pain_points/{PNT-NN}.json (legacy v2.63 backward compat read · DEPRECATED write)
+  - brands/{slug}/objections/{OBJ-NN}.json (legacy v2.63 backward compat read · DEPRECATED write)
   - brands/{slug}/audiences/{a_slug}/profile.json#/pain_points (legacy v1.7 backward compat read · DEPRECATED write)
   - brands/{slug}/audiences/{a_slug}/profile.json#/objections (legacy v1.7 backward compat read · DEPRECATED write)
 pipeline:
@@ -267,9 +270,9 @@ Route map.
 
   Absence de signal temporel ou émotionnel = absence d'evidence, ne pas inventer. Stage uniquement les benefits où la verbatim corpus porte le signal.
 
-- **`brands/{slug}/pain_points/{PNT-NN}.json` (v1.2.0 v2.63 ontologie pure · COLLECTION TOP-LEVEL séparée)** · BREAKING change v2.63 · pain_points deviennent collection top-level miroir pattern friction.schema. Chaque pain point staged = entité complète fichier dédié `brands/{slug}/pain_points/{PNT-NN}.json` avec `affected_audiences: [a_slug]` (array slugs audiences impactées, cross-audience natif). Fini sub-field profile.json.
+- **`brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json` (v1.3.0 v2.64 ontologie sémantique pure · SUB-AUDIENCE)** · pain_points appartiennent sémantiquement à une audience · sub-parent path canonical. Chaque pain point staged = entité complète fichier dédié `brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json` (owned natif). Plus de array `affected_audiences[]` nécessaire (la parent path déclare l'audience owner).
 
-  Generation incrémentale PNT-NN · scan `brands/{slug}/pain_points/*.json` existing pour next id (PNT-01, PNT-02, ... PNT-NN max + 1). Pattern stable PNT-NN, jamais réassigné.
+  Generation incrémentale PNT-NN · scan `brands/{slug}/audiences/*/pain_points/*.json` existing pour next id cross-audiences (PNT-01, PNT-02, ... PNT-NN max + 1). Pattern stable PNT-NN, jamais réassigné. Si un pain similaire détecté cross-audiences (même phenomenon dans 2 audiences), stage UNE entité dans chaque audience parente (pas de dedup cross-audience · sémantique d'appartenance owned).
 
   Entité shape (full file) ·
 
@@ -286,7 +289,6 @@ Route map.
     "emotion": "{dominant emotion}",
     "trigger": "{contextual trigger}",
     "awareness_stage": "{Schwartz stage}",
-    "affected_audiences": ["{a_slug_1}", "{a_slug_2}"],
     "affected_products": ["{p_slug}"],
     "_source_meta": {
       "origin": "voc",
@@ -307,16 +309,16 @@ Route map.
   Mutation gate (stage entité complète) ·
 
   ```bash
-  python3 .skills/write-to-context.py --path "pain_points/{PNT-NN}.json" --value '{<full pain_point entity JSON>}' --source agent --confidence 0.7 --mode proposed --reason "v2.63 ontologie pure · top-level collection"
+  python3 .skills/write-to-context.py --path "audiences/{a_slug}/pain_points/{PNT-NN}.json" --value '{<full pain_point entity JSON>}' --source agent --confidence 0.7 --mode proposed --reason "v2.64 ontologie sémantique pure · sub-audience canonical"
   ```
 
-  Cross-audience natif · si un pain point recurrent cross-audiences (ex pain `chute capillaire post-grossesse` affecte `maman-postpartum` + `femme-30-45-active`) → stage UNE entité PNT-NN avec `affected_audiences: ["maman-postpartum", "femme-30-45-active"]` plutôt que dupliquer dans deux profile.json.
+  Backward compat strict additif · si la brand cible est en migration partielle, fallback lecture transparent `brands/{slug}/pain_points/{PNT-NN}.json` top-level v2.63 si sub-audience vide. Write-side v1.3.0 stage toujours sub-audience canonical.
 
-  Cross-ref canonical friction · `friction.cross_refs.pain_point_ids[]` référence désormais directement les PNT-NN du registry top-level.
+  Cross-ref canonical friction · `friction.cross_refs.pain_point_ids[]` référence désormais les PNT-NN sub-audience canonical (lookup via parent audience path).
 
-- **`brands/{slug}/objections/{OBJ-NN}.json` (v1.2.0 v2.63 ontologie pure · COLLECTION TOP-LEVEL séparée)** · BREAKING change v2.63 · objections deviennent collection top-level miroir pattern friction.schema. Chaque objection staged = entité complète fichier dédié `brands/{slug}/objections/{OBJ-NN}.json` avec `affected_audiences: [a_slug]`. Fini sub-field profile.json.
+- **`brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json` (v1.3.0 v2.64 ontologie sémantique pure · SUB-AUDIENCE)** · objections appartiennent sémantiquement à une audience · sub-parent path canonical. Chaque objection staged = entité complète fichier dédié `brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json` (owned natif). Plus de array `affected_audiences[]` nécessaire.
 
-  Generation incrémentale OBJ-NN · scan `brands/{slug}/objections/*.json` existing pour next id (OBJ-01, OBJ-02, ... OBJ-NN max + 1).
+  Generation incrémentale OBJ-NN · scan `brands/{slug}/audiences/*/objections/*.json` existing pour next id cross-audiences (OBJ-01, OBJ-02, ... OBJ-NN max + 1).
 
   Entité shape (full file) ·
 
@@ -331,7 +333,6 @@ Route map.
     "response_counter": "{counter-réponse opérateur}",
     "derived_angle_refs": ["ANG-{NN}", ...],
     "lifecycle_stage": "awareness | consideration | decision | post_purchase",
-    "affected_audiences": ["{a_slug_1}", "{a_slug_2}"],
     "affected_products": ["{p_slug}"],
     "_source_meta": {
       "origin": "voc",
@@ -352,12 +353,12 @@ Route map.
   Mutation gate (stage entité complète) ·
 
   ```bash
-  python3 .skills/write-to-context.py --path "objections/{OBJ-NN}.json" --value '{<full objection entity JSON>}' --source agent --confidence 0.7 --mode proposed --reason "v2.63 ontologie pure · top-level collection"
+  python3 .skills/write-to-context.py --path "audiences/{a_slug}/objections/{OBJ-NN}.json" --value '{<full objection entity JSON>}' --source agent --confidence 0.7 --mode proposed --reason "v2.64 ontologie sémantique pure · sub-audience canonical"
   ```
 
-  Cross-audience natif · objection `prix trop élevé pour le format` qui touche `maman-postpartum` + `étudiante-budget-serré` → UNE entité OBJ-NN avec `affected_audiences: ["maman-postpartum", "etudiante-budget-serre"]`. Post-purchase objections (refund issues, expectation gap) restent uniques à VoC mining.
+  Backward compat strict additif · fallback lecture `brands/{slug}/objections/{OBJ-NN}.json` top-level v2.63 si sub-audience vide. Write-side v1.3.0 stage toujours sub-audience canonical.
 
-  Cross-ref canonical friction · `friction.cross_refs.objection_ids[]` référence désormais directement les OBJ-NN du registry top-level.
+  Cross-ref canonical friction · `friction.cross_refs.objection_ids[]` référence désormais les OBJ-NN sub-audience canonical.
 
 - **Legacy write `profile.json#/pain_points` + `profile.json#/objections` DEPRECATED v1.2.0** · Profile v2.0 BREAKING post-v2.63 · sub-fields `profile.pain_points[]` et `profile.objections[]` ne sont PLUS écrits par mine-voc v1.2.0+. Read backward compat preserved · les profile.json brownfield v1.7 contenant sub-fields legacy restent lisibles (skills downstream lisent les deux paths · top-level collections en priorité, profile sub-fields fallback legacy). Migration progressive · scripts upstream peuvent migrer profile.pain_points[] → pain_points/{PNT-NN}.json files sans casser lecture.
 
@@ -469,3 +470,4 @@ Three contexts surface this skill.
 - **1.0.2** (v2.29.0 alignment verify) — `awareness_stage` rename confirmed in Layer A entry shape and profile routing (`pain_points[].awareness_stage` consumes `_shared/awareness-stage.json` $ref, 5 canoniques). Canon tagging field names unchanged: `canon_schwartz_conscience_id` reste tel quel car pointe vers la fiche canon copy `niveaux-schwartz/conscience.json`, pas vers l'enum `awareness_stage` d'`angle.lineage`. No structural patches needed beyond verify.
 - **1.1.0** (v2.58 coverage extend) · Step 6 routing étendu pour combler 3 orphans audit v2.57. P1 · `spec.benefits[].emotional_signal` + `.latency_min` / `.latency_max` + `.evidence_verbatim[]` write-side (v1.10 NEW fields activated, staged depuis JTBD emotional + theme=benefit coding). P2 · `profile.pain_points[].pain_id` + `profile.objections[].objection_id` stable ID generation pattern PNT-NN / OBJ-NN (v1.7 NEW canonical IDs, fixe faille cross-ref `friction.cross_refs.{pain_point_ids, objection_ids}` qui peut désormais référencer canon). Backward compat strict (additif only).
 - **1.2.0** (v2.63 ontologie pure) · BREAKING refactor write-side · pain_points + objections passent en COLLECTIONS TOP-LEVEL séparées miroir pattern friction.schema. Stage `brands/{slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/objections/{OBJ-NN}.json` entités complètes avec `affected_audiences: [a_slug]` array (cross-audience natif). Fini sub-field `profile.pain_points[]` / `profile.objections[]` legacy writes. Profile schema v2.0 BREAKING post-migration · sub-fields legacy DEPRECATED write · read backward compat preserved (fallback lecture profile.json brownfield v1.7). Generation IDs PNT-NN / OBJ-NN scan désormais `brands/{slug}/{pain_points|objections}/*.json` filesystem au lieu de sub-fields profile. Pattern canonical · top-level collection avec cross-audience reference via affected_audiences[]. produces_proposals_for ajouté en frontmatter (paths NEW + legacy refs marquées DEPRECATED).
+- **1.3.0** (v2.64 ontologie sémantique pure) · pain_points + objections passent en SUB-AUDIENCE (`brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json`). Pattern · ces entités appartiennent sémantiquement à une audience (owned natif par parent path), plus besoin d'un array `affected_audiences[]` cross-audience tracking. Generation IDs PNT-NN/OBJ-NN scan désormais `brands/{slug}/audiences/*/pain_points/*.json` + `audiences/*/objections/*.json` cross-audiences pour next id. Si un pain/objection similaire détecté dans deux audiences, stage UNE entité par audience parente (pas de dedup cross-audience · l'appartenance sémantique précède le tracking). Backward compat strict additif · lecture fallback transparent `brands/{slug}/pain_points/{PNT-NN}.json` + `objections/{OBJ-NN}.json` top-level v2.63 si sub-audience vide OR absent. profile sub-fields legacy v1.7 toujours read fallback (audit historique). Write-side v1.3.0 stage exclusivement sub-audience canonical. produces_proposals_for frontmatter enrichi avec paths NEW sub-audience + legacy refs marquées DEPRECATED.

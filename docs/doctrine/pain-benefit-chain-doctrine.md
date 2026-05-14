@@ -16,7 +16,7 @@ La chaîne canon · **fonctionnel → émotionnel → identitaire**. Trois layer
 
 Gary Halbert dans *The Boron Letters* (1984) le résume sans détour · *"People do not buy products. They buy results. And not just any results · the emotional and identity-level outcomes those products promise."* 40 ans plus tard, c'est encore la frontière entre copywriter amateur et copywriter pro.
 
-**Ontologie pure v2.63 · pain_points sont désormais collection top-level canonical (PNT-NN), pas sub-field profile audience.** Les pain_points vivent comme entités sœurs canonical (`brands/{brand}/pain_points/PNT-NN.json`), cross-référencées par audience via `affected_audiences[]`. Parité ontologique avec objections (OBJ-NN) et frictions (FRC-NN), tous top-level depuis v2.63. Permet la chain pain → benefit canonical cross-skills · `mine-voc` capture verbatim sources, `profile-audience` structure cross-refs, `produce-paid-angles` consume PNT-NN pour générer angles dérivés (formula Observation + Tension + Reframe + Bridge), `compose-creative` reference PNT-NN comme substrate angle. Drill canonical via `/phantom {brand} pain-points` (cross-audiences) · drill item `/phantom {brand} pain-points {PNT-NN}` (fiche complète avec chain functional/emotional/identity + verbatim_quotes + cross-refs).
+**Ontologie pure v2.64 · pain_points sont sub-folder OWNED dans audiences/{slug}/pain_points/.** Un pain_point est l'expression subjective d'une audience donnée · même pain canonique ("sommeil profond perturbé") peut diverger entre stress-pro et post-partum (severity, chain functional/emotional/identity, verbatim_quotes registre, trigger). Le storage OWNED sub-audience rend cette propriété sémantique explicite. Les pain_points ne sont PAS des sub-fields dans `audience.profile.json` ni des entités top-level brand-wide (v2.63 deprecated). Ils vivent comme entités OWNED dans le sub-folder · `brands/{brand}/audiences/{slug}/pain_points/PNT-NN.json`. Cross-refs canonical · pain_points shared entre plusieurs audiences sont stockés primary owner avec `also_affects_audiences[]` array (slugs autres audiences impactées). Évite duplication, expose visibility cross-audience explicite. Permet la chain pain → benefit canonical cross-skills · `mine-voc` capture verbatim sources, `profile-audience` structure sub-folder OWNED, `produce-paid-angles` consume PNT-NN pour générer angles dérivés (formula Observation + Tension + Reframe + Bridge), `compose-creative` reference PNT-NN comme substrate angle. Drill audience-drill expose pain_points inline 360° via `/phantom {brand} audiences {slug}` · drill item `/phantom {brand} audiences {slug}/pain_points/{PNT-NN}` (fiche complète avec chain functional/emotional/identity + verbatim_quotes + cross-refs).
 
 ## Les principes canon
 
@@ -325,23 +325,24 @@ Si tu n'arrives pas à l'identité au 3ème *"et alors"*, ta chaîne est incompl
 
 ---
 
-## Cross-refs · canonical IDs explicit (v2.63)
+## Cross-refs · canonical IDs explicit (v2.64)
 
-L'ontologie pure v2.63 verrouille la chain pain → benefit via canonical IDs PNT-NN référencés explicitement dans les entités sœurs ·
+L'ontologie pure v2.64 verrouille la chain pain → benefit via canonical IDs PNT-NN référencés explicitement dans les entités sœurs. Storage canonical · sub-folder OWNED audience-specific `brands/{brand}/audiences/{slug}/pain_points/{PNT-NN}.json`. Pain shared cross-audiences · stocké primary owner avec `also_affects_audiences[]` array.
 
 | Entité référente | Field cross-ref | Description |
 |---|---|---|
 | `angle.lineage.pain_ref` | `PNT-NN` | Angle dérivé d'un pain canonical (e.g. ANG-04 reframe sur PNT-01 "sommeil profond perturbé") |
 | `objection.derived_angle_refs[]` | `PNT-NN` array | Pains qui alimentent une objection (e.g. OBJ-01 "trop cher" reliée à PNT-01 + PNT-04 sources) |
-| `friction.cross_refs.pain_point_ids[]` | `PNT-NN` array | Frictions usage qui touchent le même substrat pain (e.g. FRC-05 friction onboarding sur PNT-01 chain) |
-| `audience.pain_point_refs[]` | `PNT-NN` array | Audience cartographiée référence ses pains canonical (vs duplication legacy v2.60-) |
+| `friction.cross_refs.pain_point_ids[]` | `PNT-NN` array | Frictions usage product-specific qui touchent le même substrat pain (e.g. FRC-05 sub-product onboarding sur PNT-01 chain) |
+| `audience.pain_point_refs[]` | `PNT-NN` array | Audience cartographiée référence ses pains OWNED sub-folder (legacy v2.60- inline pain_points deprecated) |
 | `brief.derived_pain_refs[]` | `PNT-NN` array | Brief copy ancre sur pains canonical (traçabilité source) |
+| `pain_point.also_affects_audiences[]` | slug array | Audiences additionnelles impactées par ce pain (shared cross-audience entry, primary owner stocke) |
 
-**Pattern stride-up · 3 collections sub-tensions parité.** Les 3 collections sont orthogonales · `pain_points/`, `objections/`, `frictions/`. Cross-refs entre collections via `related_pain_point_refs[]`, `related_objection_refs[]`, `related_friction_refs[]` (bi-directionnel). Storage canonical · 1 fichier par entité (pas de duplication par audience). Drill cross-audiences via `/phantom {brand} pain-points` · `/phantom {brand} objections` · `/phantom {brand} frictions`.
+**Pattern v2.64 sémantique pure · sub-folders OWNED + cross-refs shared.** Pain_points + objections = OWNED sub-folder audiences/{slug}/, frictions = OWNED sub-folder products/{slug}/. Cross-refs entre entities via `related_pain_point_refs[]`, `related_objection_refs[]`, `related_friction_refs[]` (bi-directionnel). Storage 1 fichier par entité primary owner · pain shared entre N audiences encodé 1 fois avec `also_affects_audiences[]` array. Drill audience-specific 360° via `/phantom {brand} audiences {slug}` expose pain_points + objections inline natif.
 
-**Skill consumption pattern (v2.63)** ·
-- `mine-voc` capture verbatim_quotes[] → propose nouveau PNT-NN candidat
-- `profile-audience` structure `affected_audiences[]` cross-refs
+**Skill consumption pattern (v2.64)** ·
+- `mine-voc` capture verbatim_quotes[] → propose nouveau PNT-NN candidat audience-specific
+- `profile-audience` structure sub-folder OWNED pain_points/ + objections/ + cross-refs `also_affects_audiences[]`
 - `produce-paid-angles` consume PNT-NN canon pour formula angle (Observation = pain surface · Tension = pain consequence · Reframe = benefit identity · Bridge = mécanisme)
 - `compose-creative` reference PNT-NN comme substrate canonical, traçable depuis l'angle source
 
