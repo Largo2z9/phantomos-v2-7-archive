@@ -2,8 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Brand",
   "description": "Per-brand identity, positioning, financials, market context. Lives in brands/{slug}/brand.json. v2.1+: purchase_driver default + audience_trees[] for marketplaces. v2.2+: brand_equity_level + creative_zone (canon V3 §3, §4.3).",
-  "_schema_version": "brand/2.3",
+  "_schema_version": "brand/2.4",
   "_changelog": {
+    "2.4": "v2.57 Notion stride-up follow-up + hybrid business support · identity.business_model enum (DTC/service/hybrid/subscription/marketplace) + identity.business_model_signals (object avec physical_locations_detected/services_detected/products_detected/revenue_split_estimated/declared_by_operator). Drive le rendering /phantom contextuel par modèle business. Backward compat strict additif (default DTC implicite pour brands pre-v2.57).",
     "2.3": "v2.56 Notion stride-up parity · meta.validation_status $ref _shared/validation-status (composite avec meta.status existant). Backward compat strict additif."
   },
   "type": "object",
@@ -97,7 +98,32 @@
         "brand_vision": { "type": "string" },
         "brand_story": { "type": "string" },
         "brand_personality": { "type": "array", "items": { "type": "string" } },
-        "brand_values": { "type": "array", "items": { "type": "string" } }
+        "brand_values": { "type": "array", "items": { "type": "string" } },
+        "business_model": {
+          "type": "string",
+          "enum": ["DTC", "service", "hybrid", "subscription", "marketplace"],
+          "default": "DTC",
+          "description": "Modèle business de la brand. Drive le rendering /phantom contextuel (entités surface par modèle · vocabulaire opérateur-facing · scaling rules). Détection auto au snapshot-brand via heuristique (products>0 + services=0 → DTC · products+services>0 → hybrid · products=0 + services>0 → service · subscription si recurring core · marketplace si multi-vendor). Default DTC implicite pour brands pre-v2.57 (backward compat strict). Override opérateur possible via setup-brand."
+        },
+        "business_model_signals": {
+          "type": "object",
+          "description": "Signaux scrape utilisés pour auto-detection business_model. Évite re-detection silencieuse si déjà rempli.",
+          "properties": {
+            "physical_locations_detected": { "type": "integer", "description": "Locations physiques détectées (cliniques, magasins, restaurants)" },
+            "services_detected": { "type": "integer", "description": "Services / packages détectés" },
+            "products_detected": { "type": "integer", "description": "SKUs produits détectés" },
+            "revenue_split_estimated": {
+              "type": "object",
+              "description": "Estimation share revenue par couche business (optionnel).",
+              "properties": {
+                "products": { "type": "number", "minimum": 0, "maximum": 1 },
+                "services": { "type": "number", "minimum": 0, "maximum": 1 },
+                "subscription": { "type": "number", "minimum": 0, "maximum": 1 }
+              }
+            },
+            "declared_by_operator": { "type": "boolean", "default": false, "description": "True si business_model setté manuellement par opérateur · override auto-detection" }
+          }
+        }
       }
     },
 

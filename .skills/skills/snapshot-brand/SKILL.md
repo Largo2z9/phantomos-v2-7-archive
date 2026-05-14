@@ -1,7 +1,7 @@
 ---
 name: snapshot-brand
 type: producer
-version: "1.1.0"
+version: "1.2.0"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -9,7 +9,9 @@ reasoning_pattern: null
 patch_notes:
   v1.0.1: "v2.51 operator-fiche-output canonique template applied · trust-and-deepen close + Movement 4 hand-off refactor langage métier. Close menu post-synthesis · drop skill names en parenthèses (mine-voc, mine-vom, deepen-brand-context) → descriptions plain language uniquement (15 min validation guidée / 15 min écoute clients / 25 min écoute marché / 45 min full). Movement 4 hand-off Step 5 · drop wording `mine-voc fait X` / `produce-paid-angles consomme Y` → langage métier accessible (`écoute clients Trustpilot et forums` au lieu de nommer skill, `set d'angles ranked prêt brief créa` au lieu de `produce-paid-angles consume`). Cohérent template canonique resources/templates/operator-fiche-output.md."
   v1.1.0: "v2.54 investigation posture refactor Step 7 · drop 3-movements prose synthesis (mélangait observé + déduit + projection comme des faits). Step 7 restructuré en 5 sections doctrine canon · Observé (faits sourcés scrape + Q&A opérateur) · Déduit (hypothèses avec confidence chain forte/moyenne/faible/TRÈS faible + indicateurs sources, formulées comme questions) · Inconnu (variables non observables à creuser) · Leviers (skills/actions/sources pour lever les inconnues, options drill-down macro) · Close ouvert (UNE question macro priorité drill-down · opérateur arbitre). Préserve mécanismes scraping + persistance spec.json/offers.json/profile.json. Refacto uniquement la synthèse operator-facing post-scrape. Cross-ref doctrine docs/system/investigation-posture.md."
+  v1.2.0: "v2.57 alignment · auto-detect business_model heuristique scrape · stage proposal via mutation gate · surface contextuel + AskUserQuestion si ambiguous. Nouveau Step 2bis intercalé entre platform detection (Step 2) et generate spec.json (Step 3) · compute physical_locations + services_detected + products_detected + subscription_signals + marketplace_signals depuis URL scrape data, classify via priority rules en enum (DTC | service | hybrid | subscription | marketplace), stage proposal brand.json#/identity/business_model (mode=proposed, confidence 0.7, source=agent) + business_model_signals object pour traçabilité sourcing, surface contextuel 1 ligne dans Step 7 Section 1 (Observé), fallback AskUserQuestion 4 options si ambigu (products + services tous deux non-zero mais < 3 chacun). Backward compat · brands pre-v2.57 sans business_model.scraped → next snapshot-brand run détecte et stage proposal. Brands setup déjà v2.6 manuelle restent inchangées tant qu'opérateur ne re-snapshot pas."
 description: >
+  v1.2.0 (v2.57 alignment) · auto-detect business_model heuristique scrape · stage proposal via mutation gate · surface contextuel + AskUserQuestion si ambiguous.
   Automatically fills spec.json, offers.json and the base of profile.json
   from a product URL. Scrapes the page, asks 4 closed questions about the audience,
   computes a completeness score, and lists missing fields.
@@ -211,6 +213,99 @@ Answer these questions and I'll build the sheet from your answers:
 ```
 
 Wait for answers. Generate spec.json from answers + partial scraped data. Do not save an empty spec.json.
+
+---
+
+## Step 2bis — Business model auto-detection (v1.2.0 NEW · v2.57)
+
+**Objectif** · auto-detect `brand.json#identity.business_model` (NEW v2.4 schema field) depuis les signaux scrape. Évite que l'opérateur doive le déclarer manuellement. Stage proposal via mutation gate, surface contextuel à la synthèse Step 7, AskUserQuestion fallback si ambigu.
+
+**Logique de détection (à coder)** ·
+
+```python
+def detect_business_model(scrape_signals):
+    """
+    Auto-detect business_model from URL scrape heuristics.
+    Returns enum: DTC | service | hybrid | subscription | marketplace
+    """
+    physical_locations = count_physical_locations(scrape_signals)  # /locations/, /clinics/, /stores/
+    services_detected = count_services(scrape_signals)  # /services/, /consulting/, /packages/
+    products_detected = count_products(scrape_signals)  # /products/, /shop/, /collections/
+    subscription_signals = detect_subscription_core(scrape_signals)  # /subscribe/, recurring pricing primary
+    marketplace_signals = detect_marketplace(scrape_signals)  # /vendors/, /sellers/, multi-brand listings
+
+    # Priority rules
+    if marketplace_signals:
+        return "marketplace"
+    if subscription_signals and products_detected == 0:
+        return "subscription"  # SaaS pure ou abonnement-only
+    if physical_locations > 0 and products_detected > 0:
+        return "hybrid"  # clinic + product line (innerskin), restaurant + ecom, etc.
+    if services_detected > 0 and products_detected == 0:
+        return "service"  # agency, consulting, freelance
+    if products_detected > 0 and services_detected == 0:
+        return "DTC"  # DTC pure
+    if products_detected > 0 and services_detected > 0:
+        # Ambiguous · check revenue cues
+        return "hybrid"  # mix
+    # Default fallback
+    return "DTC"
+```
+
+**Sourcing signals (heuristiques scrape)** ·
+
+| Signal | Heuristique scrape | Sources HTML/URL |
+|---|---|---|
+| `physical_locations` | Scan URLs paths physiques | `/clinic`, `/clinique`, `/cabinet`, `/store`, `/location`, `/find-us`, `/find-a-store`, `/where-to-buy`, geolocation widgets, opening hours blocks, booking flows |
+| `services_detected` | Scan URLs + sections services | `/services`, `/consulting`, `/agency`, `/packages`, `/coaching`, `/freelance`, sections titrées "Services" / "Packages" / "What we do" / "How we work", pricing tiers per-hour or per-project |
+| `products_detected` | Scan URLs + schema.org/Product | `/products`, `/shop`, `/collections`, `/store`, PDP patterns, schema.org/Product markup |
+| `subscription_signals` | Scan URLs + pricing recurring | `/subscribe/`, `/pricing/` avec tiers monthly/yearly, schema.org/SubscriptionPlan, copy "monthly access", "recurring" |
+| `marketplace_signals` | Scan URLs + multi-brand listings | `/vendors/`, `/sellers/`, "shop our brands", "from {N} vendors", multi-brand listings explicit |
+
+**Output workflow (4 sub-steps)** ·
+
+**2bis.1 — Compute heuristique** depuis URL scrape data collected in Step 2 (Shopify JSON + HTML scraping + nav HTML). Apply priority rules table above. Output enum `DTC | service | hybrid | subscription | marketplace`.
+
+**2bis.2 — Stage proposal via mutation gate** ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brand.json#/identity/business_model" \
+  --value "{detected_value}" \
+  --source agent \
+  --confidence 0.7 \
+  --mode proposed \
+  --reason "Auto-detected from scrape signals · {brief rationale}"
+```
+
+**2bis.3 — Stage business_model_signals object** (le contexte sourcing pour traçabilité) ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brand.json#/identity/business_model_signals" \
+  --value '{"physical_locations_detected": N, "services_detected": N, "products_detected": N, "declared_by_operator": false}' \
+  --source agent \
+  --confidence 0.7 \
+  --mode proposed
+```
+
+**2bis.4 — Fallback AskUserQuestion si ambiguous** · si `products_detected > 0 AND services_detected > 0 AND products_detected < 3 AND services_detected < 3` (les deux non-zero mais faibles, classification incertaine), invoke AskUserQuestion avec 4 options ·
+
+- **DTC pur** · acquisition produits uniquement
+- **Hybrid** · réseau physique + ligne e-com (clinique, restaurant, magasin + produits)
+- **Service B2B** · consulting, agency, coaching
+- **Subscription** · accès récurrent / SaaS
+
+L'opérateur arbitre, agent re-stage proposal avec la valeur confirmée (source=operator, confidence=1.0, mode=accepted) au lieu de la valeur heuristique.
+
+**Surface contextuel à Step 7 Section 1 (Observé)** · 1 ligne contextuelle ajoutée à la synthèse ·
+
+> *Modèle business · `{detected}` (basé sur · {N} produits + {N} services + {N} locations détectés). Override si pertinent dans setup-brand.*
+
+**Backward compat** ·
+- Brands pre-v2.57 sans `business_model.scraped` → next snapshot-brand run détecte et stage proposal automatiquement.
+- Brands setup déjà v2.6 avec `business_model` déclaré manuellement (source=operator) restent inchangées tant que l'opérateur ne re-snapshot pas explicitement.
+- Si `brand.json#/identity/business_model` already filled avec `source=operator` → SKIP stage proposal (operator declaration > agent heuristic).
 
 ---
 

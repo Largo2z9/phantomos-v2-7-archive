@@ -1,0 +1,97 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.57.0",
+  "released_at": "2026-05-15",
+  "compatible_from": "2.0.0",
+  "type": "phantom_workspace_menu_refactor_plus_business_model_contextual_intelligence",
+  "summary": "Test live Innerskin (hybrid clinique + ligne produit 12 SKUs) a révélé que /phantom {brand} rendait à plat sans nesting produit + sans adaptation business_model. Audit 3 experts parallèle (UX + Métier + Data Engineer) convergent · refactor majeur /phantom mode brand en 5 sections obligatoires avec dividers (Header + EN COURS variable contextuel + WORKSPACE NAVIGATION adaptive business_model + ACTIONS prioritaires + DRILL exploration) · adaptation auto par brand.business_model enum NEW (DTC/service/hybrid/subscription/marketplace) · scaling rules produits codifiées · sub-line metrics canonisées (ratios + top-1 nominal, jamais volumes bruts) · drill entity + item enrichis pour visibilité. 4 schemas additifs strict (brand v2.4 business_model + profile v1.7 IDs stables PNT-NN/OBJ-NN + friction v1.1 social_status enum + spec v1.11 service/hybrid/clinical_service). snapshot-brand v1.2.0 auto-detect business_model heuristique scrape. operator-vocabulary 9 entries phantom-modes. SED §13 sub-table v2.57.",
+  "changes": [
+    {
+      "category": "schema_patch_brand_business_model",
+      "action": "patched",
+      "files": ["resources/schemas/brand.schema.json"],
+      "section": "Bloc 1.1 · brand.schema v2.3 → v2.4 · business_model enum + signals",
+      "rationale": "DataEng audit Reco A retenue · field minimal flat sur brand.json#identity, pas fork entity services. NEW identity.business_model enum [DTC, service, hybrid, subscription, marketplace] default DTC implicite (backward compat brands pre-v2.57). NEW identity.business_model_signals object (physical_locations_detected, services_detected, products_detected, revenue_split_estimated, declared_by_operator). Drive le /phantom rendering contextuel + vocabulaire opérateur-facing adaptive."
+    },
+    {
+      "category": "schema_patch_profile_canonical_ids",
+      "action": "patched",
+      "files": ["resources/schemas/profile.schema.json"],
+      "section": "Bloc 1.2 · profile.schema v1.6 → v1.7 · pain_id + objection_id stables",
+      "rationale": "DataEng audit a identifié faille canonical · friction.cross_refs.{pain_point_ids[], objection_ids[]} (v2.56 v1.0) pointait vers du vide car profile.pain_points[] et profile.objections[] n'avaient PAS d'ID stable. Patch additif optional · ajout pain_id pattern PNT-NN + objection_id pattern OBJ-NN. Backward compat strict · profiles pre-v1.7 sans IDs valident, IDs generated au mining post-v1.7 par mine-voc + profile-audience."
+    },
+    {
+      "category": "schema_patch_friction_enum_align",
+      "action": "patched",
+      "files": ["resources/schemas/friction.schema.json"],
+      "section": "Bloc 1.3 · friction.schema v1.0 → v1.1 · category enum social_status align profile",
+      "rationale": "DataEng audit a identifié divergence enum · profile.pain_points[].pain_category (v1.6) enum 6 valeurs [physical, emotional, friction_ux, logistical, cognitive, social_status], friction.category (v1.0) enum 5 valeurs (manquait social_status). Patch enum extension non-breaking · cohérence sémantique pour cross-refs friction ↔ pain_points."
+    },
+    {
+      "category": "schema_patch_spec_identity_type_services",
+      "action": "patched",
+      "files": ["resources/schemas/spec.schema.json"],
+      "section": "Bloc 1.4 · spec.schema v1.10 → v1.11 · identity.type service/hybrid/clinical_service",
+      "rationale": "DataEng audit a noté · spec.identity.product_category enum (existant v1.10) a déjà `service` value. Patch identity.type enum extension additive · ajout `service` (service-as-product, coaching/consulting package) + `hybrid` (combine physical + service, clinique consultation + skincare line) + `clinical_service` (service médical, consultation, soin, protocole). Cohérence cross-schema · brand.business_model='service' aura products[] avec spec.identity.type='service'. Hybrid · mix de types. Pas de fork services entity (canon validé)."
+    },
+    {
+      "category": "skill_patch_snapshot_brand_business_model_auto",
+      "action": "patched",
+      "files": [".skills/skills/snapshot-brand/SKILL.md"],
+      "section": "Bloc 2.1 · snapshot-brand v1.1.0 → v1.2.0 · Step 2bis business_model auto-detect",
+      "rationale": "Step 2bis NEW intercalé entre Step 2 (platform detection) et Step 3 (generate spec.json) · 4 sub-steps · 2bis.1 compute heuristique (physical_locations + services_detected + products_detected + subscription_signals + marketplace_signals depuis scrape signals) · 2bis.2 stage proposal brand.json#identity.business_model via write-to-context mode=proposed · 2bis.3 stage business_model_signals object · 2bis.4 AskUserQuestion fallback 4 options si ambiguous (DTC / hybrid / service / subscription). Surface contextuel Section 1 Observé · `Modèle business · {detected} (basé sur · N produits + N services + N locations détectés). Override si pertinent.` Backward compat · brands pre-v2.57 sans business_model.scraped → next snapshot-brand run détecte et stage proposal."
+    },
+    {
+      "category": "command_refactor_phantom_workspace_menu",
+      "action": "refactored",
+      "files": [".claude/commands/phantom.md"],
+      "section": "Bloc 3 · /phantom.md mode brand refactor majeur · 5 sections obligatoires + drill enrichi",
+      "rationale": "Refactor mode brand de minimaliste flat à vrai mini-app workspace menu · 5 sections obligatoires avec dividers ──── · (1) Header cartographie + modèle business + last session · (2) EN COURS intelligence contextuelle variable · hot spots auto-scan (angles fatigués, frictions bloquantes, audiences hypothèses stale, briefs draft >5j) + background actif + récent 24h · (3) WORKSPACE NAVIGATION adaptive business_model · Matière brand (ligne produits / réseau cliniques / services / pipeline deals selon model) · Production créative (angles + pubs Meta + briefs) · Stratégie ops (frictions + roadmap + strategy + learnings + matrix) · (4) ACTIONS prioritaires paste-ready commands · (5) DRILL exploration explicit (entités drillables + drill produit + drill audience + recherche + historique + bibliothèque métier). Cap 40-50 → 60-80 lignes (acceptable page menu structurée). 3 NEW sections canon · Scaling rules produits (1-3 full nested · 4-10 compact · 11-30 top-5 + drill · 30+ groupes catégorie) · Sub-line metrics canonisées (ratios qualitatifs + top-1 nominal, table 11 entités) · Business model adaptation (table 5 colonnes business_model × Matière/Créa/Ops). Entity-drill enrichi pattern 6-étapes (header breadcrumb + synthèse canon + items + cross-refs résolus + actions + drill suivant) + 4 nouveaux drills (frictions, roadmap, funnel, services). Item mode enrichi avec cross-refs résolus inline + 5 entités drillables. Total 1010 → 1363 lignes (+353)."
+    },
+    {
+      "category": "doctrine_jargon_phantom_modes",
+      "action": "patched",
+      "files": ["docs/system/operator-vocabulary-translation.md", ".skills/_jargon_bank.json"],
+      "section": "Bloc 2.2 · operator-vocabulary 9 entries phantom-modes + jargon-bank regen",
+      "rationale": "9 entries phantom-modes ajoutées format jargon-bank canon (Internal | Operator FR | Operator EN) · winners scalés → gagnantes scalées · funnel Meta → tunnel Meta · créas → pubs / pubs créatives · DTC pure → e-commerce direct (operator-facing) · canon terms gardés essoufflés + TOF/MOF/BOF · phase 1 Q3-2026 in-progress → Q3-2026 phase 1 en cours · CA monthly +35% target → CA mensuel +35% visé · bénéfices chain functional/emotional/identity → bénéfices du fonctionnel à l'identité. Jargon-bank regen 71 → 80 entries (+9). Post-render substitution v2.42 canon catche ces tokens."
+    },
+    {
+      "category": "doctrine_sed_schema_evolutions_v257",
+      "action": "patched",
+      "files": ["docs/system/schema-encoding-discipline.md"],
+      "section": "Bloc 4.1 · SED §13 enrichi sub-table v2.57 schemas changes + décisions design",
+      "rationale": "Section §13 Schema evolutions registry enrichie avec sub-table v2.57 documentant 4 schemas changes (brand v2.4, profile v1.7, friction v1.1, spec v1.11) + décisions design SED-side · (a) encoding identity-level pas fork services entity (raison · spec.identity.product_category enum supporte déjà service + spec.identity.type extension additive accepte service/hybrid/clinical_service · DRY) · (b) ID pattern PNT-NN/OBJ-NN cohérent avec FRC-NN/ANG-NN/MEC-NN canon (alphanum 2-3 digits, pas UUID) · (c) enum extensions strictement additives (jamais retrait) · (d) cohérence cross-schema triple brand.business_model + spec.identity.type + product_category · activation runtime via snapshot-brand v1.2.0 Step 2bis + /phantom mode brand 5 sections adaptive."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md"],
+      "section": "Bloc 5 · Version bump 2.56.0 → 2.57.0 + CHANGELOG entry",
+      "rationale": "Bump template_version 2.56.0 → 2.57.0. released_at 2026-05-15 (même jour v2.56, release cadence rapide post-test live Innerskin). CHANGELOG entry head v2.57.0 résume Why (test live + audit 3-experts) + What (4 schemas + snapshot-brand + /phantom refactor + jargon + SED) + backward compat strict additif partout."
+    },
+    {
+      "category": "manifest_regen",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json", ".skills/_jargon_bank.json"],
+      "section": "Bloc 6 · Manifest skills + jargon bank régénérés post-patches",
+      "rationale": "python3 .skills/build-manifest.py · 60 skills indexés (count inchangé v2.56 · snapshot-brand bump 1.1.0 → 1.2.0 mécanique, pas d'ajout skill). Jargon-bank 71 → 80 entries (+9 phantom-modes)."
+    }
+  ],
+  "files_patched_total": "11 files (4 schemas patched + 1 skill patched + 1 command refactored + 2 doctrine patched + _version + CHANGELOG + 2 manifests regen)",
+  "patterns_introduced": {
+    "business_model_contextual_intelligence": "brand.json#identity.business_model enum NEW drive le rendering /phantom adaptive (Matière brand · ligne produits vs réseau cliniques vs services vs pipeline deals selon model) + vocabulaire opérateur-facing (DTC / hybrid / service / subscription / marketplace). Auto-detect au snapshot-brand heuristique scrape + AskUserQuestion ambiguous fallback. Pas de hardcode skills par business_model, intelligence contextuelle déclarative.",
+    "phantom_workspace_menu_5_sections": "Mode brand /phantom {brand} structuré en vrai mini-app workspace menu · 5 sections obligatoires avec dividers ──── (Header + EN COURS + WORKSPACE NAVIGATION + ACTIONS + DRILL). Page peut atteindre 60-80 lignes (cap relax vs 40-50 v2.56) car bien structurée. Cockpit contextuel variable en haut + navigation arborescente interactive en bas. Pattern reproductible cross-business_model.",
+    "scaling_rules_compositional_products": "Règles compositionnelles scaling produits codifiées · 1-3 full L2 nested (composition, mécanismes, bénéfices, offres, pubs liées · 5 lignes par produit) · 4-10 compact (1 ligne par produit + sub-line counts) · 11-30 top-5 par activité créa + drill /phantom {brand} products · 30+ groupes par spec.identity.taxonomy + obligation drill. Anti-pattern monolithic résolu.",
+    "sub_line_metrics_ratios_qualitative": "Sub-line metrics canon · ratios + top-1 nominal qualitatif, JAMAIS volumes bruts seuls. Table 11 entités canonisée (produits, audiences, angles, frictions, funnel, roadmap, strategy, learnings, matrix, briefs, tests). Anti-pattern '47 entries' bruit · replace par '3 récents · 12 promus canon'."
+  },
+  "antipatterns_eliminated": {
+    "phantom_brand_mode_flat_no_nesting": "Mode brand rendait products + offers à plat séparés · scan impossible >3 SKUs. v2.57 nesting offers sous products dans WORKSPACE NAVIGATION + scaling rules adaptives.",
+    "phantom_no_business_model_adaptation": "Same rendering DTC / service / hybrid · décourageant pour service-only (products à 0/0) ou hybrid (clinique non surface). v2.57 adaptive auto-detection.",
+    "phantom_l3_subfields_drill_en_bloc": "L3 sub-fields embedded dans brand mode = drill-en-bloc anti-pattern terminal-like canon. v2.57 L3 strictement entity-drill territory (/phantom {brand} products {p_slug} mechanisms).",
+    "phantom_volumes_bruts_no_signal": "Sub-counts volumes bruts ('47 entries learnings') = bruit sans signal. v2.57 sub-line metrics ratios qualitatifs + top-1 nominal canonisés.",
+    "friction_cross_refs_pointing_to_void": "friction.cross_refs.{pain_point_ids[], objection_ids[]} v2.56 pointait vers du vide (profile sans IDs stables). v2.57 profile v1.7 pain_id + objection_id stables fixent canonical cross-refs."
+  },
+  "operator_impact": "Test live re-trigger Innerskin (hybrid · 20+ cliniques + 12 SKUs ligne) · /phantom innerskin rend désormais (a) header avec Modèle · hybrid (réseau cliniques + ligne produits) · (b) EN COURS section vide ou récent 24h post-snapshot · (c) WORKSPACE NAVIGATION dual layer · Réseau cliniques (20+ détectées · 0 location encodée · CTA cartographie) + Ligne produits 1/12 nested · (d) ACTIONS prioritaires cadrer business + confirmer hero + mining audiences · (e) DRILL exploration explicit. Daily use opérateurs DTC · cockpit 4-5 entités load-bearing top + navigation arbo complete en dessous + actions paste-ready. Scaling brand 22 SKUs · top-5 par activité créa + drill /phantom {brand} products pour list complète sans débordement cap 80 lignes.",
+  "backward_compat": "strict_additif. Tous schema bumps additifs · brand v2.4 business_model + signals OPTIONAL (default DTC implicite) · profile v1.7 pain_id + objection_id OPTIONAL (generated au mining post-v1.7) · friction v1.1 enum extension non-breaking · spec v1.11 identity.type enum extension additive. /phantom.md cap brand mode relax 60-80 lignes · sections existing préservées (Mode workspace, Mode entity-drill, Mode item, Mode search, Mode recent, Mode todo, Mode help, Mode canon, Mode atlas-overview, Mode doctrine, Mode audiences-tree, Mode mechanisms-drill, Mode benefits-drill, Mode briefs-drill, Mode tests-drill, Mode matrix-drill), 3 NEW sections additives (Scaling rules produits, Sub-line metrics canonisées, Business model adaptation). snapshot-brand v1.2.0 Step 2bis additif (bumps Steps 3+ pas), backward compat brands pre-v2.57. Jargon entries post-render substitutions n'affectent pas storage data. Manifest skills count 60 inchangé.",
+  "next_release_note": "v2.58+ patches identifiés · (a) sync-notion-atlas Phase B push implémentation runtime (spec rigoureuse documentée v2.56). (b) sync-notion-atlas v1.1 custom properties fallback (backlog P2 PhantomOS v2.57). (c) Test live Largo cas réel sur brand DTC mature (Sentage-like) + service-only (agence) + hybrid Innerskin pour validate /phantom 5 sections + business_model adaptation effective. (d) Doctrine notion-bridge §Évolutions futures · diff mode P2 spec. (e) Schemas v2.58+ patches potentiels · audience.json#meta.applies_to_layers[] (pour hybrid · patient clinique vs ecom buyer) si retour terrain confirme besoin distinction explicite. (f) Locations entity NEW si hybrid brand (Innerskin) nécessite cartographie réseau cliniques avec géolocalisation + capacity + booking_url + opening_hours · à évaluer post-test live Innerskin."
+}

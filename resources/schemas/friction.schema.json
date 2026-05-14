@@ -3,15 +3,16 @@
   "$id": "friction.schema.json",
   "title": "Friction (brand-side instance)",
   "description": "Friction = point de friction usage observé, déduit ou déclaré. Stored at brands/{slug}/frictions/{FRC-NN}.json. One file per friction. Closes the Notion stride-up parity gap (Frictions usage 20% coverage pre-v2.56). Cross-ref doctrine : compositional-cartography.md (friction = modulateur 'État atlas' alimentant le CONTEXTE de l'équation créative v3.1, axe state-of-experience). Sourced atoms : customer_evidence[] capture verbatims (Trustpilot, Reddit, support tickets, interview transcripts) qui ancrent la friction dans la VoC réelle. cross_refs lie une friction aux objections (profile.schema.json) et pain_points (profile.schema.json) déjà encodés, évite duplication. v1.0 baseline shippée v2.56.",
-  "_schema_version": "friction/1.0",
+  "_schema_version": "friction/1.1",
   "_changelog": {
+    "1.1": "v2.57 Notion stride-up follow-up · category enum aligné avec profile.pain_category v1.6 · ajout social_status (image / réputation / standing). Closes divergence taxonomique identifiée par DataEng audit (profile.pain_category 6 valeurs vs friction.category 5 valeurs, manque social_status). Cohérence sémantique cross-schema. Backward compat strict (enum extension additive, existing friction valeurs valident toujours).",
     "1.0": "v2.56 initial release · Notion stride-up parity Frictions usage collection. Closes le gap où aucun schema canon ne capturait les frictions d'usage observées (le profil audience encode pain points + objections, mais pas la friction concrète vécue lors de l'usage produit : étape bloquante, geste inconfortable, attente excessive, etc.). v1.0 fields : friction_id (FRC-NN), meta (validation_status ref _shared + _source enum), category (5 enum physical/emotional/friction_ux/logistical/cognitive), severity_score (1-10), customer_evidence[] (verbatims sourcés), affected_products[] / affected_audiences[] (slugs cross-refs), current_workarounds[], resolution_state (4 enum), cross_refs (objection_ids[] + pain_point_ids[]). Backward compat : N/A (nouveau schema). Source canon : Notion stride-up gap analysis v2.56."
   },
   "type": "object",
   "required": ["friction_id", "meta", "category", "severity_score"],
   "properties": {
     "_schema_version": {
-      "const": "friction/1.0",
+      "const": "friction/1.1",
       "description": "Backward compat alias of root `_schema_version`. New readers SHOULD read the root field."
     },
 
@@ -33,8 +34,8 @@
 
     "category": {
       "type": "string",
-      "enum": ["physical", "emotional", "friction_ux", "logistical", "cognitive"],
-      "description": "Friction taxonomy. physical = sensory/tactile/bodily discomfort during usage (texture, smell, posture, fatigue). emotional = affective burden (shame, anxiety, frustration, social discomfort). friction_ux = product interface / packaging / handling difficulty (opening, dosing, applying, cleaning). logistical = supply chain, delivery, availability, returns, payment. cognitive = mental load (deciding, remembering, learning, configuring, understanding instructions)."
+      "enum": ["physical", "emotional", "friction_ux", "logistical", "cognitive", "social_status"],
+      "description": "Friction taxonomy. physical = sensory/tactile/bodily discomfort during usage (texture, smell, posture, fatigue). emotional = affective burden (shame, anxiety, frustration, social discomfort). friction_ux = product interface / packaging / handling difficulty (opening, dosing, applying, cleaning). logistical = supply chain, delivery, availability, returns, payment. cognitive = mental load (deciding, remembering, learning, configuring, understanding instructions). social_status = image / réputation / standing perçu socialement (judgment des pairs, signaling, fit de rôle). v1.1 align profile.pain_category."
     },
 
     "severity_score": {

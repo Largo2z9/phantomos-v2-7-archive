@@ -7,6 +7,43 @@
 
 ---
 
+## v2.57.0 · 2026-05-15 · /phantom workspace menu refactor + business_model contextual intelligence
+
+**Why** · test live cas Innerskin (hybrid clinique + ligne produit, 12 SKUs) a révélé que `/phantom {brand}` rendait à plat sans nesting produit + sans adaptation business_model. Audit 3 experts parallèle (UX + Métier + Data Engineer) convergent · pattern enrichi initial over-engineered daily-use, refactor en vraie mini-app workspace menu nécessaire avec adaptation contextuelle intelligente (DTC / service / hybrid / subscription / marketplace) sans hardcode.
+
+**What** ·
+
+**Schemas (Bloc 1 P0)** ·
+- `brand.schema` v2.3 → v2.4 · NEW `identity.business_model` enum [DTC, service, hybrid, subscription, marketplace] default DTC implicite · NEW `identity.business_model_signals` object (physical_locations_detected, services_detected, products_detected, revenue_split_estimated, declared_by_operator).
+- `profile.schema` v1.6 → v1.7 · NEW `pain_points[].pain_id` pattern PNT-NN stable · NEW `objections[].objection_id` pattern OBJ-NN stable · fixe faille cross-ref `friction.cross_refs.{pain_point_ids[], objection_ids[]}` qui pointait vers du vide.
+- `friction.schema` v1.0 → v1.1 · category enum extension `social_status` align profile.pain_category (cohérence sémantique 6 valeurs).
+- `spec.schema` v1.10 → v1.11 · identity.type enum extension `service` / `hybrid` / `clinical_service` (typage existing, pas fork services entity).
+
+**Skills (Bloc 2 P0)** ·
+- `snapshot-brand` v1.1.0 → v1.2.0 · Step 2bis NEW auto-detect business_model heuristique scrape (physical_locations + services + products + subscription + marketplace signals) · stage proposal mode=proposed via mutation gate · AskUserQuestion 4 options fallback si ambiguous · surface contextuel Section 1 Observé.
+
+**Refactor majeur (Bloc 3 P0)** ·
+- `/phantom.md` refactor mode brand en 5 sections obligatoires dividers `────` · Header (cartographie + modèle business + last session) · EN COURS variable contextuel (hot spots auto-scan + background actif + récent 24h) · WORKSPACE NAVIGATION adaptive business_model (Matière brand + Production créative + Stratégie ops · vocabulaire ligne produits / réseau cliniques / services / pipeline deals) · ACTIONS prioritaires paste-ready · DRILL exploration explicit. Cap brand mode 40-50 → 60-80 lignes (page menu workspace structurée). 3 NEW sections canon · "Scaling rules · produits" (1-3 full nested · 4-10 compact · 11-30 top-5 + drill · 30+ groupes catégorie) · "Sub-line metrics canonisées" (ratios + top-1 nominal table 11 entités) · "Business model adaptation" (table 5 colonnes business_model × Matière/Créa/Ops). Entity-drill mode enrichi pattern 6-étapes + 4 nouveaux drills (frictions, roadmap, funnel, services). Item mode enrichi cross-refs résolus inline + 5 entités drillables (audiences, angles, products, frictions, briefs, tests, roadmap phases). Total 1010 → 1363 lignes (+353).
+
+**Doctrine + docs (Bloc 4)** ·
+- `docs/system/schema-encoding-discipline.md` §13 enrichi sub-table v2.57 schemas changes + décisions design (encoding identity-level pas fork services entity, ID pattern PNT-NN/OBJ-NN cohérent FRC-NN/ANG-NN/MEC-NN, enum extensions strictement additives, cohérence cross-schema triple brand.business_model + spec.identity.type + product_category).
+- `docs/system/operator-vocabulary-translation.md` · 9 NEW entries phantom-modes (winners scalés → gagnantes scalées · funnel Meta → tunnel Meta · créas → pubs / pubs créatives · DTC pure → e-commerce direct · canon terms gardés essoufflés + TOF/MOF/BOF).
+
+**Validation runtime** ·
+- 9/9 tests JSON parse + backward compat + new values acceptés + pattern reject invalid sur 4 schemas patchés.
+- `_jargon_bank.json` regen 71 → 80 entries.
+- `_manifest.json` regen 60 skills (count inchangé, snapshot-brand bump version mécanique).
+
+**Backward compat strict additif** ·
+- Brands pre-v2.57 sans business_model · lues comme DTC implicite, zéro impact.
+- Profile sans pain_id/objection_id · valident, IDs generated au mining post-v1.7.
+- Friction enum extension · non-breaking, existing valeurs valident.
+- Spec.identity.type extension · additive, existing valeurs valident.
+- /phantom mode brand cap relax 60-80 lignes · sections existing préservées, 3 NEW sections additives.
+- Jargon entries · post-render substitutions, n'affectent pas storage.
+
+---
+
 ## v2.56.0 · 2026-05-15 · Notion stride-up alignment · schemas + orchestrators + bridge doctrine
 
 **Why** · audit Phase 1 quantifie gap 70% coverage workspace stride-up canvas `Onday` (11 collections opérationnalisant doctrine compositional-cartography 4 arbres + matrice + modulateurs · Produits/Specs/Mécanismes/Bénéfices/Personae/Pain Points/Angles/Objections/Frictions usage/Roadmap/Full funnel Meta). Principe canon · PhantomOS = source of truth, Notion = UI optionnelle pour opérateurs préférant interface tabulaire navigable. Bridge bidirectionnel scalable pour Abyss collectif cross-brands sans freestyle.

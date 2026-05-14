@@ -197,6 +197,27 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 
 Registre canonique des évolutions schemas par release. Toute mutation `resources/schemas/*.json` doit apparaître ici (bump version, NEW schema, patch additif, $ref refactor). Append-only.
 
+### v2.57 (2026-05-14) · Notion stride-up follow-up + hybrid business support
+
+Driver · DataEng audit post-v2.56 identifie 4 gaps résiduels · (1) brand n'encode pas le business model (DTC vs service vs hybrid) qui drive le rendering /phantom contextuel ; (2) friction.cross_refs.{pain_point_ids[], objection_ids[]} pointe vers du vide car profile ne génère pas d'IDs stables ; (3) friction.category enum diverge de profile.pain_category (5 vs 6 valeurs, manque social_status) ; (4) spec.identity.type ne couvre pas service / hybrid / clinical_service. Patches additifs STRICTS, backward compat preserved (toutes nouvelles properties optional, enum extensions additives).
+
+| Schema | Action | Version | Diff |
+|---|---|---|---|
+| `brand.schema.json` | patch additif | v2.3 → v2.4 | identity.business_model enum (DTC / service / hybrid / subscription / marketplace, default DTC) + identity.business_model_signals (physical_locations_detected / services_detected / products_detected / revenue_split_estimated / declared_by_operator). Drive rendering /phantom contextuel. Auto-detection heuristique snapshot-brand, override opérateur via setup-brand. |
+| `profile.schema.json` | patch additif | v1.6 → v1.7 | pain_points.items.pain_id (pattern `^PNT-[0-9]{2,3}$`) + objections.items.objection_id (pattern `^OBJ-[0-9]{2,3}$`). Closes faille canonical IDs stables (friction.cross_refs peut désormais référencer canon). Optional, generated au mining post-v1.7. Profiles pre-v1.7 sans IDs valident toujours en read. |
+| `friction.schema.json` | patch additif | v1.0 → v1.1 | category enum += social_status (align profile.pain_category v1.6 taxonomy 6 valeurs). Cohérence sémantique cross-schema. Existing friction valeurs valident toujours. |
+| `spec.schema.json` | patch additif | v1.10 → v1.11 | identity.type enum += service / hybrid / clinical_service (aux existants functional / sensory / lifestyle). Cohérent brand.business_model v2.4 · service brand → product type service / clinical_service · hybrid brand → mix de types. Existing identity.type valeurs valident toujours. |
+
+**Décision design SED-side** · business_model est encodé identity-level (pas meta-level) car c'est une propriété sémantique brand stable, pas un état de validation. business_model_signals capture les signaux scrape pour éviter re-detection silencieuse + permettre audit du raisonnement auto. declared_by_operator: true verrouille contre auto-override.
+
+**Décision design SED-side · pain_id / objection_id pattern PNT-NN / OBJ-NN** · cohérence avec FRC-NN (friction) + ANG-NN (angle) + MEC-NN (mechanism) + RDM-{slug} (roadmap). Numérotation 2-3 digits (anticipation profils complexes >100 entrées). Generation auto par mining skills (mine-voc, profile-audience) au mining post-v1.7. Backfill manuel possible via write-to-context si profile pre-v1.7 est revisité.
+
+**Décision design SED-side · enum extensions strictement additives** · friction.category + spec.identity.type étendus sans rename ni rephrasing des valeurs existantes. Anti-pattern breaking change (rename, suppression, restriction) refusé par convention. Cohérence semver patch.
+
+**Cohérence cross-schema** · brand.business_model + spec.identity.type + brand.products_index.product_category forment une triple-cohérence rendering /phantom · brand business_model=service AND products_index entries product_category=service AND spec.identity.type=service (ou clinical_service). Mismatch détecté par validate-resources surface comme MAJOR (incohérence sémantique, pas erreur structurelle).
+
+**Activation runtime** · setup-brand v2.x consume identity.business_model auto-detection · snapshot-brand v2.x scrape les signals · mine-voc v2.x + profile-audience v2.x génèrent pain_id / objection_id au mining post-v1.7 · friction-cartography skill (futur) référence pain_point_ids + objection_ids canon.
+
 ### v2.56 (2026-05-12) · Notion stride-up alignment
 
 Driver · audit Phase 1 quantifie gap 70% coverage Notion 11 collections workspace `Onday`. PhantomOS implémente la doctrine `compositional-cartography.md` (4 arbres + matrice + modulateurs), Notion stride-up en est l'instance opérationnelle de référence. Bloc 1 comble 2 schemas manquants + 5 patches additifs, backward compat strict (toutes properties optional, validation existing instances OK).

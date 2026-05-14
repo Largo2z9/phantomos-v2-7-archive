@@ -32,6 +32,10 @@ Check the user's argument :
 | `{brand} briefs` | **briefs-drill** : DB Briefs créatifs (liste, statut, lien angle source) |
 | `{brand} tests` | **tests-drill** : DB Tests live + résultats observés + verdict winner_proxy |
 | `{brand} matrix` | **matrix-drill** : output `score-matrix` (matrice scorée + top territoires + trous) |
+| `{brand} frictions` | **frictions-drill** : table frictions usage par severity + audiences affected |
+| `{brand} roadmap` | **roadmap-drill** : phases chronologiques + current highlight + priorities |
+| `{brand} funnel` | **funnel-drill** : couverture TOF/MOF/BOF + trous détectés |
+| `{brand} services` | **services-drill** : services/packages business_model=service |
 | `{brand} atlas` | **atlas-overview** : vue d'ensemble atlas brand (synthèse 6 entités + dérivés) |
 | `doctrine` | **doctrine** : rend doctrine cartographie compositionnelle (méthode + équation V3.1) |
 | `doctrine audiences` | **doctrine-audiences** : framework cartographie audiences (4 questions) |
@@ -142,238 +146,588 @@ Anti-pattern : *"  · Lancer un audit Meta dès que possible"* (passif, l'opéra
 
 ## Mode brand
 
-Vue détaillée d'un brand spécifique.
+Vue détaillée d'un brand spécifique. **Page menu workspace structurée 5 sections obligatoires avec dividers `────`.** Adaptive selon `brand.json#identity.business_model` v2.4 NEW.
 
 ### Sources à lire (read-only, dans l'ordre)
 
 1. `brands/{slug}/_snapshot.md` (digest 1-2KB pré-généré). Si absent, déclencher `python3 .skills/build-brand-snapshot.py {slug}` puis re-lire.
 2. `brands/{slug}/status.json` → `wedge_complete`, `completeness_scores`, niveau de contexte L1/L2/L3.
-3. `brands/{slug}/brand.json` → `meta.name`, `meta.sector`, `meta.updated`.
-4. `brands/{slug}/products/` → liste, count, last update par produit.
-5. `brands/{slug}/audiences/` → liste, count, validation_status par audience (hypothesis / tested / validated / scaled / fatigued), sourcing complétude.
-6. `brands/{slug}/angles/` (si existe) → count par validation_status.
-7. `brands/{slug}/strategy.json` → `meta.updated`.
-8. `brands/{slug}/learnings.json` → count entries, count tests par status, tests actifs.
+3. `brands/{slug}/brand.json` → `meta.name`, `meta.sector`, `meta.updated`, `identity.business_model`, `identity.business_model_signals`.
+4. `brands/{slug}/products/` → liste, count, last update par produit, validation_status, hero flag.
+5. `brands/{slug}/audiences/` → liste, count, validation_status, verbatim_density, last_mining_at par audience.
+6. `brands/{slug}/angles/` (si existe) → count par validation_status, lineage_signal, ROAS chute 14j.
+7. `brands/{slug}/strategy.json` → `meta.updated`, `current_focus`.
+8. `brands/{slug}/learnings.json` → count entries, count tests par status, tests actifs, promoted_count.
 9. `brands/{slug}/connected-sources.json` (si existe) → liste plateformes connectées avec last_sync.
 10. `brands/{slug}/session-state.md` (si existe) → last brand-scoped session.
+11. `brands/{slug}/frictions/` (si existe) → count, severity_score max, N_bloquantes (≥7).
+12. `brands/{slug}/roadmap.json` (si existe) → current_phase, priorities[].
+13. `brands/{slug}/briefs/` (si existe) → count, status breakdown (draft/shipped/validated).
+14. `brands/{slug}/matrix/latest.json` (si existe) → updated_at, top_territory.
+15. `brands/{slug}/pending-validations.md` (si existe) → décisions en attente.
+16. `.phantom/active-tasks.json` (si existe) → skills en cours runtime (mine-voc, score-matrix, sync-notion-atlas).
+17. `.phantom/context-engine-events.jsonl` → mutations 24h.
 
-### Format de rendu brand
+### Format de rendu brand (5 sections obligatoires)
 
 ```
 PhantomOS · brand : {brand_name}
 ══════════════════════════════════════════════
-Cartographie    {level}/3 niveaux   {progress_bar}  {pct}% rempli
-Dernière session                 {time_ago}
-Tests actifs                     {count} ({fatiguing_count} fatigués)
-Backlog                          {hypothesis_count} hypothèses
+Cartographie    {level}/3 niveaux   {progress_bar}  ~{pct}% rempli
+Modèle · {business_model_label} · sector {sector}
+Dernière session   {time_ago} · {tests_actifs} tests live · {backlog} hypothèses
 
-Entités
-{entity_status_lines}
+──── EN COURS ────
 
-Sources connectées
-{connected_sources_lines}
+🔥 Hot spots
+{hot_spots_list}
 
-Actions prioritaires
-{suggested_actions}
+⏳ Background actif
+{background_tasks}
+
+🆕 Récent 24h
+{recent_mutations}
+
+──── WORKSPACE NAVIGATION ────
+
+Matière brand
+{matiere_brand_adapted_per_business_model}
+
+Production créative
+{creative_outputs}
+
+Stratégie & opérationnel
+{ops_entities}
+
+──── ACTIONS PRIORITAIRES ────
+
+   · `{paste-ready commande}` ({why})
+   · `{paste-ready commande}` ({why})
+   · ...
+
+──── DRILL & EXPLORATION ────
+
+   Entités drillables           /phantom {brand} {entity}
+   Drill produit                /phantom {brand} products {p_slug} {sub}
+   Drill audience               /phantom {brand} audiences {audience-slug}
+   Drill matrix                 /phantom {brand} matrix
+   Recherche cross-brand        /phantom search "{keyword}"
+   Historique mutations         /phantom recent
+   Bibliothèque métier          /phantom canon
 ```
 
-### Entity status lines (mode brand)
+### Section 1 · Header
 
-Pour chaque entité majeure, format :
+- **Cartographie level** + progress bar visuelle ASCII (existing pattern v2.36+)
+- **Modèle business** · lecture `brand.json#identity.business_model` v2.4 NEW · label opérateur-facing canonique ·
+  - `DTC` → "DTC pure"
+  - `service` → "service (B2B)"
+  - `hybrid` → "hybrid ({primary} + {secondary})" · depuis `business_model_signals`
+  - `subscription` → "subscription / SaaS"
+  - `marketplace` → "marketplace"
+  - Fallback (champ absent) → "modèle à cadrer"
+- **Last session** · tests live count · backlog hypothèses count
 
-```
-{icon} {entity}     {detail}
-```
+### Section 2 · EN COURS (intelligence contextuelle variable)
 
-Icônes :
-- `✓` : entité encodée, fraîche (updated < 7 jours)
-- `⚠` : entité encodée mais avec gaps ou stale (incomplete sourcing, validation pending, updated > 14 jours)
-- `✗` : entité absente ou bloquante
+Scan automatique de signaux. **Trois sous-blocs, chacun skip-if-empty pour rester compact.**
 
-Exemples :
-- `✓ brand              updated 2d ago`
-- `✓ products/main      updated 1w ago`
-- `⚠ audiences          3 of 5 sourced (manque {missing_slug})`
-- `⚠ angles             2 validated, 4 hypothèses, 2 fatigués`
-- `✗ strategy           no Q2 update` (si stale > 90j)
+**🔥 Hot spots** · scan signaux saillants. Max 5 lignes affichées.
+- Angles essoufflés (`status: fatigued` OR ROAS chute ≥30% sur 14j)
+- Frictions bloquantes (`severity_score ≥7`)
+- Audiences hypothèses sans mining récent (`verbatim_density < 5` OR `last_mining_at > 90j`)
+- Briefs draft depuis >5j
+- Pubs essoufflées (`status: fatigued`)
+- Decisions en attente (`pending-validations.md` non-empty)
 
-Ordre d'affichage : brand, products, offers, audiences, angles, strategy, learnings.
+Format · 1 ligne par hot spot · si zéro hot spot, afficher "🟢 Workspace serein" OU skip section entière.
 
-### Audience binding par produit (mode brand)
+**⏳ Background actif** · scan `.phantom/active-tasks.json` ou équivalent.
+- Skills en cours runtime (mine-voc running 60%, score-matrix refresh, sync-notion-atlas pull running)
+- Format · 1 ligne par task avec % et ETA
 
-Chaque audience peut être taggée avec `meta.applies_to_products[]` (slugs de produits qu'elle vise). Lors du rendering de la ligne audiences en mode brand, ajouter un breakdown par produit :
+Si zéro background, skip section.
 
-```
-⚠ audiences           7 (5 sur glow-boost, 3 sur cell-boost, 0 brand-wide)
-```
+**🆕 Récent 24h** · scan `.phantom/context-engine-events.jsonl` cap 5 events les plus saillants.
+- Créations, validations, scaling, mutations canon
+- Format · 1 ligne par event compact
 
-Audiences avec `applies_to_products` vide = brand-wide (visible sur tous les produits). Audiences avec plusieurs slugs comptent dans plusieurs colonnes du breakdown. Si seul `meta.product_id` (legacy) est présent, le lire comme `[product_id]` pour le breakdown.
+Si zéro mutation 24h, skip section.
 
-### Audience hierarchy (mode brand)
+### Section 3 · WORKSPACE NAVIGATION (vraie mini-app)
 
-When audiences are organized as mère / sous-audiences (introduced v2.19.0), expand the audiences row into an indented hierarchy view. Detect via `meta.parent_slug` in each `audiences/{slug}/profile.json`.
+**Rendering adaptatif par `business_model`. Cf section dédiée "Business model adaptation" plus bas pour la table complète.**
 
-Format :
-
-```
-{icon} audiences         {N} audiences mères + {M} poches
-   ├─ {parent_slug}      mère      {validation_label}    {fields_filled_pct}
-   │   ├─ {sub_slug}     poche     {validation_label}    {fields_filled_pct}
-   │   └─ {sub_slug}     poche     {validation_label}    {fields_filled_pct}
-   └─ {parent_slug}      mère      {validation_label}    {fields_filled_pct}
-       └─ {sub_slug}     poche     {validation_label}    {fields_filled_pct}
-```
-
-`validation_label` translation (NEVER expose `validation_status` enum directly to the operator):
-- `hypothesis` → `à valider`
-- `tested` → `testée`
-- `validated` → `validée`
-- `scaled` → `scalée`
-- `fatigued` → `fatiguée`
-
-`fields_filled_pct` is a coarse completeness signal: count non-null fields in `pain_points[]`, `voice.key_expressions[]`, `psychology.beliefs_*`, `objections[]` divided by expected. Surface as `témoignages: vide` (0%), `témoignages: partiels` (1-50%), `témoignages: denses` (>50%). NEVER expose the percentage as a number.
-
-Real example:
+#### Si `business_model: DTC` (default)
 
 ```
-⚠ audiences           2 audiences mères + 5 poches (témoignages: vide)
-   ├─ pousse-projet         mère     à valider    témoignages: vide
-   │   ├─ pousse-jeune-adulte  poche  à valider    témoignages: vide
-   │   └─ pousse-recovery      poche  à valider    témoignages: vide
-   └─ chute-active          mère     à valider    témoignages: vide
-       ├─ chute-post-grossesse  poche à valider    témoignages: vide
-       ├─ chute-hormonale-stress poche à valider   témoignages: vide
-       └─ chute-traction        poche à valider    témoignages: vide
+Matière brand
+   ✓ brand                     {identity_summary}
+
+   Ligne produits ({count})
+   ├─ {product_slug_1}                      {hero_badge} {validation_status}
+   │  ├─ composition           {validated/partial/empty}
+   │  ├─ mécanismes ({N})      {top-3 names}
+   │  ├─ bénéfices ({N})       chain {fonctionnel/émotionnel/identité}
+   │  ├─ offres ({N})          {brief summary}
+   │  └─ pubs liées            {N} ({live}/{fatigued}/{winners})
+   ├─ {product_slug_2}                      ...
+   └─ ... (selon scaling rules ci-dessous, cf section "Scaling rules · produits")
+
+   Audiences ({count}) · {verbatim_density_qualitatif}
+   ├─ {audience_slug_1}        {validation_label}    {N verbatims · M pain · K objections}
+   ├─ ...
+
+Production créative
+   Angles ({count})            {live}/{fatigued}/{validated} · {lineage_signal}
+   ├─ {Top winners 2-3}
+   ├─ {Essoufflés à refresh}
+   └─ /phantom {brand} angles
+
+   Pubs Meta ({count})         TOF/MOF/BOF {N/M/K}
+   ├─ Top winners scalés       {ids}
+   ├─ Essoufflées              {ids} (refresh recommandé)
+   └─ Drafts                   {N} en attente
+
+   Briefs ({count})            {N_draft} draft · {N_shipped} shipped · {N_validated} validés
+
+Stratégie & opérationnel
+   {✓⚠✗} Frictions usage ({count})        severity max {X}/10 · {N_bloquantes} bloquantes (≥7)
+   {✓⚠✗} Roadmap                          {current_phase_summary}
+   {✓⚠✗} Strategy                         focus {focus_summary}
+   {✓⚠✗} Learnings                        {recent_count} récents · {promoted_count} promus canon
+   {✓⚠✗} Matrix priorités                 {staleness} · top territoire {description}
 ```
 
-If most poches show `témoignages: vide`, the *Next suggested* block should propose `récupère les témoignages clients` as priority 1.
-
-If audiences exist but no parent_slug links (legacy flat structure), skip the hierarchy view and use the legacy single-line format.
-
-### Connected sources lines (mode brand)
-
-Pour chaque source, format :
+#### Si `business_model: hybrid`
 
 ```
-{icon} {platform}        {status_detail}
+Matière brand
+   ✓ brand                     {identity_summary}
+                               business · {primary} + {secondary} ({weight indicator})
+
+   {Primary_layer_label} (e.g. "Réseau cliniques · 20+ détectées")
+   └─ {locations cartographiées count OR "à cartographier" si 0}
+
+   Ligne produits ({count})
+   └─ {comme DTC nested}
+
+   Audiences ({count}) · 2 layers
+   ├─ Patient {primary_layer} ({N})
+   └─ Acheteur produit ({N})
+
+Production créative
+   {idem DTC adapté aux 2 audiences}
+
+Stratégie & opérationnel
+   {idem DTC}
 ```
 
-Icônes :
-- `✓` : connectée, last sync récent (< 7 jours)
-- `⚠` : connectée mais sync stale (> 7 jours)
-- `○` : non connectée mais pertinente
+#### Si `business_model: service`
 
-Exemples :
-- `✓ Meta Ads            synced 2h ago`
-- `⚠ Klaviyo             synced 9d ago`
-- `○ TikTok Ads          not connected`
+```
+Matière brand
+   ✓ brand                     {identity_summary} · service-only B2B
 
-Si `connected-sources.json` absent : afficher *"(sources non configurées, `/skills connect` pour connecter)"*.
+   Services / Packages ({count})
+   ├─ {service_slug_1}                      {validation_status}
+   │  ├─ livrables             {description}
+   │  ├─ process               {N_steps}
+   │  ├─ outcomes              chain
+   │  └─ pricing tier          {2k-15k/mois OR forfait}
+   └─ ...
 
-### Next suggested (mode brand)
+   ICPs B2B ({count}) · sales-cycle
+   ├─ {icp_1}                  {sales_cycle_days}j · {budget_range}
+   └─ ...
 
-3 propositions max, ordonnées par priorité décisionnelle. **Each line MUST be a paste-ready command**, not a conversational suggestion. Format : *"  · `{exact natural-language command}` ({why, one short clause})"*. The operator copies the back-tick content into the next prompt.
+Production créative
+   Angles lead-gen ({count})   case-study × {N} · contrarian POV × {N} · méthodologie × {N}
+   Pipeline deals              {N_qualifiés} · MRR projeté {amount} · {N_closing_semaine}
+   Case studies                {N} publiés
 
-Sources :
+Stratégie & opérationnel
+   {idem DTC, "Pipeline" remplace "Pubs Meta"}
+```
+
+#### Si `business_model: subscription` OR `marketplace`
+
+Adapter le label "Ligne produits" en "Plans / Tiers" (subscription) ou "Sellers / Catalog" (marketplace). Audiences = users/subscribers ou acheteurs/vendeurs (2 sides). Production créative = retention angles, churn-fighters (subscription) ou liquidité matching (marketplace).
+
+#### Icônes status entités (universel)
+
+- `✓` : entité encodée, fraîche (updated < 7j)
+- `⚠` : encodée avec gaps ou stale (7-14j ou completeness <70%)
+- `✗` : absente ou bloquante
+- `🔥` : stale critique (>90j) ou tests en chute libre
+- `⏳` : mining ou sync en cours
+- `🆕` : créé <24h
+
+Ordre canon Stratégie & ops · Frictions → Roadmap → Strategy → Learnings → Matrix.
+
+### Section 4 · ACTIONS PRIORITAIRES
+
+3-5 paste-ready commands max, dérivées dynamique du state ·
+- Si hot spots présents · top-1 action = traiter hot spot #1
+- Si fresh brand state · top-1 = "cadre le business" + "confirme hero" + "lance mining audiences"
+- Si mature brand · top-1 = action sur essoufflés / frictions bloquantes / drafts en attente
+- Format canon · `· \`{commande paste-ready}\` ({why one-line clause})`
+
+Sources d'extraction ·
 - Tests fatiguing → *"  · `refresh l'angle {angle_id}` (ROAS -42% sur 14j)"*
-- Audiences avec témoignages vide → *"  · `récupère les témoignages clients sur {slug}` (7 audiences à valider, aucun témoignage encore)"*
-- Stale > 14j sur entité critique → *"  · `mets à jour {entity}` (dernière modif il y a {N}j)"*
-- Niveau sub-L2 → *"  · `densifie le contexte de {slug}` ({N} champs manquants critiques)"*
-- Connected source non configurée mais pertinente → *"  · `connecte Meta Ads sur {slug}` (token attendu dans credentials.env)"*
+- Audiences témoignages vide → *"  · `récupère les témoignages clients sur {slug}` ({N} audiences à valider)"*
+- Frictions bloquantes → *"  · `traite la friction {FRC-NN}` (severity 9/10, bloque {audience})"*
+- Briefs draft stale → *"  · `relance le brief {BRF-NN}` (draft depuis {N}j)"*
+- Stale > 14j sur entité critique → *"  · `mets à jour {entity}` (dernière modif {N}j)"*
+- Niveau sub-L2 → *"  · `densifie le contexte de {slug}` ({N} champs manquants)"*
 
-Anti-pattern : *"  · Lancer mine-voc dès que possible"* (passif, vague). Always paste-ready, always specific. The single back-tick wrap is a visual contract · the operator knows that what's inside the back-ticks is what they paste back.
+Anti-pattern · *"  · Lancer mine-voc dès que possible"* (passif). Always paste-ready, always specific.
+
+### Section 5 · DRILL & EXPLORATION
+
+Format · 6-7 lignes navigation explicite (adapter la liste entités drillables selon business_model) ·
+
+```
+   Entités drillables           /phantom {brand} {angles | audiences | produits | offers
+                                                 | funnel | frictions | roadmap | strategy
+                                                 | learnings | briefs | tests | matrix}
+   Drill produit                /phantom {brand} products {p_slug} {mechanisms | benefits | offers}
+   Drill audience               /phantom {brand} audiences {audience-slug}
+   Drill matrix                 /phantom {brand} matrix
+   Recherche cross-brand        /phantom search "{keyword}"
+   Historique mutations         /phantom recent
+   Bibliothèque métier          /phantom canon
+```
+
+Substitutions selon business_model ·
+- `service` · remplace `produits` par `services`, `funnel` par `pipeline`
+- `subscription` · remplace `produits` par `plans`
+- `marketplace` · remplace `produits` par `catalog`
+
+---
+
+## Scaling rules · produits dans WORKSPACE NAVIGATION
+
+Règle universelle de rendering applied à la sous-section "Ligne produits" (ou équivalent business_model) de Matière brand.
+
+| N produits | Rendering mode brand |
+|---|---|
+| 0 | Skip section · CTA "premier produit · `snapshot {brand} avec {url}`" |
+| 1-3 | Full L2 nested (composition, mécanismes, bénéfices, offres, pubs liées) · 5 lignes par produit |
+| 4-10 | Compact 1 ligne par produit · `├─ {slug} {hero_badge} · {validation_status} · {N_offres} · {N_audiences} · {N_angles} · {N_pubs}` |
+| 11-30 | Top-5 par activité créa expanded + `└─ {N-5} autres SKUs · /phantom {brand} products` |
+| 30+ | Top-5 par activité + groupes par `spec.identity.taxonomy` ou category si présent + obligation drill `/phantom {brand} products` pour list complète |
+
+**Trigger "activité créa"** · score composite descending sur `(N_angles_live × 2) + N_pubs_winners + (N_tests_running × 0.5) + last_mutation_recency_weight`. Pas exposé à l'opérateur.
+
+**Application services / plans / catalog** · même barème scaling. Substituer slug entity correspondante.
+
+---
+
+## Sub-line metrics canonisées
+
+Règle universelle · sub-line surface ratios + top-1 nominal qualitatif, **JAMAIS volumes bruts seuls**. Si une ligne ne peut être enrichie (entité absente, count 0), basculer en empty state pédagogique (cf section *Empty states*).
+
+| Entité | Sub-line v2 canonique |
+|---|---|
+| Produits (1) | `{count} · {validation_status majoritaire} · TOP-bénéfice: {benefit_name}` |
+| Audiences | `{count} mères + {N} sous-poches · verbatims {sparse/medium/dense} · TOP-pain: {pain_name}` |
+| Angles | `{count} ({live}/{fatigued}/{validated}) · {lineage_objection_count} dérivés objections` |
+| Frictions | `{count} · severity max {max}/10 · {N} bloquantes (≥7)` |
+| Funnel Meta | `{creatives_count} live · TOF/MOF/BOF {a}/{b}/{c} · {winners} winners scalés` |
+| Roadmap | `{current_phase} · {N} priorités · {due_date_top_priority}` |
+| Strategy | `{focus_1_line} · target {kpi}: {value}/{period}` |
+| Learnings | `{recent_count} récents · {promoted_count} promus canon` |
+| Matrix | `{updated_time_ago} · top territoire {description}` |
+| Briefs | `{N_draft} draft · {N_shipped} shipped · {N_validated} validés` |
+| Tests | `{N_live} live · {N_winners} gagnants · {N_fatigued} essoufflés` |
+
+**Densité qualitatif** · `sparse` (<5 verbatims), `medium` (5-30), `dense` (>30). Jamais exposer le number brut comme métrique principale.
+
+**Top-1 nominal** · récupéré depuis `pain_points[0].label` ou `benefits[0].label` ranked par `priority_score` si présent, sinon premier de l'array. Pas de calcul ML, juste lecture de la sub-structure.
+
+---
+
+## Business model adaptation
+
+Section dédiée explicitant comment le rendering brand mode adapte les entités présentées selon `brand.json#identity.business_model` v2.4 NEW. Le vocabulaire opérateur-facing change ; la grammaire 5 sections reste identique.
+
+| business_model | Matière brand | Production créative | Stratégie & ops |
+|---|---|---|---|
+| `DTC` | brand · ligne produits · audiences | angles · pubs Meta · briefs | frictions · roadmap · strategy · learnings · matrix |
+| `hybrid` | brand · {primary} (réseau cliniques OU showrooms OU agence locale) · ligne produits · audiences 2 layers | angles · pubs Meta · briefs · campagnes locales | idem DTC + opérations terrain |
+| `service` | brand · services/packages · ICPs B2B | angles lead-gen · pipeline deals · case studies | frictions delivery · roadmap services · strategy · learnings · matrix |
+| `subscription` | brand · plans/tiers · audiences (subscribers vs trial) | angles acquisition · churn-fighters · onboarding flows | frictions churn · roadmap features · strategy MRR · learnings · matrix |
+| `marketplace` | brand · catalog/sellers · audiences (buyers vs sellers) | angles 2 sides · liquidité matching · trust signals | frictions liquidité · roadmap features · strategy GMV · learnings · matrix |
+
+**Order de surface** ·
+1. **Matière brand** d'abord (substrate, ce sur quoi tout repose)
+2. **Production créative** ensuite (ce qui en sort)
+3. **Stratégie & ops** en dernier (gouvernance, signaux, prioritisation)
+
+**Cas hybrid** · le `primary` layer (typiquement réseau physique, cliniques, showrooms) surface AVANT la ligne produits parce qu'il représente le volume business dominant. Le `secondary` layer (e-com produit) reste accessible mais ne masque pas le primary.
 
 ---
 
 ## Mode entity-drill
 
-`/phantom {brand_slug} {entity}` zooms on one entity within the brand. Dense, no top-level KPIs, no connected sources, no other entity rows. The operator chose the entity so the rendering goes deeper than brand mode allows in 50 lines.
+`/phantom {brand_slug} {entity}` zooms on one entity within the brand. Dense, no top-level KPIs, no connected sources, no other entity rows. The operator chose the entity so the rendering goes deeper than brand mode allows in 60-70 lines.
 
-Supported entities: `audiences`, `angles`, `products`, `offers`, `strategy`, `learnings`.
+**Supported entities v2.57** · `audiences`, `angles`, `products` (alias `produits`), `services`, `offers`, `strategy`, `learnings`, `frictions`, `roadmap`, `briefs`, `tests`, `matrix`, `funnel`, `pipeline`.
+
+### Pattern enrichi (universel)
+
+Chaque entity-drill v2.57 rend ·
+1. **Header breadcrumb** · `workspace > {brand} > {entity}`
+2. **Synthèse compact** · sub-line metrics canon (cf section dédiée)
+3. **Liste items** · top-N selon scaling rules · ordre par pertinence (ROAS / activity / severity selon entity)
+4. **Cross-refs visibles** · e.g. audiences drill montre angles rattachés, frictions drill montre audiences affected
+5. **Actions prioritaires** · 3-5 paste-ready dérivées du drill context
+6. **Drill profondeur explicite** · drill item, drill sibling, retour brand
 
 ### Common header (all entity drills)
 
 ```
-PhantomOS · brand : {brand_name} · {entity}
+workspace > {brand} > {entity}
 ══════════════════════════════════════════════
+{sub-line metrics canon}
 ```
 
-Then entity-specific body, then a single Next-suggested block specific to this entity (max 3 lines, paste-ready).
+Then entity-specific body, then **Actions prioritaires** + **Drill suivant** blocks.
 
-### `audiences` · full hierarchy + per-audience completeness detail
+### `audiences` · audiences-tree enrichi
 
-For each audience folder under `brands/{slug}/audiences/`:
-- Indented per `meta.parent_slug` (mother audiences flat, sub-audiences indented one level).
-- Per audience : `slug`, `scope`, `validation_label` (translated from `validation_status`), `pain_signal` (filled / empty), `voice_signal` (filled / empty), `objection_signal` (filled / empty), `applies_to` (produits ou `brand-wide`), `last_updated`.
+Routing override · `/phantom {brand} audiences` invoke audiences-tree mode externe (cf section *Mode audiences-tree* + `.claude/commands/phantom-modes/audiences-tree.md`).
 
-Format example :
+**v2.57 enrichissement** · audiences-tree rend l'arbre hiérarchie + chevauchements + sub-counts (pain points + objections + verbatim density qualitatif). Ajout des cross-refs · pour chaque audience, lister les angles_derived[] et frictions_affecting[] inline si présents.
+
+Format ligne audience ·
 
 ```
-{slug}                     {scope}    {validation_label}    pain: {filled|vide}    voice: {filled|vide}    → {applies_to}    last {time_ago}
-   ├─ {sub_slug}           ...
+{slug}    {scope}    {validation_label}    pain: {filled|vide}    voice: {filled|vide}    → {applies_to}    {N_angles} angles · {N_frictions} frictions
+   ├─ {sub_slug}    ...
 ```
 
-`applies_to` formatting (lit `meta.applies_to_products[]`, fallback sur `meta.product_id` legacy si vide) :
-- non-empty → liste les slugs séparés par virgule (ex: `→ glow-boost, cell-boost`)
-- empty + product_id null → `→ brand-wide`
-- empty + product_id set (legacy) → `→ {product_id}` avec astérisque
+`applies_to` formatting · cf rules existing audiences-tree (lit `meta.applies_to_products[]`, fallback `meta.product_id` legacy).
 
-End with paste-ready next-suggested : mine-voc sur missing pain, drill par produit `/phantom {brand} products {p}` pour filtrer, valider hypothesis blocks, merge low-signal sub-audiences.
+End with paste-ready · mine-voc sur missing pain, drill par produit, valider hypothesis blocks, merge low-signal sub-audiences.
 
-### Filtrage par produit (entity-drill audiences)
+### `angles` · list + lineage signal
 
-Si l'opérateur tape `/phantom {brand} products {p_slug}` (item mode produit, voir plus bas), la fiche produit liste automatiquement les audiences dont `applies_to_products` contient `{p_slug}`. Pas de mode séparé `/phantom {brand} {product} audiences` (cap CLI à 3 niveaux). Le drill par produit se fait via item-mode produit.
+Per angle in `brands/{slug}/angles/` ·
+- `angle_id`, `name`, `audience_target`, `status` (draft / live / fatigued / paused), `roas` if test_result exists, `lineage_objection` (depuis quelle objection dérive l'angle), `last_updated`.
 
-### `angles` · list + status
+**Tri** · live winners en premier, puis fatigués (à refresh), puis drafts, puis archivés.
 
-Per angle in `brands/{slug}/angles/` :
-- `angle_id`, `name`, `audience_target`, `status` (draft / live / fatigued / paused), `roas` if test_result exists, `last_updated`.
+End with paste-ready · refresh fatigued, validate draft, archive paused, créer angle depuis objection orpheline.
 
-End with paste-ready commands : refresh fatigued, validate draft, archive paused.
+### `products` (alias `produits`) · liste compacte + scaling rules
 
-### `products` · list + completeness per spec
+Per product in `brands/{slug}/products/{slug}/spec.json` · sub-line canon ·
 
-Per product in `brands/{slug}/products/{slug}/spec.json` :
-- `slug`, `name`, `category`, `pricing_filled` (yes/no), `mechanism_filled` (yes/no), `composition_filled` (yes/no), `last_updated`.
+```
+├─ {slug} {hero_badge} · {validation_status} · {N_offres} offres · {N_audiences} audiences · {N_angles} angles · {N_pubs} pubs ({live}/{fatigued})
+```
 
-End with paste-ready : densify thinnest spec, snapshot a new product.
+**Scaling rules respectées** (cf section dédiée). 1-3 produits = expanded ; 4-10 = compact 1 ligne ; 11+ = top-5 + drill obligatoire.
+
+End with paste-ready · densify thinnest spec, snapshot a new product, audit produit hero.
+
+### `services` (business_model: service)
+
+Per service `brands/{slug}/services/{slug}/spec.json` (ou équivalent) ·
+
+```
+├─ {slug} · {validation_status} · {pricing_tier} · {N_outcomes} outcomes · {N_case_studies} case studies · {sales_cycle}j
+```
+
+End with paste-ready · case-study, brief méthodologie, scaling pricing.
 
 ### `offers` · table per product
 
 Per offer file `brands/{slug}/products/{p}/offers.json`, render the `offer_groups[].offers[]` :
 - `offer_id`, `name`, `type` (single / subscription / bundle / quantity_break / prepay), `price`, `savings_pct`, `active`.
 
-End with paste-ready : connect Shopify if missing, mark inactive offers, etc.
+End with paste-ready · connect Shopify if missing, mark inactive offers, etc.
 
 ### `strategy` · current focus + Q-target snapshot
 
 Read `strategy.json`. Render :
 - Annual goals (1-line each).
 - Current quarter focus.
+- Top 3 priorities.
 - Last update timestamp.
 
-End with paste-ready : update quarter focus, set new Q-target.
+End with paste-ready · update quarter focus, set new Q-target, rebalance focus.
 
 ### `learnings` · last 10 entries
 
 Per entry in `learnings.json#entries[]` (newest first, capped at 10) :
-- `id`, `kind` (test_result / workaround / compliance / observation / decision_trace), `fact` (truncated to 1 line), `created_at`.
+- `id`, `kind` (test_result / workaround / compliance / observation / decision_trace), `fact` (truncated to 1 line), `promoted_to_canon` (yes/no), `created_at`.
 
-End with paste-ready : capture-learning on a recent observation, promote a learning to brand-level rule.
+End with paste-ready · capture-learning on a recent observation, promote a learning to brand-level rule, audit learnings sans promotion.
+
+### `frictions` (NEW v2.57) · table frictions usage
+
+Lecture · `brands/{slug}/frictions/*.json` (ou agrégat `frictions.json`).
+
+Header breadcrumb ·
+
+```
+workspace > {brand} > frictions
+══════════════════════════════════════════════
+{N} frictions · severity max {X}/10 · {N_bloquantes} bloquantes (≥7) · {N_audiences_affected} audiences touchées
+```
+
+Rendering · table par category × severity.
+
+```
+Frictions critiques (severity ≥7)
+  [FRC-08] · 9/10 · pricing-objection · audiences: chute-active, post-grossesse · {1-line fact}
+  [FRC-05] · 8/10 · delivery-time · audiences: brand-wide · {1-line fact}
+
+Frictions moyennes (severity 4-6)
+  [FRC-04] · 6/10 · onboarding-friction · audiences: nouveaux-acheteurs · ...
+  ...
+
+Frictions mineures (severity 1-3)
+  [FRC-02] · 2/10 · ...
+```
+
+Cap 10 plus saillantes (top severity desc). Cross-ref audiences via slug (drillable).
+
+Actions prioritaires ·
+- `traite la friction {FRC-NN}` (top severity bloquante)
+- `cluster frictions par category` (si >15 frictions, suggérer regroupement)
+- `capture-learning sur résolution {FRC-NN}` (si récemment traitée)
+
+Drill item · `/phantom {brand} frictions {FRC-NN}`.
+
+### `roadmap` (NEW v2.57) · phases sortées chronologique
+
+Lecture · `brands/{slug}/roadmap.json` (ou `roadmap/phases.json`).
+
+Header breadcrumb ·
+
+```
+workspace > {brand} > roadmap
+══════════════════════════════════════════════
+{current_phase_name} · {N} priorités · {due_date_top}
+```
+
+Rendering · phases chronologiques avec current highlighted.
+
+```
+Phase {N} · {phase_name} · {dates}                  ← EN COURS
+  Priorité 1   {description}                        due {date} · {status}
+  Priorité 2   {description}                        due {date} · {status}
+  Priorité 3   ...
+  → Angles refs · {ANG-XX, ANG-YY}
+  → Audiences refs · {audience-slug-1, audience-slug-2}
+
+Phase {N+1} · {phase_name} · {dates}                (à venir)
+  ...
+
+Phase {N-1} · {phase_name}                          (terminée)
+  ✓ Priorité 1
+  ✓ Priorité 2
+```
+
+Cap 3 phases (précédente + courante + suivante). Drill historique via `/phantom recent`.
+
+Actions prioritaires ·
+- `traite la priorité {P-NN}` (top current phase non-démarrée)
+- `valide phase {N}` (si toutes priorités done)
+- `réplane phase {N+1}` (si stale)
+
+### `funnel` (NEW v2.57) · couverture TOF/MOF/BOF
+
+Lecture · `brands/{slug}/funnel/coverage.json` (ou dérivé de Meta breakdown si connecté).
+
+Header breadcrumb ·
+
+```
+workspace > {brand} > funnel
+══════════════════════════════════════════════
+TOF/MOF/BOF {N}/{M}/{K} · {winners} winners scalés · {fatigued} essoufflés
+```
+
+Rendering · table par stage × creative type.
+
+```
+TOF (top of funnel)             {N_total} pubs live
+   ├─ Hook-driven               {n} ({live}/{fatigued}) · TOP ROAS: {value}
+   ├─ Pain-driven               {n} ({live}/{fatigued})
+   └─ Curiosity-driven          {n} ({live}/{fatigued})
+
+MOF (middle of funnel)          {M_total} pubs live
+   ├─ Mechanism explainer       {n} ({live}/{fatigued})
+   ├─ Social proof              {n} ({live}/{fatigued})
+   └─ Comparison                {n} ({live}/{fatigued})
+
+BOF (bottom of funnel)          {K_total} pubs live
+   ├─ Offer-driven              {n}
+   ├─ Urgency / scarcity        {n}
+   └─ Retargeting               {n}
+
+Trous détectés
+   · Aucun pain-driven sur audience {audience-slug}
+   · MOF mechanism explainer absent depuis 30j
+```
+
+Actions prioritaires ·
+- `comble le trou pain-driven sur {audience-slug}`
+- `refresh MOF mechanism explainer`
+- `scale top TOF winner {ad_id}`
+
+### `briefs`, `tests`, `matrix` · délégués aux drills dédiés
+
+`/phantom {brand} briefs` → mode briefs-drill (cf section dédiée).
+`/phantom {brand} tests` → mode tests-drill (cf section dédiée).
+`/phantom {brand} matrix` → mode matrix-drill (cf section dédiée).
+
+Ces 3 drills sont harmonisés v2.57 sur le pattern enrichi (header breadcrumb + synthèse canon + items + cross-refs + actions + drill suivant).
 
 ### Hard rule for entity-drill
 
-If `{entity}` is unsupported (not in the list above), surface : *"Entité '{x}' non reconnue. Disponibles · audiences, angles, products, offers, strategy, learnings. Pour la vue brand complète · `/phantom {brand}`."*
+If `{entity}` is unsupported (not in the list above), surface · *"Entité '{x}' non reconnue. Disponibles · audiences, angles, products, services, offers, strategy, learnings, frictions, roadmap, briefs, tests, matrix, funnel. Pour la vue brand complète · `/phantom {brand}`."*
+
+### Filtrage par produit (entity-drill audiences)
+
+Si l'opérateur tape `/phantom {brand} products {p_slug}` (item mode produit, voir plus bas), la fiche produit liste automatiquement les audiences dont `applies_to_products` contient `{p_slug}`. Pas de mode séparé `/phantom {brand} {product} audiences` (cap CLI à 3 niveaux). Le drill par produit se fait via item-mode produit.
 
 ---
 
 ## Mode item (niveau 3)
 
-> **Split externe v2.36** : full spec rendering (audiences/{slug}, angles/{id}, products/{slug}) + AskUserQuestion + hard rule → `.claude/commands/phantom-modes/item.md`. Lire ce fichier quand l'opérateur tape `/phantom {brand} {entity} {item}`.
+> **Split externe v2.36+** · full spec rendering → `.claude/commands/phantom-modes/item.md`. Lire ce fichier quand l'opérateur tape `/phantom {brand} {entity} {item}`. Si fichier absent, le créer avec la spec ci-dessous.
 
-`/phantom {brand_slug} {entity} {item-slug}` zooms on ONE item inside an entity. Le rendering équivalent d'un *file preview* dans un Finder. Operator vient de drill quelque chose de spécifique : on déballe ce qu'on a, sans tout dump.
+`/phantom {brand_slug} {entity} {item-slug}` zooms on ONE item inside an entity. Le rendering équivalent d'un *file preview* dans un Finder enrichi avec cross-refs résolus. Operator vient de drill quelque chose de spécifique · on déballe ce qu'on a, sans tout dump, mais avec **visibilité maximale sur les liens latéraux**.
 
-Bref : 3 entités drillables (`audiences/{slug}`, `angles/{id}`, `products/{slug}`), header breadcrumb obligatoire, AskUserQuestion 4 slots (action 1 / action 2 / drill sibling / retour entity), hard rule sur slug introuvable. Spec complète dans le split.
+### Pattern enrichi v2.57
+
+1. **Header breadcrumb** · `workspace > {brand} > {entity} > {item}`
+2. **Fiche item full** · tous fields canon du schema entity
+3. **Cross-refs résolus** · liens lateraux dénormalisés inline ·
+   - Audience drill → angles_derived[] + pubs_liées[] + frictions_affecting[] + objections enrichies avec angles_derived[]
+   - Angle drill → audience_target + lineage_objection + tests_runs + briefs_sourced + ROAS history
+   - Product drill → audiences applies_to + mechanisms[] + benefits[] chain + offers + pubs_liées
+   - Friction drill → audiences_affected + severity + resolution_status + learnings_promoted
+   - Brief drill → angle_source + audience_target + test_runs + winner_proxy
+4. **Actions prioritaires** · 3-5 paste-ready dérivées du drill context item
+5. **AskUserQuestion 4 slots** ·
+   - Slot 1 · drill sibling (item voisin dans la même entity)
+   - Slot 2 · action top-priority (paste-ready)
+   - Slot 3 · drill cross-ref (e.g. depuis audience → angle dérivé)
+   - Slot 4 · retour entity parent `/phantom {brand} {entity}` OU retour brand `/phantom {brand}`
+
+### Entités drillables item v2.57
+
+`audiences/{slug}`, `angles/{id}`, `products/{slug}`, `services/{slug}`, `frictions/{FRC-NN}`, `briefs/{BRF-NN}`, `tests/{TST-NN}`, `roadmap/phases/{phase-slug}`.
+
+### Hard rule sur slug introuvable
+
+Si `{item-slug}` n'existe pas dans `{entity}` du brand · *"Item '{slug}' introuvable dans {entity}. Items disponibles · {list_top_5}. Pour la liste complète · `/phantom {brand} {entity}`."* Pas d'AskUserQuestion.
 
 ---
 
@@ -923,7 +1277,7 @@ Application : utiliser `🔥` quand un test ROAS chute ≥30% sur 14j ou quand u
 ## Constraints (tous modes)
 
 - **Read-only.** Aucune mutation. Si l'opérateur demande ensuite de fix quelque chose, propose le skill approprié, ne fais pas la mutation toi-même.
-- **One screen output.** Workspace mode : 30 lignes max. Brand mode : 40-50 lignes max. Entity-drill mode : 50 lignes max.
+- **One screen output.** Workspace mode · 30 lignes max. **Brand mode · 60-80 lignes max (page menu workspace structurée 5 sections obligatoires avec dividers `────`, cf section *Mode brand*).** **Entity-drill mode · 60-70 lignes max (drill enrichi cross-refs + actions, cf section *Pattern enrichi*).** Item mode · 40-60 lignes max selon entity.
 - **Pas de jargon doctrine.** Filtre `_jargon_bank.json` post-render v2.42+ (cf section *Post-render jargon filter*). Traduit en mots métier (validé / hypothèse / fatigué).
 - **Honest staleness.** Si une entité n'a pas été touchée depuis 90j, dis-le. Si snapshot date > 1h, regenère silencieusement avant d'afficher.
 - **Workspace est le default.** `/phantom` sans argument lande toujours au niveau workspace (sauf bootstrap si 0 brand). L'opérateur drille explicitement via `/phantom {slug}`. Pattern terminal-like, jamais court-circuiter la navigation.

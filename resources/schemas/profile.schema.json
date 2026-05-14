@@ -2,8 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Audience Profile",
   "description": "Audience profile — deep psychographic and behavioral context, factual description of who they are. Lives in brands/{slug}/audiences/{audience}/profile.json. v1.2+: persona_archetype + buyer_user_split (migrated from spec.gift_economy). v1.4 (v2.42): meta.entry_door enum strict (pain_driven|goal_driven|identity_driven) REQUIRED — closes spec-vs-schema drift from v2.39 framework. Canon V3 §8.2.",
-  "_schema_version": "profile/1.6",
+  "_schema_version": "profile/1.7",
   "_changelog": {
+    "1.7": "v2.57 Notion stride-up follow-up · pain_points.items.pain_id (PNT-NN pattern) + objections.items.objection_id (OBJ-NN pattern) ajoutés optional. Closes faille canonical IDs stables identifiée par DataEng audit · friction.cross_refs.{pain_point_ids[], objection_ids[]} peuvent désormais référencer canon. IDs générés auto au mining (mine-voc, profile-audience) post-v1.7 ; profiles pre-v1.7 sans IDs valident toujours en read. Backward compat strict additif.",
     "1.6": "v2.56 Notion stride-up parity · pain_category enum taxonomy (cohérent friction.schema) · objections enrichis (severity_score + response_counter + derived_angle_refs). Backward compat strict additif.",
     "1.4": "v2.42-schema-alignment: meta.entry_door enum strict (pain_driven|goal_driven|identity_driven) ajouté + listé dans meta.required. Closes drift schema vs framework v2.39 (audience-cartography-framework.md Q1). Backward compat: lecture v1.0-v1.2 tolérée, defaults injectés par v2.42-schema-alignment.py.",
     "1.3": "S55 audit: persona_archetype enum (demographic|condition_based|psychographic) avec secondary[] hybride, buyer_user_split migré depuis spec.gift_economy (proprieté audience pas produit), identity.archetype DEPRECATED.",
@@ -213,6 +214,11 @@
       "items": {
         "type": "object",
         "properties": {
+          "pain_id": {
+            "type": "string",
+            "pattern": "^PNT-[0-9]{2,3}$",
+            "description": "ID stable du pain point (PNT-01 format). Permet cross-refs canonical depuis friction.cross_refs.pain_point_ids[]. Optional v1.7, generated au mining si absent."
+          },
           "ref": { "type": "string" },
           "priority": { "type": ["integer", "null"] },
           "formulation": { "type": "string" },
@@ -289,6 +295,11 @@
       "items": {
         "type": "object",
         "properties": {
+          "objection_id": {
+            "type": "string",
+            "pattern": "^OBJ-[0-9]{2,3}$",
+            "description": "ID stable de l'objection (OBJ-01 format). Permet cross-refs canonical depuis friction.cross_refs.objection_ids[]. Optional v1.7, generated au mining si absent."
+          },
           "type": { "type": ["string", "null"], "enum": ["prix", "scepticisme", "temps", "confiance", "urgence", "efficacité", "comparaison", ""] },
           "formulation": { "type": "string" },
           "frequency": { "type": ["integer", "null"], "minimum": 1, "maximum": 10 },

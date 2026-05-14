@@ -1,8 +1,8 @@
 {
   "_schema": "jargon-bank/1.0",
-  "_generated_at": "2026-05-13",
+  "_generated_at": "2026-05-14",
   "_source": "docs/system/operator-vocabulary-translation.md",
-  "_total_entries": 71,
+  "_total_entries": 80,
   "entries": [
     {
       "internal": [
@@ -674,6 +674,90 @@
       ],
       "operator_fr": "à valider count",
       "operator_en": "to-validate count",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "winners scalés (phantom-modes)"
+      ],
+      "operator_fr": "gagnantes scalées",
+      "operator_en": "scaled winners",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "funnel Meta (phantom-modes)"
+      ],
+      "operator_fr": "tunnel Meta",
+      "operator_en": "Meta funnel",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "bénéfices chain functional/emotional/identity (phantom-modes)"
+      ],
+      "operator_fr": "bénéfices · du fonctionnel à l'identité",
+      "operator_en": "benefits · from functional to identity",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "créas (phantom-modes)"
+      ],
+      "operator_fr": "pubs · pubs créatives",
+      "operator_en": "ads",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "DTC pure (phantom-modes",
+        "operator-facing seulement)"
+      ],
+      "operator_fr": "e-commerce direct",
+      "operator_en": "direct e-commerce",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "essoufflés (phantom-modes",
+        "canon term reutilisé)"
+      ],
+      "operator_fr": "essoufflés",
+      "operator_en": "fatigued",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "phase 1 Q3-2026 in-progress (phantom-modes)"
+      ],
+      "operator_fr": "Q3-2026 · phase 1 en cours",
+      "operator_en": "Q3-2026 · phase 1 in progress",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "CA monthly +35% target (phantom-modes)"
+      ],
+      "operator_fr": "CA mensuel · +35% visé",
+      "operator_en": "monthly revenue · +35% target",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "TOF/MOF/BOF (phantom-modes",
+        "canon term gardé)"
+      ],
+      "operator_fr": "TOF/MOF/BOF",
+      "operator_en": "TOF/MOF/BOF",
       "case_sensitive": false,
       "context": "phantom-modes"
     }

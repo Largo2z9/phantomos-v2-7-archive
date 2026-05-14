@@ -84,6 +84,15 @@ Cette règle s'étend aux concepts canon : atlas, canon, validations, fiches, co
 | State-driven (je veux voir l'état Y) | par état (je veux voir Y) | by state (I want to see Y) |
 | fatiguing (tests count) | fatigués | fatiguing |
 | hypothèses count | à valider count | to-validate count |
+| winners scalés (phantom-modes) | gagnantes scalées | scaled winners |
+| funnel Meta (phantom-modes) | tunnel Meta | Meta funnel |
+| bénéfices chain functional/emotional/identity (phantom-modes) | bénéfices · du fonctionnel à l'identité | benefits · from functional to identity |
+| créas (phantom-modes) | pubs · pubs créatives | ads |
+| DTC pure (phantom-modes · operator-facing seulement) | e-commerce direct | direct e-commerce |
+| essoufflés (phantom-modes · canon term reutilisé) | essoufflés | fatigued |
+| phase 1 Q3-2026 in-progress (phantom-modes) | Q3-2026 · phase 1 en cours | Q3-2026 · phase 1 in progress |
+| CA monthly +35% target (phantom-modes) | CA mensuel · +35% visé | monthly revenue · +35% target |
+| TOF/MOF/BOF (phantom-modes · canon term gardé) | TOF/MOF/BOF | TOF/MOF/BOF |
 
 ## Output policy
 
