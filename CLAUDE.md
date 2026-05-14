@@ -42,6 +42,12 @@ Doctrine governance (promotion, amendment, retraction, conflict resolution): `do
 - Output audit performance compte Meta → `audit-meta-account`
 - Output prioritisation territoires → `score-matrix`
 - Output learning persistence → `learn-from-session` ou `capture-learning`
+- Output pipeline atlas complet from blank (specs + audiences + angles + briefs + créas) → `build-atlas-complete`
+- Output matrice paid DTC (angles ranked + audiences scored + top-3 territoires) → `produce-paid-matrix`
+- Output brief créa + variants visuels sur angle sélectionné → `creative-brief-composer`
+- Output sync Notion ↔ PhantomOS (pull / push / scaffold) → `sync-notion-atlas`
+
+**Fallback systémique manifest (v2.56+).** Si l'output stratégique demandé ne match aucun mapping explicite ci-dessus, l'agent DOIT scanner `.skills/_manifest.json` (triggers FR + EN par skill) avant de freestyle. Si un trigger match l'intent opérateur → invoke le skill via Task tool. Si zéro match → flag gap à l'opérateur et propose `create-skill`. JAMAIS freestyle prose comme premier réflexe. Conscience skill = mapping explicite (rapide) + manifest scan (filet de sécurité, couvre les NEW skills non-encore mappés ici).
 
 Si le skill n'existe pas pour un output demandé, l'agent flag le gap explicitement à l'opérateur et propose de créer le skill via `create-skill`. Il ne remplit JAMAIS le gap par freestyle prose.
 
