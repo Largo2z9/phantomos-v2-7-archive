@@ -7,6 +7,37 @@
 
 ---
 
+## v2.62.0 · 2026-05-15 · Refresh onboarding tour.md post-v2.55→v2.61
+
+**Why** · audit live test post-v2.61 a flagué obsolescence tour.md (402L). Zéro mention 4 NEW orchestrators v2.56-v2.57 (build-atlas-complete · produce-paid-matrix · creative-brief-composer · sync-notion-atlas) · zéro mention 7 NEW skills v2.58 D#386 mappers · zéro mention business_model auto-detection · zéro mention /phantom 5 sections · zéro mention doctrine layer. Operator nouveau découvrait pipeline obsolète (snapshot → mine-voc → produce-paid-angles → produce-copy-brief 4-skill chain) au lieu de l'éventail complet v2.61.
+
+**What** · 5 patches Milestones ciblés additifs ·
+
+| Patch | Milestone | Contenu |
+|---|---|---|
+| 1 | Frontmatter description | Prepend ligne v2.62 alignment |
+| 2 | M2 Path (a) url-path | Enrich announcement scrape · mention business_model auto-détection durant scrape |
+| 3 | M5 PhantomOS introduction | 2 nouveaux blocs · doctrine layer pro métier (docs/doctrine/ 8 docs canon) + adaptive rendering /phantom business_model (DTC pure / service / hybrid / subscription / marketplace) |
+| 4 | M6 Skill concept | Table illustrative 8 triggers naturels → skills (4 orchestrators + 4 mappers D#386) · pattern "tu dis ton intent en français normal, pas le slash command" |
+| 5 | M7 Wow moment | Pipeline DTC paid upgraded vers `build-atlas-complete` chain 9 sub-skills auto + `creative-brief-composer` brief + variants + 2 NEW archetypes (matrice paid scorée via produce-paid-matrix · sync Notion via sync-notion-atlas) |
+| 6 | M9 First-skills offer | Liste suggérée enrichie (4 orchestrators + 3 mappers D#386 populaires) |
+
+**16 new refs cumulées** · build-atlas-complete · produce-paid-matrix · creative-brief-composer · sync-notion-atlas · map-mechanisms · decompose-angle · map-specs · map-benefits · map-audiences · map-angles · produce-strategy · business_model · docs/doctrine · adaptive rendering · etc.
+
+**Backward compat strict** ·
+- State machine Milestones 1-9 preserved intacts
+- Modes existing (first-run / resume / replay) preserved
+- Calibration register existing preserved
+- Path (a) · (b) · (c) preserved
+- Zéro jargon technique opérateur-facing introduit
+- Em-dashes preserved seulement dans contenu pré-existant (style file interne · audit v2.63+ candidate cleanup global)
+
+**Impact** · operator nouveau qui lance `/tour` découvre désormais l'éventail complet v2.61 stack · pipeline orchestrators chain · mappers atomiques drill · doctrine layer pédagogique · business_model adaptive rendering. Wow moment Milestone 7 montre désormais l'écart entre PhantomOS et "scraper + chatbot" générique.
+
+Total · 402L → 429L (+27 lignes). Manifest 67 skills inchangé.
+
+---
+
 ## v2.61.0 · 2026-05-15 · Cross-link skills consume doctrine layer · 20 skills patches additifs
 
 **Why** · v2.60 a ship 8 docs canon doctrine copywriting/strategy sous `docs/doctrine/`. Pour qu'elles soient activement utilisées runtime par les skills (pas seulement consultées opérateur-facing), faut cross-link via frontmatter `consumes:`. Pattern miroir existing `paid-angle-scoring.md` consume.

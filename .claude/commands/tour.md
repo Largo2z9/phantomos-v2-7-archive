@@ -1,6 +1,6 @@
 ---
 name: tour
-description: PhantomOS onboarding and workspace presentation. Runs automatically at first session when no brand exists; replayable at any time via /tour.
+description: PhantomOS onboarding and workspace presentation. Runs automatically at first session when no brand exists; replayable at any time via /tour. Update v2.62 · onboarding refresh post-v2.56→v2.61 sprint · 4 NEW orchestrators (build-atlas-complete · produce-paid-matrix · creative-brief-composer · sync-notion-atlas) + 7 NEW skills D#386 mappers + business_model auto-detection adaptive · doctrine layer pro métier introduite Milestone 5.
 ---
 
 # Tour — PhantomOS Onboarding
@@ -90,7 +90,7 @@ Skip to Milestone 8 directly in replay mode.
 1. Launch `snapshot-brand` as a subagent via Task tool. Do not wait.
 2. Announce in one turn what is happening AND collect operator context in flowing prose, not as separate questions:
 
-   > *"Scanning now, three to five min. While it runs, two things help me calibrate what comes next. First, what's the use case here — your own brand, a client, an agency portfolio, a test? Second, the stack you'd connect to this workspace if you keep using it (Shopify, Meta Ads, Klaviyo, Notion, Slack, Drive, others)?"*
+   > *"Scanning now, three to five min. Pendant le scan, j'auto-détecte aussi le modèle business de la marque (DTC pure, service, hybrid clinique+produit, subscription, marketplace) depuis les signaux URL (locations physiques, services pages, products pages, pricing tiers). Ça calibrera l'arborescence du workspace ensuite. While the scrape runs, two things help me calibrate. First, what's the use case here, your own brand, a client, an agency portfolio, a test ? Second, the stack you'd connect to this workspace if you keep using it (Shopify, Meta Ads, Klaviyo, Notion, Slack, Drive, others) ?"*
 
 3. Capture both answers, write to `/operator/profile.json → identity.profile` and `/operator/profile.json → context.stack[]` via `write_to_context`. The Milestone 4 profile-type question becomes already-answered.
 4. Proceed to Milestone 3 + Milestone 5/6 in parallel with the scrape.
@@ -173,7 +173,19 @@ Never lead Milestone 5 with this. Always after the centralization payoff is esta
 
 **Do not use the phrase "the leverage isn't a smarter model, it's X"**. That cadence is a growth-coach antipattern. Rephrase in longer, less punchy sentences. Example acceptable: *"What changes performance here isn't the model you're running. It's the fact that the work you've already done stays accessible and structured."*
 
-Add concepts covered to `awareness.concepts_introduced`.
+**4. Doctrine layer pro métier (mention courte si l'opérateur est profil marketing / agency / DTC).**
+
+Wove naturellement dans le flow, pas en encart. Pertinent surtout quand l'opérateur a signalé profil marketing/agency/copywriter en Milestone 1, 2 ou 4. Exemple ton :
+
+> *"PhantomOS ship aussi une layer doctrine copywriting/strategy pour les équipes marketing : 8 docs canon pro métier sous `docs/doctrine/` (Schwartz 5 stages, OTRB angle anatomy, hooks 5 critères, audiences cartographie 3 niveaux, objections mapping, pain-benefit chain, territoires prioritisation, DTC operator playbook). Lisibles par un copywriter freelance qui n'a jamais entendu parler de PhantomOS. Niveau bibliothèque marketeux pro (Schwartz/Sugarman/Halbert/Caples/Cialdini sources canon). Les skills consument ces doctrines runtime pour informer la production, vocabulaire canon aligné cross-skills."*
+
+**5. Adaptive rendering selon business_model détecté.**
+
+Toujours en prose, jamais en encart. Mention courte si l'opérateur a posé la question *"à quoi ça ressemble une fois configuré"* ou équivalent. Exemple ton :
+
+> *"Le rendering `/phantom {brand}` s'adapte automatiquement au modèle business détecté : DTC pure → ligne produits + pubs Meta, service-only → pipeline deals + ICPs B2B, hybrid clinique+produit → réseau cliniques + ligne produits secondaire (cas Innerskin), subscription → tiers récurrents, marketplace → catalog multi-vendor. Tu vois ce qui sert ton métier, pas une grille générique."*
+
+Add concepts covered to `awareness.concepts_introduced` (incluant `doctrine_layer`, `adaptive_rendering` quand mentionnés).
 
 ### Milestone 6. Skill concept + universal entry point
 
@@ -188,6 +200,19 @@ Still part of the same conversational flow. **No headers, no labels, no bolded t
 > One more thing worth knowing, because it avoids a confusion later. This folder is the same reference point across every Claude interface you might use. If you run Claude Code in your terminal, the web app at claude.ai, or the desktop app, all of them read this workspace when you open it. No re-setup when you move between them. And on the other side, whatever tools you already work with — Google Drive, Sheets, Gmail, Calendar, Notion, ClickUp, your paid media platforms, your analytics stack, your CRM — they connect here on demand when a skill needs them. The tools stay where they are. The workspace operates across them.
 
 **Banned cadences in both paragraphs**: triple-parallel constructions (*"one X, one Y, one Z"*, *"Drive, Sheets, Gmail"* as rhetorical list), slogan endings (*"the workspace becomes the nerve center"*, *"operates across them on demand"* in isolation). Lists of tools inside the prose are factual, not rhetorical — avoid the rhythmic feel.
+
+**Pattern naming sans demander le slug du skill.** L'opérateur n'a pas besoin de connaître le nom du skill : il dit son intent en français normal, l'agent route. Mention possible en passing si l'opérateur est dense/technique et veut un aperçu opérationnel. Table illustrative (interne, jamais surfacée frontale en menu) :
+
+| Trigger naturel | Skill cible |
+|---|---|
+| *"lance le pipeline complet pour {brand}"* | `build-atlas-complete` chain 9 sub-skills auto |
+| *"matrice paid {brand}"* | `produce-paid-matrix` top-3 territoires |
+| *"brief créa sur l'angle qui ressort top"* | `creative-brief-composer` brief + N variants |
+| *"sync mon Notion vers Phantom"* | `sync-notion-atlas` 11 collections Notion → PhantomOS |
+| *"creuse les mécanismes du sérum C15"* | `map-mechanisms` 7 deep fields canon EFSA |
+| *"décompose l'angle ANG-04"* | `decompose-angle` 11 atoms canon formula |
+| *"pose le focus Q3 de {brand}"* | `produce-strategy` Q&A annual_goals + constraints |
+| *"cartographie les audiences brand-wide"* | `map-audiences` 3 niveaux + 4 questions |
 
 Add `skill`, `universal_entry_point`, and `tool_stack_integration` to `awareness.concepts_introduced`.
 
@@ -267,8 +292,10 @@ The agent draws from these archetypes when composing options, but is not obligat
 - **Dependency and long-term bet** — model drift, platform risk, durability.
 - **Compound and process moat** — the second-order gain, only for operators already convinced of the first-order one.
 - **Lateral reorient** — a genuine "what am I probably not asking" angle, context-specific.
-- **Pipeline DTC paid acquisition (textuel)** — comment snapshot → mine-voc → produce-paid-angles → produce-copy-brief s'enchaînent pour passer d'une URL à un brief créa prêt à shipper. Pertinent quand l'opérateur a signalé un profil paid manager / agency / DTC media buyer en Milestone 1, 2 ou 4.
-- **Pipeline DTC visuel + copy complet** — comment snapshot → mine-voc → produce-paid-angles → produce-copy-brief → craft-packshot/import-asset → compose-creative s'enchaînent pour passer d'une URL à une créa visuel + brief copy prête à shipper sur Meta, branding et photo produit pixel-exact. La photo produit canon et les assets brand (logo, badges) sont préparés une fois et réutilisés sur chaque pub suivante, plus de dérive visuelle d'une ad à l'autre. Pertinent quand l'opérateur a signalé un profil DTC paid / agency / e-com en Milestone 1, 2 ou 4 et veut voir jusqu'où la pipeline va (créa shippable, pas juste brief).
+- **Pipeline DTC paid acquisition (textuel)** · comment `/build-atlas-complete {brand}` chain 9 sub-skills auto from blank URL (setup → snapshot → deepen-brand-context → profile-audience → weight-dimensions → produce-paid-angles → score-matrix → produce-copy-brief → compose-creative) avec gates opérateur entre phases, OR séquentiel manuel snapshot → mine-voc → produce-paid-angles → produce-copy-brief si l'opérateur préfère contrôle drill par drill. Pertinent quand l'opérateur a signalé un profil paid manager / agency / DTC media buyer en Milestone 1, 2 ou 4.
+- **Pipeline DTC visuel + copy complet** · comment `creative-brief-composer` chain produce-copy-brief + compose-creative ensemble (brief + N variants visuels sur l'angle sélectionné), OR séquentiel snapshot → mine-voc → produce-paid-angles → produce-copy-brief → craft-packshot/import-asset → compose-creative pour passer d'une URL à une créa visuel + brief copy prête à shipper sur Meta, branding et photo produit pixel-exact. La photo produit canon et les assets brand (logo, badges) sont préparés une fois et réutilisés sur chaque pub suivante, plus de dérive visuelle d'une ad à l'autre. Pertinent quand l'opérateur a signalé un profil DTC paid / agency / e-com en Milestone 1, 2 ou 4 et veut voir jusqu'où la pipeline va (créa shippable, pas juste brief).
+- **Matrice paid scorée top-3 territoires** · `produce-paid-matrix` orchestrator chain produce-paid-angles + weight-dimensions + score-matrix pour passer d'un brand snapshot à une matrice angles × audiences scorée, top-3 territoires prioritaires extraits avec rationale. Pertinent quand l'opérateur arrive avec un compte déjà testé et veut prioriser où concentrer l'allocation budget, ou quand un consultant veut un livrable client structuré.
+- **Sync Notion ↔ PhantomOS** · `sync-notion-atlas` Layer 1 MCP pull-only Phase A, importe 11 collections Notion (brands, products, audiences, angles, etc.) vers le workspace PhantomOS pour les opérateurs qui ont déjà un atlas Notion buildé et veulent le faire vivre dans Phantom sans rebuilder. Pertinent quand l'opérateur signale un setup Notion existant en Milestone 2.
 
 The agent composes from these OR generates fresh angles from the conversation. The list is not exhaustive.
 
@@ -327,7 +354,7 @@ Both nudges are prose entête, not menu options. They never force. They keep the
 
 If operator reached the end of the tour AND first-skill has not been built (`awareness.first_skill_built = false`) AND first_skill_offered count < 3:
 
-> One last thing. I can walk you through building your first skills via a concrete mission — publish a first Meta ad, set up recurring reporting, something you'd actually do. 30 to 60 min, you end with real skills and the method to build more. Want to go, or park it for later?
+> One last thing. I can walk you through building your first skills via a concrete mission. Cible suggérée selon profil détecté : pipeline complet d'une marque blank en 30 min (`build-atlas-complete`), matrice paid scorée top-3 territoires (`produce-paid-matrix`), brief créa + variants sur l'angle qui ressort (`creative-brief-composer`), sync Notion existant vers Phantom (`sync-notion-atlas`), drill mécanismes d'un produit canon EFSA (`map-mechanisms`), décomposition d'un angle en 11 atoms (`decompose-angle`), ou pose du focus Q3 brand-wide (`produce-strategy`). 30 to 60 min, tu finis avec un skill réel exécuté sur ta donnée et la méthode pour en construire d'autres. Want to go, or park it for later ?
 
 If accepted → trigger `build-agent` in guided-mission mode.
 If declined → `awareness.first_skill_offered += 1`. Do not push again this session. Future sessions can surface the offer again when pedagogically opportune (first mention of a platform, first *"can you do X"* to which no skill responds), up to the cap.

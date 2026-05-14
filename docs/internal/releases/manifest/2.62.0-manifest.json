@@ -1,0 +1,34 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.62.0",
+  "released_at": "2026-05-15",
+  "compatible_from": "2.0.0",
+  "type": "refresh_onboarding_tour_md_post_v2_56_v2_61",
+  "summary": "Audit live test post-v2.61 a flagué obsolescence tour.md (402L) · zéro mention évolutions v2.56-v2.61. 5 patches Milestones ciblés additifs (M2 · M5 · M6 · M7 · M9) · 16 new refs cumulées · backward compat strict state machine preserved. Operator nouveau découvre désormais l'éventail complet v2.61 stack via /tour.",
+  "changes": [
+    {
+      "category": "onboarding_refresh_tour_md",
+      "action": "patched",
+      "files": [".claude/commands/tour.md"],
+      "section": "5 patches Milestones additifs + frontmatter description",
+      "rationale": "M2 Path (a) url-path enrich announcement scrape avec mention business_model auto-détection. M5 PhantomOS introduction · 2 nouveaux blocs (doctrine layer pro métier + adaptive rendering business_model). M6 Skill concept · table illustrative 8 triggers naturels → skills (4 orchestrators + 4 mappers D#386). M7 Wow moment · pipeline DTC paid upgraded vers build-atlas-complete chain + creative-brief-composer + 2 NEW archetypes (matrice paid scorée · sync Notion). M9 First-skills offer · liste suggérée enrichie. 402L → 429L (+27 lignes). State machine Milestones 1-9 preserved intacts. Backward compat strict."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md", "docs/internal/releases/manifest/2.62.0-manifest.json"],
+      "section": "Version bump v2.61 → v2.62 + CHANGELOG + manifest NEW",
+      "rationale": "Bump template_version 2.61.0 → 2.62.0. released_at 2026-05-15. Cadence rapide patches doctrinaires + onboarding refresh."
+    }
+  ],
+  "files_patched_total": "4 files (tour.md + _version + CHANGELOG + manifest)",
+  "patterns_introduced": {
+    "onboarding_evolution_synchronicity": "Pattern canon · à chaque sprint majeur ship NEW orchestrators/skills/doctrines, audit tour.md + onboarding canonical pour synchroniser découverte opérateur avec runtime. Sinon operator nouveau découvre pipeline obsolète (v2.55-) au lieu de stack actuelle (v2.61+). Cycle audit tour à chaque 5+ releases majeures · OR systematic post-release notify pattern."
+  },
+  "antipatterns_eliminated": {
+    "tour_md_obsolete_post_sprint": "tour.md écrit avant v2.55 · 6 releases successives shippées (v2.56→v2.61) sans audit onboarding sync · operator nouveau découvre obsolete pipeline 4-skill chain au lieu de orchestrators v2.56 + mappers v2.58 + doctrine v2.60 + cross-link v2.61. v2.62 ferme le gap."
+  },
+  "operator_impact": "Operator qui lance /tour découvre désormais · M2 · auto-détection business_model durant scrape · M5 · doctrine layer pro métier pédagogique + adaptive rendering /phantom · M6 · table illustrative 8 triggers naturels skills v2.61 (build-atlas-complete chain · produce-paid-matrix · creative-brief-composer · sync-notion-atlas · map-mechanisms · decompose-angle · produce-strategy · map-audiences) · M7 · wow moment pipeline DTC paid via build-atlas-complete chain 9 sub-skills auto OR séquentiel manuel selon contrôle voulu · M9 · liste skills suggérés enrichie. Wow moment Milestone 7 montre désormais l'écart entre PhantomOS et 'scraper + chatbot' générique.",
+  "backward_compat": "strict_additif_pur. State machine Milestones 1-9 preserved intacts. Modes existing (first-run / resume / replay) preserved. Calibration register existing preserved. Path (a) / (b) / (c) preserved. Zéro jargon technique opérateur-facing introduit. Em-dashes preserved seulement dans contenu pré-existant (style file interne, audit v2.63+ candidate cleanup global). Manifest 67 skills inchangé. Aucun schema bump, aucune migration data.",
+  "next_release_note": "v2.63+ patches identifiés · (a) Cleanup global em-dashes contenu pré-existant tour.md + autres files internes (audit grep global · substitue par middle dot · canon). (b) Test live `/tour` cas réel post-v2.62 valider M2-M9 refresh effectivement vu par operator nouveau. (c) Translation EN tour.md pour opérateurs anglophones (post-validation FR). (d) Skills consume tour.md patterns (futur · si tour.md devient canon doctrine onboarding, ajouter en consumes: des skills onboard-brand + setup-brand)."
+}
