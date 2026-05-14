@@ -20,7 +20,7 @@ How to ship a clean PhantomOS update that testers can install without breaking t
 | `resources/` | `brands/{slug}/learnings.json` |
 | `brands/_TEMPLATE/` | `brands/{slug}/todos.md` |
 | `brands/_EXAMPLE/` | `brands/{slug}/custom/` (user extensions) |
-| `scripts`, `infra/` | `.skills/skills/custom/` (user skills) |
+| `scripts`, `operations/` | `.skills/skills/custom/` (user skills) |
 | `_version.json` | `/operator/installation.json → history[]` |
 
 Template files: updates can freely overwrite (post-confirm for breaking). Operator data: **never** touched by an update.
@@ -100,7 +100,7 @@ A JSON schema version bumps (e.g. `brand.json` v2.1 → v2.2). **Requires a migr
  "schema": "brand.schema.json",
  "from_schema_version": "2.1",
  "to_schema_version": "2.2",
- "migration_script": "infra/migrations/brand-v2.1-to-v2.2.py",
+ "migration_script": "operations/migrations/brand-v2.1-to-v2.2.py",
  "affected_files_glob": "brands/*/brand.json",
  "safe": false,
  "requires_confirmation": true,
@@ -120,7 +120,7 @@ Every release, in order:
 
 1. **Bump `_version.json`** with the new `template_version`, `released_at`, and a pointer to the manifest.
 2. **Write `docs/releases/{version}-manifest.json`** listing every change. One entry per change, typed precisely.
-3. **For every `schema-bump`**: write the migration script under `infra/migrations/{schema}-v{from}-to-v{to}.py`. Test it on `_EXAMPLE` before shipping.
+3. **For every `schema-bump`**: write the migration script under `operations/migrations/{schema}-v{from}-to-v{to}.py`. Test it on `_EXAMPLE` before shipping.
 4. **Update `CHANGELOG.md`** with the human-readable summary (complements the machine manifest, not a replacement).
 5. **Run `python3 .skills/build-manifest.py`** to refresh the skills manifest if any skill changed.
 6. **Run the pre-release gate** (see next section) before commit.
@@ -148,7 +148,7 @@ Run `git diff v{previous}..HEAD -- workspace-template/` and verify every changed
 For every `schema-bump` entry in the manifest, the `migration_script` path must exist and be executable. Smoke-test it on `brands/_EXAMPLE/` locally before ship:
 
 ```bash
-python3 infra/migrations/{schema}-v{from}-to-v{to}.py brands/_EXAMPLE/
+python3 operations/migrations/{schema}-v{from}-to-v{to}.py brands/_EXAMPLE/
 ```
 
 Migration script missing or failing = release blocked.
@@ -226,7 +226,7 @@ Once a release is tagged, partners running PhantomOS locally need a way to know 
 
 - `_version.json` — current template version registry.
 - `docs/releases/` — every release manifest lives here, one file per version.
-- `infra/migrations/` — every schema migration script lives here.
+- `operations/migrations/` — every schema migration script lives here.
 - `.skills/skills/update-workspace/SKILL.md` — the receiver's installer.
 - `.skills/skills/migrate-workspace/SKILL.md` — delegated schema migration.
 - `operator/installation.json` — partner-local version state (initialized at first install, updated on every successful update-workspace run).

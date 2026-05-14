@@ -1,0 +1,50 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.59.0",
+  "released_at": "2026-05-15",
+  "compatible_from": "2.0.0",
+  "type": "nomenclature_cleanup_infra_to_operations",
+  "summary": "Largo a flagué infra/ comme diminutif non-pro. Audit nomenclature cross-3-workspaces confirme · 1 seul vrai diminutif racine identifié (infra/). Rename infra/ → operations/ atomique cross-workspaces + sed mentions + jargon-bank entry HR-20 enforcement runtime. 38 mentions patched. Backward compat strict additif. Sémantique frontière scripts clarifiée · operations/ (operator-launched) vs .skills/*.py (runtime primitives) vs resources/scripts/ (build/CI).",
+  "changes": [
+    {
+      "category": "folder_rename",
+      "action": "renamed",
+      "files": ["infra/ → operations/"],
+      "section": "Rename racine cross-workspaces",
+      "rationale": "infra/ diminutif slang dev/SRE/DevOps inadapté pour PhantomOS canon-pro. operations/ = wording business-pro · operator-launched scripts (migrations schema one-shot + SOPs platform connectors Abyss). Distinct de .skills/*.py (runtime primitives) et resources/scripts/ (build/CI dev)."
+    },
+    {
+      "category": "mentions_patch",
+      "action": "patched",
+      "files": ["CLAUDE.md", "docs/system/updates.md", ".skills/skills/mine-audience/SKILL.md"],
+      "section": "Sed + manuels mentions infra/ → operations/",
+      "rationale": "CLAUDE.md root ligne 88 'shipped infra' → 'shipped operations scripts'. Ligne 132 'infrastructure scripts shipped by default' → 'operations scripts shipped by default' (aligne wording cohérent). docs/system/updates.md 4 mentions infra/migrations/ → operations/migrations/. mine-audience SKILL.md 3 mentions infra/reddit/ + infra/trustpilot/ → operations/reddit/ + operations/trustpilot/."
+    },
+    {
+      "category": "jargon_bank_entry",
+      "action": "added",
+      "files": [".skills/_jargon_bank.json"],
+      "section": "HR-20 enforcement runtime entry NEW",
+      "rationale": "context phantom-modes · internal ['infra', 'infra/'] → operator_fr 'opérations' / operator_en 'operations'. Post-render substitution v2.42+ catch tokens infra résiduels. Jargon-bank 80 → 81 entries."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md", "docs/internal/releases/manifest/2.59.0-manifest.json"],
+      "section": "Version bump v2.58 → v2.59 + CHANGELOG + manifest NEW",
+      "rationale": "Bump template_version 2.58.0 → 2.59.0. released_at 2026-05-15 (same day v2.58, cadence rapide post-audit nomenclature)."
+    }
+  ],
+  "files_patched_total": "5 files (folder rename + 3 patches mentions + jargon entry + _version + CHANGELOG + manifest)",
+  "patterns_introduced": {
+    "nomenclature_pro_discipline": "Diminutifs racine bannis canon (infra, ops, lib pro mais lib industrie OK). Mots complets pro préférés (operations, infrastructure quand sémantique exact). Distinction sémantique business-pro vs dev-tech-slang.",
+    "scripts_frontiere_3_zones_canon": ".skills/*.py = primitives runtime PhantomOS (skills via Steps). resources/scripts/ = build/CI/dev (pre-commit, validate-all). operations/ = opérateur manuel one-shot (migrations, SOPs connectors). Distinction nette par lanceur."
+  },
+  "antipatterns_eliminated": {
+    "diminutif_non_pro_racine": "infra/ slang dev/SRE éliminé · alignement nomenclature business-pro cohérente avec posture PhantomOS sérieuse.",
+    "wording_inconsistant_CLAUDE_md_root": "Ligne 88 'shipped infra' (diminutif) vs ligne 132 'infrastructure scripts shipped by default' (mot complet) incohérent. v2.59 aligne sur 'operations scripts shipped' cohérent."
+  },
+  "operator_impact": "Operator scan top-level workspace voit operations/ au lieu de infra/. Wording opérateur-facing CLAUDE.md ligne 88+132 aligné cohérent. jargon-bank HR-20 catch toute mention résiduelle infra → operations post-render. Frontière sémantique scripts cross-3-zones plus claire pour onboarding nouveau opérateur.",
+  "backward_compat": "strict_additif_atomique. Rename folder atomique · brands existantes (data) inchangées. CHANGELOG historique + manifests releases 2.29-2.42 préservés (append-only canon). Scripts existing paths cassent localement (workspace-template-side seulement, pas brands runtime). Pas de bump schema, pas de migration data, pas de mutation runtime. Manifest skills 67 inchangé.",
+  "next_release_note": "v2.60+ patches identifiés · (a) Audit propagation v2.55 routing aux 7 NEW skills v2.58 (P2 backlog todos.md). (b) Test live cas réel brand mature post-v2.58 (validation coverage 98% effective). (c) Locations entity NEW evaluation post-test Innerskin hybrid. (d) audience_fit[] schema bump v1.12 emergence. (e) sync-notion-atlas Phase B push implémentation runtime."
+}

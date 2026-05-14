@@ -7,6 +7,48 @@
 
 ---
 
+## v2.59.0 · 2026-05-15 · Nomenclature cleanup · infra/ → operations/
+
+**Why** · Largo a flagué `infra/` comme diminutif non-pro (slang dev/SRE/DevOps, faux signal pour PhantomOS qui pitche un OS sérieux business). Audit nomenclature cross-3-workspaces a confirmé · 1 seul vrai diminutif racine identifié (`infra/`), reste du système canon-pro propre (docs/, sops/, resources/canon/ etc. sont canon industrie acceptés). 38 mentions à patcher · low risk additif strict.
+
+**What** ·
+
+**Rename folder** ·
+- `infra/` → `operations/` cross-workspaces (workspace-template + phantom-os-abyss + phantomos public + dev/phantom-os-test)
+- `infra/migrations/` → `operations/migrations/` (sub-folder suit parent)
+
+**Patches mentions** ·
+- `CLAUDE.md` root ligne 88 · `shipped infra` → `shipped operations scripts`
+- `CLAUDE.md` root ligne 132 · `infrastructure scripts shipped by default` → `operations scripts shipped by default`
+- `docs/system/updates.md` · 4 mentions `infra/migrations/` → `operations/migrations/`
+- `.skills/skills/mine-audience/SKILL.md` · 3 mentions `infra/reddit/` + `infra/trustpilot/` → `operations/reddit/` + `operations/trustpilot/`
+
+**Côté Abyss** (phantom-os-abyss/operations/) ·
+- 12 SOPs/scripts data pipelines connectors (airbyte-backfill-sop, airbyte-monitor, connector-onboarding-sop-template, google-ads-access-sop, google-ads-data-dictionary, meta-airbyte-streams, meta-data-dictionary, shopify-data-dictionary, shopify-oauth-sop, snap-ads-access-sop, tiktok-ads-access-sop, vps-scaling, vps-stack-setup) renommés ensemble (couche additive Abyss preserved)
+- `ABYSS.md` mentions patched
+
+**Jargon enforcement runtime** ·
+- `.skills/_jargon_bank.json` NEW entry context phantom-modes · `internal: ["infra", "infra/"]` → `operator_fr: "opérations"` · `operator_en: "operations"`. Post-render substitution v2.42+ HR-20 catch tokens `infra` résiduels.
+
+**Sémantique nouvelle frontière scripts cross-workspace** ·
+
+| Dossier | Fonction | Lancé par |
+|---|---|---|
+| `.skills/*.py` (~15 scripts) | Primitives runtime PhantomOS (write-to-context, build-manifest, finalize-mutation-batch, etc.) | Skills via Steps |
+| `resources/scripts/` (2 scripts) | Build/CI/dev (pre-commit.sh, validate-all.py) | CI ou commit hook |
+| `operations/` (NEW name) | Opérations one-shot manuelles (migrations schema, SOPs platform connectors Abyss) | Opérateur direct |
+
+Distinction nette · qui lance le script. Plus de chevauchement sémantique avec `infra/` ambigu.
+
+**Backward compat strict additif** ·
+- Rename folder atomique · scripts existing paths cassent localement mais brands existantes (data) inchangées.
+- CHANGELOG historique + manifests releases 2.29-2.42 préservés (append-only canon, mentions `infra/` rétroactives non patched).
+- Pas de bump schema, pas de migration data, pas de mutation runtime.
+
+**1 décision canon D#399 captured** · nomenclature pro discipline · diminutifs racine bannis canon, `operations/` > `infra/` > `tooling/` pour distinction sémantique business-pro vs dev-tech-slang.
+
+---
+
 ## v2.58.0 · 2026-05-15 · Schema coverage sprint · 7 NEW skills + 8 patches + 2 NEW schemas R&D activés
 
 **Why** · audit coverage v2.57 a quantifié que sur 115 fields majeurs des 11 schemas shipped, 28% étaient orphans (NEW fields v2.42-v2.57 designés mais aucun skill ne les staged runtime). Top schemas problématiques · spec.schema v1.11 (8 ORPHAN sur 18 top-level), offer.schema v2.2 (7 ORPHAN sub-features), profile.schema v1.7 NEW fields (severity_score, response_counter, derived_angle_refs, pain_id, objection_id, behavior.*, role.*). Gap architectural majeur · D#386 mappers atomiques décidés S55 (2026-05-04) jamais shippés (10 jours lag). v2.58 ferme 25+ orphans en 1 sprint multi-agents parallèle (8 agents).

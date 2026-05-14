@@ -49,14 +49,14 @@ If either file is missing or incomplete → signal which file/fields are absent 
 Execute three parallel scrapes:
 
 **Reddit mining:**
-- Read `infra/reddit/mine_reddit.py` (or equivalent script in workspace)
+- Read `operations/reddit/mine_reddit.py` (or equivalent script in workspace)
 - Query relevant subreddits based on `spec.identity.category` (e.g., r/nursing for healthcare products, r/fitness for sports)
 - Harvest 50–100 verbatims discussing pain points, frustrations, needs, desires related to the product category
 - Verbatims must include original text + post context (subreddit, timestamp if available)
 - Source each verbatim: `{"type": "verbatim", "platform": "reddit", "ref": "r/{subreddit}/comments/{id}"}`
 
 **Trustpilot reviews mining:**
-- Read `infra/trustpilot/mine_reviews.py` (or equivalent)
+- Read `operations/trustpilot/mine_reviews.py` (or equivalent)
 - Fetch reviews for the product itself (if it exists on Trustpilot) AND competitor reviews (same category)
 - Extract verbatims from review text: pain points mentioned, benefits praised, objections, trust anchors
 - 30–50 verbatims minimum
@@ -182,7 +182,7 @@ Verbatims collected: {N}
 
 ## Dependencies & Integration
 
-- **Requires:** `infra/reddit/mine_reddit.py`, `infra/trustpilot/mine_reviews.py` (or equivalent scrapers)
+- **Requires:** `operations/reddit/mine_reddit.py`, `operations/trustpilot/mine_reviews.py` (or equivalent scrapers)
 - **Outputs:** proposals in event log, report in `brands/{brand}/reports/`
 - **Next step:** run `score-product-fit` to evaluate fit between discovered audiences and the product spec
 - **Version conflict:** if running `mine-audience@v0.x` and `v1.0` in parallel, they write different event_ids (safe, no collision)
