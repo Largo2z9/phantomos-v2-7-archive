@@ -1,0 +1,86 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.60.0",
+  "released_at": "2026-05-15",
+  "compatible_from": "2.0.0",
+  "type": "doctrine_layer_copywriting_strategy_8_new_docs_pro_canon",
+  "summary": "Largo a demandé layer doctrine copywriting/strategy pro métier pour équipes marketing · zéro dépendance schemas PhantomOS · lisibles par copywriter freelance qui n'a jamais entendu parler de PhantomOS. 4 agents parallèle ont rédigé 8 docs canon ~2970 lignes total ship sous docs/doctrine/ · niveau bibliothèque marketeux pro (Schwartz/Sugarman/Halbert/Caples/Cialdini/Hormozi/Dunford/Brunson/Miller/Heath/Kahneman/Christensen) · zéro em-dash · zéro jargon PhantomOS · exemples cross-niches brands publiques.",
+  "changes": [
+    {
+      "category": "doctrine_new_5_stages",
+      "action": "added",
+      "files": ["docs/doctrine/breakthrough-advertising-5-stages.md"],
+      "section": "Doc 1 · Schwartz 5 stages de conscience client",
+      "rationale": "287 lignes · 15 sources canon (Schwartz fondateur 1966, Sugarman, Halbert, Caples, Georgi RMBC, Brian Kurtz, Miller StoryBrand, Heath Made to Stick, Cialdini Influence/Pre-Suasion) · 8 brands publiques décomposées (AG1, Hims, Whoop, Oura, Glossier, Notion, Apple AirPods Pro). 5 stages traités · unaware → most-aware avec définition + état mental + hook canonique + framework + format + proof + brand exemple."
+    },
+    {
+      "category": "doctrine_new_pain_benefit_chain",
+      "action": "added",
+      "files": ["docs/doctrine/pain-benefit-chain-doctrine.md"],
+      "section": "Doc 2 · chaîne pain · benefit · functional → emotional → identity",
+      "rationale": "357 lignes · 13 sources canon (Halbert Boron Letters, Sugarman Adweek, Dan Kennedy Sales Letter, Caples, Miller StoryBrand, Heath Made to Stick, Russell Brunson, Calne neurologie, Damasio, Kahneman, Christensen JTBD, Bernadette Jiwa, Seth Godin). 5 brands publiques décomposées (Hims Sleep, AG1, Glossier, Apple AirPods Pro, Whoop). 3 layers · functional/emotional/identity · test 'Et alors ?' itératif."
+    },
+    {
+      "category": "doctrine_new_angle_anatomy",
+      "action": "added",
+      "files": ["docs/doctrine/angle-anatomy-doctrine.md"],
+      "section": "Doc 3 · anatomie angle publicitaire OTRB",
+      "rationale": "239 lignes · 4 components canon (Observation + Tension + Reframe + Bridge) · 11 atoms canon (phenomenon, source, sample_size, state_actual/desired, reason_blocked, perceptual_pivot, pivot_mechanism, spec_activated, benefit_served, promise_formulated) · 4 exemples décomposés (Hims hair, AG fatigue 30-45, Glossier no-makeup, Stake smart betting) · sources Schwartz/Sugarman/Halbert/Caples/Miller/Modern (Goff/Georgi)."
+    },
+    {
+      "category": "doctrine_new_hooks_method",
+      "action": "added",
+      "files": ["docs/doctrine/hooks-method-doctrine.md"],
+      "section": "Doc 4 · 5 critères canon hook quality",
+      "rationale": "344 lignes · 5 critères canon (Pattern Interrupt + Identification + Open Loop + Specificity + Awareness Match) · seuil 4/5 obligatoire · 10 winners cross-niches scorés (Hims, AG, Lemonade, Casper, Bombas, Dollar Shave Club, Eight Sleep, Notion, Whoop) + 10 fails analysés · sources Caples 1932 canon fondateur, Sugarman Adweek, Halbert #4, Bird Commonsense, modern (Kern, Georgi RMBC, Goff)."
+    },
+    {
+      "category": "doctrine_new_audiences_cartography",
+      "action": "added",
+      "files": ["docs/doctrine/audiences-cartography-doctrine.md"],
+      "section": "Doc 5 · cartographie audiences 3 niveaux + 4 questions",
+      "rationale": "322 lignes · doctrine canon 3 niveaux mère/sous-poche/micro · 4 questions canon (porte d'entrée · granularité · stage de conscience · chevauchements) · 3 cas pratiques (Sentage sleep, Allbirds DTC, Linear/Notion B2B) · 7 pitfalls · sources Schwartz + Brunson + Hormozi + Dunford + Ulwick/Christensen JTBD + Cialdini/Ariely behavioral."
+    },
+    {
+      "category": "doctrine_new_objections_mapping",
+      "action": "added",
+      "files": ["docs/doctrine/objections-mapping-doctrine.md"],
+      "section": "Doc 6 · cartographier et traiter objections clients",
+      "rationale": "442 lignes · 7 types objection canon (price/scepticism/fit/urgency/trust/status/risk) × 4 lifecycle stages (awareness/consideration/decision/post-purchase) × 6 neutralization patterns canon (feel-felt-found Sugarman, reframe positif, pre-emption, comparaison coût inaction, social proof, authority proof) · 6 cas pratiques (Hims, AG, Glossier, Stake, Notion B2B, Lemonade) · sources Sugarman canon feel-felt-found + Cialdini/Kahneman/Ariely + Hormozi guarantee stacking + Brunson false beliefs."
+    },
+    {
+      "category": "doctrine_new_territoires_priorisation",
+      "action": "added",
+      "files": ["docs/doctrine/territoires-prioritisation-doctrine.md"],
+      "section": "Doc 7 · matrice audience × source d'angle",
+      "rationale": "414 lignes · matrice canon audience × source d'angle · 5 axes origin angle (audience-derived/product-derived/category-derived/brand-derived/temporel-culturel) · scoring qualitatif 3 dimensions Impact × 3 + Vitesse × 2 + Signal × 1 · anti-pattern BCG documenté (false precision scoring exposed) · 3 cas cross-niches (sleep DTC mature, B2B Linear-like, fashion Allbirds-like) · sources Schwartz/Brunson/Hormozi/Dunford/Mintzberg."
+    },
+    {
+      "category": "doctrine_new_dtc_operator_playbook",
+      "action": "added",
+      "files": ["docs/doctrine/dtc-operator-playbook.md"],
+      "section": "Doc 8 · workflow opérateur complet 8 étapes",
+      "rationale": "565 lignes · workflow opérateur 8 étapes pédagogiques (cadrer business · snapshot brand · audiences cartographie · VoC mining · angles production · matrice priorisation · brief créa + variants · test live + learn) · adaptation business model (DTC pure / service-only / hybrid clinique+produit) · 3 cas complets workflow (Athletic Greens-like 2018, Linear-like 2019, Innerskin-like hybrid) · pitfalls par étape + checklist atlas complétion · sources Brunson/Hormozi/Dunford/Miller/Schwartz/Cialdini."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md", "docs/internal/releases/manifest/2.60.0-manifest.json"],
+      "section": "Version bump v2.59 → v2.60 + CHANGELOG + manifest NEW",
+      "rationale": "Bump template_version 2.59.0 → 2.60.0. released_at 2026-05-15 (same day v2.59, cadence rapide cleanup → doctrine layer)."
+    }
+  ],
+  "files_patched_total": "11 files (8 NEW docs doctrine + _version + CHANGELOG + manifest)",
+  "patterns_introduced": {
+    "doctrine_layer_pro_metier_operator_facing": "docs/doctrine/ devient layer canon doctrine copywriting/strategy pro métier · audience copywriter freelance + creative strategist + brand strategist + paid media director + founder DTC + agency creative lead. Niveau bibliothèque marketeux pro. Sourcing canon explicite. Exemples cross-niches brands publiques. Distinct de docs/system/ (skill-author-facing) et resources/canon/copy/ (catalogue outils atomiques internes).",
+    "skills_consume_doctrine_pattern": "Skills peuvent consume ces docs en frontmatter consumes: pour informer leur production sans dépendre des schemas exacts (extension futur v2.61+). Pattern miroir produce-paid-angles qui consume paid-angle-scoring.md + hook-quality-spec.md aujourd'hui · maintenant via docs/doctrine/ niveau supérieur conceptuel.",
+    "zero_jargon_phantom_os_isolation_test": "Test isolation canon · 8 docs lisibles à 100% par copywriter freelance qui n'a JAMAIS entendu parler de PhantomOS. Grep validated · zéro mention spec.json/profile.json/skills/paths/SED/CMR/SAD/enum techniques. Pattern reproductible pour futurs docs operator-facing pédagogiques."
+  },
+  "antipatterns_eliminated": {
+    "doctrine_dependent_phantom_os_schemas": "Avant v2.60 · doctrines existantes dans docs/system/ référencent schemas spec.json/profile.json/etc · lisibles seulement par skill authors. v2.60 ship layer doctrine isolée · concepts canon copywriting transferables hors contexte PhantomOS · réutilisables par opérateurs externes (agence, freelance, formation, etc.).",
+    "canon_copy_internal_only": "resources/canon/copy/ 11 chapitres × 58 fiches = catalogue outils atomiques internes référencé par ID. Inaccessible pédagogiquement opérateur · 'hook_canon_id' ne dit rien à un copywriter. v2.60 doctrine layer rend les concepts canon accessibles pédagogiquement avec exemples concrets."
+  },
+  "operator_impact": "Copywriter freelance peut ouvrir docs/doctrine/breakthrough-advertising-5-stages.md et comprendre comment calibrer hook par stage Schwartz sans savoir ce qu'est PhantomOS. Creative strategist peut ouvrir territoires-prioritisation-doctrine.md et apprendre matrice audience × source d'angle avec exemples DTC mature/B2B/fashion. Founder DTC peut ouvrir dtc-operator-playbook.md et suivre workflow 8 étapes pour atlas brand vierge → mature. Agence peut partager ces docs avec clients pour aligner vocabulaire pro. Skills futurs (v2.61+) peuvent consume ces docs en frontmatter pour production canonical-informed sans schema-binding strict.",
+  "backward_compat": "strict_additif_pur. 8 NEW docs additifs sous docs/doctrine/ · n'override pas audience-cartography-framework.md existing v2.39 (coexistent · framework = doc light v2.39, doctrine = canon pro complet v2.60). Aucune dépendance schema. Aucun skill modifié. Aucune migration data. Manifest skills 67 inchangé. Storage workspace inchangé.",
+  "next_release_note": "v2.61+ patches identifiés · (a) Skills frontmatter consume: enrichi avec refs docs/doctrine/ pour les 8 docs · pattern miroir paid-angle-scoring.md (audience-cartography-doctrine consumed par profile-audience + map-audiences · objections-mapping-doctrine consumed par produce-paid-angles + profile-audience · etc.). (b) Test live cas réel · validate doc breakthrough-advertising-5-stages applicable par opérateur freelance avec brand fresh. (c) Refresh audience-cartography-framework.md v2.39 → align avec doctrine v2.60 enrichie (3 niveaux + 4 questions cohérence). (d) Translation EN docs/doctrine/ pour opérateurs anglophones (post-validation FR). (e) Cross-link docs/doctrine/ → resources/canon/copy/ outils atomiques pour drill-down."
+}

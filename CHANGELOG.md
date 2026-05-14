@@ -7,6 +7,43 @@
 
 ---
 
+## v2.60.0 · 2026-05-15 · Doctrine layer copywriting/strategy · 8 NEW docs canon pro métier
+
+**Why** · Largo a demandé une layer doctrine pour équipes marketing/copywriting/creative strategy · concepts métier sans dépendance schemas PhantomOS · lisibles par copywriter freelance ou creative strategist qui n'a jamais entendu parler de PhantomOS. Niveau bibliothèque marketeux pro · canon Schwartz/Sugarman/Halbert/Caples/Cialdini/Hormozi/Dunford/Brunson/Miller/Heath/Kahneman/Christensen.
+
+**What** · 4 agents parallèle ont rédigé 8 docs canon ship sous `docs/doctrine/` · total ~2,970 lignes · zéro em-dash · zéro jargon PhantomOS · 100% lisibles hors contexte PhantomOS ·
+
+| Doc | Lignes | Couvre |
+|---|---|---|
+| `breakthrough-advertising-5-stages.md` | 287 | Schwartz 5 stages de conscience client · hook/framework/tone/proof calibrés par stage · 8 brands publiques décomposées (AG1 · Hims · Whoop · Oura · Glossier · Notion · Apple AirPods Pro) |
+| `pain-benefit-chain-doctrine.md` | 357 | 3 layers functional → emotional → identity · chaîne canon · 5 brands décomposées (Hims Sleep · AG1 · Glossier · Apple AirPods Pro · Whoop) · test "Et alors ?" itératif |
+| `angle-anatomy-doctrine.md` | 239 | Formula compositionnelle Observation + Tension + Reframe + Bridge · 11 atoms canon · 4 cas pratiques (Hims · AG · Glossier · Stake) |
+| `hooks-method-doctrine.md` | 344 | 5 critères canon Pattern Interrupt + Identification + Open Loop + Specificity + Awareness Match · seuil 4/5 obligatoire · 10 winners + 10 fails scorés |
+| `audiences-cartography-doctrine.md` | 322 | 3 niveaux mère/sous-poche/micro + 4 questions canon (porte d'entrée · granularité · stage de conscience · chevauchements) · 3 cas (Sentage sleep · Allbirds DTC · Linear B2B SaaS) |
+| `objections-mapping-doctrine.md` | 442 | 7 types objection × 4 lifecycle × 6 neutralization patterns (feel-felt-found · reframe positif · pre-emption · comparaison coût inaction · social proof · authority proof) · 6 cas (Hims · AG · Glossier · Stake · Notion · Lemonade) |
+| `territoires-prioritisation-doctrine.md` | 414 | Matrice audience × source d'angle · 5 axes origin · scoring qualitatif Impact × 3 + Vitesse × 2 + Signal × 1 · anti-pattern BCG documenté · 3 cas (DTC mature · B2B Linear-like · fashion Allbirds-like) |
+| `dtc-operator-playbook.md` | 565 | Workflow opérateur 8 étapes pédagogiques · adaptation business model DTC pure / service-only / hybrid clinique+produit · 3 cas complets (Athletic Greens-like · Linear-like · Innerskin-like) |
+
+**Sources canon citées explicitement** · Schwartz Breakthrough Advertising (chapitres référencés) · Sugarman Adweek Trilogy (Ch.X) · Halbert Boron Letters (#N) · Caples Tested Advertising Methods · Cialdini Influence/Pre-Suasion · Hormozi $100M Offers/Leads · Dunford Obviously Awesome · Brunson DotCom/Expert Secrets · Miller Building a StoryBrand · Heath Made to Stick · Kahneman Thinking Fast Slow · Christensen Jobs to be Done · Caples · Bird Commonsense DM · Calne neurology · Damasio · Ariely Predictably Irrational · modern (Stefan Georgi RMBC · Justin Goff stacking · Frank Kern · Northbeam).
+
+**Exemples brands publiques cross-niches** · Hims · Athletic Greens · Glossier · Stake · Notion · Lemonade · Casper · Allbirds · Whoop · Eight Sleep · Apple AirPods Pro · Oura · Linear · Bombas · Dollar Shave Club · MyProtein · Warby Parker · Sentage-like · Innerskin-like.
+
+**Différence avec existing** ·
+
+| Layer | Audience | Style |
+|---|---|---|
+| `resources/canon/copy/` (11 chapitres × 58 fiches) | Catalogue outils atomiques internes | Référencé par ID dans angles |
+| `docs/system/` (CI · SED · CMR · SAD · investigation-posture · etc.) | Doctrines techniques skill-author-facing | Jargon canon · pour développeurs PhantomOS |
+| `docs/doctrine/` (8 NEW + audience-cartography-framework existing) | Playbooks métier pro opérateur-facing | Pédagogiques · exemples concrets brands publiques · zéro jargon PhantomOS |
+
+**Skills consume futur** · ces docs deviendront référenceables en frontmatter `consumes:` des skills (extension v2.61+) pour informer leur production sans dépendre des schemas exacts. Pattern miroir `produce-paid-angles` qui consume `paid-angle-scoring.md` + `hook-quality-spec.md` aujourd'hui.
+
+**Conformité validation** · zéro em-dash sur 8 nouveaux docs (grep validated) · zéro mention spec.json/profile.json/skills/paths/SED/CMR/SAD/enum techniques (grep validated) · structure canon respectée 7 sections (L'enjeu · Principes canon · Méthode · Exemples · Pitfalls · Checklist · Sources) · sourcing canon explicite avec chapitres/numéros.
+
+**Backward compat strict additif** · 8 NEW docs additifs sous `docs/doctrine/` · n'override pas `audience-cartography-framework.md` existing v2.39. Aucune dépendance schema. Aucun skill modifié.
+
+---
+
 ## v2.59.0 · 2026-05-15 · Nomenclature cleanup · infra/ → operations/
 
 **Why** · Largo a flagué `infra/` comme diminutif non-pro (slang dev/SRE/DevOps, faux signal pour PhantomOS qui pitche un OS sérieux business). Audit nomenclature cross-3-workspaces a confirmé · 1 seul vrai diminutif racine identifié (`infra/`), reste du système canon-pro propre (docs/, sops/, resources/canon/ etc. sont canon industrie acceptés). 38 mentions à patcher · low risk additif strict.
