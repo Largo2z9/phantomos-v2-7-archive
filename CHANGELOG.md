@@ -7,6 +7,51 @@
 
 ---
 
+## v2.65.0 · 2026-05-15 · NEW doctrine canon · scope-extension-discipline (SED-X)
+
+**Why** · 8 releases v2.55-v2.64 ont shippé multiples extensions scope (NEW orchestrators · NEW schemas · NEW mappers · NEW bridge tool · NEW doctrine layer · NEW migration scripts) sans pattern canon formalisé. v2.65 codifie SED-X · le canon technique de l'extension scope pour skill authors. Pattern reproductible pour évolutions futures workspace.
+
+**What** · NEW doctrine `docs/system/scope-extension-discipline.md` · 326 lignes · 13 sections canon-style · skill-author-facing (sister de SED + SAD + CMR + CC + PTD) ·
+
+**7 patterns canonicaux d'extension scope** ·
+| # | Pattern | Skill canonical | Effort |
+|---|---|---|---|
+| 1 | NEW brand client (multi-brand scaling) | `setup-brand` → `snapshot-brand` chain | 5-10 min |
+| 2 | NEW produit dans brand existante | `snapshot-brand --mode=product-add` OR `ingest-resource` | 5-15 min |
+| 3 | NEW audience post-mining | `mine-voc` + `map-audiences` + `profile-audience` | 20-30 min |
+| 4 | NEW business_model post-pivot | `snapshot-brand` Step 2bis re-run OR `setup-brand --update` | 5 min |
+| 5 | NEW custom entity hors-canon | `scaffold-extension` (extension layer canon) | 15-30 min Q&A |
+| 6 | NEW data source externe (PDF · Notion · Drive · Slack) | `ingest-resource` OR `sync-notion-atlas` OR `import-asset` | 10-20 min |
+| 7 | NEW bridge tool externe (Linear · Airtable · ClickUp) | NEW `sync-{tool}-atlas` + NEW doctrine `{tool}-bridge-doctrine.md` | 4-6h sprint dédié |
+
+**4 mécanismes auto-update workspace runtime** ·
+1. Manifest regen auto post-skill add (`build-manifest.py`)
+2. Mutation gate distribué (`write-to-context.py --mode=proposed` + pending-validations.md)
+3. `/phantom` rendering adaptive miroir storage path (5 sections WORKSPACE NAVIGATION auto)
+4. Cross-refs canonical résolvent (drill 360° expose auto via PNT-NN/OBJ-NN/FRC-NN/ANG-NN/CRT-NN)
+
+**3 limites architecturales non-auto** ·
+- Refonte schema breaking (v2.x → v3.x) · doctrine governance + migration script
+- Doctrine canon pivot conceptuel · sprint refactor cross-skills
+- Cross-brand inheritance (canon copy promotion) · semi-auto via `learn-from-session` Trigger 7
+
+**5 anti-patterns explicits** ·
+- Hand-edit JSON direct (bypass mutation gate)
+- Skill fork au lieu d'extend (extend_before_create violation)
+- Custom entity hors scaffold-extension
+- NEW canonical entity orphan (sans skill consume · sans doctrine · sans SED §13 entry)
+- NEW bridge tool sans pattern reproductible (sync-notion-atlas miroir)
+
+**Decision-aid Q1-Q4** pour skill authors évaluer cas extension scope avant ship.
+
+**Cross-refs explicites** · SED (substrate) · SAD (authoring) · CMR (production) · CC (composition créa) · extending (extension layer) · notion-bridge-doctrine (bridge external pattern) · doctrine-governance (amendment process) · CI (master) · PTD scope (provenance).
+
+**Backward compat strict additif** · NEW doctrine n'override aucune existing · pattern canon documenté pour évolutions futures. SED §13 inchangé (pas de schema change v2.65). Manifest 67 skills inchangé. Aucune migration data.
+
+**D#404 captured** · ontologie extension scope discipline formalisée · workspace conçu pour scaling additif · operator declare intent → agent route skill canonical → mutations stagées via gate → workspace s'auto-organise via path structure miroir schemas.
+
+---
+
 ## v2.64.0 · 2026-05-15 · BREAKING · Sémantique pure · pain/objection sub-audience + friction sub-product
 
 **Why** · Largo a recadré v2.63 · "Le menu doit simplement mettre en miroir les schémas. L'interface suit la storage path · pas dur." v2.63 top-level brand-wide était un compromis opérationnel canon Notion (UI tableau facilité filter cross-entity) · pas sémantique vraie. Sémantique pure ·
