@@ -44,6 +44,10 @@
 - Notion bridge opt-in · zéro impact si MCP Notion absent côté opérateur.
 - Manifest skills regen · 56 → 60 skills (+3 orchestrators Bloc 2 · build-atlas-complete, produce-paid-matrix, creative-brief-composer · +1 sync-notion-atlas Bloc 3 Layer 1).
 
+**Patch v2.56.0 post-ship · Phase B spec rigoureuse documentée (prep v2.58 implémentation)** ·
+- `sync-notion-atlas` SKILL.md enrichi avec spec Phase B `--mode=push` + `--mode=scaffold` complète · 11 databases canonical properties détaillées par collection (Produits / Specs / Mécanismes / Bénéfices / Personae / Pain Points / Angles produits / Objections / Frictions usage / Roadmap / Full funnel Meta) · relations cross-DB explicites · tags universels par défaut (Source / Confidence / Validation status) avec mapping bidirectionnel vers PhantomOS `_field_types` + `confidence` + `meta.validation_status` · canvas wrapper template Onday-style (3 colonnes callouts + Opérations table + Données Atlas sub-page) · idempotency par phantom_entity_id stocké property cachée · conflict detection Notion-side edits avant overwrite · workflow bidirectionnel push/pull cycle · évolutions futures v2.58.1 canvas extended + v2.59 diff mode + v2.60 multi-source aggregation.
+- Objectif · skill v1.0.0 Phase A pull-only fonctionnel, Phase B implémentation v2.58 SHIP-READY (spec rigoureuse, pas de design work à refaire).
+
 ---
 
 ## v2.55.0 · 2026-05-14 · Skill routing systémique · matrices canon réactivées

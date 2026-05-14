@@ -530,6 +530,241 @@ Si l'opérateur invoque `--mode=push` ou `--mode=diff` v1.0.0 ·
 
 Pas de fallback silencieux. Refuse cleanly avec roadmap d'évolution.
 
+---
+
+## Phase B spec v2.58 · scaffold-create canonical Notion workspace
+
+> **Status** · spec rigoureuse documentée v2.57, implémentation runtime v2.58. Le skill DOIT pouvoir générer le système Notion canon (11 collections + relations + tags universels + canvas wrapper) miroir de stride-up Onday template, from blank, sur n'importe quel parent Notion. Phase B = `--mode=push` from PhantomOS state, OR `--mode=scaffold` from blank brand (sans state à populer).
+
+### Invocation Phase B
+
+```
+/sync-notion-atlas {brand_slug} --mode=push {notion_parent_url}
+/sync-notion-atlas {brand_slug} --mode=scaffold {notion_parent_url}
+```
+
+- `push` · brand `brands/{brand_slug}/` existe avec state populé → scaffold structure + populate rows depuis entities PhantomOS.
+- `scaffold` · brand vierge OR pré-onboarding → scaffold structure vide (canon empty workspace, opérateur populate Notion-side ensuite OR run sync pull plus tard).
+
+### Pipeline Phase B
+
+**Step 1 · Canvas root page creation**
+
+`notion-create-pages` sous `{notion_parent_url}` ·
+
+- Title · `Phantom OS · {brand_name}` (icon 🧠)
+- Content · template canvas Onday-style ·
+  - 3 colonnes (callouts) · Base de données (mention sub-page Data Client) · Liens utiles (placeholder URLs drive assets + créas) · Espace Client (sub-page Suivi des créas)
+  - Callout `Opérations / lancements` avec table months (5 colonnes mois, rows Events + Budget vides à remplir opérateur)
+  - 2 databases inline (Roadmap + Full funnel Meta · cf Step 3)
+  - Sub-page `Données Atlas` (header documentation cartographie)
+
+**Step 2 · Données Atlas wrapper sub-page**
+
+`notion-create-pages` sous canvas root ·
+
+- Title · `🧠 Data Client, {brand_name}` (icon #️⃣)
+- Content · documentation header explicative (cf Onday template) ·
+  - Section "Comment lire l'ensemble · 3 zones reliées (Produit · Audiences · Angles)"
+  - Section "Les 6 DBs en un coup d'œil" (table DB ↔ Réponse)
+  - Section "Comment naviguer" (workflow 4 étapes Persona → Pain Points → Angles → Formule)
+  - Section "Tags universels (sur toutes les DBs)" (Source / Confidence / Validation status)
+- Inline les 9 databases canon Data Client (cf Step 3)
+
+**Step 3 · 11 databases creation**
+
+`notion-create-database` × 11, chacune avec properties canonical alignées schemas PhantomOS + tags universels par défaut + relations cross-DB. Schémas détaillés ·
+
+#### 3.1 · Produits (canon spec.identity + offers résumé)
+- `Nom produit` (title)
+- `Slug` (text, url-safe)
+- `Niche` (select)
+- `Positioning` (text)
+- `Active offer summary` (text · price + urgency)
+- Tags universels (cf section 3.12)
+
+#### 3.2 · Specs (canon spec.composition + spec.specs)
+- `Spec name` (title)
+- `Type` (select · composition / dosage / certification / packaging / origin / regulatory)
+- `Value` (text)
+- `Produit` (relation → Produits)
+- Tags universels
+
+#### 3.3 · Mécanismes (canon spec.mechanisms[])
+- `Mécanisme name` (title)
+- `Description physiologique` (text rich)
+- `Duration / délai d'effet` (text · ex "4-6 semaines")
+- `Produit` (relation → Produits, multi)
+- Tags universels
+
+#### 3.4 · Bénéfices (canon spec.benefits[] v1.10)
+- `Bénéfice name` (title)
+- `Chain level` (select · functional / emotional / identity)
+- `Emotional signal` (text · ressenti spécifique exprimé client-side)
+- `Latency min (jours)` (number)
+- `Latency max (jours)` (number)
+- `Evidence verbatim` (text rich · multi-line quotes VoC)
+- `Produit` (relation → Produits)
+- `Mécanisme` (relation → Mécanismes)
+- Tags universels
+
+#### 3.5 · Personae (canon profile.identity + psychology)
+- `Persona label` (title)
+- `Slug` (text, url-safe)
+- `Awareness stage` (select · unaware / problem-aware / solution-aware / product-aware / most-aware)
+- `Demographics` (text rich)
+- `JTBD primary` (text · "Retrouver un corps que je reconnais sans me battre")
+- `Produit principal` (relation → Produits)
+- Tags universels
+
+#### 3.6 · Pain Points (canon profile.pain_benefit_chain[] v1.6)
+- `Pain formulation` (title · customer language)
+- `Category` (select · physical / emotional / friction_ux / logistical / cognitive / social_status)
+- `Emotion` (text)
+- `Trigger` (text · moment déclencheur)
+- `Verbatim quotes` (text rich · cite VoC avec sample_size en parenthèses)
+- `Persona` (relation → Personae)
+- `Bénéfice servi` (relation → Bénéfices · backward chain)
+- Tags universels
+
+#### 3.7 · Angles produits (canon angle.json v1.2)
+- `Angle name` (title)
+- `Angle ID` (text · pattern ANG-NN)
+- `Origin axis` (select · audience-derived / product-derived / category-derived / brand-derived / temporal-cultural)
+- `Awareness stage in` (select · 5 stages canon)
+- `Awareness stage out` (select · 5 stages canon)
+- `Formula Observation` (text)
+- `Formula Tension` (text)
+- `Formula Reframe` (text)
+- `Formula Bridge produit` (text)
+- `Hook canon ID` (text · ref canon copy hooks)
+- `Framework canon ID` (text · ref canon copy frameworks)
+- `Archetype voix canon ID` (text · ref canon copy archetypes-voix)
+- `Pain extract` (text · quote anchored)
+- `Proof primary` (text · type proof retenu)
+- `CTA` (text)
+- `Persona cible` (relation → Personae)
+- Tags universels
+
+#### 3.8 · Objections (canon profile.objections[] v1.6 enrichi)
+- `Objection formulation` (title)
+- `Type` (select · price / scepticism / fit / urgency / trust / status / risk)
+- `Lifecycle` (select · awareness / consideration / decision / post-purchase)
+- `Severity score` (number 1-10)
+- `Response counter` (text · formulation neutralization testée)
+- `Persona` (relation → Personae, multi)
+- `Angle dérivé` (relation → Angles produits, multi · angles qui exploitent cette objection comme tension)
+- Tags universels
+
+#### 3.9 · Frictions usage (canon friction.schema v1.0 NEW)
+- `Friction name` (title · short label)
+- `Friction ID` (text · pattern FRC-NN)
+- `Category` (select · physical / emotional / friction_ux / logistical / cognitive)
+- `Severity score` (number 1-10)
+- `Customer evidence` (text rich · verbatims usage friction)
+- `Current workarounds` (text · ce que les clients font pour contourner)
+- `Resolution state` (select · unresolved / workaround_present / patched / fixed)
+- `Affected products` (relation → Produits, multi)
+- `Affected audiences` (relation → Personae, multi)
+- `Cross-ref objections` (relation → Objections, multi)
+- `Cross-ref pain points` (relation → Pain Points, multi)
+- Tags universels
+
+#### 3.10 · Roadmap [angles/audiences] (canon roadmap.schema v1.0 NEW)
+- `Phase name` (title)
+- `Phase ID` (text)
+- `Dates` (date range start + end)
+- `Status` (select · draft / in-progress / shipped / paused / killed)
+- `Mix axis` (select · audience / angle / product / funnel / creative)
+- `Weight` (number 0-1)
+- `Production status` (select · spec'd / in-production / shipped / iterating)
+- `Priorities (top 3)` (text rich · bullets)
+- `Angles refs` (relation → Angles produits, multi)
+- `Audiences refs` (relation → Personae, multi)
+- `Products refs` (relation → Produits, multi)
+- `Creatives refs` (relation → Full funnel Meta, multi)
+- Tags universels
+
+#### 3.11 · Full funnel Meta (canon creative.json + funnel.json)
+- `Creative name` (title)
+- `Creative ID` (text · pattern CRT-NN)
+- `Format` (select · image / carousel / story / reel / vsl / landing / email / sms / ad_copy / blog)
+- `Funnel stage` (select · TOF / MOF / BOF / retargeting / lifecycle)
+- `Intent mix primary` (select · DR / Brand / Hybrid / B2B_lead_gen)
+- `NOYAU mécanique` (text · ref creative-mechanics-registry)
+- `Hook` (text · verbatim quoted)
+- `CONTEXTE angle` (relation → Angles produits)
+- `CONTEXTE persona` (relation → Personae)
+- `Status` (select · live / paused / killed / draft)
+- `Test data` (text · CTR / CVR / spend snapshot opt)
+- Tags universels
+
+#### 3.12 · Tags universels (par défaut sur les 11 DBs)
+- `Source` (select · observed / inferred / declared) · default empty (operator-side ou pull-side)
+- `Confidence` (number · 0 à 1)
+- `Validation status` (select · hypothesis / tested / validated / scaled / fatigued)
+
+Mapping vers PhantomOS ·
+- Notion `Source` ↔ PhantomOS `_field_types` (observed↔observed · inferred↔derived · declared↔stated)
+- Notion `Confidence` ↔ PhantomOS `confidence` numeric direct
+- Notion `Validation status` ↔ PhantomOS `meta.validation_status.state` enum direct
+
+**Step 4 · Populate rows (mode push uniquement, skip mode scaffold)**
+
+Pour chaque entité dans `brands/{brand_slug}/`, `notion-create-pages` dans la database correspondante avec mapping inverse PhantomOS → Notion.
+
+- `spec.json` → 1 row Produits + N rows Specs / Mécanismes / Bénéfices (subfields éclatés)
+- `audiences/{slug}/profile.json` → 1 row Personae + N rows Pain Points + N rows Objections
+- `angles/{ANG-NN}.json` → 1 row Angles produits
+- `frictions/{FRC-NN}.json` → 1 row Frictions usage
+- `roadmap.json` → N rows Roadmap (par phase)
+- `creatives/{CRT-NN}.json` → 1 row Full funnel Meta
+
+**Step 5 · Cross-link relations (post-populate)**
+
+Post Step 4, second pass · `notion-update-page` pour set relations entre rows. Pattern · pour chaque row PhantomOS porte des cross_refs (e.g. profile.pain_points → friction_ids, angle.formula → objection_id), résoudre vers Notion page IDs et set property relation.
+
+**Step 6 · Synthesis output 5 sections investigation-posture**
+
+- **Observé** · workspace Notion créé sous `{notion_parent_url}`, URL canvas root + 11 DBs IDs · row counts populés par DB · `pct_relations_linked` (% relations cross-DB résolues correctement).
+- **Déduit** · qualité scaffold dépend de qualité state PhantomOS source · si entités sparse (peu de cross_refs), Notion populé pauvre · si dense (cross_refs riches), Notion riche en relations.
+- **Inconnu** · adoption Notion-side opérateur (utilisera-t-il la UI Notion vs PhantomOS canon ?) · si Notion édité après scaffold, drift PhantomOS ↔ Notion à diff via Phase C v2.59.
+- **Leviers** · re-run push si PhantomOS évolue (mode idempotent, met à jour pages existantes par ID) · scaffold complémentaire (canvas template Onday-style complet · Liens utiles / Suivi des créas / Opérations table) en patch v2.58.1 ou v2.59 si besoin.
+- **Close ouvert** · UNE question macro · *"Workspace Notion canon créé sous {URL}. Tu veux que je share l'URL à ton client / collab pour review, OU on enchaîne sur la table Opérations / lancements à populer manuellement post-scaffold, OU on stop ici et tu inspectes ?"*
+
+### Tags universels par défaut (Step 3.12)
+
+Sur chaque database scaffold, properties tags universels créés avec ces options select par défaut ·
+
+```
+Source · observed (green) · inferred (yellow) · declared (blue)
+Validation status · hypothesis (gray) · tested (yellow) · validated (green) · scaled (purple) · fatigued (red)
+```
+
+Confidence est number 0-1, pas select. Permet de stocker la valeur numeric agent-side et l'opérateur Notion peut filter / sort dessus.
+
+### Hard rules Phase B spécifiques
+
+- **Idempotent par PhantomOS entity ID.** Re-run push update les pages Notion existantes par `phantom_entity_id` (stocké en property texte caché type "PhantomOS ID"). JAMAIS création duplicate. Pattern · query Notion par phantom_entity_id property → si match update, sinon create.
+- **No silent overwrite Notion-side edits.** Si page Notion existe ET a été éditée Notion-side depuis dernier sync (timestamp `last_edited_time` > `last_synced`), flag conflict dans Section 4 Leviers, propose Phase C diff v2.59 avant overwrite.
+- **Canvas wrapper template fidèle Onday-style.** Step 1 + Step 2 scaffold le wrapper canvas (3 colonnes callouts + Opérations table + Données Atlas page header) MIROIR de stride-up Onday template. Reproductible cross-clients pour Abyss collectif.
+- **Mode scaffold blank-only.** Si `brand_slug` a state populé, refuse `--mode=scaffold` (anti-pattern · scaffold blank doit pas effacer Notion existant). Propose `--mode=push` à la place. Mode scaffold uniquement quand brand vierge ou pre-onboarding.
+
+### Workflow post-Phase B
+
+1. Largo run `--mode=push brand-active` · workspace Notion peuplé scaffold from PhantomOS state · partage URL au client / collab.
+2. Client / collab édite Notion-side (corrections, enrichissements, validation status update).
+3. Largo run `--mode=pull` plus tard pour rapatrier les edits Notion → PhantomOS.
+4. Cycle bidirectionnel opérationnel.
+
+### Évolutions futures Phase B+
+
+- **v2.58.1 · canvas template extended** · Liens utiles populé (drive URLs si dispo dans brand config) · Suivi des créas sub-page populated · Opérations table avec dates auto-générées (12 prochains mois rolling).
+- **v2.59 · `--mode=diff`** · compare state PhantomOS vs Notion, surface deltas operator-facing en 5 sections, accept-all / per-collection / cherry-pick.
+- **v2.60 · multi-Notion sources aggregation** · 1 PhantomOS brand pulled from N Notion workspaces (Abyss collectif scaling · N clients Notion → 1 atlas PhantomOS).
+
+---
+
 ### Workflow post-sync (opérateur arbitre)
 
 1. Synthesis Section 5 propose le drill-down macro (A / B / C).
