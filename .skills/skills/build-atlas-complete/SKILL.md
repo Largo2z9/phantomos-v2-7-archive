@@ -1,7 +1,7 @@
 ---
 name: build-atlas-complete
 type: orchestrator
-version: "1.0.2"
+version: "1.1.0"
 recommended_model: sonnet
 reasoning_pattern: null
 mode: proposed
@@ -10,6 +10,7 @@ subagent_safe: false
 isolation_scope: brand_only
 layer: 2
 description: >
+  v1.1.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · Phase 3 deepen-brand-context (chain mine-voc + mine-vom) écrit désormais dans 3 collections séparées (`pain_points/` + `objections/` + `frictions/`) plus `profile.json` clean (identity + psychology + voice + behavior + decision_process restent · pain_points + objections sub-fields legacy supprimés post-v2.63 nouvelles brands). Phase 9 compose-creative · context.pain_point_ref canonical PNT-NN persisté dans creative.json downstream. Backward compat preserved (pre-v2.63 brands route fallback profile sub-fields legacy).
   v1.0.2 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (dtc-operator-playbook, audiences-cartography, angle-anatomy, hooks-method, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   Full-cycle atlas builder. Chains the 9-phase canon pipeline end-to-end on a
   blank or partially-built brand to produce the complete strategic atlas
@@ -60,6 +61,9 @@ produces_proposals_for:
   - brands/{slug}/spec.json
   - brands/{slug}/products/*/offers.json
   - brands/{slug}/audiences/*/profile.json
+  - brands/{slug}/pain_points/*.json
+  - brands/{slug}/objections/*.json
+  - brands/{slug}/frictions/*.json
   - brands/{slug}/angles/*.json
   - brands/{slug}/creatives/*.json
   - brands/{slug}/briefs/*.md
@@ -94,6 +98,13 @@ patch_notes:
     - "produce-strategy v1.0.0 NEW orchestrator invokable en post-Phase 10 close si l'opérateur veut cadrer le focus Q{n} sur la brand atlas-complete · cycle stratégique distinct de la phase score-matrix"
   v1.0.2:
     - "v2.61 doctrine consume · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (dtc-operator-playbook, audiences-cartography, angle-anatomy, hooks-method, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
+  v1.1.0:
+    - "v2.63 ontologie pure pain_points + objections collections top-level · Phase 3 deepen-brand-context (chain mine-voc + mine-vom) écrit désormais dans 3 collections séparées top-level (pain_points/ + objections/ + frictions/) plus profile.json clean (identity + psychology + voice + behavior + decision_process restent · sub-fields pain_points + objections legacy supprimés post-v2.63 nouvelles brands)"
+    - "Phase 9 compose-creative · context.pain_point_ref canonical PNT-NN persisté dans creative.json downstream (cohérent compose-creative v1.5)"
+    - "Phase 6 produce-paid-angles consume v1.9 cohérent (lit pain_points/ + objections/ collections, persiste angle.lineage.pain_ref + objection_ref canonical)"
+    - "Phase 8 produce-copy-brief consume v1.5 cohérent (sections Pain to activate + Objections to neutralize citent PNT-NN + OBJ-NN canonical IDs inline)"
+    - "produces_proposals_for: enrichi avec pain_points/*.json + objections/*.json + frictions/*.json (NEW v2.63 top-level collections)"
+    - "Backward compat strict · pre-v2.63 brands (legacy profile sub-fields) route fallback transparent, sub-skills route silently"
 ---
 
 # Skill: build-atlas-complete
@@ -208,7 +219,16 @@ Pass context:
 
 When deepen returns its cross-synthesis (3 movements, 18 sentences max per voice canon), surface it as-is to the operator. Do not re-summarize.
 
-**Gate to Phase 4**: cross-deepening-signals synthesis delivered, profile.json drafts enriched with verbatim_quotes + audience candidates + sophistication_stage + market_vernacular.
+**v1.1.0 ontologie pure v2.63 · 3 collections séparées top-level.** Phase 3 deepen-brand-context (chain mine-voc + mine-vom) écrit désormais ·
+
+- `brands/{slug}/pain_points/*.json` (PNT-NN entities · formulation + verbatim_quotes + emotion + trigger + affected_audiences + severity + chain + confidence_chain)
+- `brands/{slug}/objections/*.json` (OBJ-NN entities · formulation + type + frequency + severity + affected_audiences + lifecycle_stage + response_counter + derived_angle_refs)
+- `brands/{slug}/frictions/*.json` (FRC-NN entities · formulation + type + affected_audiences + signals · NEW canonical layer for non-pain non-objection frictions)
+- `brands/{slug}/audiences/*/profile.json` clean (identity + psychology + voice + behavior + decision_process restent · sub-fields `pain_points[]` + `objections[]` legacy supprimés post-v2.63 nouvelles brands · backward compat lecture preserved si déjà présents)
+
+Cohérent ontologie pure cross-skill · pain + objection ne vivent plus duplicated dans profile sub-fields, ils sont canon top-level avec `affected_audiences[]` mapping N-N (un pain peut affecter multiple audiences).
+
+**Gate to Phase 4**: cross-deepening-signals synthesis delivered, `pain_points/` + `objections/` + `frictions/` collections populated, profile.json drafts enriched with verbatim_quotes (voice corpus) + audience candidates + sophistication_stage + market_vernacular.
 
 ---
 
@@ -337,6 +357,8 @@ For each brief:
 - `model: opus`
 - Input: brand slug, brief id, territoire id
 - Expected: 2-3 visual créa concepts + markdown fiche v5 per variant (S55 spec)
+
+**v1.1.0 NEW v2.63 · context.pain_point_ref canonical.** compose-creative v1.5+ lit `pain_points/{PNT-NN}.json` canonical (collection top-level) via `affected_audiences[]` filter et stage `creative.json#context.pain_point_ref: "PNT-NN"` canonical en persist HR5. Cohérent ontologie pure pain canon top-level traçable cross-graph (audience → pain → angle → brief → creative).
 
 **Operator-facing line**:
 

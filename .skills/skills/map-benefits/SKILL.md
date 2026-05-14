@@ -1,7 +1,7 @@
 ---
 name: map-benefits
 type: producer
-version: "1.0.1"
+version: "1.1.0"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -10,7 +10,9 @@ operator_facing: true
 patch_notes:
   v1.0.0: "v2.58 NEW · D#386 canon S55 mappers atomiques. Sub-skill atomique deep enrichment spec.benefits[] · chain functional → emotional → identity complete + v1.10 NEW fields activés (emotional_signal, latency_min/max, evidence_verbatim). Distinct mine-voc (qui mine verbatims pour anchor evidence_verbatim) ET snapshot-brand (light pass benefits surface). map-benefits structure deep chain compositionnelle canon doctrine compositional-cartography."
   v1.0.1: "v2.61 doctrine consume · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (pain-benefit-chain). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
+  v1.1.0: "v2.63 ontologie pure lecture · BREAKING refactor read pattern · Step 4 evidence_verbatim VoC anchored lit pain_points depuis COLLECTION TOP-LEVEL séparée `brands/{slug}/pain_points/*.json` au lieu de sub-field `profile.pain_points[]` legacy. Step 5 audience_fit derivation enrichi · si pain_points partagés cross-audiences via affected_audiences[], benefit_served peut servir N audiences (audience_fit array enrichi naturellement par cross-audience reference). Profile schema v2.0 BREAKING · read fallback preserved pour brownfield v1.7."
 description: >
+  v1.1.0 (v2.63 ontologie pure lecture) · BREAKING refactor read pattern · pain_points lus depuis collection top-level séparée pour evidence_verbatim VoC anchored (Step 4) + audience_fit derivation enrichi via cross-audience reference natif (Step 5). Profile schema v2.0 BREAKING · read fallback preserved.
   v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (pain-benefit-chain). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.0.0 (v2.58 D#386 NEW) · Sub-skill atomique cartographie deep enrichment des bénéfices produit `spec.benefits[]`. Chain compositionnelle functional → emotional → identity complete + v1.10 NEW fields (emotional_signal text · latency_min/max jours · evidence_verbatim[] anchored quotes). Distinct de mine-voc qui mine les verbatims Layer B · map-benefits structure deep chain et cross-link benefit ↔ mechanism ↔ audience. Distinct snapshot-brand light pass surface · map-benefits drill-down compositionnel. Invocable séparément par l'opérateur (`map-benefits ma-gelule`) ou orchestré par snapshot-brand.
   FR · "map-benefits {product}", "chaine fonctionnel-émotionnel-identitaire", "approfondis les bénéfices", "détaille la chain bénéfices".
@@ -40,6 +42,7 @@ permissions:
 consumes:
   - brands/{slug}/products/{p_slug}/spec.json
   - brands/{slug}/audiences/{a_slug}/profile.json
+  - brands/{slug}/pain_points/*.json (v2.63 ontologie pure · collection top-level · Step 4 evidence_verbatim anchored read + Step 5 audience_fit cross-audience derivation)
   - brands/{slug}/voc/*.json (output mine-voc Layer B)
   - resources/canon/copy/heuristiques-persuasion/*.json
   - resources/schemas/spec.schema.json
@@ -68,19 +71,20 @@ Posture analyste compositional. L'opérateur veut creuser la chaîne fonctionnel
 
 Sub-skill atomique de la famille `map-X` (D#386 canon S55). Deep-enrich `spec.benefits[]` après que le light pass existe · structure la chain compositionnelle complete functional → emotional → identity, active les NEW v1.10 fields (emotional_signal, latency_min/max, evidence_verbatim), cross-link benefit ↔ mechanism ↔ audience. Invocable en standalone ou orchestré par snapshot-brand quand le full pipeline tourne.
 
-## Step 0 · DRGFP (preconditions check)
+## Step 0 · DRGFP (preconditions check · v1.1.0 v2.63 ontologie pure)
 
 Avant tout drill, scanner prerequisites ·
 
 1. Lookup `brands/{slug}/brand.json` → si absent → bloquer · *"La marque n'est pas configurée. Run setup-brand d'abord."*
 2. Lookup `brands/{slug}/products/{p_slug}/spec.json` → si absent ou `spec.benefits[]` vide → bloquer · *"Pas de bénéfices light pass. Run snapshot-brand ou define-specs d'abord."*
 3. Lookup `brands/{slug}/audiences/*/profile.json` → noter audiences disponibles pour mapping `audience_fit[]` (Step 5)
-4. Lookup `brands/{slug}/voc/` → noter présence verbatims mine-voc Layer B pour anchor `evidence_verbatim[]` (Step 4)
-5. Lookup `spec.mechanisms[]` → noter cross-refs `triggered_by_specs` pour Step 6 cross-link
+4. **Lookup `brands/{slug}/pain_points/*.json` (v1.1.0 v2.63 collection top-level)** → scan pain_points top-level pour anchor evidence_verbatim VoC (Step 4) + cross-audience reference natif via affected_audiences[] (Step 5 audience_fit derivation). Backward compat fallback · si vide, fallback `audiences/{slug}/profile.json#/pain_points[]` legacy v1.7.
+5. Lookup `brands/{slug}/voc/` → noter présence verbatims mine-voc Layer B pour anchor `evidence_verbatim[]` (Step 4)
+6. Lookup `spec.mechanisms[]` → noter cross-refs `triggered_by_specs` pour Step 6 cross-link
 
-Output state map · {N benefits déjà posés} · {N audiences profile.json dispo} · {voc Layer B dispo · oui/non} · {mechanisms enriched · oui/non}. Surface 1 ligne contextuelle ·
+Output state map · {N benefits déjà posés} · {N audiences profile.json dispo} · {N pain_points top-level dispo OR legacy fallback} · {voc Layer B dispo · oui/non} · {mechanisms enriched · oui/non}. Surface 1 ligne contextuelle ·
 
-> *Map-benefits sur {product_name}. Light pass · {N benefits} déjà cartographiés. Matière pour drill · audiences {N profile.json} · verbatims VoC {oui/non} · mechanisms {N enriched}.*
+> *Map-benefits sur {product_name}. Light pass · {N benefits} déjà cartographiés. Matière pour drill · audiences {N profile.json} · pain_points {N top-level} · verbatims VoC {oui/non} · mechanisms {N enriched}.*
 
 ## Step 1 · Classifier chain functional / emotional / identity
 
@@ -176,61 +180,71 @@ Stage via mutation gate.
 
 **Hard rules latency** · cross-ref obligatoire mechanism.time_window si disponible (canon scientifique). JAMAIS inventer délai sans source.
 
-## Step 4 · Attach evidence_verbatim[] (v1.10 NEW field)
+## Step 4 · Attach evidence_verbatim[] (v1.10 NEW field · v1.1.0 v2.63 ontologie pure read)
 
 Cible · `spec.benefits[{idx}].evidence_verbatim[]` (array quotes clients sourcées qui attestent du bénéfice).
 
-**Logique drill** ·
+**Logique drill v1.1.0 · double source** ·
 
-Cross-ref `brands/{slug}/voc/` outputs mine-voc Layer B · pour chaque benefit, chercher 1-3 verbatims qui mentionnent ce bénéfice spécifique. Structure ·
+1. **Cross-ref `brands/{slug}/pain_points/*.json` (v2.63 collection top-level)** · pour chaque benefit, chercher pain_points dont le `formulation` ou `chain[].formulation` matche la promesse résolution du benefit. Si match, extraire les verbatims sources liés au pain_point via `_source_meta.verbatim_ids[]` qui pointent vers Layer A VoC corpus.
+2. **Cross-ref `brands/{slug}/voc/` outputs mine-voc Layer B** · pour chaque benefit, chercher 1-3 verbatims qui mentionnent ce bénéfice spécifique (lookup direct).
+3. **Fallback legacy** · si `brands/{slug}/pain_points/` vide, fallback lecture `audiences/{slug}/profile.json#/pain_points[]` legacy v1.7 brownfield pour le même mapping benefit ↔ pain.
+
+Structure ·
 
 ```json
 "evidence_verbatim": [
   {
     "text": "Après 3 semaines je dors d'une traite, c'est incroyable",
     "platform": "Trustpilot",
-    "source_url": "https://www.trustpilot.com/reviews/..."
+    "source_url": "https://www.trustpilot.com/reviews/...",
+    "pain_point_ref": "PNT-12"
   },
   {
     "text": "Première fois depuis l'accouchement que je me sens reposée le matin",
     "platform": "Reddit r/Mommit",
-    "source_url": "https://reddit.com/r/Mommit/..."
+    "source_url": "https://reddit.com/r/Mommit/...",
+    "pain_point_ref": "PNT-12"
   }
 ]
 ```
 
 **Source priorité** ·
 
-1. mine-voc Layer B verbatims (gold standard · platform + source_url required)
-2. Sources upload (testimonials photos, screenshots reviews)
-3. Sites brand (testimonials section PDP scrapé · note source `brand-curated` confidence moyenne, peut être biaisé)
-4. Q&A operator si paste manuel verbatims
+1. mine-voc Layer B verbatims cross-référencés via pain_point.\_source\_meta.verbatim\_ids (gold standard · platform + source_url + pain_point_ref triangulation)
+2. mine-voc Layer B verbatims directs (lookup benefit text → verbatim match)
+3. Sources upload (testimonials photos, screenshots reviews)
+4. Sites brand (testimonials section PDP scrapé · note source `brand-curated` confidence moyenne, peut être biaisé)
+5. Q&A operator si paste manuel verbatims
 
 Stage via mutation gate.
 
-**Hard rules evidence_verbatim** · platform + source_url obligatoires pour chaque entry (traçabilité). JAMAIS inventer quote. Si pas de matière VoC → laisser `[]` vide + flag gap dans Section 3.
+**Hard rules evidence_verbatim** · platform + source_url obligatoires pour chaque entry (traçabilité). JAMAIS inventer quote. Si pas de matière VoC → laisser `[]` vide + flag gap dans Section 3. v1.1.0 · si pain_point top-level référencé, garder `pain_point_ref: "PNT-NN"` dans l'evidence pour triangulation cross-canonical (benefit ↔ pain ↔ verbatim).
 
-## Step 5 · Derive audience_fit[]
+## Step 5 · Derive audience_fit[] (v1.1.0 v2.63 ontologie pure · cross-audience natif)
 
 Cible · derive `audience_fit[]` (array slugs audiences pour qui ce benefit est primary).
 
-**Logique drill** ·
+**Logique drill v1.1.0 · cross-audience natif via affected_audiences[]** ·
 
-Pour chaque benefit, cross-ref `brands/{slug}/audiences/*/profile.json` ·
+Pour chaque benefit, double cross-ref ·
 
-1. Lire chaque `profile.json#/psychology/pain_points[]` + `psychology/benefits[]` per audience
-2. Si le benefit produit matche un pain_point résolu OU un benefit prioritaire de l'audience → audience_fit gagne l'audience slug
-3. Output array audience slugs ranked par fit strength (audience primary ranking 1 si pain_point top-3 résolu)
+1. **`brands/{slug}/pain_points/*.json` (v2.63 collection top-level)** · pour chaque pain_point top-level qui matche la promesse résolution du benefit (cf Step 4), extraire son `affected_audiences[]` array. Chaque audience listée hérite l'audience_fit pour ce benefit (cross-audience natif · un benefit qui résout PNT-12 sert toutes les audiences listées dans PNT-12.affected_audiences[]).
+2. **`brands/{slug}/audiences/*/profile.json`** · pour chaque audience, lire `profile.json#/psychology/benefits[]` (sub-field audience-bound préservé v1.5.0) · si benefit primary de l'audience → audience_fit gagne le slug.
+3. **Fallback legacy** · si `brands/{slug}/pain_points/` vide, fallback lecture `audiences/{slug}/profile.json#/pain_points[]` legacy v1.7 brownfield (legacy v1.7 audience-bound · pas de cross-audience natif).
+4. Output array audience slugs ranked par fit strength (audience primary ranking 1 si pain_point top-3 résolu, OR si benefit primary audience-bound).
 
 ```json
 "audience_fit": ["maman-postpartum", "femme-active-30-40"]
 ```
 
-**Note** · audience_fit n'est PAS dans le schema v1.10 strict (à proposer schema bump v1.12 si validation Largo). Pour v1.0.0 map-benefits · stage en sidecar `spec.benefits.extensions.json#/{idx}/audience_fit` OU directement dans `spec.benefits[{idx}].tags[]` avec format `audience:{slug}` (backward compat hack).
+**Cross-audience reference enrichi v1.1.0** · si pain_points partagés cross-audiences via `affected_audiences[]`, le `benefit_served` peut servir N audiences naturellement. Exemple · `PNT-12 chute capillaire post-grossesse` listé dans `affected_audiences: ["maman-postpartum", "femme-30-45-active"]` → benefit `serum croissance racine` qui résout PNT-12 gagne audience_fit `["maman-postpartum", "femme-30-45-active"]` direct, sans cross-ref pairwise.
+
+**Note** · audience_fit n'est PAS dans le schema v1.10 strict (à proposer schema bump v1.12 si validation Largo). Pour v1.1.0 map-benefits · stage en sidecar `spec.benefits.extensions.json#/{idx}/audience_fit` OU directement dans `spec.benefits[{idx}].tags[]` avec format `audience:{slug}` (backward compat hack).
 
 Stage via mutation gate (path TBD selon arbitrage schema extension vs tags hack).
 
-**Hard rules audience_fit** · derived from cross-ref pain_points + benefits per audience profile, pas inventé. Si zéro audience fit → ne pas stage (le benefit est generic, pas audience-segmented).
+**Hard rules audience_fit** · derived from cross-ref pain_points top-level affected_audiences[] + benefits per audience profile, pas inventé. Si zéro audience fit → ne pas stage (le benefit est generic, pas audience-segmented). v1.1.0 · cross-audience natif via affected_audiences[] enrichit l'array sans pairwise comparison.
 
 ## Step 6 · Cross-link benefit ↔ mechanism triggered_by
 

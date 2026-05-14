@@ -1,7 +1,7 @@
 ---
 name: decompose-angle
 type: producer
-version: "1.0.1"
+version: "1.1.0"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -17,6 +17,7 @@ triggers_en:
   - "deep dive angle"
   - "enrich angle formula"
 description: >
+  v1.1.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · Step 4 bridge atoms refactor · benefit_served peut désormais référencer `pain_points/{PNT-NN}.json` collection (PNT-NN ref si la formula bridge résout un pain canonical). Step 2 tension atoms · reason_blocked peut référencer `objections/{OBJ-NN}.json` collection (OBJ-NN si tension est une objection cartographiée). Triangulation cross-canon · spec_activated + pain_ref + objection_ref tous canonical. Backward compat lecture profile.pain_points[] + profile.objections[] legacy preserved (pre-v2.63 brands).
   v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.0.0 (angle.schema v1.2 design intent honored). Sub-skill atomique deep enrichment
   de `brands/{slug}/angles/{ANG-NN}.json` · light pass formula (Observation + Tension +
@@ -113,7 +114,7 @@ Stop. Ne pas inventer un angle pour satisfaire la requête.
 
 ---
 
-## Step 1 · Read encoded data
+## Step 1 · Read encoded data (v1.1.0 ontologie pure)
 
 Load silently ·
 
@@ -121,15 +122,25 @@ Load silently ·
   - `name`, `audience_slug`, `origin_axis`, `awareness_movement`
   - `formula.observation.summary` (light pass starting point pour atoms)
   - `formula.tension.summary`, `formula.reframe.summary`, `formula.bridge.summary`
-  - `lineage` (canon refs hook/framework/angle/archetype déjà tagués)
+  - `lineage` (canon refs hook/framework/angle/archetype déjà tagués) + **v1.3 NEW** `lineage.pain_ref` + `lineage.objection_ref` (canonical refs PNT-NN + OBJ-NN si populés par produce-paid-angles v1.9+)
   - `insight` si déjà populé
   - `meta.validation_status`
+
+**Collections top-level v2.63 (NEW · ontologie pure)** ·
+
+- `brands/{slug}/pain_points/*.json` filtered by `affected_audiences[]` contains `{audience_slug}` · PNT-NN canonical entities (formulation, verbatim_quotes, emotion, trigger, chain, severity). Source de vérité pour Step 4 bridge atom `benefit_served` ref PNT-NN si formula bridge résout un pain canonical. Source de vérité Step 2 observation atom `phenomenon` source canonical.
+- `brands/{slug}/objections/*.json` filtered by `affected_audiences[]` contains `{audience_slug}` · OBJ-NN canonical entities (formulation, type, response_counter, lifecycle_stage). Source de vérité Step 3 tension atom `reason_blocked` ref OBJ-NN si tension est une objection cartographiée.
+
+**Backward compat lecture (pre-v2.63 brands)** · si `brands/{slug}/pain_points/` ET `brands/{slug}/objections/` n'existent pas comme directories, fallback `audiences/{audience_slug}/profile.json#pain_points[]` + `profile.json#objections[]` (legacy sub-fields). Skip ref canonical (text-only sourcing).
+
+**Audience profile (toujours lu)** ·
+
 - `brands/{slug}/audiences/{audience_slug}/profile.json` ·
-  - `pain_points[]` (formulation + verbatim_quotes + emotion + trigger)
-  - `objections[]` (formulation + type)
   - `voice.key_expressions[]` (corpus pour phenomenon + state_actual)
   - `psychology.jtbd` (functional + emotional + social)
   - `market_position.awareness_level`
+  - **Backward compat** · `pain_points[]` + `objections[]` sub-fields legacy preserved en lecture, mais collections top-level prennent priorité si présentes.
+
 - `brands/{slug}/products/{p_slug}/spec.json` ·
   - `mechanisms[]` (mechanism_id, name, target, mode_of_action · canon pour spec_activated)
   - `benefits[]` (benefit_id, benefit, chain · canon pour benefit_served)
@@ -146,7 +157,7 @@ Load silently ·
 
 Le fait observable que l'audience perçoit déjà OU pourrait voir si on le lui montre. Source priority ·
 1. Verbatim direct dans `audience.profile.voice.key_expressions[]` · phenomenon = formulation literal du verbatim.
-2. Pain_point.verbatim_quotes[] · phenomenon = adaptation 2-4 mots du verbatim.
+2. **v2.63 NEW** `pain_points/{PNT-NN}.json#verbatim_quotes[]` canonical collection (filtered affected_audiences contains audience_slug) · phenomenon = adaptation 2-4 mots du verbatim PNT-NN. Source canonical traçable. Backward compat fallback `profile.pain_points[].verbatim_quotes[]` legacy sub-field si collection top-level absente.
 3. Stat clinical depuis `spec.proofs.scientific` · phenomenon = la stat formulée plain language.
 4. Benchmark category (mention dans `brand.json#market.external_intelligence`).
 5. Inférence si zéro support → flag formula-derived, downgrade confidence atom.
@@ -173,7 +184,7 @@ Nombre de verbatims OR data points qui supportent le phenomenon. Null si non qua
 ### 3.1 · `state_actual` (situation actuelle audience)
 
 Ce que l'audience expérimente aujourd'hui. Source priority ·
-1. `audience.psychology.emotions[]` dominant + `pain_points[].formulation` principal.
+1. `audience.psychology.emotions[]` dominant + **v2.63 NEW** `pain_points/{PNT-NN}.json#formulation` (collection top-level filtered audience) principal · fallback legacy `profile.pain_points[].formulation`.
 2. `audience.jtbd.functional` négatif (ce que le job échoue à délivrer aujourd'hui).
 3. Verbatim direct (priorité absolue si dispo).
 
@@ -187,9 +198,11 @@ Ce que l'audience aspire à atteindre. Source priority ·
 ### 3.3 · `reason_blocked` (friction qui bloque le passage)
 
 La raison pour laquelle le gap state_actual → state_desired n'est pas franchi. 3 types canon ·
-- **External obstacle** · contrainte matérielle (prix, temps, accessibilité). Source · `audience.objections[]` type="cost" ou "access".
-- **Internal belief** · croyance limitante. Source · `audience.objections[]` type="scepticism" ou "self-doubt".
+- **External obstacle** · contrainte matérielle (prix, temps, accessibilité). Source · `objections/*.json` (collection top-level v2.63) `type="cost"` ou `"access"` · fallback legacy `audience.objections[]`.
+- **Internal belief** · croyance limitante. Source · `objections/*.json` `type="scepticism"` ou `"self-doubt"` · fallback legacy `audience.objections[]`.
 - **Lack of awareness** · manque d'information sur la solution. Source · `audience.awareness_level` problem-aware ou solution-aware (pas product-aware).
+
+**Canonical ref OBJ-NN (v1.1.0 NEW · v2.63 ontologie pure)** · si la friction match une objection canonique dans `objections/*.json`, stage atom enrichi avec `reason_blocked.objection_ref: "OBJ-NN"` canonical (en plus du `reason_blocked.type` enum). Persist via mutation gate path · `angles/{ANG-NN}.json#/formula/tension/reason_blocked_objection_ref`. Triangulation cross-canon · downstream `produce-copy-brief` peut drill direct l'objection canonique + son `response_counter` cristallisé. Backward compat (pre-v2.63) · skip canonical ref, type enum seul.
 
 ---
 
@@ -230,11 +243,13 @@ Reference vers le spec qui matérialise le reframe. Triangulation canon ·
 2. Si zéro mechanism match → lire `spec.json#benefits[]` · matcher le benefit qui sert le reframe.
 3. Hard rule · `spec_activated` est UN identifier canonique (`MEC-NN` ou `BEN-NN`), pas une phrase libre. Si zéro match → laisser null + flag Section 3 Inconnu + propose `map-mechanisms` upstream pour enrichir spec.
 
-### 5.2 · `benefit_served` (benefit_id)
+### 5.2 · `benefit_served` (benefit_id + optional pain_ref canonical)
 
 Reference vers le benefit que la promise délivre. Lire `spec.json#benefits[]` · matcher le benefit dont le `chain[]` (functional → emotional → identity) résonne avec le `state_desired` de la tension.
 
 Hard rule · `benefit_served` est UN `benefit_id` (`BEN-NN`), pas une phrase libre.
+
+**Canonical ref PNT-NN (v1.1.0 NEW · v2.63 ontologie pure)** · si la formula bridge résout un pain canonical (i.e. le `state_desired` matche l'inverse d'un PNT-NN dans `pain_points/*.json` filtered audience), stage atom enrichi avec `bridge.pain_ref: "PNT-NN"` canonical (cross-ref pain résolu par bridge). Persist via mutation gate path · `angles/{ANG-NN}.json#/formula/bridge/pain_ref`. Triangulation cross-canon complète · `spec_activated` (BEN-NN ou MEC-NN canonical spec) + `benefit_served` (BEN-NN canonical spec) + `pain_ref` (PNT-NN canonical pain) tous traçables. Downstream `produce-copy-brief` peut composer brief avec PNT-NN ID inline + drill verbatim_quotes directs. Backward compat (pre-v2.63) · skip canonical ref, benefit_served seul.
 
 ### 5.3 · `promise_formulated` (formulation textuelle de la promise)
 
@@ -261,7 +276,31 @@ python3 .skills/write-to-context.py \
   --reason "decompose-angle deep enrichment · {brief rationale}"
 ```
 
-Répéter pour les 11 atoms · phenomenon, source, sample_size, state_actual, state_desired, reason_blocked, perceptual_pivot, pivot_mechanism, spec_activated, benefit_served, promise_formulated.
+Répéter pour les 11 atoms canon · phenomenon, source, sample_size, state_actual, state_desired, reason_blocked, perceptual_pivot, pivot_mechanism, spec_activated, benefit_served, promise_formulated.
+
+**Canonical refs v1.1.0 (v2.63 ontologie pure)** · 2 paths additionnels SI canonical match détecté ·
+
+```bash
+# Tension.reason_blocked canonical objection ref
+python3 .skills/write-to-context.py \
+  --path "angles/{ANG-NN}.json#/formula/tension/reason_blocked_objection_ref" \
+  --value "OBJ-{NN}" \
+  --source agent \
+  --confidence 0.9 \
+  --mode proposed \
+  --reason "decompose-angle canonical objection triangulation v2.63"
+
+# Bridge.pain_ref canonical pain ref
+python3 .skills/write-to-context.py \
+  --path "angles/{ANG-NN}.json#/formula/bridge/pain_ref" \
+  --value "PNT-{NN}" \
+  --source agent \
+  --confidence 0.9 \
+  --mode proposed \
+  --reason "decompose-angle canonical pain triangulation v2.63"
+```
+
+Skip silencieusement si zéro match canonical (pre-v2.63 brand OR formula-derived sur pain/objection hors collection).
 
 **Confidence calibration** ·
 

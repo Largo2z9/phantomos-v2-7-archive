@@ -3,8 +3,9 @@
   "$id": "learnings.schema.json",
   "title": "Learnings (append-only brand log)",
   "description": "Brand-wide append-only learnings log. Singleton brands/{slug}/learnings.json. Entries by kind (test_result, workaround, compliance, observation, decision_trace, hypothesis_validated, pattern_promoted). v1.0 baseline shipped v2.58. Used by learn-from-session + capture-learning + brief-day Trigger pattern detection.",
-  "_schema_version": "learnings/1.0",
+  "_schema_version": "learnings/1.1",
   "_changelog": {
+    "1.1": "v2.63 refactor ontologie pure additif · entries[].cross_refs.pain_point_ids[] + objection_ids[] arrays ajoutés (cross-refs canonical vers pain_points/{PNT-NN}.json + objections/{OBJ-NN}.json top-level collections v2.63). Preserve friction_ids[] + angle_ids[] + audience_slugs[] + product_slugs[] + brief_ids[] + creative_ids[] existants. Permet pattern detection cross-entity (learn-from-session Trigger 8) sur ontologie 3 collections sub-tensions séparées. Backward compat strict additif.",
     "1.0": "v2.58 baseline. Append-only entries with kind/fact/created_at/source. Validation_status per entry. Cross_refs canonical vers other entities (angles, audiences, products, frictions, briefs)."
   },
   "type": "object",
@@ -55,12 +56,22 @@
           "context": { "type": "string", "description": "Context narratif optional" },
           "cross_refs": {
             "type": "object",
-            "description": "Références canon vers autres entités brand. Permet pattern detection cross-entity (Trigger 8 brief-day).",
+            "description": "Références canon vers autres entités brand. Permet pattern detection cross-entity (Trigger 8 brief-day). v1.1 ajoute pain_point_ids[] + objection_ids[] cross-refs vers top-level collections v2.63.",
             "properties": {
-              "angle_ids": { "type": "array", "items": { "type": "string" } },
+              "angle_ids": { "type": "array", "items": { "type": "string", "pattern": "^ANG-[0-9]{2,3}$" } },
               "audience_slugs": { "type": "array", "items": { "type": "string" } },
               "product_slugs": { "type": "array", "items": { "type": "string" } },
-              "friction_ids": { "type": "array", "items": { "type": "string" } },
+              "friction_ids": { "type": "array", "items": { "type": "string", "pattern": "^FRC-[0-9]{2,3}$" } },
+              "pain_point_ids": {
+                "type": "array",
+                "items": { "type": "string", "pattern": "^PNT-[0-9]{2,3}$" },
+                "description": "v1.1 additif · cross-refs canonical vers pain_points/{PNT-NN}.json top-level collection v2.63."
+              },
+              "objection_ids": {
+                "type": "array",
+                "items": { "type": "string", "pattern": "^OBJ-[0-9]{2,3}$" },
+                "description": "v1.1 additif · cross-refs canonical vers objections/{OBJ-NN}.json top-level collection v2.63."
+              },
               "brief_ids": { "type": "array", "items": { "type": "string" } },
               "creative_ids": { "type": "array", "items": { "type": "string" } }
             }

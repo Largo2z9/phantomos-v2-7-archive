@@ -1,7 +1,7 @@
 ---
 name: map-audiences
 type: producer
-version: 1.0.1
+version: 1.1.0
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -11,7 +11,9 @@ operator_facing: true
 patch_notes:
   - "1.0.0 (S55 · v2.58 · D#386 canon) · NEW atomique cartography. Extraction depuis snapshot-brand Step 5 (audience cartography movement) en skill standalone invocable séparément. Permet refresh audiences sans relancer le full snapshot. Cartographie 3 niveaux (broad → segment → micro) respect doctrine audience-cartography. Distinct profile-audience (qui drill UNE audience deep 8 dimensions) · map-audiences scaffold le PORTFOLIO audiences brand-wide. Cross-ref D#386."
   - "1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (audiences-cartography, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
+  - "1.1.0 (v2.63 ontologie pure) · BREAKING refactor read pattern · lit pain_points + objections depuis COLLECTIONS TOP-LEVEL séparées (`brands/{slug}/pain_points/*.json` + `brands/{slug}/objections/*.json` filtré par affected_audiences contains slug) au lieu de sub-fields profile.pain_points[] / profile.objections[] legacy. Stage cartography 3 niveaux mère/sous-poche peut désormais référencer cross-audience pain_points + objections shared (un pain peut affecter mère ET sous-poche via affected_audiences[]). Profile schema v2.0 BREAKING · read fallback preserved pour brownfield v1.7."
 description: |
+  v1.1.0 (v2.63 ontologie pure) · BREAKING refactor read pattern · lit pain_points + objections depuis COLLECTIONS TOP-LEVEL séparées au lieu de sub-fields profile.pain_points[] / profile.objections[] legacy. Cartography 3 niveaux référence cross-audience pain_points + objections shared (un pain peut affecter mère ET sous-poche via affected_audiences[]).
   v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (audiences-cartography, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.0.0 (S55 · v2.58 · D#386 canon) · Atomique cartography extraction.
   Cartographie le PORTFOLIO audiences brand-wide en appliquant le framework 4 questions canon (porte d'entrée · niveau granularité · stade Schwartz · chevauchements). Scaffold N audiences mères + sous-poches via mutation gate avec validation_status hypothesis par défaut. Invocable séparément pour refresh cartographie audiences sans relancer le full snapshot. Distinct profile-audience qui drill UNE audience en deep 8 dimensions · map-audiences pose la carte brand-wide light pass.
@@ -32,8 +34,10 @@ disambiguates_against:
 consumes:
   - brands/{slug}/brand.json (sector, market context, hero product)
   - brands/{slug}/audiences/*/profile.json (existing audiences pour merge/duplicate avoid)
+  - brands/{slug}/pain_points/*.json (v2.63 ontologie pure · collection top-level, filtré par affected_audiences contains slug · cross-audience pain reference)
+  - brands/{slug}/objections/*.json (v2.63 ontologie pure · collection top-level, filtré par affected_audiences contains slug · cross-audience objection reference)
   - brands/{slug}/products/*/spec.json (cross-ref applies_to_products binding)
-  - resources/schemas/profile.schema.json (target v1.7)
+  - resources/schemas/profile.schema.json (target v1.7 read backward compat · v2.0 BREAKING write skip)
   - resources/canon/copy/niveaux-schwartz/* (awareness stages canon · Schwartz double-stage)
   - resources/canon/copy/archetypes-voix/* (archetypes canon · informe persona_archetype hypothesis)
   - docs/system/audience-cartography-doctrine.md (canon 3 niveaux · invariants enforcement)
@@ -87,13 +91,23 @@ Distinct profile-audience (qui drill UNE audience deep 8 dimensions avec verbati
 
 ## Hard Rules
 
-### Step 0 · DRGFP prerequisite check (v2.38 canon)
+### Step 0 · DRGFP prerequisite check (v2.38 canon · v1.1.0 v2.63 ontologie pure read)
 
 Avant Step 1, scanner prerequisites :
 
-1. **L1 silent** · `brand.json` (sector identifié) · `audiences/*/profile.json` existing brownfield · canon `niveaux-schwartz` + `archetypes-voix` · doctrine `audience-cartography-doctrine.md` + `audience-cartography-framework.md`
+1. **L1 silent** · `brand.json` (sector identifié) · `audiences/*/profile.json` existing brownfield · `brands/{slug}/pain_points/*.json` (v2.63 collection top-level) · `brands/{slug}/objections/*.json` (v2.63 collection top-level) · canon `niveaux-schwartz` + `archetypes-voix` · doctrine `audience-cartography-doctrine.md` + `audience-cartography-framework.md`
 2. **L2 cross-ref** · `products/*/spec.json` pour binding `applies_to_products[]` · fallback skip si absent (audience brand-wide acceptable)
 3. **L3 gate operator** · si brand.json absent OR sector vide → refuse + reco `snapshot-brand` d'abord pour poser la base brand
+
+**Read pattern pain_points + objections v1.1.0 (v2.63 ontologie pure)** ·
+
+Pour identifier overlap pain_points + objections cousins inter-audiences candidates (Q4 cartography Step 1), scan désormais collections top-level filtrées par audience_slug ·
+
+- Scan `brands/{slug}/pain_points/*.json` → group_by `affected_audiences[]` element → mapping audience_slug → [pain_ids resolved]
+- Scan `brands/{slug}/objections/*.json` → group_by `affected_audiences[]` element → mapping audience_slug → [objection_ids resolved]
+- Backward compat fallback · si collections vides OR absentes, fallback `audiences/{slug}/profile.json#/pain_points[]` + `profile.json#/objections[]` legacy v1.7 brownfield
+
+Cross-audience natif · un pain `PNT-12` dans `affected_audiences: [audience_A, audience_B]` apparaît dans le mapping des deux audiences (source unique, lecture multi-audience).
 
 Output state map + confidence_chain[] init.
 
@@ -140,13 +154,24 @@ emotional-maturity · niant → résigné → en recherche → combatif → acce
 
 Note pour Layer A trace · stade Schwartz sera assigné en deep pass par `profile-audience` quand mining verbatim aura tourné. map-audiences laisse `psychology.awareness_stage_*` null en scaffold.
 
-#### Q4 · Chevauchements cousins
+#### Q4 · Chevauchements cousins (v1.1.0 v2.63 ontologie pure · cross-audience native via affected_audiences[])
 
-Scan pairwise des audiences cartographiées pour détecter chevauchements (semantic similarity sur pain dominant inféré + identity signals inférés). Surface 1-3 paires cousines détectées par audience candidate.
+Scan pairwise des audiences cartographiées pour détecter chevauchements.
 
-Persister `meta.overlap_with[]` array slugs.
+**v2.63 ontologie pure · detection chevauchements via collections top-level** ·
 
-Note pédagogique canon · les chevauchements ne disqualifient pas l'audience · ils révèlent les angles porteurs cousinés (cross-pollinisation copy). Operator-facing · dire "audiences cousines", jamais "overlap_with" brut.
+1. Pour chaque pair (audience_A, audience_B), scan `brands/{slug}/pain_points/*.json` → filter pain_points qui ont `affected_audiences[]` contains BOTH `audience_A` AND `audience_B` → liste pain_ids shared
+2. Idem `brands/{slug}/objections/*.json` → liste objection_ids shared
+3. Si liste pain_ids shared OR objection_ids shared non-vide → flag chevauchement entre audience_A et audience_B (cross-audience reference native)
+4. Backup heuristic (si collections vides) · semantic similarity sur pain dominant inféré + identity signals inférés (legacy fallback)
+
+Cross-audience natif · les `affected_audiences[]` arrays sur pain_points/objections expriment déjà la sémantique de chevauchement · plus besoin de re-computer semantic similarity quand le canon top-level porte l'info.
+
+Surface 1-3 paires cousines détectées par audience candidate, avec liste des pain_ids/objection_ids shared comme indicateurs explicites.
+
+Persister `meta.overlap_with[]` array slugs sur chaque audience scaffold.
+
+Note pédagogique canon · les chevauchements ne disqualifient pas l'audience · ils révèlent les angles porteurs cousinés (cross-pollinisation copy). Stage cartography 3 niveaux mère/sous-poche peut désormais référencer cross-audience pain_points + objections shared (un pain `PNT-NN` peut affecter mère ET sous-poche via affected_audiences[]). Operator-facing · dire "audiences cousines", jamais "overlap_with" brut.
 
 ### Step 2 · Scaffold audience folders + profile.json light pass
 

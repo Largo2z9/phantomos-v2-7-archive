@@ -1,7 +1,7 @@
 ---
 name: produce-paid-matrix
 type: orchestrator
-version: "1.0.1"
+version: "1.1.0"
 recommended_model: sonnet
 subagent_safe: false
 operator_facing: true
@@ -21,6 +21,7 @@ triggers_en:
   - "rank paid territories"
   - "score angles by audience"
 description: >
+  v1.1.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · chain produce-paid-angles v1.9 + weight-dimensions + score-matrix · cohérence read `pain_points/*.json` + `objections/*.json` collections top-level downstream sub-skills (au lieu de profile.json sub-fields legacy). Synthesis territoires top-3 peut désormais référencer pain_points/objections canonical IDs (PNT-NN + OBJ-NN) dans rationale Section 2 Déduit. Backward compat lecture profile.pain_points[] + profile.objections[] legacy preserved (pre-v2.63 brands, sub-skills route transparent).
   v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (territoires-prioritisation, audiences-cartography). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.0.0 (v2.56 ship · audit Phase 1 Scenario 1 gap résolu) · orchestrator chairman qui chain
   produce-paid-angles → weight-dimensions → score-matrix pour produire la matrice paid
@@ -46,6 +47,12 @@ consumes:
     min_version: 1.0.0
   - path: brands/{slug}/audiences/*/profile.json
     min_version: 1.0.0
+  - path: brands/{slug}/pain_points/*.json
+    min_version: 1.0.0
+    note: "v1.1.0 NEW v2.63 ontologie pure · pain_points canonical collection top-level (filtered affected_audiences). Consumé downstream produce-paid-angles v1.9+. Backward compat fallback profile.pain_points[] legacy."
+  - path: brands/{slug}/objections/*.json
+    min_version: 1.0.0
+    note: "v1.1.0 NEW v2.63 ontologie pure · objections canonical collection top-level (filtered affected_audiences). Consumé downstream produce-paid-angles v1.9+. Backward compat fallback profile.objections[] legacy."
   - path: brands/{slug}/angles/*.json
     min_version: 1.0.0
   - path: brands/{slug}/products/*/spec.json
@@ -261,6 +268,7 @@ Déduit · top-3 territoires hypothèses (confidence chain inheritée)
 - Confidence chain EXPLICITE par territoire (héritée des sub-skills, MIN audience × brand × anchor_type per `docs/system/confidence-propagation.md`).
 - Hypothèse présentée comme question, pas comme fait affirmé.
 - Si claim_confidence majoritaire `TRÈS faible` → flag explicit "à tester sur budget calibré, pas à scaler avant validation terrain".
+- **v1.1.0 NEW v2.63 · canonical IDs PNT-NN + OBJ-NN dans rationale** · si les angles ranked top sur le territoire référencent pain_points/objections canonical (lineage.pain_ref + objection_ref populés produce-paid-angles v1.9+), le rationale peut citer inline les canonical IDs · *"audience source mine-voc dense (3 PNT-NN canon · PNT-01 ras-le-bol régimes, PNT-03 miroir post-grossesse, PNT-07 ballonnement) · 2 angles ancrés sur OBJ-02 scepticisme cliniquement prouvé"*. Surface enrichit traçabilité opérateur drill-down. Backward compat (pre-v2.63 brands) · skip canonical IDs, rationale text-only legacy.
 
 ### Section 3 · Inconnu (variables non observables)
 
@@ -423,6 +431,13 @@ The matrice paid sur une fashion brand DTC (différent vertical) surface différ
 ---
 
 ## Patch notes
+
+### v1.1.0 (v2.63 ontologie pure · 2026-05-14)
+
+- **Cohérence consume frontmatter** · chain produce-paid-angles v1.9 + weight-dimensions + score-matrix lit désormais `pain_points/*.json` + `objections/*.json` collections top-level (au lieu de profile.json sub-fields legacy). Frontmatter consumes: enrichi avec 2 paths NEW.
+- **Synthesis Section 2 enrichi** · territoires top-3 rationale peut référencer pain_points/objections canonical IDs (PNT-NN + OBJ-NN) dans rationale (si angles ranked ont lineage.pain_ref + objection_ref populés produce-paid-angles v1.9+). Surface enrichit traçabilité opérateur drill-down.
+- **Backward compat strict** · pre-v2.63 brands (legacy profile sub-fields) route fallback transparent · sub-skills route silently selon disponibilité collections top-level vs profile sub-fields.
+- **Pas de modification logique propre orchestrator** · Step 0-5 pipeline inchangé, juste cohérence frontmatter + sub-skills versions bumped consistent.
 
 ### v1.0.0 (v2.56 ship · 2026-05-12)
 

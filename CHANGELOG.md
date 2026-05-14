@@ -7,6 +7,55 @@
 
 ---
 
+## v2.63.0 · 2026-05-15 · BREAKING · Ontologie pure refactor · pain_points + objections collections top-level
+
+**Why** · Largo a flag inconsistance ontologique v2.62 · friction.schema était collection top-level (v2.56) MAIS pain_points + objections étaient sub-fields `profile.json` legacy v1.4. Les 3 sub-tensions client (pain + objection + friction) doivent être au même niveau ontologique. Canon Notion stride-up workspace les met en 3 collections séparées (parité stricte). v2.63 résout · refactor complet ontologie pure · 3 collections orthogonales avec cross-refs canonical PNT-NN/OBJ-NN/FRC-NN.
+
+**What** · 4 agents parallèle · 220+ mentions canonical cumulées · BREAKING change profile.schema v1.7 → v2.0.
+
+**Schemas (Agent A · 2 NEW + 4 patches)** ·
+- `pain_points.schema.json` v1.0 NEW · canonical top-level collection · PNT-NN id pattern · pain_category enum cohérent friction · chain surface/consequence/deep + verbatim_quotes + affected_audiences[] + affected_products[] + derived_angle_refs[]
+- `objections.schema.json` v1.0 NEW · canonical top-level collection · OBJ-NN id pattern · type 7-enum (price/scepticism/fit/urgency/trust/status/risk) × lifecycle 4-stages × severity_score 1-10 + response_counter + derived_angle_refs[]
+- `profile.schema.json` v1.7 → v2.0 **BREAKING** · remove `pain_points[]` + `objections[]` arrays. Profile clean · identity + psychology + voice + behavior + decision_process + market_position + research_meta + purchase_driver + persona_archetype + buyer_user_split + role + benefits + meta.
+- `friction.schema.json` v1.1 → v1.2 · cross_refs.{pain_point_ids, objection_ids} maintenant patterns PNT-NN/OBJ-NN enforced canonical
+- `angle.schema.json` v1.2 → v1.3 · lineage.pain_ref + objection_ref optional canonical refs (legacy pain_extract text preserved)
+- `learnings.schema.json` v1.0 → v1.1 · entries.cross_refs.pain_point_ids[] + objection_ids[] arrays + patterns enforced
+
+**Migration script** · `operations/migrations/v2.63-pain-objection-collections.py` NEW · idempotent · scan brands existants · génère PNT-NN/OBJ-NN incrémental · mapping FR→EN type enum (prix→price, etc.) · frequency integer→bucket (1-3→low, 4-6→medium, 7-10→high) · backups horodatés · events log .phantom/context-engine-events.jsonl · re-run safe.
+
+**Skills mining/audiences (Agent B · 5 patches)** ·
+- `mine-voc` v1.1.1 → v1.2.0 · writes collections top-level (pain_points/{PNT-NN}.json + objections/{OBJ-NN}.json) avec affected_audiences[] natif
+- `profile-audience` v1.4.1 → v1.5.0 · HR2/HR5/HR7.5 read + write collections séparées
+- `map-audiences` v1.0.1 → v1.1.0 · reads cross-audience natif pain/objection partagés
+- `map-mechanisms` v1.0.1 → v1.1.0 · reads pain_points collection pour mapping triggered_by
+- `map-benefits` v1.0.1 → v1.1.0 · evidence_verbatim depuis collections + audience_fit cross-audience auto
+
+**Skills paid/creative/orchestration (Agent C · 8 patches)** ·
+- `produce-paid-angles` v1.8.1 → v1.9.0 · Step 1 read collections · Step 11bis P4/P5 back-refs canonical paths (objections.response_counter + derived_angle_refs + pain_points.derived_angle_refs)
+- `produce-copy-brief` v1.4.1 → v1.5.0 · sections Pain/Objections cite PNT-NN/OBJ-NN inline + cross-ref
+- `compose-creative` v1.4.3 → v1.5.0 · context.pain_point_ref canonical
+- `decompose-ad` v1.3.2 → v1.4.0 · canonical link conditional internal vs external (isolation brand_only)
+- `decompose-angle` v1.0.1 → v1.1.0 · triangulation cross-canon spec/pain/objection refs · 11 atoms canonical
+- `creative-brief-composer` v1.0.1 → v1.1.0 · consumes cohérence chain
+- `build-atlas-complete` v1.0.2 → v1.1.0 · Step 3 deepen-brand-context écrit 3 collections + Step 9 pain_point_ref canonical
+- `produce-paid-matrix` v1.0.1 → v1.1.0 · consumes cohérence + synthesis ref canonical IDs
+
+**Rendering /phantom + doctrines + onboarding (Agent D)** ·
+- `phantom.md` · 2 NEW entity-drill modes (`{brand} pain-points` + `{brand} objections`) · WORKSPACE NAVIGATION update · pain points + objections devenus entités top-level distinctes drillables (cross-audiences cluster vue · TOP-3 par catégorie · severity blocking ≥7) · mode item PNT-NN/OBJ-NN drillable
+- 3 doctrines updates · `audiences-cartography-doctrine.md` + `objections-mapping-doctrine.md` + `pain-benefit-chain-doctrine.md` · mentionnent collections top-level + canonical IDs PNT-NN/OBJ-NN cohérent FRC-NN
+- `tour.md` v2.62 → v2.63 · Milestone 6 table enrich 2 NEW triggers (drill pain-points + objections) · Milestone 7 mention collections sub-tensions séparées
+
+**Backward compat strict additif sur lecture** ·
+- Skills lisent collections top-level en priorité + fallback transparent profile sub-fields legacy si collections absentes
+- Brands pre-v2.63 sans pain_points/objections collections valident · runtime auto-fallback profile legacy preserve
+- Migration script idempotent re-run safe pour upgrade
+
+**Stats** · 13 skills patches (5 B + 8 C) + 2 NEW schemas + 4 patches schemas + 1 NEW migration script + 4 docs updates (phantom + 3 doctrines + tour.md) · 220+ mentions canonical cumulées. Manifest 67 skills inchangé (rename frontmatter, pas skill add).
+
+**D#402 captured** · ontologie pure discipline · 3 collections sub-tensions client orthogonales (pain_points · objections · frictions) parité canon Notion stride-up · cross-refs canonical PNT-NN/OBJ-NN/FRC-NN · BREAKING change justifié par cohérence ontologique long-terme.
+
+---
+
 ## v2.62.0 · 2026-05-15 · Refresh onboarding tour.md post-v2.55→v2.61
 
 **Why** · audit live test post-v2.61 a flagué obsolescence tour.md (402L). Zéro mention 4 NEW orchestrators v2.56-v2.57 (build-atlas-complete · produce-paid-matrix · creative-brief-composer · sync-notion-atlas) · zéro mention 7 NEW skills v2.58 D#386 mappers · zéro mention business_model auto-detection · zéro mention /phantom 5 sections · zéro mention doctrine layer. Operator nouveau découvrait pipeline obsolète (snapshot → mine-voc → produce-paid-angles → produce-copy-brief 4-skill chain) au lieu de l'éventail complet v2.61.

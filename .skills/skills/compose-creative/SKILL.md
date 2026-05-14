@@ -1,6 +1,6 @@
 ---
 name: compose-creative
-version: 1.4.3
+version: 1.5.0
 type: producer
 isolation_scope: brand_only
 layer: 2
@@ -11,6 +11,7 @@ operator_facing: true
 reasoning_pattern: matrix-driven
 matrix_mode: composing
 patch_notes:
+  v1.5.0: "v2.63 ontologie pure pain_points + objections collections top-level · HR2 CONTEXTE refactor · `context.pain_point` lookup canonique `pain_points/{PNT-NN}.json` filtered by affected_audiences contains audience_slug (au lieu de profile.problem_map[idx] legacy sub-field). HR5 persist · creative.json#context.pain_point_ref stage PNT-NN canonical (au lieu de pain_extract text legacy seul). Backward compat lecture profile.pain_points[] preserved (pre-v2.63 brands · skip canonical ref, fallback pain text inline). Cohérent ontologie pure cross-skill (produce-paid-angles v1.9 + produce-copy-brief v1.5 + decompose-angle v1.1 idem refactor)."
   v1.4.2: "v2.51 operator-fiche-output canonique template applied · header + gate + footer refactor langage métier. Operator output template (HR6) refactor selon canonique resources/templates/operator-fiche-output.md · header `═══ {BRAND_HUMAIN} · Pub n°{N} ═══` + sous-titre plain language (drop `COMPOSE CREATIVE · CRT-N`). Section 1 / Section 2 / Section 3 réécrites plain language (drop `format: static_image | ratio: 4:5` JSON-style, drop `intent_mix` enum, drop `craft_mode density=0.6`, drop `concept_id: cpt_brand_audience_001`). Bloc `TAGS RETRIEVAL` retiré du template rendu operator (vit backstage dans creative.json pour retrieval programmatique). Footer · 1 reco soft offer 1 ligne max, pas menu. HR3.4 retry wording `compositing externe recommandé v2.35` clean → wording métier. HR-COMPOSITE soft offers wording cohérent canonique sans nommer skills."
   v1.4.1: "v2.50 UX patch · pull-not-push pattern systémique. HR-COMPOSITE decision rule (signal 2 canonical asset disponible) · soft offer au lieu de refuser quand asset manque · operator a 3 choix · (a) drop fichier local, (b) fetch from URL via bridge, (c) fallback full_regen. HR3b Step 3b.2 lookup canonical packshot · idem soft offer 3 options, jamais nommer skill craft-packshot ni layered en surface. HR3b Step 3b.5 multi-layer paste · build créa avec layers disponibles puis surface gap à operator en fin de pipeline avec soft offer 4 options (récupère site / drop fichier / skip cette pub / skip toujours). meta.composite_layers_missing[] log additif. Cohérent feedback operator session 2026-05-13 · jamais forcer user, pull naturel via downstream skill quand asset demandé manque, soft surface 1 ligne max."
   v1.4.0: "v2.48 multi-layer paste extension HR3b Step 3b.5 NEW · packshot + logo + badge en couches ordered pour ads complets branded pixel-exact. composite_layers[] input array · default ['packshot'] (Step 3b.3 standard single-layer) · extensions ['packshot', 'logo'] / ['packshot', 'badge:cert_plantes_naturelles'] / ['packshot', 'logo', 'badge:cert_plantes_naturelles']. Order = z-index render (premier paste = derrière, dernier = devant). Layer defaults · packshot scale 0.65 position center 0.62 shadow enabled · logo scale 0.12 position right 0.92 bottom-right shadow disabled · badge scale 0.10 position left 0.10 top-left shadow disabled. Operator override granular via dict {type, slug, variant, position, scale, shadow}. Multi_layer_composite() PIL function added · loop layers + resolve slot path depuis visual_identity.assets_canonical v1.2 nouveaux slots (logo_canonical + badge_canonical{}) + white-to-alpha threshold + paste ordered + soft shadow conditional. Workflow recommandé · craft-packshot upstream + import-asset logo+badge + compose-creative layered multi-layer. Bridge v2.48 visual_identity schema v1.2 nouveaux slots downstream consumer."
@@ -19,6 +20,7 @@ patch_notes:
   v1.0.2: "v2.36 frictions runtime patch. HR3 step 3 explicit aspect_ratio param (4:5 default Meta feed). HR3.4 adaptive retry policy (max 3 retries scenes complexes vs 2 packshot only) + label_compositing_required flag forward to compose-overlay-text v2.37. HR3.5 post-gen aspect_ratio normalize via PIL crop centre si fal.ai output ratio differe target."
   v1.0.1: "v2.35 alignment. visual_identity path fallback (spec.json#visual_identity OR sibling visual_identity.json with _belongs_to pointer). HR1.4 + HR3.1 patched + consumes paths extended."
 description: >
+  v1.5.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · context.pain_point reference refactor · lookup `pain_points/{PNT-NN}.json` canonical (au lieu de profile.pain_points[idx] sub-field legacy). creative.json stage maintenant ref `context.pain_point_ref: "PNT-NN"` canonical. Backward compat lecture profile.pain_points[] legacy preserved (pre-v2.63 brands).
   v1.4.3 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, pain-benefit-chain, breakthrough-advertising-5-stages). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.4.0 (v2.48) : multi-layer paste extension HR3b Step 3b.5 · composite_layers[] ordered packshot + logo + badge en couches pour ads complets branded pixel-exact.
   v1.3.0 (v2.47) : composite_mode input option · full_regen (default) OR layered (pattern studio photographer · packshot canon collé pixel-exact via PIL paste post-gen scene-only).
@@ -219,7 +221,7 @@ Assembler creative.schema v1.2 selon NOYAU × CONTEXTE × MODIFIEURS.
 **CONTEXTE (couches stratégiques branchables) :**
 
 - `angle_ref` : `angle_id` source (lineage canon préservé).
-- `pain_point` : depuis `profile.problem_map` + tag verbatims sources si dispo.
+- `pain_point` (v1.5.0 ontologie pure) : lookup `pain_points/{PNT-NN}.json` canonical filtered by `affected_audiences[]` contains `{audience_slug}` (collection top-level NEW v2.63). Stage `context.pain_point_ref: "PNT-NN"` canonical dans creative.json downstream HR5. Si angle.lineage.pain_ref déjà populé (produce-paid-angles v1.9+), priorité absolue à ce ref canonique. Sinon, pick top pain entity par severity desc sur l'audience. Backward compat (pre-v2.63 brands) · si `pain_points/` collection top-level absente, fallback `profile.json#problem_map` ou `profile.json#pain_points[]` sub-field legacy · stage `context.pain_point_ref: null` + `context.pain_point_text: "{verbatim from legacy}"` inline.
 - `persona` : depuis `profile` (type + buyer_user_split snapshot cache).
 - `proof` : depuis `spec.problems_solved` + `audience.benefit_stack`.
 

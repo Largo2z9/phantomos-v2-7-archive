@@ -1,7 +1,7 @@
 ---
 name: produce-copy-brief
 type: producer
-version: "1.4.1"
+version: "1.5.0"
 isolation_scope: brand_only
 layer: 3
 recommended_model: sonnet
@@ -24,6 +24,7 @@ consumes:
   - path: docs/doctrine/pain-benefit-chain-doctrine.md
   - path: docs/doctrine/breakthrough-advertising-5-stages.md
 description: >
+  v1.5.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · Step 1 read encoded data refactor · pain_points lus depuis `pain_points/*.json filtered by affected_audiences contains audience_slug` (collection top-level NEW v2.63) · objections lues depuis `objections/*.json filtered idem`. Section "Objections to neutralize" du brief cite désormais OBJ-NN canonical IDs + cross-ref objections collection. Section "Pain to activate" cite PNT-NN canonical + cross-ref pain_points collection. Backward compat lecture profile.pain_points[] + profile.objections[] legacy preserved (pre-v2.63 brands).
   v1.4.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, objections-mapping, pain-benefit-chain, breakthrough-advertising-5-stages). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.4.0 (v2.56 brief.schema activation) : Step 6bis NEW · stage Layer C frontmatter conforme brief.schema v1.0 (BRF-NN id, angle_id ref, audience_slug, product_slug, creative_format enum, intent_mix object, overlay_density, brand_mark_present, validation_status, confidence_chain, status hypothesis, created date). Storage path migré vers `brands/{slug}/briefs/{BRF-NN}.md` (canon brief.schema). Old path `produced/copy-briefs/` deprecated mais lecture backward compat. Closes schema orphan v2.42 (brief.schema designed jamais activée runtime). Downstream skills (compose-creative, recompose-creative, audit-creative-output) consument désormais des briefs au frontmatter typé canonique.
   v1.2.0 (v2.32 alignment) : when a creative_id is passed in input, reads creative.intent_mix in priority over intent for tone calibration. Also reads overlay_density + brand_mark_present (fallback craft_mode) and accepts validation_status oneOf shape.
@@ -177,11 +178,20 @@ Si l'angle n'a pas de lignage canon (angle pre-v2.26 ou produit hors skill), le 
 
 ---
 
-## Step 1 — Read encoded data
+## Step 1 — Read encoded data (v1.5.0 ontologie pure)
 
 Load the substrate silently. Never narrate the loading.
 
-- `brands/{slug}/audiences/{audience-slug}/profile.json` — `pain_points[]` (formulation, chain, emotion, trigger, awareness_stage, _source_meta.sample_size), `objections[]` (type, formulation, frequency, severity, lifecycle_stage), `voice.key_expressions[]` (text, frequency, sample_size, platform), `voice.vocabulary_to_avoid[]`, `voice.tone_register`, `psychology.jtbd.{primary, context, emotional_driver}`, `decision_process.trust_anchors[]`, `market_position.awareness_level`, demographics.
+**Collections top-level v2.63 (NEW · ontologie pure)** ·
+
+- `brands/{slug}/pain_points/*.json` filtered by `affected_audiences[]` contains `{audience-slug}` — pain canon entity (PNT-NN id, formulation, chain functional→emotional→identity, emotion, trigger, awareness_stage, verbatim_quotes[], severity, lifecycle_stage, confidence_chain, derived_angle_refs[]). Source de vérité pour section "Pain to activate" du brief.
+- `brands/{slug}/objections/*.json` filtered by `affected_audiences[]` contains `{audience-slug}` — objection canon entity (OBJ-NN id, formulation, type, frequency, severity, lifecycle_stage, response_counter, derived_angle_refs[]). Source de vérité pour section "Objections to neutralize" du brief.
+
+**Backward compat lecture (pre-v2.63 brands)** · si `brands/{slug}/pain_points/` ET `brands/{slug}/objections/` n'existent pas comme directories, fallback `audiences/{audience-slug}/profile.json#pain_points[]` + `profile.json#objections[]` (legacy sub-fields). Skill ne refuse jamais sur ce point, route transparent.
+
+**Audience profile (toujours lu)** ·
+
+- `brands/{slug}/audiences/{audience-slug}/profile.json` — `voice.key_expressions[]` (text, frequency, sample_size, platform), `voice.vocabulary_to_avoid[]`, `voice.tone_register`, `psychology.jtbd.{primary, context, emotional_driver}`, `decision_process.trust_anchors[]`, `market_position.awareness_level`, demographics. **Note v2.63** · `pain_points[]` + `objections[]` sub-fields legacy preserved en lecture pour backward compat, mais collections top-level prennent priorité si présentes.
 - `brands/{slug}/products/{hero}/spec.json` — `identity.{name, niche, positioning}`, `unique_mechanism`, `problems_solved[]` with `verbatim_quotes[]`, `benefits[].chain` (functional → emotional → identity), `proofs.{social, authority, performance, scientific}`, `compliance`, `market_context.{sophistication, demonstrability, trust_barrier}`.
 - `brands/{slug}/products/{hero}/offers.json` — active offer matching the channel, or active offer general if not channel-specific. Pricing, urgency, bonus, duration tier.
 - `brands/{slug}/brand.json` — `tone_of_voice.{style, register, banned_words, frequent_words}`, `positioning`, `market.*` if VoM has run (vernacular, white-spaces).
@@ -210,9 +220,9 @@ Mandatory sections inside the brief artifact (NOT in the agent's chat). If opera
 - **Header** — brand / audience / angle / channel / date / brief_id.
 - **Target audience** — 1 paragraph prose (demographic + psychographic + pain anchor + awareness stage), customer voice not brand voice.
 - **Le job (JTBD)** — primary JTBD in 1 sentence per `voc-coding.md` JTBD lens, customer voice. Context if it sharpens.
-- **Pain to activate** — formulation in customer language + emotion + trigger + 2-3 verbatim quotes with `sample_size` context inline.
+- **Pain to activate** — formulation in customer language + emotion + trigger + 2-3 verbatim quotes with `sample_size` context inline. **v1.5.0 NEW · cite PNT-NN canonical ID inline** (ex *"Pain principal · PNT-03 'Ras-le-bol des régimes'"*) + cross-ref `pain_points/{PNT-NN}.json` pour le copywriter qui peut drill l'entity canonique downstream. Si pre-v2.63 brand (legacy profile sub-field), skip canonical ID inline (pain text-only).
 - **Language to reuse** — 5-10 expressions from `voice.key_expressions[]` ranked by `frequency / sample_size`, each on its own line, each tagged with platform and frequency context. The words to weave into copy.
-- **Objections to neutralize** — top 3 by recurrence × severity, each paired with a proof type from `proof-registry.md` that the brand actually carries. Lifecycle stage flagged (awareness / consideration / decision).
+- **Objections to neutralize** — top 3 by recurrence × severity, each paired with a proof type from `proof-registry.md` that the brand actually carries. Lifecycle stage flagged (awareness / consideration / decision). **v1.5.0 NEW · cite OBJ-NN canonical ID inline** (ex *"OBJ-02 'C'est juste du marketing'"*) + cross-ref `objections/{OBJ-NN}.json` pour le copywriter qui peut drill `response_counter` déjà cristallisé par produce-paid-angles + `derived_angle_refs[]` cross-section. Si pre-v2.63 brand (legacy profile sub-field), skip canonical ID inline (objection text-only).
 - **Proofs available** — inventory by type (testimonials, scientific/clinical, authority, social), each entry sourced from `product.proofs[]`, ready to quote.
 - **CTAs** — 3 variants tone-aligned per `brand.tone_of_voice` + active offer pricing/urgency/bonus inline (decision #5). One direct-benefit, one risk-reversal, one urgency-anchored if offer carries urgency.
 - **Format constraints** — channel-specific: Meta primary text 125 char before "see more" / Email subject 50 char / Landing block structure / TikTok script 60s pacing. Banned claim language per platform policy.

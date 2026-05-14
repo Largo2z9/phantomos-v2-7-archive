@@ -1,7 +1,7 @@
 ---
 name: creative-brief-composer
 type: orchestrator
-version: "1.0.1"
+version: "1.1.0"
 recommended_model: sonnet
 subagent_safe: false
 mode: proposed
@@ -10,8 +10,10 @@ isolation_scope: brand_only
 layer: 2
 reasoning_pattern: null
 patch_notes:
+  v1.1.0: "v2.63 ontologie pure pain_points + objections collections top-level · cohérence consume frontmatter · chain produce-copy-brief v1.5 + compose-creative v1.5 lisent désormais pain_points/*.json + objections/*.json collections top-level (au lieu de profile.json sub-fields legacy). Frontmatter consumes: enrichi avec 2 paths NEW. Pas de modification logique propre orchestrator (Phase 1-5 pipeline inchangé), juste cohérence frontmatter + sub-skills versions bumped consistent. Backward compat lecture profile.pain_points[] + profile.objections[] legacy preserved · sub-skills route transparent selon disponibilité collections top-level vs profile sub-fields."
   v1.0.0: "v2.56 ship · résout gap orchestration Scenario 2 audit Phase 1. L'opérateur a sélectionné un angle prioritaire (via produce-paid-angles ou choix manuel) et veut matérialiser : brief structuré + 2-3 variants créa visuels Meta-ready. Chaîne produce-copy-brief → operator gate validate → compose-creative × N (parallèle ou séquentiel selon load). Orchestrateur pur, ne ré-implémente jamais la logique des sub-skills. Pattern Step 4-5 mirror onboard-brand (gate operator validate then push N variants). Cross-ref compositional-cartography.md §3 équation v3.1, investigation-posture.md output 5 sections."
 description: >
+  v1.1.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · orchestrator cohérence consume frontmatter · chain produce-copy-brief v1.5 + compose-creative v1.5 · les 2 sub-skills lisent désormais `pain_points/*.json` + `objections/*.json` collections top-level (au lieu de profile.json sub-fields legacy). Pas de modification logique propre orchestrator · juste cohérence consume frontmatter + downstream sub-skills versions bumped. Backward compat lecture profile.pain_points[] + profile.objections[] legacy preserved (pre-v2.63 brands, route transparent).
   v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, objections-mapping, pain-benefit-chain). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   Full-cycle creative materialization orchestrator. L'opérateur a sélectionné un angle prioritaire
   et veut générer brief structuré + 2-3 variants créa visuels Meta-ready en une seule passe.
@@ -42,9 +44,15 @@ consumes:
   - path: brands/{slug}/audiences/{audience_slug}/profile.json
     min_version: 1.0.0
     note: audience source · 8 dimensions + Schwartz + persona
+  - path: brands/{slug}/pain_points/*.json
+    min_version: 1.0.0
+    note: "v1.1.0 NEW v2.63 ontologie pure · pain_points canonical collection top-level (filtered affected_audiences contains audience_slug). Consumé downstream par produce-copy-brief v1.5 + compose-creative v1.5. Backward compat fallback profile.pain_points[] legacy."
+  - path: brands/{slug}/objections/*.json
+    min_version: 1.0.0
+    note: "v1.1.0 NEW v2.63 ontologie pure · objections canonical collection top-level (filtered affected_audiences contains audience_slug). Consumé downstream par produce-copy-brief v1.5. Backward compat fallback profile.objections[] legacy."
   - path: brands/{slug}/angles/{angle_id}.json
     min_version: 1.2.0
-    note: angle sélectionné · formula Obs+Tension+Reframe+Bridge + lineage canon
+    note: angle sélectionné · formula Obs+Tension+Reframe+Bridge + lineage canon (v1.3 pain_ref + objection_ref canonical v2.63 si produce-paid-angles v1.9+ a tourné)
   - path: brands/{slug}/products/{product_slug}/spec.json#visual_identity
     min_version: 1.10.0
     note: visual_identity packshot canonisé (optional · fallback full_regen si absent)

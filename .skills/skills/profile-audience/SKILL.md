@@ -1,12 +1,13 @@
 ---
 name: profile-audience
-version: 1.4.1
+version: 1.5.0
 patch_notes:
   - "1.2.0 · v2.39+ · Step 0ter framework awareness (4 questions cartography pédagogie inline)"
   - "1.3.0 · v2.54 investigation posture refactor surface · audiences présentées comme hypothèses avec confidence chain explicite (TRÈS faible par défaut sans mine-voc · faible 1-2 indicateurs site · moyenne mine-voc partiel · forte mine-voc + analytics convergents). Operator output template HR6 + HR8 restructurés · chaque audience porte hypothèse / confidence / indicateurs sources / validation requise / anti-pattern à respecter. Skill termine sur close drill-down macro · lancer mine-voc maintenant vs valider intuitivement et continuer. Préserve mécanismes 8 dimensions Schwartz double-stage problem_map. Refacto uniquement la posture surface · présentation comme hypothèse vs persona analytique. Cross-ref docs/system/investigation-posture.md."
   - "1.3.1 · v2.55 audit consume canon matrices · consumes: enrichi (archetypes-voix, heuristiques-persuasion, creative-formula.md) + HR0bis NEW Load canon matrices force lecture batch via phantom-canon.py + cross-product canon × audience obligatoire en HR3 Dimensions 1/6/7 (canon_ref cité Layer A trace + profile.json#lineage). Aligne déclaration consumes: avec ce que les Steps lisent réellement. Anti-pattern banni · halluciner archetype ou biais audience-side sans mapping canon. Master doctrine ré-activé · PhantomOS reasons over a business universe, canon dormant = output générique averaged-LLM."
   - "1.4.0 (v2.58 coverage extend) · role.type derivation depuis buyer_user_split · objections.severity_score synthesis · behavior.* sub-fields VoC-anchored. Closes 3 orphans audit v2.57."
   - "1.4.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (audiences-cartography, objections-mapping, pain-benefit-chain, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
+  - "1.5.0 (v2.63 ontologie pure) · BREAKING refactor pain_points + objections passent en COLLECTIONS TOP-LEVEL séparées · stage `brands/{slug}/pain_points/{PNT-NN}.json#chain.surface/consequence/deep` + `brands/{slug}/objections/{OBJ-NN}.json#severity_score` au lieu de sub-fields profile.json legacy. Read pain + objection désormais depuis collections (scan `brands/{slug}/pain_points/*.json` + `brands/{slug}/objections/*.json` filtré par affected_audiences contains audience_slug). Profile schema v2.0 BREAKING · sub-fields legacy DEPRECATED write · read fallback preserved pour brownfield v1.7."
 type: orchestrator
 isolation_scope: brand_only
 layer: 3
@@ -15,6 +16,7 @@ subagent_safe: true
 mode: proposed
 operator_facing: true
 description: |
+  v1.5.0 (v2.63 ontologie pure) · BREAKING refactor pain_points + objections passent en COLLECTIONS TOP-LEVEL séparées · stage `brands/{slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/objections/{OBJ-NN}.json` au lieu de sub-fields profile.json legacy. Read désormais depuis collections (scan filtré par affected_audiences contains audience_slug). Profile schema v2.0 BREAKING · sub-fields legacy DEPRECATED write · read fallback preserved.
   v1.4.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (audiences-cartography, objections-mapping, pain-benefit-chain, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.4.0 (v2.58 coverage extend) · role.type derivation depuis buyer_user_split · objections.severity_score synthesis · behavior.* sub-fields VoC-anchored. Closes 3 orphans audit v2.57.
   Synthétise les outputs de mining (voc/vom/audience) en profil audience structuré 8 dimensions canon V3. Consume verbatims raw, produit profile.json conforme schema v1.3 avec validation gate operator. Ne mine pas, synthétise.
@@ -51,6 +53,10 @@ consumes:
 produces_validations_for: []
 produces_proposals_for:
   - brands/{slug}/audiences/{audience_slug}/profile.json
+  - brands/{slug}/pain_points/{PNT-NN}.json
+  - brands/{slug}/objections/{OBJ-NN}.json
+  - brands/{slug}/audiences/{audience_slug}/profile.json#/pain_points (legacy v1.7 backward compat read · DEPRECATED write)
+  - brands/{slug}/audiences/{audience_slug}/profile.json#/objections (legacy v1.7 backward compat read · DEPRECATED write)
 permissions:
   reads: [brands/, resources/]
   writes: [brands/{slug}/audiences/{slug}/profile.json via write_to_context]
@@ -218,29 +224,40 @@ Si aucun mining n'a tourné, surface warning :
 
 > Pas de signal mining disponible. Skill produira hypothesis-grade. Run mine-voc d'abord pour grade validated. Continuer ?
 
-### HR2 · Load mining outputs
+### HR2 · Load mining outputs (v1.5.0 v2.63 ontologie pure · read collections séparées)
 
 Read `brands/{slug}/audiences/_voc/{audience}/*` + `_vom/*` + `raw/*`.
-Aggrégate verbatims, key_expressions, pain points raw, benefits raw.
-Cache localement dans `/tmp/profile-audience/{audience}-mining-corpus.json`.
+Aggrégate verbatims, key_expressions, benefits raw.
 
-### HR2.5 · Read existing profile.json as seed corpus (brownfield)
+**Read pain_points + objections désormais depuis collections top-level séparées (v2.63 ontologie pure)** ·
+
+1. Scan `brands/{slug}/pain_points/*.json` → filter par `affected_audiences` contains `{audience_slug}` → cache aggrégat pain_points scope audience courante
+2. Scan `brands/{slug}/objections/*.json` → filter par `affected_audiences` contains `{audience_slug}` → cache aggrégat objections scope audience courante
+3. Backward compat read fallback · si `brands/{slug}/pain_points/` vide OU absent, fallback lecture `profile.json#/pain_points[]` legacy v1.7 (brownfield migration progressive)
+4. Idem objections · scan `brands/{slug}/objections/*.json` premier, fallback `profile.json#/objections[]` legacy v1.7
+
+Cache localement dans `/tmp/profile-audience/{audience}-mining-corpus.json` (incl. pain_points + objections aggrégés top-level OR legacy fallback).
+
+Cross-audience reference natif · un pain_point listé dans `affected_audiences: [audience_A, audience_B]` est lu par profile-audience invoqué sur audience_A ET sur audience_B (pas duplication, source unique).
+
+### HR2.5 · Read existing profile.json as seed corpus (brownfield · v1.5.0 v2.63 ontologie pure)
 
 v1.0.1 (v2.35 alignment) : HR2.5 brownfield seed (read existing profile.json as seed corpus, preserve validated entries) + HR7.1 merge strategy explicite (no auto-overwrite).
+v1.5.0 (v2.63 ontologie pure) : pain_points + objections désormais read top-level collections via HR2 · profile.json sub-fields legacy v1.7 read fallback only.
 
-Si `brands/{slug}/audiences/{audience_slug}/profile.json` existe et contient déjà des entries (verbatims inliné, pain_points populés, voice.key_expressions, etc.) :
+Si `brands/{slug}/audiences/{audience_slug}/profile.json` existe et contient déjà des entries (verbatims inliné, voice.key_expressions, benefits chain, identity etc.) :
 
-1. Read le profile.json existant comme seed
+1. Read le profile.json existant comme seed (audience-bound fields uniquement post-v2.63 · voice, benefits, identity, psychology, behavior, decision_process, role, market_position, research_meta, meta, persona_archetype, buyer_user_split)
 2. Extraire :
    - voice.key_expressions[] · verbatims pré-existants
-   - pain_points[] · chains 3 niveaux pré-existants
    - benefits[] · chain functional/emotional/identity pré-existants
    - identity.* · démographie pré-existante
-3. Merger avec mining corpus (HR2) si dispo
+   - **pain_points[] + objections[] sub-fields LEGACY** · si présents en brownfield v1.7, read fallback (les top-level collections HR2 ont priorité si déjà encodées)
+3. Merger avec mining corpus (HR2 · top-level collections + sub-fields legacy fallback) si dispo
 4. Marquer chaque entry source : `existing_profile` (seed) vs `mine_voc/vom/audience` (fresh mining)
 5. Préserver `validation_status` existant des entries déjà validées (status >= validated)
 
-HR2.5 garantit le skill fonctionne en mode brownfield (audience pré-amorcée par opérateur ou skill antérieur) sans écraser ni perdre l'existant.
+HR2.5 garantit le skill fonctionne en mode brownfield (audience pré-amorcée par opérateur ou skill antérieur) sans écraser ni perdre l'existant. v1.5.0 · les pain_points + objections legacy sub-fields v1.7 restent lisibles, mais ne sont plus écrits · le write-side v2.63 stage vers collections top-level séparées (cf HR5 + HR7.5 P2).
 
 ### HR3 · Synthesize 8 dimensions
 
@@ -286,7 +303,7 @@ Pour chaque sub-cluster, identifier :
 
 Note : peut différer (cf D#384 multi-product binding · audit S55).
 
-### HR5 · Identify pain_points 3 niveaux
+### HR5 · Identify pain_points 3 niveaux (v1.5.0 v2.63 ontologie pure · stage collection top-level)
 
 Pour chaque pain principal, décomposer chaîne :
 - `surface` : verbatim direct ("j'ai mal aux pieds en fin de service")
@@ -294,6 +311,30 @@ Pour chaque pain principal, décomposer chaîne :
 - `deep` : sens identitaire ("j'envisage de changer de métier")
 
 Tag verbatims sources pour chaque niveau.
+
+**Stage v2.63 ontologie pure · collection top-level séparée** · au lieu de stage les chains 3 niveaux comme sub-field `audiences/{a_slug}/profile.json#/pain_points/{idx}/chain.surface/consequence/deep` legacy, stage `brands/{slug}/pain_points/{PNT-NN}.json#chain.surface/consequence/deep` entité complète top-level avec `affected_audiences: [{audience_slug}]`.
+
+Generation incrémentale PNT-NN · scan `brands/{slug}/pain_points/*.json` existing pour next id. Si pain point déjà encodé top-level (via mine-voc upstream OR profile-audience précédent), update entité existante (append audience_slug à affected_audiences[] si pas déjà présent, refine chain levels avec nouveau verbatim sourcing). Sinon, stage NEW entité complète.
+
+Mutation gate stage entité complète (NEW pain point) ·
+
+```bash
+python3 .skills/write-to-context.py --path "pain_points/{PNT-NN}.json" --value '{<full pain_point entity JSON avec chain[] 3 levels + affected_audiences[a_slug] + _source_meta>}' --source agent --confidence 0.7 --mode proposed --reason "v2.63 ontologie pure · 3-level chain synthesis from VoC"
+```
+
+Update affected_audiences existing (pain shared cross-audiences) ·
+
+```bash
+python3 .skills/write-to-context.py --path "pain_points/{PNT-NN}.json#/affected_audiences" --value '["{a_slug_existing}","{a_slug_new}"]' --source agent --confidence 0.8 --mode proposed --reason "Cross-audience pain shared"
+```
+
+Update chain levels existing (refine avec nouveau verbatim sourcing) ·
+
+```bash
+python3 .skills/write-to-context.py --path "pain_points/{PNT-NN}.json#/chain" --value '[{"level":"surface","formulation":"..."},{"level":"consequence","formulation":"..."},{"level":"deep","formulation":"..."}]' --source agent --confidence 0.7 --mode proposed --reason "Chain refine from new VoC sourcing"
+```
+
+Backward compat strict · profile.json#/pain_points[] sub-fields legacy v1.7 NE SONT PLUS écrits par profile-audience v1.5.0+. Read fallback preserved (HR2 + HR2.5).
 
 ### HR6 · Surface draft profile à operator (posture investigation, v2.54+)
 
@@ -374,7 +415,7 @@ python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/rol
 
 **Anti-pattern banni** · halluciner un `role.type = influencer` ou `gatekeeper` sans signal semantic explicite (mentions verbatim "je recommande", "je prescris", contexte pro). Default safe = `end_user` si ambiguïté.
 
-#### P2 · profile.objections.severity_score synthesis
+#### P2 · objections.severity_score synthesis (v1.5.0 v2.63 ontologie pure · stage collection top-level)
 
 Lors de l'output profile-audience (Step synthesis), pour chaque objection encodée en HR3 Dimension 1/6, computer `severity_score` 1-10 depuis la formule ·
 
@@ -394,15 +435,33 @@ emotional_charge_multiplier:
    ponctuation exclamative répétée)        = 1.2 (cap à 10)
 ```
 
-Stage par objection ·
+**Stage v2.63 ontologie pure · collection top-level séparée** · au lieu de stage `severity_score` comme sub-field `audiences/{a_slug}/profile.json#/objections/{idx}/severity_score` legacy, stage `brands/{slug}/objections/{OBJ-NN}.json#severity_score` entité complète top-level avec `affected_audiences: [{audience_slug}]`.
+
+Generation incrémentale OBJ-NN · scan `brands/{slug}/objections/*.json` existing pour next id. Si objection déjà encodée top-level (via mine-voc upstream OR profile-audience précédent), update entité existante (append audience_slug à affected_audiences[], refine severity_score si nouvelles données changent le calcul). Sinon, stage NEW entité complète.
+
+Mutation gate stage entité complète (NEW objection) ·
 
 ```bash
-python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/objections/{idx}/severity_score" --value {N} --source agent --confidence 0.7 --mode proposed --reason "Severity synthesis from frequency × emotional charge"
+python3 .skills/write-to-context.py --path "objections/{OBJ-NN}.json" --value '{<full objection entity JSON avec severity_score + affected_audiences[a_slug] + type + formulation + frequency + lifecycle_stage>}' --source agent --confidence 0.7 --mode proposed --reason "v2.63 ontologie pure · severity synthesis frequency × emotional charge"
+```
+
+Update severity_score existing (refine objection top-level) ·
+
+```bash
+python3 .skills/write-to-context.py --path "objections/{OBJ-NN}.json#/severity_score" --value {N} --source agent --confidence 0.7 --mode proposed --reason "Severity refine from new frequency × emotional charge"
+```
+
+Update affected_audiences existing (objection shared cross-audiences) ·
+
+```bash
+python3 .skills/write-to-context.py --path "objections/{OBJ-NN}.json#/affected_audiences" --value '["{a_slug_existing}","{a_slug_new}"]' --source agent --confidence 0.8 --mode proposed --reason "Cross-audience objection shared"
 ```
 
 Le `severity_score` permet à `produce-paid-angles` (HR4 scoring framework, Objection neutralization lens 20%) de pondérer les objections par urgence réelle plutôt qu'égalité naïve. Top-3 objections par severity_score deviennent prioritaires pour la matrice paid.
 
 **Anti-pattern banni** · scorer une objection 9/10 sans 5+ verbatims OR sans emotional intensifier explicite. Score 7+ requiert combinaison frequency_band high ET intensifier.
+
+Backward compat strict · profile.json#/objections[] sub-fields legacy v1.7 NE SONT PLUS écrits par profile-audience v1.5.0+. Read fallback preserved (HR2 + HR2.5).
 
 #### P3 · profile.behavior.{purchase_frequency, conversion_timeline, dominant_device, cart_behavior, seasonal_spikes, channel_preferences}
 

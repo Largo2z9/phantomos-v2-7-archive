@@ -1,7 +1,7 @@
 ---
 name: produce-paid-angles
 type: producer
-version: "1.8.1"
+version: "1.9.0"
 isolation_scope: brand_only
 layer: 3
 recommended_model: sonnet
@@ -40,6 +40,7 @@ consumes:
   - path: docs/doctrine/objections-mapping-doctrine.md
   - path: docs/doctrine/audiences-cartography-doctrine.md
 description: >
+  v1.9.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · Step 1 read encoded data refactor · pain_points lus depuis `pain_points/*.json filtered by affected_audiences contains audience_slug` (collection top-level NEW v2.63) · objections lues depuis `objections/*.json filtered idem` (collection top-level NEW v2.63). Step 11bis back-refs P4/P5 stages canonical refs `objections/{OBJ-NN}.json#response_counter` et `pain_points/{PNT-NN}.json#derived_angle_refs` (au lieu de profile.json#/objections/{idx} sub-fields legacy). angle.schema v1.3 lineage.pain_ref + objection_ref · skill populate désormais PNT-NN + OBJ-NN refs canonical en bonus de pain_extract text legacy. Backward compat lecture profile.pain_points[] + profile.objections[] legacy preserved (pre-v2.63 brands).
   v1.8.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, breakthrough-advertising-5-stages, objections-mapping, audiences-cartography). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
   v1.8.0 (v2.58 coverage extend) · objections.response_counter + derived_angle_refs back-ref auto-persist · angle.compatibility[] cross-audience persist (extension encart v1.7.0). Closes 3 orphans audit v2.57.
   v1.7.0 (v2.56 Notion zone 3→4 filter-by-persona extension) : Step 11 artifact ajoute encart pivot fin de table · `Pour pivoter sur une autre audience, relance avec {audience_slug_other}` avec liste des autres `brands/{slug}/audiences/*/profile.json` cartographiées. Couvre opérationnellement le pattern Notion zone 3→4 filter-by-persona observé dans workspace stride-up. Pas de skill standalone `filter-angles-by-persona` (anti-pattern fork) · ce skill est déjà multi-audience friendly via input `{audience_slug}`. L'encart matérialise la capacité existing.
@@ -169,11 +170,20 @@ Pour chaque outil canon lu, garder en mémoire : `id, when_works[], when_avoid[]
 
 ---
 
-## Step 1 — Read encoded data
+## Step 1 — Read encoded data (v1.9.0 ontologie pure)
 
 Load the encoded substrate for this brand and this audience. Read silently — never narrate the loading.
 
-- `brands/{slug}/audiences/{audience-slug}/profile.json` — pain_points[] (formulation, emotion, trigger, awareness_stage), objections[] (type, formulation), voice.key_expressions[] (with frequency / sample_size), psychology.jtbd (functional / emotional / social), market_position.awareness_level, demographics.
+**Collections top-level v2.63 (NEW · ontologie pure)** ·
+
+- `brands/{slug}/pain_points/*.json` filtered by `affected_audiences[]` contains `{audience_slug}` — pain canon entity (PNT-NN id, formulation, emotion, trigger, awareness_stage, verbatim_quotes[], affected_audiences[], severity, confidence_chain). Source de vérité pour `formula.tension.state_actual` + `formula.observation.phenomenon`.
+- `brands/{slug}/objections/*.json` filtered by `affected_audiences[]` contains `{audience_slug}` — objection canon entity (OBJ-NN id, formulation, type, formulation, response_counter, derived_angle_refs[], affected_audiences[], lifecycle_stage). Source de vérité pour `formula.tension.reason_blocked` + cells objection axis.
+
+**Backward compat lecture (pre-v2.63 brands)** · si `brands/{slug}/pain_points/` ET `brands/{slug}/objections/` n'existent pas comme directories, fallback `audiences/{audience-slug}/profile.json#pain_points[]` + `profile.json#objections[]` (legacy sub-fields). Skill ne refuse jamais sur ce point, route transparent.
+
+**Audience profile (toujours lu)** ·
+
+- `brands/{slug}/audiences/{audience-slug}/profile.json` — voice.key_expressions[] (with frequency / sample_size), psychology.jtbd (functional / emotional / social), market_position.awareness_level, demographics. **Note v2.63** · `pain_points[]` + `objections[]` sub-fields legacy preserved en lecture pour backward compat, mais collections top-level prennent priorité si présentes.
 - `brands/{slug}/products/{product-slug}/spec.json` — problems_solved[].verbatim_quotes[], benefits[].chain (functional → emotional → identity), proofs.{social|authority|performance|scientific}, market_context.sophistication, identity.
 - `brands/{slug}/products/{product-slug}/offers.json` — active offers, urgency flags, bundle structure, subscription presence (informs offer-led angle activation).
 - `brands/{slug}/brand.json` — tone_of_voice, market.* if VoM has run (vernacular, sophistication_stage, awareness_distribution, white_spaces, external_intelligence).
@@ -462,11 +472,11 @@ ANG-{N} · {angle name}
 
 En surface opérateur (rendu human-readable), le terme *Schwartz* reste recevable comme référence auteur (*"Schwartz conscience: solution-aware"*). Le field name canonique côté schema/JSON est `awareness_stage`. Le lignage rend l'angle **traçable** : `/phantom {brand_slug} angles ANG-03` pourra rendre la chaîne compositionnelle lue à travers l'atlas. C'est aussi ce qui débloquera les vues `copy-matrix` et `copy-map`.
 
-**Persistence brand-side (angle.schema v1.2+).** Le lignage canon est ALSO écrit dans `brands/{slug}/angles/{ANG-N}.json` aligné sur `angle.schema.json` v1.2, enrichi v2.54 avec confidence chain inheritée ·
+**Persistence brand-side (angle.schema v1.3+).** Le lignage canon est ALSO écrit dans `brands/{slug}/angles/{ANG-N}.json` aligné sur `angle.schema.json` v1.3 (NEW v2.63 · pain_ref + objection_ref canonical refs), enrichi v2.54 avec confidence chain inheritée ·
 
 ```json
 {
-  "_schema_version": "angle/1.2",
+  "_schema_version": "angle/1.3",
   "angle_id": "ANG-NN",
   "name": "...",
   "audience_slug": "...",
@@ -480,6 +490,8 @@ En surface opérateur (rendu human-readable), le terme *Schwartz* reste recevabl
     "angle_canon_id": "...",
     "archetype_canon_id": "...",
     "pain_extract": "...",
+    "pain_ref": "PNT-NN | null (NEW v1.3 v2.63 · canonical ref si pain sourcé pain_points/PNT-NN.json)",
+    "objection_ref": "OBJ-NN | null (NEW v1.3 v2.63 · canonical ref si objection sourcée objections/OBJ-NN.json)",
     "proof_primary": "...",
     "cta": "...",
     "derived_from_audience_confidence": "forte | moyenne | faible | TRÈS faible",
@@ -493,6 +505,8 @@ En surface opérateur (rendu human-readable), le terme *Schwartz* reste recevabl
 ```
 
 Les 3 fields `derived_from_audience_confidence`, `derived_from_brand_confidence`, `claim_confidence` (v2.54 doctrine investigation-posture) permettent au downstream `/phantom {brand_slug} angles ANG-NN` de rendre l'angle avec sa fiabilité héritée explicite, et à `produce-copy-brief` d'hériter à son tour la confidence chain dans le brief créa downstream.
+
+**NEW v1.9.0 · pain_ref + objection_ref canonical population.** Lors de l'écriture `angles/{ANG-NN}.json` v1.3, si la cellule top a un `pain_id` (PNT-NN) ou `objection_id` (OBJ-NN) mappable depuis Step 1 collections top-level read · populer `lineage.pain_ref` + `lineage.objection_ref` avec les canonical IDs. Sinon (cellule formula-derived, ou pre-v2.63 brand avec lecture fallback profile sub-fields), laisser null + garder `pain_extract` text legacy comme fallback. Cohérent triangulation cross-canon avec downstream (`decompose-angle` v1.1+ peut désormais re-triangulate atom-level depuis canonical refs).
 
 Renommages v2.29.0 : `source` (top-level) devient `origin_axis` · `lineage.schwartz_conscience` devient `lineage.awareness_stage`. Le field `awareness_stage` consomme l'enum canonique de `_shared/awareness-stage.json` (5 stages).
 
@@ -510,33 +524,45 @@ The next-step proposal lives in the conversational reply, NOT in the artifact fi
 
 **Backward compat strict** · si l'objection traitée n'existe pas dans `profile.json#/objections` (cas où l'angle a été généré sur un objection_id absent du profile, ex pivot audience), skip silencieusement le back-ref P4/P5. Si pas de pivot audience triggered (encart v1.7.0 non utilisé), skip P6. Aucun blocking, aucun refus de ship.
 
-### P4 · profile.objections.response_counter back-ref
+### P4 · objections.response_counter back-ref (v1.9.0 canonical collection)
 
-Quand `produce-paid-angles` génère un angle qui exploite une objection (via `formula.tension` mappée à `objections[].formulation` du profile.json source), persist back-ref · l'objection traitée reçoit `response_counter` = la formulation neutralization de l'angle généré (extraite de `formula.reframe.text`).
+Quand `produce-paid-angles` génère un angle qui exploite une objection (via `formula.tension` mappée à OBJ-NN canonical depuis `objections/*.json` filtered audience), persist back-ref · l'objection traitée reçoit `response_counter` = la formulation neutralization de l'angle généré (extraite de `formula.reframe.text`).
 
-Pour chaque angle ranked dans le top output (5 par défaut, jusqu'à 7), si la cellule a un `objection_id` mappable au profile source ·
+Pour chaque angle ranked dans le top output (5 par défaut, jusqu'à 7), si la cellule a un `objection_id` (OBJ-NN) mappable à `objections/*.json` ·
 
 ```bash
-python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/objections/{idx}/response_counter" --value "{angle.formula.reframe.text}" --source agent --confidence 0.8 --mode proposed --reason "Back-ref auto from produce-paid-angles run"
+python3 .skills/write-to-context.py --path "objections/{OBJ-NN}.json#/response_counter" --value "{angle.formula.reframe.text}" --source agent --confidence 0.8 --mode proposed --reason "Back-ref auto from produce-paid-angles run"
 ```
 
-Le `response_counter` rend la fiche audience opérable downstream · l'opérateur qui drill `audiences/{a_slug}` voit non seulement les objections mais aussi la neutralization formula que les angles ont déjà cristallisée. Évite re-générer un counter from scratch pour `produce-copy-brief` ou objection-handling email flows.
+Le `response_counter` rend la fiche objection opérable downstream · l'opérateur qui drill `objections/{OBJ-NN}` voit non seulement la formulation mais aussi la neutralization formula que les angles ont déjà cristallisée. Évite re-générer un counter from scratch pour `produce-copy-brief` ou objection-handling email flows.
+
+**Backward compat (pre-v2.63 brands)** · si `objections/{OBJ-NN}.json` n'existe pas (collection top-level non-shipped sur cette brand), fallback path legacy `audiences/{a_slug}/profile.json#/objections/{idx}/response_counter` (sub-field profile). Lookup `{idx}` via match `objections[].formulation` from profile sub-array. Skip silencieusement si zéro match.
 
 **Anti-pattern banni** · écraser un `response_counter` existant si l'objection a déjà été traitée par un angle antérieur (validation_status >= validated). Le mutation gate `write-to-context.py` mode proposed surface conflict si collision · operator arbitre.
 
-### P5 · profile.objections.derived_angle_refs[] back-ref
+### P5 · objections.derived_angle_refs[] + pain_points.derived_angle_refs[] back-refs (v1.9.0 canonical collections)
 
-Pour la même objection traitée par un angle, append `derived_angle_refs[]` avec l'`ANG-NN` id (append-only, jamais overwrite). Permet à la fiche audience de remonter tous les angles dérivés d'une objection donnée (1-N relation).
+Pour la même objection traitée par un angle, append `derived_angle_refs[]` avec l'`ANG-NN` id (append-only, jamais overwrite). Permet à la fiche objection canonique de remonter tous les angles dérivés (1-N relation).
 
-Stage append-only ·
+**Stage append-only objections collection** ·
 
 ```bash
-python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/objections/{idx}/derived_angle_refs" --value '["ANG-{NN}"]' --source agent --confidence 1.0 --mode proposed --reason "Back-ref ANG-NN derivation"
+python3 .skills/write-to-context.py --path "objections/{OBJ-NN}.json#/derived_angle_refs" --value '["ANG-{NN}"]' --source agent --confidence 1.0 --mode proposed --reason "Back-ref ANG-NN derivation"
 ```
+
+**NEW v1.9.0 · pain_points.derived_angle_refs[] back-ref** · si l'angle a `lineage.pain_ref` populé avec un PNT-NN canonical (Step 11 angle.json v1.3 write), append symétrique sur la fiche pain ·
+
+```bash
+python3 .skills/write-to-context.py --path "pain_points/{PNT-NN}.json#/derived_angle_refs" --value '["ANG-{NN}"]' --source agent --confidence 1.0 --mode proposed --reason "Back-ref ANG-NN pain source"
+```
+
+Si pain est observation source de l'angle (formula.observation.phenomenon ancré sur un PNT-NN canonical), le back-ref permet à la fiche pain de remonter tous les angles construits sur ce pain. Symétrie complète audience↔pain↔objection↔angle graph navigable.
 
 Le mutation gate handle l'append (si `derived_angle_refs[]` existe → append le nouveau ANG-NN ; sinon initialize l'array avec [ANG-NN]).
 
-Couvre le pattern Notion zone 3→4 reverse (depuis l'audience, voir tous les angles que la matrice paid a produits sur cette objection-pain pair). Dual-direction du encart pivot v1.7.0 (depuis angles, voir autres audiences).
+**Backward compat (pre-v2.63 brands)** · si `objections/{OBJ-NN}.json` ou `pain_points/{PNT-NN}.json` n'existent pas comme collections top-level, fallback path legacy `audiences/{a_slug}/profile.json#/objections/{idx}/derived_angle_refs` (sub-field profile). Si zéro pain canonical PNT-NN ref dans angle.lineage, skip pain back-ref entirely (pas de fallback profile pour pain · sub-field profile.pain_points[] legacy ne porte pas derived_angle_refs[]).
+
+Couvre le pattern Notion zone 3→4 reverse (depuis pain ou objection canonique, voir tous les angles que la matrice paid a produits sur cette pain-objection pair). Dual-direction du encart pivot v1.7.0 (depuis angles, voir autres audiences).
 
 ### P6 · angle.compatibility[] cross-audience persist
 

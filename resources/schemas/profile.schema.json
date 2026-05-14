@@ -1,9 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Audience Profile",
-  "description": "Audience profile — deep psychographic and behavioral context, factual description of who they are. Lives in brands/{slug}/audiences/{audience}/profile.json. v1.2+: persona_archetype + buyer_user_split (migrated from spec.gift_economy). v1.4 (v2.42): meta.entry_door enum strict (pain_driven|goal_driven|identity_driven) REQUIRED — closes spec-vs-schema drift from v2.39 framework. Canon V3 §8.2.",
-  "_schema_version": "profile/1.7",
+  "description": "v2.0 BREAKING · refactor ontologie pure · pain_points + objections deviennent collections top-level séparées · migration script operations/migrations/v2.63-pain-objection-collections.py. Audience profile — deep psychographic and behavioral context, factual description of who they are. Lives in brands/{slug}/audiences/{audience}/profile.json. v1.2+: persona_archetype + buyer_user_split (migrated from spec.gift_economy). v1.4 (v2.42): meta.entry_door enum strict (pain_driven|goal_driven|identity_driven) REQUIRED — closes spec-vs-schema drift from v2.39 framework. Canon V3 §8.2.",
+  "_schema_version": "profile/2.0",
   "_changelog": {
+    "2.0": "v2.63 BREAKING · refactor ontologie pure. REMOVE pain_points[] array (move to pain_points.schema top-level collection storage brands/{slug}/pain_points/{PNT-NN}.json). REMOVE objections[] array (move to objections.schema top-level collection storage brands/{slug}/objections/{OBJ-NN}.json). Closes ontologie inconsistance (friction top-level depuis v2.56 mais pain + objection sub-fields legacy) · parité friction · canon Notion stride-up strict 3 collections sub-tensions séparées. Migration · operations/migrations/v2.63-pain-objection-collections.py idempotent · scan profile.pain_points + profile.objections, génère PNT-NN + OBJ-NN ids, crée fichiers canonical, set affected_audiences = [audience_slug], remove arrays du profile. Cross-refs canonical · friction.cross_refs.{pain_point_ids[], objection_ids[]} v1.2 + angle.lineage.{pain_ref, objection_ref} v1.3 + learnings.entries[].cross_refs.{pain_point_ids[], objection_ids[]} v1.1.",
     "1.7": "v2.57 Notion stride-up follow-up · pain_points.items.pain_id (PNT-NN pattern) + objections.items.objection_id (OBJ-NN pattern) ajoutés optional. Closes faille canonical IDs stables identifiée par DataEng audit · friction.cross_refs.{pain_point_ids[], objection_ids[]} peuvent désormais référencer canon. IDs générés auto au mining (mine-voc, profile-audience) post-v1.7 ; profiles pre-v1.7 sans IDs valident toujours en read. Backward compat strict additif.",
     "1.6": "v2.56 Notion stride-up parity · pain_category enum taxonomy (cohérent friction.schema) · objections enrichis (severity_score + response_counter + derived_angle_refs). Backward compat strict additif.",
     "1.4": "v2.42-schema-alignment: meta.entry_door enum strict (pain_driven|goal_driven|identity_driven) ajouté + listé dans meta.required. Closes drift schema vs framework v2.39 (audience-cartography-framework.md Q1). Backward compat: lecture v1.0-v1.2 tolérée, defaults injectés par v2.42-schema-alignment.py.",
@@ -208,52 +209,6 @@
       }
     },
 
-    "pain_points": {
-      "type": "array",
-      "description": "Problems this audience experiences that the product can address. Each pain has a depth chain (surface, consequence, deep), an associated emotion, a trigger context, and the awareness stage at which it becomes salient.",
-      "items": {
-        "type": "object",
-        "properties": {
-          "pain_id": {
-            "type": "string",
-            "pattern": "^PNT-[0-9]{2,3}$",
-            "description": "ID stable du pain point (PNT-01 format). Permet cross-refs canonical depuis friction.cross_refs.pain_point_ids[]. Optional v1.7, generated au mining si absent."
-          },
-          "ref": { "type": "string" },
-          "priority": { "type": ["integer", "null"] },
-          "formulation": { "type": "string" },
-          "pain_category": {
-            "type": "string",
-            "enum": ["physical", "emotional", "friction_ux", "logistical", "cognitive", "social_status"],
-            "description": "Taxonomy canonique cohérente avec friction.schema · physical (douleur corps), emotional (anxiété, doute), friction_ux (galère d'usage), logistical (livraison/timing), cognitive (compréhension/décision), social_status (image)"
-          },
-          "chain": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "level": { "type": "string", "enum": ["surface", "consequence", "deep"] },
-                "formulation": { "type": "string" }
-              }
-            }
-          },
-          "emotion": { "type": "string" },
-          "trigger": { "type": "string" },
-          "awareness_stage": { "$ref": "_shared/awareness-stage.json" },
-          "_source_meta": {
-            "type": "object",
-            "properties": {
-              "origin": { "type": "string", "enum": ["voc", "brand_declared", "inferred"] },
-              "platform": { "type": "string" },
-              "sample_size": { "type": ["integer", "null"] },
-              "date_captured": { "type": "string" }
-            }
-          },
-          "_notes": { "type": "object" }
-        }
-      }
-    },
-
     "benefits": {
       "type": "array",
       "description": "Gains this audience expects from the product. Each benefit has a depth chain (functional, emotional, identity), an emotional lever, and the awareness stage at which it lands.",
@@ -284,45 +239,6 @@
               "date_captured": { "type": "string" }
             }
           },
-          "_notes": { "type": "object" }
-        }
-      }
-    },
-
-    "objections": {
-      "type": "array",
-      "description": "Reasons this audience hesitates to buy. Typed by category (price, skepticism, time, trust, urgency, efficacy, comparison), with frequency, severity, and the lifecycle stage at which it surfaces.",
-      "items": {
-        "type": "object",
-        "properties": {
-          "objection_id": {
-            "type": "string",
-            "pattern": "^OBJ-[0-9]{2,3}$",
-            "description": "ID stable de l'objection (OBJ-01 format). Permet cross-refs canonical depuis friction.cross_refs.objection_ids[]. Optional v1.7, generated au mining si absent."
-          },
-          "type": { "type": ["string", "null"], "enum": ["prix", "scepticisme", "temps", "confiance", "urgence", "efficacité", "comparaison", ""] },
-          "formulation": { "type": "string" },
-          "frequency": { "type": ["integer", "null"], "minimum": 1, "maximum": 10 },
-          "severity": { "type": ["string", "null"], "enum": ["low", "medium", "high", ""] },
-          "severity_score": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 10,
-            "description": "Sévérité de l'objection · 10 = blocker absolu, 1 = nuisance mineure"
-          },
-          "response_counter": {
-            "type": "string",
-            "description": "Counter-réponse opérateur · ex 'preuve sociale 665 avis Google', 'garantie 60j satisfait remboursé'"
-          },
-          "derived_angle_refs": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^ANG-\\d{2,3}$"
-            },
-            "description": "Refs des angles qui traitent cette objection · cross-ref vers angles/{ANG-NN}.json"
-          },
-          "lifecycle_stage": { "type": ["string", "null"], "enum": ["awareness", "consideration", "decision", "post_purchase", ""] },
           "_notes": { "type": "object" }
         }
       }

@@ -1,0 +1,95 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.63.0",
+  "released_at": "2026-05-15",
+  "compatible_from": "2.0.0",
+  "type": "breaking_ontologie_pure_refactor_pain_objections_collections_top_level",
+  "summary": "BREAKING change · Largo flag inconsistance ontologique · friction collection top-level mais pain_points + objections sub-fields profile legacy. v2.63 résout · 3 collections sub-tensions orthogonales (pain_points/ NEW + objections/ NEW + frictions/ existing) parité canon Notion stride-up. 4 agents parallèle · 220+ mentions canonical cumulées. Manifest 67 skills inchangé. Migration script idempotent. Backward compat strict additif lecture (fallback profile legacy).",
+  "changes": [
+    {
+      "category": "schemas_v263_breaking_ontologie_pure",
+      "action": "added_patched",
+      "files": [
+        "resources/schemas/pain_points.schema.json",
+        "resources/schemas/objections.schema.json",
+        "resources/schemas/profile.schema.json",
+        "resources/schemas/friction.schema.json",
+        "resources/schemas/angle.schema.json",
+        "resources/schemas/learnings.schema.json",
+        "operations/migrations/v2.63-pain-objection-collections.py",
+        "docs/system/schema-encoding-discipline.md"
+      ],
+      "section": "Agent A · 2 NEW schemas + 4 patches + migration + SED §13 v2.63",
+      "rationale": "pain_points.schema v1.0 + objections.schema v1.0 NEW collections top-level canonical. Profile.schema v1.7 → v2.0 BREAKING remove pain_points + objections arrays. Friction v1.1 → v1.2 cross_refs canonical patterns PNT-NN/OBJ-NN enforced. Angle v1.2 → v1.3 lineage.pain_ref + objection_ref optional. Learnings v1.0 → v1.1 cross_refs canonical IDs. Migration script idempotent · backups · events log · mapping FR→EN type/frequency. SED §13 v2.63 sub-table documenté."
+    },
+    {
+      "category": "skills_v263_mining_audiences",
+      "action": "patched",
+      "files": [
+        ".skills/skills/mine-voc/SKILL.md",
+        ".skills/skills/profile-audience/SKILL.md",
+        ".skills/skills/map-audiences/SKILL.md",
+        ".skills/skills/map-mechanisms/SKILL.md",
+        ".skills/skills/map-benefits/SKILL.md"
+      ],
+      "section": "Agent B · 5 skills mining/audiences refactor ontologie pure",
+      "rationale": "mine-voc v1.2.0 writes collections top-level. profile-audience v1.5.0 idem. map-audiences v1.1.0 reads cross-audience pain/objection partagés. map-mechanisms v1.1.0 reads pain_points pour triggered_by. map-benefits v1.1.0 evidence_verbatim + audience_fit cross-audience auto. 51 mentions cumulées paths new collections."
+    },
+    {
+      "category": "skills_v263_paid_creative_orchestration",
+      "action": "patched",
+      "files": [
+        ".skills/skills/produce-paid-angles/SKILL.md",
+        ".skills/skills/produce-copy-brief/SKILL.md",
+        ".skills/skills/compose-creative/SKILL.md",
+        ".skills/skills/decompose-ad/SKILL.md",
+        ".skills/skills/decompose-angle/SKILL.md",
+        ".skills/skills/creative-brief-composer/SKILL.md",
+        ".skills/skills/build-atlas-complete/SKILL.md",
+        ".skills/skills/produce-paid-matrix/SKILL.md"
+      ],
+      "section": "Agent C · 8 skills paid/creative/orchestration refactor ontologie pure",
+      "rationale": "produce-paid-angles v1.9.0 + produce-copy-brief v1.5.0 + compose-creative v1.5.0 + decompose-ad v1.4.0 + decompose-angle v1.1.0 + creative-brief-composer v1.1.0 + build-atlas-complete v1.1.0 + produce-paid-matrix v1.1.0. Read collections top-level + back-refs canonical paths + triangulation cross-canon spec/pain/objection refs. 57 mentions cumulées."
+    },
+    {
+      "category": "rendering_v263_phantom_doctrines_tour",
+      "action": "patched",
+      "files": [
+        ".claude/commands/phantom.md",
+        "docs/doctrine/audiences-cartography-doctrine.md",
+        "docs/doctrine/objections-mapping-doctrine.md",
+        "docs/doctrine/pain-benefit-chain-doctrine.md",
+        ".claude/commands/tour.md"
+      ],
+      "section": "Agent D · /phantom rendering + 3 doctrines + tour.md onboarding refresh ontologie pure",
+      "rationale": "phantom.md 2 NEW entity-drill modes (pain-points-drill + objections-drill) + WORKSPACE NAVIGATION update · pain points + objections devenus entités top-level distinctes drillables · mode item PNT-NN/OBJ-NN drillable. 3 doctrines mentionnent collections top-level + canonical IDs cohérent FRC-NN. tour.md M6 enrich 2 NEW triggers drill. 112 mentions cumulées canonical IDs."
+    },
+    {
+      "category": "manifest_regen",
+      "action": "regenerated",
+      "files": [".skills/_manifest.json", ".skills/_jargon_bank.json"],
+      "section": "Manifest skills regen post-patches v2.63",
+      "rationale": "python3 .skills/build-manifest.py · 67 skills inchangé (rename frontmatter, pas skill add)."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md", "docs/internal/releases/manifest/2.63.0-manifest.json"],
+      "section": "Version bump v2.62 → v2.63 BREAKING + CHANGELOG + manifest NEW",
+      "rationale": "Bump template_version 2.62.0 → 2.63.0 BREAKING (profile.schema v1.7 → v2.0). released_at 2026-05-15."
+    }
+  ],
+  "files_patched_total": "21 files (2 NEW schemas + 4 patches schemas + 1 NEW migration script + SED §13 + 13 skills patches + 4 docs updates + _version + CHANGELOG + manifest + 2 manifests regen)",
+  "patterns_introduced": {
+    "ontologie_pure_3_collections_sub_tensions_orthogonales": "Pattern canon v2.63 · 3 collections sub-tensions client (pain_points · objections · frictions) au même niveau ontologique top-level. Parité canon Notion stride-up workspace. Cross-refs canonical PNT-NN/OBJ-NN/FRC-NN cohérent avec FRC-NN existing. Affected_audiences[] + affected_products[] arrays · cross-cardinality native (un pain peut affecter N audiences sans duplication). Permet visibility cross-audience cluster naturelle.",
+    "breaking_change_justified_by_ontologie_long_term": "Pattern doctrine SED · BREAKING change profile.schema v1.7 → v2.0 justifié par cohérence ontologique long-terme. Inconsistance v2.56 (friction top-level + pain/objection sub-field) acceptée pragmatique mais flag-able. v2.63 résout. Backward compat strict additif sur lecture (fallback transparent profile sub-fields legacy si collections absentes) · pas BREAKING runtime pour brands existantes via fallback.",
+    "migration_script_idempotent_pattern": "Pattern canon migration · idempotent · backups horodatés · events log · re-run safe (check existing collections before write) · mapping legacy → canonical (FR→EN type enum, frequency integer→bucket enum). Pattern reproductible pour futures migrations BREAKING schemas (futur · canon-tool v1.0→v1.1, etc.)."
+  },
+  "antipatterns_eliminated": {
+    "ontologie_inconsistance_friction_topvslevel_pain_objection_subfield": "v2.56 ship friction top-level pour cross-entity cardinality. v1.4 legacy keep pain/objection sub-fields profile. Inconsistance ontologique 9 mois. v2.63 résout · 3 collections sub-tensions cohérent.",
+    "cross_audience_pain_duplication_implicite": "Legacy · même pain (ex 'sommeil profond perturbé') encodé dans profile.pain_points[] de 3 audiences distinctes = 3 copies. v2.63 · 1 entry PNT-NN avec affected_audiences=[3 slugs] = 1 source canonical, 0 duplication. Aggregate cross-audience natif."
+  },
+  "operator_impact": "Operator drill `/phantom {brand} pain-points` voit désormais TOP-N pain points cross-audiences cluster (PNT-01 affecte stress-pro + post-partum + senior-insomnie · derived ANG-01/ANG-03) au lieu de devoir scan chaque audience séparément. Idem `/phantom {brand} objections` · top-cluster OBJ-NN cross-audience + severity blocking ≥7. Skills production canonical-informed plus cohérent · produce-paid-angles ref PNT-NN canonical au lieu de redonder pain_extract text par audience.",
+  "backward_compat": "strict_additif_sur_lecture. Skills lisent collections top-level en priorité + fallback transparent profile sub-fields legacy si collections absentes. Brands pre-v2.63 sans pain_points/objections collections valident · runtime auto-fallback profile legacy preserve · skills produisent OK sans migration. Migration script idempotent re-run safe pour upgrade volontaire brands existantes. CHANGELOG historique + manifests releases 2.29-v2.62 préservés (append-only canon). Manifest skills count 67 inchangé.",
+  "next_release_note": "v2.64+ patches identifiés · (a) Validate runtime · validate-resources check intégrité cross-refs canonical PNT-NN/OBJ-NN dans angles + frictions + learnings (no broken refs). (b) /phantom rendering integrate jauge complétude ontologie pure (cf D#19 backlog) · score par 9 collections orthogonales (brand + products + audiences + angles + creatives + pain_points + objections + frictions + roadmap + strategy + learnings) + cross-refs intégrité tracée. (c) Test live cas réel · run migration script sur brand existante test workspace · valider migration data preserve cohérence. (d) Doctrine SED §14 NEW · ontologie pure discipline · pattern collections orthogonales vs sub-fields nested. (e) Audit doctrines docs/doctrine/ · update pain-benefit-chain + objections-mapping pour cohérence v2.63 canonical IDs si gap résiduel post-Agent D."
+}

@@ -33,6 +33,8 @@ Check the user's argument :
 | `{brand} tests` | **tests-drill** : DB Tests live + résultats observés + verdict winner_proxy |
 | `{brand} matrix` | **matrix-drill** : output `score-matrix` (matrice scorée + top territoires + trous) |
 | `{brand} frictions` | **frictions-drill** : table frictions usage par severity + audiences affected |
+| `{brand} pain-points` | **pain-points-drill** (v2.63) : collection cross-audiences pain_points top-level + filter par catégorie |
+| `{brand} objections` | **objections-drill** (v2.63) : collection cross-audiences objections top-level + filter par severity/type |
 | `{brand} roadmap` | **roadmap-drill** : phases chronologiques + current highlight + priorities |
 | `{brand} funnel` | **funnel-drill** : couverture TOF/MOF/BOF + trous détectés |
 | `{brand} services` | **services-drill** : services/packages business_model=service |
@@ -274,9 +276,17 @@ Matière brand
    ├─ {product_slug_2}                      ...
    └─ ... (selon scaling rules ci-dessous, cf section "Scaling rules · produits")
 
-   Audiences ({count}) · {verbatim_density_qualitatif}
-   ├─ {audience_slug_1}        {validation_label}    {N verbatims · M pain · K objections}
+   Audiences ({count} cartographiées)      {N} mères + sous-poches · témoignages {sparse/medium/dense} · TOP-pain: {pain_name}
+   ├─ {audience_slug_1}        {validation_label}    → {N_angles} angles · {N_frictions} frictions
    ├─ ...
+
+   Pain Points ({count} cartographiés)    cross-audiences · top-cluster {top_categories} · TOP-3 {PNT-NN/PNT-NN/PNT-NN}
+   ├─ Drill cross-audience                /phantom {brand} pain-points
+   └─ Filter par catégorie                physical · emotional · friction_ux · etc.
+
+   Objections ({count} cartographiées)    cross-audiences · top-cluster {top_types} · TOP-3 {OBJ-NN/OBJ-NN/OBJ-NN}
+   ├─ Drill cross-audience                /phantom {brand} objections
+   └─ Severity blocking (≥7)              {OBJ-NN} · {OBJ-NN}
 
 Production créative
    Angles ({count})            {live}/{fatigued}/{validated} · {lineage_signal}
@@ -389,10 +399,13 @@ Format · 6-7 lignes navigation explicite (adapter la liste entités drillables 
 
 ```
    Entités drillables           /phantom {brand} {angles | audiences | produits | offers
-                                                 | funnel | frictions | roadmap | strategy
+                                                 | funnel | frictions | pain-points | objections
+                                                 | roadmap | strategy
                                                  | learnings | briefs | tests | matrix}
    Drill produit                /phantom {brand} products {p_slug} {mechanisms | benefits | offers}
    Drill audience               /phantom {brand} audiences {audience-slug}
+   Drill pain-points cross      /phantom {brand} pain-points              (v2.63 cross-audiences)
+   Drill objections cross       /phantom {brand} objections               (v2.63 cross-audiences)
    Drill matrix                 /phantom {brand} matrix
    Recherche cross-brand        /phantom search "{keyword}"
    Historique mutations         /phantom recent
@@ -432,6 +445,8 @@ Règle universelle · sub-line surface ratios + top-1 nominal qualitatif, **JAMA
 |---|---|
 | Produits (1) | `{count} · {validation_status majoritaire} · TOP-bénéfice: {benefit_name}` |
 | Audiences | `{count} mères + {N} sous-poches · verbatims {sparse/medium/dense} · TOP-pain: {pain_name}` |
+| Pain Points (v2.63) | `{count} cartographiés · cross-audiences cluster · TOP-3 {PNT-NN/PNT-NN/PNT-NN}` |
+| Objections (v2.63) | `{count} cartographiées · TOP-cluster {top_types} · {N_blocking} bloquantes (≥7)` |
 | Angles | `{count} ({live}/{fatigued}/{validated}) · {lineage_objection_count} dérivés objections` |
 | Frictions | `{count} · severity max {max}/10 · {N} bloquantes (≥7)` |
 | Funnel Meta | `{creatives_count} live · TOF/MOF/BOF {a}/{b}/{c} · {winners} winners scalés` |
@@ -473,7 +488,7 @@ Section dédiée explicitant comment le rendering brand mode adapte les entités
 
 `/phantom {brand_slug} {entity}` zooms on one entity within the brand. Dense, no top-level KPIs, no connected sources, no other entity rows. The operator chose the entity so the rendering goes deeper than brand mode allows in 60-70 lines.
 
-**Supported entities v2.57** · `audiences`, `angles`, `products` (alias `produits`), `services`, `offers`, `strategy`, `learnings`, `frictions`, `roadmap`, `briefs`, `tests`, `matrix`, `funnel`, `pipeline`.
+**Supported entities v2.63** · `audiences`, `angles`, `products` (alias `produits`), `services`, `offers`, `strategy`, `learnings`, `frictions`, `pain-points` (v2.63 NEW), `objections` (v2.63 NEW), `roadmap`, `briefs`, `tests`, `matrix`, `funnel`, `pipeline`.
 
 ### Pattern enrichi (universel)
 
@@ -690,7 +705,7 @@ Ces 3 drills sont harmonisés v2.57 sur le pattern enrichi (header breadcrumb + 
 
 ### Hard rule for entity-drill
 
-If `{entity}` is unsupported (not in the list above), surface · *"Entité '{x}' non reconnue. Disponibles · audiences, angles, products, services, offers, strategy, learnings, frictions, roadmap, briefs, tests, matrix, funnel. Pour la vue brand complète · `/phantom {brand}`."*
+If `{entity}` is unsupported (not in the list above), surface · *"Entité '{x}' non reconnue. Disponibles · audiences, angles, products, services, offers, strategy, learnings, frictions, pain-points, objections, roadmap, briefs, tests, matrix, funnel. Pour la vue brand complète · `/phantom {brand}`."*
 
 ### Filtrage par produit (entity-drill audiences)
 
@@ -721,9 +736,9 @@ Si l'opérateur tape `/phantom {brand} products {p_slug}` (item mode produit, vo
    - Slot 3 · drill cross-ref (e.g. depuis audience → angle dérivé)
    - Slot 4 · retour entity parent `/phantom {brand} {entity}` OU retour brand `/phantom {brand}`
 
-### Entités drillables item v2.57
+### Entités drillables item v2.63
 
-`audiences/{slug}`, `angles/{id}`, `products/{slug}`, `services/{slug}`, `frictions/{FRC-NN}`, `briefs/{BRF-NN}`, `tests/{TST-NN}`, `roadmap/phases/{phase-slug}`.
+`audiences/{slug}`, `angles/{id}`, `products/{slug}`, `services/{slug}`, `frictions/{FRC-NN}`, `pain-points/{PNT-NN}` (v2.63 NEW), `objections/{OBJ-NN}` (v2.63 NEW), `briefs/{BRF-NN}`, `tests/{TST-NN}`, `roadmap/phases/{phase-slug}`.
 
 ### Hard rule sur slug introuvable
 
@@ -887,7 +902,7 @@ Référence métier (workspace-level)
   /phantom canon copy hooks curiosity-gap   fiche détaillée
 
 Entités drillables
-  audiences, angles, products, offers, strategy, learnings
+  audiences, angles, products, offers, strategy, learnings, pain-points (v2.63), objections (v2.63)
 
 Navigation rapide
   Chaque rendering termine par 4 boutons cliquables (drill, drill latéral, action, retour parent).
@@ -939,6 +954,121 @@ Actions prioritaires
 ```
 
 Format ligne : `[brief_id] · {created_at} · {angle_id_source} · {audience_slug} · {status}`. Cap 10 plus récents. Cross-ref atlas via lien `angle_id_source` (drillable).
+
+---
+
+## Mode pain-points-drill (NEW v2.63)
+
+`/phantom {brand} pain-points` rend la collection `pain_points/` cross-audiences. Ontologie pure v2.63 · pain_points sont entités top-level canonical (PNT-NN), pas sub-field profile audience. Permet visibility cross-audience d'un même pain (e.g. PNT-01 "sommeil profond perturbé" affecte stress-pro + post-partum + senior-insomnie simultanément, encodé 1 fois canonical avec cross-refs `affected_audiences[]`).
+
+Storage source · `brands/{brand}/pain_points/*.json` (ou agrégat `brands/{brand}/pain_points.json`).
+
+Header breadcrumb ·
+
+```
+workspace > {brand} > pain-points
+══════════════════════════════════════════════
+{N} pain points cartographiés · cross-audiences cluster · TOP-3 catégories
+  physical : {N} · emotional : {N} · friction_ux : {N} · cognitive : {N} · social : {N} · ...
+```
+
+Rendering · cross-audiences vue (cluster par pain similar). Cap 10 plus saillants (top severity_pattern desc).
+
+```
+Cross-audiences vue (cluster par pain similar)
+  PNT-01  sommeil profond perturbé        emotional   severity-pattern 8/10
+    audiences · stress-pro · post-partum · senior-insomnie (3)
+    triggered angles · ANG-01 · ANG-03
+  PNT-04  fatigue chronique matin         physical    severity-pattern 7/10
+    audiences · stress-pro · post-partum
+    triggered angles · ANG-02
+  PNT-07  réveils nocturnes anxiété       emotional   severity-pattern 9/10
+    audiences · post-partum (single)
+    triggered angles · ANG-05
+  ...
+
+Drill profondeur entité  · /phantom {brand} pain-points {PNT-NN}
+Filter par catégorie     · /phantom {brand} pain-points --category=physical
+Drill audience source    · /phantom {brand} audiences {audience-slug}
+```
+
+Format ligne · `{PNT-NN}  {label}        {category}   severity-pattern {X}/10` puis sub-lines `audiences · {slug-1} · {slug-2} · ... ({count})` et `triggered angles · {ANG-NN} · {ANG-NN}`.
+
+**Filter par catégorie** · `/phantom {brand} pain-points --category={physical|emotional|friction_ux|cognitive|social|economic}` rend uniquement les pain points de la catégorie demandée. Categories canon depuis `pain-benefit-chain-doctrine.md` (functional/emotional/identity chain + sub-categories par layer).
+
+**Cross-refs canonical** · chaque PNT-NN référencé dans · `angle.lineage.pain_ref` (angle dérivé) · `objection.derived_angle_refs` (objection cross-link) · `friction.cross_refs.pain_point_ids` (friction qui touche le même substrat).
+
+Actions prioritaires ·
+- `traite le pain bloquant {PNT-NN}` (top severity_pattern, audience widest)
+- `mine-voc sur {PNT-NN}` (pain sourcé hypothèse, <5 verbatims captés)
+- `crée des angles publicitaires sur {PNT-NN}` (pain canonical sans angle dérivé encore)
+- `audit pains orphelins` (pain encodé sans `triggered_angles[]`)
+
+Drill item · `/phantom {brand} pain-points {PNT-NN}` ouvre fiche complète (chain functional/emotional/identity + verbatim_quotes + affected_audiences[] + derived_angle_refs + sourcing tags). Pattern miroir frictions-drill, structure équivalente avec ontologie audience-cartographie/pain-benefit-chain (Schwartz layers + JTBD sub-tensions).
+
+---
+
+## Mode objections-drill (NEW v2.63)
+
+`/phantom {brand} objections` rend la collection `objections/` cross-audiences. Ontologie pure v2.63 · objections sont entités top-level canonical (OBJ-NN), pas sub-field profile audience. Permet visibility cross-audience d'une même objection (e.g. OBJ-01 "trop cher" affecte stress-pro + post-partum simultanément, encodé 1 fois canonical avec cross-refs `affected_audiences[]`). Pattern miroir pain-points-drill.
+
+Storage source · `brands/{brand}/objections/*.json` (ou agrégat `brands/{brand}/objections.json`).
+
+Header breadcrumb ·
+
+```
+workspace > {brand} > objections
+══════════════════════════════════════════════
+{N} objections cartographiées · cross-audiences cluster · TOP-3 types
+  price : {N} · scepticism : {N} · fit : {N} · urgency : {N} · trust : {N} · status : {N} · risk : {N}
+```
+
+Rendering · cross-audiences vue (cluster par objection similar). Cap 10 plus saillantes (top severity_score desc, blocking ≥7 en premier).
+
+```
+Objections critiques bloquantes (severity ≥7)
+  OBJ-01  trop cher pour un supplément quotidien   price        severity-score 8/10
+    audiences · stress-pro · post-partum · senior-insomnie (3)
+    lifecycle · consideration → decision
+    counter-patterns · reframe positif · comparaison coût inaction
+    derived angles · ANG-04 (cost-per-day reframe)
+  OBJ-04  j'ai déjà essayé d'autres melatonines   scepticism   severity-score 8/10
+    audiences · stress-pro (single)
+    lifecycle · consideration
+    counter-patterns · feel-felt-found · authority proof · specificity
+    derived angles · ANG-06 (mechanism-reveal angle)
+
+Objections moyennes (severity 4-6)
+  OBJ-03  pas le moment, je verrai plus tard      urgency      severity-score 6/10
+    audiences · stress-pro · post-partum
+    lifecycle · decision
+    counter-patterns · comparaison coût inaction · urgency contextuelle
+    derived angles · ANG-08
+  ...
+
+Drill profondeur entité  · /phantom {brand} objections {OBJ-NN}
+Filter par severity      · /phantom {brand} objections --severity=blocking (≥7)
+Filter par type          · /phantom {brand} objections --type=price
+Filter par lifecycle     · /phantom {brand} objections --lifecycle=decision
+Drill audience source    · /phantom {brand} audiences {audience-slug}
+```
+
+Format ligne · `{OBJ-NN}  {formulation_label}   {type}   severity-score {X}/10` puis sub-lines · `audiences · {slug-1} · {slug-2} · ... ({count})` · `lifecycle · {stage-1} → {stage-2}` · `counter-patterns · {pattern-1} · {pattern-2}` · `derived angles · {ANG-NN} ({short_reframe_note})`.
+
+**Types canon** (depuis `objections-mapping-doctrine.md`) · `price`, `scepticism`, `fit`, `urgency`, `trust`, `status`, `risk`. **Lifecycle stages canon** · `awareness`, `consideration`, `decision`, `post-purchase` (4 stages). **6 neutralization patterns canon** · feel-felt-found, reframe positif, pre-emption, comparaison coût inaction, social proof, authority proof.
+
+**Filter par severity** · `--severity=blocking` (≥7) · `--severity=medium` (4-6) · `--severity=minor` (1-3). **Filter par type** · `--type=price|scepticism|fit|urgency|trust|status|risk`. **Filter par lifecycle** · `--lifecycle=awareness|consideration|decision|post-purchase`.
+
+**Cross-refs canonical** · chaque OBJ-NN référencé dans · `angle.lineage.objection_ref` (angle dérivé via reframe) · `pain_point.related_objection_refs` (pain qui alimente l'objection) · `friction.cross_refs.objection_ids` (friction qui durcit l'objection).
+
+Actions prioritaires ·
+- `traite l'objection bloquante {OBJ-NN}` (top severity_score, audience widest)
+- `crée un angle reframe sur {OBJ-NN}` (objection bloquante sans angle dérivé)
+- `produce-copy-brief sur OBJ-NN handling` (brief copy pre-emption pour bloquantes severity ≥8)
+- `mine-voc sur objection {OBJ-NN}` (objection hypothèse, <10 verbatims sourcés)
+- `audit objections orphelines` (objection encodée sans counter-pattern matched)
+
+Drill item · `/phantom {brand} objections {OBJ-NN}` ouvre fiche complète (formulation + type + severity_score + lifecycle_stage + counter-patterns matched + response_counter + verbatim_quotes + affected_audiences[] + derived_angle_refs + sourcing tags). Pattern miroir pain-points-drill + frictions-drill, ontologie complète depuis `objections-mapping-doctrine.md` (7 types × 4 lifecycle × 6 patterns).
 
 ---
 

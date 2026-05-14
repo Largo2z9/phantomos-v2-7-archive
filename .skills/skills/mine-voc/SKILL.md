@@ -1,7 +1,7 @@
 ---
 name: mine-voc
 type: producer
-version: "1.1.1"
+version: "1.2.0"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -13,6 +13,7 @@ consumes:
   - path: docs/doctrine/pain-benefit-chain-doctrine.md
   - path: docs/doctrine/objections-mapping-doctrine.md
 description: >
+  v1.2.0 (v2.63 ontologie pure) · pain_points + objections passent en COLLECTIONS top-level séparées · stage `brands/{slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/objections/{OBJ-NN}.json` entités complètes avec `affected_audiences: [a_slug]`. BREAKING profile.json schema v2.0 (sub-fields legacy `profile.pain_points[]` / `profile.objections[]` DEPRECATED en write · read backward compat preserved). Pattern miroir friction.schema (top-level collection). Cross-audience reference natif via affected_audiences[].
   v1.1.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (pain-benefit-chain, objections-mapping). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.1.0 (v2.58 coverage extend) · benefits emotional_signal + latency_min/max + evidence_verbatim staging (v1.10 NEW fields activated) · pain_id PNT-NN + objection_id OBJ-NN stable generation (v1.7 NEW canonical IDs · fixe faille cross-ref friction). Closes 3 orphans audit v2.57.
   Voice of Customer mining. Captures what real customers say about THIS brand
@@ -20,7 +21,8 @@ description: >
   Codes verbatim through 4 lenses (JTBD, Schwartz awareness, theme typology,
   pain category). Produces a synthesis paragraph naming what the customers
   reveal that the brand likely does not see, plus structured mutations into
-  spec.json verbatim_quotes[] and profile.json voice.key_expressions[].
+  spec.json verbatim_quotes[], profile.json voice.key_expressions[],
+  pain_points/{PNT-NN}.json collection et objections/{OBJ-NN}.json collection.
   FR: "voc {brand}", "scrape les avis", "mine les reviews", "extrais ce que disent les clients", "voice of customer".
   EN: "voc {brand}", "mine reviews", "voice of customer", "scrape customer reviews".
 permissions:
@@ -29,6 +31,14 @@ permissions:
   emits_events: [coherence_check]
   mode: proposed
   subagent_safe: true
+produces_proposals_for:
+  - brands/{slug}/pain_points/{PNT-NN}.json
+  - brands/{slug}/objections/{OBJ-NN}.json
+  - brands/{slug}/products/{p_slug}/spec.json#/problems_solved
+  - brands/{slug}/products/{p_slug}/spec.json#/benefits
+  - brands/{slug}/audiences/{a_slug}/profile.json#/voice/key_expressions
+  - brands/{slug}/audiences/{a_slug}/profile.json#/pain_points (legacy v1.7 backward compat read · DEPRECATED write)
+  - brands/{slug}/audiences/{a_slug}/profile.json#/objections (legacy v1.7 backward compat read · DEPRECATED write)
 pipeline:
   preconditions: brand exists with at least brand.json filled (run setup-brand + snapshot-brand first)
   postconditions: synthesis delivered, Layer A corpus archived in sources/voc/, Layer B mutations proposed, finalize-mutation-batch event emitted
@@ -257,24 +267,102 @@ Route map.
 
   Absence de signal temporel ou émotionnel = absence d'evidence, ne pas inventer. Stage uniquement les benefits où la verbatim corpus porte le signal.
 
-- **`audiences/{slug}/profile.json#pain_points[].pain_id` + `audiences/{slug}/profile.json#objections[].objection_id` (v1.7 NEW canonical IDs, v2.58 write-side)** · Profile v1.7 introduit des IDs stables pattern `PNT-NN` (pain points) et `OBJ-NN` (objections) pour permettre les cross-refs canon depuis `friction.cross_refs.{pain_point_ids, objection_ids}`. Lors du mining, générer IDs stables incrémentés depuis l'existant :
+- **`brands/{slug}/pain_points/{PNT-NN}.json` (v1.2.0 v2.63 ontologie pure · COLLECTION TOP-LEVEL séparée)** · BREAKING change v2.63 · pain_points deviennent collection top-level miroir pattern friction.schema. Chaque pain point staged = entité complète fichier dédié `brands/{slug}/pain_points/{PNT-NN}.json` avec `affected_audiences: [a_slug]` (array slugs audiences impactées, cross-audience natif). Fini sub-field profile.json.
 
-  Pour chaque pain point staged · `pain_id` PNT-01, PNT-02, ... incrémenté depuis scan `brands/{slug}/audiences/{a_slug}/profile.json#/pain_points[]/pain_id` existing max.
+  Generation incrémentale PNT-NN · scan `brands/{slug}/pain_points/*.json` existing pour next id (PNT-01, PNT-02, ... PNT-NN max + 1). Pattern stable PNT-NN, jamais réassigné.
 
-  Pour chaque objection staged · `objection_id` OBJ-01, OBJ-02, ... idem depuis scan `objections[]/objection_id` existing max.
+  Entité shape (full file) ·
 
-  Mutation gate :
-
-  ```bash
-  python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/pain_points/{idx}/pain_id" --value "PNT-{NN}" --source agent --confidence 1.0 --mode proposed --reason "Stable ID generation v1.7"
-  python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/objections/{idx}/objection_id" --value "OBJ-{NN}" --source agent --confidence 1.0 --mode proposed --reason "Stable ID generation v1.7"
+  ```json
+  {
+    "pain_id": "PNT-{NN}",
+    "formulation": "{verbatim customer-voice}",
+    "pain_category": "physical | emotional | friction_ux | logistical | cognitive | social_status",
+    "chain": [
+      {"level": "surface", "formulation": "{ce qu'elle dit}"},
+      {"level": "consequence", "formulation": "{impact quotidien}"},
+      {"level": "deep", "formulation": "{sens identitaire}"}
+    ],
+    "emotion": "{dominant emotion}",
+    "trigger": "{contextual trigger}",
+    "awareness_stage": "{Schwartz stage}",
+    "affected_audiences": ["{a_slug_1}", "{a_slug_2}"],
+    "affected_products": ["{p_slug}"],
+    "_source_meta": {
+      "origin": "voc",
+      "platform": "{platform}",
+      "sample_size": {N},
+      "date_captured": "{ISO date}",
+      "verbatim_ids": ["VOC-{platform}-{nano_id}", ...]
+    },
+    "meta": {
+      "validation_status": "hypothesis",
+      "_source": "observed",
+      "created_by_skill": "mine-voc",
+      "created": "{date}"
+    }
+  }
   ```
 
-  Fixe la faille cross-ref · `friction.cross_refs.{pain_point_ids, objection_ids}` peut désormais référencer canon (PNT-NN / OBJ-NN) au lieu de re-formulations fragiles.
-- `audiences/{slug}/profile.json#voice.key_expressions[]` — 5-10 highest-frequency real-customer phrases. Mandatory triplet: `frequency`, `sample_size`, `platform`. Frequency without denominator is refused at the schema level.
-- `audiences/{slug}/profile.json#pain_points[]` — refined or new entries with formulation in customer voice, awareness_stage per Schwartz, `_source_meta.origin: "voc"`, sample_size attached.
-- `audiences/{slug}/profile.json#objections[]` — typed objections (price / trust / fit / use case / regulatory) with frequency, severity, lifecycle stage. Post-purchase objections (refund issues, expectation gap) are unique to VoC mining; snapshot cannot see them.
-- `audiences/{slug}/profile.json#psychology.beliefs_limiting` — only if a belief recurs in three or more verbatims and contradicts a brand claim.
+  Mutation gate (stage entité complète) ·
+
+  ```bash
+  python3 .skills/write-to-context.py --path "pain_points/{PNT-NN}.json" --value '{<full pain_point entity JSON>}' --source agent --confidence 0.7 --mode proposed --reason "v2.63 ontologie pure · top-level collection"
+  ```
+
+  Cross-audience natif · si un pain point recurrent cross-audiences (ex pain `chute capillaire post-grossesse` affecte `maman-postpartum` + `femme-30-45-active`) → stage UNE entité PNT-NN avec `affected_audiences: ["maman-postpartum", "femme-30-45-active"]` plutôt que dupliquer dans deux profile.json.
+
+  Cross-ref canonical friction · `friction.cross_refs.pain_point_ids[]` référence désormais directement les PNT-NN du registry top-level.
+
+- **`brands/{slug}/objections/{OBJ-NN}.json` (v1.2.0 v2.63 ontologie pure · COLLECTION TOP-LEVEL séparée)** · BREAKING change v2.63 · objections deviennent collection top-level miroir pattern friction.schema. Chaque objection staged = entité complète fichier dédié `brands/{slug}/objections/{OBJ-NN}.json` avec `affected_audiences: [a_slug]`. Fini sub-field profile.json.
+
+  Generation incrémentale OBJ-NN · scan `brands/{slug}/objections/*.json` existing pour next id (OBJ-01, OBJ-02, ... OBJ-NN max + 1).
+
+  Entité shape (full file) ·
+
+  ```json
+  {
+    "objection_id": "OBJ-{NN}",
+    "type": "prix | scepticisme | temps | confiance | urgence | efficacité | comparaison",
+    "formulation": "{verbatim customer-voice}",
+    "frequency": {1-10},
+    "severity": "low | medium | high",
+    "severity_score": {1-10},
+    "response_counter": "{counter-réponse opérateur}",
+    "derived_angle_refs": ["ANG-{NN}", ...],
+    "lifecycle_stage": "awareness | consideration | decision | post_purchase",
+    "affected_audiences": ["{a_slug_1}", "{a_slug_2}"],
+    "affected_products": ["{p_slug}"],
+    "_source_meta": {
+      "origin": "voc",
+      "platform": "{platform}",
+      "sample_size": {N},
+      "date_captured": "{ISO date}",
+      "verbatim_ids": ["VOC-{platform}-{nano_id}", ...]
+    },
+    "meta": {
+      "validation_status": "hypothesis",
+      "_source": "observed",
+      "created_by_skill": "mine-voc",
+      "created": "{date}"
+    }
+  }
+  ```
+
+  Mutation gate (stage entité complète) ·
+
+  ```bash
+  python3 .skills/write-to-context.py --path "objections/{OBJ-NN}.json" --value '{<full objection entity JSON>}' --source agent --confidence 0.7 --mode proposed --reason "v2.63 ontologie pure · top-level collection"
+  ```
+
+  Cross-audience natif · objection `prix trop élevé pour le format` qui touche `maman-postpartum` + `étudiante-budget-serré` → UNE entité OBJ-NN avec `affected_audiences: ["maman-postpartum", "etudiante-budget-serre"]`. Post-purchase objections (refund issues, expectation gap) restent uniques à VoC mining.
+
+  Cross-ref canonical friction · `friction.cross_refs.objection_ids[]` référence désormais directement les OBJ-NN du registry top-level.
+
+- **Legacy write `profile.json#/pain_points` + `profile.json#/objections` DEPRECATED v1.2.0** · Profile v2.0 BREAKING post-v2.63 · sub-fields `profile.pain_points[]` et `profile.objections[]` ne sont PLUS écrits par mine-voc v1.2.0+. Read backward compat preserved · les profile.json brownfield v1.7 contenant sub-fields legacy restent lisibles (skills downstream lisent les deux paths · top-level collections en priorité, profile sub-fields fallback legacy). Migration progressive · scripts upstream peuvent migrer profile.pain_points[] → pain_points/{PNT-NN}.json files sans casser lecture.
+
+- `audiences/{slug}/profile.json#voice.key_expressions[]` — 5-10 highest-frequency real-customer phrases. Mandatory triplet: `frequency`, `sample_size`, `platform`. Frequency without denominator is refused at the schema level. (Préservé v1.2.0 · vocabulary reste audience-bound sub-field profile.json, pas collection séparée.)
+- `audiences/{slug}/profile.json#psychology.beliefs_limiting` — only if a belief recurs in three or more verbatims and contradicts a brand claim. (Préservé v1.2.0 · psychology reste audience-bound sub-field.)
 - New `audiences/{new-slug}/profile.json` scaffolded if a coherent sub-segment surfaces that is distinct from existing audience folders. Status `hypothesis`, source `voc-mining`. Operator can reject in next turn; the proposal lives until accepted.
 - `brand.json#tone_of_voice` flags — if customers describe the brand in language wildly different from the brand's stated tone, flag for operator review. Never auto-overwrite operator-validated tone.
 - `learnings.json` append — only when a cross-session-stable pattern earns it (a recurring ops flag the operator confirmed actionable, a regulatory signal that warrants compliance review, a channel opportunity the operator wants tracked across sessions). Routine theme detection does not append learnings.
@@ -380,3 +468,4 @@ Three contexts surface this skill.
 - **1.0.1** — Canon tagging additif (`canon_schwartz_conscience_id`, `canon_emotion_id`, `canon_objection_pattern_id`) on Layer B verbatims. Feeds copy-matrix audience x stade-conscience views.
 - **1.0.2** (v2.29.0 alignment verify) — `awareness_stage` rename confirmed in Layer A entry shape and profile routing (`pain_points[].awareness_stage` consumes `_shared/awareness-stage.json` $ref, 5 canoniques). Canon tagging field names unchanged: `canon_schwartz_conscience_id` reste tel quel car pointe vers la fiche canon copy `niveaux-schwartz/conscience.json`, pas vers l'enum `awareness_stage` d'`angle.lineage`. No structural patches needed beyond verify.
 - **1.1.0** (v2.58 coverage extend) · Step 6 routing étendu pour combler 3 orphans audit v2.57. P1 · `spec.benefits[].emotional_signal` + `.latency_min` / `.latency_max` + `.evidence_verbatim[]` write-side (v1.10 NEW fields activated, staged depuis JTBD emotional + theme=benefit coding). P2 · `profile.pain_points[].pain_id` + `profile.objections[].objection_id` stable ID generation pattern PNT-NN / OBJ-NN (v1.7 NEW canonical IDs, fixe faille cross-ref `friction.cross_refs.{pain_point_ids, objection_ids}` qui peut désormais référencer canon). Backward compat strict (additif only).
+- **1.2.0** (v2.63 ontologie pure) · BREAKING refactor write-side · pain_points + objections passent en COLLECTIONS TOP-LEVEL séparées miroir pattern friction.schema. Stage `brands/{slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/objections/{OBJ-NN}.json` entités complètes avec `affected_audiences: [a_slug]` array (cross-audience natif). Fini sub-field `profile.pain_points[]` / `profile.objections[]` legacy writes. Profile schema v2.0 BREAKING post-migration · sub-fields legacy DEPRECATED write · read backward compat preserved (fallback lecture profile.json brownfield v1.7). Generation IDs PNT-NN / OBJ-NN scan désormais `brands/{slug}/{pain_points|objections}/*.json` filesystem au lieu de sub-fields profile. Pattern canonical · top-level collection avec cross-audience reference via affected_audiences[]. produces_proposals_for ajouté en frontmatter (paths NEW + legacy refs marquées DEPRECATED).

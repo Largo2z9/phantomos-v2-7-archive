@@ -12,6 +12,8 @@ Le canon Direct Response (Sugarman, Halbert, Caples, Hormozi) traite ce problèm
 
 Cette doctrine propose une grille mentale en trois axes · 7 types d'objection × 4 lifecycle stages × 6 neutralization patterns canon. Sortie · une cartographie top-3 objections par audience, severity-scored, lifecycle-positioned, pattern-matched.
 
+**Ontologie pure v2.63 · objections sont désormais collection top-level canonical (OBJ-NN).** Les objections ne sont PAS des sub-fields dans `audience.profile.json`. Elles vivent comme entités sœurs canonical (`brands/{brand}/objections/OBJ-NN.json`), cross-référencées par audience via `affected_audiences[]`. Parité ontologique avec pain_points (PNT-NN) et frictions (FRC-NN), tous top-level depuis v2.63. Permet visibility cross-audience d'une même objection (e.g. OBJ-01 "trop cher" affecte stress-pro + post-partum simultanément, encodé 1 fois canonical avec cross-refs · 1 fiche source de vérité, pas de duplication par audience). Drill cross-audiences via `/phantom {brand} objections` · drill item via `/phantom {brand} objections {OBJ-NN}`.
+
 ## Les principes canon
 
 **Principe 1 · Une objection non-traitée est une friction silencieuse.**
@@ -64,6 +66,8 @@ Les 6 patterns canon (feel-felt-found, reframe positif, pre-emption, comparaison
 Erreur classique · feel-felt-found sur objection price. Miss. Le prospect ne ressent pas que c'est cher, il sait que c'est cher (calcul rationnel). Faut reframe + comparaison coût inaction, pas empathie.
 
 ## La méthode · 7 types × 4 lifecycle × 6 patterns
+
+**Canonical IDs (v2.63)** · chaque objection cartographiée porte un ID canonical `OBJ-NN` (numérique zero-padded, ex · OBJ-01, OBJ-12), cohérent avec la convention `PNT-NN` (pain_points) et `FRC-NN` (frictions). Le canonical ID permet · (a) cross-refs explicites depuis `angle.lineage.objection_ref` (angle dérivé via reframe), `pain_point.related_objection_refs`, `friction.cross_refs.objection_ids` · (b) drill canonical via `/phantom {brand} objections {OBJ-NN}` · (c) traçabilité historique long-terme (l'OBJ-NN reste stable, même si la formulation évolue). Storage canonique · `brands/{brand}/objections/{OBJ-NN}.json` (1 fichier par objection canonical, pas de duplication par audience).
 
 ### Les 7 types d'objection canon
 
@@ -391,6 +395,16 @@ Pour chaque produit / audience / asset clé, valider ·
 - ☐ Re-mining VoC prévu (refresh annuel ou shift-driven) ?
 
 ## Sources et lectures
+
+**Canon Notion stride-up · workspace 3 collections sub-tensions parité (v2.63)**
+
+L'implémentation PhantomOS v2.63 aligne le canon doctrinal Notion stride-up workspace · 3 collections sub-tensions séparées en parité ontologique cross-audiences ·
+
+- `pain_points/` (PNT-NN) · canon `pain-benefit-chain-doctrine.md`
+- `objections/` (OBJ-NN) · canon `objections-mapping-doctrine.md` (ce fichier)
+- `frictions/` (FRC-NN) · canon runtime usage encodage
+
+Les 3 collections sont orthogonales (un même audience peut être impactée par N pain_points, N objections, N frictions). Chaque entité canonical porte `affected_audiences[]` pour permettre visibility cross-audience sans duplication. Cross-refs explicites entre collections (e.g. `objection.related_pain_point_refs[]`, `pain_point.related_objection_refs[]`). Pattern stride-up consume par les skills downstream · `produce-paid-angles` (objection → angle reframe), `produce-copy-brief` (objection → counter-pattern matched), `compose-creative` (cross-refs objection × audience × angle).
 
 **Canon historique**
 

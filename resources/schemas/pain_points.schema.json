@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "pain_points.schema.json",
+  "title": "Pain Point (audience-specific)",
+  "description": "Pain point ressenti par audience(s). v1.0 baseline ship v2.63 · refactor ontologie pure · extracted from profile.pain_points[] legacy v1.7. Cross-refs audiences via affected_audiences[]. Same pattern que friction · top-level collection.",
+  "_schema_version": "pain_points/1.0",
+  "_changelog": {
+    "1.0": "v2.63 baseline. Extracted from profile.pain_points[] legacy v1.7 (BREAKING). Now top-level collection canonical. PNT-NN id pattern. Cross-refs affected_audiences[] + affected_products[] (cohérence friction). Closes ontologie inconsistance (friction top-level mais pain sub-field legacy)."
+  },
+  "type": "object",
+  "required": ["pain_id", "formulation", "meta"],
+  "properties": {
+    "pain_id": {
+      "type": "string",
+      "pattern": "^PNT-[0-9]{2,3}$",
+      "description": "Stable id PNT-NN format. Cohérent canonical IDs PhantomOS (FRC-NN, OBJ-NN, ANG-NN, CRT-NN, etc.)."
+    },
+    "formulation": { "type": "string", "description": "Verbatim ou paraphrase customer-language" },
+    "pain_category": {
+      "type": "string",
+      "enum": ["physical", "emotional", "friction_ux", "logistical", "cognitive", "social_status"],
+      "description": "Cohérent friction.category enum (parité observable canon)"
+    },
+    "chain": {
+      "type": "object",
+      "description": "Cascade surface → consequence → deep (canon doctrine)",
+      "properties": {
+        "surface": { "type": "string" },
+        "consequence": { "type": "string" },
+        "deep": { "type": "string" }
+      }
+    },
+    "emotion": { "type": "string", "description": "Émotion dominante associée" },
+    "trigger": { "type": "string", "description": "Moment déclencheur" },
+    "awareness_stage": { "$ref": "_shared/awareness-stage.json", "description": "Schwartz stage canonical" },
+    "verbatim_quotes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string" },
+          "source": { "type": "string", "description": "Reddit thread, Trustpilot review id, etc." },
+          "sample_size": { "type": "integer", "description": "Frequency mention canonical signal" }
+        }
+      }
+    },
+    "affected_audiences": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Audience slugs · cross-ref vers brands/{slug}/audiences/{slug}/profile.json"
+    },
+    "affected_products": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Product slugs · cross-ref vers brands/{slug}/products/{slug}/spec.json"
+    },
+    "derived_angle_refs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^ANG-[0-9]{2,3}$" },
+      "description": "Back-ref · angles qui exploitent ce pain comme observation"
+    },
+    "meta": {
+      "type": "object",
+      "required": ["validation_status", "created", "_source"],
+      "properties": {
+        "validation_status": { "$ref": "_shared/validation-status.json" },
+        "_source": { "enum": ["operator", "agent", "scrape", "mine_voc", "import"] },
+        "created": { "type": "string", "format": "date-time" },
+        "updated": { "type": "string", "format": "date-time" },
+        "created_by_skill": { "type": "string" }
+      }
+    }
+  }
+}
