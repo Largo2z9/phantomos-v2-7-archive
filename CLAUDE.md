@@ -4,6 +4,17 @@
 
 ---
 
+## FIRST ACTION. Before responding to any message
+
+**CRITICAL:** check `brands/` for real brand folders (ignore any folder starting with `_`), and read `/operator/awareness.json` to know the operator's prior knowledge state.
+- **No brand found** → **YOU MUST** read and execute `.claude/commands/tour.md` NOW. Follow its onboarding flow. **NEVER** skip, even for a casual "hey" / "salut".
+- **Brand found, setup incomplete** (`status.json` → `wedge_complete: false`) → read `session-state.md`, resume setup where it stopped. **NEVER** re-run the tour.
+- **Brand(s) found, setup complete** → read `config.json` for operator preferences and `/operator/awareness.json` for prior knowledge state. Calibrate your register accordingly (concepts already introduced are not re-defined). **CRITICAL:** also read `session-state.md` (root + per-brand if applicable) **before** the operator's first turn lands. Surface the active decisions, open threads, and the last move that was being constructed. The operator should not have to re-explain where they left off, that is a violation of the core promise. If the prior session was mid-flow, propose to resume that thread or pivot, do not silently restart from scratch.
+
+This rule is **non-negotiable and precedes all other instructions in this file**. Doctrine, routing, voice, sub-doctrines all come AFTER this first action. Apply this BEFORE reading anything else below.
+
+---
+
 ## Master doctrine, Contextual intelligence
 
 **CRITICAL:** PhantomOS does not fill forms. It reasons over a business universe. Structure serves intelligence, never constrains it.
@@ -56,15 +67,6 @@ Si le skill n'existe pas pour un output demandé, l'agent flag le gap explicitem
 Full doctrine · `docs/system/canonical-matrix-reasoning.md` + `docs/system/skill-routing-discipline.md` (NEW à créer si gap).
 
 **Operator-facing rule absolue.** **NEVER** expose doctrine names (Contextual Intelligence, Schema Encoding Discipline, Canonical Matrix Reasoning, Skill Authoring Discipline, Provenance & Trust Discipline) or their acronyms in operator-facing output. Operators feel the *effects* (output 95% quality, agent that synthesizes instead of form-filling, reproducible across sessions); they never read the *names*. If an acronym leaks in operator output, that is a bug. Doctrine documents are for skill authors and contributors only, kept in `docs/system/` (not user-facing).
-
----
-
-## FIRST ACTION. Before responding to any message
-
-**CRITICAL:** check `brands/` for real brand folders (ignore any folder starting with `_`), and read `/operator/awareness.json` to know the operator's prior knowledge state.
-- **No brand found** → **YOU MUST** read and execute `.claude/commands/tour.md` NOW. Follow its onboarding flow. **NEVER** skip, even for a casual "hey" / "salut".
-- **Brand found, setup incomplete** (`status.json` → `wedge_complete: false`) → read `session-state.md`, resume setup where it stopped. **NEVER** re-run the tour.
-- **Brand(s) found, setup complete** → read `config.json` for operator preferences and `/operator/awareness.json` for prior knowledge state. Calibrate your register accordingly (concepts already introduced are not re-defined). **CRITICAL:** also read `session-state.md` (root + per-brand if applicable) **before** the operator's first turn lands. Surface the active decisions, open threads, and the last move that was being constructed. The operator should not have to re-explain where they left off, that is a violation of the core promise. If the prior session was mid-flow, propose to resume that thread or pivot, do not silently restart from scratch.
 
 ---
 
