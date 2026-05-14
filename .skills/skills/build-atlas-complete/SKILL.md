@@ -57,8 +57,8 @@ produces_proposals_for:
   - brands/{slug}/angles/*.json
   - brands/{slug}/creatives/*.json
   - brands/{slug}/briefs/*.md
-  - brands/{slug}/strategy/roadmap.json
-  - brands/{slug}/strategy/score-matrix.json
+  - brands/{slug}/strategy.json
+  - brands/{slug}/scoring/matrix-{date}.json
 pipeline:
   preconditions: operator provides brand_slug AND (URL OR snapshot already completed). MCP tools available (facebook-graph optional, Notion optional).
   postconditions: |
@@ -82,6 +82,10 @@ patch_notes:
     - "Explicit operator gates between Phases 4-5 and 6-7 (audience and angle validation)"
     - "Investigation Posture 5-section close (Observé / Déduit / Inconnu / Leviers / Close ouvert) mandatory"
     - "No raw numeric scoring exposed to operator (Compositional Cartography §7)"
+  v1.0.1:
+    - "v2.58 patch · canonical strategy.json path (was strategy/roadmap.json non-canon) · scoring matrix path aligned brands/{slug}/scoring/matrix-{date}.json (was strategy/score-matrix.json)"
+    - "Closes dette technique runtime · strategy.schema v1.0 NEW shipped v2.58 canonical entity activée"
+    - "produce-strategy v1.0.0 NEW orchestrator invokable en post-Phase 10 close si l'opérateur veut cadrer le focus Q{n} sur la brand atlas-complete · cycle stratégique distinct de la phase score-matrix"
 ---
 
 # Skill: build-atlas-complete
@@ -430,6 +434,7 @@ Then AskUserQuestion: *Go / Skip URL scan / Ajuste le pipeline (skip une phase) 
 - `.skills/skills/onboard-brand/SKILL.md` — orchestrator pattern reference (purity rule, gate canon)
 - `.skills/skills/deepen-brand-context/SKILL.md` — chained inline orchestrator (Phase 3)
 - `.skills/skills/setup-brand/SKILL.md` — Phase 1
+- `.skills/skills/produce-strategy/SKILL.md` — invokable en post-Phase 10 close si l'opérateur veut cadrer le focus Q{n} sur la brand atlas-complete (strategy.schema v1.0 canon shipped v2.58)
 - `.skills/skills/snapshot-brand/SKILL.md` — Phase 2
 - `.skills/skills/profile-audience/SKILL.md` — Phase 4
 - `.skills/skills/weight-dimensions/SKILL.md` — Phase 5

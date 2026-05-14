@@ -1,7 +1,7 @@
 ---
 name: mine-vom
 type: producer
-version: "1.0.1"
+version: "1.1.0"
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: coding
@@ -9,6 +9,7 @@ consumes:
   - path: resources/frameworks/vom-mining.md
     min_version: 1.0.0
 description: >
+  v1.1.0 (v2.58 coverage extend) · brand.market.awareness_distribution write-side · brand.market.regulatory write-side · brand.seasonality write-side · spec.competitive_comparison feature-by-feature write-side. Closes 4 orphans audit v2.57.
   Voice of Market mining. Captures what the broader niche says — competitors'
   customer reviews, niche community forums (Reddit subs, niche Discord),
   comparison content, listicles, niche hashtags, industry analyst videos.
@@ -192,13 +193,53 @@ Routes.
 
 **`brand.json#market.market_overview.sophistication_stage`** — single integer (1-5) computed from average `sophistication_signal` weighted by `recurrence_count`. Proposed update with two-sentence prose justification citing the three signals that grounded the call.
 
-**`brand.json#market.awareness_distribution`** — five floats summing to 100, computed from theme-tagged awareness stages weighted by recurrence. Proposed shift (e.g. solution_aware 60% → product_aware 55%) with cited evidence.
+**`brand.json#market.awareness_distribution` (v2.58 write-side P3)** · ratio computed from theme-tagged awareness stages weighted by recurrence dans les verbatims niche. Distribution complète 5 stages canoniques Schwartz (`unaware`, `problem_aware`, `solution_aware`, `product_aware`, `most_aware`), floats sommant à 1.0. Stage en un seul write :
+
+```bash
+python3 .skills/write-to-context.py --path "brand.json#/market/awareness_distribution" --value '{"unaware":0.4,"problem_aware":0.3,"solution_aware":0.15,"product_aware":0.1,"most_aware":0.05}' --source agent --confidence 0.6 --mode proposed --reason "VoM analysis niche distribution"
+```
+
+Proposed shift cité par evidence (e.g. *"solution_aware 60% → product_aware 55%"* avec 3+ verbatims grounding la migration).
 
 **`brand.json#market.competitors[].positioning`** — one-line synthesis per competitor, derived from their review themes. *"They win on speed, lose on transparency."* Enriched per competitor, never per-competitor blurb dumped into operator-facing output.
 
 **`brand.json#market.external_intelligence[]`** — five to seven new entries per run, hard cap, per `watch-competitors` precedent. Each entry tags the signal type (`white_space_gap`, `vocabulary_shift`, `competitor_positioning_move`, `active_porter_force`), cites the verbatims, includes the one-line strategic implication.
 
-**`brand.json#market.regulatory.advertising_restrictions[]`** — append if regulatory mentions surface (FDA letter referenced in three forum threads, ANSM warning in EU supplements category). Skip if no regulatory signal.
+**`brand.json#market.regulatory` (v2.58 write-side P4, objet complet)** · detect mentions regulatory / legal / compliance dans la niche. Trois sub-fields canoniques :
+
+- `constraints[]` · claims interdits ou bornés dans la niche (ex *"ne peut pas claim weight loss"*, *"interdiction de revendiquer la guérison"*).
+- `certifications_required[]` · certifications gating l'activité (ex *"EFSA approval"*, *"FDA clearance"*, *"Ecocert pour clean beauty"*).
+- `advertising_restrictions[]` · restrictions canaux paid (ex *"Meta ad policy restrictions for {category}"*, *"Google Ads weight-loss policy"*, *"TikTok beauty restrictions FR"*).
+
+Stage en un seul write (objet complet ; skip si zéro signal regulatory) :
+
+```bash
+python3 .skills/write-to-context.py --path "brand.json#/market/regulatory" --value '{"constraints":["claim weight loss interdit","claim healing interdit"],"certifications_required":["EFSA approval"],"advertising_restrictions":["Meta ad policy supplements","TikTok beauty FR"]}' --source agent --confidence 0.7 --mode proposed --reason "Regulatory mining niche"
+```
+
+Append si regulatory mentions surface (FDA letter referenced in three forum threads, ANSM warning in EU supplements category). Skip si no regulatory signal.
+
+**`brand.json#seasonality` (v2.58 write-side P5, NEW field)** · analyser temporal patterns dans les verbatims niche (références saisonnalité, peaks holidays, troughs post-holiday, fêtes commerciales). Trois sub-fields :
+
+- `peak_periods[]` · fenêtres haute demande (ex *"Q4-holiday"*, *"Q2-mothers-day"*, *"summer-skincare-actives"*).
+- `trough_periods[]` · fenêtres basse demande (ex *"Q1-post-holiday"*, *"août-vacances"*).
+- `notes` · string libre, contextualise les patterns détectés.
+
+Stage :
+
+```bash
+python3 .skills/write-to-context.py --path "brand.json#/seasonality" --value '{"peak_periods":["Q4-holiday","Q2-mothers-day"],"trough_periods":["Q1-post-holiday"],"notes":"Niche skincare actives portée par Q1 resolutions et back-to-school Q3, dip été net"}' --source agent --confidence 0.5 --mode proposed --reason "Seasonality niche analysis"
+```
+
+Confidence default 0.5 car saisonnalité hypothèse macro depuis corpus qualitatif (validation chiffres = analyze-perf ou Google Trends pull séparé).
+
+**`products/{slug}/spec.json#competitive_comparison[]` (v2.58 write-side P6, NEW field per produit)** · lors de l'analyse compétitive (déjà couverte par `brand.json#market.competitors[]`), enrichir feature-by-feature par produit vs top-3 competitors. Chaque entrée porte `competitor_product`, `feature`, et le delta observé. Stage par produit :
+
+```bash
+python3 .skills/write-to-context.py --path "products/{p_slug}/spec.json#/competitive_comparison" --value '[{"competitor_product":"competitor-A-hero","feature":"rapid-absorption","delta":"+50% faster claim"},{"competitor_product":"competitor-B-hero","feature":"price-tier","delta":"-30% cheaper"},{"competitor_product":"competitor-C-hero","feature":"texture","delta":"more occlusive"}]' --source agent --confidence 0.6 --mode proposed --reason "Feature-by-feature vs competitors mine-vom output"
+```
+
+Run par produit, cap 5 features par competitor pour rester actionnable copy-side. Skip si le produit n'a pas de competitor mappable (brand monopoliste niche, ou competitors hors scope hero).
 
 **`audiences/{slug}/profile.json#voice.market_vernacular[]`** — append vernacular tokens as proposed entries with `origin: "vom"` and verbatim references. Each token carries one example sentence and the source tag.
 
@@ -293,3 +334,9 @@ The focus parameter does not change the four-lens coding pass — all lenses are
 - **`.skills/stage-proposal.py`** — proposal staging primitive used in Step 1 competitor integrity check.
 - **`docs/system/contextual-intelligence.md`** — master doctrine. Read before designing any extension. The form-fill failure mode (filling `market.*` fields instead of producing synthesis) is the anti-pattern this skill polices in itself.
 - **`docs/system/voice.md`** — voice canon. Read before editing operator-facing strings.
+
+## Changelog
+
+- **1.0.0** · Initial spec. Four-lens coding consumes `vom-mining.md`. Pre-step competitor integrity check. Step 0 first-party ask non-negotiable. Step 7 synthesis follows snapshot Step 7 canon strictly. Step 9 finalize-mutation-batch mandatory. Five `--focus` modes ship at v1.
+- **1.0.1** · Vernacular source rule explicit · reject tokens surfacing only on brand-controlled surfaces. Stage 5 default skepticism encoded.
+- **1.1.0** (v2.58 coverage extend) · Step 8 routing étendu pour combler 4 orphans audit v2.57. P3 · `brand.market.awareness_distribution` write-side (5 stages canoniques Schwartz, floats sommant à 1.0, computed depuis theme-tagged awareness weighted by recurrence). P4 · `brand.market.regulatory` write-side objet complet (`constraints[]` + `certifications_required[]` + `advertising_restrictions[]`, depuis verbatims regulatory / legal / compliance mining). P5 · `brand.seasonality` write-side NEW field (`peak_periods[]` + `trough_periods[]` + `notes`, depuis temporal patterns niche). P6 · `spec.competitive_comparison[]` write-side NEW field per produit (feature-by-feature vs top-3 competitors avec delta observé). Backward compat strict (additif only).

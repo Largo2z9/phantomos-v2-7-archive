@@ -1,7 +1,7 @@
 ---
 name: mine-voc
 type: producer
-version: "1.0.2"
+version: "1.1.0"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -11,6 +11,7 @@ consumes:
   - path: resources/frameworks/voc-coding.md
     min_version: 1.0.0
 description: >
+  v1.1.0 (v2.58 coverage extend) · benefits emotional_signal + latency_min/max + evidence_verbatim staging (v1.10 NEW fields activated) · pain_id PNT-NN + objection_id OBJ-NN stable generation (v1.7 NEW canonical IDs · fixe faille cross-ref friction). Closes 3 orphans audit v2.57.
   Voice of Customer mining. Captures what real customers say about THIS brand
   from native review widgets, Trustpilot, Reddit threads, app stores, forums.
   Codes verbatim through 4 lenses (JTBD, Schwartz awareness, theme typology,
@@ -242,6 +243,31 @@ Route map.
 
 - `products/{slug}/spec.json#problems_solved[].verbatim_quotes[]` — top 3-5 representative quotes per problem, each carrying `_source_meta.origin: "voc"` and pointing by `verbatim_ids` into Layer A. Frequency and urgency derived from corpus counts (1-10 scale per schema).
 - `products/{slug}/spec.json#benefits[].verbatim_quotes[]` — same shape, surfacing perceived-benefit angles the brand under-exploits.
+- **`products/{slug}/spec.json#benefits[].emotional_signal` + `.latency_min` / `.latency_max` + `.evidence_verbatim[]` (v1.10 NEW fields, v2.58 write-side)** · lors du coding lens 2 (JTBD emotional dimension) et lens 1 (theme=benefit), identifier verbatims qui portent un ressenti spécifique exprimé (`emotional_signal`), une fenêtre temporelle ressenti effet (`latency_min` / `latency_max`, ex *"après 3 semaines je sentais"*, *"il faut 2 mois pour voir"*) et des quotes anchored (`evidence_verbatim[]`). Stage par benefit indexé :
+
+  ```bash
+  python3 .skills/write-to-context.py --path "products/{p_slug}/spec.json#/benefits/{idx}/emotional_signal" --value "{quote}" --source agent --confidence 0.7 --mode proposed --reason "VoC mining anchored"
+  python3 .skills/write-to-context.py --path "products/{p_slug}/spec.json#/benefits/{idx}/latency_min" --value {N} --source agent --confidence 0.6 --mode proposed --reason "VoC mining time-to-effect"
+  python3 .skills/write-to-context.py --path "products/{p_slug}/spec.json#/benefits/{idx}/latency_max" --value {N} --source agent --confidence 0.6 --mode proposed --reason "VoC mining time-to-effect"
+  python3 .skills/write-to-context.py --path "products/{p_slug}/spec.json#/benefits/{idx}/evidence_verbatim" --value '["{quote_1}","{quote_2}"]' --source agent --confidence 0.7 --mode proposed --reason "VoC anchored evidence"
+  ```
+
+  Absence de signal temporel ou émotionnel = absence d'evidence, ne pas inventer. Stage uniquement les benefits où la verbatim corpus porte le signal.
+
+- **`audiences/{slug}/profile.json#pain_points[].pain_id` + `audiences/{slug}/profile.json#objections[].objection_id` (v1.7 NEW canonical IDs, v2.58 write-side)** · Profile v1.7 introduit des IDs stables pattern `PNT-NN` (pain points) et `OBJ-NN` (objections) pour permettre les cross-refs canon depuis `friction.cross_refs.{pain_point_ids, objection_ids}`. Lors du mining, générer IDs stables incrémentés depuis l'existant :
+
+  Pour chaque pain point staged · `pain_id` PNT-01, PNT-02, ... incrémenté depuis scan `brands/{slug}/audiences/{a_slug}/profile.json#/pain_points[]/pain_id` existing max.
+
+  Pour chaque objection staged · `objection_id` OBJ-01, OBJ-02, ... idem depuis scan `objections[]/objection_id` existing max.
+
+  Mutation gate :
+
+  ```bash
+  python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/pain_points/{idx}/pain_id" --value "PNT-{NN}" --source agent --confidence 1.0 --mode proposed --reason "Stable ID generation v1.7"
+  python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/objections/{idx}/objection_id" --value "OBJ-{NN}" --source agent --confidence 1.0 --mode proposed --reason "Stable ID generation v1.7"
+  ```
+
+  Fixe la faille cross-ref · `friction.cross_refs.{pain_point_ids, objection_ids}` peut désormais référencer canon (PNT-NN / OBJ-NN) au lieu de re-formulations fragiles.
 - `audiences/{slug}/profile.json#voice.key_expressions[]` — 5-10 highest-frequency real-customer phrases. Mandatory triplet: `frequency`, `sample_size`, `platform`. Frequency without denominator is refused at the schema level.
 - `audiences/{slug}/profile.json#pain_points[]` — refined or new entries with formulation in customer voice, awareness_stage per Schwartz, `_source_meta.origin: "voc"`, sample_size attached.
 - `audiences/{slug}/profile.json#objections[]` — typed objections (price / trust / fit / use case / regulatory) with frequency, severity, lifecycle stage. Post-purchase objections (refund issues, expectation gap) are unique to VoC mining; snapshot cannot see them.
@@ -350,3 +376,4 @@ Three contexts surface this skill.
 - **1.0.0** (2026-04-24) — Initial spec. Four-lens coding consumes `voc-coding.md`. Layer A corpus + Layer B routed mutations. Step 0 first-party ask non-negotiable. Step 5 synthesis follows snapshot Step 7 canon strictly. Step 7 finalize-mutation-batch mandatory. Four `--focus` modes ship at v1. Sonnet for coding; Haiku A/B in v1.1.
 - **1.0.1** — Canon tagging additif (`canon_schwartz_conscience_id`, `canon_emotion_id`, `canon_objection_pattern_id`) on Layer B verbatims. Feeds copy-matrix audience x stade-conscience views.
 - **1.0.2** (v2.29.0 alignment verify) — `awareness_stage` rename confirmed in Layer A entry shape and profile routing (`pain_points[].awareness_stage` consumes `_shared/awareness-stage.json` $ref, 5 canoniques). Canon tagging field names unchanged: `canon_schwartz_conscience_id` reste tel quel car pointe vers la fiche canon copy `niveaux-schwartz/conscience.json`, pas vers l'enum `awareness_stage` d'`angle.lineage`. No structural patches needed beyond verify.
+- **1.1.0** (v2.58 coverage extend) · Step 6 routing étendu pour combler 3 orphans audit v2.57. P1 · `spec.benefits[].emotional_signal` + `.latency_min` / `.latency_max` + `.evidence_verbatim[]` write-side (v1.10 NEW fields activated, staged depuis JTBD emotional + theme=benefit coding). P2 · `profile.pain_points[].pain_id` + `profile.objections[].objection_id` stable ID generation pattern PNT-NN / OBJ-NN (v1.7 NEW canonical IDs, fixe faille cross-ref `friction.cross_refs.{pain_point_ids, objection_ids}` qui peut désormais référencer canon). Backward compat strict (additif only).

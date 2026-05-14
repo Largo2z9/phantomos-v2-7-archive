@@ -1,7 +1,7 @@
 ---
 name: produce-paid-angles
 type: producer
-version: "1.7.0"
+version: "1.8.0"
 isolation_scope: brand_only
 layer: 3
 recommended_model: sonnet
@@ -35,6 +35,7 @@ consumes:
   - path: resources/canon/copy/_shared/awareness-stage.json
     min_version: 1.0.0
 description: >
+  v1.8.0 (v2.58 coverage extend) · objections.response_counter + derived_angle_refs back-ref auto-persist · angle.compatibility[] cross-audience persist (extension encart v1.7.0). Closes 3 orphans audit v2.57.
   v1.7.0 (v2.56 Notion zone 3→4 filter-by-persona extension) : Step 11 artifact ajoute encart pivot fin de table · `Pour pivoter sur une autre audience, relance avec {audience_slug_other}` avec liste des autres `brands/{slug}/audiences/*/profile.json` cartographiées. Couvre opérationnellement le pattern Notion zone 3→4 filter-by-persona observé dans workspace stride-up. Pas de skill standalone `filter-angles-by-persona` (anti-pattern fork) · ce skill est déjà multi-audience friendly via input `{audience_slug}`. L'encart matérialise la capacité existing.
   v1.6.1 (v2.55 audit consume canon matrices) : frontmatter consumes: enrichi avec resources/canon/copy/{hooks,angles,frameworks,niveaux-schwartz,archetypes-voix,heuristiques-persuasion,_shared/awareness-stage.json}. Aligne déclaration consumes: avec Step 0ter qui lit déjà ces matrices via phantom-canon.py. Master doctrine PhantomOS reasons over a business universe ré-activé · canon dormant = output générique averaged-LLM. Mécanismes inchangés.
   v1.6.0 (v2.54 investigation posture refactor) : angles présentés avec confidence chain inheritée audience+brand en surface opérateur. Chaque angle porte derived_from_audience_confidence + derived_from_brand_confidence + claim_confidence agrégée (min des deux héritages). Ranked table colonne `Confiance` ajoutée. Close ouvre drill-down macro · test ces angles tels quels OU upgrade confidence audience source d'abord. Préserve équation Obs+Tension+Reframe+Bridge, lineage canon copy, scoring framework. Refacto uniquement la posture surface · angles avec confidence chain visible vs recommandations stratégiques posées. Cross-ref docs/system/investigation-posture.md.
@@ -494,6 +495,72 @@ Renommages v2.29.0 : `source` (top-level) devient `origin_axis` · `lineage.schw
 Permet aux outils downstream (`/phantom {brand_slug} angles ANG-03`, `produce-copy-brief ANG-03`) de relire la composition.
 
 The next-step proposal lives in the conversational reply, NOT in the artifact file. The artifact is the pure deliverable; the conversational reply carries the reasoned next move.
+
+---
+
+## Step 11bis — Back-refs auto-persist (v1.8.0, v2.58 coverage extend)
+
+**Append-only additive coverage.** Trois orphans audit v2.57 fermés par back-refs auto-persistées **post-Step 11 artifact write, pre-Step 12 finalize**. Patches NE remplacent PAS la production angles ranked, ils ENRICHISSENT le graph audience↔angle pour rendre la fiche audience drillable downstream (`/phantom {brand_slug} audiences {a_slug}` rendra les objections avec leur response_counter + derived_angle_refs[]).
+
+**Backward compat strict** · si l'objection traitée n'existe pas dans `profile.json#/objections` (cas où l'angle a été généré sur un objection_id absent du profile, ex pivot audience), skip silencieusement le back-ref P4/P5. Si pas de pivot audience triggered (encart v1.7.0 non utilisé), skip P6. Aucun blocking, aucun refus de ship.
+
+### P4 · profile.objections.response_counter back-ref
+
+Quand `produce-paid-angles` génère un angle qui exploite une objection (via `formula.tension` mappée à `objections[].formulation` du profile.json source), persist back-ref · l'objection traitée reçoit `response_counter` = la formulation neutralization de l'angle généré (extraite de `formula.reframe.text`).
+
+Pour chaque angle ranked dans le top output (5 par défaut, jusqu'à 7), si la cellule a un `objection_id` mappable au profile source ·
+
+```bash
+python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/objections/{idx}/response_counter" --value "{angle.formula.reframe.text}" --source agent --confidence 0.8 --mode proposed --reason "Back-ref auto from produce-paid-angles run"
+```
+
+Le `response_counter` rend la fiche audience opérable downstream · l'opérateur qui drill `audiences/{a_slug}` voit non seulement les objections mais aussi la neutralization formula que les angles ont déjà cristallisée. Évite re-générer un counter from scratch pour `produce-copy-brief` ou objection-handling email flows.
+
+**Anti-pattern banni** · écraser un `response_counter` existant si l'objection a déjà été traitée par un angle antérieur (validation_status >= validated). Le mutation gate `write-to-context.py` mode proposed surface conflict si collision · operator arbitre.
+
+### P5 · profile.objections.derived_angle_refs[] back-ref
+
+Pour la même objection traitée par un angle, append `derived_angle_refs[]` avec l'`ANG-NN` id (append-only, jamais overwrite). Permet à la fiche audience de remonter tous les angles dérivés d'une objection donnée (1-N relation).
+
+Stage append-only ·
+
+```bash
+python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/objections/{idx}/derived_angle_refs" --value '["ANG-{NN}"]' --source agent --confidence 1.0 --mode proposed --reason "Back-ref ANG-NN derivation"
+```
+
+Le mutation gate handle l'append (si `derived_angle_refs[]` existe → append le nouveau ANG-NN ; sinon initialize l'array avec [ANG-NN]).
+
+Couvre le pattern Notion zone 3→4 reverse (depuis l'audience, voir tous les angles que la matrice paid a produits sur cette objection-pain pair). Dual-direction du encart pivot v1.7.0 (depuis angles, voir autres audiences).
+
+### P6 · angle.compatibility[] cross-audience persist
+
+Quand l'opérateur trigger pivot audience via l'encart v1.7.0 (Step 11 artifact mentionne *"Pour pivoter sur une autre audience cette brand · relance avec {audience_slug_other}"*) et que le pivot run produit des angles compatibles avec multiple audiences, persist `angle.compatibility[]` entry sur chaque ANG-NN cross-applicable ·
+
+Pour chaque angle dans le ranked output qui matche aussi une audience autre que la source (semantic match sur pain dominant + verbatim convergence), stage ·
+
+```bash
+python3 .skills/write-to-context.py --path "angles/{ANG-NN}.json#/compatibility" --value '[{"audience_slug":"{other_aud}","fit":"yes","notes":"..."}]' --source agent --confidence 0.7 --mode proposed --reason "Cross-audience pivot persist"
+```
+
+Schema entry `compatibility[]` ·
+
+```json
+{
+  "audience_slug": "string (slug audience cousine)",
+  "fit": "yes | no | partial",
+  "notes": "string (1 phrase · pourquoi fit yes/no/partial · ex 'pain identique mais objection prix moins saliente sur cette audience')"
+}
+```
+
+- `fit: yes` · angle directement réutilisable sur l'audience cousine sans modif (verbatim density + objection match)
+- `fit: partial` · angle réutilisable avec adaptation hook (pain match mais verbatim audience-specific à swap)
+- `fit: no` · angle non-applicable (pain ou objection divergent)
+
+L'opérateur qui drill `/phantom {brand_slug} angles ANG-NN` voit la matrice de compatibility cross-audience, déclenche re-test sur audience cousine sans re-mining si `fit: yes`. Économise le cartesian re-run.
+
+**Anti-pattern banni** · auto-tagger `fit: yes` sur toute audience cousine sans cross-product check (pain match ET objection match ET verbatim convergence). Default safe = `fit: partial` si signal mixte, `fit: no` si divergent.
+
+**Surface operator** · cette persistence reste INTERNE (jamais exposée brute en Step 9 output table). Le ranked table garde `Confiance` colonne v2.54. Les `compatibility[]` enrichissent le graph brand-side, lus par `/phantom` rendering downstream.
 
 ---
 

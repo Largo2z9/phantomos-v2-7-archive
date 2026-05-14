@@ -1,0 +1,427 @@
+---
+name: map-audiences
+type: producer
+version: 1.0.0
+isolation_scope: brand_only
+layer: 2
+recommended_model: sonnet
+subagent_safe: true
+mode: proposed
+operator_facing: true
+patch_notes:
+  - "1.0.0 (S55 · v2.58 · D#386 canon) · NEW atomique cartography. Extraction depuis snapshot-brand Step 5 (audience cartography movement) en skill standalone invocable séparément. Permet refresh audiences sans relancer le full snapshot. Cartographie 3 niveaux (broad → segment → micro) respect doctrine audience-cartography. Distinct profile-audience (qui drill UNE audience deep 8 dimensions) · map-audiences scaffold le PORTFOLIO audiences brand-wide. Cross-ref D#386."
+description: |
+  v1.0.0 (S55 · v2.58 · D#386 canon) · Atomique cartography extraction.
+  Cartographie le PORTFOLIO audiences brand-wide en appliquant le framework 4 questions canon (porte d'entrée · niveau granularité · stade Schwartz · chevauchements). Scaffold N audiences mères + sous-poches via mutation gate avec validation_status hypothesis par défaut. Invocable séparément pour refresh cartographie audiences sans relancer le full snapshot. Distinct profile-audience qui drill UNE audience en deep 8 dimensions · map-audiences pose la carte brand-wide light pass.
+triggers_fr:
+  - "map-audiences {brand}"
+  - "cartographie les audiences"
+  - "split snapshot audience"
+  - "extrait les audiences mères"
+triggers_en:
+  - "map audiences"
+  - "cartograph audiences brand"
+  - "split mother audiences"
+disambiguates_against:
+  - profile-audience: "profile-audience drill UNE audience en deep 8 dimensions canon V3 avec verbatims mining. map-audiences SCAFFOLD le portfolio brand-wide (N audiences mères + sous-poches) en light pass cartography (4 questions framework canon · validation_status hypothesis)."
+  - snapshot-brand: "snapshot-brand est l'orchestrateur cartographie complète depuis URL (brand + products + audiences + close). map-audiences est l'atomique audiences-only invocable séparément pour refresh cartographie sans relancer le full snapshot. D#386."
+  - mine-audience: "mine-audience découvre des sub-clusters candidats depuis VoC mining (signal-driven discovery). map-audiences applique le framework 4 questions canon (structure-driven scaffolding) sans verbatim density requise."
+  - cartograph: "cartograph est READ-ONLY synthèse strategique cross-brand. map-audiences WRITE brand-side (scaffold audience folders + profile.json light pass)."
+consumes:
+  - brands/{slug}/brand.json (sector, market context, hero product)
+  - brands/{slug}/audiences/*/profile.json (existing audiences pour merge/duplicate avoid)
+  - brands/{slug}/products/*/spec.json (cross-ref applies_to_products binding)
+  - resources/schemas/profile.schema.json (target v1.7)
+  - resources/canon/copy/niveaux-schwartz/* (awareness stages canon · Schwartz double-stage)
+  - resources/canon/copy/archetypes-voix/* (archetypes canon · informe persona_archetype hypothesis)
+  - docs/system/audience-cartography-doctrine.md (canon 3 niveaux · invariants enforcement)
+  - docs/doctrine/audience-cartography-framework.md (4 questions canon)
+produces_proposals_for:
+  - brands/{slug}/audiences/{audience_slug}/profile.json (light pass scaffold · meta + identity light)
+permissions:
+  reads: [brands/, resources/, docs/]
+  writes: [brands/{slug}/audiences/{slug}/profile.json via write_to_context]
+  emits_events: [audience_cartography_proposal_created, audience_cartography_validated]
+pipeline:
+  preconditions:
+    - "brand.json existe (sector identifié)"
+    - "operator a déclenché map-audiences explicitement OR snapshot-brand orchestrateur appelle ce sub-skill"
+  postconditions:
+    - "N audience folders scaffold conformes profile.schema v1.7"
+    - "Hierarchy 3 niveaux respect (broad → segment → micro)"
+    - "validation_status hypothesis par défaut sur chaque audience"
+    - "operator validation gate passed"
+prerequisites:
+  - field: brand.sector
+    level: L1
+    auto_pull: read_brand_json
+    freshness_ttl_days: 90
+  - field: audiences/*/profile.json
+    level: L1
+    auto_pull: read_existing_audiences_brownfield
+    freshness_ttl_days: 90
+  - field: products/*/spec.json
+    level: L2
+    auto_pull: read_products_for_cross_ref
+    freshness_ttl_days: 90
+    fallback: skip_cross_product_binding
+  - field: resources/canon/copy/niveaux-schwartz
+    level: L1
+    auto_pull: read_canon_directory
+    freshness_ttl_days: 365
+  - field: resources/canon/copy/archetypes-voix
+    level: L1
+    auto_pull: read_canon_directory
+    freshness_ttl_days: 365
+---
+
+# map-audiences
+
+Atomique cartography. Cartographie le PORTFOLIO audiences brand-wide en appliquant le framework 4 questions canon. Scaffold N audiences mères + sous-poches via mutation gate, validation_status hypothesis par défaut. Permet refresh cartographie audiences sans relancer le full snapshot-brand.
+
+Distinct profile-audience (qui drill UNE audience deep 8 dimensions avec verbatims mining). map-audiences pose la carte brand-wide light pass · framework canon respecté, pas de mine-voc requis.
+
+## Hard Rules
+
+### Step 0 · DRGFP prerequisite check (v2.38 canon)
+
+Avant Step 1, scanner prerequisites :
+
+1. **L1 silent** · `brand.json` (sector identifié) · `audiences/*/profile.json` existing brownfield · canon `niveaux-schwartz` + `archetypes-voix` · doctrine `audience-cartography-doctrine.md` + `audience-cartography-framework.md`
+2. **L2 cross-ref** · `products/*/spec.json` pour binding `applies_to_products[]` · fallback skip si absent (audience brand-wide acceptable)
+3. **L3 gate operator** · si brand.json absent OR sector vide → refuse + reco `snapshot-brand` d'abord pour poser la base brand
+
+Output state map + confidence_chain[] init.
+
+Cross-ref doctrine · `docs/system/dependency-resolution-protocol.md`.
+
+### Step 1 · Application framework 4 questions canon
+
+Le skill applique strictement les 4 questions canon (`docs/doctrine/audience-cartography-framework.md`) en mode batch (toutes les audiences cartographiées en une passe, pas une par une comme `profile-audience`).
+
+#### Q1 · Porte d'entrée par audience identifiée
+
+Pour chaque audience mère candidate, déterminer la porte d'entrée dominante via enum strict :
+
+- **`pain_driven`** · entre par un problème ressenti (ex chute capillaire, ballonnement, fatigue)
+- **`goal_driven`** · entre par une ambition projet (ex longueur cheveux pour mariage, perte 5kg avant été, summer body)
+- **`identity_driven`** · entre par qui elle est ou veut être (ex hijabi qui préserve les edges, sportive endurance, jeune maman naturelle)
+
+Hard rule canon · **1 porte dominante par audience**. Si 3 portes égales détectées sur une candidate → flag piège 2 (audience-redondante mal séparée), proposer re-découpage.
+
+Persister dans `meta.entry_door` enum.
+
+#### Q2 · Niveau granularité (3 niveaux MECE max)
+
+Hiérarchie cap à `broad → segment → micro`. Cardinalité canon :
+
+| Niveau | Volume estimé | Cardinalité par brand |
+|---|---|---|
+| broad | 500k+ actives | 1-3 max |
+| segment | 100-500k actives | 5-15 par broad |
+| micro | 20-100k actives | 0-3 par segment, optionnel |
+
+Inférer scope depuis sector brand + description candidate. Persister `meta.scope` + `meta.parent_slug`.
+
+Hard rule canon · **descendre d'un niveau requiert 3/3** (volume restant suffisant + pitch divergent + offer divergent). Si 0/3 ou 1/3 sur une candidate micro → refuse + reclasse en variation copy (pas sous-audience).
+
+#### Q3 · Stade Schwartz (light pass · pas de mining)
+
+map-audiences est **light pass** · ne mine pas, ne pose pas le stade Schwartz par audience comme `profile-audience` (qui requiert verbatim density). Mention canon awareness stages disponibles pour orientation downstream :
+
+```
+product-awareness · unaware → problem → solution → product → most-aware
+emotional-maturity · niant → résigné → en recherche → combatif → acceptant
+```
+
+Note pour Layer A trace · stade Schwartz sera assigné en deep pass par `profile-audience` quand mining verbatim aura tourné. map-audiences laisse `psychology.awareness_stage_*` null en scaffold.
+
+#### Q4 · Chevauchements cousins
+
+Scan pairwise des audiences cartographiées pour détecter chevauchements (semantic similarity sur pain dominant inféré + identity signals inférés). Surface 1-3 paires cousines détectées par audience candidate.
+
+Persister `meta.overlap_with[]` array slugs.
+
+Note pédagogique canon · les chevauchements ne disqualifient pas l'audience · ils révèlent les angles porteurs cousinés (cross-pollinisation copy). Operator-facing · dire "audiences cousines", jamais "overlap_with" brut.
+
+### Step 2 · Scaffold audience folders + profile.json light pass
+
+Pour chaque audience mère identifiée Step 1, scaffold via mutation gate :
+
+```bash
+python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/meta/name" --value "{audience_name}" --source agent --confidence 0.6 --mode proposed --reason "map-audiences scaffold light pass"
+```
+
+Champs scaffold light pass (rest stay null jusqu'à `profile-audience` deep drill OR `mine-voc` enrich) :
+
+```
+meta.name              → human-readable label (e.g. "Femmes 30-45 chute post-grossesse")
+meta.slug              → kebab-case slug
+meta.scope             → broad | segment | micro
+meta.parent_slug       → null pour broad mère, slug-of-mother pour sub
+meta.entry_door        → pain_driven | goal_driven | identity_driven (Q1 canon)
+meta.overlap_with      → array slugs cousines (Q4 canon)
+meta.validation_status → "hypothesis" par défaut
+meta.audience_type     → "primary" | "secondary" | "discovered" | "assumed"
+meta.applies_to_products → array product slugs si cross-product check Step 3 trigger
+meta.tags              → namespace-prefixed tags depuis sector brand (e.g. "problem:hair-loss", "context:post-pregnancy")
+identity.description   → 1-line description audience (inférée depuis sector + market context brand.json)
+identity.gender        → male | female | all (only si explicit brand.json target)
+identity.age_range     → {min, max} (only si explicit brand.json target audience)
+```
+
+**Tout le reste null** jusqu'à drill deep · `pain_points[]`, `psychology.*`, `voice.key_expressions[]`, `objections[]`, `benefits[]`, `behavior.*`, `decision_process.*` restent vides en scaffold light pass. Ces fields appartiennent à `profile-audience` (synthesis 8 dimensions) et `mine-voc` (verbatim mining).
+
+### Step 3 · Cross-link audiences ↔ products
+
+Si `brands/{slug}/products/` contient des spec.json, scan pairwise audiences ↔ products via :
+
+- `spec.problems_solved[]` pain match contre Q1 entry_door inféré
+- `spec.applies_to_audiences[]` reverse-ref si déjà encodé
+- Sector brand cross-ref hero product
+
+Pour chaque audience candidate :
+- Single product match → `meta.applies_to_products: ["product_slug"]`
+- Multi-product match (cross-product) → `meta.applies_to_products: ["p1", "p2"]`
+- No clear match OR brand-wide audience → `meta.applies_to_products: []` (brand-wide)
+
+Hard rule canon · `meta.applies_to_products: []` (vide) est valide (brand-wide audience). Jamais default `[hero_product_slug]` silencieusement · respecter le binding explicite décidé Step 1.
+
+Stage chaque `applies_to_products` via mutation gate :
+
+```bash
+python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/meta/applies_to_products" --value '["product_slug"]' --source agent --confidence 0.7 --mode proposed --reason "map-audiences cross-product binding from spec.problems_solved match"
+```
+
+### Step 4 · Hierarchy enforcement canon doctrine
+
+Avant write final, validate hierarchy canon (`docs/system/audience-cartography-doctrine.md`) :
+
+1. **Invariant 1** · 3 niveaux max (broad → segment → micro). Refuse niveau 4+.
+2. **Invariant 2** · Pas d'orphelin segment. Segment sans `parent_slug` → flag MAJOR.
+3. **Invariant 3** · Pas de cycle overlap. A↔B valide (symétrie), A→B→C→A interdit (flag MAJOR).
+4. **Invariant 4** · Test 3/3 sur micro (volume + pitch divergent + offer divergent). Si 0/3 ou 1/3 → reclasse en variation copy.
+5. **Invariant 5** · Porte d'entrée explicite. `meta.entry_door` requis sur chaque audience scaffold.
+
+Si invariant violé → revise cartographie Step 1 avant Step 2 write. Pas de scaffold sur cartography incohérente.
+
+### Step 5 · Output operator-facing 5 sections investigation-posture
+
+**Doctrinal contract canon.** map-audiences produit une synthèse strategique cartographie · structure obligatoire en 5 sections explicites (`docs/system/investigation-posture.md`).
+
+#### Section 1 · Observé (faits sourcés)
+
+Ce qui a été lu de brand.json + products spec + audiences existing :
+
+```
+Observé · cartographie depuis matière brand encodée (run {date}, {duration})
+
+- Sector brand : {sector_slug} ({source brand.json#sector})
+- Hero product : {hero_slug} ({source brand.json#hero_product OR products/*/spec.json#identity.primary})
+- Audiences existing : {N existing} ({slugs · status validation_status})
+- Products bindings : {N products} ({slugs avec applies_to scope inféré})
+- Sector market context : {market.maturity OR market.sophistication si encodé brand.json}
+```
+
+Hard rule · faits sourcés uniquement avec ref. Pas d'hypothèse en Section 1.
+
+#### Section 2 · Déduit (hypothèses cartographie avec confidence)
+
+Cartographie N audiences mères + sous-poches identifiées en hypothèse :
+
+```
+Déduit · N audiences cartographiées en hypothèses
+
+{Audience_1_label} (broad · pain_driven)
+  Confidence : {forte | moyenne | faible · si verbatim_density existing OR uniquement inféré depuis sector}
+  Indicateurs sources : {ce qui justifie · sector match + market context + competitor reference OR brand.target explicit}
+  Sous-poches identifiées : {2-3 segments si Schwartz sub-cluster pertinent}
+  Cross-product : {applies_to inférée OR brand-wide}
+
+{Audience_2_label} (broad · goal_driven)
+  ...
+
+{Sous-poche_1A_label} (segment · sous {Audience_1})
+  ...
+```
+
+Hard rule · audiences présentées comme HYPOTHÈSES (validation_status hypothesis par défaut). Anti-pattern AP-2 doctrine BANNI · personas inventés présentés comme analytiques sans data verbatim.
+
+#### Section 3 · Inconnu (variables à mining-confirm)
+
+Variables non observables sans mining verbatim :
+
+```
+Inconnu · variables à creuser pour passer hypothèse → validée
+
+- Vrais pain_points par audience (mining verbatim Trustpilot + forums niche requis)
+- Vraies expressions clientes par audience (vocabulary natif client vs ce que la brand projette)
+- Schwartz stage dominant par audience (product-awareness + emotional-maturity)
+- Objections récurrentes par audience (severity + frequency réelle)
+- Vraies overlap cousines vs hypothèses overlap (sample verbatim cross-audience match)
+- Volume estimate restant par segment (data analytics audience requise)
+```
+
+#### Section 4 · Leviers (drill-down options)
+
+Skills + actions pour lever les inconnues :
+
+```
+Leviers · 4 axes prioritaires post-cartographie
+
+Axe A · Drill UNE audience deep 8 dimensions (mining verbatim + synthesis canon V3)
+  → écoute clients structurée sur Trustpilot + forums niche sur {audience_X}
+  → ~8-12 min mining + synthesis 8 dimensions canon
+  
+Axe B · Sortir un set d'angles ranked sur UNE audience cartographiée
+  → ideation angles paid avec confidence chain hérité audience source
+  → requiert Axe A d'abord pour confidence forte
+  
+Axe C · Ingest matière founder/brand existante (PDF brief, deck, sources VoC exportées)
+  → upgrade confidence cartographie sans nouvelle mining ronde
+  → 1-2 phrases denses opérateur OR drop fichier upload
+  
+Axe D · Refresh cartographie audiences sur changement scope brand
+  → re-run map-audiences si nouveau produit ajouté, nouveau marché, pivot positioning
+```
+
+#### Section 5 · Close ouvert (UNE question macro)
+
+Anti-pattern AP-5 doctrine BANNI · close affirmatif qui ferme la conversation. Toujours close ouvert drill-down macro · UNE question · opérateur arbitre.
+
+Format close canonique :
+
+> Pour passer ces {N} audiences de hypothèse à validée terrain et débloquer la suite (angles paid, brief créa) avec une fondation sourcée ·
+>
+> A · Drill UNE audience deep (~8-12 min écoute clients + synthesis 8 dimensions). Recommandé sur l'audience prioritaire identifiée · {audience_top_label}.
+> B · Garde toutes les audiences en hypothèse et lance les angles directement · downstream porte la confidence `hypothèse` héritée (à tester budget calibré, pas all-in).
+> C · Tu m'injectes données existantes (reviews exportées, analytics audience, retours SAV, brief founder) en 1-2 phrases denses ou drop fichier · je re-évalue cartographie avec matière fraîche.
+>
+> Mon avis · {reco macro adaptive · si N audiences > 5 et zéro verbatim existing → A critique sur l'audience hero · si audiences existing déjà mining-sourced partiel → B valide direct}.
+
+L'opérateur arbitre · l'agent enchaîne le drill-down sur l'axe choisi (silencieusement vers `profile-audience` OR `produce-paid-angles` OR `ingest-resource` selon choix).
+
+### Step 6 · Persist via mutation gate
+
+Une fois validation operator passée, `write_to_context` chaque champ scaffold (Steps 2-3) sur `brands/{slug}/audiences/{a_slug}/profile.json` :
+
+```bash
+python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/meta" --value '{...}' --source agent --confidence 0.6 --mode proposed --reason "map-audiences light pass scaffold"
+```
+
+Conformité `profile.schema v1.7` obligatoire. `validation_status: hypothesis` par défaut sur chaque audience.
+
+### Step 7 · Finalize mutation batch
+
+```bash
+python3 .skills/finalize-mutation-batch.py --brand-slug {slug}
+```
+
+Mécanique. Inspecte mutations Step 6, runs structural checks, emit `audience_cartography_validated` event pour turn-end-audit.
+
+Exit code 2 = blocking issue → revise avant ship. Exit code 0 warnings = log, ship.
+
+## Hard rules globales
+
+- **Doctrine audience-cartography 3 niveaux respect** · jamais niveau 4+. Invariant 1 canon enforce.
+- **validation_status hypothesis par défaut** · sur chaque audience scaffold light pass. Upgrade à `validated` uniquement post-mining verbatim (responsabilité `profile-audience` OR `mine-voc`).
+- **Backward compat strict** · existing audiences brownfield (read en Step 0 prerequisite) jamais écrasées. Merge strategy · skip si entry existing + validation_status >= validated. Append si entry nouvelle. Flag conflict si entry existing + validation_status hypothesis (operator arbitre).
+- **JAMAIS halluciner une audience sans justification sector + market context** · Section 1 Observé sourced obligatoire avant Section 2 Déduit hypothèse.
+- **JAMAIS exposer `validation_status: hypothesis`, `meta.parent_slug`, `meta.entry_door` bruts** en surface operator. Reformuler en langage métier (porte d'entrée, audience mère, hypothèse à valider).
+- **JAMAIS nommer skill** (`mine-voc`, `profile-audience`, `produce-paid-angles`) en surface operator. Routing silencieux post-arbitrage opérateur.
+- **JAMAIS scaffold audience folder si Section 1 Observé vide AND operator skip Q1** · refuse write, surface gap, suggest `snapshot-brand` d'abord OR ingest brief operator.
+- **Cap 5 audiences max scaffold par run** · au-delà, dilue cartographie et viole Pareto canon (80% revenue brand = 2-3 audiences activées). Surface flag si >5 candidates détectées, suggest priorisation operator.
+- **DRGFP L3 gate strict** · brand.json absent OR sector vide → refuse + reco `snapshot-brand`. Pas de freestyle cartography sans base brand encodée.
+
+## Anti-patterns
+
+- **AP-1** · scaffold audience folder sans `meta.entry_door` (viole Invariant 5 canon).
+- **AP-2** · présenter audiences comme analytiques sans flag hypothèse (anti-pattern doctrine investigation-posture).
+- **AP-3** · cartography flat sans hiérarchie broad → segment → micro (viole Movement 3 audience-cartography canon).
+- **AP-4** · niveau 4+ subdivisé (sous-micro) · viole Invariant 1 canon doctrine.
+- **AP-5** · close affirmatif post-cartographie (*"audiences saved, what next?"*) · banni canon investigation-posture.
+- **AP-6** · default `applies_to_products: [hero_slug]` silencieusement · audience brand-wide doit rester `[]` explicite.
+- **AP-7** · scaffold sur cartographie incohérente (Invariants 1-5 violés) sans revise Step 1.
+- **AP-8** · drill 8 dimensions par audience en map-audiences (overlap profile-audience scope) · light pass uniquement, deep dimensions delegated.
+
+## Operator output template canonique
+
+```
+{BRAND} · CARTOGRAPHIE AUDIENCES ({N} hypothèses)
+
+─────────────────────────────────────────────
+
+Observé · matière brand lue (run {date}, {duration})
+
+  Sector             {sector_slug}
+  Hero product       {hero_slug}
+  Audiences existing {N existing · statuts}
+  Products bindings  {N products · cross-ref scope}
+  Market context     {maturity OR sophistication encodée}
+
+─────────────────────────────────────────────
+
+Déduit · {N audiences} hypothèses cartographiées
+
+  [1] {Audience_1_label} (audience mère · porte pain_driven)
+    Confidence       {forte | moyenne | faible}
+    Indicateurs      {ce qui justifie · sector + market context + brand.target}
+    Sous-poches      {N segments · labels}
+    Cross-product    {applies_to inféré OR brand-wide}
+    Audiences cousines {N overlap_with détectées}
+
+  [2] {Audience_2_label} (audience mère · porte goal_driven)
+    ...
+
+  [1A] {Sous-poche_1A_label} (segment · sous {Audience_1})
+    Confidence       {moyenne}
+    Justification    {pitch + offer divergents OR pas)
+    Indicateurs      {ce qui justifie split}
+
+─────────────────────────────────────────────
+
+Inconnu · variables à creuser pour passer hypothèse → validée
+
+  - Vrais pain_points par audience (mining requise)
+  - Vraies expressions clientes par audience
+  - Schwartz stage dominant par audience
+  - Objections récurrentes par audience
+  - Vraies overlap cousines vs hypothèses overlap
+  - Volume estimate restant par segment
+
+─────────────────────────────────────────────
+
+Leviers · 4 axes drill-down post-cartographie
+
+  Axe A · Drill UNE audience deep 8 dimensions
+  Axe B · Sortir set angles ranked sur UNE audience cartographiée
+  Axe C · Ingest matière founder/brand existante
+  Axe D · Refresh cartographie sur changement scope brand
+
+─────────────────────────────────────────────
+
+Close · UNE question macro drill-down
+
+Pour passer ces {N} audiences de hypothèse à validée terrain et débloquer la suite ·
+
+A · Drill UNE audience deep (~8-12 min écoute clients + synthesis 8 dimensions). Reco sur audience prioritaire · {audience_top_label}.
+B · Garde toutes en hypothèse et lance les angles directement · downstream porte confidence héritée.
+C · Tu m'injectes données existantes (reviews, analytics, brief founder) · je re-évalue avec matière fraîche.
+
+Mon avis · {reco macro adaptive selon état corpus existing}.
+```
+
+## Cross-references
+
+- `docs/system/investigation-posture.md` · doctrine canon 5 sections obligatoires (Observé · Déduit · Inconnu · Leviers · Close ouvert)
+- `docs/system/audience-cartography.md` · doctrinal contract Movement 3 cartography (mère / sous-audiences)
+- `docs/system/audience-cartography-doctrine.md` · spec rigoureuse système-side · 5 invariants enforcement
+- `docs/doctrine/audience-cartography-framework.md` · 4 questions canon framework operator-facing
+- `resources/schemas/profile.schema.json` (v1.7) · target schema scaffold
+- `resources/canon/copy/niveaux-schwartz/*` · awareness stages canon (Schwartz double-stage référence note)
+- `resources/canon/copy/archetypes-voix/*` · archetypes canon (informe persona_archetype hypothesis)
+- `.skills/skills/profile-audience/SKILL.md` · drill UNE audience deep 8 dimensions (downstream consumer)
+- `.skills/skills/mine-voc/SKILL.md` · enrich audience verbatim post-cartographie
+- `.skills/skills/produce-paid-angles/SKILL.md` · consume audiences cartographiées (downstream consumer)
+- `.skills/skills/snapshot-brand/SKILL.md` · orchestrateur cartographie complète (parent caller D#386)
+- D#386 · décision canon · architecture cartographie marketing (snapshot-brand orchestrateur + sub-skills map-X invocables séparément)

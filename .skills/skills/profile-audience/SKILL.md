@@ -1,10 +1,11 @@
 ---
 name: profile-audience
-version: 1.3.1
+version: 1.4.0
 patch_notes:
   - "1.2.0 · v2.39+ · Step 0ter framework awareness (4 questions cartography pédagogie inline)"
   - "1.3.0 · v2.54 investigation posture refactor surface · audiences présentées comme hypothèses avec confidence chain explicite (TRÈS faible par défaut sans mine-voc · faible 1-2 indicateurs site · moyenne mine-voc partiel · forte mine-voc + analytics convergents). Operator output template HR6 + HR8 restructurés · chaque audience porte hypothèse / confidence / indicateurs sources / validation requise / anti-pattern à respecter. Skill termine sur close drill-down macro · lancer mine-voc maintenant vs valider intuitivement et continuer. Préserve mécanismes 8 dimensions Schwartz double-stage problem_map. Refacto uniquement la posture surface · présentation comme hypothèse vs persona analytique. Cross-ref docs/system/investigation-posture.md."
   - "1.3.1 · v2.55 audit consume canon matrices · consumes: enrichi (archetypes-voix, heuristiques-persuasion, creative-formula.md) + HR0bis NEW Load canon matrices force lecture batch via phantom-canon.py + cross-product canon × audience obligatoire en HR3 Dimensions 1/6/7 (canon_ref cité Layer A trace + profile.json#lineage). Aligne déclaration consumes: avec ce que les Steps lisent réellement. Anti-pattern banni · halluciner archetype ou biais audience-side sans mapping canon. Master doctrine ré-activé · PhantomOS reasons over a business universe, canon dormant = output générique averaged-LLM."
+  - "1.4.0 (v2.58 coverage extend) · role.type derivation depuis buyer_user_split · objections.severity_score synthesis · behavior.* sub-fields VoC-anchored. Closes 3 orphans audit v2.57."
 type: orchestrator
 isolation_scope: brand_only
 layer: 3
@@ -12,7 +13,9 @@ recommended_model: sonnet
 subagent_safe: true
 mode: proposed
 operator_facing: true
-description: Synthétise les outputs de mining (voc/vom/audience) en profil audience structuré 8 dimensions canon V3. Consume verbatims raw, produit profile.json conforme schema v1.3 avec validation gate operator. Ne mine pas, synthétise.
+description: |
+  v1.4.0 (v2.58 coverage extend) · role.type derivation depuis buyer_user_split · objections.severity_score synthesis · behavior.* sub-fields VoC-anchored. Closes 3 orphans audit v2.57.
+  Synthétise les outputs de mining (voc/vom/audience) en profil audience structuré 8 dimensions canon V3. Consume verbatims raw, produit profile.json conforme schema v1.3 avec validation gate operator. Ne mine pas, synthétise.
 triggers_fr:
   - "profil audience"
   - "synthétise l'audience"
@@ -333,6 +336,96 @@ Avant write_to_context :
    - Si entry source `mine_*` + entry n'existe pas dans current profile → append
    - Si entry source `mine_*` + entry existe dans current profile → flag conflict, surface à operator
 3. Operator gate explicite si conflits détectés
+
+### HR7.5 · Coverage extends v2.58 (role.type · objections.severity_score · behavior sub-fields)
+
+**Append-only additive coverage** (v1.4.0). Trois orphans audit v2.57 fermés par dérivations / synthèses **post-HR3, pre-HR7 persist**. Ces patches NE remplacent PAS les 8 dimensions canon, ils ENRICHISSENT le profile.json schema-conforme avec sub-fields opérationnels downstream (produce-paid-angles, produce-copy-brief, audit-meta-account).
+
+**Backward compat strict** · si le buyer_user_split n'est pas encodé (v1.2 brownfield) ou si les verbatims ne mentionnent pas comportements achat → skip silencieusement le sub-field correspondant, ne pas bloquer le run. Confidence calibrée selon densité signal.
+
+#### P1 · profile.role.{type, proxy_link_id} derivation
+
+Depuis `buyer_user_split` déjà encodé (v1.3 NEW field), dériver `profile.role.type` enum [`end_user` · `buyer` · `influencer` · `gatekeeper`] selon les règles ·
+
+- **buyer** · si `buyer_user_split.is_split = true` ET `buyer_user_split.buyer_role = acheteur` (B2C2C, achat pour un tiers · cadeau, parent pour enfant, etc.)
+- **end_user** · si `buyer_user_split.is_split = false` OR `buyer_user_split.user_role = consommateur` (achat = consommation, même personne)
+- **influencer** · cas spécifique détecté semantiquement (KOL audience-side, parent prescripteur sans achat direct, recommandation tiers)
+- **gatekeeper** · cas pro détecté semantiquement (médecin prescripteur, coach, formateur, conseiller qui filtre la décision)
+
+Si l'audience cible un rôle `buyer` ou `influencer` qui agit pour le compte d'un `end_user` distinct, peupler `proxy_link_id` avec le slug de l'audience end_user cousine (cross-ref `audiences/{end_user_slug}/profile.json`). Si pas d'audience cousine encodée, `proxy_link_id = null` + flag _gaps suggérant `mine-audience` pour cartographier le end_user.
+
+Stage via mutation gate ·
+
+```bash
+python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/role/type" --value "{enum}" --source agent --confidence 0.7 --mode proposed --reason "Derived from buyer_user_split"
+```
+
+Si `proxy_link_id` peuplé ·
+
+```bash
+python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/role/proxy_link_id" --value "{end_user_slug}" --source agent --confidence 0.7 --mode proposed --reason "Cross-audience link buyer→end_user"
+```
+
+**Anti-pattern banni** · halluciner un `role.type = influencer` ou `gatekeeper` sans signal semantic explicite (mentions verbatim "je recommande", "je prescris", contexte pro). Default safe = `end_user` si ambiguïté.
+
+#### P2 · profile.objections.severity_score synthesis
+
+Lors de l'output profile-audience (Step synthesis), pour chaque objection encodée en HR3 Dimension 1/6, computer `severity_score` 1-10 depuis la formule ·
+
+```
+severity_score = frequency_band × emotional_charge_multiplier
+
+frequency_band:
+  high (5+ mentions distinctes verbatim)   = 8-10
+  medium (3-4 mentions)                    = 5-7
+  low (1-2 mentions)                       = 2-4
+
+emotional_charge_multiplier:
+  default                                  = 1.0
+  intensifier (verbatim contient "rage",
+   "frustration profonde", "ras-le-bol",
+   "j'en peux plus", "écœurée", caps,
+   ponctuation exclamative répétée)        = 1.2 (cap à 10)
+```
+
+Stage par objection ·
+
+```bash
+python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/objections/{idx}/severity_score" --value {N} --source agent --confidence 0.7 --mode proposed --reason "Severity synthesis from frequency × emotional charge"
+```
+
+Le `severity_score` permet à `produce-paid-angles` (HR4 scoring framework, Objection neutralization lens 20%) de pondérer les objections par urgence réelle plutôt qu'égalité naïve. Top-3 objections par severity_score deviennent prioritaires pour la matrice paid.
+
+**Anti-pattern banni** · scorer une objection 9/10 sans 5+ verbatims OR sans emotional intensifier explicite. Score 7+ requiert combinaison frequency_band high ET intensifier.
+
+#### P3 · profile.behavior.{purchase_frequency, conversion_timeline, dominant_device, cart_behavior, seasonal_spikes, channel_preferences}
+
+Depuis les VoC verbatims mentionnant comportements achat (Step HR2 mining corpus + HR2.5 seed corpus), derive les sub-fields `behavior.*` quand le signal verbatim est présent ·
+
+| Sub-field | Verbatim signaux | Confidence calibration |
+|---|---|---|
+| `purchase_frequency` | "j'achète tous les 3 mois", "1x par an", "je renouvelle chaque saison" | 0.7 si 3+ verbatims convergents · 0.5 si 1-2 |
+| `conversion_timeline` | "j'hésite 2 semaines avant d'acheter", "achat impulsif", "je compare 1 mois" | 0.7 si 3+ convergents · 0.5 si 1-2 |
+| `dominant_device` | "je commande sur mobile", "tablette", "ordi pour les gros achats" | 0.6 si signaux convergents · 0.5 si single mention |
+| `cart_behavior` | "j'abandonne mon panier souvent", "je rajoute pour la livraison gratuite", "checkout direct" | 0.6 si 2+ mentions · 0.5 si single |
+| `seasonal_spikes` | "je commande surtout en hiver", "rush BFCM", "pas avant l'été" | 0.7 si pattern saisonnier explicite · 0.5 si inférence légère |
+| `channel_preferences` | "je viens d'Instagram", "TikTok m'a fait découvrir", "Google search produit", "bouche-à-oreille" | 0.7 si 3+ convergents · 0.5 si 1-2 |
+
+Stage chaque sub-field présent (skip si verbatim density insuffisant) ·
+
+```bash
+python3 .skills/write-to-context.py --path "audiences/{a_slug}/profile.json#/behavior/{sub_field}" --value "{value}" --source agent --confidence {0.5-0.7} --mode proposed --reason "VoC-anchored behavior synthesis"
+```
+
+Les `behavior.*` enrichissent ·
+- `produce-paid-angles` Step 2 (Resolve placement context) avec `dominant_device` + `channel_preferences` pour calibrer placements
+- `audit-meta-account` avec `conversion_timeline` pour configurer attribution windows
+- `produce-copy-brief` avec `seasonal_spikes` pour timing campagne
+- `analyze-perf` avec `cart_behavior` pour diagnostic checkout funnel
+
+**Anti-pattern banni** · inventer un `behavior.dominant_device = mobile` parce que "c'est l'audience femme 30-45 donc statistiquement mobile". Sub-field VoC-anchored uniquement · zéro verbatim → skip le sub-field, ne pas hallucinaer un default statistique.
+
+**Surface operator** · ces sub-fields restent INTERNES (jamais exposés bruts en surface HR6/HR8). L'opérateur voit l'audience structurée en 8 dimensions + close drill-down macro. Les sub-fields servent les skills downstream qui les liront via le profile.json schema-conforme.
 
 ### HR8 · Output operator-facing (close drill-down macro, v2.54+)
 

@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-14T12:09:24Z",
-  "_count": 60,
+  "_generated_at": "2026-05-14T12:41:46Z",
+  "_count": 67,
   "skills": [
     {
       "name": "analyze-copy",
@@ -528,6 +528,25 @@
       "path": ".skills/skills/decompose-ad/SKILL.md"
     },
     {
+      "name": "decompose-angle",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "decompose-ad": "decompose-ad reverse-engineers an existing COMPETITOR ad (extracts angle from observed creative). decompose-angle enriches an OWN angle already cartographied (deep dive own strategic angle). Route to decompose-ad when operator pastes a competitor ad URL/screenshot; route to decompose-angle when operator references an internal ANG-NN.",
+        "produce-paid-angles": "produce-paid-angles generates the light pass (formula one-line summaries) on a ranked set of N angles for an audience. decompose-angle enriches ONE existing angle in depth. Route to produce-paid-angles when no angles exist yet; route to decompose-angle when operator wants to drill ONE angle.",
+        "produce-copy-brief": "produce-copy-brief is the DOWNSTREAM step (one chosen angle → copywriter brief with hook variants + body + CTA). decompose-angle is the prerequisite enrichment if the formula is still light pass. Route to produce-copy-brief when formula atoms are already deep; route to decompose-angle first if atoms are null."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/decompose-angle/SKILL.md"
+    },
+    {
       "name": "deepen-brand-context",
       "type": "orchestrator",
       "model": "sonnet",
@@ -701,6 +720,93 @@
       "isolation_scope": "workspace_global",
       "layer": 3,
       "path": ".skills/skills/learn-from-session/SKILL.md"
+    },
+    {
+      "name": "map-angles",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/map-angles/SKILL.md"
+    },
+    {
+      "name": "map-audiences",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/map-audiences/SKILL.md"
+    },
+    {
+      "name": "map-benefits",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "snapshot-brand": "snapshot-brand light pass surface (benefit titles + functional layer). map-benefits drill compositionnel deep chain functional → emotional → identity + NEW fields v1.10 (emotional_signal, latency, evidence_verbatim).",
+        "mine-voc": "mine-voc Layer B mine verbatims clients depuis Reddit/Trustpilot/forums (matière brute). map-benefits CONSUME les outputs mine-voc pour anchor evidence_verbatim[] par benefit. Pas le même verbe · mine-voc collecte, map-benefits structure.",
+        "produce-paid-angles": "produce-paid-angles consume benefits chain pour générer angles ranked avec LIGNAGE. map-benefits est upstream · construit la chain de bénéfices qui alimente angles."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/map-benefits/SKILL.md"
+    },
+    {
+      "name": "map-mechanisms",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "snapshot-brand": "snapshot-brand produces the light pass (mechanism_id + name + description) on the full product spec. map-mechanisms enriches the deep fields (target, mode_of_action, time_window, etc.) on mechanisms already cartographied. Route to snapshot-brand when the product spec doesn't exist yet.",
+        "ingest-resource": "ingest-resource captures a founder PDF or clinical study to enrich the spec broadly. map-mechanisms only enriches the mechanisms[] array specifically with the 7 deep fields. Route to ingest-resource when the operator drops a single resource doc; route to map-mechanisms when the operator explicitly wants to deep dive the mechanisms.",
+        "define-specs": "define-specs cartographs the spec from scratch (no URL, manual encoding). map-mechanisms presupposes spec.mechanisms[] light pass already exists. Route to define-specs when no scrape was possible."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/map-mechanisms/SKILL.md"
+    },
+    {
+      "name": "map-specs",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "snapshot-brand": "snapshot-brand est le light pass scrape URL → spec.json (identity, composition top-level, pricing). map-specs deep-dive les sub-fields spec.specs.* après que le light pass existe.",
+        "define-specs": "define-specs est l'orchestrateur Phase 1 qui combine snapshot + Q&A + sources upload pour assembler la spec from scratch. map-specs est atomique sur sub-fields spec.specs.* d'une spec déjà initialisée.",
+        "ingest-resource": "ingest-resource extrait des données structurables depuis docs upload (PDF, deck, CSV) générique. map-specs consume les outputs ingest-resource pour drill spec.specs.* spécifiquement."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/map-specs/SKILL.md"
     },
     {
       "name": "migrate-workspace",
@@ -927,6 +1033,26 @@
       "isolation_scope": "brand_only",
       "layer": 2,
       "path": ".skills/skills/produce-paid-matrix/SKILL.md"
+    },
+    {
+      "name": "produce-strategy",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "direct",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "setup-brand": "setup-brand cadrage léger initial du brand (identity + product + audience first cut). produce-strategy = cadrage stratégique deep, Q&A reviewable, 3-5 GOAL-NN + current_focus trimestriel. Invoke produce-strategy après que setup-brand a livré la structure.",
+        "build-atlas-complete": "build-atlas-complete orchestre le pipeline complet 9 phases (specs + audiences + angles + briefs + créas). produce-strategy peut être invoqué EN sous-skill du build-atlas-complete, OU standalone pour rafraîchir le focus trimestriel sur une brand déjà cartographiée.",
+        "produce-paid-matrix": "produce-paid-matrix produit la matrice paid (angles × audiences scorées). produce-strategy pose le CADRE stratégique annuel/trimestriel qui drive WHICH audiences/products/channels prioritiser. Cycle différent · strategy = arbitrage trimestriel · paid-matrix = exécution paid.",
+        "brief-day": "brief-day raconte l'état actuel du brand (operational briefing). produce-strategy cadre l'AVENIR proche (Q{n} focus, annual goals). Brief-day consume strategy.json mais ne le produit pas."
+      },
+      "isolation_scope": "brand_only",
+      "layer": 2,
+      "path": ".skills/skills/produce-strategy/SKILL.md"
     },
     {
       "name": "profile-audience",

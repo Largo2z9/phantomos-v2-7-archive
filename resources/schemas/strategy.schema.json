@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "strategy.schema.json",
+  "title": "Strategy (brand-wide)",
+  "description": "Brand-wide strategic focus posed by operator. Singleton brands/{slug}/strategy.json. v1.0 baseline shipped v2.58 · ferme la dette technique build-atlas-complete qui write strategy/roadmap.json runtime sans canon.",
+  "_schema_version": "strategy/1.0",
+  "_changelog": {
+    "1.0": "v2.58 baseline. Annual goals · quarterly focus · KPIs canonical · acquisition_focus · constraints. Backward compat strict pour brands existantes sans strategy.json (validation runtime trigger fresh strategy si missing)."
+  },
+  "type": "object",
+  "required": ["meta"],
+  "properties": {
+    "_schema": { "type": "string" },
+    "_version": { "type": "string" },
+    "_field_types": { "type": "object", "additionalProperties": { "type": "string" } },
+    "meta": {
+      "type": "object",
+      "required": ["brand_slug"],
+      "properties": {
+        "brand_slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "version": { "type": "string", "description": "Strategy version (v1, v2, ...) cycle annuel" },
+        "validation_status": {
+          "$ref": "_shared/validation-status.json",
+          "description": "État de validation cycle stratégique · hypothesis/tested/validated/scaled/fatigued"
+        },
+        "horizon_months": { "type": "integer", "description": "Strategic horizon (12 = annual, 24 = bi-annual)" },
+        "created": { "type": "string", "format": "date-time" },
+        "updated": { "type": "string", "format": "date-time" },
+        "owner": { "type": "string", "description": "Operator slug" },
+        "source": { "type": "string", "enum": ["operator", "ai_proposed", "imported"] }
+      }
+    },
+    "annual_goals": {
+      "type": "array",
+      "description": "Annual strategic goals · 3-5 max recommandé. GOAL-NN id stable cross-session.",
+      "items": {
+        "type": "object",
+        "required": ["goal_id", "statement"],
+        "properties": {
+          "goal_id": { "type": "string", "pattern": "^GOAL-[0-9]{2,3}$" },
+          "category": {
+            "type": "string",
+            "enum": ["revenue", "growth", "retention", "expansion", "operational", "brand_equity", "compliance"]
+          },
+          "statement": { "type": "string", "description": "1-sentence goal statement opérateur-facing" },
+          "target_value": { "oneOf": [{ "type": "number" }, { "type": "string" }] },
+          "kpi_metric": { "type": "string", "description": "Mesure observable (CA monthly, AOV, ROAS, retention_rate, NPS, etc.)" },
+          "target_date": { "type": "string", "format": "date" },
+          "current_value": { "type": ["number", "string", "null"] },
+          "progress_pct": { "type": "number", "minimum": 0, "maximum": 1 },
+          "owner": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["draft", "active", "achieved", "paused", "abandoned"]
+          }
+        }
+      }
+    },
+    "current_focus": {
+      "type": "object",
+      "description": "Quarterly focus singleton · 1 cycle Q{n}-{year}. Override possible via produce-strategy à chaque trimestre.",
+      "properties": {
+        "quarter": { "type": "string", "pattern": "^Q[1-4]-[0-9]{4}$" },
+        "primary_focus": { "type": "string", "description": "Single sentence focus du trimestre" },
+        "acquisition_focus": {
+          "type": "string",
+          "enum": ["new_customer_acquisition", "retention", "expansion_existing", "reactivation", "education", "mixed"]
+        },
+        "channels_prioritized": { "type": "array", "items": { "type": "string" } },
+        "target_audiences_prioritized": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Audience slugs prioritisées Q{n} · doit matcher brands/{slug}/audiences/{slug}/"
+        },
+        "target_products_prioritized": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Product slugs prioritisés Q{n} · doit matcher brands/{slug}/products/{slug}/"
+        },
+        "budget_allocation": {
+          "type": "object",
+          "description": "% allocation par axe ou channel · sums to 1.0 ideally",
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "description": "Constraints opérationnelles, régulatoires, équipe, supplier qui contraignent l'arbitrage stratégique.",
+      "items": {
+        "type": "object",
+        "required": ["constraint_id", "description"],
+        "properties": {
+          "constraint_id": { "type": "string", "pattern": "^CST-[0-9]{2,3}$" },
+          "type": {
+            "type": "string",
+            "enum": ["budget", "regulatory", "operational", "team_capacity", "supplier", "seasonality", "compliance", "ethical"]
+          },
+          "description": { "type": "string" },
+          "severity": { "type": "string", "enum": ["low", "medium", "high", "blocking"] },
+          "until_date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "next_review_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date prochaine review stratégique (typiquement trimestrielle, peut être annuelle)."
+    }
+  }
+}

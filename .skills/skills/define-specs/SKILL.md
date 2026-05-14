@@ -1,11 +1,15 @@
 ---
 name: define-specs
-version: 1.1.0
+version: 1.2.0
 type: orchestrator
 recommended_model: sonnet
 subagent_safe: true
 mode: proposed
 operator_facing: true
+patch_notes:
+  v1.2.0: "v2.58 coverage extend · service_specs Q&A flow activé pour spec.identity.type service/clinical_service/hybrid (v1.11) · contraindications Q&A flow activé pour produits/services à contraintes usage. Closes 2 orphans audit v2.57. Backward compat strict additif."
+description: >
+  v1.2.0 (v2.58 coverage extend) · service_specs Q&A flow activé pour spec.identity.type service/clinical_service/hybrid (v1.11) · contraindications Q&A flow activé pour produits/services à contraintes usage. Closes 2 orphans audit v2.57.
 triggers_fr:
   - "définis les specs"
   - "crée la fiche produit"
@@ -136,6 +140,64 @@ Pour chaque section `spec.schema` majeure non-couverte par auto-pull/sources, po
 - `visual_identity` (packshots URLs, color_palette hex, label wordmark, distinctive_features)
 
 Règle dure : **JAMAIS plus de 3 questions par tour**. Privilégier batch question (regrouper champs proches dans un seul prompt). Tagger les réponses comme `declared`.
+
+### HR4.1 · Branche service_specs (v1.2.0 · spec.identity.type service / clinical_service / hybrid)
+
+**Activation conditionnelle** · quand `spec.identity.type` ∈ {`service`, `clinical_service`, `hybrid`} (v1.11 enum extension), ajouter branche Q&A spécifique services pour populer `spec.specs.service_specs`.
+
+Champs cibles ·
+
+- `service_type` (select · consulting · coaching · clinical · workshop · subscription_membership)
+- `duration_per_session` (text · "1h", "90 min", "demi-journée")
+- `delivery_format` (select · in-person · remote · hybrid)
+- `frequency` (select · ad-hoc · weekly · monthly · quarterly · once-off)
+- `target_outcomes[]` (résultats clients attendus, array text)
+- `prerequisites[]` (clients required state, array text)
+- `tools_provided[]` (deliverables · slides · framework · 1-on-1 calls, array text)
+
+Batch question typique (regrouper 3 max par tour cf. HR4) ·
+
+> *Type de service · consulting / coaching / clinique / workshop / membership ?*
+> *Format · présentiel / distanciel / hybride ?*
+> *Durée par session · "1h", "90 min", "demi-journée" ?*
+
+Puis tour suivant pour fréquence + outcomes/prerequisites/tools_provided regroupés.
+
+Stage ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brands/{slug}/products/{p_slug}/spec.json#/specs/service_specs" \
+  --value '{"service_type":"consulting","duration_per_session":"90 min","delivery_format":"hybrid","frequency":"weekly","target_outcomes":["..."],"prerequisites":["..."],"tools_provided":["..."]}' \
+  --source operator \
+  --confidence 0.9 \
+  --mode proposed \
+  --reason "Service business_model Q&A flow"
+```
+
+Tagger les réponses comme `declared`.
+
+### HR4.2 · Branche contraindications (v1.2.0 · produits/services à contraintes usage)
+
+**Activation conditionnelle** · pour produits/services avec contraintes usage (cosmétique réactive · santé · service médical · `spec.identity.type` ∈ {`clinical_service`, certains produits cosmétiques/santé/nutrition signalés via `category` ou `niche`)), branche Q&A spécifique pour populer `spec.specs.contraindications`.
+
+Champs cibles ·
+
+- `medical_conditions[]` (conditions médicales contre-indiquées, array text)
+- `age_restrictions` (text · "≥18 ans", "12-65 ans", "déconseillé < 6 ans")
+- `pregnancy_warnings` (text · "déconseillé grossesse + allaitement", "ok 2e trimestre", "n/a")
+- `drug_interactions[]` (interactions médicamenteuses, array text)
+- `allergic_reactions[]` (allergènes/réactions documentées, array text)
+
+Batch question typique (regrouper 3 max par tour cf. HR4) ·
+
+> *Conditions médicales contre-indiquées (liste courte si applicable) ?*
+> *Restrictions d'âge (mineurs, seniors) ?*
+> *Grossesse / allaitement · ok, déconseillé, n/a ?*
+
+Puis tour suivant pour drug_interactions + allergic_reactions si pertinents.
+
+Stage chacun via write-to-context.py mode=proposed sur `spec.json#/specs/contraindications/{field}`. Tagger `declared`.
 
 ### HR5 · Assemble draft spec.json
 

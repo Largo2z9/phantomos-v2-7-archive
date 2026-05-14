@@ -7,6 +7,51 @@
 
 ---
 
+## v2.58.0 · 2026-05-15 · Schema coverage sprint · 7 NEW skills + 8 patches + 2 NEW schemas R&D activés
+
+**Why** · audit coverage v2.57 a quantifié que sur 115 fields majeurs des 11 schemas shipped, 28% étaient orphans (NEW fields v2.42-v2.57 designés mais aucun skill ne les staged runtime). Top schemas problématiques · spec.schema v1.11 (8 ORPHAN sur 18 top-level), offer.schema v2.2 (7 ORPHAN sub-features), profile.schema v1.7 NEW fields (severity_score, response_counter, derived_angle_refs, pain_id, objection_id, behavior.*, role.*). Gap architectural majeur · D#386 mappers atomiques décidés S55 (2026-05-04) jamais shippés (10 jours lag). v2.58 ferme 25+ orphans en 1 sprint multi-agents parallèle (8 agents).
+
+**What** ·
+
+**Strate 1 · Patches orchestrateurs existants (8 skills · activate NEW fields v1.10-v1.7 dormants)** ·
+- `snapshot-brand` v1.2.0 → v1.3.0 · brand_equity_level heuristic auto · creative_zone init heuristic · sustainability HTML scraping (eco_claims, certifications, packaging_type) · price_per_unit auto-calc depuis variants.
+- `mine-voc` v1.0.x → v1.1.0 · spec.benefits emotional_signal + latency_min/max + evidence_verbatim write-side v1.10 NEW · profile.pain_id PNT-NN + objection_id OBJ-NN stable generation v1.7 NEW (fixe faille canonical cross-refs).
+- `mine-vom` v1.0.x → v1.1.0 · brand.market.awareness_distribution + regulatory + seasonality write-side · spec.competitive_comparison feature-by-feature per produit.
+- `profile-audience` v1.3.x → v1.4.0 · role.type derivation depuis buyer_user_split · objections.severity_score synthesis · behavior.{purchase_frequency, conversion_timeline, dominant_device, cart_behavior, seasonal_spikes, channel_preferences} VoC-anchored.
+- `produce-paid-angles` v1.7.0 → v1.8.0 · objections.response_counter + derived_angle_refs back-ref auto-persist · angle.compatibility[] cross-audience persist (extension encart v1.7.0).
+- `sync-notion-atlas` v1.0.0 → v1.1.0 · friction.{current_workarounds, resolution_state, cross_refs.*} mapping enrichi · roadmap.{mix[], relations} mapping + denormalized view auto-computed.
+- `define-specs` v1.1.0 → v1.2.0 · service_specs Q&A branche conditionnelle pour spec.identity.type service/clinical_service/hybrid (v1.11) · contraindications Q&A branche conditionnelle pour produits/services à contraintes usage.
+- `build-atlas-complete` v1.0.0 → v1.0.1 · canonical strategy.json path (était strategy/roadmap.json, ferme dette technique) + cross-ref produce-strategy ajouté.
+
+**Strate 2 · D#386 mappers atomiques canon S55 (6 NEW skills deep enrichment)** ·
+- `map-mechanisms` v1.0.0 NEW · D#386 atomique deep enrichment spec.mechanisms[] · 7 deep fields canon (target, mode_of_action, time_window, duration, evidence_level, market_sophistication, triggered_by_specs) · canon-driven EFSA/INSERM/clinical refs · 343 lignes.
+- `decompose-angle` v1.0.0 NEW · angle.schema v1.2 design intent honored (mention skill mais jamais shipped) · 11 atoms canon formula 4 components (phenomenon, source, sample_size, state_actual, state_desired, reason_blocked, perceptual_pivot, pivot_mechanism, spec_activated, benefit_served, promise_formulated) · triangulation spec.json stricte · 415 lignes.
+- `map-specs` v1.0.0 NEW · D#386 atomique drill spec.specs.{composition, nutrition_facts, posology, contraindications, origin, production_method, preparation, external_databases, target_suitability, durability, perishability} · canon refs Open Food Facts/INCI/EFSA · 402 lignes.
+- `map-benefits` v1.0.0 NEW · D#386 atomique chain functional → emotional → identity complete + v1.10 NEW fields (emotional_signal, latency_min/max, evidence_verbatim) + audience_fit cross-link · 356 lignes.
+- `map-audiences` v1.0.0 NEW · D#386 atomique cartographie 3 niveaux mère/sous-poche/micro · 4 questions framework canon (entry_door, granularity, awareness_distribution, overlaps) · 427 lignes.
+- `map-angles` v1.0.0 NEW · D#386 atomique cross-product audience × origin_axis · lineage canon copy 4 IDs obligatoires (hook_canon_id, framework_canon_id, angle_canon_id, archetype_canon_id) · scaffold portfolio angles brand-wide light pass · 503 lignes.
+
+**Strate 3 · Schemas R&D activés + orchestrateur strategy (2 NEW schemas + 1 NEW skill)** ·
+- `strategy.schema` v1.0 NEW · canonical entity activated · annual_goals (GOAL-NN pattern, category enum, target_value, kpi_metric, target_date, progress_pct, status) · current_focus Q{n}-{year} (primary_focus, acquisition_focus enum, channels/audiences/products_prioritized, budget_allocation) · constraints (CST-NN, type enum, severity, until_date) · backward compat strict pour brands existantes sans strategy.json.
+- `learnings.schema` v1.0 NEW · append-only canonical entries (LRN-NNNN) · 9 kinds (test_result, workaround, compliance, observation, decision_trace, hypothesis_validated, pattern_promoted, regulatory_signal, competitor_move) · cross_refs canonical 6 entities (angle_ids, audience_slugs, product_slugs, friction_ids, brief_ids, creative_ids) · test_result_data structuré · superseded_by invalidation pattern · promoted_to_canon flag.
+- `produce-strategy` v1.0.0 NEW orchestrator · 337 lignes · 7 steps (DRGFP + 6 Q&A interactive operator-guided) · stage-proposal mutation gate · synthesis 5 sections investigation-posture · disambiguates against setup-brand/build-atlas-complete/produce-paid-matrix/brief-day.
+
+**Strate 4 · Doctrine SED §13 v2.58 sub-table** ·
+- 2 NEW schemas documentés (strategy v1.0 + learnings v1.0) · 4 décisions design (R&D zone ship rationale post-10-days lag · learnings fragmentation closure single canonical schema · id patterns cohérence canon PNT-NN/OBJ-NN/FRC-NN/ANG-NN/CRT-NN/LRN-NNNN/GOAL-NN/CST-NN · runtime activation via produce-strategy + build-atlas-complete patched).
+
+**Manifest skills regen** · 60 → 67 skills (+7 NEW · 5 D#386 mappers + decompose-angle + produce-strategy).
+
+**Backward compat strict additif partout** ·
+- Tous patches orchestrateurs · Steps existing intacts, sub-steps additifs uniquement.
+- NEW skills · n'override aucun existant, disambiguates_against canon rigoureux.
+- NEW schemas · validation_status optional, brands pre-v2.58 sans strategy.json/learnings.json valident.
+- Pain_id/objection_id PNT-NN/OBJ-NN optional v1.7 · profiles pre-v1.7 valident.
+- build-atlas-complete path change · strategy/roadmap.json → strategy.json (canonical) · brands existantes avec ancien path lues backward compat.
+
+**Coverage runtime** · 72% → ~98% (25+ orphans fermés).
+
+---
+
 ## v2.57.0 · 2026-05-15 · /phantom workspace menu refactor + business_model contextual intelligence
 
 **Why** · test live cas Innerskin (hybrid clinique + ligne produit, 12 SKUs) a révélé que `/phantom {brand}` rendait à plat sans nesting produit + sans adaptation business_model. Audit 3 experts parallèle (UX + Métier + Data Engineer) convergent · pattern enrichi initial over-engineered daily-use, refactor en vraie mini-app workspace menu nécessaire avec adaptation contextuelle intelligente (DTC / service / hybrid / subscription / marketplace) sans hardcode.

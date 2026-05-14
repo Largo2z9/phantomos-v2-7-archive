@@ -1,7 +1,7 @@
 ---
 name: sync-notion-atlas
 type: orchestrator
-version: "1.0.0"
+version: "1.1.0"
 isolation_scope: brand_only
 layer: 1
 recommended_model: sonnet
@@ -10,8 +10,10 @@ mode: proposed
 operator_facing: true
 reasoning_pattern: null
 patch_notes:
+  v1.1.0: "v2.58 coverage extend · friction.{current_workarounds, resolution_state, cross_refs.*} mapping enrichi · roadmap.{mix[], relations} mapping + denormalized view auto-computed. Closes 4 orphans audit v2.57. Phase B push toujours stubbée v2.58. Backward compat strict additif."
   v1.0.0: "v2.57 Phase A pull-only MVP shipped. Bridge Notion → PhantomOS pour les 11 collections canon stride-up (Produits, Specs, Mécanismes, Bénéfices, Personae, Pain Points, Angles, Objections, Frictions usage, Roadmap, Full funnel Meta). Mappings canon docs/system/notion-bridge-doctrine.md. Mutation gate strict (write-to-context.py mode=proposed) + isolation_scope brand_only. Phase B push + Phase C diff stubbés mais inactifs v1.0.0. Cross-ref doctrines · notion-bridge-doctrine.md (source canon) · compositional-cartography.md §4 mappings · brand-isolation-discipline.md · investigation-posture.md (5 sections close) · schema-encoding-discipline.md (mutation rule + _field_types)."
 description: >
+  v1.1.0 (v2.58 coverage extend) · friction.{current_workarounds, resolution_state, cross_refs.*} mapping enrichi · roadmap.{mix[], relations} mapping + denormalized view auto-computed. Closes 4 orphans audit v2.57. Phase B push toujours stubbée v2.58.
   v1.0.0 baseline Phase A pull-only MVP. Synchronise un workspace Notion (canvas
   stride-up avec 11 collections canon · Produits, Specs, Mécanismes, Bénéfices,
   Personae, Pain Points, Angles, Objections, Frictions usage, Roadmap, Full funnel
@@ -245,11 +247,32 @@ Si une collection matched retourne 0 rows · note `{collection_name: []}` silent
 | Pain Points | `profile.pain_benefit_chain[]` + `pain_category` v2.56 | subfield profile.json |
 | Angles produits | `angle` | `brands/{slug}/angles/{ANG-NN}.json` |
 | Objections | `profile.objections[]` enrichi v2.56 + xref `angle.tension` | subfields profile.json + angle.json |
-| Frictions usage | `friction` NEW v2.56 | `brands/{slug}/frictions/{FRC-NN}.json` |
-| Roadmap | `roadmap` NEW v2.56 | `brands/{slug}/roadmap.json` (singleton) |
+| Frictions usage | `friction` NEW v2.56 (v1.1.0 · enrichi `current_workarounds`, `resolution_state`, `cross_refs.{objection_ids, pain_point_ids}`) | `brands/{slug}/frictions/{FRC-NN}.json` |
+| Roadmap | `roadmap` NEW v2.56 (v1.1.0 · enrichi `mix[]`, `relations.{angle_ids, audience_slugs, product_slugs, creative_ids}` denormalized view) | `brands/{slug}/roadmap.json` (singleton) |
 | Full funnel Meta | `creative` + `funnel` | `brands/{slug}/creatives/{CRT-NN}.json` + `funnel.json` |
 
 Full doctrine canon + cohérence cross-collections (relations Notion devenant cross_refs PhantomOS) · `docs/system/notion-bridge-doctrine.md`.
+
+### Mappings enrichis v1.1.0 (Phase A coverage extend)
+
+#### Frictions usage · enrichments v1.1.0
+
+Quand collection Notion `Frictions usage` est query, mapper additionnellement vers ·
+
+| Notion property | PhantomOS field | Type |
+|---|---|---|
+| `Workarounds` ou `Solutions actuelles client` (multi-text) | `friction.current_workarounds[]` | array text |
+| `Statut résolution` (select) | `friction.resolution_state` | enum [unresolved · in_progress · resolved · accepted] |
+| `Cross-ref objections` (relation → Objections, multi) | `friction.cross_refs.objection_ids[]` | array (OBJ-NN canonical IDs) |
+| `Cross-ref pain points` (relation → Pain Points, multi) | `friction.cross_refs.pain_point_ids[]` | array (PNT-NN canonical IDs v1.7 NEW) |
+
+Stage chaque field via write-to-context.py mode=proposed (cf. Step 4 patterns). Pour `cross_refs.*`, résoudre les relations Notion vers PhantomOS IDs canonical (OBJ-NN + PNT-NN) avant stage.
+
+#### Roadmap · enrichments v1.1.0
+
+Quand collection Notion `Roadmap [angles/audiences]` porte property `Mix axis` (select · audience · angle · product · funnel · creative) + property `Weight` (number 0-1), mapper vers `roadmap.mix[]` array.
+
+Post-mapping rows roadmap, computer aggregat denormalized auto-computed · collecter tous les `phase.priorities[].angle_ids` + tous les `production_status[].entity_id` → group by entity_type → populate `roadmap.relations.{angle_ids, audience_slugs, product_slugs, creative_ids}`. Vue denormalized auto-générée post Step 4, pas operator-fournie.
 
 ### Tags universels mapping (épistemic)
 
@@ -331,6 +354,73 @@ python3 .skills/write-to-context.py \
 Mode `proposed` stamp les `_proposed: true` + `_source: "import"` + `_confidence: N` au niveau du field, permet à l'opérateur d'accept/reject par mutation via `pending-validations.md` workflow.
 
 `--source import` valeur enum (cf. write-to-context.py `VALID_SOURCES`), réservée aux ingestions externes structurées comme Notion.
+
+### Pattern C · Stage enrichments v1.1.0 (Phase A coverage extend)
+
+**C.1 · friction.current_workarounds[] + resolution_state** ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brands/{brand_slug}/frictions/{FRC-NN}.json#/current_workarounds" \
+  --value '["{workaround_1}","{workaround_2}"]' \
+  --source import \
+  --confidence 0.8 \
+  --mode proposed
+
+python3 .skills/write-to-context.py \
+  --path "brands/{brand_slug}/frictions/{FRC-NN}.json#/resolution_state" \
+  --value '"unresolved"' \
+  --source import \
+  --confidence 0.8 \
+  --mode proposed
+```
+
+**C.2 · friction.cross_refs.{objection_ids, pain_point_ids} cross-DB resolution** ·
+
+Quand collection Notion porte cross-relations (e.g. friction page mentionne objections OR pain_points via relation Notion), résoudre vers PhantomOS IDs canonical (OBJ-NN + PNT-NN v1.7 NEW). Stage ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brands/{brand_slug}/frictions/{FRC-NN}.json#/cross_refs/objection_ids" \
+  --value '["OBJ-01","OBJ-03"]' \
+  --source agent \
+  --confidence 0.8 \
+  --mode proposed
+
+python3 .skills/write-to-context.py \
+  --path "brands/{brand_slug}/frictions/{FRC-NN}.json#/cross_refs/pain_point_ids" \
+  --value '["PNT-02","PNT-05"]' \
+  --source agent \
+  --confidence 0.8 \
+  --mode proposed
+```
+
+**C.3 · roadmap.mix[] mapping (axis + weight)** ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brands/{brand_slug}/roadmap.json#/mix" \
+  --value '[{"mix_id":"MIX-01","weight":0.4,"axis":"audience","target_id":"...","rationale":"..."}]' \
+  --source agent \
+  --confidence 0.8 \
+  --mode proposed
+```
+
+**C.4 · roadmap.relations denormalized view auto-computed** ·
+
+Post-mapping rows roadmap (Step 3 + Step 4 Patterns A-B-C.3 staged), computer aggregat denormalized · collecter tous les `phase.priorities[].angle_ids` + tous les `production_status[].entity_id` → group by entity_type → populate `roadmap.relations`. Stage ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brands/{brand_slug}/roadmap.json#/relations" \
+  --value '{"angle_ids":["ANG-01","ANG-03"],"audience_slugs":["..."],"product_slugs":["..."],"creative_ids":["CRT-12"]}' \
+  --source agent \
+  --confidence 0.9 \
+  --mode proposed \
+  --reason "Denormalized view auto-computed"
+```
+
+Vue denormalized auto-générée, pas operator-fournie. Permet drill-down rapide cross-entités sans re-parser phase.priorities[] runtime.
 
 ### Delegation à encode-batch (Haiku) pour batches > 5 mutations
 

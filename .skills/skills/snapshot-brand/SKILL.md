@@ -1,7 +1,7 @@
 ---
 name: snapshot-brand
 type: producer
-version: "1.2.0"
+version: "1.3.0"
 isolation_scope: brand_only
 layer: 2
 recommended_model: sonnet
@@ -10,7 +10,9 @@ patch_notes:
   v1.0.1: "v2.51 operator-fiche-output canonique template applied · trust-and-deepen close + Movement 4 hand-off refactor langage métier. Close menu post-synthesis · drop skill names en parenthèses (mine-voc, mine-vom, deepen-brand-context) → descriptions plain language uniquement (15 min validation guidée / 15 min écoute clients / 25 min écoute marché / 45 min full). Movement 4 hand-off Step 5 · drop wording `mine-voc fait X` / `produce-paid-angles consomme Y` → langage métier accessible (`écoute clients Trustpilot et forums` au lieu de nommer skill, `set d'angles ranked prêt brief créa` au lieu de `produce-paid-angles consume`). Cohérent template canonique resources/templates/operator-fiche-output.md."
   v1.1.0: "v2.54 investigation posture refactor Step 7 · drop 3-movements prose synthesis (mélangait observé + déduit + projection comme des faits). Step 7 restructuré en 5 sections doctrine canon · Observé (faits sourcés scrape + Q&A opérateur) · Déduit (hypothèses avec confidence chain forte/moyenne/faible/TRÈS faible + indicateurs sources, formulées comme questions) · Inconnu (variables non observables à creuser) · Leviers (skills/actions/sources pour lever les inconnues, options drill-down macro) · Close ouvert (UNE question macro priorité drill-down · opérateur arbitre). Préserve mécanismes scraping + persistance spec.json/offers.json/profile.json. Refacto uniquement la synthèse operator-facing post-scrape. Cross-ref doctrine docs/system/investigation-posture.md."
   v1.2.0: "v2.57 alignment · auto-detect business_model heuristique scrape · stage proposal via mutation gate · surface contextuel + AskUserQuestion si ambiguous. Nouveau Step 2bis intercalé entre platform detection (Step 2) et generate spec.json (Step 3) · compute physical_locations + services_detected + products_detected + subscription_signals + marketplace_signals depuis URL scrape data, classify via priority rules en enum (DTC | service | hybrid | subscription | marketplace), stage proposal brand.json#/identity/business_model (mode=proposed, confidence 0.7, source=agent) + business_model_signals object pour traçabilité sourcing, surface contextuel 1 ligne dans Step 7 Section 1 (Observé), fallback AskUserQuestion 4 options si ambigu (products + services tous deux non-zero mais < 3 chacun). Backward compat · brands pre-v2.57 sans business_model.scraped → next snapshot-brand run détecte et stage proposal. Brands setup déjà v2.6 manuelle restent inchangées tant qu'opérateur ne re-snapshot pas."
+  v1.3.0: "v2.58 coverage extend · 4 sub-steps additifs strict pour combler orphans audit v2.57. (1) Step 7 sub-step · compute brand.brand_equity_level enum (low/medium/high) depuis heuristique financials.monthly_revenue + proofs.press_mentions + market.sophistication, stage via mutation gate confidence 0.6. (2) Step 7 sub-step · init brand.creative_zone {min, max, dominant, _observed_on_n_creatives:0} depuis identity.brand_personality + tone_of_voice.register + sector heuristique, stage confidence 0.5 (incrémenté ultérieurement par decompose-ad cumul). (3) Step 2/3 HTML scraping extend · scanner spec.sustainability.eco_claims[] + certifications[] + packaging_type (confidence 0.7 si claim explicit PDP, 0.4 si déduit visuellement). (4) Step 4 offers extraction · auto-calc spec.pricing.price_per_unit (value=price÷pack_quantity, unit depuis specs.weight/volume/package_quantity, currency depuis pricing.currency, confidence 0.9 calcul mathématique direct). Backward compat strict · Steps 0-7 existing intacts, sub-steps additifs uniquement. Closes 4 orphans audit v2.57."
 description: >
+  v1.3.0 (v2.58 coverage extend) · 4 sub-steps additifs · brand_equity_level heuristic auto · creative_zone init heuristic · sustainability HTML scraping (eco_claims, certifications, packaging_type) · price_per_unit auto-calc depuis variants. Closes 4 orphans audit v2.57.
   v1.2.0 (v2.57 alignment) · auto-detect business_model heuristique scrape · stage proposal via mutation gate · surface contextuel + AskUserQuestion si ambiguous.
   Automatically fills spec.json, offers.json and the base of profile.json
   from a product URL. Scrapes the page, asks 4 closed questions about the audience,
@@ -177,6 +179,46 @@ Even if Shopify JSON returns the data, read the product page HTML to capture wha
 | Payment methods | Footer or ATC zone | brand.json — market confirmation |
 
 ⚠️ **WebFetch limit**: WebFetch returns only static HTML. Front-end apps (quantity breaks, review widgets) are rendered via JavaScript after load, invisible to WebFetch. If these elements are suspected but not visible in HTML → note `[app-rendered — requires Chrome capture]` and continue. Never invent unconfirmed price tiers.
+
+**Sustainability signals scraping (v1.3.0 NEW · v2.58)**
+
+En complément du scraping PDP standard, scanner additionnellement les signaux sustainability per produit. Ces signaux peuplent `spec.sustainability.*` (sidecar entité product) ·
+
+| Field | Heuristique HTML | Confidence |
+|---|---|---|
+| `spec.sustainability.eco_claims[]` | Scan mentions textuelles · "bio", "vegan", "cruelty-free", "upcycled", "recyclé", "natural", "organic", "sustainably-sourced", "carbon-neutral", "fairtrade" dans body_html, meta description, tags Shopify, sections produit. | 0.7 si claim explicit dans PDP (mention texte directe), 0.4 si déduit visuellement (badge sans texte associé OU inference depuis catégorie). |
+| `spec.sustainability.certifications[]` | Scan badges/logos · "Ecocert", "COSMOS", "USDA Organic", "Fair Trade", "B-Corp", "1% for the planet", "Leaping Bunny". Texte alt-tag images + texte explicite. | 0.7 si certification explicit nommée, 0.4 si badge image sans texte machine-readable. |
+| `spec.sustainability.packaging_type` | Enum `[glass · plastic · aluminum · cardboard · biodegradable · refillable · zero-waste]`. Scan mentions packaging dans description, specs, tags. | 0.7 si déclaration explicit, 0.4 si inférée depuis visuel produit ou catégorie. |
+
+Stage per spec produit via mutation gate ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "products/{product_slug}/spec.json#/sustainability/eco_claims" \
+  --value '["{claim_1}", "{claim_2}"]' \
+  --source agent \
+  --confidence {0.7 si explicit, 0.4 si déduit} \
+  --mode proposed \
+  --reason "HTML scraping eco_claims mentions"
+
+python3 .skills/write-to-context.py \
+  --path "products/{product_slug}/spec.json#/sustainability/certifications" \
+  --value '["{cert_1}"]' \
+  --source agent \
+  --confidence {0.7 si explicit, 0.4 si déduit} \
+  --mode proposed \
+  --reason "HTML scraping certifications badges"
+
+python3 .skills/write-to-context.py \
+  --path "products/{product_slug}/spec.json#/sustainability/packaging_type" \
+  --value "{enum_value}" \
+  --source agent \
+  --confidence {0.7 si explicit, 0.4 si déduit} \
+  --mode proposed \
+  --reason "HTML scraping packaging mentions"
+```
+
+Si zéro signal sustainability détecté → ne pas stage (laisser fields null, ne pas créer de bruit `proposed` vide).
 
 **Review triangulation — 3 sources, always note provenance:**
 
@@ -450,6 +492,30 @@ Fill `brands/{slug}/products/{product_slug}/offers.json` using the v2 `offer_gro
 - Group-of-1 is the default for single-product offer files. Only add more groups when shared defaults genuinely differ.
 
 If subscription detected (selling_plan_groups): create a `type: "subscription"` offer with subscription fields filled to null (to complete via ingest-resource).
+
+**Price per unit auto-calc (v1.3.0 NEW · v2.58)**
+
+Pour chaque variant offre extraite, calculer automatiquement `spec.pricing.price_per_unit` (calcul mathématique direct depuis variants) ·
+
+| Field | Calcul | Source |
+|---|---|---|
+| `value` | `price ÷ pack_quantity` (e.g. 39€ ÷ 30 caps = 1.30€/capsule, 130€ ÷ 30ml = 4.33€/ml) | `pricing.price` ÷ `specs.package_quantity` (ou `specs.weight` / `specs.volume`) |
+| `unit` | Depuis specs (cap · ml · g · piece) | `specs.weight.unit` OR `specs.volume.unit` OR `specs.package_quantity.unit` |
+| `currency` | Hérité de pricing | `pricing.currency` |
+
+Stage via mutation gate (confidence 0.9 · calcul mathématique direct, pas d'inférence) ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "products/{product_slug}/spec.json#/pricing/price_per_unit" \
+  --value '{"value": {calculated_value}, "unit": "{unit}", "currency": "{currency}"}' \
+  --source agent \
+  --confidence 0.9 \
+  --mode proposed \
+  --reason "Auto-calc price÷pack_quantity depuis variants extraction"
+```
+
+Si `pack_quantity` non détectable (variant unique sans specs structurés) → skip le stage, laisser le field null. Ne pas inventer un dénominateur.
 
 **App-driven quantity break (frequent case):**
 
@@ -770,6 +836,59 @@ Format example (FR · canonique v2.54) ·
 > *Mon avis · {recommandation macro · ex "A + B en premier (45 min total, posent la fondation), C/D si temps avant le call"}.*
 
 L'opérateur dit `A` ou `A+B` ou autre. L'agent enchaîne le drill-down sur l'axe choisi en respectant à nouveau les 5 sections (cycle itératif).
+
+### Sub-step · brand_equity_level heuristic auto (v1.3.0 NEW · v2.58)
+
+Avant le rendu des 5 sections operator-facing, compute `brand.brand_equity_level` (enum `[low | medium | high]`) depuis heuristique combinée ·
+
+| Level | Critères (ANY triggers level) |
+|---|---|
+| `high` | `financials.monthly_revenue > 500k€/mois` OR `proofs.press_mentions` top-tier (Vogue, Forbes, Elle, Wired, NYT) OR `partnerships` brand prestige (luxury houses, celebrity endorsements established) |
+| `medium` | `financials.monthly_revenue` 50k-500k€/mois OR `proofs.press_mentions` national OR `Trustpilot rating > 4.5` AND `500+ reviews` |
+| `low` | Sinon · fresh brand, niche, peu de proofs, no press, no high revenue |
+
+Stage via mutation gate (confidence 0.6 · heuristique multi-signaux, validation opérateur recommandée) ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brand.json#/brand_equity_level" \
+  --value "{level}" \
+  --source agent \
+  --confidence 0.6 \
+  --mode proposed \
+  --reason "Heuristic depuis financials.monthly_revenue + proofs.press_mentions + market.sophistication"
+```
+
+Si signaux insuffisants pour discriminer (e.g. brand neuve, zéro revenue déclaré, zéro press, zéro reviews) → default `low` avec confidence 0.4 et reason explicit · *"Default low · signaux insuffisants pour discriminer medium/high"*.
+
+### Sub-step · creative_zone init heuristic (v1.3.0 NEW · v2.58)
+
+Compute initial `brand.creative_zone.{min, max, dominant, _observed_on_n_creatives}` depuis `brand.json#identity.brand_personality` + `tone_of_voice.register` + `sector` ·
+
+| Profil détecté | dominant | min | max |
+|---|---|---|---|
+| Premium-clinique (luxe skincare, suppléments scientifiques) | `high-craft` ou `authoritative` | `informative` | `authoritative` |
+| DTC-aggressive (direct response, urgency-driven) | `punchy` ou `casual` | `casual` | `punchy` |
+| Luxury (mode, joaillerie, beauté prestige) | `editorial` ou `elegant` | `elegant` | `editorial` |
+| Wellness mainstream (compléments OTC, beauty mainstream) | `friendly` | `casual` | `informative` |
+| Tech / SaaS B2B | `informative` | `informative` | `authoritative` |
+| Hybrid / undefined | `friendly` (default safe) | `casual` | `informative` |
+
+`_observed_on_n_creatives` · `0` initial (incrémenté par `decompose-ad` cumul après chaque ad reverse-engineered, doctrine atlas vivant).
+
+Stage via mutation gate (confidence 0.5 · init heuristique, refinable par observation réelle créas) ·
+
+```bash
+python3 .skills/write-to-context.py \
+  --path "brand.json#/creative_zone" \
+  --value '{"min":"{min}","max":"{max}","dominant":"{dominant}","_observed_on_n_creatives":0}' \
+  --source agent \
+  --confidence 0.5 \
+  --mode proposed \
+  --reason "Init heuristic depuis brand_personality + tone_of_voice"
+```
+
+Si `brand_personality` + `tone_of_voice` tous deux null (brand fresh post-setup sans enrichissement) → skip le stage, laisser field null. `creative_zone` sera initialisé au premier `decompose-ad` ou enrichissement manuel.
 
 (EN equivalent · adapt to operator language detected) ·
 

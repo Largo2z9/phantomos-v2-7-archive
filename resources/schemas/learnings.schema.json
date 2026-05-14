@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "learnings.schema.json",
+  "title": "Learnings (append-only brand log)",
+  "description": "Brand-wide append-only learnings log. Singleton brands/{slug}/learnings.json. Entries by kind (test_result, workaround, compliance, observation, decision_trace, hypothesis_validated, pattern_promoted). v1.0 baseline shipped v2.58. Used by learn-from-session + capture-learning + brief-day Trigger pattern detection.",
+  "_schema_version": "learnings/1.0",
+  "_changelog": {
+    "1.0": "v2.58 baseline. Append-only entries with kind/fact/created_at/source. Validation_status per entry. Cross_refs canonical vers other entities (angles, audiences, products, frictions, briefs)."
+  },
+  "type": "object",
+  "required": ["meta", "entries"],
+  "properties": {
+    "_schema": { "type": "string" },
+    "_version": { "type": "string" },
+    "_field_types": { "type": "object", "additionalProperties": { "type": "string" } },
+    "meta": {
+      "type": "object",
+      "required": ["brand_slug"],
+      "properties": {
+        "brand_slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "total_entries": { "type": "integer", "minimum": 0 },
+        "promoted_to_canon_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Count entries cross-brand validées promues canon copy"
+        },
+        "append_only": { "type": "boolean", "const": true, "default": true },
+        "created": { "type": "string", "format": "date-time" },
+        "updated": { "type": "string", "format": "date-time" }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "description": "Append-only · jamais modifier, jamais supprimer. Invalidation = nouvelle entrée flag superseded_by sur l'ancienne id.",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "fact", "created_at"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^LRN-[0-9]{3,5}$" },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "test_result",
+              "workaround",
+              "compliance",
+              "observation",
+              "decision_trace",
+              "hypothesis_validated",
+              "pattern_promoted",
+              "regulatory_signal",
+              "competitor_move"
+            ]
+          },
+          "fact": { "type": "string", "description": "1-3 sentence factual learning" },
+          "context": { "type": "string", "description": "Context narratif optional" },
+          "cross_refs": {
+            "type": "object",
+            "description": "Références canon vers autres entités brand. Permet pattern detection cross-entity (Trigger 8 brief-day).",
+            "properties": {
+              "angle_ids": { "type": "array", "items": { "type": "string" } },
+              "audience_slugs": { "type": "array", "items": { "type": "string" } },
+              "product_slugs": { "type": "array", "items": { "type": "string" } },
+              "friction_ids": { "type": "array", "items": { "type": "string" } },
+              "brief_ids": { "type": "array", "items": { "type": "string" } },
+              "creative_ids": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "test_result_data": {
+            "type": "object",
+            "description": "Si kind=test_result · structure ROAS/CTR/spend/days_running/winner_proxy",
+            "properties": {
+              "roas": { "type": "number" },
+              "ctr": { "type": "number" },
+              "spend_eur": { "type": "number" },
+              "days_running": { "type": "integer" },
+              "winner_proxy": { "type": "boolean" },
+              "fatigue_signal": { "type": "boolean" }
+            }
+          },
+          "validation_status": {
+            "$ref": "_shared/validation-status.json",
+            "description": "État validation de l'entrée · hypothesis/tested/validated/scaled/fatigued"
+          },
+          "superseded_by": {
+            "type": ["string", "null"],
+            "description": "Si remplacée par LRN-NNNN plus récent, référence stockée ici. Append-only enforcement."
+          },
+          "promoted_to_canon": { "type": "boolean", "default": false },
+          "promoted_canon_path": {
+            "type": "string",
+            "description": "Si promoted_to_canon=true · path canon copy promotion (e.g. resources/canon/copy/hooks/{tool}.json)"
+          },
+          "source": {
+            "type": "string",
+            "enum": ["operator", "agent", "skill_output", "test_capture"]
+          },
+          "created_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
