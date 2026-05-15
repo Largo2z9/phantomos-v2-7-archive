@@ -1,0 +1,54 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.68.0",
+  "released_at": "2026-05-15",
+  "compatible_from": "2.0.0",
+  "type": "canonisation_progressive_cartography_doctrine_NEW_skills_phasing_gates_light",
+  "summary": "Canonisation progressive-cartography · NEW doctrine progressive-cartography-discipline.md (366L · 13 sections canon-style miroir territory-discipline) codifie phasing par profondeur · Phase 1 Macro confirmation light · Phase 2 Drilling autonome · Phase 3 Audiences hiérarchique parent/enfants · Phase 4 Enrichissement continu non-bloquant. Gates light binaires entre paliers (vs Q&A questions premature anti-pattern canon CI No questionnaire before action). Mode fast-track opérateur expert opt-in. snapshot-brand v1.3.1 → v1.4.0 progressive (drop 4 Q&A questions audience · Step 7 split 7a Phase 1 + 7b Phase 2 · drill-down autonome reviews+verbatims). build-atlas-complete v1.3.0 → v1.4.0 chain orchestrator avec gates light entre Phase 1+2 → Phase 3 → Phase 4 + fast-track flag. D#411 captured. Backward compat strict additif.",
+  "changes": [
+    {
+      "category": "doctrine_new_progressive_cartography",
+      "action": "added",
+      "files": ["docs/system/progressive-cartography-discipline.md"],
+      "section": "NEW doctrine canon 366L · 13 sections canon-style miroir territory-discipline (Thesis · Problème · Phase 1 Macro · Phase 2 Drilling · Phase 3 Audiences hiérarchique · Phase 4 Enrichissement non-bloquant · Mode skip/fast-track · Pattern gates light · Skills implémentation · Anti-patterns · Decision-aid Q1-Q4 · Cross-references · Status)",
+      "rationale": "Pattern phasing progressif territoire posage existait en germe mais non canonisé. Canon snapshot-brand v1.3.1 dumpait Step 7 synthesis bloc + 4 Q&A questions audience post-scrape (anti-patterns canon CI No questionnaire + dump saturation opérateur). v2.68 codifie 4 phases avec gates light entre paliers + enrichissement non-bloquant. Sister doctrine territory-discipline v2.67 (substrat) + progressive-cartography v2.68 (comment substrat se pose progressivement)."
+    },
+    {
+      "category": "skill_snapshot_brand_v1_4_0_progressive",
+      "action": "patched",
+      "files": [".skills/skills/snapshot-brand/SKILL.md"],
+      "section": "v1.3.1 → v1.4.0 progressive cartography refactor · drop 4 Q&A questions audience anti-pattern · Step 7 split Step 7a Phase 1 macro confirmation light (synthesis 3-5 lignes · gate binaire) + Step 7b Phase 2 drilling autonome (drill-down PDP + reviews + verbatims tagged · synthesis 5 sections investigation-posture · gate intermédiaire route Phase 3) · NEW hard rules No Q&A premature audience + Phase 1+2 gate light binaire",
+      "rationale": "Friction live identifié v2.67 simulation Stepprs · agent posait 4 questions audience au lieu de drill-down autonome reviews + verbatims tagged · violation canon CI No questionnaire before action. v1.4.0 align doctrine progressive-cartography Phase 1+2 implémentation. Backward compat strict additif sur Steps 1-6 scrape (territoire chain preserved · 67 em-dashes legacy preserved par contrainte backward compat strict)."
+    },
+    {
+      "category": "skill_build_atlas_complete_v1_4_0_progressive",
+      "action": "patched",
+      "files": [".skills/skills/build-atlas-complete/SKILL.md"],
+      "section": "v1.3.0 → v1.4.0 chain orchestrator progressive cartography · Phase 1+2 (snapshot-brand) → Gate Intermédiaire 1 light → Phase 3 (map-audiences hiérarchique) → Gate Intermédiaire 2 light → Phase 4 (mine-voc × N + profile-audience × N enrichissement) · NEW flag --fast-track opérateur expert OR config /operator/profile.json#preferences.auto_validate_after_n_brands true · 2 NEW Hard Rules Guardrails (Gates entre Phases canon + Fast-track opt-in opérateur expert)",
+      "rationale": "v1.3.0 territoire-pure (v2.67) chain skills sequential sans gates entre paliers · canon précédent dumpait synthesis bloc. v1.4.0 align doctrine progressive-cartography Phase 1-4 · gates light entre paliers validation operator avant continue · fast-track flag opt-in pour opérateur expert qui veut bypass gates. Backward compat strict additif sur chain skills existing."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md", "docs/internal/releases/manifest/2.68.0-manifest.json"],
+      "section": "Bump template_version 2.67.0 → 2.68.0 + summary + CHANGELOG entry v2.68.0 + NEW manifest",
+      "rationale": "Sprint canonisation progressive-cartography complete. Release v2.68.0."
+    }
+  ],
+  "files_patched_total": "5 files (1 NEW doctrine 366L · 2 SKILL.md major refactors snapshot-brand v1.4.0 + build-atlas-complete v1.4.0 · _version.json bump · CHANGELOG.md entry · 2.68.0-manifest.json NEW · decisions.md D#411)",
+  "patterns_introduced": {
+    "progressive_cartography_phasing_canon": "Pattern canon v2.68 · 4 phases progressive territoire posage avec gates light entre paliers · Phase 1 Macro confirmation (3-5 lignes synthesis + gate binaire) · Phase 2 Drilling autonome (drill PDP+reviews+verbatims · synthesis 5 sections IP · gate intermédiaire) · Phase 3 Audiences hiérarchique parent/enfants (map-audiences 3 niveaux mère+sous-poches · gate validation arbre) · Phase 4 Enrichissement continu non-bloquant (agent listening passive · opérateur drop insight à tout moment · stage proposed auto). Pattern reproductible pour évaluation futurs skills territoire.",
+    "gates_light_binaire_canon": "Pattern canon v2.68 · gate light = 1-2 lignes synthesis + 1 binaire validation/correction operator · jamais Q&A questions verbeux. Anti-friction premier-contact opérateur. Cohérent doctrine CI No questionnaire before action.",
+    "fast_track_opt_in_operator_expert_canon": "Pattern canon v2.68 · opérateur expert peut bypass gates via flag `--fast-track` OR config `/operator/profile.json#preferences.auto_validate_after_n_brands: true` (auto-validate après N brands setup). Default = gates light visible pour repère cognitif premier-contact. Anti-pattern · fast-track default qui perd nouvel opérateur."
+  },
+  "antipatterns_eliminated": {
+    "qa_questions_premature_audience": "Avant v2.68 · snapshot-brand v1.3.1 posait 4 Q&A questions audience post-scrape (mentionné explicit frontmatter description). Agent demandait au lieu de drill-down autonome reviews + verbatims tagged. v2.68 v1.4.0 drop · agent drill-down autonome puis présente hypothèses avec confidence chain explicit · opérateur valide bulk.",
+    "dump_synthesis_bloc_canon_actuel": "Avant v2.68 · snapshot-brand Step 7 dumpait synthesis 5 sections + 4 Q&A questions d'un bloc · saturation opérateur · pas validation grain fin. v2.68 split Step 7a Phase 1 macro + Step 7b Phase 2 drilling avec gate intermédiaire light entre.",
+    "gates_verbeux_anti_friction": "Pattern anti-pattern canonisé · gate qui demande 4 questions opérateur au lieu de 1 binaire light = friction inverse. v2.68 doctrine canon gates light = 1-2 lignes synthesis + 1 binaire valide/corrige.",
+    "enrichissement_bloquant_anti_pattern": "Pattern anti-pattern canonisé · agent attend opérateur insight avant continuer flow principal. v2.68 Phase 4 non-bloquant · agent listening passive · opérateur drop insight asynchrone · stage proposed auto · pas bloquant flow.",
+    "fast_track_default_perd_premier_contact": "Pattern anti-pattern canonisé · fast-track default pour tout opérateur skip gates · perd nouvel opérateur premier-contact (perd repère cognitif phases). v2.68 fast-track = opt-in opérateur expert via flag OR config."
+  },
+  "operator_impact": "Operators v2.68+ bénéficient phasing progressif clair (mental model Phase 1-4 explicit) · validation grain fin avant escalade lourde · enrichissement first-party non-bloquant fluide (drop insight n'importe quand · agent absorbe). Premier-contact opérateur · gates light visible pour repère cognitif. Opérateur expert · fast-track opt-in via flag --fast-track OR config auto-validate. Reduces friction saturation canon v1.3.1 dump synthesis bloc. Cohérent usage pattern réel · Phase 1 Macro (2 min) → validate → Phase 2 Drilling (5-10 min) → validate → Phase 3 Audiences (15-20 min) → validate → Phase 4 Enrichissement continu (open-ended cross-sessions).",
+  "backward_compat": "strict_additif sur chain skills existing + Steps preserved snapshot-brand 1-6 + build-atlas-complete chain skills. Phase 1+2 gate intermédiaire additif sur snapshot-brand Step 7 (split en 7a + 7b · pas suppression). Gates additifs sur build-atlas-complete entre paliers (chain skills existing preserved). Fast-track flag opt-in (default = gates visible · pas BREAKING). Doctrine NEW additive. 67 em-dashes legacy snapshot-brand Steps 1-6 préservés par contrainte backward compat strict (anti-pattern em-dash limited to NEW content · legacy preserved). Operators v2.67.x non affectés sauf invocation snapshot-brand OR build-atlas-complete qui obtiennent désormais gates light visible (premier-contact opérateur) OU fast-track opt-in.",
+  "next_release_note": "v2.68+ patches identifiés · (a) Test live brand pilote post-v2.68 (Stepprs · validate end-to-end snapshot-brand v1.4.0 + build-atlas-complete v1.4.0 progressive flow · capture frictions Phase 1+2 gate intermédiaire + Phase 3 audiences hiérarchique gate + Phase 4 enrichissement non-bloquant). (b) NEW `_EXAMPLE/stepprs` brand canonical territoire-pure construit en duo via flow progressive v1.4.0 · référence visuelle nouveaux opérateurs. (c) Audit em-dash legacy Steps 1-6 snapshot-brand · canon strict zero em-dash → sweep ciblé v2.68.1 patch (drop em-dash 67 instances · cohérent canon style). (d) Enrichissement continu Phase 4 mode dédié `enrich-territory` skill candidate v2.69+ si pattern usage validé runtime · listening passive + stage proposed auto operator insights. (e) Mode fast-track config opt-in canonical · /operator/profile.json#preferences.auto_validate_after_n_brands threshold à définir (3 brands · 5 brands · custom)."
+}

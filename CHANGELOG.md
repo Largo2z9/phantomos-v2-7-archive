@@ -7,6 +7,47 @@
 
 ---
 
+## v2.68.0 · 2026-05-15 · Canonisation progressive-cartography · NEW doctrine + snapshot-brand + build-atlas refactor progressive
+
+**Why** · Friction live identifiée lors simulation Stepprs v2.67 · agent `snapshot-brand` v1.3.1 dumpait Step 7 synthesis 5 sections + posait 4 Q&A questions audience post-scrape · saturation opérateur + violation canon Contextual Intelligence "No questionnaire before action" (agent doit drill-down autonome reviews + verbatims tagged avant questionner). Pattern d'usage réel opérateur · phasing progressif par profondeur (Macro confirmation light → Drilling autonome → Audiences hiérarchique parent/enfants → Enrichissement continu non-bloquant) avec gates light entre paliers. Brique technique existaient (snapshot-brand · map-audiences · mine-voc · profile-audience) · le méta-pattern orchestration progressive manquait canon. Pré-requis avant build `_EXAMPLE/stepprs` brand canonical pour éviter codifier frictions actuelles dans la référence canon.
+
+**What** · 4 blocs ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · NEW doctrine `progressive-cartography-discipline.md`** | 366L · 13 sections canon-style miroir territory-discipline · sister SED/CMR/SED-X/CC/IP/TD | Codifie phasing 4 phases + gates light + mode fast-track opt-in + 5 anti-patterns + decision-aid Q1-Q4 + cross-refs CI/IP/CC/SED/SED-X/CMR explicit |
+| **2 · Refactor `snapshot-brand` v1.3.1 → v1.4.0** | 1069L → 1141L (+72L) · Step 7 split 7a Phase 1 macro confirmation light + 7b Phase 2 drilling autonome · drop 4 Q&A questions audience · NEW 2 hard rules (No Q&A premature + Gate light binaire) | Premier contact opérateur · synthesis 3-5 lignes Phase 1 + gate binaire valide/corrige + drilling autonome Phase 2 vs canon précédent saturation bloc |
+| **3 · Refactor `build-atlas-complete` v1.3.0 → v1.4.0** | 470L → 561L (+91L) · chain orchestrator Phase 1+2 → Gate 1 → Phase 3 map-audiences → Gate 2 → Phase 4 mine-voc + profile-audience · NEW flag `--fast-track` opérateur expert · NEW 2 hard rules Guardrails | Validation operator grain fin entre paliers + fast-track opt-in opérateur expert (config `/operator/profile.json#preferences.auto_validate_after_n_brands true`) |
+| **4 · Pattern enrichissement continu canonisé** | Absorbé dans Bloc 1 doctrine Section 6 Phase 4 · agent listening passive · opérateur drop insight first-party à tout moment · stage proposed auto via mutation gate · cartographie background non-bloquant | Expérience usage naturelle · opérateur enrichit territoire au fil de l'eau sans bloquer flow principal |
+
+**3 patterns canon introduits** ·
+1. **Progressive cartography phasing canon** · 4 phases progressive territoire posage avec gates light entre paliers · Phase 1 Macro (3-5 lignes synthesis · gate binaire) · Phase 2 Drilling (drill-down autonome reviews+verbatims · 5 sections IP) · Phase 3 Audiences hiérarchique parent/enfants (map-audiences 3 niveaux) · Phase 4 Enrichissement non-bloquant (listening passive)
+2. **Gates light binaire canon** · gate = 1-2 lignes synthesis + 1 binaire valide/corrige · jamais Q&A questions verbeux · anti-friction premier-contact
+3. **Fast-track opt-in opérateur expert canon** · bypass gates via flag `--fast-track` OR config `auto_validate_after_n_brands true` · default = gates visible pour repère cognitif nouvel opérateur
+
+**5 anti-patterns canonisés** ·
+- **Q&A questions premature audience** · agent pose 3-4 questions avant scrape OR post-scrape sans drill-down autonome · violation CI No questionnaire before action
+- **Dump synthesis d'un bloc** · canon v1.3.1 dumpait Phase 1+2+3+4 d'un coup · saturation
+- **Gates verbeux** · gate qui demande 4 questions opérateur · anti-friction inverse
+- **Enrichissement bloquant** · agent attend opérateur insight avant continuer flow principal
+- **Fast-track default** · skip gates pour tout opérateur · perd premier-contact
+
+**Mode fast-track opt-in** · opérateur expert (≥3 brands setup OR explicit `--fast-track` flag OR `/operator/profile.json#preferences.auto_validate_after_n_brands: true`) bypass gates Phase 1-3 auto-validate. Default = gates light visible pour repère cognitif.
+
+**Backward compat strict additif** · chain skills existing preserved · Steps 1-6 snapshot-brand inchangés · Steps existing build-atlas-complete preserved · gates additifs entre paliers · fast-track flag opt-in (default gates visible). 67 em-dashes legacy snapshot-brand Steps 1-6 préservés par contrainte strict additif (NEW content zero em-dash · audit ciblé sweep v2.68.1 candidate).
+
+**Files patched** ·
+- `docs/system/progressive-cartography-discipline.md` NEW 366L
+- `.skills/skills/snapshot-brand/SKILL.md` v1.3.1 → v1.4.0 (1069L → 1141L)
+- `.skills/skills/build-atlas-complete/SKILL.md` v1.3.0 → v1.4.0 (470L → 561L)
+- `_version.json` 2.67.0 → 2.68.0
+- `CHANGELOG.md` v2.68.0 entry (this entry)
+- `docs/internal/releases/manifest/2.68.0-manifest.json` NEW
+
+**Next release notes** · (a) Test live brand pilote post-v2.68 (Stepprs · validate end-to-end progressive flow · capture frictions gates Phase 1+2 · Phase 3 · Phase 4 enrichissement). (b) NEW `_EXAMPLE/stepprs` brand canonical territoire-pure construit en duo via flow progressive v1.4.0 · référence visuelle nouveaux opérateurs. (c) Audit em-dash legacy Steps 1-6 snapshot-brand v2.68.1 sweep candidate (67 instances strip cohérent canon style). (d) Mode `enrich-territory` skill candidate v2.69+ si pattern Phase 4 enrichissement validé runtime · listening passive + stage proposed auto. (e) Threshold canon `auto_validate_after_n_brands` à définir (3 · 5 · custom).
+
+---
+
 ## v2.67.0 · 2026-05-15 · Canonisation territoire vs production vs meta · NEW doctrine + layer field 67 skills + build-atlas refactor
 
 **Why** · 3 vocabularies historiques (Reference architecture.md §7 · Spatial encoding SED §3 · Substrat session-log S54) décrivent la même distinction substrat stable vs livrable on-demand · sans unification canon. Pattern existait en germe mais non nommé en doctrine canonique. `build-atlas-complete` v1.2.0 mélangeait territoire (Steps 1-7) + production (Steps 8-9 produce-copy-brief + compose-creative) violant scope cohérent. `sync-notion-atlas` v2.0.0 push 11 collections mixed territoire+production. Polysémie "territoire" macro (substrat brand) vs micro (intersection audience×angle) sans disambiguation. v2.67 codifie territoire/production/meta canon doctrine unifié · clean split skill par layer · pré-requis avant build `_EXAMPLE/stepprs` brand canonical post-canon.

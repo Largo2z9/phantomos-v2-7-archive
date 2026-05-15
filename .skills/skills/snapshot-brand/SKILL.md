@@ -1,25 +1,29 @@
 ---
 name: snapshot-brand
 type: producer
-version: "1.3.1"
+version: "1.4.0"
 isolation_scope: brand_only
 layer: territoire
 recommended_model: sonnet
 reasoning_pattern: null
+operator_facing: true
 patch_notes:
+  v1.4.0: "v2.68 progressive cartography refactor · drop 4 closed questions about audience anti-pattern (canon Contextual Intelligence No questionnaire before action). Introduce Phase 1 macro confirmation gate intermédiaire light (synthesis 3-5 lignes produit+offer+positionning) puis Phase 2 drilling autonome (drill PDP details + reviews verbatims tagged + offers + funnel signals · synthesis 5 sections investigation-posture). Gate light entre Phase 1 et Phase 2 (binaire valide/corrige · pas Q&A). Cross-ref progressive-cartography-discipline.md NEW v2.68. Backward compat strict additif sur Steps 1-6 scrape (territoire chain preserved) · Step 7 refactor en Step 7a Phase 1 + Step 7b Phase 2 avec gate intermédiaire. Mode fast-track via /operator/profile.json#preferences.auto_validate_after_n_brands true bypass gate Phase 1."
   v1.0.1: "v2.51 operator-fiche-output canonique template applied · trust-and-deepen close + Movement 4 hand-off refactor langage métier. Close menu post-synthesis · drop skill names en parenthèses (mine-voc, mine-vom, deepen-brand-context) → descriptions plain language uniquement (15 min validation guidée / 15 min écoute clients / 25 min écoute marché / 45 min full). Movement 4 hand-off Step 5 · drop wording `mine-voc fait X` / `produce-paid-angles consomme Y` → langage métier accessible (`écoute clients Trustpilot et forums` au lieu de nommer skill, `set d'angles ranked prêt brief créa` au lieu de `produce-paid-angles consume`). Cohérent template canonique resources/templates/operator-fiche-output.md."
   v1.1.0: "v2.54 investigation posture refactor Step 7 · drop 3-movements prose synthesis (mélangait observé + déduit + projection comme des faits). Step 7 restructuré en 5 sections doctrine canon · Observé (faits sourcés scrape + Q&A opérateur) · Déduit (hypothèses avec confidence chain forte/moyenne/faible/TRÈS faible + indicateurs sources, formulées comme questions) · Inconnu (variables non observables à creuser) · Leviers (skills/actions/sources pour lever les inconnues, options drill-down macro) · Close ouvert (UNE question macro priorité drill-down · opérateur arbitre). Préserve mécanismes scraping + persistance spec.json/offers.json/profile.json. Refacto uniquement la synthèse operator-facing post-scrape. Cross-ref doctrine docs/system/investigation-posture.md."
   v1.2.0: "v2.57 alignment · auto-detect business_model heuristique scrape · stage proposal via mutation gate · surface contextuel + AskUserQuestion si ambiguous. Nouveau Step 2bis intercalé entre platform detection (Step 2) et generate spec.json (Step 3) · compute physical_locations + services_detected + products_detected + subscription_signals + marketplace_signals depuis URL scrape data, classify via priority rules en enum (DTC | service | hybrid | subscription | marketplace), stage proposal brand.json#/identity/business_model (mode=proposed, confidence 0.7, source=agent) + business_model_signals object pour traçabilité sourcing, surface contextuel 1 ligne dans Step 7 Section 1 (Observé), fallback AskUserQuestion 4 options si ambigu (products + services tous deux non-zero mais < 3 chacun). Backward compat · brands pre-v2.57 sans business_model.scraped → next snapshot-brand run détecte et stage proposal. Brands setup déjà v2.6 manuelle restent inchangées tant qu'opérateur ne re-snapshot pas."
   v1.3.0: "v2.58 coverage extend · 4 sub-steps additifs strict pour combler orphans audit v2.57. (1) Step 7 sub-step · compute brand.brand_equity_level enum (low/medium/high) depuis heuristique financials.monthly_revenue + proofs.press_mentions + market.sophistication, stage via mutation gate confidence 0.6. (2) Step 7 sub-step · init brand.creative_zone {min, max, dominant, _observed_on_n_creatives:0} depuis identity.brand_personality + tone_of_voice.register + sector heuristique, stage confidence 0.5 (incrémenté ultérieurement par decompose-ad cumul). (3) Step 2/3 HTML scraping extend · scanner spec.sustainability.eco_claims[] + certifications[] + packaging_type (confidence 0.7 si claim explicit PDP, 0.4 si déduit visuellement). (4) Step 4 offers extraction · auto-calc spec.pricing.price_per_unit (value=price÷pack_quantity, unit depuis specs.weight/volume/package_quantity, currency depuis pricing.currency, confidence 0.9 calcul mathématique direct). Backward compat strict · Steps 0-7 existing intacts, sub-steps additifs uniquement. Closes 4 orphans audit v2.57."
   v1.3.1: "v2.61 doctrine consume · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (breakthrough-advertising-5-stages, audiences-cartography). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
 description: >
+  v1.4.0 (v2.68 progressive cartography refactor) · Phase 1 macro confirmation light (3-5 lignes produit+offer+positionning · gate binaire valide/corrige) puis Phase 2 drilling autonome (drill PDP details + reviews verbatims tagged + funnel signals · synthesis 5 sections investigation-posture). Drop 4 closed questions about audience anti-pattern · drill-down autonome reviews + verbatims tagged remplace Q&A audience.
   v1.3.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (breakthrough-advertising-5-stages, audiences-cartography). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.3.0 (v2.58 coverage extend) · 4 sub-steps additifs · brand_equity_level heuristic auto · creative_zone init heuristic · sustainability HTML scraping (eco_claims, certifications, packaging_type) · price_per_unit auto-calc depuis variants. Closes 4 orphans audit v2.57.
   v1.2.0 (v2.57 alignment) · auto-detect business_model heuristique scrape · stage proposal via mutation gate · surface contextuel + AskUserQuestion si ambiguous.
   Automatically fills spec.json, offers.json and the base of profile.json
-  from a product URL. Scrapes the page, asks 4 closed questions about the audience,
-  computes a completeness score, and lists missing fields.
-  Scope: one product per run. Does not replace VoC/VoM, it complements them.
+  from a product URL. Scrapes the page, deploys drill-down autonome reviews + verbatims tagged
+  (no operator questionnaire pre-action), computes a completeness score, lists missing fields,
+  runs progressive cartography Phase 1 macro confirmation light then Phase 2 drilling autonome.
+  Scope: one product per run (spec + offers + profile draft). Does not replace VoC/VoM, it complements them.
   FR: "snapshot", "snapshot ce produit", "remplis le workspace", "onboard ce produit",
   "crée la fiche produit depuis l'URL", "remplit spec.json depuis le site".
   EN: "snapshot", "snapshot this product", "populate workspace from URL", "onboard product".
@@ -32,6 +36,10 @@ consumes:
   - path: docs/doctrine/breakthrough-advertising-5-stages.md
   - path: docs/doctrine/audiences-cartography-doctrine.md
   - path: docs/system/scope-extension-discipline.md
+  - path: docs/system/progressive-cartography-discipline.md
+  - path: docs/system/territory-discipline.md
+  - path: docs/system/contextual-intelligence.md
+  - path: docs/system/investigation-posture.md
 pipeline:
   preconditions: brands/{slug}/ must exist (run setup-brand if needed)
   postconditions: run validate-resources to check completeness, ingest-resource to enrich
@@ -685,7 +693,7 @@ Extract one mother audience from the answer. Skip Movement 3's sub-audiences ent
 
 Fill `brands/{slug}/audiences/{audience_slug}/profile.json` with:
 - What comes directly from the product page (gender apparent in copy, problem addressed in title/description)
-- What comes from Q1-Q4 answers
+- What comes from Step 5 movements 1-3 operator input (axis choice + hierarchy validation + product binding)
 - Nothing else
 
 **Hierarchy = N audience folders.** The Step 5 hierarchy validated by the operator typically yields 2-3 mother audiences + 1-3 sub-audiences each = 4-12 audience folders to scaffold. Scaffold each one. Mother audiences carry `meta.parent_slug: null` and `meta.scope: "broad"`. Sub-audiences carry `meta.parent_slug: "{mother-slug}"` and `meta.scope: "segment"` (or `"micro"` for hyper-niches).
@@ -714,15 +722,71 @@ Everything else stays null until `mine-voc` (verbatim → pain_points[].formulat
 
 ---
 
-## Step 7 — Operator-facing synthesis (5 sections doctrine, v2.54+)
+## Step 7a · Phase 1 Macro confirmation light (v1.4.0 NEW · v2.68 progressive cartography)
 
-**Doctrinal contract.** Before writing files, deliver the synthesis structured in 5 explicit sections per `docs/system/investigation-posture.md`. Cartographier avant affirmer · jamais affirmer une hypothèse comme un fait · jamais inventer des audiences/positionings présentés comme analytiques · ouvrir le drill-down macro, ne pas le fermer.
+**Doctrinal contract.** Phase 1 of progressive cartography per `docs/system/progressive-cartography-discipline.md` (NEW v2.68, Sections 3-4). After Steps 1-6 scrape complete (territoire chain preserved), surface a light macro synthesis (3-5 lines) covering produit hero + offer macro + positionning + tone. Operator runs a binary gate (valide / corrige). No Q&A, no questionnaire, no open-ended audience questions. Anti-friction · max 2 minutes wall-clock total Phase 1.
+
+Phase 1 replaces the prior "4 closed questions about audience" anti-pattern (canon Contextual Intelligence · No questionnaire before action). The agent does not ask Q1-Q4 audience demographic prompts before action. It synthesizes what scrape revealed at the macro level and lets the operator correct the base before drilling autonome in Phase 2.
+
+### Phase 1 output · 3-5 lines macro synthesis
+
+Format example (FR · canonique v2.68) ·
+
+> *Produit hero · {product_name}, {price}{currency}, {category}.*
+> *Offer macro · {N} offres détectées · {main offer type · ex single / bundle / subscription} · {N variants si pertinent}.*
+> *Positionning observé · {1 ligne · ex "DTC supplément capillaire post-grossesse" depuis tags + copy}.*
+> *Tone détecté · {register · ex "informatif scientifique / casual punchy / editorial premium"} (depuis copy + nav HTML).*
+> *Plateforme · {Shopify confirmed / HTML scraping fallback}.*
+
+Plain language, zero internal jargon (no `_snapshot.confidence_score`, no `business_model_signals`, no `validation_status: hypothesis`). 3 to 5 lines maximum. No bullet menu, no audience hypotheses surfaced (Phase 2 territory).
+
+### Phase 1 gate light · binaire (valide / corrige)
+
+Single-line close ·
+
+> *Tu valides la base, ou tu corriges ?*
+
+Operator answers binary ·
+- **`"valide"`, `"go"`, `"OK"`, `"yes"`, `"spot on"`** → Phase 1 gate passes → Phase 2 drilling autonome unlocked.
+- **Free-form correction** (e.g. *"le produit hero c'est plutôt X"*, *"non, le positionning c'est plutôt premium clinique"*) → apply correction silently in memory, regenerate Phase 1 synthesis with the correction baked in, re-ask the same binary gate.
+- **Rejection without correction** (e.g. *"non c'est pas ça"*) → ask ONE sharpening question (cf root CLAUDE.md questions protocol · 1 thread question per turn) to identify the wrong fact, re-stage Phase 1.
+
+**Hard rules Phase 1** ·
+- **3-5 lines max.** Phase 1 is light. Surface produit + offer + positionning + tone. Nothing else. No audience hypotheses, no funnel signals, no business_model verbose, no investigation-posture 5 sections. Those live in Phase 2.
+- **Binary gate only.** One line close. No menu, no Q&A, no four-questions enumeration. Anti-pattern AP · `4 closed questions about audience` BANNI.
+- **Wall-clock budget** · target 2 min max Phase 1 (light synthesis + gate light). If the agent spends 5+ min crafting Phase 1, the Phase 1 contract is broken (too much detail leaking from Phase 2).
+- **Fast-track bypass** · if `/operator/profile.json#preferences.auto_validate_after_n_brands` is `true` AND operator has run snapshot-brand on N+ brands prior (expert user opt-in config), skip Phase 1 gate light and auto-proceed to Phase 2. Reason · expert operator doesn't need the macro check, has internalized the pattern, wants speed. Default config = `false` (gate always shown).
+
+---
+
+## Step 7b · Phase 2 Drilling autonome (v1.4.0 NEW · v2.68 progressive cartography)
+
+**Invoked if and only if Phase 1 gate passes.** Phase 2 of progressive cartography per `docs/system/progressive-cartography-discipline.md` (Sections 3-4). Agent drill-downs autonomously across PDP details + reviews verbatims tagged + FAQ + cross-sells + trust badges + funnel signals (lead magnets + popups + scarcity) WITHOUT asking the operator any audience demographic question. Audience hypotheses are DEDUCED from verbatims clients (profession · pain points · objections traités copy site · use cases · hashtags) with explicit confidence chain. The agent presents its drill-down findings structured in 5 sections investigation-posture canon. The operator never answers Q1-Q4 ; the operator only arbitrates Section 5 close ouvert at the end.
+
+### Drill-down autonome scope (Phase 2 input)
+
+Agent autonomously drills across the following surfaces (no operator question · drill-down autonome from scrape data already collected in Steps 1-6 + targeted re-fetch if needed) ·
+
+| Surface | Drill objective | Audience signal extracted |
+|---|---|---|
+| PDP details (ingredients, posology, contraindications, claims) | Identify product mechanism precision + target demographic implicit | Audience hypothesis from posology age range, contraindications (pregnant / breastfeeding signals female 25-40), claims (anti-aging signals 35+) |
+| Reviews verbatims (Trustpilot + Judge.me/Loox/Okendo widget if accessible) | Tag verbatims by use_case + pain expressed + profession mentioned + life context | Audience hypothesis from verbatims tagged · "post-grossesse" mentions, "voilée" mentions, profession mentions, age implicit |
+| FAQ section | Identify objections traités explicitly | Audience hypothesis from objections type · "is it for X profile" answered = X profile is a target |
+| Cross-sells / "frequently bought with" | Identify product bundles + complementary use cases | Audience hypothesis from cross-sell pattern (e.g. anti-chute + shampoo gentle = post-pregnancy bundle pattern) |
+| Trust badges / authority claims | Verify positioning Phase 1 + identify proof type used | Confidence boost on positioning hypothesis · clinical badges = medical positioning, celebrity = aspirational |
+| Funnel signals (lead magnet popups, scarcity timers, exit-intent) | Identify funnel stage maturity + acquisition strategy | Acquisition hypothesis · aggressive DR funnel vs editorial funnel vs subscription-first |
+
+**Hard rule** · drill-down autonome from scrape data first. ONLY surface a question to the operator if a variable is NOT accessible via drill-down autonome (e.g. first-party insight operator knows · seasonality patterns, LTV cohort data internal, gross margin, current paid stack). See Hard Rule "No Q&A premature" below.
+
+### Phase 2 output · 5 sections investigation-posture canon
+
+Before writing files, deliver the synthesis structured in 5 explicit sections per `docs/system/investigation-posture.md`. Cartographier avant affirmer · jamais affirmer une hypothèse comme un fait · jamais inventer des audiences/positionings présentés comme analytiques · ouvrir le drill-down macro, ne pas le fermer.
 
 The 5 sections replace the prior 3-movements prose pattern (v1.0.1 ←) which mixed observed + deduced + projection as confident assertions. Reading the synthesis now lands like an analyst's note · faits sourcés, hypothèses avec confidence chain, inconnus listés, leviers proposés, opérateur arbitre.
 
 ### Section 1 · Observé (faits sourcés)
 
-Structured list of what scrape + Q&A actually revealed. Each fact carries its source. Pure observation, zero interpretation.
+Structured list of what scrape + drill-down autonome (PDP details, reviews verbatims tagged, FAQ, cross-sells, funnel signals) revealed. Each fact carries its source. Pure observation, zero interpretation.
 
 Format example (FR · canonique v2.54) ·
 
@@ -736,13 +800,15 @@ Format example (FR · canonique v2.54) ·
 > *Reviews widget embarqué · {Judge.me / Loox / Okendo détecté} OR "aucun widget vérifié"*
 > *Offres détectées · {N offres · types · paliers de prix}*
 > *Plateforme · {Shopify confirmed / HTML scraping fallback}*
-> *Capture opérateur (Q&A audience) · {Q1 verbatim} · {Q2 verbatim} · {Q3 verbatim} · {Q4 verbatim}*
+> *Drill-down autonome reviews · {N verbatims taggués · {tags fréquence top-3 ex "post-grossesse x12 · stress x8 · post-coloration x5"} OR "widget inaccessible"}*
+> *Drill-down PDP details · {posology implicit demographic signals · contraindications · claims}*
+> *Drill-down funnel signals · {lead magnets · popups · scarcity · cross-sells observés OR "none visible"}*
 >
-> *Pas observé directement (ne pas affirmer) · {liste explicite · audience démographique réelle, gross margin, base mail, plateforme analytics, structure paid, base trafic, autres selon scan}*
+> *Pas observé directement (ne pas affirmer) · {liste explicite · audience démographique précise hors verbatims, gross margin, base mail, plateforme analytics, structure paid, base trafic, autres selon scan}*
 
 **Hard rules Section 1** ·
 - Liste à puces ou format structuré. JAMAIS prose narrative.
-- Chaque fait avec son ancrage source (scrape URL · API Shopify · HTML · Q&A opérateur · widget vérifié).
+- Chaque fait avec son ancrage source (scrape URL · API Shopify · HTML · drill-down autonome reviews verbatims tagged · widget vérifié · Phase 1 correction opérateur si applicable).
 - Bloc explicite "Pas observé directement" liste les variables non accessibles depuis le scan (anti-pattern AP-4 doctrine · affirmer ce qu'on n'a pas observé).
 - Zéro adjectif évaluatif (*"impressionnant"*, *"unique"*, *"premium"*). Faits bruts uniquement.
 
@@ -842,6 +908,8 @@ Format example (FR · canonique v2.54) ·
 > *Mon avis · {recommandation macro · ex "A + B en premier (45 min total, posent la fondation), C/D si temps avant le call"}.*
 
 L'opérateur dit `A` ou `A+B` ou autre. L'agent enchaîne le drill-down sur l'axe choisi en respectant à nouveau les 5 sections (cycle itératif).
+
+**Gate Phase 2 → Phase 3 (downstream audiences)** · l'output Phase 2 termine par UNE question macro de routing aussi · *"on attaque Phase 3 audiences ?"* (la phase suivante de progressive cartography enrichit le layer audience via drill autonome sur verbatims tagged · routage interne silencieux vers `map-audiences` ou `profile-audience` downstream). Si operator répond `oui` / `go` → agent invoque le skill audience downstream silencieusement. Si operator pivote sur un autre axe (ex audit perf, brief créa direct) → respecter le pivot, le routage Phase 3 attend.
 
 ### Sub-step · brand_equity_level heuristic auto (v1.3.0 NEW · v2.58)
 
@@ -1008,8 +1076,8 @@ I sort and file automatically.
 - **Quantity breaks = app-driven, invisible to API.** If HTML shows per-quantity price tiers but API is flat → `type: "quantity_break"`, tiers null, ask the operator. Never invent tiers.
 - **Geo-detection.** API currency ≠ display currency → note both, flag `[geo_detection_active]`.
 - **Confidence score mandatory**. If < 40% → block before saving spec.json, ask for missing fields.
-- **4 audience questions in order**, wait for each answer. Never skip, never merge.
-- **If Q1 too vague after follow-up** → `null`, no inference. Same for every question.
+- **No Q&A premature on audience.** Agent MUST drill-down autonome reviews + PDP details + verbatims tagged before posing ANY question to the operator about audience. Questions opérateur uniquement si data n'est PAS accessible via drill-down autonome (e.g. first-party insight opérateur connaît · seasonality, LTV cohort interne, gross margin réelle, current paid stack). Canon Contextual Intelligence "No questionnaire before action" + Progressive Cartography Phase 2 (cf `docs/system/progressive-cartography-discipline.md`). Anti-pattern legacy v1.3.x · "4 closed questions about audience" → DROPPED v1.4.0. Audience hypotheses are deduced from verbatims with explicit confidence chain (Section 2 Déduit), jamais demandés en Q&A pre-action.
+- **Phase 1 + Phase 2 gate light binaire.** Gate intermédiaire entre Phase 1 macro confirmation (Step 7a) et Phase 2 drilling autonome (Step 7b) DOIT être binaire (1 ligne `valide` / `corrige`). Pas de Q&A verbeux, pas de menu, pas de quatre options equal-weight. Anti-friction. Mode fast-track auto-validate via `/operator/profile.json#preferences.auto_validate_after_n_brands true` pour expert operator config opt-in (default `false`, gate always shown).
 - **Never overwrite brand.json**. This skill doesn't touch brand.json.
 - **Setup-brand first**. If `brands/{slug}/` doesn't exist → stop and route to setup-brand.
 - **One product per run**. Multi-product = relaunch the skill for each product.
@@ -1057,13 +1125,17 @@ The `_TEMPLATE` is at v1.8. When scraping a product page, you must look for and 
 
 ---
 
-## Cross-refs
+## Cross-references
 
-- `docs/system/investigation-posture.md` (v2.54 doctrine canon) · cartographier avant affirmer · confidence chain explicit · drill-down macro = opérateur · 5 sections obligatoires Step 7 (Observé / Déduit / Inconnu / Leviers / Close ouvert).
-- `docs/system/contextual-intelligence.md` · master doctrine, no orphan output, jargon zéro en surface opérateur.
+- `docs/system/progressive-cartography-discipline.md` (NEW v2.68) · Phase 1 Macro confirmation + Phase 2 Drilling autonome implémenté ici dans Steps 7a + 7b. Doctrine canon · drop questionnaire pre-action, drill-down autonome, gate light binaire entre phases. Sections 3-4 spécifient le contrat opérationnel des deux phases.
+- `docs/system/territory-discipline.md` (v2.67) · layer territoire pattern · snapshot-brand classified `layer: territoire` (cf frontmatter). Steps 1-6 scrape produisent substrat canonisé · spec.json + offers.json + profile.json draft. Steps 7a+7b livrent synthèse macro+drill autonome operator-facing sans corrompre cycle promotion canon.
+- `docs/system/contextual-intelligence.md` (master doctrine) · "No questionnaire before action" canon · agent reasons not form-fills. Hard Rule "No Q&A premature on audience" enforce ce canon spécifique au layer audience.
+- `docs/system/investigation-posture.md` (v2.54 doctrine canon) · cartographier avant affirmer · confidence chain explicit · drill-down macro = opérateur · 5 sections obligatoires Step 7b (Observé / Déduit / Inconnu / Leviers / Close ouvert).
 - `docs/system/audience-cartography.md` · doctrinal contract Step 5 (4 movements audience).
 - `docs/system/voice.md` · voice canon, register, banned phrases.
 - `resources/templates/operator-fiche-output.md` · canonical template fiche output.
 - `.skills/skills/mine-voc/SKILL.md` · downstream pour lever hypothèses audience confidence `TRÈS faible`.
 - `.skills/skills/mine-vom/SKILL.md` · downstream pour lever inconnus vernacular marché + compétitif.
 - `.skills/skills/produce-paid-angles/SKILL.md` · downstream pour produire angles avec confidence chain héritée audience + brand.
+- `.skills/skills/map-audiences/SKILL.md` · downstream Phase 3 audiences (routé depuis Step 7b close ouvert "on attaque Phase 3 audiences ?").
+- `.skills/skills/profile-audience/SKILL.md` · downstream Phase 3 audiences alt-route depuis Step 7b.

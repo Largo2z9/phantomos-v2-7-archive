@@ -1,7 +1,7 @@
 ---
 name: build-atlas-complete
 type: orchestrator
-version: "1.3.0"
+version: "1.4.0"
 recommended_model: sonnet
 reasoning_pattern: null
 mode: proposed
@@ -10,6 +10,7 @@ subagent_safe: false
 isolation_scope: brand_only
 layer: territoire
 description: >
+  v1.4.0 (v2.68 progressive cartography refactor) · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot-brand · gate intermédiaire 1 · Phase 3 map-audiences hiérarchique parent/enfants · gate intermédiaire 2 · Phase 4 mine-voc + profile-audience enrichissement per audience). Mode `--fast-track` opérateur expert bypass gates auto-validate (opt-in flag OR config `auto_validate_after_n_brands` true). Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0 où gates étaient Gate A audiences + Gate B angles seulement). Cross-ref doctrine `docs/system/progressive-cartography-discipline.md` NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs light · fast-track flag opt-in default off · gates A+B angles preserved après Phase 4).
   v1.3.0 (v2.67 territoire-pure refactor) · Steps 8-9 stripped (produce-copy-brief + compose-creative) · align doctrine `docs/system/territory-discipline.md` shipped v2.67. Orchestrator scope = territoire substrat only · productions briefs+créas via `creative-brief-composer` post-atlas downstream (separate skill, separate invocation). Output explicite · complete strategic atlas substrate (specs + offers + audiences + angles + territoires scorés). BREAKING · operators v1.x qui invoquaient pour briefs+créas doivent invoquer `creative-brief-composer` post-`build-atlas-complete`. Migration documentée CHANGELOG v2.67.0. Backward compat strict additif sur Steps 1-7 unchanged (territoire chain preserved).
   v1.2.0 (v2.64 ontologie sémantique pure · pain_points + objections sub-audience + frictions sub-product) · Phase 3 deepen-brand-context (chain mine-voc + mine-vom) écrit désormais dans sub-parent locations · `audiences/{a_slug}/pain_points/` + `audiences/{a_slug}/objections/` + `products/{p_slug}/frictions/` (owned natif par parent path). Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved.
   v1.1.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · Phase 3 deepen-brand-context (chain mine-voc + mine-vom) écrit désormais dans 3 collections séparées (`pain_points/` + `objections/` + `frictions/`) plus `profile.json` clean (identity + psychology + voice + behavior + decision_process restent · pain_points + objections sub-fields legacy supprimés post-v2.63 nouvelles brands). Backward compat preserved (pre-v2.63 brands route fallback profile sub-fields legacy).
@@ -49,7 +50,9 @@ consumes:
   - resources/catalogues/formats-livrables.json
   - resources/catalogues/hooks.json
   - resources/catalogues/angles.json
+  - path: docs/system/progressive-cartography-discipline.md
   - path: docs/system/territory-discipline.md
+  - path: docs/system/investigation-posture.md
   - path: docs/doctrine/dtc-operator-playbook.md
   - path: docs/doctrine/audiences-cartography-doctrine.md
   - path: docs/doctrine/angle-anatomy-doctrine.md
@@ -84,6 +87,8 @@ disambiguates_against:
   profile-audience: "route to profile-audience standalone when operator wants audiences only, not the full strategic atlas."
   score-matrix: "route to score-matrix standalone when atlas is already populated and operator wants only territory prioritization."
 patch_notes:
+  v1.4.0:
+    - "v2.68 progressive cartography refactor · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot · gate · Phase 3 map-audiences · gate · Phase 4 mine-voc + profile-audience). Mode --fast-track opérateur expert bypass gates auto-validate. Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0). Cross-ref progressive-cartography-discipline.md NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs · mode flag opt-in)."
   v1.3.0:
     - "v2.67 territoire-pure refactor · Steps 8-9 stripped (produce-copy-brief + compose-creative) · align doctrine territory-discipline.md. Orchestrator scope = territoire substrat only · productions briefs+créas via creative-brief-composer post-atlas downstream. BREAKING · operators v1.x qui invoquaient pour briefs+créas doivent invoquer creative-brief-composer post-build-atlas-complete. Migration documentée CHANGELOG v2.67.0. Backward compat strict additif sur Steps 1-7 unchanged (territoire chain preserved)."
   v1.0.0:
@@ -116,7 +121,7 @@ patch_notes:
 
 # Skill: build-atlas-complete
 
-**CRITICAL:** this is an **Orchestrator**. **YOU MUST NEVER** re-implement setup-brand, snapshot-brand, deepen-brand-context, profile-audience, weight-dimensions, produce-paid-angles, or score-matrix logic here. **YOU MUST** delegate to each existing skill in sequence via Task tool (when the subskill is `subagent_safe: true`) or inline invocation (when `subagent_safe: false`). Any deviation breaks the canon purity rule established by `onboard-brand`. **Scope v1.3.0 territoire-pure** · productions briefs+créas post-atlas via `creative-brief-composer` (separate skill, separate invocation). Voir `docs/system/territory-discipline.md`.
+**CRITICAL:** this is an **Orchestrator**. **YOU MUST NEVER** re-implement setup-brand, snapshot-brand, map-audiences, mine-voc, profile-audience, weight-dimensions, produce-paid-angles, or score-matrix logic here. **YOU MUST** delegate to each existing skill in sequence via Task tool (when the subskill is `subagent_safe: true`) or inline invocation (when `subagent_safe: false`). Any deviation breaks the canon purity rule established by `onboard-brand`. **Scope v1.4.0 progressive cartography** · 4 paliers chain skills avec gates light entre paliers (`docs/system/progressive-cartography-discipline.md` NEW v2.68) + Gate A audiences + Gate B angles preserved + mode `--fast-track` opérateur expert bypass gates intermédiaires (opt-in). **Scope v1.3.0 territoire-pure preserved** · productions briefs+créas post-atlas via `creative-brief-composer` (separate skill, separate invocation). Voir `docs/system/territory-discipline.md`.
 
 ## Tone
 
@@ -128,24 +133,40 @@ Chairman orchestrating a territoire substrate pipeline that produces the complet
 
 **Canonical expert persona**: senior strategic director at a paid-acquisition agency, briefing a brand from blank URL to deployable territoire substrate in one sitting. Owns the chain, validates at each gate, lifts the operator's view to project altitude when uncertainty surfaces. Briefs+créas production handed off post-atlas to `creative-brief-composer`.
 
-**Framework**: sequential territoire substrate chain, two mid-pipeline operator gates (audiences validated before angles, angles validated before scoring). Confidence chain propagated phase-by-phase per `docs/system/confidence-propagation.md`. Investigation Posture enforced on the final operator-facing synthesis per `docs/system/investigation-posture.md`. Scope discipline per `docs/system/territory-discipline.md` (v2.67).
+**Framework**: sequential territoire substrate chain en **4 paliers progressive cartography** (v1.4.0 v2.68 doctrine `docs/system/progressive-cartography-discipline.md`) avec **gates light entre paliers** + Gate A audiences + Gate B angles preserved après Phase 4. Confidence chain propagated phase-by-phase per `docs/system/confidence-propagation.md`. Investigation Posture enforced on the final operator-facing synthesis per `docs/system/investigation-posture.md`. Scope discipline per `docs/system/territory-discipline.md` (v2.67).
+
+**Paliers progressive cartography v1.4.0** ·
+- **Palier Phase 1+2** · snapshot-brand chain (structure + URL scan · ~10-15 min)
+- **Gate intermédiaire 1** · territoire produit + offers + brand identity validation
+- **Palier Phase 3** · map-audiences hiérarchique parent/enfants 3 niveaux mère + sous-poches (4 questions framework canon · ~15-20 min)
+- **Gate intermédiaire 2** · arbre audiences validation (drop / ajoute / valide avant enrichissement)
+- **Palier Phase 4** · mine-voc × N audiences + profile-audience × N (enrichissement per audience · pain_points + objections + JTBD canon V3 8 dimensions · ~30-45 min)
+- Phase 5-9 preserved · weight-dimensions, produce-paid-angles (Gate B), score-matrix, stage territories, close
 
 **Matrix**:
 
 | Phase | Skill delegated | Subagent? | Gate before next phase |
 |---|---|---|---|
-| 0. Pre-flight (DRGFP) | inline | n/a | brand_slug present, URL or snapshot ready, MCP layer detected |
+| 0. Pre-flight (DRGFP) | inline | n/a | brand_slug present, URL or snapshot ready, MCP layer detected, `--fast-track` flag check |
+| **Palier 1+2** | | | |
 | 1. Structure + identity | `setup-brand` | No (conversational) | brand.json filled with name + language + sector |
-| 2. URL snapshot | `snapshot-brand` (Task) | Yes | spec.json + offers.json + profile.json draft at 60% |
-| 3. Deepen context | `deepen-brand-context` (inline orchestrator) | No (chains its own subagents) | VoC Layer B + VoM Layer B + cross-signals synthesis delivered |
-| 4. Audiences | `profile-audience` (Task per candidate) | Yes | Audiences mère + sub-clusters proposed, confidence chain explicit |
-| **GATE A** | inline operator validate | n/a | Operator accepts / corrects audiences |
+| 2. URL snapshot | `snapshot-brand` (Task, includes Phase 1 macro + Phase 2 drilling gate) | Yes | spec.json + offers.json + profile.json draft at 60% |
+| **GATE INTERMÉDIAIRE 1** (light · v1.4.0) | inline operator validate | n/a | Territoire produit + offers + brand identity posé · validation/correction binaire avant Phase 3 audiences |
+| **Palier 3** | | | |
+| 3. Map audiences (hiérarchique parent/enfants) | `map-audiences` (Task brand-wide) | Yes | N audiences mère + sous-poches proposed, 4 questions framework canon |
+| **GATE INTERMÉDIAIRE 2** (light · v1.4.0) | inline operator validate | n/a | Arbre audiences validation · drop X / ajoute Y / valide avant Phase 4 enrichissement |
+| **Palier 4** | | | |
+| 4a. Mine VoC per audience | `mine-voc` (Task per audience validée) | Yes | pain_points + objections sub-audience populated, verbatim_quotes corpus |
+| 4b. Profile audience per audience | `profile-audience` (Task per audience validée) | Yes | profile.json enriched JTBD canon V3 8 dimensions + psychology + voice + behavior + decision_process |
+| **GATE A** (preserved v1.3.0) | inline operator validate | n/a | Operator accepts / corrects audiences enrichies |
 | 5. Weight dimensions | `weight-dimensions` (Task brand-wide) | Yes | Audience-angle compatibility scores pre-computed (internal) |
 | 6. Paid angles | `produce-paid-angles` (Task per top-3 audience) | Yes | Angles ranked per audience (formula Obs+Tension+Reframe+Bridge) |
-| **GATE B** | inline operator validate | n/a | Operator accepts / corrects ranked angles |
+| **GATE B** (preserved v1.3.0) | inline operator validate | n/a | Operator accepts / corrects ranked angles |
 | 7. Score matrix | `score-matrix` (Task brand-wide) | Yes | Profil × Source d'angle matrix, top 3 axes créatifs selected |
 | 8. Stage territories | inline (substrate review) | n/a | Territories staged as proposals, ready for downstream production |
 | 9. Close | inline (Investigation Posture 5 sections) | No | Synthesis delivered, no orphan close, handoff to `creative-brief-composer` proposed |
+
+**Mode `--fast-track`** · si flag `--fast-track` passed OR `operator/profile.json#preferences.auto_validate_after_n_brands` true détecté → skip Gate intermédiaire 1 + Gate intermédiaire 2 (auto-validate silent log). Gate A + Gate B preserved (structural decisions audiences finales + angles ranked). Default = gates light visible (premier-contact opérateur garde repère cognitif).
 
 **Variables tracked**:
 - `url_available` (bool) · drives whether Phase 2 runs or skips with confidence degradation
@@ -170,10 +191,13 @@ Check operator provided minimum context. Apply Dependency Resolution & Gap-Filli
 - **brand_slug** required. If absent → ask via AskUserQuestion: *"Sur quelle marque je build l'atlas complet ?"*.
 - **URL** or **existing snapshot**. If neither, mark `url_available = false` and warn confidence will degrade. If operator typed *"build atlas {brand}"* without URL on a blank workspace, ask once: *"Tu as une URL pour pré-remplir, ou je travaille en blind (purement déclaratif) ?"*.
 - **MCP layer detection**: silent check `.mcp.json` for `facebook-graph` (Meta benchmarks) and `notion` (existing strategic memos). Populate `mcp_layer`. Surface only if operator asks.
+- **Fast-track flag check (v1.4.0)** · check si flag `--fast-track` passed dans invocation OR `operator/profile.json#preferences.auto_validate_after_n_brands` true détecté. Si oui → mark `fast_track = true`, log silent ("opérateur expert détecté · gates intermédiaires bypass auto-validate · Gate A audiences + Gate B angles preserved"). Si non → mark `fast_track = false`, gates intermédiaires light visible default.
 
 Announce the pipeline (chairman posture, no jargon, no skill names):
 
-> *"OK, atlas complet de {brand}. Pipeline territoire substrat · structure, scan, voix client+marché, audiences, angles paid, territoires scorés. Deux gates où tu valides au passage (audiences puis angles). 30 à 90 min selon la densité. Je pilote, tu valides aux gates. Une fois l'atlas posé, on enchaîne sur briefs+créas via `creative-brief-composer` sur l'axe créatif que tu choisis. Go ?"*
+> *"OK, atlas complet de {brand}. Pipeline territoire substrat en 4 paliers progressive · Phase 1+2 structure + scan site, Phase 3 cartographie audiences (mère + sous-poches), Phase 4 enrichissement voix client per audience. Gates light entre paliers où tu valides au passage. Puis Phase 5-7 angles paid + scoring. Deux gates structurels (audiences enrichies puis angles ranked). 30 à 90 min selon la densité. Je pilote, tu valides aux gates. Une fois l'atlas posé, on enchaîne sur briefs+créas via `creative-brief-composer` sur l'axe créatif que tu choisis. Go ?"*
+
+Si `fast_track = true` · ajouter une ligne *"Mode opérateur expert détecté · gates intermédiaires bypass auto-validate, on s'arrête seulement sur Gate A (audiences finales) + Gate B (angles ranked)."*
 
 Hold for go-ahead, then proceed.
 
@@ -210,55 +234,110 @@ Surface snapshot Step 7 synthesis paragraph when it returns (4-6 sentences, pros
 
 ---
 
-## Step 3 · Delegate `deepen-brand-context` (inline orchestrator)
+## GATE INTERMÉDIAIRE 1 · Phase 1+2 drilling validation (light · v1.4.0)
 
-`deepen-brand-context` is itself an orchestrator (`subagent_safe: false`). Invoke inline. It will spawn `mine-voc` + `mine-vom` subagents and run `cross-deepening-signals` synthesis.
+**Gate light** entre Palier Phase 1+2 (snapshot-brand) → Palier Phase 3 (map-audiences). Format canon doctrine `docs/system/progressive-cartography-discipline.md` Section 8 Pattern gates light · 1-2 lignes synthesis + 1 binaire validation/correction. Pas Q&A verbeux.
+
+**Si `fast_track = true`** · skip ce gate · auto-validate silent log ("Gate 1 bypass auto-validate · territoire produit + offers posé"). Continue direct Palier Phase 3.
+
+**Si `fast_track = false`** (default) · surface synthesis 1-2 lignes + AskUserQuestion binaire ·
+
+> *"Phase 1+2 drilling complete · territoire produit + offers + brand identity posé ({N produits · M offers · positioning détecté). Tu valides ou corriges avant qu'on attaque cartographie audiences ?"*
+
+Options ·
+- "Valide, on attaque cartographie audiences"
+- "Corrige · {détail produit/offer/identity off}"
+
+Si corrige → route correction inline (write_to_context mode proposed sur field concerné) puis re-surface gate. Si valide → proceed Palier Phase 3.
+
+**NEVER** proceed Palier Phase 3 sans validation (gate light visible default) OR sans `fast_track = true` (opt-in auto-validate).
+
+---
+
+## Step 3 · Delegate `map-audiences` via Task tool (Palier Phase 3 hiérarchique)
+
+**Refactor v1.4.0** · Phase 3 cartographie audiences hiérarchique parent/enfants 3 niveaux mère + sous-poches via `map-audiences` (4 questions framework canon doctrine `docs/system/progressive-cartography-discipline.md` Section 5). Remplace ancien Step 3 deepen-brand-context (chain mine-voc + mine-vom upfront) qui a été déplacé vers Palier Phase 4 enrichissement per audience validée.
+
+`map-audiences` is `subagent_safe: true`. Spawn single subagent brand-wide.
 
 Pass context:
 - brand slug
-- run mode: `silent` (this is a chain inside a larger chain · the orchestrator surfaces the cross-synthesis only, not each subskill's individual synthesis)
+- territoire drilling Phase 2 (spec.json + offers.json + brand.json identity)
+- mode: `hierarchique` (3 niveaux mère + sous-poches default)
+
+For execution:
+- `model: sonnet`
+- Input: brand slug, snapshot Phase 2 output
+- Expected: arbre audiences mère + sous-poches (hiérarchique parent/enfants 3 niveaux) avec 4 questions framework canon (qui? quoi? pourquoi? quand?) appliquées par audience
 
 **Operator-facing line**:
 
-> *"Je passe à la voix client + voix marché. ~45 min en arrière-plan."*
+> *"Je cartographie les audiences hiérarchique mère + sous-poches."*
 
-When deepen returns its cross-synthesis (3 movements, 18 sentences max per voice canon), surface it as-is to the operator. Do not re-summarize.
+When map-audiences returns, synthesize at orchestrator level into a single arbre audiences tableau (mère × sous-poches × confidence chain). **NEVER** dump raw subagent output verbatim per delegation pattern §synthesis layer.
 
-**v1.2.0 ontologie sémantique pure v2.64 · sub-parent locations.** Phase 3 deepen-brand-context (chain mine-voc + mine-vom) écrit désormais dans sub-parent locations (owned natif par parent path) ·
+---
+
+## GATE INTERMÉDIAIRE 2 · Phase 3 audiences cartography validation (light · v1.4.0)
+
+**Gate light** entre Palier Phase 3 (map-audiences hiérarchique) → Palier Phase 4 (enrichissement per audience). Format canon doctrine `docs/system/progressive-cartography-discipline.md` Section 8 Pattern gates light.
+
+**Si `fast_track = true`** · skip ce gate · auto-validate silent log ("Gate 2 bypass auto-validate · arbre audiences posé"). Continue direct Palier Phase 4.
+
+**Si `fast_track = false`** (default) · surface synthesis 1-2 lignes + AskUserQuestion binaire ·
+
+> *"Phase 3 cartographie audiences complete · {N} audiences mères + sous-poches posées. Tu valides l'arbre · drop X · ajoute Y · ou on attaque Phase 4 enrichissement ?"*
+
+Options ·
+- "Valide l'arbre, on attaque Phase 4 enrichissement"
+- "Drop {audience X} · re-trim arbre"
+- "Ajoute {audience Y} · enrichir arbre"
+
+Si drop/ajoute → route correction inline (map-audiences refine targeted) puis re-surface gate. Si valide → proceed Palier Phase 4.
+
+**NEVER** proceed Palier Phase 4 sans validation (gate light visible default) OR sans `fast_track = true`.
+
+---
+
+## Step 4 · Palier Phase 4 enrichissement per audience (mine-voc × N + profile-audience × N)
+
+**Refactor v1.4.0** · Palier Phase 4 enrichissement per audience validée Gate Intermédiaire 2. Chain `mine-voc` × N audiences + `profile-audience` × N audiences (parallel cap 3 par delegation pattern). Remplace ancien Step 4 profile-audience standalone qui shootait à partir cross-signals upfront (vs audiences validées operator post Gate Intermédiaire 2 v1.4.0).
+
+**Sub-step 4a · `mine-voc` per audience validée** ·
+
+`mine-voc` is `subagent_safe: true`. Spawn one subagent per audience validée Gate Intermédiaire 2 (cap 3 parallel).
+
+For each audience:
+- `model: sonnet`
+- Input: brand slug, audience id
+- Expected: pain_points + objections sub-audience populated · `audiences/{a_slug}/pain_points/*.json` (PNT-NN entities) + `audiences/{a_slug}/objections/*.json` (OBJ-NN entities)
+
+**v1.2.0 ontologie sémantique pure v2.64 · sub-parent locations.** Phase 4 mine-voc écrit dans sub-parent locations (owned natif par parent path) ·
 
 - `brands/{slug}/audiences/{a_slug}/pain_points/*.json` (PNT-NN entities · formulation + verbatim_quotes + emotion + trigger + severity + chain + confidence_chain · audience owner implicite via parent path, pas de array affected_audiences[])
 - `brands/{slug}/audiences/{a_slug}/objections/*.json` (OBJ-NN entities · formulation + type + frequency + severity + lifecycle_stage + response_counter + derived_angle_refs · audience owner implicite)
 - `brands/{slug}/products/{p_slug}/frictions/*.json` (FRC-NN entities · formulation + type + signals · product owner implicite via parent path · NEW canonical layer for product-bound frictions sub-product)
-- `brands/{slug}/audiences/*/profile.json` clean (identity + psychology + voice + behavior + decision_process restent · sub-fields `pain_points[]` + `objections[]` legacy supprimés post-v2.64 nouvelles brands · backward compat lecture preserved si déjà présents)
-
-Cohérent ontologie sémantique pure cross-skill · pain + objection appartiennent sémantiquement à une audience (owned natif par sub-parent path), friction appartient à un product. Pattern · l'appartenance précède le tracking · pas besoin de array affected_audiences[]/affected_products[] cross-reference quand le path déclare déjà l'owner.
 
 **Backward compat strict additif** · fallback transparent top-level v2.63 (`pain_points/` + `objections/` + `frictions/` avec affected_audiences[]/affected_products[]) + profile sub-fields v1.7 preserved si brand brownfield.
 
-**Gate to Phase 4**: cross-deepening-signals synthesis delivered, `audiences/*/pain_points/` + `audiences/*/objections/` + `products/*/frictions/` sub-parent collections populated, profile.json drafts enriched with verbatim_quotes (voice corpus) + audience candidates + sophistication_stage + market_vernacular.
+**Sub-step 4b · `profile-audience` per audience validée** ·
 
----
+`profile-audience` is `subagent_safe: true`. Spawn one subagent per audience validée (cap 3 parallel · run après mine-voc 4a complete pour enrichir profile avec verbatim_quotes corpus).
 
-## Step 4 · Delegate `profile-audience` via Task tool (per audience candidate)
-
-`profile-audience` is `subagent_safe: true`. Spawn one subagent per audience candidate identified in Phase 3 cross-signals.
-
-Cap parallel at 3 candidates (per delegation pattern §parallel limits). If Phase 3 surfaced >3 candidates, take top-3 by cross-signal strength.
-
-For each candidate:
+For each audience:
 - `model: sonnet`
-- Input: brand slug, audience candidate (mère hypothesis from cross-signals)
-- Expected: full profile.json with mère audience + sub-clusters, confidence chain explicit per axis, observed/déduit/déclaré sourcing tags
+- Input: brand slug, audience id, mine-voc output (pain_points + objections sub-audience)
+- Expected: full profile.json with JTBD canon V3 8 dimensions + identity + psychology + voice + behavior + decision_process · confidence chain explicit per axis · observed/déduit/déclaré sourcing tags
 
 **Operator-facing line**:
 
-> *"Je cartographie les audiences candidates en parallèle."*
+> *"Je mine la voix client puis enrichis les profils audiences validées en parallèle. ~30-45 min en arrière-plan."*
 
-When all return, synthesize at orchestrator level into a single audience tableau (mère × sub-clusters × confidence chain). **NEVER** dump raw subagent output verbatim per delegation pattern §synthesis layer.
+When all 4a + 4b return, synthesize at orchestrator level into a single audience enrichi tableau (mère × sous-poches × pain_points + objections + JTBD × confidence chain). **NEVER** dump raw subagent output verbatim per delegation pattern §synthesis layer.
 
 ---
 
-## GATE A · Operator validates audiences
+## GATE A · Operator validates audiences enrichies (preserved v1.3.0)
 
 **MANDATORY GATE** before Phase 5. Surface the audience tableau, then AskUserQuestion:
 
@@ -408,22 +487,27 @@ Trigger `learn-from-session` batch (posture adaptive, operational/ship register)
 
 If the operator typed a minimal brief ("build atlas {brand}") without context, briefly cartograph the pipeline before executing (~5 lines, operator language, no system jargon):
 
-> *"Analysé. Atlas substrat complet, voilà comment je vais piloter :*
-> *• Je structure ta marque puis je scanne le site*
-> *• Je dig voix client + voix marché*
-> *• Je cartographie les audiences. **Premier gate** : tu valides*
-> *• Je produis les angles paid ranked par audience. **Second gate** : tu valides*
-> *• Je build la matrice complète et je remonte les top-3 axes créatifs ranked*
-> *• Je clôture avec un drill-down · soit on enchaîne briefs+créas via `creative-brief-composer` sur l'axe que tu choisis, soit on enrichit le territoire d'abord"*
+> *"Analysé. Atlas substrat complet en 4 paliers progressive cartography, voilà comment je vais piloter :*
+> *• **Palier 1+2** · structure ta marque + scan le site. **Gate light** entre les paliers : tu valides territoire produit + offers*
+> *• **Palier 3** · cartographie audiences hiérarchique mère + sous-poches. **Gate light** : tu valides l'arbre*
+> *• **Palier 4** · mine voix client + enrichis les profils audiences validées. **Gate A** : tu valides audiences enrichies*
+> *• Produits les angles paid ranked par audience. **Gate B** : tu valides les angles*
+> *• Build la matrice complète et remonte les top-3 axes créatifs ranked*
+> *• Clôture avec un drill-down · soit on enchaîne briefs+créas via `creative-brief-composer` sur l'axe que tu choisis, soit on enrichit le territoire d'abord"*
 
-Then AskUserQuestion: *Go / Skip URL scan / Ajuste le pipeline (skip une phase) / Autre*.
+Si `fast_track = true` détecté · *"Mode opérateur expert · gates light intermédiaires bypass auto-validate, stop seulement Gate A + Gate B."*
+
+Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeline (skip une phase) / Autre*.
 
 ---
 
 ## Guardrails
 
+- **HR · Gates entre Phases canon (v1.4.0)** · build-atlas-complete v1.4.0+ doit insérer **gate light entre Phase 2 (drilling) → Phase 3 (audiences hiérarchique) → Phase 4 (enrichissement)**. Anti-pattern · chain skills sans validation operator entre paliers progressive cartography (dump synthesis bloc canon précédent v1.3.0 où seuls Gate A + Gate B existaient). Doctrine `docs/system/progressive-cartography-discipline.md` Section 8 Pattern gates light · format 1-2 lignes synthesis + 1 binaire validation/correction. Pas Q&A verbeux.
+- **HR · Fast-track opt-in opérateur expert (v1.4.0)** · gates intermédiaires auto-validate **seulement si opérateur explicit** (flag `--fast-track` passed dans invocation) OR config opt-in (`operator/profile.json#preferences.auto_validate_after_n_brands` true détecté). Default = gates light visible. Premier-contact opérateur garde gates pour repère cognitif. Gate A + Gate B **toujours preserved** quel que soit le mode (structural decisions audiences finales + angles ranked, jamais bypass).
 - **NEVER** run all phases sequentially blocking on one operator without heartbeat. Surface progress at each gate.
 - **NEVER** skip Gate A or Gate B silently. Audiences gate angles, angles gate scoring. Skipping = fan-out on unvalidated hypotheses = wasted calls + low-quality atlas substrate.
+- **NEVER** skip Gate Intermédiaire 1 or Gate Intermédiaire 2 sans `fast_track = true` opt-in explicit. Gates light visible default · premier-contact opérateur a besoin du repère cognitif entre paliers progressive.
 - **NEVER** expose Task tool mechanics, subagent internals, or skill names to the operator ("I spawned profile-audience", "produce-paid-angles returned"). Say what it *does*: "je cartographie les audiences", "je génère les angles".
 - **NEVER** re-implement subskill logic. If a subskill has a bug or gap, fix it there, not here. Pure orchestrator per `onboard-brand` precedent.
 - **NEVER** expose raw scoring numbers, confidence floats, weight-dimensions matrix values, or internal field paths. Compositional Cartography §7 anti-pattern enforcement.
@@ -442,20 +526,23 @@ Then AskUserQuestion: *Go / Skip URL scan / Ajuste le pipeline (skip une phase) 
 ## Cross-references
 
 - `.skills/skills/onboard-brand/SKILL.md` · orchestrator pattern reference (purity rule, gate canon)
-- `.skills/skills/deepen-brand-context/SKILL.md` · chained inline orchestrator (Phase 3)
-- `.skills/skills/setup-brand/SKILL.md` · Phase 1
-- `.skills/skills/produce-strategy/SKILL.md` · invokable en post-Phase 9 close si l'opérateur veut cadrer le focus Q{n} sur la brand atlas-complete (strategy.schema v1.0 canon shipped v2.58)
-- `.skills/skills/snapshot-brand/SKILL.md` · Phase 2
-- `.skills/skills/profile-audience/SKILL.md` · Phase 4
+- `.skills/skills/setup-brand/SKILL.md` · Palier Phase 1 (Step 1)
+- `.skills/skills/snapshot-brand/SKILL.md` · Palier Phase 1+2 (Step 2 · includes its own Phase 1 macro + Phase 2 drilling gate v1.4.0)
+- `.skills/skills/map-audiences/SKILL.md` · Palier Phase 3 hiérarchique parent/enfants 3 niveaux mère + sous-poches (Step 3 v1.4.0 · 4 questions framework canon)
+- `.skills/skills/mine-voc/SKILL.md` · Palier Phase 4 enrichissement per audience (Step 4a v1.4.0 · pain_points + objections sub-audience)
+- `.skills/skills/profile-audience/SKILL.md` · Palier Phase 4 enrichissement per audience (Step 4b v1.4.0 · JTBD canon V3 8 dimensions)
+- `.skills/skills/deepen-brand-context/SKILL.md` · legacy orchestrator (v1.3.0 Step 3 deepen chain · remplacé par map-audiences Step 3 + mine-voc/profile-audience Phase 4 v1.4.0)
 - `.skills/skills/weight-dimensions/SKILL.md` · Phase 5
 - `.skills/skills/produce-paid-angles/SKILL.md` · Phase 6
 - `.skills/skills/score-matrix/SKILL.md` · Phase 7
+- `.skills/skills/produce-strategy/SKILL.md` · invokable en post-Phase 9 close si l'opérateur veut cadrer le focus Q{n} sur la brand atlas-complete (strategy.schema v1.0 canon shipped v2.58)
 - `.skills/skills/creative-brief-composer/SKILL.md` · downstream production briefs+créas post-atlas (separate invocation, operator chooses axe créatif)
-- `docs/system/territory-discipline.md` · NEW v2.67 · territoire-pure scope canon (build-atlas-complete = substrat territoire only, productions briefs+créas downstream)
+- `docs/system/progressive-cartography-discipline.md` · **NEW v2.68** · progressive cartography canon (Sections 3-7 phasing · Section 8 Pattern gates light) · doctrine source v1.4.0 refactor
+- `docs/system/territory-discipline.md` · v2.67 · layer territoire scope canon (build-atlas-complete = substrat territoire only, productions briefs+créas downstream)
+- `docs/system/investigation-posture.md` · 5-section close canon (Step 9 mandatory) · close ouvert Phase 4 vers production downstream via creative-brief-composer (out of scope build-atlas territoire-pure v1.3.0+)
 - `docs/system/scope-extension-discipline.md` · SED-X v2.65 · skill scope boundaries discipline
 - `docs/system/canonical-matrix-reasoning.md` · CMR · production discipline (95% quality on intersectional outputs)
 - `docs/system/compositional-cartography.md` · §7 anti-pattern (no raw numeric scoring to operator) · implémentation domaine créatif de CMR
-- `docs/system/investigation-posture.md` · 5-section close canon (Step 9 mandatory)
 - `docs/system/confidence-propagation.md` · confidence chain algebra
 - `docs/system/brand-isolation-discipline.md` · brand_only scope default
 - `docs/system/skill-routing-discipline.md` · v2.55 routing canon (orchestrator delegates, never freestyles strategic prose)
@@ -465,6 +552,10 @@ Then AskUserQuestion: *Go / Skip URL scan / Ajuste le pipeline (skip une phase) 
 
 ---
 
-## Verdict v1.3.0
+## Verdict v1.4.0
+
+v1.4.0 ship orchestrator progressive cartography refactor · chain skills avec gates light entre paliers progressive (Phase 1+2 snapshot-brand · gate intermédiaire 1 · Phase 3 map-audiences hiérarchique · gate intermédiaire 2 · Phase 4 mine-voc + profile-audience enrichissement per audience validée) · mode `--fast-track` opérateur expert bypass gates intermédiaires auto-validate (opt-in) · Gate A audiences + Gate B angles preserved structural · territoire substrat (specs + offers + profiles + pain_points + objections + angles + scoring + frictions + roadmap + strategy) end-to-end · productions briefs+créas via separate `creative-brief-composer` skill post-atlas downstream. Backward compat strict additif sur chain skills (Steps preserved · gates additifs light · fast-track flag opt-in default off).
+
+## Verdict v1.3.0 (legacy)
 
 v1.3.0 ship orchestrator territoire-pure · substrate atlas (specs + offers + profiles + angles + scoring + frictions + roadmap + strategy) end-to-end · productions briefs+créas via separate `creative-brief-composer` skill post-atlas downstream.
