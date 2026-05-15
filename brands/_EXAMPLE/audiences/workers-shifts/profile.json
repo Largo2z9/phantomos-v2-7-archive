@@ -1,0 +1,174 @@
+{
+  "$comment": "EXEMPLE pédagogique · Audience mère Stepprs Workers shifts 8-12h debout. Vitrine canon profile/2.0 v2.68 · pattern parent/enfants sémantique pure v2.64 (mère = scope général + traits partagés cross-sous-poches · 3 sous-poches inheritent + override specificity_modifiers · pas duplication). pain_benefit_chain + objections legacy empty (sub-collection canon v2.64 Phase 4 next). Driver brand mixed pain 65% utility 35% · cette audience skew pain dominant (fin-de-shift accumulated trigger achat).",
+  "_schema": "profile/2.0",
+  "_version": "2.0",
+  "_field_types": {
+    "identity.label": "stated",
+    "identity.awareness_stage": "structured",
+    "identity.demographics.age_range": "structured",
+    "identity.demographics.gender": "observed",
+    "identity.demographics.income": "observed",
+    "identity.life_stage": "observed",
+    "identity.role.type": "structured",
+    "identity.role.buyer_user_split": "structured",
+    "psychology.jtbd_primary": "observed",
+    "psychology.jtbd_secondary": "observed",
+    "psychology.drives": "derived",
+    "psychology.fears": "observed",
+    "psychology.status_signals": "derived",
+    "psychology.self_perception": "derived",
+    "decision_process.trigger": "observed",
+    "decision_process.evaluation_criteria": "structured",
+    "decision_process.purchase_path": "structured",
+    "decision_process.time_to_decide": "structured",
+    "behavior.where_they_hang": "observed",
+    "behavior.content_consumed": "observed",
+    "behavior.vocab_register": "observed",
+    "behavior.brand_relationships": "observed",
+    "voice.key_expressions": "observed",
+    "voice.tone_self": "derived",
+    "voice.pain_metaphors": "observed",
+    "voice.solution_metaphors": "observed",
+    "market_position.segment_size_pct_of_brand": "derived",
+    "market_position.price_sensitivity": "structured",
+    "market_position.competition_alternatives": "observed",
+    "market_position.differentiation_appeal": "derived"
+  },
+  "meta": {
+    "audience_slug": "workers-shifts",
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example mother audience · validé par construction pédagogique"
+    },
+    "parent_audience_slug": null,
+    "is_mother": true,
+    "example_canon_showcased": [
+      "profile/2.0 schema v1.6.0 · 8 dimensions canon V3 (identity, role, psychology, decision_process, behavior, voice, market_position, meta)",
+      "Pattern parent/enfants sémantique pure v2.64 · mère = scope partagé + sous-poches override specificity_modifiers seulement",
+      "Buyer/user split canon v1.4 · role.type + buyer_user_split explicite",
+      "pain_benefit_chain + objections legacy empty (sub-collection canon v2.64 Phase 4 next)",
+      "Awareness stage Schwartz canon · solution_aware ici (acheteur cherche déjà solution insole)",
+      "Cross-ref Stepprs spec.json mechanisms (Arch support → plantar fasciitis · Impact cushioning → end-of-shift comfort) + benefits latency (emotional 0 · functional 7-14j · identity 30-90j)"
+    ],
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "identity": {
+    "label": "Workers shifts (8-12h debout)",
+    "$comment_label": "Label opérateur-facing · scope général sans spécificité occupation (sous-poches nurses-12h, warehouse-10h, hospitality-retail héritent et précisent).",
+    "awareness_stage": "solution_aware",
+    "$comment_awareness": "Canon Schwartz · cible cherche déjà une solution insole (a probablement essayé Dr. Scholl). Acheteur ne demande plus 'pourquoi j'ai mal aux pieds' · il demande 'quelle insole choisir vs énième déception'. Drive registre copy = différenciation vs alternatives, pas éducation problème.",
+    "demographics": {
+      "age_range": "25-55",
+      "gender": "mixed (skew dépend sous-poche · F dominante nurses + hospitality · M dominante warehouse)",
+      "income": "$30-65k US median (sous-poches varient · hospitality-retail bas $25-40k · warehouse-10h mid $40-55k · nurses-12h mid-high $50-75k)"
+    },
+    "life_stage": "active workforce · physical demanding occupations · family responsibilities (kids ou dependents) · pas en position de switch carrière facilement (golden handcuffs santé bénéfices)",
+    "role": {
+      "type": "primary_buyer + user_self",
+      "$comment_role_type": "Canon buyer_user_split v1.4 · self-buy dominant (80%) · 20% achat par conjoint (Mom's Day · Father's Day · gift-driven · cf hashtag #Mailman viral angle conjoint inquiet santé)",
+      "buyer_user_split": "self-buy · self-use predominant (80%) · gift-buy par conjoint 20% sur trigger santé visible (limping · plaintes répétées soir)"
+    }
+  },
+  "psychology": {
+    "jtbd_primary": "Finish my 8-12h shift sans cette douleur accumulée fin-de-shift qui empoisonne mon évening + sleep",
+    "$comment_jtbd_primary": "JTBD primary = utilitarian short-term · résoudre le problème immédiat (fatigue chronique cumulée). C'est ce que la cible verbalise spontanément. Drive le hook copy hour-8 reframe (cf evidence_verbatim spec.json 'First full shift with zero heel pain by hour 8' Dean H).",
+    "jtbd_secondary": "Stay in this physically demanding job sans retiring early due to foot/knee chronic injury accumulated",
+    "$comment_jtbd_secondary": "JTBD secondary = long-term identitaire · longevité occupationnelle. Cible ne verbalise pas spontanément mais c'est la peur sous-jacente. Drive l'angle 'invest in your body now or pay later' pour deepen objection prix.",
+    "drives": [
+      "pain relief immédiat ressenti fin-de-shift",
+      "longévité occupationnelle (continuer ce métier sans handicap forcé)",
+      "daily-life functionality (rentrer le soir sans gémir, jouer avec les kids, marcher chien sans grimacer)"
+    ],
+    "fears": [
+      "chronic injury forced retirement (perdre le job pour raison santé)",
+      "missing days work cost (sick days unpaid pour occupations majorité)",
+      "conjoint qui flag la dégradation visible (limping · plaintes répétées · refus activités weekend)"
+    ],
+    "status_signals": [
+      "I'm the kind who solves problems pragmatically (pas le whiner)",
+      "Smart consumer who invests in self-care strategically (pas le cheap qui souffre)",
+      "I understand body mechanics (proxy intelligence pratique vs hippie wellness vague)"
+    ],
+    "self_perception": "Practical worker · treats body as tool · realizes neglect = career-limiting · skeptical of marketing fluff mais opens up à evidence pragmatique (podiatrist endorsement + 800k customers + money-back)"
+  },
+  "pain_benefit_chain": [],
+  "$comment_pain_benefit_chain": "LEGACY field empty array · canon v2.64 Phase 4 migre vers sub-collection brands/{slug}/audiences/{audience}/pain_points/*.json + benefits/*.json (cross-ref mechanisms spec.json par ID). Mère définit le scope partagé · sous-poches override avec pain spécifiques (steel-toe vibration warehouse, miles walked unit nurse, customer-facing smile hospitality).",
+  "objections": [],
+  "$comment_objections": "LEGACY field empty array · canon v2.64 Phase 4 migre vers sub-collection brands/{slug}/audiences/{audience}/objections/*.json. Objections cross-sous-poches partagées au niveau mère = (1) déjà essayé Dr. Scholl/Powerstep déception (sophistication stage 3-4 Schwartz · cible vue tous les angles génériques) (2) prix $27 vs $5 Dr. Scholl drugstore (skepticism mark-up justifié) (3) fit dans steel-toe/work shoes contraint (objection fonctionnelle worker-spécifique).",
+  "decision_process": {
+    "trigger": "Specific moment · matin réveil avec douleur talon (plantar fasciitis flare) OR end-of-week exhaustion accumulée samedi + conjoint flag (refus dîner debout · 'tu marches encore comme un vieux') OR shoe replacement cycle (achat nouvelles shoes work · pourquoi pas insole same time)",
+    "$comment_trigger": "Triggers multi-temporels · matin (douleur réveil), fin-de-semaine (exhaustion cumulée), achat lié (shoe replacement). Drive timing creative paid = Lundi-Mardi matin pour catch morning pain · Vendredi soir pour catch weekend exhaustion · Always-on pour catch shoe replacement.",
+    "evaluation_criteria": [
+      "fits work shoes/boots (steel-toe warehouse · uniform sneaker nurse · fashion shoe hospitality · sous-poche varie)",
+      "endorsement crédible (podiatrist + 800k+ customers · pas juste influencer)",
+      "money-back risk-free 90 days (annule downside achat raté)",
+      "price reasonable vs Dr. Scholl $5 mais sans franchir Vionic clinical $80+ (sweet spot $27-50)"
+    ],
+    "purchase_path": [
+      "Search Google 'plantar fasciitis insole work' OR 'best insole 12 hour shift'",
+      "Land sur 3-5 options DTC (Stepprs · competitors Powerstep · Superfeet · Vionic)",
+      "Read reviews Amazon/site (cherche verbatims occupation-specific 'nurse' 'warehouse' 'mailman')",
+      "Compare price + return policy + endorsement",
+      "Purchase 1 single pair trial $27 (pas direct bundle · skeptical legacy)"
+    ],
+    "time_to_decide": "3-14 days research · pas impulse · cible compare avant clicker buy",
+    "$comment_time_to_decide": "Window 3-14j critique pour retargeting paid · cookie window minimum 30j sur Meta + Klaviyo abandoned cart D1+D3+D7. Sophistication stage drive consideration plus longue que catégorie générique."
+  },
+  "behavior": {
+    "where_they_hang": [
+      "Facebook groups occupation-specific (Nurses Network · Warehouse Workers Union · USPS Mailmen Group)",
+      "Reddit r/Nurses r/Warehouse r/USPS r/PlantarFasciitis r/Mailman",
+      "YouTube searches 'foot pain after long shift' + 'plantar fasciitis treatment home'",
+      "Amazon reviews scrolling avant achat (verbatim verification step canon)"
+    ],
+    "content_consumed": [
+      "Before/after testimonials occupation-tagged (préfère nurse-by-nurse vs generic testimonial)",
+      "Podiatrist explainer videos 'why plantar fasciitis happens to standing workers'",
+      "Money-back guarantee emphasis ads (downside-removal anchor)",
+      "Hashtag-driven content viral (#Mailman #PlantarFasciitis #12HourShift)"
+    ],
+    "vocab_register": "occupational direct · short sentences · numerals (12-hour shift · 8 hours standing · concrete floor · steel-toe boots) · no skincare-style euphemism · respect pour engineering vocabulary (arch support · cushioning · impact absorption)",
+    "brand_relationships": "Dr. Scholl tried + disappointed (drugstore reflex achat raté) · Vionic too expensive + too clinical (vieux look) · Powerstep clinical mid-tier known mais cheap-looking · Stepprs entry mid-tier engineered-but-accessible (sweet spot positioning)"
+  },
+  "voice": {
+    "key_expressions": [
+      "I'm on my feet all day",
+      "by hour 8 I'm done",
+      "concrete floors are killing me",
+      "first full shift with zero heel pain",
+      "2 years · 10 hour days in a warehouse",
+      "12-hour shifts are brutal on your feet",
+      "the roller after a long day is a game changer"
+    ],
+    "$comment_key_expressions": "Verbatims réels scrapés site reviews Stepprs (Mike Kowalski warehouse · Dean H · Tanya nurse · Rachel S roller). Drive copy paid directement · réinjecter verbatim raw dans hooks (pas reformulation marketer · authenticity = conversion).",
+    "tone_self": "practical · uncomplaining-but-frustrated · respect engineering · no whining · pragmatic problem-solver",
+    "pain_metaphors": [
+      "my feet are screaming by end of shift",
+      "I can barely stand by the time I clock out",
+      "heel pain wakes me up before my alarm",
+      "concrete floors are killing me"
+    ],
+    "solution_metaphors": [
+      "walking on air",
+      "game changer",
+      "my feet thank me",
+      "first time I finished a shift without limping home"
+    ],
+    "$comment_solution_metaphors": "Cross-ref spec.json benefits[0] tagline 'Feel Like You're Walking on Air' · verbatim canon que la cible self-utilise spontanément · validation alignment promise/voice cible."
+  },
+  "market_position": {
+    "segment_size_pct_of_brand": 45,
+    "$comment_segment_size": "Estimation 45% acquisition Stepprs · cross-pollinisé hashtag #Mailman + #PlantarFasciitis + occupation FB groups. Pas un niche · audience principal driver volume. Sous-poches splits ≈ nurses-12h 35% + warehouse-10h 35% + hospitality-retail 30%.",
+    "price_sensitivity": "medium · prêt à payer $27-50 si efficacité prouvée + money-back · pas $100+ Vionic territoire. Sweet spot single $27 trial + repeat $48 Plantar Fasciitis Kit bundle.",
+    "competition_alternatives": [
+      "Dr. Scholl (entry generic drugstore · 'déjà essayé sans résultat')",
+      "Powerstep (clinical mid-tier · 'looks cheap' objection)",
+      "Superfeet (sport-leaning · 'pas pour standing work' objection)",
+      "Vionic (premium clinical · 'too expensive + old people brand' objection)",
+      "No insole (resigned · 'rien ne marche de toute façon')"
+    ],
+    "differentiation_appeal": "Engineered + Podiatrist Recommended sans positioning clinical intimidant · price accessible vs Vionic · daily-wearable vs Superfeet sport-only · authentic verbatim worker testimonials vs Dr. Scholl marketing-fluff. Cross-ref spec.json identity.positioning 'L'insole pain relief daily-wearable entre Dr. Scholl mass et orthèse podiatrique premium'."
+  }
+}

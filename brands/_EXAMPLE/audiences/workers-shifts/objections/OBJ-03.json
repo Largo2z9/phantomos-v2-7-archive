@@ -1,0 +1,36 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection shared cross-sous-poches workers-shifts · prix $27 vs $15 Walmart Dr Scholl · vitrine canon v2.64 objection mère car prix anchor entry-level alternative concerne tous workers budget-aware",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id",
+    "type": "enum price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · objection prix shared cross-poches · placée mère"
+  },
+  "objection_id": "OBJ-03",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · price comparison entry alternative Walmart Dr Scholl $15"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "$27 c'est cher pour une semelle · au Walmart j'ai du Dr Scholl à $15 · pourquoi je paierais le double",
+  "type": "price",
+  "lifecycle": "decision",
+  "severity_score": 5,
+  "tier": "secondary",
+  "response_counter": "Engineered structure (arch + cushioning + massage + grip 4 mécanismes intégrés) vs gel pad simple · durabilité 2+ ans pattern (Mike Kowalski verbatim) vs Dr Scholl refresh tous les 2-3 mois · cost-per-wear largement inférieur sur 24 mois",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-01"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["workers-shifts", "nurses-12h", "warehouse-10h", "hospitality-retail"]
+}

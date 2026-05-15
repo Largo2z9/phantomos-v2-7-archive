@@ -1,0 +1,53 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain shared cross-sous-poches workers-shifts (nurses-12h, warehouse-10h, hospitality-retail tous touchés par foot fatigue end-of-shift) · vitrine canon v2.64 sub-audience sémantique pure (pain mère car shared visible cross-trois sous-poches)",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id (PNT-XX séquentiel cross-tree audience)",
+    "formulation": "verbatim customer language (FR ou EN selon target locale)",
+    "chain": "doctrine pain-benefit-chain canon v2.60 · surface (sensation) → consequence (impact daily) → deep (identity/dignity)",
+    "category": "enum · physical / emotional / friction_ux / logistical / cognitive / social_status",
+    "severity_score": "1-10 (10 = unbearable · 1 = mild)",
+    "frequency": "labeled enum · rare / occasional / common / very_common / universal (avec % audience touchée si quantifiable)",
+    "urgency": "labeled enum · low / medium / high / critical (impact daily quality of life)",
+    "affected_audiences": "array de audience_ids · 1 si spécifique sous-poche · multiple si shared cross-poches"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 sub-audience sémantique pure · pain shared cross-sous-poches stocké au niveau mère workers-shifts/pain_points/ car visible chez nurses-12h + warehouse-10h + hospitality-retail (foot fatigue universel occupations 8h+ debout)"
+  },
+  "pain_id": "PNT-01",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · verbatim Mike Kowalski + Tanya nurse + Dean H confirment universalité cross-occupations"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Mes pieds sont à l'agonie à la fin de mon shift 12h · je rentre lessivé · même m'asseoir fait mal",
+  "chain": {
+    "surface": "Foot fatigue accumulated par fin de shift · sensation de pieds en feu · marche heavy · douleur arche + talon",
+    "consequence": "Impact direct fin de journée · soirée perdue (canapé · plus la force de bouger) · sommeil perturbé · réveil pas réparé · entame jour suivant déjà fatigué",
+    "deep": "Sentiment d'être prisonnier de mon corps · réduit ma performance professionnelle · interfère avec ma vie famille post-shift · question si je peux tenir mon métier 10 ans de plus"
+  },
+  "category": "physical",
+  "severity_score": 6,
+  "tier": "primary",
+  "emotion": "exhaustion · frustration · resignation · powerlessness",
+  "trigger": "Fin de shift 8h+ debout concrete floors · accumulated since début shift · pic 6-8h dans · unbearable hour 10-12",
+  "verbatim_quotes": [
+    "Mike Kowalski (2 years · 10 hour days warehouse) · confirme cycle quotidien",
+    "Tanya nurse (12-hour shifts · first impression really promising) · explicite la promesse vs reality pre-Stepprs",
+    "Dean H (first full shift with zero heel pain by hour 8) · baseline avant Stepprs = pain by hour 8 standard"
+  ],
+  "frequency": "very_common (workers shifts 8h+ occupations · 80%+ touchés)",
+  "urgency": "high (impact daily quality of life + performance work + risk early career exit)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Impact absorption cushioning", "Arch support engineered structure", "Massage textured stimulation"],
+    "benefits_served": ["End-of-shift comfort (long standing)", "Walking on Air", "Plantar fasciitis pain relief"],
+    "friction_ids": [],
+    "objection_ids": ["OBJ-02"]
+  },
+  "affected_audiences": ["workers-shifts", "nurses-12h", "warehouse-10h", "hospitality-retail"]
+}

@@ -1,0 +1,51 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain SPÉCIFIQUE sous-poche plantar-fasciitis-diagnosed · custom orthotics expensive disappointing (sunk cost $500-800 · marche pas en daily) · vitrine canon v2.64 sub-audience sémantique pure (pain spécifique stocké dans sous-poche car concerne UNIQUEMENT segment post-podiatre · pas heel-pain-general qui n'a pas vécu cette expérience)",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id",
+    "formulation": "verbatim customer language",
+    "chain": "surface → consequence → deep canon v2.60",
+    "category": "enum physical / emotional / friction_ux / logistical / cognitive / social_status",
+    "severity_score": "1-10",
+    "affected_audiences": "array · ICI single audience car pain spécifique sous-poche"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 sub-audience sémantique pure · pain spécifique sous-poche stocké dans plantar-fasciitis-diagnosed/pain_points/ car visible UNIQUEMENT chez segment ayant vu podiatre + tenté custom orthotics · sub-audience driver dominant cette frustration sunk-cost"
+  },
+  "pain_id": "PNT-12",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · pattern custom orthotics deception verbatim Reddit r/PlantarFasciitis 32 occurrences/200 sample · spécifique post-podiatre segment"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Les orthèses sur mesure n'ont pas marché et ça coute $700 · ça reste dans la chaussure du cabinet · pas portable au quotidien · sunk cost qui me reste sur l'estomac",
+  "chain": {
+    "surface": "Custom orthotics achetées suite diagnostic podiatre · soulagement partiel ou nul · usage limité chaussures spécifiques (dress shoes ou sneakers podiatre-fittées) · pas portable daily (jardinage · maison · slippers)",
+    "consequence": "Sunk cost $500-800 non récupérable · perte confiance dans solutions clinical premium · culpabilité d'avoir gaspillé argent significatif · scepticisme envers next-attempt (Stepprs ou autre) · démoralisation 'rien ne marche'",
+    "deep": "Sentiment d'avoir été instrumentalisé par système médical · perte foi dans expertise podiatre · question fondamentale · si même le solution la plus chère a échoué pour ma condition diagnostiquée, qu'est-ce qui peut marcher · grief économique + grief espoir"
+  },
+  "category": "emotional",
+  "severity_score": 7,
+  "tier": "primary",
+  "emotion": "regret · resentment · resignation · self-blame · cynicism médical",
+  "trigger": "Moments confrontation avec orthotics inutilisées dans placard · réflexion budget santé annuel · invitation activité où il faudrait orthotics mais elles sont pas portables · annonce nouveau produit insole (déclenche défense)",
+  "verbatim_quotes": [
+    "Reddit r/PlantarFasciitis · les orthèses sur mesure n'ont pas marché et ça coute $700 (32 occurrences/200 sample)",
+    "Amazon reviews verified · I spent $500 on custom and they sit in a drawer (theme récurrent)",
+    "Facebook arthritis groups · my podiatrist orthotics didn't help and now I'm out $800"
+  ],
+  "frequency": "common (plantar-fasciitis-diagnosed sous-poche · ~40% ont tenté custom orthotics · 65%+ d'entre eux insatisfaits)",
+  "urgency": "high (objection majeure conversion · si pas adressé bloque achat next-attempt)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Arch support engineered structure", "Impact absorption cushioning"],
+    "benefits_served": ["Plantar fasciitis pain relief", "Daily wearability sans friction"],
+    "friction_ids": [],
+    "objection_ids": ["OBJ-10"]
+  },
+  "affected_audiences": ["plantar-fasciitis-diagnosed"]
+}

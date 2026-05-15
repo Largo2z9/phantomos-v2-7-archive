@@ -1,0 +1,38 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection shared cross-sous-poches chronic-pain-45 · '90-day guarantee enough or not vs custom orthotics $500 long term' · vitrine canon v2.64 objection mère car risk-evaluation pattern shared cross-diagnostic spectrum",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id",
+    "type": "enum price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10 impact conversion",
+    "response_counter": "copy canon brand refute",
+    "affected_audiences": "array audience_ids"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · objection risk-evaluation long-term (90j vs custom durability) shared cross-poches · placée mère car comparison custom orthotics $500-800 = référentiel mental dominant chronic-pain-45"
+  },
+  "objection_id": "OBJ-09",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · objection 'value-for-money longue durée' = friction décision finale chronic-pain-45 · adressée par 90-day MBG + verbatim long-term success (2 ans Mike Kowalski) + price-point $27 trial perception cheap risk"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "90 jours c'est assez pour juger · si ça lâche après 6 mois c'est nul · custom orthotics $500 durent 2-3 ans · ratio prix/durée mieux à long terme",
+  "type": "risk",
+  "lifecycle": "decision",
+  "severity_score": 5,
+  "tier": "secondary",
+  "response_counter": "Stepprs prix $27 trial = perception cheap risk vs custom $500-800 · si tu kiff après 90 jours tu rachètes une paire fresh tous les ans pour ~$54/an total ($27 x 2) · custom orthotics $500-800 amorti sur 2 ans = $200-400/an · Stepprs reste 4-7x plus value-for-money sur durée comparable · témoignages 2-year usage validés (Mike Kowalski) · 90-day money back risk-free trial",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-11"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["chronic-pain-45", "plantar-fasciitis-diagnosed", "heel-pain-general"]
+}

@@ -1,0 +1,37 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection SPÉCIFIQUE sous-poche nurses-12h · hospital uniform white sneakers · vitrine canon v2.64 objection placée sous-poche car contrainte uniforme blanc unique aux nurses (warehouse = pas de constraint couleur, hospitality = variable)",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id",
+    "type": "enum price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10",
+    "affected_audiences": "1 entry nurses-12h car contrainte uniforme spécifique"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · objection spécifique sous-poche · contrainte visibilité couleur orange Stepprs dans sneakers blanches uniforme hospital"
+  },
+  "objection_id": "OBJ-04",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · uniforme hospital white sneakers standard policy"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "J'ai mes sneakers blanches uniforme hospital · l'orange Stepprs ça va se voir à travers les mailles · ça va pas être pro",
+  "type": "status",
+  "lifecycle": "consideration",
+  "severity_score": 4,
+  "tier": "secondary",
+  "response_counter": "Insole se loge sous arche pied (semelle propre du sneaker dessous masque visibilité externe) · mailles sneakers white peu transparentes pour couleur sous semelle · zero feedback patient/colleague reporté sur visibility (verbatim Tanya nurse)",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-04"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["nurses-12h"]
+}

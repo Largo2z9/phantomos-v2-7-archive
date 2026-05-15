@@ -1,0 +1,37 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection shared cross-sous-poches chronic-pain-45 · 'Need real podiatrist solution' (cette douleur médicale demande vrai expert) · vitrine canon v2.64 objection mère car trust-medical-authority shared cross-diagnostic spectrum",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id",
+    "type": "enum price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10 impact conversion",
+    "response_counter": "copy canon brand refute"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · objection trust medical-authority shared cross-poches · placée mère car perception 'OTC = pas sérieux' pattern dominant chronic-pain-45 mature consumer (vs workers ouverts solutions pragmatiques)"
+  },
+  "objection_id": "OBJ-08",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · trust-authority gap = friction conversion dominante chronic-pain-45 · adressée par Stepprs avec 'Podiatrist Recommended' trust badge"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Cette douleur c'est médical · il me faut une vraie solution podiatre · les insoles OTC c'est du marketing pour gens qui ont pas de vrai problème",
+  "type": "trust",
+  "lifecycle": "consideration",
+  "severity_score": 7,
+  "tier": "primary",
+  "response_counter": "Stepprs is Podiatrist Recommended (badge officiel · podiatres prescripteurs partenaires) · Clinically Tested (étude clinique référencée) · même mécanisme arch support engineered structure que custom orthotics podiatre · 10x moins cher car économie échelle 800k+ customers · daily wearable (vs custom orthotics limitées à chaussures spécifiques)",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-10"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["chronic-pain-45", "plantar-fasciitis-diagnosed", "heel-pain-general"]
+}

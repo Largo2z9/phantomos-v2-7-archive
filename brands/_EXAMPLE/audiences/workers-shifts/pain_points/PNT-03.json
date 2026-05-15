@@ -1,0 +1,50 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain shared cross-sous-poches workers-shifts · morning stiffness post-shift sleep recovery insufficient · vitrine canon v2.64 pain mère car recovery insuffisant visible cross-toutes occupations 8h+ debout",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id",
+    "formulation": "verbatim customer language",
+    "chain": "surface → consequence → deep",
+    "category": "enum physical / emotional / friction_ux / logistical / cognitive / social_status",
+    "severity_score": "1-10",
+    "frequency": "labeled enum avec % audience touchée"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · pain temporel (morning recovery) shared cross-poches · placé mère car cycle nuit-jour universel workers shifts"
+  },
+  "pain_id": "PNT-03",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · raideur réveil post-shift = signature plantar fasciitis + accumulated foot fatigue"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Je me réveille déjà fatigué · mes pieds ont pas eu le temps de récupérer · premier pas du matin c'est l'horreur",
+  "chain": {
+    "surface": "Raideur intense pieds + chevilles + lombaires au réveil · première marche pénible · douleur pic 0-5 minutes après lever",
+    "consequence": "Démarrage de journée handicapé · café devient ritual obligatoire · productivité matinale réduite · mental dégradé avant même shift",
+    "deep": "Sentiment que mon corps ne suit plus · peur que ça empire avec l'âge · question silencieuse · combien d'années je peux encore tenir ce rythme"
+  },
+  "category": "physical",
+  "severity_score": 4,
+  "tier": "secondary",
+  "emotion": "weariness · anxiety · slow despair",
+  "trigger": "Réveil après shift 8h+ · pic raideur premiers pas · aggravé chez plantar fasciitis chroniques · hyper-marqué jours consécutifs shifts",
+  "verbatim_quotes": [
+    "Tanya nurse (12-hour shifts · first impression really promising) · context recovery insuffisant pre-Stepprs",
+    "James (he called me two days later and said order me another pair) · pattern besoin récurrent recovery aid"
+  ],
+  "frequency": "very_common (workers shifts consécutifs · 75%+ touchés)",
+  "urgency": "high (impact démarrage journée + cumulative sur semaine)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Impact absorption cushioning", "Arch support engineered structure", "Massage textured stimulation"],
+    "benefits_served": ["End-of-shift comfort (long standing)", "Plantar fasciitis pain relief", "Daily wearability sans friction"],
+    "friction_ids": [],
+    "objection_ids": []
+  },
+  "affected_audiences": ["workers-shifts", "nurses-12h", "warehouse-10h", "hospitality-retail"]
+}

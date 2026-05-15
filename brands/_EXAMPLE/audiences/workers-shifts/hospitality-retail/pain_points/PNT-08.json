@@ -1,0 +1,48 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain SPÉCIFIQUE sous-poche hospitality-retail · fashion shoes constraint (heels/flats/narrow toe box) · vitrine canon v2.64 pain placé sous-poche car contrainte chaussure mode unique hospitality/retail (nurses = sneakers · warehouse = steel-toe)",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id",
+    "formulation": "verbatim retail/hospitality worker",
+    "chain": "surface → consequence → deep",
+    "category": "enum",
+    "affected_audiences": "1 entry hospitality-retail"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · pain spécifique hospitality/retail · contrainte fashion shoes (heels, flats narrow, dress code) signature occupation"
+  },
+  "pain_id": "PNT-08",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · pattern fashion shoes constraint retail/restaurant/hospitality dress code"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Le dress code c'est talons 5cm ou ballerines plates · zéro support · à la fin du shift je suis pliée en deux · les ballerines c'est aussi pire que les talons",
+  "chain": {
+    "surface": "Douleur plante pied + arche affaissée · douleur talon flats (impact direct sans cushioning) · douleur avant-pied heels (compression toe box)",
+    "consequence": "Achats fréquents chaussures nouvelles (espoir trouver paire confortable) · podiatrist orthotic prescription · médication antalgique fin shift · skip activités sociales post-shift (rester chez soi)",
+    "deep": "Sentiment de sacrifier mon corps pour respecter une norme arbitraire · question identité (est-ce que ce job mérite ma santé) · frustration que les hommes du même métier portent baskets"
+  },
+  "category": "physical",
+  "severity_score": 7,
+  "tier": "primary",
+  "emotion": "frustration · resentment · resignation · gender_injustice",
+  "trigger": "Dress code shift 8h+ · pic fin shift mid-evening · aggravé back-to-back shifts week-end retail/hospitality high traffic",
+  "verbatim_quotes": [
+    "Rachel S (the roller after a long day on your feet is a game changer) · contexte post-shift recovery besoin"
+  ],
+  "frequency": "very_common (hospitality/retail women dress code · 85%+ touchées)",
+  "urgency": "high (impact daily quality of life + médical podiatrist + risque déformation pieds long-terme)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Arch support engineered structure", "Impact absorption cushioning", "Massage textured stimulation"],
+    "benefits_served": ["Plantar fasciitis pain relief", "End-of-shift comfort (long standing)", "Walking on Air"],
+    "friction_ids": [],
+    "objection_ids": ["OBJ-06"]
+  },
+  "affected_audiences": ["hospitality-retail"]
+}

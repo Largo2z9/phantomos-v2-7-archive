@@ -1,0 +1,62 @@
+{
+  "$comment": "EXEMPLE pédagogique · friction usage produit massage-insoles · vitrine canon v2.64 · friction SECONDARY sizing trim challenge",
+  "_schema": "friction/1.3",
+  "_version": "1.3",
+  "_field_types": {
+    "friction_id": "stated",
+    "meta.*": "structured",
+    "formulation": "observed",
+    "category": "structured",
+    "severity_score": "derived",
+    "tier": "structured",
+    "customer_evidence": "observed",
+    "current_workarounds": "observed",
+    "resolution_state": "structured",
+    "cross_refs.*": "structured",
+    "affected_products": "stated",
+    "affected_audiences": "stated"
+  },
+  "_meta": {
+    "example_canon_showcased": "Canon v2.64 · friction cognitive sizing · 4 tailles adultes + 2 kids + trimmable mais risque over-cut · severity calibré moyen 4 (pas tous 7-8)"
+  },
+  "friction_id": "FRC-02",
+  "meta": {
+    "status": "complete",
+    "validation_status": {"state": "validated", "_note": "Example pédagogique vitrine v2.68"},
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "$comment_formulation": "Verbatim customer · friction cognitive avant achat · doute taille à choisir + peur de mal couper le trim",
+  "formulation": "Customer language verbatim · 'Je suis entre deux tailles · si je size up et je coupe trop ça fout en l'air l'insole · y a pas de retour si j'ai déjà trimmé'",
+  "category": "cognitive",
+  "$comment_severity": "Score 4 friction modérée · trimmable design mitige mais cognitive load sizing decision pré-achat = drop conversion",
+  "severity_score": 4,
+  "tier": "secondary",
+  "customer_evidence": [
+    "Customer support tickets · 'I'm between size 8 and 9 which one should I order'",
+    "Site copy support · 'Cut along the dotted line for a custom fit · always size up if between sizes'",
+    "Reviews mention · 'Be careful when trimming · cut conservatively first'"
+  ],
+  "current_workarounds": [
+    "Always size up rule · trim down to exact fit",
+    "Trim conservativement · cut petit à petit puis tester",
+    "Sizing chart cross-référencer pointure US/EU/UK avant commande",
+    "Customer support outreach pré-achat pour sizing confirmation"
+  ],
+  "resolution_state": "workaround_present",
+  "$comment_cross_refs": "Cross-refs · pas de PNT direct (friction pré-usage) · OBJ-02 workers-shifts (sizing doubt général) · mechanisms_workaround vide (friction non mitigée par feature physique) · benefits_blocked partial fit = mitige Daily wearability si mal trim",
+  "cross_refs": {
+    "affected_pain_points": [],
+    "affected_objections": ["OBJ-02"],
+    "mechanisms_workaround": [],
+    "benefits_blocked": ["Daily wearability"]
+  },
+  "affected_products": ["massage-insoles"],
+  "affected_audiences": [
+    "workers-shifts",
+    "workers-shifts/warehouse-10h",
+    "workers-shifts/hospitality-retail",
+    "workers-shifts/nurses-12h",
+    "chronic-pain-45"
+  ]
+}

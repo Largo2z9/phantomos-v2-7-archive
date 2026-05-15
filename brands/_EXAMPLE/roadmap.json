@@ -1,0 +1,200 @@
+{
+  "$comment": "EXEMPLE pédagogique · Roadmap fictive Stepprs · vitrine canon roadmap.schema v1.1 v2.68 · 4 arbre compositional cartography v3.1 démontré (Roadmap timeline · 4ème arbre canon). Mock planning · pas planning réel.",
+  "_schema": "roadmap/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "phases[].*": "stated",
+    "mix[].weight": "derived",
+    "mix[].axis": "stated",
+    "production_status[].*": "structured",
+    "relations.*": "structured"
+  },
+  "meta": {
+    "roadmap_id": "RDM-_EXAMPLE",
+    "status": "complete",
+    "validation_status": {"state": "validated", "_note": "Example pédagogique"},
+    "created": "2026-05-15",
+    "updated": "2026-05-15",
+    "horizon_months": 9
+  },
+  "phases": [
+    {
+      "phase_id": "PHASE-Q2-2026",
+      "name": "Q2 2026 · Scale workers-shifts core",
+      "dates": {"start": "2026-04-01", "end": "2026-06-30"},
+      "status": "in-progress",
+      "priorities": [
+        "ANG-01 hero campaign · Two years · zero heel pain by hour 8 · workers-shifts mère cross-sous-poches",
+        "ANG-04 supporting · What concrete floors do to your knees · MOF educate workers-shifts",
+        "Bundle volume tiered push · OFR-02 2-pair + OFR-03 3-pair via Meta CAPI"
+      ],
+      "$comment": "Phase courante · workers-shifts représente 45% segment + revenue principal · hero angles audience-derived primary"
+    },
+    {
+      "phase_id": "PHASE-Q3-2026",
+      "name": "Q3 2026 · Expand chronic-pain-45 activation",
+      "dates": {"start": "2026-07-01", "end": "2026-09-30"},
+      "status": "draft",
+      "priorities": [
+        "ANG-02 launch · Skip the $500 custom orthotics · chronic-pain-45/plantar-fasciitis-diagnosed BOF",
+        "ANG-03 supporting · Why podiatrists recommend Stepprs · MOF educate solution_aware mixed",
+        "OFR-07 Ultimate Foot Relief Kit premium push · target chronic-pain-45 mature audience"
+      ],
+      "$comment": "Expansion segment 35% chronic-pain-45 · driver pain heavy · BOF tactic prix vs custom orthotics"
+    },
+    {
+      "phase_id": "PHASE-Q4-2026",
+      "name": "Q4 2026 · Gift season + thematic bundles",
+      "dates": {"start": "2026-10-01", "end": "2026-12-31"},
+      "status": "draft",
+      "priorities": [
+        "ANG-07 Mother's Day campaign refresh · seasonality November-December Christmas peak",
+        "OFR-05 Plantar Fasciitis Kit + OFR-07 Ultimate Foot Relief Kit gift bundling push",
+        "ANG-06 brand authority refresh · 800k+ customers social proof scale"
+      ],
+      "$comment": "Pic décembre · cadeaux mère/grand-mère · category gift dynamic indirect via chronic-pain-45 family-purchased 30%"
+    },
+    {
+      "phase_id": "PHASE-Q1-2027",
+      "name": "Q1 2027 · New product line + subscription test",
+      "dates": {"start": "2027-01-01", "end": "2027-03-31"},
+      "status": "draft",
+      "priorities": [
+        "NEW product variant launch · sport-vertical line (cross-product extension territoire)",
+        "Subscription test · refill 12-month rotation insoles (FRC-03 lifespan friction solution)",
+        "ANG-05 category whitespace push post-new-line · re-positioning vs Superfeet sport"
+      ],
+      "$comment": "Expansion produit · adresse FRC-03 lifespan annual friction via subscription · test category sport"
+    }
+  ],
+  "mix": [
+    {
+      "mix_id": "MIX-AUD-WORKERS",
+      "axis": "audience",
+      "weight": 0.45,
+      "_note": "workers-shifts segment 45% · drives Q2 phase priorities"
+    },
+    {
+      "mix_id": "MIX-AUD-CHRONIC",
+      "axis": "audience",
+      "weight": 0.35,
+      "_note": "chronic-pain-45 segment 35% · drives Q3 expansion"
+    },
+    {
+      "mix_id": "MIX-AUD-GIFT",
+      "axis": "audience",
+      "weight": 0.10,
+      "_note": "gift-buyers indirect via family-purchased 30% chronic-pain-45 + Q4 seasonal trigger · sub-segment temporal"
+    },
+    {
+      "mix_id": "MIX-AUD-DAILY-PREVENTIF",
+      "axis": "audience",
+      "weight": 0.10,
+      "_note": "daily-preventif audience candidate (mentionnée spec.json · profile.json fantôme) · weight 10% placeholder · à fiche v2.69+ post-test live"
+    },
+    {
+      "mix_id": "MIX-ANG-AUDIENCE-DRIVEN",
+      "axis": "angle",
+      "weight": 0.55,
+      "_note": "audience-derived angles (ANG-01 + ANG-02) hero campaigns · driver brand pain dominant"
+    },
+    {
+      "mix_id": "MIX-ANG-PRODUCT-DRIVEN",
+      "axis": "angle",
+      "weight": 0.25,
+      "_note": "product-derived angles (ANG-03 + ANG-04) MOF educate · mécanique explainer"
+    },
+    {
+      "mix_id": "MIX-ANG-BRAND-CATEGORY",
+      "axis": "angle",
+      "weight": 0.20,
+      "_note": "brand-derived (ANG-06) + category-derived (ANG-05) + temporal (ANG-07) supporting MOF/TOF"
+    },
+    {
+      "mix_id": "MIX-PROD-HERO",
+      "axis": "product",
+      "weight": 0.70,
+      "_note": "massage-insoles hero produit · drive 70% revenue · 800k customer base"
+    },
+    {
+      "mix_id": "MIX-PROD-BUNDLES",
+      "axis": "product",
+      "weight": 0.25,
+      "_note": "bundles thématiques + volume tiered drive AOV uplift + 25% revenue"
+    },
+    {
+      "mix_id": "MIX-PROD-CROSS-SELLS",
+      "axis": "product",
+      "weight": 0.05,
+      "_note": "Massage Roller + Heel Cushion Pads cross-sells post-checkout"
+    }
+  ],
+  "production_status": [
+    {
+      "entity_type": "angle",
+      "entity_id": "ANG-01",
+      "status": "live",
+      "active_campaigns": 3,
+      "spend_share": 0.40
+    },
+    {
+      "entity_type": "angle",
+      "entity_id": "ANG-04",
+      "status": "live",
+      "active_campaigns": 2,
+      "spend_share": 0.20
+    },
+    {
+      "entity_type": "angle",
+      "entity_id": "ANG-02",
+      "status": "in-production",
+      "active_campaigns": 0,
+      "spend_share": 0.0,
+      "_note": "Briefs créa ready · campagne Meta launch prévu W27"
+    },
+    {
+      "entity_type": "angle",
+      "entity_id": "ANG-03",
+      "status": "draft",
+      "active_campaigns": 0,
+      "spend_share": 0.0
+    },
+    {
+      "entity_type": "angle",
+      "entity_id": "ANG-05",
+      "status": "spec'd",
+      "active_campaigns": 0,
+      "spend_share": 0.0
+    },
+    {
+      "entity_type": "angle",
+      "entity_id": "ANG-06",
+      "status": "live",
+      "active_campaigns": 1,
+      "spend_share": 0.15
+    },
+    {
+      "entity_type": "angle",
+      "entity_id": "ANG-07",
+      "status": "paused",
+      "active_campaigns": 0,
+      "spend_share": 0.0,
+      "_note": "Resume Q4 2026 Mother's Day refresh + Christmas push"
+    }
+  ],
+  "relations": {
+    "angle_ids": ["ANG-01", "ANG-02", "ANG-03", "ANG-04", "ANG-05", "ANG-06", "ANG-07"],
+    "audience_slugs": [
+      "workers-shifts",
+      "workers-shifts/nurses-12h",
+      "workers-shifts/warehouse-10h",
+      "workers-shifts/hospitality-retail",
+      "chronic-pain-45",
+      "chronic-pain-45/plantar-fasciitis-diagnosed",
+      "chronic-pain-45/heel-pain-general"
+    ],
+    "product_slugs": ["massage-insoles", "massage-roller", "heel-cushion-pads", "height-insoles"],
+    "creative_ids": [],
+    "$comment": "Denormalized view auto-computed pattern · agrégat des entités cross-phases pour navigation rapide cross-refs canonical"
+  }
+}

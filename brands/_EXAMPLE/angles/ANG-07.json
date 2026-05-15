@@ -1,0 +1,161 @@
+{
+  "$comment": "EXEMPLE pedagogique · angle temporal-cultural Mother's Day seasonal + family-purchased gift dynamic · vitrine canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB demontree · tier secondary supporting hero · cible gift-buyers (chronic-pain-45 indirect via family-purchased 30% market signal) · awareness in unaware out product_aware (TOF wider · acheteur cadeau decouvre brand)",
+  "_schema": "angle/1.2",
+  "_version": "1.2",
+  "_field_types": {
+    "angle_id": "string · canonical ID format ANG-XX",
+    "meta.name": "string · hook ou phrase signature de l'angle",
+    "meta.status": "enum · draft|complete|deprecated",
+    "meta.validation_status.state": "enum · validated|pending|rejected",
+    "origin_axis": "enum · temporal-cultural (Mother's Day seasonal + family-purchased gift dynamic)",
+    "tier": "enum · primary|secondary|exploratory · secondary supporting hero audience-derived",
+    "awareness_movement.in": "enum schwartz · unaware (acheteur cadeau ne connait pas brand · vient sur intent gift)",
+    "awareness_movement.out": "enum schwartz · product_aware (decouvre Stepprs comme reponse gift utile vs symbolique)",
+    "formula.observation.phenomenon": "string · phenomene observe data/scrape (30% market signal family-purchased gift dynamic chronic-pain-45 profile · seasonality May pic Mother's Day)",
+    "formula.observation.source": "string · provenance evidence (brand.json#seasonality + chronic-pain-45 profile family-purchased signal)",
+    "formula.observation.sample_size": "string · taille echantillon ou pattern recurrence",
+    "formula.tension.state_actual": "string · etat actuel observateur famille (voit maman souffrir · cadeau symbolique sans impact)",
+    "formula.tension.state_desired": "string · etat vise observateur famille (cadeau utile · montre qu'on a ecoute · soulagement palpable)",
+    "formula.tension.reason_blocked": "string · pourquoi gap persiste (insoles = cadeau pas glamour · perception sociale 'pas cadeau pour maman')",
+    "formula.reframe.perceptual_pivot": "string · nouveau cadrage perceptuel · cadeau utile vs cadeau symbolique · usage versus joli",
+    "formula.reframe.pivot_mechanism": "string · mecanisme/raison qui justifie le pivot (testimonials gift-receiver gratitude + Walking on Air immediate)",
+    "formula.bridge.spec_activated": "string · cross-ref spec.json#mechanisms (Walking on Air emotional · soulagement palpable immediat premier port)",
+    "formula.bridge.benefit_served": "string · cross-ref benefit emotional + identity (cadeau qui dit je t'ai ecoutee)",
+    "formula.bridge.promise_formulated": "string · promesse formalisee pret-a-deployer copy (empathy-witness frame)",
+    "lineage.audience_slug": "string · cross-ref audiences/{slug} (gift-buyers indirect chronic-pain-45)",
+    "lineage.schwartz_stage": "enum schwartz",
+    "lineage.hook_canon_id": "string · canon copy hook ID (empathy-witness)",
+    "lineage.framework_canon_id": "string · canon copy framework ID (gift-emotional-bridge)",
+    "lineage.archetype_canon_id": "string · canon copy archetype-voix ID",
+    "lineage.pain_extract": "string · verbatim extrait audience.json#pains observee cote famille (PNT-11 + PNT-10 cote observateur)",
+    "lineage.proof_primary": "string · proof asset principal (90-day money back + testimonials gift-receiver gratitude verbatims illustratifs)",
+    "lineage.CTA": "string · call-to-action formule (gift now · Mother's Day timing)",
+    "compatibility.audience_compatibility": "array · slugs audience compatibles (gift-buyers + chronic-pain-45 mere indirect)",
+    "compatibility.awareness_compatibility": "array · stages schwartz compatibles (TOF wider)",
+    "compatibility.friction_blockers": "array · friction IDs qui bloquent activation angle",
+    "compatibility.pain_addressed": "array · pain canonical IDs adresses (cote observateur famille)",
+    "compatibility.objection_neutralized": "array · objection canonical IDs neutralisees (objection sociale gift pas glamour)",
+    "compatibility.timing": "array · seasonality compatibility (May + November-December peaks)",
+    "cross_refs.audience_slugs": "array · audiences cross-ref",
+    "cross_refs.pain_point_ids": "array · PNT-XX",
+    "cross_refs.objection_ids": "array · OBJ-XX",
+    "cross_refs.friction_ids": "array · FRC-XX",
+    "cross_refs.mechanism_refs": "array · spec.json mechanisms (Walking on Air emotional benefit)",
+    "cross_refs.benefit_refs": "array · spec.json benefits (emotional + identity)",
+    "cross_refs.seasonality_refs": "array · brand.json#seasonality primary + secondary peaks"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB · angle temporal-cultural Mother's Day seasonal + family-purchased gift dynamic · tier secondary supporting hero audience-derived · origin_axis specifique temporal-cultural (seasonality peak May + family-purchased 30% market signal chronic-pain-45 = TOF wider via gift-buyers · awareness in unaware out product_aware acheteur cadeau decouvre brand)"
+  },
+  "angle_id": "ANG-07",
+  "meta": {
+    "name": "The best gift for mom who's still on her feet all day",
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pedagogique · vitrine canon · tier secondary temporal-cultural Mother's Day gift dynamic · activation seasonality May + Nov-Dec"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "origin_axis": "temporal-cultural",
+  "tier": "secondary",
+  "awareness_movement": {
+    "in": "unaware",
+    "out": "product_aware"
+  },
+  "formula": {
+    "$comment": "Formula OTRB substantive · temporal-cultural demontre seasonal trigger + family-purchased dynamic · observation = 30% market signal + seasonality peaks · tension = cadeau symbolique vs utile · reframe = ecoute vs convention · bridge = Walking on Air immediate + testimonials gift-receiver",
+    "observation": {
+      "$comment": "Observation · pattern observable cross-data · 30% du market signal chronic-pain-45 audience profile vient de family-purchased (un proche achete pour la mere souffrante) · plus seasonality brand.json May Mother's Day primary peak + November-December Christmas secondary peak",
+      "phenomenon": "30% du market signal chronic-pain-45 audience profile vient de family-purchased dynamic · les enfants adultes achetent insoles pour leur mere qui souffre des pieds · plus seasonality brand.json#seasonality May Mother's Day = primary peak + November-December Christmas = secondary peak · pattern cadeau utile dans contexte celebration symbolique",
+      "source": "brand.json#seasonality.primary_peak_months (May June July August · pic ete + Mother's Day May) + secondary (November December · Christmas) · plus chronic-pain-45 audience profile family-purchased 30% signal · plus context Stepprs verbatims gift-buyers pattern",
+      "sample_size": "30% pattern recurrence family-purchased signal chronic-pain-45 profile · plus 2 peaks saisonniers actifs cartographies (May Mother's Day + Nov-Dec Christmas)"
+    },
+    "tension": {
+      "$comment": "Tension · gap state_actual vs state_desired vu cote observateur famille (acheteur cadeau) · reason_blocked = convention sociale gift glamour vs utility · PNT-11 + PNT-10 cote observateur",
+      "state_actual": "Acheteur cadeau (enfant adulte) voit sa mere souffrir des pieds tous les jours · refuse activites qu'elle aimait (marche · jardin · sorties) · self-perception mobility declining · acheteur sent l'erosion · veut faire quelque chose · mais cadeaux conventionnels (fleurs · bougie · spa carte) symboliques sans impact sur la douleur reelle observee",
+      "state_desired": "Offrir un cadeau qui dit 'je t'ai ecoutee · j'ai vu que tu souffres · voici quelque chose qui peut vraiment t'aider' · cadeau utile + emotionally meaningful · soulagement palpable mesurable · maman sent l'attention ciblee versus convention",
+      "reason_blocked": "Insoles = perception sociale 'pas un cadeau · trop pratique · pas glamour pour fete des meres' · convention bloque la decision · plus crainte 'elle va trouver bizarre de recevoir des insoles' · belief social que cadeau doit etre joli + symbolique pas utile"
+    },
+    "reframe": {
+      "$comment": "Reframe · pivot perceptuel · cadeau utile vs symbolique · pivot_mechanism = testimonials gift-receiver gratitude + Walking on Air immediate (soulagement palpable des premier port = experience emotionnelle forte vs fleurs ephemeres)",
+      "perceptual_pivot": "Le meilleur cadeau pour maman n'est pas le plus joli ni le plus symbolique · c'est celui qui montre qu'on l'a vraiment ecoutee · maman qui souffre des pieds appreciera 100x plus que des fleurs · ce gift dit · je t'ai vu · pas · j'ai respecte la convention",
+      "pivot_mechanism": "Testimonials gift-receiver gratitude verbatims (illustratifs · maman qui pleure · qui appelle pour remercier · qui dit 'tu m'as ecoutee') + Walking on Air mecanisme emotional benefit latency 0 (soulagement palpable des le premier port · experience emotionnelle forte vs fleurs ephemeres) · combination invalide convention 'pas glamour'"
+    },
+    "bridge": {
+      "$comment": "Bridge · pont concret · Walking on Air emotional benefit ancre la promesse cadeau utile · spec_activated emotional mecanisme + identity benefit (cadeau qui dit je t'ai ecoutee) · promise = empathy-witness frame",
+      "spec_activated": "spec.json#mechanisms · Walking on Air emotional benefit (latency 0 · ressenti des le premier port) · gift = soulagement palpable immediat ressenti maman versus fleurs ephemeres ou cadeau symbolique sans usage",
+      "benefit_served": "Walking on Air (emotional · latency 0) + Identity 'cadeau qui dit je t'ai ecoutee' (identity · gift-emotional bridge · acheteur cadeau ressent fierte d'avoir vraiment vu · maman ressent l'attention ciblee versus convention)",
+      "promise_formulated": "The best gift for mom who's still on her feet all day · 800k Americans walking on air · 90-day money back risk-free if she doesn't love them · perfect for Mother's Day"
+    }
+  },
+  "lineage": {
+    "audience_slug": "gift-buyers-chronic-pain-45-indirect",
+    "schwartz_stage": "unaware",
+    "hook_canon_id": "empathy-witness",
+    "framework_canon_id": "gift-emotional-bridge",
+    "archetype_canon_id": "warm-pedagogical-confident",
+    "pain_extract": "Maman refuse de marcher avec nous · dit que ses pieds ne suivent plus · je la vois renoncer · ca me brise",
+    "proof_primary": "90-day money back guarantee + testimonials gift-receiver gratitude verbatims (illustratifs) + 800k customers cumulative validation · combination rassure acheteur cadeau (risque social + economique reduit)",
+    "CTA": "Give mom the best Mother's Day gift this year · Walking on air · 90-day money back if she doesn't love them"
+  },
+  "compatibility": {
+    "audience_compatibility": [
+      "gift-buyers-chronic-pain-45-indirect",
+      "chronic-pain-45",
+      "chronic-pain-45/plantar-fasciitis",
+      "chronic-pain-45/declining-mobility-self-perception"
+    ],
+    "awareness_compatibility": [
+      "unaware",
+      "problem_aware",
+      "product_aware"
+    ],
+    "friction_blockers": [
+      "FRC-05 Social convention gift glamour",
+      "FRC-06 Size uncertainty buying for someone else"
+    ],
+    "pain_addressed": [
+      "PNT-10",
+      "PNT-11"
+    ],
+    "objection_neutralized": [
+      "OBJ-09",
+      "OBJ-10"
+    ],
+    "timing": [
+      "May (Mother's Day · primary peak)",
+      "November-December (Christmas · secondary peak)"
+    ]
+  },
+  "cross_refs": {
+    "audience_slugs": [
+      "gift-buyers-chronic-pain-45-indirect",
+      "chronic-pain-45"
+    ],
+    "pain_point_ids": [
+      "PNT-10",
+      "PNT-11"
+    ],
+    "objection_ids": [
+      "OBJ-09",
+      "OBJ-10"
+    ],
+    "friction_ids": [
+      "FRC-05",
+      "FRC-06"
+    ],
+    "mechanism_refs": [
+      "Walking on Air (emotional benefit · latency 0)"
+    ],
+    "benefit_refs": [
+      "Walking on Air (emotional · latency 0)",
+      "Identity 'cadeau qui dit je t'ai ecoutee' (identity · gift-emotional bridge)"
+    ],
+    "seasonality_refs": [
+      "May Mother's Day · brand.json#seasonality primary peak",
+      "November-December Christmas · brand.json#seasonality secondary peak"
+    ]
+  }
+}

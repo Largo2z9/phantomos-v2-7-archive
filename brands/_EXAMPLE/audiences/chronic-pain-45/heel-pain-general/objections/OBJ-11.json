@@ -1,0 +1,38 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection SPÉCIFIQUE sous-poche heel-pain-general · 'Am I imagining symptoms · self-doubt qu'est-ce qui me fait vraiment mal vs ageing normal' · vitrine canon v2.64 objection spécifique car concerne UNIQUEMENT segment non-diagnostiqué qui doute de la légitimité de sa douleur",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id",
+    "type": "enum price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10 impact conversion",
+    "response_counter": "copy canon brand refute",
+    "affected_audiences": "array · ICI single audience"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 sub-audience sémantique pure · objection self-doubt légitimité douleur stockée sous-poche heel-pain-general/objections/ car spécifique segment non-diagnostiqué · plantar-fasciitis-diagnosed a la validation médicale qui supprime ce doute"
+  },
+  "objection_id": "OBJ-11",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · self-doubt friction awareness = blocage purchase decision spécifique segment non-validé médicalement · adressée par marketing inclusif Stepprs (douleur normale post-shift OR chronique = même solution)"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Est-ce que j'imagine ma douleur · peut-être c'est juste l'âge qui vient · est-ce que j'ai vraiment besoin d'un produit ou je dramatise · qu'est-ce qui me fait vraiment mal exactement",
+  "type": "scepticism",
+  "lifecycle": "awareness",
+  "severity_score": 4,
+  "tier": "secondary",
+  "response_counter": "Stepprs adresse tout spectrum heel/arch/foot discomfort (de la fatigue post-shift au plantar fasciitis chronique · pas besoin diagnostic clinical pour mériter relief) · 800k+ customers age 30-75 confirment légitimité expérience · 90-day money back risk-free trial pour valider si ça change quelque chose pour TOI · pas besoin de justifier ta douleur pour mériter d'essayer une solution",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-13"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["heel-pain-general"]
+}

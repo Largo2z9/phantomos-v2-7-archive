@@ -1,0 +1,159 @@
+{
+  "$comment": "EXEMPLE pedagogique · angle category-derived whitespace positioning · vitrine canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB demontree · tier secondary supporting hero · cible solution_aware comparing options (workers-shifts mere + chronic-pain-45 mere intersection)",
+  "_schema": "angle/1.2",
+  "_version": "1.2",
+  "_field_types": {
+    "angle_id": "string · canonical ID format ANG-XX",
+    "meta.name": "string · hook ou phrase signature de l'angle",
+    "meta.status": "enum · draft|complete|deprecated",
+    "meta.validation_status.state": "enum · validated|pending|rejected",
+    "origin_axis": "enum · category-derived (positioning whitespace vs alternatives marche)",
+    "tier": "enum · primary|secondary|exploratory · secondary supporting hero audience-derived",
+    "awareness_movement.in": "enum schwartz · solution_aware (audience deja comparing options)",
+    "awareness_movement.out": "enum schwartz · product_aware (Stepprs nomme comme answer)",
+    "formula.observation.phenomenon": "string · phenomene observe data/scrape (positioning whitespace marche · price gap concurrents)",
+    "formula.observation.source": "string · provenance evidence (verbatim · price comparison · category map)",
+    "formula.observation.sample_size": "string · taille echantillon ou pattern recurrence",
+    "formula.tension.state_actual": "string · etat actuel audience (faux choix mass vs premium · price/quality tradeoff)",
+    "formula.tension.state_desired": "string · etat vise audience (qualite engineered + prix accessible)",
+    "formula.tension.reason_blocked": "string · pourquoi gap persiste (categorie polarisee · whitespace inhabite)",
+    "formula.reframe.perceptual_pivot": "string · nouveau cadrage perceptuel propose (le choix n'est pas binaire)",
+    "formula.reframe.pivot_mechanism": "string · mecanisme/raison qui justifie le pivot (engineering Vionic-grade + scale 800k cost-efficiency)",
+    "formula.bridge.spec_activated": "string · cross-ref spec.json#mechanisms (combined engineering claim)",
+    "formula.bridge.benefit_served": "string · cross-ref benefit + latency",
+    "formula.bridge.promise_formulated": "string · promesse formalisee pret-a-deployer copy (comparison-pro hook)",
+    "lineage.audience_slug": "string · cross-ref audiences/{slug} mere",
+    "lineage.schwartz_stage": "enum schwartz",
+    "lineage.hook_canon_id": "string · canon copy hook ID (category-pro-comparison)",
+    "lineage.framework_canon_id": "string · canon copy framework ID (before-after-bridge)",
+    "lineage.archetype_canon_id": "string · canon copy archetype-voix ID",
+    "lineage.pain_extract": "string · verbatim extrait audience.json#pains cross-audience",
+    "lineage.proof_primary": "string · proof asset principal (800k customers + Podiatrist Recommended + price compare)",
+    "lineage.CTA": "string · call-to-action formule",
+    "compatibility.audience_compatibility": "array · slugs audience compatibles (cross-mere)",
+    "compatibility.awareness_compatibility": "array · stages schwartz compatibles",
+    "compatibility.friction_blockers": "array · friction IDs qui bloquent activation angle",
+    "compatibility.pain_addressed": "array · pain canonical IDs adresses",
+    "compatibility.objection_neutralized": "array · objection canonical IDs neutralisees",
+    "cross_refs.audience_slugs": "array · audiences cross-ref",
+    "cross_refs.pain_point_ids": "array · PNT-XX",
+    "cross_refs.objection_ids": "array · OBJ-XX",
+    "cross_refs.friction_ids": "array · FRC-XX",
+    "cross_refs.mechanism_refs": "array · spec.json mechanisms",
+    "cross_refs.benefit_refs": "array · spec.json benefits",
+    "cross_refs.competitor_refs": "array · brand.json#market.competitors cites whitespace"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB · angle category-derived whitespace positioning · tier secondary supporting hero audience-derived · origin_axis specifique category-derived (positioning whitespace Dr Scholl mass $15 vs Vionic premium $90+ · Stepprs comble $27 engineered accessible)"
+  },
+  "angle_id": "ANG-05",
+  "meta": {
+    "name": "Engineered like Vionic · priced like Dr Scholl · 800k customers prove it works",
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pedagogique · vitrine canon · tier secondary category-derived whitespace"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "origin_axis": "category-derived",
+  "tier": "secondary",
+  "awareness_movement": {
+    "in": "solution_aware",
+    "out": "product_aware"
+  },
+  "formula": {
+    "$comment": "Formula OTRB substantive · category-derived demontre whitespace positioning · observation = category map · tension = faux choix mass vs premium · reframe = third option · bridge = engineering accessible",
+    "observation": {
+      "$comment": "Observation · category map factuelle · price points + positioning concurrents observables · pattern audience comparing forced binary choice",
+      "phenomenon": "Categorie foot care insoles polarisee · mass drugstore inefficace (Dr Scholl $15 · foam basique · pas d'engineering) versus premium clinical inaccessible (Vionic $90+ · Powerstep $80+ · custom orthotics podiatre $500-800). Audience solution_aware comparing options se voit forcee a un choix binaire prix/qualite · cherche middle ground engineered + accessible mais ne le trouve pas en categorie.",
+      "source": "Category mapping observable concurrents brand.json#market.competitors (Dr Scholl 30-50% lower · Powerstep 20-40% higher · Superfeet 50-100% higher · Vionic 70-150% higher · custom $500-800) · plus verbatim audience type 'tried Dr Scholl didn't work · can't afford podiatrist'",
+      "sample_size": "4 concurrents cartographies cross-tiers (mass · clinical mid · sport premium · lifestyle premium) plus 1 alternative over-engineered (custom orthotics) · pattern price-point gap entre $15 et $90 inhabite"
+    },
+    "tension": {
+      "$comment": "Tension · gap state_actual vs state_desired sur axe choix concu · reason_blocked = categorie elle-meme polarisee · whitespace inhabite",
+      "state_actual": "Audience comparing options coincee dans faux choix · si elle prend Dr Scholl elle gaspille 15$ sur foam inefficace et reste avec la douleur · si elle prend Vionic ou custom elle paie 3 a 30x plus cher · resignation 'soit ca ne marche pas · soit c'est hors budget'",
+      "state_desired": "Trouver un produit engineered (vraie biomecanique · arch support + impact absorption · pas du foam mass) a prix accessible (pas $90+ ni custom $500+) · qualite clinique avec accessibility drugstore",
+      "reason_blocked": "Categorie elle-meme polarisee · les brands traditionnelles forcent un trade-off · mass joue le volume sur cout materiaux bas · premium joue la marge sur positioning clinical · personne ne fait engineered + accessible · whitespace inhabite jusqu'a Stepprs"
+    },
+    "reframe": {
+      "$comment": "Reframe · pivot perceptuel · le choix n'est pas binaire · troisieme option existe · pivot_mechanism rationnel (engineering Vionic-grade + scale 800k = cost-efficiency · pas magique)",
+      "perceptual_pivot": "Le choix n'est pas mass-inefficace versus premium-inaccessible · une troisieme option existe · engineered comme Vionic et accessible comme Dr Scholl · pas de compromis biomechanique force",
+      "pivot_mechanism": "Engineering claim valide (Arch support engineered + Impact absorption cushioning · combined biomechanical redistribution · clinical-grade) plus scale 800k customers = cost-efficiency permettant prix $27 (vs Dr Scholl $15 inefficace · Vionic $90 over-priced lifestyle) · Podiatrist Recommended valide le claim biomecanique cross-tier"
+    },
+    "bridge": {
+      "$comment": "Bridge · pont concret · combined engineering claim active les 2 mechanisms ensemble (whitespace = engineered package complet) · promise = comparison-pro proof empilable",
+      "spec_activated": "spec.json#mechanisms · Arch support engineered structure + Impact absorption cushioning (combined engineering claim pour activer whitespace versus mass foam · concurrents prennent un seul mecanisme · Stepprs empile les deux)",
+      "benefit_served": "Plantar fasciitis pain relief (functional · latency 7-14j) + End-of-shift comfort (functional · latency 0-7j) · benefit chain demontre que les 2 mechanisms livrent 2 outcomes mesurables que Dr Scholl ne livre pas",
+      "promise_formulated": "Engineered like Vionic · priced like Dr Scholl · 800k customers prove it works · Podiatrist Recommended · Clinically Tested · risk-free 90 days"
+    }
+  },
+  "lineage": {
+    "audience_slug": "solution_aware-comparing-options",
+    "schwartz_stage": "solution_aware",
+    "hook_canon_id": "category-pro-comparison",
+    "framework_canon_id": "before-after-bridge",
+    "archetype_canon_id": "trusted-engineer-practical",
+    "pain_extract": "Tried Dr Scholl · didn't work · can't justify $90 for Vionic without knowing if it will work either",
+    "proof_primary": "800k customers + Podiatrist Recommended + Clinically Tested + price compare table $27 Stepprs vs $15 Dr Scholl (inefficace) vs $90 Vionic (over-priced)",
+    "CTA": "See the difference engineered insoles make · Try Stepprs Risk-Free 90 Days at the price of drugstore"
+  },
+  "compatibility": {
+    "audience_compatibility": [
+      "workers-shifts",
+      "chronic-pain-45",
+      "workers-shifts/nurses-12h",
+      "workers-shifts/warehouse-10h",
+      "chronic-pain-45/plantar-fasciitis"
+    ],
+    "awareness_compatibility": [
+      "solution_aware",
+      "product_aware"
+    ],
+    "friction_blockers": [
+      "FRC-01 Fit shoes constraint",
+      "FRC-03 Price sensitivity threshold"
+    ],
+    "pain_addressed": [
+      "PNT-01",
+      "PNT-09"
+    ],
+    "objection_neutralized": [
+      "OBJ-02",
+      "OBJ-08"
+    ]
+  },
+  "cross_refs": {
+    "audience_slugs": [
+      "workers-shifts",
+      "chronic-pain-45"
+    ],
+    "pain_point_ids": [
+      "PNT-01",
+      "PNT-09"
+    ],
+    "objection_ids": [
+      "OBJ-02",
+      "OBJ-08"
+    ],
+    "friction_ids": [
+      "FRC-01",
+      "FRC-03"
+    ],
+    "mechanism_refs": [
+      "Arch support engineered structure",
+      "Impact absorption cushioning"
+    ],
+    "benefit_refs": [
+      "Plantar fasciitis pain relief",
+      "End-of-shift comfort (long standing)"
+    ],
+    "competitor_refs": [
+      "Dr. Scholl's (mass drugstore · $15 · 30-50% lower)",
+      "Vionic (podiatrist recommended lifestyle · $90+ · 70-150% higher)",
+      "Powerstep (clinical mid-tier · 20-40% higher)",
+      "Custom orthotics podiatre ($500-800 · over-engineered + expensive)"
+    ]
+  }
+}

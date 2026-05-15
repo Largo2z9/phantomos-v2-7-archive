@@ -1,0 +1,153 @@
+{
+  "$comment": "EXEMPLE pedagogique · angle product-derived Impact absorption cushioning · vitrine canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB demontree · audience workers-shifts mere · feature angle compound pain (foot + joint)",
+  "_schema": "angle/1.2",
+  "_version": "1.2",
+  "_field_types": {
+    "angle_id": "string · canonical ID format ANG-XX",
+    "meta.name": "string · hook ou phrase signature de l'angle",
+    "meta.status": "enum · draft|complete|deprecated",
+    "meta.validation_status.state": "enum · validated|pending|rejected",
+    "origin_axis": "enum · audience-derived|product-derived",
+    "tier": "enum · primary|secondary|exploratory",
+    "awareness_movement.in": "enum schwartz · unaware|problem_aware|solution_aware|product_aware|most_aware",
+    "awareness_movement.out": "enum schwartz · meme echelle (target post-exposition angle)",
+    "formula.observation.phenomenon": "string · phenomene observe data/scrape (verbatims · hashtags · evidence)",
+    "formula.observation.source": "string · provenance evidence (verbatim/scrape/data/clinical)",
+    "formula.observation.sample_size": "string · taille echantillon ou pattern recurrence",
+    "formula.tension.state_actual": "string · etat actuel audience (douleur · friction · status quo)",
+    "formula.tension.state_desired": "string · etat vise audience (outcome ideal)",
+    "formula.tension.reason_blocked": "string · pourquoi gap persiste (false belief · solution echec · resignation)",
+    "formula.reframe.perceptual_pivot": "string · nouveau cadrage perceptuel propose",
+    "formula.reframe.pivot_mechanism": "string · mecanisme/raison qui justifie le pivot",
+    "formula.bridge.spec_activated": "string · cross-ref spec.json#mechanisms ou features activees",
+    "formula.bridge.benefit_served": "string · cross-ref benefit + latency",
+    "formula.bridge.promise_formulated": "string · promesse formalisee pret-a-deployer copy",
+    "lineage.audience_slug": "string · cross-ref audiences/{slug}",
+    "lineage.schwartz_stage": "enum schwartz",
+    "lineage.hook_canon_id": "string · canon copy hook ID",
+    "lineage.framework_canon_id": "string · canon copy framework ID",
+    "lineage.archetype_canon_id": "string · canon copy archetype-voix ID",
+    "lineage.pain_extract": "string · verbatim extrait audience.json#pains",
+    "lineage.proof_primary": "string · proof asset principal (verbatim · clinical · stat)",
+    "lineage.CTA": "string · call-to-action formule",
+    "compatibility.audience_compatibility": "array · slugs audience compatibles (mere + sous-poches)",
+    "compatibility.awareness_compatibility": "array · stages schwartz compatibles",
+    "compatibility.friction_blockers": "array · friction IDs qui bloquent activation angle",
+    "compatibility.pain_addressed": "array · pain canonical IDs adresses",
+    "compatibility.objection_neutralized": "array · objection canonical IDs neutralisees",
+    "cross_refs.audience_slugs": "array · audiences cross-ref",
+    "cross_refs.pain_point_ids": "array · PNT-XX",
+    "cross_refs.objection_ids": "array · OBJ-XX",
+    "cross_refs.friction_ids": "array · FRC-XX",
+    "cross_refs.mechanism_refs": "array · spec.json mechanisms",
+    "cross_refs.benefit_refs": "array · spec.json benefits"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB (Observation + Tension + Reframe + Bridge) · angle product-derived Impact cushioning (feature primary) · compound pain reframe (foot fatigue + joint impact compose)"
+  },
+  "angle_id": "ANG-04",
+  "meta": {
+    "name": "What concrete floors do to your knees · and the cushioning that stops it",
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pedagogique · vitrine canon"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "origin_axis": "product-derived",
+  "tier": "primary",
+  "awareness_movement": {
+    "in": "problem_aware",
+    "out": "product_aware"
+  },
+  "formula": {
+    "$comment": "Formula OTRB · angle compound pain · expansion du symptome (foot fatigue) vers cause systemique (joint impact compose) · pivote la conscience douleur de localisee a systemique",
+    "observation": {
+      "$comment": "Observation · workers concrete floor reportent douleur composee (talons + genoux + dos) mais attribuent souvent uniquement aux pieds · gap perceptuel sur la cascade biomecanique",
+      "phenomenon": "Workers shifts concrete floors (warehouse · retail · hospitality · nursing) reportent douleur composee · pieds + genoux + bas du dos · mais focus mental sur les pieds uniquement · la cascade biomecanique impact-shock concrete vers articulations sup est meconnue · resultat · cherchent solutions chaussures/insoles foot-only · negligent la cause upstream",
+      "source": "verbatim clients Stepprs cross-referenced · plus scrape hashtags #WarehouseLife #MailmanProblems · plus reviews PDP compagnies comparable",
+      "sample_size": "5 verbatims explicites Stepprs (Mike Kowalski warehouse · Tanya nurse · Dean H · Rachel S · James) · plus pattern recurrent reviews top category"
+    },
+    "tension": {
+      "$comment": "Tension · gap entre solution cherchee (foot relief) et probleme reel (joint impact systemique) · la solution achetee precedemment ne pouvait pas marcher car ciblait le symptome pas la cause",
+      "state_actual": "Worker rentre du shift avec douleur composee qu'il attribue 'a son age' ou 'a son boulot' · accepte la degradation articulaire comme inevitable · cherche occasionnellement chaussures plus confortables sans systeme · pas de modele mental causal",
+      "state_desired": "Comprendre que la douleur articulaire upstream (genoux · dos · hanches) est consequence directe de l'impact-shock concrete non-absorbe · proteger la sante articulaire long-terme · pas juste soulager les pieds le soir",
+      "reason_blocked": "Modele mental dominant 'douleur pieds = probleme pieds' · pas de literacy biomecanique cascade · perception 'les genoux qui craquent c'est la vie' · resignation cumulative"
+    },
+    "reframe": {
+      "$comment": "Reframe · pivot causal · ce n'est pas le foot pain le probleme · c'est le joint impact compound · adresser la cause upstream protege downstream",
+      "perceptual_pivot": "Ce n'est pas le foot pain le probleme · c'est le joint impact compound · les genoux et le dos accumulent les chocs non-absorbes shift apres shift · Stepprs cushioning absorbe la cause avant qu'elle remonte la chaine articulaire · investissement preventif pas juste curatif",
+      "pivot_mechanism": "Impact absorption cushioning (multi-layer densite progressive) absorbe l'energie d'impact concrete a la source · reduit la transmission shock vers genoux/hanches/dos · biomecanique cascade documentee · chaque pas absorbe = stress articulaire upstream evite"
+    },
+    "bridge": {
+      "$comment": "Bridge · spec primary impact cushioning · benefit end-of-shift comfort + joint protection · promise sourcee Mike Kowalski (durability 2 ans) + clinical (95% pain reduction)",
+      "spec_activated": "spec.json#mechanisms · Impact absorption cushioning (primary feature angle)",
+      "benefit_served": "End-of-shift comfort (long standing) · latency 0-7j · functional · plus joint protection downstream latency 30-90j",
+      "promise_formulated": "Mike Kowalski · 2 years · 10 hour days warehouse · Clinical Tested 95% pain reduction · protect your knees before they need protecting · 90-day money back risk-free"
+    }
+  },
+  "lineage": {
+    "audience_slug": "workers-shifts",
+    "schwartz_stage": "problem_aware",
+    "hook_canon_id": "stat-choc",
+    "framework_canon_id": "problem-agitate-solution",
+    "archetype_canon_id": "trusted-engineer-practical",
+    "pain_extract": "My feet are killing me by hour 8 · and lately my knees too · I'm only 38",
+    "proof_primary": "Mike Kowalski 2 years 10 hour days warehouse verbatim · plus Clinical Tested 95% pain reduction · plus impact cushioning biomecanique explainer",
+    "CTA": "Try Stepprs Risk-Free 90 Days · Feel your first shift with full impact absorption"
+  },
+  "compatibility": {
+    "audience_compatibility": [
+      "workers-shifts",
+      "workers-shifts/warehouse-10h",
+      "workers-shifts/nurses-12h",
+      "workers-shifts/hospitality-retail"
+    ],
+    "awareness_compatibility": [
+      "problem_aware",
+      "solution_aware"
+    ],
+    "friction_blockers": [
+      "FRC-01 Fit shoes constraint",
+      "FRC-02 Past insole disappointment"
+    ],
+    "pain_addressed": [
+      "PNT-01",
+      "PNT-02",
+      "PNT-04",
+      "PNT-06"
+    ],
+    "objection_neutralized": [
+      "OBJ-02",
+      "OBJ-05",
+      "OBJ-07"
+    ]
+  },
+  "cross_refs": {
+    "audience_slugs": [
+      "workers-shifts"
+    ],
+    "pain_point_ids": [
+      "PNT-01",
+      "PNT-02"
+    ],
+    "objection_ids": [
+      "OBJ-02",
+      "OBJ-05"
+    ],
+    "friction_ids": [
+      "FRC-01",
+      "FRC-02"
+    ],
+    "mechanism_refs": [
+      "Impact absorption cushioning",
+      "Arch support engineered structure"
+    ],
+    "benefit_refs": [
+      "End-of-shift comfort (long standing)",
+      "Daily wearability"
+    ]
+  }
+}

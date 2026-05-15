@@ -1,0 +1,48 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain SPÉCIFIQUE sous-poche nurses-12h · back pain compound standing + walking unit miles · vitrine canon v2.64 pain placé sous-poche car compound standing+walking unique nurses (warehouse = walking aussi mais pattern différent · hospitality = standing mostly)",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id séquentiel cross-tree workers-shifts (PNT-04 continue après mère 01-03)",
+    "formulation": "verbatim customer language nurses",
+    "chain": "surface → consequence → deep",
+    "category": "enum physical / emotional / friction_ux / logistical / cognitive / social_status",
+    "affected_audiences": "array · 1 entry nurses-12h car spécifique sous-poche"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · pain spécifique sous-poche · placé nurses-12h/pain_points/ car compound standing+walking unit pattern unique aux infirmières (5-7 miles/shift dans unité)"
+  },
+  "pain_id": "PNT-04",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · back pain nurse pattern reconnu litérature occupational health"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Mon dos est cuit · je passe 12h debout ET je marche miles dans l'unité · les patients changent de chambre, je marche, je porte, je penche, je marche encore",
+  "chain": {
+    "surface": "Douleur lombaire chronique compound · raideur cervicale · sciatique épisodique · jambes lourdes fin shift",
+    "consequence": "Dépendance ibuprofène + heat pads · sommeil non récupérateur · impact direct vie famille (incapable jouer avec enfants après shift) · médecin évoque hernie discale précoce",
+    "deep": "Peur de devoir quitter ma vocation avant l'âge · culpabilité de pas être présente pour ma famille hors shift · question identité (suis-je encore l'infirmière que j'étais à 25 ans)"
+  },
+  "category": "physical",
+  "severity_score": 7,
+  "tier": "primary",
+  "emotion": "fear · exhaustion · guilt · identity_threat",
+  "trigger": "12h shifts back-to-back · compound standing + walking unit + lifting patients · pic shifts week-end consécutifs",
+  "verbatim_quotes": [
+    "Tanya nurse (12-hour shifts · first impression really promising) · explicit pattern besoin solution post-shift"
+  ],
+  "frequency": "very_common (nurses 12h shifts · 85%+ touchées chronic back pain after 3+ years)",
+  "urgency": "critical (impact career longevity + risque hernie + vie famille)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Impact absorption cushioning", "Arch support engineered structure"],
+    "benefits_served": ["End-of-shift comfort (long standing)", "Plantar fasciitis pain relief"],
+    "friction_ids": [],
+    "objection_ids": ["OBJ-04"]
+  },
+  "affected_audiences": ["nurses-12h"]
+}

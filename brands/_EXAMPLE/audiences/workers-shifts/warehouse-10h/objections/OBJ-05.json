@@ -1,0 +1,37 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection SPÉCIFIQUE sous-poche warehouse-10h · steel-toe boots don't accept extra insole thickness · vitrine canon v2.64 objection placée sous-poche car contrainte épaisseur insole + steel-toe unique warehouse (nurses sneakers = pas de constraint thickness · hospitality dress shoes = variable)",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id",
+    "type": "enum price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10",
+    "affected_audiences": "1 entry warehouse-10h"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · objection spécifique warehouse · steel-toe fit constraint thickness 6mm trop"
+  },
+  "objection_id": "OBJ-05",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · steel-toe boots embeded insole + safety toe leave minimal volume extra insole"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Mes steel-toes ont déjà une semelle intégrée · si je rajoute une insole 6mm mes orteils touchent le toe cap · ça compress · pas viable 10h",
+  "type": "fit",
+  "lifecycle": "consideration",
+  "severity_score": 7,
+  "tier": "primary",
+  "response_counter": "Stepprs profil engineered thin 4mm (vs gel pads 6-8mm) · retire semelle origine steel-toe et remplace par Stepprs (won't make your shoes feel tight · fits easily into work boots verbatim site) · workaround pattern validé warehouse workers reviews",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-06", "PNT-07"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["warehouse-10h"]
+}

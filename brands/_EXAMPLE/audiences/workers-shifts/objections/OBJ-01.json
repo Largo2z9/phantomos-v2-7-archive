@@ -1,0 +1,39 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection shared cross-sous-poches workers-shifts · fit work shoes/boots · vitrine canon v2.64 objection mère car concerne tous workers (nurses sneakers, warehouse boots, retail dress shoes) qui rajoutent semelle dans chaussure pro existante",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id (OBJ-XX séquentiel cross-tree audience)",
+    "type": "enum · price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum · awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10 (impact conversion · 10 = dealbreaker absolu)",
+    "response_counter": "copy validée canon brand qui refute · verbatim site/landing si dispo",
+    "derived_angle_refs": "array ANG-XX angles qui exploitent cette objection (cross-link Phase 6 angles)",
+    "affected_audiences": "array audience_ids · 1 spécifique · multiple si shared cross-poches"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · objection fit shoes shared cross-trois sous-poches · placée mère car universelle workers shifts"
+  },
+  "objection_id": "OBJ-01",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · objection FAQ verbatim site Stepprs"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Ça va pas rentrer dans mes work boots · j'ai déjà des semelles dedans qui sortent pas",
+  "type": "fit",
+  "lifecycle": "consideration",
+  "severity_score": 6,
+  "tier": "primary",
+  "response_counter": "Won't make your shoes feel tight · Fits easily into work boots, sneakers, trainers (copy site verbatim Stepprs · thin engineered profile 4mm)",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-01"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["workers-shifts", "nurses-12h", "warehouse-10h", "hospitality-retail"]
+}

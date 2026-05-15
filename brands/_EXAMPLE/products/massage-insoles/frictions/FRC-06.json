@@ -1,0 +1,61 @@
+{
+  "$comment": "EXEMPLE pédagogique · friction usage produit massage-insoles · vitrine canon v2.64 · friction PRIMARY adjustment period 7-14 days latency pain relief",
+  "_schema": "friction/1.3",
+  "_version": "1.3",
+  "_field_types": {
+    "friction_id": "stated",
+    "meta.*": "structured",
+    "formulation": "observed",
+    "category": "structured",
+    "severity_score": "derived",
+    "tier": "structured",
+    "customer_evidence": "observed",
+    "current_workarounds": "observed",
+    "resolution_state": "structured",
+    "cross_refs.*": "structured",
+    "affected_products": "stated",
+    "affected_audiences": "stated"
+  },
+  "_meta": {
+    "example_canon_showcased": "Canon v2.64 · friction PRIMARY cognitive latency · adjustment 7-14j avant relief plantar fasciitis · chronic-pain audience scarred par insoles précédentes inefficaces · 90-day guarantee mitige · communication latency upfront critique"
+  },
+  "friction_id": "FRC-06",
+  "meta": {
+    "status": "complete",
+    "validation_status": {"state": "validated", "_note": "Example pédagogique vitrine v2.68"},
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "$comment_formulation": "Verbatim customer · friction cognitive impatience · audience chronic pain a essayé X produits · refund attendu si pas de relief jour 3-4 alors que latence réelle = 7-14j",
+  "formulation": "Customer language verbatim · 'J'ai mal depuis 5 ans · 3 jours dans et toujours mal · I want a refund · les autres insoles que j'ai essayées rien marchait non plus'",
+  "category": "cognitive",
+  "$comment_severity": "Score 6 friction primary · latency adjustment vs impatience pain relief = drop conversion + early returns avant fenêtre relief effective · audience chronic-pain particulièrement sensible (scarred trust)",
+  "severity_score": 6,
+  "tier": "primary",
+  "customer_evidence": [
+    "Dean H testimonial · 'first full shift with zero heel pain by hour 8' (mais après combien de jours d'usage?)",
+    "Site copy · 'Most users report significant relief within 7-14 days of consistent daily use'",
+    "Returns data implicite · early returns jour 3-5 audience chronic-pain",
+    "Reviews · 'didn't work · returned' vs 'gave it 2 weeks · life-changing'"
+  ],
+  "current_workarounds": [
+    "90-day guarantee · attendre la fenêtre complète avant retour",
+    "Communication latency upfront · onboarding email day 1-3-7-14",
+    "Wear daily 4-6h crescendo · pas full shift jour 1",
+    "Combine avec foot roller (autre produit Stepprs) pour relief immédiat parallèle"
+  ],
+  "resolution_state": "workaround_present",
+  "$comment_cross_refs": "Cross-refs · PNT-09 chronic-pain-45 (douleur quotidienne longue durée) · OBJ-07 chronic-pain-45 (insoles never worked before · scar) · mechanisms_workaround Massage textured stimulation + Arch support engineered structure (mécanismes nécessitent adaptation tissue · latency physiologique) · benefits_blocked Plantar fasciitis pain relief (functional · latency 7-14j explicit dans spec.json)",
+  "cross_refs": {
+    "affected_pain_points": ["PNT-09"],
+    "affected_objections": ["OBJ-07"],
+    "mechanisms_workaround": ["Massage textured stimulation", "Arch support engineered structure"],
+    "benefits_blocked": ["Plantar fasciitis pain relief"]
+  },
+  "affected_products": ["massage-insoles"],
+  "affected_audiences": [
+    "chronic-pain-45",
+    "chronic-pain-45/plantar-fasciitis-diagnosed",
+    "chronic-pain-45/heel-pain-general"
+  ]
+}

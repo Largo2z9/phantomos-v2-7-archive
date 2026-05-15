@@ -1,0 +1,301 @@
+{
+  "$comment": "EXEMPLE PEDAGOGIQUE · sous-poche heel-pain-general (enfant de chronic-pain-45). Demontre divergence opposee a plantar-fasciitis-diagnosed · awareness stage problem_aware (vs mere solution_aware · vs sister product_aware). Pas vu podiatre · douleur talon non-diagnostiquee · 'ca fait mal quand je marche longtemps'. Trigger first OTC attempt sans visite medicale. Cross-refs spec.json Massage Insoles · mecanisme massage textured stimulation (premier feel comfort) + benefit emotional 'walking on air' (latence 0 instant) · plus accessible que mecanisme arch support technique (qui parle plus a sous-poche diagnosed). Demontre pattern · meme produit, angles benefits differents selon awareness stage.",
+  "_schema": "profile/2.0",
+  "_version": "2.0",
+  "_field_types": {
+    "meta.*": "structured",
+    "meta.parent_audience_slug": "structured",
+    "meta.is_mother": "structured",
+    "meta.specificity_modifiers": "structured",
+    "identity.label": "structured",
+    "identity.awareness_stage": "structured",
+    "identity.demographics.*": "stated",
+    "identity.life_stage": "derived",
+    "psychology.jtbd_primary": "observed",
+    "psychology.drives": "derived",
+    "psychology.fears": "observed",
+    "decision_process.trigger": "observed",
+    "decision_process.evaluation_criteria": "observed",
+    "decision_process.purchase_path": "observed",
+    "decision_process.time_to_decide": "derived",
+    "behavior.where_they_hang": "observed",
+    "behavior.content_consumed": "observed",
+    "behavior.vocab_register": "derived",
+    "voice.key_expressions": "observed",
+    "voice.tone_self": "derived",
+    "market_position.*": "derived"
+  },
+
+  "meta": {
+    "$comment": "Sous-poche enfant · is_mother: false · parent_audience_slug: chronic-pain-45. Herite scope mere + ajoute specificity_modifiers opposes a plantar-fasciitis-diagnosed · awareness stage problem_aware (vs sister product_aware), trigger sans visite medicale (vs sister post-podiatre + custom orthotics), vocab medical-low (lay terms 'mal au talon' vs sister 'fascia plantaire'). Demontre pattern · awareness stage divergence parent vs enfants peut etre symmetrique opposee entre 2 sous-poches.",
+    "name": "Heel pain general",
+    "slug": "heel-pain-general",
+    "audience_slug": "heel-pain-general",
+    "parent_audience_slug": "chronic-pain-45",
+    "is_mother": false,
+    "example_canon_showcased": "Canon V3 §8.2 sous-poche enfant · awareness stage divergence parent (solution_aware) vs enfant (problem_aware) · specificity_modifiers opposes a sister sous-poche · meme produit, angles benefits differents selon awareness",
+    "specificity_modifiers": {
+      "awareness_divergence": "problem_aware (vs mere solution_aware · vs sister product_aware)",
+      "trigger_added": "douleur quotidienne intolerable apres station debout/marche prolongee sans visite medicale prealable",
+      "vocab_specificity": "medical-low (mal au talon, douleur quand je marche, mes pieds me font souffrir) sans terminologie clinique",
+      "criteria_added": ["accessible OTC first attempt", "no prescription needed", "affordable trial $20-30 range"]
+    },
+    "applies_to_products": ["massage-insoles"],
+    "scope": "segment",
+    "tags": ["heel-pain", "undiagnosed", "first-otc-attempt", "problem-aware"],
+    "audience_type": "primary",
+    "validation_status": {
+      "state": "validated",
+      "validated_by": "operator",
+      "validated_at": "2026-05-14",
+      "validation_notes": "Sous-poche enfant chronic-pain-45 · awareness problem_aware verifie · trigger sans visite medicale source verbatims Amazon reviews mention 'first try' + 'never went to podiatrist'."
+    },
+    "entry_door": "pain_driven",
+    "status": "complete",
+    "created": "2026-05-14",
+    "updated": "2026-05-14"
+  },
+
+  "purchase_driver": "pain_relief",
+
+  "persona_archetype": {
+    "$comment": "Herite mere · condition_based primary (douleur talon trait definitoire) + demographic + psychographic. Condition_based moins pointu que sister (pas diagnostique formel · 'general heel pain' subjective).",
+    "primary": "condition_based",
+    "secondary": ["demographic", "psychographic"]
+  },
+
+  "buyer_user_split": {
+    "$comment": "Herite mere · 65% self-buy (own pain). 35% family-purchased gift (enfants achetent pour parents 60+ sans diagnostic · 'mom said her feet hurt'). Plus haute gift purchase que sister diagnosed car operator non-medical decision moins committed.",
+    "is_split": true,
+    "buyer_role": "self OR adult child OR spouse",
+    "user_role": "self (45-65 undiagnosed heel pain)",
+    "buyer_emotions": ["concern parent mobility", "guilt about parent aging", "looking for accessible affordable solution before medical escalation"],
+    "user_experience": ["surprise OTC works without doctor visit", "validation chose simple solution first"]
+  },
+
+  "identity": {
+    "description": "Sous-poche enfant chronic-pain-45 · douleur talon generale non-diagnostiquee. 'Ca fait mal quand je marche longtemps · je sais pas vraiment ce que c'est'. Pas vu podiatre (cout, time, denial 'c'est normal a mon age'). Cherche premiere solution OTC sans visite medicale prealable. Awareness stage = problem_aware (cherche premiere solution, pas product comparison). Subset typique 50% du tree chronic-pain-45 · largement majoritaire.",
+    "age_range": { "min": 45, "max": 65 },
+    "gender": "all",
+    "profession_category": "white-collar pre-retirement OR retiree OR caregiver (heritage mere · large spectrum vs sister bias healthcare)",
+    "income_level": "medium",
+    "lifestyle": [
+      "active mais affectee par douleur talon non-diagnostiquee",
+      "jamais consulte podiatre (cout/temps/denial)",
+      "essaie de gerer avec self-care basic (repose, advil occasionnel)",
+      "famille suggere 'va voir un docteur' · resiste",
+      "jardinage, marche, garde-enfants grands-parents"
+    ],
+    "information_sources": [
+      "Amazon reviews insole categorie general",
+      "Facebook ads insoles retargeting age 45+",
+      "Google search 'mal au talon que faire'",
+      "amies meme age recommandations bouche-a-oreille",
+      "AARP newsletters articles aging health"
+    ]
+  },
+
+  "role": {
+    "type": "end_user",
+    "proxy_link_id": null
+  },
+
+  "psychology": {
+    "core_desire": "Soulager cette douleur talon quotidienne sans avoir a aller chez un docteur · trouver une solution simple OTC abordable.",
+    "values": [
+      "self-reliance (gerer sans medical escalation)",
+      "value-for-money (low-stakes trial)",
+      "preserved mobility = preserved independence",
+      "simple solution > complex medical route"
+    ],
+    "goals": [
+      "marcher 30 min sans cette douleur en fin de balade",
+      "premier pas du matin moins penible",
+      "ne pas devenir personne qui se plaint constamment",
+      "eviter visite medicale et son cout"
+    ],
+    "beliefs_limiting": [
+      "A mon age c'est normal d'avoir mal aux pieds",
+      "Les insoles OTC sont toutes pareilles, marketing differenties",
+      "Si je vais voir un docteur il va trouver autre chose et ca va couter",
+      "C'est probablement rien de grave"
+    ],
+    "beliefs_facilitating": [
+      "$27 c'est rien pour essayer · si ca marche pas je rends",
+      "Money-back guarantee = no risk",
+      "Si milliers de personnes laissent reviews positives, ca doit fonctionner pour certains",
+      "Au moins essayer avant de payer un docteur"
+    ],
+    "emotions": ["frustration douleur recurrente", "denial mineur 'c'est normal'", "espoir cautious", "fear si je consulte ils trouveront pire"],
+    "social_codes": ["amies 45+ partagent 'j'ai mal au talon aussi'", "discret avec famille sur frequence douleur", "fierte si solution OTC simple marche"],
+    "life_moments": ["fin de journee marche prolongee", "matin reveil douleur insistante", "vacances marche touristique limite", "famille flag 'tu boitilles'", "moment ou amie 60+ mentionne solution insole qui a marche"],
+    "jtbd": {
+      "primary": "Soulager cette douleur talon quotidienne sans avoir a aller chez un docteur ni depenser $500+ en medical.",
+      "secondary": "Tester premiere solution accessible avant escalade medicale potentielle.",
+      "context": "Pre-podiatre · douleur recurrente non-diagnostiquee · resistance ou non-priorite visite medicale · cherche premiere solution OTC accessible.",
+      "emotional_driver": "relief",
+      "drives": ["pain relief accessible", "value-for-money low-stakes trial", "preserved mobility without medical escalation"],
+      "fears": ["si je consulte ils trouveront pire", "cout medical inattendu", "etre cette personne qui se plaint sans cesse"],
+      "status_signals": ["smart consumer who tries simple first", "I take care of small issues without escalating"],
+      "self_perception": "Pragmatic adult who tries the simple solution before the expensive medical route."
+    }
+  },
+
+  "decision_process": {
+    "$comment": "Trigger specifique sous-poche · douleur quotidienne intolerable sans diagnostic prealable. Evaluation criteria simplifies vs sister diagnosed · pas de clinical equivalence claim (n'a pas reference custom orthotics) · poids sur reviews accessible + money-back. Time_to_decide plus long (2-6 weeks vs sister 1-2 weeks) car problem_aware exploration concepts.",
+    "awareness_trigger": "Douleur quotidienne intolerable apres marche/station debout · conjoint flag 'tu boitilles' · OR amie meme age recommande insole OTC · OR ad Facebook ciblage 45+ heel pain.",
+    "research_behavior": {
+      "primary_sources": ["Google search 'mal au talon quand je marche'", "Amazon insole categorie reviews", "Facebook ads landing pages"],
+      "secondary_sources": ["amies meme age bouche-a-oreille", "AARP articles aging", "Reddit r/AgingParents discussions"],
+      "decision_makers": "self"
+    },
+    "evaluation_criteria": [
+      "verified reviews 1000+ accessible language (pas medical jargon)",
+      "money-back guarantee 90-day (cross-ref spec.json promise)",
+      "price $20-30 sweet spot (low-stakes first trial)",
+      "podiatrist mention (gives legitimacy without visiting one)",
+      "before/after age-similar testimonials",
+      "easy to use (slip-in insole, no fitting needed)"
+    ],
+    "trust_anchors": [
+      "verified reviews volume 1000+",
+      "before/after testimonials age-similar people",
+      "podiatrist recommended badge (cross-ref spec.json promise · gives borrowed authority)",
+      "money back guarantee (no-regret trial)"
+    ],
+    "purchase_path": [
+      "trigger (douleur OR amie OR ad)",
+      "Google search 'mal au talon que faire' / 'best insole heel pain'",
+      "Amazon reviews comparison + DTC site review",
+      "skip podiatre etape (resistance · cost · time)",
+      "purchase trial pair $27 (cross-ref spec.json offers · 35% off frame $42→$27)",
+      "wear daily 2-3 weeks · validate sensation 'walking on air' (cross-ref spec.json benefit emotional latency 0)"
+    ],
+    "purchase_catalyst": "Promo 35% off ($42→$27) + verified reviews mass + 90-day money back · sweet spot 'might as well try, $27 is nothing'.",
+    "time_to_decide": "2-6 weeks (problem_aware exploration · pas product comparison precis)",
+    "risk_tolerance": "waits_for_proof"
+  },
+
+  "behavior": {
+    "purchase_frequency": "occasional",
+    "conversion_timeline": "considered",
+    "dominant_device": "mobile",
+    "cart_behavior": "waits_for_discount",
+    "where_they_hang": [
+      "Amazon insole reviews mass market",
+      "Facebook age 45+ groups general health",
+      "Google search results heel pain queries",
+      "AARP forums age 50+"
+    ],
+    "content_consumed": [
+      "Amazon reviews mass insole accessible language",
+      "Facebook ads heel pain insole landing pages",
+      "Google articles 'why does my heel hurt'",
+      "AARP newsletters health tips aging",
+      "before/after testimonials similar age stories"
+    ],
+    "vocab_register": "medical-low · uses lay terms (mal au talon, douleur quand je marche, mes pieds me font souffrir, problemes de pieds) · evite terminologie clinique",
+    "brand_relationships": "Dr Scholl tried failed (chaussette/pad cheap inefficace) · jamais essaye custom orthotics ou Vionic specifique · Stepprs nouvelle decouverte via Amazon search OR Facebook ad.",
+    "seasonal_spikes": ["spring (return outdoor walking)", "summer vacation (long walks reveal pain)", "post-holidays (resolutions self-care)"],
+    "channel_preferences": ["Google search", "Amazon", "Facebook ads", "email if past customer"]
+  },
+
+  "voice": {
+    "vocabulary_to_use": [
+      "j'ai mal au talon",
+      "ca me fait mal quand je marche longtemps",
+      "mes pieds me font souffrir en fin de journee",
+      "soulagement",
+      "marcher sur un nuage (cross-ref Stepprs promise 'Walking on Air')"
+    ],
+    "vocabulary_to_avoid": [
+      "plantar fasciitis (medical jargon · trop technique)",
+      "fascia plantaire",
+      "podiatrist-prescribed",
+      "clinical-grade",
+      "biomechanical"
+    ],
+    "key_expressions": [
+      { "text": "j'ai mal au talon quand je marche longtemps mais je sais pas vraiment ce que c'est", "origin": "voc", "platform": "amazon-reviews", "frequency": 62, "sample_size": 200 },
+      { "text": "j'ai jamais consulte de podiatre · trop cher · trop time", "origin": "voc", "platform": "amazon-reviews", "frequency": 38, "sample_size": 200 },
+      { "text": "j'ai essaye Dr Scholl chez Walmart, rien fait", "origin": "voc", "platform": "amazon-reviews", "frequency": 71, "sample_size": 200 },
+      { "text": "au prix la, ca vaut le coup d'essayer", "origin": "voc", "platform": "amazon-reviews", "frequency": 84, "sample_size": 200 }
+    ],
+    "tone_self": "pragmatic · slightly worried mais denial · cautious hope · accessible language",
+    "tone_register": "lay accessible, no medical jargon, partage experience similaire age, hesitations sur visite medicale",
+    "pain_metaphors": [
+      "j'ai mal au talon",
+      "comme si je marchais sur un caillou",
+      "douleur sourde en fin de journee",
+      "mes pieds me lachent"
+    ],
+    "solution_metaphors": [
+      "marcher sur un nuage (cross-ref Stepprs promise 'Walking on Air')",
+      "soulagement immediat sensation",
+      "ne plus penser a mes pieds",
+      "comme si j'avais des chaussures neuves"
+    ]
+  },
+
+  "benefits": [
+    {
+      "$comment": "BEN-01 sous-poche heel-pain-general · cross-ref spec.json benefit emotional 'walking on air' latence 0 instant · mecanisme massage textured stimulation (plus parlant que arch support technical). Premier benefit perceptible des le premier port · critical pour problem_aware (besoin signal immediat reassurance).",
+      "ref": "BEN-01",
+      "priority": 1,
+      "formulation": "Sensation 'walking on air' des le premier port · soulagement immediat fin de journee",
+      "chain": [
+        { "level": "functional", "formulation": "Massage textured stimulation + cushioning impact absorption · comfort feel instant des le premier port · cross-ref spec.json mecanisme massage" },
+        { "level": "emotional", "formulation": "Je ressens immediatement la difference · validation choix simple sans avoir a consulter docteur" },
+        { "level": "identity", "formulation": "Je suis le pragmatique qui essaie la solution simple avant l'expensive medical · preserved mobility sans escalade" }
+      ],
+      "emotional_lever": "relief",
+      "awareness_stage": "problem_aware"
+    },
+    {
+      "$comment": "BEN-02 sous-poche heel-pain-general · benefit secondaire = pain reduction quotidienne sous semaines (mais latence plus longue, donc apres BEN-01 instant feel · ordering inverse vs sister diagnosed qui priorite functional). Cross-ref spec.json promise 'zero heel pain by hour 8'.",
+      "ref": "BEN-02",
+      "priority": 2,
+      "formulation": "Zero heel pain by hour 8 · plus de douleur fin de journee apres 2-3 semaines de port quotidien",
+      "chain": [
+        { "level": "functional", "formulation": "Arch support engineered + cushioning · douleur talon fin de journee reduite progressive sur 2-3 semaines" },
+        { "level": "emotional", "formulation": "Je peux finir ma journee sans souffrir · je peux faire mes activites comme avant" },
+        { "level": "identity", "formulation": "Je suis l'adulte active qui a trouve la solution simple · preserved mobility sans avoir consulte" }
+      ],
+      "emotional_lever": "relief",
+      "awareness_stage": "problem_aware"
+    }
+  ],
+
+  "pain_benefit_chain": [],
+
+  "objections": [],
+
+  "market_position": {
+    "$comment": "Awareness problem_aware (diverge de mere solution_aware · vs sister product_aware) · cherche premiere solution, pas product comparison. Segment size 50% du tree chronic-pain-45 (large majority undiagnosed). Price sensitivity higher than sister (no sunk cost custom · $27 perception real).",
+    "awareness_level": "problem_aware",
+    "sophistication_override": "stage_2_amplified_claims",
+    "segment_size_pct_of_tree_parent": 50,
+    "segment_size_pct_of_brand": 17.5,
+    "price_sensitivity": "medium · sweet spot $20-30 (perception affordable trial · $50+ feels excessive sans diagnostic)",
+    "competition_alternatives": [
+      "Dr Scholl mass $15-25 (cheap try-failed precedent commun)",
+      "Powerstep Pinnacle $30-45 (mid-tier accessible)",
+      "Vionic shoes $90-130 (premium lifestyle but expensive)",
+      "Stepprs Massage Insoles $27 sale frame (sweet spot)",
+      "stay no solution (denial + cost barrier visite medicale)"
+    ],
+    "differentiation_appeal": "Insole accessible OTC pour heel pain general · sensation 'walking on air' immediate des le premier port (cross-ref spec.json benefit emotional latency 0) · 90-day money back risk-free trial · podiatrist recommended (borrowed authority sans visite) · $27 sweet spot trial price. Cross-ref spec.json positioning 'between Dr Scholl mass et Vionic premium clinical · lifestyle comfort innovation'."
+  },
+
+  "research_meta": {
+    "confidence": 72,
+    "opportunity_score": 9,
+    "sources_used": [
+      "Stepprs Amazon reviews verified general heel pain sample 600+",
+      "Google search analytics 'heel pain' related queries volume",
+      "Facebook ads performance data ciblage 45+ heel pain creative",
+      "AARP forums heel pain discussions sample 100 posts",
+      "Stepprs internal data customer service first-time buyers age 45+"
+    ]
+  }
+}

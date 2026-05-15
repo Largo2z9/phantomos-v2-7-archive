@@ -1,0 +1,38 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection SPÉCIFIQUE sous-poche plantar-fasciitis-diagnosed · Stepprs $27 vs custom orthotics $500 trop bon pour vrai (perception qualité) · vitrine canon v2.64 objection spécifique sous-poche car concerne UNIQUEMENT segment ayant référentiel custom orthotics premium",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id",
+    "type": "enum price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10 impact conversion",
+    "response_counter": "copy canon brand refute",
+    "affected_audiences": "array · ICI single audience"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 sub-audience sémantique pure · objection spécifique sous-poche stockée dans plantar-fasciitis-diagnosed/objections/ car référentiel mental 'custom $500 = standard quality' propre à segment post-podiatre · heel-pain-general n'a pas ce référentiel donc pas cette objection"
+  },
+  "objection_id": "OBJ-10",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · paradox 'cheap = suspect' = friction conversion spécifique segment habitué medical premium pricing"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Stepprs à $27 quand custom orthotics coutent $500 · trop bon pour vrai · soit c'est de la merde soit ils me cachent quelque chose · qualité réelle ça coute cher",
+  "type": "scepticism",
+  "lifecycle": "consideration",
+  "severity_score": 6,
+  "tier": "primary",
+  "response_counter": "Stepprs prix bas grâce économie échelle 800k+ customers servis · custom orthotics $500-800 incluent visite podiatre $150 + scan/mold $200 + fabrication artisanale 1 paire $150-450 · Stepprs production industrielle qualité contrôlée Clinically Tested + Podiatrist Recommended · même mécanisme arch support engineered structure · daily wearable (vs custom orthotics limitées) · 90-day money back risk-free pour vérifier qualité avant engagement",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-12"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["plantar-fasciitis-diagnosed"]
+}

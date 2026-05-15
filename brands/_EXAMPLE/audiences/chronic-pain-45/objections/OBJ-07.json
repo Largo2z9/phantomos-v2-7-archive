@@ -1,0 +1,39 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection shared cross-sous-poches chronic-pain-45 · 'Insoles never worked before' (Dr Scholl / Powerstep échec) · vitrine canon v2.64 objection mère car pattern past-failure shared cross-diagnostic spectrum",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id (OBJ-XX séquentiel cross-tree audience)",
+    "type": "enum · price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum · awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10 (impact conversion · 10 = dealbreaker absolu)",
+    "response_counter": "copy validée canon brand qui refute · verbatim site/landing si dispo",
+    "derived_angle_refs": "array ANG-XX angles qui exploitent cette objection (cross-link Phase 6 angles)",
+    "affected_audiences": "array audience_ids · 1 spécifique · multiple si shared cross-poches"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · objection scepticism past-failure shared cross-deux sous-poches · placée mère car expérience Dr Scholl/Powerstep échec universelle chronic-pain-45 (verbatim Amazon reviews 89/200 sample)"
+  },
+  "objection_id": "OBJ-07",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · objection past-failure = pattern dominant chronic-pain-45 vs workers-shifts (workers ouverts essai · chronic-pain-45 ont historique échecs)"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "J'ai déjà essayé Dr Scholl · Powerstep · même les orthèses sur mesure du podiatre · rien ne marche durablement",
+  "type": "scepticism",
+  "lifecycle": "consideration",
+  "severity_score": 9,
+  "tier": "primary",
+  "response_counter": "Stepprs combine 3 mécanismes (massage textured surface stimulation + arch support engineered structure + impact absorption cushioning) vs single-feature concurrents · Clinically Tested + Podiatrist Recommended (800k+ customers · 95% pain reduction reported) · 90-day money back si pas convaincu · risque-free trial $27 vs custom orthotics $500-800",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-09"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["chronic-pain-45", "plantar-fasciitis-diagnosed", "heel-pain-general"]
+}

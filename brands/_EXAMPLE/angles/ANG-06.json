@@ -1,0 +1,157 @@
+{
+  "$comment": "EXEMPLE pedagogique · angle brand-derived social proof scale + endorsement · vitrine canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB demontree · tier secondary supporting hero · cible problem_aware + solution_aware mixed cross-audiences",
+  "_schema": "angle/1.2",
+  "_version": "1.2",
+  "_field_types": {
+    "angle_id": "string · canonical ID format ANG-XX",
+    "meta.name": "string · hook ou phrase signature de l'angle",
+    "meta.status": "enum · draft|complete|deprecated",
+    "meta.validation_status.state": "enum · validated|pending|rejected",
+    "origin_axis": "enum · brand-derived (social proof scale + expert endorsement = brand equity)",
+    "tier": "enum · primary|secondary|exploratory · secondary supporting hero audience-derived",
+    "awareness_movement.in": "enum schwartz · problem_aware (audience sait qu'elle souffre · cherche encore comment resoudre)",
+    "awareness_movement.out": "enum schwartz · solution_aware (sait que ce type de produit est une voie · Stepprs nomme la categorie)",
+    "formula.observation.phenomenon": "string · phenomene observe data/scrape (800k customers + Podiatrist Recommended badges · scale social proof)",
+    "formula.observation.source": "string · provenance evidence (brand.json#proofs total_customers + notable_endorsements)",
+    "formula.observation.sample_size": "string · taille echantillon ou pattern recurrence",
+    "formula.tension.state_actual": "string · etat actuel audience (isolement · scepticisme repete · echecs anciens insoles)",
+    "formula.tension.state_desired": "string · etat vise audience (validation sociale + expert que ca peut marcher)",
+    "formula.tension.reason_blocked": "string · pourquoi gap persiste (objection 'insoles never worked' acquise via Dr Scholl)",
+    "formula.reframe.perceptual_pivot": "string · nouveau cadrage perceptuel · tu n'es pas seul · 800k personnes ont resolu",
+    "formula.reframe.pivot_mechanism": "string · mecanisme/raison qui justifie le pivot (scale + endorsement = pas de luck)",
+    "formula.bridge.spec_activated": "string · cross-ref spec.json#mechanisms (les 4 mechanisms empiles)",
+    "formula.bridge.benefit_served": "string · cross-ref benefit emotional + identity",
+    "formula.bridge.promise_formulated": "string · promesse formalisee pret-a-deployer copy (social proof stack)",
+    "lineage.audience_slug": "string · cross-ref audiences/{slug} mere",
+    "lineage.schwartz_stage": "enum schwartz",
+    "lineage.hook_canon_id": "string · canon copy hook ID (social-proof-scale)",
+    "lineage.framework_canon_id": "string · canon copy framework ID (social-proof-stack)",
+    "lineage.archetype_canon_id": "string · canon copy archetype-voix ID",
+    "lineage.pain_extract": "string · verbatim extrait audience.json#pains (PNT-09 morning first-step)",
+    "lineage.proof_primary": "string · proof asset principal (800k + Podiatrist + Clinically Tested badges empiles)",
+    "lineage.CTA": "string · call-to-action formule (join 800k)",
+    "compatibility.audience_compatibility": "array · slugs audience compatibles (cross-tree)",
+    "compatibility.awareness_compatibility": "array · stages schwartz compatibles",
+    "compatibility.friction_blockers": "array · friction IDs qui bloquent activation angle",
+    "compatibility.pain_addressed": "array · pain canonical IDs adresses",
+    "compatibility.objection_neutralized": "array · objection canonical IDs neutralisees",
+    "cross_refs.audience_slugs": "array · audiences cross-ref",
+    "cross_refs.pain_point_ids": "array · PNT-XX",
+    "cross_refs.objection_ids": "array · OBJ-XX",
+    "cross_refs.friction_ids": "array · FRC-XX",
+    "cross_refs.mechanism_refs": "array · spec.json mechanisms (4 mechanisms empiles)",
+    "cross_refs.benefit_refs": "array · spec.json benefits (Walking on Air emotional + Identity)"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB · angle brand-derived social proof scale + endorsement · tier secondary supporting hero audience-derived · origin_axis specifique brand-derived (800k customers + Podiatrist Recommended = brand equity Stepprs · social proof = trust driver dominant categorie scepticisme efficacite)"
+  },
+  "angle_id": "ANG-06",
+  "meta": {
+    "name": "Join 800,000+ Americans walking on air · Podiatrist Recommended",
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pedagogique · vitrine canon · tier secondary brand-derived social proof scale"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "origin_axis": "brand-derived",
+  "tier": "secondary",
+  "awareness_movement": {
+    "in": "problem_aware",
+    "out": "solution_aware"
+  },
+  "formula": {
+    "$comment": "Formula OTRB substantive · brand-derived demontre social proof scale + endorsement comme leverage equity Stepprs · observation = badges empiles · tension = isolement + scepticisme · reframe = tu n'es pas seul · bridge = 4 mechanisms valides par 800k",
+    "observation": {
+      "$comment": "Observation · proof assets brand observables · 800k customers (brand.json#proofs.total_customers) + Podiatrist Recommended + Clinically Tested · pattern scale social proof + expert endorsement empiles",
+      "phenomenon": "Stepprs cumule 800 000 customers acquired (brand.json#proofs.total_customers) · plus 3 endorsements proof empilables (Podiatrist Recommended · Clinically Tested · 95% pain reduction claim) · scale social proof tres au-dessus seuil categorie (concurrents directs ne publient pas chiffres comparables · Dr Scholl mass donc baseline · Vionic premium plus faible volume)",
+      "source": "brand.json#proofs.total_customers + brand.json#proofs.notable_endorsements · plus verbatims clients valides (Mike Kowalski 2 years · Dean H first full shift zero pain by hour 8 · Tanya nurse 12-hour shifts · Rachel S roller after long day · James called two days later order another pair)",
+      "sample_size": "800 000 customers brand-level cumulative · plus 5 verbatims top reviews valides pour ancrer la stat avec voice client concret · plus 3 badges endorsement empilables"
+    },
+    "tension": {
+      "$comment": "Tension · isolement audience · chacun a essaye insoles avant (Dr Scholl) et echoue · resignation acquise · objection 'insoles never worked' = belief categorie · reason_blocked precis",
+      "state_actual": "Audience problem_aware vit dans isolement · chacun a essaye insoles Dr Scholl ou similaires avant · echoue · resignation acquise · belief 'insoles · ca marche pas pour moi · j'ai deja teste' · scepticisme efficacite est l'objection #1 brand.json#proofs comment",
+      "state_desired": "Validation sociale (autres comme moi ont resolu) + validation expert (un professionnel valide la biomecanique) pour autoriser une nouvelle tentative · besoin de preuves empiles avant d'engager budget + esperance",
+      "reason_blocked": "Echec Dr Scholl passe a calcifie le scepticisme · objection OBJ-07 'insoles never worked before' = belief acquis categorie · isolement perçu fait que chaque worker pense que c'est lui le probleme (mauvaise anatomie · pas le bon produit pour lui specifiquement)"
+    },
+    "reframe": {
+      "$comment": "Reframe · pivot perceptuel · tu n'es pas seul · 800k personnes ont resolu via Stepprs · pivot_mechanism = scale + endorsement = pas un coup de chance ni un placebo",
+      "perceptual_pivot": "Tu n'es pas le probleme · les insoles drugstore etaient le probleme · 800 000 personnes ont resolu via Stepprs · plus un podiatre valide la biomecanique · cette categorie de produit peut fonctionner · pour toi aussi",
+      "pivot_mechanism": "Scale 800k customers + Podiatrist Recommended endorsement = combination qui invalide le belief 'ca marche pas pour moi' · si 800k Americans ont resolu et un expert valide · ce n'est pas un coup de chance ni un placebo · c'est un produit qui delivre · plus 95% pain reduction claim stat ancre l'efficacite"
+    },
+    "bridge": {
+      "$comment": "Bridge · pont concret · les 4 mechanisms empiles (Walking on Air emotional capture sur Mecanisme Massage textured stimulation) · promise = social proof stack + invitation join",
+      "spec_activated": "spec.json#mechanisms · les 4 mechanisms empiles ensemble (Massage textured stimulation + Arch support engineered structure + Impact absorption cushioning + Anti-slip stability grip) · Walking on Air emotional capture ancre sur Massage textured stimulation comme mecanisme primaire pedagogique",
+      "benefit_served": "Walking on Air emotional (latency 0 · ressenti immediat premier port) + Identity 'I take care of myself smart' (identity · latency 30-90j · belonging to a smart-self-care tribe de 800k) · combination emotional + identity active la decision",
+      "promise_formulated": "Join 800,000+ Americans walking on air · Podiatrist Recommended · Clinically Tested · 95% pain reduction · 90-day money back risk-free"
+    }
+  },
+  "lineage": {
+    "audience_slug": "cross-audiences",
+    "schwartz_stage": "problem_aware",
+    "hook_canon_id": "social-proof-scale",
+    "framework_canon_id": "social-proof-stack",
+    "archetype_canon_id": "trusted-engineer-practical",
+    "pain_extract": "First step in the morning · sharp pain every single day · I've tried everything and nothing worked",
+    "proof_primary": "800 000 customers acquired + Podiatrist Recommended + Clinically Tested + 95% pain reduction stat · badges empiles social proof + endorsement",
+    "CTA": "Join 800,000+ Americans walking on air · Try Stepprs Risk-Free 90 Days"
+  },
+  "compatibility": {
+    "audience_compatibility": [
+      "workers-shifts",
+      "chronic-pain-45",
+      "workers-shifts/nurses-12h",
+      "workers-shifts/warehouse-10h",
+      "workers-shifts/hospitality-retail",
+      "chronic-pain-45/plantar-fasciitis"
+    ],
+    "awareness_compatibility": [
+      "problem_aware",
+      "solution_aware"
+    ],
+    "friction_blockers": [
+      "FRC-01 Fit shoes constraint",
+      "FRC-04 Trust skepticism trigger"
+    ],
+    "pain_addressed": [
+      "PNT-01",
+      "PNT-09"
+    ],
+    "objection_neutralized": [
+      "OBJ-07",
+      "OBJ-08"
+    ]
+  },
+  "cross_refs": {
+    "audience_slugs": [
+      "workers-shifts",
+      "chronic-pain-45"
+    ],
+    "pain_point_ids": [
+      "PNT-01",
+      "PNT-09"
+    ],
+    "objection_ids": [
+      "OBJ-07",
+      "OBJ-08"
+    ],
+    "friction_ids": [
+      "FRC-01",
+      "FRC-04"
+    ],
+    "mechanism_refs": [
+      "Massage textured stimulation",
+      "Arch support engineered structure",
+      "Impact absorption cushioning",
+      "Anti-slip stability grip"
+    ],
+    "benefit_refs": [
+      "Walking on Air (emotional · latency 0)",
+      "Identity 'I take care of myself smart' (identity · latency 30-90j)",
+      "Plantar fasciitis pain relief",
+      "End-of-shift comfort (long standing)"
+    ]
+  }
+}

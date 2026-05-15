@@ -1,0 +1,37 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection SPÉCIFIQUE sous-poche hospitality-retail · entry price $27 vs lower wage budget tight · vitrine canon v2.64 objection placée sous-poche car contrainte budget wage hospitality/retail spécifiquement plus tendue (minimum wage tipping vs warehouse hourly + benefits)",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id",
+    "type": "enum price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10",
+    "affected_audiences": "1 entry hospitality-retail"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · objection prix spécifique sous-poche · hospitality/retail wages typiquement plus bas que warehouse + benefits = price sensitivity accentuée"
+  },
+  "objection_id": "OBJ-06",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · price sensitivity accentuée hospitality/retail vs warehouse"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "$27 c'est mon budget bouffe d'une semaine · le Dr Scholl à $15 Walmart c'est ce que je peux me permettre · même si c'est moins bon",
+  "type": "price",
+  "lifecycle": "decision",
+  "severity_score": 5,
+  "tier": "secondary",
+  "response_counter": "Cost-per-wear · Stepprs durabilité 2+ ans (verbatim Mike) vs Dr Scholl refresh tous les 2-3 mois · $27 / 24 mois = $1.13/mois vs Dr Scholl $15 × 6 refresh/an = $7.50/mois · Stepprs largement moins cher sur 2 ans · payment splits dispo (Klarna Afterpay) pour rester sous budget mensuel",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-08"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["hospitality-retail"]
+}

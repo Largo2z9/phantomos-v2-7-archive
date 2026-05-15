@@ -1,0 +1,51 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain SPÉCIFIQUE sous-poche heel-pain-general · Don't want to see podiatrist (anxiety médicale + coût visite + uncertainty diagnostic) · vitrine canon v2.64 sub-audience sémantique pure (pain spécifique stocké sous-poche car concerne UNIQUEMENT segment non-diagnostiqué qui résiste consultation · plantar-fasciitis-diagnosed a déjà passé cette étape)",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id",
+    "formulation": "verbatim customer language",
+    "chain": "surface → consequence → deep canon v2.60",
+    "category": "enum physical / emotional / friction_ux / logistical / cognitive / social_status",
+    "severity_score": "1-10",
+    "affected_audiences": "array · ICI single audience"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 sub-audience sémantique pure · pain spécifique sous-poche stocké dans heel-pain-general/pain_points/ car friction médicale (anxiety + cost + uncertainty) propre à segment non-diagnostiqué · diametralement opposé à plantar-fasciitis-diagnosed qui a passé l'étape consultation"
+  },
+  "pain_id": "PNT-13",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · resistance consultation podiatre = trait définitoire heel-pain-general · drives self-research + OTC try-first pattern"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Je veux pas aller voir un podiatre · ça va couter $200 la visite · ils vont me dire que c'est dans ma tête ou me prescrire un truc à $500 · je préfère essayer par moi-même d'abord",
+  "chain": {
+    "surface": "Friction décisionnelle consultation médicale · délai prise rendez-vous · coût visite spécialiste $150-250 hors couverture · anxiety résultat (diagnostic grave ou minimisation 'c'est rien')",
+    "consequence": "Souffrance prolongée non-adressée · auto-diagnostic via Google + Reddit · accumulation OTC products inefficaces (Dr Scholl · Powerstep · stretches YouTube) · démoralisation 'je dois pourtant faire quelque chose mais je sais pas quoi'",
+    "deep": "Méfiance système médical (anxiety procédures + crainte diagnostic anxiogène) · self-reliance défensive · sentiment d'être seul face à sa douleur · question silencieuse · est-ce que ça vaut le coup d'investir temps + argent dans une consultation qui pourrait juste valider ce que je sais déjà"
+  },
+  "category": "cognitive",
+  "severity_score": 5,
+  "tier": "secondary",
+  "emotion": "anxiety médicale · self-reliance défiance · frustration · isolation",
+  "trigger": "Moments réflexion 'devrais-je consulter' déclenchés par pic douleur · annonce assurance dental/vision (rappel coût santé) · conjoint qui dit 'va voir un docteur' · article santé lu déclenche anxiety",
+  "verbatim_quotes": [
+    "Reddit r/PlantarFasciitis · I don't want to spend $200 just to be told to wear better shoes (theme récurrent)",
+    "Amazon reviews · I'm trying this before paying for a podiatrist (pattern self-treatment first)",
+    "Facebook groups · the podiatrist visit cost more than the orthotics that didn't work"
+  ],
+  "frequency": "common (heel-pain-general sous-poche · ~55%+ resistance active consultation)",
+  "urgency": "medium-high (drive OTC purchase decision · ouverture marche Stepprs offer)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Arch support engineered structure", "Massage textured surface stimulation", "Impact absorption cushioning"],
+    "benefits_served": ["Plantar fasciitis pain relief", "Feel Like You're Walking on Air"],
+    "friction_ids": [],
+    "objection_ids": ["OBJ-11"]
+  },
+  "affected_audiences": ["heel-pain-general"]
+}

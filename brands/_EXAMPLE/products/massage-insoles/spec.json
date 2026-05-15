@@ -1,0 +1,265 @@
+{
+  "$comment": "EXEMPLE pédagogique · Produit hero fictif Stepprs Massage Insoles. Vitrine canon spec.schema v1.11 v2.68 · 4 mécanismes typés deep + benefits enrichis emotional_signal+latency · compositional cartography arbre Spec→Mécanisme→Bénéfice canon v3.1 démontré.",
+  "_schema": "spec/1.11",
+  "_version": "1.11",
+  "_field_types": {
+    "identity.*": "stated",
+    "specs.composition.*": "observed",
+    "specs.variants.*": "observed",
+    "active_principle.*": "observed",
+    "mechanisms[].name": "stated",
+    "mechanisms[].description": "observed",
+    "mechanisms[].target": "stated",
+    "mechanisms[].mode_of_action": "structured",
+    "mechanisms[].time_window": "structured",
+    "mechanisms[].duration": "stated",
+    "mechanisms[].evidence_level": "structured",
+    "mechanisms[].market_sophistication": "structured",
+    "benefits[].benefit": "stated",
+    "benefits[].chain_level": "structured",
+    "benefits[].emotional_signal": "observed",
+    "benefits[].latency_min": "stated",
+    "benefits[].latency_max": "stated",
+    "benefits[].evidence_verbatim": "observed",
+    "benefits[].pain_addressed": "structured",
+    "benefits[].mechanism_ref": "structured",
+    "problems_solved[].*": "observed",
+    "promise.*": "stated",
+    "proofs.*": "observed",
+    "pricing.price": "observed",
+    "pricing.currency": "observed",
+    "pricing.price_per_unit": "derived",
+    "pricing.cogs": "stated",
+    "pricing.gross_margin": "derived",
+    "pricing.breakeven_cpa": "derived",
+    "sustainability.*": "observed"
+  },
+  "meta": {
+    "name": "Stepprs Massage Insoles",
+    "slug": "massage-insoles",
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example product · validé par construction pédagogique"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "identity": {
+    "category": "foot care · daily comfort insoles",
+    "niche": "daily-wear insoles pain relief (workers + chronic + preventif)",
+    "product_type": "lifestyle",
+    "tagline": "Feel Like You're Walking on Air",
+    "positioning": "L'insole pain relief daily-wearable · entre Dr. Scholl mass et orthèse podiatrique premium. Engineered + Podiatrist Recommended sans positioning clinique.",
+    "url": "https://stepprs.com/products/massage-insoles",
+    "google_product_category": "194",
+    "hero_image": null,
+    "$comment": "Identity stable · drive le tagline + positioning de tous les angles paid downstream."
+  },
+  "specs": {
+    "composition": {
+      "primary_layer": "Textured massage surface (silicone-rubber blend)",
+      "support_layer": "Engineered arch support structure (EVA foam)",
+      "base_layer": "Anti-slip backing (silicone grip)",
+      "$comment": "3 couches fonctionnelles · chacune triggers un mécanisme distinct (cf mechanisms[] · arbre Spec→Mécanisme canon v3.1)."
+    },
+    "variants": {
+      "colors": ["orange", "black"],
+      "sizes": ["S (US 5-7)", "M (US 7-9)", "L (US 9-11)", "XL (US 11-13)"],
+      "kids_sizes": ["K-S (US 1-3 kids)", "K-M (US 3-5 kids)"],
+      "fit_modifier": "trimmable edges · cut along dotted line scissors"
+    },
+    "dimensions": {
+      "thickness_mm": 6,
+      "weight_per_pair_g": 95,
+      "lifespan_months": 12
+    }
+  },
+  "active_principle": {
+    "name": "Layered functional engineering",
+    "category": "consumer foot care biomechanics",
+    "evidence_strength": "moderate (claim Clinically Tested + Podiatrist Recommended · pas étude publique citée)"
+  },
+  "mechanisms": [
+    {
+      "name": "Massage textured surface stimulation",
+      "description": "Texture micro-bosses qui stimulent la voûte plantaire à chaque pas · effet réflexologie léger + circulation",
+      "target": "circulation_plantaire + nerve_endings",
+      "mode_of_action": "mechanical_stimulation",
+      "time_window": "immediate",
+      "duration": "during wear",
+      "evidence_level": "anecdotal_strong",
+      "market_sophistication": "medium",
+      "triggered_by_specs": ["composition.primary_layer"],
+      "$comment": "Mécanisme entry-level · ressenti immédiat · drive emotional benefit 'Walking on Air' (cf benefits[0])."
+    },
+    {
+      "name": "Arch support engineered structure",
+      "description": "Soutien biomécanique de la voûte · répartit la charge sur la surface plantaire · réduit pression localisée sur talon + métatarse",
+      "target": "plantar_arch + heel_pressure_distribution",
+      "mode_of_action": "biomechanical_redistribution",
+      "time_window": "7d",
+      "duration": "during wear + cumulative comfort 7-14d",
+      "evidence_level": "clinical_claim",
+      "market_sophistication": "medium-high",
+      "triggered_by_specs": ["composition.support_layer", "specs.dimensions.thickness_mm"],
+      "$comment": "Mécanisme structurel cœur · drive functional benefit pain reduction (cf benefits[1] · plantar fasciitis + arch pain)."
+    },
+    {
+      "name": "Impact absorption cushioning",
+      "description": "EVA foam absorbe les chocs talons-béton durant la marche debout · réduit fatigue articulaire genoux + dos sur shifts longs",
+      "target": "joint_impact + heel_pad",
+      "mode_of_action": "shock_absorption",
+      "time_window": "immediate",
+      "duration": "during wear · cumulative end-of-shift comfort",
+      "evidence_level": "clinical_claim",
+      "market_sophistication": "high",
+      "triggered_by_specs": ["composition.support_layer"],
+      "$comment": "Mécanisme worker shifts critique · 10-hour days warehouse + 12-hour shifts nursing · drive functional benefit 'zero heel pain by hour 8' (cf benefits[2])."
+    },
+    {
+      "name": "Anti-slip stability grip",
+      "description": "Silicone backing empêche l'insole de glisser dans la chaussure · maintient position correcte voûte alignée",
+      "target": "insole_position_stability",
+      "mode_of_action": "friction_grip",
+      "time_window": "immediate",
+      "duration": "during wear",
+      "evidence_level": "anecdotal_strong",
+      "market_sophistication": "medium",
+      "triggered_by_specs": ["composition.base_layer"],
+      "$comment": "Mécanisme support · supprime la friction d'ajustement constant · drive utility benefit daily wearability (cf benefits[3])."
+    }
+  ],
+  "benefits": [
+    {
+      "benefit": "Feel Like You're Walking on Air",
+      "chain_level": "emotional",
+      "emotional_signal": "Soulagement immédiat ressenti dès le premier pas · sensation lift + souplesse",
+      "latency_min": 0,
+      "latency_max": 0,
+      "evidence_verbatim": ["the first impression is really promising (Tanya, nurse)"],
+      "pain_addressed": ["heaviness_feet", "morning_stiffness"],
+      "mechanism_ref": "Massage textured surface stimulation",
+      "target_audience": ["workers-shifts", "chronic-pain-45"],
+      "$comment": "Bénéfice émotionnel hero · tagline brand. Latency 0 = instant gratification · vend l'achat sur premier essai."
+    },
+    {
+      "benefit": "Plantar fasciitis pain relief",
+      "chain_level": "functional",
+      "emotional_signal": "Soulagement de la douleur talon matinale qui empoisonne les premiers pas",
+      "latency_min": 7,
+      "latency_max": 14,
+      "evidence_verbatim": ["First full shift with zero heel pain by hour 8 (Dean H)"],
+      "pain_addressed": ["plantar_fasciitis", "heel_pain", "arch_pain"],
+      "mechanism_ref": "Arch support engineered structure",
+      "target_audience": ["chronic-pain-45", "workers-shifts"],
+      "$comment": "Bénéfice fonctionnel cœur · résout la douleur chronique #1 dans la niche. Latency 7-14j = patience required, mais validation forte une fois ressentie."
+    },
+    {
+      "benefit": "End-of-shift comfort (long standing)",
+      "chain_level": "functional",
+      "emotional_signal": "Capacité à finir shift 8-12h sans cette douleur lancinante accumulée talons+genoux+dos",
+      "latency_min": 0,
+      "latency_max": 7,
+      "evidence_verbatim": [
+        "2 years · 10 hour days in a warehouse (Mike Kowalski)",
+        "12-hour shifts (Tanya, nurse)"
+      ],
+      "pain_addressed": ["foot_fatigue_long_shifts", "joint_impact_concrete_floors"],
+      "mechanism_ref": "Impact absorption cushioning",
+      "target_audience": ["workers-shifts"],
+      "$comment": "Bénéfice fonctionnel audience principal Workers shifts. Mécanisme directly mapped à l'usage occupational quotidien."
+    },
+    {
+      "benefit": "Daily wearability sans friction",
+      "chain_level": "functional",
+      "emotional_signal": "Une fois posées, on les oublie · pas de glissement, pas d'ajustement constant",
+      "latency_min": 0,
+      "latency_max": 1,
+      "evidence_verbatim": ["Won't make your shoes feel tight · Fits easily into work boots, sneakers, trainers (copy site)"],
+      "pain_addressed": ["fit_friction", "insole_slipping"],
+      "mechanism_ref": "Anti-slip stability grip",
+      "target_audience": ["workers-shifts", "chronic-pain-45", "daily-preventif"],
+      "$comment": "Bénéfice utility cross-audience · objection 'won't fit shoes' réfutée. Drive repeat purchase + bundle conversion."
+    },
+    {
+      "benefit": "Identité 'I take care of myself smart'",
+      "chain_level": "identity",
+      "emotional_signal": "Reconnaissance qu'on a fait un choix engineered + endorsed plutôt que générique drugstore",
+      "latency_min": 30,
+      "latency_max": 90,
+      "evidence_verbatim": ["he called me two days later and said order me another pair · that tells you everything (James, recommendation)"],
+      "pain_addressed": ["self_perception_smart_consumer"],
+      "mechanism_ref": "Arch support engineered structure",
+      "target_audience": ["chronic-pain-45", "daily-preventif"],
+      "$comment": "Bénéfice identitaire bottom-of-funnel · drives word-of-mouth + brand advocacy. Latency longue · maturité usage."
+    }
+  ],
+  "problems_solved": [
+    {
+      "problem": "Plantar fasciitis · douleur talon chronique matinale",
+      "chain": "physical→functional→emotional",
+      "verbatim_quotes": ["First full shift with zero heel pain by hour 8"],
+      "frequency": "common (45+ population)",
+      "urgency": "high (douleur quotidienne handicapante)"
+    },
+    {
+      "problem": "Foot fatigue end-of-shift 8-12h standing",
+      "chain": "physical→emotional",
+      "verbatim_quotes": ["2 years · 10 hour days warehouse", "12-hour shifts nurse"],
+      "frequency": "very_common (workers occupations)",
+      "urgency": "high (impact quotidien performance + bien-être)"
+    },
+    {
+      "problem": "Insole drugstore ne fits pas / glisse / inefficace",
+      "chain": "friction→trust_breakdown",
+      "verbatim_quotes": [],
+      "frequency": "common (acheteurs ayant déjà essayé Dr. Scholl)",
+      "urgency": "medium (objection #1 = scepticisme efficacité énième insole)"
+    }
+  ],
+  "promise": {
+    "headline": "Zero heel pain by hour 8 · podiatrist recommended · 90 days risk-free",
+    "support_pillars": [
+      "Clinically Tested · 95% pain reduction",
+      "Podiatrist Recommended",
+      "800,000+ happy customers",
+      "90-day money back guarantee"
+    ],
+    "$comment": "Promise canon · triangulé proof points pour neutraliser objection scepticisme efficacité."
+  },
+  "proofs": {
+    "clinical_test_claim": "Clinically Tested",
+    "podiatrist_endorsed": "Podiatrist Recommended",
+    "pain_reduction_claim_pct": 95,
+    "customer_count": 800000,
+    "money_back_guarantee_days": 90,
+    "press_mentions": []
+  },
+  "market_context": {
+    "main_competitors_in_category": ["Dr. Scholl's", "Powerstep", "Superfeet", "Vionic"],
+    "price_position": "mid-tier ($27 single · $48-150 bundles)",
+    "differentiation_hook": "Daily wearable engineered insole · pas clinical · pas mass · podiatrist endorsed sans positioning intimidant"
+  },
+  "pricing": {
+    "currency": "USD",
+    "price": 27.00,
+    "compare_at_price": 42.00,
+    "discount_pct": 35,
+    "price_per_unit": {
+      "value": 27.00,
+      "unit": "pair",
+      "currency": "USD"
+    },
+    "cogs": 6.00,
+    "gross_margin": 0.78,
+    "breakeven_cpa": 21.00,
+    "$comment": "Pricing canon · COGS bas (mass production silicone+EVA) · margin 78% confort scaling paid. Compare_at 42 = anchor pricing pour 35% off frame perpétuel (Mom's Day · Black Friday · etc.)."
+  },
+  "sustainability": {
+    "eco_claims": [],
+    "certifications": [],
+    "packaging_type": "cardboard box · pas plastique apparent",
+    "$comment": "Sustainability faible · category foot care pas drive consumer choice eco aujourd'hui · gap opportunity future."
+  }
+}

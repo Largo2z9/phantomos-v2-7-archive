@@ -1,0 +1,64 @@
+{
+  "$comment": "EXEMPLE pédagogique · friction usage produit massage-insoles · vitrine canon v2.64 · friction SECONDARY lifespan 12 months · subscription absent",
+  "_schema": "friction/1.3",
+  "_version": "1.3",
+  "_field_types": {
+    "friction_id": "stated",
+    "meta.*": "structured",
+    "formulation": "observed",
+    "category": "structured",
+    "severity_score": "derived",
+    "tier": "structured",
+    "customer_evidence": "observed",
+    "current_workarounds": "observed",
+    "resolution_state": "structured",
+    "cross_refs.*": "structured",
+    "affected_products": "stated",
+    "affected_audiences": "stated"
+  },
+  "_meta": {
+    "example_canon_showcased": "Canon v2.64 · friction logistical lifespan · 12 months replacement annual · subscription absent = friction repeat purchase · severity 5 moyen-haut"
+  },
+  "friction_id": "FRC-03",
+  "meta": {
+    "status": "complete",
+    "validation_status": {"state": "validated", "_note": "Example pédagogique vitrine v2.68"},
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "$comment_formulation": "Verbatim customer · friction logistique post-achat · usure 12 mois + pas de rappel automatique = drop LTV",
+  "formulation": "Customer language verbatim · 'James called me two days later and said order me another pair · I forgot mine were dead · pas de système qui me dit quand changer'",
+  "category": "logistical",
+  "$comment_severity": "Score 5 friction moyenne · lifespan 12 mois acceptable mais subscription absent = manque revenue model récurrent + customer doit s'auto-rappeler",
+  "severity_score": 5,
+  "tier": "secondary",
+  "customer_evidence": [
+    "James testimonial · 'he called me two days later and said order me another pair'",
+    "Mike Kowalski 2 years use · implique replacement 1x mid-cycle",
+    "Site copy · 'Lasts up to 12 months with regular use'",
+    "Reviews · 'wish there was a subscription · I'd auto-renew'"
+  ],
+  "current_workarounds": [
+    "Calendar reminder personnel 11 mois post-achat",
+    "Email marketing brand-side reminder usure",
+    "Buy 2 paires d'avance · rotation usage",
+    "Notice physique change · perte massage stimulation + cushioning collapse"
+  ],
+  "resolution_state": "accepted",
+  "$comment_cross_refs": "Cross-refs · pas PNT direct (post-purchase) · OBJ-03 workers-shifts (durabilité doute · 'ça dure combien de temps') · mechanisms_workaround vide · benefits_blocked durability long-term + Plantar fasciitis pain relief cycle (relief disparait si insole wear)",
+  "cross_refs": {
+    "affected_pain_points": [],
+    "affected_objections": ["OBJ-03"],
+    "mechanisms_workaround": [],
+    "benefits_blocked": ["Plantar fasciitis pain relief", "End-of-shift comfort"]
+  },
+  "affected_products": ["massage-insoles"],
+  "affected_audiences": [
+    "workers-shifts",
+    "workers-shifts/warehouse-10h",
+    "workers-shifts/nurses-12h",
+    "workers-shifts/hospitality-retail",
+    "chronic-pain-45",
+    "chronic-pain-45/plantar-fasciitis-diagnosed"
+  ]
+}

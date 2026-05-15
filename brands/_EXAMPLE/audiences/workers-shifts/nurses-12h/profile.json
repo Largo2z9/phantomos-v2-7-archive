@@ -1,0 +1,178 @@
+{
+  "$comment": "EXEMPLE pédagogique · Sous-poche nurses-12h héritant de mère workers-shifts. Vitrine canon profile/2.0 v2.68 · pattern parent/enfants sémantique pure v2.64 · sous-poche override seulement les fields où elle diverge significativement de la mère (specificity_modifiers). Hérite scope général + traits partagés. Cross-ref Stepprs spec.json mechanisms · Impact absorption cushioning + Arch support engineered structure = pillars cœur pour 12h walking miles within unit + emotional toll caregiving.",
+  "_schema": "profile/2.0",
+  "_version": "2.0",
+  "_field_types": {
+    "identity.label": "stated",
+    "identity.awareness_stage": "structured",
+    "identity.demographics.age_range": "structured",
+    "identity.demographics.gender": "observed",
+    "identity.demographics.income": "observed",
+    "identity.life_stage": "observed",
+    "identity.role.type": "structured",
+    "identity.role.buyer_user_split": "structured",
+    "psychology.jtbd_primary": "observed",
+    "psychology.jtbd_secondary": "observed",
+    "psychology.drives": "derived",
+    "psychology.fears": "observed",
+    "psychology.status_signals": "derived",
+    "psychology.self_perception": "derived",
+    "decision_process.trigger": "observed",
+    "decision_process.evaluation_criteria": "structured",
+    "decision_process.purchase_path": "structured",
+    "decision_process.time_to_decide": "structured",
+    "behavior.where_they_hang": "observed",
+    "behavior.content_consumed": "observed",
+    "behavior.vocab_register": "observed",
+    "behavior.brand_relationships": "observed",
+    "voice.key_expressions": "observed",
+    "voice.tone_self": "derived",
+    "voice.pain_metaphors": "observed",
+    "voice.solution_metaphors": "observed",
+    "market_position.segment_size_pct_of_brand": "derived",
+    "market_position.price_sensitivity": "structured",
+    "market_position.competition_alternatives": "observed",
+    "market_position.differentiation_appeal": "derived",
+    "specificity_modifiers.*": "structured"
+  },
+  "meta": {
+    "audience_slug": "nurses-12h",
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example sub-pocket · validé par construction pédagogique"
+    },
+    "parent_audience_slug": "workers-shifts",
+    "is_mother": false,
+    "example_canon_showcased": [
+      "Pattern parent/enfants sémantique pure v2.64 · sous-poche override seulement specificity_modifiers (trigger spécifique · context unit walking · pain miles+emotional · objection uniform shoe · vocab nursing)",
+      "specificity_modifiers block explicit · documente précisément ce qui diverge de la mère",
+      "Cross-ref spec.json mechanisms Impact absorption cushioning + Arch support engineered structure · 12h shift = stack mechanisms critique",
+      "Verbatim Tanya nurse 'first impression really promising' + '12-hour shifts' canon cible verbatim"
+    ],
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "identity": {
+    "label": "Nurses 12h shifts (hospital + clinical)",
+    "$comment_label": "Sous-poche spécifique nurse 12h hospital · scope plus restreint que mère workers-shifts.",
+    "awareness_stage": "solution_aware",
+    "demographics": {
+      "age_range": "26-50",
+      "$comment_age": "Skew plus jeune que mère · nursing peak career 26-50 · burn out forced switch après 50.",
+      "gender": "85% F · 15% M",
+      "income": "$50-75k US median (RN salary range · LPN bas $35-50k)"
+    },
+    "life_stage": "active nursing career · 3-4 shifts par semaine 12h · souvent mère de famille + dependent care · sleep-deprived chronique",
+    "role": {
+      "type": "primary_buyer + user_self",
+      "buyer_user_split": "self-buy 85% · gift par conjoint 15% (souvent Mom's Day · birthday · cf hashtag #Nurse pour creative angle conjoint reconnaissance sacrifice)"
+    }
+  },
+  "psychology": {
+    "jtbd_primary": "Finir mon 12h shift sans cette douleur talon qui me suit dans mon sleep + impacte ma capacité à m'occuper de mes patients la nuit prochaine",
+    "$comment_jtbd_primary_override": "Override mère · ajoute dimension emotional toll caregiving (impacte capacité prendre soin patients) · drive un angle copy différent de warehouse (responsabilité humaine vs productivité machine).",
+    "jtbd_secondary": "Stay in nursing sans burn out forced retirement à 50 ans par foot/knee chronic injury · nursing = mission, pas juste job",
+    "drives": [
+      "pain relief permettant focus sur patients (pas distraction douleur pendant care)",
+      "longévité nursing career (mission-driven · veut continuer)",
+      "energy reserve à la maison pour family (pas crash sofa post-shift)"
+    ],
+    "fears": [
+      "burn out forced switch carrière (perdre mission qui définit identité)",
+      "missing shifts cost colleagues (guilt culture nursing · pas le whiner qui appelle sick)",
+      "patient safety impacted by my exhaustion (responsabilité morale lourde)"
+    ],
+    "status_signals": [
+      "I'm the kind who endures (nursing pride · sacrifice valorisé)",
+      "I take care of others first, but smart about my own body now (mature nurse positioning)",
+      "I know clinical evidence (proxy expertise · réceptive à 'Clinically Tested' + 'Podiatrist Recommended')"
+    ],
+    "self_perception": "Caregiver who finally accepts she needs care too · clinical-literate · skeptical of consumer marketing fluff mais valide endorsement professional"
+  },
+  "pain_benefit_chain": [],
+  "objections": [],
+  "$comment_inheritance": "Hérite legacy empty arrays de mère · sub-collection canon v2.64 Phase 4 sera spécifique sous-poche (pain miles walked unit + emotional toll caregiving + uniform white sneaker constraint = 3 pain spécifiques que mère n'a pas).",
+  "decision_process": {
+    "trigger": "Specific moment · plantar fasciitis flare matin après night shift OR end-of-week post-3-shifts exhaustion samedi OR collègue mention insole qui marche dans break room (peer-driven trigger nursing-spécifique vs solo trigger autres sous-poches)",
+    "$comment_trigger_override": "Override mère · ajoute peer-driven trigger break room conversation (nursing culture collectif vs warehouse solo). Drive un creative angle UGC nurse-to-nurse recommendation puissant.",
+    "evaluation_criteria": [
+      "fits uniform white sneakers (Birkenstock Pro · Dansko · Hoka Bondi · constraint spécifique nursing uniform code)",
+      "endorsement clinical crédible (podiatrist + nurse-endorsed si possible · clinical literacy filter)",
+      "money-back risk-free 90 days",
+      "price reasonable mais nurse income $50-75k = moins price-sensitive que hospitality"
+    ],
+    "purchase_path": [
+      "Search Google 'best insole 12 hour nurse shift' OR 'plantar fasciitis insole nursing'",
+      "Lurking r/Nurses pour peer recommendations (nursing forum trust > marketing copy)",
+      "Compare 2-3 options DTC après filtering peer-validated",
+      "Purchase 1 single pair trial $27 (skeptical legacy · pas direct bundle même si nurse income soutient)"
+    ],
+    "time_to_decide": "5-14 days research · plus longue que mère average · clinical literacy = comparaison plus structurée"
+  },
+  "behavior": {
+    "where_they_hang": [
+      "Reddit r/Nurses (forum trust > marketing) + r/PlantarFasciitis",
+      "Facebook groups Nurses Network · Nursing Solidarity · Travel Nurses",
+      "Allnurses.com forum legacy",
+      "YouTube nurse-vloggers shift-day-in-life content + foot pain tutorials"
+    ],
+    "content_consumed": [
+      "Nurse-to-nurse UGC testimonials (highest trust signal)",
+      "Podiatrist explainer videos 'why nurses develop plantar fasciitis'",
+      "Comparison videos 'Birkenstock Pro vs Hoka Bondi vs adding insole'",
+      "Money-back guarantee emphasis (downside-removal pour nurse income context)"
+    ],
+    "vocab_register": "clinical + occupational · 12-hour shift · units · charting · admits · codes · break room · scrubs · uniform sneakers · floors miles walked",
+    "brand_relationships": "Birkenstock Pro · Dansko · Hoka Bondi connu (premium nursing shoes) · Stepprs entry pour add-in insole sans switcher shoes · Dr. Scholl tried in 20s + déçue (early career generic)"
+  },
+  "voice": {
+    "key_expressions": [
+      "12-hour shifts are brutal on your feet",
+      "I walked 8 miles within the unit today",
+      "by the time I clock out my feet are screaming",
+      "the first impression is really promising (Tanya verbatim canon)",
+      "after a code my back and feet both hurt for days",
+      "Birkenstock Pros aren't enough anymore"
+    ],
+    "$comment_key_expressions": "Verbatim Tanya 'first impression really promising' + '12-hour shifts' = canon cible nursing scrapé Stepprs reviews. Reformuler dans hooks creative + témoignages UGC.",
+    "tone_self": "professional · matter-of-fact · clinical-pragmatic · no drama mais reconnaît douleur réelle quand demande",
+    "pain_metaphors": [
+      "my feet are screaming by hour 8",
+      "I walked 8 miles within the unit today",
+      "after a code my back and feet both hurt for days",
+      "my heel pain wakes me up before my alarm"
+    ],
+    "solution_metaphors": [
+      "walking on air",
+      "first impression is really promising",
+      "I can actually focus on my patients again instead of my feet",
+      "game changer for my Birkenstock Pros"
+    ]
+  },
+  "market_position": {
+    "segment_size_pct_of_brand": 18,
+    "$comment_segment_size": "Estimation 18% acquisition Stepprs · sous-poche cœur workers-shifts (45% mère split ≈ 18% nurses + 18% warehouse + 9% hospitality).",
+    "price_sensitivity": "low-medium · nurse income $50-75k confortable pour $27-50 · accepte $48 Plantar Fasciitis Kit bundle plus facilement que hospitality",
+    "competition_alternatives": [
+      "Birkenstock Pro (premium nursing shoe · pas vraiment insole concurrent · complément)",
+      "Dansko (premium clogs · complément)",
+      "Hoka Bondi (cushioned sneaker · concurrent direct si used solo sans insole)",
+      "Powerstep Pinnacle Maxx (clinical mid-tier · concurrent direct insole)",
+      "No insole + premium shoe alone (resigned · 'shoes are enough')"
+    ],
+    "differentiation_appeal": "Engineered insole that ADDS to premium nursing shoes (pas remplacement Birkenstock · stack-in) · podiatrist endorsed = clinical literacy match · 800k+ customers including nurses (peer validation) · 90-day money-back annule risk pour nurse income context"
+  },
+  "specificity_modifiers": {
+    "trigger_unique": "Peer-driven break room conversation (collègue nurse mentionne insole qui marche · culture collective nursing vs solo trigger autres sous-poches)",
+    "context_occupation": "12h shift hospital · walking 5-8 miles within unit per shift · codes + admits cause sprints unexpected · standing/walking ratio plus walking dominant que warehouse",
+    "pain_specific": [
+      "Miles walked within unit per shift (5-8 miles cumulative · plus que warehouse 10h)",
+      "Emotional toll caregiving (douleur talon distraction quand patient critique · responsabilité morale)",
+      "Sleep impact (night shift + plantar fasciitis flare = sleep deprivation cumul)"
+    ],
+    "objection_specific": "Uniform white sneaker / clog code constraint · 'doit fits dans mes Birkenstock Pros · pas remplacer · pas trop épais'",
+    "vocab_specific": "Clinical-occupational (units · charting · admits · codes · scrubs · break room) + nursing community jargon (Allnurses · travel nursing · charge nurse · float pool)",
+    "$comment_specificity": "Block explicit documentant ce qui diverge significativement de mère workers-shifts. Pattern v2.64 = mère définit scope général partagé · sous-poches stockent override deltas ici. Empêche duplication ET garde traçabilité claire."
+  }
+}

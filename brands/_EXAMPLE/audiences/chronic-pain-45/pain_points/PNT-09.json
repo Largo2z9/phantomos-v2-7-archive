@@ -1,0 +1,53 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain shared cross-sous-poches chronic-pain-45 (plantar-fasciitis-diagnosed + heel-pain-general tous touchés par morning first-step talon pain) · vitrine canon v2.64 sub-audience sémantique pure (pain mère car shared visible cross-deux sous-poches diagnostic spectrum)",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id (PNT-XX séquentiel cross-tree audience)",
+    "formulation": "verbatim customer language (FR ou EN selon target locale)",
+    "chain": "doctrine pain-benefit-chain canon v2.60 · surface (sensation) → consequence (impact daily) → deep (identity/dignity)",
+    "category": "enum · physical / emotional / friction_ux / logistical / cognitive / social_status",
+    "severity_score": "1-10 (10 = unbearable · 1 = mild)",
+    "frequency": "labeled enum · rare / occasional / common / very_common / universal (avec % audience touchée si quantifiable)",
+    "urgency": "labeled enum · low / medium / high / critical (impact daily quality of life)",
+    "affected_audiences": "array de audience_ids · 1 si spécifique sous-poche · multiple si shared cross-poches"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 sub-audience sémantique pure · pain shared cross-sous-poches stocké au niveau mère chronic-pain-45/pain_points/ car visible chez plantar-fasciitis-diagnosed + heel-pain-general (morning first-step pain = signature universelle plantar fasciitis OR variant)"
+  },
+  "pain_id": "PNT-09",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · morning first-step talon pain = signature clinique plantar fasciitis · validé Reddit r/PlantarFasciitis + Amazon reviews verbatim 47 occurrences/200 sample"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Mes premiers pas le matin · coup de couteau dans le talon · je boite jusqu'à ce que ça se réchauffe",
+  "chain": {
+    "surface": "Douleur talon lancinante réveil + premiers pas · marche raide compensatoire 5-10 min · sensation coup de couteau au lever",
+    "consequence": "Réveil pénible · début de journée gâché · anxiety anticipe la douleur · douche/petit-déj affectés · routine matinale ralentie · mental dégradé avant 9h",
+    "deep": "Sentiment de vieillir trop vite · perte autonomie matin · peur de la dégradation progressive · question silencieuse · est-ce que je vais devoir abandonner mes marches matinales"
+  },
+  "category": "physical",
+  "severity_score": 9,
+  "tier": "primary",
+  "emotion": "douleur · résignation · peur · anxiety anticipatoire",
+  "trigger": "Réveil matin · premiers pas après nuit immobile (fascia rétractée pendant sommeil) · symptôme classique plantar fasciitis · aggravé après jours actifs marche prolongée",
+  "verbatim_quotes": [
+    "Dean H · First full shift with zero heel pain by hour 8 (baseline pre-Stepprs · matin douloureux)",
+    "Mike Kowalski · 2 years · 10 hour days warehouse (context cumulative · réveil affecté)",
+    "Reddit r/PlantarFasciitis · mes premiers pas le matin sont un calvaire (47 occurrences/200 sample)"
+  ],
+  "frequency": "very_common (45+ chronic pain segment · 70%+ touchés plantar fasciitis OR variant)",
+  "urgency": "high (impact daily quality of life · début de journée systématiquement compromis · ritualisé chronique)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Arch support engineered structure", "Massage textured surface stimulation"],
+    "benefits_served": ["Plantar fasciitis pain relief", "Feel Like You're Walking on Air"],
+    "friction_ids": [],
+    "objection_ids": ["OBJ-07"]
+  },
+  "affected_audiences": ["chronic-pain-45", "plantar-fasciitis-diagnosed", "heel-pain-general"]
+}

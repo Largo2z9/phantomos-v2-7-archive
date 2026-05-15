@@ -1,0 +1,150 @@
+{
+  "$comment": "EXEMPLE pedagogique · angle audience-derived chronic-pain-45/plantar-fasciitis-diagnosed · vitrine canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB demontree · BOF deep product_aware (sophistication elevee post-podiatre)",
+  "_schema": "angle/1.2",
+  "_version": "1.2",
+  "_field_types": {
+    "angle_id": "string · canonical ID format ANG-XX",
+    "meta.name": "string · hook ou phrase signature de l'angle",
+    "meta.status": "enum · draft|complete|deprecated",
+    "meta.validation_status.state": "enum · validated|pending|rejected",
+    "origin_axis": "enum · audience-derived|product-derived",
+    "tier": "enum · primary|secondary|exploratory",
+    "awareness_movement.in": "enum schwartz · unaware|problem_aware|solution_aware|product_aware|most_aware",
+    "awareness_movement.out": "enum schwartz · meme echelle (target post-exposition angle)",
+    "formula.observation.phenomenon": "string · phenomene observe data/scrape (verbatims · hashtags · evidence)",
+    "formula.observation.source": "string · provenance evidence (verbatim/scrape/data/clinical)",
+    "formula.observation.sample_size": "string · taille echantillon ou pattern recurrence",
+    "formula.tension.state_actual": "string · etat actuel audience (douleur · friction · status quo)",
+    "formula.tension.state_desired": "string · etat vise audience (outcome ideal)",
+    "formula.tension.reason_blocked": "string · pourquoi gap persiste (false belief · solution echec · resignation)",
+    "formula.reframe.perceptual_pivot": "string · nouveau cadrage perceptuel propose",
+    "formula.reframe.pivot_mechanism": "string · mecanisme/raison qui justifie le pivot",
+    "formula.bridge.spec_activated": "string · cross-ref spec.json#mechanisms ou features activees",
+    "formula.bridge.benefit_served": "string · cross-ref benefit + latency",
+    "formula.bridge.promise_formulated": "string · promesse formalisee pret-a-deployer copy",
+    "lineage.audience_slug": "string · cross-ref audiences/{slug}",
+    "lineage.schwartz_stage": "enum schwartz",
+    "lineage.hook_canon_id": "string · canon copy hook ID",
+    "lineage.framework_canon_id": "string · canon copy framework ID",
+    "lineage.archetype_canon_id": "string · canon copy archetype-voix ID",
+    "lineage.pain_extract": "string · verbatim extrait audience.json#pains",
+    "lineage.proof_primary": "string · proof asset principal (verbatim · clinical · stat)",
+    "lineage.CTA": "string · call-to-action formule",
+    "compatibility.audience_compatibility": "array · slugs audience compatibles (mere + sous-poches)",
+    "compatibility.awareness_compatibility": "array · stages schwartz compatibles",
+    "compatibility.friction_blockers": "array · friction IDs qui bloquent activation angle",
+    "compatibility.pain_addressed": "array · pain canonical IDs adresses",
+    "compatibility.objection_neutralized": "array · objection canonical IDs neutralisees",
+    "cross_refs.audience_slugs": "array · audiences cross-ref",
+    "cross_refs.pain_point_ids": "array · PNT-XX",
+    "cross_refs.objection_ids": "array · OBJ-XX",
+    "cross_refs.friction_ids": "array · FRC-XX",
+    "cross_refs.mechanism_refs": "array · spec.json mechanisms",
+    "cross_refs.benefit_refs": "array · spec.json benefits"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB (Observation + Tension + Reframe + Bridge) · angle audience-derived BOF chronic-pain-45/plantar-fasciitis-diagnosed (sous-poche sophistication elevee)"
+  },
+  "angle_id": "ANG-02",
+  "meta": {
+    "name": "Skip the $500 custom orthotics · this $27 daily-wearable does what my podiatrist couldn't",
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pedagogique · vitrine canon"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "origin_axis": "audience-derived",
+  "tier": "primary",
+  "awareness_movement": {
+    "in": "product_aware",
+    "out": "product_aware"
+  },
+  "formula": {
+    "$comment": "Formula OTRB · cas BOF · audience deja product_aware (a vu podiatre · a essaye orthoses) · reframe pivote sur prix/wearability vs efficacite",
+    "observation": {
+      "$comment": "Observation · sous-poche diagnostiquee plantar fasciitis · parcours medical complet vecu · decu",
+      "phenomenon": "Patients diagnostiques plantar fasciitis post-45 ans ayant tente orthoses sur mesure ($300-$700) rapportent inconfort daily · rigid · pas portables hors-shoes specifiques · douleur morning first-step persistante malgre investissement",
+      "source": "verbatim reviews comparatives + forums plantar fasciitis (Reddit r/PlantarFasciitis · TheTootDoc community)",
+      "sample_size": "Pattern recurrent reviews PDP + 3 verbatims explicites parcours orthese-puis-Stepprs (Tanya nurse · Rachel S · client anonyme James)"
+    },
+    "tension": {
+      "$comment": "Tension · gap entre investissement medical massif et resultat decevant · resignation budgetaire",
+      "state_actual": "$500 depenses chez podiatre pour orthoses rigides qui restent dans une seule paire de chaussures · douleur morning first-step persiste · sentiment d'avoir gaspille · resignation 'rien ne marche'",
+      "state_desired": "Solution portable cross-shoes · daily wearability · soulagement morning first-step pain · prix raisonnable sans repasser par cabinet medical",
+      "reason_blocked": "Belief que seul le sur-mesure medical peut traiter plantar fasciitis · perception OTC = inefficace par definition · echec orthoses cher renforce cynisme"
+    },
+    "reframe": {
+      "$comment": "Reframe · pivot economique + fonctionnel · sur-mesure n'est pas synonyme de superieur quand daily-life est le contexte d'usage",
+      "perceptual_pivot": "Custom orthotics expensive sont over-engineered pour daily life · contexte d'usage clinique pas portable · Stepprs = arch support engineered clinical-grade dans format daily-wearable · paradoxalement plus efficace en usage reel",
+      "pivot_mechanism": "Arch support engineered structure delivre les memes principes biomecaniques que l'orthese sur-mesure mais conçu pour daily-wearability cross-shoes · Podiatrist Recommended valide la legitimite clinique sans le prix du cabinet"
+    },
+    "bridge": {
+      "$comment": "Bridge · spec primary arch support · benefit latency 7-14j (realiste plantar fasciitis recovery curve) · promise sourcee endorsement medical",
+      "spec_activated": "spec.json#mechanisms · Arch support engineered structure (primary feature angle)",
+      "benefit_served": "Plantar fasciitis pain relief · latency 7-14j · functional · plus Daily wearability latency 0-1j",
+      "promise_formulated": "Podiatrist Recommended · Clinically Tested 95% pain reduction · $27 vs $500 orthotic · 90-day money back risk-free"
+    }
+  },
+  "lineage": {
+    "audience_slug": "chronic-pain-45",
+    "schwartz_stage": "product_aware",
+    "hook_canon_id": "contrarian-reframe",
+    "framework_canon_id": "problem-agitate-solution",
+    "archetype_canon_id": "podiatrist-explainer",
+    "pain_extract": "I spent $500 on custom orthotics and still wake up to that first-step pain every single morning",
+    "proof_primary": "Podiatrist Recommended endorsement · plus Clinical Tested 95% pain reduction · plus Tanya nurse 12-hour shifts verbatim",
+    "CTA": "Try Stepprs Risk-Free 90 Days · Compare to your orthotics in your first week"
+  },
+  "compatibility": {
+    "audience_compatibility": [
+      "chronic-pain-45",
+      "chronic-pain-45/plantar-fasciitis-diagnosed",
+      "chronic-pain-45/heel-spur-radio-confirme"
+    ],
+    "awareness_compatibility": [
+      "product_aware",
+      "most_aware"
+    ],
+    "friction_blockers": [
+      "FRC-01 Fit shoes constraint",
+      "FRC-04 Skepticism medical claim"
+    ],
+    "pain_addressed": [
+      "PNT-09",
+      "PNT-12",
+      "PNT-03"
+    ],
+    "objection_neutralized": [
+      "OBJ-01",
+      "OBJ-03",
+      "OBJ-09"
+    ]
+  },
+  "cross_refs": {
+    "audience_slugs": [
+      "chronic-pain-45"
+    ],
+    "pain_point_ids": [
+      "PNT-09",
+      "PNT-12"
+    ],
+    "objection_ids": [
+      "OBJ-01",
+      "OBJ-03"
+    ],
+    "friction_ids": [
+      "FRC-01",
+      "FRC-04"
+    ],
+    "mechanism_refs": [
+      "Arch support engineered structure"
+    ],
+    "benefit_refs": [
+      "Plantar fasciitis pain relief",
+      "Daily wearability"
+    ]
+  }
+}

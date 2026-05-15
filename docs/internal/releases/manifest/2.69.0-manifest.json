@@ -1,0 +1,38 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.69.0",
+  "released_at": "2026-05-16",
+  "compatible_from": "2.0.0",
+  "type": "skill_new_trendtrack_enrich_brand_market_intelligence_layer_first_runtime_brick",
+  "summary": "NEW skill canonical `trendtrack-enrich-brand` v1.0.0 · pattern Market Intelligence Layer (D#408 R&D) first runtime brick. Skill territoire enrichit substrat brand existing depuis intelligence externe TrendTrack API live · resolve via /v1/lookup → /v1/shops/{shopId} → /v1/ads?pageId={pageId} chain · 3 queries ads (longestRunning + reach + newest · ~30 ads sample) · stage proposals brand.json + learnings.json. DRGFP Step 0 canon L1+L2+L3. 5 sections investigation-posture synthesis. Mutation gate strict source=import + meta tag trendtrack. Pattern reproductible cross spy tools sources futures via mirror NEW skills `{source}-enrich-brand`. D#412 captured. Backward compat strict additif · zero override existing · skills count 67 → 68.",
+  "changes": [
+    {
+      "category": "skill_new_trendtrack_enrich_brand",
+      "action": "added",
+      "files": [".skills/skills/trendtrack-enrich-brand/SKILL.md"],
+      "section": "NEW skill canonical 400L · type producer · layer territoire · isolation_scope brand_only · mode proposed · subagent_safe true · recommended_model sonnet · 6 Steps (Step 0 DRGFP L1+L2+L3 prerequisite · Step 1 brand lookup resolution /v1/lookup · Step 2 shop profile fetch /v1/shops/{shop_id} · Step 3 ads sample fetch 3 queries · Step 4 patterns analysis 8 patterns · Step 5 stage proposals mutation gate · Step 6 synthesis 5 sections investigation-posture)",
+      "rationale": "Premier skill Market Intelligence Layer ship runtime post-D#408 R&D doc. Pattern enrichissement brand state existing depuis source externe spy tool API. TrendTrack chosen pilote car · API documented stable · MCP officiel publié · 10000 credits/month plan professional default opérateur. Pattern reproductible cross sources futures (Foreplay · Atria · Meta Ad Library · BigSpy) via NEW skills mirror `{source}-enrich-brand` même structure (Step 0 DRGFP · Step 1 lookup · Step 2 profile fetch · Step 3 ads sample · Step 4 patterns analysis · Step 5 stage proposals · Step 6 synthesis IP)."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md", "docs/internal/releases/manifest/2.69.0-manifest.json", ".skills/_manifest.json"],
+      "section": "Bump template_version 2.68.0 → 2.69.0 + summary + CHANGELOG entry v2.69.0 + NEW manifest 2.69.0-manifest.json + regen _manifest.json (skills 67 → 68)",
+      "rationale": "NEW skill ship v2.69.0. Manifest regen via `python3 .skills/build-manifest.py` extracts frontmatter + triggers FR/EN du NEW skill pour discoverability runtime."
+    }
+  ],
+  "files_patched_total": "4 files (1 NEW SKILL.md · _version.json bump · CHANGELOG.md entry · 2.69.0-manifest.json NEW · _manifest.json regen · decisions.md D#412)",
+  "patterns_introduced": {
+    "market_intelligence_layer_first_runtime_brick": "Pattern canon v2.69 · première skill runtime layer Market Intelligence (post-D#408 R&D doc 2026-05-14). Skill territoire enrichit substrat brand existing depuis source externe spy tool API. Pattern différencie de snapshot-brand (PDP scrape public · territoire canon initial) vs trendtrack-enrich-brand (external intelligence · ads + trustpilot + socials + traffic non-scrapable PDP). Skill complémentaire pas substitut.",
+    "spy_tool_enrich_brand_mirror_pattern": "Pattern canon v2.69 reproductible cross sources futures · NEW skills mirror `{source}-enrich-brand` (foreplay-enrich-brand · atria-enrich-brand · meta-adlibrary-enrich-brand · bigspy-enrich-brand · etc.) suivent même structure 6 Steps (DRGFP L1+L2+L3 · lookup · profile fetch · ads sample · patterns analysis · stage proposals mutation gate · synthesis 5 sections IP). Adaptation par source = endpoints API + field mappings + cost budget. Anti-pattern · freelancing structure cross sources (perd composabilité).",
+    "drgfp_step0_l1_l2_l3_canon_skill_external_api": "Pattern canon v2.69 · skill consume external API DOIT implémenter DRGFP Step 0 niveaux gradués · L1 silent (precondition resource existing) · L2 gate (auth credentials presence verify · AskUserQuestion si absent) · L3 quota (cost budget check avant chain calls coûteux · refuse explicit si quota insuffisant). Applicable tout skill external API future (Klaviyo · Shopify · GA4 · spy tools)."
+  },
+  "antipatterns_eliminated": {
+    "freestyle_external_enrichment_zero_pattern": "Avant v2.69 · enrichment brand depuis source externe (TrendTrack · Meta Ads · etc.) freestyle dans conversation libre · output prose · zero structured mutation gate · zero traçabilité source. v2.69 canonise pattern · skill structuré 6 Steps + mutation gate + traçabilité source=import + meta lineage trendtrack.",
+    "missing_quota_check_external_api_cost_risk": "Avant v2.69 · skill external API absence quota check pre-chain · risque burn credits budget opérateur. v2.69 Hard rule canon · L3 quota /v1/usage check min 50 credits avant proceed · refuse explicit si insuffisant.",
+    "single_source_lockin_pattern_non_reproductible": "Avant v2.69 · enrichment TrendTrack one-off non-réutilisable pour autres sources futures (Foreplay · Atria). v2.69 codifie pattern mirror `{source}-enrich-brand` reproductible cross sources via NEW skills mirror même structure 6 Steps."
+  },
+  "operator_impact": "Operators v2.69+ peuvent enrichir brand state existing depuis intelligence externe TrendTrack via skill canonical · trigger FR `enrichis cette brand depuis trendtrack` OR EN `trendtrack enrich {brand_slug}`. Output operator-facing 5 sections investigation-posture (Observé · Déduit · Inconnu · Leviers · Close ouvert) · pas data dump API verbose. Mutations stagées via mutation gate · opérateur arbitre accept/reject per proposal. Pré-requis · brand existing (skill ENRICH pas CREATE) + TRENDTRACK_API_KEY in credentials_shared.env OR MCP TrendTrack actif + quota >= 50 credits. Cost typical run · ~10-15 credits (1 lookup + 1 shop + 3 ads queries + 1 usage check).",
+  "backward_compat": "strict_additif · NEW skill n'override aucun existing · zero migration data · skills count 67 → 68 · operators v2.68.x non affectés sauf invocation explicit NEW skill. Source enum write-to-context.py VALID_SOURCES preserved (`import` value existing utilisée · pas bump enum schema). Meta tag `trendtrack` dans `_meta.lineage` additif (pattern canon traçabilité source externe spécifique).",
+  "next_release_note": "v2.69+ patches identifiés · (a) Test live brand pilote post-v2.69 (Stepprs · validate end-to-end trendtrack-enrich-brand flow · capture frictions auth setup L2 + quota check L3 + chain queries cost · benchmark wall-clock typical run). (b) NEW skill mirror candidates v2.70+ · foreplay-enrich-brand (Foreplay API · ads library + funnels) · atria-enrich-brand (Atria API · creative analytics) · meta-adlibrary-enrich-brand (Meta Ad Library public · zero cost mais limited data). (c) Pattern `sync-creatives-to-notion` v2.70+ candidate · push top winning ads sampled vers Notion Kanban cards (production layer separated from territoire push) · cohérent D#410 territoire-discipline. (d) Skill `track-competitor` v2.70+ candidate · monitor brand changes over time via cron + diff state across runs (vs trendtrack-enrich-brand snapshot one-shot moment T). (e) Doctrine `market-intelligence-discipline.md` canon technique skill-author-facing v2.70+ candidate (codifier pattern 6 Steps mirror cross sources)."
+}

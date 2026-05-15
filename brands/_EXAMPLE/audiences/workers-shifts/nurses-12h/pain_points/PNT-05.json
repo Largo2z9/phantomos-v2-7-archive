@@ -1,0 +1,48 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain SPÉCIFIQUE sous-poche nurses-12h · long walks within hospital unit accumulated 5-7 miles per shift · vitrine canon v2.64 pain sous-poche car pattern walking distance unique nurses (warehouse = walking forklifts pattern différent)",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id",
+    "formulation": "verbatim nurse",
+    "chain": "surface → consequence → deep",
+    "category": "enum",
+    "affected_audiences": "1 entry nurses-12h"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · pain spécifique nurses · walking distance hospital unit (5-7 miles/shift trackers fitness) signature unique"
+  },
+  "pain_id": "PNT-05",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · données fitness tracker nurses 5-7 miles/12h shift reconnu literature occupational"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Je viens de regarder mon FitBit · j'ai fait 7 miles en 12h juste dans l'unité · pas étonnant que mes pieds explosent",
+  "chain": {
+    "surface": "Douleur talon + plante pied compound walking accumulé · ampoules récurrentes · onglets pieds noirs (impact répété sneaker)",
+    "consequence": "Limitation activités hors shift (impossible randonner avec mari week-end · skip soirée debout) · achats sneakers neufs tous les 2 mois (usure accélérée) · podiatrist visit régulier",
+    "deep": "Sentiment que ce métier est en train de me consumer physiquement · perte plaisir d'usage du corps (marche random plus possible) · question silencieuse sur transition desk job"
+  },
+  "category": "physical",
+  "severity_score": 6,
+  "tier": "secondary",
+  "emotion": "exhaustion · resignation · loss_of_self",
+  "trigger": "12h shifts walking unit · pic fin de shift hour 10-12 · cumulative back-to-back shifts",
+  "verbatim_quotes": [
+    "Tanya nurse (12-hour shifts) · contexte walking distance"
+  ],
+  "frequency": "very_common (nurses hospital units · 90%+ tracking 5+ miles/shift)",
+  "urgency": "high (impact daily + sneaker wear cost + médical)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Impact absorption cushioning", "Massage textured stimulation", "Anti-slip stability grip"],
+    "benefits_served": ["Walking on Air", "End-of-shift comfort (long standing)", "Daily wearability sans friction"],
+    "friction_ids": [],
+    "objection_ids": []
+  },
+  "affected_audiences": ["nurses-12h"]
+}

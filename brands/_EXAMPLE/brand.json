@@ -1,340 +1,209 @@
 {
-  "$comment": "EXEMPLE — Brand fictive Glowco. Montre à quoi ressemble un brand.json rempli, aligné sur _TEMPLATE.",
-  "_schema": "brand/L1-brand",
-  "_version": "2.2",
+  "$comment": "EXEMPLE pédagogique · Brand fictive Stepprs (foot care insoles · vitrine canon PhantomOS v2.68). NE PAS MODIFIER. Référence visuelle pour comprendre à quoi ressemble un brand.json bien posé. Mock data inspirée de stepprs.com (foot care DTC réel) · valeurs financières + métriques inventées pour pédagogie. Ignored par FIRST ACTION canon (folder prefix `_`). Migration v2.2 → v2.4 v2.68.",
+  "_schema": "brand/2.4",
+  "_version": "2.4",
   "_field_types": {
-    "identity.*": "stated",
-    "positioning.*": "stated",
-    "tone_of_voice.*": "stated",
+    "identity.name": "stated",
+    "identity.url": "observed",
+    "identity.slug": "stated",
+    "identity.year_founded": "observed",
+    "identity.brand_mission": "observed",
+    "identity.brand_vision": "stated",
+    "identity.brand_personality": "stated",
+    "identity.brand_values": "stated",
+    "identity.brand_story": "observed",
+    "identity.business_model": "derived",
+    "identity.business_model_signals.*": "derived",
+    "identity.language": "stated",
+    "identity.target_geo": "stated",
+    "positioning.market_category": "stated",
+    "positioning.brand_differentiation": "derived",
+    "positioning.brand_promise": "observed",
+    "tone_of_voice.*": "observed",
+    "platforms.*": "observed",
     "proofs.*": "observed",
     "social_media.*": "observed",
-    "platforms.*": "observed",
-    "contacts.*": "observed",
-    "financials.currency": "observed",
-    "financials.aov": "derived",
-    "financials.monthly_revenue": "observed",
-    "financials.avg_cogs_pct": "derived",
-    "financials.avg_gross_margin": "derived",
-    "financials.customer_ltv": "derived",
-    "financials.refund_rate": "derived",
-    "financials.payback_days": "derived",
-    "financials.roas_breakeven": "derived",
-    "seasonality.*": "structured",
-    "products_index": "structured",
-    "market.market_overview.*": "structured",
-    "market.competitors[].name": "observed",
-    "market.competitors[].url": "observed",
-    "market.competitors[].estimated_monthly_revenue": "observed",
-    "market.competitors[].market_position": "structured",
-    "market.competitors[].price_vs_us": "structured",
-    "market.competitors[].primary_channel": "structured",
-    "market.competitors[].positioning": "structured",
-    "market.awareness_distribution.*": "structured",
+    "financials.*": "stated",
+    "market.competitors[].*": "observed",
+    "market.awareness_distribution.*": "derived",
     "market.regulatory.*": "observed",
-    "brand_equity_level": "stated",
-    "creative_zone.min": "derived",
-    "creative_zone.max": "derived",
-    "creative_zone.dominant": "derived",
-    "creative_zone._observed_on_n_creatives": "derived",
-    "strategic_context.stage": "structured",
-    "strategic_context.momentum": "structured",
-    "strategic_context.market": "structured",
-    "strategic_context.atlas_state": "structured"
+    "market.sophistication": "derived",
+    "market.category_maturity": "derived",
+    "purchase_driver": "derived",
+    "driver_blend.*": "derived",
+    "brand_equity_level": "derived",
+    "creative_zone.*": "derived",
+    "strategic_context.*": "stated",
+    "_meta.*": "structured"
   },
-  "brand_equity_level": null,
-  "creative_zone": {
-    "min": null,
-    "max": null,
-    "dominant": null,
-    "_observed_on_n_creatives": 0
+  "_meta": {
+    "is_example": true,
+    "example_purpose": "Pedagogical reference brand · vitrine canon PhantomOS v2.68 (territoire-discipline + progressive-cartography + compositional-cartography 4 arbres). Mock brand inspirée Stepprs foot care DTC.",
+    "example_canon_showcased": [
+      "compositional-cartography v3.1 · 4 arbres (Spec→Mécanisme→Bénéfice · Audience→Pain→Bénéfice · Angle OTRB · Roadmap timeline)",
+      "territory-discipline v2.67 · substrat stable canonisé",
+      "progressive-cartography v2.68 · phasing par profondeur · gates light",
+      "Contextual Intelligence master · raisonnement business universe vs form-filling"
+    ]
   },
-  "strategic_context": {
-    "stage": null,
-    "momentum": null,
-    "market": null,
-    "atlas_state": null
-  },
-  "purchase_driver": "pain",
   "meta": {
-    "name": "Glowco",
-    "slug": "glowco",
-    "vertical": "skincare",
-    "market": "FR",
-    "stage": "growth",
-    "status": "active",
-    "owner": "Sophie Renard",
-    "team": [
-      "Sophie Renard",
-      "Julie (freelance media buyer)"
-    ],
-    "created": "2026-01-10",
-    "updated": "2026-04-03"
+    "name": "Stepprs (Example Brand)",
+    "validation_status": {
+      "state": "validated",
+      "tested": null,
+      "scaled": null,
+      "fatigued": null,
+      "_note": "Example brand · état validated par construction pédagogique · pas via test ROAS réel"
+    }
   },
   "identity": {
-    "url": "https://glowco.fr",
-    "tagline": "La peau que tu mérites, sans compromis.",
-    "year_founded": 2022,
-    "language": "fr",
-    "target_geo": [
-      "FR"
-    ],
-    "brand_mission": "Rendre les soins anti-âge cliniquement efficaces accessibles aux femmes actives.",
-    "brand_vision": "Devenir la référence DTC des soins visage à concentration clinique en France.",
-    "brand_story": "Fondée par une dermatologue lasse de voir ses patientes gaspiller de l'argent sur des crèmes inefficaces. Glowco est née d'une frustration professionnelle devenue mission.",
-    "brand_personality": [
-      "experte",
-      "accessible",
-      "directe",
-      "bienveillante"
-    ],
-    "brand_values": [
-      "transparence",
-      "efficacité prouvée",
-      "accessibilité",
-      "science-first"
-    ]
+    "name": "Stepprs",
+    "slug": "_EXAMPLE",
+    "url": "https://stepprs.com/",
+    "language": "en",
+    "target_geo": ["US", "UK", "EU"],
+    "year_founded": null,
+    "brand_mission": "Make foot care accessible and enjoyable for everyone",
+    "brand_vision": "Daily comfort innovation · pain relief without the clinical positioning",
+    "brand_personality": ["expert-backed", "approachable", "warm", "practical"],
+    "brand_values": ["accessibility", "engineered quality", "trusted by experts", "everyday wearability"],
+    "brand_story": "Stepprs was started with the goal of improving overall foot care for all, focused on thoughtful design and quality materials.",
+    "business_model": "DTC",
+    "business_model_signals": {
+      "products_detected": 4,
+      "services_detected": 0,
+      "physical_locations": 0,
+      "subscription_signals": false,
+      "marketplace_signals": false,
+      "_note": "DTC e-com Shopify · gamme produits foot care + bundles · pas de subscription ni marketplace"
+    }
   },
   "positioning": {
-    "value_proposition": "Les résultats d'un soin professionnel, dans ta routine quotidienne.",
-    "market_category": "skincare anti-âge premium accessible",
-    "brand_differentiation": "Formules à concentration clinique validées par des dermatologues, sans les prix de pharmacie.",
-    "brand_promise": "Des résultats visibles et mesurables en 28 jours — ou remboursée."
+    "market_category": "Foot care · daily comfort daily-use insoles + accessories",
+    "brand_differentiation": "Lifestyle comfort innovation positioned between mass-drugstore (Dr. Scholl) et premium clinical (Vionic · podiatrist orthotics). White space · qualité accessible day-to-day pour gens qui souffrent professionnellement.",
+    "brand_promise": "Feel like you're walking on air · pain relief sans sacrifier la wearability quotidienne",
+    "$comment": "Positioning canon · territoire de marque stable. Évolue rarement (annuel max). Influence tous les angles paid downstream."
   },
   "tone_of_voice": {
-    "style": "experte mais accessible, directe, sans jargon inutile",
-    "register": "conversational",
-    "banned_words": [
-      "révolutionnaire",
-      "magique",
-      "anti-âge miraculeux",
-      "rajeunissez"
-    ],
-    "frequent_words": [
-      "cliniquement prouvé",
-      "concentration active",
-      "résultats visibles",
-      "sans artifice"
-    ]
-  },
-  "proofs": {
-    "total_customers": 18500,
-    "global_rating": 4.7,
-    "global_review_count": 2340,
-    "results": [
-      "87% constatent une amélioration de l'éclat en 28 jours",
-      "Réduction rides -34% mesurée à 12 semaines"
-    ],
-    "testimonials": [
-      "Première crème que je rachète — et j'en suis à mon 4e pot. (Marie-Claire, 48 ans)",
-      "Mon dermato m'a demandé ce que j'utilisais tellement ma peau a changé. (Isabelle, 52 ans)"
-    ],
-    "certifications": [
-      "Testé dermatologiquement",
-      "Non comédogène"
-    ],
-    "press_mentions": [
-      "Madame Figaro",
-      "Elle",
-      "Cosmopolitan FR"
-    ],
-    "notable_endorsements": [
-      "Dr. Claire Morin, dermatologue (Paris 16e)",
-      "Testée en cabinet sur 120 patientes"
-    ]
-  },
-  "social_media": {
-    "instagram": {
-      "url": "https://instagram.com/glowco.skincare",
-      "followers": 24000
-    },
-    "tiktok": {
-      "url": "https://tiktok.com/@glowco.skincare",
-      "followers": 8500
-    },
-    "youtube": {
-      "url": "",
-      "subscribers": null
-    },
-    "facebook": {
-      "url": "https://facebook.com/glowco.skincare",
-      "followers": 12000
-    }
+    "style": "friendly motivational expert-backed",
+    "register": "casual",
+    "banned_words": ["medical-grade", "podiatric orthotic", "clinically prescribed", "rajeunir"],
+    "voice": "warm pedagogical confident practical"
   },
   "platforms": {
-    "meta_ads": {
-      "account_id": "act_1234567890",
-      "pixel_id": "px_9876543210",
-      "catalog_id": null,
-      "active": true
-    },
-    "google_ads": {
-      "account_id": "",
-      "merchant_center_id": null,
-      "active": false
-    },
-    "tiktok_ads": {
-      "account_id": "",
-      "pixel_id": null,
-      "active": false
-    },
-    "shopify": {
-      "store_url": "glowco.myshopify.com",
-      "active": true
-    },
-    "klaviyo": {
-      "list_id": "KLV_glowco_main",
-      "active": true
-    },
-    "pinterest_ads": {
-      "account_id": null,
-      "active": false
-    }
+    "shopify_url": "https://stepprs.com/",
+    "meta_ads": null,
+    "tiktok_ads": null,
+    "google_ads": null
+  },
+  "proofs": {
+    "total_customers": 800000,
+    "global_rating": null,
+    "global_review_count": null,
+    "press_mentions": [],
+    "notable_endorsements": [
+      "Podiatrist Recommended (claim site)",
+      "Clinically Tested (claim site)",
+      "95% pain reduction (claim site)"
+    ],
+    "$comment": "Proof points = trust drivers principaux. Stepprs joue scepticisme efficacité (objection #1) via empilage clinical + numbers."
+  },
+  "social_media": {
+    "instagram": null,
+    "tiktok": null,
+    "youtube": null,
+    "facebook": null,
+    "$comment": "Followers counts non scraped · à compléter post-mining VoM si pertinent."
   },
   "financials": {
-    "currency": "EUR",
-    "aov": 68,
-    "monthly_revenue": 85000,
-    "avg_cogs_pct": 0.28,
-    "avg_gross_margin": 0.72,
-    "customer_ltv": 210,
-    "refund_rate": 0.031,
+    "currency": "USD",
+    "monthly_revenue": 1200000,
+    "aov": 38,
+    "avg_cogs_pct": 0.22,
+    "avg_gross_margin": 0.78,
+    "customer_ltv": 65,
+    "refund_rate": 0.04,
     "payback_days": 45,
-    "roas_breakeven": 1.39,
-    "_notes": {
-      "roas_breakeven": "Calculé : 1 / avg_gross_margin = 1/0.72 ≈ 1.39"
-    }
+    "roas_breakeven": 1.85,
+    "$comment": "Mock financials cohérents avec 800k customers · AOV bundles foot care · LTV moyen (subscription absente · repeat partiel · 90-day money back guarantee modeste refund_rate)."
   },
   "seasonality": {
-    "monthly_revenue_distribution": {
-      "jan": 10,
-      "feb": 7,
-      "mar": 8,
-      "apr": 8,
-      "may": 7,
-      "jun": 6,
-      "jul": 5,
-      "aug": 5,
-      "sep": 11,
-      "oct": 9,
-      "nov": 14,
-      "dec": 10
-    },
-    "peak_periods": [
-      "septembre (rentrée)",
-      "novembre (Black Friday + Noël anticipé)"
-    ],
-    "trough_periods": [
-      "juillet-août (vacances)"
-    ],
-    "notes": "Saisonnalité typique beauté FR. Pic rentrée + fin d'année."
-  },
-  "contacts": {
-    "founder": {
-      "name": "Sophie Renard",
-      "email": "sophie@glowco.fr",
-      "role": "Fondatrice & CEO"
-    },
-    "marketing": {
-      "name": "Julie Fabre",
-      "email": "julie@glowco.fr",
-      "role": "Freelance media buyer"
-    },
-    "operations": {
-      "name": "",
-      "email": "",
-      "role": ""
-    }
+    "primary_peak_months": ["May", "June", "July", "August"],
+    "secondary_peak_months": ["November", "December"],
+    "off_season_months": ["February", "March"],
+    "$comment": "Pic été · activité piétonne haute (marche · jardinage · vacances debout). Pic décembre · cadeaux mère/grand-mère."
   },
   "market": {
-    "meta": {
-      "updated": "2026-04-03",
-      "confidence": 72
-    },
-    "market_overview": {
-      "category": "skincare anti-âge",
-      "sophistication": "mature",
-      "size_estimate": null,
-      "growth_trend": "stable",
-      "seasonality": {
-        "peak_months": [
-          9,
-          11
-        ],
-        "trough_months": [
-          7,
-          8
-        ],
-        "notes": ""
-      }
-    },
     "competitors": [
       {
-        "name": "Filorga",
-        "url": "https://filorga.com",
-        "market_position": "leader",
-        "price_vs_us": "higher",
-        "primary_channel": "retail",
-        "positioning": "médical-luxe, distribution pharmacie",
-        "estimated_monthly_revenue": null
+        "name": "Dr. Scholl's",
+        "url": "https://www.drscholls.com/",
+        "market_position": "mass drugstore incumbent",
+        "estimated_monthly_revenue": null,
+        "price_vs_us": "30-50% lower",
+        "primary_channel": "retail pharmacy + grocery",
+        "positioning": "drugstore mass · trusted generic · entry-level pricing"
       },
       {
-        "name": "Caudalie",
-        "url": "https://caudalie.com",
-        "market_position": "challenger",
-        "price_vs_us": "parity",
-        "primary_channel": "retail",
-        "positioning": "naturel-premium, vigne, spa lifestyle",
-        "estimated_monthly_revenue": null
+        "name": "Powerstep",
+        "url": "https://powerstep.com/",
+        "market_position": "clinical mid-tier",
+        "estimated_monthly_revenue": null,
+        "price_vs_us": "20-40% higher",
+        "primary_channel": "DTC + podiatrist referral",
+        "positioning": "clinical-positioned · arch support engineering · podiatrist endorsed"
       },
       {
-        "name": "Bioderma",
-        "url": "https://bioderma.fr",
-        "market_position": "leader",
-        "price_vs_us": "lower",
-        "primary_channel": "retail",
-        "positioning": "dermo-accessible, recommandé médecins, mass market",
-        "estimated_monthly_revenue": null
+        "name": "Superfeet",
+        "url": "https://superfeet.com/",
+        "market_position": "sport/clinical premium",
+        "estimated_monthly_revenue": null,
+        "price_vs_us": "50-100% higher",
+        "primary_channel": "DTC + specialty sporting goods",
+        "positioning": "performance/sport vertical · premium materials · running heritage"
+      },
+      {
+        "name": "Vionic",
+        "url": "https://vionicshoes.com/",
+        "market_position": "podiatrist recommended lifestyle",
+        "estimated_monthly_revenue": null,
+        "price_vs_us": "70-150% higher",
+        "primary_channel": "DTC + department stores",
+        "positioning": "lifestyle premium · podiatrist designed · footwear extension"
       }
     ],
+    "sophistication": "medium-high",
+    "category_maturity": "established",
+    "regulatory_environment": "low · OTC consumer product · pas de claims médicaux contraignants FDA",
     "awareness_distribution": {
-      "unaware": 0.55,
-      "problem_aware": 0.25,
-      "solution_aware": 0.12,
-      "product_aware": 0.06,
-      "most_aware": 0.02
-    },
-    "regulatory": {
-      "constraints": [
-        "Claims dermatologiques encadrés DGCCRF"
-      ],
-      "certifications_required": [],
-      "advertising_restrictions": [
-        "Interdit : 'rajeunit', 'efface les rides', toute promesse thérapeutique non prouvée"
-      ]
+      "unaware": 0.10,
+      "problem_aware": 0.45,
+      "solution_aware": 0.30,
+      "product_aware": 0.10,
+      "most_aware": 0.05,
+      "$comment": "Niche foot care dominée problem_aware + solution_aware · acheteurs cherchent déjà solution. Hooks doivent valider tension existante pas créer urgency."
     }
   },
-  "products_index": [
-    {
-      "slug": "creme-eclat",
-      "name": "Crème Éclat Glowco",
-      "role": "hero",
-      "type": "sensory",
-      "product_category": "physical",
-      "price": 89,
-      "enriched": true
-    }
-  ],
-  "audiences_index": [
-    {
-      "slug": "femmes-40-55",
-      "name": "Femmes actives 40-55",
-      "scope": "segment",
-      "parent_slug": null,
-      "validation_status": "hypothesis"
-    }
-  ],
-  "_changelog": {
-    "2.2": "v2.42-schema-alignment: creative_zone + brand_equity_level + strategic_context placeholders. 4 axes modulateurs scoring brand-level. Backward compat: null = pas observé.",
-    "2.1": "S30d-close: purchase_driver added (brand-level default, cascades to audiences). audience_trees[] added (optional marketplaces). Per D#243, D#244, D#246, D#250."
+  "purchase_driver": "mixed",
+  "driver_blend": {
+    "primary": "pain",
+    "secondary": "utility",
+    "ratio": 0.65,
+    "$comment": "Pain dominant (65%) · clients viennent souffrir d'un problème pied. Utility secondaire (35%) · daily comfort wearability sans douleur préexistante. Drives audience taxonomy · audiences pain-driven (Workers shifts · Chronic pain 45+) + audience utility-driven (Daily wearers preventif)."
+  },
+  "brand_equity_level": "high",
+  "creative_zone": {
+    "min": 3,
+    "max": 6,
+    "dominant": 4,
+    "_observed_on_n_creatives": 0,
+    "$comment": "High equity DTC standard · register tone warm pedagogical · creative_zone 3-6 dom 4 cohérent verbatim cible vs medium energy bump avant audit"
+  },
+  "strategic_context": {
+    "stage": "scale",
+    "momentum": "stable",
+    "market": "mature",
+    "atlas_state": "exemple complet pédagogique · 4 arbres compositional cartography canon v3.1 démontrés (Spec→Mécanisme→Bénéfice · Audience→Pain→Bénéfice · Angle OTRB · Roadmap timeline)",
+    "$comment": "Stage scale · 800k customers acquired · focus retention + expansion vs net new acquisition primaire."
   }
 }

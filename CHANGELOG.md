@@ -7,6 +7,43 @@
 
 ---
 
+## v2.69.0 · 2026-05-16 · NEW skill `trendtrack-enrich-brand` · Market Intelligence Layer first runtime brick
+
+**Why** · D#408 R&D Market Intelligence Layer (2026-05-14) cartographiait pattern multi-sources spy tools cohérent (TrendTrack pilote · MCP officiel publié · 8 phases opérateur · 5 NEW skills + 3 extensions). v2.69 ship première brique runtime · skill `trendtrack-enrich-brand` enrichit brand state existing depuis intelligence externe non-scrapable PDP (ads winners · trustpilot · socials · traffic · scaling patterns). Pré-requis post-D#410 territory-discipline (layer territoire canon) · NEW skill territoire premier de la nouvelle vague Market Intelligence. Pattern reproductible mirror cross sources futures (Foreplay · Atria · Meta Ad Library · BigSpy) via NEW skills `{source}-enrich-brand` même structure 6 Steps. Découvertes session live TrendTrack (API base · auth · 5 endpoints validés · pattern Stepprs observé · 1 narrative hero répliqué cross-geo · $146k+ spend cumulé · 16M+ reach · Trustpilot 3.4/5 · 119k FB + 92.7k IG followers) consommées comme vitrine pédagogique skill.
+
+**What** · 4 blocs ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · NEW skill `trendtrack-enrich-brand`** | 400L SKILL.md · type producer · layer territoire · isolation_scope brand_only · mode proposed · subagent_safe true · recommended_model sonnet · 6 Steps canon (DRGFP L1+L2+L3 · lookup · shop profile · ads sample 3 queries · patterns analysis 8 patterns · stage proposals mutation gate · synthesis 5 sections IP) | Premier skill Market Intelligence Layer runtime ship · enrichit brand state existing depuis TrendTrack API live · complémentaire snapshot-brand (PDP scrape) |
+| **2 · DRGFP Step 0 canon skill external API** | L1 silent (precondition brand existing) + L2 gate (auth credentials AskUserQuestion si absent) + L3 quota (cost budget /v1/usage min 50 credits) | Pattern canon reproductible tout skill external API future (Klaviyo · Shopify · GA4 · spy tools) |
+| **3 · Mirror pattern cross sources** | Structure 6 Steps reproductible cross spy tools sources futures · NEW skills mirror `{source}-enrich-brand` (foreplay-enrich-brand · atria-enrich-brand · meta-adlibrary-enrich-brand · bigspy-enrich-brand) suivent même structure · adaptation par endpoints API + field mappings + cost budget | Pattern composable layer Market Intelligence · pas freelancing structure cross sources |
+| **4 · Source canonical `import` + meta tag `trendtrack`** | Skill consume `--source import` (enum write-to-context.py existing · pas bump) + meta tag `_meta.lineage.source_origin: trendtrack` post-write pour traçabilité spécifique source externe | Anti-pattern · tagger `--source agent` perd traçabilité origine data externe. Anti-pattern · bump enum schema VALID_SOURCES par source (explosion non-scalable). |
+
+**3 patterns canon introduits** ·
+1. **Market Intelligence Layer first runtime brick** · première skill runtime post-D#408 R&D doc · enrichit substrat brand existing depuis source externe spy tool API · complémentaire pas substitut snapshot-brand (PDP scrape public)
+2. **Spy tool enrich-brand mirror pattern** · structure 6 Steps reproductible cross sources futures · NEW skills mirror `{source}-enrich-brand` adaptation par endpoints + field mappings + cost budget
+3. **DRGFP Step 0 L1+L2+L3 canon skill external API** · L1 silent precondition + L2 gate auth + L3 quota cost budget · applicable tout skill external API future
+
+**3 anti-patterns canonisés** ·
+- **Freestyle external enrichment zero pattern** · enrichment freestyle prose · zero structured mutation gate · zero traçabilité source. v2.69 canonise pattern · skill structuré + mutation gate + traçabilité source=import + meta lineage.
+- **Missing quota check external API cost risk** · skill external API absence quota check pre-chain · risque burn credits budget opérateur. v2.69 Hard rule L3 quota check explicit.
+- **Single source lockin pattern non-reproductible** · enrichment one-off non-réutilisable autres sources. v2.69 codifie pattern mirror reproductible cross sources futures.
+
+**Backward compat strict additif** · NEW skill n'override aucun existing · zero migration data · skills count 67 → 68 · operators v2.68.x non affectés sauf invocation explicit NEW skill. Source enum write-to-context.py VALID_SOURCES preserved (`import` value existing utilisée · pas bump enum schema). Meta tag `trendtrack` dans `_meta.lineage` additif.
+
+**Files patched** ·
+- `.skills/skills/trendtrack-enrich-brand/SKILL.md` NEW 400L
+- `_version.json` 2.68.0 → 2.69.0
+- `CHANGELOG.md` v2.69.0 entry (this entry)
+- `docs/internal/releases/manifest/2.69.0-manifest.json` NEW
+- `.skills/_manifest.json` regen (skills 67 → 68)
+- D#412 captured `decisions.md`
+
+**Next release notes** · (a) Test live brand pilote post-v2.69 (Stepprs · validate end-to-end trendtrack-enrich-brand flow · capture frictions auth setup L2 + quota check L3 + chain queries cost · benchmark wall-clock typical run). (b) NEW skill mirror candidates v2.70+ · foreplay-enrich-brand · atria-enrich-brand · meta-adlibrary-enrich-brand. (c) Pattern `sync-creatives-to-notion` v2.70+ candidate · push top winning ads sampled vers Notion Kanban cards (production layer separated from territoire push). (d) Skill `track-competitor` v2.70+ candidate · monitor brand changes over time via cron + diff state across runs. (e) Doctrine `market-intelligence-discipline.md` canon technique skill-author-facing v2.70+ candidate (codifier pattern 6 Steps mirror cross sources).
+
+---
+
 ## v2.68.0 · 2026-05-15 · Canonisation progressive-cartography · NEW doctrine + snapshot-brand + build-atlas refactor progressive
 
 **Why** · Friction live identifiée lors simulation Stepprs v2.67 · agent `snapshot-brand` v1.3.1 dumpait Step 7 synthesis 5 sections + posait 4 Q&A questions audience post-scrape · saturation opérateur + violation canon Contextual Intelligence "No questionnaire before action" (agent doit drill-down autonome reviews + verbatims tagged avant questionner). Pattern d'usage réel opérateur · phasing progressif par profondeur (Macro confirmation light → Drilling autonome → Audiences hiérarchique parent/enfants → Enrichissement continu non-bloquant) avec gates light entre paliers. Brique technique existaient (snapshot-brand · map-audiences · mine-voc · profile-audience) · le méta-pattern orchestration progressive manquait canon. Pré-requis avant build `_EXAMPLE/stepprs` brand canonical pour éviter codifier frictions actuelles dans la référence canon.

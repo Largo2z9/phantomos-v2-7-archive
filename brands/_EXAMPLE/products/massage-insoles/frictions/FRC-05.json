@@ -1,0 +1,59 @@
+{
+  "$comment": "EXEMPLE pédagogique · friction usage produit massage-insoles · vitrine canon v2.64 · friction SECONDARY color visibility orange uniform constraint",
+  "_schema": "friction/1.3",
+  "_version": "1.3",
+  "_field_types": {
+    "friction_id": "stated",
+    "meta.*": "structured",
+    "formulation": "observed",
+    "category": "structured",
+    "severity_score": "derived",
+    "tier": "structured",
+    "customer_evidence": "observed",
+    "current_workarounds": "observed",
+    "resolution_state": "structured",
+    "cross_refs.*": "structured",
+    "affected_products": "stated",
+    "affected_audiences": "stated"
+  },
+  "_meta": {
+    "example_canon_showcased": "Canon v2.64 · friction social_status mappée à category 'cognitive' (perception sociale uniforme · pas physique pure) · audience spécifique nurses-12h white sneakers · variant black résout (mais friction discoverability)"
+  },
+  "friction_id": "FRC-05",
+  "meta": {
+    "status": "complete",
+    "validation_status": {"state": "validated", "_note": "Example pédagogique vitrine v2.68"},
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "$comment_formulation": "Verbatim customer · friction visibilité couleur · nurses sneakers blanches mesh perforé · orange insole peek-out visible · uniforme pro contrarié",
+  "formulation": "Customer language verbatim · 'Je porte des sneakers blanches en service · l'orange ressort à travers les perforations · ça fait pas pro · j'ai dû racheter en noir'",
+  "category": "cognitive",
+  "$comment_severity": "Score 4 friction modérée · variant black existe et résout · mais discoverability black option = friction conversion + double commande possible",
+  "severity_score": 4,
+  "tier": "secondary",
+  "customer_evidence": [
+    "Tanya nurse review · 'first impression really promising but I got orange · had to reorder black for work'",
+    "Site copy variants · 'Available in classic orange and discreet black'",
+    "Hospitality retail audience · branded uniform fashion shoes constraint"
+  ],
+  "current_workarounds": [
+    "Opt for black variant à l'achat",
+    "Échanger orange contre black post-achat (90-day guarantee)",
+    "Trim insole un peu plus court pour réduire peek-out (réduit support arch)",
+    "Sneakers chaussures couleur foncée seulement"
+  ],
+  "resolution_state": "resolved",
+  "$comment_cross_refs": "Cross-refs · PNT-05 nurses-12h (uniforme pression visuelle) · OBJ-04 nurses-12h (intégration routine uniforme) · mechanisms_workaround vide (variant ≠ mécanisme physique mais résout) · benefits_blocked Identity professional uniform compliance",
+  "cross_refs": {
+    "affected_pain_points": ["PNT-05"],
+    "affected_objections": ["OBJ-04"],
+    "mechanisms_workaround": [],
+    "benefits_blocked": ["Identity 'I take care of myself smart'"]
+  },
+  "affected_products": ["massage-insoles"],
+  "affected_audiences": [
+    "workers-shifts/nurses-12h",
+    "workers-shifts/hospitality-retail"
+  ]
+}

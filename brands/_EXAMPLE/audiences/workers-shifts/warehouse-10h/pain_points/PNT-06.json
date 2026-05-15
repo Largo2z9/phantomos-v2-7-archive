@@ -1,0 +1,48 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain SPÉCIFIQUE sous-poche warehouse-10h · vibration concrete + lifting accumulated · vitrine canon v2.64 pain placé sous-poche car pattern lifting heavy weights + forklift vibration unique warehouse (nurses = lifting patients pattern différent · hospitality = pas lifting)",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id",
+    "formulation": "verbatim warehouse worker",
+    "chain": "surface → consequence → deep",
+    "category": "enum",
+    "affected_audiences": "1 entry warehouse-10h"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · pain spécifique warehouse · compound vibration forklift + lifting heavy + concrete impact = signature occupation"
+  },
+  "pain_id": "PNT-06",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · pattern warehouse worker reconnu literature occupational musculoskeletal"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Je porte des cartons toute la journée sur le concrete · le vibration du forklift dans les jambes · les genoux ils prennent cher · j'ai 38 ans et je marche comme un vieux",
+  "chain": {
+    "surface": "Douleur genoux + chevilles compound · sensation impact lourd à chaque pas chargé · raideur cumulative hour 6+ shift",
+    "consequence": "Médication antalgique quotidienne · podiatrist + kiné régulier · arrêts maladie occasionnels lumbago · achats orthopédiques (genouillères, ceinture lombaire)",
+    "deep": "Sentiment d'usure prématurée · peur de perdre l'emploi si productivité baisse · culpabilité de pas pouvoir suivre les jeunes recrues · question reconversion silencieuse"
+  },
+  "category": "physical",
+  "severity_score": 8,
+  "tier": "primary",
+  "emotion": "fear · resignation · pride_threat · age_anxiety",
+  "trigger": "10h shifts warehouse · compound lifting 20-50lb cartons + walking concrete + vibration forklift · pic mid-shift hour 5-7",
+  "verbatim_quotes": [
+    "Mike Kowalski (2 years · 10 hour days warehouse) · contexte direct"
+  ],
+  "frequency": "very_common (warehouse workers 5+ years · 80%+ touchés chronic joint pain)",
+  "urgency": "critical (career longevity + risque accident chute fatigue + médical)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Impact absorption cushioning", "Arch support engineered structure", "Anti-slip stability grip"],
+    "benefits_served": ["End-of-shift comfort (long standing)", "Plantar fasciitis pain relief"],
+    "friction_ids": [],
+    "objection_ids": ["OBJ-05"]
+  },
+  "affected_audiences": ["warehouse-10h"]
+}

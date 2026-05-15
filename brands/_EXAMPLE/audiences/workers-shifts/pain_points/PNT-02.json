@@ -1,0 +1,50 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain shared cross-sous-poches workers-shifts · joint impact concrete floors compound (genoux + dos) · vitrine canon v2.64 pain mère car compound impact visible cross-trois sous-poches",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id",
+    "formulation": "verbatim customer language",
+    "chain": "surface → consequence → deep canon v2.60",
+    "category": "enum physical / emotional / friction_ux / logistical / cognitive / social_status",
+    "severity_score": "1-10",
+    "affected_audiences": "array audience_ids · shared = multiple entries"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · pain compound stocké mère car concrete floors universel occupations workers-shifts (warehouses, hospitals, retail floors)"
+  },
+  "pain_id": "PNT-02",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · concrete impact accumulated reconnu literature plantar fasciitis + chronic occupational musculoskeletal"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Mes genoux et mon dos me lâchent · je sens chaque impact dans toute la colonne · le concrete c'est pas fait pour le corps humain",
+  "chain": {
+    "surface": "Sensation d'impact direct dans genoux + dos à chaque pas · raideur articulations · douleur lombaire compound",
+    "consequence": "Wear and tear corporel accéléré · médecin évoque arthrose précoce · pertes de mouvements perso (sport, loisirs) · médication antalgique régulière",
+    "deep": "Peur de devoir changer de métier avant l'âge · sentiment de sacrifier mon corps pour gagner ma vie · perte d'estime physique (vieillir vite)"
+  },
+  "category": "physical",
+  "severity_score": 9,
+  "tier": "primary",
+  "emotion": "fear · resignation · helplessness · creeping despair",
+  "trigger": "Cumulé années occupation concrete floors · pic réveil + après shift · aggravé par steel-toe boots ou chaussures sans absorption",
+  "verbatim_quotes": [
+    "Mike Kowalski (2 years · 10 hour days warehouse) · cumulative impact pattern",
+    "Rachel S (the roller after a long day on your feet is a game changer) · besoin recovery post-impact"
+  ],
+  "frequency": "very_common (workers concrete floors 5+ years · 70%+ symptômes)",
+  "urgency": "critical (impact career longevity + médical à long terme)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Impact absorption cushioning", "Arch support engineered structure"],
+    "benefits_served": ["End-of-shift comfort (long standing)", "Plantar fasciitis pain relief"],
+    "friction_ids": [],
+    "objection_ids": []
+  },
+  "affected_audiences": ["workers-shifts", "nurses-12h", "warehouse-10h", "hospitality-retail"]
+}

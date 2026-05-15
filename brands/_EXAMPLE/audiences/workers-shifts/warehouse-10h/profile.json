@@ -1,0 +1,180 @@
+{
+  "$comment": "EXEMPLE pédagogique · Sous-poche warehouse-10h héritant de mère workers-shifts. Vitrine canon profile/2.0 v2.68 · pattern parent/enfants sémantique pure v2.64. Spécificité = steel-toe boots required + vibration concrete floors + lifting + manual labor accumulé. Verbatim Mike Kowalski '2 years · 10 hour days in a warehouse' = cible canon. Cross-ref Stepprs spec.json Impact absorption cushioning mechanism = pillar critique cette sous-poche (concrete + steel-toe + heavy lifting = max shock stack).",
+  "_schema": "profile/2.0",
+  "_version": "2.0",
+  "_field_types": {
+    "identity.label": "stated",
+    "identity.awareness_stage": "structured",
+    "identity.demographics.age_range": "structured",
+    "identity.demographics.gender": "observed",
+    "identity.demographics.income": "observed",
+    "identity.life_stage": "observed",
+    "identity.role.type": "structured",
+    "identity.role.buyer_user_split": "structured",
+    "psychology.jtbd_primary": "observed",
+    "psychology.jtbd_secondary": "observed",
+    "psychology.drives": "derived",
+    "psychology.fears": "observed",
+    "psychology.status_signals": "derived",
+    "psychology.self_perception": "derived",
+    "decision_process.trigger": "observed",
+    "decision_process.evaluation_criteria": "structured",
+    "decision_process.purchase_path": "structured",
+    "decision_process.time_to_decide": "structured",
+    "behavior.where_they_hang": "observed",
+    "behavior.content_consumed": "observed",
+    "behavior.vocab_register": "observed",
+    "behavior.brand_relationships": "observed",
+    "voice.key_expressions": "observed",
+    "voice.tone_self": "derived",
+    "voice.pain_metaphors": "observed",
+    "voice.solution_metaphors": "observed",
+    "market_position.segment_size_pct_of_brand": "derived",
+    "market_position.price_sensitivity": "structured",
+    "market_position.competition_alternatives": "observed",
+    "market_position.differentiation_appeal": "derived",
+    "specificity_modifiers.*": "structured"
+  },
+  "meta": {
+    "audience_slug": "warehouse-10h",
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example sub-pocket · validé par construction pédagogique"
+    },
+    "parent_audience_slug": "workers-shifts",
+    "is_mother": false,
+    "example_canon_showcased": [
+      "Pattern parent/enfants sémantique pure v2.64 · sous-poche warehouse override specificity_modifiers (steel-toe constraint · vibration concrete · lifting · gender skew M dominant)",
+      "Verbatim canon Mike Kowalski '2 years · 10 hour days in a warehouse' (cf spec.json benefits[2] evidence_verbatim) = cible directe",
+      "Cross-ref Stepprs spec.json mechanisms Impact absorption cushioning + Arch support · stack mechanisms maximum pour shock + standing combiné",
+      "Hashtag viral #Mailman directement applicable (USPS mailman = sous-segment warehouse-adjacent)"
+    ],
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "identity": {
+    "label": "Warehouse workers 10h+ days (Amazon · UPS · USPS · Manufacturing)",
+    "$comment_label": "Sous-poche warehouse/logistics/manufacturing · scope inclut Amazon FC · UPS handlers · USPS mailmen · manufacturing floor workers.",
+    "awareness_stage": "solution_aware",
+    "demographics": {
+      "age_range": "28-55",
+      "$comment_age": "Skew plus âgé que nurses · warehouse career-long souvent · peak pain accumulation 35-50.",
+      "gender": "65% M · 35% F",
+      "income": "$40-55k US median (Amazon FC starting · UPS senior union · USPS career)"
+    },
+    "life_stage": "active manual labor career · 10-12h shifts mandatory overtime peak season · familles avec kids · physically aware identity (corps = outil)",
+    "role": {
+      "type": "primary_buyer + user_self",
+      "buyer_user_split": "self-buy 80% · gift par conjoint 20% (cf hashtag #Mailman viral angle conjoint inquiet santé mari)"
+    }
+  },
+  "psychology": {
+    "jtbd_primary": "Finir mon 10-12h shift sans cette douleur talon + genoux accumulée concrete-vibration qui ruine mon weekend repos · rentrer capable de jouer avec les kids",
+    "$comment_jtbd_primary_override": "Override mère · ajoute dimension family/kids weekend (warehouse career-long context). Drive un angle copy 'be present for kids weekend' angle conjoint.",
+    "jtbd_secondary": "Stay in this job sans hernie discale forced disability claim · garder le union/benefits/seniority accumulés",
+    "drives": [
+      "pain relief permettant continuer shifts overtime (peak season Q4 = $$$)",
+      "longévité job (union benefits + seniority accumulated = golden handcuffs santé)",
+      "family time weekend (kids deserve présent parent pas crash sofa)"
+    ],
+    "fears": [
+      "hernie discale forced workers comp claim (process long · revenu coupé)",
+      "missing days work cost (union benefits liés à attendance · sick days limités)",
+      "kids voir parent diminished physical (perte respect peer · pride paternel/maternel)"
+    ],
+    "status_signals": [
+      "I'm the kind who works hard physically (warehouse pride · pas le office whiner)",
+      "I take care of body as professional tool (mature worker positioning)",
+      "I solve problems pragmatic (proxy intelligence pratique vs corporate clever)"
+    ],
+    "self_perception": "Manual laborer who treats body as professional asset · skeptical of corporate marketing · trusts peer recommendation + technical specs + money-back proof"
+  },
+  "pain_benefit_chain": [],
+  "objections": [],
+  "$comment_inheritance": "Sub-collection canon v2.64 Phase 4 sous-poche-spécifique = pain steel-toe vibration + pain lifting cumulative + objection 'too thick to fit steel-toe' = 3 deltas vs mère workers-shifts.",
+  "decision_process": {
+    "trigger": "Specific moment · matin réveil avec douleur talon dimanche post-week (recovery insuffisante) OR collègue limping break room (peer signal visible) OR peak season overtime mandatory + douleur amplifiée OR shoe replacement cycle steel-toe boots usés",
+    "$comment_trigger_override": "Override mère · ajoute peak season trigger (Q4 Amazon FC overtime · holiday USPS surge) · creative timing paid = Octobre-Décembre peak.",
+    "evaluation_criteria": [
+      "fits steel-toe work boots (Timberland Pro · Caterpillar · Red Wing · constraint critique · thickness max 6mm)",
+      "endorsement crédible (podiatrist + 800k customers including workers · pas juste runner endorsement)",
+      "money-back risk-free 90 days (downside-removal context union income protected)",
+      "price reasonable mid-tier · $27-50 acceptable mais pas $80+ Vionic"
+    ],
+    "purchase_path": [
+      "Search Google 'best insole steel toe boots' OR 'plantar fasciitis warehouse worker'",
+      "Reddit r/Warehouse r/USPS r/Mailman r/UnionWorkers (peer trust)",
+      "Compare 3-5 options DTC focus thickness + steel-toe compatibility",
+      "Read reviews specifically warehouse/USPS verbatims",
+      "Purchase 1 single pair trial $27"
+    ],
+    "time_to_decide": "3-10 days research · plus court que nurses · pragmatic decision once peer-validated"
+  },
+  "behavior": {
+    "where_they_hang": [
+      "Reddit r/Warehouse r/USPS r/Mailman r/Amazon r/UnionWorkers (peer trust core)",
+      "Facebook groups USPS Mailmen Network · Amazon FC Workers Solidarity · Teamsters",
+      "YouTube workplace vlogs USPS day-in-life · Amazon FC reality content",
+      "TikTok #Mailman viral hashtag (visual UGC workplace content)"
+    ],
+    "content_consumed": [
+      "Worker-to-worker UGC testimonials (USPS mailman testimonial = high trust)",
+      "Podiatrist explainer 'why standing on concrete causes plantar fasciitis'",
+      "Steel-toe boot comparison content (boots = primary purchase · insole = add-in)",
+      "#Mailman viral content (algorithmic discovery main pathway)"
+    ],
+    "vocab_register": "manual labor + union direct · 10-hour days · concrete · steel-toe · lifting · floor stack · forklift · break room · clocking out · overtime mandatory · workers comp",
+    "brand_relationships": "Timberland Pro · Caterpillar · Red Wing connu (premium work boots) · Stepprs insole add-in pas remplacement boots · Dr. Scholl tried decade ago déçu · Powerstep Pinnacle Plus known mais cheap-feel"
+  },
+  "voice": {
+    "key_expressions": [
+      "2 years · 10 hour days in a warehouse (Mike Kowalski verbatim canon)",
+      "concrete floors are killing me",
+      "by hour 8 I'm done",
+      "my feet are screaming after a forklift shift",
+      "first full shift with zero heel pain by hour 8 (Dean H verbatim canon)",
+      "he called me two days later and said order me another pair (James verbatim canon)"
+    ],
+    "$comment_key_expressions": "Verbatim Mike Kowalski warehouse + Dean H + James = canon cible scrapé Stepprs reviews. Mike '2 years · 10 hour days' = cible directe cette sous-poche · reformuler hook · 'After 2 years of 10-hour warehouse days · my feet finally got the upgrade they deserved.'",
+    "tone_self": "blue-collar pragmatic · no-nonsense · respect engineering · skeptical marketing fluff · validates peer recommendation",
+    "pain_metaphors": [
+      "concrete floors are killing me",
+      "my feet are screaming",
+      "by hour 8 I'm done",
+      "I limp home most nights",
+      "Sundays I can barely walk to the mailbox"
+    ],
+    "solution_metaphors": [
+      "first full shift with zero heel pain by hour 8",
+      "game changer for my Timberlands",
+      "I can actually play with my kids on Sunday now",
+      "order me another pair"
+    ]
+  },
+  "market_position": {
+    "segment_size_pct_of_brand": 18,
+    "$comment_segment_size": "Estimation 18% acquisition Stepprs · symetric à nurses-12h (split workers-shifts ≈ 18% nurses + 18% warehouse + 9% hospitality).",
+    "price_sensitivity": "medium · union income $40-55k accepte $27-50 · accepte $48 Plantar Fasciitis Kit bundle si convaincu single pair",
+    "competition_alternatives": [
+      "Timberland Pro insole bundled (default · pas vraiment efficace)",
+      "Dr. Scholl Work (entry generic · 'cheap drugstore réflexe')",
+      "Powerstep Pinnacle Plus (clinical mid-tier insole · concurrent direct)",
+      "Superfeet Black (low-profile thin · 'fits steel-toe' positioning)",
+      "No insole + boots alone (resigned · 'rien ne marche')"
+    ],
+    "differentiation_appeal": "Engineered insole 6mm thickness · fits Timberland Pro + Red Wing steel-toe (objection #1 résolue · cf spec.json specs.dimensions.thickness_mm = 6) · podiatrist endorsed = professional credibility worker respecte · 800k+ customers proof scale · 90-day money-back annule risk"
+  },
+  "specificity_modifiers": {
+    "trigger_unique": "Peak season overtime mandatory + douleur amplifiée (Q4 Amazon FC · holiday USPS surge) OR shoe replacement cycle steel-toe boots usés (achat lié)",
+    "context_occupation": "10-12h shifts standing/walking concrete floors · steel-toe boots required (Timberland Pro · Caterpillar · Red Wing) · vibration from forklifts + machinery + heavy lifting accumulated impact · USPS mailmen variation = outdoor walking 8-10 miles per route",
+    "pain_specific": [
+      "Steel-toe boot vibration accumulated (mechanical shock day-after-day)",
+      "Heavy lifting hernie risk + back/knee chain reaction (foot pain = symptom upstream)",
+      "Concrete floor cumulative impact (vs nurse hospital floors slightly softer)"
+    ],
+    "objection_specific": "Steel-toe boot fit constraint · 'doit fits dans mes Timberland Pros · 6mm max thickness · pas remplacer boots' · objection #1 cette sous-poche",
+    "vocab_specific": "Manual labor + union (10-hour days · concrete · steel-toe · lifting · forklift · floor stack · clocking out · workers comp · union benefits · seniority · break room · OT mandatory) + hashtag viral #Mailman algorithm discovery vector",
+    "$comment_specificity": "Block explicit · steel-toe constraint = objection #1 différentiel vs nurses (uniform sneaker) et hospitality (fashion shoe). Cross-ref spec.json specs.dimensions.thickness_mm = 6 résout directement objection."
+  }
+}

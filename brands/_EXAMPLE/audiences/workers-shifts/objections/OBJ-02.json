@@ -1,0 +1,37 @@
+{
+  "$comment": "EXEMPLE pédagogique · objection shared cross-sous-poches workers-shifts · scepticisme efficacité (Dr Scholl tried before failed) · vitrine canon v2.64 objection mère car scepticisme entry-level concerne tous workers ayant déjà testé alternatives drugstore",
+  "_schema": "objection/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "objection_id": "canonical_id",
+    "type": "enum price / scepticism / fit / urgency / trust / status / risk",
+    "lifecycle": "enum awareness / consideration / decision / post-purchase",
+    "severity_score": "1-10",
+    "response_counter": "copy validée brand qui refute"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · objection scepticisme post-échec alternative (Dr Scholl) shared cross-poches · placée mère"
+  },
+  "objection_id": "OBJ-02",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · scepticisme typique après échec Dr Scholl · pattern reviews repeatedly observed"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "J'ai déjà essayé Dr Scholl avant · ça soulage 2 jours et après c'est mort · pourquoi ça serait différent",
+  "type": "scepticism",
+  "lifecycle": "consideration",
+  "severity_score": 8,
+  "tier": "primary",
+  "response_counter": "Engineered structure vs flat gel pad · arch support persistent (pas affaissement après 2 jours) · massage stimulation + impact absorption combinés · verbatim Mike Kowalski 2 years 10h days = durabilité prouvée long-terme",
+  "derived_angle_refs": [],
+  "cross_refs": {
+    "pain_point_ids": ["PNT-01", "PNT-02", "PNT-03"],
+    "friction_ids": []
+  },
+  "affected_audiences": ["workers-shifts", "nurses-12h", "warehouse-10h", "hospitality-retail"]
+}

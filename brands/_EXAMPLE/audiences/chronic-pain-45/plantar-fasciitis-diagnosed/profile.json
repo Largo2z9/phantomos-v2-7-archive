@@ -1,0 +1,286 @@
+{
+  "$comment": "EXEMPLE PEDAGOGIQUE · sous-poche plantar-fasciitis-diagnosed (enfant de chronic-pain-45). Demontre pattern enfant v2.64 · herite traits mere (entry_door pain_driven, demographic 45-65, vocab register medical mid-tier, brand_relationships Dr Scholl/Vionic/custom orthotics) + ajoute specificity_modifiers · awareness stage diverge vers product_aware (a vu podiatre, sait quoi acheter, compare options), trigger specifique (orthese sur mesure $500-800 trop cher/inconvenient daily wearable), evaluation criteria enrichi (durability vs custom orthotics, clinical equivalence affirmation). Cross-refs spec.json Massage Insoles · arch support engineered (mecanisme principal mappe plantar fasciitis specifique) + 90-day money back (anti-risque vs trial custom orthotics non-refundable).",
+  "_schema": "profile/2.0",
+  "_version": "2.0",
+  "_field_types": {
+    "meta.*": "structured",
+    "meta.parent_audience_slug": "structured",
+    "meta.is_mother": "structured",
+    "meta.specificity_modifiers": "structured",
+    "identity.label": "structured",
+    "identity.awareness_stage": "structured",
+    "identity.demographics.*": "stated",
+    "identity.life_stage": "derived",
+    "psychology.jtbd_primary": "observed",
+    "psychology.drives": "derived",
+    "psychology.fears": "observed",
+    "decision_process.trigger": "observed",
+    "decision_process.evaluation_criteria": "observed",
+    "decision_process.purchase_path": "observed",
+    "decision_process.time_to_decide": "derived",
+    "behavior.where_they_hang": "observed",
+    "behavior.content_consumed": "observed",
+    "behavior.vocab_register": "derived",
+    "voice.key_expressions": "observed",
+    "voice.tone_self": "derived",
+    "market_position.*": "derived"
+  },
+
+  "meta": {
+    "$comment": "Sous-poche enfant · is_mother: false · parent_audience_slug: chronic-pain-45. Herite scope mere + ajoute specificity_modifiers · awareness stage product_aware (diverge de mere solution_aware), trigger specifique (custom orthotics $500-800 trop cher/limite chaussures), vocab medical-high (specific terminologie podiatre).",
+    "name": "Plantar fasciitis diagnosed",
+    "slug": "plantar-fasciitis-diagnosed",
+    "audience_slug": "plantar-fasciitis-diagnosed",
+    "parent_audience_slug": "chronic-pain-45",
+    "is_mother": false,
+    "example_canon_showcased": "Canon V3 §8.2 sous-poche enfant · awareness stage divergence parent (solution_aware) vs enfant (product_aware) · specificity_modifiers ajoutent trigger + evaluation criteria · entry_door pain_driven herite mere",
+    "specificity_modifiers": {
+      "awareness_divergence": "product_aware (vs mere solution_aware)",
+      "trigger_added": "custom orthotics $500-800 trop cher OR limite chaussures specifiques",
+      "vocab_specificity": "medical-high (plantar fasciitis, heel spur, fascia plantaire, podiatrist-prescribed)",
+      "criteria_added": ["clinical equivalence affirmation vs custom", "durability comparable custom orthotics", "podiatrist endorsement explicite"]
+    },
+    "applies_to_products": ["massage-insoles"],
+    "scope": "segment",
+    "tags": ["plantar-fasciitis", "diagnosed", "post-podiatre", "product-aware"],
+    "audience_type": "primary",
+    "validation_status": {
+      "state": "validated",
+      "validated_by": "operator",
+      "validated_at": "2026-05-14",
+      "validation_notes": "Sous-poche enfant chronic-pain-45 · awareness product_aware verifie · trigger custom orthotics frustration source verbatims Reddit + Amazon reviews."
+    },
+    "entry_door": "pain_driven",
+    "status": "complete",
+    "created": "2026-05-14",
+    "updated": "2026-05-14"
+  },
+
+  "purchase_driver": "pain_relief",
+
+  "persona_archetype": {
+    "$comment": "Herite mere · condition_based primary + demographic + psychographic. Condition_based renforce ici car diagnostique formel.",
+    "primary": "condition_based",
+    "secondary": ["demographic", "psychographic"]
+  },
+
+  "buyer_user_split": {
+    "$comment": "Herite mere · 80% self-buy (own pain documented · plus autonome decision que mere general). 20% family-purchased (gift adult child to parent).",
+    "is_split": true,
+    "buyer_role": "self primarily OR adult child secondarily",
+    "user_role": "self (45-65 diagnosed plantar fasciitis)",
+    "buyer_emotions": ["validation diagnosed condition deserves solution", "frustration custom orthotics failed/expensive"],
+    "user_experience": ["surprise OTC works comparable custom", "validation chose smart alternative"]
+  },
+
+  "identity": {
+    "description": "Sous-poche enfant chronic-pain-45 · diagnostique formel plantar fasciitis par podiatre. A essaye custom orthotics ($500-800) souvent decevant/limite a chaussures specifiques. Cherche alternative daily-wearable abordable. Awareness stage = product_aware (sait quoi acheter · compare options · evalue clinical equivalence). Subset typique 40% du tree chronic-pain-45.",
+    "age_range": { "min": 45, "max": 65 },
+    "gender": "all",
+    "profession_category": "white-collar pre-retirement OR retiree active OR caregiver (heritage mere + bias caregivers + healthcare workers diagnose tot)",
+    "income_level": "medium",
+    "lifestyle": [
+      "active mais affectee par plantar fasciitis diagnostique",
+      "a deja paye $500-800 custom orthotics (sunk cost frustration)",
+      "wear custom orthotics weekdays · cherche solution evenings/weekends/sport",
+      "deja informee podiatre sur exercises stretching + ice rolling"
+    ],
+    "information_sources": [
+      "Reddit r/PlantarFasciitis (active members diagnostiques)",
+      "Facebook groups Plantar Fasciitis Support",
+      "YouTube podiatrist channels (deep dive specific PF content)",
+      "Amazon reviews verified avec mention 'podiatrist recommended'",
+      "podiatre direct recommendation (rare mais signal trust max)"
+    ]
+  },
+
+  "role": {
+    "type": "end_user",
+    "proxy_link_id": null
+  },
+
+  "psychology": {
+    "core_desire": "Trouver alternative custom orthotics qui marche aussi bien mais 10x moins cher et wearable daily.",
+    "values": [
+      "informed consumer (deja paye custom · knowledgeable)",
+      "value-for-money critical (sunk cost custom $500-800)",
+      "preserved mobility = preserved identity",
+      "clinical credibility non-negotiable"
+    ],
+    "goals": [
+      "porter une seule paire insole daily (vs swap custom multiple chaussures)",
+      "douleur plantar fasciitis controllable sous 2 semaines",
+      "marcher 1h+ sans flare-up",
+      "ne plus etre limite par chaussures custom orthotics fittees"
+    ],
+    "beliefs_limiting": [
+      "Si custom orthotics $700 marchent que partiellement, OTC marchera moins",
+      "Les podiatres recommandent custom car c'est leur business",
+      "Plantar fasciitis chronique = jamais vraiment soigne"
+    ],
+    "beliefs_facilitating": [
+      "Si podiatre mentionne Stepprs, vaut le coup d'essayer",
+      "90-day money back = risque-free vs custom non-refundable",
+      "Verified reviews 1000+ avec mention plantar fasciitis valident efficacite",
+      "$27 perception negligible vs $700 custom · low-risk trial"
+    ],
+    "emotions": ["frustration custom orthotics failed/limite", "skepticisme initial OTC", "espoir mesure si endorsement clinical", "fierte si solution trouvee abordable"],
+    "social_codes": ["partage Reddit/Facebook diagnostiques success stories", "discret avec famille sur cout custom orthotics decevant"],
+    "life_moments": ["diagnostic podiatre PF", "premiere annonce custom orthotics $700", "premiere deception custom apres 3-6 mois", "premier sport interdit/limit by PF", "recherche alternative active sur Reddit"],
+    "jtbd": {
+      "primary": "Trouver alternative custom orthotics qui marche aussi bien mais wearable daily sans contraintes chaussures.",
+      "secondary": "Recuperer confiance dans la categorie insole apres deception Dr Scholl + custom orthotics partiel.",
+      "context": "Post-podiatre · custom orthotics achetees · deception partielle · recherche alternative complementaire ou substitut.",
+      "emotional_driver": "relief",
+      "drives": ["pain relief documented condition", "value-for-money post custom orthotics", "preserved mobility specific to PF"],
+      "fears": ["chronic plantar fasciitis lifelong", "regression sport/activity due to PF flare-ups", "additional sunk cost on another failed solution"],
+      "status_signals": ["smart medical consumer", "I bypass the expensive custom orthotics racket"],
+      "self_perception": "Informed patient who refuses to be milked by the custom orthotics industry."
+    }
+  },
+
+  "decision_process": {
+    "$comment": "Trigger specifique sous-poche · custom orthotics frustration (sunk cost $500-800 deception partielle). Evaluation criteria enrichis vs mere · clinical equivalence affirmation explicite, durability comparable custom. Time_to_decide plus court que mere (1-2 weeks vs 1-4 weeks) car deja product_aware · evalue specifications, pas concepts.",
+    "awareness_trigger": "Custom orthotics $500-800 deception partielle (douleur persiste OR limite a chaussures specifiques) · OR podiatre mention insole brand OTC en alternative.",
+    "research_behavior": {
+      "primary_sources": ["Reddit r/PlantarFasciitis specific brand threads", "Amazon reviews filter 'plantar fasciitis'", "DTC site review (Stepprs + Powerstep comparison)"],
+      "secondary_sources": ["YouTube podiatrist channels specific brand reviews", "Facebook PF groups testimonials specific products", "Trustpilot verified"],
+      "decision_makers": "self"
+    },
+    "evaluation_criteria": [
+      "podiatrist explicit recommendation (cross-ref spec.json promise 'podiatrist recommended')",
+      "clinical study citation OR equivalence claim vs custom orthotics",
+      "verified reviews 500+ mentioning 'plantar fasciitis' specifically",
+      "durability claim comparable custom orthotics (6-12 months wear)",
+      "90-day money back guarantee (vs custom non-refundable)",
+      "daily wearable across multiple shoe types (vs custom limite specifique)",
+      "price $25-50 sweet spot (perception affordable trial vs custom $500-800)"
+    ],
+    "trust_anchors": [
+      "podiatrist video testimonial OR endorsement",
+      "before/after testimonials specifically diagnosed PF patients",
+      "Reddit r/PlantarFasciitis recommended threads (organic social proof)",
+      "money back guarantee 90 days"
+    ],
+    "purchase_path": [
+      "trigger (custom orthotics deception OR podiatre mention)",
+      "Reddit r/PlantarFasciitis search 'best OTC insole'",
+      "Stepprs/Powerstep comparison via reviews + youtube",
+      "DTC site review · check clinical claims + reviews",
+      "purchase trial pair $27 (perception ridiculously low vs custom $700)",
+      "wear daily 1-2 weeks · validate plantar fasciitis pain reduction (cross-ref spec.json benefit functional latency 7-14j)"
+    ],
+    "purchase_catalyst": "Verified review 'better than my $700 custom orthotics' OR podiatrist endorsement video OR Reddit recommended thread · combined avec 90-day money back perception zero-risk.",
+    "time_to_decide": "1-2 weeks (product_aware deja · compare options, pas concepts)",
+    "risk_tolerance": "needs_consensus"
+  },
+
+  "behavior": {
+    "purchase_frequency": "regular",
+    "conversion_timeline": "considered",
+    "dominant_device": "mobile",
+    "cart_behavior": "comparison_shops",
+    "where_they_hang": [
+      "Reddit r/PlantarFasciitis (active poster diagnostique)",
+      "Facebook groups Plantar Fasciitis Support",
+      "YouTube podiatrist channels comments",
+      "Amazon PF insole reviews"
+    ],
+    "content_consumed": [
+      "podiatrist explainer specific PF content",
+      "before/after testimonials diagnosed PF patients",
+      "review comparisons Stepprs vs Powerstep vs custom orthotics",
+      "stretching exercises advanced PF",
+      "shoe recommendations compatible PF insoles"
+    ],
+    "vocab_register": "medical-high · familiar avec terminology specifique (fascia plantaire, heel spur, fasciotomy, night splint, custom orthotics, podiatrist-prescribed, gait analysis)",
+    "brand_relationships": "Custom orthotics expensive disappointing (limite chaussures, partial relief, sunk cost frustration $500-800) · Dr Scholl tried failed early-stage · Powerstep tried mixed results · Stepprs nouvelle decouverte espoir endorsed by podiatre OR Reddit.",
+    "seasonal_spikes": ["spring (return to outdoor walking, PF flare)", "September (new shoes, custom orthotics swap)", "post vacation (long walks PF flare)"],
+    "channel_preferences": ["search google specific PF queries", "Reddit", "Amazon", "DTC site direct (post organic discovery)"]
+  },
+
+  "voice": {
+    "vocabulary_to_use": [
+      "j'ai consulte un podiatre",
+      "diagnostique plantar fasciitis",
+      "j'ai paye $700 pour des orthoses sur mesure",
+      "fasciite plantaire chronique",
+      "wearable daily across multiple shoes"
+    ],
+    "vocabulary_to_avoid": [
+      "miracle insole",
+      "instant cure",
+      "comme avant la condition",
+      "no more pain forever"
+    ],
+    "key_expressions": [
+      { "text": "j'ai paye $700 pour custom orthotics et ca marche que dans 1 paire de chaussures", "origin": "voc", "platform": "reddit-plantar-fasciitis", "frequency": 41, "sample_size": 200 },
+      { "text": "mon podiatre m'a dit que Stepprs c'est aussi bien que custom pour daily wear", "origin": "voc", "platform": "amazon-reviews", "frequency": 23, "sample_size": 200 },
+      { "text": "diagnostique plantar fasciitis chronique il y a 18 mois", "origin": "voc", "platform": "facebook-pf-groups", "frequency": 56, "sample_size": 200 },
+      { "text": "les custom orthotics c'est un racket des podiatres", "origin": "voc", "platform": "reddit-plantar-fasciitis", "frequency": 19, "sample_size": 200 }
+    ],
+    "tone_self": "informed medical · slightly cynical post-custom-deception · cautiously open if endorsement clinical",
+    "tone_register": "medical-aware specific, preuves cliniques exigees, compare specs, partage cout deceptions custom orthotics",
+    "pain_metaphors": [
+      "coup de couteau dans le talon premiere marche matin",
+      "comme si le fascia allait dechirer",
+      "douleur sourde apres 1h station debout",
+      "flare-up apres trop de marche"
+    ],
+    "solution_metaphors": [
+      "comparable a mes custom orthotics mais a $27",
+      "enfin une insole portable dans toutes mes chaussures",
+      "soulagement progressif sous 7-14 jours (cross-ref spec.json latence functional)",
+      "podiatre validated"
+    ]
+  },
+
+  "benefits": [
+    {
+      "$comment": "BEN-01 sous-poche · cross-ref spec.json benefit functional plantar fasciitis pain relief · latence 7-14j. Specificity vs mere · explicite mention diagnostique + comparaison custom orthotics. Lever relief renforce car driver pain documented.",
+      "ref": "BEN-01",
+      "priority": 1,
+      "formulation": "Plantar fasciitis pain reduction 70%+ sous 2 semaines · comparable a custom orthotics mais wearable daily across multiple shoes",
+      "chain": [
+        { "level": "functional", "formulation": "Arch support engineered targets plantar fascia stress points · clinical equivalence claim vs custom orthotics · daily wear toute chaussures" },
+        { "level": "emotional", "formulation": "Validation choix smart consumer · $27 plutot que $700 pour resultat equivalent daily wear" },
+        { "level": "identity", "formulation": "Informed patient qui bypass le racket custom orthotics · preserved mobility specific to chronic condition" }
+      ],
+      "emotional_lever": "relief",
+      "awareness_stage": "product_aware"
+    }
+  ],
+
+  "pain_benefit_chain": [],
+
+  "objections": [],
+
+  "market_position": {
+    "$comment": "Awareness product_aware (diverge de mere solution_aware) · sait quoi acheter, compare specs cross-brand. Segment size 40% du tree chronic-pain-45 (estimation diagnostiques formels). Price sensitivity low (sunk cost custom $500-800 fait perception $27 negligible).",
+    "awareness_level": "product_aware",
+    "sophistication_override": "stage_4_unique_mechanism",
+    "segment_size_pct_of_tree_parent": 40,
+    "segment_size_pct_of_brand": 14,
+    "price_sensitivity": "very-low · sunk cost custom $500-800 fait $27 perception negligible · trial low-risk",
+    "competition_alternatives": [
+      "custom orthotics podiatre $500-800 (deja achete deception partielle · alternative complementaire)",
+      "Powerstep Pinnacle Plus $35-55 (direct comparable PF-specific)",
+      "Vionic shoes $90-130 (lifestyle integration mais limite shoes)",
+      "Tread Labs Stride $80-110 (mid-tier PF-specific)",
+      "stay with custom orthotics (frustrated but resigned)"
+    ],
+    "differentiation_appeal": "Insole engineered specifically pour plantar fasciitis chronique · clinical equivalence custom orthotics claim · daily wearable across shoes (vs custom limite specifique) · 90-day money back vs custom non-refundable · price $27 vs custom $500-800. Cross-ref spec.json positioning + promise 'podiatrist recommended · 90-day money back · zero heel pain by hour 8'."
+  },
+
+  "research_meta": {
+    "confidence": 78,
+    "opportunity_score": 9,
+    "sources_used": [
+      "Reddit r/PlantarFasciitis 6 months threads sample 500 posts",
+      "Stepprs Amazon reviews verified filter 'plantar fasciitis' 400+",
+      "Facebook Plantar Fasciitis Support groups testimonials sample 80",
+      "Podiatrist YouTube channels comments analysis (Dr Andrew Schneider · Dr Brad Schaeffer)",
+      "Stepprs internal data customer service tickets PF mentions"
+    ]
+  }
+}

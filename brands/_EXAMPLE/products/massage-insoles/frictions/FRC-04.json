@@ -1,0 +1,62 @@
+{
+  "$comment": "EXEMPLE pédagogique · friction usage produit massage-insoles · vitrine canon v2.64 · friction SECONDARY hand wash maintenance hygiene routine",
+  "_schema": "friction/1.3",
+  "_version": "1.3",
+  "_field_types": {
+    "friction_id": "stated",
+    "meta.*": "structured",
+    "formulation": "observed",
+    "category": "structured",
+    "severity_score": "derived",
+    "tier": "structured",
+    "customer_evidence": "observed",
+    "current_workarounds": "observed",
+    "resolution_state": "structured",
+    "cross_refs.*": "structured",
+    "affected_products": "stated",
+    "affected_audiences": "stated"
+  },
+  "_meta": {
+    "example_canon_showcased": "Canon v2.64 · friction friction_ux maintenance · hand wash required pas machine · workers time-pressed skip routine · accélère wear (croise FRC-03)"
+  },
+  "friction_id": "FRC-04",
+  "meta": {
+    "status": "complete",
+    "validation_status": {"state": "validated", "_note": "Example pédagogique vitrine v2.68"},
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "$comment_formulation": "Verbatim customer · friction UX maintenance · workers 10-12h shifts + odeur/sueur accumulation + pas de temps pour hand wash hebdo",
+  "formulation": "Customer language verbatim · 'Hand wash only · j'ai pas le temps de laver les insoles à la main après 12h de garde · j'oublie · ça commence à sentir'",
+  "category": "friction_ux",
+  "$comment_severity": "Score 4 friction modérée · maintenance habit-forming dur à imposer · pas de machine wash = barrier pratique workers volume",
+  "severity_score": 4,
+  "tier": "secondary",
+  "customer_evidence": [
+    "Site care instructions · 'Hand wash with mild soap · air dry · do not machine wash'",
+    "Reviews · 'Wish they were machine washable · I just don't have time'",
+    "Tanya nurse 12h shifts · time-pressed routine context",
+    "Mike Kowalski warehouse · sweat accumulation steel-toe enclosed boots"
+  ],
+  "current_workarounds": [
+    "Hand wash quick rinse savon doux · 1x/semaine",
+    "Rotation 2 paires · une sèche pendant l'autre porte",
+    "Baking soda saupoudrer dry odeur control",
+    "Skip wash routine · accept odor + accelerated wear"
+  ],
+  "resolution_state": "accepted",
+  "$comment_cross_refs": "Cross-refs · PNT-04 nurses-12h (hygiène uniforme pression) · OBJ-04 nurses-12h (intégration routine hygiène) · mechanisms_workaround vide · benefits_blocked durability (skip wash = wear accelerated) + Identity 'I take care of myself smart' (skip = contre-identité)",
+  "cross_refs": {
+    "affected_pain_points": ["PNT-04"],
+    "affected_objections": ["OBJ-04"],
+    "mechanisms_workaround": [],
+    "benefits_blocked": ["Identity 'I take care of myself smart'"]
+  },
+  "affected_products": ["massage-insoles"],
+  "affected_audiences": [
+    "workers-shifts",
+    "workers-shifts/nurses-12h",
+    "workers-shifts/warehouse-10h",
+    "workers-shifts/hospitality-retail"
+  ]
+}

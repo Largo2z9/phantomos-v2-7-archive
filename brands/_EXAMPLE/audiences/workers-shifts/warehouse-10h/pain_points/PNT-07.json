@@ -1,0 +1,49 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain SPÉCIFIQUE sous-poche warehouse-10h · steel-toe boots constrained airflow + heat + sweat · vitrine canon v2.64 pain placé sous-poche car steel-toe boots unique warehouse (nurses = white sneakers · hospitality = dress shoes/heels)",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id",
+    "formulation": "verbatim",
+    "chain": "surface → consequence → deep",
+    "category": "enum",
+    "affected_audiences": "1 entry warehouse-10h"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · pain spécifique warehouse · steel-toe boots constraint heat/sweat/airflow"
+  },
+  "pain_id": "PNT-07",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · steel-toe boots heat + moisture pattern reconnu occupational footwear"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "Mes pieds nagent dans la sueur dans mes steel-toes · pas d'air qui passe · l'été c'est l'enfer · chaussettes trempées à midi",
+  "chain": {
+    "surface": "Pieds moites toute la journée · chaleur extrême été · ampoules récurrentes · odeur tenace · démangeaisons mycose",
+    "consequence": "Changement chaussettes mi-shift (peu pratique) · podiatrist pour mycoses récurrentes · achats poudre + spray quotidiens · gêne sociale post-shift (vestiaire, retour maison)",
+    "deep": "Sentiment d'insalubrité corporelle imposée par le métier · gêne dignity (ne pas sentir bon · cacher ses pieds en société) · perte d'estime"
+  },
+  "category": "physical",
+  "severity_score": 4,
+  "tier": "secondary",
+  "emotion": "discomfort · shame · resignation",
+  "trigger": "Steel-toe boots 8-10h · pic été · aggravé entrepôts non climatisés",
+  "verbatim_quotes": [
+    "Mike Kowalski (2 years · 10 hour days warehouse) · contexte warehouse",
+    "James (he called me two days later and said order me another pair) · pattern besoin solution récurrente"
+  ],
+  "frequency": "common (warehouse workers steel-toe summer · 60%+ touchés)",
+  "urgency": "medium (impact quality of life + médical mycoses)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Massage textured stimulation", "Anti-slip stability grip"],
+    "benefits_served": ["Daily wearability sans friction", "Walking on Air"],
+    "friction_ids": [],
+    "objection_ids": ["OBJ-05"]
+  },
+  "affected_audiences": ["warehouse-10h"]
+}

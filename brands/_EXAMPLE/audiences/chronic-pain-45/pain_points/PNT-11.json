@@ -1,0 +1,51 @@
+{
+  "$comment": "EXEMPLE pédagogique · pain shared cross-sous-poches chronic-pain-45 · avoiding activities loved (marche · jardinage · garde-enfants grands-parents) · vitrine canon v2.64 pain mère car renoncement activité aimée = expérience commune cross-diagnostic",
+  "_schema": "pain_point/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "pain_id": "canonical_id",
+    "formulation": "verbatim customer language",
+    "chain": "surface → consequence → deep",
+    "category": "enum physical / emotional / friction_ux / logistical / cognitive / social_status",
+    "severity_score": "1-10",
+    "frequency": "labeled enum avec % audience touchée"
+  },
+  "_meta": {
+    "example_canon_showcased": "canon v2.64 · pain logistique-émotionnel (renoncement activités) shared cross-poches · placé mère car loss of beloved activity pattern universel chronic-pain-45 (jardinage · marche · garde-enfants grands-parents)"
+  },
+  "pain_id": "PNT-11",
+  "meta": {
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example pédagogique · pattern avoidance activités aimées observé Facebook groups arthritis + Reddit + Amazon reviews verbatim · spécificité chronic-pain-45 vs workers (workers obligés tenir · chronic-pain-45 ont la liberté d'éviter mais le payent en self-perception)"
+    },
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "formulation": "J'évite la randonnée maintenant · j'ai dû arrêter le jardinage du dimanche · je peux plus garder mes petits-enfants longtemps parce que mes pieds suivent pas",
+  "chain": {
+    "surface": "Renoncement progressif activités aimées · jardinage limité 30 min max · randonnée abandonnée · garde-enfants grands-parents écourtée · marches courtes seulement",
+    "consequence": "Perte de plaisir quotidien · érosion liens famille (rôle grand-parent réduit) · perte hobby thérapeutique (jardinage = self-care) · sentiment de vie qui rétrécit · jalousie envers conjoint/amis encore mobiles",
+    "deep": "Identity erosion · suis-je encore cette personne active qui aime sa vie ou je suis devenue cette personne qui dit non · grief silencieux vie d'avant · peur que ça s'aggrave avec l'âge · rapport au temps qui change (chaque année compte plus)"
+  },
+  "category": "emotional",
+  "severity_score": 6,
+  "tier": "secondary",
+  "emotion": "grief · frustration · jalousie cachée · resentment du corps · sentiment d'injustice",
+  "trigger": "Moments invitation décliner · réflexion fin saison jardinage perdue · regard envieux sur pair même âge actif · annonce activité famille qu'on devra rater",
+  "verbatim_quotes": [
+    "Facebook arthritis groups · j'ai dû arrêter le jardinage · ça me manque tellement (theme récurrent)",
+    "Reddit r/PlantarFasciitis · I can't keep up with my grandkids anymore",
+    "AARP forums · the activities I loved are slipping away"
+  ],
+  "frequency": "very_common (45+ chronic pain segment · 60%+ avoidance pattern documented)",
+  "urgency": "high (chaque saison perdue est irrécupérable · grief cumulative)",
+  "cross_refs": {
+    "mechanisms_addressed": ["Arch support engineered structure", "Impact absorption cushioning", "Massage textured surface stimulation"],
+    "benefits_served": ["Plantar fasciitis pain relief", "Identité 'I take care of myself smart'", "Feel Like You're Walking on Air"],
+    "friction_ids": [],
+    "objection_ids": ["OBJ-09"]
+  },
+  "affected_audiences": ["chronic-pain-45", "plantar-fasciitis-diagnosed", "heel-pain-general"]
+}

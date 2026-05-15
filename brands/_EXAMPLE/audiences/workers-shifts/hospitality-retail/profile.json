@@ -1,0 +1,179 @@
+{
+  "$comment": "EXEMPLE pédagogique · Sous-poche hospitality-retail héritant de mère workers-shifts. Vitrine canon profile/2.0 v2.68 · pattern parent/enfants sémantique pure v2.64. Spécificité = customer-facing fashion shoes constraint + smile-despite-pain emotional + lower wage = price-sensitive (sweet spot $27 single OR Plantar Fasciitis Kit $48 dependent budget moment). Cross-ref Stepprs spec.json Massage textured surface stimulation + Anti-slip stability grip · mécanismes entry-level matchent fashion shoe daily wear + immediate emotional gratification besoin.",
+  "_schema": "profile/2.0",
+  "_version": "2.0",
+  "_field_types": {
+    "identity.label": "stated",
+    "identity.awareness_stage": "structured",
+    "identity.demographics.age_range": "structured",
+    "identity.demographics.gender": "observed",
+    "identity.demographics.income": "observed",
+    "identity.life_stage": "observed",
+    "identity.role.type": "structured",
+    "identity.role.buyer_user_split": "structured",
+    "psychology.jtbd_primary": "observed",
+    "psychology.jtbd_secondary": "observed",
+    "psychology.drives": "derived",
+    "psychology.fears": "observed",
+    "psychology.status_signals": "derived",
+    "psychology.self_perception": "derived",
+    "decision_process.trigger": "observed",
+    "decision_process.evaluation_criteria": "structured",
+    "decision_process.purchase_path": "structured",
+    "decision_process.time_to_decide": "structured",
+    "behavior.where_they_hang": "observed",
+    "behavior.content_consumed": "observed",
+    "behavior.vocab_register": "observed",
+    "behavior.brand_relationships": "observed",
+    "voice.key_expressions": "observed",
+    "voice.tone_self": "derived",
+    "voice.pain_metaphors": "observed",
+    "voice.solution_metaphors": "observed",
+    "market_position.segment_size_pct_of_brand": "derived",
+    "market_position.price_sensitivity": "structured",
+    "market_position.competition_alternatives": "observed",
+    "market_position.differentiation_appeal": "derived",
+    "specificity_modifiers.*": "structured"
+  },
+  "meta": {
+    "audience_slug": "hospitality-retail",
+    "status": "complete",
+    "validation_status": {
+      "state": "validated",
+      "_note": "Example sub-pocket · validé par construction pédagogique"
+    },
+    "parent_audience_slug": "workers-shifts",
+    "is_mother": false,
+    "example_canon_showcased": [
+      "Pattern parent/enfants sémantique pure v2.64 · sous-poche hospitality override specificity_modifiers (fashion shoe constraint · customer-facing emotional · lower wage price-sensitive · younger demographic)",
+      "Price sensitivity divergent · sweet spot $27 single trial (pas $48 bundle direct comme nurses) · drive paid copy positioning entry-tier",
+      "Cross-ref Stepprs spec.json Massage textured surface stimulation (latency 0 immediate · instant gratification) + Anti-slip stability grip (fashion shoe constraint fit) = mécanismes pillars",
+      "Rachel S verbatim 'roller after long day game changer' = cible hospitality canon (post-shift recovery ritual)"
+    ],
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "identity": {
+    "label": "Hospitality + Retail standing (waiters · waitresses · retail floor)",
+    "$comment_label": "Sous-poche service industry standing · scope inclut serveurs/serveuses restaurant · retail floor associates · baristas · bartenders · hotel front desk · customer-facing service standing 8h+.",
+    "awareness_stage": "solution_aware",
+    "demographics": {
+      "age_range": "22-45",
+      "$comment_age": "Skew plus jeune que mère · service industry younger workforce · peak career change après 45.",
+      "gender": "60% F · 40% M",
+      "income": "$25-40k US median (tipped + minimum wage range · plus bas que warehouse + nurses · price-sensitive critique)"
+    },
+    "life_stage": "active service industry · 6-9h shifts standing customer-facing · souvent étudiants/jeunes parents/career-transition · cash-flow tendu mois à mois",
+    "role": {
+      "type": "primary_buyer + user_self",
+      "buyer_user_split": "self-buy 90% · gift 10% (lower gift-driver que mère · price-sensitive context · conjoint moins enclin gifter à ce prix-tier si user lui-même price-sensitive)"
+    }
+  },
+  "psychology": {
+    "jtbd_primary": "Finir mon 8-9h shift customer-facing sans grimacer derrière mon smile · sans rentrer en limpant à la maison · sans claquer 25% de mon tip cash dans une insole qui marche pas",
+    "$comment_jtbd_primary_override": "Override mère · ajoute dimension emotional 'smile-despite-pain' (customer-facing constraint unique) + dimension price-sensitive ('25% de mon tip cash dans insole'). Drive un copy angle different · authenticity 'we get it · $27 from your tips is real money'.",
+    "jtbd_secondary": "Stay in service industry sans damage chronique · transition out career si possible mais pas forced par foot/back injury",
+    "drives": [
+      "pain relief permettant maintenir smile customer-facing (job depends on demeanor)",
+      "low-risk trial (cash-flow tendu · downside-removal critique)",
+      "fast results (latency tolerance basse · si pas ressenti vite, return)"
+    ],
+    "fears": [
+      "claquer $27 dans énième insole qui marche pas (déjà testé Dr. Scholl déçu)",
+      "missing shifts cost (tipped workers = pas de sick days souvent · revenu direct lié shift)",
+      "customer voir grimace douleur (review négatif · tip réduit · management noticed)"
+    ],
+    "status_signals": [
+      "I'm scrappy · I find what works on a budget",
+      "I take care of myself smart despite low income (mature service worker positioning)",
+      "I'm professional · customers don't see my pain"
+    ],
+    "self_perception": "Scrappy service professional · cash-flow conscious · skeptical of marketing · trusts peer recommendation + money-back proof + price-accessibility signal"
+  },
+  "pain_benefit_chain": [],
+  "objections": [],
+  "$comment_inheritance": "Sub-collection canon v2.64 Phase 4 sous-poche-spécifique = pain customer-facing smile constraint + pain fashion shoe non-supportive + objection 'pas $48 bundle direct · $27 single first trial' = 3 deltas vs mère workers-shifts.",
+  "decision_process": {
+    "trigger": "Specific moment · post-double-shift dimanche soir exhaustion + douleur talon refusing weekend activities OR tip-jar count Vendredi soir + flash 'this month I deserve to fix my feet' OR collègue serveuse mention insole break room",
+    "$comment_trigger_override": "Override mère · ajoute tip-jar trigger spécifique service industry (cash moment decision · $27 immédiat affordable depuis tip cash). Drive timing creative paid = Vendredi-Dimanche soir.",
+    "evaluation_criteria": [
+      "fits fashion-acceptable shoes (Skechers Slip-Ins · Reebok Classic · Vans · Doc Martens · Adidas Stan Smith · constraint fashion-allowed shop floor)",
+      "endorsement peer-trusted (review serveuse-by-serveuse > podiatrist clinical pour cette sous-poche)",
+      "money-back risk-free 90 days · CRITICAL (downside-removal cash-flow context)",
+      "price $27 single trial · pas $48 bundle direct (price-sensitive entry)"
+    ],
+    "purchase_path": [
+      "Search Google 'best insole serving 8 hours' OR 'plantar fasciitis cheap insole'",
+      "TikTok #PlantarFasciitis algorithmic discovery (younger demographic vector)",
+      "Compare 2-3 options DTC focus price + return policy",
+      "Read TikTok comments + Amazon reviews specifically service industry verbatims",
+      "Purchase 1 single pair trial $27 (entry-level · pas direct bundle)"
+    ],
+    "time_to_decide": "2-7 days research · plus court que mère · cash-flow decision moment-driven"
+  },
+  "behavior": {
+    "where_they_hang": [
+      "TikTok #PlantarFasciitis #ServiceIndustry #ServerLife (algorithmic discovery primary)",
+      "Reddit r/Serverlife r/Bartenders r/Retail r/TalesFromYourServer",
+      "Facebook groups Servers United · Restaurant Workers Solidarity",
+      "Instagram service industry creators (younger demographic media stack)"
+    ],
+    "content_consumed": [
+      "Server-to-server TikTok UGC (highest trust + algorithmic match)",
+      "Quick-cut day-in-life service shift content (relatable pain points surface)",
+      "Money-back guarantee emphasis ads (downside-removal critical price-sensitive)",
+      "Tipping/cash-flow lifestyle content (parallel community signaling)"
+    ],
+    "vocab_register": "service industry slang · tip jar · double shift · table 12 · 86'd · 8-top · pivot · expo · back-of-house · smile-and-nod · break room · clocking out · tip-out percentage · cash money",
+    "brand_relationships": "Skechers Slip-Ins · Reebok Classic · Vans Old Skool · Doc Martens connus (fashion-acceptable service shoes) · Stepprs insole add-in fits dans tout · Dr. Scholl tried + déçu (drugstore reflex achat raté) · Powerstep too expensive"
+  },
+  "voice": {
+    "key_expressions": [
+      "the roller after a long day on your feet is a game changer (Rachel S verbatim canon)",
+      "I'm on my feet all day for tips",
+      "by my third shift this week my feet are dead",
+      "smile through the pain · customer doesn't pay for grimace",
+      "$27 from my tips better be worth it",
+      "Sundays after a double · I can't move"
+    ],
+    "$comment_key_expressions": "Verbatim Rachel S 'roller game changer' = cible canon hospitality scrapé Stepprs reviews. Spec.json brand offre likely include roller bundle = upsell natural cette sous-poche post-trial single pair conversion.",
+    "tone_self": "scrappy + real + service-industry-direct · no-bullshit · validates peer + budget signal · resists pretentious clinical positioning",
+    "pain_metaphors": [
+      "my feet are dead by my third shift this week",
+      "I limp home after every double",
+      "Sundays I can't move",
+      "my smile starts breaking after hour 6",
+      "$27 better be worth it · that's a quarter of my tip night"
+    ],
+    "solution_metaphors": [
+      "the roller after a long day is a game changer",
+      "I can actually do a double without dying",
+      "first time my feet didn't kill me Sunday after work",
+      "$27 well-spent · which is rare in my budget"
+    ]
+  },
+  "market_position": {
+    "segment_size_pct_of_brand": 9,
+    "$comment_segment_size": "Estimation 9% acquisition Stepprs · moitié de nurses/warehouse car price-sensitive ralentit conversion · mais volume audience plus large · ratio plus bas mais reach plus haut. Split workers-shifts ≈ 18% nurses + 18% warehouse + 9% hospitality.",
+    "price_sensitivity": "high · cash-flow tendu · sweet spot $27 single trial entry · bundle $48 Plantar Fasciitis Kit possible repeat purchase post-trial validation seulement · 35% off frame critique conversion",
+    "competition_alternatives": [
+      "Dr. Scholl Massaging Gel Sport (drugstore $15-20 · 'cheap réflexe' · entry generic)",
+      "Skechers Slip-Ins built-in foam (shoe-bundled · 'enough')",
+      "No insole + Skechers + Reebok comfort shoe alone (resigned · 'shoes are enough')",
+      "Crocs (back-of-house option · controversial fashion acceptability)"
+    ],
+    "differentiation_appeal": "Engineered insole entry-tier $27 + 90-day money-back annule risk (cash-flow context downside-removal essential) · fits fashion shoes (Skechers · Reebok · Vans · Doc Martens · pas constraint steel-toe) · 800k+ customers proof scale · authentic service-industry verbatims (Rachel S roller testimonial drive)"
+  },
+  "specificity_modifiers": {
+    "trigger_unique": "Tip-jar count Vendredi soir + cash moment decision (specific service industry trigger · entry-affordability from tip cash) OR post-double-shift dimanche exhaustion refusing weekend activities",
+    "context_occupation": "6-9h shifts standing customer-facing restaurant/retail/hospitality · fashion-acceptable shoes constraint (Skechers Slip-Ins · Reebok · Vans · Doc Martens · pas steel-toe pas uniform sneaker) · smile-despite-pain emotional constraint · tipped wages = cash-flow tendu · younger demographic skew",
+    "pain_specific": [
+      "Customer-facing smile constraint (must maintain demeanor despite pain · emotional taxation unique)",
+      "Fashion shoe non-supportive (Vans flat sole · Doc Martens unforgiving · constraint occupation appearance)",
+      "Cash-flow trial barrier ($27 = 25% of tip night · downside-removal critical)"
+    ],
+    "objection_specific": "$27 entry trial OK mais $48 bundle direct pas affordable · price-sensitive entry path · drive paid copy 'start with single trial · upgrade bundle if it works'",
+    "vocab_specific": "Service industry slang (tip jar · double shift · table 12 · 86'd · 8-top · pivot · expo · back-of-house · smile-and-nod · clocking out · tip-out percentage · cash money) + TikTok algorithmic discovery dominant vector (vs Reddit/FB autres sous-poches)",
+    "$comment_specificity": "Block explicit · price-sensitivity + fashion shoe constraint + emotional smile-despite-pain = 3 deltas critiques vs nurses + warehouse. Drive paid creative angle entry-tier authenticity-positioned · pas clinical premium messaging."
+  }
+}

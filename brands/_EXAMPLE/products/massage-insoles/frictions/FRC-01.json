@@ -1,0 +1,60 @@
+{
+  "$comment": "EXEMPLE pédagogique · friction usage produit massage-insoles · vitrine canon v2.64 sub-product sémantique pure · friction PRIMARY fit shoes constraint",
+  "_schema": "friction/1.3",
+  "_version": "1.3",
+  "_field_types": {
+    "friction_id": "stated",
+    "meta.*": "structured",
+    "formulation": "observed",
+    "category": "structured",
+    "severity_score": "derived",
+    "tier": "structured",
+    "customer_evidence": "observed",
+    "current_workarounds": "observed",
+    "resolution_state": "structured",
+    "cross_refs.*": "structured",
+    "affected_products": "stated",
+    "affected_audiences": "stated"
+  },
+  "_meta": {
+    "example_canon_showcased": "Canon v2.64 sub-product sémantique pure · friction usage appartient au produit qu'elle affecte (massage-insoles) · cross-refs audiences mère + sous-poches · mechanisms_workaround pointe mechanisms Stepprs spec.json · benefits_blocked pointe benefits spec.json"
+  },
+  "friction_id": "FRC-01",
+  "meta": {
+    "status": "complete",
+    "validation_status": {"state": "validated", "_note": "Example pédagogique vitrine v2.68"},
+    "created": "2026-05-15",
+    "updated": "2026-05-15"
+  },
+  "$comment_formulation": "Verbatim customer language · pas reformulation marketing · capture friction physique réelle ressentie workers steel-toe + hospitality narrow toe box",
+  "formulation": "Customer language verbatim · 'L'insole rentre pas dans mes work boots · j'ai déjà des semelles dedans qui sortent pas · ça serre trop avec mes steel-toe'",
+  "category": "physical",
+  "$comment_severity": "Score 7 reflète friction primary impactant adoption · fit shoes = barrier purchase pour workers segment volume",
+  "severity_score": 7,
+  "tier": "primary",
+  "customer_evidence": [
+    "Verbatim site copy refutation · 'Won't make your shoes feel tight · Fits easily into work boots, sneakers, trainers'",
+    "Mike Kowalski warehouse · 2 years use · 10 hour days · steel-toe constraint context",
+    "Hospitality retail audience · narrow toe box fashion shoes · pression latérale signalée"
+  ],
+  "current_workarounds": [
+    "Cut along dotted line scissors trim · trimmable edges",
+    "Retirer semelle d'origine et remplacer entièrement",
+    "Tester avec une seule chaussure d'abord avant de trim l'autre",
+    "Size up d'une pointure pour accommoder volume insole 6mm"
+  ],
+  "resolution_state": "workaround_present",
+  "$comment_cross_refs": "Cross-refs canon · PNT-08 hospitality-retail audience (fashion narrow shoes pain) · OBJ-01 workers-shifts mère (fit doubt) + OBJ-05 warehouse-10h (steel-toe specific) · mechanisms_workaround pointe Anti-slip stability grip qui maintient malgré trim · benefits_blocked Daily wearability sans friction = benefit functional latency 0-1j",
+  "cross_refs": {
+    "affected_pain_points": ["PNT-08"],
+    "affected_objections": ["OBJ-01", "OBJ-05"],
+    "mechanisms_workaround": ["Anti-slip stability grip"],
+    "benefits_blocked": ["Daily wearability"]
+  },
+  "affected_products": ["massage-insoles"],
+  "affected_audiences": [
+    "workers-shifts",
+    "workers-shifts/warehouse-10h",
+    "workers-shifts/hospitality-retail"
+  ]
+}
