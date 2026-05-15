@@ -1,6 +1,6 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-14T18:29:03Z",
+  "_generated_at": "2026-05-15T16:02:26Z",
   "_count": 67,
   "skills": [
     {
@@ -1533,13 +1533,19 @@
           "pull notion vers phantom",
           "import notion vers {brand_slug}",
           "synchronise mon notion avec phantom",
-          "tire mon atlas notion dans phantom"
+          "tire mon atlas notion dans phantom",
+          "push phantom vers notion",
+          "scaffold notion workspace {brand_slug}",
+          "expose phantom dans notion"
         ],
         "en": [
           "sync notion atlas",
           "pull notion to phantom",
           "import from notion",
-          "sync workspace from notion"
+          "sync workspace from notion",
+          "push phantom to notion",
+          "scaffold notion workspace",
+          "export phantom to notion"
         ]
       },
       "disambiguates_against": {

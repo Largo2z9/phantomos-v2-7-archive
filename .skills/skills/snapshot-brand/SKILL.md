@@ -31,6 +31,7 @@ permissions:
 consumes:
   - path: docs/doctrine/breakthrough-advertising-5-stages.md
   - path: docs/doctrine/audiences-cartography-doctrine.md
+  - path: docs/system/scope-extension-discipline.md
 pipeline:
   preconditions: brands/{slug}/ must exist (run setup-brand if needed)
   postconditions: run validate-resources to check completeness, ingest-resource to enrich

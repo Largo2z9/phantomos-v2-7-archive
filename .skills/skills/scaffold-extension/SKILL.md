@@ -24,6 +24,8 @@ permissions:
   writes: [brand.custom, brand.extensions, operator.extensions, operator.profile.extensions, resource.extensions, index, skill.custom, brand.todos, operator.todos]
   mode: direct
   subagent_safe: false
+consumes:
+  - path: docs/system/scope-extension-discipline.md
 pipeline:
   preconditions: workspace deployed, docs/system/extending.md present, validate-resources skill available
   postconditions: extension registered + validated + operator informed

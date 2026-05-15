@@ -7,6 +7,68 @@
 
 ---
 
+## v2.66.0 · 2026-05-15 · Phase B push runtime exec-ready · sync-notion-atlas v2.0.0 BREAKING dual-direction sync
+
+**Why** · sync-notion-atlas v1.0.0 (v2.57) shipped Phase A pull-only MVP. v1.1.0 (v2.58) coverage extend. Phase B push spec documented (~230L) mais stubbée sans code runtime. Operator invoque `--mode=push` obtient refusal "deferred v2.58". v2.66 convertit la spec en Steps exec-ready · dual-direction sync Notion ↔ PhantomOS opérationnel · scaffold canvas + 11 DBs + rows populate + relations 2-pass + idempotency lookup. Pattern bridge tool dual-direction reproductible cross sources futures.
+
+**What** · `.skills/skills/sync-notion-atlas/SKILL.md` v1.1.0 → v2.0.0 BREAKING bump (dual-direction sync activé) · Phase B section refactor 230L → 730L · +488L total SKILL.md (935L → 1423L) · 7 Steps B1-B7 detailed exec-ready ·
+
+| Step | Coverage | Effort run-time |
+|---|---|---|
+| **B0** · pre-checks mode-dependent | URL parse + MCP gate + state validation push vs scaffold | <30s |
+| **B1** · canvas root creation Onday-style | 3 columns callouts + Opérations table + Roadmap/Full funnel inline + Données Atlas wrapper sub-page | 30-60s |
+| **B2** · 11 DBs creation pass 1 structure no-relations | Properties spec per DB + tags universels (Source/Confidence/Validation) + phantom_entity_id hidden property + rate limit 3 req/s | 2-5 min |
+| **B3** · rows population per entity 11 mappings | spec.json → Produits + Specs N + Mécanismes N + Bénéfices N · profile.json → Personae + Pain Points N + Objections N · angles · frictions · roadmap · creatives · tags universels reverse mapping | 5-30 min selon volume |
+| **B4** · idempotency lookup interleaved | DB-level lookup pre-create + row-level phantom_entity_id query pre-create · update si exists · skip si conflict last_edited_time > _synced_at | inline B2+B3 |
+| **B5** · relations cross-link 2-pass | B5a add relation properties to DBs · B5b set relation values on rows · per-entity resolution mapping (Specs→Produit · Bénéfices→Produit+Mécanisme · Pain Points→Persona+Bénéfice servi · Angles→Persona · Objections→Persona+Angle dérivé · Frictions→Products+Audiences+Objections+Pain Points · Roadmap→Angles+Audiences+Products+Creatives · Full funnel→Angle+Persona) | 2-5 min |
+| **B6** · tags universels verify pass | Source/Confidence/Validation defaults défensifs (declared/0.7/hypothesis) aligned canon Phase A | inline B3 |
+| **B7** · synthesis 5 sections investigation-posture | Observé URL canvas_root + 11 db_ids + row_counts + pct_relations_linked · Déduit H1 H2 · Inconnu 4 variables · Leviers A-E · Close ouvert UNE question macro | 1 turn |
+
+**9 hard rules Phase B canon** ·
+1. Idempotent par phantom_entity_id lookup (no duplicate · re-run = update existing)
+2. No silent overwrite Notion-side edits (flag Phase C diff candidate)
+3. 2-pass create pattern · DBs first sans relations · relations second avec page IDs resolved
+4. Rate limit Notion API 3 req/s · throttle si cascade
+5. Mode scaffold blank-only · refuse si brand state populated (anti-pattern · scaffold blank effacerait Notion existant)
+6. Canvas wrapper template fidèle Onday-style miroir stride-up
+7. No invented data Notion-side (si PhantomOS field null · skip Notion property · pas de default values)
+8. Stage all or none partial · continue batch sur autres rows si validate-resources MAJOR sur 1 entity · flag dans Leviers
+9. brand.json NOT pushed Notion-side · brand identity stays PhantomOS-only (multi-clients agency isolation · privacy leak prevention)
+
+**Modes runtime opérationnels** ·
+- `/sync-notion-atlas {brand_slug} --mode=push {notion_parent_url}` · brand existant peuplé → scaffold + populate
+- `/sync-notion-atlas {brand_slug} --mode=scaffold {notion_parent_url}` · brand vierge → scaffold canvas + 11 DBs vides (Notion-side populate ensuite OR pull plus tard)
+- `/sync-notion-atlas {brand_slug} --mode=pull {notion_url}` · UNCHANGED Phase A v1.0.0 (Notion → PhantomOS)
+- `--mode=diff` · DEFERRED v2.59+ (Phase C audit deltas cross-systems)
+
+**Cycle bidirectionnel post-v2.66** ·
+1. Largo run `--mode=push brand-active` · workspace Notion peuplé scaffold from PhantomOS · partage URL client/collab
+2. Client/collab édite Notion-side (corrections, enrichissements, validation_status updates)
+3. Largo run `--mode=pull` ultérieur · rapatrie edits Notion → PhantomOS canonical
+4. Cycle bidirectionnel opérationnel
+
+**Évolutions futures Phase B+** ·
+- v2.66.1 · canvas template extended (Liens utiles populated drive URLs · Suivi des créas sub-page populated · Opérations table dates auto-générées 12 mois rolling)
+- v2.66.2 · multi-Notion sources aggregation (1 PhantomOS brand pulled from N Notion workspaces · Abyss collectif scaling N clients → 1 atlas)
+- v2.59+ · `--mode=diff` Phase C audit deltas cross-systems
+- v2.60+ · views creation post-scaffold (Personae filter awareness · Roadmap timeline · Full funnel Kanban status · Angles board par source · ~10-15 vues canon)
+
+**Pattern canon bridge tool dual-direction reproductible** · sync-notion-atlas devient le pattern reference pour futures bridges (Linear · Airtable · ClickUp · spy tools layer market intelligence D#408). Structure miroir · NEW sync-{tool}-atlas skill (orchestrator Layer 1 MCP · Steps 0-N pull + Steps B0-B7 push + Steps C diff deferred) + NEW {tool}-bridge-doctrine.md (principe canon source of truth + mappings cross-platform + edge cases + workflow opérateur). Reproductible cross-sources futures via copy-paste pattern + adaptation tool-specific.
+
+**Files patched** ·
+- `.skills/skills/sync-notion-atlas/SKILL.md` v1.1.0 → v2.0.0 (935L → 1423L · +488L Phase B exec-ready section)
+- `.skills/_manifest.json` regen post-bump (auto)
+- `_version.json` template_version 2.65.0 → 2.66.0
+- `CHANGELOG.md` v2.66.0 entry (this entry)
+- `docs/internal/releases/manifest/2.66.0-manifest.json` NEW
+- `decisions.md` D#409 captured
+
+**Backward compat strict additif** · Phase A pull (Steps 0-6) preserved unchanged. Triggers FR/EN existing + NEW push/scaffold triggers added. Operators v1.x invocation `--mode=pull` behavior identical · existing pulls unaffected. brand.json read-only canon (jamais touched by push). SKILL.md v1.1.0 → v2.0.0 BREAKING bump justified per SED §13 (Phase B activation = major feature dual-direction sync · not patch-level).
+
+**Next release notes** · (a) Phase B test live brand pilote (sync brand existing Onday/stepprs vers Notion fresh canvas → validate end-to-end + capture frictions · candidate test live priority post-v2.66). (b) v2.66.1 canvas template extended si frictions identifiées. (c) Views creation v2.60+ si opérateurs demandent post-scaffold. (d) Pattern bridge tool dual-direction documenté dans `docs/system/bridge-tool-discipline.md` NEW v2.67+ (codify le pattern reproductible cross sources futures · sister doctrine SED-X).
+
+---
+
 ## v2.65.0 · 2026-05-15 · NEW doctrine canon · scope-extension-discipline (SED-X)
 
 **Why** · 8 releases v2.55-v2.64 ont shippé multiples extensions scope (NEW orchestrators · NEW schemas · NEW mappers · NEW bridge tool · NEW doctrine layer · NEW migration scripts) sans pattern canon formalisé. v2.65 codifie SED-X · le canon technique de l'extension scope pour skill authors. Pattern reproductible pour évolutions futures workspace.

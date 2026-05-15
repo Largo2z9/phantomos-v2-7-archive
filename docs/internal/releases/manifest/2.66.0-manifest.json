@@ -1,0 +1,53 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.66.0",
+  "released_at": "2026-05-15",
+  "compatible_from": "2.0.0",
+  "type": "phase_b_push_runtime_exec_ready_dual_direction_sync_notion_bridge",
+  "summary": "Phase B push runtime exec-ready · sync-notion-atlas v1.1.0 → v2.0.0 BREAKING. Dual-direction sync Notion ↔ PhantomOS opérationnel. SKILL.md 935L → 1423L (+488L Phase B section). 7 Steps B1-B7 detailed exec-ready (canvas Onday-style wrapper + 11 databases creation pass 1 sans relations + rows population per entity 11 mappings + idempotency lookup par phantom_entity_id + relations cross-link 2-pass + tags universels stamp + synthesis 5 sections investigation-posture). 9 hard rules Phase B (idempotent · no silent overwrite · 2-pass · rate limit 3 req/s · scaffold blank-only · canvas Onday fidèle · no invented data · stage all or none · brand.json not pushed). Modes runtime · push (state populé) + scaffold (blank canvas). diff Phase C reste deferred v2.59+. D#409 captured. Pattern bridge tool dual-direction reproductible cross sources futures.",
+  "changes": [
+    {
+      "category": "skill_phase_b_push_exec_ready",
+      "action": "patched",
+      "files": [".skills/skills/sync-notion-atlas/SKILL.md"],
+      "section": "Phase B section refactor 230L → 730L · Steps B1-B7 detailed exec-ready + 9 hard rules Phase B + cycle bidirectionnel workflow + évolutions futures",
+      "rationale": "v1.0.0 Phase A pull-only MVP (v2.57) puis v1.1.0 coverage extend (v2.58) sans Phase B runtime. Spec Phase B documented mais stubbed · operator invoque --mode=push obtient refusal deferred v2.58. v2.66 convertit spec rigoureuse en Steps exec-ready · Claude effectivement execute push pipeline. Bump v1.1.0 → v2.0.0 BREAKING justifié (dual-direction activation = major feature · SED §13 amendment process)."
+    },
+    {
+      "category": "skill_version_bump_major",
+      "action": "patched",
+      "files": [".skills/skills/sync-notion-atlas/SKILL.md"],
+      "section": "Frontmatter version 1.1.0 → 2.0.0 + patch_notes v2.0.0 entry + description dual-direction + triggers FR/EN push/scaffold added",
+      "rationale": "BREAKING bump dual-direction sync operational (vs v1.x pull-only). Triggers FR EN extended pour discover push/scaffold modes. Description reflète opérationnel pas spec stub."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md"],
+      "section": "Bump template_version 2.65.0 → 2.66.0 + summary released_at 2026-05-15 + CHANGELOG entry v2.66.0",
+      "rationale": "Sprint Phase B push exec-ready ship v2.66.0."
+    },
+    {
+      "category": "release_manifest_new",
+      "action": "added",
+      "files": ["docs/internal/releases/manifest/2.66.0-manifest.json"],
+      "section": "NEW manifest entry v2.66.0",
+      "rationale": "Canonical release manifest documenting Phase B push exec-ready. Pattern miroir 2.55-2.65 manifests."
+    }
+  ],
+  "files_patched_total": "5 files (1 skill SKILL.md +488L · _version.json bump · CHANGELOG.md entry v2.66.0 · 2.66.0-manifest.json NEW · decisions.md D#409 append)",
+  "patterns_introduced": {
+    "phase_b_push_dual_direction_runtime_exec_ready": "Pattern canon v2.66 · sync-notion-atlas dual-direction sync opérationnel. Steps B1-B7 exec-ready (canvas + 11 DBs + rows + relations 2-pass + idempotency lookup). Modes push (state populé scaffold + populate) + scaffold (canvas + DBs vides sans state). Bridge bidirectionnel cycle · push initial → Notion edits → pull rapatrie → re-push update idempotent.",
+    "idempotency_phantom_entity_id_lookup_pattern": "Pattern canon v2.66 · idempotent re-run via phantom_entity_id hidden property sur chaque Notion DB. Lookup pre-create · si exists update via notion-update-page · sinon create via notion-create-pages. Soft conflict detection · last_edited_time Notion > _synced_at PhantomOS → flag Phase C diff candidate (deferred v2.59+). JAMAIS création duplicate. Re-run identique = même résultat. Stateless idempotent par design.",
+    "two_pass_relations_binding_pattern": "Pattern canon v2.66 · 2-pass create. Pass 1 (Step B2) · create 11 DBs avec properties scalar + tags universels SANS relations (relations type require target DB existence). Pass 2 (Step B5) · add relation properties to DBs (notion-update-data-source) puis set relation values per row (notion-update-page) avec resolution PhantomOS canonical IDs → Notion page_ids via row_ids dict mapping. Évite chicken-egg DB cross-references.",
+    "bridge_tool_dual_direction_reproducible_pattern": "Pattern canon v2.66 · sync-notion-atlas devient reference pour futures bridges (Linear · Airtable · ClickUp · spy tools layer market intelligence D#408). Structure miroir reproductible · NEW sync-{tool}-atlas skill (orchestrator Layer 1 MCP · Steps 0-N pull + Steps B0-B7 push + Steps C diff deferred) + NEW {tool}-bridge-doctrine.md (principe source of truth + mappings cross-platform + edge cases + workflow). Pattern reproductible copy-paste + adaptation tool-specific."
+  },
+  "antipatterns_eliminated": {
+    "phase_b_stub_blocking_dual_direction_workflow": "Avant v2.66 · sync-notion-atlas Phase B spec documented mais stubbed · operator invoque --mode=push obtient refusal deferred v2.58 message. Direction PhantomOS → Notion impossible runtime. v2.66 ship dual-direction opérationnel · workflow build PhantomOS + expose Notion UI activé.",
+    "duplicate_creation_re_run_push_workspaces_polluants": "Avant v2.66 · sans idempotency lookup, re-run push créerait duplicate workspaces/DBs/rows Notion. v2.66 phantom_entity_id lookup canon · re-run = update existing OR skip si conflict. Workspaces Notion clean cross sessions.",
+    "spec_documentation_only_pattern_drift": "Pattern canon · sprint v2.55-v2.65 a shippé multiples doctrines + canons SANS toujours convertir spec en exec runtime. Phase B spec documented v2.57+ mais stubbed jusqu'à v2.66. v2.66 audit-rendu drift identifié par audit Vague 3 + scaffold-extension consumes refs · puis Phase B exec-ready sprint."
+  },
+  "operator_impact": "Operators invoquant `/sync-notion-atlas {brand_slug} --mode=push {notion_parent_url}` obtiennent désormais effective execution · workspace Notion canon Onday-style créé + 11 DBs avec properties canonicales + rows populated from PhantomOS state + relations cross-DB bound + 5 sections synthesis investigation-posture. Re-run idempotent (update existing par phantom_entity_id). Workflow opérateur Direction 3 (PhantomOS-first puis push Notion · cf capabilities.md scenarios) activé. Cycle bidirectionnel Notion ↔ PhantomOS opérationnel. Notion = UI navigable pour client/collab review · PhantomOS canonical source of truth preserved.",
+  "backward_compat": "strict_additif. Phase A pull (Steps 0-6) preserved unchanged · existing operators v1.x invocation `--mode=pull` behavior identical · zero migration data. brand.json read-only canon (jamais touched by push · multi-clients agency isolation). SKILL.md v1.1.0 → v2.0.0 BREAKING bump justified per SED §13 (dual-direction activation = major feature · pas patch-level). Triggers FR EN existing preserved + NEW push/scaffold triggers added. Aucune migration runtime requise · operators choisissent leur mode invocation.",
+  "next_release_note": "v2.66+ patches identifiés · (a) Test live brand pilote · sync brand existing (Onday/stepprs) vers Notion fresh canvas → validate end-to-end Phase B + capture frictions (candidate priorité test live post-v2.66). (b) v2.66.1 canvas template extended si frictions identifiées · Liens utiles populated drive URLs si brand config dispo · Suivi des créas sub-page populated · Opérations table dates auto-générées 12 mois rolling. (c) v2.66.2 multi-Notion sources aggregation pour Abyss collectif (1 PhantomOS brand pulled from N Notion workspaces). (d) v2.59+ `--mode=diff` Phase C audit deltas cross-systems (workflow audit + cherry-pick deltas). (e) v2.60+ views creation post-scaffold (~10-15 vues canon · Personae filter awareness · Roadmap timeline · Full funnel Kanban · Angles board par source). (f) v2.67+ doctrine NEW `docs/system/bridge-tool-discipline.md` codifie pattern bridge tool dual-direction reproductible (sister SED-X · skill-author-facing pour futurs bridges Linear/Airtable/ClickUp/spy tools). (g) Market Intelligence Layer D#408 backlog · pattern reproductible appliqué pour TrendTrack/Foreplay/Atria bridges post-v2.66 valide doctrine sister."
+}

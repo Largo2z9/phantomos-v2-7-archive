@@ -1,7 +1,7 @@
 ---
 name: sync-notion-atlas
 type: orchestrator
-version: "1.1.0"
+version: "2.0.0"
 isolation_scope: brand_only
 layer: 1
 recommended_model: sonnet
@@ -10,21 +10,24 @@ mode: proposed
 operator_facing: true
 reasoning_pattern: null
 patch_notes:
+  v2.0.0: "v2.66 NEW · Phase B push runtime exec-ready · Steps B1-B7 detailed · canvas + 11 DBs + rows + relations 2-pass + idempotency lookup. Phase A pull preserved unchanged backward compat strict additif. BREAKING bump justified (dual-direction sync operational, --mode=push activé from previous stub). Phase C diff (--mode=diff) reste deferred v2.59+."
   v1.1.0: "v2.58 coverage extend · friction.{current_workarounds, resolution_state, cross_refs.*} mapping enrichi · roadmap.{mix[], relations} mapping + denormalized view auto-computed. Closes 4 orphans audit v2.57. Phase B push toujours stubbée v2.58. Backward compat strict additif."
   v1.0.0: "v2.57 Phase A pull-only MVP shipped. Bridge Notion → PhantomOS pour les 11 collections canon stride-up (Produits, Specs, Mécanismes, Bénéfices, Personae, Pain Points, Angles, Objections, Frictions usage, Roadmap, Full funnel Meta). Mappings canon docs/system/notion-bridge-doctrine.md. Mutation gate strict (write-to-context.py mode=proposed) + isolation_scope brand_only. Phase B push + Phase C diff stubbés mais inactifs v1.0.0. Cross-ref doctrines · notion-bridge-doctrine.md (source canon) · compositional-cartography.md §4 mappings · brand-isolation-discipline.md · investigation-posture.md (5 sections close) · schema-encoding-discipline.md (mutation rule + _field_types)."
 description: >
-  v1.1.0 (v2.58 coverage extend) · friction.{current_workarounds, resolution_state, cross_refs.*} mapping enrichi · roadmap.{mix[], relations} mapping + denormalized view auto-computed. Closes 4 orphans audit v2.57. Phase B push toujours stubbée v2.58.
+  v2.0.0 (v2.66) · Phase B push runtime exec-ready · Steps B1-B7 detailed (canvas + 11 DBs creation + rows population + relations 2-pass + idempotency lookup par phantom_entity_id). Phase A pull (Steps 0-6) preserved unchanged backward compat strict additif. Dual-direction sync operational. --mode=diff reste deferred v2.59+.
+  v1.1.0 (v2.58 coverage extend) · friction.{current_workarounds, resolution_state, cross_refs.*} mapping enrichi · roadmap.{mix[], relations} mapping + denormalized view auto-computed. Closes 4 orphans audit v2.57.
   v1.0.0 baseline Phase A pull-only MVP. Synchronise un workspace Notion (canvas
   stride-up avec 11 collections canon · Produits, Specs, Mécanismes, Bénéfices,
   Personae, Pain Points, Angles, Objections, Frictions usage, Roadmap, Full funnel
-  Meta) vers les entités canon PhantomOS d'une brand existante. Mode
-  --mode=pull {notion_url} (Phase A v2.57). Modes --mode=push (Phase B post-MVP
-  v2.58) et --mode=diff (P2 deferred v2.59) stubbés mais pas implémentés v1.0.0.
-  Mutation gate strict (write-to-context.py mode=proposed), isolation_scope
-  brand_only, stateless idempotent. Source of truth canon = PhantomOS, Notion = UI
-  optionnelle mirror.
-  FR: "sync notion atlas {brand_slug}" "pull notion vers phantom" "import notion vers {brand_slug}" "synchronise mon notion avec phantom" "tire mon atlas notion dans phantom".
-  EN: "sync notion atlas" "pull notion to phantom" "import from notion" "sync workspace from notion".
+  Meta) vers les entités canon PhantomOS d'une brand existante. Modes
+  --mode=pull {notion_url} (Phase A v2.57), --mode=push {notion_parent_url} (Phase B
+  v2.66 NEW · scaffold canvas + 11 DBs + populate rows + bind relations), --mode=scaffold
+  (canvas + 11 DBs vides sans populate, Phase B variant). --mode=diff (Phase C deferred v2.59).
+  Mutation gate strict (write-to-context.py mode=proposed) côté pull, MCP Notion direct
+  côté push, isolation_scope brand_only, stateless idempotent par phantom_entity_id.
+  Source of truth canon = PhantomOS, Notion = UI optionnelle mirror.
+  FR: "sync notion atlas {brand_slug}" "pull notion vers phantom" "import notion vers {brand_slug}" "synchronise mon notion avec phantom" "tire mon atlas notion dans phantom" "push phantom vers notion" "scaffold notion workspace {brand_slug}" "expose phantom dans notion".
+  EN: "sync notion atlas" "pull notion to phantom" "import from notion" "sync workspace from notion" "push phantom to notion" "scaffold notion workspace" "export phantom to notion".
 permissions:
   reads: [brand, product, offer, profile, angle, friction, roadmap, creative]
   writes: [product, offer, profile, angle, friction, roadmap, creative]
@@ -85,7 +88,7 @@ Bridge Notion → PhantomOS Phase A pull-only MVP. Synchronise les 11 collection
 
 PhantomOS = source of truth canonique. Notion = UI optionnelle mirror. Le bridge est asymétrique par design (cf. `docs/system/notion-bridge-doctrine.md § Le principe canon`).
 
-Phase A v1.0.0 ship · `--mode=pull` uniquement. `--mode=push` deferred v2.58. `--mode=diff` deferred v2.59.
+Phase A (v1.0.0 baseline) `--mode=pull` Steps 0-6 unchanged. Phase B (v2.0.0 NEW v2.66) `--mode=push` + `--mode=scaffold` Steps B1-B7 runtime exec-ready ci-dessous. Phase C `--mode=diff` reste deferred v2.59+.
 
 ---
 
@@ -610,21 +613,23 @@ Exemple ·
 /sync-notion-atlas stepprs --mode=pull https://notion.so/workspace/abc123def456
 ```
 
-### Modes deferred (v1.0.0 stubs)
+### Modes deferred (v2.0.0 status)
 
-Si l'opérateur invoque `--mode=push` ou `--mode=diff` v1.0.0 ·
+Si l'opérateur invoque `--mode=diff` v2.0.0 ·
 
-> *Sync-notion-atlas v1.0.0 = Phase A pull-only MVP shipped v2.57. Mode `--mode=push` (PhantomOS → Notion) prévu Phase B v2.58. Mode `--mode=diff` (compare sans muter) deferred P2 v2.59.*
+> *Sync-notion-atlas v2.0.0 = dual-direction sync shipped v2.66. Modes `--mode=pull` (Phase A) et `--mode=push` / `--mode=scaffold` (Phase B) opérationnels. Mode `--mode=diff` (compare sans muter, audit pré-sync) reste deferred Phase C v2.59+.*
 >
 > *Pour pull · `/sync-notion-atlas {brand_slug} --mode=pull {notion_url}`*
+> *Pour push · `/sync-notion-atlas {brand_slug} --mode=push {notion_parent_url}`*
+> *Pour scaffold blank · `/sync-notion-atlas {brand_slug} --mode=scaffold {notion_parent_url}`*
 
 Pas de fallback silencieux. Refuse cleanly avec roadmap d'évolution.
 
 ---
 
-## Phase B spec v2.58 · scaffold-create canonical Notion workspace
+## Phase B runtime v2.0.0 (v2.66) · push PhantomOS → Notion exec-ready
 
-> **Status** · spec rigoureuse documentée v2.57, implémentation runtime v2.58. Le skill DOIT pouvoir générer le système Notion canon (11 collections + relations + tags universels + canvas wrapper) miroir de stride-up Onday template, from blank, sur n'importe quel parent Notion. Phase B = `--mode=push` from PhantomOS state, OR `--mode=scaffold` from blank brand (sans state à populer).
+> **Status** · v2.0.0 NEW v2.66 · 7 steps B1-B7 runtime-executable. Le skill génère le système Notion canon (canvas wrapper + 11 DBs + rows + relations + tags universels) miroir stride-up Onday template, from blank OR from populated PhantomOS state, sur n'importe quel parent Notion. Idempotent par `phantom_entity_id`. Phase B = `--mode=push` from PhantomOS state populé, OR `--mode=scaffold` from blank brand (DBs vides, skip Step B3).
 
 ### Invocation Phase B
 
@@ -633,91 +638,194 @@ Pas de fallback silencieux. Refuse cleanly avec roadmap d'évolution.
 /sync-notion-atlas {brand_slug} --mode=scaffold {notion_parent_url}
 ```
 
-- `push` · brand `brands/{brand_slug}/` existe avec state populé → scaffold structure + populate rows depuis entities PhantomOS.
-- `scaffold` · brand vierge OR pré-onboarding → scaffold structure vide (canon empty workspace, opérateur populate Notion-side ensuite OR run sync pull plus tard).
+- `push` · brand `brands/{brand_slug}/` existe avec state populé → exec Steps B1 + B2 + B4 + B3 + B5 + B6 + B7 (DBs + rows + relations + idempotency).
+- `scaffold` · brand vierge OR pre-onboarding → exec Steps B1 + B2 + B5a (relations DB-side) + B7 uniquement, skip Step B3 (no rows populate). Refuse `--mode=scaffold` si brand a state populé (anti-pattern, propose `--mode=push` à la place).
 
-### Pipeline Phase B
+### Working memory dict (cross-steps)
 
-**Step 1 · Canvas root page creation**
+L'agent maintient en working memory tout au long de Phase B ·
 
-`notion-create-pages` sous `{notion_parent_url}` ·
+```
+{
+  "canvas_root_id": "<notion_page_id from Step B1>",
+  "data_client_page_id": "<notion_page_id from Step B1>",
+  "db_ids": {
+    "Produits": "<db_id>", "Specs": "<db_id>", "Mécanismes": "<db_id>",
+    "Bénéfices": "<db_id>", "Personae": "<db_id>", "Pain Points": "<db_id>",
+    "Angles produits": "<db_id>", "Objections": "<db_id>", "Frictions usage": "<db_id>",
+    "Roadmap": "<db_id>", "Full funnel Meta": "<db_id>"
+  },
+  "row_ids": {
+    "<phantom_entity_id>": "<notion_row_id>",
+    ...
+  },
+  "created_count": {"<collection>": N, ...},
+  "updated_count": {"<collection>": N, ...},
+  "conflicts": [{"phantom_entity_id": "...", "reason": "notion_edited_after_sync"}, ...]
+}
+```
 
-- Title · `Phantom OS · {brand_name}` (icon 🧠)
-- Content · template canvas Onday-style ·
-  - 3 colonnes (callouts) · Base de données (mention sub-page Data Client) · Liens utiles (placeholder URLs drive assets + créas) · Espace Client (sub-page Suivi des créas)
-  - Callout `Opérations / lancements` avec table months (5 colonnes mois, rows Events + Budget vides à remplir opérateur)
-  - 2 databases inline (Roadmap + Full funnel Meta · cf Step 3)
-  - Sub-page `Données Atlas` (header documentation cartographie)
+---
 
-**Step 2 · Données Atlas wrapper sub-page**
+### Step B0 · Pre-checks Phase B spécifiques
 
-`notion-create-pages` sous canvas root ·
+Avant Step B1 ·
 
-- Title · `🧠 Data Client, {brand_name}` (icon #️⃣)
-- Content · documentation header explicative (cf Onday template) ·
-  - Section "Comment lire l'ensemble · 3 zones reliées (Produit · Audiences · Angles)"
-  - Section "Les 6 DBs en un coup d'œil" (table DB ↔ Réponse)
-  - Section "Comment naviguer" (workflow 4 étapes Persona → Pain Points → Angles → Formule)
-  - Section "Tags universels (sur toutes les DBs)" (Source / Confidence / Validation status)
-- Inline les 9 databases canon Data Client (cf Step 3)
+1. **Brand state check (mode-dependent)** ·
+   - Si `--mode=push` · verify `brands/{brand_slug}/brand.json` existe ET `identity.name` non-empty. Si vide · refuse · *"Brand state empty. Pour push, brand doit avoir au moins identity.name. Lance setup-brand + ingest avant push, OU passe `--mode=scaffold` si tu veux juste un workspace Notion blank."*
+   - Si `--mode=scaffold` · verify brand state est vide / pre-onboarding (only `brand.json` minimal + `status.json`). Si state populé (audiences/products/angles présents) · refuse · *"Brand a déjà du state populé ({N} audiences · {N} products · {N} angles). Mode scaffold blank serait destructif Notion-side. Use `--mode=push` à la place pour exposer ton state existant."*
 
-**Step 3 · 11 databases creation**
+2. **Notion parent URL parse** · `notion_parent_url` → extract `parent_page_id`. Verify URL Notion valide · si fail · AskUserQuestion mapping correct.
 
-`notion-create-database` × 11, chacune avec properties canonical alignées schemas PhantomOS + tags universels par défaut + relations cross-DB. Schémas détaillés ·
+3. **MCP Notion gate** · même check que Phase A Step 0 L2 (déjà fait Step 0 standard avant ramification mode).
 
-#### 3.1 · Produits (canon spec.identity + offers résumé)
+Si Step B0 passe · continue vers Step B1.
+
+---
+
+### Step B1 · Canvas root + Données Atlas wrapper creation
+
+**Goal** · poser le wrapper canvas Onday-style (canvas root + sub-page Données Atlas) avant tout DB creation.
+
+**Sub-step B1.1 · Canvas root page** ·
+
+```
+mcp__claude_ai_Notion__notion-create-pages
+  parent: {parent_page_id from B0}
+  title: "Phantom OS · {brand_name}"
+  icon: "🧠"
+  content: |
+    {Canvas root content blocks ·
+    
+    Block 1 · 3-column callout layout ·
+      Column 1 · Callout "📊 Base de données" + mention link sub-page "Data Client · {brand_name}"
+      Column 2 · Callout "🔗 Liens utiles" + placeholders bullets (Drive assets · Drive créas · Slack channel)
+      Column 3 · Callout "👤 Espace Client" + placeholder sub-page "Suivi des créas"
+    
+    Block 2 · Heading 2 "Opérations / lancements"
+    Block 3 · Table 5 columns months (rolling 5 prochains mois from date push) · rows · Events (empty) · Budget (empty)
+    
+    Block 4 · Heading 2 "Roadmap angles/audiences"
+    Block 5 · Inline database placeholder (sera replacé Step B2 avec Roadmap DB_id)
+    
+    Block 6 · Heading 2 "Full funnel Meta"
+    Block 7 · Inline database placeholder (sera replacé Step B2 avec Full funnel Meta DB_id)
+    }
+```
+
+Store · `canvas_root_id` ← notion_page_id retourné.
+
+**Sub-step B1.2 · Données Atlas wrapper sub-page** ·
+
+```
+mcp__claude_ai_Notion__notion-create-pages
+  parent: {canvas_root_id}
+  title: "Data Client · {brand_name}"
+  icon: "#️⃣"
+  content: |
+    {Documentation header content ·
+    
+    Heading 1 "Data Client · {brand_name}"
+    
+    Heading 2 "Comment lire l'ensemble"
+    Paragraph · "3 zones reliées · Produit (specs · mécanismes · bénéfices) · Audiences (personae · pain points · objections · frictions usage) · Angles (formula obs+tension+reframe+bridge)."
+    
+    Heading 2 "Les 9 DBs Data Client en un coup d'œil"
+    Table 2 columns (DB ↔ Réponse) ·
+      Produits ↔ "Qu'est-ce qu'on vend ?"
+      Specs ↔ "De quoi c'est fait ?"
+      Mécanismes ↔ "Comment ça marche ?"
+      Bénéfices ↔ "Qu'est-ce que le client gagne ?"
+      Personae ↔ "Qui achète ?"
+      Pain Points ↔ "Pourquoi ils achètent ?"
+      Angles produits ↔ "Comment on leur parle ?"
+      Objections ↔ "Pourquoi ils n'achètent pas ?"
+      Frictions usage ↔ "Pourquoi ils arrêtent ?"
+    
+    Heading 2 "Comment naviguer"
+    Numbered list · 1. Persona → 2. Pain Points → 3. Angles → 4. Formula (obs+tension+reframe+bridge)
+    
+    Heading 2 "Tags universels (sur les 11 DBs)"
+    Bullets · "Source · observed / inferred / declared" · "Confidence · 0-1" · "Validation status · hypothesis / tested / validated / scaled / fatigued"
+    }
+```
+
+Store · `data_client_page_id` ← notion_page_id retourné.
+
+---
+
+### Step B2 · 11 databases creation (pass 1 · structure no relations yet)
+
+**Goal** · créer les 11 DBs Notion (2 sous canvas_root · Roadmap + Full funnel Meta · 9 sous data_client_page · les autres) avec leurs properties non-relation. Les properties `relation` sont DEFERRED à Step B5 (pass 2) pour éviter race condition (relation ne peut pointer vers DB qui n'existe pas encore).
+
+**Pattern par DB** · `mcp__claude_ai_Notion__notion-create-database` avec parent + properties spec.
+
+**Rate limit** · max 3 requests/seconde à Notion API. Throttle si cascade · `time.sleep(0.4)` entre creates si besoin.
+
+**Hidden property universelle** · chaque DB inclut `phantom_entity_id` (text, hidden default mais queryable) pour idempotency lookup Step B4.
+
+**Tags universels** (3 properties sur chaque DB) ·
+- `Source` (select · observed [green] · inferred [yellow] · declared [blue])
+- `Confidence` (number · 0-1)
+- `Validation status` (select · hypothesis [gray] · tested [yellow] · validated [green] · scaled [purple] · fatigued [red])
+
+**DB 1 · Produits** (parent = data_client_page_id) ·
 - `Nom produit` (title)
 - `Slug` (text, url-safe)
 - `Niche` (select)
 - `Positioning` (text)
 - `Active offer summary` (text · price + urgency)
-- Tags universels (cf section 3.12)
+- `phantom_entity_id` (text, hidden)
+- Tags universels (3 properties)
 
-#### 3.2 · Specs (canon spec.composition + spec.specs)
+**DB 2 · Specs** (parent = data_client_page_id) ·
 - `Spec name` (title)
 - `Type` (select · composition / dosage / certification / packaging / origin / regulatory)
 - `Value` (text)
-- `Produit` (relation → Produits)
+- `phantom_entity_id` (text, hidden)
 - Tags universels
+- **DEFERRED Step B5** · `Produit` (relation → Produits)
 
-#### 3.3 · Mécanismes (canon spec.mechanisms[])
+**DB 3 · Mécanismes** (parent = data_client_page_id) ·
 - `Mécanisme name` (title)
 - `Description physiologique` (text rich)
 - `Duration / délai d'effet` (text · ex "4-6 semaines")
-- `Produit` (relation → Produits, multi)
+- `phantom_entity_id` (text, hidden)
 - Tags universels
+- **DEFERRED Step B5** · `Produit` (relation → Produits, multi)
 
-#### 3.4 · Bénéfices (canon spec.benefits[] v1.10)
+**DB 4 · Bénéfices** (parent = data_client_page_id) ·
 - `Bénéfice name` (title)
 - `Chain level` (select · functional / emotional / identity)
-- `Emotional signal` (text · ressenti spécifique exprimé client-side)
+- `Emotional signal` (text)
 - `Latency min (jours)` (number)
 - `Latency max (jours)` (number)
-- `Evidence verbatim` (text rich · multi-line quotes VoC)
-- `Produit` (relation → Produits)
-- `Mécanisme` (relation → Mécanismes)
+- `Evidence verbatim` (text rich · multi-line VoC quotes)
+- `phantom_entity_id` (text, hidden)
 - Tags universels
+- **DEFERRED Step B5** · `Produit` (relation → Produits) + `Mécanisme` (relation → Mécanismes)
 
-#### 3.5 · Personae (canon profile.identity + psychology)
+**DB 5 · Personae** (parent = data_client_page_id) ·
 - `Persona label` (title)
 - `Slug` (text, url-safe)
 - `Awareness stage` (select · unaware / problem-aware / solution-aware / product-aware / most-aware)
 - `Demographics` (text rich)
-- `JTBD primary` (text · "Retrouver un corps que je reconnais sans me battre")
-- `Produit principal` (relation → Produits)
+- `JTBD primary` (text)
+- `phantom_entity_id` (text, hidden)
 - Tags universels
+- **DEFERRED Step B5** · `Produit principal` (relation → Produits)
 
-#### 3.6 · Pain Points (canon profile.pain_benefit_chain[] v1.6)
+**DB 6 · Pain Points** (parent = data_client_page_id) ·
 - `Pain formulation` (title · customer language)
 - `Category` (select · physical / emotional / friction_ux / logistical / cognitive / social_status)
 - `Emotion` (text)
 - `Trigger` (text · moment déclencheur)
-- `Verbatim quotes` (text rich · cite VoC avec sample_size en parenthèses)
-- `Persona` (relation → Personae)
-- `Bénéfice servi` (relation → Bénéfices · backward chain)
+- `Verbatim quotes` (text rich · VoC + sample_size en parenthèses)
+- `phantom_entity_id` (text, hidden)
 - Tags universels
+- **DEFERRED Step B5** · `Persona` (relation → Personae) + `Bénéfice servi` (relation → Bénéfices)
 
-#### 3.7 · Angles produits (canon angle.json v1.2)
+**DB 7 · Angles produits** (parent = data_client_page_id) ·
 - `Angle name` (title)
 - `Angle ID` (text · pattern ANG-NN)
 - `Origin axis` (select · audience-derived / product-derived / category-derived / brand-derived / temporal-cultural)
@@ -727,131 +835,511 @@ Pas de fallback silencieux. Refuse cleanly avec roadmap d'évolution.
 - `Formula Tension` (text)
 - `Formula Reframe` (text)
 - `Formula Bridge produit` (text)
-- `Hook canon ID` (text · ref canon copy hooks)
-- `Framework canon ID` (text · ref canon copy frameworks)
-- `Archetype voix canon ID` (text · ref canon copy archetypes-voix)
-- `Pain extract` (text · quote anchored)
-- `Proof primary` (text · type proof retenu)
+- `Hook canon ID` (text)
+- `Framework canon ID` (text)
+- `Archetype voix canon ID` (text)
+- `Pain extract` (text)
+- `Proof primary` (text)
 - `CTA` (text)
-- `Persona cible` (relation → Personae)
+- `phantom_entity_id` (text, hidden)
 - Tags universels
+- **DEFERRED Step B5** · `Persona cible` (relation → Personae)
 
-#### 3.8 · Objections (canon profile.objections[] v1.6 enrichi)
+**DB 8 · Objections** (parent = data_client_page_id) ·
 - `Objection formulation` (title)
 - `Type` (select · price / scepticism / fit / urgency / trust / status / risk)
 - `Lifecycle` (select · awareness / consideration / decision / post-purchase)
 - `Severity score` (number 1-10)
-- `Response counter` (text · formulation neutralization testée)
-- `Persona` (relation → Personae, multi)
-- `Angle dérivé` (relation → Angles produits, multi · angles qui exploitent cette objection comme tension)
+- `Response counter` (text)
+- `phantom_entity_id` (text, hidden)
 - Tags universels
+- **DEFERRED Step B5** · `Persona` (relation → Personae, multi) + `Angle dérivé` (relation → Angles produits, multi)
 
-#### 3.9 · Frictions usage (canon friction.schema v1.0 NEW)
-- `Friction name` (title · short label)
+**DB 9 · Frictions usage** (parent = data_client_page_id) ·
+- `Friction name` (title)
 - `Friction ID` (text · pattern FRC-NN)
 - `Category` (select · physical / emotional / friction_ux / logistical / cognitive)
 - `Severity score` (number 1-10)
-- `Customer evidence` (text rich · verbatims usage friction)
-- `Current workarounds` (text · ce que les clients font pour contourner)
-- `Resolution state` (select · unresolved / workaround_present / patched / fixed)
-- `Affected products` (relation → Produits, multi)
-- `Affected audiences` (relation → Personae, multi)
-- `Cross-ref objections` (relation → Objections, multi)
-- `Cross-ref pain points` (relation → Pain Points, multi)
+- `Customer evidence` (text rich)
+- `Current workarounds` (text)
+- `Resolution state` (select · unresolved / in_progress / resolved / accepted)
+- `phantom_entity_id` (text, hidden)
 - Tags universels
+- **DEFERRED Step B5** · `Affected products` (relation → Produits, multi) + `Affected audiences` (relation → Personae, multi) + `Cross-ref objections` (relation → Objections, multi) + `Cross-ref pain points` (relation → Pain Points, multi)
 
-#### 3.10 · Roadmap [angles/audiences] (canon roadmap.schema v1.0 NEW)
+**DB 10 · Roadmap** (parent = **canvas_root_id**, pas data_client_page) ·
 - `Phase name` (title)
 - `Phase ID` (text)
-- `Dates` (date range start + end)
+- `Dates start` (date)
+- `Dates end` (date)
 - `Status` (select · draft / in-progress / shipped / paused / killed)
 - `Mix axis` (select · audience / angle / product / funnel / creative)
 - `Weight` (number 0-1)
 - `Production status` (select · spec'd / in-production / shipped / iterating)
 - `Priorities (top 3)` (text rich · bullets)
-- `Angles refs` (relation → Angles produits, multi)
-- `Audiences refs` (relation → Personae, multi)
-- `Products refs` (relation → Produits, multi)
-- `Creatives refs` (relation → Full funnel Meta, multi)
+- `phantom_entity_id` (text, hidden)
 - Tags universels
+- **DEFERRED Step B5** · `Angles refs` (relation → Angles, multi) + `Audiences refs` (relation → Personae, multi) + `Products refs` (relation → Produits, multi) + `Creatives refs` (relation → Full funnel Meta, multi)
 
-#### 3.11 · Full funnel Meta (canon creative.json + funnel.json)
+**DB 11 · Full funnel Meta** (parent = **canvas_root_id**, pas data_client_page) ·
 - `Creative name` (title)
 - `Creative ID` (text · pattern CRT-NN)
 - `Format` (select · image / carousel / story / reel / vsl / landing / email / sms / ad_copy / blog)
 - `Funnel stage` (select · TOF / MOF / BOF / retargeting / lifecycle)
 - `Intent mix primary` (select · DR / Brand / Hybrid / B2B_lead_gen)
-- `NOYAU mécanique` (text · ref creative-mechanics-registry)
+- `NOYAU mécanique` (text)
 - `Hook` (text · verbatim quoted)
-- `CONTEXTE angle` (relation → Angles produits)
-- `CONTEXTE persona` (relation → Personae)
 - `Status` (select · live / paused / killed / draft)
 - `Test data` (text · CTR / CVR / spend snapshot opt)
+- `phantom_entity_id` (text, hidden)
 - Tags universels
+- **DEFERRED Step B5** · `CONTEXTE angle` (relation → Angles) + `CONTEXTE persona` (relation → Personae)
 
-#### 3.12 · Tags universels (par défaut sur les 11 DBs)
-- `Source` (select · observed / inferred / declared) · default empty (operator-side ou pull-side)
-- `Confidence` (number · 0 à 1)
-- `Validation status` (select · hypothesis / tested / validated / scaled / fatigued)
+Store dans working memory · `db_ids = {collection_name: notion_db_id}` mapping (11 entries).
 
-Mapping vers PhantomOS ·
-- Notion `Source` ↔ PhantomOS `_field_types` (observed↔observed · inferred↔derived · declared↔stated)
-- Notion `Confidence` ↔ PhantomOS `confidence` numeric direct
-- Notion `Validation status` ↔ PhantomOS `meta.validation_status.state` enum direct
+**Sub-step B2.bis · scaffold mode shortcut** · si `--mode=scaffold`, jump direct to Step B5a (add relation properties pass 2a only, skip Step B3 + Step B5b row-relation-binding). Workspace ship blank canon.
 
-**Step 4 · Populate rows (mode push uniquement, skip mode scaffold)**
+---
 
-Pour chaque entité dans `brands/{brand_slug}/`, `notion-create-pages` dans la database correspondante avec mapping inverse PhantomOS → Notion.
+### Step B3 · Rows population per PhantomOS entity (mode=push only)
 
-- `spec.json` → 1 row Produits + N rows Specs / Mécanismes / Bénéfices (subfields éclatés)
-- `audiences/{slug}/profile.json` → 1 row Personae + N rows Pain Points + N rows Objections
-- `angles/{ANG-NN}.json` → 1 row Angles produits
-- `frictions/{FRC-NN}.json` → 1 row Frictions usage
-- `roadmap.json` → N rows Roadmap (par phase)
-- `creatives/{CRT-NN}.json` → 1 row Full funnel Meta
+**Goal** · pour chaque entité PhantomOS sous `brands/{brand_slug}/`, créer rows correspondants dans les DBs Notion. Toutes relations sont DEFERRED à Step B5b (set après Step B5a a ajouté les relation properties aux DBs).
 
-**Step 5 · Cross-link relations (post-populate)**
+**Mode=scaffold** · skip entièrement Step B3.
 
-Post Step 4, second pass · `notion-update-page` pour set relations entre rows. Pattern · pour chaque row PhantomOS porte des cross_refs (e.g. profile.pain_points → friction_ids, angle.formula → objection_id), résoudre vers Notion page IDs et set property relation.
+**Convention `phantom_entity_id` (idempotency key)** ·
+- Produits · `prod-{product_slug}`
+- Specs · `spec-{product_slug}-{spec_type}-{index}` (ex `spec-multivit-composition-0`)
+- Mécanismes · `mech-{product_slug}-{index}` (ex `mech-multivit-0`)
+- Bénéfices · `bnf-{product_slug}-{index}`
+- Personae · `pers-{audience_slug}`
+- Pain Points · `pain-{audience_slug}-{index}`
+- Angles · `{angle_id}` (ex `ANG-01`)
+- Objections · `obj-{audience_slug}-{index}` (ou `OBJ-NN` canonical si dispo)
+- Frictions · `{friction_id}` (ex `FRC-01`)
+- Roadmap phases · `roadmap-phase-{phase_id}` (ex `roadmap-phase-P1`)
+- Creatives · `{creative_id}` (ex `CRT-12`)
 
-**Step 6 · Synthesis output 5 sections investigation-posture**
+**Property mapping PhantomOS → Notion (inverse Phase A Step 3)** ·
 
-- **Observé** · workspace Notion créé sous `{notion_parent_url}`, URL canvas root + 11 DBs IDs · row counts populés par DB · `pct_relations_linked` (% relations cross-DB résolues correctement).
-- **Déduit** · qualité scaffold dépend de qualité state PhantomOS source · si entités sparse (peu de cross_refs), Notion populé pauvre · si dense (cross_refs riches), Notion riche en relations.
-- **Inconnu** · adoption Notion-side opérateur (utilisera-t-il la UI Notion vs PhantomOS canon ?) · si Notion édité après scaffold, drift PhantomOS ↔ Notion à diff via Phase C v2.59.
-- **Leviers** · re-run push si PhantomOS évolue (mode idempotent, met à jour pages existantes par ID) · scaffold complémentaire (canvas template Onday-style complet · Liens utiles / Suivi des créas / Opérations table) en patch v2.58.1 ou v2.59 si besoin.
-- **Close ouvert** · UNE question macro · *"Workspace Notion canon créé sous {URL}. Tu veux que je share l'URL à ton client / collab pour review, OU on enchaîne sur la table Opérations / lancements à populer manuellement post-scaffold, OU on stop ici et tu inspectes ?"*
-
-### Tags universels par défaut (Step 3.12)
-
-Sur chaque database scaffold, properties tags universels créés avec ces options select par défaut ·
-
+#### B3.1 · Produits (depuis `brands/{slug}/products/{p}/spec.json` + `offers.json`)
+Pour chaque product folder ·
 ```
-Source · observed (green) · inferred (yellow) · declared (blue)
-Validation status · hypothesis (gray) · tested (yellow) · validated (green) · scaled (purple) · fatigued (red)
+Map ·
+  Nom produit ← spec.identity.product_name
+  Slug ← {product_slug}
+  Niche ← spec.market_context.niche
+  Positioning ← spec.identity.positioning
+  Active offer summary ← compute from offers.offer_groups[0] (price + urgency_window résumé 1 ligne)
+  phantom_entity_id ← "prod-{product_slug}"
+  
+mcp__claude_ai_Notion__notion-create-pages
+  parent: {db_ids["Produits"]}
+  properties: {Map above}
+```
+Store · `row_ids["prod-{product_slug}"]` ← notion_row_id.
+
+#### B3.2 · Specs (depuis `spec.composition` + `spec.specs.*`)
+Pour chaque composition entry et chaque spec entry · 1 row Specs ·
+```
+Map ·
+  Spec name ← composition[i].name OR specs[type].label
+  Type ← composition / dosage / certification / packaging / origin / regulatory
+  Value ← composition[i].value OR specs[type].value
+  phantom_entity_id ← "spec-{product_slug}-{type}-{i}"
+  
+mcp__claude_ai_Notion__notion-create-pages parent={db_ids["Specs"]} properties=Map
 ```
 
-Confidence est number 0-1, pas select. Permet de stocker la valeur numeric agent-side et l'opérateur Notion peut filter / sort dessus.
+#### B3.3 · Mécanismes (depuis `spec.mechanisms[]`)
+```
+Map per mechanism ·
+  Mécanisme name ← mechanisms[i].name
+  Description physiologique ← mechanisms[i].description
+  Duration / délai d'effet ← mechanisms[i].duration
+  phantom_entity_id ← "mech-{product_slug}-{i}"
+```
+
+#### B3.4 · Bénéfices (depuis `spec.benefits[]`)
+```
+Map per benefit ·
+  Bénéfice name ← benefits[i].name
+  Chain level ← benefits[i].chain_level (functional / emotional / identity)
+  Emotional signal ← benefits[i].emotional_signal
+  Latency min (jours) ← benefits[i].latency_min_days
+  Latency max (jours) ← benefits[i].latency_max_days
+  Evidence verbatim ← benefits[i].evidence_verbatim (join multi-line)
+  phantom_entity_id ← "bnf-{product_slug}-{i}"
+```
+
+#### B3.5 · Personae (depuis `brands/{slug}/audiences/{a}/profile.json`)
+```
+Map per audience ·
+  Persona label ← profile.identity.label
+  Slug ← {audience_slug}
+  Awareness stage ← profile.psychology.awareness_stage
+  Demographics ← profile.identity.demographics (compact JSON → markdown)
+  JTBD primary ← profile.psychology.jtbd_primary
+  phantom_entity_id ← "pers-{audience_slug}"
+```
+
+#### B3.6 · Pain Points (depuis `profile.pain_benefit_chain[]`)
+Pour chaque audience, pour chaque pain entry ·
+```
+Map ·
+  Pain formulation ← pain_benefit_chain[i].pain_formulation
+  Category ← pain_benefit_chain[i].pain_category
+  Emotion ← pain_benefit_chain[i].emotion
+  Trigger ← pain_benefit_chain[i].trigger
+  Verbatim quotes ← pain_benefit_chain[i].verbatim_quotes (join + sample_size)
+  phantom_entity_id ← "pain-{audience_slug}-{i}"
+```
+
+#### B3.7 · Angles produits (depuis `brands/{slug}/angles/{ANG-NN}.json`)
+```
+Map per angle ·
+  Angle name ← angle.name
+  Angle ID ← angle.angle_id
+  Origin axis ← angle.origin_axis
+  Awareness stage in ← angle.awareness_movement.stage_in
+  Awareness stage out ← angle.awareness_movement.stage_out
+  Formula Observation ← angle.formula.observation
+  Formula Tension ← angle.formula.tension
+  Formula Reframe ← angle.formula.reframe
+  Formula Bridge produit ← angle.formula.bridge_product
+  Hook canon ID ← angle.lineage.hook_canon_id
+  Framework canon ID ← angle.lineage.framework_canon_id
+  Archetype voix canon ID ← angle.lineage.archetype_voix_canon_id
+  Pain extract ← angle.insight.pain_extract
+  Proof primary ← angle.insight.proof_primary
+  CTA ← angle.insight.cta
+  phantom_entity_id ← angle.angle_id
+```
+
+#### B3.8 · Objections (depuis `profile.objections[]`)
+Pour chaque audience, pour chaque objection ·
+```
+Map ·
+  Objection formulation ← objections[i].formulation
+  Type ← objections[i].type
+  Lifecycle ← objections[i].lifecycle
+  Severity score ← objections[i].severity_score
+  Response counter ← objections[i].response_counter
+  phantom_entity_id ← objections[i].objection_id OR "obj-{audience_slug}-{i}"
+```
+
+#### B3.9 · Frictions usage (depuis `brands/{slug}/frictions/{FRC-NN}.json`)
+```
+Map per friction ·
+  Friction name ← friction.name
+  Friction ID ← friction.friction_id
+  Category ← friction.category
+  Severity score ← friction.severity_score
+  Customer evidence ← friction.customer_evidence (join multi-line)
+  Current workarounds ← friction.current_workarounds (join, "; ")
+  Resolution state ← friction.resolution_state
+  phantom_entity_id ← friction.friction_id
+```
+
+#### B3.10 · Roadmap (depuis `brands/{slug}/roadmap.json#/phases[]` + `mix[]`)
+1 row par phase ·
+```
+Map per phase ·
+  Phase name ← phases[i].name
+  Phase ID ← phases[i].phase_id
+  Dates start ← phases[i].dates.start
+  Dates end ← phases[i].dates.end
+  Status ← phases[i].status
+  Mix axis ← phases[i].mix_axis_primary (or null si phase-level pas mix-level)
+  Weight ← phases[i].weight_primary (or null)
+  Production status ← phases[i].production_status
+  Priorities (top 3) ← phases[i].priorities (join bullets)
+  phantom_entity_id ← "roadmap-phase-{phase_id}"
+```
+Note · `mix[]` est aggregat singleton, expose via `Mix axis` + `Weight` rolled-up dans phase rows pour Phase B v2.0.0. Si besoin separate per-mix rows émerge v2.0.1+, ajouter colonne dédiée.
+
+#### B3.11 · Full funnel Meta (depuis `brands/{slug}/creatives/{CRT-NN}.json`)
+```
+Map per creative ·
+  Creative name ← creative.name
+  Creative ID ← creative.creative_id
+  Format ← creative.format
+  Funnel stage ← creative.intent.funnel_stage
+  Intent mix primary ← creative.intent_mix.primary
+  NOYAU mécanique ← creative.mecanique
+  Hook ← creative.execution.hook
+  Status ← creative.performance.status
+  Test data ← creative.performance.summary (CTR/CVR/spend résumé 1 ligne)
+  phantom_entity_id ← creative.creative_id
+```
+
+**Tags universels per row (toutes les 11 DBs)** ·
+- `Source` ← reverse `_field_types` per entity (observed→observed · derived→inferred · stated→declared · default declared)
+- `Confidence` ← `meta.confidence` numeric direct (0-1)
+- `Validation status` ← `meta.validation_status` enum direct (hypothesis/tested/validated/scaled/fatigued)
+
+**No invented data rule** · si un PhantomOS field est null/missing, SKIP la property Notion (do NOT default a value). Le row ship avec property vide Notion-side.
+
+**Stage all or none discipline** · si un row creation fail (Notion API error, property invalide) · log error, flag dans Step B7 Section 4 Leviers, continue le batch. Pas de rollback automatique.
+
+**MCP call pattern par row** ·
+```
+mcp__claude_ai_Notion__notion-create-pages
+  parent: {db_ids[target_collection]}
+  properties: {Map à partir entity PhantomOS}
+```
+
+Store · `row_ids[phantom_entity_id]` ← notion_row_id retourné. Critical pour Step B5b resolution.
+
+**Compteurs** · `created_count[collection] += 1` (ou `updated_count[collection] += 1` si Step B4 a flagué update).
+
+---
+
+### Step B4 · Idempotency lookup (interleaved pre Step B2 + Step B3)
+
+**Goal** · re-run de push update existing rows par `phantom_entity_id` plutôt que dupliquer. Hard rule canon · NEVER create duplicate.
+
+**Sub-step B4.1 · DB-level lookup (avant chaque create Step B2)** ·
+
+Pour chaque DB à créer Step B2, AVANT le `notion-create-database` ·
+```
+mcp__claude_ai_Notion__notion-search
+  query: "{db_title}"
+  parent_id: {canvas_root_id OR data_client_page_id selon target}
+```
+
+Si match retourné (DB déjà existe sous parent avec ce titre) · skip create, store existing `db_id` dans `db_ids[collection]`, log "DB {name} pre-existing, reused".
+
+Si zéro match · proceed avec create normal Step B2.
+
+**Sub-step B4.2 · Row-level lookup (avant chaque create Step B3)** ·
+
+Pour chaque entity à push Step B3, AVANT le `notion-create-pages` ·
+```
+mcp__claude_ai_Notion__notion-query-database-view
+  database_id: {db_ids[target_collection]}
+  filter: {property: "phantom_entity_id", text: {equals: "{target_id}"}}
+```
+
+Si match retourné (1 row existant avec ce phantom_entity_id) ·
+- Extract `notion_row_id` + `last_edited_time` du match.
+- **Conflict check** · si `last_edited_time` (Notion-side) > `_synced_at` PhantomOS-side timestamp · FLAG conflict ·
+  ```
+  conflicts.append({
+    "phantom_entity_id": target_id,
+    "notion_row_id": notion_row_id,
+    "reason": "notion_edited_after_sync",
+    "notion_last_edited": last_edited_time,
+    "phantom_synced_at": phantom_synced_at
+  })
+  ```
+  → do NOT overwrite. Skip update for this row. Surface dans Section 4 Step B7 Leviers (Phase C diff candidate v2.59+).
+- Si pas de conflict · UPDATE via `mcp__claude_ai_Notion__notion-update-page` (pas create) ·
+  ```
+  mcp__claude_ai_Notion__notion-update-page
+    page_id: {notion_row_id}
+    properties: {Map}
+  ```
+  Increment `updated_count[collection] += 1`. Store `row_ids[phantom_entity_id]` ← existing notion_row_id.
+
+Si zéro match · proceed avec create normal Step B3, increment `created_count[collection] += 1`.
+
+**Hard rule** · re-run push = update existing par `phantom_entity_id`, NEVER duplicate. Soft rule · Notion-side edits post-sync = flag conflict, no silent overwrite.
+
+---
+
+### Step B5 · Relations cross-link binding (pass 2 · 2 sub-passes)
+
+**Goal** · après Steps B2 (DBs created) + B3 (rows populated), résoudre les relations cross-DB en 2 sub-passes ·
+
+**Sub-pass B5a · Add relation properties to DBs** ·
+
+Pour chaque DB ayant des relations DEFERRED Step B2, run ·
+```
+mcp__claude_ai_Notion__notion-update-data-source
+  data_source_id: {db_ids[collection]}
+  add_properties: [
+    {name: "Produit", type: "relation", relation: {database_id: {db_ids["Produits"]}}},
+    ... per DB's deferred relations ...
+  ]
+```
+
+Mapping deferred relations à ajouter ·
+- **Specs** · `Produit` → Produits
+- **Mécanismes** · `Produit` → Produits (multi)
+- **Bénéfices** · `Produit` → Produits + `Mécanisme` → Mécanismes
+- **Personae** · `Produit principal` → Produits
+- **Pain Points** · `Persona` → Personae + `Bénéfice servi` → Bénéfices
+- **Angles produits** · `Persona cible` → Personae
+- **Objections** · `Persona` → Personae (multi) + `Angle dérivé` → Angles produits (multi)
+- **Frictions usage** · `Affected products` → Produits (multi) + `Affected audiences` → Personae (multi) + `Cross-ref objections` → Objections (multi) + `Cross-ref pain points` → Pain Points (multi)
+- **Roadmap** · `Angles refs` → Angles (multi) + `Audiences refs` → Personae (multi) + `Products refs` → Produits (multi) + `Creatives refs` → Full funnel Meta (multi)
+- **Full funnel Meta** · `CONTEXTE angle` → Angles + `CONTEXTE persona` → Personae
+
+**Sub-pass B5b · Set relation values on rows** (skip si mode=scaffold) ·
+
+Pour chaque row créé/updaté Step B3, résoudre ses cross_refs PhantomOS-side vers notion_row_ids via `row_ids` mapping working memory ·
+
+Pattern resolution per entity type ·
+
+- **Specs row** · resolve `spec.cross_refs.product_slug` → `row_ids["prod-{product_slug}"]`. Set property `Produit` = [resolved_notion_row_id].
+- **Mécanismes row** · resolve product_slugs (multi) → list of `row_ids["prod-{slug}"]`. Set `Produit` (multi).
+- **Bénéfices row** · resolve product + mécanisme refs.
+- **Personae row** · resolve product principal ref.
+- **Pain Points row** · resolve audience_slug → `row_ids["pers-{slug}"]` + benefit_served_id → `row_ids[bnf-id]`.
+- **Angles row** · resolve `angle.audience_slug` → `row_ids["pers-{audience_slug}"]`. Set `Persona cible`.
+- **Objections row** · resolve audience_slugs (multi) + `objections.derived_angle_refs[]` (multi · resolve each `ANG-NN` to `row_ids[ANG-NN]`).
+- **Frictions usage row** · resolve `friction.affected_products[]` + `friction.affected_audiences[]` + `friction.cross_refs.objection_ids[]` + `friction.cross_refs.pain_point_ids[]` (each multi).
+- **Roadmap row** · resolve `phases[i].priorities[].angle_ids[]` + `phases[i].priorities[].audience_slugs[]` + `phases[i].priorities[].product_slugs[]` + `phases[i].priorities[].creative_ids[]` (collect per phase, set on phase row, all multi).
+- **Full funnel Meta row** · resolve `creative.context.angle_id` → `row_ids[ANG-NN]` + `creative.audience_slug` → `row_ids["pers-{slug}"]`.
+
+**MCP call pattern** ·
+```
+mcp__claude_ai_Notion__notion-update-page
+  page_id: {row_ids[phantom_entity_id]}
+  properties: {<relation_name>: <list of resolved notion_row_ids>, ...}
+```
+
+**Resolution failure handling** · si une cross_ref pointe vers un PhantomOS ID absent du `row_ids` mapping (target entity pas pushé, ou nom mal référencé) · log warning, skip cette relation pour cette row, increment `relations_unresolved_count`. Surface % `pct_relations_linked` dans Step B7 Section 1.
+
+---
+
+### Step B6 · Tags universels + epistemic sync stamp (verify pass)
+
+**Goal** · pass de vérification que chaque row créé/updaté Step B3 a bien ses 3 tags universels (Source · Confidence · Validation status) set explicitement. Cas typique · row updaté Step B4 (idempotent) pré-existait Notion-side, vérifier qu'il a hérité des nouveaux tags PhantomOS-side.
+
+Pour chaque row dans `row_ids` ·
+- Si row a été créé Step B3 · tags déjà set inline via property mapping (rien à faire).
+- Si row a été updaté Step B4 idempotent · re-verify Source / Confidence / Validation status présents et alignés sur PhantomOS state actuel. Si missing · `mcp__claude_ai_Notion__notion-update-page` avec defaults défensifs ·
+  ```
+  Source = "declared" (default défensif si _field_types absent)
+  Confidence = 0.7 (default défensif si meta.confidence absent)
+  Validation status = "hypothesis" (default défensif si meta.validation_status absent)
+  ```
+  Aligné canon Phase A Step 3 tags universels mapping lignes 287-298.
+
+**Stamp pass · agnostic** · permet aux 3 tags d'être source of truth bidirectionnelle (Notion-side opérateur peut corriger Source=observed après audit verbatim, et Phase A pull v2.66+ rapatriera la correction si --mode=pull relance).
+
+---
+
+### Step B7 · Synthesis output 5 sections investigation-posture
+
+**Goal** · output final canonique respectant `docs/system/investigation-posture.md` (5 sections explicites, jamais fusionnées en prose).
+
+#### Section 1 · Observé (faits sourcés)
+
+> *Observé · workspace Notion créé sous {notion_parent_url} ({date}, {durée_total_push})*
+>
+> *Canvas root · {canvas_url} (page "Phantom OS · {brand_name}")*
+> *Data Client wrapper · {data_client_url} (sub-page "Data Client · {brand_name}")*
+>
+> *11 databases créées/réutilisées ·*
+> *  • Produits · {created_count.Produits} créées · {updated_count.Produits} mises à jour*
+> *  • Specs · {created_count.Specs} / {updated_count.Specs}*
+> *  • Mécanismes · {created_count.Mécanismes} / {updated_count.Mécanismes}*
+> *  • Bénéfices · {created_count.Bénéfices} / {updated_count.Bénéfices}*
+> *  • Personae · {created_count.Personae} / {updated_count.Personae}*
+> *  • Pain Points · {created_count.PainPoints} / {updated_count.PainPoints}*
+> *  • Angles produits · {created_count.Angles} / {updated_count.Angles}*
+> *  • Objections · {created_count.Objections} / {updated_count.Objections}*
+> *  • Frictions usage · {created_count.Frictions} / {updated_count.Frictions}*
+> *  • Roadmap · {created_count.Roadmap} phases*
+> *  • Full funnel Meta · {created_count.Creatives} créatives*
+>
+> *Total · {sum(created)} rows créés · {sum(updated)} rows updatés idempotent (par phantom_entity_id)*
+>
+> *Relations cross-DB · {pct_relations_linked}% des cross_refs PhantomOS résolues vers Notion page IDs ({N_resolved} / {N_total} cross_refs)*
+>
+> *Tags universels stampés cross-rows ·*
+> *  • Source set sur {pct_source}% des rows*
+> *  • Confidence set sur {pct_confidence}% des rows*
+> *  • Validation status set sur {pct_status}% des rows*
+
+#### Section 2 · Déduit (hypothèses)
+
+> *Déduit · qualité du scaffold reflète la densité du state PhantomOS source*
+>
+> *H1 · Densité cross_refs PhantomOS-side*
+> *  Confidence · {forte si pct_relations_linked > 80% · moyenne si 50-80% · faible si < 50%}*
+> *  Indicateurs · {N_cross_refs_resolved} relations résolues sur {N_cross_refs_total} cross_refs présentes PhantomOS state*
+> *  À valider · Si pct < 50%, le state PhantomOS est sparse (peu de cross-refs entre entités). Workspace Notion sera navigable mais relations vides. Tu veux qu'on enrichisse les cross_refs PhantomOS d'abord, ou ship as-is ?*
+>
+> *H2 · Conflicts détectés (Notion-side edits post dernier sync)*
+> *  Confidence · {forte si {len(conflicts)} > 0, sinon zéro}*
+> *  Indicateurs · {len(conflicts)} rows pré-existaient Notion-side avec last_edited_time > _synced_at PhantomOS. Skip overwrite, candidats Phase C diff v2.59+.*
+
+#### Section 3 · Inconnu (variables non observables)
+
+> *Inconnu · {N} variables à creuser*
+>
+> *1. Adoption Notion-side · le client / collab à qui tu shares l'URL va-t-il vraiment utiliser cette UI vs PhantomOS canon ? Inconnu jusqu'à feedback.*
+> *2. Drift PhantomOS ↔ Notion futur · les edits Notion-side post-push créeront du drift cumulatif. Audit via Phase C diff v2.59+.*
+> *3. Cohérence relations resolved · les {pct_relations_linked}% résolues sont-elles sémantiquement correctes ou juste structurellement liées ? Audit manuel.*
+> *4. Conflicts non-résolus · {len(conflicts)} rows Notion-side modifiés depuis sync → divergence entre Notion truth opérateur et PhantomOS canon · arbitrage manuel ou Phase C v2.59+.*
+
+#### Section 4 · Leviers (options drill-down)
+
+> *Leviers · {N} axes d'investigation prioritaires*
+>
+> *Axe A · Share URL au client / collab pour review*
+> *  → Workspace prêt à partager · canvas root URL ci-dessus · client peut naviguer 11 DBs + canvas Onday-style*
+> *  → Reco · accompagner share par doc "Comment lire l'ensemble" (Data Client page déjà documenté Sub-step B1.2)*
+>
+> *Axe B · Re-run push idempotent quand PhantomOS évolue*
+> *  → Re-invoke `--mode=push` à tout moment · les rows existants updatent par phantom_entity_id · nouveaux entities créés · aucune duplication*
+> *  → Si Notion édité side opérateur entre 2 push · conflicts surfacés Section 4 Leviers post-run*
+>
+> *Axe C · Resolve conflicts détectés (si {len(conflicts)} > 0)*
+> *  → Phase C diff v2.59+ permettra audit explicite delta Notion ↔ PhantomOS avant overwrite*
+> *  → En attendant v2.59+ · review manuelle des {len(conflicts)} rows, decide source-of-truth, sync manuel*
+>
+> *Axe D · Populate Opérations table manuelle (canvas root)*
+> *  → Table 5 colonnes mois shipped vide Step B1.1 · à populer manuellement Notion-side (events + budget) hors scope skill*
+>
+> *Axe E · Phase A pull pour rapatrier edits Notion → PhantomOS plus tard*
+> *  → Cycle bidirectionnel opérationnel · `--mode=pull` après que client a édité Notion = rapatrie corrections vers PhantomOS canon*
+
+#### Section 5 · Close ouvert (UNE question macro)
+
+> *Workspace Notion canon créé sous {canvas_url}, {sum(created)} rows shipped, {pct_relations_linked}% relations linked, {len(conflicts)} conflicts détectés.*
+>
+> *Tu veux que je share l'URL à ton client / collab pour review, OU on enchaîne sur la table Opérations / lancements à populer manuellement Notion-side, OU on stop ici et tu inspectes le workspace ?*
+
+#### Hard rules cross-section synthèse (cf. investigation-posture.md)
+
+- **5 sections explicites, jamais fusionnées en prose continue.** Anti-pattern AP-6 doctrine.
+- **JAMAIS exposer confidence numeric à l'opérateur.** Confidence chain qualitatif uniquement.
+- **JAMAIS nommer le skill interne en surface opérateur** (`mcp__claude_ai_Notion__*` interne = OK si présenté comme workflow, pas comme path technique).
+- **JAMAIS clôturer avec affirmation** · close ouvert toujours UNE question macro drill-down.
+- **JAMAIS inventer data Notion pour combler les vides PhantomOS-side.** Si une cross_ref pointe vers entity absente, skip silent (log warn dans `relations_unresolved_count`).
+
+---
 
 ### Hard rules Phase B spécifiques
 
-- **Idempotent par PhantomOS entity ID.** Re-run push update les pages Notion existantes par `phantom_entity_id` (stocké en property texte caché type "PhantomOS ID"). JAMAIS création duplicate. Pattern · query Notion par phantom_entity_id property → si match update, sinon create.
-- **No silent overwrite Notion-side edits.** Si page Notion existe ET a été éditée Notion-side depuis dernier sync (timestamp `last_edited_time` > `last_synced`), flag conflict dans Section 4 Leviers, propose Phase C diff v2.59 avant overwrite.
-- **Canvas wrapper template fidèle Onday-style.** Step 1 + Step 2 scaffold le wrapper canvas (3 colonnes callouts + Opérations table + Données Atlas page header) MIROIR de stride-up Onday template. Reproductible cross-clients pour Abyss collectif.
-- **Mode scaffold blank-only.** Si `brand_slug` a state populé, refuse `--mode=scaffold` (anti-pattern · scaffold blank doit pas effacer Notion existant). Propose `--mode=push` à la place. Mode scaffold uniquement quand brand vierge ou pre-onboarding.
+- **Idempotent par `phantom_entity_id`.** Re-run push update les pages Notion existantes par phantom_entity_id (hidden text property sur chaque DB). JAMAIS création duplicate. Pattern · query Notion par phantom_entity_id → si match update, sinon create (Step B4).
+- **No silent overwrite Notion-side edits.** Si page Notion `last_edited_time` > PhantomOS `_synced_at` · flag conflict Section 4 Leviers, do NOT overwrite. Phase C diff v2.59+ candidat resolve.
+- **2-pass create pattern · DBs first (B2), relations second (B5).** Eviter race condition relation → DB inexistante. Sub-pass B5a ajoute relation properties aux DBs, sub-pass B5b set values sur rows.
+- **Rate limit Notion API 3 req/sec.** Throttle si cascade requests (Steps B2 + B3 + B5 ont beaucoup de calls). `time.sleep(0.4)` entre creates si besoin.
+- **Mode scaffold blank-only.** Si brand a state populé · refuse `--mode=scaffold` (anti-pattern · scaffold blank effacerait Notion existant). Propose `--mode=push` à la place (Step B0 pre-check).
+- **Canvas wrapper template fidèle Onday-style.** Step B1 reproduit le canvas Onday (3 colonnes callouts + Opérations table + Données Atlas sub-page) miroir stride-up. Reproductible cross-clients Abyss collectif.
+- **No invented data Notion-side.** Si PhantomOS field null/missing · skip property Notion-side (Step B3). Do NOT default a value. Parité doctrinale `snapshot-brand § Never invent`.
+- **Stage all or none discipline (partial).** Si row creation/update fail · log, flag Section 4, continue batch. Pas de rollback automatique (anti-pattern destructive).
+- **`brand.json` not pushed.** Brand identity reste canon PhantomOS-side, jamais exposée Notion-side (anti-pattern leak identity data multi-clients agency).
 
-### Workflow post-Phase B
+### Workflow post-Phase B (cycle bidirectionnel)
 
-1. Largo run `--mode=push brand-active` · workspace Notion peuplé scaffold from PhantomOS state · partage URL au client / collab.
+1. Largo run `--mode=push {brand_slug} {notion_parent_url}` · workspace Notion populé from PhantomOS state · partage URL au client/collab.
 2. Client / collab édite Notion-side (corrections, enrichissements, validation status update).
-3. Largo run `--mode=pull` plus tard pour rapatrier les edits Notion → PhantomOS.
-4. Cycle bidirectionnel opérationnel.
+3. Largo run `--mode=pull {brand_slug} {notion_url}` plus tard pour rapatrier les edits Notion → PhantomOS via mutation gate.
+4. Cycle bidirectionnel opérationnel. Conflicts détectés Step B4 idempotency check candidate Phase C diff v2.59+.
 
 ### Évolutions futures Phase B+
 
-- **v2.58.1 · canvas template extended** · Liens utiles populé (drive URLs si dispo dans brand config) · Suivi des créas sub-page populated · Opérations table avec dates auto-générées (12 prochains mois rolling).
-- **v2.59 · `--mode=diff`** · compare state PhantomOS vs Notion, surface deltas operator-facing en 5 sections, accept-all / per-collection / cherry-pick.
-- **v2.60 · multi-Notion sources aggregation** · 1 PhantomOS brand pulled from N Notion workspaces (Abyss collectif scaling · N clients Notion → 1 atlas PhantomOS).
+- **v2.0.1 · canvas template extended** · Liens utiles populé (drive URLs depuis brand config) · Suivi des créas sub-page populated · Opérations table avec dates auto-générées (12 prochains mois rolling).
+- **v2.0.2 · separate per-mix rows Roadmap** · si `roadmap.mix[]` granularity émerge use-case, ajouter colonne dédiée vs rolled-up dans phase rows.
+- **v2.59 · `--mode=diff`** · compare state PhantomOS vs Notion, surface deltas operator-facing en 5 sections, resolve conflicts détectés Step B4.
+- **v2.60 · multi-Notion sources aggregation** · 1 PhantomOS brand pulled from N Notion workspaces (Abyss collectif scaling).
 
 ---
 
@@ -932,4 +1420,4 @@ Stateless idempotent. Re-run `/sync-notion-atlas {brand_slug} --mode=pull {notio
 
 ## Verdict
 
-Skill `sync-notion-atlas` v1.0.0 ship le bridge Notion → PhantomOS Phase A pull-only MVP, mutation gate strict via write-to-context.py mode=proposed, isolation brand_only, 5 sections close investigation-posture, MCP Notion gate L2 explicite · Phases B push + diff stubbées pour évolution v2.58+ sans casser v1.0.0.
+Skill `sync-notion-atlas` v2.0.0 ship dual-direction sync opérationnel · Phase A pull (Notion → PhantomOS) Steps 0-6 preserved unchanged backward compat strict additif · Phase B push (PhantomOS → Notion) Steps B1-B7 runtime exec-ready v2.66 NEW · canvas Onday-style wrapper + 11 DBs creation pass 1 + rows population pass 2 + relations binding pass 3 (2 sub-passes B5a property add / B5b value set) + idempotency lookup par phantom_entity_id (no duplicate, no silent overwrite conflicts surfaced) · mutation gate strict pull-side · MCP Notion direct push-side · 5 sections close investigation-posture · isolation_scope brand_only · 12 hard rules canon. Phase C diff (`--mode=diff`) reste deferred v2.59+ pour resolve conflicts détectés Step B4.
