@@ -3,6 +3,7 @@ name: update-workspace
 type: orchestrator
 version: "1.0.0"
 recommended_model: sonnet
+layer: meta
 reasoning_pattern: null
 description: >
   Applies one or more PhantomOS release updates to an installed workspace

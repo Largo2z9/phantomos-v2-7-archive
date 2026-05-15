@@ -4,6 +4,7 @@ type: producer
 version: "1.0.0"
 agent_id: score-product-fit@v1.0
 recommended_model: haiku
+layer: territoire
 reasoning_pattern: null
 description: >
   Evaluate product-audience fit by comparing spec.json against profile.json. Score 0-10, list strengths/gaps, identify language misalignment.

@@ -3,7 +3,7 @@ name: map-audiences
 type: producer
 version: 1.2.0
 isolation_scope: brand_only
-layer: 2
+layer: territoire
 recommended_model: sonnet
 subagent_safe: true
 mode: proposed

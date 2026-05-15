@@ -3,6 +3,7 @@ name: migrate-workspace
 type: curator
 version: "1.0.0"
 recommended_model: sonnet
+layer: meta
 reasoning_pattern: null
 description: >
   Migrates an existing brand instance to match a newer template version.

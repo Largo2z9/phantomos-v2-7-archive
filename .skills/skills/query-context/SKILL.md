@@ -3,7 +3,7 @@ name: query-context
 type: curator
 version: "1.1.0"
 isolation_scope: brand_only
-layer: 3
+layer: meta
 recommended_model: haiku
 reasoning_pattern: null
 description: >

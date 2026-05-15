@@ -3,6 +3,7 @@ name: red-team
 type: orchestrator
 version: "1.0.0"
 recommended_model: sonnet
+layer: production
 reasoning_pattern: null
 description: >
   Multi-expert adversarial audit on any artifact: document, plan, strategy, feed, brief,

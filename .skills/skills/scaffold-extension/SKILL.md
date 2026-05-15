@@ -3,6 +3,7 @@ name: scaffold-extension
 type: orchestrator
 version: "1.1.0"
 recommended_model: sonnet
+layer: meta
 reasoning_pattern: null
 description: >
   Orchestrator for building a new extension in PhantomOS at one of three scopes (brand, operator, workspace).

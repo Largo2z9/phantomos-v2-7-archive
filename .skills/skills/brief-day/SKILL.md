@@ -3,6 +3,7 @@ name: brief-day
 type: navigator
 version: "1.2.0"
 recommended_model: haiku
+layer: production
 reasoning_pattern: null
 description: >
   Session-start orientation briefing. Reads workspace state across all brands

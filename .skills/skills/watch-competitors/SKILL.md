@@ -3,6 +3,7 @@ name: watch-competitors
 type: producer
 version: "1.0.0"
 recommended_model: sonnet
+layer: territoire
 reasoning_pattern: null
 description: >
   Analyse les publicités Meta des concurrents d'une brand et produit un rapport

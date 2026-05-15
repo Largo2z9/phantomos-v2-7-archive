@@ -3,6 +3,7 @@ name: capture-learning
 type: capturer
 version: "1.0.0"
 recommended_model: haiku
+layer: meta
 reasoning_pattern: null
 description: >
   Quick append of a single operational learning to learnings.json.

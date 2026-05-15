@@ -3,6 +3,7 @@ name: check-existing-coverage
 type: curator
 version: "2.0.0"
 recommended_model: haiku
+layer: meta
 reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Pre-build gate that checks whether the operator's intent

@@ -160,6 +160,14 @@ Ce que la marque vend. Composition, mécanisme, claims, problème adressé, prix
 
 Comment un produit est présenté commercialement : prix, bundle, gifting, subscription, refill. Plusieurs offres possibles par produit. Vit sous le produit dans l'arborescence.
 
+## Territoire
+
+Substrat stable canonisé de la marque · ce qui survit aux sessions et change rarement. Inclut specs produits, audiences profilées, angles décomposés, frictions usage, roadmap, strategy, learnings cumulés. Posé une fois en setup (semaine 1) puis enrichi marginalement (1 audience tous les 2 mois en croisière). Distinct de la **production** (livrables runtime on-demand · briefs, creatives, ad copy · changent toutes les semaines). Synonymes canon historiques · "Reference" (architecture.md §7), "Spatial encoding" (SED §3), "Substrat" (session-log S54). Doctrine canon · `docs/system/territory-discipline.md`.
+
+## Axe créatif
+
+Cellule canonique au croisement d'une audience cible et d'une source d'angle. Output principal de `score-matrix` (top-3 axes créatifs scorés et priorisés). Candidat à matérialiser via `creative-brief-composer` (brief copy + creatives). Renommage v2.67 · auparavant appelé "territoire" au sens micro (ambiguïté avec territoire macro brand) · "axe créatif" résout la polysémie. Doctrine canon · `docs/system/territory-discipline.md` Section 11 Decision-aid.
+
 ---
 
 *Dernière mise à jour : 2026-05-04 (S55). Enrichissement post audit nomenclature S55 + releases v2.26-v2.28.1 : ajout 14 entrées (Concept vs Creative vs Variant, Insight, Pain_point, Tension, JTBD, Mécanique creative, Mechanism spec, Atlas canon copy, Atome irréductible, Awareness stage, Schwartz, Persona vs Audience, Origin_axis, Lineage). Distinctions MECE explicites : pain_point ≠ tension ≠ insight ≠ JTBD (4 plans), Mécanique creative ≠ Mechanism spec (2 plans disjoints), atome_irreductible ≠ perceptual_pivot ≠ stop_scroller (3 plans), Concept ≠ Creative ≠ Variant. Source : decisions.md D#382, D#383, D#391.*

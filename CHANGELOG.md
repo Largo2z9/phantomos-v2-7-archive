@@ -7,6 +7,53 @@
 
 ---
 
+## v2.67.0 · 2026-05-15 · Canonisation territoire vs production vs meta · NEW doctrine + layer field 67 skills + build-atlas refactor
+
+**Why** · 3 vocabularies historiques (Reference architecture.md §7 · Spatial encoding SED §3 · Substrat session-log S54) décrivent la même distinction substrat stable vs livrable on-demand · sans unification canon. Pattern existait en germe mais non nommé en doctrine canonique. `build-atlas-complete` v1.2.0 mélangeait territoire (Steps 1-7) + production (Steps 8-9 produce-copy-brief + compose-creative) violant scope cohérent. `sync-notion-atlas` v2.0.0 push 11 collections mixed territoire+production. Polysémie "territoire" macro (substrat brand) vs micro (intersection audience×angle) sans disambiguation. v2.67 codifie territoire/production/meta canon doctrine unifié · clean split skill par layer · pré-requis avant build `_EXAMPLE/stepprs` brand canonical post-canon.
+
+**What** · 5 blocs parallélisés ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · NEW doctrine `territory-discipline.md`** | 356L · 13 sections canon-style miroir SED-X · sister SED/CMR/SED-X/CC/InvestigationPosture | Skill-author-facing technique + opérateur-facing pédagogique · pattern usage opérateur Section 8 explicit |
+| **2 · Refactor `build-atlas-complete` v1.2.0 → v1.3.0 BREAKING** | Steps 8-9 stripped (produce-copy-brief + compose-creative) · frontmatter clean · postconditions update · emits_events update · cross-ref doctrine · "top-3 territoires" → "top-3 axes créatifs" lexicon disambiguation | Orchestrator territoire-pure · productions via creative-brief-composer post-atlas downstream (separate invocation · clean split) |
+| **3 · `layer` field NEW sur 66 SKILL.md** | Frontmatter `layer: territoire | production | meta` · 31 territoire + 11 production + 25 meta indexed (1 template skipped) · manifest regen avec layer discoverability | Routing canon + future enforcement mutation gate + observability cost tracking per layer |
+| **4 · Lexicon disambiguation** | NEW entries "Territoire" (sens macro · substrat brand + synonymes canon historiques) + "Axe créatif" (sens micro · output score-matrix renommé) | Polysémie résolue · operateur comprend distinction macro/micro |
+| **5 · `sync-notion-atlas` v2.0.0 → v2.0.1 territoire-only default** | Phase B push 10 collections strict (Full funnel Meta retiré) · creatives via NEW skill dédié futur `sync-creatives-to-notion` v2.68+ (cards/Kanban Notion briefs+créas par angle · production layer séparée) · Hard rule 10 NEW "Production layer NOT pushed" · Phase A pull unchanged backward compat | Canvas Notion brand-side = territoire only · plus propre interface visibilité partage client/collab |
+
+**3 patterns canon introduits** ·
+1. **Territoire/production/meta unified** · 3 layers orthogonaux consolidant vocabularies historiques scattered · doctrine 13 sections canon-style miroir SED-X
+2. **Skill layer field frontmatter canon** · `layer: territoire | production | meta` obligatoire chaque SKILL.md v2.67+ · manifest expose discoverability + future enforcement
+3. **1 skill par layer clean split canon** · build-atlas-complete territoire-pure · creative-brief-composer production-pure · sync-notion-atlas v2.0.1 territoire-only (creatives via NEW skill v2.68+)
+
+**4 anti-patterns éliminés** ·
+- Orchestrator layers mixed (build-atlas-complete v1.2.0 corrigé v1.3.0)
+- Vocabularies scattered non-unified (3 noms historiques unifiés territoire canon v2.67+)
+- Notion push mixed layers (sync-notion-atlas v2.0.0 corrigé v2.0.1 territoire-only 10 collections)
+- Polysémie territoire macro/micro (lexicon disambiguation territoire + axe créatif)
+
+**Migration BREAKING ciblé** ·
+- `build-atlas-complete` v1.2.0 → v1.3.0 · operators v1.x qui invoquaient pour briefs+créas migrent vers `creative-brief-composer` post-atlas (separate invocation après atlas substrate complete)
+- `sync-notion-atlas` v2.0.0 → v2.0.1 · operators v2.0.0 qui pushaient 11 collections obtiennent 10 v2.0.1 · creatives push deferred via NEW skill futur v2.68+
+
+**Backward compat strict additif sur layer field 67 SKILL.md + lexicon entries + doctrine NEW** · zero override existing fields.
+
+**Files patched** ·
+- `docs/system/territory-discipline.md` NEW 356L
+- `.skills/skills/build-atlas-complete/SKILL.md` v1.2.0 → v1.3.0 (415L → 470L)
+- `.skills/skills/sync-notion-atlas/SKILL.md` v2.0.0 → v2.0.1 (1423L → 1417L)
+- `.skills/skills/{66 skills}/SKILL.md` frontmatter `layer` field add (66 patches additifs)
+- `.skills/_manifest.json` regen 67 skills + layer field
+- `.skills/_jargon_bank.json` regen
+- `lexicon.md` 2 NEW entries (Territoire + Axe créatif)
+- `_version.json` 2.66.0 → 2.67.0
+- `CHANGELOG.md` v2.67.0 entry (this entry)
+- `docs/internal/releases/manifest/2.67.0-manifest.json` NEW
+
+**Next release notes** · (a) v2.68 NEW `sync-creatives-to-notion` skill production layer (cards/Kanban Notion briefs+créas par angle · 1 skill par layer canon reproductible). (b) Test live brand pilote post-v2.67 (Stepprs ou Onday existing · validate end-to-end push territoire 10 collections). (c) NEW `_EXAMPLE/stepprs` brand canonical territoire-pure complete · build duo Largo+agent · référence visuelle nouveaux opérateurs. (d) Audit mutation gate enforcement layer field (production skill refuses writes substrat sans operator gate · validate-resources audit) candidate v2.69+. (e) Cost tracking par layer observabilité runtime candidate v2.70+ pour Abyss collectif scaling.
+
+---
+
 ## v2.66.0 · 2026-05-15 · Phase B push runtime exec-ready · sync-notion-atlas v2.0.0 BREAKING dual-direction sync
 
 **Why** · sync-notion-atlas v1.0.0 (v2.57) shipped Phase A pull-only MVP. v1.1.0 (v2.58) coverage extend. Phase B push spec documented (~230L) mais stubbée sans code runtime. Operator invoque `--mode=push` obtient refusal "deferred v2.58". v2.66 convertit la spec en Steps exec-ready · dual-direction sync Notion ↔ PhantomOS opérationnel · scaffold canvas + 11 DBs + rows populate + relations 2-pass + idempotency lookup. Pattern bridge tool dual-direction reproductible cross sources futures.

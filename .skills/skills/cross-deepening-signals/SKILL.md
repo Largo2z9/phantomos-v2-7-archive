@@ -3,6 +3,7 @@ name: cross-deepening-signals
 type: orchestrator
 version: "1.0.0"
 recommended_model: sonnet
+layer: territoire
 reasoning_pattern: null
 operator_facing: false
 description: >

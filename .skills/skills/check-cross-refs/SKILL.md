@@ -3,6 +3,7 @@ name: check-cross-refs
 type: curator
 version: "1.0.0"
 recommended_model: haiku
+layer: meta
 reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Walks declared cross-references in a proposed schema

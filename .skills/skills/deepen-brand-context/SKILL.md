@@ -3,6 +3,7 @@ name: deepen-brand-context
 type: orchestrator
 version: "1.0.0"
 recommended_model: sonnet
+layer: territoire
 reasoning_pattern: null
 description: >
   Orchestrates deepening of brand context after snapshot. Chains mine-voc

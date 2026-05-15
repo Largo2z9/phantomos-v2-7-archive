@@ -3,6 +3,7 @@ name: mine-vom
 type: producer
 version: "1.1.1"
 recommended_model: sonnet
+layer: territoire
 reasoning_pattern: matrix-driven
 matrix_mode: coding
 consumes:

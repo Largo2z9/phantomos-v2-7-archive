@@ -4,7 +4,7 @@ type: orchestrator
 version: "1.0.0"
 recommended_model: sonnet
 isolation_scope: workspace_global
-layer: 1
+layer: meta
 description: >
   Guide opérateur dans setup MCP server. Layer 1 (MCP configurés au niveau
   Claude Code, pas shippés avec le template). Targets defaults PhantomOS :

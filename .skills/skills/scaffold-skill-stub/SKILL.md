@@ -3,6 +3,7 @@ name: scaffold-skill-stub
 type: builder
 version: "1.0.0"
 recommended_model: sonnet
+layer: meta
 reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Generates a SKILL.md stub in `.skills/skills/custom/{name}/`

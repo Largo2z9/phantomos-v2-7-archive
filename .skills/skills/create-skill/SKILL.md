@@ -5,7 +5,7 @@ type: builder
 recommended_model: sonnet
 subagent_safe: false
 isolation_scope: workspace_global
-layer: 3
+layer: meta
 description: >
   Meta-skill, generates SKILL.md files conformant to the workspace authoring discipline.
   Knows frontmatter triad (name, type, triggers), DRGFP prerequisites schema, isolation_scope rules,

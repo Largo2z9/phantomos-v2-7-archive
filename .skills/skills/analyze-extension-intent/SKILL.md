@@ -3,6 +3,7 @@ name: analyze-extension-intent
 type: curator
 version: "1.0.0"
 recommended_model: sonnet
+layer: meta
 reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Captures operator intent for a new extension and

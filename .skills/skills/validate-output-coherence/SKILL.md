@@ -3,6 +3,7 @@ name: validate-output-coherence
 type: curator
 version: "1.0.0"
 recommended_model: haiku
+layer: meta
 reasoning_pattern: null
 operator_facing: false
 invocable_by:

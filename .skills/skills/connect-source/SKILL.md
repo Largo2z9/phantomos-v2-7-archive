@@ -3,7 +3,7 @@ name: connect-source
 description: Connect an external platform (Meta Ads, Shopify, Klaviyo, GA4, etc.) to PhantomOS. Guides operator through credentials setup, scope choice (workspace or brand), and capabilities. Uses convention if available in resources/conventions/, otherwise invokes scope skill (BUILD mode) to map the new platform first.
 type: orchestrator
 isolation_scope: brand_only
-layer: 2
+layer: territoire
 recommended_model: sonnet
 subagent_safe: false
 mode: interactive

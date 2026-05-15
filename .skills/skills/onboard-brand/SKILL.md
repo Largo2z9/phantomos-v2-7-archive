@@ -3,6 +3,7 @@ name: onboard-brand
 type: orchestrator
 version: "1.0.0"
 recommended_model: sonnet
+layer: territoire
 reasoning_pattern: null
 description: >
   Full-cycle brand onboarding orchestrator. Chains setup-brand (identity + structure)

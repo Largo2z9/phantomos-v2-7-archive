@@ -5,7 +5,7 @@ recommended_model: sonnet
 subagent_safe: true
 operator_facing: false
 isolation_scope: brand_only
-layer: 3
+layer: production
 version: 1.0.1
 mode: proposed
 reasoning_pattern: matrix-driven

@@ -3,6 +3,7 @@ name: validate-naming
 type: curator
 version: "1.0.0"
 recommended_model: haiku
+layer: meta
 reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Verifies the proposed extension name does not collide

@@ -3,6 +3,7 @@ name: cartograph
 type: producer
 version: "1.0.0"
 recommended_model: sonnet
+layer: territoire
 reasoning_pattern: matrix-driven
 matrix_mode: generating
 consumes:

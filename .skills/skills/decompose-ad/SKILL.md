@@ -3,7 +3,7 @@ name: decompose-ad
 version: 1.5.0
 type: producer
 isolation_scope: brand_only
-layer: 2
+layer: production
 recommended_model: opus
 reasoning_pattern: matrix-driven
 matrix_mode: decomposing

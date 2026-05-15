@@ -5,7 +5,7 @@ recommended_model: sonnet
 subagent_safe: true
 operator_facing: true
 isolation_scope: brand_only
-layer: 3
+layer: territoire
 version: 1.2.0
 mode: proposed
 patch_notes:

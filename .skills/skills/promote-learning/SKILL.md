@@ -3,6 +3,7 @@ name: promote-learning
 type: curator
 version: "1.0.0"
 recommended_model: sonnet
+layer: meta
 reasoning_pattern: null
 description: >
   Promotes a brand-specific learning to the shared KB when it proves generic.

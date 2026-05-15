@@ -4,6 +4,7 @@ version: 1.2.0
 type: orchestrator
 recommended_model: sonnet
 subagent_safe: true
+layer: territoire
 mode: proposed
 operator_facing: true
 patch_notes:

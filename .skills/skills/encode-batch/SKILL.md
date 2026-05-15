@@ -3,6 +3,7 @@ name: encode-batch
 type: shared
 version: "1.0.0"
 recommended_model: haiku
+layer: meta
 reasoning_pattern: null
 operator_facing: false
 description: >

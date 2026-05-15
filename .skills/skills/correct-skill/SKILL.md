@@ -5,7 +5,7 @@ type: builder
 recommended_model: sonnet
 subagent_safe: false
 isolation_scope: workspace_global
-layer: 3
+layer: meta
 description: >
   Encodes a correction into an existing `SKILL.md` as a permanent Hard Rule.
   Invoke when the operator flags that a skill produced an incorrect output.

@@ -3,7 +3,7 @@ name: map-benefits
 type: producer
 version: "1.2.0"
 isolation_scope: brand_only
-layer: 2
+layer: territoire
 recommended_model: sonnet
 reasoning_pattern: null
 operator_facing: true

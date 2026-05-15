@@ -3,6 +3,7 @@ name: study-niche-marketdeepdive
 type: orchestrator
 version: "1.0.1"
 recommended_model: sonnet
+layer: territoire
 reasoning_pattern: matrix-driven
 matrix_mode: generating
 consumes:

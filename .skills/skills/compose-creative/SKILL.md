@@ -3,7 +3,7 @@ name: compose-creative
 version: 1.6.0
 type: producer
 isolation_scope: brand_only
-layer: 2
+layer: production
 recommended_model: opus
 subagent_safe: true
 mode: proposed

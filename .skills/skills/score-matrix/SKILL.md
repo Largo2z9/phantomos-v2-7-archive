@@ -3,7 +3,7 @@ name: score-matrix
 version: 1.1.1
 type: producer
 isolation_scope: brand_only
-layer: 3
+layer: territoire
 recommended_model: sonnet
 subagent_safe: true
 mode: proposed

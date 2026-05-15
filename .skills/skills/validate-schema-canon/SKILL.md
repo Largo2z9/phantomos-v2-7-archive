@@ -3,6 +3,7 @@ name: validate-schema-canon
 type: curator
 version: "1.0.0"
 recommended_model: haiku
+layer: meta
 reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Validates a draft schema against canon conventions

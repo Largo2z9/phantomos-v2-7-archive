@@ -3,6 +3,7 @@ name: propose-schema-draft
 type: producer
 version: "1.0.0"
 recommended_model: sonnet
+layer: territoire
 reasoning_pattern: null
 description: >
   Sub-skill of scaffold-extension. Generates a canon-compliant JSON Schema draft

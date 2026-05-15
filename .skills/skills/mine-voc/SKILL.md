@@ -3,7 +3,7 @@ name: mine-voc
 type: producer
 version: "1.3.0"
 isolation_scope: brand_only
-layer: 2
+layer: territoire
 recommended_model: sonnet
 reasoning_pattern: matrix-driven
 matrix_mode: coding

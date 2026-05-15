@@ -1,0 +1,67 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.67.0",
+  "released_at": "2026-05-15",
+  "compatible_from": "2.0.0",
+  "type": "canonisation_territoire_production_meta_doctrine_NEW_skills_layer_field",
+  "summary": "Canonisation territoire vs production vs meta · NEW doctrine territory-discipline.md (356L · 13 sections canon-style) sister SED/CMR/SED-X/CC/InvestigationPosture. Unifie 3 vocabularies historiques scattered (Reference + Spatial encoding + Substrat) sous canon territoire/production/meta. Frontmatter layer field NEW sur 67 SKILL.md (30 territoire + 11 production + 25 meta = 66 indexed · 1 non-classifié template skipped) · manifest regen avec layer discoverability. build-atlas-complete v1.2.0 → v1.3.0 BREAKING territoire-pure (Steps 8-9 stripped). sync-notion-atlas v2.0.0 → v2.0.1 territoire-only default 10 collections strict. Lexicon entries Territoire macro + Axe créatif (renommage score-matrix output micro résout polysémie). Pattern canon 1 skill par layer · clean split. D#410 captured.",
+  "changes": [
+    {
+      "category": "doctrine_new_territory_discipline",
+      "action": "added",
+      "files": ["docs/system/territory-discipline.md"],
+      "section": "NEW doctrine canon 356L · 13 sections canon-style miroir SED-X (Thesis · Problème · Définition territoire · Définition production · Définition meta · Synonymes canon historiques · Cycle promotion · Pattern usage opérateur · Skill layer enforcement · Notion bridge implication · Decision-aid Q1-Q4 · Anti-patterns · Cross-refs explicites)",
+      "rationale": "3 vocabularies historiques (Reference architecture.md §7 + Spatial encoding SED §3 + Substrat session-log S54) coexistent sans unification canon. Pattern existait en germe mais non nommé. v2.67 codifie territoire/production/meta canon. Skill-author-facing technique + opérateur-facing pédagogique. Cross-refs explicites tous doctrines existing."
+    },
+    {
+      "category": "skill_layer_field_canon_NEW",
+      "action": "patched",
+      "files": [".skills/skills/*/SKILL.md (66 files patched)"],
+      "section": "Frontmatter NEW `layer: territoire | production | meta` field ajouté sur 66 SKILL.md (1 template skipped) · manifest regen avec layer discoverability",
+      "rationale": "Layer field permet routing canon (skill discovery par layer) + enforcement (mutation gate validate skill production ne peut écrire substrat sans operator gate) + observability (cost tracking par layer future). Pattern strict additif backward compat preserve existing fields."
+    },
+    {
+      "category": "skill_build_atlas_complete_v1_3_0_BREAKING",
+      "action": "patched",
+      "files": [".skills/skills/build-atlas-complete/SKILL.md"],
+      "section": "v1.2.0 → v1.3.0 BREAKING refactor territoire-pure · Steps 8-9 stripped (produce-copy-brief + compose-creative) · frontmatter clean + postconditions update + emits_events update + cross-ref territory-discipline + 'top-3 territoires' → 'top-3 axes créatifs' (lexicon disambiguation v2.67)",
+      "rationale": "v1.2.0 mélangeait territoire (Steps 1-7) + production (Steps 8-9) violant doctrine territory-discipline NEW. Operators v1.x qui invoquaient pour briefs+créas migrent vers creative-brief-composer post-atlas downstream (separate skill, separate invocation, clean split per layer). BREAKING ciblé · CHANGELOG migration note documenté."
+    },
+    {
+      "category": "skill_sync_notion_atlas_v2_0_1_territoire_only",
+      "action": "patched",
+      "files": [".skills/skills/sync-notion-atlas/SKILL.md"],
+      "section": "v2.0.0 → v2.0.1 territoire-only default · Phase B push 10 collections strict (Full funnel Meta retiré · creatives = production layer routées NEW skill dédié futur sync-creatives-to-notion v2.68+ cards/Kanban Notion briefs+créas par angle). Hard rule 10 NEW 'Production layer NOT pushed'. Phase A pull unchanged backward compat strict",
+      "rationale": "v2.0.0 push 11 collections mixed territoire+production violait doctrine territory-discipline. v2.0.1 align strict · 1 skill par layer canon. Operators v2.0.0 qui pushaient 11 collections obtiennent 10 v2.0.1 · creatives push deferred via NEW skill futur. Cohérent doctrine."
+    },
+    {
+      "category": "lexicon_disambiguation",
+      "action": "patched",
+      "files": ["lexicon.md"],
+      "section": "NEW entries · Territoire (sens macro · substrat brand + synonymes canon historiques) + Axe créatif (sens micro · output score-matrix renommé · résout polysémie)",
+      "rationale": "Sans disambiguation, opérateur lit 'top-3 territoires' (score-matrix output) puis 'territoire de marque' (build-atlas-complete output) sans comprendre distinction. v2.67 résout · territoire = macro (substrat brand) · axe créatif = micro (intersection audience×angle)."
+    },
+    {
+      "category": "version_bump",
+      "action": "patched",
+      "files": ["_version.json", "CHANGELOG.md", "docs/internal/releases/manifest/2.67.0-manifest.json"],
+      "section": "Bump template_version 2.66.0 → 2.67.0 + summary + CHANGELOG entry v2.67.0 + NEW manifest",
+      "rationale": "Sprint canonisation territoire/production complete. Release v2.67.0."
+    }
+  ],
+  "files_patched_total": "70+ files (1 NEW doctrine 356L · 66 SKILL.md layer field add · 2 SKILL.md major refactors (build-atlas-complete v1.3.0 + sync-notion-atlas v2.0.1) · 1 lexicon enriched · _version.json bump · CHANGELOG.md entry · 2.67.0-manifest.json NEW · _manifest.json regen · decisions.md D#410)",
+  "patterns_introduced": {
+    "territoire_production_meta_canon_unified": "Pattern canon v2.67 · 3 layers orthogonaux (territoire substrat stable · production livrable runtime on-demand · meta système) consolidant 3 vocabularies historiques scattered. Doctrine territory-discipline.md codifie · 13 sections canon-style miroir SED-X. Pattern reproductible pour évaluation futurs skills (Decision-aid Q1-Q4).",
+    "skill_layer_field_frontmatter_canon": "Pattern canon v2.67 · frontmatter `layer: territoire | production | meta` field obligatoire sur chaque SKILL.md. Manifest expose layer discoverability + routing canon + future enforcement mutation gate (production skill peut pas écrire substrat sans operator gate). 1 skill par layer principle.",
+    "1_skill_per_layer_clean_split_canon": "Pattern canon v2.67 · 1 skill par layer · clean split territoire/production/meta. build-atlas-complete v1.3.0 territoire-pure · creative-brief-composer production-pure · sync-notion-atlas v2.0.1 territoire-only (creatives via NEW skill dédié v2.68+ futur sync-creatives-to-notion). Pattern reproductible pour futures bridges + orchestrators."
+  },
+  "antipatterns_eliminated": {
+    "orchestrator_layers_mixed": "Avant v2.67 · build-atlas-complete v1.2.0 chain territoire (Steps 1-7) + production (Steps 8-9 produce-copy-brief + compose-creative) mixed violant scope cohérent. v2.67 strip Steps 8-9 · territoire-pure orchestrator + production routée via creative-brief-composer separate invocation.",
+    "vocabularies_scattered_non_unified": "Avant v2.67 · 3 vocabularies historiques canon (Reference architecture.md §7 + Spatial encoding SED §3 + Substrat session-log S54) coexistent sans unification nommée. v2.67 codifie territoire/production/meta canon doctrine unifié.",
+    "notion_push_mixed_layers": "Avant v2.67 · sync-notion-atlas v2.0.0 push 11 collections (10 territoire + 1 production Full funnel Meta) mixed violant doctrine territory-discipline. v2.67 v2.0.1 territoire-only 10 collections strict · creatives via NEW skill dédié futur.",
+    "polysemie_territoire_macro_micro": "Avant v2.67 · 'territoire' utilisé pour 2 sens distincts (macro substrat brand · micro intersection audience×angle de score-matrix). v2.67 disambiguation · territoire = macro · axe créatif = micro renommé."
+  },
+  "operator_impact": "Operators v2.67+ bénéficient distinction claire territoire (investissement substrat semaine 1) vs production (ROI cycle court semaines 2-24) · pattern usage opérateur explicit doctrine territory-discipline Section 8. Workflow Direction 3 (PhantomOS-first puis push Notion) reste opérationnel · push Notion territoire-only 10 collections plus propre interface visibilité partage client/collab (canvas brand stable · pas pollué par creatives volatiles). build-atlas-complete v1.3.0 retourne atlas substrate complete · creative-brief-composer separate invocation pour briefs+créas (clean orchestrator-per-layer). _EXAMPLE brand canonical (Stepprs build planned post-v2.67) reflète canon territoire-pure visuellement immédiat pour nouveaux opérateurs.",
+  "backward_compat": "strict_additif_sur_layer_field_67_skills + BREAKING_cible_sur_build_atlas_complete_v1_3_0_et_sync_notion_atlas_v2_0_1. Layer field frontmatter add = zero override · existing field preserve. Doctrine NEW additive. Lexicon additive. build-atlas-complete v1.2.0 → v1.3.0 BREAKING ciblé · operators v1.x qui invoquaient pour briefs+créas migrent vers creative-brief-composer post-atlas (migration note CHANGELOG v2.67.0 documenté). sync-notion-atlas v2.0.0 → v2.0.1 BREAKING ciblé · push 10 collections vs 11 ancienne behavior · creatives push deferred via NEW skill futur v2.68+. Phase A pull (Steps 0-6) preserved unchanged. Operators v2.66.x pull-only non affectés.",
+  "next_release_note": "v2.67+ patches identifiés · (a) v2.68 NEW skill `sync-creatives-to-notion` production layer · cards/Kanban Notion pour briefs + creatives par angle · 1 skill par layer canon reproductible. (b) Test live brand pilote post-v2.67 (Stepprs ou Onday existing · sync vers Notion fresh canvas · validate end-to-end push territoire 10 collections + frontmatter layer field discoverability runtime). (c) NEW `_EXAMPLE/stepprs` brand canonical dans workspace-template/brands/ · territoire-pure complete (specs + audiences + angles + frictions + roadmap + strategy + learnings) · build duo Largo+agent post-v2.67 · référence visuelle nouveaux opérateurs + agents orchestrateurs. (d) Audit mutation gate enforcement layer field (skill production refuses writes substrat sans operator gate · validate-resources audit) · candidate v2.69+. (e) Cost tracking par layer (observabilité runtime) · candidate v2.70+ pour Abyss collectif scaling. (f) build-atlas-complete v1.3.0 migration users · communication documentation route alternative creative-brief-composer post-atlas."
+}

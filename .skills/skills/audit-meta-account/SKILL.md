@@ -3,7 +3,7 @@ name: audit-meta-account
 type: producer
 version: "1.1.0"
 isolation_scope: brand_only
-layer: 2
+layer: production
 recommended_model: sonnet
 reasoning_pattern: null
 description: >

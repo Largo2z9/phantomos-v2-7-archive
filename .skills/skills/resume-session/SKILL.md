@@ -3,6 +3,7 @@ name: resume-session
 type: navigator
 version: "1.0.0"
 recommended_model: haiku
+layer: meta
 reasoning_pattern: null
 description: >
   Clean resumption after absence. Reads last session state, pending work, open threads.

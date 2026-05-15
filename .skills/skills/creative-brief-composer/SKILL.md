@@ -7,7 +7,7 @@ subagent_safe: false
 mode: proposed
 operator_facing: true
 isolation_scope: brand_only
-layer: 2
+layer: production
 reasoning_pattern: null
 patch_notes:
   v1.2.0: "v2.64 ontologie sémantique pure pain_points + objections sub-audience · cohérence consume frontmatter · chain produce-copy-brief v1.6 + compose-creative v1.6 lisent désormais audiences/{audience_slug}/pain_points/*.json + audiences/{audience_slug}/objections/*.json sub-audience canonical. Frontmatter consumes: enrichi avec paths NEW sub-audience. Pas de modification logique propre orchestrator (Phase 1-5 pipeline inchangé), juste cohérence frontmatter + sub-skills versions bumped consistent. Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved · sub-skills route transparent."

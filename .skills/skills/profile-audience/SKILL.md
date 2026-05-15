@@ -11,7 +11,7 @@ patch_notes:
   - "1.6.0 (v2.64 ontologie sémantique pure) · pain_points + objections passent en SUB-AUDIENCE · stage `brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json#chain.surface/consequence/deep` + `brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json#severity_score` (owned natif par parent path). Read désormais depuis sub-audience direct (scan `brands/{slug}/audiences/{a_slug}/pain_points/*.json` + `brands/{slug}/audiences/{a_slug}/objections/*.json` sans filter affected_audiences nécessaire · l'audience parente est implicite). Backward compat strict additif · lecture fallback transparent top-level v2.63 `pain_points/*.json` + `objections/*.json` filtrés par affected_audiences si sub-audience vide OR absente. profile sub-fields legacy v1.7 read fallback aussi preserved."
 type: orchestrator
 isolation_scope: brand_only
-layer: 3
+layer: territoire
 recommended_model: sonnet
 subagent_safe: true
 mode: proposed

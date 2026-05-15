@@ -4,6 +4,7 @@ type: producer
 version: "1.0.0"
 agent_id: mine-audience@v1.0
 recommended_model: sonnet
+layer: territoire
 reasoning_pattern: null
 description: >
   Mine voice-of-market from Reddit, Trustpilot, and Meta Ads Library for a product+brand pair.

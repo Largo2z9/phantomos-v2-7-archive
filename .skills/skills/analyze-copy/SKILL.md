@@ -5,7 +5,7 @@ type: curator
 recommended_model: sonnet
 subagent_safe: true
 isolation_scope: brand_only
-layer: 2
+layer: production
 reasoning_pattern: matrix-driven
 matrix_mode: hybrid
 description: >

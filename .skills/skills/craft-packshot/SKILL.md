@@ -5,7 +5,7 @@ recommended_model: sonnet
 subagent_safe: true
 operator_facing: true
 isolation_scope: brand_only
-layer: 2
+layer: production
 version: 1.2.0
 mode: proposed
 triggers_fr:

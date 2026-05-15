@@ -3,7 +3,7 @@ name: validate-resources
 type: curator
 version: "1.3.0"
 isolation_scope: workspace_global
-layer: 3
+layer: meta
 patch_notes: "v2.42 · HR-21 + Check 21 audience cartography hierarchy enforcement runtime (v2.39 doctrine matérialisée). v2.42 PATCH 5 · Check 13c isolation_scope enforcement updated (default brand_only auto, gate AskUserQuestion, justification workspace_global) + Check 13d layer frontmatter enforcement (enum 1/2/3, layer 1 MCP, layer 2 APIs+credentials, layer 3 shipped infra). Infrastructure curator workspace_global justifié · valide tous skills cross-brand pour intégrité runtime."
 recommended_model: haiku
 reasoning_pattern: null

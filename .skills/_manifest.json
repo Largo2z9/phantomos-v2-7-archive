@@ -1,6 +1,6 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-15T16:02:26Z",
+  "_generated_at": "2026-05-15T18:36:07Z",
   "_count": 67,
   "skills": [
     {
@@ -34,7 +34,7 @@
         "decompose-ad": "decompose-ad reverse-engineers a competitor ad to extract patterns. analyze-copy audits the operator's own script against target audience canon."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "production",
       "path": ".skills/skills/analyze-copy/SKILL.md"
     },
     {
@@ -57,7 +57,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/analyze-extension-intent/SKILL.md"
     },
     {
@@ -83,7 +83,7 @@
         "validate-resources": "route to validate-resources when operator says 'audit' or 'check' without a platform context — that's a workspace integrity check, not a Meta platform audit"
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "production",
       "path": ".skills/skills/audit-meta-account/SKILL.md"
     },
     {
@@ -110,7 +110,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "production",
       "path": ".skills/skills/brief-day/SKILL.md"
     },
     {
@@ -137,7 +137,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/build-agent/SKILL.md"
     },
     {
@@ -171,7 +171,7 @@
         "score-matrix": "route to score-matrix standalone when atlas is already populated and operator wants only territory prioritization."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/build-atlas-complete/SKILL.md"
     },
     {
@@ -199,7 +199,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/capture-learning/SKILL.md"
     },
     {
@@ -234,7 +234,7 @@
         "deepen-brand-context": "deepen-brand-context pour enrichir context via mine-voc + mine-vom (WRITE) ; cartograph pour synthèse READ-ONLY de l'existant."
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/cartograph/SKILL.md"
     },
     {
@@ -257,7 +257,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/check-cross-refs/SKILL.md"
     },
     {
@@ -282,7 +282,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/check-existing-coverage/SKILL.md"
     },
     {
@@ -302,7 +302,7 @@
         "recompose-creative": "recompose-creative ADAPTE une créa existante (variant). compose-creative produit ex nihilo."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "production",
       "path": ".skills/skills/compose-creative/SKILL.md"
     },
     {
@@ -320,7 +320,7 @@
         "recompose-creative": "recompose-creative cree variants (audience/platform/format). compose-overlay-text fixe la qualite d'un creative existant."
       },
       "isolation_scope": "brand_only",
-      "layer": 3,
+      "layer": "production",
       "path": ".skills/skills/compose-overlay-text/SKILL.md"
     },
     {
@@ -350,7 +350,7 @@
         "onboard-brand": "onboard-brand builds a brand workspace inside PhantomOS. connect-mcp-server wires connectivity outside the brand layer."
       },
       "isolation_scope": "workspace_global",
-      "layer": 1,
+      "layer": "meta",
       "path": ".skills/skills/connect-mcp-server/SKILL.md"
     },
     {
@@ -368,7 +368,7 @@
         "scaffold-extension": "scaffold-extension adds a custom entity to the substrate. connect-source adds a runtime data source to consume."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/connect-source/SKILL.md"
     },
     {
@@ -399,7 +399,7 @@
         "capture-learning": "capture-learning is operator-named one-off (logbook). correct-skill is structural mutation on a skill's contract."
       },
       "isolation_scope": "workspace_global",
-      "layer": 3,
+      "layer": "meta",
       "path": ".skills/skills/correct-skill/SKILL.md"
     },
     {
@@ -418,7 +418,7 @@
         "define-specs": "define-specs encode visual_identity.json (label, container, content). craft-packshot consume visual_identity puis produit l'asset packshot canonique."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "production",
       "path": ".skills/skills/craft-packshot/SKILL.md"
     },
     {
@@ -449,7 +449,7 @@
         "build-agent": "build-agent constructs a runtime agent (multi-skill assembly + brand binding). create-skill authors a single skill spec file."
       },
       "isolation_scope": "workspace_global",
-      "layer": 3,
+      "layer": "meta",
       "path": ".skills/skills/create-skill/SKILL.md"
     },
     {
@@ -469,7 +469,7 @@
         "recompose-creative": "route to recompose-creative when adapting an existing creative variant. creative-brief-composer produces ex nihilo from angle."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "production",
       "path": ".skills/skills/creative-brief-composer/SKILL.md"
     },
     {
@@ -492,7 +492,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/cross-deepening-signals/SKILL.md"
     },
     {
@@ -524,7 +524,7 @@
         "watch-competitors": "route to watch-competitors for ongoing surveillance of a competitor library. decompose-ad is one ad, deep, persisted to creatives."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "production",
       "path": ".skills/skills/decompose-ad/SKILL.md"
     },
     {
@@ -543,7 +543,7 @@
         "produce-copy-brief": "produce-copy-brief is the DOWNSTREAM step (one chosen angle → copywriter brief with hook variants + body + CTA). decompose-angle is the prerequisite enrichment if the formula is still light pass. Route to produce-copy-brief when formula atoms are already deep; route to decompose-angle first if atoms are null."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/decompose-angle/SKILL.md"
     },
     {
@@ -573,7 +573,7 @@
         "onboard-brand": "route to onboard-brand for the full setup pipeline from scratch — deepen-brand-context assumes snapshot is done"
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/deepen-brand-context/SKILL.md"
     },
     {
@@ -592,7 +592,7 @@
         "propose-schema-draft": "propose-schema-draft crée nouveau schema canon (R&D). define-specs peuple un spec.json existant pour une brand."
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/define-specs/SKILL.md"
     },
     {
@@ -618,7 +618,7 @@
         "write-to-context": "write-to-context is the single-mutation primitive. encode-batch wraps N write-to-context calls in one delegated execution so the main thread stays responsive."
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/encode-batch/SKILL.md"
     },
     {
@@ -636,7 +636,7 @@
         "ingest-resource": "route to ingest-resource when the operator brings external content (PDF, article, transcript from a different system) to integrate into the workspace knowledge layer. export-session is one-way out, ingest is one-way in."
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/export-session/SKILL.md"
     },
     {
@@ -655,7 +655,7 @@
         "setup-brand": "setup-brand fait le scrape initial brand + populate brand.json. import-asset opère post-setup pour ajouter assets visuels canon."
       },
       "isolation_scope": "brand_only",
-      "layer": 3,
+      "layer": "territoire",
       "path": ".skills/skills/import-asset/SKILL.md"
     },
     {
@@ -686,7 +686,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": 3,
+      "layer": "territoire",
       "path": ".skills/skills/ingest-resource/SKILL.md"
     },
     {
@@ -718,7 +718,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "workspace_global",
-      "layer": 3,
+      "layer": "meta",
       "path": ".skills/skills/learn-from-session/SKILL.md"
     },
     {
@@ -733,7 +733,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/map-angles/SKILL.md"
     },
     {
@@ -748,7 +748,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/map-audiences/SKILL.md"
     },
     {
@@ -767,7 +767,7 @@
         "produce-paid-angles": "produce-paid-angles consume benefits chain pour générer angles ranked avec LIGNAGE. map-benefits est upstream · construit la chain de bénéfices qui alimente angles."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/map-benefits/SKILL.md"
     },
     {
@@ -786,7 +786,7 @@
         "define-specs": "define-specs cartographs the spec from scratch (no URL, manual encoding). map-mechanisms presupposes spec.mechanisms[] light pass already exists. Route to define-specs when no scrape was possible."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/map-mechanisms/SKILL.md"
     },
     {
@@ -805,7 +805,7 @@
         "ingest-resource": "ingest-resource extrait des données structurables depuis docs upload (PDF, deck, CSV) générique. map-specs consume les outputs ingest-resource pour drill spec.specs.* spécifiquement."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/map-specs/SKILL.md"
     },
     {
@@ -834,7 +834,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/migrate-workspace/SKILL.md"
     },
     {
@@ -860,7 +860,7 @@
         "mine-vom": "route to mine-vom when the goal is the broader market voice (competitors' customers, niche communities) — mine-audience focuses on segment discovery and audience proposals for a specific product"
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/mine-audience/SKILL.md"
     },
     {
@@ -891,7 +891,7 @@
         "watch-competitors": "route to watch-competitors when operator wants recurring monitoring of competitors' paid creatives, not one-shot customer voice"
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/mine-voc/SKILL.md"
     },
     {
@@ -922,7 +922,7 @@
         "ingest-resource": "route to ingest-resource when operator drops a single market report/document"
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/mine-vom/SKILL.md"
     },
     {
@@ -949,7 +949,7 @@
         "snapshot-brand": "route to snapshot-brand when operator wants just URL scraping on an already-configured brand (not a full onboarding)"
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/onboard-brand/SKILL.md"
     },
     {
@@ -979,7 +979,7 @@
         "mine-voc": "route to mine-voc when audience is thin (no verbatims encoded yet) — copy-brief needs verbatim density to anchor hooks credibly"
       },
       "isolation_scope": "brand_only",
-      "layer": 3,
+      "layer": "production",
       "path": ".skills/skills/produce-copy-brief/SKILL.md"
     },
     {
@@ -1009,7 +1009,7 @@
         "ingest-resource": "route to ingest-resource when operator drops a single brief or doc — that's a one-off ingestion, not angle ideation"
       },
       "isolation_scope": "brand_only",
-      "layer": 3,
+      "layer": "territoire",
       "path": ".skills/skills/produce-paid-angles/SKILL.md"
     },
     {
@@ -1031,7 +1031,7 @@
         "onboard-brand": "onboard-brand sets up the brand from scratch. produce-paid-matrix assumes setup complete and ≥ 2 audiences encodées."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/produce-paid-matrix/SKILL.md"
     },
     {
@@ -1051,7 +1051,7 @@
         "brief-day": "brief-day raconte l'état actuel du brand (operational briefing). produce-strategy cadre l'AVENIR proche (Q{n} focus, annual goals). Brief-day consume strategy.json mais ne le produit pas."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/produce-strategy/SKILL.md"
     },
     {
@@ -1066,7 +1066,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": 3,
+      "layer": "territoire",
       "path": ".skills/skills/profile-audience/SKILL.md"
     },
     {
@@ -1094,7 +1094,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/promote-learning/SKILL.md"
     },
     {
@@ -1117,7 +1117,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/propose-schema-draft/SKILL.md"
     },
     {
@@ -1154,7 +1154,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": 3,
+      "layer": "meta",
       "path": ".skills/skills/query-context/SKILL.md"
     },
     {
@@ -1188,7 +1188,7 @@
         "produce-paid-angles": "produce-paid-angles produit un nouveau ANGLE (forward generation depuis brand intelligence). recompose-creative garde l'angle, change autre dimension (audience/platform/format/hook/visual)."
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "production",
       "path": ".skills/skills/recompose-creative/SKILL.md"
     },
     {
@@ -1229,7 +1229,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "production",
       "path": ".skills/skills/red-team/SKILL.md"
     },
     {
@@ -1252,7 +1252,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/register-and-flag/SKILL.md"
     },
     {
@@ -1278,7 +1278,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/resume-session/SKILL.md"
     },
     {
@@ -1301,7 +1301,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/scaffold-entity-files/SKILL.md"
     },
     {
@@ -1339,7 +1339,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/scaffold-extension/SKILL.md"
     },
     {
@@ -1362,7 +1362,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/scaffold-skill-stub/SKILL.md"
     },
     {
@@ -1377,7 +1377,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": 3,
+      "layer": "territoire",
       "path": ".skills/skills/score-matrix/SKILL.md"
     },
     {
@@ -1400,7 +1400,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/score-product-fit/SKILL.md"
     },
     {
@@ -1429,7 +1429,7 @@
         "query-context": "route to query-context for CURRENT brand state (live JSON entities). Route to session-search for PAST narrative (sessions, decisions, history)."
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/session-search/SKILL.md"
     },
     {
@@ -1460,7 +1460,7 @@
         "snapshot-brand": "route to snapshot-brand when operator provides a URL and wants product/brand data auto-scraped (not a guided manual setup)"
       },
       "isolation_scope": "brand_only",
-      "layer": 3,
+      "layer": "territoire",
       "path": ".skills/skills/setup-brand/SKILL.md"
     },
     {
@@ -1490,7 +1490,7 @@
         "onboard-brand": "route to onboard-brand when operator wants the full multi-step pipeline from scratch, not just a URL scrape"
       },
       "isolation_scope": "brand_only",
-      "layer": 2,
+      "layer": "territoire",
       "path": ".skills/skills/snapshot-brand/SKILL.md"
     },
     {
@@ -1518,7 +1518,7 @@
         "mine-voc": "route to mine-voc when operator wants brand-bound customer voice"
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/study-niche-marketdeepdive/SKILL.md"
     },
     {
@@ -1554,7 +1554,7 @@
         "ingest-resource": "route to ingest-resource pour docs ponctuels (brief PDF, transcript interview, copy doc, reviews export). sync-notion-atlas couvre le workspace Notion systémique 11 collections inter-reliées, pas l'enrichissement par document isolé."
       },
       "isolation_scope": "brand_only",
-      "layer": 1,
+      "layer": "territoire",
       "path": ".skills/skills/sync-notion-atlas/SKILL.md"
     },
     {
@@ -1582,7 +1582,7 @@
         "setup-brand": "route to setup-brand when operator wants to add a new brand, not update the template"
       },
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/update-workspace/SKILL.md"
     },
     {
@@ -1605,7 +1605,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/validate-naming/SKILL.md"
     },
     {
@@ -1628,7 +1628,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/validate-output-coherence/SKILL.md"
     },
     {
@@ -1660,7 +1660,7 @@
         "audit-meta-account": "route to audit-meta-account when operator says 'audit' + platform context (Meta Ads), that's a platform-specific audit, not a workspace integrity check"
       },
       "isolation_scope": "workspace_global",
-      "layer": 3,
+      "layer": "meta",
       "path": ".skills/skills/validate-resources/SKILL.md"
     },
     {
@@ -1686,7 +1686,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "meta",
       "path": ".skills/skills/validate-schema-canon/SKILL.md"
     },
     {
@@ -1711,7 +1711,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": null,
+      "layer": "territoire",
       "path": ".skills/skills/watch-competitors/SKILL.md"
     },
     {
@@ -1726,7 +1726,7 @@
       },
       "disambiguates_against": {},
       "isolation_scope": "brand_only",
-      "layer": 3,
+      "layer": "territoire",
       "path": ".skills/skills/weight-dimensions/SKILL.md"
     }
   ]

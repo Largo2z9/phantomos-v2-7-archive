@@ -6,7 +6,7 @@ recommended_model: sonnet
 subagent_safe: false
 operator_facing: true
 isolation_scope: brand_only
-layer: 2
+layer: territoire
 mode: proposed
 reasoning_pattern: null
 triggers_fr:

@@ -3,6 +3,7 @@ name: export-session
 type: capturer
 version: "1.0.0"
 recommended_model: haiku
+layer: meta
 reasoning_pattern: null
 description: >
   Export a Claude Code conversation (current or past) to a clean markdown transcript stored
