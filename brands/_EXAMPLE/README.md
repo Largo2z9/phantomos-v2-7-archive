@@ -58,6 +58,8 @@ Chaque fichier porte ·
 - `_field_types` riche per field
 - `validation_status: "validated"` (par construction pédagogique · pas via test ROAS réel)
 
+Audiences mères canon v2.64 portent `_meta.cross_narrative_notes` quand pattern cross-audience targeting observed (cf `workers-shifts` + `chronic-pain-45` cross-narrative TrendTrack live 2026-05-16). NEW field additif backward compat · documente la distinction cartographie substrat vs ad targeting runtime sans casser pattern parent/enfants sémantique pure.
+
 ## Pour aller plus loin
 
 - **Construire ta brand** · lance `/onboard-brand` (chain `setup-brand` → `snapshot-brand` → `validate-resources`) ou `/build-atlas-complete {brand_slug}` (chain progressive cartography v2.68 · gates light entre paliers Phase 1 Macro → Phase 2 Drilling → Phase 3 Audiences hiérarchique → Phase 4 Enrichissement)
@@ -66,6 +68,21 @@ Chaque fichier porte ·
 - **Catalogue skills canon** · `.skills/README.md` + `.skills/_manifest.json`
 
 ## Canon vs réel · data TrendTrack live (2026-05-16)
+
+### Cartographie audience ≠ ad targeting (distinction importante)
+
+PhantomOS cartographie audiences = SUBSTRAT stable · qui souffre quoi · pain points + objections + JTBD par segment distinct. Canon v2.64 sémantique pure · parent/enfants hiérarchique.
+
+Ad targeting runtime = PRODUCTION decision · qui voit l'ad. Peut COMBINER plusieurs audiences cartographiées en single ad copy si narrative crossover (e.g. Michelle testimonial · plantar fasciitis (chronic-pain-45) + 10h shifts work boots (workers-shifts) en single ad atteint les 2 segments simultanément via copy verbatim).
+
+Les deux ne sont pas contradictoires ·
+- Cartographie 7 audiences (mères + sous-poches) reste valide · documente le terrain
+- Targeting paid Stepprs réel observé = 1 narrative hero répliqué cross-geo · combine workers+chronic via narrative shared (work boots + plantar fasciitis)
+- Première production paid peut commencer simple (1 angle cross-audience comme Michelle hero) puis diversifier au fil des learnings
+
+L'opérateur ne doit PAS forcer 1 ad par audience cartographiée · le canon permet flexibilité production runtime selon scaling strategy (single hero cross-audience VS diversified angles per audience).
+
+Cross-refs canonical · `learnings.json` LRN-0002 + `angles/ANG-01.json` hero pattern + TrendTrack live capture 2026-05-16.
 
 Ce `_EXAMPLE` mélange canon pédagogique max-richesse (7 angles diversifiés · 2 audiences hiérarchiques · etc.) ET data réelles sourced TrendTrack API live (skill `trendtrack-enrich-brand` v1.0.0). Les deux ont leur valeur ·
 

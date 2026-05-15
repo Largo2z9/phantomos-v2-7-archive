@@ -95,6 +95,18 @@ Skip to Milestone 8 directly in replay mode.
 3. Capture both answers, write to `/operator/profile.json → identity.profile` and `/operator/profile.json → context.stack[]` via `write_to_context`. The Milestone 4 profile-type question becomes already-answered.
 4. Proceed to Milestone 3 + Milestone 5/6 in parallel with the scrape.
 
+### Pattern canon · URL e-com pasted déclenche proactive chain
+
+Quand l'opérateur paste une URL e-com (Shopify · brand homepage · PDP) en premier message · l'agent DOIT déclencher proactive chain canon ·
+
+1. Lancer scrape URL en async (background via Task tool snapshot-brand)
+2. EN PARALLÈLE · poser les 2-3 questions setup minimal (langue · scope solo/équipe/agency)
+3. Quand setup Q&A done · synthese scrape déjà prêt · enchaîner Phase 1 macro confirmation immédiate
+
+Anti-pattern · attendre setup Q&A complet avant lancer scrape (séquentiel · perd 1-2 min wall-time inutile). Canon CLAUDE.md root "Proactive multi-skill deployment" · obvious chain ≥2 sub-skills = deploy silently parallèle.
+
+Mode fast-track opérateur expert (post-N brands setup OR flag explicit) skip ces 2-3 questions · use defaults from /operator/profile.json + auto-validate.
+
 **Path (b) — conversational-path mode**:
 1. Ask 2 to 3 targeted questions in sequence (one per turn): sector, hero product or core service, rough audience. Keep questions tight, conversational.
 2. Use these answers to build the operator's profile in live conversation (the wow moment in this path is demonstrated understanding rather than scraped pre-fill).

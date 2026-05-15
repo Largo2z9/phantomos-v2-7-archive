@@ -62,6 +62,11 @@
     "updated": "2026-05-14"
   },
 
+  "_meta": {
+    "$comment": "Annotations canon-aware NEW v2.69.1 · backward compat strict additif · n'override aucun field existing · documente patterns cross-cutting cartographie canon v2.64 (parent/enfants sémantique pure) sans casser le pattern.",
+    "cross_narrative_notes": "Cross-narrative paid targeting · audience chronic-pain-45 peut être COMBINÉE avec workers-shifts en single ad copy via testimonial crossover (e.g. Michelle plantar fasciitis + 10h shifts work boots capture chronic + workers simultanément). Cartographie audience = substrat stable (qui souffre quoi). Targeting ad runtime = production decision distincte (qui voit l'ad). Les deux ne sont pas contradictoires · cartographie canon v2.64 préserve 7 audiences sémantique pure · targeting runtime peut combiner via narrative shared. Cf learnings.json LRN-0002 + angles/ANG-01 hero pattern observed Stepprs paid live TrendTrack 2026-05-16."
+  },
+
   "purchase_driver": "pain_relief",
 
   "persona_archetype": {

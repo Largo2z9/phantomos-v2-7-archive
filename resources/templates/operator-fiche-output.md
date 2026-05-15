@@ -287,9 +287,154 @@ Cette distinction est non-négociable. Le pattern v2.51+ force le respect via ce
 
 ---
 
+## Visual rendering refresh v2.69+ · format opérateur sobre
+
+Refresh canon pour fiches opérateur-facing rendues post-v2.69. Le format ASCII separator box (`═══════════`) reste valide pour fiches creative production (compose-creative, craft-packshot etc · structuré rigide). Pour fiches état brand / atlas / synthèse opérateur (snapshot-brand, brief-day, profile-audience, build-atlas-complete), appliquer le pattern visuel sobre suivant.
+
+### Header sobre · pas raw markdown level mismatch
+
+Format ·
+
+```
+## {Brand X} · état atlas
+{date YYYY-MM-DD} · {1 phrase plain language résumé}
+```
+
+Pas de `# {Brand} ATLAS` (H1 monolithique) ni `### {brand}` (H3 sous-niveau ambigu). H2 simple, sous-titre 1 ligne.
+
+### Tableau visuel pour metrics quantitatifs
+
+Quand un rendu agrège plusieurs metrics quantitatifs (reviews count, rating, taille audience estimée, prix produits), utiliser tableau markdown · pas prose ·
+
+```markdown
+| Metric | Valeur | Source |
+|---|---|---|
+| Reviews count | 2127 | Trustpilot [observé] |
+| Rating moyenne | 3.4/5 | Trustpilot [observé] |
+| Produits actifs | 12 | Site scrape [observé] |
+| Audience mère estimée | 50k EU | Cartographie [déduit] |
+```
+
+Pas de prose équivalente *"Trustpilot a 2127 reviews avec une note de 3.4/5, et le site présente 12 produits actifs..."* (scannable beaucoup moins vite).
+
+### Bullets courts pour insights qualitatifs
+
+Insights qualitatifs en bullets courts (1 ligne par insight max) · pas paragraphes denses ·
+
+```markdown
+**Forces observées** ·
+- Hero angle plantar fasciitis dominant 27 EU countries [observé]
+- Single narrative cross-audience reproductible [déduit]
+- Trustpilot review velocity stable Q1-Q2 [observé]
+
+**Inconnu macro** ·
+- Conversion rate par audience non observable depuis scrape public
+- Allocation budget réelle inconnue
+```
+
+### Annotations source/confidence subtiles
+
+Pattern canon · suffixe entre crochets simple, pas field path JSON ·
+
+```markdown
+- Trustpilot 3.4/5 · 2127 reviews [observé]
+- Audience mère 50k EU estimation [déduit]
+- Pricing tier premium 79€ [observé]
+- Brand cohérence narrative cross-channels [déduit · confiance moyenne]
+```
+
+Pas de · `trustpilot.rating: 3.4 [field source: observed, confidence: 0.95]` · field path + numeric confidence violent règle "no internal plumbing operator" (canon `feedback_no_jargon_to_operator` Memory).
+
+Mappings annotations operator-facing ·
+
+| Annotation interne | Operator-facing |
+|---|---|
+| `source: scraped, confidence: high` | `[observé]` |
+| `source: derived, confidence: medium` | `[déduit]` |
+| `source: stated, confidence: authoritative` | `[déclaré]` |
+| `source: derived, confidence: low` | `[incertain]` |
+
+### Couleurs / emojis SOBRES
+
+Règles ·
+
+- ✓ pour state OK / validé (un seul caractère ASCII checkmark)
+- ⚠ pour state incertain / risque (un seul caractère warning sign)
+- Aucun emoji décoratif (📋 💡 🎯 🚀 ✨ 🔥 banni)
+- Pas de couleurs runtime (markdown rendu plain, pas terminal ANSI)
+
+Exemple usage ·
+
+```markdown
+**État atlas Brand X** ·
+- Audiences cartographiées ✓ (2 mères × 5 sous-poches)
+- Pain points encodés ✓ (12 PNT, validés)
+- Ad targeting strategy ⚠ (1 hero angle seul testé · diversification non démarrée)
+- Frictions produit ⚠ (3 FRC observées · severity à confirmer ops)
+```
+
+### Zero raw JSON / paths / field names dans rendu opérateur-facing
+
+JAMAIS dans fiche operator-facing ·
+
+```
+brands/stepprs/audiences/workers-shifts/profile.json
+audience.psychographics.identity: "blue-collar pride"
+_field_types.workers_shifts.profile: "structured"
+```
+
+TOUJOURS plain language ·
+
+```
+Audience workers-shifts · identité "blue-collar pride" · validée
+```
+
+Si l'opérateur demande explicitement le path (power user `?` shortcut), surfacer dans une ligne dédiée backstage · pas dans body fiche.
+
+### Exemple fiche complète post-refresh v2.69+
+
+```markdown
+## Stepprs · état atlas
+2026-05-14 · synthèse post-snapshot, 2 audiences mères cartographiées, hero angle live observé.
+
+### Substrat encodé
+
+| Entité | Count | État |
+|---|---|---|
+| Audiences mères | 2 | ✓ cartographiées |
+| Sous-poches | 5 | ✓ encodées |
+| Pain points | 12 | ✓ validés |
+| Frictions produit | 3 | ⚠ severity à confirmer |
+
+### Forces observées
+
+- Hero angle plantar fasciitis dominant 27 EU countries [observé]
+- Single narrative cross-audience reproductible [déduit]
+- Trustpilot 3.4/5 · 2127 reviews [observé]
+
+### Inconnu macro
+
+- Conversion rate par audience non observable [scrape public limité]
+- Allocation budget réelle inconnue [auth Meta Ads requise]
+
+### Leviers
+
+- `mine-voc` pour densifier verbatims (Trustpilot 1-2 stars riches)
+- `audit-meta-account` si credentials Meta fournis pour conversion par audience
+
+### Close
+
+Si tu veux, on peut creuser la cartographie audience workers-shifts (sous-poches mining vs validation directe).
+```
+
+Pattern visuel · sobre, scannable, opérateur lit en 30s, zéro jargon.
+
+---
+
 ## Cross-refs
 
 - Doctrine source · `docs/system/contextual-intelligence.md` "Operator-facing rule absolue"
 - Audit red team source · session 2026-05-13 patterns systémiques A + B
 - Workspace CLAUDE.md root · ligne 132 "NEVER expose paths, field names, internal codes"
 - Skills concernés v2.51+ · compose-creative, recompose-creative, craft-packshot, import-asset, decompose-ad, compose-overlay-text · DOIVENT référencer ce template dans leur HR `Operator output template` section
+- Visual refresh v2.69+ · `audiences-cartography-doctrine.md § Cartographie ≠ ad targeting` (substrat cartographié vs runtime production · respecté en rendu fiche), `territory-discipline.md` (encodage stable), `progressive-cartography-discipline.md` (annotations confidence sobres operator-facing)

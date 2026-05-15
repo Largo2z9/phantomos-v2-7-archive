@@ -132,6 +132,26 @@ Workflow opérateur cartographie en 6 étapes ·
 
 Output canon · un document 1 page par mère (porte d'entrée, taille estimée, 2-4 sous-poches, distribution stages, chevauchements). 3-5 documents pour une marque mature.
 
+## Cartographie audience ≠ ad targeting (distinction canon)
+
+La cartographie audience PhantomOS canon v2.64 segmente le SUBSTRAT (qui souffre quoi · pain points + objections + JTBD par segment distinct hiérarchique parent/enfants). C'est de l'encodage stable territoire.
+
+L'ad targeting RUNTIME est une DÉCISION PRODUCTION distincte · qui voit l'ad. Une ad copy peut combiner plusieurs audiences cartographiées en single narrative quand crossover existe.
+
+**Pattern observed (TrendTrack live 2026-05-16 · Stepprs foot care DTC)** ·
+
+Brand cartographiée 2 audiences mères (workers-shifts + chronic-pain-45) avec 5 sous-poches. Strategy paid réelle observée · 1 narrative hero (Michelle testimonial · plantar fasciitis morning pain + 10h shifts work boots) répliqué 27 EU countries · single ad copy combine les 2 segments via crossover verbatim. Cross-narrative targeting cohérent avec cartographie · pas contradictoire.
+
+**Canon décision** ·
+- Cartographie audience N segments · valide pour substrat stable territory-discipline
+- Ad targeting M ads runtime · M peut être < N · plusieurs audiences combinées single ad copy si narrative crossover
+- Première production paid · commencer simple (1 angle hero cross-audience) puis diversifier au fil des learnings · pas l'inverse
+- Annotation canon NEW · `_meta.cross_narrative_notes` sur audience mère quand cross-targeting pattern observé · documente l'opportunité sans forcer la séparation
+
+Pattern reproductible cross brands · audiences cartographiées séparées + production runtime décide single ad cross-audience OR N ads séparées selon scaling strategy + learnings.
+
+Cross-refs · `territory-discipline.md` (encodage stable substrat), `progressive-cartography-discipline.md` (cartographie hypothèse confidence 0.5 valide avant mining), `compositional-cartography.md` (NOYAU × CONTEXTE × MODIFIEURS · CONTEXTE audience-spécifique cohabite avec NOYAU mécanique cross-audience), ANG-01 hero angle pattern, LRN-0002 cross-narrative single-narrative observation.
+
 ## Cross-refs · sub-folders OWNED audience-specific + shared via cross-refs (v2.64)
 
 L'audience cartographiée par cette doctrine est l'entité root, et ses sub-tensions (pain_points, objections) sont des sub-folders OWNED dans le dossier audience (audience-specific). Les frictions vivent en sub-folder OWNED des produits (product-specific). Storage paths sémantique pure ·

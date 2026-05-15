@@ -1,0 +1,100 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.69.1",
+  "released_at": "2026-05-16",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 68,
+  "skills_count_after": 68,
+  "doctrines_count_before": 11,
+  "doctrines_count_after": 11,
+  "summary": "Patch v2.69.1 captures UX live frictions identifiées pendant build `_EXAMPLE/stepprs` session précédente (v2.69 ship 2026-05-16). 3 layers patches strict additif · skills runtime canon + réceptacle global doctrines + brand pédagogique vitrine. Zero override existing.",
+  "patches": [
+    {
+      "layer": "skill",
+      "file": ".skills/skills/snapshot-brand/SKILL.md",
+      "version_before": "1.4.0",
+      "version_after": "1.4.1",
+      "change_type": "hard_rules_addition",
+      "size_before_lines": 1141,
+      "size_after_lines": 1149,
+      "new_hard_rules": [
+        "HR-v1.4.1-NEW-1 No anticipatory output before scrape data sourced (anti-hallucination CI · violation observée Stepprs grip socks halluciné)",
+        "HR-v1.4.1-NEW-2 No defaults inferred workspace fresh premier contact (transparency canon · explicit confirm sauf operator profile populated)",
+        "HR-v1.4.1-NEW-3 URL intake proactive chain canon scrape async + setup Q&A parallèle (Proactive multi-skill deployment canon CLAUDE.md root)",
+        "HR-v1.4.1-NEW-4 Sitemap discovery before guessing pages (anti-404 silent · navigation crawl fallback)"
+      ],
+      "patch_notes_entry": "v1.4.1 frontmatter patch_notes entry ajouté · 4 NEW HR canon · backward compat strict additif Steps 1-7b inchangés"
+    },
+    {
+      "layer": "doctrine",
+      "file": "docs/doctrine/audiences-cartography-doctrine.md",
+      "change_type": "new_section",
+      "new_section": "Cartographie audience ≠ ad targeting (distinction canon)",
+      "content_summary": "Distinction canon substrat stable N segments cartographiés vs targeting runtime M ads (M ≤ N · audiences combinables single ad copy si narrative crossover). Pattern observed TrendTrack live Stepprs hero Michelle plantar fasciitis + 10h shifts cross 2 audiences single ad. Canon décision · cartographie audience N segments valide pour substrat stable territory-discipline · ad targeting M ads runtime peut être < N · première production paid commencer simple (1 angle hero cross-audience) puis diversifier au fil learnings. NEW annotation `_meta.cross_narrative_notes` sur audience mère canon-aware. Backward compat strict additif · zero override."
+    },
+    {
+      "layer": "doctrine",
+      "file": "docs/system/compositional-cartography.md",
+      "change_type": "cross_ref_addition",
+      "content_summary": "Cross-ref bloc Cross-refs vers nouvelle section doctrine `audiences-cartography-doctrine.md § Cartographie audience ≠ ad targeting`. Mention CC compatibility N segments substrat vs M ads runtime."
+    },
+    {
+      "layer": "command",
+      "file": ".claude/commands/tour.md",
+      "change_type": "new_subsection",
+      "new_subsection": "Pattern canon · URL e-com pasted déclenche proactive chain",
+      "content_summary": "URL intake proactive chain canon · scrape async via Task tool snapshot-brand + EN PARALLÈLE 2-3 questions setup minimal · puis synthese scrape déjà prêt → Phase 1 macro confirmation immédiate. Fast-track opérateur expert (operator profile populated OR flag explicit) skip Q&A. Anti-pattern séquentiel documenté."
+    },
+    {
+      "layer": "template",
+      "file": "resources/templates/operator-fiche-output.md",
+      "change_type": "new_section",
+      "new_section": "Visual rendering refresh v2.69+",
+      "content_summary": "6 sous-sections rendu visuel opérateur-facing canonique · header sobre `## Brand X · état atlas` · tableaux visuels metrics quantitatifs · bullets courts insights qualitatifs · annotations [observé/déduit/déclaré/incertain] subtiles (zero raw JSON · zero field_path · zero source/confidence numbers) · ✓/⚠ sobres décoratifs zero · exemple fiche complète Stepprs. Format ASCII existant preserved parallèle (canon CLAUDE.md no jargon to operator)."
+    },
+    {
+      "layer": "brand_example",
+      "file": "brands/_EXAMPLE/audiences/workers-shifts/profile.json",
+      "change_type": "new_field_additive",
+      "new_field": "_meta.cross_narrative_notes",
+      "content_summary": "NEW top-level _meta container distinct du bloc meta existing (no underscore convention preserved). Note · cross-narrative paid targeting · audience workers-shifts combinable avec chronic-pain-45 single ad copy via testimonial crossover (Michelle plantar fasciitis + 10h shifts work boots). Cf learnings.json LRN-0002 + ANG-01 hero pattern observed Stepprs paid live 2026-05-16."
+    },
+    {
+      "layer": "brand_example",
+      "file": "brands/_EXAMPLE/audiences/chronic-pain-45/profile.json",
+      "change_type": "new_field_additive",
+      "new_field": "_meta.cross_narrative_notes",
+      "content_summary": "Symmetric note pattern · cross-narrative targeting avec workers-shifts. Cf learnings.json LRN-0002 + ANG-01 hero."
+    },
+    {
+      "layer": "brand_example",
+      "file": "brands/_EXAMPLE/README.md",
+      "change_type": "subsection_enriched",
+      "content_summary": "Section `Canon vs réel` enrichie avec sub-section NEW `Cartographie audience ≠ ad targeting (distinction importante)` + ligne `Annotations canon-aware` mentionnant NEW `_meta.cross_narrative_notes` pattern. Cross-refs canonical LRN-0002 + ANG-01 + TrendTrack live 2026-05-16."
+    }
+  ],
+  "doctrinal_patterns_introduced": [
+    "Anti-hallucination identity pré-scrape · skill territoire NE DOIT PAS produire output anticipatif identity/category/positionning depuis brand name seul avant scrape data sourced (canon CI master)",
+    "Cartographie audience ≠ ad targeting · distinction canon substrat stable N segments vs targeting runtime M ads (M ≤ N · combinables si narrative crossover)",
+    "URL intake proactive chain canon · scrape async + setup Q&A parallèle (canon CLAUDE.md root Proactive multi-skill deployment appliqué onboarding)"
+  ],
+  "anti_patterns_canonized": [
+    "Anticipatory output identity pre-scrape (e.g. grip socks halluciné depuis brand name Stepprs)",
+    "Defaults inferred workspace fresh premier contact (agency multi-client + outputs EN sans confirmation)",
+    "Séquentiel URL intake → setup Q&A → scrape (1-2 min wall-time perdu vs parallèle async)"
+  ],
+  "decisions_captured": ["D#413"],
+  "session_origin": "_EXAMPLE/stepprs build session 2026-05-16 · 9 frictions identified live · 2 patched durant session · 1 non-patchable architectural · 6 patched v2.69.1 patch",
+  "validation_checks_passed": [
+    "snapshot-brand v1.4.1 grep version match · 4 NEW HR markers present · em-dash count NEW content zero · Steps 1-7b inchangés byte-size similar",
+    "audiences-cartography-doctrine.md NEW section additif · zero override existing · cross-refs résolus",
+    "compositional-cartography.md cross-ref additif · zero override",
+    "tour.md NEW sub-section additif · pattern proactive chain documenté",
+    "operator-fiche-output.md v2.69+ section parallèle ASCII existing preserved · zero override",
+    "_EXAMPLE/stepprs audiences JSON parse valid · pattern parent/enfants canon v2.64 préservé",
+    "README.md cross-refs LRN-0002 + ANG-01 + TrendTrack live tissés"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.69.1 = git revert HEAD strict (zero data loss · 4 HR retirées · doctrines NEW sections retirées · template ASCII existing preserved intact · audiences NEW _meta.cross_narrative_notes additif retirable sans impact pattern parent/enfants)"
+}

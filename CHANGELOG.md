@@ -7,6 +7,48 @@
 
 ---
 
+## v2.69.1 · 2026-05-16 · Patch UX live frictions `_EXAMPLE/stepprs` build · 3 layers + doctrine
+
+**Why** · Build `_EXAMPLE/stepprs` session précédente (v2.69 ship 2026-05-16) a révélé live 9 frictions UX runtime · 2 patched durant session (drop 4 Q&A audience snapshot-brand v1.4.0 · severity recalibration audit marketing P0 angles) · 1 non-patchable architecturalement (TrendTrack API endpoint ignored advertiserId · workaround pageId documented) · 6 NOT patched encore. Sprint patch v2.69.1 ferme la boucle session-learning · 3 layers · skills runtime canon + réceptacle global doctrines + brand pédagogique vitrine.
+
+**What** · 3 blocs ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · `snapshot-brand` v1.4.0 → v1.4.1 · 4 NEW Hard Rules canon** | HR-v1.4.1-NEW-1 No anticipatory output identity produit pré-scrape (anti-hallucination CI · violation observée Stepprs grip socks halluciné depuis brand name) · HR-v1.4.1-NEW-2 No defaults inferred workspace fresh premier contact (transparency canon · explicit 2-3 questions setup minimal sauf operator profile populated) · HR-v1.4.1-NEW-3 URL intake proactive chain canon scrape async + setup Q&A parallèle (Proactive multi-skill deployment canon CLAUDE.md root) · HR-v1.4.1-NEW-4 Sitemap discovery before guessing pages (anti-404 silent · navigation crawl fallback) | Skill territoire onboarding plus rigoureux canon CI · zero anticipation pré-data · transparency workspace fresh · proactive parallel chain · resilient page discovery |
+| **2 · Réceptacle global · 4 files doctrines + templates** | `audiences-cartography-doctrine.md` NEW section `Cartographie audience ≠ ad targeting` (substrat stable N segments vs targeting runtime M ads · audiences combinables single ad copy si narrative crossover · pattern observed TrendTrack live Stepprs hero Michelle plantar fasciitis + 10h shifts cross-segments) · `compositional-cartography.md` cross-ref vers nouvelle section · `tour.md` NEW pattern proactive chain URL e-com intake (scrape async + setup Q&A parallèle · fast-track opérateur expert) · `operator-fiche-output.md` section v2.69+ refresh rendu visuel opérateur-facing (header sobre · tableaux metrics · bullets insights · annotations [observé/déduit/déclaré/incertain] · ✓/⚠ sobres · zero raw JSON/paths/field names · exemple complet Stepprs) | Doctrine canon explicite distinction substrat vs runtime · onboarding canon proactive chain URL pasted · template visuel rendu opérateur-facing refreshed cohérent canon CLAUDE.md "no jargon to operator" |
+| **3 · `_EXAMPLE/stepprs` brand canon · NEW field additif + README enrichi** | `audiences/workers-shifts/profile.json` + `audiences/chronic-pain-45/profile.json` NEW field `_meta.cross_narrative_notes` additif (cross-narrative paid targeting pattern observed · cf learnings.json LRN-0002 + ANG-01 hero) · README.md sub-section "Cartographie audience ≠ ad targeting (distinction importante)" enrichie + ligne "Annotations canon-aware" mentionnant NEW `_meta.cross_narrative_notes` pattern | Brand pédagogique vitrine canonique mise à jour cohérente doctrine NEW canon · pattern parent/enfants v2.64 préservé strict additif · cross-refs canonical LRN-0002 + ANG-01 + TrendTrack live tissés |
+
+**3 patterns canon introduits** ·
+1. **Anti-hallucination identity pré-scrape** · skill territoire ne DOIT PAS produire output anticipatif sur identity produit/category/positionning depuis nom brand seul avant scrape data sourced. Violation Contextual Intelligence master. Pattern HR canon snapshot-brand · réplicable autres skills territoire.
+2. **Cartographie audience ≠ ad targeting** · distinction canon explicite substrat stable N segments cartographiés vs targeting runtime M ads (M ≤ N · audiences combinables single ad copy si narrative crossover). NEW field `_meta.cross_narrative_notes` sur audience mère documente l'opportunité. Pattern observed validé TrendTrack live (Stepprs hero Michelle cross 2 audiences single ad).
+3. **URL intake proactive chain canon** · URL e-com pasted en premier OR mi-session message déclenche scrape async parallèle setup Q&A minimal · zéro séquentiel inutile · canon CLAUDE.md root "Proactive multi-skill deployment" appliqué onboarding.
+
+**3 anti-patterns canonisés** ·
+- **Anticipatory output identity pre-scrape** · agent produit "grip socks athlétiques" depuis nom brand "Stepprs" avant scrape (réalité foot care insoles pain relief). Anti-pattern violation CI master. v2.69.1 HR canon strict.
+- **Defaults inferred workspace fresh premier contact** · agent commité "agency multi-client + outputs EN" defaults sans confirmation operator runtime vierge (no /operator/profile.json populated). Anti-pattern transparency canon. v2.69.1 HR canon strict.
+- **Séquentiel URL intake → setup Q&A → scrape** · attendre setup Q&A complet avant lancer scrape · perd 1-2 min wall-time inutile. Anti-pattern violation Proactive multi-skill deployment canon. v2.69.1 HR canon proactive chain async + setup parallèle.
+
+**Backward compat strict additif** · zero override existing · 4 NEW HR ajoutées section Hard Rules existing snapshot-brand (Steps 1-7b inchangés) · doctrine audiences-cartography NEW section post-existing (workflow concret + cross-refs préservés) · compositional-cartography cross-ref additif · tour.md NEW pattern section additive · operator-fiche-output v2.69+ section parallèle au format ASCII existant preserved · `_EXAMPLE/stepprs` audiences NEW `_meta.cross_narrative_notes` distinct du bloc `meta` existing (no underscore convention preserved). Skills count 68 → 68 (patches seulement · no new skill). 11 doctrines canon → 11 (audiences-cartography enrichi · pas split). Operators v2.69.x non affectés sauf invocation `/onboard-brand` OR `snapshot-brand` qui retombent sur version v1.4.1 plus rigoureuse canon (silent backward compat · output plus précis).
+
+**Files patched** ·
+- `.skills/skills/snapshot-brand/SKILL.md` v1.4.0 → v1.4.1 (1141L → 1149L · 4 NEW HR)
+- `docs/doctrine/audiences-cartography-doctrine.md` (NEW section "Cartographie audience ≠ ad targeting")
+- `docs/system/compositional-cartography.md` (cross-ref bloc NEW section doctrine)
+- `.claude/commands/tour.md` (NEW sub-section pattern URL intake proactive chain)
+- `resources/templates/operator-fiche-output.md` (NEW section v2.69+ rendu visuel opérateur-facing)
+- `brands/_EXAMPLE/audiences/workers-shifts/profile.json` (NEW field `_meta.cross_narrative_notes`)
+- `brands/_EXAMPLE/audiences/chronic-pain-45/profile.json` (NEW field `_meta.cross_narrative_notes`)
+- `brands/_EXAMPLE/README.md` (sub-section "Cartographie audience ≠ ad targeting" enrichie)
+- `_version.json` 2.69.0 → 2.69.1
+- `CHANGELOG.md` v2.69.1 entry (this entry)
+- `docs/internal/releases/manifest/2.69.1-manifest.json` NEW
+- `.skills/_manifest.json` regen (skill snapshot-brand version bump)
+
+**D#413 captured** · `decisions.md` PhantomOS · v2.69.1 patch UX live frictions · 4 NEW HR snapshot-brand + doctrine cartographie ≠ targeting + tour proactive chain + template visuel refresh + `_EXAMPLE` annotations canon-aware.
+
+---
+
 ## v2.69.0 · 2026-05-16 · NEW skill `trendtrack-enrich-brand` · Market Intelligence Layer first runtime brick
 
 **Why** · D#408 R&D Market Intelligence Layer (2026-05-14) cartographiait pattern multi-sources spy tools cohérent (TrendTrack pilote · MCP officiel publié · 8 phases opérateur · 5 NEW skills + 3 extensions). v2.69 ship première brique runtime · skill `trendtrack-enrich-brand` enrichit brand state existing depuis intelligence externe non-scrapable PDP (ads winners · trustpilot · socials · traffic · scaling patterns). Pré-requis post-D#410 territory-discipline (layer territoire canon) · NEW skill territoire premier de la nouvelle vague Market Intelligence. Pattern reproductible mirror cross sources futures (Foreplay · Atria · Meta Ad Library · BigSpy) via NEW skills `{source}-enrich-brand` même structure 6 Steps. Découvertes session live TrendTrack (API base · auth · 5 endpoints validés · pattern Stepprs observé · 1 narrative hero répliqué cross-geo · $146k+ spend cumulé · 16M+ reach · Trustpilot 3.4/5 · 119k FB + 92.7k IG followers) consommées comme vitrine pédagogique skill.
