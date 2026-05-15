@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE pédagogique · Brand fictive Stepprs (foot care insoles · vitrine canon PhantomOS v2.68). NE PAS MODIFIER. Référence visuelle pour comprendre à quoi ressemble un brand.json bien posé. Mock data inspirée de stepprs.com (foot care DTC réel) · valeurs financières + métriques inventées pour pédagogie. Ignored par FIRST ACTION canon (folder prefix `_`). Migration v2.2 → v2.4 v2.68.",
+  "$comment": "EXEMPLE pédagogique · Brand fictive Stepprs (foot care insoles · vitrine canon PhantomOS v2.68). NE PAS MODIFIER. Référence visuelle pour comprendre à quoi ressemble un brand.json bien posé. Enrichi data TrendTrack live 2026-05-16 · validate skill trendtrack-enrich-brand v1.0.0 cas réel · mock data financials preserved (LTV $65 · AOV $38 · etc.) · data factuelle sourced API (year_founded · social_media · trustpilot · monthly_visits · categories · active_ads metrics). Ignored par FIRST ACTION canon (folder prefix `_`). Migration v2.2 → v2.4 v2.68.",
   "_schema": "brand/2.4",
   "_version": "2.4",
   "_field_types": {
@@ -15,15 +15,47 @@
     "identity.business_model": "derived",
     "identity.business_model_signals.*": "derived",
     "identity.language": "stated",
-    "identity.target_geo": "stated",
+    "identity.target_geo": "observed",
     "positioning.market_category": "stated",
     "positioning.brand_differentiation": "derived",
     "positioning.brand_promise": "observed",
     "tone_of_voice.*": "observed",
     "platforms.*": "observed",
-    "proofs.*": "observed",
-    "social_media.*": "observed",
-    "financials.*": "stated",
+    "proofs.total_customers": "stated",
+    "proofs.global_rating": "observed",
+    "proofs.global_review_count": "observed",
+    "proofs.press_mentions": "observed",
+    "proofs.notable_endorsements": "observed",
+    "proofs.trustpilot.rating": "observed",
+    "proofs.trustpilot.review_count": "observed",
+    "proofs.trustpilot.url": "observed",
+    "proofs.active_ads_count": "observed",
+    "proofs.reach_30d": "observed",
+    "proofs.reach_lifetime": "observed",
+    "social_media.facebook.handle": "observed",
+    "social_media.facebook.followers": "observed",
+    "social_media.facebook.growth_30d": "observed",
+    "social_media.instagram.handle": "observed",
+    "social_media.instagram.followers": "observed",
+    "social_media.instagram.growth_30d": "observed",
+    "social_media.tiktok.handle": "observed",
+    "social_media.tiktok.followers": "observed",
+    "social_media.youtube.handle": "observed",
+    "financials.currency": "observed",
+    "financials.monthly_revenue": "stated",
+    "financials.aov": "stated",
+    "financials.avg_cogs_pct": "stated",
+    "financials.avg_gross_margin": "stated",
+    "financials.customer_ltv": "stated",
+    "financials.refund_rate": "stated",
+    "financials.payback_days": "stated",
+    "financials.roas_breakeven": "stated",
+    "financials.monthly_visits": "observed",
+    "financials.monthly_visits_growth_30d": "observed",
+    "financials.traffic_history_6m": "observed",
+    "market.categories": "observed",
+    "market.products_count": "observed",
+    "market.myshopify_domain": "observed",
     "market.competitors[].*": "observed",
     "market.awareness_distribution.*": "derived",
     "market.regulatory.*": "observed",
@@ -43,7 +75,8 @@
       "compositional-cartography v3.1 · 4 arbres (Spec→Mécanisme→Bénéfice · Audience→Pain→Bénéfice · Angle OTRB · Roadmap timeline)",
       "territory-discipline v2.67 · substrat stable canonisé",
       "progressive-cartography v2.68 · phasing par profondeur · gates light",
-      "Contextual Intelligence master · raisonnement business universe vs form-filling"
+      "Contextual Intelligence master · raisonnement business universe vs form-filling",
+      "trendtrack-enrich-brand v1.0.0 · enrichissement live API TrendTrack 2026-05-16 · data réelles sourced"
     ]
   },
   "meta": {
@@ -61,8 +94,8 @@
     "slug": "_EXAMPLE",
     "url": "https://stepprs.com/",
     "language": "en",
-    "target_geo": ["US", "UK", "EU"],
-    "year_founded": null,
+    "target_geo": ["US", "UK", "DE", "FR", "IT", "ES", "RO", "BE", "NL", "AT", "PL"],
+    "year_founded": 2024,
     "brand_mission": "Make foot care accessible and enjoyable for everyone",
     "brand_vision": "Daily comfort innovation · pain relief without the clinical positioning",
     "brand_personality": ["expert-backed", "approachable", "warm", "practical"],
@@ -98,6 +131,7 @@
   },
   "proofs": {
     "total_customers": 800000,
+    "_note": "Claim site · Trustpilot 3.4/5 sur 2127 reviews suggère réalité plus mitigée",
     "global_rating": null,
     "global_review_count": null,
     "press_mentions": [],
@@ -106,14 +140,36 @@
       "Clinically Tested (claim site)",
       "95% pain reduction (claim site)"
     ],
-    "$comment": "Proof points = trust drivers principaux. Stepprs joue scepticisme efficacité (objection #1) via empilage clinical + numbers."
+    "trustpilot": {
+      "rating": 3.4,
+      "review_count": 2127,
+      "url": "https://www.trustpilot.com/review/stepprs.com"
+    },
+    "active_ads_count": 2318,
+    "reach_30d": 15982973,
+    "reach_lifetime": 284329153,
+    "$comment": "Proof points = trust drivers principaux. Stepprs joue scepticisme efficacité (objection #1) via empilage clinical + numbers. Data TrendTrack live 2026-05-16 · Trustpilot 3.4/5 réalité plus mitigée que claim site (validates objection #1 scepticism canon). Active ads + reach métriques sourced advertiser ID 216540858213050."
   },
   "social_media": {
-    "instagram": null,
-    "tiktok": null,
-    "youtube": null,
-    "facebook": null,
-    "$comment": "Followers counts non scraped · à compléter post-mining VoM si pertinent."
+    "facebook": {
+      "handle": "https://www.facebook.com/getstepprs",
+      "followers": 119000,
+      "growth_30d": 0.0348
+    },
+    "instagram": {
+      "handle": "https://www.instagram.com/getstepprs",
+      "followers": 92699,
+      "growth_30d": 0.0248
+    },
+    "tiktok": {
+      "handle": "https://tiktok.com/@stepprs.com",
+      "followers": null
+    },
+    "youtube": {
+      "handle": "https://youtube.com/@stepprs",
+      "followers": null
+    },
+    "$comment": "Followers + growth_30d sourced TrendTrack API live 2026-05-16. Facebook 119k · IG 92k · TikTok handle existe (followers null API limit) · YouTube handle existe (followers null API limit). Growth FB +3.5% / IG +2.5% sur 30j."
   },
   "financials": {
     "currency": "USD",
@@ -125,7 +181,16 @@
     "refund_rate": 0.04,
     "payback_days": 45,
     "roas_breakeven": 1.85,
-    "$comment": "Mock financials cohérents avec 800k customers · AOV bundles foot care · LTV moyen (subscription absente · repeat partiel · 90-day money back guarantee modeste refund_rate)."
+    "monthly_visits": 859978,
+    "monthly_visits_growth_30d": 0.0532,
+    "traffic_history_6m": [
+      {"month": "2025-11", "visits": 968000},
+      {"month": "2025-12", "visits": 1009000},
+      {"month": "2026-01", "visits": 980000},
+      {"month": "2026-02", "visits": 825000},
+      {"month": "2026-05", "visits": 859978}
+    ],
+    "$comment": "Mock financials cohérents avec 800k customers · AOV bundles foot care · LTV moyen (subscription absente · repeat partiel · 90-day money back guarantee modeste refund_rate). NEW data sourced TrendTrack 2026-05-16 · monthly_visits 860k + growth +5.3% sur 30j · traffic_history 6 mois récents (pic 1M déc-2025, dip 825k fév-2026, rebond mai-2026)."
   },
   "seasonality": {
     "primary_peak_months": ["May", "June", "July", "August"],
@@ -134,6 +199,9 @@
     "$comment": "Pic été · activité piétonne haute (marche · jardinage · vacances debout). Pic décembre · cadeaux mère/grand-mère."
   },
   "market": {
+    "categories": ["Apparel", "Clothing Accessories", "Footwear", "Health", "Health Conditions", "Medical Devices & Equipment", "Pain Management"],
+    "products_count": 26,
+    "myshopify_domain": "ec0012-2.myshopify.com",
     "competitors": [
       {
         "name": "Dr. Scholl's",

@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE pedagogique · angle audience-derived workers-shifts · vitrine canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB demontree · cross-sous-poches (nurses-12h + warehouse-10h + hospitality-retail)",
+  "$comment": "EXEMPLE pédagogique · ANG-01 rewrite hero avec data TrendTrack live 2026-05-16 · validate skill trendtrack-enrich-brand v1.0.0 · Michelle Verified Customer testimonial réel sourced ad_id facebook_1400371197671653 · 358 days running · reach 1M+ · spend $9,615 · cross-audience narrative pattern observed Stepprs paid live",
   "_schema": "angle/1.2",
   "_version": "1.2",
   "_field_types": {
@@ -30,6 +30,8 @@
     "lineage.pain_extract": "string · verbatim extrait audience.json#pains",
     "lineage.proof_primary": "string · proof asset principal (verbatim · clinical · stat)",
     "lineage.CTA": "string · call-to-action formule",
+    "lineage.landing_page_url": "string · landing page funnel cible (variants test)",
+    "lineage.mechanism_ref": "string · mécanismes spec activés",
     "compatibility.audience_compatibility": "array · slugs audience compatibles (mere + sous-poches)",
     "compatibility.awareness_compatibility": "array · stages schwartz compatibles",
     "compatibility.friction_blockers": "array · friction IDs qui bloquent activation angle",
@@ -43,18 +45,21 @@
     "cross_refs.benefit_refs": "array · spec.json benefits"
   },
   "_meta": {
-    "example_canon_showcased": "canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB (Observation + Tension + Reframe + Bridge) · angle audience-derived hero workers-shifts cross-sous-poches"
+    "example_canon_showcased": [
+      "canon compositional cartography v3.1 PhantomOS v2.68 · formula OTRB (Observation + Tension + Reframe + Bridge) · angle audience-derived hero workers-shifts cross-sous-poches",
+      "trendtrack-enrich-brand v1.0.0 live enrichment · ANG hero sourced from real top winning ad pattern"
+    ]
   },
   "angle_id": "ANG-01",
   "meta": {
-    "name": "Two years · 10 hour days · zero heel pain by hour 8",
+    "name": "Walk on Clouds Or It's FREE · Michelle plantar fasciitis + 10-hour shifts work boots testimonial",
     "status": "complete",
     "validation_status": {
       "state": "validated",
-      "_note": "Example pedagogique · vitrine canon"
+      "_note": "Example pedagogique · vitrine canon · hero rewrite sourced TrendTrack live 2026-05-16 ad_id facebook_1400371197671653"
     },
     "created": "2026-05-15",
-    "updated": "2026-05-15"
+    "updated": "2026-05-16"
   },
   "origin_axis": "audience-derived",
   "tier": "primary",
@@ -63,51 +68,54 @@
     "out": "product_aware"
   },
   "formula": {
-    "$comment": "Formula OTRB substantive · chaque sub-field demontre un layer du compositional reasoning canon v3.1",
+    "$comment": "Formula OTRB substantive · chaque sub-field demontre un layer du compositional reasoning canon v3.1 · enriched 2026-05-16 avec verbatim Michelle Verified Customer réel + lineage hero ad cross-audience narrative",
     "observation": {
       "$comment": "Observation · phenomene reel scrape/verbatim · ancrage data avant tout claim",
-      "phenomenon": "Workers debout 8-12h shifts (warehouse · nursing · hospitality) souffrent douleur talons + genoux + dos accumulee sur concrete floors · pattern recurrent verbatims top reviews + hashtags viraux",
-      "source": "verbatim clients Stepprs · scrape PDP reviews + hashtag patterns #Mailman #Warehouse #NurseLife",
-      "sample_size": "5 temoignages top reviews valides (Mike Kowalski · Dean H · Tanya · Rachel S · James) + pattern recurrence cross-sous-poches workers-shifts"
+      "phenomenon": "Workers debout 10h+ shifts avec plantar fasciitis morning stabbing pain · cross-audience narrative validated via Michelle verbatim customer testimonial · live Stepprs paid social campaign 358 days running cross-EU",
+      "source": "TrendTrack API live 2026-05-16 · ad_id facebook_1400371197671653 · advertiser 216540858213050 Stepprs · longestRunning sort",
+      "sample_size": "30 ads sampled · 1-2 unique narratives observed · single hero replicated cross-geo pattern confirmed"
     },
     "tension": {
       "$comment": "Tension · gap state_actual vs state_desired · reason_blocked explicite (cle pour reframe)",
-      "state_actual": "Fin de shift exhaustion physique · douleur accumulee empoisonne soiree + sommeil + matin suivant · le worker rentre casse · qualite de vie hors-travail erodee",
-      "state_desired": "Finir shift 8-12h avec niveau pain comparable au debut · capacity to enjoy life post-work · jouer avec les enfants · sortir · dormir reparateur",
-      "reason_blocked": "Insoles drugstore Dr Scholl essayees · inefficaces · perception qu'aucune solution OTC ne tient · resignation accumulee · belief 'c'est le metier qui veut ca'"
+      "state_actual": "Multi-failed insoles attempts · drugstore Dr Scholl + autres · plantar fasciitis stabbing pain morning + work boots 10h+ shifts daily",
+      "state_desired": "Few days adjustment · stabbing morning pain nearly gone · finish 10h shift without coming home aching feet · regain comfort",
+      "reason_blocked": "Résignation accumulated échec multi-insoles passés · scepticisme efficacité (objection #1 OBJ-02 fondée vu Trustpilot 3.4/5 plus mitigated que site claim 4.8)"
     },
     "reframe": {
       "$comment": "Reframe · pivot perceptuel qui retourne le belief bloquant · mechanism explicite (pas magique)",
-      "perceptual_pivot": "Cette douleur n'est pas inevitable · c'est un defaut d'equipement reparable par engineering · pas par stoicisme ni acceptation",
-      "pivot_mechanism": "Impact absorption cushioning + Arch support engineered redistribuent la charge biomecaniquement · ce que Dr Scholl (foam basique) ne fait pas · clinical-grade vs drugstore-grade"
+      "perceptual_pivot": "Cette douleur chronique réparable rapide (few days) · pas inevitable accumulation · Stepprs casse pattern multi-failed insoles via 4 mécanismes empilés",
+      "pivot_mechanism": "Cushioning + Breathable + Arch Support + Instant Relief (verbatim site claims) cross-mechanisms vs single-feature concurrents Dr Scholl/Powerstep"
     },
     "bridge": {
       "$comment": "Bridge · pont concret entre reframe et action · spec activated + benefit + promise pret-a-deployer",
-      "spec_activated": "spec.json#mechanisms · Impact absorption cushioning + Arch support engineered structure",
-      "benefit_served": "End-of-shift comfort (long standing) · latency 0-7j · functional · plus Daily wearability latency 0-1j",
-      "promise_formulated": "Zero heel pain by hour 8 · Podiatrist Recommended · 90-day money back risk-free"
+      "spec_activated": "spec.json#mechanisms tous 4 · Massage textured + Arch support engineered + Impact absorption cushioning + Anti-slip stability grip",
+      "benefit_served": "Walking on Air emotional (latency 0 · instant) + Plantar fasciitis pain relief functional (latency 7-14j few days)",
+      "promise_formulated": "Walk on Clouds · Or It's FREE (capture Walking on Air emotional + 90-day money back guarantee en single phrase)"
     }
   },
   "lineage": {
-    "audience_slug": "workers-shifts",
-    "schwartz_stage": "solution_aware",
-    "hook_canon_id": "concrete-numeric-claim",
-    "framework_canon_id": "before-after-transformation",
-    "archetype_canon_id": "trusted-engineer-practical",
-    "pain_extract": "By hour 8 of my 12-hour shift my feet are screaming · I'm broken before I get home",
-    "proof_primary": "Clinical Tested · 95% pain reduction claim · plus Mike Kowalski 2 years 10 hour days warehouse durability verbatim",
-    "CTA": "Try Stepprs Risk-Free 90 Days · See your first full shift with zero heel pain"
+    "audience_slug": "workers-shifts + chronic-pain-45 (cross-audience narrative · Michelle profile cross workers shifts + chronic plantar fasciitis combined)",
+    "schwartz_stage": "solution_aware → product_aware",
+    "hook_canon_id": "testimonial-cross-audience-objection-flip",
+    "framework_canon_id": "tried-failed-until-discovered (objection-flip narrative)",
+    "archetype_canon_id": "verified-customer-testimonial-warm",
+    "pain_extract": "I've tried so many insoles for my plantar fasciitis · nothing ever really helped · stabbing heel pain morning · 10-hour shifts work boots · come home with aching feet",
+    "proof_primary": "Michelle Verified Customer testimonial · 358 days running ad · reach 1M+ single ad · spend $9,615 · 27 EU countries targeted · live Stepprs paid",
+    "CTA": "Walk on Clouds Or It's FREE.",
+    "landing_page_url": "https://stepprs.com/pages/review-3-5 (variant /review-3-1, /review-3-3, /products/massage tested cross-ad)",
+    "mechanism_ref": "Tous 4 mécanismes empilés · pas single feature"
   },
   "compatibility": {
     "audience_compatibility": [
       "workers-shifts",
       "workers-shifts/nurses-12h",
       "workers-shifts/warehouse-10h",
-      "workers-shifts/hospitality-retail"
+      "chronic-pain-45",
+      "chronic-pain-45/plantar-fasciitis-diagnosed"
     ],
     "awareness_compatibility": [
-      "problem_aware",
-      "solution_aware"
+      "solution_aware",
+      "product_aware"
     ],
     "friction_blockers": [
       "FRC-01 Fit shoes constraint"
@@ -116,7 +124,9 @@
       "PNT-01",
       "PNT-02",
       "PNT-04",
-      "PNT-06"
+      "PNT-06",
+      "PNT-09",
+      "PNT-12"
     ],
     "objection_neutralized": [
       "OBJ-02",
@@ -125,25 +135,36 @@
   },
   "cross_refs": {
     "audience_slugs": [
-      "workers-shifts"
+      "workers-shifts",
+      "chronic-pain-45",
+      "workers-shifts/warehouse-10h",
+      "chronic-pain-45/plantar-fasciitis-diagnosed"
     ],
     "pain_point_ids": [
       "PNT-01",
-      "PNT-02"
+      "PNT-02",
+      "PNT-04",
+      "PNT-06",
+      "PNT-09",
+      "PNT-12"
     ],
     "objection_ids": [
-      "OBJ-02"
+      "OBJ-02",
+      "OBJ-07"
     ],
     "friction_ids": [
       "FRC-01"
     ],
     "mechanism_refs": [
+      "Massage textured stimulation",
+      "Arch support engineered structure",
       "Impact absorption cushioning",
-      "Arch support engineered structure"
+      "Anti-slip stability grip"
     ],
     "benefit_refs": [
-      "End-of-shift comfort (long standing)",
-      "Plantar fasciitis pain relief"
+      "Walking on Air",
+      "Plantar fasciitis pain relief",
+      "End-of-shift comfort"
     ]
   }
 }

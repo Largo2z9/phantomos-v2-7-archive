@@ -1,0 +1,120 @@
+{
+  "$comment": "EXEMPLE pédagogique · learnings.json Stepprs · 8 patterns captured via skill trendtrack-enrich-brand v1.0.0 (TrendTrack API live 2026-05-16) · vitrine canon learnings.schema v1.1 + cross-refs canonical PNT/OBJ/ANG/mechanisms/benefits",
+  "_schema": "learnings/1.1",
+  "_version": "1.1",
+  "_field_types": {
+    "learnings[].learning_id": "stated",
+    "learnings[].formulation": "observed",
+    "learnings[].category": "structured",
+    "learnings[].source": "stated",
+    "learnings[].confidence": "derived",
+    "learnings[].cross_refs.*": "structured",
+    "learnings[].captured_at": "stated"
+  },
+  "_meta": {
+    "is_example": true,
+    "example_canon_showcased": [
+      "learnings.json canon v1.1 · 8 patterns observed cross-skills",
+      "trendtrack-enrich-brand v1.0.0 output · 8 patterns Step 4 patterns analysis",
+      "cross-refs canonical résolvent (PNT/OBJ/ANG/mechanisms/benefits)",
+      "source canonical 'trendtrack-enrich-brand' + meta tag lineage"
+    ]
+  },
+  "meta": {
+    "brand_slug": "_EXAMPLE",
+    "status": "complete",
+    "validation_status": {"state": "validated"},
+    "created": "2026-05-16",
+    "updated": "2026-05-16"
+  },
+  "learnings": [
+    {
+      "learning_id": "LRN-0001",
+      "formulation": "Stepprs scaling strategy = 1 hero narrative replicated cross-geo · pas diversifié angles. Top 7 ads spend $146,651 + reach 16M+ via single Michelle testimonial dupliqué DE GB GB GB RO ES IT.",
+      "category": "creative_strategy",
+      "source": "trendtrack-enrich-brand v1.0.0 · Step 4 Pattern 1 narrative diversity ratio",
+      "confidence": 0.95,
+      "captured_at": "2026-05-16T20:00:00Z",
+      "cross_refs": {
+        "angle_ids": ["ANG-01"],
+        "audience_slugs": ["workers-shifts", "chronic-pain-45"],
+        "mechanism_refs": ["Arch support engineered structure", "Impact absorption cushioning"],
+        "benefit_refs": ["Walking on Air", "Plantar fasciitis pain relief"]
+      }
+    },
+    {
+      "learning_id": "LRN-0002",
+      "formulation": "Audience cross-narrative validated · Michelle testimonial combine plantar fasciitis (chronic-pain-45) + 10-hour shifts work boots (workers-shifts) en single ad copy · audiences théoriquement séparées canon mais combinées paid practice.",
+      "category": "audience_targeting",
+      "source": "trendtrack-enrich-brand v1.0.0 · Step 3 ads body analysis",
+      "confidence": 0.9,
+      "captured_at": "2026-05-16T20:00:00Z",
+      "cross_refs": {
+        "angle_ids": ["ANG-01"],
+        "audience_slugs": ["workers-shifts", "chronic-pain-45/plantar-fasciitis-diagnosed"],
+        "pain_point_ids": ["PNT-09", "PNT-01"]
+      }
+    },
+    {
+      "learning_id": "LRN-0003",
+      "formulation": "CTA dominant Stepprs · 'Walk on Clouds Or It's FREE' capture 2 benefits en single phrase · Walking on Air emotional + 90-day money back guarantee risk-free. Variant CTA 'SAVE UP TO 60% TODAY' price-driven secondaire.",
+      "category": "cta_pattern",
+      "source": "trendtrack-enrich-brand v1.0.0 · Step 4 Pattern 5 CTA patterns",
+      "confidence": 0.95,
+      "captured_at": "2026-05-16T20:00:00Z",
+      "cross_refs": {
+        "benefit_refs": ["Walking on Air", "Daily wearability sans friction"],
+        "objection_ids": ["OBJ-07"]
+      }
+    },
+    {
+      "learning_id": "LRN-0004",
+      "formulation": "Geo focus paid social Stepprs · EU heavy (DE main · GB IT ES RO Top 5 countries) · pas US prioritaire malgré target_geo annoncé US/UK/EU. Pattern scale via geo duplication single hero ad.",
+      "category": "geo_strategy",
+      "source": "trendtrack-enrich-brand v1.0.0 · Step 4 Pattern 2 geo distribution",
+      "confidence": 0.9,
+      "captured_at": "2026-05-16T20:00:00Z",
+      "cross_refs": {}
+    },
+    {
+      "learning_id": "LRN-0005",
+      "formulation": "Targeting demographic broad · 18+ age · gender null (no filter) · pain-based filtering naturel via copy verbatim (plantar fasciitis · 10-hour shifts · work boots). Pas narrow age 45+ comme audience chronic-pain-45 canon suggérerait.",
+      "category": "targeting_strategy",
+      "source": "trendtrack-enrich-brand v1.0.0 · Step 4 Pattern 7 targeting demographic",
+      "confidence": 0.85,
+      "captured_at": "2026-05-16T20:00:00Z",
+      "cross_refs": {
+        "audience_slugs": ["workers-shifts", "chronic-pain-45"]
+      }
+    },
+    {
+      "learning_id": "LRN-0006",
+      "formulation": "Creative format split image + video balanced (50/50 sur 30 ads sampled) · pas dominance claire. Production split equilibré · test both formats systematically.",
+      "category": "creative_format",
+      "source": "trendtrack-enrich-brand v1.0.0 · Step 4 Pattern 4 creative format split",
+      "confidence": 0.8,
+      "captured_at": "2026-05-16T20:00:00Z",
+      "cross_refs": {}
+    },
+    {
+      "learning_id": "LRN-0007",
+      "formulation": "Landing pages diversity · 4 variants test funnels rotation · /pages/review-3-1 · /pages/review-3-3 · /pages/review-3-5 · /products/massage. Pattern A/B test pages review-themed advertorial funnel.",
+      "category": "funnel_strategy",
+      "source": "trendtrack-enrich-brand v1.0.0 · Step 4 Pattern 6 landing pages diversity",
+      "confidence": 0.9,
+      "captured_at": "2026-05-16T20:00:00Z",
+      "cross_refs": {}
+    },
+    {
+      "learning_id": "LRN-0008",
+      "formulation": "Trustpilot 3.4/5 sur 2127 reviews · réalité plus mitigée que claim site 4.8/5. Validates objection scepticism #1 (OBJ-02 · OBJ-07) fondée · audiences chronic-pain-45 méfiance multi-insoles failed pertinente.",
+      "category": "trust_signal",
+      "source": "trendtrack-enrich-brand v1.0.0 · Step 2 shop profile trustpilot data",
+      "confidence": 0.95,
+      "captured_at": "2026-05-16T20:00:00Z",
+      "cross_refs": {
+        "objection_ids": ["OBJ-02", "OBJ-07"]
+      }
+    }
+  ]
+}

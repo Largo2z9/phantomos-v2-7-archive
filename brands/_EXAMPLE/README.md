@@ -64,3 +64,24 @@ Chaque fichier porte ·
 - **Doctrine territoire substrat** · `docs/system/territory-discipline.md`
 - **Doctrine progressive-cartography** · `docs/system/progressive-cartography-discipline.md`
 - **Catalogue skills canon** · `.skills/README.md` + `.skills/_manifest.json`
+
+## Canon vs réel · data TrendTrack live (2026-05-16)
+
+Ce `_EXAMPLE` mélange canon pédagogique max-richesse (7 angles diversifiés · 2 audiences hiérarchiques · etc.) ET data réelles sourced TrendTrack API live (skill `trendtrack-enrich-brand` v1.0.0). Les deux ont leur valeur ·
+
+**Canon vitrine** (audiences hiérarchiques · 7 angles distincts · 4 arbres compositional cartography) montre les POSSIBILITÉS structurelles que PhantomOS encode.
+
+**Réel Stepprs paid** (capté via TrendTrack API · ad sample 30 ads cross longest+newest+reach) montre le PATTERN OBSERVÉ d'un brand 2 ans mature ·
+- 1 narrative hero (Michelle plantar fasciitis + 10h shifts work boots) répliqué cross-geo · pas 7 angles distincts
+- Audiences workers + chronic COMBINÉES en single ad copy (pas séparées)
+- Targeting 18+ broad · pain-based filtering via copy naturel (pas narrow 45+ demographic)
+- Geo focus EU heavy (DE main) · pas US prioritaire malgré annonce
+- CTA "Walk on Clouds Or It's FREE" capture 2 benefits en single phrase
+- Landing variants /pages/review-3-x test funnels advertorial rotation
+- Trustpilot 3.4/5 (pas 4.8 site claim) · réalité plus mitigée · justifie objections scepticism canon
+
+**Implication pédagogique** · canon = ce que tu PEUX cartographier · réel = ce que les top performers FONT vraiment. Tes premières productions paid peuvent commencer simple (1 angle hero cross-audience) puis diversifier au fil des learnings · pas l'inverse.
+
+Plus skill `trendtrack-enrich-brand` v1.0.0 v2.69 · enrichis tout brand existing avec data live (chain lookup → shop profile → ads sample 3 queries → 8 patterns analysés). Pattern reproductible cross spy tools (Foreplay · Atria · Meta Ad Library · BigSpy · etc.) via NEW skills mirror.
+
+8 patterns captured dans `learnings.json` post-enrichment Stepprs · ranked confidence · cross-refs canonical PNT/OBJ/ANG/mechanisms/benefits.
