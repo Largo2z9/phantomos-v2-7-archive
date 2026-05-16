@@ -1,8 +1,10 @@
 ---
 name: scaffold-extension
 type: orchestrator
-version: "1.2.0"
+version: "1.3.0"
 recommended_model: sonnet
+patch_notes:
+  v1.3.0: "v2.75.0 Phase 9 register-and-flag enrichie · NEW consumable_by field auto-detection · scaffold-extension v1.3.0+ register NEW entity avec liste enum orchestrateurs production consommables (creative-brief-composer · score-matrix · produce-paid-matrix · build-atlas-complete) selon entity_type + scope + data_shape · operator validation gate AskUserQuestion accept OR adjust manually. Cross-ref doctrine canon extension-discovery-discipline.md v2.75.0 NEW. Backward compat strict additif · consumable_by champ optional · legacy v1.2.0 NEW entities sans consumable_by still registered mais pas auto-discovery (manual patch nécessaire si consumption later)."
 layer: meta
 reasoning_pattern: null
 description: >
@@ -190,9 +192,85 @@ If the intent includes a skill that populates the extension (common for scrapers
 
 Skipped if the operator does not need a populating skill (manual-only tracking, pure sidecar enrichment).
 
-### Phase 9 — `register-and-flag`
+### Phase 9 · `register-and-flag` (enrichie v1.3.0)
 
-For custom entities : add an entry to `index.json → extensions[]` via `.skills/write-to-context.py`, with `type`, `scope` (brand|operator|workspace), `schema` path (resolved per scope), `cross_refs`, `owner_skill`, `registered_at`. For sidecars : skip (sidecars are convention-discovered, not registered, see `docs/system/extending.md`).
+Register NEW entity dans manifest workspace · `_extensions.json` (operator scope) OR `brands/{slug}/extensions.json` (brand scope) OR `_manifest.json#extensions` (workspace scope) selon Phase 1 scope.
+
+**9.a · Register entity metadata** (existing v1.2.0)
+
+For custom entities : add an entry to `index.json → extensions[]` via `.skills/write-to-context.py`, with `type`, `scope` (brand|operator|workspace), `schema` path (resolved per scope), `cross_refs`, `owner_skill`, `registered_at`, `entity_id`, `data_shape`, `file_path`. For sidecars : skip (sidecars are convention-discovered, not registered, see `docs/system/extending.md`).
+
+**9.b · `consumable_by` auto-detection (NEW v1.3.0)**
+
+Détermine quels orchestrateurs production peuvent consommer cette NEW entity via discovery hook.
+
+Algorithm auto-detection ·
+
+Q1 · `entity_type` matche quel orchestrateur production canon ?
+- `creative_entity` (e.g. video-script · podcast-script · static-ad) → creative-brief-composer · score-matrix · build-atlas-complete
+- `audience_entity` (e.g. niche-audience · proxy-audience) → all 4 orchestrateurs
+- `angle_entity` (e.g. unique-angle · positioning-variant) → score-matrix · produce-paid-matrix · creative-brief-composer · build-atlas-complete
+- `brief_entity` (e.g. brand-brief · creative-brief-variant) → creative-brief-composer · build-atlas-complete
+- `territory_entity` (e.g. emerging-territory · niche-territory) → produce-paid-matrix · build-atlas-complete
+- `product_entity` (e.g. NEW product type beyond canon spec) → build-atlas-complete
+- `friction_entity` (e.g. NEW friction usage pattern) → build-atlas-complete
+- `other` → empty consumable_by (operator validation gate manual flag if applicable)
+
+Q2 · `scope` (brand/operator/workspace) limite-t-il quels orchestrateurs ?
+- `brand_only` orchestrateurs (score-matrix · produce-paid-matrix · creative-brief-composer) compatible avec entity scope `brand` OU `workspace`
+- `cross_brand` orchestrateurs (build-atlas-complete OK toutes scopes)
+- `operator` scope entity · limited consume (rare cas spécifique)
+
+Q3 · `data_shape` (instance-per-item / aggregate / time-series) compatible quel pattern orchestrateur ?
+- `instance-per-item` · standard · OK all orchestrateurs
+- `aggregate` · OK score-matrix · build-atlas-complete (consume aggregates)
+- `time-series` · limited consumers · check case par case (default empty consumable_by)
+
+**Output proposed** · liste enum `consumable_by` calculée auto via Q1+Q2+Q3.
+
+**9.c · Operator validation gate (AskUserQuestion)**
+
+Surface à l'opérateur ·
+
+```
+══════════════════════════════════════════════════════════════════════
+NEW ENTITY · {entity_id} register · consumable_by proposed
+══════════════════════════════════════════════════════════════════════
+
+Le système propose que cette NEW entity puisse être consommée
+automatiquement par ces orchestrateurs production ·
+
+  ✓ creative-brief-composer (production briefs · variants visuels)
+  ✓ score-matrix (scoring audience × angle)
+  ✓ build-atlas-complete (pipeline atlas complet)
+
+Tu veux ·
+  A · Accepter proposed (3 orchestrateurs auto-consume next invocation)
+  B · Ajuster manuellement (sélectionner sous-set OR ajouter autre)
+  C · Skip · register sans consumable_by (NEW entity registered mais pas auto-discovery)
+```
+
+Operator choice via AskUserQuestion · Path A accept · Path B adjust subset · Path C skip empty.
+
+**9.d · Persist consumable_by dans registry**
+
+Final registry entry ·
+
+```json
+{
+  "entity_id": "video-script-001",
+  "entity_type": "creative_entity",
+  "scope": "brand",
+  "data_shape": "instance-per-item",
+  "consumable_by": ["creative-brief-composer", "score-matrix", "build-atlas-complete"],
+  "file_path": "brands/{slug}/custom/video-scripts/{id}.json",
+  ...
+}
+```
+
+Cross-ref doctrine canon · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
+
+**9.e · Flag adoption todos**
 
 Add a flag entry to track adoption of the new extension (first data capture, first query) :
 
@@ -240,13 +318,29 @@ On halt, write nothing. The workspace remains in its previous state. Resume is p
 - One thread question per turn across all phases.
 - Voice canon 100%. No triple-parallel, no coach-phrase, no decorative metaphor.
 
+### HR-consumable-1 · consumable_by auto-detection + operator gate (NEW v1.3.0)
+
+Toute NEW entity registered via scaffold-extension v1.3.0+ Phase 9 DOIT inclure 
+`consumable_by` field avec liste enum orchestrateurs production proposés via 
+auto-detection (Q1 entity_type + Q2 scope + Q3 data_shape) ET validé par 
+operator gate AskUserQuestion (accept · adjust · skip). 
+
+Backward compat · NEW entities scaffolded pré-v1.3.0 (v1.2.0 legacy) sans 
+`consumable_by` field still registered fonctionnellement mais pas 
+auto-discovery downstream · l'opérateur peut patcher manuellement registry 
+entry pour ajouter consumable_by post-hoc.
+
+Cross-ref · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
+
 ---
 
 ## Related canon
 
-- `docs/system/extending.md` — extension layer architecture, three governance rules.
-- `docs/system/patterns.md § Skill Taxonomy` — type definitions.
-- `docs/system/agent-contracts.md` — mutation gate rules.
-- `brands/_TEMPLATE/custom/_EXAMPLE/competitor_pricing/` — canonical reference example.
-- `.skills/skills/validate-resources/SKILL.md § Checks 15-18` — post-write integrity checks.
-- `.skills/skills/build-agent/SKILL.md` — delegates here for simple extension intents.
+- `docs/system/extending.md` · extension layer architecture, three governance rules.
+- `docs/system/patterns.md § Skill Taxonomy` · type definitions.
+- `docs/system/agent-contracts.md` · mutation gate rules.
+- `brands/_TEMPLATE/custom/_EXAMPLE/competitor_pricing/` · canonical reference example.
+- `.skills/skills/validate-resources/SKILL.md § Checks 15-18` · post-write integrity checks.
+- `.skills/skills/build-agent/SKILL.md` · delegates here for simple extension intents.
+- `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (doctrine canon consumable_by + extension_hooks)
+- 4 orchestrateurs production v2.75.0 downstream consumers (creative-brief-composer · score-matrix · produce-paid-matrix · build-atlas-complete)

@@ -1,0 +1,51 @@
+{
+  "$comment": "EXEMPLE pédagogique · Extensions Registry du cas canonique Stepprs · NEW entities scaffolded via scaffold-extension v1.3.0+ · consumable_by enum proposed par auto-detection Phase 9.b + operator validation gate 9.c. Doctrine canon · extension-discovery-discipline.md v2.75.0. NE PAS MODIFIER. Vitrine canon · 2 entries démonstratifs représentatifs des patterns courants.",
+  "_schema": "extensions_registry",
+  "_version": "1.0",
+  "scope": "brand",
+  "scope_target": "_EXAMPLE",
+  "extensions": [
+    {
+      "entity_id": "video-script-001",
+      "entity_type": "creative_entity",
+      "scope": "brand",
+      "data_shape": "instance-per-item",
+      "consumable_by": [
+        "creative-brief-composer",
+        "score-matrix",
+        "build-atlas-complete"
+      ],
+      "schema_path": "brands/_EXAMPLE/custom/video-scripts/schema.json",
+      "instance_path_pattern": "brands/_EXAMPLE/custom/video-scripts/{id}.json",
+      "owner_skill": null,
+      "cross_refs": [
+        {"field": "audience_slug", "target": "audiences"},
+        {"field": "angle_ref", "target": "angles"},
+        {"field": "product_ref", "target": "products"}
+      ],
+      "scaffolded_at": "2026-05-16T20:00:00Z",
+      "scaffolded_by_skill_version": "scaffold-extension v1.3.0",
+      "_comment": "NEW entity scaffolded via demande opérateur · ajouter capacité génération script vidéo IA pour Meta/TikTok ads · entity_type creative_entity · scope brand-only (spécifique à Stepprs) · data_shape instance-per-item (1 script par instance) · auto-detection Phase 9.b a proposé creative-brief-composer + score-matrix + build-atlas-complete (3 orchestrateurs production canon-compatibles avec creative_entity) · operator a accepté Phase 9.c Path A · entity registered avec consumable_by enum complet."
+    },
+    {
+      "entity_id": "reddit-voc-pattern-001",
+      "entity_type": "audience_entity",
+      "scope": "brand",
+      "data_shape": "aggregate",
+      "consumable_by": [
+        "build-atlas-complete",
+        "score-matrix"
+      ],
+      "schema_path": null,
+      "instance_path_pattern": "brands/_EXAMPLE/custom/reddit-voc-patterns/{id}.json",
+      "owner_skill": "mine-voc-reddit",
+      "cross_refs": [
+        {"field": "audience_slug", "target": "audiences"},
+        {"field": "pain_point_refs", "target": "pain_points"}
+      ],
+      "scaffolded_at": "2026-05-16T20:30:00Z",
+      "scaffolded_by_skill_version": "scaffold-extension v1.3.0",
+      "_comment": "NEW entity scaffolded pour tracker patterns VoC mining Reddit r/nursing (workers-shifts audience) · entity_type audience_entity (enrichit audience cartography existing) · scope brand-only · data_shape aggregate (statistiques cross-instances) · auto-detection Phase 9.b a proposé build-atlas-complete + score-matrix (2 orchestrateurs compatibles avec audience_entity aggregate) · operator a accepté Phase 9.c Path A · owner_skill custom mine-voc-reddit (NEW skill scaffolded en parallèle pour populer)."
+    }
+  ]
+}

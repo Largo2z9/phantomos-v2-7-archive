@@ -319,6 +319,22 @@ The extension layer ships production-ready for V1 with the following known limit
 
 **Skill trigger collisions.** Past twenty-plus custom skills, the harness trigger-matching becomes non-deterministic when two skills declare overlapping trigger phrases. Namespacing (`custom:skill-name`) is planned. Until then, keep custom skill count bounded and triggers specific.
 
+## Position post-v2.75.0 · NEW canon paths (SUPERSEDED legacy)
+
+À partir de v2.75.0, le registry extensions canon n'écrit PLUS dans `index.json → extensions[]` (legacy convention v2.0+). NEW canon paths · `_extensions.json` scope-routed per scope ·
+
+- **brand scope** · `brands/{slug}/_extensions.json`
+- **operator scope** · `operator/_extensions.json`
+- **workspace scope** · `resources/_extensions.json`
+
+Schema canon · `resources/schemas/extensions-registry.schema.json` v1.0.
+
+NEW field canon · `consumable_by` enum (orchestrateurs production v2.75.0 · build-atlas-complete · score-matrix · produce-paid-matrix · creative-brief-composer) qui permet auto-discovery via extension_hooks frontmatter + Step 0 DRGFP Manifest Registry Scan dans orchestrateurs production.
+
+Doctrine canon NEW v2.75.0 · `docs/system/extension-discovery-discipline.md`.
+
+**Legacy `index.json → extensions[]`** · SUPERSEDED v2.75.0. Backward compat preserved en lecture pendant transition (register-and-flag v1.1.0 fallback read si NEW canon absent ET legacy present). Forward writes uniquement vers NEW canon paths. Migration manuelle legacy → NEW canon · backlog v2.76+ si opérateur a entries legacy persisting.
+
 ## Related canon
 
 - `lexicon.md § Method — the encoding discipline` — definitions of extension, custom entity, sidecar schema, core vs custom namespace.

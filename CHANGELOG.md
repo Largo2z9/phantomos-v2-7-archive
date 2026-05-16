@@ -7,6 +7,49 @@
 
 ---
 
+## v2.75.0 · 2026-05-16 · Sprint majeur · extension-discovery-discipline · auto-consume NEW entities
+
+**Why** · v2.72.0 Patch 5 audit READ-ONLY a flaggé gap structurel · 4 orchestrateurs production (score-matrix · produce-paid-matrix · creative-brief-composer · build-atlas-complete) hard-coded entity types · zéro lecture manifest runtime · NEW entities scaffolded via scaffold-extension v1.2.0 registered correctement mais NOT auto-consumed. Sprint dédié 8-10h estimé. Largo a explicitement demandé "gros chantier". 6 agents parallèle 2 waves.
+
+**What** · 7 blocs livrés ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · NEW doctrine canon `extension-discovery-discipline.md`** | 357L · 13 sections canon-style · formalise contrat extension_hooks frontmatter + manifest registry scan Step 0 DRGFP + consumable_by enum auto-detection · sister SED-X + territory + op-system master 5 couches | Grammaire canon NEW pour auto-consume NEW entities · contrat explicit cross-skill |
+| **2 · `extension_hooks` + Step 0 DRGFP sur 4 orchestrateurs production** | `score-matrix` v1.2.0 (3 types) · `produce-paid-matrix` v1.3.0 (3 types) · `creative-brief-composer` v1.3.0 (4 types) · `build-atlas-complete` v1.5.0 (7 types atlas complet) | Auto-consume NEW entities runtime · zéro patch manuel · cross-skill discovery |
+| **3 · `scaffold-extension` v1.2.0 → v1.3.0 · Phase 9 enrichie** | NEW 9.b consumable_by auto-detection (Q1 entity_type + Q2 scope + Q3 data_shape) + 9.c operator validation gate AskUserQuestion + 9.d persist registry · NEW HR-consumable-1 | Auto-detection consumable_by au scaffold · operator validation systematic · backward compat preserved |
+| **4 · `register-and-flag` v1.0.0 → v1.1.0** | Route writes vers NEW canon `{scope}/_extensions.json` scope-routed · pas `index.json → extensions[]` legacy · idempotent · backward compat read fallback transition | Registry physique aligné NEW canon · pattern EXTEND > SIBLING |
+| **5 · NEW schema `extensions-registry.schema.json` v1.0** | Draft-07 · 8 entity_type enum + 4 consumable_by enum + required props strict | Schema canon registry physique en place |
+| **6 · NEW exemple `brands/_EXAMPLE/_extensions.json`** | 2 entries démonstratives Stepprs (video-script-001 creative_entity + reddit-voc-pattern-001 audience_entity aggregate) · vitrine canon registry pattern + auto-detection résultats | Pattern canon registry rendu tangible via cas Stepprs · pédagogique |
+| **7 · Reconciliation `extending.md` doctrine** | NEW section "Position post-v2.75.0 · NEW canon paths (SUPERSEDED legacy)" · marker legacy `index.json → extensions[]` SUPERSEDED · backward compat fallback documented · migration manuelle backlog v2.76+ | Cohérence doctrine canon · drift triple résolu |
+
+**Pattern canon introduit** · `SYSTÈME OPÉRATIONNEL EXTENSIBLE = scaffold (ECR méthodologie v2.71+v2.72) × register (consumable_by auto-detection v2.75) × discovery (extension_hooks + Step 0 DRGFP v2.75) × consume (orchestrateurs production v2.75)`. Pipeline canon end-to-end · NEW entity scaffolded → registered avec consumable_by → orchestrateurs production scan manifest → consume automatiquement next invocation · pas de patch manuel · pas de friction runtime.
+
+**Anti-pattern canonisé** · Extension dead-end (NEW entity scaffolded mais orphan orchestrateurs production hard-coded). v2.75.0 ferme ce gap structurel canon.
+
+**Backward compat strict additif** · 7 patches · zero override fonctionnel · `extension_hooks` frontmatter default empty (legacy v2.74.x preserved) · `consumable_by` optional (legacy NEW entities pré-v2.75 still registered fonctionnellement) · `register-and-flag` v1.1.0 backward compat read fallback `index.json → extensions[]` legacy pendant transition · skills count 70 → 70 (zero new skill · 5 skills existing patchés) · doctrines canon 12 → 13 (NEW extension-discovery-discipline) · slash commands 5 → 5.
+
+**Files patched** ·
+- `docs/system/extension-discovery-discipline.md` NEW 357L
+- `.skills/skills/score-matrix/SKILL.md` v1.1.1 → v1.2.0
+- `.skills/skills/produce-paid-matrix/SKILL.md` v1.2.0 → v1.3.0
+- `.skills/skills/creative-brief-composer/SKILL.md` v1.2.0 → v1.3.0
+- `.skills/skills/build-atlas-complete/SKILL.md` v1.4.0 → v1.5.0
+- `.skills/skills/scaffold-extension/SKILL.md` v1.2.0 → v1.3.0
+- `.skills/skills/register-and-flag/SKILL.md` v1.0.0 → v1.1.0
+- `resources/schemas/extensions-registry.schema.json` NEW v1.0
+- `brands/_EXAMPLE/_extensions.json` NEW
+- `docs/system/extending.md` NEW section "Position post-v2.75.0"
+- `_version.json` 2.74.1 → 2.75.0
+- `CHANGELOG.md` v2.75.0 entry (this entry)
+- `docs/internal/releases/manifest/2.75.0-manifest.json` NEW
+
+**D#421 captured** · `decisions.md` PhantomOS · v2.75.0 sprint majeur extension-discovery-discipline · gap structurel auto-consume NEW entities orchestrateurs production fermé end-to-end.
+
+**Backlog v2.76+ identifié** · migration manuelle entries legacy `index.json → extensions[]` (si opérateurs en ont) vers NEW canon `_extensions.json` · pattern reproductible cross brands canon futures · skills mirror Market Intelligence Layer (foreplay · atria · etc.) avec auto-discovery extension_hooks · doctrine `bridge-tool-discipline.md` sister SED-X.
+
+---
+
 ## v2.74.1 · 2026-05-16 · Patch cleanup complet · 3 axes parallèle (doublons Stepprs + refs canon + em-dash sweep)
 
 **Why** · Largo a explicitement demandé "fais les résidus parasites · CLEAN TOUT" post-v2.74.0. 3 backlogs identifiés audit v2.74.0 Patch 4 + audit hygiène v2.72.x · doublons Stepprs accessibilité + refs canon paths cassées + em-dash legacy residuels. Sprint patch fusionné v2.74.1 · 3 agents parallèle scope disjoint.

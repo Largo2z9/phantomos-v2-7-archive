@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Extensions Registry",
+  "description": "Registry per-scope (brand · operator · workspace) des NEW entities scaffolded via scaffold-extension v1.3.0+ · permet auto-consume par orchestrateurs production via extension_hooks frontmatter + manifest registry scan Step 0 DRGFP. Doctrine canon · extension-discovery-discipline.md v2.75.0.",
+  "type": "object",
+  "required": ["_schema", "_version", "scope", "extensions"],
+  "properties": {
+    "_schema": {
+      "type": "string",
+      "const": "extensions_registry"
+    },
+    "_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["brand", "operator", "workspace"]
+    },
+    "scope_target": {
+      "type": "string",
+      "description": "Brand slug si scope=brand · 'operator' si scope=operator · 'workspace' si scope=workspace"
+    },
+    "$comment": {
+      "type": "string"
+    },
+    "extensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["entity_id", "entity_type", "scope", "data_shape", "consumable_by", "scaffolded_at"],
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "entity_type": {
+            "type": "string",
+            "enum": [
+              "audience_entity",
+              "angle_entity",
+              "creative_entity",
+              "brief_entity",
+              "territory_entity",
+              "product_entity",
+              "friction_entity",
+              "other"
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "enum": ["brand", "operator", "workspace"]
+          },
+          "data_shape": {
+            "type": "string",
+            "enum": ["instance-per-item", "aggregate", "time-series"]
+          },
+          "consumable_by": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "build-atlas-complete",
+                "score-matrix",
+                "produce-paid-matrix",
+                "creative-brief-composer"
+              ]
+            },
+            "description": "Orchestrateurs production qui consomment cette entity automatiquement via extension_hooks frontmatter + Step 0 DRGFP scan. Auto-detection scaffold-extension v1.3.0 Phase 9.b puis operator validation gate 9.c."
+          },
+          "schema_path": {
+            "type": ["string", "null"],
+            "description": "Path optionnel vers schema JSON dédié si custom"
+          },
+          "instance_path_pattern": {
+            "type": "string",
+            "description": "Pattern chemin instances · e.g. brands/{slug}/custom/video-scripts/{id}.json"
+          },
+          "owner_skill": {
+            "type": ["string", "null"],
+            "description": "Skill custom qui possède le scaffold OR null si scaffold-extension générique"
+          },
+          "cross_refs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["field", "target"],
+              "properties": {
+                "field": {"type": "string"},
+                "target": {"type": "string"}
+              }
+            }
+          },
+          "scaffolded_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "scaffolded_by_skill_version": {
+            "type": "string",
+            "description": "e.g. scaffold-extension v1.3.0"
+          },
+          "_comment": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.75.0",
+  "released_at": "2026-05-16",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 70,
+  "skills_count_after": 70,
+  "slash_commands_count_before": 5,
+  "slash_commands_count_after": 5,
+  "doctrines_count_before": 12,
+  "doctrines_count_after": 13,
+  "summary": "Sprint majeur v2.75.0 · extension-discovery-discipline · auto-consume NEW entities orchestrateurs production · 6 agents parallèle 2 waves.",
+  "patches": [
+    {
+      "id": 1,
+      "name": "NEW doctrine extension-discovery-discipline",
+      "file": "docs/system/extension-discovery-discipline.md",
+      "size_lines": 357,
+      "type": "doctrine_canon_new"
+    },
+    {
+      "id": 2,
+      "name": "extension_hooks + Step 0 DRGFP · 4 orchestrateurs production",
+      "patches": [
+        {"file": ".skills/skills/score-matrix/SKILL.md", "v_before": "1.1.1", "v_after": "1.2.0", "extension_hooks": ["audience_entity", "angle_entity", "creative_entity"]},
+        {"file": ".skills/skills/produce-paid-matrix/SKILL.md", "v_before": "1.2.0", "v_after": "1.3.0", "extension_hooks": ["audience_entity", "angle_entity", "territory_entity"]},
+        {"file": ".skills/skills/creative-brief-composer/SKILL.md", "v_before": "1.2.0", "v_after": "1.3.0", "extension_hooks": ["creative_entity", "brief_entity", "audience_entity", "angle_entity"]},
+        {"file": ".skills/skills/build-atlas-complete/SKILL.md", "v_before": "1.4.0", "v_after": "1.5.0", "extension_hooks": ["audience_entity", "angle_entity", "creative_entity", "brief_entity", "territory_entity", "product_entity", "friction_entity"]}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "scaffold-extension v1.2.0 → v1.3.0 Phase 9 enrichie",
+      "file": ".skills/skills/scaffold-extension/SKILL.md",
+      "v_before": "1.2.0",
+      "v_after": "1.3.0",
+      "changes": [
+        "Phase 9 enrichie · 9.b consumable_by auto-detection (Q1 entity_type + Q2 scope + Q3 data_shape)",
+        "9.c operator validation gate AskUserQuestion paths A/B/C",
+        "9.d persist registry JSON example",
+        "NEW HR-consumable-1 (auto-detection + operator gate obligatoires)"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "register-and-flag v1.0.0 → v1.1.0",
+      "file": ".skills/skills/register-and-flag/SKILL.md",
+      "v_before": "1.0.0",
+      "v_after": "1.1.0",
+      "changes": [
+        "Route writes vers NEW canon `{scope}/_extensions.json` scope-routed",
+        "Pas `index.json → extensions[]` legacy",
+        "Idempotent · backward compat read fallback pendant transition"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "NEW schema extensions-registry.schema.json",
+      "file": "resources/schemas/extensions-registry.schema.json",
+      "version": "1.0",
+      "type": "schema_new",
+      "scope": "Draft-07 · 8 entity_type enum + 4 consumable_by enum + required props strict"
+    },
+    {
+      "id": 6,
+      "name": "NEW exemple Stepprs _extensions.json",
+      "file": "brands/_EXAMPLE/_extensions.json",
+      "type": "example_new",
+      "entries": [
+        "video-script-001 creative_entity instance-per-item consumable_by [creative-brief-composer, score-matrix, build-atlas-complete]",
+        "reddit-voc-pattern-001 audience_entity aggregate consumable_by [build-atlas-complete, score-matrix]"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Reconciliation extending.md doctrine",
+      "file": "docs/system/extending.md",
+      "change": "NEW section 'Position post-v2.75.0 · NEW canon paths (SUPERSEDED legacy)' · marker legacy index.json#extensions SUPERSEDED · backward compat fallback documented · migration manuelle backlog v2.76+"
+    }
+  ],
+  "doctrinal_patterns_introduced": [
+    "Pipeline canon end-to-end auto-consume NEW entities · scaffold (ECR) × register (consumable_by auto-detection) × discovery (extension_hooks + Step 0 DRGFP) × consume (orchestrateurs production)",
+    "extension_hooks frontmatter pattern · liste enum entity types acceptés via discovery au-delà du hard-coded canon",
+    "consumable_by enum auto-detection scaffold-extension Phase 9.b · Q1 entity_type + Q2 scope + Q3 data_shape"
+  ],
+  "anti_patterns_canonized": [
+    "Extension dead-end · NEW entity scaffolded mais orphan orchestrateurs production hard-coded · fermé v2.75.0",
+    "Hard-coded entity types frontmatter sans hook canon discovery · violation extension-discovery-discipline",
+    "Discovery sans validation gate · NEW entity consumed runtime sans operator awareness · prévenu v2.75.0 via 9.c operator gate"
+  ],
+  "decisions_captured": ["D#421"],
+  "backlog_v276": [
+    "Migration manuelle entries legacy index.json → extensions[] vers NEW canon _extensions.json (si opérateurs en ont)",
+    "Pattern reproductible cross brands canon futures (foreplay-enrich-brand · atria · etc. avec auto-discovery extension_hooks)",
+    "Doctrine NEW bridge-tool-discipline.md sister SED-X"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.75.0 = git revert HEAD strict · 7 patches retirables independently · scaffold-extension retour v1.2.0 · 4 orchestrateurs Step 0 retirables · register-and-flag retour v1.0.0 · schema + exemple files delete · doctrine NEW file delete · extending.md section additive retirable · doctrines canon 13 → 12 · skills count 70 → 70 inchangé"
+}

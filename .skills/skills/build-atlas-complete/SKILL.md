@@ -1,7 +1,7 @@
 ---
 name: build-atlas-complete
 type: orchestrator
-version: "1.4.0"
+version: "1.5.0"
 recommended_model: sonnet
 reasoning_pattern: null
 mode: proposed
@@ -9,6 +9,14 @@ operator_facing: true
 subagent_safe: false
 isolation_scope: brand_only
 layer: territoire
+extension_hooks:
+  - audience_entity
+  - angle_entity
+  - creative_entity
+  - brief_entity
+  - territory_entity
+  - product_entity
+  - friction_entity
 description: >
   v1.4.0 (v2.68 progressive cartography refactor) · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot-brand · gate intermédiaire 1 · Phase 3 map-audiences hiérarchique parent/enfants · gate intermédiaire 2 · Phase 4 mine-voc + profile-audience enrichissement per audience). Mode `--fast-track` opérateur expert bypass gates auto-validate (opt-in flag OR config `auto_validate_after_n_brands` true). Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0 où gates étaient Gate A audiences + Gate B angles seulement). Cross-ref doctrine `docs/system/progressive-cartography-discipline.md` NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs light · fast-track flag opt-in default off · gates A+B angles preserved après Phase 4).
   v1.3.0 (v2.67 territoire-pure refactor) · Steps 8-9 stripped (produce-copy-brief + compose-creative) · align doctrine `docs/system/territory-discipline.md` shipped v2.67. Orchestrator scope = territoire substrat only · productions briefs+créas via `creative-brief-composer` post-atlas downstream (separate skill, separate invocation). Output explicite · complete strategic atlas substrate (specs + offers + audiences + angles + territoires scorés). BREAKING · operators v1.x qui invoquaient pour briefs+créas doivent invoquer `creative-brief-composer` post-`build-atlas-complete`. Migration documentée CHANGELOG v2.67.0. Backward compat strict additif sur Steps 1-7 unchanged (territoire chain preserved).
@@ -87,6 +95,8 @@ disambiguates_against:
   profile-audience: "route to profile-audience standalone when operator wants audiences only, not the full strategic atlas."
   score-matrix: "route to score-matrix standalone when atlas is already populated and operator wants only territory prioritization."
 patch_notes:
+  v1.5.0:
+    - "v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-discipline.md NEW v2.75.0."
   v1.4.0:
     - "v2.68 progressive cartography refactor · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot · gate · Phase 3 map-audiences · gate · Phase 4 mine-voc + profile-audience). Mode --fast-track opérateur expert bypass gates auto-validate. Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0). Cross-ref progressive-cartography-discipline.md NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs · mode flag opt-in)."
   v1.3.0:
@@ -181,6 +191,25 @@ Chairman orchestrating a territoire substrate pipeline that produces the complet
 - Phase 3 (deepen) returns thin material (no Reddit, no Trustpilot reviews available) → flag as "Inconnu" in final synthesis, propose `mine-voc` ticket as Lever.
 - Gate A or B operator rejects all proposals → pause pipeline, route to standalone `profile-audience` or `produce-paid-angles` for manual rework, do not silently kill chain.
 - Phase 7 (score-matrix) finds zero viable axe créatif → surface honestly, propose alternative routes (expand audiences, re-mine VoC for missed angles).
+
+---
+
+### Step 0 · DRGFP Manifest Registry Scan (NEW v2.75.0)
+
+Pre-flight discovery NEW entities scaffolded via scaffold-extension v1.2.0+ · 
+scan `_extensions.json` OR `_manifest.json#extensions` pour entities avec 
+`consumable_by: [{skill_name}]` matching CE skill.
+
+Pour chaque NEW entity registered matching extension_hooks frontmatter ·
+- Match `entity_type` ∈ frontmatter `extension_hooks` enum
+- Match `consumable_by` field registry contains `{skill_name}` 
+- Include NEW entity dans inputs Phase 1 pipeline ci-dessous
+- Output enrichi avec lineage extension consommée dans atome_irreductible
+
+Halt si NEW entity registered sans `consumable_by` field flagué (scaffold-extension v1.2.0 legacy) · 
+silent skip · pas error · l'opérateur peut patcher manuellement le scaffold-extension Phase 9 register-and-flag pour ajouter `consumable_by`.
+
+Cross-ref doctrine canon · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
 
 ---
 
@@ -549,6 +578,8 @@ Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeli
 - `docs/system/delegation-pattern.md` · model routing + parallel caps
 - `docs/system/contract-build.md` · Build mode rules + Orchestration gate
 - `docs/system/voice.md` · operator-facing prose canon (3 movements, no bold-section anchors on synthesis paragraphs)
+- `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
+- `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)
 
 ---
 

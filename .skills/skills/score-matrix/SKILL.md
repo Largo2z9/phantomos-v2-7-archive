@@ -1,6 +1,6 @@
 ---
 name: score-matrix
-version: 1.1.1
+version: 1.2.0
 type: producer
 isolation_scope: brand_only
 layer: territoire
@@ -8,6 +8,10 @@ recommended_model: sonnet
 subagent_safe: true
 mode: proposed
 operator_facing: true
+extension_hooks:
+  - audience_entity   # NEW audiences custom scaffolded
+  - angle_entity      # NEW angle types
+  - creative_entity   # NEW creative types (e.g. video-script)
 triggers_fr:
   - "score la matrice"
   - "priorise les territoires"
@@ -23,6 +27,7 @@ disambiguates_against:
   - weight-dimensions: "weight-dimensions calcule pondérations dimensions audience → angle (input). score-matrix CONSOMME ces weights pour scoring final matrice."
   - produce-paid-angles: "produce-paid-angles produit des angles individuels. score-matrix priorise les COMBINAISONS audience × angle."
 description: >
+  v1.2.0 (v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-discipline.md NEW v2.75.0.)
   v1.1.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (territoires-prioritisation). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
 consumes:
   - brands/{slug}/audiences/*/profile.json (sub-clusters)
@@ -66,6 +71,23 @@ Producer skill operator-facing. Clôt la Phase 3 doctrine cartographie. Consomme
 Cohérence cross-skill : sourcing weights précomputés via `weight-dimensions`, sources d'angle alignées canon V3 (`creative-formula.md`), compatibilité awareness verrouillée doctrine canonical-matrix-reasoning.
 
 ## Hard Rules
+
+### Step 0 · DRGFP Manifest Registry Scan (NEW v2.75.0)
+
+Pre-flight discovery NEW entities scaffolded via scaffold-extension v1.2.0+ · 
+scan `_extensions.json` OR `_manifest.json#extensions` pour entities avec 
+`consumable_by: [{skill_name}]` matching CE skill.
+
+Pour chaque NEW entity registered matching extension_hooks frontmatter ·
+- Match `entity_type` ∈ frontmatter `extension_hooks` enum
+- Match `consumable_by` field registry contains `{skill_name}` 
+- Include NEW entity dans inputs Phase 1 pipeline ci-dessous
+- Output enrichi avec lineage extension consommée dans atome_irreductible
+
+Halt si NEW entity registered sans `consumable_by` field flagué (scaffold-extension v1.2.0 legacy) · 
+silent skip · pas error · l'opérateur peut patcher manuellement le scaffold-extension Phase 9 register-and-flag pour ajouter `consumable_by`.
+
+Cross-ref doctrine canon · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
 
 ### Step 0bis · Prerequisite check (DRGFP v2.38)
 
@@ -240,5 +262,7 @@ Marquer 🔥 sur top 1 par ligne. `0` sur cellules vierges. Aucun em-dash dans t
 - `creative-formula.md` V3 · 5 sources d'angle canoniques colonnes matrice
 - `docs/system/canonical-matrix-reasoning.md` · cardinalité ≤ 5, awareness compatibility hard rule
 - `docs/system/skill-authoring-discipline.md` · frontmatter triad + lifecycle
+- `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
+- `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)
 - `produce-paid-angles` · downstream sur trous détectés
 - `produce-copy-brief` · downstream sur top territoire validé

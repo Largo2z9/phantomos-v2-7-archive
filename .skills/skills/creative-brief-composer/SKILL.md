@@ -1,7 +1,7 @@
 ---
 name: creative-brief-composer
 type: orchestrator
-version: "1.2.0"
+version: "1.3.0"
 recommended_model: sonnet
 subagent_safe: false
 mode: proposed
@@ -9,7 +9,13 @@ operator_facing: true
 isolation_scope: brand_only
 layer: production
 reasoning_pattern: null
+extension_hooks:
+  - creative_entity   # NEW creative types (e.g. video-script, podcast-script)
+  - brief_entity      # NEW brief structures custom
+  - audience_entity   # NEW audiences custom scaffolded
+  - angle_entity      # NEW angle types
 patch_notes:
+  v1.3.0: "v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-discipline.md NEW v2.75.0."
   v1.2.0: "v2.64 ontologie sémantique pure pain_points + objections sub-audience · cohérence consume frontmatter · chain produce-copy-brief v1.6 + compose-creative v1.6 lisent désormais audiences/{audience_slug}/pain_points/*.json + audiences/{audience_slug}/objections/*.json sub-audience canonical. Frontmatter consumes: enrichi avec paths NEW sub-audience. Pas de modification logique propre orchestrator (Phase 1-5 pipeline inchangé), juste cohérence frontmatter + sub-skills versions bumped consistent. Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved · sub-skills route transparent."
   v1.1.0: "v2.63 ontologie pure pain_points + objections collections top-level · cohérence consume frontmatter · chain produce-copy-brief v1.5 + compose-creative v1.5 lisent désormais pain_points/*.json + objections/*.json collections top-level (au lieu de profile.json sub-fields legacy). Frontmatter consumes: enrichi avec 2 paths NEW. Pas de modification logique propre orchestrator (Phase 1-5 pipeline inchangé), juste cohérence frontmatter + sub-skills versions bumped consistent. Backward compat lecture profile.pain_points[] + profile.objections[] legacy preserved · sub-skills route transparent selon disponibilité collections top-level vs profile sub-fields."
   v1.0.0: "v2.56 ship · résout gap orchestration Scenario 2 audit Phase 1. L'opérateur a sélectionné un angle prioritaire (via produce-paid-angles ou choix manuel) et veut matérialiser : brief structuré + 2-3 variants créa visuels Meta-ready. Chaîne produce-copy-brief → operator gate validate → compose-creative × N (parallèle ou séquentiel selon load). Orchestrateur pur, ne ré-implémente jamais la logique des sub-skills. Pattern Step 4-5 mirror onboard-brand (gate operator validate then push N variants). Cross-ref compositional-cartography.md §3 équation v3.1, investigation-posture.md output 5 sections."
@@ -137,6 +143,25 @@ Chairman orchestrating a 2-step pipeline with an operator gate in between. Narra
 - operator reject brief à Phase 3 → loop Phase 2 avec adjustments, max 2 retries avant escalate
 - compose-creative échoue sur un variant (endpoint nano-banana-2 retry exhausted) → continue avec N-1 variants, log gap en synthesis Phase 5
 - visual_identity absent ET operator pas autorisé fallback full_regen → hold, propose craft-packshot upstream
+
+---
+
+### Step 0 · DRGFP Manifest Registry Scan (NEW v2.75.0)
+
+Pre-flight discovery NEW entities scaffolded via scaffold-extension v1.2.0+ · 
+scan `_extensions.json` OR `_manifest.json#extensions` pour entities avec 
+`consumable_by: [{skill_name}]` matching CE skill.
+
+Pour chaque NEW entity registered matching extension_hooks frontmatter ·
+- Match `entity_type` ∈ frontmatter `extension_hooks` enum
+- Match `consumable_by` field registry contains `{skill_name}` 
+- Include NEW entity dans inputs Phase 1 pipeline ci-dessous
+- Output enrichi avec lineage extension consommée dans atome_irreductible
+
+Halt si NEW entity registered sans `consumable_by` field flagué (scaffold-extension v1.2.0 legacy) · 
+silent skip · pas error · l'opérateur peut patcher manuellement le scaffold-extension Phase 9 register-and-flag pour ajouter `consumable_by`.
+
+Cross-ref doctrine canon · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
 
 ---
 
@@ -292,3 +317,5 @@ Operator override possible · *"genre 2 variants sur même hook, 1 sur hook alte
 - **Parent pattern** · `onboard-brand` SKILL.md (Step 4-5 gate validate then push pattern)
 - **Confidence propagation** · `docs/system/confidence-propagation.md` (cascade confidence cross-skill orchestrator)
 - **Brand isolation** · `docs/system/brand-isolation-discipline.md` (`isolation_scope: brand_only` enforcement)
+- `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
+- `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)
