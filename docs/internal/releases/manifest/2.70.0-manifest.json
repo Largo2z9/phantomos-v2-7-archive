@@ -1,0 +1,117 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.70.0",
+  "released_at": "2026-05-16",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 68,
+  "skills_count_after": 68,
+  "slash_commands_count_before": 3,
+  "slash_commands_count_after": 4,
+  "doctrines_count_before": 11,
+  "doctrines_count_after": 11,
+  "summary": "NEW slash command `/breakdown stepprs {topic}` · vitrine pédagogique PhantomOS via cas concret Stepprs (brand fictive foot care DTC encodée canon `brands/_EXAMPLE/`). 7 topics drillables structurés en 4 pivots pédagogiques (fondement · mécanique · application · output). Pattern reproductible cross brands canon futures.",
+  "additions": [
+    {
+      "type": "slash_command",
+      "name": "breakdown",
+      "path": ".claude/commands/breakdown.md",
+      "size_lines": 280,
+      "scope": "Vitrine pédagogique PhantomOS via cas Stepprs · 7 topics drillables · format output canonique strict · agent source files Stepprs live à chaque invocation",
+      "target_audience": "Opérateur marketeur · créa · stratège paid qui veut comprendre comment PhantomOS structure le savoir métier et produit des outputs reproductibles"
+    }
+  ],
+  "topics_pedagogical": [
+    {
+      "n": 1,
+      "name": "principe",
+      "pivot": "FONDEMENT",
+      "concept": "Substrat stable vs production runtime · pourquoi PhantomOS existe",
+      "files_sourced": ["brand.json", "status.json", "README.md"]
+    },
+    {
+      "n": 2,
+      "name": "composition",
+      "pivot": "MÉCANIQUE",
+      "concept": "4 couches chaînage · composition physique → mécanismes typés canon → bénéfices chainés → angles formula OTRB",
+      "files_sourced": ["products/massage-insoles/spec.json", "angles/ANG-01.json à ANG-07.json"]
+    },
+    {
+      "n": 3,
+      "name": "vocabulaires",
+      "pivot": "MÉCANIQUE",
+      "concept": "Registres canon fermés vs freestyle · mécanismes typés · awareness levels · lead types",
+      "files_sourced": ["spec.json", "resources/registries/creative-mechanics-registry.md", "resources/registries/angle-registry.md", "resources/registries/proof-registry.md"]
+    },
+    {
+      "n": 4,
+      "name": "angles",
+      "pivot": "APPLICATION",
+      "concept": "Formula OTRB stricte (Observation · Tension · Reframe · Bridge) · 7 angles distribués 5 origin_axis (audience · product · category · brand · temporal-cultural)",
+      "files_sourced": ["angles/ANG-01.json à ANG-07.json"]
+    },
+    {
+      "n": 5,
+      "name": "audiences",
+      "pivot": "APPLICATION",
+      "concept": "Cartographie hiérarchique parent/enfants (substrat stable N segments) vs targeting paid runtime (production decision M campagnes · M ≤ N) · canon v2.69.1",
+      "files_sourced": ["audiences/workers-shifts/profile.json", "audiences/chronic-pain-45/profile.json", "learnings.json LRN-0002", "README.md section canon vs réel"]
+    },
+    {
+      "n": 6,
+      "name": "investigation",
+      "pivot": "APPLICATION",
+      "concept": "5 sections IP (Observé · Déduit · Inconnu · Leviers · Close ouvert) sur toute synthèse stratégique · rigueur output",
+      "files_sourced": ["audiences/workers-shifts/profile.json", "learnings.json", "products/massage-insoles/frictions/FRC-01.json"]
+    },
+    {
+      "n": 7,
+      "name": "production",
+      "pivot": "OUTPUT",
+      "concept": "Brief copy + variants en 5 min depuis substrat encodé · production runtime presque mécanique",
+      "files_sourced": ["spec.json", "audiences/workers-shifts/profile.json", "angles/ANG-01.json", "products/massage-insoles/offers.json"]
+    }
+  ],
+  "format_output_canonique": {
+    "sections_ordered": [
+      "LIVRABLE OBTENU EN {durée} · output concret produit",
+      "CE QUI LE REND POSSIBLE · diagramme cartographique relations",
+      "PROPRIÉTÉ STRUCTURELLE · 1-2 lignes différenciation",
+      "LECTURE OPÉRATEUR · 2-3 lignes ROI implicite",
+      "EXPLORER · 3 drill-down actions"
+    ],
+    "max_lines_per_topic": 35,
+    "strict_rules": [
+      "Zéro file path exposé operator-facing",
+      "Zéro field name JSON exposé operator-facing",
+      "Zéro acronyme doctrine non-traduit (SED, CMR, SAD, SED-X jamais exposés)",
+      "Verbatims sourcés conservés littéralement, jamais paraphrasés",
+      "Zéro em-dash",
+      "Ton institutionnel mesuré, jamais sales-bro",
+      "Livrable concret en tête, mécanique après"
+    ]
+  },
+  "cross_link_discovery": [
+    {
+      "file": "brands/_EXAMPLE/README.md",
+      "change": "NEW section 'Parcours pédagogique' pointing /breakdown stepprs avec 7 topics + cible audience"
+    },
+    {
+      "file": ".claude/commands/tour.md",
+      "change": "Milestone 6 enrichi · mention /breakdown stepprs aux côtés /skills et /phantom comme trio commands universal entry point"
+    }
+  ],
+  "doctrinal_patterns_introduced": [
+    "Vitrine pédagogique slash command pattern · démontre les doctrines PhantomOS via brand canon _EXAMPLE pédagogique · pattern reproductible cross brands canon futures (/breakdown {brand_slug} {topic})",
+    "Format output canonique strict pédagogique · livrable-first → diagramme cartographique → propriété structurelle → lecture opérateur → drill suivant · ~30 lignes max",
+    "Parcours pédagogique 4 pivots · FONDEMENT (pourquoi) · MÉCANIQUE (comment c'est construit) · APPLICATION (comment ça s'applique au marketing) · OUTPUT (ce que ça donne). Arc du général au concret."
+  ],
+  "anti_patterns_canonized": [
+    "Dump prose continue sans diagramme · fiche pédagogique linéaire texte = pas digestible pour cible marketeur·créa·strat",
+    "Acronymes doctrine exposés sans traduction (OTRB, SED, CMR, SAD, SED-X) · violation no-jargon-to-operator canon",
+    "Mécanique avant valeur · explication structurelle avant livrable concret = perd la cible · v2.70 strict livrable-first"
+  ],
+  "decisions_captured": ["D#414"],
+  "rollback_strategy": "Strict additif backward compat · revert v2.70.0 = git revert HEAD strict (zero data loss · NEW slash command retirée · tour.md Milestone 6 retour version v2.69.1 · _EXAMPLE/README.md section Parcours pédagogique retirée · slash commands count 4 → 3)"
+}

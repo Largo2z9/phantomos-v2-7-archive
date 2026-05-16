@@ -203,9 +203,9 @@ Add concepts covered to `awareness.concepts_introduced` (incluant `doctrine_laye
 
 Still part of the same conversational flow. **No headers, no labels, no bolded titles** in the output. Two tight paragraphs of prose following naturally from Milestone 5.
 
-**First, introduce the concept of a skill.** Not as a feature bullet. As context for how the agent will behave in the rest of the session. Two commands worth naming on the way: `/skills` (catalogue des capacités) and `/phantom` (cockpit de visualisation). Example tone:
+**First, introduce the concept of a skill.** Not as a feature bullet. As context for how the agent will behave in the rest of the session. Three commands worth naming on the way: `/skills` (catalogue des capacités), `/phantom` (cockpit de visualisation), and `/breakdown stepprs` (vitrine pédagogique via cas concret). Example tone:
 
-> Concretely, when you ask for something specific like an audit, a brief, or a report, there's usually a capability already written for that, what the workspace calls a skill. I don't improvise it. The skill runs, I hand back the output. `/skills` à tout moment liste ce qui est disponible. `/phantom` à tout moment ouvre la vue d'état du workspace, ce qui est encodé, ce qui est à valider, ce qui dort. C'est le cockpit de visualisation, read-only, sans risque à explorer.
+> Concretely, when you ask for something specific like an audit, a brief, or a report, there's usually a capability already written for that, what the workspace calls a skill. I don't improvise it. The skill runs, I hand back the output. `/skills` à tout moment liste ce qui est disponible. `/phantom` à tout moment ouvre la vue d'état du workspace, ce qui est encodé, ce qui est à valider, ce qui dort. C'est le cockpit de visualisation, read-only, sans risque à explorer. `/breakdown stepprs` ouvre la vitrine pédagogique via un cas concret (brand fictive foot care DTC encodée canon) avec 7 chapitres drillables qui démontrent comment PhantomOS structure le savoir métier, de la composition produit jusqu'au brief copy en 5 min. Lecture séquentielle ~20 min, drill direct possible.
 
 **Second, explain the two-sided universal entry point.** Merge both aspects in flowing sentences. Do not use the phrase *"single nerve center"* — metaphor without load-bearing. Stick to operational description. Example tone:
 

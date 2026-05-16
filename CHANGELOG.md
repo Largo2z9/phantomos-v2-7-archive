@@ -7,6 +7,43 @@
 
 ---
 
+## v2.70.0 · 2026-05-16 · NEW slash command `/breakdown stepprs {topic}` · vitrine pédagogique PhantomOS
+
+**Why** · Le brand `_EXAMPLE/stepprs` shipped v2.69 est une vitrine canon riche (13 PNT · 11 OBJ · 7 angles OTRB · 6 frictions · 2 audiences hiérarchiques + 5 sous-poches · learnings · brand/spec/offers/roadmap) mais demeurait référence statique. Marketeurs, créatifs et stratèges paid n'ont pas le temps de lire 50 fichiers JSON pour comprendre la thèse PhantomOS. La thèse se décompose en 7 sous-sujets pédagogiques · le besoin canon = une orchestrateur pédagogique qui démontre chaque sous-sujet via Stepprs comme cas concret, structuré en parcours digestible. v2.70 ship première brique vitrine pédagogique PhantomOS.
+
+**What** · 4 blocs ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · NEW slash command** | `.claude/commands/breakdown.md` 280L · vitrine pédagogique 7 topics drillables · structurés en 4 pivots (fondement · mécanique · application · output) · format output canonique strict (livrable-first → diagramme cartographique → propriété structurelle → lecture opérateur → drill suivant · ~30 lignes max par fiche) · l'agent source les fichiers Stepprs live à chaque invocation | Vitrine pédagogique PhantomOS opérationnelle · démontre la thèse via cas concret riche · cible opérateur marketeur·créa·strat |
+| **2 · 7 topics pédagogiques cartographiés** | (1) principe · substrat vs production · le pourquoi PhantomOS existe (2) composition · 4 couches chaînage composition physique → mécanismes typés canon → bénéfices chainés → angles OTRB (3) vocabulaires · registres canon fermés vs freestyle · creative-mechanics-registry · angle-registry · proof-registry (4) angles · formula OTRB appliquée · 7 angles distribués 5 origin_axis (5) audiences · cartographie hiérarchique parent/enfants vs targeting paid runtime (canon v2.69.1) (6) investigation · 5 sections IP sur synthèses stratégiques (7) production · brief copy en 5 min depuis substrat encodé | Parcours pédagogique complet ~20 min lecture séquentielle ou drill direct par topic · couvre marketing + compositionnel + investigation rigoureuse |
+| **3 · Cross-link discovery** | `brands/_EXAMPLE/README.md` NEW section "Parcours pédagogique" pointant `/breakdown stepprs` · `.claude/commands/tour.md` Milestone 6 enrichi mention `/breakdown stepprs` aux côtés `/skills` et `/phantom` comme trio commands universal entry point | Discoverability garantie · opérateur tombe sur la vitrine onboarding OR exploration `_EXAMPLE` |
+| **4 · Mode index sans arg** | `/breakdown stepprs` (sans arg) sort le diagramme cartographique 4 pivots 7 chapitres + ordre suggéré + drill direct possible · pédagogique de la map elle-même | Opérateur voit la structure pédagogique globale avant de drill · cognitive scaffolding |
+
+**3 patterns canon introduits** ·
+1. **Vitrine pédagogique slash command pattern** · slash command qui démontre les doctrines PhantomOS via brand canon `_EXAMPLE` pédagogique · pattern reproductible cross brands canon futures (`/breakdown {brand_slug} {topic}`).
+2. **Format output canonique strict pédagogique** · livrable-first (la valeur en tête, pas la mécanique) → diagramme cartographique des relations (visuel, pas prose) → propriété structurelle (ce qui rend la mécanique unique vs Notion/Airtable) → lecture opérateur (ROI implicite pas pitch) → drill suivant. ~30 lignes max par fiche.
+3. **Parcours pédagogique 4 pivots** · FONDEMENT (pourquoi PhantomOS existe) · MÉCANIQUE (comment c'est construit structurellement) · APPLICATION (comment ça s'applique au raisonnement marketing) · OUTPUT (ce que ça donne au livrable). 7 chapitres distribués sur les 4 pivots, arc pédagogique du général au concret.
+
+**3 anti-patterns canonisés** ·
+- **Dump prose continue sans diagramme** · fiche pédagogique linéaire texte = pas digestible pour cible marketeur·créa·strat. v2.70 strict diagramme cartographique relations obligatoire chaque topic.
+- **Acronymes doctrine exposés** · OTRB, SED, CMR, SAD, SED-X, etc. exposés sans traduction · violation no-jargon-to-operator canon. v2.70 strict tous acronymes traduits ou expliqués inline, JAMAIS noms de doctrines opérateur-facing.
+- **Mécanique avant valeur** · explication structurelle avant le livrable concret = perd la cible. v2.70 strict livrable-first canon (output tangible en tête avant remonter à la mécanique qui le produit).
+
+**Backward compat strict additif** · NEW slash command n'override aucun existing · zero migration · slash commands count 3 → 4 (tour · phantom · skills · breakdown). Operators v2.69.x non affectés sauf invocation `/breakdown stepprs` qui n'existait pas. Cross-link `tour.md` Milestone 6 enrichi (1 paragraphe additif) preserved structure existing. Cross-link `_EXAMPLE/README.md` NEW section "Parcours pédagogique" preserved structure existing. Pattern reproductible cross brands canon futures via NEW slash commands `/breakdown {brand_slug} {topic}` (foreplay-example · meta-adlibrary-example · etc.) même structure.
+
+**Files patched** ·
+- `.claude/commands/breakdown.md` NEW 280L
+- `brands/_EXAMPLE/README.md` (NEW section "Parcours pédagogique")
+- `.claude/commands/tour.md` (Milestone 6 mention `/breakdown stepprs`)
+- `_version.json` 2.69.1 → 2.70.0
+- `CHANGELOG.md` v2.70.0 entry (this entry)
+- `docs/internal/releases/manifest/2.70.0-manifest.json` NEW
+
+**D#414 captured** · `decisions.md` PhantomOS · v2.70.0 NEW slash command `/breakdown stepprs {topic}` vitrine pédagogique PhantomOS · 7 topics structurés 4 pivots · format output canonique strict · pattern reproductible cross brands canon futures.
+
+---
+
 ## v2.69.1 · 2026-05-16 · Patch UX live frictions `_EXAMPLE/stepprs` build · 3 layers + doctrine
 
 **Why** · Build `_EXAMPLE/stepprs` session précédente (v2.69 ship 2026-05-16) a révélé live 9 frictions UX runtime · 2 patched durant session (drop 4 Q&A audience snapshot-brand v1.4.0 · severity recalibration audit marketing P0 angles) · 1 non-patchable architecturalement (TrendTrack API endpoint ignored advertiserId · workaround pageId documented) · 6 NOT patched encore. Sprint patch v2.69.1 ferme la boucle session-learning · 3 layers · skills runtime canon + réceptacle global doctrines + brand pédagogique vitrine.

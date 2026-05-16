@@ -60,6 +60,23 @@ Chaque fichier porte ·
 
 Audiences mères canon v2.64 portent `_meta.cross_narrative_notes` quand pattern cross-audience targeting observed (cf `workers-shifts` + `chronic-pain-45` cross-narrative TrendTrack live 2026-05-16). NEW field additif backward compat · documente la distinction cartographie substrat vs ad targeting runtime sans casser pattern parent/enfants sémantique pure.
 
+## Parcours pédagogique · `/breakdown stepprs`
+
+Slash command vitrine qui démontre chaque doctrine PhantomOS via ce cas Stepprs concret. 7 chapitres structurés en 4 pivots (fondement · mécanique · application · output). Lecture séquentielle ~20 min, drill direct sur un topic possible.
+
+```
+/breakdown stepprs                → index + parcours suggéré
+/breakdown stepprs principe       → substrat vs production
+/breakdown stepprs composition    → 4 couches chaînage
+/breakdown stepprs vocabulaires   → registres canon fermés
+/breakdown stepprs angles         → formula OTRB appliquée
+/breakdown stepprs audiences      → hiérarchie vs targeting
+/breakdown stepprs investigation  → 5 sections IP
+/breakdown stepprs production     → brief copy en 5 min
+```
+
+Cible · opérateur marketeur, créa, stratège paid qui veut comprendre comment PhantomOS structure le savoir métier et produit des outputs reproductibles.
+
 ## Pour aller plus loin
 
 - **Construire ta brand** · lance `/onboard-brand` (chain `setup-brand` → `snapshot-brand` → `validate-resources`) ou `/build-atlas-complete {brand_slug}` (chain progressive cartography v2.68 · gates light entre paliers Phase 1 Macro → Phase 2 Drilling → Phase 3 Audiences hiérarchique → Phase 4 Enrichissement)
