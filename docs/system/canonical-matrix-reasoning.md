@@ -346,6 +346,18 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 
 ---
 
+## Position dans le système opérationnel 5 couches
+
+CMR opère sur 2 couches du système opérationnel (cf
+`operational-system-discipline.md`) · couche 1 (modèle) via l'imposition
+schema + matrice canon comme structure de production · couche 4 (métriques)
+via le scoring intersectionnel qui mesure la qualité output par cellule.
+
+CMR garantit la cohérence cross-skill au niveau modèle. La couche 4
+métriques traçabilité audit ses outputs.
+
+---
+
 ## 12. Cross-references
 
 - `docs/system/contextual-intelligence.md` — sister doctrine. CI defines *what* the agent reasons over (the business universe). CMR defines *with what mechanism* (canon + matrix). When in conflict, CI wins on substantive judgment, CMR wins on production discipline.

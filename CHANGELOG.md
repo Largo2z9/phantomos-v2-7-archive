@@ -7,6 +7,54 @@
 
 ---
 
+## v2.71.0 · 2026-05-16 · NEW doctrine mère `operational-system-discipline.md` · équation maître 5 couches
+
+**Why** · PhantomOS avait toutes les briques d'un système opérationnel complet (ECR via CC v3.1 + atomicité + fractalité · Règles via resources/registries + investigation-posture · Templates via resources/templates + brand _TEMPLATE · Métriques via learnings.json + validation_status + _field_types · Rituels via brief-day + learn-from-session + hygiene-audit) mais aucune grammaire commune nommant ces couches comme système multiplicatif. La doctrine mère manquait · sans elle, PhantomOS restait un assemblage de doctrines spécialisées vs plateforme de systémisation complète différenciée. v2.71 canonise l'équation maître `SYSTÈME OPÉRATIONNEL = ECR × RÈGLES × TEMPLATES × MÉTRIQUES × RITUELS` · doctrine mère sœur de Contextual Intelligence au niveau master.
+
+**What** · 3 blocs ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · NEW doctrine mère** | `docs/system/operational-system-discipline.md` 322L · 13 sections canon-style miroir territory + SED-X · thèse multiplicatif explicit + tableau différenciation PhantomOS vs Notion vs Airtable vs SOPs + décision-aid Q1-Q4 routing skill → couche + cycle promotion entre couches + 15 cross-refs explicit | Grammaire opérationnelle PhantomOS canonisée · plateforme de systémisation complète différenciée |
+| **2 · Cross-links rétroactifs 10 doctrines existing** | NEW section `Position dans le système opérationnel 5 couches` additive sur · contextual-intelligence (master · operational-system = implémentation méthodologique) · compositional-cartography (instance couche 1 ECR Strat/Compo/Exé) · canonical-matrix-reasoning (couche 1 + couche 4 scoring) · schema-encoding-discipline (couche 4 traçabilité + couche 1 atomicité) · scope-extension-discipline (méthodologie ECR amont) · audiences-cartography (couche 1 fractal Funnel + couche 2 règles canon v2.69.1) · territory-discipline (substrat couche 1) · progressive-cartography (rituel couche 5 + couche 2 gates light) · investigation-posture (règle couche 2 · 5 sections) · pain-benefit-chain (couche 1 fractal surface→consequence→deep + couche 4 severity scoring). 130 insertions, 0 deletions. Backward compat strict additif confirmed. | 10 doctrines existing ancrées dans la grammaire commune · cohérence canon cross-doctrines |
+| **3 · Refonte `breakdown.md` slash command** | Cartographie 10 topics restructurés autour 5 couches comme grammaire pédagogique mère · principe transverse + atomicité/fractalité/composition/matrices (couche 1 modèle) + règles (couche 2) + templates (couche 3 NEW) + métriques (couche 4 NEW) + rituels (couche 5 NEW) + production (démo livrable concret combinant 5 couches). Vocabulaire universel novice complet (DTC expliqué inline · scale · audience · OTRB · template via image recette pain · matrice via image tableau 2D · fractalité via image flocon de neige et chou romanesco). 768L (vs 280L v2.70 · profondeur pédagogique justifiée). | Vitrine pédagogique PhantomOS opérationnelle pour novice complet · grammaire opérationnelle rendue tangible via cas concret riche |
+
+**3 patterns canon introduits** ·
+
+1. **Équation maître multiplicative** · `SYSTÈME OPÉRATIONNEL = ECR × RÈGLES × TEMPLATES × MÉTRIQUES × RITUELS`. Multiplicatif pas additif · une couche manque, système s'effondre. ECR sans règles = squelette sans muscle. Règles sans ECR = décisions isolées sans cohérence. Templates sans règles = reproduction aveugle. Métriques sans ECR = mesures sans diagnostic. Rituels sans métriques = réunions vides.
+
+2. **Différenciation produit canonisée** · PhantomOS vs Notion (stocke texte) vs Airtable (structure données) vs SOPs (documentent) sur les 5 couches. PhantomOS systémise les 5 couches simultanément.
+
+3. **Cycle de promotion entre couches** · règle qui marche → templatable (couche 2 → couche 3) · métrique qui converge → rituelée (couche 4 → couche 5) · template fatigué → métrique le détecte (couche 3 → couche 4) · rituel automatique → règle implicite (couche 5 → couche 2).
+
+**3 anti-patterns canonisés** ·
+- Briques 5 couches sans grammaire commune · résultat assemblage doctrines spécialisées, perte différenciation produit
+- Doctrine isolée non-ancrée dans système opérationnel 5 couches · perte cohérence cross-doctrines
+- Vocabulaire pédagogique marketing-flavored vs universel · cible novice complet exclue, adoption restreinte marketeurs
+
+**Backward compat strict additif** · NEW doctrine n'override aucune existing · 10 cross-links additifs section NEW preserved structure existing · slash command breakdown.md refonte preserved frontmatter + mode index + topic guides paths Stepprs files · skills count 68 → 68 (zero new skill) · doctrines canon 11 → 12 (NEW operational-system-discipline mère). Operators v2.70.x non affectés sauf invocation `/breakdown stepprs` qui retombe sur version refactorée 10 topics structurés (silent backward compat · cartographie plus riche).
+
+**Files patched** ·
+- `docs/system/operational-system-discipline.md` NEW 322L
+- `docs/system/contextual-intelligence.md` (NEW section Position 5 couches)
+- `docs/system/compositional-cartography.md` (NEW section Position 5 couches)
+- `docs/system/canonical-matrix-reasoning.md` (NEW section Position 5 couches)
+- `docs/system/schema-encoding-discipline.md` (NEW section Position 5 couches)
+- `docs/system/scope-extension-discipline.md` (NEW section Position 5 couches)
+- `docs/doctrine/audiences-cartography-doctrine.md` (NEW section Position 5 couches)
+- `docs/system/territory-discipline.md` (NEW section Position 5 couches)
+- `docs/system/progressive-cartography-discipline.md` (NEW section Position 5 couches)
+- `docs/system/investigation-posture.md` (NEW section Position 5 couches)
+- `docs/doctrine/pain-benefit-chain-doctrine.md` (NEW section Position 5 couches)
+- `.claude/commands/breakdown.md` refonte complète 280L → 640L (10 topics restructurés 5 couches + vocabulaire universel novice)
+- `_version.json` 2.70.0 → 2.71.0
+- `CHANGELOG.md` v2.71.0 entry (this entry)
+- `docs/internal/releases/manifest/2.71.0-manifest.json` NEW
+
+**D#415 captured** · `decisions.md` PhantomOS · v2.71.0 NEW doctrine mère operational-system-discipline + équation maître 5 couches + cross-links rétroactifs 10 doctrines + refonte breakdown.md grammaire pédagogique mère.
+
+---
+
 ## v2.70.0 · 2026-05-16 · NEW slash command `/breakdown stepprs {topic}` · vitrine pédagogique PhantomOS
 
 **Why** · Le brand `_EXAMPLE/stepprs` shipped v2.69 est une vitrine canon riche (13 PNT · 11 OBJ · 7 angles OTRB · 6 frictions · 2 audiences hiérarchiques + 5 sous-poches · learnings · brand/spec/offers/roadmap) mais demeurait référence statique. Marketeurs, créatifs et stratèges paid n'ont pas le temps de lire 50 fichiers JSON pour comprendre la thèse PhantomOS. La thèse se décompose en 7 sous-sujets pédagogiques · le besoin canon = une orchestrateur pédagogique qui démontre chaque sous-sujet via Stepprs comme cas concret, structuré en parcours digestible. v2.70 ship première brique vitrine pédagogique PhantomOS.

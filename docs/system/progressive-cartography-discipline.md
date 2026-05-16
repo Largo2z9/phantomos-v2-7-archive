@@ -333,6 +333,19 @@ Q4 · Skill mode enrichissement Phase 4 (capture insights first-party) ?
 
 ---
 
+## Position dans le système opérationnel 5 couches
+
+Progressive cartography opère sur 2 couches du système opérationnel (cf
+`operational-system-discipline.md`) · couche 5 (rituels · cadence par
+phases avec gates light entre paliers) · couche 2 (règles · gates light
+binaire valide/corrige sont des heuristiques de décision canon).
+
+Le phasing 4 phases (Macro · Drilling · Audiences hiérarchique ·
+Enrichissement continu) est le rituel canon d'encodage d'un nouveau brand
+dans PhantomOS.
+
+---
+
 ## 12. Cross-references
 
 - `territory-discipline.md` (TD v2.67) · sister doctrine · territoire vs production vs meta layers · base distinction layer territoire qui se pose progressivement

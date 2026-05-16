@@ -166,6 +166,18 @@ When in doubt about whether a rule is SED or another discipline, ask: *"is this 
 
 ---
 
+## Position dans le système opérationnel 5 couches
+
+SED opère sur 2 couches du système opérationnel (cf
+`operational-system-discipline.md`) · couche 1 (modèle · atomicité des
+entités, cross-refs canonical, append-only learnings) · couche 4 (métriques ·
+_field_types observed/stated/derived/structured assure traçabilité audit
+trail, mutation gate proposed/accepted feedback loop).
+
+SED est le squelette technique sur lequel toutes les autres couches s'appuient.
+
+---
+
 ## 11. Cross-references
 
 - **`contextual-intelligence.md`** — master doctrine ; SED is the substrate sub-discipline that keeps CI's reasoning honest.

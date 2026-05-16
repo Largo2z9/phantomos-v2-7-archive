@@ -104,6 +104,20 @@ Plus **Extractibility test** · frame de validation transverse appliqué aux dis
 
 ---
 
+## Position dans le système opérationnel 5 couches
+
+Compositional Cartography est une instance canonique de la couche 1
+(modèle structurel · ECR) du système opérationnel PhantomOS (cf
+`operational-system-discipline.md`). Elle applique le pattern Strat/Compo/Exé
+au domaine créatif via l'équation OUTPUT = NOYAU × CONTEXTE × MODIFIEURS,
+les 4 arbres, et la matrice de scoring.
+
+Pour absorber un nouveau domaine, appliquer la méthode ECR canon
+(5 étapes · test d'éligibilité · atome de sortie · triptyque · MECE ·
+récursion) plutôt que dupliquer CC en variante.
+
+---
+
 ## Cross-refs
 
 - `resources/templates/creative-formula.md` · registry vivant exhaustif (mécaniques, hooks, proof, angles, sous-types UGC, curseur texte/visual, classificateur production, 522 créas analysées, 10 patches S55).

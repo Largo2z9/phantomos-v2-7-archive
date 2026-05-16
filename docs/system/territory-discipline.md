@@ -318,6 +318,20 @@ Terme "territoire" était utilisé à 2 niveaux dans canon stride-up · macro (s
 
 ---
 
+## Position dans le système opérationnel 5 couches
+
+Le territoire de marque (substrat stable canonisé) est l'objet structurel
+de la couche 1 (modèle) du système opérationnel PhantomOS (cf
+`operational-system-discipline.md`). C'est le résultat tangible de
+l'application de l'ECR à un brand.
+
+La distinction territoire / production runtime est une conséquence directe
+de l'équation maître multiplicative · le territoire = stable (modèle +
+règles + templates) · la production = volatile (combine les 5 couches
+en livrable à la demande).
+
+---
+
 ## 13. Cross-references
 
 - `architecture.md §7 Data Nature` · Reference vs Production · table 2×4 historique anglo (synonyme territoire/production canon v2.67+ Section 6)

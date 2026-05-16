@@ -276,6 +276,19 @@ Skills concernés v2.55+ (audit + propagation) ·
 
 ---
 
+## Position dans le système opérationnel 5 couches
+
+Investigation posture (5 sections · Observé · Déduit · Inconnu · Leviers ·
+Close ouvert) est une règle canonique de la couche 2 (heuristiques de
+décision) du système opérationnel PhantomOS (cf
+`operational-system-discipline.md`). Elle s'applique à TOUT output
+stratégique (audience synthesis · paid angles · brief copy · audit perf · etc.).
+
+Sans cette règle, l'agent freelance des syntheses non-traçables. Avec
+elle, chaque assertion porte son étiquette d'origine et confidence chain.
+
+---
+
 ## Cross-refs
 
 - Master · `docs/system/contextual-intelligence.md` (cette doctrine en est une extension cognitive)

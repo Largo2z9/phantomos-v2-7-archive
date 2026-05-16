@@ -1,0 +1,96 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.71.0",
+  "released_at": "2026-05-16",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 68,
+  "skills_count_after": 68,
+  "slash_commands_count_before": 4,
+  "slash_commands_count_after": 4,
+  "doctrines_count_before": 11,
+  "doctrines_count_after": 12,
+  "summary": "NEW doctrine mère canon `operational-system-discipline.md` · canonise l'équation maître `SYSTÈME OPÉRATIONNEL = ECR × RÈGLES × TEMPLATES × MÉTRIQUES × RITUELS` (multiplicatif). 5 couches d'un système opérationnel complet · ECR (couche 1 modèle) · Règles (couche 2 heuristiques) · Templates (couche 3 raccourcis) · Métriques (couche 4 feedback) · Rituels (couche 5 cadence). Doctrine mère sœur de CI au niveau master. Cross-links rétroactifs 10 doctrines existing. Refonte `breakdown.md` cartographie pédagogique mère 5 couches.",
+  "additions": [
+    {
+      "type": "doctrine_canon",
+      "name": "operational-system-discipline",
+      "path": "docs/system/operational-system-discipline.md",
+      "size_lines": 322,
+      "level": "master",
+      "scope": "Doctrine mère canon · canonise l'équation maître 5 couches du système opérationnel PhantomOS · sœur de Contextual Intelligence",
+      "13_sections": [
+        "Thèse · équation maître + différenciation PhantomOS vs Notion/Airtable/SOPs",
+        "Problème résolu · grammaire commune absente",
+        "Couche 1 · ECR (modèle structurel) · 5 étapes + 4 patterns + 5 pièges",
+        "Couche 2 · Règles (heuristiques décision)",
+        "Couche 3 · Templates (raccourcis combinaisons gagnantes)",
+        "Couche 4 · Métriques (boucles feedback)",
+        "Couche 5 · Rituels (cadence opérationnelle)",
+        "Équation maître expliquée · multiplicatif pas additif",
+        "Tableau reconnaissance rapide · question opérateur → couche",
+        "Anti-patterns canonisés · 6 patterns",
+        "Cycle de promotion entre couches",
+        "Décision-aid Q1-Q4 routing skill → couche dominante",
+        "Cross-refs · 15 doctrines explicit tissées"
+      ]
+    }
+  ],
+  "cross_links_retroactif": {
+    "count": 10,
+    "format": "NEW section additive `Position dans le système opérationnel 5 couches` 5-10 lignes par doctrine + cross-ref vers operational-system-discipline.md master",
+    "doctrines_patched": [
+      {"file": "docs/system/contextual-intelligence.md", "role": "master · operational-system = implémentation méthodologique"},
+      {"file": "docs/system/compositional-cartography.md", "role": "instance couche 1 ECR Strat/Compo/Exé · équation NOYAU × CONTEXTE × MODIFIEURS"},
+      {"file": "docs/system/canonical-matrix-reasoning.md", "role": "instance couche 1 modèle + couche 4 scoring intersectionnel"},
+      {"file": "docs/system/schema-encoding-discipline.md", "role": "couche 4 traçabilité _field_types + couche 1 atomicité"},
+      {"file": "docs/system/scope-extension-discipline.md", "role": "méthodologie ECR amont scope extension"},
+      {"file": "docs/doctrine/audiences-cartography-doctrine.md", "role": "couche 1 fractal Funnel parent/enfants + couche 2 règles canon v2.69.1"},
+      {"file": "docs/system/territory-discipline.md", "role": "territoire = substrat couche 1"},
+      {"file": "docs/system/progressive-cartography-discipline.md", "role": "rituel couche 5 cadence + couche 2 gates light règles"},
+      {"file": "docs/system/investigation-posture.md", "role": "règle couche 2 · 5 sections IP heuristique décision"},
+      {"file": "docs/doctrine/pain-benefit-chain-doctrine.md", "role": "couche 1 fractal surface→consequence→deep + couche 4 severity scoring"}
+    ],
+    "diff_stats": "130 insertions, 0 deletions (backward compat strict additif confirmed)"
+  },
+  "breakdown_refactor": {
+    "file": ".claude/commands/breakdown.md",
+    "size_before_lines": 280,
+    "size_after_lines": 640,
+    "change_type": "complete_refactor_5_layers_grammar",
+    "10_topics_restructured": [
+      {"n": 1, "name": "principe", "couche": "transverse · préalable", "concept": "Substrat stable vs production runtime · pourquoi PhantomOS existe"},
+      {"n": 2, "name": "atomicite", "couche": "1 modèle", "concept": "Atomes connectés réutilisables · cross-refs canonical"},
+      {"n": 3, "name": "fractalite", "couche": "1 modèle", "concept": "Auto-similarité · même pattern à toutes les échelles"},
+      {"n": 4, "name": "composition", "couche": "1 modèle", "concept": "Équation OUTPUT = NOYAU × CONTEXTE × MODIFIEURS"},
+      {"n": 5, "name": "matrices", "couche": "1 modèle", "concept": "3 usages · cartographier · prioriser · produire variations"},
+      {"n": 6, "name": "regles", "couche": "2 règles NEW", "concept": "Vocabulaires fermés canon + investigation-posture 5 sections"},
+      {"n": 7, "name": "templates", "couche": "3 templates NEW", "concept": "Raccourcis combinaisons gagnantes · production rapide qualité constante"},
+      {"n": 8, "name": "metriques", "couche": "4 métriques NEW", "concept": "Feedback boucles auto-correction par niveau + traçabilité source"},
+      {"n": 9, "name": "rituels", "couche": "5 rituels NEW", "concept": "Cadence opérationnelle · brief-day · learn-from-session · validate · hygiene-audit"},
+      {"n": 10, "name": "production", "couche": "démo intégrée 5 couches", "concept": "Brief copy 5 min applique les 5 couches en action"}
+    ],
+    "vocabulary_universal_inline": [
+      "DTC (vente directe au consommateur, sans intermédiaire)",
+      "scale (passer du test au volume)",
+      "audience (le groupe de personnes visé)",
+      "OTRB expliqué inline première occurrence",
+      "template via image recette pain",
+      "matrice via image tableau 2D",
+      "fractalité via image flocon de neige et chou romanesco"
+    ]
+  },
+  "doctrinal_patterns_introduced": [
+    "Équation maître multiplicative · SYSTÈME OPÉRATIONNEL = ECR × RÈGLES × TEMPLATES × MÉTRIQUES × RITUELS · une couche manque, système s'effondre",
+    "Différenciation produit canonisée · PhantomOS vs Notion (stocke) vs Airtable (structure) vs SOPs (documentent) sur les 5 couches",
+    "Cycle de promotion entre couches · règle qui marche → templatable · métrique qui converge → rituelée · template fatigué → métrique le détecte · rituel automatique → règle implicite"
+  ],
+  "anti_patterns_canonized": [
+    "Briques 5 couches sans grammaire commune · résultat assemblage doctrines spécialisées, perte différenciation produit",
+    "Doctrine isolée non-ancrée dans système opérationnel 5 couches · perte cohérence cross-doctrines",
+    "Vocabulaire pédagogique marketing-flavored vs universel · cible novice complet exclue, adoption restreinte marketeurs"
+  ],
+  "decisions_captured": ["D#415"],
+  "rollback_strategy": "Strict additif backward compat · revert v2.71.0 = git revert HEAD strict (zero data loss · NEW doctrine retirée · 10 cross-links additifs section NEW retirables sans impact · slash command breakdown.md retour version v2.70 · doctrines count 12 → 11 · cross-refs canon revert)"
+}

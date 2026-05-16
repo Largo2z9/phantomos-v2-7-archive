@@ -325,6 +325,20 @@ Si tu n'arrives pas à l'identité au 3ème *"et alors"*, ta chaîne est incompl
 
 ---
 
+## Position dans le système opérationnel 5 couches
+
+Pain-benefit chain est une instance canonique de la couche 1 (modèle ·
+ECR pattern Funnel auto-similaire) du système opérationnel PhantomOS (cf
+`operational-system-discipline.md`). Le chaînage surface → consequence →
+deep est fractal · le même schéma de décomposition (3 niveaux séquentiels
+emboîtés) se retrouve sur chaque pain point, et à l'échelle de l'audience
+mère vs sous-poches.
+
+Severity discriminante + tier marker primary/secondary touchent aussi
+la couche 4 (métriques · scoring entité-level).
+
+---
+
 ## Cross-refs · canonical IDs explicit (v2.64)
 
 L'ontologie pure v2.64 verrouille la chain pain → benefit via canonical IDs PNT-NN référencés explicitement dans les entités sœurs. Storage canonical · sub-folder OWNED audience-specific `brands/{brand}/audiences/{slug}/pain_points/{PNT-NN}.json`. Pain shared cross-audiences · stocké primary owner avec `also_affects_audiences[]` array.

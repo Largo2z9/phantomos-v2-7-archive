@@ -310,6 +310,17 @@ Pour chaque mère identifiée, valider ·
 - ☐ Mère exploitable en copy (porte d'entrée traduisible en hook ad sans ambiguïté) ?
 - ☐ Mère re-cartographiable (process de refresh annuel ou shift-driven prévu) ?
 
+## Position dans le système opérationnel 5 couches
+
+Audiences cartography est une instance canonique de la couche 1 (modèle ·
+ECR pattern Funnel auto-similaire) du système opérationnel PhantomOS (cf
+`operational-system-discipline.md`). Le pattern parent/enfants hiérarchique
+(audience mère → sous-poches) est fractal · le même schéma de raisonnement
+se répète à toutes les échelles d'audience.
+
+La distinction cartographie audience ≠ ad targeting paid (canon v2.69.1)
+touche aussi la couche 2 (règles) · règle canon de décision production runtime.
+
 ## Sources et lectures
 
 **Canon historique**

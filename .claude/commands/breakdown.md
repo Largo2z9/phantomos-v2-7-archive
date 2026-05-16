@@ -1,21 +1,41 @@
 ---
 name: breakdown
-description: Démontre les doctrines PhantomOS via le cas Stepprs (brand pédagogique foot care DTC). 7 topics drillables · principe · composition · vocabulaires · angles · audiences · investigation · production. Ordre suggéré 1 à 7 = parcours complet (~20 min). Drill direct possible sur tout topic.
+description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand fictive foot care DTC encodée canon). 10 topics drillables structurés en 5 couches d'un système opérationnel · principe · atomicité · fractalité · composition · matrices · règles · templates · métriques · rituels · production. Ordre suggéré 1 à 10 = parcours complet (~30 min). Drill direct possible sur tout topic.
 ---
 
 # `/breakdown stepprs {topic}` · vitrine pédagogique PhantomOS
 
-Slash command qui démontre chaque doctrine PhantomOS via le cas concret Stepprs (brand fictive foot care DTC encodée canon dans `brands/_EXAMPLE/`). L'agent sourcing les fichiers Stepprs live à chaque invocation, pas dump statique.
+Slash command qui démontre la grammaire opérationnelle PhantomOS via le cas concret Stepprs (brand fictive foot care DTC encodée canon dans `brands/_EXAMPLE/`). L'agent source les fichiers Stepprs live à chaque invocation, pas dump statique.
 
-**Cible** · opérateur marketeur, créa, stratège paid qui veut comprendre comment PhantomOS structure le savoir métier et produit des outputs reproductibles. Ton institutionnel sérieux, accessible, zéro jargon plumbing.
+**Cible audience** · opérateur novice complet (vibecoder, domain expert hors marketing, curieux). Pas un marketeur. Vocabulaire universel, ZERO jargon supposé connu. Premier contact avec un système opérationnel structuré. Ton institutionnel sérieux mais accessible, vulgarisé, jamais sales-bro.
+
+**Promesse** · expliquer ce qui rend PhantomOS reproductible (cohérence 95% output cross-session) en 10 topics, avec Stepprs comme cas filé. Chaque topic = une couche du système. Comprendre les 5 couches = maîtriser n'importe quel domaine.
+
+## Architecture pédagogique · 5 couches d'un système opérationnel
+
+PhantomOS n'est pas une CRM enrichie. C'est un système opérationnel composé de 5 couches qui fonctionnent ensemble.
+
+```
+COUCHE        RÔLE                              CE QUE ÇA PRODUIT
+─────────     ────────────────────────────      ─────────────────────────
+1 MODÈLE      Comment encoder le savoir         Atomes connectés réutilisables
+2 RÈGLES      Comment cadrer le raisonnement    Outputs reproductibles
+3 TEMPLATES   Comment réutiliser ce qui marche  Production rapide qualité constante
+4 MÉTRIQUES   Comment se corriger               Feedback chiffré + traçabilité
+5 RITUELS     Comment durer dans le temps       Système qui ne se dégrade pas
+```
+
+Les 10 topics du parcours couvrent ces 5 couches plus 1 principe transverse plus 1 démo concrète.
 
 ## Mode detection
 
 | Argument | Mode |
 |---|---|
-| empty (`/breakdown stepprs`) | **index** · liste les 7 topics + parcours suggéré + diagramme cartographique |
+| empty (`/breakdown stepprs`) | **index** · liste les 10 topics + parcours suggéré + diagramme 5 couches |
 | topic name (e.g. `/breakdown stepprs composition`) | **drill** · génère la fiche du topic sourçant Stepprs live |
-| invalid topic | **redirect** · liste les 7 topics valides en 1 ligne, demande choix |
+| invalid topic | **redirect** · liste les 10 topics valides en 1 ligne, demande choix |
+
+**Topics valides** · `principe` · `atomicite` · `fractalite` · `composition` · `matrices` · `regles` · `templates` · `metriques` · `rituels` · `production`
 
 ## Mode index, default
 
@@ -23,250 +43,726 @@ Si l'opérateur tape `/breakdown stepprs` sans arg, sortir exactement ceci (rend
 
 ```
 ══════════════════════════════════════════════════════════════════════
-PARCOURS PHANTOMOS · démontré via cas Stepprs
+PARCOURS PHANTOMOS · démontré via Stepprs · 5 couches d'un système opérationnel
 ══════════════════════════════════════════════════════════════════════
 
-FONDEMENT          MÉCANIQUE            APPLICATION              OUTPUT
-─────────          ─────────            ───────────              ──────
+PRINCIPE    COUCHE 1 MODÈLE        COUCHE 2 RÈGLES     COUCHE 3      COUCHE 4       COUCHE 5    DÉMO
+─────────   ────────────────       ────────────────    TEMPLATES     MÉTRIQUES      RITUELS     ────
 
-1. principe   →    2. composition  →    4. angles           →    7. production
-   substrat          4 couches             formula OTRB              brief copy
-   vs production     chainage              7 angles dérivés          en 5 min
+1. principe → 2. atomicité      → 6. règles       → 7. templates → 8. métriques → 9. rituels → 10. production
+              3. fractalité
+              4. composition
+              5. matrices
 
-                   3. vocabulaires →    5. audiences
-                      mécanismes           hiérarchie
-                      typés canon          vs targeting
-
-                                       6. investigation
-                                          5 sections IP
-                                          rigueur output
-
-  POURQUOI           COMMENT C'EST        COMMENT ÇA               CE QUE
-  PHANTOMOS          CONSTRUIT            S'APPLIQUE               ÇA DONNE
-  EXISTE             STRUCTURELLEMENT     AU RAISONNEMENT          AU LIVRABLE
-                                          MARKETING
-
-Ordre suggéré · 1 → 7 (parcours complet, ~20 min lecture)
+Ordre suggéré · 1 → 10 (parcours complet, ~30 min lecture)
 Drill direct · /breakdown stepprs {topic}
 ══════════════════════════════════════════════════════════════════════
 ```
 
 ## Mode drill · génération fiche topic
 
-Pour chaque topic, appliquer le format output canonique ci-dessous, en sourçant les fichiers Stepprs spécifiques au topic (cf section "Topic guides").
+Pour chaque topic, appliquer le **format output canonique strict** ci-dessous, en sourçant les fichiers Stepprs spécifiques au topic (cf section "Topic guides").
 
-### Format output canonique (5 sections, ordre strict)
+### Format output canonique (sections, ordre strict)
 
 ```
 ══════════════════════════════════════════════════════════════════════
-CAS STEPPRS · {titre topic}
+{TITRE TOPIC} · {sous-titre}
 ══════════════════════════════════════════════════════════════════════
 
-LIVRABLE OBTENU EN {durée}
-  {Output concret produit par la mécanique. Pour le topic "principe",
-   le livrable est un raisonnement clair. Pour "composition", c'est un
-   brief copy. Pour "production", c'est un brief copy + variants visuels.
-   Pour les autres, choisir l'output le plus tangible.}
+  {Intro contextuelle 2-3 lignes. Pattern · "Avant d'attaquer ta propre
+   marque, regarde Stepprs..." ou "Pour comprendre pourquoi PhantomOS
+   tient dans le temps, regarde comment Stepprs..."}
 
-CE QUI LE REND POSSIBLE
-  {Diagramme cartographique ASCII des relations entre éléments, ou
-   tableau structuré si plus lisible. Toujours visuel, jamais prose
-   linéaire pure.}
+{NOM SECTION CLÉ}
+  {Contenu pédagogique en langage courant. Premier emploi d'un mot
+   technique, expliquer inline. Exemple "audience (le groupe de
+   personnes visé)".}
 
-PROPRIÉTÉ STRUCTURELLE
-  {1 à 2 lignes · ce qui rend cette mécanique unique vs un Notion ou
-   un Airtable. La propriété qui fait la différence reproducibilité.}
+  ✦ {annotation inline qui décompresse · pas un emoji décoratif ·
+     un repère visuel sobre pour signaler "ce qu'il faut retenir"}
 
-LECTURE OPÉRATEUR
-  {2 à 3 lignes · comment appliquer ce principe sur sa propre brand.
-   ROI implicite, pas pitch.}
+{NOM SECTION 2}
+  {Contenu. Diagramme cartographique ASCII obligatoire dans la section
+   qui montre "ce qui rend ça possible" structurellement.}
 
-EXPLORER
-  → {action next 1}        /{slash command}
-  → {action next 2}        /{slash command}
-  → Topic suivant parcours /breakdown stepprs {topic+1}
+CE QUE ÇA CHANGE POUR TOI
+  {2-3 lignes. ROI implicite, jamais pitch. Comment l'opérateur applique
+   ce principe sur sa propre activité.}
+
+POUR ALLER PLUS LOIN
+  → {action 1}                /breakdown stepprs {topic}
+  → {action 2}                /breakdown stepprs {topic}
+  → Continuer le parcours     /breakdown stepprs {topic+1}
 ```
 
-**Règles strictes pour l'agent** ·
-- Zéro file path exposé (pas `audiences/workers-shifts/profile.json#field`)
-- Zéro field name JSON exposé (pas `_meta.cross_narrative_notes`, `emotional_signal`, `evidence_verbatim`)
-- Zéro acronyme doctrine non-traduit (OTRB peut rester car court mais expliqué dans le topic "angles", SED CMR SAD jamais exposés)
-- Verbatims sourcés conservés littéralement, jamais paraphrasés
-- Zéro em-dash
-- Ton institutionnel, mesuré, jamais sales-bro
-- Fiche ~30 lignes max, livrable en tête, drill en fin
+**Règles strictes pour l'agent runtime** ·
+- **ZERO file path exposé** operator-facing (jamais `audiences/workers-shifts/profile.json`)
+- **ZERO field name JSON exposé** operator-facing (jamais `_meta.cross_narrative_notes`, `evidence_verbatim`)
+- **ZERO acronyme doctrine non-traduit** · OTRB peut rester si expliqué inline première occurrence. SED, CMR, SAD, SED-X, IP, VOC JAMAIS exposés.
+- **Vocabulaire universel** · première occurrence d'un terme métier, expliquer inline en langue courante. Exemple · "DTC (vente directe au consommateur, sans intermédiaire)". Exemple · "scale (passer du test au volume)". Exemple · "audience (le groupe de personnes visé)".
+- **Verbatims sourcés** conservés littéralement, jamais paraphrasés
+- **ZERO em-dash** (le caractère tiret-cadratin). Substituer par parenthèses, virgule, point, deux-points, ou middle dot (·)
+- **Ton institutionnel mesuré**, jamais sales-bro ("L'erreur que la plupart font", "Faux.")
+- **Livrable concret en tête** · valeur d'abord, mécanique après
+- **Diagramme cartographique ASCII** obligatoire dans la section "ce qui le rend possible"
+- **✦ markers sobres** pour annotations qui décompressent un point dense
+- **Fiche ~30 lignes max**, drill en fin
 
 ## Topic guides · ce que l'agent doit produire par topic
 
-### 1. principe · substrat vs production
+---
 
-**Concept démontré** · PhantomOS encode le savoir métier d'une marque en substrat stable (territoire) qui survit aux sessions et alimente la production runtime à la demande. Économie cognitive massive, pas une CRM enrichie.
+### 1. principe · ce qui reste stable, ce qui se génère
 
-**Files Stepprs à sourcer**
-- `brands/_EXAMPLE/brand.json` (identity + driver_blend + brand_equity)
-- `brands/_EXAMPLE/status.json` (`is_example: true`, validation_status)
-- `brands/_EXAMPLE/README.md` (canon vs réel section)
+**Couche** · principe transverse (préalable aux 5 couches)
 
-**Livrable concret en tête** · raisonnement opérateur clair sur un cas Stepprs réel. Exemple · "Pour produire 1 nouvelle créa Stepprs, l'opérateur n'a pas besoin de re-explorer composition produit, audiences, angles, proofs. Tout est encodé. Il pioche dans le substrat, génère, valide."
+**Concept à transmettre** · PhantomOS sépare deux choses qu'on a tendance à mélanger. Le **territoire** d'une marque (qui elle est, à qui elle parle, ce qu'elle vend) reste stable dans le temps. Les **productions** (une publicité, un email, un script de vidéo) changent chaque semaine. Encoder le territoire une fois, générer les productions à la demande.
 
-**Diagramme à proposer** · vue 2 layers · TERRITOIRE (stable, encodé 1 fois) au-dessus, PRODUCTION (volatil, runtime, multiple) en dessous, avec flèche de consommation.
+**Image vulgarisation** · l'encyclopédie d'une marque (structure stable, mise à jour rare) vs les articles de magazine produits chaque mois à partir de cette encyclopédie. Sans encyclopédie, chaque article repart de zéro.
 
-**Propriété structurelle** · le substrat survit aux sessions cross-skills cross-opérateurs. Notion stocke du texte. PhantomOS encode du raisonnement.
+**Concept concret Stepprs** · brand fictive qui vend des semelles anti-douleur (massage insoles) à deux types de personnes principales · les travailleurs qui restent debout 8h+ par jour (infirmières, magasiniers, serveurs) et les personnes de 45 ans et + qui souffrent de douleurs chroniques (épine calcanéenne, talalgie). Semelle avec mousse à mémoire de forme, redistribution de pression et soutien de la voûte plantaire. Vendue en ligne directement (DTC, vente directe au consommateur, pas de pharmacie ni distributeur).
 
-### 2. composition · 4 couches chaînage
-
-**Concept démontré** · Compositional Cartography v3.1. Composition physique du produit → mécanismes typés canon → bénéfices chainés → angles formula OTRB. Multiplication par composition, pas duplication d'idées brutes.
+**Investissement vs ROI** · setup initial 1-2h en semaine 1 pour encoder le territoire. ROI immédiat dès semaine 2 · chaque nouvelle production (publicité, email, page produit) prend 5-15 min au lieu de 1-2h.
 
 **Files Stepprs à sourcer**
-- `brands/_EXAMPLE/products/massage-insoles/spec.json` (composition, mechanisms, benefits)
-- `brands/_EXAMPLE/angles/ANG-01.json` à `ANG-07.json` (7 angles dérivés)
+- `brands/_EXAMPLE/brand.json` (identité, positionnement, audiences principales)
+- `brands/_EXAMPLE/status.json` (état du workspace, validation)
+- `brands/_EXAMPLE/README.md` (note canon vs réel)
 
-**Livrable concret en tête** · brief copy d'angle plantar-fasciitis généré en 5 min (Hook + Mécanisme + Bénéfice + Proof + CTA), sourcé du substrat composition.
+**Livrable concret en tête** · "Pour produire 1 nouvelle créa Stepprs, l'opérateur n'a pas besoin de re-explorer la composition produit, les audiences, les angles, les preuves. Tout est encodé. Il pioche dans le territoire, génère, valide. Temps de production divisé par 10."
 
-**Diagramme à proposer** ·
+**Diagramme à produire** · vue 2 couches orthogonales TERRITOIRE / PRODUCTION ·
+
 ```
-COMPOSITION   →   MÉCANISMES   →   BÉNÉFICES   →   ANGLES
-physique          typés canon       chainés          OTRB
-
-top               cushioning        confort         hero
-middle            pressure-redist   moins fatigue   audience
-base              arch-support      relief PF       category
-                  shock-absorb      moins lombaire  product
-
-3 entrées         4 mécanismes      5 bénéfices    7 angles
+TERRITOIRE (stable, encodé 1 fois)
+─────────────────────────────────────────
+Identité · positionnement · audiences ·
+produit · mécanismes · douleurs · preuves
+─────────────────────────────────────────
+                ↓
+        consommé par
+                ↓
+─────────────────────────────────────────
+PRODUCTION (runtime, multiple)
+publicité 1 · publicité 2 · email · page
+produit · script vidéo · post X · brief
 ```
 
-**Propriété structurelle** · 3 entrées physiques produisent 7 angles par composition. Le travail créatif se concentre sur les angles, pas sur la redéfinition de la matière première à chaque session.
+**Sections fiche** · LIVRABLE OBTENU · CE QUI LE REND POSSIBLE (diagramme) · CE QUE ÇA CHANGE POUR TOI · POUR ALLER PLUS LOIN.
 
-### 3. vocabulaires · registres canon fermés
+**Pour aller plus loin** ·
+- → Comprendre comment le savoir est encodé en atomes connectés    `/breakdown stepprs atomicite`
+- → Voir une production concrète de bout en bout    `/breakdown stepprs production`
+- → Continuer le parcours    `/breakdown stepprs atomicite`
 
-**Concept démontré** · PhantomOS impose des vocabulaires fermés (mécanismes typés, awareness levels, sophistication levels, lead types) plutôt que freestyle. La contrainte produit la reproducibilité.
+---
+
+### 2. atomicité · le savoir comme graphe d'atomes connectés (couche 1 modèle)
+
+**Couche** · 1 modèle
+
+**Concept à transmettre** · le savoir d'une marque n'est pas une grosse note prose. C'est un ensemble d'**atomes** (petites unités identifiables, chacune avec un identifiant unique). Une douleur identifiée chez un client = 1 atome. Une objection fréquente = 1 atome. Un angle de publicité = 1 atome. Tous reliés par références croisées (un atome cite les autres atomes qu'il utilise).
+
+**Avantage clé** · quand tu corriges 1 atome, tous les atomes qui le citent en bénéficient automatiquement. Une CRM stocke du texte. PhantomOS encode du raisonnement connecté.
+
+**Concept concret Stepprs** · ~50 atomes identifiés au total ·
+- 13 douleurs documentées (pain points)
+- 11 objections d'achat (objections)
+- 6 frictions produit (frictions d'usage)
+- 7 angles de publicité (angles)
+- 4 mécanismes produit (mechanisms)
+- 5 bénéfices (benefits)
+- 7 sous-audiences (audience pockets)
+
+**Exemple connecté** · la douleur identifiée "douleur talalgie au réveil" (1 atome) est citée par 3 autres atomes · 1 angle de pub hero, 1 objection sceptique ("est-ce que ça marche vraiment au réveil ?"), 1 mécanisme produit (redistribution de pression). Si tu corriges la formulation de la douleur, les 3 dépendants se mettent à jour automatiquement.
 
 **Files Stepprs à sourcer**
-- `brands/_EXAMPLE/products/massage-insoles/spec.json` (mécanismes typés depuis registre canon)
-- `resources/registries/` (registres canon disponibles · `creative-mechanics-registry.md`, `angle-registry.md`, `proof-registry.md` à citer)
-- `resources/catalogues/` (catalogues canon complémentaires si présents)
+- `brands/_EXAMPLE/audiences/{audience}/pain_points/PNT-*.json` (douleurs identifiées)
+- `brands/_EXAMPLE/audiences/{audience}/objections/OBJ-*.json` (objections d'achat)
+- `brands/_EXAMPLE/products/massage-insoles/frictions/FRC-*.json` (frictions produit)
+- `brands/_EXAMPLE/angles/ANG-*.json` (angles de publicité)
 
-**Livrable concret en tête** · 2 versions d'un même mécanisme produit · freestyle ("soutien dynamique adaptatif") vs canon ("arch support + pressure redistribution"). Montrer comment le canon permet à un autre skill (decompose-ad, produce-paid-angles) de raisonner sans interprétation.
+**Livrable concret en tête** · cartographie du graphe Stepprs · 50 atomes, ~120 connexions identifiées. Tu modifies 1 atome (verbatim corrigé), 3 atomes en aval se mettent à jour sans intervention manuelle.
 
-**Diagramme à proposer** · tableau comparatif freestyle vs canon sur 2 ou 3 attributs Stepprs concrets.
+**Diagramme à produire** · graphe atomique simplifié ·
 
-**Propriété structurelle** · les vocabulaires fermés sont l'équivalent d'un schéma SQL pour le raisonnement créatif. Sans eux, chaque session redéfinit, rien ne s'accumule.
+```
+ATOMES STEPPRS · graphe partiel
 
-### 4. angles · formula OTRB appliquée
+[douleur talalgie réveil]
+        │
+        ├──→ [angle hero "premier pas matin"]
+        │
+        ├──→ [objection "ça marche au réveil ?"]
+        │
+        └──→ [mécanisme redistribution pression]
+                        │
+                        ├──→ [bénéfice "confort dès le premier pas"]
+                        │
+                        └──→ [angle hero] (boucle)
 
-**Concept démontré** · Formula OTRB (Observation + Tension + Reframe + Bridge). Tout angle paid Stepprs suit cette structure stricte. Reproducible cross-skill, lisible cross-session.
+1 atome corrigé = 3+ atomes dépendants mis à jour
+```
+
+**Pour aller plus loin** ·
+- → Voir comment ce graphe se répète à toutes les échelles    `/breakdown stepprs fractalite`
+- → Comprendre comment combiner les atomes en livrable    `/breakdown stepprs composition`
+- → Continuer le parcours    `/breakdown stepprs fractalite`
+
+---
+
+### 3. fractalité · le même pattern à toutes les échelles (couche 1 modèle)
+
+**Couche** · 1 modèle
+
+**Concept à transmettre** · une fois qu'on a compris UN pattern de raisonnement, on l'applique à tous les niveaux. C'est ça la fractalité (le même motif visible à différentes échelles, comme un flocon de neige ou un chou romanesco). Un seul mode de pensée à apprendre, applicable partout.
+
+**Le pattern unique** · observer une tension, formuler une réponse, terminer par un appel. Quatre temps. Toujours les mêmes.
+
+**Concept concret Stepprs** · ce pattern se retrouve à 4 échelles distinctes ·
+
+1. **Échelle brand entière** · positionnement entre 2 forces opposées (Stepprs se positionne entre le médical sérieux et le confort grand public)
+2. **Échelle audience** · une douleur partagée par un groupe (workers-shifts partagent la fatigue podale fin de journée)
+3. **Échelle douleur identifiée** · chaîne surface → conséquence → racine profonde (douleur talalgie → impact sommeil → tension lombaire chronique)
+4. **Échelle angle de publicité** · formule OTRB · Observation (verbatim client) + Tension (insight douleur) + Reframe (mécanisme produit positionné) + Bridge (appel à l'action + garantie)
+
+**OTRB expliqué inline** · acronyme interne PhantomOS pour la structure canonique d'un angle paid (Observation, Tension, Reframe, Bridge). C'est l'équivalent d'un plan en 4 cases pour une publicité.
 
 **Files Stepprs à sourcer**
-- `brands/_EXAMPLE/angles/ANG-01.json` (hero Michelle, le pilote)
-- `brands/_EXAMPLE/angles/ANG-02.json` à `ANG-07.json` (6 variations sur 5 origin_axis)
+- `brands/_EXAMPLE/brand.json` (positionnement entre 2 forces)
+- `brands/_EXAMPLE/audiences/workers-shifts/profile.json` (douleur partagée par audience)
+- `brands/_EXAMPLE/audiences/workers-shifts/pain_points/PNT-01.json` (chaîne douleur)
+- `brands/_EXAMPLE/angles/ANG-01.json` (angle structure OTRB)
 
-**Livrable concret en tête** · ANG-01 décomposé en 4 cases OTRB, montrant comment chaque case est ancrée sur le substrat (audience composite, verbatim sourcé, mécanisme typé, garantie).
+**Livrable concret en tête** · même grille mentale à 4 niveaux. L'opérateur apprend UNE fois à structurer un raisonnement en observation/tension/réponse/appel, il l'applique partout.
 
-**Diagramme à proposer** ·
+**Diagramme à produire** · 4 échelles, même structure ·
+
 ```
-ANG-01 hero Michelle
-─────────────────────────────────────────────────
-O · Observation : verbatim Trustpilot sourcé
-T · Tension     : insight douleur articulée
-R · Reframe     : mécanisme produit positionné
-B · Bridge      : CTA + garantie
+ÉCHELLE              OBSERVATION         TENSION              RÉPONSE                APPEL
+─────────────        ─────────────       ─────────────        ─────────────          ────────────
+
+brand               le marché propose   ni l'un ni l'autre   nous tenons             rejoindre la
+                    soit médical soit   ne convient à        la place du milieu      voie médiane
+                    confort             la majorité          rigoureux + accessible
+
+audience            travailleurs 8h+    fatigue podale       audience partage la     ils achètent
+                    debout              affecte sommeil      même douleur racine     une solution
+                                        et lombaires                                  unique
+
+douleur PNT-01      "talalgie au        dégrade qualité      cause profonde =        produit traite
+                    réveil"             de vie globale       inflammation aponévrose la cause
+
+angle ANG-01        verbatim Trustpilot insight douleur      mécanisme produit       CTA + garantie
+                    sourcé              articulé             positionné              60 jours
 ```
 
-Lister rapidement les 7 angles + origin_axis (audience, product, category, brand, temporal-cultural).
+**Pour aller plus loin** ·
+- → Comprendre l'équation qui assemble les atomes en livrable    `/breakdown stepprs composition`
+- → Voir comment cartographier 3 façons différentes    `/breakdown stepprs matrices`
+- → Continuer le parcours    `/breakdown stepprs composition`
 
-**Propriété structurelle** · 7 angles distribués 5 axes = couverture créative par construction, pas par inspiration aléatoire.
+---
 
-### 5. audiences · cartographie hiérarchique vs targeting paid
+### 4. composition · l'équation qui assemble les atomes en livrables (couche 1 modèle)
 
-**Concept démontré** · Cartographie audience parent/enfants (substrat stable, N segments documentés) ≠ targeting ad runtime (production decision, M campagnes, M ≤ N). Canon v2.69.1.
+**Couche** · 1 modèle
+
+**Concept à transmettre** · un livrable (une publicité, un email, une page produit) n'est pas inventé à partir de zéro. Il est **calculé** par une équation simple ·
+
+```
+LIVRABLE = NOYAU × CONTEXTE × MODIFICATEURS
+```
+
+**NOYAU** · ce qui ne change pas (matériau du produit, effet physique principal)
+**CONTEXTE** · ce qui dépend du moment (audience visée, verbatim client précis)
+**MODIFICATEURS** · ce qui varie selon le canal (saisonnalité, registre de ton, format publicité, canal media)
+
+**Concept concret Stepprs** · pour produire un hook (la première ligne d'une publicité qui doit accrocher) ·
+
+- **NOYAU** · semelle massage avec mousse à mémoire (matière) + redistribution de pression (effet physique)
+- **CONTEXTE** · audience workers-shifts (visée) + verbatim Trustpilot "mes pieds ne me lâchent plus en fin de service" (preuve concrète)
+- **MODIFICATEURS** · hiver (saisonnalité, gel = douleur amplifiée), ton vulnérable empathique (registre), format vidéo verticale 9:16 (canal Instagram Reels)
+
+Le hook qui en sort n'est pas inventé. Il est composé. Reproducible. Si tu changes 1 modificateur (saison ou registre), tu obtiens une variante cohérente sans repenser le noyau.
 
 **Files Stepprs à sourcer**
-- `brands/_EXAMPLE/audiences/workers-shifts/profile.json` (mère + 3 sous-poches)
-- `brands/_EXAMPLE/audiences/chronic-pain-45/profile.json` (mère + 2 sous-poches)
-- `brands/_EXAMPLE/learnings.json` LRN-0002 (pattern cross-narrative observed)
-- `brands/_EXAMPLE/README.md` section canon vs réel
+- `brands/_EXAMPLE/products/massage-insoles/spec.json` (composition + mécanismes + bénéfices = NOYAU)
+- `brands/_EXAMPLE/audiences/workers-shifts/profile.json` (audience = CONTEXTE)
+- `brands/_EXAMPLE/angles/ANG-01.json` (hook composé en sortie)
 
-**Livrable concret en tête** · décision stratégique opérationnelle · "Stepprs cartographie 7 segments mais diffuse 1 hero cross-audience. Voilà pourquoi et comment décider sur ta propre brand."
+**Livrable concret en tête** · 1 noyau × 7 audiences possibles × 4 saisons × 3 registres = 84 variations cohérentes. Tu ne réinventes jamais. Tu paramètres.
 
-**Diagramme à proposer** ·
+**Diagramme à produire** · cartographique de la composition ·
+
 ```
-CARTOGRAPHIE (substrat)        TARGETING PAID (production)
-──────────────────────         ──────────────────────────
-workers-shifts (mère)
-  nurses-12h                   ┐
-  warehouse-10h                ├──→  1 hero Michelle
-  hospitality-retail           │     (combine 2 mères
-                               │      en 1 testimonial)
-chronic-pain-45 (mère)         │
-  plantar-fasciitis            │
-  heel-pain-general            ┘
+COMPOSITION D'UN LIVRABLE STEPPRS
 
-7 segments documentés          1 ad copy, 27 marchés EU
+NOYAU (stable)         CONTEXTE (situation)     MODIFICATEURS (variation)
+─────────────          ────────────────         ─────────────────────────
+
+matière                audience                 saisonnalité
+  mousse mémoire         workers-shifts           hiver / été / rentrée
+                                                  
+effet physique         verbatim sourcé          registre ton
+  redistribution         "mes pieds ne me        vulnérable / fier /
+  pression               lâchent plus..."        chirurgical
+                                                  
+bénéfice racine        douleur ciblée           format livrable
+  confort dès            talalgie réveil          vidéo verticale /
+  premier pas                                    statique / carousel
+                                                  
+                                                 canal média
+                                                   Meta / TikTok / mail
+
+         ↓                  ↓                            ↓
+         └──────────────────┴────────────────────────────┘
+                              │
+                              ▼
+                      LIVRABLE COMPOSÉ
+                      (hook + body + CTA)
 ```
 
-**Propriété structurelle** · cartographier sert à comprendre le terrain. Le targeting paid est une décision séparée, libre, informée par la cartographie.
+**Pour aller plus loin** ·
+- → Voir comment cartographier les atomes en matrices    `/breakdown stepprs matrices`
+- → Comprendre les règles qui cadrent le raisonnement    `/breakdown stepprs regles`
+- → Continuer le parcours    `/breakdown stepprs matrices`
 
-### 6. investigation · 5 sections IP appliquées
+---
 
-**Concept démontré** · Tout output stratégique PhantomOS (synthèse audience, angle, brief copy, audit perf) sort en 5 sections explicites · Observé, Déduit, Inconnu, Leviers, Close ouvert. Pas de prose libre, pas d'affirmation sans confidence chain.
+### 5. matrices · cartographier · prioriser · produire des variations (couche 1 modèle)
+
+**Couche** · 1 modèle
+
+**Concept à transmettre** · une **matrice** (un tableau à 2 dimensions) sert à trois usages différents dans PhantomOS. Pas un seul. Trois usages distincts à reconnaître pour savoir lequel utiliser.
+
+**Les 3 usages canon de matrice** ·
+
+1. **Matrice cartographie** · douleurs en lignes × audiences en colonnes. Sert à voir qui souffre de quoi. Révèle les **asymétries** (1 douleur frappe 5 audiences) et les **zones blanches** (audiences peu adressées). Diagnostic, pas action.
+
+2. **Matrice scoring** · angles × audiences avec un score d'intérêt par case. Sert à **prioriser** les top-3 territoires à tester. Aide à décider où mettre le budget en premier.
+
+3. **Matrice production** · 1 angle × 4 audiences × 3 formats × 2 saisons = 24 variations possibles. On en priorise top-5 à produire selon couverture maximale. Sert à **multiplier** les variations sans repartir de zéro.
+
+**Concept concret Stepprs** ·
+
+- **Cartographie** · 13 douleurs × 7 audiences = 91 cases. Révèle que la douleur "talalgie réveil" frappe 4 audiences sur 7 (forte horizontalité, candidate hero). À l'inverse, "douleur métatarsienne sport" frappe 1 seule audience (vertical, candidat niche).
+- **Scoring** · 7 angles × 7 audiences, chaque case scorée /10 sur frottement et conversion estimée. Top-3 territoires révélés · angle hero Michelle × workers-shifts (8.5/10), angle reassurance × chronic-pain-45 (7.8/10), angle confession × plantar-fasciitis (7.5/10).
+- **Production** · pour l'angle hero Michelle, 4 audiences × 3 formats vidéo × 2 saisons = 24 variations possibles. Top-5 priorisées sur couverture EU et budget.
 
 **Files Stepprs à sourcer**
-- `brands/_EXAMPLE/audiences/workers-shifts/profile.json` (vérifier si profil contient déjà cette structure · sinon montrer comment elle s'applique au runtime)
-- `brands/_EXAMPLE/learnings.json` (pattern captured avec sourcing)
-- `brands/_EXAMPLE/products/massage-insoles/frictions/FRC-01.json` (friction documentée avec verbatim)
+- `brands/_EXAMPLE/learnings.json` (LRN-0002 pattern observé, exemple cartographie)
+- score-matrix output si disponible (sinon produire un exemple inline)
 
-**Livrable concret en tête** · une synthèse audience workers-shifts présentée en 5 sections IP, montrant comment chaque assertion porte son sourcing.
+**Livrable concret en tête** · trois cartes mentales différentes. L'opérateur sait toujours quelle matrice utiliser pour quel besoin (diagnostiquer, prioriser, multiplier).
 
-**Diagramme à proposer** · tableau 5 sections avec exemple Stepprs concret par section ·
+**Diagramme à produire** · 3 matrices distinctes, même format, usages différents ·
 
 ```
-OBSERVÉ      verbatims Trustpilot, reviews Amazon, scrape PDP
-DÉDUIT       trigger commun, vocabulaire shared, severity tier
-INCONNU      saisonnalité achat, fréquence remplacement
-LEVIERS      mine-voc sur Reddit r/nursing, mine-vom forums podiatres
-CLOSE OUVERT "On creuse le segment hospitality-retail ou on
-              valide d'abord le hero Michelle sur la mère ?"
+3 USAGES DE MATRICE PHANTOMOS
+
+CARTOGRAPHIE (diagnostic)        SCORING (priorisation)      PRODUCTION (variations)
+
+       workers  chronic           workers  chronic              fmt1  fmt2  fmt3
+talalgie  ✓      ✓                ANG-01    8.5     7.2         saison
+métat     ✗      ✓                ANG-02    6.1     7.8           hiver  ✓    ✓    ·
+arch      ✓      ✗                ANG-03    7.0     6.5           été    ✓    ·    ✓
+sciat     ✗      ✓                ANG-04    5.5     6.0         
+
+révèle asymétries                identifie top-3              multiplie en top-5
++ zones blanches                  territoires test             cohérents
 ```
 
-**Propriété structurelle** · l'agent n'invente jamais une persona analytique. Il observe, déduit avec confidence chain, flag les inconnus, propose leviers, garde la conversation ouverte.
+**Pour aller plus loin** ·
+- → Comprendre les règles qui cadrent le raisonnement    `/breakdown stepprs regles`
+- → Voir comment les templates accélèrent la production    `/breakdown stepprs templates`
+- → Continuer le parcours    `/breakdown stepprs regles`
 
-### 7. production · brief copy en 5 min
+---
 
-**Concept démontré** · Le substrat encodé alimente la production runtime. Un brief copy ou une variation créative se génère en 5 min, pas en 1 heure, parce que le travail cognitif a été fait au setup.
+### 6. règles · vocabulaires fermés + posture investigation (couche 2 règles)
+
+**Couche** · 2 règles
+
+**Concept à transmettre** · PhantomOS impose des **règles de raisonnement** qui ressemblent à des contraintes mais qui sont en fait des accélérateurs. Deux règles centrales à connaître.
+
+**Règle 1 · vocabulaires fermés** · au lieu d'inventer un terme à chaque fois pour décrire la même chose, on choisit dans une liste prédéfinie (un registre). Exemple sur Stepprs · pour décrire le mécanisme produit, on ne dit pas "soutien dynamique adaptatif" (texte libre, ininterprétable pour l'agent suivant). On dit "arch support" + "pressure redistribution" (deux entrées du registre canon des mécanismes). N'importe quel autre skill PhantomOS peut alors raisonner sur ces mêmes mécanismes sans interprétation. La contrainte produit la reproducibilité.
+
+**Règle 2 · posture investigation (5 sections)** · toute synthèse stratégique sort structurée en 5 sections explicites ·
+- **Observé** · faits sourcés (verbatim Trustpilot, scrape PDP, review Amazon)
+- **Déduit** · hypothèses avec niveau de confiance (forte / moyenne / faible / très faible)
+- **Inconnu** · variables non observables, à creuser
+- **Leviers** · skills ou actions pour lever les inconnues
+- **Close ouvert** · UNE question macro pour que l'opérateur arbitre où creuser
+
+Pas de prose libre. Pas d'affirmation sans étiquette d'origine.
+
+**Concept concret Stepprs** ·
+
+- **Texte libre interdit** · "Stepprs a une semelle qui s'adapte dynamiquement" → un autre skill ne peut pas raisonner sur "s'adapte dynamiquement"
+- **Vocabulaire canon** · "Stepprs combine arch-support + pressure-redistribution + shock-absorption" → 3 entrées du registre, manipulables par tous les skills
+
+- **Synthèse libre interdite** · "L'audience workers-shifts est probablement sensible au prix car..."
+- **Synthèse en 5 sections** · Observé (3 verbatims sourcés), Déduit (sensibilité prix, confiance moyenne, basée sur 3 verbatims), Inconnu (élasticité réelle prix), Leviers (test A/B prix sur audience contrôle), Close ouvert ("on creuse l'élasticité prix ou on teste d'abord l'angle hero ?")
 
 **Files Stepprs à sourcer**
-- `brands/_EXAMPLE/products/massage-insoles/spec.json` (composition, mechanisms, benefits)
-- `brands/_EXAMPLE/audiences/workers-shifts/profile.json` (audience visée hero)
-- `brands/_EXAMPLE/angles/ANG-01.json` (angle hero)
-- `brands/_EXAMPLE/products/massage-insoles/offers.json` (offer + guarantee)
+- `brands/_EXAMPLE/products/massage-insoles/spec.json` (mécanismes typés canon)
+- `brands/_EXAMPLE/learnings.json` (synthèse en 5 sections, exemple)
+- registres canon `resources/registries/*` (citer 2-3 noms en clair sans path)
 
-**Livrable concret en tête** · brief copy complet généré sur cible audience workers-shifts angle ANG-01, avec Hook + Body + Proof + CTA + variants visuels, sourcé du substrat. Ne pas inventer, citer.
+**Livrable concret en tête** · 2 sorties comparées · une en mode "texte libre" (irréutilisable) vs une en mode "règles PhantomOS" (manipulable par tous les skills, reproducible cross-session).
 
-**Diagramme à proposer** · arbre de provenance du brief ·
+**Diagramme à produire** · comparaison freestyle vs règles ·
 
 ```
-BRIEF COPY
-├── Hook         ← audience.trigger + audience.vocabulaire
-├── Body         ← spec.mechanism + spec.benefit chained
-├── Proof        ← angle.observation (verbatim sourcé)
-├── CTA          ← offer.guarantee + offer.cta_canon
-└── Variants     ← creative-mechanics-registry × 3 variations
+RÈGLE 1 · vocabulaire fermé
+
+FREESTYLE (interdit)              CANON (imposé)
+────────────────────              ──────────────────────────────
+"soutien dynamique adaptatif"     arch-support
+                                  + pressure-redistribution
+                                  + shock-absorption
+
+→ ininterprétable                 → 3 entrées registre canon
+→ chaque skill réinvente          → manipulable par tous skills
+
+RÈGLE 2 · synthèse 5 sections
+
+PROSE LIBRE (interdite)           STRUCTURE INVESTIGATION
+─────────────────                 ─────────────────────────────
+"L'audience est sensible          Observé · 3 verbatims sourcés
+au prix car probablement..."       Déduit · sensibilité prix (moyenne)
+                                   Inconnu · élasticité réelle
+→ affirmation non sourcée          Leviers · test A/B prix
+→ pas auditable                    Close · "où on creuse ?"
 ```
 
-**Propriété structurelle** · la production runtime est presque mécanique. Le travail intellectuel a été fait une fois au setup. La créa devient un acte de composition, pas d'invention.
+**Pour aller plus loin** ·
+- → Voir comment les templates encodent ce qui marche    `/breakdown stepprs templates`
+- → Comprendre comment les métriques tracent l'origine    `/breakdown stepprs metriques`
+- → Continuer le parcours    `/breakdown stepprs templates`
+
+---
+
+### 7. templates · raccourcis combinaisons gagnantes (couche 3 templates)
+
+**Couche** · 3 templates
+
+**Concept à transmettre** · un **template** encode une combinaison qui marche, sous forme réutilisable. Au lieu de re-décider à chaque création de tous les paramètres (audience, angle, mécanique, format, ton), tu pars d'un template prouvé et tu adaptes 20% au contexte. Passe de 1 livrable/jour à 10 livrables/jour avec qualité constante.
+
+**Image vulgarisation** · un template, c'est une recette. La recette du pain dit "farine + eau + sel + levure, repos 2h, cuisson 250°C". Tu adaptes la farine selon ce que tu as sous la main, mais tu ne réinventes pas la recette à chaque fournée.
+
+**Concept concret Stepprs** · template "POV confession" (point de vue, confession personnelle face caméra) ·
+
+- **Composition figée** ·
+  - audience early-stage (personnes qui découvrent le problème)
+  - angle reassurance (rassurer sur la légitimité de la douleur)
+  - mécanique confession (un témoignage personnel, vulnérable)
+  - format statique ou vidéo ASMR 9:16
+  - ton vulnérable empathique
+
+- **Ce qu'on adapte (20%)** · le verbatim utilisé, l'identité du témoin (workers-shifts vs chronic-pain-45), l'angle de prise vidéo, la saisonnalité dans le hook.
+
+Au lieu de re-décider chaque case à chaque création, tu pars du template et tu adaptes ces 4 paramètres. 5 minutes de travail au lieu de 1 heure.
+
+**Files Stepprs à sourcer**
+- `brands/_EXAMPLE/angles/ANG-*.json` (pattern réutilisable identifié)
+- templates canon dans `resources/templates/*` (citer 2-3 noms sans path)
+
+**Livrable concret en tête** · 10 variantes du template POV confession produites en 1h, qualité constante, sourcées du même territoire. Sans template · 10h de travail créatif et qualité variable.
+
+**Diagramme à produire** · anatomie d'un template ·
+
+```
+TEMPLATE STEPPRS · "POV confession"
+
+PARAMÈTRES FIGÉS (80%)            PARAMÈTRES ADAPTÉS (20%)
+──────────────────────            ──────────────────────────
+
+audience type    early-stage      verbatim cité     "mes pieds..."
+                                                    "je n'osais plus..."
+                                                    "ma femme m'a dit..."
+
+angle structure  reassurance      identité témoin   workers nurse
+                                                    workers warehouse
+                                                    chronic-pain plantar
+
+mécanique        confession       angle prise vidéo face camera
+                                                    over shoulder
+                                                    POV pieds
+
+format           statique 1:1     saisonnalité     hiver gel
+                 ou ASMR 9:16     dans hook         rentrée scolaire
+                                                    été chaleur
+
+ton              vulnérable
+
+→ on instancie le template avec 4 paramètres adaptés
+→ 5 min par variante · qualité constante
+→ 10 variantes/heure au lieu de 1
+```
+
+**Pour aller plus loin** ·
+- → Comprendre comment les métriques tracent l'origine    `/breakdown stepprs metriques`
+- → Voir les rituels qui font durer le système    `/breakdown stepprs rituels`
+- → Continuer le parcours    `/breakdown stepprs metriques`
+
+---
+
+### 8. métriques · feedback par niveau + traçabilité source (couche 4 métriques)
+
+**Couche** · 4 métriques
+
+**Concept à transmettre** · chaque information dans PhantomOS porte son **étiquette d'origine**. Tu sais toujours d'où vient une affirmation. Quatre étiquettes possibles ·
+
+- **observée** · vue directement (verbatim Trustpilot, scrape page produit)
+- **déclarée** · dite par l'opérateur (revenu mensuel, contraintes, objectifs)
+- **déduite** · inférée par l'agent avec niveau de confiance
+- **structurée** · calculée à partir d'autres atomes (score d'opportunité, priorité)
+
+Chaque atome porte aussi son **état de validation** · proposée, validée par opérateur, testée en réel, scalée en volume, fatiguée (n'est plus performante).
+
+**Concept concret Stepprs** ·
+
+- **Trustpilot 3.4/5 · 1247 reviews** · note observée (scrape direct site Trustpilot, date d'observation enregistrée)
+- **Revenu mensuel 47k€** · valeur déclarée par l'opérateur (jamais déduit)
+- **Driver d'achat primaire = soulagement immédiat** · déduit (niveau confiance moyen, basé sur 3 verbatims qui le mentionnent explicitement)
+- **Score d'opportunité angle hero × workers-shifts = 8.5/10** · structuré (calculé à partir du score frottement × score conversion estimée)
+
+Au niveau output, une matrice de scoring quantifie. Pas d'intuition seule. La traçabilité est garantie cross-session.
+
+**Files Stepprs à sourcer**
+- `brands/_EXAMPLE/brand.json` (étiquettes d'origine sur chaque champ)
+- `brands/_EXAMPLE/learnings.json` (état de validation sur chaque atome)
+- score-matrix output si disponible
+
+**Livrable concret en tête** · tu reprends Stepprs 6 mois plus tard. Chaque atome te dit comment il est arrivé là (observé, déclaré, déduit). Tu sais ce qui a été testé en réel vs ce qui reste hypothèse. Zéro perte d'information.
+
+**Diagramme à produire** · arbre de traçabilité ·
+
+```
+ÉTIQUETTES D'ORIGINE STEPPRS
+
+observée                  déclarée                déduite                structurée
+─────────                 ─────────               ─────────              ─────────────
+Trustpilot 3.4/5          revenu 47k€/mois        driver primaire =      score opportunité
+1247 reviews              objectif EU expansion   "soulagement"          angle × audience
+scrape PDP                contraintes budget      (confiance moyenne)    8.5/10
+
+  ↓                         ↓                       ↓                       ↓
+
+source liée               opérateur statement     confidence chain        algorithme
++ date observation        + date déclaration      + 3 verbatims source    + inputs sourcés
+
+ÉTAT DE VALIDATION (par atome)
+
+proposée  →  validée  →  testée  →  scalée  →  fatiguée
+(agent)    (opérateur)   (réel)     (volume)    (n'est plus performante)
+```
+
+**Pour aller plus loin** ·
+- → Voir les rituels qui font durer le système    `/breakdown stepprs rituels`
+- → Voir une production concrète bout en bout    `/breakdown stepprs production`
+- → Continuer le parcours    `/breakdown stepprs rituels`
+
+---
+
+### 9. rituels · cadence opérationnelle + auto-correction (couche 5 rituels)
+
+**Couche** · 5 rituels
+
+**Concept à transmettre** · un système ne tient que s'il est **exécuté à fréquence**. Sans rituels (moments réguliers où on revisite le système), les règles se relâchent, les templates deviennent obsolètes, les métriques ne sont plus lues. Le système se dégrade silencieusement.
+
+**4 rituels canon PhantomOS** ·
+
+1. **Brief journalier** · en début de session, l'agent fait l'état de la brand active et propose les prochaines actions. 30 secondes. Empêche les sessions sans direction.
+
+2. **Fin de session** · capture des décisions prises, des frictions observées, des corrections appliquées. Persiste dans le système. Empêche la perte d'information cross-session.
+
+3. **Pré-ship** · audit de cohérence avant production réelle (avant de lancer une publicité payée, avant d'envoyer un email à la base). Vérifie que les atomes utilisés sont validés, que les verbatims sont sourcés, que les angles sont scorés. Empêche les ratés évitables.
+
+4. **Audit hebdo** · scan complet du workspace · stale (atomes non touchés depuis 30+ jours), parasites (atomes non référencés), drift (atomes qui contredisent les nouveaux), duplicates (atomes presque identiques). Maintient l'hygiène long terme.
+
+**Concept concret Stepprs** ·
+
+- Lundi matin · brief journalier. État Stepprs (3 angles validés, 2 en test, 1 fatigué). Proposition · rotation de l'angle fatigué avec une variante template POV confession.
+- Vendredi soir · fin de session. Capture · "l'angle hero Michelle performe mieux sur workers que sur chronic-pain. Verbatim x à corriger."
+- Avant un test live · pré-ship. Verbatim sourcé ? Score territoire ≥ 7/10 ? Audience cartographiée ?
+- Dimanche soir · audit hebdo. 3 atomes stale (>30j), 1 duplicate à fusionner, 0 drift.
+
+**Files Stepprs à sourcer** (à invoquer dans la fiche live)
+- rituel brief-day (skill existant)
+- rituel learn-from-session (skill existant)
+- rituel validate-resources (skill existant)
+- rituel hygiene-audit (skill existant)
+
+**Livrable concret en tête** · 4 rituels, total ~30 min/semaine. ROI · le système reste à jour, prêt à produire, sans dérive silencieuse. Sans rituels · 3 mois plus tard, ton workspace est devenu une CRM obsolète.
+
+**Diagramme à produire** · 4 rituels, cadence, output ·
+
+```
+CADENCE OPÉRATIONNELLE PHANTOMOS
+
+RITUEL             FRÉQUENCE        DURÉE       OUTPUT
+─────────────      ─────────────    ─────       ─────────────────────────
+
+brief journalier   début session    30 sec      état brand · prochaines
+                                                 actions proposées
+
+fin de session     fin session      2 min       capture décisions ·
+                                                 frictions · corrections
+                                                 persistées
+
+pré-ship           avant production 5 min       audit cohérence ·
+                                                 verbatim sourcé ·
+                                                 angle scoré ≥ 7/10
+
+audit hebdo        1×/semaine       10 min      scan stale · parasites
+                                                 · drift · duplicates
+
+TOTAL              hebdomadaire    ~30 min/sem  système maintenu propre
+
+SANS RITUELS                       AVEC RITUELS
+─────────────                       ─────────────
+règles relâchées                    règles respectées
+templates obsolètes                 templates rafraîchis
+métriques non lues                  métriques activées
+drift silencieux                    drift détecté + corrigé
+```
+
+**Pour aller plus loin** ·
+- → Voir la démo complète d'une production en 5 min    `/breakdown stepprs production`
+- → Revoir l'atomicité depuis l'angle système    `/breakdown stepprs atomicite`
+- → Continuer le parcours    `/breakdown stepprs production`
+
+---
+
+### 10. production · brief copy en 5 minutes appliquant les 5 couches (démo)
+
+**Couche** · démo complète (combine les 5 couches)
+
+**Concept à transmettre** · démonstration concrète. Un brief copy hero pour Stepprs sur la douleur talalgie (plantar fasciitis) produit en 5 minutes en activant simultanément les 5 couches du système. Chaque ligne du brief vient d'une couche identifiable. Arbre de provenance visible.
+
+**Concept concret Stepprs** · brief copy hero workers-shifts × angle Michelle × douleur talalgie ·
+
+```
+BRIEF COPY HERO · STEPPRS x WORKERS-SHIFTS x ANG-01 MICHELLE
+
+HOOK
+"Premier pas du matin · ces 30 premières secondes
+qui décident de ta journée."
+
+ARGUMENT
+"Mousse à mémoire + redistribution de pression sur l'arche.
+Pour que tes pieds ne te lâchent plus dès le réveil."
+
+PREUVE
+"Michelle, infirmière 12h shifts · 'Avant, je me levais
+en m'agrippant au mur. Maintenant je marche normal.'
+(Trustpilot · 4.5/5 · vérifié)"
+
+CTA
+"Essaie 60 jours. Si tes pieds ne changent pas, on rembourse.
+Stepprs.com/start"
+```
+
+**Décomposition par couche** ·
+
+- **HOOK** vient de **couche 1 (modèle composition)** + **couche 2 (règle audience cartographiée)**. Le NOYAU "premier pas du matin" est composé de la douleur talalgie réveil (atome PNT-01) × audience workers-shifts (audience cartographiée). La règle "vocabulaire de l'audience" impose "30 premières secondes" et "ta journée" (registre opérationnel travailleur, pas registre clinique).
+
+- **ARGUMENT** vient de **couche 1 (modèle atomicité)**. Les 2 mécanismes cités ("mousse à mémoire" + "redistribution de pression sur l'arche") sont 2 atomes du graphe spec produit. Pas inventés, sourcés.
+
+- **PREUVE** vient de **couche 4 (métrique traçabilité)**. Le verbatim Michelle est observé (scrape Trustpilot, vérifié). La note 4.5/5 est observée. Étiquette d'origine garantie.
+
+- **CTA** vient de **couche 3 (template offer canon)**. "60 jours essai + remboursement" est un template canon Stepprs réutilisable sur tous les angles. Pas re-décidé à chaque fois.
+
+**Files Stepprs à sourcer**
+- `brands/_EXAMPLE/products/massage-insoles/spec.json` (mécanismes)
+- `brands/_EXAMPLE/audiences/workers-shifts/profile.json` (audience)
+- `brands/_EXAMPLE/angles/ANG-01.json` (angle structure)
+- `brands/_EXAMPLE/products/massage-insoles/offers.json` (template offer)
+- verbatim Michelle sourcé Trustpilot (sourcing observé)
+
+**Livrable concret en tête** · 4 lignes de brief, 5 couches activées, arbre de provenance complet. Reproducible. Si tu remplaces workers-shifts par chronic-pain-45 dans le contexte, tu obtiens une variante cohérente automatiquement.
+
+**Diagramme à produire** · arbre de provenance du brief ·
+
+```
+BRIEF COPY · ARBRE DE PROVENANCE
+
+HOOK
+├── NOYAU       ← couche 1 (atome PNT-01 talalgie)
+├── CONTEXTE    ← couche 1 (audience workers-shifts)
+└── REGISTRE    ← couche 2 (règle vocabulaire opérationnel)
+
+ARGUMENT
+├── mécanisme 1 ← couche 1 (atome mousse à mémoire)
+└── mécanisme 2 ← couche 1 (atome redistribution pression)
+
+PREUVE
+├── verbatim    ← couche 4 (observé Trustpilot)
+└── note        ← couche 4 (observé Trustpilot 4.5/5)
+
+CTA
+└── garantie    ← couche 3 (template offer canon 60j)
+
+PRODUCTION COMPLÈTE = 5 min · 5 couches activées
+arbre de provenance visible · reproducible
+```
+
+**Sans le système** · 1 brief = 1-2h de travail créatif, qualité variable, sourcing absent, non-reproducible.
+**Avec le système** · 1 brief = 5 min, qualité constante, sourcing garanti, reproducible cross-session.
+
+**Pour aller plus loin** ·
+- → Revoir le principe fondateur depuis l'angle démo    `/breakdown stepprs principe`
+- → Lancer le tour onboarding complet PhantomOS    `/tour`
+- → Voir les autres skills disponibles    `/skills`
+
+---
 
 ## Anti-patterns à éviter dans toute fiche
 
 - Dump prose continue sans diagramme
-- Acronymes doctrine non-traduits exposés (SED, CMR, SAD, SED-X, etc.)
+- Acronymes doctrine non-traduits exposés (SED, CMR, SAD, SED-X, IP, VOC, etc.)
 - Field paths JSON exposés (`audiences/workers-shifts/profile.json#field`)
-- Ton sales-bro ou tabloid ("L'erreur que la plupart font", "Faux.", etc.)
+- Ton sales-bro ou tabloid ("L'erreur que la plupart font", "Faux.", "L'astuce que personne ne te dit")
+- Em-dash (le caractère tiret-cadratin) anywhere
 - Fiche au-delà de 35 lignes
-- Em-dash
+- Vocabulaire technique sans explication inline première occurrence
+- Présupposé de connaissance marketing (audience, DTC, scale, angle) sans expliquer en langue courante
 
-## Cross-refs
+## Cross-refs canon
 
-- Brand pédagogique source · `brands/_EXAMPLE/` (foot care DTC fictive Stepprs)
-- Doctrines démontrées (référence skill-author) · `docs/system/territory-discipline.md` · `docs/system/compositional-cartography.md` · `docs/system/schema-encoding-discipline.md` · `docs/system/canonical-matrix-reasoning.md` · `docs/doctrine/audiences-cartography-doctrine.md` · `docs/doctrine/angle-anatomy-doctrine.md` · `docs/system/investigation-posture.md`
-- Slash command frères · `/tour` (onboarding) · `/skills` (navigable menu) · `/phantom` (state cockpit)
+**Doctrine mère** ·
+- `docs/system/operational-system-discipline.md` (NEW v2.71.0 · les 5 couches d'un système opérationnel comme grammaire pédagogique mère)
+
+**Doctrines couche 1 (modèle)** ·
+- `docs/system/compositional-cartography.md` (équation NOYAU × CONTEXTE × MODIFICATEURS)
+- `docs/doctrine/audiences-cartography-doctrine.md` (cartographie hiérarchique)
+- `docs/doctrine/pain-benefit-chain-doctrine.md` (chaîne douleur surface → racine)
+- `docs/system/territory-discipline.md` (territoire stable vs production volatile)
+
+**Doctrines couche 2 (règles)** ·
+- `docs/system/investigation-posture.md` (5 sections obligatoires + vocabulaires fermés)
+- `docs/system/schema-encoding-discipline.md` (encoding rigoureux + sourcing tags)
+
+**Doctrines couche 4 (métriques)** ·
+- `docs/system/confidence-propagation.md` (cascade confidence cross-skill)
+- `docs/system/provenance-trust-discipline-scope.md` (provenance des assertions)
+
+**Doctrines couche 5 (rituels)** ·
+- `docs/system/progressive-cartography-discipline.md` (cadence de mise à jour)
+- `docs/system/contract-daily.md` (rituels post-setup daily-use)
+
+**Brand pédagogique source** ·
+- `brands/_EXAMPLE/` (foot care DTC fictive Stepprs · canon vs réel documenté dans README)
+
+**Slash commands frères** ·
+- `/tour` (onboarding complet PhantomOS)
+- `/skills` (menu navigable des skills)
+- `/phantom` (state cockpit brand active)
+
+**Discovery cross-link** ·
+- `_EXAMPLE/stepprs/README.md` pointe vers `/breakdown stepprs`
+- `tour.md` Milestone 6 mentionne `/breakdown stepprs` dans le trio commands

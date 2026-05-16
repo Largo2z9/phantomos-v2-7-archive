@@ -136,6 +136,19 @@ This doctrine inverts the default. **Structure is in service of intelligence, no
 
 ---
 
+## Position dans le système opérationnel 5 couches
+
+Contextual Intelligence est la doctrine méta-mère qui définit le mode de
+raisonnement PhantomOS (business universe vs form-filling). Le système
+opérationnel 5 couches (cf `operational-system-discipline.md`) est son
+implémentation méthodologique · comment ce raisonnement se structure
+concrètement en modèle (couche 1) · règles (couche 2) · templates
+(couche 3) · métriques (couche 4) · rituels (couche 5).
+
+CI dit pourquoi. Operational-system dit comment.
+
+---
+
 ## Sub-corpus
 
 CI is the master doctrine. Three sub-corpus extend it without becoming peer doctrines :
