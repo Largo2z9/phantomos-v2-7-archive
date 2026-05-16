@@ -1,0 +1,86 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.71.1",
+  "released_at": "2026-05-16",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 68,
+  "skills_count_after": 68,
+  "slash_commands_count_before": 4,
+  "slash_commands_count_after": 4,
+  "doctrines_count_before": 12,
+  "doctrines_count_after": 12,
+  "summary": "Patch v2.71.1 · refonte `breakdown.md` slash command 10 → 12 topics + 2 dimensions transverses canon (intelligence + apprentissage) + 2 enrichissements topic guides existing (principe + métriques). Parcours pédagogique complet 12 topics couvre intégralement les concepts canon opérateur-facing PhantomOS.",
+  "patches": [
+    {
+      "layer": "slash_command",
+      "file": ".claude/commands/breakdown.md",
+      "size_before_lines": 770,
+      "size_after_lines": 895,
+      "change_type": "topics_expansion_plus_enrichments",
+      "new_topics_added": [
+        {
+          "n": 11,
+          "name": "intelligence",
+          "dimension": "transverse",
+          "concept": "raisonnement contextuel grâce aux variables paramétrées · doctrine master Contextual Intelligence rendue opérateur-facing · différence concrète système rigide vs système intelligent · équation revue sous l'angle intelligence",
+          "files_sourced": ["brand.json", "products/massage-insoles/spec.json", "angles/ANG-01.json"]
+        },
+        {
+          "n": 12,
+          "name": "apprentissage",
+          "dimension": "transverse",
+          "concept": "cycle de promotion canon entre couches · 4 étapes (PRODUCE → TEST → LEARN → PROMOTE) · 4 chemins de promotion (Production → Templates · Règle → Template · Métrique → Rituel · Rituel → Règle) · compound effect canon",
+          "files_sourced": ["learnings.json", "angles/ANG-01.json", "status.json"]
+        }
+      ],
+      "enrichments": [
+        {
+          "topic": 1,
+          "name": "principe",
+          "addition": "NEW paragraphe Setup canon phasing progressif par profondeur · phasing canon 4 phases avec gates light (Macro · Drilling · Audiences hiérarchique · Enrichissement continu non-bloquant)",
+          "doctrine_referenced": "progressive-cartography-discipline.md (canon v2.68)"
+        },
+        {
+          "topic": 8,
+          "name": "metriques",
+          "addition": "5e étiquette d'origine NEW Importé (enrichissement depuis sources externes spy tools) + NEW paragraphe Market Intelligence Layer · pattern canon NEW skills {source}-enrich-brand reproductibles cross spy tools (TrendTrack · Foreplay · Atria · Meta Ad Library · BigSpy)",
+          "doctrine_referenced": "trendtrack-enrich-brand v1.0.0 (canon v2.69) · Market Intelligence Layer pattern"
+        }
+      ],
+      "topics_unchanged": [2, 3, 4, 5, 6, 7, 9],
+      "drill_updated": [10]
+    }
+  ],
+  "doctrinal_patterns_introduced_pedagogically": [
+    "Intelligence contextuelle comme promesse fondatrice · doctrine master Contextual Intelligence rendue opérateur-facing dans parcours · différenciation produit explicite vs systèmes rigides",
+    "Compound effect canon via cycle de promotion entre couches · 4 chemins canonisés (Production → Templates · Règle → Template · Métrique → Rituel · Rituel → Règle)",
+    "Pattern phasing + enrichissement multi-source combinés · territoire grandit dans le temps par phasing initial (progressive cartography) ET par enrichissement continu multi-source (Market Intelligence Layer)"
+  ],
+  "anti_patterns_canonized": [
+    "Parcours pédagogique 5 couches sans dimension transverse intelligence · opérateur voit infrastructure sans comprendre sa raison d'être · perte d'adhésion produit",
+    "Parcours pédagogique sans cycle d'apprentissage explicit · opérateur croit système statique · manque promesse compound effect différenciatrice"
+  ],
+  "concepts_canon_now_covered_in_parcours": {
+    "contextual_intelligence_master": "topic 11 intelligence (NEW)",
+    "compositional_cartography_v3_1": "topics 2-5 (modèle)",
+    "canonical_matrix_reasoning": "topics 5 matrices + 8 métriques",
+    "schema_encoding_discipline": "topics 2 atomicité + 8 métriques",
+    "investigation_posture": "topic 6 règles",
+    "territory_discipline": "topic 1 principe",
+    "operational_system_discipline_master_v2_71": "cadre parcours lui-même 5 couches + 2 transverses",
+    "progressive_cartography_v2_68": "topic 1 principe enrichi NEW",
+    "market_intelligence_layer_v2_69": "topic 8 métriques enrichi NEW",
+    "cycle_de_promotion_compound_effect": "topic 12 apprentissage (NEW)"
+  },
+  "concepts_canon_hors_scope_introductif": [
+    "Scope Extension Discipline (SED-X) · concept avancé absorbing nouveau domaine",
+    "Mutation Gate / Proposal Workflow · concept architecture interne",
+    "Brand Isolation Discipline · concept agency multi-client",
+    "Skills typology (6 types · producer/curator/capturer/orchestrator/navigator/builder) · concept interne",
+    "Doctrine Governance · concept méta promotion/amendment/retraction doctrines"
+  ],
+  "decisions_captured": ["D#416"],
+  "rollback_strategy": "Strict additif backward compat · revert v2.71.1 = git revert HEAD strict (zero data loss · NEW topics 11 + 12 retirés · enrichissements topic 1 + 8 paragraphes retirables · drill-down topic 10 retour version v2.71.0 · mode index retour 10 topics · architecture pédagogique retour 5 couches sans transverses)"
+}

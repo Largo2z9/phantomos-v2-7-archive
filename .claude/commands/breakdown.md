@@ -1,6 +1,6 @@
 ---
 name: breakdown
-description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand fictive foot care DTC encodée canon). 10 topics drillables structurés en 5 couches d'un système opérationnel · principe · atomicité · fractalité · composition · matrices · règles · templates · métriques · rituels · production. Ordre suggéré 1 à 10 = parcours complet (~30 min). Drill direct possible sur tout topic.
+description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). 12 topics drillables structurés en 5 couches d'un système opérationnel plus 2 dimensions transverses · principe · atomicité · fractalité · composition · matrices · règles · templates · métriques · rituels · production · intelligence · apprentissage. Ordre suggéré 1 à 10 (parcours couches) puis 11 à 12 (transverses qui scellent le parcours). Drill direct possible sur tout topic.
 ---
 
 # `/breakdown stepprs {topic}` · vitrine pédagogique PhantomOS
@@ -9,7 +9,7 @@ Slash command qui démontre la grammaire opérationnelle PhantomOS via le cas co
 
 **Cible audience** · opérateur novice complet (vibecoder, domain expert hors marketing, curieux). Pas un marketeur. Vocabulaire universel, ZERO jargon supposé connu. Premier contact avec un système opérationnel structuré. Ton institutionnel sérieux mais accessible, vulgarisé, jamais sales-bro.
 
-**Promesse** · expliquer ce qui rend PhantomOS reproductible (cohérence 95% output cross-session) en 10 topics, avec Stepprs comme cas filé. Chaque topic = une couche du système. Comprendre les 5 couches = maîtriser n'importe quel domaine.
+**Promesse** · expliquer ce qui rend PhantomOS reproductible (cohérence 95% output cross-session) en 12 topics, avec Stepprs comme cas filé. Chaque topic = une couche ou une dimension transverse du système. Comprendre les 5 couches + 2 transverses = maîtriser n'importe quel domaine.
 
 ## Architecture pédagogique · 5 couches d'un système opérationnel
 
@@ -25,17 +25,28 @@ COUCHE        RÔLE                              CE QUE ÇA PRODUIT
 5 RITUELS     Comment durer dans le temps       Système qui ne se dégrade pas
 ```
 
-Les 10 topics du parcours couvrent ces 5 couches plus 1 principe transverse plus 1 démo concrète.
+**Plus 2 dimensions transverses qui scellent le parcours** ·
+
+```
+DIMENSION       RÔLE                                  CE QUE ÇA PRODUIT
+─────────────   ────────────────────────────────      ─────────────────────────
+11 INTELLIGENCE Comment les 5 couches ensemble        Raisonnement contextuel
+                produisent du raisonnement adapté     adapté à chaque cas
+12 APPRENTISSAGE Comment le système s'auto-améliore   Compound effect au fil
+                via promotion entre couches            du temps
+```
+
+Les 12 topics du parcours couvrent ces 5 couches plus 2 dimensions transverses.
 
 ## Mode detection
 
 | Argument | Mode |
 |---|---|
-| empty (`/breakdown stepprs`) | **index** · liste les 10 topics + parcours suggéré + diagramme 5 couches |
+| empty (`/breakdown stepprs`) | **index** · liste les 12 topics + parcours suggéré + diagramme 5 couches + 2 transverses |
 | topic name (e.g. `/breakdown stepprs composition`) | **drill** · génère la fiche du topic sourçant Stepprs live |
-| invalid topic | **redirect** · liste les 10 topics valides en 1 ligne, demande choix |
+| invalid topic | **redirect** · liste les 12 topics valides en 1 ligne, demande choix |
 
-**Topics valides** · `principe` · `atomicite` · `fractalite` · `composition` · `matrices` · `regles` · `templates` · `metriques` · `rituels` · `production`
+**Topics valides** · `principe` · `atomicite` · `fractalite` · `composition` · `matrices` · `regles` · `templates` · `metriques` · `rituels` · `production` · `intelligence` · `apprentissage`
 
 ## Mode index, default
 
@@ -43,18 +54,24 @@ Si l'opérateur tape `/breakdown stepprs` sans arg, sortir exactement ceci (rend
 
 ```
 ══════════════════════════════════════════════════════════════════════
-PARCOURS PHANTOMOS · démontré via Stepprs · 5 couches d'un système opérationnel
+PARCOURS PHANTOMOS · démontré via Stepprs · 5 couches + 2 dimensions transverses
 ══════════════════════════════════════════════════════════════════════
 
-PRINCIPE    COUCHE 1 MODÈLE        COUCHE 2 RÈGLES     COUCHE 3      COUCHE 4       COUCHE 5    DÉMO
-─────────   ────────────────       ────────────────    TEMPLATES     MÉTRIQUES      RITUELS     ────
+PRINCIPE    COUCHE 1 MODÈLE      COUCHE 2 RÈGLES    COUCHE 3       COUCHE 4       COUCHE 5    DÉMO
+─────────   ────────────────     ────────────────   TEMPLATES      MÉTRIQUES      RITUELS     ────
 
-1. principe → 2. atomicité      → 6. règles       → 7. templates → 8. métriques → 9. rituels → 10. production
+1. principe → 2. atomicité    → 6. règles       →  7. templates → 8. métriques → 9. rituels → 10. production
               3. fractalité
               4. composition
               5. matrices
 
-Ordre suggéré · 1 → 10 (parcours complet, ~30 min lecture)
+DIMENSIONS TRANSVERSES · scellent le parcours
+─────────────────────────────────────────────
+
+11. intelligence    (raisonnement contextuel grâce aux variables paramétrées)
+12. apprentissage   (cycle de promotion entre couches · compound effect)
+
+Ordre suggéré · 1 → 10 (parcours couches) puis 11 à 12 (transverses)
 Drill direct · /breakdown stepprs {topic}
 ══════════════════════════════════════════════════════════════════════
 ```
@@ -124,6 +141,10 @@ POUR ALLER PLUS LOIN
 **Concept concret Stepprs** · brand fictive qui vend des semelles anti-douleur (massage insoles) à deux types de personnes principales · les travailleurs qui restent debout 8h+ par jour (infirmières, magasiniers, serveurs) et les personnes de 45 ans et + qui souffrent de douleurs chroniques (épine calcanéenne, talalgie). Semelle avec mousse à mémoire de forme, redistribution de pression et soutien de la voûte plantaire. Vendue en ligne directement (DTC, vente directe au consommateur, pas de pharmacie ni distributeur).
 
 **Investissement vs ROI** · setup initial 1-2h en semaine 1 pour encoder le territoire. ROI immédiat dès semaine 2 · chaque nouvelle production (publicité, email, page produit) prend 5-15 min au lieu de 1-2h.
+
+**Setup canon · phasing progressif par profondeur**
+
+Le territoire ne se construit pas en bloc en semaine 1. PhantomOS canon impose un phasing en 4 phases avec gates light entre chaque · Phase 1 macro (scrape automatique + confirmation light) · Phase 2 drilling (drill pages produits + reviews) · Phase 3 audiences hiérarchique (cartographie parent/enfants) · Phase 4 enrichissement continu (non-bloquant, l'opérateur drop des insights à tout moment). Setup initial 1-2h en semaine 1 couvre Phase 1+2. Phase 3 atteinte sem 1-2. Phase 4 ouverte ad vitam. Tu n'es jamais "obligé d'avoir tout encodé pour commencer à produire".
 
 **Files Stepprs à sourcer**
 - `brands/_EXAMPLE/brand.json` (identité, positionnement, audiences principales)
@@ -514,12 +535,17 @@ ton              vulnérable
 
 **Couche** · 4 métriques
 
-**Concept à transmettre** · chaque information dans PhantomOS porte son **étiquette d'origine**. Tu sais toujours d'où vient une affirmation. Quatre étiquettes possibles ·
+**Concept à transmettre** · chaque information dans PhantomOS porte son **étiquette d'origine**. Tu sais toujours d'où vient une affirmation. Cinq étiquettes possibles ·
 
-- **observée** · vue directement (verbatim Trustpilot, scrape page produit)
-- **déclarée** · dite par l'opérateur (revenu mensuel, contraintes, objectifs)
-- **déduite** · inférée par l'agent avec niveau de confiance
-- **structurée** · calculée à partir d'autres atomes (score d'opportunité, priorité)
+- **Observé** · capté directement (Trustpilot, Facebook followers, year_founded, marchés EU sourced live)
+- **Déclaré** · saisi par l'opérateur (revenu mensuel mock, LTV, marge brute)
+- **Déduit** · raisonné par l'agent (driver primaire, positionnement)
+- **Structuré** · règle métier (les 4 mécanismes typés canon, formula OTRB)
+- **Importé** · enrichi depuis source externe spy tool (TrendTrack ads winners, Trustpilot bulk, Foreplay creative library, etc.)
+
+**Enrichissement multi-source · Market Intelligence Layer**
+
+Le territoire ne grandit pas seulement via scrape du site web propre. PhantomOS canonise un pattern de NEW skills `{source}-enrich-brand` qui enrichissent le territoire depuis sources externes spy tools (TrendTrack pour ads competitive, Foreplay pour creative library, Atria, Meta Ad Library, BigSpy, etc.). Chaque info importée porte l'étiquette `Importé` + meta tag de la source d'origine (e.g. `trendtrack`). Sur Stepprs · 8 patterns capturés via TrendTrack live (narrative diversity, geo distribution, spend concentration, etc.) enrichissent le territoire au-delà du scrape PDP.
 
 Chaque atome porte aussi son **état de validation** · proposée, validée par opérateur, testée en réel, scalée en volume, fatiguée (n'est plus performante).
 
@@ -715,9 +741,110 @@ arbre de provenance visible · reproducible
 **Avec le système** · 1 brief = 5 min, qualité constante, sourcing garanti, reproducible cross-session.
 
 **Pour aller plus loin** ·
-- → Revoir le principe fondateur depuis l'angle démo    `/breakdown stepprs principe`
-- → Lancer le tour onboarding complet PhantomOS    `/tour`
-- → Voir les autres skills disponibles    `/skills`
+- → Comprendre comment l'intelligence contextuelle utilise les 5 couches    `/breakdown stepprs intelligence`
+- → Comprendre comment le système s'auto-améliore    `/breakdown stepprs apprentissage`
+- → Refaire le parcours complet    `/breakdown stepprs`
+
+---
+
+### 11. intelligence · raisonnement contextuel grâce aux variables paramétrées
+
+**Dimension** · transverse · scelle le parcours (la promesse fondatrice que les 5 couches servent)
+
+**Concept à transmettre** · Les 5 couches qu'on vient de voir ne sont pas leur propre fin. Elles existent pour rendre une seule chose possible · un système qui raisonne contextuellement, plutôt qu'un système qui applique des règles mécaniques aveugles. C'est la promesse fondatrice de PhantomOS (doctrine master · Contextual Intelligence).
+
+**Différence concrète à montrer** ·
+
+Système rigide (CRM enrichi, automation Zapier, scripts Make)
+- Reçoit · "audience workers-shifts, saison hiver"
+- Produit · le brief T-001 stocké en mémoire pour ce cas exact
+- Adapte · zéro. Si le cas est nouveau, retombe sur défaut générique.
+
+Système intelligent (PhantomOS)
+- Reçoit · "audience workers-shifts, saison hiver"
+- Raisonne · workers-shifts → douleur 10h+ shifts (couche 1) + saison hiver → urgence ressentie (couche 1) + modifieur saison → ton plus empathique (couche 2) + verbatim Trustpilot infirmière hiver (couche 4)
+- Produit · un brief unique adapté à CE moment, CETTE audience, CETTE saison.
+
+**L'équation revue sous l'angle intelligence**
+- LIVRABLE = NOYAU × CONTEXTE × MODIFIEURS
+- NOYAU stable (savoir territoire). CONTEXTE et MODIFIEURS paramétrés varient à chaque invocation. C'est cette variabilité paramétrée qui produit l'intelligence · le système adapte sans qu'on le reprogramme.
+
+**Diagramme à proposer · les 5 couches ensemble servent l'intelligence**
+- Couche 1 modèle    · fournit les atomes et leurs relations
+- Couche 2 règles    · cadre le raisonnement (vocabulaires, posture investigation)
+- Couche 3 templates · propose des combinaisons éprouvées
+- Couche 4 métriques · fournit la traçabilité de chaque variable
+- Couche 5 rituels   · maintient le système à jour pour rester pertinent
+
+**Lecture opérateur** · Tu ne configures pas N templates pour N cas (qui te demanderait d'anticiper toutes les combinaisons, impossible). Tu encodes le territoire une fois, et le système raisonne à chaque invocation. Nouvelle audience ? Le système l'absorbe et produit. Nouvelle saison ? Pareil. Tu fournis les variables, le système raisonne.
+
+**Files Stepprs à sourcer**
+- `brands/_EXAMPLE/brand.json` (audiences cartographiées, modifieurs structurels)
+- `brands/_EXAMPLE/products/massage-insoles/spec.json` (noyau composition)
+- `brands/_EXAMPLE/angles/ANG-01.json` (exemple application équation)
+
+**Drill-down suggéré**
+- /breakdown stepprs apprentissage (comment le système s'auto-améliore)
+- /breakdown stepprs principe (revenir au principe fondateur)
+- /breakdown stepprs (refaire le parcours complet)
+
+---
+
+### 12. apprentissage · cycle de promotion entre couches · compound effect
+
+**Dimension** · transverse · scelle le parcours (comment le système devient meilleur au fil du temps)
+
+**Concept à transmettre** · Un système opérationnel statique se dégrade. Un système qui apprend s'enrichit. PhantomOS encode un cycle de promotion entre les 5 couches qui fait grandir le territoire à chaque cycle de production. C'est le compound effect canon.
+
+**Cycle canon à 4 étapes (produce → test → learn → promote)**
+
+1. PRODUCE · l'agent produit un livrable en combinant les 5 couches. Exemple Stepprs · 5 publicités avec variations de hook.
+2. TEST · le livrable est lancé en réel. Exemple Stepprs · 5 publicités testées sur Meta pendant 7 jours.
+3. LEARN · les métriques (couche 4) capturent ce qui marche. Exemple Stepprs · publicité #3 (hook "5h du matin") explose à 8x le CTR moyen.
+4. PROMOTE · ce qui marche remonte vers une couche supérieure. Exemple Stepprs · le hook "5h du matin" est promu de production éphémère vers template canon (couche 3).
+
+**Les 4 chemins de promotion canon**
+
+- Production → Templates (couche 3) · un angle qui scale 3 fois devient template canonique. Exemple Stepprs · ANG-01 hero Michelle promu après 27 marchés EU.
+- Règle → Template (couche 2 → 3) · une heuristique appliquée systématiquement avec succès devient template. Exemple · "verbatim Trustpilot toujours en proof" devient template hook canon.
+- Métrique → Rituel (couche 4 → 5) · une métrique qui converge vers un seuil stable mérite son rituel de suivi. Exemple · "CTR cible 1.8% sur ad statique" devient rituel hebdomadaire.
+- Rituel → Règle (couche 5 → 2) · un rituel exécuté assez de fois pour devenir automatique se cristallise en règle canon. Exemple · "auditer la cohérence territoire avant ship" devient règle hard.
+
+**Diagramme à proposer** ·
+
+```
+           PRODUCTION éphémère
+                  │
+                  │ promote si scale ≥3 fois
+                  ▼
+              TEMPLATES (couche 3)
+                  │
+                  │ promote si appliqué systématique
+                  ▼
+              RÈGLES (couche 2)
+
+           MÉTRIQUE convergente
+                  │
+                  │ promote si seuil stable
+                  ▼
+              RITUEL (couche 5)
+                  │
+                  │ promote si automatique
+                  ▼
+              RÈGLE (couche 2)
+```
+
+**Lecture opérateur** · Plus la marque vit dans PhantomOS, plus elle s'affine. Au bout d'un an, ton territoire contient les angles qui ont prouvé leur ROI, les objections qui reviennent vraiment, le vocabulaire qui résonne sur ta cible spécifique. Chaque nouvelle production démarre depuis un substrat plus riche. Le compound effect s'accumule.
+
+**Files Stepprs à sourcer**
+- `brands/_EXAMPLE/learnings.json` (8 patterns LRN-0001 à LRN-0008 capturés via TrendTrack live)
+- `brands/_EXAMPLE/angles/ANG-01.json` (hero promu après scaling)
+- `brands/_EXAMPLE/status.json` (validation_status sur entités · validated → tested → scaled)
+
+**Drill-down suggéré**
+- /breakdown stepprs intelligence (comment le système raisonne contextuellement)
+- /breakdown stepprs principe (revenir au principe fondateur)
+- /breakdown stepprs (refaire le parcours complet)
 
 ---
 

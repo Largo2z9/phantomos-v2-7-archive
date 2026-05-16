@@ -7,6 +7,43 @@
 
 ---
 
+## v2.71.1 · 2026-05-16 · Patch `breakdown.md` 10 → 12 topics · 2 dimensions transverses canon + 2 enrichissements
+
+**Why** · Audit parcours pédagogique post-v2.71.0 a révélé 3 concepts canon HIGH priority manquants ou sous-représentés · (1) la doctrine master Contextual Intelligence (raisonnement contextuel grâce aux variables paramétrées) · les 5 couches existaient mais leur RAISON D'ÊTRE n'était pas explicite (2) le cycle de promotion entre couches · compound effect canon qui transforme système statique en système qui s'auto-améliore · mentionné doctrine §11 mais pas dans parcours (3) progressive cartography canon v2.68 (phasing 4 phases gates light) + Market Intelligence Layer v2.69 (enrichissement multi-source) · mentions implicites topic 1 et 8 mais pas explicit. v2.71.1 ferme la boucle pédagogique · 12 topics couvrent intégralement les concepts canon opérateur-facing.
+
+**What** · 4 blocs ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · NEW topic 11 `intelligence`** | Topic guide · raisonnement contextuel grâce aux variables paramétrées · scelle la promesse fondatrice doctrine master Contextual Intelligence · différence concrète système rigide (CRM enrichi · automation Zapier · scripts Make) vs système intelligent (PhantomOS raisonne sur business universe) · équation OUTPUT = NOYAU × CONTEXTE × MODIFIEURS revue sous l'angle intelligence (CONTEXTE + MODIFIEURS = variables paramétrées) · les 5 couches comme infrastructure de l'intelligence contextuelle | Promesse fondatrice rendue tangible · différenciation produit explicite vs systèmes rigides · raisonnement contextuel canonisé pédagogiquement |
+| **2 · NEW topic 12 `apprentissage`** | Topic guide · cycle de promotion canon entre couches · 4 étapes (PRODUCE → TEST → LEARN → PROMOTE) · 4 chemins de promotion canon (Production → Templates · Règle → Template · Métrique → Rituel · Rituel → Règle) · compound effect au fil du temps · système qui s'auto-améliore vs système statique qui se dégrade · 1 an plus tard territoire contient angles ROI prouvé · objections récurrentes · vocabulaire qui résonne | Compound effect canon rendu tangible · cycle d'apprentissage opérationnel canonisé pédagogiquement · différenciation produit "système qui apprend" |
+| **3 · Enrichissement topic 1 principe** | NEW paragraphe "Setup canon · phasing progressif par profondeur" · phasing canon 4 phases avec gates light (Phase 1 macro + Phase 2 drilling + Phase 3 audiences hiérarchique + Phase 4 enrichissement continu non-bloquant) · Setup pas en bloc semaine 1 · encodage incrémental · "tu n'es jamais obligé d'avoir tout encodé pour commencer à produire" | Progressive cartography canon v2.68 rendue opérateur-facing · démystifie le setup · libère l'opérateur de la pression "tout encoder semaine 1" |
+| **4 · Enrichissement topic 8 métriques** | 5e étiquette d'origine NEW `Importé` (enrichissement depuis sources externes spy tools) + NEW paragraphe "Enrichissement multi-source · Market Intelligence Layer" · pattern canon NEW skills `{source}-enrich-brand` reproductibles cross spy tools (TrendTrack · Foreplay · Atria · Meta Ad Library · BigSpy) · Stepprs 8 patterns capturés via TrendTrack live | Market Intelligence Layer canon v2.69 rendu opérateur-facing · démystifie l'enrichissement multi-source · territoire ne grandit pas seulement via scrape PDP |
+
+**3 patterns canon introduits dans parcours** ·
+
+1. **Intelligence contextuelle** comme promesse fondatrice (canonise dans le parcours la doctrine master Contextual Intelligence) · les 5 couches existent pour permettre le raisonnement contextuel adapté à chaque cas, pas pour leur propre fin.
+
+2. **Compound effect canon** via cycle de promotion entre couches · 4 chemins canonisés (Production → Templates · Règle → Template · Métrique → Rituel · Rituel → Règle) · système qui s'auto-améliore par construction.
+
+3. **Pattern phasing + enrichissement multi-source** combinés · le territoire grandit dans le temps par phasing initial (progressive cartography 4 phases) ET par enrichissement continu multi-source (Market Intelligence Layer skills `{source}-enrich-brand`).
+
+**2 anti-patterns canonisés** ·
+- Parcours pédagogique 5 couches sans dimension transverse intelligence · l'opérateur voit l'infrastructure sans comprendre sa raison d'être, perte d'adhésion produit
+- Parcours pédagogique sans cycle d'apprentissage explicit · l'opérateur croit que le système est statique, manque la promesse compound effect différenciatrice
+
+**Backward compat strict additif** · zero override · Topic guides 2-7, 9 inchangés · topic 1 + 8 enrichis (paragraphe additif) · topic 10 drill-down updated pour pointer vers 11 + 12 · NEW topics 11 + 12 ajoutés en série · mode index canonique mis à jour 10 → 12 topics structurés 5 couches + 2 transverses · architecture pédagogique enrichie avec tableau dimensions transverses · skills count 68 → 68 (zero new skill) · doctrines canon 12 → 12 (zero new doctrine, juste enrichissement parcours pédagogique de doctrines existing). Operators v2.71.0 non affectés sauf invocation `/breakdown stepprs` qui retombe sur version refactorée 12 topics.
+
+**Files patched** ·
+- `.claude/commands/breakdown.md` 770L → 895L (+125L · 2 NEW topics + 2 enrichissements + mode index updated + architecture pédagogique enrichie)
+- `_version.json` 2.71.0 → 2.71.1
+- `CHANGELOG.md` v2.71.1 entry (this entry)
+- `docs/internal/releases/manifest/2.71.1-manifest.json` NEW
+
+**D#416 captured** · `decisions.md` PhantomOS · v2.71.1 patch parcours pédagogique 12 topics complet · 2 dimensions transverses canon (intelligence + apprentissage) + 2 enrichissements (progressive cartography + Market Intelligence Layer).
+
+---
+
 ## v2.71.0 · 2026-05-16 · NEW doctrine mère `operational-system-discipline.md` · équation maître 5 couches
 
 **Why** · PhantomOS avait toutes les briques d'un système opérationnel complet (ECR via CC v3.1 + atomicité + fractalité · Règles via resources/registries + investigation-posture · Templates via resources/templates + brand _TEMPLATE · Métriques via learnings.json + validation_status + _field_types · Rituels via brief-day + learn-from-session + hygiene-audit) mais aucune grammaire commune nommant ces couches comme système multiplicatif. La doctrine mère manquait · sans elle, PhantomOS restait un assemblage de doctrines spécialisées vs plateforme de systémisation complète différenciée. v2.71 canonise l'équation maître `SYSTÈME OPÉRATIONNEL = ECR × RÈGLES × TEMPLATES × MÉTRIQUES × RITUELS` · doctrine mère sœur de Contextual Intelligence au niveau master.
