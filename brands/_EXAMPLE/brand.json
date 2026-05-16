@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE pédagogique · Brand fictive Stepprs (foot care insoles · vitrine canon PhantomOS v2.68). NE PAS MODIFIER. Référence visuelle pour comprendre à quoi ressemble un brand.json bien posé. Enrichi data TrendTrack live 2026-05-16 · validate skill trendtrack-enrich-brand v1.0.0 cas réel · mock data financials preserved (LTV $65 · AOV $38 · etc.) · data factuelle sourced API (year_founded · social_media · trustpilot · monthly_visits · categories · active_ads metrics). Ignored par FIRST ACTION canon (folder prefix `_`). Migration v2.2 → v2.4 v2.68.",
+  "$comment": "EXEMPLE pédagogique · Brand pédagogique Stepprs · cas canonique PhantomOS · marque réelle (stepprs.com fondée 2024) avec certains financials et verbatims mockés pour la pédagogie · foot care insoles · vitrine canon PhantomOS v2.68. NE PAS MODIFIER. Référence visuelle pour comprendre à quoi ressemble un brand.json bien posé. Enrichi data TrendTrack live 2026-05-16 · validate skill trendtrack-enrich-brand v1.0.0 cas réel · mock data financials preserved (LTV $65 · AOV $38 · etc.) · data factuelle sourced API (year_founded · social_media · trustpilot · monthly_visits · categories · active_ads metrics). Ignored par FIRST ACTION canon (folder prefix `_`). Migration v2.2 → v2.4 v2.68.",
   "_schema": "brand/2.4",
   "_version": "2.4",
   "_field_types": {
@@ -70,7 +70,7 @@
   },
   "_meta": {
     "is_example": true,
-    "example_purpose": "Pedagogical reference brand · vitrine canon PhantomOS v2.68 (territoire-discipline + progressive-cartography + compositional-cartography 4 arbres). Mock brand inspirée Stepprs foot care DTC.",
+    "example_purpose": "Pedagogical reference brand · vitrine canon PhantomOS v2.68 (territoire-discipline + progressive-cartography + compositional-cartography 4 arbres). Brand pédagogique du cas canonique PhantomOS inspirée Stepprs (marque réelle stepprs.com) foot care DTC.",
     "example_canon_showcased": [
       "compositional-cartography v3.1 · 4 arbres (Spec→Mécanisme→Bénéfice · Audience→Pain→Bénéfice · Angle OTRB · Roadmap timeline)",
       "territory-discipline v2.67 · substrat stable canonisé",

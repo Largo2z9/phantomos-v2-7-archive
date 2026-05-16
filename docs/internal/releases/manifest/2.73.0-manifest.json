@@ -1,0 +1,108 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.73.0",
+  "released_at": "2026-05-16",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 69,
+  "skills_count_after": 70,
+  "slash_commands_count_before": 4,
+  "slash_commands_count_after": 4,
+  "doctrines_count_before": 12,
+  "doctrines_count_after": 12,
+  "summary": "Sprint majeur v2.73.0 · décompose créa concurrente end-to-end · 5 agents parallèle · features (decompose-ad v2.0.0 grille ANATOMIE 3 niveaux + NEW adapt-from-competitor v1.0.0 orchestrator) + cleanup hygiène (7 files wording + 2 doctrines + audit refs).",
+  "patches": [
+    {
+      "id": 1,
+      "name": "decompose-ad v1.5.0 → v2.0.0 grille ANATOMIE 3 niveaux",
+      "file": ".skills/skills/decompose-ad/SKILL.md",
+      "size_before_lines": 419,
+      "size_after_lines": 535,
+      "version_before": "1.5.0",
+      "version_after": "2.0.0",
+      "changes": [
+        "Frontmatter version bump + patch_notes v2.0.0",
+        "Section 4 fiche v5 refactor · RÉUTILISATION legacy → ANATOMIE 3 niveaux canon (CE QUI FAIT PERFORMER · À ADAPTER À TA BRAND · À SITUER)",
+        "4 NEW Hard Rules HR-anatomie-1 à 4",
+        "Close 1 question binaire vers /adapt-from-competitor {CRT-NN}",
+        "Cross-refs canon · operational-system-discipline v2.71 + compositional-cartography v3.1 + canonical-matrix-reasoning + adapt-from-competitor downstream"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "NEW skill adapt-from-competitor v1.0.0",
+      "additions": [
+        {
+          "type": "skill",
+          "name": "adapt-from-competitor",
+          "path": ".skills/skills/adapt-from-competitor/SKILL.md",
+          "size_lines": 206,
+          "type_skill": "orchestrator",
+          "layer": "production",
+          "subagent_safe": true,
+          "scope": "Orchestrator chain decompose-ad output → operator gate isolation variables → produce-copy-brief brand-side · pipeline 5 phases · 7 HR · 3 paths flow opérateur (variant complet · 1 axe seul · registry promotion)"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Cleanup hygiène P0 wording drift · 7 files",
+      "files_patched": [
+        "brands/_EXAMPLE/README.md (titre + description + 13 chapitres + 30 min)",
+        "brands/_EXAMPLE/brand.json (2 occurrences · $comment + _meta.example_purpose)",
+        "brands/_EXAMPLE/status.json (2 occurrences · $comment + flag)",
+        "brands/_EXAMPLE/roadmap.json ($comment)",
+        "brands/_EXAMPLE/products/massage-insoles/spec.json ($comment)",
+        "brands/_EXAMPLE/products/massage-insoles/offers.json ($comment)",
+        ".claude/commands/breakdown.md (5 patches · 6 occurrences brand fictive + uniformisé 13 topics + 5 couches + 3 transverses)"
+      ],
+      "result": "Zero 'brand fictive' résiduel · Stepprs wording uniformément 'brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com' cross-files"
+    },
+    {
+      "id": 4,
+      "name": "Cleanup hygiène P0 doctrine · 2 patches",
+      "patches": [
+        {
+          "file": "docs/system/operational-system-discipline.md",
+          "change": "2 occurrences cross-ref singulier 'audience-cartography-doctrine.md' (CASSÉ) → pluriel 'audiences-cartography-doctrine.md' (canonical) · L87 + L292"
+        },
+        {
+          "file": "docs/system/skill-authoring-discipline.md",
+          "change": "NEW section 'Position dans le système opérationnel 5 couches' L218 · omission v2.71.0 corrigée · couche transverse meta gouverne authoring skills cross-layers"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Audit 18 broken resource refs (READ-ONLY)",
+      "type": "audit_readonly",
+      "result": {
+        "false_positive": 8,
+        "cleanup_v2731_backlog": 7,
+        "ship_v274_backlog": 2,
+        "pedagogical_preserved": 1
+      },
+      "backlog_identified": {
+        "v2.73.1": "Cleanup refs CHANGELOG L1474 + check-existing-coverage L83 path canonical · 15 min",
+        "v2.74": "Doctrine NEW skill-routing-discipline.md + orchestrator NEW audit-meta-global"
+      }
+    }
+  ],
+  "doctrinal_patterns_introduced": [
+    "Grille ANATOMIE 3 niveaux cohérente équation v3.1 · NOYAU (à garder) / CONTEXTE (à adapter brand) / MODIFIEURS (à situer) · pattern reproductible cross-skill",
+    "Phase 1 analyse vs Phase 2 adaptation séparées canon · 2 décisions distinctes 2 invocations · decompose-ad close binaire vers adapt-from-competitor orchestrator",
+    "Output opérateur-facing 100% humain · canon résonne back-end silent · règle généralisée PhantomOS · ZERO raw field name · ZERO registry ID exposé"
+  ],
+  "anti_patterns_canonized": [
+    "Flow décompose créa sans grille variables 3 niveaux · Section RÉUTILISATION prose libre legacy",
+    "Output opérateur-facing exposant raw fields canon · violation operator-facing rule",
+    "Phase 1 analyse et Phase 2 adaptation fusionnées · canon · 2 phases distinctes"
+  ],
+  "decisions_captured": ["D#418"],
+  "backlog_identified": {
+    "v2.73.1": "Cleanup léger refs + registry ugc-confession variante NEW",
+    "v2.74": "Doctrine skill-routing-discipline + orchestrator audit-meta-global NEW"
+  },
+  "rollback_strategy": "Strict additif backward compat · revert v2.73.0 = git revert HEAD strict (zero data loss · decompose-ad retour v1.5.0 · adapt-from-competitor skill delete · 7 files wording revert · 2 doctrines revert)"
+}

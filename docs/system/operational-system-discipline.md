@@ -84,7 +84,7 @@ Operational System Discipline = doctrine canon qui ferme ces gaps.
 | *"Comment architecte-t-on ce système ?"* | Système |
 | *"Comment mesure-t-on cette performance ?"* | Performance |
 
-Instances canon · `compositional-cartography.md` (Strat × Compo × Exé · creative · v3.1), `canonical-matrix-reasoning.md` (modèle schema+matrice production), `audience-cartography-doctrine.md` (fractal parent/enfants), `pain-benefit-chain-doctrine.md` (surface → consequence → deep).
+Instances canon · `compositional-cartography.md` (Strat × Compo × Exé · creative · v3.1), `canonical-matrix-reasoning.md` (modèle schema+matrice production), `audiences-cartography-doctrine.md` (fractal parent/enfants), `pain-benefit-chain-doctrine.md` (surface → consequence → deep).
 
 ---
 
@@ -289,7 +289,7 @@ Q4 · Le skill capture-t-il une mesure ou alimente-t-il un signal feedback ?
 - **`canonical-matrix-reasoning.md` (CMR)** · instance couche 1 (modèle schema+matrice) + couche 4 (métriques score-matrix scoring interne)
 - **`schema-encoding-discipline.md` (SED)** · instance couche 4 (traçabilité _field_types · provenance par champ) + couche 1 (atomicité décomposition)
 - **`scope-extension-discipline.md` (SED-X)** · méthodologie ECR appliquée à la validation de scope extension nouveau domaine
-- **`audience-cartography-doctrine.md`** · instance couche 1 fractal pattern parent/enfants + couche 2 règles (cartographie ≠ targeting)
+- **`audiences-cartography-doctrine.md`** · instance couche 1 fractal pattern parent/enfants + couche 2 règles (cartographie ≠ targeting)
 - **`territory-discipline.md`** · territoire = substrat couche 1 (substrat brand canonisé) · production = livrable issu de couches 2+3 · meta = couches 4+5 transverses
 - **`progressive-cartography-discipline.md`** · rituel couche 5 cadence inter-palier + couche 2 gates light règles
 - **`investigation-posture.md`** · règle couche 2 (5 sections IP = heuristique décision méta enforcement skills production)

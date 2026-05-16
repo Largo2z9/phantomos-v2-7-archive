@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE pédagogique · Status _EXAMPLE/stepprs · flag is_example canon. Ignored par FIRST ACTION canon (folder prefix `_`). Mock brand · pas runtime active.",
+  "$comment": "EXEMPLE pédagogique · Status _EXAMPLE/stepprs · flag is_example canon. Ignored par FIRST ACTION canon (folder prefix `_`). Brand pédagogique · pas runtime active.",
   "brand_slug": "_EXAMPLE",
   "is_example": true,
   "example_purpose": "Pedagogical reference brand · vitrine canon PhantomOS v2.68",
@@ -29,6 +29,6 @@
   },
   "flags": [
     "is_example: true · NEVER modify · pedagogical reference only",
-    "Stepprs is fictive · inspired by stepprs.com but financials + verbatims partly mocked"
+    "Stepprs · brand pédagogique du cas canonique PhantomOS · marque réelle stepprs.com avec certains financials et verbatims partly mocked pour la pédagogie"
   ]
 }

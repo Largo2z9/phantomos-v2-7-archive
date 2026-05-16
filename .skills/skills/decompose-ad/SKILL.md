@@ -1,6 +1,6 @@
 ---
 name: decompose-ad
-version: 1.5.0
+version: 2.0.0
 type: producer
 isolation_scope: brand_only
 layer: production
@@ -8,6 +8,7 @@ recommended_model: opus
 reasoning_pattern: matrix-driven
 matrix_mode: decomposing
 patch_notes:
+  v2.0.0: "v2.73 enrichissement Section 4 fiche v5 avec grille variables 3 niveaux (ANATOMIE) cohérente équation v3.1 NOYAU × CONTEXTE × MODIFIEURS canon doctrine compositional-cartography. Output opérateur-facing 100% humain · zero raw field name · zero registry ID exposé · zero acronyme doctrine. Sous le capot, creative.json persisted avec IDs canoniques mecanique/angle/proof registries + fields canon creative.schema v1.2 (mecanique · format · stop_scroller · atome_irreductible · copy_visual_cursor · audience_segment · context.pain_point_ref · context.proof_type · context.product_mechanism_ref · context.offer_ref · modifiers.canal · modifiers.seasonality · modifiers.ton · modifiers.destination · intent_mix) · cross-skill reproducibilité garantie via back-end. NEW Section 4 ANATOMIE structurée · CE QUI FAIT PERFORMER (à garder · 5 éléments humains) / À ADAPTER À TA BRAND (5 refs humaines · IDs canoniques silent) / À SITUER (5 modifieurs situationnels). Close 1 question binaire 'Veux-tu l'adapter à ta brand · /adapt-from-competitor {CRT-NN}'. Backward compat strict additif · Sections 1-3 préservées · Section 4 enrichie remplace ancienne RÉUTILISATION existing avec format canonique plus structuré. 4 NEW Hard Rules HR-anatomie-1 à 4. Cross-refs · operational-system-discipline v2.71 (équation canon) + compositional-cartography v3.1 + canonical-matrix-reasoning + adapt-from-competitor downstream NEW v2.73."
   v1.5.0: "v2.64 ontologie sémantique pure pain_points + objections sub-audience · HR5 section 2 refactor · si reverse-engineer mentionne pain ou objection détectée dans ad concurrente sur même audience que brand opérée (signal cross-applicable, internal_production mode), link vers `audiences/{audience_slug}/pain_points/{PNT-NN}.json` ou `audiences/{audience_slug}/objections/{OBJ-NN}.json` canonical sub-audience IF match observable. Sinon (ad externe pure, pas d'audience match), note descriptive sans canonical ref. HR8 persist · creative.json#context.pain_point_ref + objection_ref canonical sub-audience persistés SI link applicable. Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved."
   v1.4.0: "v2.63 ontologie pure pain_points + objections collections top-level · HR5 section 2 refactor · si reverse-engineer mentionne pain ou objection détectée dans ad concurrente sur même audience que brand opérée (signal cross-applicable, internal_production mode), link vers `pain_points/{PNT-NN}.json` ou `objections/{OBJ-NN}.json` canonical IF match observable cross-audience. Sinon (ad externe pure, pas d'audience match avec brand opérée), note descriptive sans canonical ref (l'ad concurrente n'est pas notre canonical · observation pure, pas mutation cross-graph). HR8 persist · creative.json#context.pain_point_ref + objection_ref canonical IDs persistés SI link applicable, sinon null + text legacy. Backward compat preserved (pre-v2.63 brands route fallback profile sub-fields legacy)."
   v1.3.1: "v2.51 operator-fiche-output canonique template applied · header fiche v5 refactor langage métier. Header `{TITRE COURT} · {BRAND}` → `{BRAND_HUMAIN} · Analyse pub · {source_humaine}` (selon canonique resources/templates/operator-fiche-output.md mapping). Sous-titre 1 ligne plain language `décomposition de la pub {concurrent | interne n°N}`. Body sections 1-4 préservées (déjà plain language), TAGS RETRIEVAL bloc préservé (mode reverse-engineering · l'opérateur peut vouloir voir comment c'est encodé). Footer · 1 reco soft offer 1 ligne max."
@@ -269,13 +270,34 @@ Quand le skill produit un output `creative.json` (HR8 persist), écrire les NOUV
 
 ---
 
-## HR7 · Decompose Section 4 · RÉUTILISATION + TAGS
+## HR7 · Decompose Section 4 · ANATOMIE 3 NIVEAUX + TAGS (v2.0.0)
 
-**Amélioration.** 1-2 phrases actionnables. Ce qu'un copywriter senior changerait pour booster perf sans casser le NOYAU. Ex : "tester un hook texte qui formule explicitement l'insight au lieu de le laisser implicite, l'audience est encore problem-aware sur ce levier".
+**Refactor v2.0.0.** L'ancienne section RÉUTILISATION (Amélioration / Transposable sur / Concept-mère) v1.5.0 est remplacée par la grille ANATOMIE 3 NIVEAUX cohérente avec l'équation canonique v3.1 (NOYAU × CONTEXTE × MODIFIEURS). Output opérateur-facing 100% humain, IDs canoniques persistés silent back-end via HR8.
 
-**Transposable sur.** 2-3 brands où le concept marcherait, avec adaptation 1-line par brand. Tirer de `brands/` actifs si dispo, sinon nommer typologies ("autre marque DTC apparel féminin", "supplément perte de poids féminin 35+").
+**Grille canonique 3 niveaux.**
 
-**Concept-mère.** Générer `concept_id` pattern `cpt_{brand_slug}_{angle_short}_{NNN}`. Si l'ad est une variante d'un concept déjà encodé, lien `variant_of` + `variant_axis` (`photo_swap | promo_toggle | hook_swap | background_swap | persona_split`).
+- **CE QUI FAIT PERFORMER (à garder · 5 éléments humains).** Composants du NOYAU créa, invariants. Modifier casse la performance. 5 lignes ·
+  - La mécanique narrative (label humain registry mecanique, pas ID exposé)
+  - Le format (label humain enum format, pas raw value)
+  - La phrase d'accroche (label humain stop_scroller, pas field name)
+  - L'élément pivotal (label humain atome_irreductible, pas field name)
+  - L'équilibre copy/visuel (label humain copy_visual_cursor, pas field name)
+- **À ADAPTER À TA BRAND (5 refs humaines · IDs canoniques silent).** Composants du CONTEXTE branchable. Adapter rend la créa tienne sans casser le NOYAU. 5 lignes ·
+  - L'audience visée (selon ta cartographie, ref `audience_segment` silent)
+  - La douleur précise adressée (depuis ton territoire, ref `context.pain_point_ref` silent)
+  - Le verbatim de preuve (depuis tes reviews clients, ref `context.proof_type` silent)
+  - Le mécanisme produit cité (selon ta composition, ref `context.product_mechanism_ref` silent)
+  - Le CTA et la garantie (selon ton offre, ref `context.offer_ref` silent)
+- **À SITUER (5 modifieurs situationnels).** Composants MODIFIEURS. Plusieurs choix possibles selon campagne cible. 5 lignes ·
+  - Le canal de diffusion (Meta, TikTok, YouTube · `modifiers.canal`)
+  - La saisonnalité (hiver, été, back-to-school · `modifiers.seasonality`)
+  - Le ton (chaleureux, direct, neutre · `modifiers.ton`)
+  - La destination (page produit, landing dédiée · `modifiers.destination`)
+  - L'offre attachée (standalone, bundle volume · `modifiers.offer_ref`)
+
+**Concept-mère.** Générer `concept_id` pattern `cpt_{brand_slug}_{angle_short}_{NNN}` (persisted silent HR8). Si l'ad est une variante d'un concept déjà encodé, lien `variant_of` + `variant_axis` (`photo_swap | promo_toggle | hook_swap | background_swap | persona_split`) persisted silent. Pas surfacé en fiche opérateur-facing v5 v2.0.0 (back-end uniquement).
+
+**Close v2.0.0.** Fin de fiche v5 close strict sur 1 question binaire vers `adapt-from-competitor` downstream · *"→ Veux-tu l'adapter à ta brand · /adapt-from-competitor {CRT-NN}"*. Pas reco prose libre legacy v1.5.0. Phase 1 décomposition pure ici · Phase 2 adaptation séparée downstream.
 
 **Bloc TAGS retrieval.** Tous les axes du schema, snake_case strict :
 
@@ -361,12 +383,68 @@ Risques            · {bullet}
                    · {bullet}
 
 ───────────────────────────────────────────────────────────────
-4 · Réutilisation
+4 · ANATOMIE · 3 NIVEAUX (canonique v2.0.0)
 ───────────────────────────────────────────────────────────────
-Amélioration       {1-2 phrases actionnables}
-Transposable sur   · {brand_1} · {adaptation}
-                   · {brand_2} · {adaptation}
-Concept-mère       {concept_id} {· variant_of: parent si applicable}
+
+CE QUI MARCHE · 5 SECONDES DE LECTURE
+
+  Format de la pub        · {format humain · ex vidéo testimonial 15s}
+  Phrase d'accroche       · {hook humain · ex "5h du matin"}
+  Mécanique narrative     · {label registry humain · ex confession première
+                            personne, validation de la souffrance}
+  Élément pivotal         · {atome humain · ex "j'avais tout essayé jusqu'à..."}
+  Preuve                  · {proof humain · ex témoignage transformation 2 sem}
+  Angle de communication  · {angle humain · ex efficacité, soulagement rapide}
+  Intention dominante     · {intent humain · ex vente directe (80%), branding
+                            léger (20%)}
+  Équilibre copy/visuel   · {cursor humain · ex copy-dominant, visuel pédago}
+  Audience visée          · {audience humaine phrase · ex personnes debout
+                            10h+ par jour + douleurs chroniques (croisement)}
+
+  ✦ Ce qui fait la performance · la combinaison [mécanique humaine] +
+    [angle humain] + [proof humain] sur ce profil composite. Pattern
+    observable chez N brands [secteur] récentes.
+
+ANATOMIE · 3 NIVEAUX
+
+  ┌─ CE QUI FAIT PERFORMER · à garder ───────────────────────────────┐
+  │                                                                  │
+  │  La mécanique narrative ({label humain · pas registry ID})       │
+  │  Le format ({label humain · pas raw enum})                       │
+  │  La phrase d'accroche ({label humain · pas stop_scroller field}) │
+  │  L'élément pivotal ({label humain · pas atome_irreductible})     │
+  │  L'équilibre copy/visuel ({label humain · pas copy_visual_cursor})│
+  │                                                                  │
+  │  Modifier ces 5 éléments casse la créa.                          │
+  └──────────────────────────────────────────────────────────────────┘
+
+  ┌─ À ADAPTER À TA BRAND ───────────────────────────────────────────┐
+  │                                                                  │
+  │  L'audience visée (selon ta cartographie)                        │
+  │  La douleur précise adressée (depuis ton territoire)             │
+  │  Le verbatim de preuve (depuis tes reviews clients)              │
+  │  Le mécanisme produit cité (selon ta composition)                │
+  │  Le CTA et la garantie (selon ton offre)                         │
+  │                                                                  │
+  │  Adapter ces 5 éléments rend la créa tienne.                     │
+  └──────────────────────────────────────────────────────────────────┘
+
+  ┌─ À SITUER · selon le contexte de campagne ───────────────────────┐
+  │                                                                  │
+  │  Le canal de diffusion (Meta, TikTok, YouTube)                   │
+  │  La saisonnalité (hiver, été, back-to-school)                    │
+  │  Le ton (chaleureux, direct, neutre)                             │
+  │  La destination (page produit, landing dédiée)                   │
+  │  L'offre attachée (standalone, bundle volume)                    │
+  │                                                                  │
+  │  Plusieurs choix possibles selon la campagne cible.              │
+  └──────────────────────────────────────────────────────────────────┘
+
+CE QU'ELLE PROUVE DANS LE PAYSAGE {SECTEUR}
+
+  Cette combinaison ({mécanique + angle + proof humains}) scale chez
+  N brands {secteur} observées récemment. Le système peut l'enregistrer
+  comme pattern réutilisable après une validation ROI sur ta propre brand.
 
 ───────────────────────────────────────────────────────────────
 Tags retrieval
@@ -374,8 +452,40 @@ Tags retrieval
 {bloc tags 16 lignes snake_case}
 
 ───────────────────────────────────────────────────────────────
-{1 reco actionnable contextuelle, 1-2 phrases}
+→ Veux-tu l'adapter à ta brand ?    /adapt-from-competitor {CRT-NN}
 ```
+
+---
+
+## Hard Rules v2.0.0 · Anatomie fiche
+
+### HR-anatomie-1 · Section 4 grille 3 niveaux obligatoire
+
+Toute fiche v5 produite par decompose-ad v2.0.0+ DOIT exposer la grille
+3 niveaux (CE QUI FAIT PERFORMER · À ADAPTER À TA BRAND · À SITUER).
+Pas optionnelle. Pas Section RÉUTILISATION prose libre legacy v1.5.0.
+
+### HR-anatomie-2 · Output opérateur-facing 100% humain
+
+ZERO raw field name (mecanique · stop_scroller · atome_irreductible ·
+copy_visual_cursor · audience_segment · context.pain_point_ref · etc.).
+ZERO registry ID exposé (mecanique-registry IDs · angle-registry IDs ·
+proof-registry IDs). ZERO acronyme doctrine. Labels humains accessibles
+uniquement (cf operator-facing rule canon CLAUDE.md root).
+
+### HR-anatomie-3 · IDs canoniques back-end persisted silent
+
+Sous le capot, creative.json v1.2 persiste avec fields canon + registry
+IDs mapping (silent via write_to_context). Cross-skill reproducibilité
+garantie · adapt-from-competitor v1.0.0+ peut consume cet output via
+back-end sans interpréter prose opérateur-facing.
+
+### HR-anatomie-4 · Close 1 question binaire vers adapt-from-competitor
+
+Fin de fiche v5 v2.0.0 close strict · "→ Veux-tu l'adapter à ta brand ·
+/adapt-from-competitor {CRT-NN}". Pas reco prose libre legacy. Pas 3 paths
+ici (Phase 1 décomposition pure · Phase 2 adaptation séparée). Chain
+explicit downstream vers adapt-from-competitor orchestrator.
 
 ---
 
@@ -416,3 +526,10 @@ Tags retrieval
 - Sibling skills : `produce-paid-angles` (forward generation), `analyze-copy` (long-form), `watch-competitors` (surveillance), `audit-meta-account` (full account audit).
 - Visual identity schema : `resources/schemas/spec.schema.json#visual_identity` (v1.10+, S55 v2.31 extension).
 - Audit visual fidelity : `decisions.md` D#392 (S55 audit régression label wordmark with brackets, prompt brand-side → trigger HR2bis + HR5bis).
+
+### Related canon (v2.0.0)
+
+- `docs/system/operational-system-discipline.md` v2.71 (équation maître canonisée · canon résonance back-end)
+- `docs/system/compositional-cartography.md` v3.1 (équation v3.1 NOYAU × CONTEXTE × MODIFIEURS canon)
+- `docs/system/canonical-matrix-reasoning.md` (schema + matrice canon)
+- `adapt-from-competitor` v1.0.0+ NEW downstream orchestrator (consume creative.json v1.2 sub-couche)

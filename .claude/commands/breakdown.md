@@ -7,11 +7,11 @@ description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand pédagogiq
 
 **Disclaimer canon** · PhantomOS est le sujet de ce parcours. Stepprs est l'illustration pédagogique partagée (marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). Agents et opérateurs peuvent référencer Stepprs comme cas concret pour clarifier ou illustrer un concept canon, JAMAIS l'utiliser comme runtime brand active. Si l'opérateur parle de "sa marque", l'agent regarde dans `brands/` (folders sans préfixe `_`), JAMAIS dans `_EXAMPLE/`.
 
-Slash command qui démontre la grammaire opérationnelle PhantomOS via le cas concret Stepprs (brand fictive foot care DTC encodée canon dans `brands/_EXAMPLE/`). L'agent source les fichiers Stepprs live à chaque invocation, pas dump statique.
+Slash command qui démontre la grammaire opérationnelle PhantomOS via le cas concret Stepprs (brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie, foot care DTC encodée canon dans `brands/_EXAMPLE/`). L'agent source les fichiers Stepprs live à chaque invocation, pas dump statique.
 
 **Cible audience** · opérateur novice complet (vibecoder, domain expert hors marketing, curieux). Pas un marketeur. Vocabulaire universel, ZERO jargon supposé connu. Premier contact avec un système opérationnel structuré. Ton institutionnel sérieux mais accessible, vulgarisé, jamais sales-bro.
 
-**Promesse** · expliquer ce qui rend PhantomOS reproductible (cohérence 95% output cross-session) en 12 topics, avec Stepprs comme cas filé. Chaque topic = une couche ou une dimension transverse du système. Comprendre les 5 couches + 2 transverses = maîtriser n'importe quel domaine.
+**Promesse** · expliquer ce qui rend PhantomOS reproductible (cohérence 95% output cross-session) en 13 topics, avec Stepprs comme cas filé. Chaque topic = une couche ou une dimension transverse du système. Comprendre les 5 couches + 3 transverses = maîtriser n'importe quel domaine.
 
 ## Architecture pédagogique · 5 couches d'un système opérationnel
 
@@ -47,9 +47,9 @@ Les 13 topics du parcours couvrent ces 5 couches plus 3 dimensions transverses.
 
 | Argument | Mode |
 |---|---|
-| empty (`/breakdown stepprs`) | **index** · liste les 12 topics + parcours suggéré + diagramme 5 couches + 2 transverses |
+| empty (`/breakdown stepprs`) | **index** · liste les 13 topics + parcours suggéré + diagramme 5 couches + 3 transverses |
 | topic name (e.g. `/breakdown stepprs composition`) | **drill** · génère la fiche du topic sourçant Stepprs live |
-| invalid topic | **redirect** · liste les 12 topics valides en 1 ligne, demande choix |
+| invalid topic | **redirect** · liste les 13 topics valides en 1 ligne, demande choix |
 
 **Topics valides** · `principe` · `atomicite` · `fractalite` · `composition` · `matrices` · `regles` · `templates` · `metriques` · `rituels` · `production` · `intelligence` · `apprentissage` · `extension`
 
@@ -149,7 +149,7 @@ POUR ALLER PLUS LOIN
 
 **Image vulgarisation** · l'encyclopédie d'une marque (structure stable, mise à jour rare) vs les articles de magazine produits chaque mois à partir de cette encyclopédie. Sans encyclopédie, chaque article repart de zéro.
 
-**Concept concret Stepprs** · brand fictive qui vend des semelles anti-douleur (massage insoles) à deux types de personnes principales · les travailleurs qui restent debout 8h+ par jour (infirmières, magasiniers, serveurs) et les personnes de 45 ans et + qui souffrent de douleurs chroniques (épine calcanéenne, talalgie). Semelle avec mousse à mémoire de forme, redistribution de pression et soutien de la voûte plantaire. Vendue en ligne directement (DTC, vente directe au consommateur, pas de pharmacie ni distributeur).
+**Concept concret Stepprs** · brand pédagogique du cas canonique PhantomOS (marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie) qui vend des semelles anti-douleur (massage insoles) à deux types de personnes principales · les travailleurs qui restent debout 8h+ par jour (infirmières, magasiniers, serveurs) et les personnes de 45 ans et + qui souffrent de douleurs chroniques (épine calcanéenne, talalgie). Semelle avec mousse à mémoire de forme, redistribution de pression et soutien de la voûte plantaire. Vendue en ligne directement (DTC, vente directe au consommateur, pas de pharmacie ni distributeur).
 
 **Investissement vs ROI** · setup initial 1-2h en semaine 1 pour encoder le territoire. ROI immédiat dès semaine 2 · chaque nouvelle production (publicité, email, page produit) prend 5-15 min au lieu de 1-2h.
 
@@ -950,7 +950,7 @@ Tu n'es jamais coincé. Le système n'est pas un cadre rigide où tout ce qui n'
 - `docs/system/contract-daily.md` (rituels post-setup daily-use)
 
 **Brand pédagogique source** ·
-- `brands/_EXAMPLE/` (foot care DTC fictive Stepprs · canon vs réel documenté dans README)
+- `brands/_EXAMPLE/` (foot care DTC Stepprs · brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie · canon vs réel documenté dans README)
 
 **Slash commands frères** ·
 - `/tour` (onboarding complet PhantomOS)

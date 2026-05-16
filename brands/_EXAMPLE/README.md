@@ -1,6 +1,6 @@
-# `_EXAMPLE` · Brand pédagogique fictive Stepprs
+# `_EXAMPLE` · Brand pédagogique Stepprs
 
-> Mock brand fictive · **foot care insoles DTC** inspirée de stepprs.com. Vitrine canon PhantomOS v2.68 pour comprendre à quoi ressemble un territoire de marque bien posé. **NE PAS MODIFIER.** Ignored par `FIRST ACTION` canon (folder prefix `_`).
+> Brand pédagogique du cas canonique PhantomOS · **foot care insoles DTC** inspirée de stepprs.com. Vitrine canon PhantomOS v2.68 pour comprendre à quoi ressemble un territoire de marque bien posé. **NE PAS MODIFIER.** Ignored par `FIRST ACTION` canon (folder prefix `_`).
 
 ## Pourquoi cet exemple existe
 
@@ -62,7 +62,7 @@ Audiences mères canon v2.64 portent `_meta.cross_narrative_notes` quand pattern
 
 ## Parcours pédagogique · `/breakdown stepprs`
 
-Slash command vitrine qui démontre chaque doctrine PhantomOS via ce cas Stepprs concret. 7 chapitres structurés en 4 pivots (fondement · mécanique · application · output). Lecture séquentielle ~20 min, drill direct sur un topic possible.
+Slash command vitrine qui démontre chaque doctrine PhantomOS via ce cas Stepprs concret. 13 chapitres structurés en 5 couches + 3 dimensions transverses (modèle · règles · templates · métriques · rituels · intelligence · apprentissage · extension). Lecture séquentielle ~30 min, drill direct sur un topic possible.
 
 ```
 /breakdown stepprs                → index + parcours suggéré

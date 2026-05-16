@@ -7,6 +7,61 @@
 
 ---
 
+## v2.73.0 · 2026-05-16 · Sprint majeur · décompose créa concurrente end-to-end + cleanup hygiène
+
+**Why** · Demande Largo · "j'aimerais aussi voir si c'est bien fait quand on importe et qu'on veut analyser des créatives concurrentes · on peut choisir de décomposer · identifier la composition sous différents angles · enregistrer le pattern OR appliquer immédiatement au contexte opérateur · quelle variable adapter et quel truc garder · posture marketing senior pour identifier la matrice". Audit fonctionnel (5 agents parallèle) a révélé · stack 70% workable mais 5 gaps structurels critiques · zéro orchestrateur end-to-end import-and-adapt-competitor · matrice variables modulables vs stables absente surface fiche · adaptation depuis ad concurrente non câblée · target marketing senior 25 min raté ~50%. Plus contradictions canon wording résiduelles post-v2.72.0 anti-hallucination ("brand fictive" Stepprs · "12 vs 13 topics" auto-contradiction breakdown.md · "7 chapitres ~20 min" obsolète). Sprint fusionné v2.73.0 features + cleanup hygiène · 5 agents wave 1 scope disjoint.
+
+**What** · 5 blocs livrés via 5 agents parallèle ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · `decompose-ad` v1.5.0 → v2.0.0** | Enrichissement fiche v5 Section 4 ANATOMIE 3 niveaux cohérente équation v3.1 NOYAU × CONTEXTE × MODIFIEURS canon · CE QUI FAIT PERFORMER (à garder · 5 éléments humains) / À ADAPTER À TA BRAND (5 refs humaines · IDs canoniques silent) / À SITUER (5 modifieurs situationnels) · output opérateur-facing 100% humain · zero raw field name · zero registry ID exposé · canon résonne back-end via creative.json v1.2 IDs canoniques persisted silent · 4 NEW Hard Rules HR-anatomie-1 à 4 · close 1 question binaire vers `/adapt-from-competitor {CRT-NN}` · 419L → 535L | Décomposition créa concurrente structurée canon · grille variables 3 niveaux opérateur-facing accessible · cross-skill reproducibilité via back-end |
+| **2 · NEW skill canonical `adapt-from-competitor` v1.0.0** | Orchestrator chain decompose-ad output → operator gate isolation variables → produce-copy-brief brand-side · pipeline 5 phases (load competitor + brand context → match canonical refs → operator gate AskUserQuestion 3 paths → chain downstream selon path → synthesis 5 sections IP) · 7 Hard Rules canon · 3 paths flow opérateur (variant complet · 1 axe seul · registry promotion) · 206L | Phase 2 du flow décompose créa concurrente câblée canon · cible marketing senior 25 min idéation à brief variant atteint à ~80% |
+| **3 · Cleanup hygiène P0 wording drift** | 7 files patched · `brands/_EXAMPLE/README.md` + brand.json + status.json + roadmap.json + spec.json + offers.json + breakdown.md · zero `brand fictive` résiduel · uniformisé 13 topics + 30 min lecture + 5 couches + 3 transverses · cohérence canon anti-hallucination v2.72.0 | Contradictions canon production résolues · Stepprs wording uniformément "brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com..." cross-files |
+| **4 · Cleanup hygiène P0 doctrine** | `operational-system-discipline.md` cross-ref singulier `audience-cartography-doctrine.md` (CASSÉ) → pluriel `audiences-cartography-doctrine.md` (canonical) · 2 occurrences L87 + L292 · `skill-authoring-discipline.md` NEW section `Position dans le système opérationnel 5 couches` (omission v2.71.0 corrigée · couche transverse meta gouverne authoring skills consommant les 5 couches) | Cohérence canon doctrine post-v2.71.0 complétée · 11/11 doctrines structurelles ancrées dans grammaire op-system 5 couches |
+| **5 · Audit 18 broken resource refs (READ-ONLY)** | 8 false positive (folder structure existing OK · canonical paths différents) · 7 cleanup légers backlog v2.73.1 (refs CHANGELOG + check-existing-coverage) · 2 ship réels backlog v2.74 (`skill-routing-discipline.md` doctrine NEW + `.skills/skills/audit-meta-global/` orchestrator NEW) · 1 SOP pédagogique préservé OK | Backlog précis identifié pour next sprints · aucun blocker live runtime |
+
+**3 patterns canon introduits** ·
+
+1. **Grille ANATOMIE 3 niveaux cohérente équation v3.1** · `decompose-ad v2.0.0` expose canon NOYAU (5 éléments à garder · ce qui fait performer) / CONTEXTE (5 refs à adapter brand-side · audience · pain · proof · mécanisme · CTA) / MODIFIEURS (5 modifieurs situationnels · canal · saisonnalité · ton · destination · offer attachée). Pattern reproductible cross-skill · adapt-from-competitor consume cette grille via back-end.
+
+2. **Phase 1 analyse vs Phase 2 adaptation séparées canon** · Le flow décompose créa concurrente DOIT séparer · Phase 1 (decompose-ad output fiche v5 + grille ANATOMIE + close binaire "Veux-tu adapter ?") · Phase 2 (adapt-from-competitor orchestrator avec pré-rempli refs canoniques brand + 3 paths flow). 2 décisions distinctes, 2 invocations distinctes. Pas mélange.
+
+3. **Output opérateur-facing 100% humain · canon résonne back-end silent** · Règle généralisée PhantomOS · le raisonnement RÉSONNE avec les schémas (cohérent · reproducible · structuré canon back-end) mais l'output opérateur-facing reste en LANGAGE HUMAIN ACCESSIBLE · ZERO raw field name · ZERO registry ID exposé · ZERO acronyme doctrine. HR-anatomie-2 + HR6 adapt-from-competitor canonisent cette règle.
+
+**3 anti-patterns canonisés** ·
+- Flow décompose créa sans grille variables 3 niveaux · Section RÉUTILISATION prose libre legacy v1.5.0 · pas actionnable opérateur-facing pour identifier "garder · adapter · situer"
+- Output opérateur-facing exposant raw fields canon (mecanique · audience_segment · context.pain_point_ref · registry IDs) · violation operator-facing rule canon CLAUDE.md root
+- Phase 1 analyse et Phase 2 adaptation fusionnées · risque opérateur perdu vs forcé d'adapter · canon · 2 phases distinctes 2 décisions
+
+**Backward compat strict additif** · zero override · decompose-ad Sections 1-3 fiche v5 UNCHANGED · Section 4 enrichie remplace ancienne RÉUTILISATION existing avec format canonique plus structuré · 4 NEW HR additifs · NEW skill adapt-from-competitor ne perturbe rien existing · 7 files _EXAMPLE/* + breakdown.md wording correction additif (zero suppression) · op-system 2 occurrences correction pluriel additif · SAD NEW section additive · skills count 69 → 70 (NEW adapt-from-competitor) · doctrines canon 12 → 12.
+
+**Files patched** ·
+- `.skills/skills/decompose-ad/SKILL.md` v1.5.0 → v2.0.0 (419L → 535L)
+- `.skills/skills/adapt-from-competitor/SKILL.md` NEW 206L
+- `brands/_EXAMPLE/README.md` (wording fictive → pédagogique + 13 topics + 30 min)
+- `brands/_EXAMPLE/brand.json` (2 occurrences $comment + _meta.example_purpose)
+- `brands/_EXAMPLE/status.json` (2 occurrences $comment + flag)
+- `brands/_EXAMPLE/roadmap.json` ($comment)
+- `brands/_EXAMPLE/products/massage-insoles/spec.json` ($comment)
+- `brands/_EXAMPLE/products/massage-insoles/offers.json` ($comment)
+- `.claude/commands/breakdown.md` (5 patches · 6 occurrences "brand fictive" + uniformisé 13 topics + 5 couches + 3 transverses)
+- `docs/system/operational-system-discipline.md` (2 occurrences singulier → pluriel)
+- `docs/system/skill-authoring-discipline.md` (NEW section "Position dans le système opérationnel 5 couches")
+- `.skills/_manifest.json` regen (skills 69 → 70)
+- `_version.json` 2.72.1 → 2.73.0
+- `CHANGELOG.md` v2.73.0 entry (this entry)
+- `docs/internal/releases/manifest/2.73.0-manifest.json` NEW
+
+**D#418 captured** · `decisions.md` PhantomOS · v2.73.0 sprint majeur décompose créa concurrente end-to-end · grille ANATOMIE 3 niveaux + NEW skill adapt-from-competitor + cleanup hygiène 7 files wording + 2 patches doctrine + audit 18 broken refs.
+
+**Backlog identifié** ·
+- v2.73.1 patch léger · 7 cleanup refs CHANGELOG + check-existing-coverage path canonical · 15 min
+- v2.73.1 patch optionnel · `creative-mechanics-registry.md` NEW variante `ugc-confession_vulnerable` dans fiche `ugc` existing (pattern EXTEND > SIBLING canon)
+- v2.74 doctrine ship · `docs/system/skill-routing-discipline.md` NEW (flaggée NEW à créer CLAUDE.md L81) + `.skills/skills/audit-meta-global/` orchestrator NEW (SOP existant attendant orchestrator parent)
+
+---
+
 ## v2.72.1 · 2026-05-16 · Hotfix `tour.md` ligne 208 · 3 corrections cohérence
 
 **Why** · Audit post-v2.72.0 a flaggé 3 incohérences dans `tour.md` Milestone 6 prose (ligne 208) introduites v2.70.0 et jamais updated post-évolutions canon · (1) `brand fictive foot care DTC` contredit canon anti-hallucination v2.72.0 (Stepprs marque réelle pas fictive · sourced TrendTrack live) (2) `7 chapitres drillables` obsolète post-v2.72.0 refonte 13 topics (3) `~20 min` obsolète post-extensions parcours.

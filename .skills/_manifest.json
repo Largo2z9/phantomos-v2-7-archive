@@ -1,8 +1,27 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-16T16:31:34Z",
-  "_count": 69,
+  "_generated_at": "2026-05-16T17:29:47Z",
+  "_count": 70,
   "skills": [
+    {
+      "name": "adapt-from-competitor",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "decompose-ad": "decompose-ad reverse-engineer 1 ad concurrente en fiche v5 + grille variables 3 niveaux ANATOMIE. adapt-from-competitor consume cet output + adapte à la brand opérée via chain orchestrator.",
+        "recompose-creative": "recompose-creative adapte UNE créa interne brand-side (produced/{CRT-N}.json) sur 1 axis variant explicite. adapt-from-competitor adapte depuis UNE créa CONCURRENTE décomposée (competitive-intel/decomposed/{CRT-NN}.json) avec multi-axes (audience + pain + proof + mécanisme + offer simultanément, NOYAU preserved strict).",
+        "creative-brief-composer": "creative-brief-composer orchestrator produit brief copy + variants visuels depuis angle interne brand (ANG-NN). adapt-from-competitor orchestrator chain produit brief copy + variants depuis créa concurrente décomposée + adaptation contexte brand. adapt-from-competitor upstream invoke creative-brief-composer downstream après isolation variables."
+      },
+      "isolation_scope": "brand_only",
+      "layer": "production",
+      "path": ".skills/skills/adapt-from-competitor/SKILL.md"
+    },
     {
       "name": "analyze-copy",
       "type": "curator",
