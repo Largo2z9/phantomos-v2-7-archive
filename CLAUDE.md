@@ -17,13 +17,15 @@ This rule is **non-negotiable and precedes all other instructions in this file**
 
 ## `_EXAMPLE/` folder · anti-hallucination canon
 
-`brands/_EXAMPLE/` contient un cas pédagogique partagé canon (actuellement `stepprs` · marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). Cas illustratif pour rendre tangibles les concepts canon PhantomOS, JAMAIS la marque active de l'opérateur.
+`brands/_EXAMPLE/` contient un cas pédagogique partagé canon (Stepprs · brand pédagogique cas canonique · cf `brands/_EXAMPLE/README.md` pour contexte complet). Cas illustratif pour rendre tangibles les concepts canon PhantomOS, JAMAIS la marque active de l'opérateur.
 
 **JAMAIS** confondre `brands/_EXAMPLE/` avec la marque de l'opérateur. Si l'opérateur dit "ma marque", "mes audiences", "mon produit", l'agent regarde dans `brands/{slug}/` (folders sans préfixe `_`), JAMAIS dans `_EXAMPLE/`.
 
 **JAMAIS** opérer sur `_EXAMPLE/` comme runtime brand. Pas de mutation gate (`write_to_context` refusé sur `_EXAMPLE/`). Pas de production paid lancée. Pas de scrape qui write dessus.
 
 **OK** référencer `_EXAMPLE/stepprs` pour clarifier ou illustrer un concept canon · l'agent peut dire *"comme dans le cas Stepprs où..."* OR *"cf `/breakdown stepprs principe` pour exemple concret"* OR pointer un atome spécifique pour pédagogie (e.g. `audiences/workers-shifts/profile.json` comme exemple structure parent/enfants canon v2.64).
+
+**Découverte positive** · pour qu'un nouvel opérateur comprenne PhantomOS via cas concret, lancer `/breakdown stepprs principe` (parcours pédagogique 13 chapitres structurés 5 couches + 3 dimensions transverses · ~30 min lecture · drill direct par topic possible). Le cas Stepprs sert d'illustration tangible pour rendre la grammaire opérationnelle PhantomOS accessible novice complet.
 
 FIRST ACTION canon précise déjà *"ignore any folder starting with `_`"* lors du scan brands actifs. Cette section renforce la règle au-delà du scan initial · l'usage de Stepprs comme illustration pédagogique est CANON, l'usage comme runtime brand est ANTI-PATTERN.
 

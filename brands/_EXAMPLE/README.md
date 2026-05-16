@@ -86,6 +86,19 @@ Cible · opérateur marketeur, créa, stratège paid qui veut comprendre comment
 
 ## Canon vs réel · data TrendTrack live (2026-05-16)
 
+Ce `_EXAMPLE` mélange canon pédagogique max-richesse (7 angles diversifiés · 2 audiences hiérarchiques · 4 arbres compositional cartography) ET data réelles sourced TrendTrack API live (skill `trendtrack-enrich-brand` v1.0.0 · ad sample 30 ads cross longest+newest+reach). Les deux ont leur valeur distincte.
+
+**Canon vitrine** (audiences hiérarchiques · 7 angles distincts · 4 arbres compositional cartography) montre les POSSIBILITÉS structurelles que PhantomOS encode.
+
+**Réel Stepprs paid** (capté via TrendTrack API live) montre le PATTERN OBSERVÉ d'un brand 2 ans mature ·
+- 1 narrative hero (Michelle plantar fasciitis + 10h shifts work boots) répliqué cross-geo · pas 7 angles distincts
+- Audiences workers + chronic COMBINÉES en single ad copy (pas séparées)
+- Targeting 18+ broad · pain-based filtering via copy naturel (pas narrow 45+ demographic)
+- Geo focus EU heavy (DE main) · pas US prioritaire malgré annonce
+- CTA "Walk on Clouds Or It's FREE" capture 2 benefits en single phrase
+- Landing variants /pages/review-3-x test funnels advertorial rotation
+- Trustpilot 3.4/5 (pas 4.8 site claim) · réalité plus mitigée · justifie objections scepticism canon
+
 ### Cartographie audience ≠ ad targeting (distinction importante)
 
 PhantomOS cartographie audiences = SUBSTRAT stable · qui souffre quoi · pain points + objections + JTBD par segment distinct. Canon v2.64 sémantique pure · parent/enfants hiérarchique.
@@ -99,22 +112,9 @@ Les deux ne sont pas contradictoires ·
 
 L'opérateur ne doit PAS forcer 1 ad par audience cartographiée · le canon permet flexibilité production runtime selon scaling strategy (single hero cross-audience VS diversified angles per audience).
 
-Cross-refs canonical · `learnings.json` LRN-0002 + `angles/ANG-01.json` hero pattern + TrendTrack live capture 2026-05-16.
-
-Ce `_EXAMPLE` mélange canon pédagogique max-richesse (7 angles diversifiés · 2 audiences hiérarchiques · etc.) ET data réelles sourced TrendTrack API live (skill `trendtrack-enrich-brand` v1.0.0). Les deux ont leur valeur ·
-
-**Canon vitrine** (audiences hiérarchiques · 7 angles distincts · 4 arbres compositional cartography) montre les POSSIBILITÉS structurelles que PhantomOS encode.
-
-**Réel Stepprs paid** (capté via TrendTrack API · ad sample 30 ads cross longest+newest+reach) montre le PATTERN OBSERVÉ d'un brand 2 ans mature ·
-- 1 narrative hero (Michelle plantar fasciitis + 10h shifts work boots) répliqué cross-geo · pas 7 angles distincts
-- Audiences workers + chronic COMBINÉES en single ad copy (pas séparées)
-- Targeting 18+ broad · pain-based filtering via copy naturel (pas narrow 45+ demographic)
-- Geo focus EU heavy (DE main) · pas US prioritaire malgré annonce
-- CTA "Walk on Clouds Or It's FREE" capture 2 benefits en single phrase
-- Landing variants /pages/review-3-x test funnels advertorial rotation
-- Trustpilot 3.4/5 (pas 4.8 site claim) · réalité plus mitigée · justifie objections scepticism canon
-
 **Implication pédagogique** · canon = ce que tu PEUX cartographier · réel = ce que les top performers FONT vraiment. Tes premières productions paid peuvent commencer simple (1 angle hero cross-audience) puis diversifier au fil des learnings · pas l'inverse.
+
+Cross-refs canonical · `learnings.json` LRN-0002 + `angles/ANG-01.json` hero pattern + TrendTrack live capture 2026-05-16.
 
 Plus skill `trendtrack-enrich-brand` v1.0.0 v2.69 · enrichis tout brand existing avec data live (chain lookup → shop profile → ads sample 3 queries → 8 patterns analysés). Pattern reproductible cross spy tools (Foreplay · Atria · Meta Ad Library · BigSpy · etc.) via NEW skills mirror.
 

@@ -7,6 +7,28 @@
 
 ---
 
+## v2.74.1 · 2026-05-16 · Patch cleanup complet · 3 axes parallèle (doublons Stepprs + refs canon + em-dash sweep)
+
+**Why** · Largo a explicitement demandé "fais les résidus parasites · CLEAN TOUT" post-v2.74.0. 3 backlogs identifiés audit v2.74.0 Patch 4 + audit hygiène v2.72.x · doublons Stepprs accessibilité + refs canon paths cassées + em-dash legacy residuels. Sprint patch fusionné v2.74.1 · 3 agents parallèle scope disjoint.
+
+**What** · 3 blocs cleanup livrés ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · Cleanup doublons Stepprs accessibilité (4 patches)** | Disclaimer "brand pédagogique du cas canonique PhantomOS · marque réelle stepprs.com" réduit 5+ occurrences à 3 sources canon · 2 sections "Canon vs réel" dupliquées `_EXAMPLE/README.md` L87-117 fusionnées · `brands/README.md` enrichi pointer `/breakdown stepprs principe` · `CLAUDE.md` root section `_EXAMPLE/` enrichie "Découverte positive" block | Doublons HIGH résolus · accessibilité Stepprs complète |
+| **2 · Cleanup refs canon paths v2.73.x (2 patches + 1 audit)** | CHANGELOG L1575 path `resources/canon/copy/_registry/*` → `resources/registries/*` · check-existing-coverage L83 path `resources/registries/hook-formulas.md` → `resources/templates/hook-formulas.md` · audit READ-ONLY `resources/catalogues/` finding gap structurel doctrinal · backlog v2.75 décision archi | 2 paths cassés résolus · gap catalogues canon backlog v2.75 |
+| **3 · Em-dash sweep 3 SKILL.md actifs (255 éliminés)** | `produce-copy-brief` 109 → 0 · `snapshot-brand` 67 → 0 · `study-niche-marketdeepdive` 79 → 0 · pattern ` — ` → ` · ` middle dot · 2 paths gaps audit (audit-meta-global hallucination · canonical-matrix-reasoning doctrine pas skill · backlog v2.75) | Canon zero em-dash strict respecté · 255 em-dashes éliminés |
+
+**Backward compat strict additif** · skills 70 → 70 · slash commands 5 → 5 · doctrines canon 12 → 12.
+
+**Files patched** · brands/_EXAMPLE/README.md · breakdown.md · CLAUDE.md root · _EXAMPLE/CLAUDE.md · tour.md · brands/README.md · CHANGELOG L1575 · check-existing-coverage SKILL · produce-copy-brief SKILL · snapshot-brand SKILL · study-niche-marketdeepdive SKILL · _version 2.74.0 → 2.74.1 · CHANGELOG v2.74.1 entry · manifest 2.74.1 NEW.
+
+**D#420 captured.**
+
+**Backlog v2.75 identifié** · décision archi catalogues JSON · em-dash sweep doctrine canonical-matrix-reasoning · réconciliation path audit-meta-global · doctrine NEW skill-routing-discipline · orchestrator NEW audit-meta-global.
+
+---
+
 ## v2.74.0 · 2026-05-16 · Sprint UX onboarding + fit-check + lexicon + audit accessibilité
 
 **Why** · Largo a flagué 4 sujets distincts post-v2.73.0 · (1) skill transition deep-fit-check pour évaluer si une créa/LP/email concurrent vaut la peine d'être adapté à TA brand (vs adapt mechanical déjà câblé) (2) onboarding ne pas forcer copywriting cartographie sur premier contact (axe trop lourd novice · trouver moyen de présenter capacités progressivement) (3) accessibilité documents enrichissement Stepprs cross-docs (doublons · format global · cohérence) (4) magic keywords PhantomOS dans onboarding pour prompter efficient dès le premier jour + rappel 3-6 mois.
@@ -1572,7 +1594,7 @@ ongoing               · learn-from-session smart-suggest daemon · validate-res
 - **`docs/system/schemas/{README, spec, angle, profile, brand, offer}.md` (NEW, 6 docs).** Une doc humaine par entité brand : sémantique des fields, distinctions MECE (insight vs tension vs pain_point), trade-offs encodage, exemples cross-typologies, anti-patterns. README indexe + pose conventions communes (snake_case, _field_types, sourcing sémantique).
 - **`docs/system/skill-authoring-discipline.md` §5bis (NEW section).** Bidirectional canon contract : tout skill producer/curator interagissant avec un atlas canon doit déclarer `consume_from` (couches lues) + `produce_to` (entries appendables via validations[]). Encode le pattern v2.27 comme doctrine pour futurs skills.
 - **`docs/system/creative-formula.md` (PATCHED).** Réconciliation v3 + v3.1 : v3.1 promu canonique (creative_statique = concept × execution), v3 archivé en historique. Ajout section composition reasoning pointant vers atlas-canon-copy.md.
-- **`resources/canon/copy/_registry/creative-mechanics-registry.md` (PATCHED).** 4 mécaniques PROPOSED graduées vers VALIDATED suite stress test S55 (curiosity_teaser, emotional_reframe, educational_diagram, listicle). 4 nouvelles PROPOSED ajoutées (ladder_of_futures, accusatory_hook, payoff_externalization, evergreen_winner_signal). Total : 16 VALIDATED + 4 PROPOSED.
+- **`resources/registries/creative-mechanics-registry.md` (PATCHED).** 4 mécaniques PROPOSED graduées vers VALIDATED suite stress test S55 (curiosity_teaser, emotional_reframe, educational_diagram, listicle). 4 nouvelles PROPOSED ajoutées (ladder_of_futures, accusatory_hook, payoff_externalization, evergreen_winner_signal). Total : 16 VALIDATED + 4 PROPOSED.
 - **`lexicon.md` (PATCHED, 14 entrées enrichies).** Distinctions MECE clarifiées : Insight vs Pain_point vs Tension vs JTBD ; Mécanique (compositionnel d'angle) vs Mechanism (produit biologique) ; Atlas vs Canon ; Atome irréductible ; Awareness (stages canon V3) vs Sophistication (vagues marché) ; Origin_axis vs source ; Brand_equity_level ; Buyer_user_split ; Persona_archetype ; Composition reasoning ; Bidirectional canon contract.
 - **`docs/internal/canon.md` (PATCHED, 3 sections).** Atlas pointer vers atlas-canon-copy.md, Composition reasoning, Canon vivant (mécanisme bidirectional consume + produce).
 - **`docs/product/capabilities.md` (PATCHED).** Atlas canon navigation operator-facing + composition canon (zéro jargon doctrine).

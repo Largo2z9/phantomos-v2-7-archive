@@ -1,0 +1,82 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.74.1",
+  "released_at": "2026-05-16",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 70,
+  "skills_count_after": 70,
+  "slash_commands_count_before": 5,
+  "slash_commands_count_after": 5,
+  "doctrines_count_before": 12,
+  "doctrines_count_after": 12,
+  "summary": "Patch cleanup complet · 3 axes parallèle · doublons Stepprs accessibilité + refs canon paths v2.73.x + em-dash sweep 3 SKILL.md actifs (255 em-dashes éliminés).",
+  "patches": [
+    {
+      "id": 1,
+      "name": "Cleanup doublons Stepprs accessibilité",
+      "sub_patches": [
+        "Disclaimer 'brand pédagogique du cas canonique' réduit 5+ occurrences à 3 sources canon",
+        "2 sections 'Canon vs réel' dupliquées _EXAMPLE/README.md L87-117 fusionnées",
+        "brands/README.md enrichi pointer /breakdown stepprs principe",
+        "CLAUDE.md root section _EXAMPLE/ enrichie 'Découverte positive' block"
+      ],
+      "files_patched": [
+        "brands/_EXAMPLE/README.md",
+        ".claude/commands/breakdown.md",
+        "CLAUDE.md (root)",
+        "brands/_EXAMPLE/CLAUDE.md",
+        ".claude/commands/tour.md",
+        "brands/README.md"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Cleanup refs canon paths v2.73.x",
+      "sub_patches": [
+        "CHANGELOG L1575 path resources/canon/copy/_registry/* → resources/registries/*",
+        "check-existing-coverage/SKILL.md L83 path resources/registries/hook-formulas.md → resources/templates/hook-formulas.md",
+        "Audit READ-ONLY resources/catalogues/ folder · finding gap structurel doctrinal · backlog v2.75 décision archi"
+      ],
+      "files_patched": [
+        "CHANGELOG.md",
+        ".skills/skills/check-existing-coverage/SKILL.md"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Em-dash sweep 3 SKILL.md actifs",
+      "sub_patches": [
+        "produce-copy-brief/SKILL.md 109 → 0 em-dashes",
+        "snapshot-brand/SKILL.md 67 → 0 em-dashes",
+        "study-niche-marketdeepdive/SKILL.md 79 → 0 em-dashes",
+        "Pattern dominant ` — ` → ` · ` (middle dot canon)"
+      ],
+      "files_patched": [
+        ".skills/skills/produce-copy-brief/SKILL.md",
+        ".skills/skills/snapshot-brand/SKILL.md",
+        ".skills/skills/study-niche-marketdeepdive/SKILL.md"
+      ],
+      "skipped_paths_audit": [
+        "audit-meta-global/SKILL.md · path n'existe pas (audit hallucination) · backlog v2.75 réconciliation",
+        "canonical-matrix-reasoning · doctrine docs/system/ pas skill · backlog v2.75 sweep doctrine séparée"
+      ],
+      "total_em_dashes_eliminated": 255
+    }
+  ],
+  "patterns_respected": [
+    "Memory no_em_dash · zero em-dash strict sweep applique",
+    "Memory extend_before_create · enrichissement existing files uniquement",
+    "Memory solutions_not_observations · 3 axes cleanup actionnable + backlog v2.75 précis"
+  ],
+  "decisions_captured": ["D#420"],
+  "backlog_v275": [
+    "Décision archi resources/catalogues/ · ship 5 JSON catalogues OR retirer couche doctrine (9 refs cross-files)",
+    "Em-dash sweep docs/system/canonical-matrix-reasoning.md doctrine (82 em-dashes legacy)",
+    "Réconciliation audit path audit-meta-global (audit hygiène hallucination)",
+    "Doctrine NEW docs/system/skill-routing-discipline.md (flaggée CLAUDE.md L81)",
+    "Orchestrator NEW .skills/skills/audit-meta-global/SKILL.md"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.74.1 = git revert HEAD strict (zero data loss · 3 axes cleanup retirables independently)"
+}

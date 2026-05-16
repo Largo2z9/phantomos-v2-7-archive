@@ -66,23 +66,23 @@ Relation to other skills:
 
 ---
 
-## Step 0 — Pre-flight: check workspace state
+## Step 0 · Pre-flight: check workspace state
 
 Before anything, two checks:
 
-**Check 1 — Does the brand exist?**
+**Check 1 · Does the brand exist?**
 Check that `brands/{slug}/brand.json` is filled (`identity.name` field non-empty).
 - If empty or absent → tell the operator: "The brand isn't configured yet. Run `setup-brand` first, then come back here." Stop.
 - If filled → continue.
 
-**Check 2 — Product already snapshotted?**
+**Check 2 · Product already snapshotted?**
 Check if `brands/{slug}/products/{product_slug}/spec.json` exists and has `meta.slug` filled.
 - If yes → flag: "This product already has a sheet. Update it (merge) or start fresh?" Wait for reply. Merge = keep existing non-null fields, overwrite with new scraped values. Fresh = overwrite everything.
 - If no → continue.
 
 ---
 
-## Step 1 — Product URL
+## Step 1 · Product URL
 
 Ask:
 > "URL of the product to snapshot?"
@@ -95,12 +95,12 @@ Ask:
 | Brand or homepage URL (`example-brand.com`, `example-brand.com/`) | Read HTML navigation FIRST (see "Hero detection" below). Only if nav gives no clear signal → try `{base_url}/products.json?limit=50` to list the catalogue. |
 | Collection URL (`/collections/{handle}`) | Try `{collection_url}/products.json?limit=50`. List products. Same flow as brand URL. |
 
-**Large catalogue (>1000 SKUs):** `products.json` is paginated 50 max per page; fully enumerating a 1000+ catalogue burns tokens and time. When the catalogue exceeds ~200 products (detected via collection counts in nav, or after first page if `products.json` returns 50 with continuation tokens), do NOT enumerate — sample: read pages 1, 2, and the most recent (sort by `published_at desc`) for hero candidates, surface the volume to the operator (*"this catalogue has 1000+ products, I'm sampling featured + hero, paste a specific URL if you want a different one"*), and let them choose. Snapshot remains one product per run.
+**Large catalogue (>1000 SKUs):** `products.json` is paginated 50 max per page; fully enumerating a 1000+ catalogue burns tokens and time. When the catalogue exceeds ~200 products (detected via collection counts in nav, or after first page if `products.json` returns 50 with continuation tokens), do NOT enumerate · sample: read pages 1, 2, and the most recent (sort by `published_at desc`) for hero candidates, surface the volume to the operator (*"this catalogue has 1000+ products, I'm sampling featured + hero, paste a specific URL if you want a different one"*), and let them choose. Snapshot remains one product per run.
 | Ambiguous URL (can't type) | Ask: "Is this the URL of a specific product or the brand homepage?" |
 
 One run = one product. If the operator wants several, relaunch the skill for each.
 
-**Hero detection — always before API:**
+**Hero detection · always before API:**
 
 When the URL is a homepage or brand URL → read the page HTML to detect the product highlighted in the navigation:
 - Dedicated tab with visual emphasis (color, position) → strong hero signal
@@ -108,7 +108,7 @@ When the URL is a homepage or brand URL → read the page HTML to detect the pro
 
 ⚠️ Some hero products are **not returned by the** Shopify API (`products.json`). The HTML nav is the source of truth for hero, not the API.
 
-**Mandatory confirmation before scraping — stage + ask:**
+**Mandatory confirmation before scraping · stage + ask:**
 
 After detection, stage the proposal BEFORE asking the operator. The stage call records that a confirmation is pending; the next operator turn flows through the `checkpoint-resolver` hook and promotes the checkpoint based on the literal text of their reply.
 
@@ -120,7 +120,7 @@ After detection, stage the proposal BEFORE asking the operator. The stage call r
      --brand {slug} \
      --checkpoint confirmed_products \
      --product-slug {detected product slug} \
-     --summary "Hero detected: {product name} — {url}"
+     --summary "Hero detected: {product name} · {url}"
    ```
 2. Show the operator:
    ```
@@ -132,7 +132,7 @@ After detection, stage the proposal BEFORE asking the operator. The stage call r
 3. **Wait for the operator turn.** The `checkpoint-resolver` hook reads their reply and resolves the pending proposal:
    - `"oui"`, `"yes"`, `"go"`, `"ok"`, `"valide"` etc. → `confirmed_products` gains `{slug}` → Step 2 unlocked.
    - `"non"`, `"no"`, `"pas bon"`, correction like `"non, it's X"` → rejection logged, pending cleared → re-detect, re-stage with the corrected product, re-ask.
-   - Free-form correction without confirm/reject marker (`"Glow Boost"`) → no automatic resolution. Clear pending manually by re-staging with the corrected slug (pending existing blocks new stage — surface gracefully to the operator).
+   - Free-form correction without confirm/reject marker (`"Glow Boost"`) → no automatic resolution. Clear pending manually by re-staging with the corrected slug (pending existing blocks new stage · surface gracefully to the operator).
 4. **Never start scraping until stage-proposal is resolved.** Writing `products/{slug}/spec.json` or `products/{slug}/offers.json` without the slug in `confirmed_products` is blocked by the write-to-context gate.
 
 **Validate the retained product URL:**
@@ -150,7 +150,7 @@ After detection, stage the proposal BEFORE asking the operator. The stage call r
 
 ---
 
-## Step 2 — Platform detection + scraping
+## Step 2 · Platform detection + scraping
 
 **Shopify detection** (in this order):
 1. URL contains `.myshopify.com` or `/products/` → Shopify likely
@@ -189,11 +189,11 @@ Even if Shopify JSON returns the data, read the product page HTML to capture wha
 |---|---|---|
 | Trust badges / authority claims ("Clinically Tested", "Podiatrist Recommended") | Title zone → ATC | spec.proofs.authority |
 | Review count displayed | Reviews widget (Judge.me, Loox, Okendo) | `_snapshot.reviews_displayed` |
-| Quantity break selector (1 pair / 2 pairs / 3 pairs…) | Offer section, before ATC | offers.json — type `quantity_break` |
-| Urgency / bonus ("OFFER ENDS SOON", "FREE eBook") | ATC zone | offers.json — `urgency`, `bonus_included` |
-| Payment methods | Footer or ATC zone | brand.json — market confirmation |
+| Quantity break selector (1 pair / 2 pairs / 3 pairs…) | Offer section, before ATC | offers.json · type `quantity_break` |
+| Urgency / bonus ("OFFER ENDS SOON", "FREE eBook") | ATC zone | offers.json · `urgency`, `bonus_included` |
+| Payment methods | Footer or ATC zone | brand.json · market confirmation |
 
-⚠️ **WebFetch limit**: WebFetch returns only static HTML. Front-end apps (quantity breaks, review widgets) are rendered via JavaScript after load, invisible to WebFetch. If these elements are suspected but not visible in HTML → note `[app-rendered — requires Chrome capture]` and continue. Never invent unconfirmed price tiers.
+⚠️ **WebFetch limit**: WebFetch returns only static HTML. Front-end apps (quantity breaks, review widgets) are rendered via JavaScript after load, invisible to WebFetch. If these elements are suspected but not visible in HTML → note `[app-rendered · requires Chrome capture]` and continue. Never invent unconfirmed price tiers.
 
 **Sustainability signals scraping (v1.3.0 NEW · v2.58)**
 
@@ -235,12 +235,12 @@ python3 .skills/write-to-context.py \
 
 Si zéro signal sustainability détecté → ne pas stage (laisser fields null, ne pas créer de bruit `proposed` vide).
 
-**Review triangulation — 3 sources, always note provenance:**
+**Review triangulation · 3 sources, always note provenance:**
 
 | Source | How to get it | What it measures |
 |---|---|---|
 | Native Shopify | `products/{handle}.js` metafields | Reviews on this specific product |
-| Onsite app (Judge.me, Loox…) | HTML page — displayed widget | Aggregated reviews cross-product, potentially imported |
+| Onsite app (Judge.me, Loox…) | HTML page · displayed widget | Aggregated reviews cross-product, potentially imported |
 | Trustpilot | `trustpilot.com/review/{domain}` | Independent verified reviews |
 
 Rule: always note all 3 in `_snapshot.reviews_sources`. Never use the highest number without noting its source, the on-page number may come from an app with imported reviews (unverified). Significant gap between sources = flag `[review_source_conflict]` in `_snapshot`.
@@ -273,7 +273,7 @@ Wait for answers. Generate spec.json from answers + partial scraped data. Do not
 
 ---
 
-## Step 2bis — Business model auto-detection (v1.2.0 NEW · v2.57)
+## Step 2bis · Business model auto-detection (v1.2.0 NEW · v2.57)
 
 **Objectif** · auto-detect `brand.json#identity.business_model` (NEW v2.4 schema field) depuis les signaux scrape. Évite que l'opérateur doive le déclarer manuellement. Stage proposal via mutation gate, surface contextuel à la synthèse Step 7, AskUserQuestion fallback si ambigu.
 
@@ -321,9 +321,9 @@ def detect_business_model(scrape_signals):
 
 **Output workflow (4 sub-steps)** ·
 
-**2bis.1 — Compute heuristique** depuis URL scrape data collected in Step 2 (Shopify JSON + HTML scraping + nav HTML). Apply priority rules table above. Output enum `DTC | service | hybrid | subscription | marketplace`.
+**2bis.1 · Compute heuristique** depuis URL scrape data collected in Step 2 (Shopify JSON + HTML scraping + nav HTML). Apply priority rules table above. Output enum `DTC | service | hybrid | subscription | marketplace`.
 
-**2bis.2 — Stage proposal via mutation gate** ·
+**2bis.2 · Stage proposal via mutation gate** ·
 
 ```bash
 python3 .skills/write-to-context.py \
@@ -335,7 +335,7 @@ python3 .skills/write-to-context.py \
   --reason "Auto-detected from scrape signals · {brief rationale}"
 ```
 
-**2bis.3 — Stage business_model_signals object** (le contexte sourcing pour traçabilité) ·
+**2bis.3 · Stage business_model_signals object** (le contexte sourcing pour traçabilité) ·
 
 ```bash
 python3 .skills/write-to-context.py \
@@ -346,7 +346,7 @@ python3 .skills/write-to-context.py \
   --mode proposed
 ```
 
-**2bis.4 — Fallback AskUserQuestion si ambiguous** · si `products_detected > 0 AND services_detected > 0 AND products_detected < 3 AND services_detected < 3` (les deux non-zero mais faibles, classification incertaine), invoke AskUserQuestion avec 4 options ·
+**2bis.4 · Fallback AskUserQuestion si ambiguous** · si `products_detected > 0 AND services_detected > 0 AND products_detected < 3 AND services_detected < 3` (les deux non-zero mais faibles, classification incertaine), invoke AskUserQuestion avec 4 options ·
 
 - **DTC pur** · acquisition produits uniquement
 - **Hybrid** · réseau physique + ligne e-com (clinique, restaurant, magasin + produits)
@@ -366,7 +366,7 @@ L'opérateur arbitre, agent re-stage proposal avec la valeur confirmée (source=
 
 ---
 
-## Step 3 — Generate spec.json (delegated encoding)
+## Step 3 · Generate spec.json (delegated encoding)
 
 Before generating, read `brands/{slug}/brand.json` → sections `tone_of_voice` and `positioning`.
 If these fields are filled → use the brand tone and positioning to align the product description.
@@ -433,7 +433,7 @@ The `_snapshot` block is a technical block (non-schema official). Documents data
 
 ---
 
-## Step 4 — Generate offers.json
+## Step 4 · Generate offers.json
 
 Each Shopify variant = one candidate offer.
 
@@ -445,7 +445,7 @@ Each Shopify variant = one candidate offer.
 4. If a single variant without explicit duration, or group of variants same price without duration → `type: "single"`
 5. If `compare_at_price > price` → compute `savings_percent` and `savings_amount`
 
-Fill `brands/{slug}/products/{product_slug}/offers.json` using the v2 `offer_groups[]` shape. Group-of-1 is valid and is the default for single-product offer files — only split into multiple groups if offers share distinct defaults (shipping, returns, warranty, payment_methods, active_window).
+Fill `brands/{slug}/products/{product_slug}/offers.json` using the v2 `offer_groups[]` shape. Group-of-1 is valid and is the default for single-product offer files · only split into multiple groups if offers share distinct defaults (shipping, returns, warranty, payment_methods, active_window).
 
 ```json
 {
@@ -537,11 +537,11 @@ Si `pack_quantity` non détectable (variant unique sans specs structurés) → s
 If the HTML page shows a quantity selector with tiered prices (1 unit / 2 units / 3 units…) but the API returns a flat price identical on all variants → the price structure is handled by a front-end app (Bundler, Bold Bundles, custom script). The API doesn't see it.
 
 Behavior:
-- Create an offer `type: "quantity_break"` with `pricing.tiers: null` and note `_snapshot.offer_note: "quantity_break app detected — tiers not accessible via API, requires HTML/Chrome capture"`
+- Create an offer `type: "quantity_break"` with `pricing.tiers: null` and note `_snapshot.offer_note: "quantity_break app detected · tiers not accessible via API, requires HTML/Chrome capture"`
 - Never invent unconfirmed price tiers
 - Flag to the operator: "I detected a per-quantity price structure on the page, but it's handled by an app I can't read automatically. Can you confirm the tiers? (e.g. 1 pair = X€, 2 pairs = Y€ each…)"
 
-**Geo-detection — note currency context:**
+**Geo-detection · note currency context:**
 
 Price scraping always in a known context. The API returns the base currency (USD/GBP). The site may display a different currency based on geo.
 - Always note the API currency (`_snapshot.api_currency`) and displayed currency if different (`_snapshot.display_currency`)
@@ -549,13 +549,13 @@ Price scraping always in a known context. The API returns the base currency (USD
 
 ---
 
-## Step 5 — Audience cartography (4 movements)
+## Step 5 · Audience cartography (4 movements)
 
 **Doctrinal contract.** Read `docs/system/audience-cartography.md` before authoring or modifying this step. Step 5 runs four operator-facing movements in order: (1) raw observations, (2) cartography axes, (3) hierarchy mère/sous-audiences, (4) hand-off pédagogique vers `mine-voc`. Single-axis classification or flat audience output is a regression to form-fill and a violation of contextual intelligence doctrine.
 
 The agent does NOT extract `pain_points[]`, `psychology.beliefs_limiting[]`, `voice.key_expressions[]` from the product page. Those fields belong to `mine-voc` verbatim. snapshot-brand fills only the cartography skeleton listed in `audience-cartography.md § Field-level contract`.
 
-### Movement 1 — Raw observations (operator-facing)
+### Movement 1 · Raw observations (operator-facing)
 
 Before any classification, name what the page literally said. No interpretation, just observation with source. **Zero internal jargon in the operator output** : never say "Movement", "cartography axis", "validation_status", "hypothesis-grade", "field path". Plain words.
 
@@ -573,15 +573,15 @@ If the page is thin, say so plainly:
 
 Movement 1 is **never skipped**. Empty observations are a valid output, and more useful than a fabricated profile.
 
-### Movement 2 — Découpages possibles (operator-facing)
+### Movement 2 · Découpages possibles (operator-facing)
 
 Propose 2 to 3 alternative ways to slice the audience. Always mark one as the default hypothesis with a one-line rationale tied to a Movement 1 observation. Always invite override. **Operator-facing language**: "manières de découper", "découpages", "axes". Never "cartography axes".
 
 The three canonical axes (skill-author vocabulary, NOT operator vocabulary):
 
-- **Pain-driven** — slice by emotional state. Dominant when pain register diverges by segment.
-- **Situational** — slice by life moment / context. Dominant when the same pain has different trigger contexts.
-- **Demographic / cultural** — slice by who they are. Rarely dominant for paid acquisition; usually a modulator within pain or situational.
+- **Pain-driven** · slice by emotional state. Dominant when pain register diverges by segment.
+- **Situational** · slice by life moment / context. Dominant when the same pain has different trigger contexts.
+- **Demographic / cultural** · slice by who they are. Rarely dominant for paid acquisition; usually a modulator within pain or situational.
 
 Operator-facing format example:
 
@@ -597,7 +597,7 @@ Operator-facing format example:
 
 Wait for the operator's choice before Movement 3.
 
-### Movement 3 — Hierarchy proposée (operator-facing)
+### Movement 3 · Hierarchy proposée (operator-facing)
 
 Once the operator picks an axis, propose 2 to 3 **groupes principaux** with 1 to 3 **sous-groupes** each. Skill-author terms: mother audiences and sub-audiences. **Operator-facing terms**: "groupe principal" et "sous-groupe", or just "groupe" et "sous". Never "mother audience", never `meta.parent_slug`, never "validation_status: hypothesis".
 
@@ -605,13 +605,13 @@ Operator-facing format example:
 
 > *"Sur le découpage par ressenti que t'as choisi, voilà la structure que je propose, en deux niveaux.*
 >
-> *Groupe 1 : pousse-projet — longueur ou densité jugées insuffisantes, démarche beauté positive, pas d'urgence.*
+> *Groupe 1 : pousse-projet · longueur ou densité jugées insuffisantes, démarche beauté positive, pas d'urgence.*
 > *  Sous-groupes : pousse-jeune-adulte (18-30, projet esthétique), pousse-recovery (post-coloration ou post-lissage, casse récente).*
 >
-> *Groupe 2 : chute-active — chute en cours, charge émotionnelle, urgence.*
+> *Groupe 2 : chute-active · chute en cours, charge émotionnelle, urgence.*
 > *  Sous-groupes : chute-post-grossesse (25-35, hormonal aigu), chute-hormonale-stress (22-32, diffuse longue durée), chute-traction (zones d'appui voile / tissages / tresses).*
 >
-> *Tous les sous-groupes sont à valider — c'est volontaire, ça veut dire qu'on les pose comme hypothèses de travail et qu'on les confirmera avec du vrai verbatim client juste après. Tu valides cette structure, ou tu veux qu'on en garde moins pour démarrer plus serré ?"*
+> *Tous les sous-groupes sont à valider · c'est volontaire, ça veut dire qu'on les pose comme hypothèses de travail et qu'on les confirmera avec du vrai verbatim client juste après. Tu valides cette structure, ou tu veux qu'on en garde moins pour démarrer plus serré ?"*
 
 Single-question gate. Wait for operator confirmation. Once confirmed, scaffold the audience folders (Step 6) and explicitly tell the operator they can visualize the result via `/phantom {brand_slug}`.
 
@@ -636,7 +636,7 @@ L'opérateur valide ou corrige. Encoder via `meta.applies_to_products: ["glow-bo
 
 Cette question débloque la navigation cross-référencée dans `/phantom` : *"voir les audiences sur glow-boost"* devient une commande naturelle (`/phantom {brand_slug} products glow-boost` rend la fiche produit avec les audiences cibles dessous).
 
-### Movement 4 — Hand-off vers approfondissement (operator-facing)
+### Movement 4 · Hand-off vers approfondissement (operator-facing)
 
 Before closing Step 5, explicitly tell the operator how the audience encoding will be **used next**. Anchors why the work matters and proposes the next move in plain language métier · jamais nommer les skills internes en surface operator.
 
@@ -644,7 +644,7 @@ Format example (FR · canonique v2.51) ·
 
 > *"Voilà comment ces audiences vont servir à partir de maintenant.*
 >
-> *Ce qu'on vient de poser est volontairement minimal · un nom, un découpage, une hypothèse. Pas de douleurs détaillées, pas d'objections, pas de citations clientes. C'est exprès — ces choses-là, je ne vais pas les inventer depuis une page produit, ils doivent venir de ce que disent vraiment tes clientes.*
+> *Ce qu'on vient de poser est volontairement minimal · un nom, un découpage, une hypothèse. Pas de douleurs détaillées, pas d'objections, pas de citations clientes. C'est exprès · ces choses-là, je ne vais pas les inventer depuis une page produit, ils doivent venir de ce que disent vraiment tes clientes.*
 >
 > *Deux étapes enrichissent ça naturellement ·*
 >
@@ -690,7 +690,7 @@ Extract one mother audience from the answer. Skip Movement 3's sub-audiences ent
 
 ---
 
-## Step 6 — Generate profile.json (base, delegated encoding)
+## Step 6 · Generate profile.json (base, delegated encoding)
 
 Fill `brands/{slug}/audiences/{audience_slug}/profile.json` with:
 - What comes directly from the product page (gender apparent in copy, problem addressed in title/description)
@@ -1035,8 +1035,8 @@ If the page was thin (`_snapshot.confidence_score` internal flag low), say so ex
 Once saved, run three silent post-writes before talking:
 
 1. **Append to `brands/{slug}/pending-validations.md § Context gate`** one `[ ]` line per inferred field that was stamped with `mode=proposed` during this run. Wording in the operator's language, plain-language source tag (`(inferred from site)`, `(deduced)`), never `source` / `confidence` / `mode` jargon. Typical entries: audience(s) inferred, positioning inferred, tone inferred, compliance gaps detected (e.g. missing contraindications on a medical device).
-2. **Trigger `validate-resources` silently** on the brand. This refreshes `status.json` (completeness per entity, freshness stamps, `wedge_complete`), rebuilds `learnings-index.json` if present, and re-runs the snapshot digest. Surface its result only if it flags MAJOR/CRITICAL — otherwise stay silent.
-3. **Run `finalize-mutation-batch`** — single bash command, replaces the prior LLM-based coherence check (which was systematically skipped under load):
+2. **Trigger `validate-resources` silently** on the brand. This refreshes `status.json` (completeness per entity, freshness stamps, `wedge_complete`), rebuilds `learnings-index.json` if present, and re-runs the snapshot digest. Surface its result only if it flags MAJOR/CRITICAL · otherwise stay silent.
+3. **Run `finalize-mutation-batch`** · single bash command, replaces the prior LLM-based coherence check (which was systematically skipped under load):
 
    ```bash
    python3 .skills/finalize-mutation-batch.py --brand-slug {slug}
@@ -1068,10 +1068,10 @@ I sort and file automatically.
 
 ## Hard Rules
 
-- **Stage before asking — always.** Hero confirmation (Step 1) and audience confirmation (Step 5B) MUST call `.skills/stage-proposal.py` before showing the question to the operator. The checkpoint-resolver hook promotes checkpoints from the literal operator reply — agent self-declaration is not accepted. Writes to `products/*/spec.json`, `products/*/offers.json`, `audiences/*/profile.json` are blocked by the write-to-context workflow gate until checkpoints resolve.
+- **Stage before asking · always.** Hero confirmation (Step 1) and audience confirmation (Step 5B) MUST call `.skills/stage-proposal.py` before showing the question to the operator. The checkpoint-resolver hook promotes checkpoints from the literal operator reply · agent self-declaration is not accepted. Writes to `products/*/spec.json`, `products/*/offers.json`, `audiences/*/profile.json` are blocked by the write-to-context workflow gate until checkpoints resolve.
 - **Never invent** a field not present in the page or answers. Null > approximation.
 - **Hero detection = nav HTML first, API second.** Some hero products are absent from `products.json`. The site nav is the source of truth, read the homepage HTML before any API call when the URL is a brand URL.
-- **Confirmation before scraping — always.** Show the detected product to the operator and wait for an explicit "go" before starting the scraping. Never assume.
+- **Confirmation before scraping · always.** Show the detected product to the operator and wait for an explicit "go" before starting the scraping. Never assume.
 - **Shopify JSON API priority** over HTML for product data. Do not scrape HTML if `/products/{handle}.js` returns 200. Exception: product detail page scraping (above-the-fold, reviews, quantity breaks) always runs in complement to the API.
 - **Review triangulation mandatory.** Capture the 3 sources separately (native Shopify, onsite app, Trustpilot). Never use a single number without noting its source. Significant gap = flag `[review_source_conflict]`.
 - **Quantity breaks = app-driven, invisible to API.** If HTML shows per-quantity price tiers but API is flat → `type: "quantity_break"`, tiers null, ask the operator. Never invent tiers.
@@ -1084,9 +1084,9 @@ I sort and file automatically.
 - **One product per run**. Multi-product = relaunch the skill for each product.
 - **`_snapshot` block always present** in spec.json and profile.json. Documents provenance.
 - **Do not create audience folder** if Q1 + Q2 are both null, not enough to identify audience.
-- **Write modes.** Never call `write_to_context` on a whole file path with `mode=proposed` — the proposal wrapper stamps `_proposed/_source/_confidence` at the root object and corrupts consumers. Always scaffold the file in `mode=direct` (full structure with null placeholders), then stamp inferred fields one by one with `mode=proposed` using a JSONPointer fragment (e.g. `file.json#/pricing/price`). The tool enforces this guard since 2.6.20.
+- **Write modes.** Never call `write_to_context` on a whole file path with `mode=proposed` · the proposal wrapper stamps `_proposed/_source/_confidence` at the root object and corrupts consumers. Always scaffold the file in `mode=direct` (full structure with null placeholders), then stamp inferred fields one by one with `mode=proposed` using a JSONPointer fragment (e.g. `file.json#/pricing/price`). The tool enforces this guard since 2.6.20.
 - **Offers.json = v2 `offer_groups[]` only.** Never write the legacy flat `offers[]` at root. `_version: "2.0"` is mandatory. Single-product files use a group-of-1. Use `product_refs: [{slug, quantity}]`, not `product_ids`.
-- **`finalize-mutation-batch` is mandatory before any operator-facing summary.** Step 7 post-write #3 runs `python3 .skills/finalize-mutation-batch.py --brand-slug {slug}`. Mechanical Python primitive — no LLM negotiation, no skip path. Exit code 2 = blocking issue, MUST revise. Soft-prescribed `validate-output-coherence` LLM call (prior version) was skipped 100% of the time under load on the v2.7.1 stress test; this is the replacement.
+- **`finalize-mutation-batch` is mandatory before any operator-facing summary.** Step 7 post-write #3 runs `python3 .skills/finalize-mutation-batch.py --brand-slug {slug}`. Mechanical Python primitive · no LLM negotiation, no skip path. Exit code 2 = blocking issue, MUST revise. Soft-prescribed `validate-output-coherence` LLM call (prior version) was skipped 100% of the time under load on the v2.7.1 stress test; this is the replacement.
 
 ### Hard Rules v1.4.1 NEW (v2.69.1)
 
@@ -1101,35 +1101,35 @@ I sort and file automatically.
 
 The `_TEMPLATE` is at v1.8. When scraping a product page, you must look for and fill these new fields if the info is present. Null > invention.
 
-**spec.json — blocks to populate when applicable:**
+**spec.json · blocks to populate when applicable:**
 
-- `specs.composition[]` — structured list (ingredient, pct, organic_certified, class, origin, inci). Accepts string for legacy too.
-- `specs.posology` — recommended_daily_servings, serving_unit, timing, duration_recommended, max_daily_dose, notes. Relevant: supplements, skincare, cures.
-- `specs.contraindications` — conditions[], medications[], age_min/max, pregnancy, breastfeeding, warnings[]. Relevant: supplements, cosmetics, food.
-- `specs.origin` — country, region, facility, local_supply_pct, made_in_claim, supply_chain_transparency.
-- `specs.production_method` — type, batch_size, frequency, method_notes. Relevant: artisanal, made-to-order.
-- `specs.preparation` — cooking_required, method, time_minutes, temperature, serving_suggestions[]. Relevant: food.
-- `specs.external_databases` — open_food_facts_id, yuka_id, inci_beauty_id, ciqual_id, ean, gtin.
-- `specs.target_suitability` — skin_types[], hair_types[], body_areas[], use_cases[], demographics[]. Relevant: beauty, skincare.
-- `specs.durability` — warranty_years, warranty_type, repairable, spare_parts_available, repair_program, lifespan_estimate, repairability_index. Relevant: apparel, hardware, electronics.
-- `nutrition_facts.allergen_sources[]` — allergen → ingredient source mapping.
-- `nutrition_facts.nutri_score_grade` — A-E enum (FR 2025+).
-- `perishability.period_after_opening_months` — PAO (cosmetics EU mandatory).
-- `perishability.expiry_date_required` — boolean.
+- `specs.composition[]` · structured list (ingredient, pct, organic_certified, class, origin, inci). Accepts string for legacy too.
+- `specs.posology` · recommended_daily_servings, serving_unit, timing, duration_recommended, max_daily_dose, notes. Relevant: supplements, skincare, cures.
+- `specs.contraindications` · conditions[], medications[], age_min/max, pregnancy, breastfeeding, warnings[]. Relevant: supplements, cosmetics, food.
+- `specs.origin` · country, region, facility, local_supply_pct, made_in_claim, supply_chain_transparency.
+- `specs.production_method` · type, batch_size, frequency, method_notes. Relevant: artisanal, made-to-order.
+- `specs.preparation` · cooking_required, method, time_minutes, temperature, serving_suggestions[]. Relevant: food.
+- `specs.external_databases` · open_food_facts_id, yuka_id, inci_beauty_id, ciqual_id, ean, gtin.
+- `specs.target_suitability` · skin_types[], hair_types[], body_areas[], use_cases[], demographics[]. Relevant: beauty, skincare.
+- `specs.durability` · warranty_years, warranty_type, repairable, spare_parts_available, repair_program, lifespan_estimate, repairability_index. Relevant: apparel, hardware, electronics.
+- `nutrition_facts.allergen_sources[]` · allergen → ingredient source mapping.
+- `nutrition_facts.nutri_score_grade` · A-E enum (FR 2025+).
+- `perishability.period_after_opening_months` · PAO (cosmetics EU mandatory).
+- `perishability.expiry_date_required` · boolean.
 
 **New dietary_tags available:** caffeine_free, bio, raw, chicory_based, clean_beauty, cruelty_free.
 **Allergen "oats" added to the EU14 enum.**
 
-**offers.json — new fields:**
+**offers.json · new fields:**
 
-- `contents.duration_type` — calendar | usage_days | servings.
-- `contents.duration_servings` — number.
-- `contents.cure_metadata` — cure_name, is_premade, target_concern, phases[]. Relevant: pre-built cures.
-- `incentives.duration_tiers[]` — discount per engagement (1/3/6/12 months).
-- `incentives.loyalty` — loyalty program (points, tiers, sign_up_bonus).
-- `offer_groups[].offers[].tags[]` — free tags at offer level (v2 schema; legacy `offers[].tags[]` is v1.x).
+- `contents.duration_type` · calendar | usage_days | servings.
+- `contents.duration_servings` · number.
+- `contents.cure_metadata` · cure_name, is_premade, target_concern, phases[]. Relevant: pre-built cures.
+- `incentives.duration_tiers[]` · discount per engagement (1/3/6/12 months).
+- `incentives.loyalty` · loyalty program (points, tiers, sign_up_bonus).
+- `offer_groups[].offers[].tags[]` · free tags at offer level (v2 schema; legacy `offers[].tags[]` is v1.x).
 
-**Automatic stamping:** each entity file carries its own `_version` field matching the schema it was built against. Current baseline (read live from `_TEMPLATE`): `brand.json _version=2.1`, `products/{slug}/spec.json _version=1.8`, `products/{slug}/offers.json _version=2.0`, `audiences/{slug}/profile.json _version=1.2`. After a fresh scaffold via `cp -r _TEMPLATE brands/{slug}`, these values are inherited automatically. Never hardcode version expectations — always read from `_TEMPLATE` first.
+**Automatic stamping:** each entity file carries its own `_version` field matching the schema it was built against. Current baseline (read live from `_TEMPLATE`): `brand.json _version=2.1`, `products/{slug}/spec.json _version=1.8`, `products/{slug}/offers.json _version=2.0`, `audiences/{slug}/profile.json _version=1.2`. After a fresh scaffold via `cp -r _TEMPLATE brands/{slug}`, these values are inherited automatically. Never hardcode version expectations · always read from `_TEMPLATE` first.
 
 ---
 

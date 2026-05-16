@@ -80,7 +80,7 @@ Example: operator on `brand-B` wants to track competitor pricing. Already exists
 Can the concept be represented using an existing shared resource (`resources/registries/`, `resources/routing/`, `resources/frameworks/`, `resources/templates/`)?
 
 - Walk `resources/*/` and scan file contents for semantic match against the intent's fields.
-- If the concept is fully a reference rather than new data (e.g. operator wants a *"tag of proven hook types"* → already exists as `resources/registries/hook-formulas.md`), surface to operator as reuse.
+- If the concept is fully a reference rather than new data (e.g. operator wants a *"tag of proven hook types"* → already exists as `resources/templates/hook-formulas.md`), surface to operator as reuse.
 - If partial (e.g. operator wants to track which registry entry applies to each instance), suggest building a **thin extension** that cross-references the shared resource by ID rather than duplicating content.
 
 Example: operator wants a library of creative angles. Already exists as `resources/registries/angle-registry.md`. Route to reuse; if operator wants per-brand tracking of which angles they've tested, propose a thin extension with ref fields pointing to angle-registry IDs.

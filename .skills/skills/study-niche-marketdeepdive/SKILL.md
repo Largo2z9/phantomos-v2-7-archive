@@ -30,8 +30,8 @@ pipeline:
   preconditions: brand exists with at least brand.json filled. Ticket opened at start.
   postconditions: strategic memo archived in custom/market-memo/{date}.md, Layer A corpus archived in sources/marketdeepdive/, Layer B mutations to brand.json#market.* and strategy.json proposed, ticket closed, finalize-mutation-batch event emitted
 disambiguates_against:
-  mine-vom: "route to mine-vom when operator wants market customer voice (vernacular, white-spaces from forum/review verbatim) — that's qualitative; deep-dive is structural/strategic"
-  watch-competitors: "route to watch-competitors when operator wants recurring creative monitoring of named competitors — different cadence, different output"
+  mine-vom: "route to mine-vom when operator wants market customer voice (vernacular, white-spaces from forum/review verbatim) · that's qualitative; deep-dive is structural/strategic"
+  watch-competitors: "route to watch-competitors when operator wants recurring creative monitoring of named competitors · different cadence, different output"
   mine-voc: "route to mine-voc when operator wants brand-bound customer voice"
 ---
 
@@ -59,18 +59,18 @@ Canon for the analytical vocabulary lives in `resources/frameworks/market-deepdi
 
 Selectivity rules apply per layer:
 
-- Porter — name the 1-2 active forces. Document which force was tested and rejected, in one line.
-- PESTEL — name the 2-3 active forces. Document which were peripheral.
-- Schwartz — read longitudinally (3 years ago, today, 3 years out), not as a snapshot.
-- Crossing the Chasm — apply only when the niche is under 5 years old and category leader is unclear. Skip otherwise.
-- Capital flow — always active. Strategic memos that ignore capital are tactical memos.
-- Disruption — always active. Tech, demographic, regulatory shifts that reframe the niche in 12-24 months.
+- Porter · name the 1-2 active forces. Document which force was tested and rejected, in one line.
+- PESTEL · name the 2-3 active forces. Document which were peripheral.
+- Schwartz · read longitudinally (3 years ago, today, 3 years out), not as a snapshot.
+- Crossing the Chasm · apply only when the niche is under 5 years old and category leader is unclear. Skip otherwise.
+- Capital flow · always active. Strategic memos that ignore capital are tactical memos.
+- Disruption · always active. Tech, demographic, regulatory shifts that reframe the niche in 12-24 months.
 
 The synthesis layer is the only mandatory output. Frameworks supply vocabulary; synthesis supplies the verdict.
 
 ---
 
-## Step 0 — Ticket open + first-party data ask
+## Step 0 · Ticket open + first-party data ask
 
 Runtime exceeds 10 minutes by design. Open a ticket immediately, before any research. Ticket discipline is non-negotiable per `brands/_TEMPLATE/tickets/README.md`.
 
@@ -94,12 +94,12 @@ Then ask first-party data, plain prose:
 
 > *"Avant que je lance une étude marché complète (45 min), est-ce que tu as :*
 >
-> *— des reports payants (Statista, Mintel, Euromonitor, NPD) à digérer ?*
-> *— des notes prises en conférence sectorielle ?*
-> *— des analyses internes ou strategy decks récents ?*
-> *— des notes de calls investisseurs / strategy si pertinent ?*
+> *· des reports payants (Statista, Mintel, Euromonitor, NPD) à digérer ?*
+> *· des notes prises en conférence sectorielle ?*
+> *· des analyses internes ou strategy decks récents ?*
+> *· des notes de calls investisseurs / strategy si pertinent ?*
 >
-> *Drop ici si oui — ça précise mon analyse de 30-50% et je peux gagner 10-15 min sur le scrape public."*
+> *Drop ici si oui · ça précise mon analyse de 30-50% et je peux gagner 10-15 min sur le scrape public."*
 
 Branching:
 
@@ -110,7 +110,7 @@ Heavy-skill gate per `voice.md § Heavy skill posture`. The first-party ask doub
 
 ---
 
-## Step 1 — Niche definition lock
+## Step 1 · Niche definition lock
 
 Read `brand.json#/meta/vertical`, `brand.json#/market/market_overview/category`, top product `spec.json#/identity/category`. Compose the precise niche tuple:
 
@@ -124,7 +124,7 @@ Worked examples:
 - Supplement sleep / FR-EU / premium 25-50€
 - Anti-age facial skincare cosmetics-grade / France-EU primary, US secondary
 
-If any axis is ambiguous, ask one targeted question and stop. No deep-dive on a vague niche — the memo would be unreadable.
+If any axis is ambiguous, ask one targeted question and stop. No deep-dive on a vague niche · the memo would be unreadable.
 
 ```
 "Avant de lancer : tu vois le marché comme {niche tuple proposed}, ou tu coupes plus serré ({alternative axis})?"
@@ -134,11 +134,11 @@ Lock the tuple in the ticket log before continuing.
 
 ---
 
-## Step 2 — Selective Porter analysis
+## Step 2 · Selective Porter analysis
 
 Per `market-deepdive.md` framework, identify the 1-2 forces that are *actually active* in this niche. Document the binary tests that activated them.
 
-For each active force, write a paragraph naming what the force implies for the operator's window. Skip the rest explicitly with one-line dismissals (e.g. *"Buyer power non-load-bearing — DTC commerce keeps power on the brand side; review density on price terms is low"*).
+For each active force, write a paragraph naming what the force implies for the operator's window. Skip the rest explicitly with one-line dismissals (e.g. *"Buyer power non-load-bearing · DTC commerce keeps power on the brand side; review density on price terms is low"*).
 
 The substitute force is the one most often missed and most often load-bearing. GLP-1 took share from weight-loss supplements in 24 months. AI tutoring is taking share from Khan-style apps. Med-spa procedures are taking share from anti-age skincare in the >35 segment. Always test the substitute force explicitly.
 
@@ -146,17 +146,17 @@ Output of this step is internal reasoning material for Step 9, not a section in 
 
 ---
 
-## Step 3 — Player landscape mapping
+## Step 3 · Player landscape mapping
 
 Triangulated crawl, three paths:
 
 - Crunchbase scrape on the top 10-15 players in the niche (funding history, employee count, revenue estimate, recent rounds)
-- Listicle aggregation on industry press (*"best {category} 2026"*, *"top {niche} brands"*) — Modern Retail, Glossy, Business of Fashion, sector-specific trade outlets
+- Listicle aggregation on industry press (*"best {category} 2026"*, *"top {niche} brands"*) · Modern Retail, Glossy, Business of Fashion, sector-specific trade outlets
 - Marketplace top-sellers where applicable (Amazon, Sephora, iHerb)
 
 Layer in:
 
-- Press coverage on strategic moves last 18 months — Forbes, TechCrunch, Vogue Business
+- Press coverage on strategic moves last 18 months · Forbes, TechCrunch, Vogue Business
 - Strategic acquirer activity (CPG conglomerates buying DTC, roll-up funds active in the segment)
 - Public market signals (IPOs, public-private comparable acquisitions, trading multiples)
 
@@ -173,7 +173,7 @@ Cache aggressively. Player landscape fundamentals don't shift weekly. TTL 30 day
 
 ---
 
-## Step 4 — Selective PESTEL
+## Step 4 · Selective PESTEL
 
 Per framework, identify the 2-3 forces actually reshaping the niche right now. Document binary tests.
 
@@ -185,7 +185,7 @@ For each active force, write a paragraph naming the policy / trend / regulation,
 
 ---
 
-## Step 5 — Schwartz longitudinal sophistication
+## Step 5 · Schwartz longitudinal sophistication
 
 The most load-bearing layer for messaging strategy. Place the niche on the 1-5 stage axis at three anchors:
 
@@ -197,9 +197,9 @@ Cite a source for each anchor. The trajectory is what makes the analysis operati
 
 Worked example, skincare clean FR:
 
-- 2020 — stage 3 (mechanism: *"what's not in it"*)
-- 2023 — stage 4 (mechanism + dermo proof: *"clean and it works"*)
-- 2026 — stage 5 (identity + lifestyle: *"clean is who I am, performance is assumed"*)
+- 2020 · stage 3 (mechanism: *"what's not in it"*)
+- 2023 · stage 4 (mechanism + dermo proof: *"clean and it works"*)
+- 2026 · stage 5 (identity + lifestyle: *"clean is who I am, performance is assumed"*)
 
 Audience awareness distribution feeds this layer mechanically and routes to `brand.json#/market/awareness_distribution/*`. In a stage-4 niche, the audience is mostly product-aware; in a stage-2 niche, mostly problem-aware.
 
@@ -209,34 +209,34 @@ Worked example, nootropics: stage 2 in 2018, stage 3 in 2022, stage 4 in 2025. S
 
 ---
 
-## Step 6 — Capital flow + exit comparables
+## Step 6 · Capital flow + exit comparables
 
 Strategic memos that ignore capital are tactical memos.
 
 Four signal types, captured with sources:
 
-- Recent deals last 18 months — name, acquirer, target, disclosed multiple (revenue × N or EBITDA × N), strategic rationale where stated
-- Funding rounds — Series A/B/C amounts, disclosed valuations, geography (FR/EU/US), investor pattern (sector specialists vs generalists)
-- Public market signals — IPOs, secondary acquisitions, comparable trading multiples for category leaders
-- Strategic acquirer activity — which CPG conglomerates, which roll-up funds, on what cadence
+- Recent deals last 18 months · name, acquirer, target, disclosed multiple (revenue × N or EBITDA × N), strategic rationale where stated
+- Funding rounds · Series A/B/C amounts, disclosed valuations, geography (FR/EU/US), investor pattern (sector specialists vs generalists)
+- Public market signals · IPOs, secondary acquisitions, comparable trading multiples for category leaders
+- Strategic acquirer activity · which CPG conglomerates, which roll-up funds, on what cadence
 
 For each, surface multiples where disclosed. Three deals at 4-6× revenue in the same niche signals an active exit window for similarly-sized targets. One deal at 12× revenue with strategic synergy is a one-off, not a market multiple.
 
 Implication for the operator is one of three reads:
 
-- Window favorable for exit — preserve optionality, build clean financials, avoid debt that complicates a deal
-- Window favorable for raise — sharpen the deck, name the comparables, target sector specialists
-- Window favorable for scale-and-hold — operate for cash flow, take the long route, IPO threshold higher
+- Window favorable for exit · preserve optionality, build clean financials, avoid debt that complicates a deal
+- Window favorable for raise · sharpen the deck, name the comparables, target sector specialists
+- Window favorable for scale-and-hold · operate for cash flow, take the long route, IPO threshold higher
 
-The memo names which read applies and why, sized to the operator's revenue band. Exit comparables ship in the memo only — never written to the core schema.
+The memo names which read applies and why, sized to the operator's revenue band. Exit comparables ship in the memo only · never written to the core schema.
 
 ---
 
-## Step 7 — Disruption signals
+## Step 7 · Disruption signals
 
 Three buckets, each detected by signal density.
 
-Tech disruption arrives 12-24 months ahead of consumer impact from labs and venture rounds. AI in skincare diagnostics. Biotech ingredient platforms. Detection signal is VC investment pattern, patent filing trends, conference keynote density. Binary test: is the signal already affecting top-three players' product roadmaps? If yes, it's no longer disruption — it's table stakes the operator needs yesterday.
+Tech disruption arrives 12-24 months ahead of consumer impact from labs and venture rounds. AI in skincare diagnostics. Biotech ingredient platforms. Detection signal is VC investment pattern, patent filing trends, conference keynote density. Binary test: is the signal already affecting top-three players' product roadmaps? If yes, it's no longer disruption · it's table stakes the operator needs yesterday.
 
 Demographic disruption is slower but harder to escape. Aging Western populations. Gen-Z purchasing power shift. GLP-1 adoption reshaping nutrition adjacencies. Single-person households reshaping SKU sizes. Detection signal is multi-year cohort data, not press cycles.
 
@@ -246,32 +246,32 @@ For each signal flagged, the memo answers two questions: what is the brand's cur
 
 ---
 
-## Step 8 — Strategic implications synthesis
+## Step 8 · Strategic implications synthesis
 
 The only mandatory output. Three questions answered:
 
 1. **What positioning is durable for 24 months, what is commoditized in 12?** Anchor in Schwartz trajectory + selective Porter (substitute threat especially) + capital flow. Name the angles to defend, the angles to exit, the angles the operator could newly own.
-2. **What capital window matters — exit, raise, or scale?** Name which read applies, sized to the operator's revenue band, with comparable precedents from Step 6. If no window is open, say so plainly.
+2. **What capital window matters · exit, raise, or scale?** Name which read applies, sized to the operator's revenue band, with comparable precedents from Step 6. If no window is open, say so plainly.
 3. **What disruption is the brand exposed to, what protects it?** Name the two or three disruption signals from Step 7 that hit this brand specifically, the exposure path, the structural protection or its absence.
 
 End with one primary strategic bet, two-to-three secondary bets, recommended cadence to revisit. This section reads as prose, not as a bullet recap of framework layers.
 
 ---
 
-## Step 9 — Memo writing
+## Step 9 · Memo writing
 
 Write the memo to `brands/{slug}/custom/market-memo/{YYYY-MM-DD}-{niche-slug}.md`. Hard cap: 3000 words / ~6 pages.
 
 The memo is NOT a Porter / PESTEL / Schwartz section template. Each paragraph is named by what it carries, not by which framework supplied the vocabulary. Worked structure follows the deepening-skills research brief 03 example:
 
-- **Opening paragraph — market structural shift.** Names the dominant structural read in 2-3 sentences. Cites sources. *"Le marché skincare clean FR a basculé en 2024-2025 d'un marché positionnement-driven vers un marché performance-driven [MKT-003, MKT-007, MKT-012]…"*
-- **Player landscape paragraph.** Top 3-5 named players, recent moves, consolidation read. *"Caudalie acquise à 65% par L'Oréal (deal 280M€) [MKT-018], Typology Series C 60M€ chez Eurazeo [MKT-021], Endro acquise 80% [MKT-023]. La cohorte indépendante restante FR — Respire, Aime, Oden, Sabé Masson — se réduit chaque trimestre."*
+- **Opening paragraph · market structural shift.** Names the dominant structural read in 2-3 sentences. Cites sources. *"Le marché skincare clean FR a basculé en 2024-2025 d'un marché positionnement-driven vers un marché performance-driven [MKT-003, MKT-007, MKT-012]…"*
+- **Player landscape paragraph.** Top 3-5 named players, recent moves, consolidation read. *"Caudalie acquise à 65% par L'Oréal (deal 280M€) [MKT-018], Typology Series C 60M€ chez Eurazeo [MKT-021], Endro acquise 80% [MKT-023]. La cohorte indépendante restante FR · Respire, Aime, Oden, Sabé Masson · se réduit chaque trimestre."*
 - **Forces shaping next 18 months paragraph.** 1-2 Porter + 2-3 PESTEL applied selectively, prose-form, named not numbered.
 - **Capital window paragraph.** Multiples cited, exit/raise/scale read named, sized to operator band.
 - **Disruption signals paragraph.** Tech + demographic + regulatory signals flagged, exposure named, protection named.
-- **Strategic implications paragraph for THIS brand.** 3 bets prioritized — one primary, two secondary. The section the operator reads twice.
+- **Strategic implications paragraph for THIS brand.** 3 bets prioritized · one primary, two secondary. The section the operator reads twice.
 
-Every claim cites a `[MKT-NNN]` corpus pointer. The `finalize-mutation-batch` gate enforces this — any numeric or factual claim without a pointer blocks ship.
+Every claim cites a `[MKT-NNN]` corpus pointer. The `finalize-mutation-batch` gate enforces this · any numeric or factual claim without a pointer blocks ship.
 
 If the draft runs longer than 3000 words, rewrite tighter. Operators do not read consultant decks.
 
@@ -291,19 +291,19 @@ _sources_count: {N}
 
 ---
 
-## Step 10 — Surface synthesis
+## Step 10 · Surface synthesis
 
 Per `snapshot-brand` Step 7 canon, the operator-facing surface is a 4-line synthesis pointing to the memo. Pure prose. No bullet list. No bold section labels. No technical fields.
 
 ```
-Mémo stratégique livré pour {niche}. {1-2 sentences naming the dominant structural read with the strongest single insight}. Ton créneau {brand} est {durable / exposé} sur {N} mois si tu pivotes {direction maintenant} ; après, {what closes the window}. Memo complet dans brands/{slug}/custom/market-memo/{date}.md — N pages, M sources citées.
+Mémo stratégique livré pour {niche}. {1-2 sentences naming the dominant structural read with the strongest single insight}. Ton créneau {brand} est {durable / exposé} sur {N} mois si tu pivotes {direction maintenant} ; après, {what closes the window}. Memo complet dans brands/{slug}/custom/market-memo/{date}.md · N pages, M sources citées.
 
 Want to read the full memo, or drill into a specific layer (player landscape / regulatory / disruption / strategic implications)?
 ```
 
 Worked example, Respire on skincare clean FR:
 
-> *Mémo stratégique livré pour clean beauty FR. Le marché est en consolidation accélérée — 3 deals M&A >50M€ en 2025, exit multiples 4-6× revenue, sophistication stage 5 atteint, le clean comme positionnement seul ne tient plus 18 mois. Ton créneau Respire (clean + performance dermo + pregnancy-safe) est défendable sur 12-24 mois si tu pivotes la communication maintenant ; après, fenêtre fermée par Caudalie qui a déposé 4 brevets bakuchiol-like en 2025. Memo complet dans brands/respire/custom/market-memo/2026-04-25.md — 6 pages, 23 sources citées.*
+> *Mémo stratégique livré pour clean beauty FR. Le marché est en consolidation accélérée · 3 deals M&A >50M€ en 2025, exit multiples 4-6× revenue, sophistication stage 5 atteint, le clean comme positionnement seul ne tient plus 18 mois. Ton créneau Respire (clean + performance dermo + pregnancy-safe) est défendable sur 12-24 mois si tu pivotes la communication maintenant ; après, fenêtre fermée par Caudalie qui a déposé 4 brevets bakuchiol-like en 2025. Memo complet dans brands/respire/custom/market-memo/2026-04-25.md · 6 pages, 23 sources citées.*
 >
 > *Want to read the full memo, or drill into a specific layer (player landscape / regulatory / disruption / strategic implications)?*
 
@@ -316,21 +316,21 @@ Hard rules for the surface (inherited from `snapshot-brand` Step 7):
 
 ---
 
-## Step 11 — Routing to entity files (Layer B)
+## Step 11 · Routing to entity files (Layer B)
 
 Field updates routed via `python3 .skills/write-to-context.py` with `mode=proposed` for every numeric or structured claim. Plumbing destinations:
 
-- `brand.json#/market/market_overview/sophistication` — proposed update with trajectory note
-- `brand.json#/market/market_overview/awareness_distribution` — % per stage if computable
-- `brand.json#/market/market_overview/size_estimate` — TAM/SAM/SOM with confidence_signal, only if sourced
-- `brand.json#/market/market_overview/growth_rate` — historical CAGR + projected, sourced
-- `brand.json#/market/regulatory/upcoming_changes[]` — append entries for forthcoming regulations
-- `brand.json#/market/regulatory/active_regulations[]` — append entries currently enforced
-- `brand.json#/market/competitors[]` — enrich existing entries (positioning, recent moves, channel_mix), add missing players up to 12-15 total
-- `brand.json#/market/external_intelligence[]` — append-only sourced signals (type=trend, type=competitor_move, type=demand_signal, type=category_shift, type=m_a)
-- `strategy.json#/constraints[]` — consolidation_risk verdict (acquirer / target / neutral / roadkill), positioning_durability verdict (durable / eroding / dead), regulatory or capital flow constraints
-- `strategy.json#/annual_goals[]` — propose 1 primary + 2 secondary bets (operator confirms before merge)
-- `learnings.json` append — 3 strategic takeaways flagged by `learn-from-session`
+- `brand.json#/market/market_overview/sophistication` · proposed update with trajectory note
+- `brand.json#/market/market_overview/awareness_distribution` · % per stage if computable
+- `brand.json#/market/market_overview/size_estimate` · TAM/SAM/SOM with confidence_signal, only if sourced
+- `brand.json#/market/market_overview/growth_rate` · historical CAGR + projected, sourced
+- `brand.json#/market/regulatory/upcoming_changes[]` · append entries for forthcoming regulations
+- `brand.json#/market/regulatory/active_regulations[]` · append entries currently enforced
+- `brand.json#/market/competitors[]` · enrich existing entries (positioning, recent moves, channel_mix), add missing players up to 12-15 total
+- `brand.json#/market/external_intelligence[]` · append-only sourced signals (type=trend, type=competitor_move, type=demand_signal, type=category_shift, type=m_a)
+- `strategy.json#/constraints[]` · consolidation_risk verdict (acquirer / target / neutral / roadkill), positioning_durability verdict (durable / eroding / dead), regulatory or capital flow constraints
+- `strategy.json#/annual_goals[]` · propose 1 primary + 2 secondary bets (operator confirms before merge)
+- `learnings.json` append · 3 strategic takeaways flagged by `learn-from-session`
 
 Layer A corpus archive at `brands/{slug}/sources/marketdeepdive/{YYYY-MM-DD}-{run_id}/corpus.jsonl`. Every entry:
 
@@ -360,7 +360,7 @@ Mutation discipline per root `CLAUDE.md`:
 
 ---
 
-## Step 12 — Finalize + close ticket
+## Step 12 · Finalize + close ticket
 
 Before any operator-facing summary, run the mutation gate. Mechanical, non-skippable:
 
@@ -370,7 +370,7 @@ python3 .skills/finalize-mutation-batch.py --brand-slug {slug}
 
 The gate inspects every mutation written in this run, checks `_field_types`, flags unmapped paths, manual derived writes, tone misclassification, and most importantly here: any numeric or factual claim in field updates that does not trace to a `[MKT-NNN]` corpus pointer. Exit code 2 = blocking issue. Revise before shipping.
 
-The soft-prescribed `validate-output-coherence` LLM call is not used here — it was skipped 100% of the time under load on the v2.7.1 stress test. `finalize-mutation-batch` is the replacement, mechanical, no negotiation, no skip path.
+The soft-prescribed `validate-output-coherence` LLM call is not used here · it was skipped 100% of the time under load on the v2.7.1 stress test. `finalize-mutation-batch` is the replacement, mechanical, no negotiation, no skip path.
 
 Once the gate passes:
 
@@ -394,7 +394,7 @@ The skill accepts a `--focus` flag for narrower runs. Each mode is shorter (1-2 
 | `--focus=exit-comparables` | M&A multiples + funding rounds + public comps + window read | 6 | Porter, PESTEL, Schwartz, disruption |
 | `--focus=disruption` | Tech + demographic + regulatory shifts + 12-24 month outlook + brand exposure | 7 | player landscape, capital flow, sophistication |
 
-Operator triggers focus mode with phrasing like *"étude marché — focus régulation seulement"* or *"deep dive {niche} mais juste les exit comparables"*.
+Operator triggers focus mode with phrasing like *"étude marché · focus régulation seulement"* or *"deep dive {niche} mais juste les exit comparables"*.
 
 The synthesis surface (Step 10) adapts: the drill-down question lists only the layers covered, the memo header notes the focus mode.
 
@@ -405,16 +405,16 @@ The synthesis surface (Step 10) adapts: the drill-down question lists only the l
 - **Mandatory ticket lifecycle.** Runtime > 10 min. Ticket opened at Step 0, closed at Step 12. Operator interaction surfaced via `pause / resume / close / where is ticket X`. Never run without a ticket.
 - **First-party data ask non-negotiable** at Step 0. Operator branches the run; agent does not silently default to public sources without surfacing the ask.
 - **Frameworks consumed from `resources/frameworks/market-deepdive.md`**, never duplicated, never applied as section headers in the memo. Porter / PESTEL / Schwartz / Crossing-the-Chasm names appear as analytical vocabulary in prose, never as `## H2` markdown headings.
-- **Selective Porter — 1-2 forces.** Selective PESTEL — 2-3 forces. Document the rejected forces in one line each. Form-filling all six is a doctrine violation.
+- **Selective Porter · 1-2 forces.** Selective PESTEL · 2-3 forces. Document the rejected forces in one line each. Form-filling all six is a doctrine violation.
 - **Every claim sourced.** Numeric or factual claim in the memo carries a `[MKT-NNN]` corpus pointer. `finalize-mutation-batch` blocks any unsourced number in field updates. Null > invention.
 - **Memo cap 3000 words / 6 pages.** Drafts running long are rewritten tighter, not shipped long.
 - **Synthesis surface 4 lines max** + memo pointer + drill-down question. Pure prose. No bullets, no bold section labels, no technical fields exposed.
 - **Cache aggressive.** TTL 30 days for funding/M&A trackers and player landscape, 90 days for industry reports, 7 days for breaking news. Niche fundamentals don't shift weekly.
 - **`finalize-mutation-batch` mandatory before ticket close.** Mechanical Python primitive. Exit code 2 blocks ship. Non-skippable.
-- **Re-run cadence — every 6-9 months max.** If the skill detects a prior run on the same niche < 6 months old, surface: *"Marché ne bouge pas si vite — le mémo {date} couvre déjà cette niche, confirme rerun ou skip"*. Auto-prompt at 9 months in `pending-validations.md`. Hard nudge at 12 months.
+- **Re-run cadence · every 6-9 months max.** If the skill detects a prior run on the same niche < 6 months old, surface: *"Marché ne bouge pas si vite · le mémo {date} couvre déjà cette niche, confirme rerun ou skip"*. Auto-prompt at 9 months in `pending-validations.md`. Hard nudge at 12 months.
 - **Privacy.** Memo carries `_private: true` in its header. May contain sensitive competitive intel (deal multiples, exposure reads, internal positioning verdicts). Never auto-shared, never exported to `sources/` (which is auto-loaded under some triggers).
 - **Mutation gate non-optional** per root `CLAUDE.md`. No `Edit` / `Write` on `brands/*.json`. All mutations through `write_to_context` with `mode=proposed`. `validate-resources` silent post-write. `build-brand-snapshot.py` after any core file write.
-- **Scope discipline.** This skill reads the niche. Customer voice routes to `mine-voc` (own customers) or `mine-vom` (category customers). Tactical execution — channel tests, creative angles, copy hooks — routes to `analyze-perf`, `watch-competitors`, `routine-perf`. When the memo starts critiquing the operator's product copy or proposing campaign angles, scope has drifted.
+- **Scope discipline.** This skill reads the niche. Customer voice routes to `mine-voc` (own customers) or `mine-vom` (category customers). Tactical execution · channel tests, creative angles, copy hooks · routes to `analyze-perf`, `watch-competitors`, `routine-perf`. When the memo starts critiquing the operator's product copy or proposing campaign angles, scope has drifted.
 - **Plumbing leak ban.** Operator-facing surface never exposes `source`, `confidence`, `mode`, field paths, JSONPointer syntax, or skill names. Operator verbs: accept / reject / correct / flag. Per `voice.md § Plumbing leak to operator`.
 - **Heavy-skill gate** per `voice.md § Heavy skill posture`. Surface plan + cost estimate + scenario before launching the cascade. The Step 0 first-party ask doubles as the gate.
 
@@ -422,17 +422,17 @@ The synthesis surface (Step 10) adapts: the drill-down question lists only the l
 
 ## Cross-references
 
-- `resources/frameworks/market-deepdive.md` — analytical canon (Porter, PESTEL, Schwartz, Crossing-the-Chasm, capital flow, disruption signals). The skill consumes this framework, never duplicates it.
-- `.skills/skills/snapshot-brand/SKILL.md` — voice canon for the surface synthesis (Step 7 Movement structure, prose-first, anti-form-fill rules).
-- `.skills/skills/mine-vom/SKILL.md` — sister skill on category-level customer voice. Complementary, not substitutable. mine-vom = qualitative voice; study-niche-marketdeepdive = structural / strategic.
-- `.skills/skills/mine-voc/SKILL.md` — brand-bound customer voice. Out of scope here.
-- `.skills/skills/watch-competitors/SKILL.md` — recurring creative monitoring on already-known competitors. Different cadence, different output.
-- `brands/_TEMPLATE/tickets/README.md` — ticket lifecycle pattern (mandatory for skills > 10 min runtime).
-- `.skills/finalize-mutation-batch.py` — Step 12 mutation gate primitive. Mechanical, non-skippable.
-- `.skills/write-to-context.py` — canonical mutation channel. `mode=proposed` for every claim, JSONPointer fragments only.
-- `.skills/build-brand-snapshot.py` — post-write digest refresh on core files.
-- `docs/system/contextual-intelligence.md` — master doctrine. Two-tier rule (mechanical strict, semantic trust). The skill operates at the semantic layer: trust the model's reasoning across Schwartz / Porter / PESTEL / sophistication calls; enforce strict at the mechanical layer (mutations, paths, ticket lifecycle, gate).
-- `docs/system/voice.md` — register, anti-patterns, heavy-skill gate, plumbing leak ban.
-- `docs/system/extending.md` — custom entity logging in `{entity}.extensions.json`.
-- `docs/system/field-types.md` — `observed | stated | derived | structured`. Sourced corpus claims = observed. Synthesized verdicts (consolidation_risk, positioning_durability) = structured. Never derived (this skill never computes).
-- `docs/system/skill-creation-protocol.md` — heavy-skill gate, graduation matrix.
+- `resources/frameworks/market-deepdive.md` · analytical canon (Porter, PESTEL, Schwartz, Crossing-the-Chasm, capital flow, disruption signals). The skill consumes this framework, never duplicates it.
+- `.skills/skills/snapshot-brand/SKILL.md` · voice canon for the surface synthesis (Step 7 Movement structure, prose-first, anti-form-fill rules).
+- `.skills/skills/mine-vom/SKILL.md` · sister skill on category-level customer voice. Complementary, not substitutable. mine-vom = qualitative voice; study-niche-marketdeepdive = structural / strategic.
+- `.skills/skills/mine-voc/SKILL.md` · brand-bound customer voice. Out of scope here.
+- `.skills/skills/watch-competitors/SKILL.md` · recurring creative monitoring on already-known competitors. Different cadence, different output.
+- `brands/_TEMPLATE/tickets/README.md` · ticket lifecycle pattern (mandatory for skills > 10 min runtime).
+- `.skills/finalize-mutation-batch.py` · Step 12 mutation gate primitive. Mechanical, non-skippable.
+- `.skills/write-to-context.py` · canonical mutation channel. `mode=proposed` for every claim, JSONPointer fragments only.
+- `.skills/build-brand-snapshot.py` · post-write digest refresh on core files.
+- `docs/system/contextual-intelligence.md` · master doctrine. Two-tier rule (mechanical strict, semantic trust). The skill operates at the semantic layer: trust the model's reasoning across Schwartz / Porter / PESTEL / sophistication calls; enforce strict at the mechanical layer (mutations, paths, ticket lifecycle, gate).
+- `docs/system/voice.md` · register, anti-patterns, heavy-skill gate, plumbing leak ban.
+- `docs/system/extending.md` · custom entity logging in `{entity}.extensions.json`.
+- `docs/system/field-types.md` · `observed | stated | derived | structured`. Sourced corpus claims = observed. Synthesized verdicts (consolidation_risk, positioning_durability) = structured. Never derived (this skill never computes).
+- `docs/system/skill-creation-protocol.md` · heavy-skill gate, graduation matrix.

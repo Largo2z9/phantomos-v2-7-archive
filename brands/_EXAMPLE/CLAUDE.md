@@ -2,7 +2,7 @@
 
 **Tu n'es pas dans la brand active de l'opérateur.** Tu es dans le cas pédagogique partagé canon PhantomOS.
 
-`_EXAMPLE/stepprs/` est utilisé comme cas illustratif pour rendre tangibles les concepts canon (compositional cartography, sub-audience hiérarchique, formula OTRB, investigation-posture, etc.). Stepprs est une marque réelle (stepprs.com) avec data factuelle sourced live (positionnement, social_media, trustpilot, year_founded, marchés EU) plus certains financials et verbatims mockés pour la pédagogie.
+`_EXAMPLE/stepprs/` est utilisé comme cas illustratif pour rendre tangibles les concepts canon (compositional cartography, sub-audience hiérarchique, formula OTRB, investigation-posture, etc.). Stepprs · brand pédagogique cas canonique · cf `_EXAMPLE/README.md` pour contexte complet.
 
 ## Règles strictes pour tout agent
 

@@ -7,7 +7,7 @@ description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand pédagogiq
 
 **Disclaimer canon** · PhantomOS est le sujet de ce parcours. Stepprs est l'illustration pédagogique partagée (marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). Agents et opérateurs peuvent référencer Stepprs comme cas concret pour clarifier ou illustrer un concept canon, JAMAIS l'utiliser comme runtime brand active. Si l'opérateur parle de "sa marque", l'agent regarde dans `brands/` (folders sans préfixe `_`), JAMAIS dans `_EXAMPLE/`.
 
-Slash command qui démontre la grammaire opérationnelle PhantomOS via le cas concret Stepprs (brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie, foot care DTC encodée canon dans `brands/_EXAMPLE/`). L'agent source les fichiers Stepprs live à chaque invocation, pas dump statique.
+Slash command qui démontre la grammaire opérationnelle PhantomOS via le cas concret Stepprs (brand pédagogique cas canonique · cf `_EXAMPLE/README.md`, foot care DTC encodée canon dans `brands/_EXAMPLE/`). L'agent source les fichiers Stepprs live à chaque invocation, pas dump statique.
 
 **Cible audience** · opérateur novice complet (vibecoder, domain expert hors marketing, curieux). Pas un marketeur. Vocabulaire universel, ZERO jargon supposé connu. Premier contact avec un système opérationnel structuré. Ton institutionnel sérieux mais accessible, vulgarisé, jamais sales-bro.
 
@@ -950,7 +950,7 @@ Tu n'es jamais coincé. Le système n'est pas un cadre rigide où tout ce qui n'
 - `docs/system/contract-daily.md` (rituels post-setup daily-use)
 
 **Brand pédagogique source** ·
-- `brands/_EXAMPLE/` (foot care DTC Stepprs · brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie · canon vs réel documenté dans README)
+- `brands/_EXAMPLE/` (foot care DTC Stepprs · brand pédagogique cas canonique · cf `_EXAMPLE/README.md` pour contexte complet · canon vs réel documenté dans README)
 
 **Slash commands frères** ·
 - `/tour` (onboarding complet PhantomOS)
