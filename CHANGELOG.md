@@ -7,6 +7,54 @@
 
 ---
 
+## v2.72.0 · 2026-05-16 · Sprint majeur · 5 patches structurels · ECR runtime + anti-hallucination + extension dimension
+
+**Why** · Sprint fusionné v2.71.2 (UX improvements) + v2.72.0 (ECR runtime gap fermé). Audit profond du stack extension a révélé · (a) `scaffold-extension` v1.1.0 orchestrateur unique avec 9 phases EXISTE et marche, MAIS (b) ECR méthodologie doctrine v2.71 NON câblée runtime dans `analyze-extension-intent` v1.0.0 · (c) gap "décomposition guidée (équations + matrices + MECE + récursion atomes)" non produit · (d) `breakdown.md` parcours manque dimension extension + risque hallucination "Stepprs = marque opérateur" + back-end peut faire peur novice. 5 patches structurels.
+
+**What** · 5 blocs livrés via 5 agents parallèle ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · Refonte `breakdown.md` 12 → 13 topics** | NEW topic 13 `extension` dimension transverse (4 chemins canon · cas Stepprs concrets) + disclaimer intro renforcé `COMPRENDRE PHANTOMOS · expliqué via le cas pédagogique Stepprs` + 4 ✦ subtle rassurance back-end (topics 4, 5, 6, 8 · "tu ne calcules pas l'équation à la main · le système le fait, tu valides") + frontmatter description + topics valides + mode index ASCII + Architecture pédagogique table updated. 895L → 962L. | Parcours pédagogique 13 topics couvre extension canon + rassure novice + clarifie sujet PhantomOS vs illustration Stepprs |
+| **2 · Anti-hallucination canon `_EXAMPLE/`** | NEW section dans `CLAUDE.md` root `_EXAMPLE/ folder · anti-hallucination canon` + NEW file `brands/_EXAMPLE/CLAUDE.md` (read-only canon · 28L · scope local agents qui descendent dans dossier) + enrichissement `tour.md` Milestone 6 mention. 3 files patched. | Risque hallucination "Stepprs = marque opérateur" éliminé canon · usage référence pédagogique CANON · usage runtime brand ANTI-PATTERN explicit |
+| **3 · `analyze-extension-intent` v1.0.0 → v2.0.0 · ECR runtime** | Intégration méthodologie ECR 5 étapes (test éligibilité 3 critères · atome de sortie · triptyque Pourquoi × Quoi × Comment · MECE 3-5 sous-variables · récursion atomes) · 4 patterns canon (Strat/Compo/Exé · Funnel · Système · Performance) · 5 NEW Hard Rules HR-ECR-1 à 5 · output enrichi `ecr_decomposition` object · HR-ECR-1 fallback mode v1.0.0 si test éligibilité fail. 74L → 214L. | Méthodologie ECR doctrine v2.71 canonisée RUNTIME · décomposition guidée applicable cross-domaine (pas seulement marketing DTC) |
+| **4 · NEW skill `produce-decomposition-ecr` + Phase 3bis scaffold-extension** | NEW skill canonical v1.0.0 (163L · 6 steps · 5 HR · cross-refs canon) · consume ECR decomposition de analyze-extension-intent v2.0.0 · produit artefact opérateur-facing canonique (équation maître + matrice cartographique + atomes mesurables + templates suggérés depuis registry pattern) · AskUserQuestion validation OR ajustement. `scaffold-extension` v1.1.0 → v1.2.0 · Phase 3bis inserted entre Phase 3 et Phase 4. 237L → 252L. | Décomposition ECR opérateur-facing canonisée · cas concret "script IA vidéo ads" peut être scaffolded avec équation + matrice + atomes guidés (gap fermé) |
+| **5 · Audit READ-ONLY orchestrateurs production** | Audit 4 orchestrateurs (score-matrix · produce-paid-matrix · creative-brief-composer · build-atlas-complete) · gap identifié · hard-coded entity types · NEW entities scaffolded via scaffold-extension v1.2.0 registered correctement mais NOT auto-consumed. | Backlog v2.73.0 sprint dédié extension-discovery-discipline (8-10h estimé) · pattern `extension_hooks` frontmatter + manifest registry scan Step 0 + NEW doctrine canon |
+
+**3 patterns canon introduits** ·
+
+1. **ECR méthodologie 5 étapes runtime** · doctrine v2.71 op-system canonisée doctrine maintenant câblée RUNTIME dans `analyze-extension-intent` v2.0.0. Test éligibilité 3 critères (hiérarchie · auto-similarité · multiplicatif) + atome de sortie + triptyque Pourquoi × Quoi × Comment + MECE 3-5 sous-variables + récursion atomes. 4 patterns canon disponibles (Strat/Compo/Exé · Funnel · Système · Performance). HR-ECR-1 fallback intelligent si sujet non-fractal.
+
+2. **Décomposition ECR opérateur-facing** · NEW skill `produce-decomposition-ecr` consomme ECR decomposition technique et produit artefact opérateur-facing (équation maître + matrice cartographique + atomes mesurables + templates suggérés). AskUserQuestion validation · l'opérateur valide la décomposition AVANT scaffold continue. Phase 3bis canon dans pipeline `scaffold-extension` v1.2.0+.
+
+3. **Anti-hallucination canon `_EXAMPLE/`** · règle explicit `JAMAIS confondre _EXAMPLE/ avec runtime brand` · canon distribué CLAUDE.md root + NEW `_EXAMPLE/CLAUDE.md` local + tour.md Milestone 6 mention. Trois couches de protection.
+
+**3 anti-patterns canonisés** ·
+- Méthodologie ECR documentée doctrine sans câblage runtime · risque non-application en pratique. v2.72 ferme ce gap.
+- `_EXAMPLE/` traité comme runtime brand · risque hallucination "tes audiences workers-shifts..." sur opérateur qui n'a pas Stepprs comme brand active.
+- Parcours pédagogique back-end exposé brut sans rassurance · risque novice complet effrayé par concepts techniques. v2.72 distille rassurance subtile dans 4 topics existing.
+
+**Backward compat strict additif** · zero override · breakdown.md topics 1-12 préservés (4 enrichis 1 ✦ chacun) · CLAUDE.md root NEW section additive · _EXAMPLE/CLAUDE.md NEW file · tour.md mention additive (1 phrase) · analyze-extension-intent v2.0.0 backward compat HR-ECR-1 (fallback v1.0.0 mode) · scaffold-extension v1.2.0 NEW Phase 3bis conditional (skip si non-ECR) · NEW skill produce-decomposition-ecr ne perturbe rien existing · skills count 68 → 69 · doctrines canon 12 → 12.
+
+**Files patched** ·
+- `.claude/commands/breakdown.md` 895L → 962L
+- `CLAUDE.md` root NEW section anti-hallucination canon (12L additif)
+- `brands/_EXAMPLE/CLAUDE.md` NEW 28L
+- `.claude/commands/tour.md` Milestone 6 mention enrichie
+- `.skills/skills/analyze-extension-intent/SKILL.md` v1.0.0 → v2.0.0 (74L → 214L)
+- `.skills/skills/produce-decomposition-ecr/SKILL.md` NEW 163L
+- `.skills/skills/scaffold-extension/SKILL.md` v1.1.0 → v1.2.0 (237L → 252L)
+- `.skills/_manifest.json` regen (skills 68 → 69)
+- `_version.json` 2.71.1 → 2.72.0
+- `CHANGELOG.md` v2.72.0 entry (this entry)
+- `docs/internal/releases/manifest/2.72.0-manifest.json` NEW
+
+**D#417 captured** · `decisions.md` PhantomOS · v2.72.0 sprint majeur ECR runtime + anti-hallucination canon + extension dimension breakdown + audit orchestrateurs production backlog v2.73.0.
+
+**Backlog v2.73.0 identifié** · auto-consume NEW entity registered dans orchestrateurs production · pattern `extension_hooks` frontmatter + manifest registry scan Step 0 + NEW doctrine canon `extension-discovery-discipline.md`. Sprint dédié 8-10h estimé.
+
+---
+
 ## v2.71.1 · 2026-05-16 · Patch `breakdown.md` 10 → 12 topics · 2 dimensions transverses canon + 2 enrichissements
 
 **Why** · Audit parcours pédagogique post-v2.71.0 a révélé 3 concepts canon HIGH priority manquants ou sous-représentés · (1) la doctrine master Contextual Intelligence (raisonnement contextuel grâce aux variables paramétrées) · les 5 couches existaient mais leur RAISON D'ÊTRE n'était pas explicite (2) le cycle de promotion entre couches · compound effect canon qui transforme système statique en système qui s'auto-améliore · mentionné doctrine §11 mais pas dans parcours (3) progressive cartography canon v2.68 (phasing 4 phases gates light) + Market Intelligence Layer v2.69 (enrichissement multi-source) · mentions implicites topic 1 et 8 mais pas explicit. v2.71.1 ferme la boucle pédagogique · 12 topics couvrent intégralement les concepts canon opérateur-facing.

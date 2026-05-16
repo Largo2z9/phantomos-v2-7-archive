@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-15T23:03:42Z",
-  "_count": 68,
+  "_generated_at": "2026-05-16T16:31:34Z",
+  "_count": 69,
   "skills": [
     {
       "name": "analyze-copy",
@@ -47,12 +47,14 @@
         "fr": [
           "analyse l'intent extension",
           "capture l'intent",
-          "extension intent"
+          "extension intent",
+          "décompose ECR"
         ],
         "en": [
           "analyze extension intent",
           "capture extension intent",
-          "extension intent"
+          "extension intent",
+          "ECR decomposition"
         ]
       },
       "disambiguates_against": {},
@@ -981,6 +983,24 @@
       "isolation_scope": "brand_only",
       "layer": "production",
       "path": ".skills/skills/produce-copy-brief/SKILL.md"
+    },
+    {
+      "name": "produce-decomposition-ecr",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "propose-schema-draft": "propose-schema-draft génère le schema JSON technique. produce-decomposition-ecr génère la décomposition opérateur-facing (équation + matrice + atomes + templates suggérés) consommée AVANT le schema.",
+        "analyze-extension-intent": "analyze-extension-intent capture l'intent + applique ECR méthodologie 5 étapes. produce-decomposition-ecr consomme cet output ECR pour produire l'artefact opérateur-facing."
+      },
+      "isolation_scope": "brand_only",
+      "layer": "meta",
+      "path": ".skills/skills/produce-decomposition-ecr/SKILL.md"
     },
     {
       "name": "produce-paid-angles",

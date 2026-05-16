@@ -1,0 +1,112 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.72.0",
+  "released_at": "2026-05-16",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 68,
+  "skills_count_after": 69,
+  "slash_commands_count_before": 4,
+  "slash_commands_count_after": 4,
+  "doctrines_count_before": 12,
+  "doctrines_count_after": 12,
+  "summary": "Sprint majeur v2.72.0 · 5 patches structurels en parallèle. ECR méthodologie runtime câblée + anti-hallucination canon _EXAMPLE/ + extension dimension breakdown + audit orchestrateurs production.",
+  "patches": [
+    {
+      "id": 1,
+      "name": "Refonte breakdown.md 12 → 13 topics",
+      "file": ".claude/commands/breakdown.md",
+      "size_before_lines": 895,
+      "size_after_lines": 962,
+      "changes": [
+        "NEW topic 13 `extension` dimension transverse · 4 chemins canon · cas Stepprs concrets",
+        "Disclaimer intro renforcé · `COMPRENDRE PHANTOMOS · expliqué via le cas pédagogique Stepprs`",
+        "4 ✦ subtle rassurance back-end distillées (topics 4, 5, 6, 8)",
+        "Frontmatter description + topics valides + mode index ASCII + Architecture pédagogique table updated"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Anti-hallucination canon _EXAMPLE/",
+      "files_patched": [
+        "CLAUDE.md root (NEW section)",
+        "brands/_EXAMPLE/CLAUDE.md (NEW 28L)",
+        ".claude/commands/tour.md Milestone 6 (mention enrichie)"
+      ],
+      "rule": "JAMAIS confondre _EXAMPLE/ avec runtime brand · usage référence pédagogique CANON · usage runtime brand ANTI-PATTERN"
+    },
+    {
+      "id": 3,
+      "name": "analyze-extension-intent v1.0.0 → v2.0.0 · ECR runtime",
+      "file": ".skills/skills/analyze-extension-intent/SKILL.md",
+      "size_before_lines": 74,
+      "size_after_lines": 214,
+      "version_before": "1.0.0",
+      "version_after": "2.0.0",
+      "changes": [
+        "Intégration méthodologie ECR 5 étapes runtime · test éligibilité + atome + triptyque + MECE + récursion",
+        "4 patterns canon · Strat/Compo/Exé · Funnel · Système · Performance",
+        "5 NEW Hard Rules HR-ECR-1 à 5",
+        "Output enrichi `ecr_decomposition` object consommé par Phase 3bis",
+        "HR-ECR-1 backward compat · fallback mode v1.0.0 si test éligibilité fail"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "NEW skill produce-decomposition-ecr + Phase 3bis scaffold-extension",
+      "additions": [
+        {
+          "type": "skill",
+          "name": "produce-decomposition-ecr",
+          "path": ".skills/skills/produce-decomposition-ecr/SKILL.md",
+          "size_lines": 163,
+          "type_skill": "producer",
+          "layer": "meta",
+          "subagent_safe": true,
+          "scope": "Sub-skill of scaffold-extension Phase 3bis · consume ECR decomposition + produit décomposition canon opérateur-facing (équation maître + matrice cartographique + atomes mesurables + templates suggérés)"
+        }
+      ],
+      "patches": [
+        {
+          "file": ".skills/skills/scaffold-extension/SKILL.md",
+          "size_before_lines": 237,
+          "size_after_lines": 252,
+          "version_before": "1.1.0",
+          "version_after": "1.2.0",
+          "change": "NEW Phase 3bis insertion entre Phase 3 propose-schema-draft et Phase 4 validate-naming · conditional skip si ECR eligibility fail"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Audit READ-ONLY orchestrateurs production",
+      "type": "audit_readonly",
+      "skills_audited": ["score-matrix", "produce-paid-matrix", "creative-brief-composer", "build-atlas-complete"],
+      "verdict": "Gap identifié · hard-coded entity types · NEW entities scaffolded via scaffold-extension v1.2.0 registered correctement mais NOT auto-consumed",
+      "backlog_v273": {
+        "scope": "Sprint dédié extension-discovery-discipline · pattern `extension_hooks` frontmatter + manifest registry scan Step 0 + NEW doctrine canon",
+        "effort_estimated_hours": "8-10h"
+      }
+    }
+  ],
+  "doctrinal_patterns_introduced": [
+    "ECR méthodologie 5 étapes runtime · doctrine v2.71 canonisée maintenant câblée runtime dans analyze-extension-intent v2.0.0 · 4 patterns canon disponibles",
+    "Décomposition ECR opérateur-facing · NEW skill produce-decomposition-ecr produit artefact canon (équation + matrice + atomes + templates) avec AskUserQuestion validation",
+    "Anti-hallucination canon _EXAMPLE/ · canon distribué 3 couches (CLAUDE.md root + _EXAMPLE/CLAUDE.md local + tour.md mention)"
+  ],
+  "anti_patterns_canonized": [
+    "Méthodologie ECR documentée doctrine sans câblage runtime · gap fermé v2.72",
+    "_EXAMPLE/ traité comme runtime brand · risque hallucination éliminé",
+    "Parcours pédagogique back-end exposé brut sans rassurance · subtle ✦ rassurance distillée dans topics existing"
+  ],
+  "decisions_captured": ["D#417"],
+  "backlog_identified": {
+    "v2.73.0": {
+      "name": "Sprint extension-discovery-discipline · auto-consume NEW entity registered dans orchestrateurs production",
+      "scope": "Pattern `extension_hooks` frontmatter + manifest registry scan Step 0 + NEW doctrine canon `extension-discovery-discipline.md`",
+      "effort_estimated_hours": "8-10h"
+    }
+  },
+  "rollback_strategy": "Strict additif backward compat · revert v2.72.0 = git revert HEAD strict (zero data loss · 5 patches retirables independently · breakdown.md retour v2.71.1 · CLAUDE.md root section anti-hallucination retirée · _EXAMPLE/CLAUDE.md file delete · tour.md mention retirée · analyze-extension-intent retour v1.0.0 · produce-decomposition-ecr skill delete · scaffold-extension retour v1.1.0)"
+}

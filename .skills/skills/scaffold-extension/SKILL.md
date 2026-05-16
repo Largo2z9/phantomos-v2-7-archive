@@ -1,7 +1,7 @@
 ---
 name: scaffold-extension
 type: orchestrator
-version: "1.1.0"
+version: "1.2.0"
 recommended_model: sonnet
 layer: meta
 reasoning_pattern: null
@@ -129,6 +129,21 @@ This phase is **mandatory** when canon is absent and the extension implies metho
 Generate a canon-compliant JSON Schema draft for the custom entity (or sidecar). Follows `_version`, `_schema`, `_field_types` conventions. Uses patterns from `resources/schemas/` as structural reference. Integrates the cross-references and reused banks identified in Phase 2 — and the canon encoded in Phase 2bis if applicable (axes drawn from canonical references, not invented).
 
 Operator sees the schema, approves or adjusts.
+
+### Phase 3bis — `produce-decomposition-ecr` (NEW v1.2.0)
+
+Consume the ECR decomposition object produced by `analyze-extension-intent v2.0.0` (Phase 1) plus the schema draft from Phase 3. Render an operator-facing ECR decomposition artifact ·
+
+- Master equation instantiated for the subject `[SUJET] = X × Y × Z` (triptych pattern Strat/Compo/Exé · Funnel · Système · Performance · selon domaine)
+- Cartographic matrix proposed (2D grid · axes × values)
+- Atomes mesurables identified with associated metrics
+- Templates suggérés depuis registry pattern existing (creative-mechanics-registry, angle-registry, proof-registry, frameworks)
+
+Operator validates via AskUserQuestion · A) accept and continue Phase 4 · B) adjust 1-2 dimensions (re-prompt analyze-extension-intent) · C) halt.
+
+**Conditional skip** · if `ecr_decomposition.eligibility.applicable = false` (test d'éligibilité 3 critères fail in Phase 1), this phase is skipped. Scaffold proceeds directly to Phase 4.
+
+**Cross-ref** · `docs/system/operational-system-discipline.md` (doctrine mère ECR canonisée v2.71).
 
 ### Phase 4 — `validate-naming`
 

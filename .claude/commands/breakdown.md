@@ -1,9 +1,11 @@
 ---
 name: breakdown
-description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). 12 topics drillables structurés en 5 couches d'un système opérationnel plus 2 dimensions transverses · principe · atomicité · fractalité · composition · matrices · règles · templates · métriques · rituels · production · intelligence · apprentissage. Ordre suggéré 1 à 10 (parcours couches) puis 11 à 12 (transverses qui scellent le parcours). Drill direct possible sur tout topic.
+description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). 13 topics drillables structurés en 5 couches d'un système opérationnel plus 3 dimensions transverses · principe · atomicité · fractalité · composition · matrices · règles · templates · métriques · rituels · production · intelligence · apprentissage · extension. Ordre suggéré 1 à 10 (parcours couches) puis 11 à 13 (transverses qui scellent le parcours). Drill direct possible sur tout topic.
 ---
 
 # `/breakdown stepprs {topic}` · vitrine pédagogique PhantomOS
+
+**Disclaimer canon** · PhantomOS est le sujet de ce parcours. Stepprs est l'illustration pédagogique partagée (marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). Agents et opérateurs peuvent référencer Stepprs comme cas concret pour clarifier ou illustrer un concept canon, JAMAIS l'utiliser comme runtime brand active. Si l'opérateur parle de "sa marque", l'agent regarde dans `brands/` (folders sans préfixe `_`), JAMAIS dans `_EXAMPLE/`.
 
 Slash command qui démontre la grammaire opérationnelle PhantomOS via le cas concret Stepprs (brand fictive foot care DTC encodée canon dans `brands/_EXAMPLE/`). L'agent source les fichiers Stepprs live à chaque invocation, pas dump statique.
 
@@ -25,7 +27,7 @@ COUCHE        RÔLE                              CE QUE ÇA PRODUIT
 5 RITUELS     Comment durer dans le temps       Système qui ne se dégrade pas
 ```
 
-**Plus 2 dimensions transverses qui scellent le parcours** ·
+**Plus 3 dimensions transverses qui scellent le parcours** ·
 
 ```
 DIMENSION       RÔLE                                  CE QUE ÇA PRODUIT
@@ -34,9 +36,12 @@ DIMENSION       RÔLE                                  CE QUE ÇA PRODUIT
                 produisent du raisonnement adapté     adapté à chaque cas
 12 APPRENTISSAGE Comment le système s'auto-améliore   Compound effect au fil
                 via promotion entre couches            du temps
+13 EXTENSION    Comment PhantomOS absorbe              Système extensible pas
+                ce qui n'est pas shipped               rigide
+                (4 chemins canon)
 ```
 
-Les 12 topics du parcours couvrent ces 5 couches plus 2 dimensions transverses.
+Les 13 topics du parcours couvrent ces 5 couches plus 3 dimensions transverses.
 
 ## Mode detection
 
@@ -46,7 +51,7 @@ Les 12 topics du parcours couvrent ces 5 couches plus 2 dimensions transverses.
 | topic name (e.g. `/breakdown stepprs composition`) | **drill** · génère la fiche du topic sourçant Stepprs live |
 | invalid topic | **redirect** · liste les 12 topics valides en 1 ligne, demande choix |
 
-**Topics valides** · `principe` · `atomicite` · `fractalite` · `composition` · `matrices` · `regles` · `templates` · `metriques` · `rituels` · `production` · `intelligence` · `apprentissage`
+**Topics valides** · `principe` · `atomicite` · `fractalite` · `composition` · `matrices` · `regles` · `templates` · `metriques` · `rituels` · `production` · `intelligence` · `apprentissage` · `extension`
 
 ## Mode index, default
 
@@ -54,8 +59,13 @@ Si l'opérateur tape `/breakdown stepprs` sans arg, sortir exactement ceci (rend
 
 ```
 ══════════════════════════════════════════════════════════════════════
-PARCOURS PHANTOMOS · démontré via Stepprs · 5 couches + 2 dimensions transverses
+COMPRENDRE PHANTOMOS · expliqué via le cas pédagogique Stepprs
 ══════════════════════════════════════════════════════════════════════
+
+  PhantomOS est le sujet. Stepprs est l'illustration. Marque réelle
+  (stepprs.com) utilisée comme cas canonique partagé pour rendre
+  tangibles les concepts back-end. Ce n'est PAS ta marque.
+  Ta marque vit dans brands/{ton-slug}/, jamais dans _EXAMPLE/.
 
 PRINCIPE    COUCHE 1 MODÈLE      COUCHE 2 RÈGLES    COUCHE 3       COUCHE 4       COUCHE 5    DÉMO
 ─────────   ────────────────     ────────────────   TEMPLATES      MÉTRIQUES      RITUELS     ────
@@ -70,8 +80,9 @@ DIMENSIONS TRANSVERSES · scellent le parcours
 
 11. intelligence    (raisonnement contextuel grâce aux variables paramétrées)
 12. apprentissage   (cycle de promotion entre couches · compound effect)
+13. extension       (comment PhantomOS absorbe ce qui n'est pas shipped)
 
-Ordre suggéré · 1 → 10 (parcours couches) puis 11 à 12 (transverses)
+Ordre suggéré · 1 → 10 (parcours couches) puis 11 à 13 (transverses)
 Drill direct · /breakdown stepprs {topic}
 ══════════════════════════════════════════════════════════════════════
 ```
@@ -296,6 +307,10 @@ angle ANG-01        verbatim Trustpilot insight douleur      mécanisme produit 
 LIVRABLE = NOYAU × CONTEXTE × MODIFICATEURS
 ```
 
+  ✦ Tu ne calcules pas l'équation à la main. Le système combine les
+    ingrédients à chaque invocation. Tu choisis le contexte, le système
+    compose.
+
 **NOYAU** · ce qui ne change pas (matériau du produit, effet physique principal)
 **CONTEXTE** · ce qui dépend du moment (audience visée, verbatim client précis)
 **MODIFICATEURS** · ce qui varie selon le canal (saisonnalité, registre de ton, format publicité, canal media)
@@ -366,6 +381,9 @@ bénéfice racine        douleur ciblée           format livrable
 
 3. **Matrice production** · 1 angle × 4 audiences × 3 formats × 2 saisons = 24 variations possibles. On en priorise top-5 à produire selon couverture maximale. Sert à **multiplier** les variations sans repartir de zéro.
 
+  ✦ Tu ne remplis pas les cellules manuellement. Le système calcule
+    les scores à partir des atomes encodés.
+
 **Concept concret Stepprs** ·
 
 - **Cartographie** · 13 douleurs × 7 audiences = 91 cases. Révèle que la douleur "talalgie réveil" frappe 4 audiences sur 7 (forte horizontalité, candidate hero). À l'inverse, "douleur métatarsienne sport" frappe 1 seule audience (vertical, candidat niche).
@@ -418,6 +436,9 @@ révèle asymétries                identifie top-3              multiplie en to
 - **Close ouvert** · UNE question macro pour que l'opérateur arbitre où creuser
 
 Pas de prose libre. Pas d'affirmation sans étiquette d'origine.
+
+  ✦ Tu n'as pas à mémoriser les vocabulaires fermés. Le système te
+    propose ce qui s'applique selon le contexte, tu valides.
 
 **Concept concret Stepprs** ·
 
@@ -542,6 +563,10 @@ ton              vulnérable
 - **Déduit** · raisonné par l'agent (driver primaire, positionnement)
 - **Structuré** · règle métier (les 4 mécanismes typés canon, formula OTRB)
 - **Importé** · enrichi depuis source externe spy tool (TrendTrack ads winners, Trustpilot bulk, Foreplay creative library, etc.)
+
+  ✦ Tu ne taggues pas chaque info manuellement. Le système l'auto-tag
+    depuis les signaux sémantiques. Tu vois `observé/déduit/déclaré`,
+    jamais les nombres.
 
 **Enrichissement multi-source · Market Intelligence Layer**
 
@@ -845,6 +870,48 @@ Système intelligent (PhantomOS)
 - /breakdown stepprs intelligence (comment le système raisonne contextuellement)
 - /breakdown stepprs principe (revenir au principe fondateur)
 - /breakdown stepprs (refaire le parcours complet)
+
+---
+
+### 13. extension · comment PhantomOS absorbe ce qui n'est pas shipped
+
+**Dimension** · transverse · scelle la promesse extensibilité (PhantomOS grandit avec ton besoin, pas l'inverse)
+
+**Concept à transmettre** · PhantomOS arrive avec des concepts canon (audiences, produits, angles, etc.) qui couvrent les marques DTC standard. Mais ton besoin sortira parfois du cadre shipped. Le système est conçu pour absorber l'inconnu via une méthode canonique (doctrine `scope-extension-discipline.md` v2.65 + orchestrateur `scaffold-extension` v1.1.0+ 9 phases).
+
+**Les 4 chemins d'extension canon · cas concrets Stepprs**
+
+Nouveau type d'objet (NEW entity)
+  Stepprs lance une gamme chaussures. Ce n'est pas une semelle, c'est un nouveau type de produit. Le système te propose le scaffold avec les mêmes 4 arbres (composition, mécanismes, bénéfices, angles). Tu n'as pas à inventer la structure.
+
+Nouveau domaine (NEW domain)
+  Stepprs lance un service de podologie en cabinet. Sortie du cadre DTC ecom pur. Le système identifie · "ce n'est pas un produit physique, c'est un service." Propose la structure adaptée. Tu valides ou ajustes.
+
+Nouvelle source de données (NEW source)
+  Stepprs veut tracker les avis Reddit r/nursing. Le système propose un nouveau skill `mine-voc-reddit` basé sur le pattern canon mining VoC existant. Réutilisable, pas freelance.
+
+Nouvelle capacité (NEW skill)
+  Stepprs veut comparer la performance Meta Ads entre Allemagne et Roumanie. Le système identifie · "c'est un audit perf scopé par géo." Propose extension du skill existing audit-meta-account avec un mode --compare-geo. Pas de nouveau skill freelance qui duplique.
+
+**Ce que l'opérateur fait, ce qu'il ne fait pas**
+
+Tu décris ton besoin en langage naturel · "j'aimerais ajouter une gamme chaussures", "je veux suivre les avis Reddit", "j'ai besoin de comparer les pays". Le système décompose, propose la structure, te montre les implications, tu valides ou ajustes.
+
+Tu ne conçois pas la structure technique. Tu ne choisis pas dans des listes fermées. Tu ne nommes pas les champs. Le système le fait pour toi à partir de la méthode canonique d'extension.
+
+  ✦ Le canon protège ton territoire de la dérive. Tu ne peux pas créer une entité ou un skill qui dupliquerait un existing sans que le système te le flague. La cohérence est garantie par construction.
+
+**Ce que ça change pour toi**
+
+Tu n'es jamais coincé. Le système n'est pas un cadre rigide où tout ce qui n'est pas shipped est exclu. C'est un cadre extensible où le nouveau passe par le même filtre canonique que l'existing. PhantomOS grandit avec ton besoin, pas l'inverse.
+
+**Files Stepprs à sourcer (pour exemples vivants si extensions encodées)**
+- Aucune extension Stepprs encodée actuellement (Stepprs vit dans le canon shipped). Les exemples sont des PROJECTIONS hypothétiques pour illustrer les 4 chemins.
+
+**Drill-down suggéré**
+- /breakdown stepprs intelligence (comment le système raisonne sur les extensions)
+- /breakdown stepprs apprentissage (comment le système apprend des extensions)
+- /breakdown stepprs principe (revenir au principe fondateur)
 
 ---
 
