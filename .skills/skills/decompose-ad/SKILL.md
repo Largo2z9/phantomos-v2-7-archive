@@ -1,6 +1,6 @@
 ---
 name: decompose-ad
-version: 2.0.0
+version: 2.1.0
 type: producer
 isolation_scope: brand_only
 layer: production
@@ -8,6 +8,7 @@ recommended_model: opus
 reasoning_pattern: matrix-driven
 matrix_mode: decomposing
 patch_notes:
+  v2.1.0: "v2.74 NEW Section 5 FIT AVEC TA BRAND insérée entre Section 4 ANATOMIE et close binaire · scoring fit-check 5 dimensions (audience match · product match · ton match · stage match · leviers psychologiques fit) + diagnostic + reco actionnable (adapt full · adapt 1 axe seul · skip ce concept). Operator décide AVANT d'invoquer adapt-from-competitor. NEW HR-anatomie-5 · fit-check obligatoire avant close binaire. Backward compat strict additif · Sections 1-4 unchanged · Section 5 NEW · close binaire enrichi de la reco fit-check."
   v2.0.0: "v2.73 enrichissement Section 4 fiche v5 avec grille variables 3 niveaux (ANATOMIE) cohérente équation v3.1 NOYAU × CONTEXTE × MODIFIEURS canon doctrine compositional-cartography. Output opérateur-facing 100% humain · zero raw field name · zero registry ID exposé · zero acronyme doctrine. Sous le capot, creative.json persisted avec IDs canoniques mecanique/angle/proof registries + fields canon creative.schema v1.2 (mecanique · format · stop_scroller · atome_irreductible · copy_visual_cursor · audience_segment · context.pain_point_ref · context.proof_type · context.product_mechanism_ref · context.offer_ref · modifiers.canal · modifiers.seasonality · modifiers.ton · modifiers.destination · intent_mix) · cross-skill reproducibilité garantie via back-end. NEW Section 4 ANATOMIE structurée · CE QUI FAIT PERFORMER (à garder · 5 éléments humains) / À ADAPTER À TA BRAND (5 refs humaines · IDs canoniques silent) / À SITUER (5 modifieurs situationnels). Close 1 question binaire 'Veux-tu l'adapter à ta brand · /adapt-from-competitor {CRT-NN}'. Backward compat strict additif · Sections 1-3 préservées · Section 4 enrichie remplace ancienne RÉUTILISATION existing avec format canonique plus structuré. 4 NEW Hard Rules HR-anatomie-1 à 4. Cross-refs · operational-system-discipline v2.71 (équation canon) + compositional-cartography v3.1 + canonical-matrix-reasoning + adapt-from-competitor downstream NEW v2.73."
   v1.5.0: "v2.64 ontologie sémantique pure pain_points + objections sub-audience · HR5 section 2 refactor · si reverse-engineer mentionne pain ou objection détectée dans ad concurrente sur même audience que brand opérée (signal cross-applicable, internal_production mode), link vers `audiences/{audience_slug}/pain_points/{PNT-NN}.json` ou `audiences/{audience_slug}/objections/{OBJ-NN}.json` canonical sub-audience IF match observable. Sinon (ad externe pure, pas d'audience match), note descriptive sans canonical ref. HR8 persist · creative.json#context.pain_point_ref + objection_ref canonical sub-audience persistés SI link applicable. Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved."
   v1.4.0: "v2.63 ontologie pure pain_points + objections collections top-level · HR5 section 2 refactor · si reverse-engineer mentionne pain ou objection détectée dans ad concurrente sur même audience que brand opérée (signal cross-applicable, internal_production mode), link vers `pain_points/{PNT-NN}.json` ou `objections/{OBJ-NN}.json` canonical IF match observable cross-audience. Sinon (ad externe pure, pas d'audience match avec brand opérée), note descriptive sans canonical ref (l'ad concurrente n'est pas notre canonical · observation pure, pas mutation cross-graph). HR8 persist · creative.json#context.pain_point_ref + objection_ref canonical IDs persistés SI link applicable, sinon null + text legacy. Backward compat preserved (pre-v2.63 brands route fallback profile sub-fields legacy)."
@@ -447,12 +448,64 @@ CE QU'ELLE PROUVE DANS LE PAYSAGE {SECTEUR}
   comme pattern réutilisable après une validation ROI sur ta propre brand.
 
 ───────────────────────────────────────────────────────────────
+5 · FIT AVEC TA BRAND · scoring + reco (canonique v2.1.0)
+───────────────────────────────────────────────────────────────
+
+  Le système évalue si cette créa concurrente vaut la peine d'être
+  adaptée à ta brand avant de te proposer le flow d'adaptation.
+
+SCORING SUR 5 DIMENSIONS
+
+  Audience match           · {score 0-10} · {diagnostic 1 ligne}
+  Produit match            · {score 0-10} · {diagnostic 1 ligne}
+  Ton de marque match      · {score 0-10} · {diagnostic 1 ligne}
+  Stage de scale match     · {score 0-10} · {diagnostic 1 ligne}
+  Leviers psychologiques   · {score 0-10} · {diagnostic 1 ligne}
+
+  Score global de fit · {score moyenne pondérée / 10}
+
+DIAGNOSTIC DÉTAILLÉ
+
+  Audience match
+    {analyse · concurrent vise audience X observée · ta cartographie
+     contient AUD-NN matching score Y · gap si applicable}
+
+  Produit match
+    {analyse · concurrent met en avant mécanisme produit X · ta spec
+     contient mécanisme matching Y · gap si applicable}
+
+  Ton de marque match
+    {analyse · concurrent registre de ton X · ton brand voice registre
+     Y · cohérent OU dissonant si applicable}
+
+  Stage de scale match
+    {analyse · concurrent stage observé X (early/scale/mature) · ton
+     brand stage Y · cohérence campagne}
+
+  Leviers psychologiques fit
+    {analyse · leviers utilisés par concurrent (urgence, peur, validation,
+     authority, social proof, etc.) · cohérence avec brand_equity_level
+     et driver_blend de ta brand}
+
+RECO ACTIONNABLE
+
+  ✦ {Reco selon scoring global ·
+     · 8-10 · "Adapt full" · variant complet brief copy + visuels Meta-ready
+     · 5-7  · "Adapt 1 axe seul" · isoler 1 dimension qui matche fort
+     · 0-4  · "Skip ce concept" · pas de fit suffisant · gaspillage d'adapt}
+
+  {Justification 2-3 lignes en langage humain accessible}
+
+───────────────────────────────────────────────────────────────
 Tags retrieval
 ───────────────────────────────────────────────────────────────
 {bloc tags 16 lignes snake_case}
 
 ───────────────────────────────────────────────────────────────
-→ Veux-tu l'adapter à ta brand ?    /adapt-from-competitor {CRT-NN}
+→ {Selon score global de fit} ·
+  · 8-10 · "Bon fit · adapt full recommandé"            /adapt-from-competitor {CRT-NN}
+  · 5-7  · "Fit partiel · adapt 1 axe recommandé"       /adapt-from-competitor {CRT-NN} --axis={dim_top_score}
+  · 0-4  · "Faible fit · skip recommandé · adapt risqué" (pas de skip command · l'opérateur peut quand même invoquer /adapt-from-competitor {CRT-NN} s'il veut override)
 ```
 
 ---
@@ -486,6 +539,27 @@ Fin de fiche v5 v2.0.0 close strict · "→ Veux-tu l'adapter à ta brand ·
 /adapt-from-competitor {CRT-NN}". Pas reco prose libre legacy. Pas 3 paths
 ici (Phase 1 décomposition pure · Phase 2 adaptation séparée). Chain
 explicit downstream vers adapt-from-competitor orchestrator.
+
+### HR-anatomie-5 · Fit-check obligatoire avant close binaire
+
+Toute fiche v5 v2.1.0+ DOIT produire Section 5 FIT AVEC TA BRAND avec
+scoring 5 dimensions + diagnostic + reco actionnable. Le close binaire
+vers adapt-from-competitor est CONDITIONNEL au score global · "Bon fit"
+(8-10) recommande adapt full · "Fit partiel" (5-7) recommande adapt 1 axe ·
+"Faible fit" (0-4) recommande skip. L'opérateur peut override la reco mais
+le système signale honnêtement le verdict fit-check pre-adapt. Évite
+gaspillage d'invocation adapt-from-competitor sur créa non-fit.
+
+Sourcing scoring 5 dimensions ·
+- Audience match · matching score audience_segment concurrent vs cartographie brand AUD-NN
+- Produit match · matching mécanisme produit concurrent vs spec composition + mechanisms brand
+- Ton de marque match · cohérence tone_of_voice concurrent vs brand.tone_of_voice.register
+- Stage de scale match · cohérence stage observé concurrent vs brand.strategic_context.stage
+- Leviers psychologiques fit · cohérence leviers (urgence/peur/validation/authority/social/scarcity) vs brand_equity_level + driver_blend.primary
+
+Output opérateur-facing 100% humain (HR-anatomie-2 preserved) · zero raw
+field name · zero registry ID exposé · scoring exposé en humain (0-10
+échelle accessible · pas confidence numerical raw).
 
 ---
 
@@ -533,3 +607,9 @@ explicit downstream vers adapt-from-competitor orchestrator.
 - `docs/system/compositional-cartography.md` v3.1 (équation v3.1 NOYAU × CONTEXTE × MODIFIEURS canon)
 - `docs/system/canonical-matrix-reasoning.md` (schema + matrice canon)
 - `adapt-from-competitor` v1.0.0+ NEW downstream orchestrator (consume creative.json v1.2 sub-couche)
+
+### Related canon (v2.1.0)
+
+- `docs/system/canonical-matrix-reasoning.md` (scoring intersectionnel canon · 5 dimensions fit-check)
+- `docs/system/investigation-posture.md` (diagnostic 5 sections canon adapté fit-check)
+- `adapt-from-competitor` v1.0.0 downstream avec reco actionable depuis fit-check Section 5

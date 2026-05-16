@@ -7,6 +7,52 @@
 
 ---
 
+## v2.74.0 · 2026-05-16 · Sprint UX onboarding + fit-check + lexicon + audit accessibilité
+
+**Why** · Largo a flagué 4 sujets distincts post-v2.73.0 · (1) skill transition deep-fit-check pour évaluer si une créa/LP/email concurrent vaut la peine d'être adapté à TA brand (vs adapt mechanical déjà câblé) (2) onboarding ne pas forcer copywriting cartographie sur premier contact (axe trop lourd novice · trouver moyen de présenter capacités progressivement) (3) accessibilité documents enrichissement Stepprs cross-docs (doublons · format global · cohérence) (4) magic keywords PhantomOS dans onboarding pour prompter efficient dès le premier jour + rappel 3-6 mois.
+
+**What** · 4 blocs livrés via 4 agents parallèle ·
+
+| Bloc | Output | Impact |
+|---|---|---|
+| **1 · `decompose-ad` v2.0.0 → v2.1.0 · NEW Section 5 FIT AVEC TA BRAND** | Scoring fit-check 5 dimensions (audience match · produit match · ton match · stage match · leviers psychologiques fit) + diagnostic + reco actionnable (8-10 adapt full · 5-7 adapt 1 axe · 0-4 skip) · NEW HR-anatomie-5 · close binaire enrichi conditional 3 tiers · 535L → 615L. Pattern EXTEND > SIBLING (skill existing étendu, pas NEW frère). | L'opérateur voit le verdict fit-check AVANT d'invoquer adapt-from-competitor · évite gaspillage d'adapt sur créa non-fit · scoring honnête transparent |
+| **2 · `tour.md` Milestone 5 refactor capacités MENU** | Refactor Milestone 5 · présenter capacités PhantomOS comme MENU 6 axes (paid acquisition · décompose créa concurrente · copywriting cartographie · audit performance · sync Notion · extension) plutôt que trajectoire copywriting forcée · AskUserQuestion canon · adaptation profil détecté Milestone 1-4 · anti-pattern documenté · fallback `/breakdown stepprs principe` pour wow effect (lignes 146-179). | Onboarding novice plus accessible · l'opérateur choisit son axe selon intent vs forcé sur copywriting cartographie · découverte progressive doctrine au fil des usages |
+| **3 · NEW slash command `/lexicon` + tour.md Milestone 6 enrichi** | NEW slash command opérateur-facing `/lexicon` 183L · 13 magic keywords canon (cartographier · décomposer · adapter · composer · atomicité · fractalité · composition · territoire · audit perf · brief day · investigation 5 sections · learn from session · adapt extension · breakdown) · usage prompting + ce que ça déclenche + exemple concret + pattern combiner multi-couches · cible onboarding + rappel 3-6 mois. Plus tour.md Milestone 6 mention `/lexicon` aux côtés `/skills /phantom /breakdown stepprs` comme QUAD commands universal entry point. | Vocabulaire opérateur-facing canonisé · prompts efficient day-1 + 6 mois après · opérateur conscient de l'environnement (objectif Largo "exploitation environnement à 6 mois après") |
+| **4 · Audit READ-ONLY accessibilité Stepprs** | Verdict ACCESSIBLE state-of-the-art · 64 files mentionnent Stepprs · 1 doublon HIGH (boilerplate disclaimer 5 files) · 2 doublons MEDIUM (canon-vs-réel dupliquée + disclaimer JAMAIS runtime 4 occurrences) · entry points couverts via tour (path principal fonctionne) · friction mineure path exploration folder direct. P0 zéro · P1+P2 cleanup ~30 min backlog v2.74.1. | Cohérence canon Stepprs validée · backlog précis identifié pour cleanup léger · aucun blocker structurel |
+
+**3 patterns canon introduits** ·
+
+1. **Fit-check pre-adapt scoring 5 dimensions** · l'opérateur voit le verdict fit-check (audience · produit · ton · stage · leviers psychologiques) AVANT d'invoquer adapt-from-competitor. Évite gaspillage d'adaptation sur créa non-fit. Pattern EXTEND > SIBLING canonisé · enrichir skill existing avec nouvelle section vs créer skill frère.
+
+2. **Onboarding capacités MENU vs trajectoire forcée** · Milestone 5 `tour.md` présente 6 axes (paid · décompose · copywriting · audit · sync · extension) comme MENU. L'opérateur choisit selon profil détecté. Pas de matériel dense forcé novice. Découverte progressive doctrine layer.
+
+3. **Magic keywords PhantomOS opérateur-facing** · 13 termes canon (cartographier · décomposer · adapter · composer · atomicité · fractalité · etc.) avec usage prompting + ce que ça déclenche + exemple concret. Permet à l'opérateur de prompter avec les bons termes qui débloquent les bons skills sans avoir à mémoriser les noms internes des skills.
+
+**3 anti-patterns canonisés** ·
+- Adapter une créa concurrente sans fit-check préalable · gaspillage adapt-from-competitor sur créa non-fit
+- Forcer copywriting cartographie sur novice complet · 8 docs canon Schwartz/OTRB/hooks/audiences/objections trop dense pour onboarding initial
+- Vocabulaire opérateur-facing implicite · l'opérateur ne sait pas quels magic keywords activent quels skills
+
+**Backward compat strict additif** · zero override · decompose-ad Sections 1-4 unchanged · NEW Section 5 additive · tour.md Milestones 1-4 + 6-9 unchanged · seulement Milestone 5 refactoré + Milestone 6 enrichi 1 phrase · NEW slash command /lexicon ne perturbe rien existing · skills count 70 → 70 (zero new skill) · slash commands count 4 → 5 (NEW /lexicon) · doctrines canon 12 → 12.
+
+**Files patched** ·
+- `.skills/skills/decompose-ad/SKILL.md` v2.0.0 → v2.1.0 (535L → 615L)
+- `.claude/commands/tour.md` (Milestone 5 refactor lignes 146-179 + Milestone 6 mention /lexicon ligne 189)
+- `.claude/commands/lexicon.md` NEW 183L
+- `_version.json` 2.73.0 → 2.74.0
+- `CHANGELOG.md` v2.74.0 entry (this entry)
+- `docs/internal/releases/manifest/2.74.0-manifest.json` NEW
+
+**D#419 captured** · `decisions.md` PhantomOS · v2.74.0 sprint UX onboarding + fit-check + lexicon + audit accessibilité.
+
+**Backlog identifié** ·
+- v2.74.1 cleanup léger doublons accessibilité Stepprs (~30 min · consolider disclaimer 5 files + fusionner canon-vs-réel _EXAMPLE/README + enrichir brands/README pointer `/breakdown`)
+- v2.74.1 patch léger refs v2.73.x backlog (CHANGELOG L1474 + check-existing-coverage L83 path canonical)
+- v2.74.1 registry `ugc-confession_vulnerable` variante NEW (pattern EXTEND > SIBLING canon)
+- v2.75 doctrine ship `docs/system/skill-routing-discipline.md` NEW + orchestrator `audit-meta-global` NEW
+
+---
+
 ## v2.73.0 · 2026-05-16 · Sprint majeur · décompose créa concurrente end-to-end + cleanup hygiène
 
 **Why** · Demande Largo · "j'aimerais aussi voir si c'est bien fait quand on importe et qu'on veut analyser des créatives concurrentes · on peut choisir de décomposer · identifier la composition sous différents angles · enregistrer le pattern OR appliquer immédiatement au contexte opérateur · quelle variable adapter et quel truc garder · posture marketing senior pour identifier la matrice". Audit fonctionnel (5 agents parallèle) a révélé · stack 70% workable mais 5 gaps structurels critiques · zéro orchestrateur end-to-end import-and-adapt-competitor · matrice variables modulables vs stables absente surface fiche · adaptation depuis ad concurrente non câblée · target marketing senior 25 min raté ~50%. Plus contradictions canon wording résiduelles post-v2.72.0 anti-hallucination ("brand fictive" Stepprs · "12 vs 13 topics" auto-contradiction breakdown.md · "7 chapitres ~20 min" obsolète). Sprint fusionné v2.73.0 features + cleanup hygiène · 5 agents wave 1 scope disjoint.

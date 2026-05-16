@@ -143,61 +143,40 @@ In url-path and conversational-path modes: if the operator already signaled thei
 
 Capture as `solo | agency | creator | early | dropshipper | portfolio`. Write to `/operator/profile.json → identity.profile`.
 
-### Milestone 5. PhantomOS introduction
+### Milestone 5. Ce que PhantomOS peut faire pour toi (capacités-MENU)
 
-Deliver as one coherent turn of flowing prose. **No section headers, no labels, no bolded mini-titles** — the output reads as reasoning aloud, not a structured product tour. The operator should feel the agent is thinking through what PhantomOS is for them, not delivering a deck.
+**First-run + replay** · présenter les capacités PhantomOS comme MENU plutôt que doctrine forcée. L'opérateur choisit son axe d'entrée selon son intent (déjà détecté Milestone 1-4 · operator profile · stack · use case).
 
-Substance to cover, in a natural order chosen by the agent based on how the conversation has flowed so far. Concrete guidance on **how to phrase**, not what labels to use:
+**Tone canon** · "voici ce qui peut t'intéresser maintenant · choisis ton entrée". Institutionnel sérieux + accessible, pas sales-bro, pas growth-coach. Voice canon 100% (prose first, load-bearing terms, pas de triple-parallel, pas d'em-dash).
 
-**1. Ground what PhantomOS is.**
-One or two sentences that anchor the mental model. Lexicon-grounded. No marketing decoration. Adapt the example to the operator's profile detected (DTC marketer, consultant, coach, etc.) — the workspace is domain-agnostic, the example chosen should match what they do. Examples of **how it should sound** (not literal templates to copy, but tone references):
+**Capacités présentées en MENU (6 axes principaux)** ·
 
-- grounded (DTC operator) : *"The way this is set up is basically a folder on your machine. An agent reads it every time you talk to it. Your brand lives inside it, as files. That's the whole mental model — not a dashboard, not a SaaS account."*
-- grounded (consultant) : *"It's a folder on your machine where your method and your client playbooks live as structured files. An agent reads it every time you open a session — your tacit knowledge becomes operable, not just yours."*
-- standard (DTC operator) : *"Here the thing you work with is a local workspace. Your brand context lives in structured files in it. The agent reads the workspace on every request and writes back to it when you teach it something."*
-- standard (consultant) : *"You have a local workspace where your repeatable method, your frameworks, and your client engagements live in structured files. The agent reads it on every request and writes back when you correct or teach it something new."*
-- dense : *"Technically it's an agentic workspace OS. One context unit per workspace (brand, client, cohort, niche). An agent contract loaded on every session. Six versioned entities per context (brand, products, offers, audience, learnings, strategy), plus les assets visuels (photos produit officielles, logo brand, badges certifications) que tu peux apporter ou que je peux préparer pour toi à partir de ton site. Every write is recorded in an append-only event log."*
-- technical : *"Stateful local-first agentic runtime, Claude Code as host, six-entity Context DB + visual-assets layer (canon packshots, brand assets), mutation-gated writes, file-based, domain-agnostic."*
+1. **Paid acquisition** · audience cartographique + angles paid + score-matrix + brief copy + variants visuels Meta-ready (skills · `build-atlas-complete` · `produce-paid-matrix` · `creative-brief-composer` · `score-matrix`).
+2. **Décompose créa concurrente** · reverse-engineering ad concurrente + fit-check + adapt à ta brand (skills · `decompose-ad` · `adapt-from-competitor`).
+3. **Copywriting cartographie** · doctrine layer 8 docs canon Schwartz / OTRB / hooks / audiences / objections / pain-benefit / territoires / DTC operator playbook (skills · `profile-audience` · `produce-paid-angles` · `produce-copy-brief`).
+4. **Audit performance** · audit Meta Ads accounts + dimensions auditables canoniques (skills · `audit-meta-account` · `routine-perf` · `analyze-perf`).
+5. **Sync Notion ↔ PhantomOS** · pull / push / scaffold 10 collections territoire (skill · `sync-notion-atlas`).
+6. **Extension** · ajouter NEW entity / domain / source / skill au-delà du shipped via méthode canonique ECR (skill · `scaffold-extension` · `adapt-from-competitor` pour creative).
 
-**2. Name the operator's frustration.**
-Weave into the prose, not as a separate "here is the problem" block. Pick two or three of these signals and merge them into a natural acknowledgement of what the operator has likely been through:
-- Most AI tools forget everything between sessions.
-- You end up re-explaining the same brand, the same tone, the same audience to every new chat.
-- Your knowledge stays in your head, doesn't scale, doesn't transfer.
-- You've been waiting for a smarter model to fix this. The models got smarter. The scattered-workflow problem did not move.
-- You have prompts saved in a dozen tabs, Notion docs no one reads.
+**Display via `AskUserQuestion`** · présenter les 6 capacités numérotées, question *"Sur quoi tu veux commencer ?"*. L'opérateur choisit 1-6 OR option fallback *"Pas sûr · montre-moi un cas concret"* qui route vers `/breakdown stepprs principe` (vitrine pédagogique cas Stepprs canon). Free-text escape natif géré par `AskUserQuestion`, ne pas ajouter de 7e option manuelle.
 
-**Triple-parallel cadence is banned.** *"Your folder, your files, your control"*, *"prompts in 12 tabs, Notion docs no one reads, knowledge stuck in your head"*, *"X becomes Y, A becomes B, C becomes D"* — all of these are voice canon violations. Write as full conversational sentences, not rhythmic triplets.
+**Adaptation au profil détecté Milestone 1-4** · l'agent met en avant les axes pertinents au profil capté, mais expose toujours le menu complet (l'opérateur décide).
 
-**3. Explain the primary payoff — centralization and zero re-briefing.**
+- Profil paid manager / agency / DTC media buyer → recommander axes 1 + 2 + 4 (paid acquisition + décompose créa + audit perf).
+- Profil copywriter / content strategist → recommander axes 3 + 2 (copywriting cartographie + décompose créa).
+- Profil ecom owner / founder → recommander axes 1 + 4 + 5 (paid + audit + Notion sync).
+- Profil curieux / évaluation → recommander `/breakdown stepprs principe` direct pour wow effect.
 
-**This is the hero, not the compound effect.** What the operator feels on day one is the simple fact that everything about their brand lives in one place the agent reads on every request. They tell the system something once, it keeps it. Next session, no re-explaining the brand, the tone, the audience, the offers. The agent opens the workspace, reads, responds with context already loaded. This is the *immediate* value, felt from session 1 — not a future promise.
+**Anti-pattern** · NE PAS forcer la trajectoire copywriting cartographie en premier sur novice complet. C'est dense (8 docs canon Schwartz / OTRB / hooks / audiences / objections / pain-benefit / territoires / DTC playbook), trop lourd pour onboarding initial. La doctrine layer se découvre progressivement au fur et à mesure des usages, jamais comme axe imposé.
 
-**Compound is secondary, not hero.** After establishing the centralization payoff, the agent can briefly mention that what the operator corrects along the way also becomes rules the system applies next time, and that the context grows denser with use. Frame as a **second-order benefit**, never lead with it. Do not introduce *Context Layering*, *Decision Trace*, *Skill Graph*, *Feedback Loop*, or *process moat* in this milestone — those belong to expansion paths if the operator asks for depth.
+**Skip Milestone 5 conditional** · si Path (c) discovery-only depuis Milestone 1-2, skip ce milestone directement (l'opérateur ne veut pas configurer, juste comprendre). Aller à Milestone 6 (skill concept + universal entry point) puis Milestone 8 (close + recap).
 
-**Name the compound mechanism with one line.** When mentioning the compound, name `/learn-from-session` so the operator has a concrete handle. One sentence, not a paragraph. Example tone:
+**Cross-refs canon enrichis** ·
+- `/breakdown stepprs principe` (cas concret wow effect, vitrine pédagogique).
+- `/skills` (catalogue navigable des capacités, à tout moment).
+- 6 axes cross-référencent skills existing canon (build-atlas-complete, produce-paid-matrix, creative-brief-composer, score-matrix, decompose-ad, adapt-from-competitor, profile-audience, produce-paid-angles, produce-copy-brief, audit-meta-account, routine-perf, analyze-perf, sync-notion-atlas, scaffold-extension).
 
-> *"Concrètement, quand tu corriges quelque chose en cours de route ou que tu m'apprends une règle (par exemple 'sur Glowco on ne dit jamais miracle'), tu peux taper /learn-from-session à la fin pour verrouiller la règle. Sinon je la capte au fil de l'eau, mais cette commande te laisse appuyer dessus quand un point te paraît important."*
-
-Never lead Milestone 5 with this. Always after the centralization payoff is established. The operator should hear *what they get* before *how to lock it in*.
-
-**Term usage**: *Context Layering* may be named at most once, after the centralization point, and only at dense or technical registers. At grounded and standard registers, use plainer phrasing such as *"what you correct sticks and applies next time"*.
-
-**Do not use the phrase "the leverage isn't a smarter model, it's X"**. That cadence is a growth-coach antipattern. Rephrase in longer, less punchy sentences. Example acceptable: *"What changes performance here isn't the model you're running. It's the fact that the work you've already done stays accessible and structured."*
-
-**4. Doctrine layer pro métier (mention courte si l'opérateur est profil marketing / agency / DTC).**
-
-Wove naturellement dans le flow, pas en encart. Pertinent surtout quand l'opérateur a signalé profil marketing/agency/copywriter en Milestone 1, 2 ou 4. Exemple ton :
-
-> *"PhantomOS ship aussi une layer doctrine copywriting/strategy pour les équipes marketing : 8 docs canon pro métier sous `docs/doctrine/` (Schwartz 5 stages, OTRB angle anatomy, hooks 5 critères, audiences cartographie 3 niveaux, objections mapping, pain-benefit chain, territoires prioritisation, DTC operator playbook). Lisibles par un copywriter freelance qui n'a jamais entendu parler de PhantomOS. Niveau bibliothèque marketeux pro (Schwartz/Sugarman/Halbert/Caples/Cialdini sources canon). Les skills consument ces doctrines runtime pour informer la production, vocabulaire canon aligné cross-skills."*
-
-**5. Adaptive rendering selon business_model détecté.**
-
-Toujours en prose, jamais en encart. Mention courte si l'opérateur a posé la question *"à quoi ça ressemble une fois configuré"* ou équivalent. Exemple ton :
-
-> *"Le rendering `/phantom {brand}` s'adapte automatiquement au modèle business détecté : DTC pure → ligne produits + pubs Meta, service-only → pipeline deals + ICPs B2B, hybrid clinique+produit → réseau cliniques + ligne produits secondaire (cas Innerskin), subscription → tiers récurrents, marketplace → catalog multi-vendor. Tu vois ce qui sert ton métier, pas une grille générique."*
-
-Add concepts covered to `awareness.concepts_introduced` (incluant `doctrine_layer`, `adaptive_rendering` quand mentionnés).
+Add concepts covered to `awareness.concepts_introduced` (incluant `capabilities_menu`, `paid_acquisition`, `decompose_ad`, `copywriting_cartography`, `audit_performance`, `notion_sync`, `extension` selon ce que l'opérateur a sélectionné).
 
 ### Milestone 6. Skill concept + universal entry point
 
@@ -206,6 +185,8 @@ Still part of the same conversational flow. **No headers, no labels, no bolded t
 **First, introduce the concept of a skill.** Not as a feature bullet. As context for how the agent will behave in the rest of the session. Three commands worth naming on the way: `/skills` (catalogue des capacités), `/phantom` (cockpit de visualisation), and `/breakdown stepprs` (vitrine pédagogique via cas concret). Example tone:
 
 > Concretely, when you ask for something specific like an audit, a brief, or a report, there's usually a capability already written for that, what the workspace calls a skill. I don't improvise it. The skill runs, I hand back the output. `/skills` à tout moment liste ce qui est disponible. `/phantom` à tout moment ouvre la vue d'état du workspace, ce qui est encodé, ce qui est à valider, ce qui dort. C'est le cockpit de visualisation, read-only, sans risque à explorer. `/breakdown stepprs` ouvre la vitrine pédagogique via un cas concret (brand pédagogique foot care DTC encodée canon) avec 13 chapitres drillables qui démontrent comment PhantomOS structure le savoir métier, structurés en 5 couches d'un système opérationnel plus 3 dimensions transverses (intelligence, apprentissage, extension), de la composition produit jusqu'au brief copy en 5 min. Lecture séquentielle ~30 min, drill direct possible. Important · Stepprs est notre cas d'illustration pédagogique partagé canon. Marque réelle (stepprs.com) utilisée comme référence visuelle. Pas ta marque, pas un brand actif. Les agents peuvent s'en servir comme exemple pour clarifier ou illustrer un concept canon, jamais l'utiliser comme runtime brand active.
+
+Plus · `/lexicon` ouvre le lexique opérateur-facing avec 10-15 magic keywords PhantomOS qui débloquent les bons skills et raisonnements quand tu prompts. Important onboarding et rappel à 3-6 mois. Vocabulaire canon · cartographie · décompose · adapt · compose · territoire · atomicité · fractalité · brief day · investigation 5 sections · learn from session · breakdown. Combinables pour activer raisonnement multi-couches.
 
 **Second, explain the two-sided universal entry point.** Merge both aspects in flowing sentences. Do not use the phrase *"single nerve center"* — metaphor without load-bearing. Stick to operational description. Example tone:
 

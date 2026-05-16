@@ -1,0 +1,118 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.74.0",
+  "released_at": "2026-05-16",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 70,
+  "skills_count_after": 70,
+  "slash_commands_count_before": 4,
+  "slash_commands_count_after": 5,
+  "doctrines_count_before": 12,
+  "doctrines_count_after": 12,
+  "summary": "Sprint v2.74.0 · 4 patches structurels parallèle · UX onboarding novice + fit-check competitor + lexicon + audit accessibilité.",
+  "patches": [
+    {
+      "id": 1,
+      "name": "decompose-ad v2.0.0 → v2.1.0 NEW Section 5 FIT AVEC TA BRAND",
+      "file": ".skills/skills/decompose-ad/SKILL.md",
+      "size_before_lines": 535,
+      "size_after_lines": 615,
+      "version_before": "2.0.0",
+      "version_after": "2.1.0",
+      "pattern_canon": "EXTEND > SIBLING (skill existing étendu vs NEW frère)",
+      "changes": [
+        "NEW Section 5 FIT AVEC TA BRAND fiche v5 · scoring fit-check 5 dimensions + diagnostic + reco actionnable",
+        "Scoring 5 dimensions · audience match · produit match · ton match · stage match · leviers psychologiques fit",
+        "Reco · 8-10 adapt full · 5-7 adapt 1 axe · 0-4 skip",
+        "NEW Hard Rule HR-anatomie-5 (fit-check obligatoire avant close binaire)",
+        "Close binaire enrichi conditional 3 tiers"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "tour.md Milestone 5 refactor capacités MENU",
+      "file": ".claude/commands/tour.md",
+      "lines_affected": "146-179 (Milestone 5)",
+      "changes": [
+        "Refactor Milestone 5 · capacités PhantomOS comme MENU 6 axes vs trajectoire copywriting forcée",
+        "6 axes · paid acquisition · décompose créa concurrente · copywriting cartographie · audit performance · sync Notion · extension",
+        "AskUserQuestion display canon · 6 capacités numérotées + fallback /breakdown stepprs principe",
+        "Adaptation profil détecté Milestone 1-4 · 4 profils (paid manager · copywriter · ecom owner · curieux)",
+        "Anti-pattern documenté · ne pas forcer copywriting cartographie novice"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "NEW slash command /lexicon + tour Milestone 6",
+      "additions": [
+        {
+          "type": "slash_command",
+          "name": "lexicon",
+          "path": ".claude/commands/lexicon.md",
+          "size_lines": 183,
+          "scope": "13 magic keywords PhantomOS opérateur-facing · usage prompting + ce que ça déclenche + exemple concret + pattern combiner multi-couches"
+        }
+      ],
+      "magic_keywords": [
+        "cartographier",
+        "décomposer",
+        "adapter",
+        "composer",
+        "atomicité",
+        "fractalité",
+        "composition",
+        "territoire",
+        "audit perf",
+        "brief day",
+        "investigation 5 sections",
+        "apprends de la session",
+        "adapt extension",
+        "breakdown"
+      ],
+      "tour_patch": "tour.md Milestone 6 ligne 189 · mention /lexicon aux côtés /skills /phantom /breakdown stepprs comme QUAD commands universal entry point"
+    },
+    {
+      "id": 4,
+      "name": "Audit READ-ONLY accessibilité Stepprs",
+      "type": "audit_readonly",
+      "verdict": "ACCESSIBLE state-of-the-art · P0 zéro · P1+P2 cleanup ~30 min backlog v2.74.1",
+      "stats": {
+        "total_files_stepprs_mentions": 64,
+        "doublons_HIGH": 1,
+        "doublons_MEDIUM": 2,
+        "doublons_critique": 0
+      },
+      "backlog_v2741": [
+        "Consolider disclaimer 5 files · single source _EXAMPLE/README.md + 1-line ref ailleurs",
+        "Fusionner 2 sections canon-vs-réel dupliquées _EXAMPLE/README.md L87-102 et L104-117",
+        "Enrichir brands/README.md pointer /breakdown stepprs",
+        "Ajouter pointer positif CLAUDE.md root section _EXAMPLE/ vers /breakdown (pas que gates négatifs)"
+      ]
+    }
+  ],
+  "doctrinal_patterns_introduced": [
+    "Fit-check pre-adapt scoring 5 dimensions · l'opérateur voit verdict AVANT adapt-from-competitor invocation",
+    "Onboarding capacités MENU vs trajectoire forcée · opérateur choisit axe d'entrée selon profil détecté",
+    "Magic keywords PhantomOS opérateur-facing · vocabulary canon pour prompter efficient (13 keywords + pattern combiner multi-couches)"
+  ],
+  "anti_patterns_canonized": [
+    "Adapter créa concurrente sans fit-check préalable · gaspillage adapt-from-competitor",
+    "Forcer copywriting cartographie sur novice complet · trop dense pour onboarding initial",
+    "Vocabulaire opérateur-facing implicite · opérateur ne sait pas quels magic keywords activent quels skills"
+  ],
+  "decisions_captured": ["D#419"],
+  "backlog_identified": {
+    "v2.74.1": [
+      "Cleanup léger doublons accessibilité Stepprs (~30 min)",
+      "Cleanup léger refs v2.73.x backlog (~15 min)",
+      "Registry ugc-confession_vulnerable variante NEW (pattern EXTEND > SIBLING)"
+    ],
+    "v2.75": [
+      "Doctrine NEW docs/system/skill-routing-discipline.md (flaggée NEW à créer CLAUDE.md L81)",
+      "Orchestrator NEW .skills/skills/audit-meta-global/SKILL.md (SOP existant attendant orchestrator parent)"
+    ]
+  },
+  "rollback_strategy": "Strict additif backward compat · revert v2.74.0 = git revert HEAD strict (zero data loss · decompose-ad retour v2.0.0 · tour.md Milestone 5+6 revert · lexicon.md delete · slash commands count 5 → 4)"
+}
