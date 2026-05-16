@@ -7,6 +7,32 @@
 
 ---
 
+## v2.72.1 · 2026-05-16 · Hotfix `tour.md` ligne 208 · 3 corrections cohérence
+
+**Why** · Audit post-v2.72.0 a flaggé 3 incohérences dans `tour.md` Milestone 6 prose (ligne 208) introduites v2.70.0 et jamais updated post-évolutions canon · (1) `brand fictive foot care DTC` contredit canon anti-hallucination v2.72.0 (Stepprs marque réelle pas fictive · sourced TrendTrack live) (2) `7 chapitres drillables` obsolète post-v2.72.0 refonte 13 topics (3) `~20 min` obsolète post-extensions parcours.
+
+**What** · 1 file patched · `tour.md` ligne 208 unique edit ·
+
+```
+Avant · "brand fictive foot care DTC encodée canon avec 7 chapitres drillables 
+         qui démontrent... Lecture séquentielle ~20 min, drill direct possible."
+
+Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres 
+         drillables qui démontrent... structurés en 5 couches d'un système 
+         opérationnel plus 3 dimensions transverses (intelligence, apprentissage, 
+         extension)... Lecture séquentielle ~30 min, drill direct possible."
+```
+
+**Backward compat strict additif** · zero override autre que correction wording dans phrase prose Milestone 6. Operators v2.72.0 non affectés.
+
+**Files patched** ·
+- `.claude/commands/tour.md` ligne 208 (1 edit)
+- `_version.json` 2.72.0 → 2.72.1
+- `CHANGELOG.md` v2.72.1 entry (this entry)
+- `docs/internal/releases/manifest/2.72.1-manifest.json` NEW
+
+---
+
 ## v2.72.0 · 2026-05-16 · Sprint majeur · 5 patches structurels · ECR runtime + anti-hallucination + extension dimension
 
 **Why** · Sprint fusionné v2.71.2 (UX improvements) + v2.72.0 (ECR runtime gap fermé). Audit profond du stack extension a révélé · (a) `scaffold-extension` v1.1.0 orchestrateur unique avec 9 phases EXISTE et marche, MAIS (b) ECR méthodologie doctrine v2.71 NON câblée runtime dans `analyze-extension-intent` v1.0.0 · (c) gap "décomposition guidée (équations + matrices + MECE + récursion atomes)" non produit · (d) `breakdown.md` parcours manque dimension extension + risque hallucination "Stepprs = marque opérateur" + back-end peut faire peur novice. 5 patches structurels.

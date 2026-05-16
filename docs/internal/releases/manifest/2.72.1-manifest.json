@@ -1,0 +1,26 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.72.1",
+  "released_at": "2026-05-16",
+  "type": "hotfix",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 69,
+  "skills_count_after": 69,
+  "doctrines_count_before": 12,
+  "doctrines_count_after": 12,
+  "summary": "Hotfix · correction 3 incohérences `tour.md` Milestone 6 ligne 208 (brand fictive → pédagogique · 7 → 13 chapitres · 20 → 30 min) + mention explicite structure 5 couches + 3 dimensions transverses.",
+  "patches": [
+    {
+      "file": ".claude/commands/tour.md",
+      "line": 208,
+      "corrections": [
+        "brand fictive foot care DTC → brand pédagogique foot care DTC (cohérence canon anti-hallucination v2.72.0)",
+        "7 chapitres drillables → 13 chapitres drillables (post-v2.72.0 refonte)",
+        "Lecture séquentielle ~20 min → ~30 min (cohérence post-extensions)",
+        "Ajout mention `structurés en 5 couches d'un système opérationnel plus 3 dimensions transverses (intelligence, apprentissage, extension)` (cohérence canon operational-system-discipline v2.71)"
+      ]
+    }
+  ],
+  "rollback_strategy": "Revert v2.72.1 = git revert HEAD strict (1 file 1 edit, trivial)"
+}
