@@ -1,7 +1,7 @@
 ---
 name: setup-brand
 type: orchestrator
-version: "2.1.0"
+version: "2.1.1"
 isolation_scope: brand_only
 layer: territoire
 recommended_model: sonnet
@@ -30,6 +30,37 @@ disambiguates_against:
 
 Interactive guide to configure a new brand in the workspace.
 Zero manual copy-paste. The agent creates the full structure and guides the operator.
+
+## Engagement disclosure pré-runtime · canon v2.79.3
+
+Avant de lancer le setup, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3) ·
+
+```
+Setup brand · ce qui va se passer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Plan
+  ─────────────────────────────────────────────────────────────────────
+  1. Capture brand info (nom · langue · sector · produits · audiences)
+  2. Atelier identité brand (archetype · purpose · valeurs · founder story)
+  3. Phrase d'ancrage brand (origin story · 1 phrase)
+  4. Synthèse demo-value + close Build chantiers
+  5. Tour workspace (env brand · capacités · outils)
+
+  ETA           ~8-15 min (selon densité réponses + atelier identité)
+  Implication   tu réponds aux questions séquentielles (1 par tour) · valides recaps
+  Livrable      brand workspace initialisée + identité encodée + chantiers prêts pour daily use
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  OK pour lancer ? · ou tu préfères attendre / faire autre chose
+```
+
+ATTENDS confirmation explicite avant de lancer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.3.
+
+Cross-ref doctrine racine `docs/system/engagement-disclosure-discipline.md` v2.79.3.
+
+---
 
 ## Tone
 

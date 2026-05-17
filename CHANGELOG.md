@@ -7,6 +7,67 @@
 
 ---
 
+## v2.79.3 · 2026-05-17 · Sprint patch · onboarding agnostique holistique + engagement disclosure pré-engagement · 2 NEW doctrines canon racine · /tour refondu panorama 360° · 6 skills orchestrateurs disclosure pré-runtime · D#436 + D#437 captured
+
+**Why** · Recadrage Largo post-réflexion structurelle sur onboarding canon PhantomOS. Deux gaps systémiques flag ·
+
+1. **Gap onboarding · typage métier en porte d'entrée non-aligné memory canon `phantomos_elastic_scope`.** Use case déclencheur · opérateur Abyss tracking-GTM specialist arrivé via Abyss workspace · l'onboarding /tour v2.79.2 survendait surface creative/copywriting/brand · l'opérateur tracking-GTM ne se reconnaissait pas dans le panorama · friction adoption. Pattern systémique · détecter profil métier en entrée violerait memory canon `phantomos_elastic_scope` (l'opérateur décide ce qui rentre, système accueille n'importe quel domaine encodé). PhantomOS doit accueillir tous métiers DTC sur pied d'égalité visuelle, l'opérateur se reconnaît dans le panorama, choisit où commencer.
+
+2. **Gap engagement disclosure · skills orchestrateurs lourds lançaient silent sans annoncer démarche.** Use case déclencheur · build-atlas-complete + onboard-brand + mine-voc + setup-brand + creative-brief-composer + produce-paid-matrix lancent silent post-trigger · opérateur se retrouvait captif mi-cycle sans conscience claire (durée · démarche · livrable). Asymétrie information agent (sait durée + étapes) vs opérateur (croyait instantané). Pattern systémique · skills `type: orchestrator` OR duration estimée >5 min OR spans sessions OR 2+ sub-skills déployés OR producer heavy paid doivent disclosure pré-engagement obligatoire.
+
+**What** · 4 patches structurels parallèle (Agents 1-4) plus release engineering complet (Agent 5 · ce job).
+
+**Patches structurels (4 parallèle)** ·
+
+1. **NEW doctrine canon racine `onboarding-holistic-discipline.md`** (Agent 1) · doctrine canon onboarding agnostique + holistique · panorama 360° des 7 territoires métiers DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · zéro typage profil métier en porte d'entrée · l'opérateur découvre l'étendue, se reconnaît, choisit où commencer · 8 HR-OHD + 8 AP-OHD enforcement runtime.
+
+2. **NEW doctrine canon racine `engagement-disclosure-discipline.md`** (Agent 2) · doctrine canon engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds · 5 triggers canon (type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid) · 4 éléments pattern (plan N étapes ≤8 · ETA chiffrée minutes ou range · démarche implication + livrable · close binaire confirmation) · court-circuit autorisé UNIQUEMENT opérateur opt-out explicit (`--no-disclosure` OR `operator/profile.json#preferences.disclosure_preference: silent`) · canon opt-out expert post-N usages JAMAIS opt-in default · 8 HR-EDD + 8 AP-EDD enforcement runtime.
+
+3. **Refonte `/tour.md` panorama 360° holistique** (Agent 3) · refonte complète onboarding canon v2.79.3 · 7 territoires DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · statut shipped/partial/open par territoire · iconographie canon v2.79.2 préservée (✓ complet · ◐ partiel · ○ vide · ✗ absent · ⚠ critique) · zéro question profil métier porte d'entrée · pédagogie "se reconnaître dans le panorama".
+
+4. **Patches CLAUDE.md root + 6 skills orchestrateurs disclosure pré-runtime** (Agent 4) · CLAUDE.md root sommaire 19 → 21 doctrines (NEW entries onboarding-holistic-discipline + engagement-disclosure-discipline insérés funnel order canon) + 2 NEW operator contract rules (onboarding holistique agnostique + pre-engagement disclosure obligatoire) · 6 skills orchestrateurs lourds canon prioritaires patchés section disclosure pré-runtime (build-atlas-complete + onboard-brand + mine-voc + setup-brand + creative-brief-composer + produce-paid-matrix) · pattern canon plan + ETA + démarche + confirmation.
+
+**Pattern systémique fermé · onboarding holistique + engagement disclosure canon v2.79.3**
+
+```
+Layer 1 · NEW doctrine onboarding-holistic-discipline.md       ✓ v2.79.3
+Layer 2 · NEW doctrine engagement-disclosure-discipline.md     ✓ v2.79.3
+Layer 3 · CLAUDE.md root sommaire 19 → 21 doctrines            ✓ funnel order
+Layer 4 · CLAUDE.md root 2 NEW operator contract rules         ✓ enforcement
+Layer 5 · /tour panorama 360° refondu                          ✓ 7 territoires
+Layer 6 · 6 skills orchestrateurs disclosure pré-runtime       ✓ canon prioritaires
+```
+
+Plus de typage métier en porte d'entrée. Plus de skills orchestrateurs lourds lancés silent sans disclosure. L'opérateur découvre l'étendue PhantomOS sur pied d'égalité visuelle (memory canon `phantomos_elastic_scope` respecté · système accueille tous domaines). L'opérateur s'engage en conscience pré-runtime (plan · ETA · démarche · livrable visible avant clic). Asymétrie information agent vs opérateur fermée.
+
+**Backward compat strict additif** · 2 doctrines NEW additif strict (retirables via revert) · /tour refondu (revert to v2.79.2 state possible) · CLAUDE.md root 2 NEW operator rules retirables · 6 skills disclosure section additif strict (cycle runtime préservé · disclosure ajoutée AVANT exécution skill existing). Skills count 80 inchangé (NEW 6 skills tracking-GTM backlog v2.80 séparé). Slash commands 7 inchangé (/tour refondu mais pas nouveau). Doctrines 19 → 21 (+2 NEW · onboarding-holistic-discipline + engagement-disclosure-discipline).
+
+**Files patched (12-14)** ·
+- `docs/system/onboarding-holistic-discipline.md` NEW (Agent 1)
+- `docs/system/engagement-disclosure-discipline.md` NEW (Agent 2)
+- `.claude/commands/tour.md` refonte v2.79.3 panorama 360° (Agent 3)
+- `CLAUDE.md` root sommaire 19 → 21 doctrines + 2 NEW operator contract rules (Agent 4)
+- `.skills/skills/build-atlas-complete/SKILL.md` disclosure pré-runtime section (Agent 4)
+- `.skills/skills/onboard-brand/SKILL.md` disclosure pré-runtime section (Agent 4)
+- `.skills/skills/mine-voc/SKILL.md` disclosure pré-runtime section (Agent 4)
+- `.skills/skills/setup-brand/SKILL.md` disclosure pré-runtime section (Agent 4)
+- `.skills/skills/creative-brief-composer/SKILL.md` disclosure pré-runtime section (Agent 4)
+- `.skills/skills/produce-paid-matrix/SKILL.md` disclosure pré-runtime section (Agent 4)
+- `../../../decisions.md` workspace ROOT · D#436 + D#437 captured (Agent 5 · ce job)
+- `_version.json` bumped 2.79.2 → 2.79.3 (Agent 5 · ce job)
+- `CHANGELOG.md` v2.79.3 entry prepended (this entry · Agent 5 · ce job)
+- `docs/internal/releases/manifest/2.79.3-manifest.json` NEW (Agent 5 · ce job)
+
+**D#436 + D#437 captured** ·
+- **D#436** · Onboarding PhantomOS canon agnostique + holistique. Pas de typage profil métier en porte d'entrée. /tour expose panorama 360° des 7 territoires DTC (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) sur pied d'égalité visuelle. L'opérateur découvre l'étendue, se reconnaît, choisit où commencer. Use case déclencheur · opérateur Abyss tracking-GTM specialist devait pouvoir reconnaître son métier sans typage initial. Doctrine NEW onboarding-holistic-discipline.md v2.79.3. Cross-refs scope-extension-discipline + tour + CLAUDE.md root operator contract NEW rule. Memory canon `phantomos_elastic_scope` reinforced.
+- **D#437** · Engagement disclosure obligatoire canon pré-engagement skills orchestrateurs lourds. Triggers · type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid. Pattern · plan (N étapes ≤8) + ETA chiffrée (minutes ou range) + démarche (implication + livrable) + confirmation close binaire. 6 skills canon prioritaires patchés v2.79.3 (build-atlas-complete + onboard-brand + mine-voc + setup-brand + creative-brief-composer + produce-paid-matrix). Court-circuit autorisé UNIQUEMENT opérateur opt-out explicit. Doctrine NEW engagement-disclosure-discipline.md v2.79.3.
+
+**Backlog v2.79.3+** · Sprint v2.80 4-6 skills tracking-GTM NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode · prérequis brief tracking specialist solide) · Sprint v2.79.x business pilotage backlog v2.79.1 (unit economics + WBR + cohort retention + audit-klaviyo-flows) · Sprint v2.80.x DR copywriting production backlog v2.79.1 (sales letter + email sequence + big-idea-canon + audit-proof-coverage) · Sprint v2.81+ CRO + lifecycle backlog v2.79.1 · Pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md) · Re-test live workspace fresh v2.79.3 sur KaraCare pour valider /tour panorama 360° + disclosure pré-runtime build-atlas-complete.
+
+**Skills count 80 (inchangé) · slash commands 7 (inchangé · /tour refondu) · doctrines 19 → 21 (+2 NEW · onboarding-holistic-discipline + engagement-disclosure-discipline).**
+
+---
+
 ## v2.79.2 · 2026-05-17 · Patch hygiène + clarté livrable opérateur-facing cross 5 surfaces · NEW doctrine output-clarity-discipline + scope révisé Decomposition Visibility (`/phantom` exclu cockpit scan rapide) + D#435 termes niveaux distincts canon
 
 **Why** · Test live workspace v2.79.1 sur KaraCare a flag 14 problèmes structurels post-enforcement runtime v2.79.1. Parmi eux · (1) incohérence terminologie niveaux · header `/phantom` v2.79.1 affichait "Cartographie 1/3 niveaux" suggérant 3 niveaux de progression alors que doctrine Decomposition Visibility canon v2.79+ affiche 4 NIVEAUX matriciels obligatoires · confusion lecteur. (2) Iconographie hétérogène cross-commands · symboles différents pour même état entité cross `/phantom` plus `/bird`. (3) Jargon doctrinal leak runtime · 12 termes internes exposés opérateur-facing (canonical / framework / SOP / quality-spec / catalogue / entity / field / schema / mutation / proposal / encoding / discovery). (4) Cockpit `/phantom` trop chargé post-v2.79.1 · Section 6 Decomposition Visibility (4 NIVEAUX matriciels + 6 HR + 6 AP · +135L) appliquée canon DVD universelle alors que cockpit = scan rapide santé brand (ALERTES + ÉTAT + ACTIONS + Drill footer suffisent) ≠ pédagogie reverse engineering. Pattern systémique canon · enforcement runtime ne doit pas s'appliquer universellement · calibrer profondeur livrable à complexité requête (memory canon `no_overengineer`).

@@ -1,7 +1,7 @@
 ---
 name: creative-brief-composer
 type: orchestrator
-version: "1.3.0"
+version: "1.3.1"
 recommended_model: sonnet
 subagent_safe: false
 mode: proposed
@@ -111,6 +111,36 @@ disambiguates_against:
 ## Tone
 
 Chairman orchestrating a 2-step pipeline with an operator gate in between. Narrate each handoff briefly to the operator (*"je pose le brief structuré sur l'angle... gate validation... je pars sur N variants en parallèle..."*). **NEVER** expose technical paths, field names, schema versions, or sub-skill names in operator-facing output. Keep the operator informed of progress without overloading.
+
+## Engagement disclosure pré-runtime · canon v2.79.3
+
+Avant de lancer la composition brief + variants, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3) ·
+
+```
+Composition brief créa + N variants · ce qui va se passer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Plan
+  ─────────────────────────────────────────────────────────────────────
+  1. Pre-flight DRGFP (angle valide · audience résolue · visual_identity check)
+  2. Load context (brand · audience · angle · canon refs)
+  3. Génération brief structuré (produce-copy-brief sub-skill)
+  4. Gate validation operator (binaire confirme ou ajuste)
+  5. Composition N variants visuels parallèle (compose-creative × N)
+  6. Synthèse 5 sections Investigation Posture + ranking + close
+
+  ETA           ~12-20 min (selon N variants + visual_identity dispo)
+  Implication   tu valides le brief avant push variants · N par défaut 3 (override possible)
+  Livrable      1 brief structuré + N variants créa Meta-ready + ranking + reco test live
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  OK pour lancer ? · ou tu préfères attendre / faire autre chose
+```
+
+ATTENDS confirmation explicite avant de lancer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.3.
+
+Cross-ref doctrine racine `docs/system/engagement-disclosure-discipline.md` v2.79.3.
 
 ## Expert methodology
 

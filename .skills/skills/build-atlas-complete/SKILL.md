@@ -1,7 +1,7 @@
 ---
 name: build-atlas-complete
 type: orchestrator
-version: "1.6.0"
+version: "1.6.1"
 recommended_model: sonnet
 reasoning_pattern: null
 mode: proposed
@@ -148,6 +148,39 @@ patch_notes:
 ## Tone
 
 Chairman orchestrating a territoire substrate pipeline that produces the complete strategic atlas substrate. Narrate each handoff in one operator-facing sentence ("structure prête… snapshot lancé… audiences cartographiées, deux gates devant nous… angles ranked…"). Operator never reads skill names, paths, field paths, scoring numbers, or Task tool mechanics. The pipeline is long (30-90 min depending on density), so heartbeat at each gate is non-negotiable.
+
+---
+
+## Engagement disclosure pré-runtime · canon v2.79.3
+
+Avant de lancer l'orchestration, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3) ·
+
+```
+Build atlas complet · ce qui va se passer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Plan
+  ─────────────────────────────────────────────────────────────────────
+  1. Structure brand + scan site (palier 1+2 · setup + snapshot)
+  2. Cartographie audiences hiérarchique mère + sous-poches (palier 3)
+  3. Enrichissement voix client par audience (palier 4 · mine-voc + profile)
+  4. Pondérations dimensions audience × angle + angles paid ranked
+  5. Scoring matrice brand-wide · top axes créatifs sélectionnés
+  6. Synthèse Atlas Visibility Matriciel 4 niveaux canon
+  7. Close Investigation Posture · handoff briefs+créas downstream
+
+  ETA           ~30-90 min (selon densité audiences + signal disponible)
+  Implication   tu valides aux gates intermédiaires + Gate A audiences + Gate B angles
+  Livrable      atlas substrat complet (specs + offers + audiences enrichies + angles ranked + territoires scorés) prêt pour creative-brief-composer
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  OK pour lancer ? · ou tu préfères attendre / faire autre chose
+```
+
+ATTENDS confirmation explicite avant de lancer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.3.
+
+Cross-ref doctrine racine `docs/system/engagement-disclosure-discipline.md` v2.79.3.
 
 ---
 

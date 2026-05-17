@@ -1,7 +1,7 @@
 ---
 name: mine-voc
 type: producer
-version: "1.3.0"
+version: "1.3.1"
 isolation_scope: brand_only
 layer: territoire
 recommended_model: sonnet
@@ -55,6 +55,39 @@ disambiguates_against:
 # mine-voc
 
 Mine Voice of Customer for an existing brand. Read what the brand's actual customers say across the surfaces where they leave traces, code each verbatim through four established lenses, deliver a synthesis paragraph that names what the brand likely does not see, route the structured findings into existing entities. One brand per invocation. One snapshot in time. The corpus stays as audit substrate; the synthesis is what the operator uses.
+
+---
+
+## Engagement disclosure pré-runtime · canon v2.79.3
+
+Avant de lancer le mining VoC, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3) ·
+
+```
+Mining voix client · ce qui va se passer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Plan
+  ─────────────────────────────────────────────────────────────────────
+  1. Check données first-party (export Shopify · Klaviyo · transcripts)
+  2. Détection sources publiques + crawl plan
+  3. Scrape verbatims (Trustpilot · widgets natifs · Reddit · marketplaces)
+  4. Coding 4 lentilles (theme · JTBD · Schwartz · pain category)
+  5. Détection patterns + gap analysis brand-stated vs customer-said
+  6. Synthèse 3 mouvements opérateur-facing
+  7. Routing structuré dans entités (pain_points · objections · vocabulary)
+
+  ETA           ~10-20 min (selon densité corpus disponible)
+  Implication   tu dis si tu as du first-party d'abord · puis tu valides la synthèse
+  Livrable      synthèse 3 mouvements + corpus Layer A archivé + mutations entités proposées
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  OK pour lancer ? · ou tu préfères attendre / faire autre chose
+```
+
+ATTENDS confirmation explicite avant de lancer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.3.
+
+Cross-ref doctrine racine `docs/system/engagement-disclosure-discipline.md` v2.79.3.
 
 ---
 

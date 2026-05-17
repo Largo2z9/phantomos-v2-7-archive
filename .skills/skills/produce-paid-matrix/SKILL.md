@@ -1,7 +1,7 @@
 ---
 name: produce-paid-matrix
 type: orchestrator
-version: "1.3.0"
+version: "1.3.1"
 recommended_model: sonnet
 subagent_safe: false
 operator_facing: true
@@ -105,6 +105,36 @@ disambiguates_against:
 # produce-paid-matrix
 
 Chairman orchestrator. Chain les trois producers (produce-paid-angles → weight-dimensions → score-matrix) pour livrer la matrice paid DTC complète d'une brand, puis synthétise en 5 sections investigation-posture. Narrate les handoffs brièvement. Jamais expose Task tool internals à l'opérateur. Synthesis finale strictement doctrine investigation-posture v2.54.
+
+## Engagement disclosure pré-runtime · canon v2.79.3
+
+Avant de lancer la matrice paid, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3) ·
+
+```
+Matrice paid DTC · ce qui va se passer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Plan
+  ─────────────────────────────────────────────────────────────────────
+  1. Pre-flight DRGFP (L1 strict + L2 voc density gate + L3 brand context)
+  2. Angles ranked par audience top-3 parallèle (produce-paid-angles × 3)
+  3. Pondérations dimensions audience × angle parallèle (weight-dimensions × 3)
+  4. Scoring matrice brand-wide Sub-cluster × Source d'angle (score-matrix)
+  5. Synthèse 5 sections Investigation Posture · top-3 territoires stars qualitatives
+  6. Close drill-down macro · opérateur arbitre
+
+  ETA           ~10-15 min (mode parallèle · cap top-3 audiences)
+  Implication   tu choisis mode briefing (en cours · à la fin · skip scoring)
+  Livrable      matrice paid scorée · top-3 territoires en stars · 5 sections + close ouvert
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  OK pour lancer ? · ou tu préfères attendre / faire autre chose
+```
+
+ATTENDS confirmation explicite avant de lancer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.3.
+
+Cross-ref doctrine racine `docs/system/engagement-disclosure-discipline.md` v2.79.3.
 
 ## Expert methodology
 

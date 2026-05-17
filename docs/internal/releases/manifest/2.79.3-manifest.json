@@ -1,0 +1,95 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.79.3",
+  "released_at": "2026-05-17",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 80,
+  "skills_count_after": 80,
+  "slash_commands_count_before": 7,
+  "slash_commands_count_after": 7,
+  "doctrines_count_before": 19,
+  "doctrines_count_after": 21,
+  "summary": "Sprint patch v2.79.3 · onboarding agnostique holistique + engagement disclosure pré-engagement skills orchestrateurs lourds. Post-recadrage Largo flag 2 gaps systémiques · (1) /tour v2.79.2 survendait surface creative/copywriting/brand · opérateur Abyss tracking-GTM specialist ne se reconnaissait pas dans le panorama · friction adoption · violait memory canon `phantomos_elastic_scope` (système agnostique de domaine). (2) Skills orchestrateurs lourds (build-atlas-complete + onboard-brand + mine-voc + setup-brand + creative-brief-composer + produce-paid-matrix) lançaient silent sans annoncer démarche · opérateur captif mi-cycle sans conscience claire (durée · étapes · livrable). 4 patches structurels parallèle (Agents 1-4) plus release engineering (Agent 5 · ce manifest). 2 NEW doctrines canon racine (onboarding-holistic-discipline + engagement-disclosure-discipline) plus /tour refondu panorama 360° des 7 territoires DTC sur pied d'égalité visuelle plus 6 skills orchestrateurs disclosure pré-runtime obligatoire (plan + ETA + démarche + confirmation). D#436 + D#437 captured. Backward compat strict additif.",
+  "audit_amont": {
+    "context_recadrage_largo": "Post-réflexion structurelle Largo sur onboarding canon PhantomOS · 2 gaps systémiques flag · (1) typage métier en porte d'entrée non-aligné memory canon `phantomos_elastic_scope` · /tour v2.79.2 survendait creative/copywriting/brand · opérateur Abyss tracking-GTM specialist ne se reconnaissait pas dans le panorama. (2) Skills orchestrateurs lourds lançaient silent · asymétrie information agent (sait durée + étapes) vs opérateur (croyait instantané).",
+    "use_case_declencheur_1_onboarding": "Opérateur Abyss tracking-GTM specialist arrivé via Abyss workspace · onboarding /tour v2.79.2 surface creative/copywriting/brand dominante · friction adoption · le système doit accueillir tous métiers DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · l'opérateur se reconnaît dans le panorama, choisit où commencer · zéro typage profil métier en porte d'entrée.",
+    "use_case_declencheur_2_disclosure": "Skills orchestrateurs lourds (build-atlas-complete · onboard-brand · mine-voc · setup-brand · creative-brief-composer · produce-paid-matrix) lancent silent post-trigger · opérateur se retrouvait captif mi-cycle sans conscience claire de durée + démarche + livrable · asymétrie information agent vs opérateur · canon pré-engagement disclosure obligatoire requis (plan + ETA + démarche + confirmation close binaire).",
+    "diagnostic_gap_systemique": "Pattern systémique canon · onboarding holistique + disclosure pré-engagement = complémentaires · l'opérateur entre en conscience (panorama 360° visible) et reste en conscience (disclosure pré-skill orchestrator visible). Memory canon `phantomos_elastic_scope` plus memory canon `iterative_validation` (micro-bouchées validées au fur et à mesure pas proposition exhaustive d'un coup) cohérents canon v2.79.3."
+  },
+  "patches_structurels": [
+    "NEW doctrine canon racine `docs/system/onboarding-holistic-discipline.md` v2.79.3 (Agent 1) · doctrine onboarding agnostique + holistique · panorama 360° des 7 territoires métiers DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · zéro typage profil métier en porte d'entrée · 8 HR-OHD + 8 AP-OHD enforcement runtime",
+    "NEW doctrine canon racine `docs/system/engagement-disclosure-discipline.md` v2.79.3 (Agent 2) · doctrine engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds · 5 triggers canon (type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid) · 4 éléments pattern (plan ≤8 + ETA chiffrée + démarche + close binaire) · court-circuit autorisé UNIQUEMENT opt-out explicit · 8 HR-EDD + 8 AP-EDD enforcement runtime",
+    "Refonte `.claude/commands/tour.md` panorama 360° v2.79.3 (Agent 3) · refonte complète onboarding canon · 7 territoires DTC sur pied d'égalité visuelle · iconographie canon v2.79.2 préservée (✓ ◐ ○ ✗ ⚠) · statut shipped/partial/open par territoire · zéro question profil métier porte d'entrée · pédagogie `se reconnaître dans le panorama`",
+    "Patch `CLAUDE.md` root v2.79.3 (Agent 4) · sommaire 19 → 21 doctrines (NEW entries onboarding-holistic-discipline + engagement-disclosure-discipline funnel order canon respecté) + 2 NEW operator contract rules (onboarding holistique agnostique + pre-engagement disclosure obligatoire)",
+    "Patches 6 skills orchestrateurs lourds canon prioritaires disclosure pré-runtime (Agent 4) · `build-atlas-complete/SKILL.md` + `onboard-brand/SKILL.md` + `mine-voc/SKILL.md` + `setup-brand/SKILL.md` + `creative-brief-composer/SKILL.md` + `produce-paid-matrix/SKILL.md` · section disclosure pré-runtime canon ajoutée AVANT cycle runtime existing · pattern plan + ETA + démarche + close binaire confirmation"
+  ],
+  "files_patched": [
+    {"file": "docs/system/onboarding-holistic-discipline.md", "scope": "NEW doctrine canon racine onboarding agnostique + holistique panorama 360° 7 territoires DTC pied d'égalité visuelle (Agent 1)"},
+    {"file": "docs/system/engagement-disclosure-discipline.md", "scope": "NEW doctrine canon racine engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds (Agent 2)"},
+    {"file": ".claude/commands/tour.md", "scope": "Refonte v2.79.3 panorama 360° des 7 territoires DTC pied d'égalité visuelle · zéro typage métier porte d'entrée (Agent 3)"},
+    {"file": "CLAUDE.md", "scope": "Sommaire 19 → 21 doctrines (Agent 4 NEW entries onboarding-holistic + engagement-disclosure) + 2 NEW operator contract rules (onboarding holistique agnostique + pre-engagement disclosure obligatoire)"},
+    {"file": ".skills/skills/build-atlas-complete/SKILL.md", "scope": "Disclosure pré-runtime section ajoutée (Agent 4) · plan + ETA + démarche + close binaire confirmation"},
+    {"file": ".skills/skills/onboard-brand/SKILL.md", "scope": "Disclosure pré-runtime section ajoutée (Agent 4) · plan + ETA + démarche + close binaire confirmation"},
+    {"file": ".skills/skills/mine-voc/SKILL.md", "scope": "Disclosure pré-runtime section ajoutée (Agent 4) · plan + ETA + démarche + close binaire confirmation"},
+    {"file": ".skills/skills/setup-brand/SKILL.md", "scope": "Disclosure pré-runtime section ajoutée (Agent 4) · plan + ETA + démarche + close binaire confirmation"},
+    {"file": ".skills/skills/creative-brief-composer/SKILL.md", "scope": "Disclosure pré-runtime section ajoutée (Agent 4) · plan + ETA + démarche + close binaire confirmation"},
+    {"file": ".skills/skills/produce-paid-matrix/SKILL.md", "scope": "Disclosure pré-runtime section ajoutée (Agent 4) · plan + ETA + démarche + close binaire confirmation"},
+    {"file": "../../../decisions.md", "scope": "D#436 + D#437 captured workspace ROOT (Agent 5) · onboarding canon agnostique + engagement disclosure pré-engagement obligatoire"},
+    {"file": "_version.json", "scope": "Bump 2.79.2 → 2.79.3 + manifest path 2.79.3 + summary updated (Agent 5)"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.79.3 prepended (Agent 5)"},
+    {"file": "docs/internal/releases/manifest/2.79.3-manifest.json", "scope": "NEW · this manifest (Agent 5)"}
+  ],
+  "onboarding_holistic_coverage": {
+    "doctrine_canon_racine_NEW": "onboarding-holistic-discipline.md v2.79.3 (Agent 1) · 8 HR-OHD + 8 AP-OHD enforcement runtime",
+    "7_territoires_DTC_pied_egalite": [
+      "Creative (atlas créatif · hooks · angles · briefs · compose-creative)",
+      "Tracking (pixels · server-side GTM · consent mode · attribution · skills canon v2.80 backlog)",
+      "Media Buy (analyze-perf · audit-meta-account · audit-google-pmax · routine-perf · creative-testing-discipline)",
+      "Brand (positioning canvas Moore · voice Nielsen Norman 4D · archetypes 12/12 Mark+Pearson · validate-brand-voice-consistency)",
+      "Ops (mutation gate · validate-resources · capture-learning · learn-from-session · pattern detection daemon)",
+      "Business (unit economics · WBR · cohort retention · backlog v2.79.x)",
+      "Lifecycle (CRM email sequences · klaviyo flows · CRO landing · backlog v2.81+)"
+    ],
+    "iconographie_canon_v279_2_preserved": "✓ shipped (capabilité complète canon v2.79.3) · ◐ partial (capabilité partielle skills existants) · ○ open (capabilité backlog v2.80+ NEW skills) · ✗ absent (capabilité non-prévue) · ⚠ critical (gap structurel flag)",
+    "agnostique_entree": "Zéro question profil métier en porte d'entrée · l'opérateur découvre l'étendue · se reconnaît dans le panorama · choisit où commencer · skills latents annoncés transparent (status open avec backlog associé)",
+    "memory_canon_aligne": "phantomos_elastic_scope reinforced (système agnostique de domaine) · iterative_validation (micro-bouchées 7 territoires scan rapide vs proposition exhaustive d'un coup) · largo_cognitive_profile (visuel/matriciel pied d'égalité)"
+  },
+  "engagement_disclosure_coverage": {
+    "doctrine_canon_racine_NEW": "engagement-disclosure-discipline.md v2.79.3 (Agent 2) · 8 HR-EDD + 8 AP-EDD enforcement runtime",
+    "5_triggers_canon": [
+      "type: orchestrator (skills `type` frontmatter declared orchestrator)",
+      "duration estimée >5 min (skill estimated runtime exceeds 5 min)",
+      "spans sessions (skill output traverses session boundaries · ticket-grade)",
+      "2+ sub-skills déployés (skill orchestre 2+ sous-skills via Task tool)",
+      "producer heavy paid (skill type producer · output paid creatives · heavy compute)"
+    ],
+    "4_elements_pattern": [
+      "Plan (N étapes ≤8 · overload cognitif si >8)",
+      "ETA chiffrée (minutes OR range · jamais `rapide` ou `long` ou `patiente`)",
+      "Démarche (implication opérateur + livrable produit)",
+      "Close binaire confirmation (OK / J'attends · jamais open-ended)"
+    ],
+    "6_skills_canon_prioritaires_patches": [
+      "build-atlas-complete (orchestrator · spans sessions · 8 phases)",
+      "onboard-brand (orchestrator · 4 sub-skills · ~15 min ETA)",
+      "mine-voc (producer heavy · 30-60 min ETA · multi-source mining)",
+      "setup-brand (orchestrator · 7 steps · ~12 min ETA)",
+      "creative-brief-composer (producer heavy · 5-10 min ETA · brief + variants)",
+      "produce-paid-matrix (producer heavy · 10-15 min ETA · matrice ranked)"
+    ],
+    "court_circuit_autorise_opt_out_explicit": "UNIQUEMENT opérateur opt-out explicit `--no-disclosure` arg OR `operator/profile.json#preferences.disclosure_preference: silent` (opt-out expert post-N usages · JAMAIS opt-in default)",
+    "asymetrie_information_fermee": "Pré-v2.79.3 · agent sait durée + étapes + livrable · opérateur croit instantané · captif mi-cycle. Post-v2.79.3 · disclosure pré-engagement visible · opérateur s'engage en conscience · validation opt-in close binaire."
+  },
+  "decisions_captured": ["D#436", "D#437"],
+  "backlog_v279_3_plus": [
+    "Sprint v2.80 · 4-6 skills tracking-GTM NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode) · prérequis brief tracking specialist solide · close gap territoire Tracking statut open canon /tour v2.79.3",
+    "Sprint v2.79.x business pilotage backlog v2.79.1 (unit economics + WBR + cohort retention + audit-klaviyo-flows)",
+    "Sprint v2.80.x DR copywriting production backlog v2.79.1 (sales letter + email sequence + big-idea-canon + audit-proof-coverage)",
+    "Sprint v2.81+ CRO + lifecycle backlog v2.79.1 (audit-pdp + audit-landing + flow-builder-klaviyo)",
+    "Pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md)",
+    "Re-test live workspace fresh v2.79.3 sur KaraCare pour valider /tour panorama 360° + disclosure pré-runtime build-atlas-complete"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.79.3 = git revert HEAD strict · 2 doctrines NEW retirables (onboarding-holistic-discipline + engagement-disclosure-discipline) · /tour refondu (revert to v2.79.2 state) · CLAUDE.md root 2 NEW operator rules retirables (sommaire 21 → 19 doctrines + 2 rules retirables) · 6 skills disclosure section retirable (cycle runtime préservé · disclosure ajoutée AVANT exécution skill existing donc retirable sans casse fonctionnelle) · skills count 80 inchangé · slash commands 7 inchangé · doctrines 19 → 21 retirables → 19 baseline v2.79.2"
+}

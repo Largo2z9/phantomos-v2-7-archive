@@ -1,7 +1,7 @@
 ---
 name: onboard-brand
 type: orchestrator
-version: "1.0.0"
+version: "1.0.1"
 recommended_model: sonnet
 layer: territoire
 reasoning_pattern: null
@@ -35,6 +35,37 @@ disambiguates_against:
 ## Tone
 
 Chairman orchestrating a 4-step pipeline. Narrate each handoff briefly to the operator ("scan launching in background... structure built... validation pass..."). **NEVER** expose technical paths or field names. Keep the operator informed of progress without overloading.
+
+---
+
+## Engagement disclosure pré-runtime · canon v2.79.3
+
+Avant de lancer l'orchestration, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3) ·
+
+```
+Onboarding complet · ce qui va se passer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Plan
+  ─────────────────────────────────────────────────────────────────────
+  1. Structure + identité brand (setup conversationnel)
+  2. Scan du site en arrière-plan (snapshot URL)
+  3. Enrichissement contexte si docs fournis (ingest)
+  4. Check intégrité brand (validation pass)
+  5. Close Build chantiers (selon ton profil)
+
+  ETA           ~15-25 min (selon URL + docs fournis)
+  Implication   tu fournis nom/URL + valides aux gates intermédiaires
+  Livrable      brand structure peuplée niveau 1-2 · pending-validations chantiers prêts
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  OK pour lancer ? · ou tu préfères attendre / faire autre chose
+```
+
+ATTENDS confirmation explicite avant de lancer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.3.
+
+Cross-ref doctrine racine `docs/system/engagement-disclosure-discipline.md` v2.79.3.
 
 ---
 

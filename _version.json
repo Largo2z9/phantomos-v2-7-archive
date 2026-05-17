@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.79.2",
+  "template_version": "2.79.3",
   "released_at": "2026-05-17",
   "compatible_from": "2.0.0",
-  "summary": "Sprint patch hygiène v2.79.2 · clarté livrable opérateur-facing cross 5 surfaces (refonte /phantom retire Section 6 Decomposition Visibility + refonte /bird iconographie + refonte /breakdown + audit 4 autres slash commands + NEW doctrine output-clarity-discipline + patch CLAUDE.md root + patch doctrine Decomposition Visibility scope révisé `/phantom` exclu). Audit Largo test live KaraCare workspace v2.79.1 a flag 14 problèmes structurels post-enforcement runtime · incohérence 3 vs 4 niveaux (3 niveaux atlas richesse hypothèse/sourced/production-ready ≠ 4 NIVEAUX Decomposition Visibility) plus iconographie hétérogène cross-commands plus dejargonisation 12 termes plus cockpit scan rapide trop chargé (Section 6 matrices pédagogie hors scope `/phantom`). D#435 captured (termes niveaux distincts canon · scope `/phantom` exclu DVD · alignement cross-files v2.79.2). Backward compat strict additif sur sémantique (clarté ≠ casse fonctionnelle).",
-  "manifest": "docs/internal/releases/manifest/2.79.2-manifest.json"
+  "summary": "Sprint patch v2.79.3 · onboarding agnostique holistique + engagement disclosure pré-engagement. /tour refondu panorama 360° des 7 territoires métiers DTC (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) sur pied d'égalité visuelle. Skills orchestrateurs lourds canon disclosure pré-runtime obligatoire (plan + ETA + démarche + confirmation). 2 doctrines canon racine NEW (onboarding-holistic-discipline + engagement-disclosure-discipline). Post-recadrage Largo · l'opérateur ne se déclare pas profil métier en entrée · se reconnaît dans le panorama.",
+  "manifest": "docs/internal/releases/manifest/2.79.3-manifest.json"
 }
