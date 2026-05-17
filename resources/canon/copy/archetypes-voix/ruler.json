@@ -1,0 +1,93 @@
+{
+  "_schema": "canon-tool/1.1",
+  "_version": "1.0",
+  "id": "ruler",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Ruler",
+  "principle": "Voix d'autorité maîtrisée. Le Ruler n'a pas besoin de prouver son rang, il le porte. La marque incarne le standard, pas la promesse. Confiance assurée, raffinement contenu, langage qui pose et qui range. Le pouvoir, jamais le bruit.",
+  "structure": "Vocabulaire institutionnel, phrases pleines mais maîtrisées. Pas d'hyperbole, jamais de superlatif gratuit. Le ton porte la prééminence par l'aisance, pas par le volume. Cadence posée, formules qui clôturent. Pronoms à distance respectueuse.",
+  "gabarits": [
+    "[Marque] définit la référence depuis [période].",
+    "Ce que vous attendez de [catégorie], nous le tenons.",
+    "Aucun compromis sur [variable critique]. C'est le standard.",
+    "Le choix qui clôt la question."
+  ],
+  "when_works": [
+    "luxe, premium, héritage, automobile haut de gamme, horlogerie, finance privée",
+    "audiences établies, en quête de signal de statut et de fiabilité",
+    "marques institutions ou marques de référence catégorie",
+    "marchés où l'autorité héritée est un asset (le challenger paraît cheap)"
+  ],
+  "when_avoid": [
+    "marques challenger ou disruptives (l'autorité héritée sonne contradictoire)",
+    "audiences jeunes anti-establishment (le ton repousse)",
+    "catégories fun ou hédonistes (le ruler y est rigide)",
+    "marchés mass-market à prix bas (le ton paraît hors-sujet)"
+  ],
+  "combines_with": {
+    "hooks": [
+      "stat-choc",
+      "avant-apres",
+      "curiosity-gap"
+    ],
+    "frameworks": [
+      "fab",
+      "aida",
+      "4ps"
+    ],
+    "leads": [
+      "proof-led",
+      "offer-led"
+    ],
+    "angles": [
+      "identite",
+      "status-shift",
+      "mecanisme-unique"
+    ],
+    "emotions": [
+      "confiance",
+      "fierte",
+      "respect",
+      "stabilite"
+    ]
+  },
+  "anti_patterns": [
+    "Autorité performée (la marque revendique le rang qu'elle n'a pas)",
+    "Hauteur méprisante (l'audience se sent jugée plutôt qu'élevée)",
+    "Pompe vide (vocabulaire institutionnel sans substance produit)",
+    "Ruler challenger qui sonne forcé (l'absence d'héritage trahit le ton)",
+    "Rigidité qui éloigne (autorité sans aisance devient distance)"
+  ],
+  "examples": [
+    "Mercedes-Benz n'a jamais eu besoin de dire qu'elle était premium. The best or nothing dit ce qu'il faut sans hausser le ton.",
+    "Rolex ne parle pas de prix, ne parle pas de modes. La maison parle de ses garde-temps et de ceux qui les portent. Le reste se déduit.",
+    "American Express te dit Membership has its privileges depuis 40 ans. La phrase porte l'institution, pas le claim."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes",
+      "Mark & Pearson Hero and Outlaw 12 archetypes",
+      "Cialdini authority"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-16T00:00:00.000000Z"
+}

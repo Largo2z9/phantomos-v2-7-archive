@@ -1,7 +1,7 @@
 ---
 name: build-atlas-complete
 type: orchestrator
-version: "1.5.0"
+version: "1.6.0"
 recommended_model: sonnet
 reasoning_pattern: null
 mode: proposed
@@ -18,6 +18,7 @@ extension_hooks:
   - product_entity
   - friction_entity
 description: >
+  v1.6.0 (v2.78.2 decomposition visibility refactor) · NEW Phase Output Atlas Visibility Matriciel Multi-niveau obligatoire post-encoding entités (avant Step 9 Close) · 4 niveaux canon obligatoires (Décomposition produit cross-products · Many-to-many pain × audience matrix cross-atlas · Positionnement filtre par stage business · Méthode pédagogique verbale). Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` NEW v2.78.2. Distinction explicit audience produit-fit (toutes encoded) vs audience ciblage créa (filter sub-set positioning targeting). Backward compat strict additif (Phases 1-7 + Step 8 stage + Step 9 close preserved · NEW phase output insérée entre Step 8 et Step 9). HR-NEW + AP-NEW ajoutés guardrails.
   v1.4.0 (v2.68 progressive cartography refactor) · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot-brand · gate intermédiaire 1 · Phase 3 map-audiences hiérarchique parent/enfants · gate intermédiaire 2 · Phase 4 mine-voc + profile-audience enrichissement per audience). Mode `--fast-track` opérateur expert bypass gates auto-validate (opt-in flag OR config `auto_validate_after_n_brands` true). Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0 où gates étaient Gate A audiences + Gate B angles seulement). Cross-ref doctrine `docs/system/progressive-cartography-discipline.md` NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs light · fast-track flag opt-in default off · gates A+B angles preserved après Phase 4).
   v1.3.0 (v2.67 territoire-pure refactor) · Steps 8-9 stripped (produce-copy-brief + compose-creative) · align doctrine `docs/system/territory-discipline.md` shipped v2.67. Orchestrator scope = territoire substrat only · productions briefs+créas via `creative-brief-composer` post-atlas downstream (separate skill, separate invocation). Output explicite · complete strategic atlas substrate (specs + offers + audiences + angles + territoires scorés). BREAKING · operators v1.x qui invoquaient pour briefs+créas doivent invoquer `creative-brief-composer` post-`build-atlas-complete`. Migration documentée CHANGELOG v2.67.0. Backward compat strict additif sur Steps 1-7 unchanged (territoire chain preserved).
   v1.2.0 (v2.64 ontologie sémantique pure · pain_points + objections sub-audience + frictions sub-product) · Phase 3 deepen-brand-context (chain mine-voc + mine-vom) écrit désormais dans sub-parent locations · `audiences/{a_slug}/pain_points/` + `audiences/{a_slug}/objections/` + `products/{p_slug}/frictions/` (owned natif par parent path). Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved.
@@ -59,8 +60,10 @@ consumes:
   - resources/catalogues/hooks.json
   - resources/catalogues/angles.json
   - path: docs/system/progressive-cartography-discipline.md
+  - path: docs/system/decomposition-visibility-discipline.md
   - path: docs/system/territory-discipline.md
   - path: docs/system/investigation-posture.md
+  - path: docs/system/pain-benefit-chain.md
   - path: docs/doctrine/dtc-operator-playbook.md
   - path: docs/doctrine/audiences-cartography-doctrine.md
   - path: docs/doctrine/angle-anatomy-doctrine.md
@@ -95,6 +98,15 @@ disambiguates_against:
   profile-audience: "route to profile-audience standalone when operator wants audiences only, not the full strategic atlas."
   score-matrix: "route to score-matrix standalone when atlas is already populated and operator wants only territory prioritization."
 patch_notes:
+  v1.6.0:
+    - "v2.78.2 decomposition visibility refactor · NEW Phase Output Atlas Visibility Matriciel Multi-niveau insérée entre Step 8 (stage territories) et Step 9 (Close Investigation Posture)"
+    - "4 niveaux canon obligatoires · NIVEAU 1 Décomposition produit cross-products (specs · mécanismes · bénéfices 3 couches functional/emotional/identity) · NIVEAU 2 Many-to-many pain × audience matrix cross-atlas (ASCII obligatoire) · NIVEAU 3 Positionnement filtre par stage business (early/growth/scale · audience produit-fit vs ciblage créa distinction) · NIVEAU 4 Méthode pédagogique verbale"
+    - "Cross-ref doctrine canon racine `docs/system/decomposition-visibility-discipline.md` NEW v2.78.2 shipped Agent A Sprint v2.78.2"
+    - "Sister skills v2.78.2 cohérents · snapshot-brand · profile-audience · define-specs (chain entities encoded · Phase Atlas Visibility synthétise cross-atlas après tous returns)"
+    - "Forward-compat sister skills v2.80 · produce-positioning-canvas (Moore format) · define-brand-voice (4D) si shipped · NIVEAU 3 Positioning Statement consume si entity present"
+    - "HR-NEW · Phase output Atlas Visibility Matriciel obligatoire (post-encoding finale) · 4 niveaux matriciels canon obligatoires · Many-to-many matrix cross-products + cross-audiences obligatoire · Stage business filter obligatoire si signal détectable (ARR/proof points/domain age) · Audience produit-fit vs ciblage créa distinction explicit · Méthode pédagogique verbale obligatoire post-matrices"
+    - "AP-NEW · Encodage atlas silent sans synthèse matricielle finale · Synthèse prose-only sans Phase Atlas Visibility · Many-to-many implicite cross-products (opérateur déduit) · Stage business absent du filtre positionnement · Méthode pédagogique skip (opérateur ne sait pas comment l'atlas a été construit)"
+    - "Backward compat strict additif · Phases 1-7 chain skills preserved · Step 8 stage preserved · Step 9 close preserved (Investigation Posture 5 sections désormais consomme la synthèse matricielle Phase Atlas Visibility en amont · Observé section enrichie cross-niveaux)"
   v1.5.0:
     - "v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-discipline.md NEW v2.75.0."
   v1.4.0:
@@ -174,6 +186,7 @@ Chairman orchestrating a territoire substrate pipeline that produces the complet
 | **GATE B** (preserved v1.3.0) | inline operator validate | n/a | Operator accepts / corrects ranked angles |
 | 7. Score matrix | `score-matrix` (Task brand-wide) | Yes | Profil × Source d'angle matrix, top 3 axes créatifs selected |
 | 8. Stage territories | inline (substrate review) | n/a | Territories staged as proposals, ready for downstream production |
+| **8.5. Atlas Visibility Matriciel (NEW v1.6.0)** | inline (synthèse cross-atlas) | n/a | 4 niveaux canon · Décomposition produit · Many-to-many pain × audience · Stage business filter · Méthode pédagogique verbale |
 | 9. Close | inline (Investigation Posture 5 sections) | No | Synthesis delivered, no orphan close, handoff to `creative-brief-composer` proposed |
 
 **Mode `--fast-track`** · si flag `--fast-track` passed OR `operator/profile.json#preferences.auto_validate_after_n_brands` true détecté → skip Gate intermédiaire 1 + Gate intermédiaire 2 (auto-validate silent log). Gate A + Gate B preserved (structural decisions audiences finales + angles ranked). Default = gates light visible (premier-contact opérateur garde repère cognitif).
@@ -459,6 +472,84 @@ Next phase (outside this orchestrator) · materialize briefs + creatives via `cr
 
 ---
 
+## Phase Output Atlas · Visibility Matriciel Multi-niveau (canon v2.78.2)
+
+**MANDATORY** post-encoding entités · présenter synthèse matricielle multi-niveau canon doctrine `docs/system/decomposition-visibility-discipline.md` NEW v2.78.2 AVANT le Step 9 Close (Investigation Posture). Sans cette Phase, l'opérateur ne voit jamais la vue d'ensemble matricielle (product × pain × audience × positionnement × stage business) · output atlas reste prose-only · invalid.
+
+Après encoding toutes entités atlas (brand · products · audiences · pains · objections · frictions · angles · offers · learnings · strategy), présenter OBLIGATOIREMENT synthèse matricielle multi-niveau canon decomposition-visibility-discipline v2.78.2.
+
+### NIVEAU 1 · Décomposition produit cross-products
+
+Pour chaque produit · table compacte décomposition specs · mécanismes · bénéfices 3 couches canon `docs/system/pain-benefit-chain.md` (functional · emotional · identity, layer chargé identifié explicit) ·
+
+```
+PRODUCT [name]
+SPECS               MÉCANISMES                BÉNÉFICES 3 couches
+[atome 1]           [atome action 1]          Functional · [bénéfice]
+[atome 2]           [atome action 2]          Emotional  · [bénéfice]
+                                              Identity   · [bénéfice]
+                                                          ← layer chargé
+```
+
+Itérer pour les N produits encoded brand. Si produit unique · une table. Si multi-produits · N tables compactes empilées (séparateur visuel entre).
+
+### NIVEAU 2 · Many-to-many · pain × audience matrix cross-atlas
+
+Matrice ASCII OBLIGATOIRE cross-products + cross-audiences · skip = invalid output. Décompose explicitement quelle douleur frappe quelle audience avec intensité primary vs secondary ·
+
+```
+                       Audience-1    Audience-2    Audience-3   Audience-N
+                       (slug)        (slug)        (slug)       (slug)
+PNT-01 [pain label]      ✓✓ PRIMARY      ·            ✓           ·
+PNT-02 [pain label]         ·         ✓✓ PRIMARY      ·           ✓
+PNT-03 [pain label]         ✓             ✓        ✓✓ PRIMARY     ·
+PNT-NN ...
+─────────────────────────────────────────────────────────────────────
+Espace blanc paid          ·         INCONTESTÉ      ·            ·
+(compétitif intel)                   (5 concurrents
+                                      sur axe unique)
+```
+
+Légende canon · `✓✓ PRIMARY` (douleur dominante audience) · `✓` (douleur secondaire affecte audience) · `·` (zéro affect). Row `Espace blanc paid` (optional · ship si signal compétitif détecté Phase 6 produce-paid-angles) · pour chaque audience, repère où concurrence est faible/inexistante sur l'angle → opportunité paid prioritaire.
+
+### NIVEAU 3 · Positionnement filtre par stage business
+
+Stage business détecté (signal ARR estimée · proof points · domain age · funding signals) OU opérateur-déclaré. Table canon ·
+
+```
+STAGE détecté            [early | growth | scale]
+ARR estimée              [signal range]
+
+AUDIENCE PRIORITAIRE     [audience slug + rationale 1 ligne]
+ANGLES DOMINANTS         [3-5 angle ids ranked top]
+POSITIONING STATEMENT    [Moore format si produce-positioning-canvas
+                          shipped v2.80 · sinon stage hypothèse 1 ligne]
+
+Distinction critique opérateur ·
+Audience produit-fit     [toutes audiences encoded · ex audience-1 · audience-2 · audience-3]
+Audience ciblage créa    [filter sub-set selon positioning targeting · ex audience-2 only stage early]
+```
+
+**HR · Stage business filter obligatoire si signal détectable.** ARR signal absent ET proof points absents ET domain age inconnu → flag `stage = inconnu` · ne pas inventer. Sinon · stage déclaré explicit.
+
+**HR · Distinction explicit audience produit-fit vs ciblage créa.** Audience produit-fit = toutes audiences encoded Phase 4 (pertinentes pour le produit). Audience ciblage créa = sub-set filtré par positionnement stage-aware (ex · stage early → ciblage early adopters only, growth/scale audiences seront produit-fit mais pas ciblage créa runtime). Confusion = leak runtime · opérateur dépense paid sur audiences hors ciblage stage.
+
+### NIVEAU 4 · Méthode pédagogique verbale
+
+Verbaliser méthode décomposition canon · l'opérateur sait COMMENT l'atlas a été construit, pas seulement QUOI ·
+
+> *"J'ai cartographié l'atlas {brand} en 4 niveaux canon ·*
+> *1. Décomposition produit · specs/mécanismes/bénéfices 3 couches (functional · emotional · identity, layer chargé identifié)*
+> *2. Many-to-many · {N} pains × {M} audiences (matrix primary/secondary affectations · espace blanc paid si signal compétitif)*
+> *3. Stage business · {stage détecté} → audience prioritaire {slug} · {3-5 angles dominants}*
+> *4. Positionnement filter · {produit-fit toutes audiences} vs {ciblage créa sub-set stage-aware}*
+>
+> *L'atlas est désormais opérable cross-skills downstream · `produce-paid-angles` · `creative-brief-composer` · `compose-creative`. Validation systémique opérée par confidence chain explicit cross-entity."*
+
+**HR · Méthode pédagogique verbale obligatoire post-matrices.** Skip = opérateur ne sait pas comment l'atlas a été construit · runtime downstream skills consomment l'atlas en aveugle · debugging downstream impossible.
+
+---
+
 ## Step 9 · Close (Investigation Posture, 5 sections MANDATORY)
 
 **CRITICAL**: this is a strategic deliverable orchestrator, not a setup orchestrator. Investigation Posture is mandatory per `docs/system/investigation-posture.md`. Five sections explicit:
@@ -532,6 +623,17 @@ Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeli
 
 ## Guardrails
 
+- **HR-NEW · Phase output Atlas Visibility Matriciel obligatoire (v1.6.0)** · post-encoding entités atlas (brand · products · audiences · pains · objections · frictions · angles · offers · learnings · strategy) · Phase Atlas Visibility 4 niveaux canon obligatoire AVANT Step 9 Close. Skip = invalid output (l'opérateur ne voit jamais la vue d'ensemble matricielle product × pain × audience × positionnement × stage business). Doctrine racine · `docs/system/decomposition-visibility-discipline.md` NEW v2.78.2.
+- **HR-NEW · 4 niveaux matriciels canon obligatoires (v1.6.0)** · NIVEAU 1 Décomposition produit cross-products · NIVEAU 2 Many-to-many pain × audience matrix cross-atlas · NIVEAU 3 Positionnement filtre par stage business · NIVEAU 4 Méthode pédagogique verbale. Skip 1 = invalid output.
+- **HR-NEW · Many-to-many matrix cross-products + cross-audiences obligatoire (v1.6.0)** · ASCII matrix explicite avec `✓✓ PRIMARY` / `✓` / `·` symboles canon · skip = matrix implicite cross-products force opérateur à déduire affectations pain × audience.
+- **HR-NEW · Stage business filter obligatoire si signal détectable (v1.6.0)** · ARR estimée + proof points + domain age + funding signals → stage déclaré explicit (early/growth/scale). Aucun signal détectable → flag `stage = inconnu` · NEVER inventer.
+- **HR-NEW · Audience produit-fit vs ciblage créa distinction explicit (v1.6.0)** · audience produit-fit = toutes audiences encoded Phase 4 · audience ciblage créa = sub-set filtré par positionnement stage-aware. Confusion = leak runtime · opérateur dépense paid sur audiences hors ciblage stage. Skip = invalid output.
+- **HR-NEW · Méthode pédagogique verbale obligatoire post-matrices (v1.6.0)** · verbaliser les 4 niveaux canon de cartographie atlas appliqués · skip = opérateur ne sait pas comment l'atlas a été construit · runtime downstream skills consomment en aveugle · debugging impossible.
+- **AP-NEW · Encodage atlas silent sans synthèse matricielle finale (v1.6.0)** · NEVER ship atlas substrat sans Phase Atlas Visibility · `build-atlas-complete` v1.6.0+ MUST surface synthèse matricielle multi-niveau post-encoding entités.
+- **AP-NEW · Synthèse prose-only sans Phase Atlas Visibility (v1.6.0)** · NEVER substitute Investigation Posture 5 sections Close (Step 9) en lieu de Phase Atlas Visibility matricielle (Step 8.5). Close consomme la synthèse matricielle en amont, ne la remplace pas.
+- **AP-NEW · Many-to-many implicite cross-products (v1.6.0)** · NEVER force opérateur à déduire affectations pain × audience par inférence prose · ASCII matrix explicite obligatoire (NIVEAU 2 canon).
+- **AP-NEW · Stage business absent du filtre positionnement (v1.6.0)** · NEVER skip stage filter si signal détectable · stage = inconnu acceptable seulement si zéro signal · NEVER inventer stage.
+- **AP-NEW · Méthode pédagogique skip (v1.6.0)** · NEVER ship atlas matriciel sans verbaliser COMMENT l'atlas a été construit · l'opérateur perd la grammaire de raisonnement runtime.
 - **HR · Gates entre Phases canon (v1.4.0)** · build-atlas-complete v1.4.0+ doit insérer **gate light entre Phase 2 (drilling) → Phase 3 (audiences hiérarchique) → Phase 4 (enrichissement)**. Anti-pattern · chain skills sans validation operator entre paliers progressive cartography (dump synthesis bloc canon précédent v1.3.0 où seuls Gate A + Gate B existaient). Doctrine `docs/system/progressive-cartography-discipline.md` Section 8 Pattern gates light · format 1-2 lignes synthesis + 1 binaire validation/correction. Pas Q&A verbeux.
 - **HR · Fast-track opt-in opérateur expert (v1.4.0)** · gates intermédiaires auto-validate **seulement si opérateur explicit** (flag `--fast-track` passed dans invocation) OR config opt-in (`operator/profile.json#preferences.auto_validate_after_n_brands` true détecté). Default = gates light visible. Premier-contact opérateur garde gates pour repère cognitif. Gate A + Gate B **toujours preserved** quel que soit le mode (structural decisions audiences finales + angles ranked, jamais bypass).
 - **NEVER** run all phases sequentially blocking on one operator without heartbeat. Surface progress at each gate.
@@ -567,6 +669,13 @@ Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeli
 - `.skills/skills/produce-strategy/SKILL.md` · invokable en post-Phase 9 close si l'opérateur veut cadrer le focus Q{n} sur la brand atlas-complete (strategy.schema v1.0 canon shipped v2.58)
 - `.skills/skills/creative-brief-composer/SKILL.md` · downstream production briefs+créas post-atlas (separate invocation, operator chooses axe créatif)
 - `docs/system/progressive-cartography-discipline.md` · **NEW v2.68** · progressive cartography canon (Sections 3-7 phasing · Section 8 Pattern gates light) · doctrine source v1.4.0 refactor
+- `docs/system/decomposition-visibility-discipline.md` · **NEW v2.78.2** · doctrine canon racine v1.6.0 refactor · 4 niveaux matriciels obligatoires (Décomposition produit · Many-to-many pain × audience · Stage business filter · Méthode pédagogique verbale) · audience produit-fit vs ciblage créa distinction
+- `docs/system/pain-benefit-chain.md` · canon 3 couches bénéfices (functional · emotional · identity) · consume NIVEAU 1 Décomposition produit
+- `.skills/skills/snapshot-brand/SKILL.md` v2.78.2 cohérent · sister skill encoding products + offers + brand identity (Phase 1+2 chain)
+- `.skills/skills/profile-audience/SKILL.md` v2.78.2 cohérent · sister skill encoding audiences enrichies JTBD canon V3 8 dimensions (Phase 4b chain)
+- `.skills/skills/define-specs/SKILL.md` v2.78.2 cohérent · sister skill décomposition produit specs/mécanismes/bénéfices (consume NIVEAU 1)
+- `.skills/skills/produce-positioning-canvas/SKILL.md` (forward-compat v2.80 si shipped) · Moore positioning format pour NIVEAU 3 Positioning Statement
+- `.skills/skills/define-brand-voice/SKILL.md` (forward-compat v2.80 si shipped) · 4D brand voice cohérence NIVEAU 3 positionnement
 - `docs/system/territory-discipline.md` · v2.67 · layer territoire scope canon (build-atlas-complete = substrat territoire only, productions briefs+créas downstream)
 - `docs/system/investigation-posture.md` · 5-section close canon (Step 9 mandatory) · close ouvert Phase 4 vers production downstream via creative-brief-composer (out of scope build-atlas territoire-pure v1.3.0+)
 - `docs/system/scope-extension-discipline.md` · SED-X v2.65 · skill scope boundaries discipline
@@ -582,6 +691,10 @@ Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeli
 - `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)
 
 ---
+
+## Verdict v1.6.0
+
+v1.6.0 ship orchestrator decomposition visibility refactor · NEW Phase Output Atlas Visibility Matriciel Multi-niveau insérée entre Step 8 stage territories et Step 9 Close Investigation Posture · 4 niveaux canon obligatoires (NIVEAU 1 Décomposition produit cross-products specs/mécanismes/bénéfices 3 couches functional/emotional/identity · NIVEAU 2 Many-to-many pain × audience matrix cross-atlas ASCII obligatoire avec espace blanc paid si signal · NIVEAU 3 Positionnement filtre par stage business early/growth/scale audience produit-fit vs ciblage créa distinction explicit · NIVEAU 4 Méthode pédagogique verbale). Doctrine racine `docs/system/decomposition-visibility-discipline.md` NEW v2.78.2. Sister skills v2.78.2 cohérents (snapshot-brand · profile-audience · define-specs). Forward-compat sister skills v2.80 produce-positioning-canvas (Moore format NIVEAU 3) + define-brand-voice (4D). Backward compat strict additif · Phases 1-7 chain skills preserved · Step 8 stage preserved · Step 9 close preserved (Investigation Posture consomme synthèse matricielle Phase Atlas Visibility en amont · Observé section enrichie cross-niveaux).
 
 ## Verdict v1.4.0
 

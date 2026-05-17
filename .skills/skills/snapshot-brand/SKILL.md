@@ -1,13 +1,14 @@
 ---
 name: snapshot-brand
 type: producer
-version: "1.4.1"
+version: "1.5.0"
 isolation_scope: brand_only
 layer: territoire
 recommended_model: sonnet
 reasoning_pattern: null
 operator_facing: true
 patch_notes:
+  v1.5.0: "v2.78.2 decomposition visibility discipline · NEW Phase output Decomposition Visibility matricielle obligatoire APRÈS 5 sections investigation-posture (vs replace · additif strict). 4 niveaux canon · NIVEAU 1 décomposition produit (specs · mécanismes · bénéfices 3 couches functional/emotional/identity) · NIVEAU 2 many-to-many pain × audience matrix ASCII si ≥2 pains AND ≥2 audiences · NIVEAU 3 positionnement filtre par stage business (early/growth/scale) · NIVEAU 4 méthode pédagogique verbale obligatoire. 5 NEW HR · Phase Decomposition obligatoire · 4 niveaux skip = invalid · many-to-many matrix si signaux · stage business filter si ARR signals · méthode pédagogique verbatim canon. 3 NEW AP · synthèse prose-only sans Decomposition Visibility · many-to-many implicite · 3 niveaux au lieu de 4. Cross-refs · docs/system/decomposition-visibility-discipline.md v2.78.2 canon racine + pain-benefit-chain.md (functional · emotional · identity 3 couches). Cohérent sister skills patches parallèles v2.78.2 · build-atlas-complete + profile-audience + define-specs. Backward compat strict additif · existing Phase output + 5 sections IP preserved."
   v1.4.1: "v2.69.1 hard rules UX live captés session-précédente · No anticipatory output identity pre-scrape (anti-hallucination CI · violation Stepprs grip socks hallucination) · No defaults inferred workspace fresh premier contact (transparency canon · explicit confirm) · URL intake proactive chain scrape async parallèle setup Q&A (Proactive multi-skill deployment canon CLAUDE.md root) · Sitemap discovery before fetch pages devinées (anti-404 silent · navigation crawl fallback). Backward compat strict additif · 4 NEW HR ajoutées section Hard Rules existing · zero override behavior · canon CI + investigation-posture cross-refs renforcés."
   v1.4.0: "v2.68 progressive cartography refactor · drop 4 closed questions about audience anti-pattern (canon Contextual Intelligence No questionnaire before action). Introduce Phase 1 macro confirmation gate intermédiaire light (synthesis 3-5 lignes produit+offer+positionning) puis Phase 2 drilling autonome (drill PDP details + reviews verbatims tagged + offers + funnel signals · synthesis 5 sections investigation-posture). Gate light entre Phase 1 et Phase 2 (binaire valide/corrige · pas Q&A). Cross-ref progressive-cartography-discipline.md NEW v2.68. Backward compat strict additif sur Steps 1-6 scrape (territoire chain preserved) · Step 7 refactor en Step 7a Phase 1 + Step 7b Phase 2 avec gate intermédiaire. Mode fast-track via /operator/profile.json#preferences.auto_validate_after_n_brands true bypass gate Phase 1."
   v1.0.1: "v2.51 operator-fiche-output canonique template applied · trust-and-deepen close + Movement 4 hand-off refactor langage métier. Close menu post-synthesis · drop skill names en parenthèses (mine-voc, mine-vom, deepen-brand-context) → descriptions plain language uniquement (15 min validation guidée / 15 min écoute clients / 25 min écoute marché / 45 min full). Movement 4 hand-off Step 5 · drop wording `mine-voc fait X` / `produce-paid-angles consomme Y` → langage métier accessible (`écoute clients Trustpilot et forums` au lieu de nommer skill, `set d'angles ranked prêt brief créa` au lieu de `produce-paid-angles consume`). Cohérent template canonique resources/templates/operator-fiche-output.md."
@@ -16,6 +17,7 @@ patch_notes:
   v1.3.0: "v2.58 coverage extend · 4 sub-steps additifs strict pour combler orphans audit v2.57. (1) Step 7 sub-step · compute brand.brand_equity_level enum (low/medium/high) depuis heuristique financials.monthly_revenue + proofs.press_mentions + market.sophistication, stage via mutation gate confidence 0.6. (2) Step 7 sub-step · init brand.creative_zone {min, max, dominant, _observed_on_n_creatives:0} depuis identity.brand_personality + tone_of_voice.register + sector heuristique, stage confidence 0.5 (incrémenté ultérieurement par decompose-ad cumul). (3) Step 2/3 HTML scraping extend · scanner spec.sustainability.eco_claims[] + certifications[] + packaging_type (confidence 0.7 si claim explicit PDP, 0.4 si déduit visuellement). (4) Step 4 offers extraction · auto-calc spec.pricing.price_per_unit (value=price÷pack_quantity, unit depuis specs.weight/volume/package_quantity, currency depuis pricing.currency, confidence 0.9 calcul mathématique direct). Backward compat strict · Steps 0-7 existing intacts, sub-steps additifs uniquement. Closes 4 orphans audit v2.57."
   v1.3.1: "v2.61 doctrine consume · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (breakthrough-advertising-5-stages, audiences-cartography). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
 description: >
+  v1.5.0 (v2.78.2 decomposition visibility) · Phase output NEW section Decomposition Visibility matricielle obligatoire APRÈS 5 sections IP · 4 niveaux canon (décomposition produit specs/mécanismes/bénéfices 3 couches · many-to-many pain × audience matrix · stage business filter · méthode pédagogique verbale). Additif strict · existing Phase output preserved.
   v1.4.0 (v2.68 progressive cartography refactor) · Phase 1 macro confirmation light (3-5 lignes produit+offer+positionning · gate binaire valide/corrige) puis Phase 2 drilling autonome (drill PDP details + reviews verbatims tagged + funnel signals · synthesis 5 sections investigation-posture). Drop 4 closed questions about audience anti-pattern · drill-down autonome reviews + verbatims tagged remplace Q&A audience.
   v1.3.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (breakthrough-advertising-5-stages, audiences-cartography). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.3.0 (v2.58 coverage extend) · 4 sub-steps additifs · brand_equity_level heuristic auto · creative_zone init heuristic · sustainability HTML scraping (eco_claims, certifications, packaging_type) · price_per_unit auto-calc depuis variants. Closes 4 orphans audit v2.57.
@@ -912,6 +914,76 @@ L'opérateur dit `A` ou `A+B` ou autre. L'agent enchaîne le drill-down sur l'ax
 
 **Gate Phase 2 → Phase 3 (downstream audiences)** · l'output Phase 2 termine par UNE question macro de routing aussi · *"on attaque Phase 3 audiences ?"* (la phase suivante de progressive cartography enrichit le layer audience via drill autonome sur verbatims tagged · routage interne silencieux vers `map-audiences` ou `profile-audience` downstream). Si operator répond `oui` / `go` → agent invoque le skill audience downstream silencieusement. Si operator pivote sur un autre axe (ex audit perf, brief créa direct) → respecter le pivot, le routage Phase 3 attend.
 
+## Phase Output · Decomposition Visibility (canon v2.78.2)
+
+Après la synthèse 5 sections investigation-posture (Observé · Déduit · Inconnu · Leviers · Close ouvert), présenter OBLIGATOIREMENT matrices ASCII canon · 4 niveaux décomposition. Cette phase NE remplace PAS la synthèse 5 sections IP, elle s'ajoute APRÈS, en cohérence canon `decomposition-visibility-discipline.md` v2.78.2. Objectif · rendre visible la décomposition logique du produit (specs · mécanismes · bénéfices 3 couches), expliciter le many-to-many produit × pain × audience, filtrer le positionnement par stage business, verbaliser la méthode pédagogique pour que l'opérateur comprenne *comment* l'agent a raisonné.
+
+### NIVEAU 1 · Décomposition produit (specs · mécanismes · bénéfices)
+
+Pattern matriciel obligatoire ·
+
+```
+SPECS (ce qu'il EST)       MÉCANISMES (ce qu'il FAIT)
+[atomes objectifs]         [atomes action mesurable]
+
+BÉNÉFICES 3 couches canon pain-benefit-chain
+Functional   [bénéfice visible mesurable]
+Emotional    [bénéfice ressenti subjectif]
+Identity     [bénéfice qui je suis · identitaire]
+             ← layer le plus chargé sur audience cible
+```
+
+`SPECS` = atomes objectifs (matériau, taille, prix, composition, certifications, durée). Sourcés Step 2 scrape PDP + Step 3 spec.json. `MÉCANISMES` = atomes action mesurable (ce que le produit *fait* matériellement · "absorbe l'humidité 3x plus", "réduit la friction de 60%", "diffuse 8 heures"). Distinction stricte · une spec décrit, un mécanisme agit. Si tu écris "matériau respirant" c'est une spec (passive) · "évacue la transpiration" est un mécanisme (action). `BÉNÉFICES 3 couches` canon `pain-benefit-chain.md` · Functional = mesurable extérieur ("pieds secs toute la journée") · Emotional = ressenti subjectif ("confort apaisant qui détend") · Identity = projection identitaire ("je suis quelqu'un qui prend soin de soi"). Marquer le layer le plus chargé sur l'audience cible (souvent Identity sur DTC mature, Functional sur fresh brand pain-driven).
+
+### NIVEAU 2 · Many-to-many (pain × audience)
+
+Matrice ASCII obligatoire si ≥2 pains AND ≥2 audiences identifiées (drill Section 2 Déduit · hypothèses audiences + Section 1 Observé · pains sourcés reviews/verbatims). Exemple format ·
+
+```
+                Audience1   Audience2   Audience3
+Pain-1            ✓✓ PRIMARY    ·         ✓
+Pain-2              ·       ✓✓ PRIMARY    ·
+Pain-3              ·           ✓       ✓✓ PRIMARY
+Espace blanc paid (si compétitif intel disponible)
+```
+
+`✓✓ PRIMARY` = pain dominant pour cette audience (volume verbatims, intensité émotionnelle). `✓` = pain présent mais secondaire. `·` = pain absent ou non observé. `Espace blanc paid` (ligne optionnelle si veille concurrentielle disponible) · zones de la matrice non occupées par les compétiteurs (territoire wedge paid potentiel). Si <2 pains OR <2 audiences identifiées dans cette run · skip la matrice et annoter explicit *"matrice many-to-many skippée · signaux insuffisants (1 pain identifié OR 1 audience)"*. Ne jamais produire une matrice 1×1 qui simule le many-to-many sans signal.
+
+### NIVEAU 3 · Positionnement filtre par stage business
+
+Si stage business inférable depuis context (ARR · domain age · proof points · reviews count · press mentions) · table obligatoire ·
+
+```
+STAGE              AUDIENCE PRIORITAIRE       ANGLE DOMINANT
+Early (0-500k)     1 audience focus           Identity heavy
+Growth (500k-3M)   2 audiences                Identity + Functional
+Scale (3M+)        3-4 audiences              Diversifier
+```
+
+Marquer la ligne stage détecté (e.g. **Early** si domain <12 mois + reviews <100 + zero press tier-1 · **Growth** si 100-1000 reviews + national press + Trustpilot rating cohérent · **Scale** si tier-1 press + 1000+ reviews + multi-marché). Si stage non-inférable depuis signaux observés · skip la table et annoter explicit *"stage business non-inférable · signaux financials + proofs insuffisants"*. Ne jamais hardcoder un stage par defaults.
+
+Plus distinction explicit · `audience produit-fit` ≠ `audience ciblage créa` (si opérateur déclare positioning targeting strategy). L'audience produit-fit est qui utilise et bénéficie réellement (sourcing reviews). L'audience ciblage créa est qui on adresse en paid (intent + acquisition cost + LTV cohort). Les deux peuvent diverger sur DTC mature · une audience produit-fit large peut être ciblée via une niche précise haute LTV en paid. Distinguer explicitement si signaux le permettent.
+
+### NIVEAU 4 · Méthode pédagogique verbale
+
+Toujours verbaliser comment l'agent a décomposé. Verbatim canon obligatoire (adapté langue opérateur) ·
+
+> *"J'ai décomposé {brand} en 4 niveaux logiques · ce que le produit EST, ce qu'il FAIT, ce que ça CHANGE, à QUI ça répond. Puis filtre positionnement par stage business [détecté {stage}] · [audience prioritaire {audience}]. Le produit est many-to-many · 1 produit · N pains · M audiences."*
+
+Cette verbalisation explicite la méthode de décomposition pour l'opérateur (transparency canon · agent qui montre comment il raisonne, pas seulement ce qu'il produit). Posture · pédagogique brève, jamais "voici mes étapes en 12 sous-points". Une phrase dense canon. Adapter `{brand}`, `{stage}`, `{audience}` aux signaux observés. Si stage non-inférable · drop la mention stage et garder uniquement "J'ai décomposé en 4 niveaux logiques · EST · FAIT · CHANGE · QUI · le produit est many-to-many".
+
+**Hard rules Phase Decomposition Visibility** ·
+- 4 niveaux obligatoires · skip un niveau = output invalid (downgrader sortie + flag).
+- NIVEAU 1 toujours présent (specs + mécanismes + 3 couches bénéfices canon).
+- NIVEAU 2 many-to-many matrix obligatoire si ≥2 pains AND ≥2 audiences identifiées · sinon annotation explicit skip.
+- NIVEAU 3 stage business filter obligatoire si inférable depuis ARR/proofs/reviews · sinon annotation explicit skip.
+- NIVEAU 4 méthode pédagogique verbale toujours présente · verbatim canon adapté langue opérateur.
+
+**Anti-patterns Phase Decomposition Visibility** ·
+- AP-DV-1 · Synthèse prose-only sans Phase Decomposition Visibility (5 sections IP seules · 4 niveaux skip silencieusement) → VIOLATION canon v2.78.2 systémique.
+- AP-DV-2 · Many-to-many implicite (opérateur doit déduire la matrice depuis prose) → toujours expliciter en matrice ASCII si signaux suffisants.
+- AP-DV-3 · 3 niveaux au lieu de 4 (skip bénéfices 3 couches functional/emotional/identity OR skip stage business filter OR skip méthode pédagogique) → invalid output.
+
 ### Sub-step · brand_equity_level heuristic auto (v1.3.0 NEW · v2.58)
 
 Avant le rendu des 5 sections operator-facing, compute `brand.brand_equity_level` (enum `[low | medium | high]`) depuis heuristique combinée ·
@@ -1095,6 +1167,14 @@ I sort and file automatically.
 - **HR-v1.4.1-NEW-3 · URL intake · proactive chain canon · scrape async + setup Q&A en parallèle.** Quand opérateur paste URL e-com (Shopify · homepage · PDP) en premier OR mi-session message · agent DOIT déclencher proactive chain · (1) lancer scrape URL en async background via Task tool snapshot-brand · (2) EN PARALLÈLE poser 2-3 questions setup minimal si workspace fresh · (3) quand setup Q&A done · synthese scrape déjà prêt · enchaîner Phase 1 macro confirmation immédiate. Anti-pattern · attendre setup Q&A complet avant lancer scrape (séquentiel · perd 1-2 min wall-time inutile). Canon root CLAUDE.md "Proactive multi-skill deployment" · obvious chain ≥2 sub-skills = deploy silently parallèle.
 - **HR-v1.4.1-NEW-4 · Sitemap discovery before guessing pages.** Avant fetch pages additionnelles devinées au-delà de PDP/homepage (about · faq · reviews · etc.) · l'agent DOIT essayer `/sitemap.xml` OR `/robots.txt` parse OR scan homepage navigation links pour discoverability paths réels. Évite 404 silencieux qui perdent context utile. Pattern observé · agent fetch `/pages/about` direct sur Stepprs.com · 404 · about page existe ailleurs (vérifier sitemap d'abord). Si sitemap absent · fallback navigation crawl homepage anchor links pour discoverability.
 
+### Hard Rules v1.5.0 NEW (v2.78.2 · Decomposition Visibility Discipline)
+
+- **HR-v1.5.0-NEW-1 · Phase output Decomposition Visibility obligatoire après 5 sections IP.** Tout output Phase 2 (Step 7b synthesis) DOIT enchaîner avec Phase Decomposition Visibility (4 niveaux matriciels canon) APRÈS la synthèse 5 sections investigation-posture (Observé · Déduit · Inconnu · Leviers · Close ouvert). La Phase Decomposition Visibility ne remplace PAS les 5 sections IP, elle s'ajoute en aval. Output qui termine sur Section 5 Close ouvert sans présenter les 4 niveaux décomposition = VIOLATION canon v2.78.2. Anti-pattern legacy v1.4.x · "synthèse prose-only sans visualisation matricielle décomposition" → DROPPED v1.5.0.
+- **HR-v1.5.0-NEW-2 · 4 niveaux matriciels canon obligatoires · skip 1 = invalid output.** NIVEAU 1 décomposition produit (specs · mécanismes · bénéfices 3 couches functional/emotional/identity canon `pain-benefit-chain.md`) · NIVEAU 2 many-to-many pain × audience matrix ASCII si signaux suffisants · NIVEAU 3 positionnement filtre par stage business (Early/Growth/Scale) si inférable · NIVEAU 4 méthode pédagogique verbale toujours présente. Skip un niveau silencieusement (sans annotation explicit raison signaux insuffisants) = output invalid · downgrader sortie + flag à l'opérateur.
+- **HR-v1.5.0-NEW-3 · Many-to-many matrix obligatoire si ≥2 pains AND ≥2 audiences identifiées.** Si Section 1 Observé sourcing pains ≥2 (verbatims reviews · forums · PDP) AND Section 2 Déduit audiences ≥2 (hypothèses avec confidence chain) · présenter matrice ASCII NIVEAU 2 obligatoirement. Marquer PRIMARY pain × audience dominante + relations secondaires + espace blanc paid (si veille concurrentielle disponible). Ne jamais laisser le many-to-many implicite en prose · canon visibilité décomposition exige matrice explicite.
+- **HR-v1.5.0-NEW-4 · Stage business filter obligatoire si inférable depuis ARR signals.** Si signaux financials (monthly_revenue) OR proofs.press_mentions OR reviews count OR domain age OR market.sophistication permettent d'inférer stage business (Early 0-500k · Growth 500k-3M · Scale 3M+) · présenter table NIVEAU 3 obligatoirement avec ligne stage détecté marquée. Distinguer audience produit-fit (reviews observed) vs audience ciblage créa (intent + LTV declared) si signaux le permettent. Si signaux insuffisants · skip avec annotation explicit *"stage non-inférable · signaux insuffisants"* · jamais hardcode default stage.
+- **HR-v1.5.0-NEW-5 · Méthode pédagogique verbale obligatoire · verbatim canon adapté langue opérateur.** NIVEAU 4 doit toujours verbaliser comment l'agent a décomposé · verbatim canon *"J'ai décomposé {brand} en 4 niveaux logiques · ce que le produit EST, ce qu'il FAIT, ce que ça CHANGE, à QUI ça répond. Puis filtre positionnement par stage business [détecté {stage}] · [audience prioritaire {audience}]. Le produit est many-to-many · 1 produit · N pains · M audiences."* (adapté langue opérateur · EN équivalent runtime detection). Transparency canon · agent montre comment il raisonne, pas seulement ce qu'il produit. Posture pédagogique brève · une phrase dense canon, jamais une décomposition en 12 sous-points.
+
 ---
 
 ## v1.8 Field Awareness (2026-04)
@@ -1135,6 +1215,8 @@ The `_TEMPLATE` is at v1.8. When scraping a product page, you must look for and 
 
 ## Cross-references
 
+- `docs/system/decomposition-visibility-discipline.md` (NEW v2.78.2 · canon racine) · doctrine 4 niveaux matriciels obligatoires post-synthèse 5 sections IP · NIVEAU 1 décomposition produit (specs · mécanismes · bénéfices 3 couches) · NIVEAU 2 many-to-many matrix · NIVEAU 3 stage business filter · NIVEAU 4 méthode pédagogique verbale. Implémenté ici Phase Output Decomposition Visibility (Step 7b extend v1.5.0). Sister skills consumers cohérents · `build-atlas-complete` + `profile-audience` + `define-specs` (tous patches v2.78.2 parallèles).
+- `docs/system/pain-benefit-chain.md` · canon 3 couches bénéfices · Functional (mesurable extérieur) · Emotional (ressenti subjectif) · Identity (projection identitaire). Consommé NIVEAU 1 décomposition produit Phase Decomposition Visibility v1.5.0.
 - `docs/system/progressive-cartography-discipline.md` (NEW v2.68) · Phase 1 Macro confirmation + Phase 2 Drilling autonome implémenté ici dans Steps 7a + 7b. Doctrine canon · drop questionnaire pre-action, drill-down autonome, gate light binaire entre phases. Sections 3-4 spécifient le contrat opérationnel des deux phases.
 - `docs/system/territory-discipline.md` (v2.67) · layer territoire pattern · snapshot-brand classified `layer: territoire` (cf frontmatter). Steps 1-6 scrape produisent substrat canonisé · spec.json + offers.json + profile.json draft. Steps 7a+7b livrent synthèse macro+drill autonome operator-facing sans corrompre cycle promotion canon.
 - `docs/system/contextual-intelligence.md` (master doctrine) · "No questionnaire before action" canon · agent reasons not form-fills. Hard Rule "No Q&A premature on audience" enforce ce canon spécifique au layer audience.
@@ -1147,3 +1229,5 @@ The `_TEMPLATE` is at v1.8. When scraping a product page, you must look for and 
 - `.skills/skills/produce-paid-angles/SKILL.md` · downstream pour produire angles avec confidence chain héritée audience + brand.
 - `.skills/skills/map-audiences/SKILL.md` · downstream Phase 3 audiences (routé depuis Step 7b close ouvert "on attaque Phase 3 audiences ?").
 - `.skills/skills/profile-audience/SKILL.md` · downstream Phase 3 audiences alt-route depuis Step 7b.
+- `.skills/skills/build-atlas-complete/SKILL.md` · sister skill consumer patches parallèle v2.78.2 (Decomposition Visibility cohérent atlas pipeline).
+- `.skills/skills/define-specs/SKILL.md` · sister skill consumer patches parallèle v2.78.2 (NIVEAU 1 décomposition produit cohérent specs production).

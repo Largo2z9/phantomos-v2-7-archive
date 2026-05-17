@@ -1,7 +1,8 @@
 ---
 name: profile-audience
-version: 1.6.0
+version: 1.7.0
 patch_notes:
+  - "1.7.0 (v2.78.2 decomposition visibility) · NEW Output section `Audience Visibility Matriciel` après encoding 8 dimensions canon V3 · matrice ASCII audience × pain × angle obligatoire si ≥2 pains owned sub-audience · stage business filter (early / growth / scale) si signal détectable · méthode pédagogique verbale explicit (8 dimensions résumées + many-to-many audience-pain-angle). HR10-HR14 + AP10-AP13 ajoutés. Backward compat strict additif · existing 8 dimensions + 5 sections IP preserved · operator output template v2.54 preserved (template legacy reste valide, NEW section l'enrichit). Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.78.2 (canon racine sister Sprint A)."
   - "1.2.0 · v2.39+ · Step 0ter framework awareness (4 questions cartography pédagogie inline)"
   - "1.3.0 · v2.54 investigation posture refactor surface · audiences présentées comme hypothèses avec confidence chain explicite (TRÈS faible par défaut sans mine-voc · faible 1-2 indicateurs site · moyenne mine-voc partiel · forte mine-voc + analytics convergents). Operator output template HR6 + HR8 restructurés · chaque audience porte hypothèse / confidence / indicateurs sources / validation requise / anti-pattern à respecter. Skill termine sur close drill-down macro · lancer mine-voc maintenant vs valider intuitivement et continuer. Préserve mécanismes 8 dimensions Schwartz double-stage problem_map. Refacto uniquement la posture surface · présentation comme hypothèse vs persona analytique. Cross-ref docs/system/investigation-posture.md."
   - "1.3.1 · v2.55 audit consume canon matrices · consumes: enrichi (archetypes-voix, heuristiques-persuasion, creative-formula.md) + HR0bis NEW Load canon matrices force lecture batch via phantom-canon.py + cross-product canon × audience obligatoire en HR3 Dimensions 1/6/7 (canon_ref cité Layer A trace + profile.json#lineage). Aligne déclaration consumes: avec ce que les Steps lisent réellement. Anti-pattern banni · halluciner archetype ou biais audience-side sans mapping canon. Master doctrine ré-activé · PhantomOS reasons over a business universe, canon dormant = output générique averaged-LLM."
@@ -17,6 +18,7 @@ subagent_safe: true
 mode: proposed
 operator_facing: true
 description: |
+  v1.7.0 (v2.78.2 decomposition visibility) · NEW Output section `Audience Visibility Matriciel` après encoding 8 dimensions canon V3 · matrice ASCII audience × pain × angle si ≥2 pains owned · stage business filter (early/growth/scale) · méthode pédagogique verbale (8 dimensions résumées + many-to-many). Backward compat strict additif.
   v1.6.0 (v2.64 ontologie sémantique pure) · pain_points + objections passent en SUB-AUDIENCE · stage `brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json` (owned natif par parent path). Read désormais depuis sub-audience direct (pas de filter affected_audiences[] nécessaire · l'audience parente est implicite). Backward compat strict additif · lecture fallback top-level v2.63 collections + profile sub-fields legacy v1.7 preserved.
   v1.5.0 (v2.63 ontologie pure) · BREAKING refactor pain_points + objections passent en COLLECTIONS TOP-LEVEL séparées · stage `brands/{slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/objections/{OBJ-NN}.json` au lieu de sub-fields profile.json legacy. Read désormais depuis collections (scan filtré par affected_audiences contains audience_slug). Profile schema v2.0 BREAKING · sub-fields legacy DEPRECATED write · read fallback preserved.
   v1.4.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (audiences-cartography, objections-mapping, pain-benefit-chain, breakthrough-advertising-5-stages). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
@@ -52,6 +54,10 @@ consumes:
   - path: docs/doctrine/objections-mapping-doctrine.md
   - path: docs/doctrine/pain-benefit-chain-doctrine.md
   - path: docs/doctrine/breakthrough-advertising-5-stages.md
+  - path: docs/system/decomposition-visibility-discipline.md
+  - path: docs/system/pain-benefit-chain.md
+  - path: docs/system/investigation-posture.md
+  - path: docs/system/audience-cartography.md
 produces_validations_for: []
 produces_proposals_for:
   - brands/{slug}/audiences/{audience_slug}/profile.json
@@ -510,13 +516,156 @@ L'opérateur arbitre macro. Pas de menu décoratif, UNE question avec reco.
 - JAMAIS nommer skill (`mine-voc`, `produce-paid-angles`) en surface · routing silencieux à l'agent après choix opérateur.
 - JAMAIS afficher persona inventé comme analytique (anti-pattern AP-2 doctrine). Toujours flaggué hypothèse avec confidence chain.
 
-### HR9 · Anti-patterns
+### HR10 · NEW Output section `Audience Visibility Matriciel` obligatoire (v2.78.2 decomposition visibility)
+
+Après encoding 8 dimensions canon V3 (HR3) + 5 sections IP (Observé · Déduit · Inconnu · Leviers · Close ouvert per `docs/system/investigation-posture.md`), présenter OBLIGATOIREMENT vue matricielle canon `decomposition-visibility-discipline` v2.78.2.
+
+L'opérateur ne doit jamais voir l'encoding 8 dimensions sans la synthèse matricielle finale. Encoding silent sans visibilité = AP10 banni.
+
+Section NEW à émettre AVANT le close investigation posture (avant la question macro drill-down HR8). Structure complète canon · cf section dédiée "Output · Audience Visibility Matriciel (canon v2.78.2)" infra.
+
+### HR11 · Matrice audience × pain × angle obligatoire si ≥2 pains owned
+
+Si l'audience encodée a sub-collection `audiences/{a_slug}/pain_points/PNT-NN.json` contenant ≥2 entités owned (post-HR5 stage), émettre matrice ASCII canon (audience header + pain_points listing + angles proposed vers `produce-paid-angles` downstream).
+
+Si <2 pains owned · skip matrice ASCII · noter "matrice activée à partir de 2 pains owned, actuellement {N}" en surface (transparence opérateur).
+
+Le many-to-many (audience ↔ N pains ↔ N angles) doit être explicit, JAMAIS implicite. Opérateur ne déduit pas la relation, l'agent la trace.
+
+### HR12 · Stage business filter obligatoire si signal détectable
+
+Si stage business inférable depuis brand context (signal observable · ARR mentionné, proof points encodés brand.json#financials, domain age via Wayback, traction signals stratégie), émettre table canon ·
+
+```
+STAGE business        [early | growth | scale]
+Audience priorité     [primary | secondary | backup] selon stage
+Angle dominant        [identity heavy | functional + identity | diversifié]
+```
+
+Si zéro signal détectable · skip table + noter "stage business non détectable depuis brand context actuel, table activée si signal ajouté brand.json#financials ou via snapshot-brand re-run".
+
+L'inférence stage doit citer son signal source (anti-pattern · stage inventé sans signal observable).
+
+### HR13 · Audience produit-fit vs ciblage créa distinction explicit
+
+Dans le header matrice canon, distinguer deux statuts orthogonaux ·
+
+- **Audience produit-fit** · toutes les audiences encoded retain by product (par définition encoded = produit-fit, sinon supprimée upstream)
+- **Audience ciblage créa** · enum `primary | secondary | backup` selon positioning targeting strategy (encodée par produce-paid-matrix downstream)
+
+Statut ciblage par défaut · "à déterminer downstream produce-paid-matrix" si jamais staged. Anti-pattern · confondre les deux statuts (produit-fit ≠ ciblage créa).
+
+### HR14 · Méthode pédagogique verbale obligatoire
+
+Verbaliser TOUJOURS comment l'agent a cartographié l'audience · résumé 1-ligne par dimension (8 lignes) + déclaration explicit du many-to-many (cette audience est [primary/secondary/backup] sur [N] pains, au stage [X] elle est prioritaire [oui/non], positioning targeting [produit-fit vs ciblage créa]).
+
+Format ·
+
+> J'ai cartographié [audience slug] en 8 dimensions canon V3 ·
+> - Démographie · [résumé 1 ligne]
+> - Psychographie · [résumé 1 ligne]
+> - Triggers · [résumé 1 ligne]
+> - Stage in journey · [résumé 1 ligne]
+> - Sophistication · [niveau 1-5]
+> - Buyer/User split · [résumé 1 ligne]
+> - Language · [registre détecté]
+> - Validation status · [hypothesis | confirmed | scaled]
+>
+> L'audience possède [N] pain_points sub-collection canonical PNT-NN.json · chacun owned, severity scoré, layer pain-benefit-chain explicit.
+>
+> Many-to-many · cette audience est [primary | secondary | backup] sur [N] pains identifiés · au stage business [détecté X], audience prioritaire [oui/non] · positioning targeting [audience produit-fit vs ciblage créa].
+
+Pédagogie verbale = anti-jargon (jamais exposer field path interne · "8 dimensions" OK, "psychology.awareness_stage_product" jamais). Per HR8 operator-facing rules.
+
+### HR15 · Anti-patterns
 
 - Ne JAMAIS halluciner une dimension sans verbatims sources
 - Ne JAMAIS poser une dimension à hypothesis sans tag `confidence < 0.5`
 - Ne JAMAIS skip Schwartz double-stage check
 - Ne JAMAIS auto-write sans operator validation gate
 - Ne JAMAIS exposer JSON brut à l'opérateur
+- **AP10 (v2.78.2)** · Ne JAMAIS encoding 8 dimensions silent sans synthèse matricielle finale `Audience Visibility Matriciel`. L'encoding seul = invisible decomposition.
+- **AP11 (v2.78.2)** · Ne JAMAIS many-to-many implicite (opérateur déduit la relation audience-pain-angle). L'agent trace la matrice, pas l'opérateur.
+- **AP12 (v2.78.2)** · Ne JAMAIS stage business absent du filtre si signal détectable. Skip légitime uniquement si zéro signal observable (transparence explicit obligatoire).
+- **AP13 (v2.78.2)** · Ne JAMAIS méthode pédagogique skip. La verbalisation 8 dimensions + many-to-many est obligatoire, pas optionnelle.
+
+## Output · Audience Visibility Matriciel (canon v2.78.2)
+
+Après encoding 8 dimensions audience canon V3 (demographics · psychographics · triggers · stage_in_journey · sophistication · buyer_user_split · language · validation_status), présenter OBLIGATOIREMENT vue matricielle canon `decomposition-visibility-discipline` v2.78.2.
+
+Cette section enrichit l'operator output template legacy (v2.54 investigation posture · 5 sections IP) sans le remplacer. Section ajoutée APRÈS les 8 dimensions encoded + 5 sections IP, AVANT le close drill-down macro HR8.
+
+### Matrice audience × pain × angle (canon many-to-many)
+
+Si audience encodée a sub-collection `pain_points/PNT-NN.json` owned (≥2 pains per HR11) · matrice ASCII obligatoire ·
+
+```
+AUDIENCE · [slug + nom mère]
+Audience produit-fit · ✓ (toutes audiences encoded retain by product)
+Audience ciblage créa · [✓ primary | ✓ secondary | · backup selon
+                        positioning targeting strategy]
+
+PAIN POINTS owned (sub-collection PNT-NN.json)
+────────────────────────────────────────────
+PNT-01 [label]    severity [1-10]   functional/emotional/identity
+                  emotional_signal · [signal]
+                  latency · [instant | 1-2 sessions | 2-3 semaines | etc.]
+
+PNT-02 [label]    severity [1-10]   functional/emotional/identity
+PNT-NN ...
+
+ANGLES PROPOSED (vers produce-paid-angles downstream)
+────────────────────────────────────────────────────
+ANG-candidate-1   pain_addressed · PNT-01
+                  formula · OTRB
+                  niveau Schwartz · [unaware | problem | solution | product]
+                  stage business match · [early | growth | scale]
+
+ANG-candidate-2   ...
+```
+
+Si <2 pains owned · skip matrice + noter "matrice activée à partir de 2 pains owned, actuellement {N}" en surface (transparence opérateur, per HR11).
+
+### Stage business filter (si détectable)
+
+Si stage business inférable depuis brand context (ARR · proof points · domain age via Wayback · traction signals encodés brand.json#financials) · table canon obligatoire (per HR12) ·
+
+```
+STAGE business        [early | growth | scale]
+Audience priorité     [primary | secondary | backup] selon stage
+Angle dominant        [identity heavy | functional + identity | diversifié]
+```
+
+Si zéro signal détectable · skip table + noter transparence opérateur "stage business non détectable depuis brand context actuel, table activée si signal ajouté brand.json#financials ou via snapshot-brand re-run".
+
+L'inférence stage doit citer son signal source en 1 ligne (e.g. "stage growth inféré · proof_points 50+ clients encoded brand.json + domain age 2y via Wayback").
+
+### Méthode pédagogique verbale (per HR14)
+
+Verbaliser TOUJOURS comment l'agent a cartographié l'audience ·
+
+> J'ai cartographié [audience slug] en 8 dimensions canon V3 ·
+> - Démographie · [résumé 1 ligne]
+> - Psychographie · [résumé 1 ligne]
+> - Triggers · [résumé 1 ligne]
+> - Stage in journey · [résumé 1 ligne]
+> - Sophistication · [niveau 1-5]
+> - Buyer/User split · [résumé 1 ligne]
+> - Language · [registre détecté]
+> - Validation status · [hypothesis | confirmed | scaled]
+>
+> L'audience possède [N] pain_points sub-collection canonical PNT-NN.json · chacun owned, severity scoré, layer pain-benefit-chain explicit.
+>
+> Many-to-many · cette audience est [primary | secondary | backup] sur [N] pains identifiés · au stage business [détecté X], audience prioritaire [oui/non] · positioning targeting [audience produit-fit vs ciblage créa].
+
+Pédagogie verbale = anti-jargon. Jamais exposer field path interne brut (e.g. "psychology.awareness_stage_product" jamais ; dire "stade Schwartz produit" en surface). Per HR8 operator-facing rules.
+
+### Anti-patterns NEW section (canon v2.78.2)
+
+- **AP10** · Encoding 8 dimensions silent sans synthèse matricielle finale → invisible decomposition, opérateur ne voit jamais le many-to-many.
+- **AP11** · Many-to-many implicite (opérateur déduit la relation audience-pain-angle).
+- **AP12** · Stage business absent du filtre si signal détectable.
+- **AP13** · Méthode pédagogique verbale skip.
 
 ## Operator output template (v2.54 investigation posture)
 
@@ -602,11 +751,14 @@ Mon avis · {reco macro adaptive selon verbatim_density actuelle}.
 
 ## Cross-references
 
+- `docs/system/decomposition-visibility-discipline.md` (v2.78.2 canon racine sister Sprint A) · matrice audience × pain × angle × stage business obligatoire après encoding 8 dimensions · many-to-many explicit, jamais implicite.
 - `docs/system/investigation-posture.md` (v2.54 doctrine canon) · cartographier avant affirmer · confidence chain explicit · audiences comme hypothèses (TRÈS faible par défaut sans mine-voc) · close drill-down macro · opérateur arbitre.
 - `docs/system/contextual-intelligence.md` · master doctrine, no orphan output, jargon zéro en surface.
 - `docs/system/audience-cartography.md` · doctrinal contract cartography (mère / sous-audiences, 4 movements).
+- `docs/system/pain-benefit-chain.md` · 3 couches functional · emotional · identity · chaînage canonique pain/benefit (layer explicit dans matrice).
 - `docs/doctrine/audience-cartography-framework.md` · 4 questions framework canon Step 0ter.
 - `docs/system/confidence-propagation.md` · algèbre cascade confidence cross-skill (audience → angle → brief créa).
+- Sister skills v2.78.2 (canon decomposition visibility) · `snapshot-brand` · `build-atlas-complete` · `define-specs`.
 - `resources/canon/copy/niveaux-schwartz/*` (sophistication 1-5, awareness stages).
 - `resources/schemas/profile.schema.json` v1.3 (`persona_archetype`, `buyer_user_split`, `purchase_driver` derived).
 - `resources/canon/copy/creative-formula.md` V3 (8 dimensions canon).

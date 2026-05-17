@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-17T15:59:15Z",
-  "_count": 77,
+  "_generated_at": "2026-05-17T16:45:12Z",
+  "_count": 80,
   "skills": [
     {
       "name": "adapt-from-competitor",
@@ -722,6 +722,26 @@
       "path": ".skills/skills/deepen-brand-context/SKILL.md"
     },
     {
+      "name": "define-brand-voice",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "interactive",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {
+        "snapshot-brand": "snapshot-brand extracts tone_of_voice passively from site scrape (style + register + voice strings). define-brand-voice workshops the tone methodically via 4D Nielsen Norman axes + do/don't lexique + sample sentences per touchpoint. Invoke define-brand-voice AFTER snapshot-brand has anchored the brand passively, to upgrade the voice substrate from declarative strings to operational chart.",
+        "produce-positioning-canvas": "produce-positioning-canvas anchors the positioning identity statement (category + differentiation + promise + market_position). define-brand-voice anchors the brand voice TONALITY cross-touchpoint (how the brand sounds). Sister skills · positioning answers WHAT the brand stands for, voice answers HOW the brand speaks. Both upstream of produce-paid-angles + produce-copy-brief.",
+        "validate-brand-voice-consistency": "validate-brand-voice-consistency scans post-write outputs (ads · captions · emails · microcopy) cross-touchpoint to detect drift from the encoded voice chart. define-brand-voice PRODUCES the voice chart upstream that validate-brand-voice-consistency CONSUMES downstream. Cycle · define produces canon, validate audits drift, define refresh if drift systematic.",
+        "setup-brand": "setup-brand light initial brand cadrage (identity + product + audience first cut). define-brand-voice deep voice anchoring with 4D methodology + do/don't + samples. Invoke define-brand-voice AFTER setup-brand has the identity + audiences encoded minimum."
+      },
+      "isolation_scope": "brand",
+      "layer": "production",
+      "path": ".skills/skills/define-brand-voice/SKILL.md"
+    },
+    {
       "name": "define-specs",
       "type": "orchestrator",
       "model": "sonnet",
@@ -1224,6 +1244,21 @@
       "isolation_scope": "brand_only",
       "layer": "territoire",
       "path": ".skills/skills/produce-paid-matrix/SKILL.md"
+    },
+    {
+      "name": "produce-positioning-canvas",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "interactive",
+      "triggers": {
+        "fr": [],
+        "en": []
+      },
+      "disambiguates_against": {},
+      "isolation_scope": "brand",
+      "layer": "production",
+      "path": ".skills/skills/produce-positioning-canvas/SKILL.md"
     },
     {
       "name": "produce-strategy",
@@ -1868,6 +1903,33 @@
       "isolation_scope": "brand_only",
       "layer": "meta",
       "path": ".skills/skills/update-workspace/SKILL.md"
+    },
+    {
+      "name": "validate-brand-voice-consistency",
+      "type": "curator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "interactive",
+      "triggers": {
+        "fr": [
+          "validate brand voice",
+          "check voice consistency",
+          "scan voice drift",
+          "audit voice cross-touchpoint",
+          "verify brand voice"
+        ],
+        "en": [
+          "validate brand voice",
+          "check voice consistency",
+          "scan voice drift",
+          "voice audit cross-touchpoint",
+          "verify brand voice"
+        ]
+      },
+      "disambiguates_against": {},
+      "isolation_scope": "brand",
+      "layer": "production",
+      "path": ".skills/skills/validate-brand-voice-consistency/SKILL.md"
     },
     {
       "name": "validate-naming",

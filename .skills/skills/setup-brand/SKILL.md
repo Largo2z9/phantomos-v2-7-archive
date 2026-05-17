@@ -1,7 +1,7 @@
 ---
 name: setup-brand
 type: orchestrator
-version: "2.0.0"
+version: "2.1.0"
 isolation_scope: brand_only
 layer: territoire
 recommended_model: sonnet
@@ -35,7 +35,7 @@ Zero manual copy-paste. The agent creates the full structure and guides the oper
 
 Talk like a colleague helping with setup. Simple, concrete, zero technical jargon. The operator never sees paths, JSON, or slugs. They see clear questions and plain-language confirmations.
 
-## Suggestions during onboarding — guide-rail regime
+## Suggestions during onboarding · guide-rail regime
 
 Throughout the setup-brand flow, action suggestions follow a restricted regime (override of the daily-use rules in workspace CLAUDE.md):
 
@@ -46,15 +46,15 @@ Throughout the setup-brand flow, action suggestions follow a restricted regime (
 
 General rule: in onboarding, less is more. Every additional suggestion invites the operator out of the flow and away from finishing setup.
 
-## Question rule — 1 per turn, never 2
+## Question rule · 1 per turn, never 2
 
 **Non-negotiable hard rule**: ask ONE question per agent message. Never two, even if both seem useful. Reason: stacking two questions turns the conversation into a form and breaks the *"not a questionnaire"* promise.
 
 - If two infos are needed → pick the most structuring, the other will come naturally next turn.
 - If the operator gives two infos in their answer → acknowledge both, then continue normally.
-- Explicit acknowledge before each new question: rephrase what they just said in strategic language (not system) — e.g. *"Noted. Clear target, hero product placed. [one question]"*. Shows it was read, not just recorded.
+- Explicit acknowledge before each new question: rephrase what they just said in strategic language (not system), e.g. *"Noted. Clear target, hero product placed. [one question]"*. Shows it was read, not just recorded.
 
-## Fast-path — zero questions if info already given
+## Fast-path · zero questions if info already given
 
 **Hard rule**: before asking a Step 1 question, scan the first operator message and previous answers. For each piece of info already given or inferable, **skip the corresponding question**:
 
@@ -81,7 +81,7 @@ Customers: {audience_names} (or "to set later")
 ```
 For the operator (especially Claude Code novices), this block is the visual proof that "it's filed". Without it, the novice doubts that the agent really captured the info.
 
-**(b) The Step 2 "Level 1/2/3" brief — profile-adapted version.**
+**(b) The Step 2 "Level 1/2/3" brief · profile-adapted version.**
 Posted systematically after the Step 1 recap, regardless of fast-path. It's the operator's mental map: they know where we are and where we're going.
 
 Two versions based on detected signal:
@@ -102,7 +102,7 @@ The creator-led version avoids the DTC jargon "positioning / competitors / finan
 
 ---
 
-## Step 0 — Async mode via URL (default if URL available)
+## Step 0 · Async mode via URL (default if URL available)
 
 **Trigger**: the operator drops a site/store URL (*"https://brand.com"*, *"peaktrek.com"*) in the first message, or picks (a) from the onboarding menu with URL provided.
 
@@ -111,11 +111,11 @@ The creator-led version avoids the DTC jargon "positioning / competitors / finan
 1. **Acknowledge + announce background**:
    > *OK, [profile]. I'll launch the scan on [URL] in the background. 3-5 min, I'll ping you when ready. In the meantime, do whatever. Ask me questions, test a capability, connect a tool, challenge me.*
 
-2. **Launch `snapshot-brand` as a subagent via Task tool** — the `snapshot-brand` skill runs in parallel, the main agent continues the conversation.
+2. **Launch `snapshot-brand` as a subagent via Task tool**. The `snapshot-brand` skill runs in parallel, the main agent continues the conversation.
 
-3. **During the wait** — the main agent stays conversational, answers what the operator asks, uses smart suggests a/b/c/d as usual.
+3. **During the wait**. The main agent stays conversational, answers what the operator asks, uses smart suggests a/b/c/d as usual.
 
-4. **When the snapshot-brand returns** (signal from the subagent) — the agent comes back **at a natural break**:
+4. **When the snapshot-brand returns** (signal from the subagent). The agent comes back **at a natural break**:
    > *[At a natural break] I have your brand pre-filled from the site. [Summary in 2-3 lines of what was found: hero product, visible customers, active offers]. Want to validate together and complete what's missing? 3-5 min.*
 
 5. **If "yes"** → move to Step 2 (review + completion).
@@ -129,11 +129,11 @@ The creator-led version avoids the DTC jargon "positioning / competitors / finan
 
 ---
 
-## Step 1 — Synchronous mode (if no URL available)
+## Step 1 · Synchronous mode (if no URL available)
 
 **Trigger**: the operator doesn't have a URL handy, or their brand doesn't yet have a site, or they explicitly prefer to start without scrape.
 
-### Prelim — Operator profile (capture first, at Step 1 OR inferred from WELCOME close)
+### Prelim · Operator profile (capture first, at Step 1 OR inferred from WELCOME close)
 
 **Rule**: the operator profile then picks the Build chantiers close variant (see CLAUDE.md § Build → Execute gates). Capture once, store in `/operator/profile.json → identity.profile`. Persistent cross-sessions, never re-asked.
 
@@ -178,7 +178,7 @@ Wait for confirmation.
 
 ---
 
-## Step 2 — Onboarding brief
+## Step 2 · Onboarding brief
 
 > Goal: set the mental map of how we'll enrich the brand, without falling into a form. Conversational, not bullets to fill.
 
@@ -200,7 +200,7 @@ Rule: never present this as a bulleted list to fill. No "• Paste your position
 
 ---
 
-## Step 3 — Brand anchoring
+## Step 3 · Brand anchoring
 
 Ask one last interactive question:
 
@@ -219,7 +219,7 @@ python3 .skills/write-to-context.py \
   --source operator \
   --confidence 1.0 \
   --mode direct \
-  --reason "Step 3 brand anchoring — operator's own sentence"
+  --reason "Step 3 brand anchoring, operator's own sentence"
 ```
 
 The script is the ONLY sanctioned channel for writes under `brands/` and `operator/`. Edit, Write, `python -c json.dump`, `echo >`, `sed -i`, `tee` all bypass the mutation gate and are blocked.
@@ -236,7 +236,172 @@ You don't need to open a file, that's my job.
 
 ---
 
-## Step 4 — Demo-value then Build switch
+## Step 4 · Brand identity workshop (then demo-value + Build switch)
+
+> Identity workshop methodical (4a archetype + 4b purpose + 4c values + 4d founder story) precedes demo-value synthesis (4e) and Build chantiers close. Each sub-step is a discrete workshop (1 question per turn), uses AskUserQuestion canon with 3 options shortlisted from Step 1-3 context, writes via `write_to_context` mutation gate. Skip rule : if Step 0 async snapshot-brand already populated the field with confidence ≥ medium and operator confirms, skip the sub-step (acknowledge inline). Otherwise run the workshop.
+
+### Step 4a · Brand archetype (Mark+Pearson canon, primary + optional secondary)
+
+**Goal** : anchor the brand's voice DNA in the 12 canonical archetypes (Mark & Pearson, *The Hero and the Outlaw*). Primary obligatoire, secondary optional (max 1).
+
+**12 archetypes canon** :
+- Innocent
+- Sage
+- Explorer
+- Outlaw (Rebelle)
+- Magician
+- Hero (Heros)
+- Lover (Amante)
+- Jester
+- Everyman (Homme-ordinaire)
+- Caregiver
+- Ruler
+- Creator
+
+**Workshop** :
+
+1. **Shortlist 2-3 candidates** from Step 1-3 brand context (sector + audience + anchoring sentence + scraped tone if Step 0 ran). Read 2-3 matching canon files in `resources/canon/copy/archetypes-voix/{archetype}.json` for `principle` + `when_works`.
+
+2. **AskUserQuestion canon** with 3 options :
+   - 2 primary candidates ranked (e.g. *"Sage (autorité tranquille, voix qui éclaire, marche pour skincare/santé/dermo)"* vs *"Caregiver (chaleur, protection, marche pour parents/wellness)"*)
+   - 1 "drill canon" option (*"montre-moi les 12 archetypes en bref avant de choisir"*) → if picked, read all 12 canon files briefly and re-ask.
+
+3. **On selection** → run :
+
+   ```bash
+   python3 .skills/write-to-context.py \
+     --path "brands/{slug}/brand.json#/identity.brand_archetype_primary" \
+     --value '"{archetype-id}"' \
+     --source operator \
+     --confidence 1.0 \
+     --mode direct \
+     --reason "Step 4a brand archetype primary, operator selected"
+   ```
+
+4. **Optional secondary** (only if operator signals mix) :
+   - *"Une couleur secondaire qui se mixe avec le primaire ? Optionnel, beaucoup de marques n'ont qu'un seul."*
+   - If yes → AskUserQuestion 3 compatible secondary options (from `combines_with.archetypes` in primary canon file). Otherwise skip.
+   - Write to `brand.json#/identity.brand_archetype_secondary` via same mutation gate.
+
+**Output fields** :
+- `brand.json#/identity.brand_archetype_primary` (mandatory, enum 12 canon ids)
+- `brand.json#/identity.brand_archetype_secondary` (optional, enum 12 canon ids, ≠ primary)
+
+### Step 4b · Brand purpose (Simon Sinek's "why")
+
+**Goal** : capture pourquoi la brand existe au-delà du business. 1-2 sentences max. Anti-buzzword filter active.
+
+**Workshop** :
+
+1. **Seed 3 candidates** from Step 1-3 context :
+   - **Founder origin** angle (*"Tu as construit ça parce qu'il manquait {gap} pour {who}"*)
+   - **Pain addressed** angle (*"Tu existes pour résoudre {specific pain} que le marché traite mal"*)
+   - **Category transformation** angle (*"Tu existes pour transformer {category} en {aspiration}"*)
+   - + free-text custom option
+
+2. **AskUserQuestion canon** with the 3 seeded angles + free-text.
+
+3. **HR4 buzzword filter applied to operator answer** :
+   - Banned terms : `innovation`, `excellence`, `customer-centric`, `passion`, `quality`, `integrity`, `teamwork`, `respect`
+   - If detected → push back gently : *"`{term}` est générique, toutes les brands disent ça. Qu'est-ce qui rend ton pourquoi spécifique à {brand} ? Ce que tu dirais à un proche, pas dans un pitch."*
+   - Re-ask once. If operator insists, log with `confidence: 0.5` and flag in pending-validations.
+
+4. **Length check** : 1-2 sentences max (HR6). If multi-paragraph → compress : *"Pour le filer, on garde la phrase-clé. Laquelle des deux ?"*.
+
+5. **On final answer** → run :
+
+   ```bash
+   python3 .skills/write-to-context.py \
+     --path "brands/{slug}/brand.json#/identity.brand_purpose" \
+     --value '"{operator's purpose sentence, JSON-escaped}"' \
+     --source operator \
+     --confidence 1.0 \
+     --mode direct \
+     --reason "Step 4b brand purpose, operator Sinek why"
+   ```
+
+**Output field** : `brand.json#/identity.brand_purpose` (string, 1-2 sentences).
+
+### Step 4c · Brand values (3-5 max, anti-buzzword filter strict)
+
+**Goal** : 3-5 ownable values, specific to the brand, memorable. Not a generic corporate list of 10+ diluted nouns.
+
+**Workshop** :
+
+1. **Seed 5 candidates** from Step 1-3 context + archetype primary (Step 4a) + purpose (Step 4b). Pull `principle` + `when_works` from primary archetype canon file to inform candidates. Bias toward verbs/concrete commitments over abstract nouns.
+
+   Example for a Sage skincare brand : *"Pédagogie radicale", "Sourcer chaque claim", "Zéro buzzword marketing", "Formules qu'on comprend", "Refuser le bullshit category"*.
+
+2. **AskUserQuestion canon** with the 5 seeded values + free-text *"j'en propose d'autres"*.
+
+3. **Operator selects 3-5** (HR5 cap). If operator picks 6+ → push back : *"5 max, sinon ça se dilue. Lesquelles tu retires ?"*. If operator picks 1-2 → push back : *"3 min, sinon ça manque de relief. Ajoute 1-2."*.
+
+4. **HR4 buzzword filter applied** :
+   - Banned (auto-reject) : `innovation`, `excellence`, `quality`, `customer-centric`, `passion`, `integrity`, `teamwork`, `respect`, `sustainability` (alone, without specificity)
+   - If detected → push back : *"`{term}` est générique, ça ne te distingue pas. Reformule en spécifique. Exemple Patagonia : pas `sustainability`, mais `Build the best product, cause no unnecessary harm`."*
+
+5. **Acceptable shape check** :
+   - Specific (cites concrete commitment, not abstract noun)
+   - Ownable (your brand could die on this hill)
+   - Memorable (operator could repeat it in 6 months without re-reading)
+
+6. **On final answer** → run :
+
+   ```bash
+   python3 .skills/write-to-context.py \
+     --path "brands/{slug}/brand.json#/identity.brand_values" \
+     --value '["{value1}", "{value2}", "{value3}"]' \
+     --source operator \
+     --confidence 1.0 \
+     --mode direct \
+     --reason "Step 4c brand values, operator selected 3-5 anti-buzzword"
+   ```
+
+**Output field** : `brand.json#/identity.brand_values` (array, 3-5 entries).
+
+### Step 4d · Brand story (founder origin, 1 paragraph)
+
+**Goal** : capture l'histoire fondatrice spécifique, 1 paragraph 100-200 words. Pattern qui rend tangible le `brand_purpose` (Step 4b). Évite le corporate generic.
+
+**Workshop** :
+
+1. **AskUserQuestion canon** with 3 framings :
+   - *"Pain perso qui a déclenché la création (ce que tu vivais avant de construire ça)"*
+   - *"Credentials fondateur (parcours expert qui légitime ton positionnement)"*
+   - *"Moment de bascule (l'évènement précis qui a forcé la création)"*
+   - + free-text *"j'ai une autre angle"*
+
+2. **Operator répond** en prose libre, 1 paragraph 100-200 words.
+
+3. **HR7 anti-pattern filter** :
+   - Banned openings (auto-reject) : *"We were frustrated by..."*, *"We saw an opportunity in..."*, *"Our journey began when..."*, *"After years of..."*
+   - If detected → push back : *"`{opening}` est générique, 90% des brands ouvrent comme ça. Sois spécifique : nom propre, lieu, chiffre, sensation physique. Exemple : pas `we saw an opportunity in skincare`, mais `Marie passait 3 mois par an à doser ses sérums pour 2 enfants, on a fait l'ingrédient unique qui marche pour les deux`."*
+
+4. **Length check** : 1 paragraph 100-200 words. If multi-paragraph → compress. If 1 sentence → re-ask : *"Donne-moi le moment précis, pas la version corporate"*.
+
+5. **On final answer** → run :
+
+   ```bash
+   python3 .skills/write-to-context.py \
+     --path "brands/{slug}/brand.json#/identity.brand_story" \
+     --value '"{operator's founder story, JSON-escaped}"' \
+     --source operator \
+     --confidence 1.0 \
+     --mode direct \
+     --reason "Step 4d brand story, operator founder origin paragraph"
+   ```
+
+**Output field** : `brand.json#/identity.brand_story` (string, 1 paragraph).
+
+### Step 4 identity workshop · close transition
+
+Once 4a + 4b + 4c + 4d complete, acknowledge in plain language and bridge to demo-value :
+
+> *OK. Voix d'archétype {primary}{ + secondary if any}, pourquoi {brand_purpose 1-liner}, {N} valeurs ancrées, histoire {founder_story 1-line summary}. C'est ton ADN encodé. On enchaîne avec ce que je lis du reste de ton contexte pour fermer le setup.*
+
+Then proceed to Step 4e (demo-value context synthesis below).
+
+### Step 4e · Demo-value then Build switch (legacy Step 4)
 
 > Contextual application of the **Build → Execute gates** rule (source of truth: `CLAUDE.md § Build → Execute gates`). Do not redocument the 4 mechanics here.
 
@@ -248,9 +413,9 @@ You don't need to open a file, that's my job.
    python3 .skills/finalize-mutation-batch.py --brand-slug {slug}
    ```
 
-   Mechanical Python primitive — exit code 2 = blocking issue, revise the synthesis. Exit 0 with warnings = log silently, ship. Non-negotiable.
+   Mechanical Python primitive · exit code 2 = blocking issue, revise the synthesis. Exit 0 with warnings = log silently, ship. Non-negotiable.
 
-2. **Explicit blind spots** — detailed audience, past learnings, platform access, competitor benchmarks.
+2. **Explicit blind spots** · detailed audience, past learnings, platform access, competitor benchmarks.
 
 3. **Close in 3 Build chantiers** (never audit/brief/diag menu):
 
@@ -275,22 +440,22 @@ Bad. Delivering a Meta audit without access. Proposing "3-angle creative brief" 
 
 ---
 
-## Execution — Create the structure (silent)
+## Execution · Create the structure (silent)
 
 *The agent executes these steps without exposing them to the operator. No path, no filename in the conversation.*
 
-### E1 — Create the brand structure
+### E1 · Create the brand structure
 
 1. Copy `brands/_TEMPLATE/` to `brands/{slug}/`
-2. Replace `{brand-name}` placeholder with the real brand name in **every** markdown file at brand root: `CLAUDE.md`, `session-state.md`, `pending-validations.md`, `todos.md`. Missing any of these is a bug — the operator will see `{brand-name}` in their own workspace. Data Access fields in CLAUDE.md stay `[TO FILL]` (those are filled in E2).
+2. Replace `{brand-name}` placeholder with the real brand name in **every** markdown file at brand root: `CLAUDE.md`, `session-state.md`, `pending-validations.md`, `todos.md`. Missing any of these is a bug (the operator will see `{brand-name}` in their own workspace). Data Access fields in CLAUDE.md stay `[TO FILL]` (those are filled in E2).
 3. Update `brands/{slug}/status.json`: `brand_slug` → slug, `last_session` → today
 4. Update `brands/{slug}/config.json`: `language` → chosen language
-5. **Seed `brands/{slug}/pending-validations.md`** with the baseline items under the three gate sections (append after the `<!-- Examples: -->` block of each section, do not remove the comments — they stay as reference):
-   - Under **Context gate**: `- [ ] Review inferred audience (segment, pains, objections)` + one line per field stamped in `mode=proposed` by snapshot-brand (positioning, tone, audience). Source tag embedded as plain-language `(inferred from site)` / `(stated by operator)` — never expose `source` / `confidence` / `mode` keywords.
+5. **Seed `brands/{slug}/pending-validations.md`** with the baseline items under the three gate sections (append after the `<!-- Examples: -->` block of each section, do not remove the comments, they stay as reference):
+   - Under **Context gate**: `- [ ] Review inferred audience (segment, pains, objections)` + one line per field stamped in `mode=proposed` by snapshot-brand (positioning, tone, audience). Source tag embedded as plain-language `(inferred from site)` / `(stated by operator)`. Never expose `source` / `confidence` / `mode` keywords.
    - Under **Access gate**: one line per platform mentioned by the operator without a token (e.g. `- [ ] Set up Meta Ads access`).
    - Under **Enrichment**: `- [ ] Surface past learnings (client history, past tests, platform rules learned)`.
 
-### E2 — Configure ecosystem and access
+### E2 · Configure ecosystem and access
 
 Ask:
 > "Which platforms do you use for {name}? (Meta Ads, Shopify, Google Ads, GA4, Klaviyo…)"
@@ -327,7 +492,7 @@ When you talk to me about your Meta campaigns or Shopify sales, I'll know where 
 **3. Routing table + Convention files** (automatic, silent):
 
 For each confirmed platform:
-- Add a line to the **routing table** in workspace root CLAUDE.md (section `## Routing — Platform conventions`):
+- Add a line to the **routing table** in workspace root CLAUDE.md (section `## Routing · Platform conventions`):
   ```
   | {category} | {platform} | `resources/conventions/{platform-slug}.json` |
   ```
@@ -344,17 +509,17 @@ For each confirmed platform:
 
 **If no platforms** → "OK. You can add them later. Say 'configure access for {name}' when ready."
 
-### E3 — Create product and audience folders
+### E3 · Create product and audience folders
 
 For each declared product: create `brands/{slug}/products/{product_slug}/`, copy spec.json and offers.json from `_TEMPLATE/products/_example/`, update `meta.slug`.
 
 For each declared audience: create `brands/{slug}/audiences/{audience_slug}/`, copy profile.json from `_TEMPLATE/audiences/_example/`, update `meta.slug`.
 
-### E4 — Initialize CHANGELOG
+### E4 · Initialize CHANGELOG
 
 Add entry to `CHANGELOG.md`:
 ```
-## {date} — Setup Brand
+## {date} · Setup Brand
 
 **Brand**: {name} (slug: {slug})
 **Action**: CREATED brand structure
@@ -364,7 +529,7 @@ Add entry to `CHANGELOG.md`:
 
 ---
 
-## Step 5 — Workspace tour (automatic after demo-value)
+## Step 5 · Workspace tour (automatic after demo-value)
 
 **Trigger**: right after Step 4 (demo-value + Build chantiers set), when the operator has seen the richness of the inferred context and the upcoming chantiers. At that point they've seen value, they're receptive to an environment map.
 
@@ -378,15 +543,15 @@ If the operator says skip → jump straight to end-of-session recap. Don't push.
 
 Otherwise, deliver the tour in **4 short sub-parts** (not a monolithic block):
 
-### Tour (a) — Your brand data
+### Tour (a) · Your brand data
 
 > *What we just set for {brand_name} is the base. Over time, 6 types of stuff fill around it. Your brand (identity, what makes you unique, tone, already started), your products (specs, mechanism, benefits), your offers (prices, bundles, landing), your audience (segments, objections, language), your learnings (workarounds, platform rules, patterns that work), and your strategy (goals, quarterly focus). You don't fill anything by hand, you talk to me, I file.*
 
-### Tour (b) — Your shared resources
+### Tour (b) · Your shared resources
 
 > *On top, you have a cross-brand library. Copywriting frameworks, tested angles, platform rules, Meta/Shopify conventions you accumulate. Fills automatically when I detect that a learning from one brand works for the others.*
 
-### Tour (c) — The skills at your disposal
+### Tour (c) · The skills at your disposal
 
 > *What you can ask me anytime:*
 > - *A creative brief, a copy angle, a platform setup audit. Your production capabilities.*
@@ -396,7 +561,7 @@ Otherwise, deliver the tour in **4 short sub-parts** (not a monolithic block):
 >
 > *And if you need a capability that doesn't exist, I can build it custom. You describe what you want, I build the assistant.*
 
-### Tour (d) — Your external tools
+### Tour (d) · Your external tools
 
 > *Your platforms (Meta, Shopify, Klaviyo, GA, Notion, calendar…) connect on the fly. No continuous sync, on demand. When you ask me for a Meta report or a Shopify audit, I ask for your access once, you hand it, I file it locally, next time I'm operational direct. Each platform has its rules file noting how we use it. Reusable across all your brands, shareable if you work in a team.*
 
@@ -437,7 +602,66 @@ Examples at E1 / Step 1:
 
 - **Always ask confirmation** before creating files (Step 1 recap)
 - **Never overwrite** an existing brand folder, check first
-- **Never fill brand.json** — this skill creates the structure, ingest-resource fills the content
-- **Always auto-generate slugs** — don't ask the operator for the slug
+- **Brand.json identity fields filled by Step 3 + Step 4 only** (origin_story via Step 3, brand_archetype_primary + brand_archetype_secondary + brand_purpose + brand_values + brand_story via Step 4a-d). Rest of brand.json filled by ingest-resource via subsequent enrichment loops.
+- **Always auto-generate slugs**. Don't ask the operator for the slug.
 - **If slug conflict** → flag and propose an alternative slug
 - **Never expose file paths, JSON names, or technical terms** in operator messages
+
+### HR4 · Anti-buzzword filter (brand purpose + values)
+
+Applies to Step 4b and Step 4c. Auto-reject any operator answer containing these generic terms (zero-differentiation across brands) :
+
+- `innovation`, `innovative`
+- `excellence`
+- `customer-centric`, `customer first`
+- `passion`, `passionate`
+- `quality`
+- `integrity`
+- `teamwork`
+- `respect`
+- `sustainability` (alone, without specific commitment)
+
+On detection, push back once with a specific counter-example (e.g. Patagonia's *"Build the best product, cause no unnecessary harm"* vs generic *"sustainability"*). If operator insists after push-back, log with `confidence: 0.5` and flag in `pending-validations.md`.
+
+### HR5 · Max 5 brand values
+
+Step 4c output array is capped at 3-5 entries. Operator picks 6+ → push back compress. Operator picks 1-2 → push back expand to 3 minimum. Rationale : 10+ values dilute, operator cannot remember them, generic corporate list pattern.
+
+### HR6 · Brand purpose 1-2 sentences max
+
+Step 4b output is capped at 1-2 sentences. Multi-paragraph corporate "About us" prose is anti-pattern. If operator provides multi-paragraph → compress : *"Pour le filer, on garde la phrase-clé."*. Rationale : the purpose must fit in operator's head, deployable in 10 seconds of conversation.
+
+### HR7 · Brand story 1 paragraph, specific not generic
+
+Step 4d output is 1 paragraph, 100-200 words. Banned openings auto-rejected :
+- *"We were frustrated by..."*
+- *"We saw an opportunity in..."*
+- *"Our journey began when..."*
+- *"After years of..."*
+
+Push back demands specific anchors : proper noun, place, number, physical sensation. Rationale : 90% of brand stories open with these generic phrases, zero differentiation, zero memorability.
+
+### HR8 · Brand archetype primary obligatoire, secondary optional
+
+Step 4a output is :
+- `brand_archetype_primary` : mandatory, enum of 12 canonical Mark+Pearson archetypes (Innocent, Sage, Explorer, Outlaw/Rebelle, Magician, Hero/Heros, Lover/Amante, Jester, Everyman/Homme-ordinaire, Caregiver, Ruler, Creator)
+- `brand_archetype_secondary` : optional, max 1, must differ from primary
+
+Canon files live in `resources/canon/copy/archetypes-voix/{archetype}.json`. Each file ships `principle`, `structure`, `gabarits`, `when_works`, `when_avoid`, `combines_with`. Step 4a reads candidates from these files to seed the AskUserQuestion shortlist.
+
+If operator hesitates between 3+ archetypes → run drill canon : read all 12 brief `principle` lines and re-ask. Never accept *"je sais pas, choisis"* (zero ownership). Always extract operator's instinct.
+
+---
+
+## Cross-refs · sister skills Sprint v2.80
+
+The Step 4 identity workshop output (brand_archetype + brand_purpose + brand_values + brand_story) feeds downstream skills :
+
+- **`produce-positioning-canvas`** · consumes `brand_archetype_primary` + `brand_purpose` + `brand_values` to generate positioning canvas (category, frame of reference, point of difference, reason to believe).
+- **`define-brand-voice`** · consumes `brand_archetype_primary` (+ optional secondary) + `brand_values` to encode voice rules (vocabulary range, register, anti-patterns, gabarits) into `brand.json#/tone_of_voice`.
+- **`validate-brand-voice-consistency`** · consumes encoded archetype + voice rules to cross-touchpoint validator (does this copy / ad / email / landing match the encoded archetype + voice?).
+
+Canon references :
+- `resources/canon/copy/archetypes-voix/{archetype}.json` · 12 Mark+Pearson archetypes shipped Sprint v2.80 Agent A
+- `docs/system/investigation-posture.md` · 5 sections canon (Observé · Déduit · Inconnu · Leviers · Close ouvert) for any strategic synthesis downstream consuming this identity layer
+- `resources/schemas/brand.schema.json` · `identity.brand_archetype_primary` + `identity.brand_archetype_secondary` + `identity.brand_purpose` + `identity.brand_values` field definitions

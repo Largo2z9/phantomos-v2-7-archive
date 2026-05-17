@@ -1,6 +1,6 @@
 ---
 name: define-specs
-version: 1.2.0
+version: 1.3.0
 type: orchestrator
 recommended_model: sonnet
 subagent_safe: true
@@ -8,9 +8,10 @@ layer: territoire
 mode: proposed
 operator_facing: true
 patch_notes:
+  v1.3.0: "v2.78.2 decomposition-visibility-discipline · Output NEW section Specs Visibility Matriciel 3 niveaux obligatoire après encoding (specs objectifs · mécanismes · bénéfices 3 couches canon pain-benefit-chain). Méthode pédagogique verbale obligatoire. Cross-refs decomposition-visibility-discipline + pain-benefit-chain. Backward compat strict additif (existing Phases preserved)."
   v1.2.0: "v2.58 coverage extend · service_specs Q&A flow activé pour spec.identity.type service/clinical_service/hybrid (v1.11) · contraindications Q&A flow activé pour produits/services à contraintes usage. Closes 2 orphans audit v2.57. Backward compat strict additif."
 description: >
-  v1.2.0 (v2.58 coverage extend) · service_specs Q&A flow activé pour spec.identity.type service/clinical_service/hybrid (v1.11) · contraindications Q&A flow activé pour produits/services à contraintes usage. Closes 2 orphans audit v2.57.
+  v1.3.0 (v2.78.2 decomposition-visibility-discipline) · Output NEW section Specs Visibility Matriciel 3 niveaux obligatoire après encoding (specs · mécanismes · bénéfices 3 couches canon pain-benefit-chain). Méthode pédagogique verbale obligatoire. v1.2.0 (v2.58 coverage extend) · service_specs Q&A flow activé pour spec.identity.type service/clinical_service/hybrid (v1.11) · contraindications Q&A flow activé pour produits/services à contraintes usage.
 triggers_fr:
   - "définis les specs"
   - "crée la fiche produit"
@@ -243,6 +244,88 @@ Vue lisible spec posée + next-step proposal contextuel :
 
 Format no-orphan-output : 1 reco forte + 1 ou 2 chemins backup si genuinely useful.
 
+### HR8.5 · Output Specs Visibility Matriciel 3 niveaux (canon v2.78.2)
+
+Après encoding specs produit (composition · mécanismes · bénéfices via HR5-HR7) et AVANT le next-step proposal (HR8), présenter OBLIGATOIREMENT la matrice 3 niveaux canon `decomposition-visibility-discipline` v2.78.2. Cette section rend visible à l'opérateur comment specs objectifs, mécanismes et bénéfices se mappent entre eux (graph atomique reverse engineering possible).
+
+Backward compat strict · cette section vient s'ajouter APRÈS l'output spec posée existant (HR8 surface), pas en remplacement. L'opérateur voit d'abord la fiche assemblée (HR6 template), valide, puis reçoit la synthèse matricielle.
+
+Bloc obligatoire à présenter (format opérateur-facing, pas JSON brut) ·
+
+```
+═══════════════════════════════════════════════════════════════
+Specs Visibility · 3 niveaux canon (decomposition-visibility v2.78.2)
+═══════════════════════════════════════════════════════════════
+
+NIVEAU 1 · Specs objectifs (ce que le produit EST)
+─────────────────────────────────────────────────
+PRODUCT          {product_name} ({product_slug})
+Catégorie        {category}
+Type             {physical_product | digital_product | service | hybrid}
+
+Atomes matériels observables ·
+  Format / packaging       {format}
+  Composition / materials  {composition}
+  Posologie / usage        {usage}
+  Cure / cycle             {cycle}
+  Certifications           {certifications si applicable}
+
+NIVEAU 2 · Mécanismes (ce qu'il FAIT)
+─────────────────────────────────────
+Atomes action sur corps / contexte ·
+
+  [Mécanisme 1] · {mechanism.name}
+    Target          {target} (corps system / context system)
+    Mode of action  {mode_of_action}
+    Time window     {time_window}
+    Evidence level  {scientific | clinical_claim | empirical | anecdotal_strong | claim}
+    Sources         {études / certifications / claims}
+
+  [Mécanisme 2] · {mechanism.name}
+    ...
+
+Cross-réf vers map-mechanisms (canon-driven · EFSA/NCT/INSERM/etc.) si shipped et applicable.
+
+NIVEAU 3 · Bénéfices 3 couches canon pain-benefit-chain
+───────────────────────────────────────────────────────
+Atomes ressentis · canon Halbert/Sugarman/StoryBrand ·
+
+  FUNCTIONAL · {benefit.benefit} (bénéfice visible mesurable)
+    emotional_signal   {signal}
+    latency            {immediate | 7-14j | 2-12 semaines | etc.}
+    evidence_verbatim  {verbatim sourcé}
+    mechanism_ref      {Mécanisme N upstream}
+
+  EMOTIONAL · {benefit.benefit} (bénéfice ressenti subjectif)
+    emotional_signal   {signal}
+    latency            {...}
+    evidence_verbatim  {verbatim sourcé}
+    mechanism_ref      {...}
+
+  IDENTITY · {benefit.benefit} (qui je suis · identitaire)
+    emotional_signal   {signal}
+    latency            {...}
+    evidence_verbatim  {verbatim sourcé}
+    mechanism_ref      {...}
+    ← layer le plus chargé sur audiences cible (si verbatim signal fort)
+```
+
+### Méthode pédagogique verbale obligatoire
+
+Après le bloc matriciel, verbaliser TOUJOURS comment l'agent a décomposé les specs ·
+
+> *"J'ai décomposé {product name} en 3 niveaux canon ·*
+> *1. SPECS (objectif matériel) · {N} atomes*
+> *2. MÉCANISMES (action) · {N} atomes ranked evidence_level*
+> *3. BÉNÉFICES 3 couches (canon pain-benefit-chain) ·*
+>    *Functional · {résumé}*
+>    *Emotional  · {résumé}*
+>    *Identity   · {résumé} ← layer le plus chargé sur ton segment cible*
+>
+> *Chaque bénéfice référence un mécanisme upstream (mechanism_ref canonical) · graph atomique reverse engineering possible · spec → mécanisme → bénéfice → pain addressed → audience served."*
+
+Rappel posture · l'opérateur voit `observé / déduit / déclaré / incertain` (jamais `source / confidence / mode / field_path` raw cf HR9). La verbalisation utilise vocabulaire opérateur, pas vocabulaire interne.
+
 ### HR9 · Anti-patterns
 
 - **JAMAIS** auto-write sans operator validation gate (HR6)
@@ -252,6 +335,10 @@ Format no-orphan-output : 1 reco forte + 1 ou 2 chemins backup si genuinely usef
 - **JAMAIS** exposer JSON brut à l'opérateur dans le surface draft
 - **JAMAIS** exposer `source`, `confidence` (numbers), ou `_field_types` raw. Traduire en `observé / déduit / déclaré / incertain` si la distinction aide
 - **JAMAIS** utiliser em dash dans output
+- **JAMAIS (v2.78.2)** encoding specs silent sans synthèse matricielle 3 niveaux (skip HR8.5)
+- **JAMAIS (v2.78.2)** bénéfices 1 couche only (skip 2 autres layers canon pain-benefit-chain · functional + emotional + identity sont les 3 layers canoniques, jamais réduire à 1)
+- **JAMAIS (v2.78.2)** `mechanism_ref` absent sur un bénéfice (bénéfice orphelin · pas de reverse engineering possible · chaîne spec → mécanisme → bénéfice cassée)
+- **JAMAIS (v2.78.2)** skip méthode pédagogique verbale (opérateur ne sait pas comment specs décomposés · cf verbatim canon HR8.5)
 
 ## Operator output template (HR6 surface)
 
@@ -313,5 +400,9 @@ Validation requise · valider en bloc, corriger un champ, ou poser une question 
 - Doctrine production : `docs/system/canonical-matrix-reasoning.md`
 - Doctrine substrate : `docs/system/schema-encoding-discipline.md`
 - Doctrine authoring : `docs/system/skill-authoring-discipline.md`
+- Doctrine racine v2.78.2 : `docs/system/decomposition-visibility-discipline.md` (canon 3 niveaux specs · mécanismes · bénéfices · matrice obligatoire)
+- Doctrine 3 couches bénéfices : `docs/system/pain-benefit-chain.md` (functional · emotional · identity canon Halbert/Sugarman/StoryBrand)
+- Doctrine investigation 5 sections : `docs/system/investigation-posture.md` (Observé / Déduit / Inconnu / Leviers / Close ouvert)
+- Sister skills v2.78.2 : `snapshot-brand` · `build-atlas-complete` · `profile-audience`
 - Mutation gate : `write_to_context` (jamais Edit/Write direct sur `.json`)
 - Validation post-write : `validate-resources`

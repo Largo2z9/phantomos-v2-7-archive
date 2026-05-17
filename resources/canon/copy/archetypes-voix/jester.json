@@ -1,0 +1,93 @@
+{
+  "_schema": "canon-tool/1.1",
+  "_version": "1.0",
+  "id": "jester",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Jester",
+  "principle": "Voix qui désamorce et qui amuse. Le Jester refuse la solennité commerciale, il prend le contre-pied du sérieux marketing par l'humour. La marque ne se prend pas au sérieux mais prend l'audience au sérieux. L'humour, jamais l'humiliation.",
+  "structure": "Vocabulaire ludique, jeux de mots, références culturelles, registre conversationnel. Phrases courtes qui surprennent. Rythme jazzy, timing comique. Auto-dérision tactique. Jamais cynique, jamais méchant.",
+  "gabarits": [
+    "[Promesse marketing classique]. Sauf qu'on a [tordu absurde].",
+    "On voulait écrire un slogan sérieux. On a [autre chose].",
+    "[Concurrent caricaturé] fait [trope sérieux]. Nous on [contre-pied léger].",
+    "Tu veux [résultat]. Voilà [produit]. Pas besoin de poésie."
+  ],
+  "when_works": [
+    "FMCG fun, snack, lifestyle léger, produits du quotidien à charge faible",
+    "audiences jeunes ou jeunes d'esprit, anti-corporate, qui scrollent en mode défense",
+    "marques challenger qui veulent percer le bruit par le ton",
+    "catégories saturées où l'humour devient un asset différenciant (pas le claim)"
+  ],
+  "when_avoid": [
+    "catégories à fort enjeu émotionnel (santé sérieuse, deuil, vulnérabilité)",
+    "produits luxe ou aspirationnels (l'humour casse la promesse de statut)",
+    "audiences seniors ou contextes formels (le ton paraît déplacé)",
+    "marchés réglementés où l'humour passe pour irresponsabilité"
+  ],
+  "combines_with": {
+    "hooks": [
+      "contrarian",
+      "question-callout",
+      "stat-choc"
+    ],
+    "frameworks": [
+      "aida",
+      "pas",
+      "4ps"
+    ],
+    "leads": [
+      "story-led",
+      "problem-led"
+    ],
+    "angles": [
+      "contre-intuitif",
+      "ennemi-commun",
+      "honnetete"
+    ],
+    "emotions": [
+      "amusement",
+      "complicite",
+      "surprise",
+      "soulagement"
+    ]
+  },
+  "anti_patterns": [
+    "Humour forcé qui sonne corporate (la marque tente, ça grince)",
+    "Vannes au-dessus de la tête (référence trop niche, casse la complicité)",
+    "Cynisme déguisé en humour (la moquerie remplace la blague)",
+    "Jester sur produit sérieux (l'humour minimise l'enjeu réel)",
+    "Comique répété qui devient gimmick (le ton vide le message)"
+  ],
+  "examples": [
+    "Old Spice a réinventé son ton avec une seule règle : pas plus sérieux qu'une douche. Le reste a suivi.",
+    "Skittles dit Taste the Rainbow et empile des absurdités. Ça marche parce que le produit est exactement ça : bonbons absurdes assumés.",
+    "IKEA glisse des blagues dans les noms et les annonces. Ça désamorce le rapport au prix sans jamais minimiser le produit."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes",
+      "Mark & Pearson Hero and Outlaw 12 archetypes",
+      "Bill Bernbach DDB humor school"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-16T00:00:00.000000Z"
+}

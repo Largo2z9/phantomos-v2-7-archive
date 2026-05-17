@@ -1,7 +1,7 @@
 ---
 name: map-angles
 type: producer
-version: 1.0.1
+version: 1.0.2
 isolation_scope: brand_only
 layer: territoire
 recommended_model: sonnet
@@ -11,6 +11,20 @@ operator_facing: true
 patch_notes:
   - "1.0.0 (S55 · v2.58 · D#386 canon) · NEW atomique cartography. Extraction OR refonte produce-paid-angles · scaffold portfolio angles brand-wide (light pass formula + lineage canon) sans deep production matrix scoring. Invocable séparément pour refresh cartographie angles sans relancer le full pipeline produce-paid-angles. Cross-product audience × axis origin cartographié, scaffold N angles light pass avec lineage canon obligatoire. Cross-ref D#386."
   - "1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, breakthrough-advertising-5-stages, audiences-cartography). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts."
+  - "1.0.2 (v2.80 Sprint A · audit canon brand strategist) · archetype_canon_id enum 6 → 12 valeurs Mark+Pearson canon complet. Ship 6 NEW archetypes (innocent, explorer, magician, jester, ruler, creator) qui rejoignent les 6 existing (caregiver, sage, rebelle, amante, heros, homme-ordinaire). Refus mapping client réels résolu · cartographie peut maintenant attribuer le bon archetype quelle que soit la catégorie (luxe ruler, outdoor explorer, FMCG fun jester, tech magician, artisanat creator, mass-market innocent)."
+archetype_canon_id_enum:
+  - innocent
+  - sage
+  - explorer
+  - rebelle
+  - magician
+  - heros
+  - amante
+  - jester
+  - homme-ordinaire
+  - caregiver
+  - ruler
+  - creator
 description: |
   v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, breakthrough-advertising-5-stages, audiences-cartography). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
   v1.0.0 (S55 · v2.58 · D#386 canon) · Atomique cartography extraction.
@@ -131,7 +145,7 @@ Lecture batch obligatoire via `python3 .skills/phantom-canon.py copy {layer}` po
 1. **`hooks`** · 6 ouvertures canon (curiosity-gap, contrarian, stat-choc, avant-apres, question-callout, confession). Hook ID lineage `hook_canon_id` obligatoire sur chaque angle scaffold.
 2. **`angles`** · 6 axes narratifs canon (mecanisme-unique, identite, retour-en-arriere, ennemi-commun, status-shift, contre-intuitif). Angle ID lineage `angle_canon_id` obligatoire.
 3. **`frameworks`** · 6 squelettes structurels canon (AIDA, PAS, BAB, QUEST, FAB, 4Ps). Framework ID lineage `framework_canon_id` obligatoire.
-4. **`archetypes-voix`** · 6 registres canon (caregiver, sage, rebelle, amante, heros, homme-ordinaire). Archetype ID lineage `archetype_canon_id` obligatoire.
+4. **`archetypes-voix`** · 12 registres canon Mark+Pearson (innocent, sage, explorer, rebelle, magician, heros, amante, jester, homme-ordinaire, caregiver, ruler, creator). Archetype ID lineage `archetype_canon_id` obligatoire. Enum complet `archetype_canon_id_enum` frontmatter ci-dessus.
 5. **`niveaux-schwartz`** · 5 stages product-awareness canon (`_shared/awareness-stage.json` $ref) · awareness_stage + sophistication (v1-v5) lineage obligatoire.
 
 Pour chaque outil canon lu, garder en mémoire · `id, when_works[], when_avoid[], combines_with{}`. Ces contraintes filtrent quels outils sont compatibles avec audience résolue Step 1 + product résolu Step 2.
@@ -222,8 +236,10 @@ Pour chaque angle scaffold Step 3, assigner lineage canon depuis matrices Step 0
 Hard rule canon · 4 IDs lineage canon obligatoires sur chaque angle (`hook_canon_id`, `framework_canon_id`, `angle_canon_id`, `archetype_canon_id`). Anti-pattern v2.55 BANNI · halluciner archetype ou hook sans le mapper au canon (`PhantomOS reasons over a business universe`, canon dormant = output générique averaged-LLM).
 
 Cross-product canon × audience cartographié obligatoire :
-- Si audience entry_door pain_driven → angle archetype likely `caregiver` OR `sage` (cross-ref canon `when_works`)
-- Si audience entry_door identity_driven → angle archetype likely `rebelle` OR `amante` (cross-ref canon `when_works`)
+- Si audience entry_door pain_driven → angle archetype likely `caregiver` OR `sage` OR `innocent` (cross-ref canon `when_works`)
+- Si audience entry_door identity_driven → angle archetype likely `rebelle` OR `amante` OR `explorer` OR `ruler` (cross-ref canon `when_works`)
+- Si audience entry_door goal_driven → angle archetype likely `heros` OR `magician` OR `creator` (cross-ref canon `when_works`)
+- Si audience registre fun ou hédoniste → angle archetype likely `jester` OR `amante` (cross-ref canon `when_works`)
 - Si audience scope broad → angle awareness_stage likely `problem_aware` OR `solution_aware` (top funnel)
 - Si audience scope micro → angle awareness_stage likely `product_aware` OR `most_aware` (bottom funnel)
 

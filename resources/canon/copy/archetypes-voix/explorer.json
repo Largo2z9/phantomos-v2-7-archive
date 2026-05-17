@@ -1,0 +1,93 @@
+{
+  "_schema": "canon-tool/1.1",
+  "_version": "1.0",
+  "id": "explorer",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Explorer",
+  "principle": "Voix qui appelle au large. L'Explorer refuse la routine et l'enfermement, il célèbre la liberté de tracer sa route. La marque ne suit pas la file, elle outille ceux qui partent. Authenticité comme contrepoison de la conformité.",
+  "structure": "Vocabulaire d'aventure, de mouvement, de découverte (route, frontière, terrain, dehors). Phrases qui ouvrent l'espace. Pronoms inclusifs aux affranchis (toi qui, ceux qui). Ton bold, légèrement rugueux, jamais corporate.",
+  "gabarits": [
+    "Pour ceux qui ne tiennent pas en place.",
+    "Si la route est facile, c'est qu'elle est déjà prise.",
+    "Ce qu'il te faut, c'est [équipement/produit] qui tient quand tu sors du cadre.",
+    "[Produit] est fait pour aller là où les autres s'arrêtent."
+  ],
+  "when_works": [
+    "outdoor, voyage, équipement technique, sport aventure, lifestyle nomade",
+    "audiences indépendantes, anti-conformistes, en recherche d'authenticité",
+    "marques challenger qui se positionnent contre le mainstream confortable",
+    "catégories où la robustesse et la fiabilité terrain comptent"
+  ],
+  "when_avoid": [
+    "audiences sédentaires ou risk-averse (l'invitation ne résonne pas)",
+    "catégories indoor ou domestiques (le ton paraît hors-sujet)",
+    "marques institutionnelles ou héritage classique (contradiction de tone)",
+    "produits soin doux ou wellness contemplatif (l'effort marche pas)"
+  ],
+  "combines_with": {
+    "hooks": [
+      "contrarian",
+      "question-callout",
+      "avant-apres"
+    ],
+    "frameworks": [
+      "bab",
+      "aida",
+      "fab"
+    ],
+    "leads": [
+      "transformation-led",
+      "story-led"
+    ],
+    "angles": [
+      "identite",
+      "status-shift",
+      "contre-intuitif"
+    ],
+    "emotions": [
+      "liberte",
+      "curiosite",
+      "fierte",
+      "determination"
+    ]
+  },
+  "anti_patterns": [
+    "Adventure-bro déconnecté (clichés Instagram outdoor sans substance)",
+    "Authentique performé (rugosité marketing pour faire vrai)",
+    "Liberté slogan qui veut rien dire (le mot lâché sans ancrage produit)",
+    "Explorer luxe qui sonne contradictoire (héritage premium étouffe le ton)",
+    "Cliché sponsor (le mot aventure remplace la vraie utilité produit)"
+  ],
+  "examples": [
+    "Patagonia ne te vend pas une veste, te vend la possibilité d'aller où tu veux sans t'inquiéter du tissu. C'est leur ligne depuis 50 ans.",
+    "The North Face le dit clairement. La montagne ne fait pas de cadeau, ton équipement non plus. Tu sors, ça tient.",
+    "Jeep est partie de là. Si la route s'arrête, le véhicule continue. Tout le reste découle de cette idée."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes",
+      "Mark & Pearson Hero and Outlaw 12 archetypes",
+      "Campbell hero's journey (call to adventure)"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-16T00:00:00.000000Z"
+}

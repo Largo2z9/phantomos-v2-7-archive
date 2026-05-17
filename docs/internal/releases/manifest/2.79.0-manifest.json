@@ -1,0 +1,76 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.79.0",
+  "released_at": "2026-05-17",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 77,
+  "skills_count_after": 80,
+  "slash_commands_count_before": 7,
+  "slash_commands_count_after": 7,
+  "doctrines_count_before": 17,
+  "doctrines_count_after": 18,
+  "summary": "Sprint majeur v2.79.0 · release groupée Sprint v2.80 brand strategy frameworks + Sprint v2.78.2 Decomposition Visibility Discipline · 3 NEW skills + 1 NEW doctrine + 5 skills enrichis + 6 NEW archetypes Mark+Pearson canon + map-angles enum 12 valeurs · ferme gap test live KaraCare flag par Largo (pattern systémique cross-skills opérateur-facing · l'agent MONTRE désormais sa réflexion visuellement) + P0 audit experts Sprint A bis brand strategist (6/10 → 8.5/10 estimé).",
+  "audit_amont": {
+    "context_v2_78_post_release": "Largo test live workspace v2.78.0 sur KaraCare · flag 3 défauts critiques cross-skills opérateur-facing · pas de visualisation matricielle · pas d'explication pédagogique méthode · many-to-many product × pain × audience implicite",
+    "sprint_A_bis_5_agents_experts_audit": [
+      "Creative strategist senior DTC · 7.5/10 CONDITIONAL · best decompose-ad 9/10",
+      "Media buyer senior · 4.5/10 CRITIQUE pré-v2.78 · post-v2.78 ship 7+/10 estimé",
+      "Copywriter DR senior · 7/10 · research + brief + audit excellents",
+      "Brand strategist senior · 6/10 · archetypes 6/12 + Nielsen Norman 4D absent + Moore canvas absent",
+      "Ecom founder senior · 6.5/10 · cockpit créatif paid premium · pas hub founder full-spectrum"
+    ],
+    "verdict_cross_5_experts": "Atelier creative + brand + audience excellent · brand frameworks formalisés + visualisation matricielle décomposition opérateur-facing manquants · gaps fermés par v2.79.0",
+    "verdict_largo_test_live_karacare": "L'agent doit PROUVER qu'il a compris en MONTRANT sa réflexion · profil cognitif systematizer-strategist visuel · cartographie = mécanisme réduction d'incertitude (memory canon largo_cognitive_profile)"
+  },
+  "patches_sprint_v2_80_brand_strategy_frameworks": [
+    "Extend archetypes-voix 6 → 12 Mark+Pearson canon (innocent + explorer + magician + jester + ruler + creator NEW)",
+    "NEW produce-positioning-canvas SKILL.md (458L · Geoffrey Moore + Trout-Ries + Ehrenberg-Bass + Lochhead)",
+    "NEW define-brand-voice SKILL.md (705L · Nielsen Norman 4D + do/don't lexique + 4 touchpoints samples)",
+    "Enrich setup-brand Step 4 (443 → 667L · v2.0.0 → v2.1.0 · 4 sub-steps + 5 NEW HR + anti-buzzword filter)",
+    "NEW validate-brand-voice-consistency SKILL.md (373L · curator cross-touchpoint drift severity ≤1/2-3/4-5/≥6)"
+  ],
+  "patches_sprint_v2_78_2_decomposition_visibility": [
+    "NEW doctrine decomposition-visibility-discipline.md (396L · 14 sections canon-style miroir · 4 niveaux obligatoires · 8 HR + 8 AP + 12 cross-refs canon)",
+    "Patch snapshot-brand v1.4.1 → v1.5.0 (+84L · NEW Phase Decomposition Visibility 4 niveaux matriciels canon · 5 NEW HR + 3 NEW AP)",
+    "Patch build-atlas-complete v1.5.0 → v1.6.0 (+113L · NEW Phase Atlas Visibility Matriciel multi-niveau · 6 HR-NEW + 5 AP-NEW)",
+    "Patch profile-audience v1.6.0 → v1.7.0 (+151L · NEW Output Audience Visibility Matriciel · 5 HR-NEW + 4 AP-NEW)",
+    "Patch define-specs v1.2.0 → v1.3.0 (+91L · NEW HR8.5 Specs Visibility Matriciel 3 niveaux · 4 AP-NEW)"
+  ],
+  "files_patched": [
+    {"file": "resources/canon/copy/archetypes-voix/innocent.json", "scope": "NEW · archetype Mark+Pearson canon · brand examples Coca/Dove"},
+    {"file": "resources/canon/copy/archetypes-voix/explorer.json", "scope": "NEW · archetype Mark+Pearson canon · brand examples Patagonia/NorthFace/Jeep"},
+    {"file": "resources/canon/copy/archetypes-voix/magician.json", "scope": "NEW · archetype Mark+Pearson canon · brand examples Apple/Disney/Tesla/MAC"},
+    {"file": "resources/canon/copy/archetypes-voix/jester.json", "scope": "NEW · archetype Mark+Pearson canon · brand examples Old Spice/Skittles/IKEA"},
+    {"file": "resources/canon/copy/archetypes-voix/ruler.json", "scope": "NEW · archetype Mark+Pearson canon · brand examples Mercedes/Rolex/Microsoft/Amex"},
+    {"file": "resources/canon/copy/archetypes-voix/creator.json", "scope": "NEW · archetype Mark+Pearson canon · brand examples Lego/Crayola/Adobe/Etsy"},
+    {"file": ".skills/skills/map-angles/SKILL.md", "scope": "Patch · archetype_canon_id_enum 6 → 12 Mark+Pearson · v1.0.1 → v1.0.2"},
+    {"file": ".skills/skills/produce-positioning-canvas/SKILL.md", "scope": "NEW · 458L producer · Geoffrey Moore 6 placeholders + Trout-Ries + Ehrenberg-Bass + Lochhead · 8 HR + 7 AP"},
+    {"file": ".skills/skills/define-brand-voice/SKILL.md", "scope": "NEW · 705L producer · Nielsen Norman 4D scoring -5/+5 + do/don't lexique sourcing canonical + 4 touchpoints samples · 10 HR + 7 AP"},
+    {"file": ".skills/skills/setup-brand/SKILL.md", "scope": "Enrich · 443 → 667L · v2.0.0 → v2.1.0 · 4 sub-steps NEW (4a archetype + 4b purpose Sinek + 4c values anti-buzzword + 4d founder story) · 5 NEW HR (HR4-HR8)"},
+    {"file": ".skills/skills/validate-brand-voice-consistency/SKILL.md", "scope": "NEW · 373L curator · scan cross-touchpoint paid/organic/CRM/UI/PDP · drift severity seuils canon ≤1/2-3/4-5/≥6 · 12 HR + 10 AP"},
+    {"file": "docs/system/decomposition-visibility-discipline.md", "scope": "NEW · 396L · 14 sections canon-style miroir · 4 niveaux obligatoires · 8 HR-DVD + 8 AP-DVD + 12 cross-refs canon valid"},
+    {"file": ".skills/skills/snapshot-brand/SKILL.md", "scope": "Enrich · +84L · v1.4.1 → v1.5.0 · NEW Phase Decomposition Visibility 4 niveaux matriciels canon · 5 NEW HR + 3 NEW AP"},
+    {"file": ".skills/skills/build-atlas-complete/SKILL.md", "scope": "Enrich · +113L · v1.5.0 → v1.6.0 · NEW Phase Atlas Visibility Matriciel multi-niveau · 6 HR-NEW + 5 AP-NEW"},
+    {"file": ".skills/skills/profile-audience/SKILL.md", "scope": "Enrich · +151L · v1.6.0 → v1.7.0 · NEW Output Audience Visibility Matriciel · 5 HR-NEW + 4 AP-NEW"},
+    {"file": ".skills/skills/define-specs/SKILL.md", "scope": "Enrich · +91L · v1.2.0 → v1.3.0 · NEW HR8.5 Specs Visibility Matriciel 3 niveaux · 4 AP-NEW"},
+    {"file": ".skills/_manifest.json", "scope": "Regen · 80 skills total · 3 NEW v2.80 confirmés · jargon_bank.json regen"},
+    {"file": "_version.json", "scope": "Bump 2.78.0 → 2.79.0 · summary v2.79.0 + manifest path 2.79.0"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.79.0 prepended"},
+    {"file": "docs/internal/releases/manifest/2.79.0-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "decisions_captured": ["D#430", "D#431", "D#432", "D#433"],
+  "backlog_v279_plus": [
+    "Re-test live workspace fresh v2.79.0 sur KaraCare pour valider patterns matriciels rendus + pédagogie verbale + many-to-many explicit",
+    "Sprint v2.79.x business pilotage · unit economics canon (CAC + LTV + MER + payback + contribution margin) + WBR skill + analyze-cohort-retention + audit-klaviyo-flows",
+    "Sprint v2.80.x DR copywriting production · produce-sales-letter (long-form VSL + sales letter) + produce-email-sequence (Halbert/Klaviyo canon) + big-idea-canon doctrine + audit-proof-coverage",
+    "Sprint v2.81+ CRO + lifecycle · audit-pdp + audit-landing + flow-builder-klaviyo + plateformes attribution modernes (Northbeam · Motion · Foreplay MCP/skill)",
+    "Skill produce-hooks (gap creative strat Sprint A bis · ratio 1:15 angle:hooks vs 1:0.6 actuel)",
+    "Skill decompose-batch (ingère 20+ ads competitor d'un coup · swipefile mining)",
+    "Pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md déjà identifié)",
+    "Port unfog skill source root (3e pair canon avec scope/bird)",
+    "Convention argument-hint accolades non-quotées PyYAML strict documentation _TEMPLATE/SKILL.md"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.79.0 = git revert HEAD strict · 3 NEW skills v2.80 removable via manifest regen · 1 NEW doctrine retirable · 6 NEW archetypes JSON files removable · 5 skills enrichis backward compat (legacy preserved · NEW sections additif strict) · 4 niveaux matriciels canon decomposition-visibility-discipline removable via revert Phase Output sections cross-4 skills consumers"
+}

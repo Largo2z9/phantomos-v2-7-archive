@@ -7,6 +7,64 @@
 
 ---
 
+## v2.79.0 · 2026-05-17 · Sprint majeur · brand strategy frameworks + Decomposition Visibility Discipline (release groupée Sprint v2.80 + Sprint v2.78.2)
+
+**Why** · Post-test live workspace v2.78.0 sur KaraCare · Largo a flag gap structurel cross-skills opérateur-facing · l'agent encode silencieusement sans présenter visuellement (1) la décomposition produit specs/mécanismes/bénéfices · (2) le mapping many-to-many product × pain × audience · (3) le positionnement filtre par stage business · (4) la méthode pédagogique verbale. Profil cognitif Largo (memory canon `largo_cognitive_profile` · systematizer-strategist visuel · cartographie = mécanisme réduction d'incertitude) demande visualisation matricielle systémique. Plus Sprint A bis 5 agents experts audit a flag P0 critical brand strategist 6/10 CONDITIONAL · archetypes 6/12 Mark+Pearson · tone_of_voice 4-enum vs Nielsen Norman 4D · positioning canvas Geoffrey Moore absent.
+
+**What** · 2 sprints groupés · v2.80 brand strategy frameworks (5 agents) + v2.78.2 Decomposition Visibility Discipline (5 agents).
+
+**Sprint v2.80 · Brand Strategy Frameworks (5 patches)** ·
+
+1. **Extend archetypes-voix 6 → 12 Mark+Pearson canon** · NEW innocent + explorer + magician + jester + ruler + creator · pattern canon-tool/1.1 reproductible · brand examples sourcés réels (Coca/Dove · Patagonia/NorthFace · Apple/Tesla · Old Spice/Skittles · Mercedes/Rolex · Lego/Adobe) · map-angles enum 12 valeurs updated (v1.0.1 → v1.0.2)
+2. **NEW `produce-positioning-canvas` SKILL.md** (458L · type producer) · Geoffrey Moore format strict 6 placeholders + Trout-Ries category leadership + Ehrenberg-Bass distinctive assets + Lochhead Play Bigger · 3-5 candidates ranked 4 lentilles scoring (specificity · believability · ownability · emotionality) · 8 HR + 7 AP · Step 0 bridge proactif canon v2.77
+3. **NEW `define-brand-voice` SKILL.md** (705L · type producer) · Nielsen Norman 4D axes scoring strict -5/+5 (Funny↔Serious · Formal↔Casual · Respectful↔Irreverent · Enthusiastic↔Matter-of-fact) · do/don't lexique 5-10 entries each sourcing canonical (audiences key_expressions + pain_metaphors + solution_metaphors + brand_personality) · 4 touchpoints samples (paid headline 5-10 mots · organic caption 30-80 mots · CRM email subject+body · UI microcopy button+tooltip+error) · 10 HR + 7 AP
+4. **Enrich `setup-brand` Step 4** (443 → 667L · v2.0.0 → v2.1.0 · +224L additif strict) · 4 sub-steps NEW · 4a archetype Mark+Pearson primary + secondary (AskUserQuestion drill 12 archetypes) · 4b purpose Sinek why (3 angles seedés + free-text) · 4c values anti-buzzword 3-5 max (banned list innovation/excellence/customer-centric/passion/quality/integrity/teamwork/respect/sustainability sans spécificité) · 4d founder story specific (1 paragraph anti-générique) · 5 NEW HR (HR4-HR8)
+5. **NEW `validate-brand-voice-consistency` SKILL.md** (373L · type curator) · scan cross-touchpoint paid creatives + organic posts + CRM email sequences + UI landing + PDP · drift severity seuils canon chiffrés ≤1 consistent / 2-3 soft / 4-5 medium / ≥6 critical · do_lexicon/dont_lexicon adherence check + key_expressions miss + banned_words detection · 12 HR + 10 AP · Step 0 bridge proactif canon v2.77 (define-brand-voice upstream prerequisite OR degraded mode)
+
+**Sprint v2.78.2 · Decomposition Visibility Discipline (5 patches)** ·
+
+6. **NEW doctrine canon `decomposition-visibility-discipline.md`** (396L · 14 sections canon-style miroir op-system + extension-discovery + skill-routing + pacing pattern) · thèse fondatrice "l'agent doit PROUVER qu'il a compris en MONTRANT sa réflexion" · 6 raisons systémiques (visibilité = confiance · pédagogie = autonomie opérateur · reverse engineering visible = contrôle qualité · many-to-many explicit = pensée systémique correcte · positioning filtre = degré de liberté stratégique · différenciation canon vs LLM black box) · 4 niveaux obligatoires canon (NIVEAU 1 décomposition produit · NIVEAU 2 many-to-many · NIVEAU 3 positionnement filtre stage · NIVEAU 4 méthode pédagogique verbale) · 8 HR-DVD + 8 AP-DVD · 12 cross-refs canon valid
+7. **Patch `snapshot-brand` v1.4.1 → v1.5.0** (+84L additif) · NEW Phase Output Decomposition Visibility APRÈS Section 5 Close ouvert · 4 niveaux matriciels canon · 5 NEW HR + 3 NEW AP (AP-DV-1/2/3)
+8. **Patch `build-atlas-complete` v1.5.0 → v1.6.0** (+113L additif) · NEW Phase Output Atlas Visibility Matriciel multi-niveau (post Step 8 stage territories · pre Step 9 Close IP) · 4 NIVEAUX canon cross-products + cross-audiences · 6 HR-NEW + 5 AP-NEW
+9. **Patch `profile-audience` v1.6.0 → v1.7.0** (+151L additif) · NEW Output Audience Visibility Matriciel · matrice audience × pain × angle cross-atlas · stage business filter + audience produit-fit vs ciblage créa distinction · 5 HR-NEW (HR10-HR14) + 4 AP-NEW (AP10-AP13)
+10. **Patch `define-specs` v1.2.0 → v1.3.0** (+91L additif) · NEW HR8.5 Specs Visibility Matriciel 3 niveaux (specs · mécanismes · bénéfices 3 couches functional/emotional/identity canon pain-benefit-chain) · mechanism_ref par bénéfice obligatoire (reverse engineering possible) · 4 AP-NEW v2.78.2
+
+**Pattern systémique cross-skills fermé · l'agent MONTRE désormais sa réflexion visuellement**
+
+Pré-v2.79 · l'agent encodait silencieusement · output prose-only · many-to-many implicite · opérateur déduisait · drift validation. Post-v2.79 · 4 skills consumers opérateur-facing (snapshot-brand · build-atlas-complete · profile-audience · define-specs) appliquent canon decomposition-visibility-discipline · 4 niveaux matriciels ASCII obligatoires + pédagogie verbale méthode décomposition + many-to-many explicit + positionnement filtre par stage business + audience produit-fit vs ciblage créa distinction. Plus v2.80 frameworks brand strategy (positioning canvas Geoffrey Moore + voice Nielsen Norman 4D + archetypes 12/12 Mark+Pearson + voice consistency cross-touchpoint validator) consumables par skills v2.78.2 downstream.
+
+Ferme gap test live KaraCare flag par Largo · différenciation structurelle défensable vs LLM black box ChatGPT/Claude/Notion AI (boîte noire input → output) · PhantomOS canon = agent qui PROUVE qu'il a compris en MONTRANT sa réflexion.
+
+**Backward compat strict additif** · skills count 77 → 80 (+3 NEW · produce-positioning-canvas + define-brand-voice + validate-brand-voice-consistency) · slash commands 7 (inchangé) · doctrines 17 → 18 (+1 NEW decomposition-visibility-discipline). 4 skills enrichis (setup-brand + snapshot-brand + build-atlas-complete + profile-audience + define-specs · 5 total). 6 NEW archetypes registry + map-angles enum updated. 9 files patched + 8 NEW.
+
+**Files patched + NEW (17 entries)** ·
+- 6 NEW archetype JSON files (innocent + explorer + magician + jester + ruler + creator dans `resources/canon/copy/archetypes-voix/`)
+- `.skills/skills/produce-positioning-canvas/SKILL.md` NEW (458L)
+- `.skills/skills/define-brand-voice/SKILL.md` NEW (705L)
+- `.skills/skills/validate-brand-voice-consistency/SKILL.md` NEW (373L)
+- `.skills/skills/setup-brand/SKILL.md` enrich (443 → 667L · v2.0.0 → v2.1.0)
+- `.skills/skills/map-angles/SKILL.md` patch enum (v1.0.1 → v1.0.2)
+- `docs/system/decomposition-visibility-discipline.md` NEW (396L)
+- `.skills/skills/snapshot-brand/SKILL.md` enrich (+84L · v1.4.1 → v1.5.0)
+- `.skills/skills/build-atlas-complete/SKILL.md` enrich (+113L · v1.5.0 → v1.6.0)
+- `.skills/skills/profile-audience/SKILL.md` enrich (+151L · v1.6.0 → v1.7.0)
+- `.skills/skills/define-specs/SKILL.md` enrich (+91L · v1.2.0 → v1.3.0)
+- `.skills/_manifest.json` regen (80 skills total)
+- `.skills/_jargon_bank.json` regen
+- `_version.json` 2.78.0 → 2.79.0
+- `CHANGELOG.md` v2.79.0 entry (this entry)
+- `docs/internal/releases/manifest/2.79.0-manifest.json` NEW
+
+**D#430-D#433 captured** ·
+- D#430 · v2.79.0 release groupée Sprint v2.80 + Sprint v2.78.2 (cohérence shipping discipline · close gap test live KaraCare flag par Largo)
+- D#431 · Sprint v2.80 brand strategy frameworks (3 NEW skills + 1 setup-brand enrichi + 6 NEW archetypes Mark+Pearson canon · close P0 audit Sprint A bis brand strategist 6/10 → 8.5/10 estimé)
+- D#432 · Sprint v2.78.2 NEW Decomposition Visibility Discipline doctrine + 4 skills patches consumers (snapshot-brand + build-atlas-complete + profile-audience + define-specs · pattern systémique cross-skills opérateur-facing)
+- D#433 · Pattern canon racine "l'agent doit PROUVER qu'il a compris en MONTRANT sa réflexion" · 4 niveaux matriciels obligatoires + pédagogie verbale · différenciation structurelle défensable vs LLM black box
+
+**Backlog v2.79+** · Re-test live workspace fresh v2.79.0 sur KaraCare pour valider patterns matriciels rendus · Sprint v2.79.x business pilotage (unit economics canon + WBR + cohort retention + audit-klaviyo-flows · Sprint v2.79 plan original) · Sprint v2.80.x DR copywriting production (sales letter + email sequence + big-idea-canon + audit-proof-coverage) · Sprint v2.81+ CRO + lifecycle (audit-pdp + audit-landing + flow-builder-klaviyo) · pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md déjà identifié) · port unfog (3e pair canon avec scope/bird) · convention argument-hint PyYAML.
+
+---
+
 ## v2.78.0 · 2026-05-17 · Sprint majeur · ops paid coverage closure + magic keyword cleanup canon
 
 **Why** · Sprint A bis 5 agents experts cross-métiers (creative strategist DTC · media buyer · copywriter DR · brand strategist · ecom founder) audit READ-ONLY workspace v2.77.0. Pattern convergent identifié · "Atelier creative + brand + audience excellent · ops paid + business pilotage + lifecycle gaps structurels". Verdict critique media buyer 4.5/10 CONDITIONAL · skills routine-perf + analyze-perf + audit-google-pmax référencés canon doctrine connectivity-layering ligne 20 + INDEX.md mais SKILL.md jamais shippés (mensonge surface vs ship).

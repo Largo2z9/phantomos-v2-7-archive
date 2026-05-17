@@ -1,0 +1,93 @@
+{
+  "_schema": "canon-tool/1.1",
+  "_version": "1.0",
+  "id": "magician",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Magician",
+  "principle": "Voix qui révèle la transformation. Le Magician ne promet pas un meilleur produit, il promet un autre monde. La marque maîtrise un mécanisme qui semble tenir de la magie, mais qui repose sur une vision et un savoir-faire. Catalyseur, pas spectateur.",
+  "structure": "Vocabulaire de transformation, vision, alchimie (révéler, transformer, libérer, déclencher, transmuter). Métaphores fortes mais pas mystiques au point de devenir vagues. Phrases qui suggèrent un seuil franchi. Confiance sereine, jamais hyperbolique.",
+  "gabarits": [
+    "[Produit] ne fait pas que [bénéfice attendu]. Il transforme [variable plus profonde].",
+    "Ce qu'on a découvert change ce que tu croyais possible.",
+    "[Avant] tu étais [état]. [Après produit] tu deviens [nouveau cadre].",
+    "Il suffit d'un déclencheur. [Produit] est ce déclencheur."
+  ],
+  "when_works": [
+    "tech transformative, beauté avec mécanisme breakthrough, wellness aspirationnel",
+    "audiences en quête de changement profond (pas juste optimisation)",
+    "marques à mécanisme unique défendable (vraie innovation, vraie vision)",
+    "catégories où le résultat dépasse la promesse fonctionnelle (skincare, biohacking, dispositifs)"
+  ],
+  "when_avoid": [
+    "produits mass-market ou commodités (le ton paraît disproportionné)",
+    "audiences pragmatiques ou skeptiques (la magie déclenche la défense)",
+    "catégories régulées strictes (santé, médical : claims transformatifs risqués)",
+    "marques sans mécanisme défendable (la promesse paraît creuse)"
+  ],
+  "combines_with": {
+    "hooks": [
+      "curiosity-gap",
+      "contrarian",
+      "avant-apres"
+    ],
+    "frameworks": [
+      "aida",
+      "fab",
+      "quest"
+    ],
+    "leads": [
+      "mechanism-led",
+      "transformation-led"
+    ],
+    "angles": [
+      "mecanisme-unique",
+      "status-shift",
+      "contre-intuitif"
+    ],
+    "emotions": [
+      "emerveillement",
+      "espoir",
+      "curiosite",
+      "envie"
+    ]
+  },
+  "anti_patterns": [
+    "Mysticisme creux (mots magiques sans mécanisme défendable)",
+    "Hyperbole non tenue (promesse de transformation sans preuve)",
+    "Magic-talk technique trahie (jargon scientifique qui contredit le ton)",
+    "Magician sans vision (transformation revendiquée sans worldview)",
+    "Spirituel performé (la marque joue mystique pour cacher l'ordinaire)"
+  ],
+  "examples": [
+    "Apple ne te vendait pas un téléphone. Il te vendait un changement de ce que pouvait être un téléphone. C'est ça la posture Magician shippée pendant 20 ans.",
+    "Tesla part de cette idée. Une voiture, c'est juste de l'énergie qui se déplace. Quand tu changes l'énergie, tu changes la voiture, et tu changes la route.",
+    "MAC Cosmetics te promet pas du maquillage. Il te promet de devenir le rôle que tu choisis pour la soirée. Le mécanisme est dans la pigmentation, la promesse est ailleurs."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes",
+      "Mark & Pearson Hero and Outlaw 12 archetypes",
+      "Eugene Schwartz breakthrough mechanism"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-16T00:00:00.000000Z"
+}

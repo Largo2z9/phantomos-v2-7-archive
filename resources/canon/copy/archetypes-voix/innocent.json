@@ -1,0 +1,92 @@
+{
+  "_schema": "canon-tool/1.1",
+  "_version": "1.0",
+  "id": "innocent",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Innocent",
+  "principle": "Voix simple, claire, optimiste. L'Innocent croit que les choses bien faites n'ont pas besoin d'être compliquées. Le bonheur est accessible, la promesse est tenue, la marque ne triche pas. Pureté revendiquée comme valeur, jamais comme naïveté.",
+  "structure": "Vocabulaire élémentaire, phrases positives, images claires. Pas d'ironie, pas de second degré, pas de jargon. Le ton porte la confiance par la simplicité, pas par l'autorité. Cadence apaisée, registre familier sans condescendance.",
+  "gabarits": [
+    "C'est simple. [X] fait [Y]. C'est tout ce dont tu as besoin.",
+    "On a juste voulu [intention pure]. Et ça marche.",
+    "Les choses qui comptent sont les plus simples. [Produit] en est une.",
+    "Pas de promesse compliquée. [Bénéfice clair], au quotidien."
+  ],
+  "when_works": [
+    "marques familiales, grand public, mass-market avec promesse claire",
+    "audiences fatiguées par la sophistication marketing (recherche de simplicité)",
+    "catégories alimentation saine, hygiène, soin doux, produits enfants",
+    "marchés où la confiance prime sur la performance (food, daily care)"
+  ],
+  "when_avoid": [
+    "audiences cyniques ou sophistiqué-aware (l'innocence sonne naïve)",
+    "produits techniques ou performance (le ton minimise la valeur)",
+    "marchés saturés à sophistication 4+ (claim simple ne perce plus)",
+    "catégories aspirationnelles ou luxe (l'innocent paraît cheap)"
+  ],
+  "combines_with": {
+    "hooks": [
+      "avant-apres",
+      "question-callout",
+      "confession"
+    ],
+    "frameworks": [
+      "bab",
+      "aida"
+    ],
+    "leads": [
+      "story-led",
+      "transformation-led"
+    ],
+    "angles": [
+      "honnetete",
+      "communaute",
+      "identite"
+    ],
+    "emotions": [
+      "confiance",
+      "soulagement",
+      "espoir",
+      "nostalgie"
+    ]
+  },
+  "anti_patterns": [
+    "Innocence performative (pureté revendiquée comme posture marketing creuse)",
+    "Naïveté qui passe pour incompétence (simple devient simpliste)",
+    "Bisounours déconnecté du réel (zéro friction reconnue)",
+    "Innocent qui esquive les objections (refus de nuance perçu comme malhonnête)",
+    "Sucre tartiné (positif forcé qui sonne faux)"
+  ],
+  "examples": [
+    "Dove le dit depuis 60 ans. Un savon, vraiment doux, qui ne dessèche pas. Pas besoin d'en dire plus.",
+    "Coca-Cola n'a jamais changé la promesse. Un moment partagé, simple. C'est ce qui tient depuis un siècle.",
+    "Notre formule, c'est trois ingrédients. Tu lis l'étiquette, tu comprends tout. C'est ce que Weleda fait depuis toujours."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes",
+      "Mark & Pearson Hero and Outlaw 12 archetypes",
+      "Joseph Campbell innocent archetype"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-16T00:00:00.000000Z"
+}

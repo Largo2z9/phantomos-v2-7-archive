@@ -1,0 +1,93 @@
+{
+  "_schema": "canon-tool/1.1",
+  "_version": "1.0",
+  "id": "creator",
+  "atlas": "copy",
+  "layer": "archetypes-voix",
+  "name": "Creator",
+  "principle": "Voix qui célèbre le geste et l'œuvre. Le Creator s'adresse à ceux qui construisent, qui composent, qui finissent les détails. La marque outille la vision, elle ne la remplace pas. Artisanat revendiqué, originalité défendue, durabilité de ce qui est bien fait.",
+  "structure": "Vocabulaire d'atelier, de matière, de finition (composer, façonner, monter, ajuster, signer). Phrases qui décrivent un faire, pas un résultat. Détails concrets sur le processus. Ton respectueux du métier de l'audience, jamais condescendant.",
+  "gabarits": [
+    "Pour ceux qui finissent ce qu'ils commencent.",
+    "[Produit] est ton outil. La signature, elle est de toi.",
+    "Composer, c'est faire des choix. [Marque] te donne les bons.",
+    "Ce qui dure est ce qui est bien construit. [Produit] suit cette règle."
+  ],
+  "when_works": [
+    "outils créatifs, matériel art, DIY, papeterie, design, software créatif, artisanat",
+    "audiences makers, artisans, créatifs pro ou amateurs sérieux",
+    "marques outils premium où la qualité du moyen définit la qualité de l'œuvre",
+    "catégories où le geste de l'utilisateur compte autant que le produit fini"
+  ],
+  "when_avoid": [
+    "produits clé-en-main ou commodités (le ton paraît disproportionné)",
+    "audiences pressées par le résultat sans intérêt pour le processus",
+    "catégories où la main de l'utilisateur n'a pas de place (food packaged, dispositifs auto)",
+    "marchés mass-market à promesse simple (la sophistication du ton fatigue)"
+  ],
+  "combines_with": {
+    "hooks": [
+      "curiosity-gap",
+      "avant-apres",
+      "confession"
+    ],
+    "frameworks": [
+      "fab",
+      "quest",
+      "aida"
+    ],
+    "leads": [
+      "mechanism-led",
+      "transformation-led"
+    ],
+    "angles": [
+      "identite",
+      "mecanisme-unique",
+      "rituel"
+    ],
+    "emotions": [
+      "inspiration",
+      "fierte",
+      "satisfaction",
+      "envie"
+    ]
+  },
+  "anti_patterns": [
+    "Artisanal performé (vocabulaire d'atelier sans réalité produit)",
+    "Élitisme créatif (le ton range l'audience qui ne fait pas le métier)",
+    "Sophistication marketing qui étouffe (le faire revendiqué noyé sous le claim)",
+    "Creator sur produit mass-produit (la promesse craft contredit la réalité)",
+    "Vocabulaire vague (créatif, original, unique) sans ancrage matériel"
+  ],
+  "examples": [
+    "Lego ne te vend pas des briques. Il te vend la possibilité de construire ce que tu imagines. Chaque set est un point de départ, jamais un point d'arrivée.",
+    "Adobe parle aux créatifs comme à des collègues. Photoshop, Illustrator, Premiere : ce sont des outils, la signature est ailleurs. La promesse n'a jamais bougé.",
+    "Crayola accompagne le geste de l'enfant depuis 120 ans. Pas d'image marketing surchargée. Juste la couleur, la main, le résultat sur la feuille."
+  ],
+  "validations": [],
+  "lineage": {
+    "source": "public-doctrine",
+    "references": [
+      "Jung archetypes",
+      "Mark & Pearson Hero and Outlaw 12 archetypes",
+      "Howard Gossage craft school"
+    ]
+  },
+  "_field_types": {
+    "id": "stated",
+    "atlas": "stated",
+    "layer": "stated",
+    "name": "stated",
+    "principle": "stated",
+    "structure": "stated",
+    "gabarits[]": "stated",
+    "when_works[]": "stated",
+    "when_avoid[]": "stated",
+    "combines_with.*": "stated",
+    "anti_patterns[]": "stated",
+    "examples[]": "stated",
+    "validations[]": "observed",
+    "lineage.*": "stated"
+  },
+  "_seeded_at": "2026-05-16T00:00:00.000000Z"
+}
