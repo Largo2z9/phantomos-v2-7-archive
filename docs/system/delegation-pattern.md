@@ -8,7 +8,7 @@
 
 Friction observed across sessions : the main agent attempts a multi-dimensional task (cross-prism audit, mass sweep, multi-source research, parallel skill chain) sequentially, in main thread, and either takes ten minutes blocking the operator or partially short-circuits to stay responsive. Both are wrong. The right move is to delegate.
 
-The Jarvis posture requires the agent to autonomously decide when to fan out work to sub-agents, manage the parallelism, surface the right thing at the right time, and synthesize back into a coherent recommendation. The doctrine below codifies that decision-making so the agent does not improvise a different protocol every session.
+The proactif posture requires the agent to autonomously decide when to fan out work to sub-agents, manage the parallelism, surface the right thing at the right time, and synthesize back into a coherent recommendation. The doctrine below codifies that decision-making so the agent does not improvise a different protocol every session.
 
 This doctrine sits next to `autonomous-correction-pattern.md` (handling tool refusals) and `pattern-detection-triggers.md` (silent observation buffer). Together they form the runtime behavioral layer of Contextual Intelligence : self-correct, self-observe, self-delegate.
 

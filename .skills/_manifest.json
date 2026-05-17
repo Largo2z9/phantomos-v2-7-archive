@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-16T22:34:35Z",
-  "_count": 72,
+  "_generated_at": "2026-05-17T15:59:15Z",
+  "_count": 77,
   "skills": [
     {
       "name": "adapt-from-competitor",
@@ -80,6 +80,94 @@
       "isolation_scope": "brand_only",
       "layer": "meta",
       "path": ".skills/skills/analyze-extension-intent/SKILL.md"
+    },
+    {
+      "name": "analyze-perf",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "interactive",
+      "triggers": {
+        "fr": [
+          "deep-dive perf",
+          "analyse perf en profondeur",
+          "diagnostic ROAS drop",
+          "audit perf 30j",
+          "investigation perf",
+          "pourquoi le ROAS tombe",
+          "creuse la perf",
+          "analyse paid en profondeur"
+        ],
+        "en": [
+          "deep-dive perf",
+          "perf analysis",
+          "ROAS drop diagnostic",
+          "30-day perf audit",
+          "perf investigation",
+          "why is CPA up"
+        ]
+      },
+      "disambiguates_against": {
+        "routine-perf": "route to routine-perf when operator wants quick J-1 daily briefing (~5 min, flag binaire anomalies). analyze-perf is the deep-dive multi-day diagnostic (7-30j, profond, confidence chain, recos ranked)",
+        "audit-meta-account": "route to audit-meta-account when operator audits SETUP health (pixel, CAPI, structure, naming, attribution config). analyze-perf audits DELIVERY signals (CPA / ROAS / COS / MER multi-day cross-platform)",
+        "import-meta-results": "route to import-meta-results when operator wants raw data pulled + writing canon validations[]. analyze-perf consumes data already imported (or pulls it as side-effect) to produce diagnostic + recos actionnables"
+      },
+      "isolation_scope": "brand",
+      "layer": "production",
+      "path": ".skills/skills/analyze-perf/SKILL.md"
+    },
+    {
+      "name": "audit-creative-fatigue",
+      "type": "curator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "interactive",
+      "triggers": {
+        "fr": [
+          "audit fatigue créa",
+          "check creative fatigue",
+          "fatigue scan ads",
+          "creative refresh check",
+          "audit fatigue creatives",
+          "scan fatigue"
+        ],
+        "en": [
+          "audit creative fatigue",
+          "creative fatigue scan",
+          "ad fatigue check",
+          "scan creative fatigue",
+          "fatigue audit"
+        ]
+      },
+      "disambiguates_against": {},
+      "isolation_scope": "brand",
+      "layer": "production",
+      "path": ".skills/skills/audit-creative-fatigue/SKILL.md"
+    },
+    {
+      "name": "audit-google-pmax",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "interactive",
+      "triggers": {
+        "fr": [
+          "audit Google Ads",
+          "audit PMAX",
+          "check Performance Max",
+          "audit Google"
+        ],
+        "en": [
+          "audit Google Ads",
+          "audit PMAX",
+          "Performance Max audit",
+          "Google audit"
+        ]
+      },
+      "disambiguates_against": {},
+      "isolation_scope": "brand",
+      "layer": "production",
+      "path": ".skills/skills/audit-google-pmax/SKILL.md"
     },
     {
       "name": "audit-meta-account",
@@ -714,6 +802,34 @@
       "isolation_scope": "brand_only",
       "layer": "territoire",
       "path": ".skills/skills/import-asset/SKILL.md"
+    },
+    {
+      "name": "import-meta-results",
+      "type": "capturer",
+      "model": "haiku",
+      "subagent_safe": true,
+      "mode": "silent",
+      "triggers": {
+        "fr": [
+          "import results Meta",
+          "import perf ads",
+          "feed atlas vivant",
+          "alimente validations canon",
+          "import meta perf",
+          "pull insights canon"
+        ],
+        "en": [
+          "import Meta results",
+          "import ad perf",
+          "feed validations canon",
+          "pull canon results",
+          "import meta insights"
+        ]
+      },
+      "disambiguates_against": {},
+      "isolation_scope": "brand",
+      "layer": "meta",
+      "path": ".skills/skills/import-meta-results/SKILL.md"
     },
     {
       "name": "ingest-resource",
@@ -1355,6 +1471,37 @@
       "isolation_scope": "brand_only",
       "layer": "meta",
       "path": ".skills/skills/resume-session/SKILL.md"
+    },
+    {
+      "name": "routine-perf",
+      "type": "navigator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "interactive",
+      "triggers": {
+        "fr": [
+          "fais la routine perf",
+          "brief perf du jour",
+          "pacing check",
+          "où on en est aujourd'hui",
+          "briefing perf"
+        ],
+        "en": [
+          "perf routine",
+          "perf brief",
+          "pacing check",
+          "where are we today",
+          "performance briefing"
+        ]
+      },
+      "disambiguates_against": {
+        "audit-meta-account": "audit-meta-account audite le setup health du compte Meta (config + structure + pixel + attribution). routine-perf brief la perf quotidienne (delivery + signal alert sur insights J-1).",
+        "analyze-perf": "analyze-perf deep-dive diagnostic cross-platform multi-jour avec recos stratégiques. routine-perf pull rapide briefing court 5 min cadence quotidienne.",
+        "brief-day": "brief-day oriente l'opérateur sur l'état du brand (Identité + Inventaire + Atlas vivant). routine-perf focalisé spécifiquement sur l'état perf paid quotidien (insights J-1 + signaux alerte)."
+      },
+      "isolation_scope": "brand",
+      "layer": "production",
+      "path": ".skills/skills/routine-perf/SKILL.md"
     },
     {
       "name": "scaffold-entity-files",

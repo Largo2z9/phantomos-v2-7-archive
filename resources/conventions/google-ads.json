@@ -7,14 +7,15 @@
     "operations[].*": "structured",
     "naming_conventions.*": "structured",
     "known_limitations[]": "observed",
-    "learned_rules[]": "observed"
+    "learned_rules[]": "observed",
+    "operator_notes[]": "observed"
   },
   "meta": {
     "platform": "Google Ads",
     "category": "paid_media",
     "api_version": "v18",
     "documentation_url": "https://developers.google.com/google-ads/api/docs/start",
-    "last_updated": ""
+    "last_updated": "2026-05-17"
   },
   "access": {
     "method": "api_rest",
@@ -29,7 +30,9 @@
     ],
     "oauth_scopes_required": ["https://www.googleapis.com/auth/adwords"],
     "app_review_required": true,
-    "loading_pattern": "from google.ads.googleads.client import GoogleAdsClient\nclient = GoogleAdsClient.load_from_storage('credentials.env')"
+    "app_review_note": "Developer token Google Ads requires approval workflow. Basic tier (test accounts only, 15k ops/day) auto-approved after request. Standard tier (production accounts, scaled ops) requires Google review form 2-4 weeks, justification compte + cas usage. Workaround : utiliser MCC token client-side si client a déjà un developer token standard, login_customer_id = MCC, customer_id = sub-account audited.",
+    "loading_pattern": "from google.ads.googleads.client import GoogleAdsClient\nclient = GoogleAdsClient.load_from_storage('credentials.env')",
+    "shared_token_note": "Developer token Google Ads NON shared cross-brand (vs Meta). Chaque brand a son propre customer_id, mais developer_token peut être agency-wide si MCC structure."
   },
   "rate_limits": {
     "per_second": null,
@@ -38,7 +41,8 @@
     "scope": "per_developer_token",
     "burst_strategy": "queries_per_dev_token",
     "backoff_on_429": "exponential",
-    "monitoring_endpoint": "GoogleAdsService.Search response.rate_limit"
+    "monitoring_endpoint": "GoogleAdsService.Search response.rate_limit",
+    "tier_note": "Basic tier = 15k ops/day (test accounts only). Standard tier = 40k ops/day (production). Throttle silencieux possible : status code 429 + RESOURCE_EXHAUSTED. Backoff exponential 2^N seconds (1s, 2s, 4s, 8s, max 60s)."
   },
   "operations": [
     {
@@ -46,30 +50,133 @@
       "description": "Pull data via Google Ads Query Language (GAQL)",
       "endpoint_or_method": "GoogleAdsService.SearchStream",
       "example": "SELECT campaign.id, campaign.name, metrics.cost_micros, metrics.conversions FROM campaign WHERE segments.date DURING LAST_7_DAYS",
-      "notes": "cost_micros = cost in micro-units (divide by 1M for currency)."
+      "notes": "cost_micros = cost in micro-units (divide by 1M for currency). SearchStream pour large datasets, Search pour pagination classique."
+    },
+    {
+      "name": "audit_pmax_campaigns",
+      "description": "Pull toutes les PMAX campaigns actives d'un compte",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT campaign.id, campaign.name, campaign.status, campaign.advertising_channel_type, campaign.bidding_strategy_type, campaign.bidding_strategy_system_status, campaign.maximize_conversion_value.target_roas, campaign.start_date FROM campaign WHERE campaign.advertising_channel_type = 'PERFORMANCE_MAX' AND campaign.status IN ('ENABLED', 'PAUSED')",
+      "notes": "Filter advertising_channel_type = PERFORMANCE_MAX strict. campaign.bidding_strategy_system_status révèle learning state (LEARNING_NEW, LEARNING_BID_CHANGE, LIMITED_BY_BUDGET, MISCONFIGURED)."
+    },
+    {
+      "name": "get_asset_groups",
+      "description": "Pull asset groups par PMAX campaign + ad strength score",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT asset_group.id, asset_group.name, asset_group.status, asset_group.ad_strength, asset_group.primary_status FROM asset_group WHERE campaign.id = {campaign_id}",
+      "notes": "ad_strength enum : POOR, AVERAGE, GOOD, EXCELLENT. Seuils canon : POOR <60% champs remplis, AVERAGE 60-80%, GOOD 80-100%, EXCELLENT 100% + variety. POOR triggere 50% perf reach reduction observée."
+    },
+    {
+      "name": "get_audience_signals",
+      "description": "Pull audience signals composition par asset group",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT asset_group_signal.audience, asset_group_signal.asset_group FROM asset_group_signal WHERE asset_group.id = {asset_group_id}",
+      "notes": "Audience signals = hint pour smart bidding (pas targeting strict). Composition canon : 1P data 80% (customer match, website visitors, purchasers), custom segments 15% (search intent + URL visited), demographics 5% (age, gender, household income)."
+    },
+    {
+      "name": "get_search_themes",
+      "description": "Pull search themes insights (positive search behavior categories)",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT campaign_search_term_insight.category_label, metrics.clicks, metrics.impressions, metrics.conversions FROM campaign_search_term_insight WHERE segments.date DURING LAST_30_DAYS AND campaign.id = {campaign_id}",
+      "notes": "Search themes positifs configurés non-pullable via API (UI only). Cet endpoint donne search term insights (catégories agrégées). Negative search themes pullable via campaign_criterion.negative."
+    },
+    {
+      "name": "get_brand_exclusions",
+      "description": "Pull brand exclusions list par campaign",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT campaign.brand_safety_suitability, campaign_criterion.brand_list, campaign_criterion.negative FROM campaign_criterion WHERE campaign_criterion.type = 'BRAND_LIST' AND campaign.id = {campaign_id}",
+      "notes": "Brand list = liste curated brands à exclude (own + variants + competitors). Maintenue cross-account si MCC structure. Vide = cannibalisation Search Brand campaign + spend owned-traffic gaspillé."
+    },
+    {
+      "name": "get_value_rules",
+      "description": "Pull conversion value rules (location, device, audience modifiers)",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT conversion_value_rule.geo_location_condition.geo_target_constants, conversion_value_rule.device_condition.device_types, conversion_value_rule.audience_condition.user_lists, conversion_value_rule.action.operation, conversion_value_rule.action.value FROM conversion_value_rule",
+      "notes": "Value rules permettent ajuster conversion value en runtime selon location (core market +20%), device (mobile +10%), audience (existing customer -30% pour favoriser acquisition). Indispensable Target ROAS bidding sur compte mature."
+    },
+    {
+      "name": "audit_conversion_setup",
+      "description": "Pull conversion goals + attribution model + lookback windows",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT customer_conversion_goal.category, customer_conversion_goal.origin, customer_conversion_goal.biddable, conversion_action.name, conversion_action.type, conversion_action.attribution_model_settings.attribution_model, conversion_action.click_through_lookback_window_days, conversion_action.view_through_lookback_window_days, conversion_action.value_settings.default_value FROM conversion_action",
+      "notes": "Conversion goals = portfolio strategy (account-level conversions). Canon e-commerce : 1 primary (purchase) + N secondary (add_to_cart, view_product, lead). Attribution data-driven recommandé si >300 conv/30j."
+    },
+    {
+      "name": "pull_pmax_insights",
+      "description": "Pull PMAX-specific insights (audience, search categories, asset performance)",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT campaign_audience_view.resource_name, audience.name, metrics.clicks, metrics.conversions, metrics.cost_micros FROM campaign_audience_view WHERE segments.date DURING LAST_30_DAYS AND campaign.advertising_channel_type = 'PERFORMANCE_MAX'",
+      "notes": "PMAX insights agrégés (Google ne révèle pas placement-level pour PMAX). Cross-référence avec asset_group performance pour identifier top-thematic."
+    },
+    {
+      "name": "get_negative_keywords_portfolio",
+      "description": "Pull negative keywords list portfolio account-wide",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT shared_set.name, shared_set.type, shared_criterion.keyword.text, shared_criterion.keyword.match_type FROM shared_criterion WHERE shared_set.type = 'NEGATIVE_KEYWORDS'",
+      "notes": "Negative keywords portfolio = shared list applied cross-campaign. Canon : 100-500 negatives e-commerce mature (irrelevant intent, competitor brands, off-niche queries)."
+    },
+    {
+      "name": "audit_smart_bidding_status",
+      "description": "Audit smart bidding learning state + recent changes",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT campaign.bidding_strategy_type, campaign.bidding_strategy_system_status, campaign.target_cpa.target_cpa_micros, campaign.maximize_conversion_value.target_roas FROM campaign WHERE campaign.advertising_channel_type = 'PERFORMANCE_MAX'",
+      "notes": "bidding_strategy_system_status enum : LEARNING_NEW, LEARNING_BUDGET_CHANGE, LEARNING_BID_CHANGE, LEARNING_CONVERSION_TYPE_CHANGE, LEARNING_COMPOSITION_CHANGE, LIMITED_BY_BUDGET, MISCONFIGURED, ENABLED. LEARNING_* >7j = issue sous-optimisation."
+    },
+    {
+      "name": "audit_asset_strength",
+      "description": "Audit asset variety + count par asset group",
+      "endpoint_or_method": "GoogleAdsService.Search",
+      "example": "SELECT asset.id, asset.type, asset.text_asset.text, asset.image_asset.full_size.url, asset.image_asset.full_size.width_pixels, asset.image_asset.full_size.height_pixels FROM asset_group_asset WHERE asset_group.id = {asset_group_id}",
+      "notes": "Canon par asset group : 5-15 headlines (30 char), 1-5 long headlines (90 char), 1-5 descriptions (90 char), 3-20 images multi-ratio (square + landscape obligatoire), 1-5 videos 10-30s, 1-5 logos (square + landscape). Asset variety = leverage strength score."
     },
     {
       "name": "create_campaign",
       "description": "Create a Performance Max or Search campaign",
       "endpoint_or_method": "CampaignService.Mutate",
       "example": "advertising_channel_type=PERFORMANCE_MAX, status=PAUSED, bidding_strategy=MAXIMIZE_CONVERSION_VALUE",
-      "notes": "Always create PAUSED. Performance Max requires asset groups (not ad groups)."
+      "notes": "Always create PAUSED. Performance Max requires asset groups (not ad groups). Set start_date après asset groups completion sinon learning start prématuré."
     }
   ],
   "naming_conventions": {
     "campaign_pattern": "{LANG}-{Type}-{Objective}",
-    "campaign_examples": ["FR-PMAX-Sales", "FR-Search-Brand", "FR-Display-Retarget"],
+    "campaign_examples": ["FR-PMAX-Sales", "FR-Search-Brand", "FR-Display-Retarget", "FR-PMAX-Acquisition", "FR-Search-Generic"],
     "asset_group_pattern": "{LANG}-{Theme}",
-    "separator_rules": "Tiret (-) séparateur."
+    "asset_group_examples": ["FR-Hero-Product", "FR-Bundle-Family", "FR-Lifestyle-Use-Case"],
+    "separator_rules": "Tiret (-) séparateur niveaux. Pas d'underscore. Pas d'accent.",
+    "utm_template": "utm_source=google&utm_medium=cpc&utm_campaign={campaignid}&utm_content={adgroupid}&utm_term={keyword}"
   },
   "known_limitations": [
-    "Developer token requires Google approval (basic vs standard tier).",
+    "Developer token requires Google approval (basic vs standard tier). Standard tier = 2-4 weeks review.",
     "Customer ID format strict : XXX-XXX-XXXX (with dashes for display, no dashes for API).",
-    "PMAX assets cannot be edited after asset group creation, only added."
+    "PMAX assets cannot be edited after asset group creation, only added (delete + recreate workaround).",
+    "Search themes positives configurés non-pullable via API (UI only). Insight endpoint donne agrégats categories.",
+    "PMAX placement-level performance non-révélé (Google blackbox). Insights agrégés audience + search categories seulement.",
+    "Asset group ad_strength score recalculé async (peut prendre 24-48h post-asset update).",
+    "Brand exclusions list mutation requires shared_set creation préalable (2-step process).",
+    "Smart bidding learning period reset si change : bid strategy, budget >20%, conversion type, asset composition majeure.",
+    "Conversion value rules max 100 par account (Google enforced cap).",
+    "Negative keywords shared_set max 5000 entries par list."
   ],
   "learned_rules": [
-    "Always test with --dry-run before mutate operations.",
-    "Conversion uploads via OfflineUserDataJobService for server-side tracking.",
-    "Use cost_micros throughout, format display only at output."
+    "asset_strength : Excellent = 100% champs remplis + variety, Good = 80-100%, Fair = 60-80%, Below Average <60%. Au seuil Below Average, 50% perf reach reduction observée. Action prioritaire = combler gaps assets jusqu'à Good minimum.",
+    "search_themes : Negative search themes obligatoire (brand keywords + competitor brands + irrelevant intent). 20-50 negatives standard PMAX mature. Zéro negatives = 20-50% spend off-target observé.",
+    "audience_signals : 1P data 80% poids canon, custom segments 15%, demographics 5%. 1P data absent OR demographics-only = signal qualité dégradé, smart bidding sous-optimisé.",
+    "conversion_setup : Account-level conversions = stratégie portfolio (recommandé default). Campaign-level conversions = test isolated specific. JAMAIS mixer sans intent documenté (confusion smart bidding signal).",
+    "bidding : Maximize Conversions stade 0 (<30 conv/30j). Target CPA après 30 conv/30j stable. Target ROAS après 50 conv/30j stable + value tracked. Target activé prématurément = no learning, volatility.",
+    "learning_period : 7j minimum smart bidding learning. NE PAS changer bid strategy + budget +20% + conversion type pendant learning, sinon reset 7j supplémentaires.",
+    "brand_exclusions : Brand + variants + competitor brands. Liste maintenue cross-account si MCC. Absent = cannibalisation Search Brand + spend owned-traffic gaspillé.",
+    "value_rules : Indispensable Target ROAS sur compte mature. Location modifier (core market +20%), device (mobile/desktop split), audience (existing customer -30% pour favoriser acquisition).",
+    "listing_groups : Shopping integration PMAX, full catalog default. Exclure produits loss-leader + stock zéro. Custom segmentation par margin/category/perf = leverage Target ROAS granularity.",
+    "attribution_model : Data-driven recommandé si >300 conv/30j. Last-click legacy fallback. Position-based niche use case. Data-driven non-activé sur compte mature = signal causalité perdu.",
+    "asset_variety : 5-15 headlines + 1-5 long headlines + 1-5 descriptions + 3-20 images (square + landscape obligatoire) + 1-5 videos 10-30s + 1-5 logos. Video absent = Google auto-genère depuis static (low quality).",
+    "rate_limit : Standard tier 40k ops/day. Basic tier 15k ops/day (test only). Backoff exponential 2^N seconds sur 429. Batch GAQL queries (SearchStream) > individual calls pour large datasets.",
+    "mcc_strategy : Login_customer_id = MCC manager account, customer_id = sub-account audited. Permet developer_token agency-wide vs token per-brand."
+  ],
+  "operator_notes": [
+    "Senior buyer observation : 80% des comptes PMAX audités ont strength score AVERAGE ou POOR sur 50%+ asset groups. Quick win prioritaire = combler assets jusqu'à GOOD avant tout autre optimisation.",
+    "Senior buyer observation : Brand exclusions absentes sur 60%+ des comptes PMAX. Cannibalisation Search Brand systémique, fix = liste brand + variants + competitor brands appliquée campaign-level.",
+    "Anti-pattern observé : opérateurs activent Target ROAS dès création campaign PMAX. No learning, volatility 30-50% premiers 14j. Fix = Maximize Conversions 30j minimum avant target.",
+    "Anti-pattern observé : audit PMAX freestyle sans asset group strength check = miss 50% du diagnostic. Le ad_strength field est le KPI #1 de santé PMAX, jamais sauter.",
+    "Workaround MCC : si client a developer_token standard, opérer en login_customer_id = MCC + customer_id = client sub-account. Évite app review process per-brand."
   ]
 }

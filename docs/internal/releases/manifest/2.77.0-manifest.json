@@ -11,14 +11,14 @@
   "slash_commands_count_after": 7,
   "doctrines_count_before": 13,
   "doctrines_count_after": 14,
-  "summary": "Sprint majeur v2.77.0 · hygiène globale workspace-template + onboarding Jarvis + /scope + /bird + doctrine skill-routing-discipline NEW · 12 patches structurels via Sprint A audit 3 agents + Sprint B 5 agents wave 1 parallèle scope disjoint + Sprint C verification 9 cross-checks · cumul 1 NEW doctrine + 2 NEW skills + 2 NEW slash commands + 697 em-dashes purgés foundation docs.",
+  "summary": "Sprint majeur v2.77.0 · hygiène globale workspace-template + onboarding proactif mesuré + /scope + /bird + doctrine skill-routing-discipline NEW · 12 patches structurels via Sprint A audit 3 agents + Sprint B 5 agents wave 1 parallèle scope disjoint + Sprint C verification 9 cross-checks · cumul 1 NEW doctrine + 2 NEW skills + 2 NEW slash commands + 697 em-dashes purgés foundation docs.",
   "audit_amont": {
     "sprint_A_3_agents_READ_ONLY": [
       "Agent 1 · audit hygiène cross-files (ton + positioning + canon cohérence + drift terminologique · sortie P0/P1/P2)",
-      "Agent 2 · audit onboarding /tour Jarvis-style + mapping triggers contextuels (1 insert + 10 verbes intention vers MCP/API/skill consumer)",
+      "Agent 2 · audit onboarding /tour proactif + mapping triggers contextuels (1 insert + 10 verbes intention vers MCP/API/skill consumer)",
       "Agent 3 · cartographie /scope auto-déclenchement sujet précis (existence partial root largo-kb + 8 patterns trigger + design minimaliste port)"
     ],
-    "verdict_convergent": "DRIFT structurel cross-files post-canon évolution rapide · doctrine fantôme skill-routing-discipline · em-dash policy contradictoire · entity count incohérent intra-fichier · anti-pattern Jarvis systémique skills consumer · /scope + /bird pair canon non porté"
+    "verdict_convergent": "DRIFT structurel cross-files post-canon évolution rapide · doctrine fantôme skill-routing-discipline · em-dash policy contradictoire · entity count incohérent intra-fichier · anti-pattern proactif systémique skills consumer · /scope + /bird pair canon non porté"
   },
   "patches_tier_1_P0": [
     "Em-dash purge complète foundation docs (697 occurrences cross 26 docs · voice.md L113 directive aligné Memory canon)",
@@ -30,8 +30,8 @@
   "patches_tier_2_P1": [
     "NEW doctrine skill-routing-discipline.md (391L · 14 sections canon-style miroir extension-discovery + op-system pattern)",
     "Port /scope + /bird workspace-template (2 NEW skills layer:meta + 2 NEW slash commands · manifest regen 72 skills)",
-    "Tour.md Milestone 5 Jarvis insert mesuré (3 lignes ligne 203 · trigger phrase 'connecte mes outils')",
-    "4 skills consumer Step 0 Jarvis bridge (audit-meta-account + mine-vom + sync-notion-atlas + brief-day degraded mode)",
+    "Tour.md Milestone 5 proactif insert mesuré (3 lignes ligne 203 · trigger phrase 'connecte mes outils')",
+    "4 skills consumer Step 0 bridge proactif (audit-meta-account + mine-vom + sync-notion-atlas + brief-day degraded mode)",
     "Schema brand v2.1 → v2.2 cohérence cross-skills (validate-resources + snapshot-brand + migrate-workspace bonus)"
   ],
   "files_patched": [
@@ -43,11 +43,11 @@
     {"file": ".claude/commands/scope.md", "scope": "NEW · 42L slash command pointer · cohérent 5 existing"},
     {"file": ".claude/commands/bird.md", "scope": "NEW · 41L slash command pointer · cohérent 5 existing"},
     {"file": ".skills/_manifest.json", "scope": "Regen post-port · 72 skills total · scope + bird layer:meta confirmé · disambiguates_against bilatéral"},
-    {"file": ".claude/commands/tour.md", "scope": "Milestone 5 Jarvis insert ligne 203 · 3 lignes mesurées proposition connexion outils externes · trigger phrase 'connecte mes outils'"},
-    {"file": ".skills/skills/audit-meta-account/SKILL.md", "scope": "Step 0 Jarvis bridge ligne 64 · AskUserQuestion (a) connect-mcp-server (b) declarative interview"},
-    {"file": ".skills/skills/mine-vom/SKILL.md", "scope": "Step 0 Jarvis bridge ligne 55 · AskUserQuestion (a) connect-mcp-server youtube-transcript (b) manual paste fallback"},
-    {"file": ".skills/skills/sync-notion-atlas/SKILL.md", "scope": "Step 0 Jarvis bridge entre L2 gate L122 et L3 degraded · AskUserQuestion (a) connect-mcp-server notion (b) export markdown standalone"},
-    {"file": ".skills/skills/brief-day/SKILL.md", "scope": "Step 1 degraded mode Jarvis bridge · google-calendar + supabase MCP absent · 1 ligne Jarvis bottom of brief 'connecte mes outils' quand pertinent"},
+    {"file": ".claude/commands/tour.md", "scope": "Milestone 5 proactif insert ligne 203 · 3 lignes mesurées proposition connexion outils externes · trigger phrase 'connecte mes outils'"},
+    {"file": ".skills/skills/audit-meta-account/SKILL.md", "scope": "Step 0 bridge proactif ligne 64 · AskUserQuestion (a) connect-mcp-server (b) declarative interview"},
+    {"file": ".skills/skills/mine-vom/SKILL.md", "scope": "Step 0 bridge proactif ligne 55 · AskUserQuestion (a) connect-mcp-server youtube-transcript (b) manual paste fallback"},
+    {"file": ".skills/skills/sync-notion-atlas/SKILL.md", "scope": "Step 0 bridge proactif entre L2 gate L122 et L3 degraded · AskUserQuestion (a) connect-mcp-server notion (b) export markdown standalone"},
+    {"file": ".skills/skills/brief-day/SKILL.md", "scope": "Step 1 degraded mode bridge proactif · google-calendar + supabase MCP absent · 1 ligne proactive bottom of brief 'connecte mes outils' quand pertinent"},
     {"file": ".skills/skills/validate-resources/SKILL.md", "scope": "L753 brand.json _version=2.1 → 2.2"},
     {"file": ".skills/skills/snapshot-brand/SKILL.md", "scope": "L1132 brand.json _version=2.1 → 2.2"},
     {"file": ".skills/skills/migrate-workspace/SKILL.md", "scope": "L167 brand.json _version=2.1 → 2.2 bonus patch"},
@@ -59,11 +59,11 @@
   "decisions_captured": ["D#424", "D#425", "D#426", "D#427"],
   "backlog_v277_plus": [
     "30 files em-dash restants (docs/internal/ + docs/product/ + docs/vision/) purge complète workspace-template",
-    "Pattern Jarvis propagation systémique · watch-competitors (5 MCP mentions zéro proactivité) + trendtrack-enrich-brand (6 MCP mentions zéro proactivité) Step 0 anti-pattern à patcher",
+    "Pattern proactif propagation systémique · watch-competitors (5 MCP mentions zéro proactivité) + trendtrack-enrich-brand (6 MCP mentions zéro proactivité) Step 0 anti-pattern à patcher",
     "Port unfog (3e pair canon avec scope/bird · skill-routing-discipline Phase 5 referenced)",
     "Convention argument-hint accolades non-quotées PyYAML strict documentation `_TEMPLATE/SKILL.md`",
     "CLAUDE.md L62 duplication 5 sections investigation-posture cleanup Sprint C polish",
     "Frontmatter description verbose 1500+ chars shrink (score-matrix + build-atlas-complete · UI autocomplete tronque)"
   ],
-  "rollback_strategy": "Strict additif backward compat · revert v2.77.0 = git revert HEAD strict · NEW skills scope + bird removable via manifest regen · NEW doctrine skill-routing-discipline retirable · patches cross-files context-sensitive substitution (em-dashes restorable via grep replace pattern inverse) · semantic spec preserved cross-files · 4 skills consumer Step 0 Jarvis bridge backward compat (legacy precondition fail behavior preserved si patch retiré)"
+  "rollback_strategy": "Strict additif backward compat · revert v2.77.0 = git revert HEAD strict · NEW skills scope + bird removable via manifest regen · NEW doctrine skill-routing-discipline retirable · patches cross-files context-sensitive substitution (em-dashes restorable via grep replace pattern inverse) · semantic spec preserved cross-files · 4 skills consumer Step 0 bridge proactif backward compat (legacy precondition fail behavior preserved si patch retiré)"
 }

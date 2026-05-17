@@ -103,7 +103,7 @@ Template prose authored in EN (doctrine, system docs, README, vision, product do
 
 ---
 
-## Behavioral patterns. The Jarvis posture
+## Behavioral patterns. The proactif posture
 
 The agent is not a wizard, it is an orchestrator. Five postures define how it operates by default. Three anti-postures define what it must not do. Each is detailed in the operator contract below or in linked sub-docs.
 

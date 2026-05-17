@@ -7,9 +7,51 @@
 
 ---
 
-## v2.77.0 · 2026-05-17 · Sprint majeur · hygiène globale workspace-template + onboarding Jarvis + /scope + /bird + doctrine skill-routing-discipline
+## v2.78.0 · 2026-05-17 · Sprint majeur · ops paid coverage closure + magic keyword cleanup canon
 
-**Why** · Largo demande recadrage workspace-template canonical avant go-to-market · "checker hygiène globale ton + positionnement, onboarding patché et guidé, /scope sujet précis pour forcer pertinence système". Sprint A audit READ-ONLY 3 agents parallèle (hygiène cross-files + onboarding Jarvis-style + /scope auto-déclenchement) · Sprint B 5 agents parallèle scope disjoint pour patches structurels · Sprint C verification 9 cross-checks.
+**Why** · Sprint A bis 5 agents experts cross-métiers (creative strategist DTC · media buyer · copywriter DR · brand strategist · ecom founder) audit READ-ONLY workspace v2.77.0. Pattern convergent identifié · "Atelier creative + brand + audience excellent · ops paid + business pilotage + lifecycle gaps structurels". Verdict critique media buyer 4.5/10 CONDITIONAL · skills routine-perf + analyze-perf + audit-google-pmax référencés canon doctrine connectivity-layering ligne 20 + INDEX.md mais SKILL.md jamais shippés (mensonge surface vs ship).
+
+**What** · 5 NEW skills + 3 NEW doctrines + 1 convention enrichie + magic keyword cleanup 14 files · ferme P0 audit experts.
+
+**5 NEW skills shipped (1733 lignes total)** ·
+
+1. **`routine-perf` (318L · navigator)** · briefing perf paid quotidien (2-3x/jour) · lit J-1 insights par account cross-plateformes (Meta + Google + Shopify + TripleWhale conv Layer 2) · flags pacing curve · ROAS drop · frequency saturation · CPM drift · creative fatigue signals · output 5 sections investigation-posture format founder-facing Slack/voix-friendly · Step 0 bridge proactif canon v2.77
+2. **`analyze-perf` (399L · producer)** · deep-dive diagnostic perf cross-platform multi-jour (Meta + Google + TikTok + Shopify + TripleWhale + Klaviyo) · cross-réf attribution windows · diagnostic CPA/ROAS/COS/MER confidence chain canon · recos actionables ranked impact × effort · sub-agent friendly delegated heavy lift
+3. **`audit-google-pmax` (306L · orchestrator)** · audit complet PMAX Google Ads · asset group score · audience signals · search themes · listing groups · conversion config · brand exclusions · value rules · negative keywords portfolio · output 5 sections investigation-posture
+4. **`audit-creative-fatigue` (361L · curator)** · scan creatives produced/{CRT-NN} brand-side · pull Meta Insights par ad_id · détecte fatigue signaux canon (CTR decay 14-30j · CPM rise +30% week-over-week · frequency saturation >2.5 · ROAS decay) · flag à operator avec reco trigger recompose-creative (variant_axis hook_swap OR background_swap)
+5. **`import-meta-results` (349L · capturer)** · pull Meta Insights par ad_id pour creatives produced (CRT-NN) · écrit validations[] canon-tools utilisés (formula · framework · archetype · hook · objection · CTA) · alimente decay v2.37 attribution + N≥3 brands threshold auto-promote canon · ferme la boucle produce → test → learn → promote opérée quotidiennement par skill dédié
+
+**3 NEW doctrines canon shipped (858 lignes total)** ·
+
+6. **`pacing-discipline.md` (288L)** · seuils canon chiffrés · variance ±10/±20/±40% · frequency Meta ≤1.8/2.5/4.0 · frequency PMAX ≤3.0/5.0 · CPM drift WoW ±15%/+30%/+50% · CTR decay 14j/21j/30j · stages 1.5x/2.5x/3.5x · sweet spot 21j
+7. **`creative-testing-discipline.md` (280L)** · 3x3 matrix = 27 variants · Configuration A (angle × hook × visual) + Configuration B (angle × audience × visual) · win ROAS ≥ breakeven × 1.2 + spend ≥ 3 × CPM + days ≥ 7 · kill ROAS < breakeven × 0.7 + spend ≥ 1 × CPM + days ≥ 3 · refresh 14j min / 21j sweet spot / 30j max
+8. **`attribution-multitouch-discipline.md` (290L)** · 7d-click vs 1d-click vs view-through canon · windows par canal table (Meta/Google/Klaviyo/Shopify/TW/GA4) · reconciliation 3 sources mandatory stage maintain+ · iCAC/CAC/MER mapping canon · MER target 3.5x/2.5x/1.5x/2.0x par stage · divergence Meta vs Shopify > 30% flag canon
+
+**1 convention enrichie** ·
+
+9. **`resources/conventions/google-ads.json`** · ops 2 → 13 (PMAX-specific · asset_groups · audience_signals · search_themes · brand_exclusions · value_rules · listing_groups · conversion_setup · pmax_insights · negative_keywords_portfolio · smart_bidding_status · asset_strength) + learned_rules 3 → 13 + 5 operator_notes ajoutés + last_updated 2026-05-17
+
+**Magic keyword cleanup canon (cross 14 files)** ·
+
+10. **64 substitutions cross workspace-template canonical** · le mot "Jarvis" magic keyword interne Largo-vers-moi ne devait JAMAIS leaker dans canon shipped. Cleanup substitution context-sensitive · "Jarvis bridge" → "bridge proactif" · "mode Jarvis" → "mode proactif mesuré" · "Step 0 Jarvis bridge canon" → "Step 0 bridge proactif canon" · "pattern Jarvis" → "pattern proactif" · "Jarvis mesuré" → "proactif mesuré" · "Onboarding Jarvis" → "Onboarding proactif mesuré". NEW memory canon `no_jarvis_in_canon` sister `no_em_dash`.
+
+**Pattern systémique fermé · feedback loop atlas vivant runtime**
+
+Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc manuel pré-v2.78) · `audit-creative-fatigue` détecte fatigue creative-level → reco recompose-creative variant_axis pertinent · `import-meta-results` pull Meta Insights → écrit validations[] canon-tools → alimente decay v2.37 + N≥3 auto-promote candidate flag. Plus de skills référencés non shippés.
+
+**Backward compat strict additif** · 5 NEW skills (additive) + 3 NEW doctrines (additive) + 1 convention enrichie (additive) + 64 substitutions context-sensitive (zéro break semantic) · skills count 72 → 77 (+5) · slash commands 7 (inchangé) · doctrines 14 → 17 (+3).
+
+**D#428-D#429 captured** ·
+- D#428 · v2.78.0 sprint majeur ops paid coverage closure (5 NEW skills + 3 NEW doctrines + google-ads.json enrich · ferme P0 audit experts Sprint A bis · pipeline produce → test → learn → promote fermé end-to-end quotidien)
+- D#429 · Magic keyword cleanup canon "Jarvis" + NEW memory `no_jarvis_in_canon` (64 substitutions cross 14 files · canon strict cross-output sister no_em_dash)
+
+**Backlog v2.78+** · 937 em-dashes restantes dans skills SKILL.md · Sprint v2.78.1 canonisation transversalité (5 patches positioning + onboarding) · Sprint v2.78.2 Encoding Reformulation Discipline (NEW doctrine + 4 skills patches setup-brand + snapshot-brand + profile-audience + define-specs · pattern récap actif visibilité opérateur pré-encoding · skip business stage detection skill Largo recadrage tonalité-only suffisant) · Sprint v2.79 business pilotage · v2.80 brand strategy frameworks · v2.81 DR copywriting production · v2.82 CRO + lifecycle.
+
+---
+
+## v2.77.0 · 2026-05-17 · Sprint majeur · hygiène globale workspace-template + onboarding proactif mesuré + /scope + /bird + doctrine skill-routing-discipline
+
+**Why** · Largo demande recadrage workspace-template canonical avant go-to-market · "checker hygiène globale ton + positionnement, onboarding patché et guidé, /scope sujet précis pour forcer pertinence système". Sprint A audit READ-ONLY 3 agents parallèle (hygiène cross-files + onboarding proactif + /scope auto-déclenchement) · Sprint B 5 agents parallèle scope disjoint pour patches structurels · Sprint C verification 9 cross-checks.
 
 **What** · 12 patches structurels livrés via 5 agents wave 1 parallèle ·
 
@@ -24,11 +66,11 @@
 7. **Port `/scope` workspace-template** · `.skills/skills/scope/SKILL.md` 274L layer:meta · 5 sections canon investigation-posture intégrées (Observé · Déduit · Inconnu · Leviers · Close ouvert) · 2 modes LEARN/BUILD + 5 phases + Excalidraw + chain `--for-skill=`
 8. **Port `/bird` workspace-template** · `.skills/skills/bird/SKILL.md` 267L layer:meta navigator · HR-7 alignement investigation-posture · hook unfog (pas shipped) remplacé par `/scope` · persistence paths brand-level
 9. **2 NEW slash commands pointers** · `.claude/commands/scope.md` + `.claude/commands/bird.md` · description compact + cohérent pattern 5 existing
-10. **Tour.md Milestone 5 Jarvis insert** · 3 lignes mesurées proposition connexion outils externes (Meta Ads · Calendar · Notion · Supabase · Shopify · autres) · trigger phrase opérateur "connecte mes outils" · ligne 203 entre mapping skills sous le capot et adaptation profil détecté · jamais nommer connect-mcp-server à l'opérateur (sous le capot only)
-11. **4 skills consumer Step 0 Jarvis bridge** · audit-meta-account + mine-vom + sync-notion-atlas + brief-day (degraded mode google-calendar + supabase) · pattern AskUserQuestion 2 options (a) guidage connect-mcp-server (b) fallback declarative interview · default proactif Jarvis · ferme anti-pattern systémique
+10. **Tour.md Milestone 5 proactif insert** · 3 lignes mesurées proposition connexion outils externes (Meta Ads · Calendar · Notion · Supabase · Shopify · autres) · trigger phrase opérateur "connecte mes outils" · ligne 203 entre mapping skills sous le capot et adaptation profil détecté · jamais nommer connect-mcp-server à l'opérateur (sous le capot only)
+11. **4 skills consumer Step 0 bridge proactif** · audit-meta-account + mine-vom + sync-notion-atlas + brief-day (degraded mode google-calendar + supabase) · pattern AskUserQuestion 2 options (a) guidage connect-mcp-server (b) fallback declarative interview · default proactif canon · ferme anti-pattern systémique
 12. **Schema brand v2.1 → v2.2 cohérence cross-skills** · validate-resources L753 + snapshot-brand L1132 + migrate-workspace L167 bonus patches stale refs
 
-**Pattern systémique résolu** · workspace-template avait drift cross-files post-canon évolution rapide (10 releases v2.55→v2.76 en session unique) · doctrine fantôme `skill-routing-discipline` référencée v2.55 jamais shippée · em-dash policy contradictoire (Memory canon vs voice.md) · entity count incohérent intra-fichier (6 vs 7 angle) · anti-pattern Jarvis systémique (4 skills consumer connect-mcp-server non proactif) · `/scope` + `/bird` pair canon root largo-kb jamais portés template. v2.77.0 ferme ces gaps via Sprint hygiène complet (Sprint A audit + Sprint B 5 agents + Sprint C verification).
+**Pattern systémique résolu** · workspace-template avait drift cross-files post-canon évolution rapide (10 releases v2.55→v2.76 en session unique) · doctrine fantôme `skill-routing-discipline` référencée v2.55 jamais shippée · em-dash policy contradictoire (Memory canon vs voice.md) · entity count incohérent intra-fichier (6 vs 7 angle) · anti-pattern proactif systémique (4 skills consumer connect-mcp-server non proactif) · `/scope` + `/bird` pair canon root largo-kb jamais portés template. v2.77.0 ferme ces gaps via Sprint hygiène complet (Sprint A audit + Sprint B 5 agents + Sprint C verification).
 
 **Backward compat strict additif** · 1 NEW doctrine (additive · skill-routing-discipline) + 2 NEW skills (additive · scope + bird) + 2 NEW slash commands (additive · scope + bird) + 12 patches cohérence cross-files (no breaking) · skills count 70 → 72 (+2) · slash commands 5 → 7 (+2) · doctrines 13 → 14 (+1).
 
@@ -41,11 +83,11 @@
 - `.claude/commands/scope.md` NEW (42L)
 - `.claude/commands/bird.md` NEW (41L)
 - `.skills/_manifest.json` regen (72 skills · scope + bird layer:meta confirmé)
-- `.claude/commands/tour.md` (Milestone 5 Jarvis insert ligne 203)
-- `.skills/skills/audit-meta-account/SKILL.md` (Step 0 Jarvis bridge)
-- `.skills/skills/mine-vom/SKILL.md` (Step 0 Jarvis bridge)
-- `.skills/skills/sync-notion-atlas/SKILL.md` (Step 0 Jarvis bridge)
-- `.skills/skills/brief-day/SKILL.md` (Step 1 degraded mode Jarvis bridge)
+- `.claude/commands/tour.md` (Milestone 5 proactif insert ligne 203)
+- `.skills/skills/audit-meta-account/SKILL.md` (Step 0 bridge proactif)
+- `.skills/skills/mine-vom/SKILL.md` (Step 0 bridge proactif)
+- `.skills/skills/sync-notion-atlas/SKILL.md` (Step 0 bridge proactif)
+- `.skills/skills/brief-day/SKILL.md` (Step 1 degraded mode bridge proactif)
 - `.skills/skills/validate-resources/SKILL.md` (L753 schema brand 2.2)
 - `.skills/skills/snapshot-brand/SKILL.md` (L1132 schema brand 2.2)
 - `.skills/skills/migrate-workspace/SKILL.md` (L167 schema brand 2.2 bonus)
@@ -60,7 +102,7 @@
 - D#426 · NEW doctrine skill-routing-discipline.md shipped (close gap fantôme L83 référencée v2.55 jamais shippée · 5-phase routing protocol canon)
 - D#427 · /scope + /bird port workspace-template (pair canon root largo-kb shipped template · 5 sections investigation-posture canon alignment · skills 70 → 72 · slash commands 5 → 7)
 
-**Backlog v2.77+** · 30 files em-dash restants docs/internal + docs/product + docs/vision · pattern Jarvis propagation 2 skills MCP-dépendants (watch-competitors + trendtrack-enrich-brand) · port unfog (3e pair canon avec scope/bird) · convention argument-hint accolades non-quotées PyYAML strict documentation `_TEMPLATE/SKILL.md`.
+**Backlog v2.77+** · 30 files em-dash restants docs/internal + docs/product + docs/vision · pattern proactif propagation 2 skills MCP-dépendants (watch-competitors + trendtrack-enrich-brand) · port unfog (3e pair canon avec scope/bird) · convention argument-hint accolades non-quotées PyYAML strict documentation `_TEMPLATE/SKILL.md`.
 
 ---
 
@@ -1516,7 +1558,7 @@ Distinction nette · qui lance le script. Plus de chevauchement sémantique avec
   Step 0bis prerequisite_check ajouté chaque skill avant Step 1 existant. HR existing préservées prose (cohérence runtime).
 - **Manifest skills regenerated** · 49 skills présents, PyYAML strict parser v2.37 valide tous frontmatters (shim flow-sequence backward compat couvre `{slug}` paths non-quoted pré-existants).
 
-**Operator impact.** Demain matin tu tapes `/phantom kara doctrine` pour voir la méthode, puis lance n'importe quel skill du pipeline P0→P5. Le skill arbitre ses gaps en transparence : auto-pull silent ce qu'il peut, te demande arbitrage explicite UNIQUEMENT sur choix stratégique, applique fallback degraded avec flag visible si output viable. Plus de "Atlas vivant validations[] cumulées" ou syntaxe `compose-creative kara cellule-boost ANG-01` cérémoniale (jargon translation v2.37 + DRGFP v2.38 = posture orchestrateur Jarvis canonisée). Backward compat strict additif partout.
+**Operator impact.** Demain matin tu tapes `/phantom kara doctrine` pour voir la méthode, puis lance n'importe quel skill du pipeline P0→P5. Le skill arbitre ses gaps en transparence : auto-pull silent ce qu'il peut, te demande arbitrage explicite UNIQUEMENT sur choix stratégique, applique fallback degraded avec flag visible si output viable. Plus de "Atlas vivant validations[] cumulées" ou syntaxe `compose-creative kara cellule-boost ANG-01` cérémoniale (jargon translation v2.37 + DRGFP v2.38 = posture orchestrateur proactif canonisée). Backward compat strict additif partout.
 
 **Next.** v2.39 consume-existing protocol (3 lookups upstream brand-side + canon + atlas vivant · dedup_strategy + diversity_constraint anti lock-in). v2.40 show-before-ask adaptive (3 modes verbosité cold/warm/silent · cache intra-chain · triage orchestrators ambigus only). Test live E2E kara post-DRGFP : lancer chain produce-paid-angles → produce-copy-brief → compose-creative pour observer comportement gates en conditions réelles.
 

@@ -1,0 +1,69 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.78.0",
+  "released_at": "2026-05-17",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 72,
+  "skills_count_after": 77,
+  "slash_commands_count_before": 7,
+  "slash_commands_count_after": 7,
+  "doctrines_count_before": 14,
+  "doctrines_count_after": 17,
+  "summary": "Sprint majeur v2.78.0 · ops paid coverage closure + magic keyword cleanup canon · 5 NEW skills + 3 NEW doctrines + 1 convention enrichie + 64 substitutions cross 14 files · ferme P0 audit experts Sprint A bis (mensonge surface vs ship skills perf canon · feedback loop atlas vivant runtime).",
+  "audit_amont": {
+    "sprint_A_bis_5_agents_experts_READ_ONLY": [
+      "Agent 1 · Creative strategist senior DTC (5+ ans scaling brands) · verdict 7.5/10 CONDITIONAL · meilleurs skills decompose-ad 9/10 + produce-paid-angles 8/10 + Compositional Cartography v3.1 validée canon métier (RMBC/Stefan Georgi/angle stacking)",
+      "Agent 2 · Media buyer senior (Meta+Google+TikTok · 7-fig spend/mois) · verdict 4.5/10 CONDITIONAL CRITIQUE · gap structurel mensonge surface vs ship (routine-perf + analyze-perf + audit-google-pmax référencés mais jamais shippés)",
+      "Agent 3 · Copywriter DR senior (10+ ans long-form + short-form + email) · verdict 7/10 CONDITIONAL · research + brief + audit excellents · écriture absente (sales letter + email sequence DR canon manquants)",
+      "Agent 4 · Brand strategist senior (positioning + USP + voice 8+ ans) · verdict 6/10 CONDITIONAL · drift archetypes 6/12 Mark+Pearson + tone_of_voice 4-enum vs Nielsen Norman 4D + positioning canvas absent",
+      "Agent 5 · Ecom founder senior (DTC scaled 1-10M ARR) · verdict 6.5/10 CONDITIONAL · cockpit créatif paid premium · pas hub founder DTC full-spectrum (unit economics + WBR + cohort retention absents)"
+    ],
+    "verdict_convergent": "Pattern systémique cross-5-agents · Atelier creative + brand + audience strategy excellent · ops paid + business pilotage + lifecycle gaps structurels · canon mismatch surface vs ship sur skills perf (référencés mais non shippés)"
+  },
+  "patches_tier_1_P0": [
+    "Ship routine-perf SKILL.md (318L · navigator briefing perf quotidien cross-plateformes)",
+    "Ship analyze-perf SKILL.md (399L · producer deep-dive diagnostic cross-platform multi-jour)",
+    "Ship audit-google-pmax SKILL.md (306L · orchestrator audit PMAX Google Ads + google-ads.json enrich 2 → 13 ops)",
+    "Ship audit-creative-fatigue SKILL.md (361L · curator détection fatigue creative-level)",
+    "Ship import-meta-results SKILL.md (349L · capturer feedback loop atlas vivant validations[] canon-tools)"
+  ],
+  "patches_tier_2_P1": [
+    "Ship doctrine pacing-discipline.md (288L · seuils canon ±20% spend ±2.5 freq +30% CPM drift 14j fatigue)",
+    "Ship doctrine creative-testing-discipline.md (280L · 3x3 matrix win/kill seuils canon)",
+    "Ship doctrine attribution-multitouch-discipline.md (290L · 7d-click vs 1d vs view-through canon · MER target par stage)",
+    "Magic keyword cleanup canon · 64 substitutions cross 14 files (Jarvis → proactif/proactif mesuré/bridge proactif context-sensitive)",
+    "NEW memory canon no_jarvis_in_canon sister no_em_dash"
+  ],
+  "files_patched": [
+    {"file": ".skills/skills/routine-perf/SKILL.md", "scope": "NEW · 318L navigator · briefing perf paid quotidien cross-plateformes + Step 0 bridge proactif canon v2.77 + 5 sections investigation-posture + seuils canon ±20% spend ±2.5 freq +30% CPM drift 14j fatigue"},
+    {"file": ".skills/skills/analyze-perf/SKILL.md", "scope": "NEW · 399L producer · deep-dive diagnostic cross-platform multi-jour (Meta+Google+TikTok+Shopify+TW+Klaviyo) + 5 sections investigation-posture + 8 HR + 7 anti-patterns"},
+    {"file": ".skills/skills/audit-google-pmax/SKILL.md", "scope": "NEW · 306L orchestrator · audit complet PMAX (asset groups + audience signals + search themes + listing groups + value rules + brand exclusions) + 5 sections investigation-posture"},
+    {"file": ".skills/skills/audit-creative-fatigue/SKILL.md", "scope": "NEW · 361L curator · scan creatives produced + détection fatigue (CTR decay 14-30j + CPM rise +30% WoW + frequency saturation + ROAS decay) + reco recompose-creative variant_axis pertinent"},
+    {"file": ".skills/skills/import-meta-results/SKILL.md", "scope": "NEW · 349L capturer · pull Meta Insights par ad_id → écrit validations[] canon-tools → alimente decay v2.37 + N≥3 brands threshold auto-promote canon · ferme boucle produce → test → learn → promote quotidienne"},
+    {"file": "docs/system/pacing-discipline.md", "scope": "NEW · 288L 14 sections canon-style miroir · seuils canon chiffrés explicit"},
+    {"file": "docs/system/creative-testing-discipline.md", "scope": "NEW · 280L 14 sections canon-style miroir · 3x3 matrix variants + win/kill seuils canon"},
+    {"file": "docs/system/attribution-multitouch-discipline.md", "scope": "NEW · 290L 14 sections canon-style miroir · attribution windows canon par canal + iCAC/CAC/MER mapping"},
+    {"file": "resources/conventions/google-ads.json", "scope": "Enrich · ops 2 → 13 PMAX-specific (asset_groups + audience_signals + search_themes + brand_exclusions + value_rules + listing_groups + conversion_setup + pmax_insights + negative_keywords_portfolio + smart_bidding_status + asset_strength) + learned_rules 3 → 13 + 5 operator_notes + last_updated 2026-05-17"},
+    {"file": ".skills/_manifest.json", "scope": "Regen · 77 skills total · 5 NEW v2.78 confirmés"},
+    {"file": ".skills/_jargon_bank.json", "scope": "Regen · 80 jargon entries"},
+    {"file": "Magic keyword cleanup 14 files", "scope": "64 substitutions context-sensitive · Jarvis → proactif/proactif mesuré/bridge proactif · cross 5 NEW skills v2.78 + 4 skills v2.77 + delegation-pattern + CLAUDE.md + CHANGELOG + _version + 2.77.0-manifest"},
+    {"file": "_version.json", "scope": "Bump 2.77.0 → 2.78.0 + summary v2.78.0 + manifest path 2.78.0"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.78.0 prepended"},
+    {"file": "docs/internal/releases/manifest/2.78.0-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "decisions_captured": ["D#428", "D#429"],
+  "backlog_v278_plus": [
+    "937 em-dashes restantes dans skills SKILL.md (pre-commit hook em-dash sweep P3 todos.md déjà identifié)",
+    "Sprint v2.78.1 canonisation transversalité workspace unifié cross-rôles (5 patches positioning + onboarding · workspace-unification-discipline NEW OR enrich scope-extension-discipline + CLAUDE.md root + brand.json atlas + /tour Milestone 5+6 + spec.json mecanique-élasticité-scope)",
+    "Sprint v2.78.2 Encoding Reformulation Discipline (NEW doctrine + 4 skills patches setup-brand + snapshot-brand + profile-audience + define-specs · pattern récap actif visibilité opérateur pré-encoding · pas business stage detection skill Largo recadrage tonalité-only suffisant)",
+    "Sprint v2.79 business pilotage · unit economics canon (CAC + LTV + MER + payback + contribution margin) + WBR skill + analyze-cohort-retention + audit-klaviyo-flows",
+    "Sprint v2.80 brand strategy frameworks · archetypes 6 → 12 Mark+Pearson + produce-positioning-canvas (Geoffrey Moore + Trout+Ries) + define-brand-voice (Nielsen Norman 4D) + validate-brand-voice-consistency cross-touchpoint",
+    "Sprint v2.81 DR copywriting production · produce-sales-letter (long-form VSL + sales letter) + produce-email-sequence (Halbert/Klaviyo canon) + big-idea-canon doctrine + audit-proof-coverage",
+    "Sprint v2.82 CRO + lifecycle · audit-pdp + audit-landing + flow-builder-klaviyo + plateformes attribution modernes (Northbeam, Motion, Foreplay) MCP/skill",
+    "Skill produce-hooks (gap creative strat Sprint A bis · ratio 1:15 angle:hooks vs 1:0.6 actuel)",
+    "Skill decompose-batch (ingère 20+ ads competitor d'un coup · swipefile mining)"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.78.0 = git revert HEAD strict · 5 NEW skills removable via manifest regen · 3 NEW doctrines retirables · convention google-ads enrich revert au previous (2 ops + 3 learned_rules) · 64 substitutions magic keyword reversibles via grep replace pattern inverse · semantic spec preserved cross-files · pipeline feedback loop atlas vivant (audit-creative-fatigue + import-meta-results) backward compat (legacy ad-hoc manual workflow preserved si patches retirés)"
+}
