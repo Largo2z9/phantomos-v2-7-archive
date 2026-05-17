@@ -7,6 +7,82 @@
 
 ---
 
+## v2.79.4 · 2026-05-17 · Sprint patch · refonte intro /tour Vercel/GitHub-style narratif court + NEW slash command /about documentation deep PhantomOS holistique · D#438 captured
+
+**Why** · Post-test live Largo v2.79.3 fresh workspace `~/dev/phantom-test-v279_3` a flag pitch d'amorce trop dense pédagogie opérateur novice. /tour v2.79.3 livrait panorama 360° des 7 territoires DTC sur pied d'égalité visuelle (canon onboarding-holistic-discipline) MAIS · intro d'amorce 1 phrase dense insuffisante · opérateur novice n'avait pas le contexte pour comprendre la profondeur PhantomOS avant d'arriver dans le panorama. Pattern systémique canon · standards onboarding Vercel/GitHub shipped product · intro courte narrative (rapide démarrage) + docs deep opt-in (compréhension profondeur opérateur conscient). Split intro court vs deep doc · cohérent memory canon `phantomos_pitch_posture` (institutionnel sérieux + accessible + zéro jargon + différenciation produit/kit explicite + couverture exhaustive angles).
+
+**What** · 2 patches structurels parallèle (Agents 1-2) plus release engineering (Agent 3 · ce job).
+
+**Patches structurels (2 parallèle)** ·
+
+1. **Refonte intro `/tour.md` Vercel/GitHub-style narratif court** (Agent 2) · replace pitch dense par intro courte 6-7 lignes panorama 360° + action close pointeur `/about` pour deep doc opt-in · pédagogie démarrage rapide opérateur · canon onboarding-holistic-discipline v2.79.3 préservé (7 territoires DTC pied d'égalité visuelle).
+
+2. **NEW slash command `/about.md`** (Agent 1) · documentation deep PhantomOS holistique opt-in · 10 sections matricielles (vision · 5 artefacts · 4 mécanismes raisonnement · cycle opérationnel · différenciation matricielle vs ChatGPT/Notion/ClickUp/Airtable · 10 termes canon glossaire · comment ça reste honnête · 7 territoires DTC détaillés · pour démarrer) · ~150-200L · opt-in opérateur sans friction /tour rapide.
+
+**Pattern systémique fermé · onboarding split strategy canon v2.79.4**
+
+```
+Layer 1 · /tour intro courte narrative Vercel/GitHub-style (démarrage rapide)   ✓ v2.79.4
+Layer 2 · /about NEW slash command documentation deep opt-in (compréhension)    ✓ v2.79.4
+Layer 3 · panorama 360° des 7 territoires DTC pied d'égalité (canon v2.79.3)    ✓ préservé
+Layer 4 · cohérent standards Vercel/GitHub shipped product onboarding             ✓ canon
+```
+
+L'opérateur novice démarre rapidement via /tour court. L'opérateur conscient drill deep via /about opt-in. Asymétrie pitch d'amorce trop dense vs profondeur opt-in fermée. Memory canon `phantomos_pitch_posture` reinforced (institutionnel sérieux + accessible + couverture exhaustive angles).
+
+**Backward compat strict additif** · /tour refondu (revert to v2.79.3 state possible · CLAUDE.md root sommaire revert) · /about NEW additif strict (retirable via git revert HEAD strict) · doctrines 21 inchangées · skills 80 inchangés · slash commands 7 → 8 (+1 /about NEW). Zéro impact runtime fonctionnel.
+
+**Files patched (7-8)** ·
+- `.claude/commands/tour.md` refonte intro Vercel/GitHub-style narratif court (Agent 2)
+- `.claude/commands/about.md` NEW slash command documentation deep PhantomOS holistique (Agent 1)
+- `CLAUDE.md` root patches mention /about + sommaire slash commands count 7 → 8 (Agent 3 · ce job)
+- `../../../decisions.md` workspace ROOT · D#438 captured (Agent 3 · ce job)
+- `_version.json` bumped 2.79.3 → 2.79.4 (Agent 3 · ce job)
+- `CHANGELOG.md` v2.79.4 entry prepended (this entry · Agent 3 · ce job)
+- `docs/internal/releases/manifest/2.79.4-manifest.json` NEW (Agent 3 · ce job)
+
+**D#438 captured** ·
+- **D#438** · Onboarding PhantomOS split strategy canon v2.79.4 · /tour intro courte narrative Vercel/GitHub-style (6-7 lignes pitch + panorama 360° + action close pointeur /about) pour démarrage rapide · /about NEW slash command documentation deep opt-in (10 sections matricielles · vision · 5 artefacts · 4 mécanismes raisonnement · cycle opérationnel · différenciation matricielle vs ChatGPT/Notion/ClickUp/Airtable · 10 termes canon glossaire · comment ça reste honnête · 7 territoires DTC détaillés · pour démarrer). Use case déclencheur · test live Largo v2.79.3 fresh workspace flag pitch d'amorce 1 phrase dense insuffisant pédagogie opérateur novice. Cohérent memory canon `phantomos_pitch_posture` (institutionnel sérieux + accessible + couverture exhaustive angles). Cross-refs · /tour v2.79.4 + /about v2.79.4 + memory canon `phantomos_pitch_posture` reinforced.
+
+**Backlog v2.79.4+** · Sprint v2.80 4-6 skills tracking-GTM NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode · prérequis brief tracking specialist solide) · Sprint v2.79.x business pilotage backlog v2.79.1 (unit economics + WBR + cohort retention + audit-klaviyo-flows) · Sprint v2.80.x DR copywriting production backlog v2.79.1 (sales letter + email sequence + big-idea-canon + audit-proof-coverage) · Sprint v2.81+ CRO + lifecycle backlog v2.79.1 · Pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md) · Re-test live workspace fresh v2.79.4 sur opérateur novice pour valider split intro /tour court + /about deep doc opt-in.
+
+**Skills count 80 (inchangé) · slash commands 7 → 8 (+1 /about NEW) · doctrines 21 → 22 (+1 pain-benefit-chain NEW post-audit cohérence).**
+
+---
+
+### Hygiène cohérence post-audit (v2.79.4 consolidation pre-ship · D#439)
+
+**Why** · Sprint v2.79.4 ship hold pré-push · audit 4 agents READ-ONLY parallèle scope disjoint (cohérence interne /about · cross-files canon · sémantique structures 5 artefacts MECE + 4 mécanismes + 10 termes + 7 territoires · factuel technique) a flag 9 issues (1 critique format + 5 majeures + 3 mineures). Cohérent memory canon `no_overengineer` (calibrer profondeur · 8 patches consolidation pre-ship, pas nouvelle version) + `iterative_validation` (4 audits scope disjoint validés) + `phantomos_pitch_posture` (institutionnel sérieux + couverture exhaustive angles).
+
+**8 patches appliqués inline** (2 agents WRITE parallèle) ·
+
+1. **CLAUDE.md root count doctrines drift fix** · L44 "17 canon" → "21 canon" (legacy v2.79.2 non-bumpée post-NEW output-clarity + v2.79.3 onboarding-holistic + engagement-disclosure)
+2. **NEW `docs/system/pain-benefit-chain.md` doctrine stub** · référencé par 2 doctrines aval mais fichier inexistant · ~350-400L canon-style miroir · 4 couches functional/emotional/identity/aspirational · 8 HR + 8 AP enforcés
+3. **/about §10 drill section 3+1 cassée → 3 commands propres + setup prose post-bloc** · cohérent HR-OCD-6
+4. **/tour territoires wording statut faux** · Business + Lifecycle "(skills shipped/partials)" → "(aucun skill shipped · invocation freestyle prose dispo)" · statut ◐ justifié par canon + backlog skills NEW, pas par fake "skills partials"
+5. **/about §3 5 artefacts non-MECE → 4 artefacts** · Workspace · Brand · Skill · Doctrine (Atlas retiré, sous-cas Brand)
+6. **/about §7 glossaire 10 → 13 termes** · Workspace · Brand · Skill ajoutés (termes critiques utilisés cross-sections jamais définis)
+7. **/about §3 Atlas redondance fixée** (post-fix issue 5 · Atlas défini uniquement glossaire §7 désormais)
+8. **/about §4 §8 Skill routing triple emploi → cross-refs §7** (définition canon unique glossaire)
+
+**Backlog explicit v2.79.5 architectural** · Issue 7 panorama 7 vs 11 territoires non-CE (manque Customer Service · Influencer/UGC · Logistics · Data/BI · vs claim panorama 360° onboarding-holistic-discipline v2.79.3 non tenue). Refactor cascade · doctrine onboarding-holistic-discipline + /tour panorama + /about §9 + memory + decisions + manifest. Décision Largo + sprint dédié.
+
+**Files patched cohérence (8)** ·
+- `CLAUDE.md` root count doctrines drift fix L44
+- `docs/system/pain-benefit-chain.md` NEW canon-style doctrine stub
+- `.claude/commands/about.md` §3 §4 §7 §8 §10 patches MECE + glossaire + cross-refs
+- `.claude/commands/tour.md` wording statut Business + Lifecycle fix
+- `CHANGELOG.md` entry enrichi (ce job)
+- `docs/internal/releases/manifest/2.79.4-manifest.json` patches_structurels enrichi (ce job)
+- `../../../decisions.md` workspace ROOT · D#439 appended (ce job)
+- memory canon `phantomos_state` updated v2.79.4 post-cohérence (ce job)
+
+**D#439 captured** · Sprint v2.79.4 audit cohérence post-ship 4 agents parallèle scope disjoint + 8 patches appliqués inline + backlog v2.79.5 architectural (issue 7 panorama 11 territoires).
+
+**Counts updated** · doctrines 21 → 22 (NEW pain-benefit-chain) · skills 80 inchangé · slash commands 8 inchangé. Backward compat strict additif.
+
+---
+
 ## v2.79.3 · 2026-05-17 · Sprint patch · onboarding agnostique holistique + engagement disclosure pré-engagement · 2 NEW doctrines canon racine · /tour refondu panorama 360° · 6 skills orchestrateurs disclosure pré-runtime · D#436 + D#437 captured
 
 **Why** · Recadrage Largo post-réflexion structurelle sur onboarding canon PhantomOS. Deux gaps systémiques flag ·

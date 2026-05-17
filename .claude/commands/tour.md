@@ -1,7 +1,7 @@
 ---
 name: tour
-version: v2.79.3
-description: PhantomOS onboarding holistique 360°. Lance panorama 7 territoires DTC dès Step 1, opérateur reconnaît son métier (creative · tracking · media buy · brand · ops · business · lifecycle), choisit librement où drill. Pas de typage profil initial (doctrine onboarding-holistic-discipline.md v2.79.3 · canon HR-OHD-2). Replayable via `/tour`. Update v2.79.3 · refonte panorama 360° agnostique + suppression questions profil métier. Update v2.64 · ontologie sémantique pure · pain_points + objections sub-folder OWNED audiences/{slug}/ · frictions sub-folder OWNED products/{slug}/. Update v2.62 · onboarding refresh 4 NEW orchestrators (build-atlas-complete · produce-paid-matrix · creative-brief-composer · sync-notion-atlas).
+version: v2.79.4
+description: PhantomOS onboarding holistique 360°. Lance panorama 7 territoires DTC dès Step 1, opérateur reconnaît son métier (creative · tracking · media buy · brand · ops · business · lifecycle), choisit librement où drill. Pas de typage profil initial (doctrine onboarding-holistic-discipline.md v2.79.3 · canon HR-OHD-2). Replayable via `/tour`. Documentation deep opt-in via `/about` (architecture + philosophie pour opérateur curieux). Update v2.79.4 · refonte intro narratif court Vercel/GitHub-style + action close pointeur `/about` NEW (1 phrase dense remplacée 6-7 lignes narratives bilingual FR/EN). Update v2.79.3 · refonte panorama 360° agnostique + suppression questions profil métier. Update v2.64 · ontologie sémantique pure · pain_points + objections sub-folder OWNED audiences/{slug}/ · frictions sub-folder OWNED products/{slug}/. Update v2.62 · onboarding refresh 4 NEW orchestrators (build-atlas-complete · produce-paid-matrix · creative-brief-composer · sync-notion-atlas).
 ---
 
 # Tour · PhantomOS Onboarding
@@ -61,14 +61,21 @@ Every tour hits these in order. Milestones can fuse when a single operator turn 
 
 **Output pattern (à adapter language opérateur · FR/EN détecté, jamais codé en dur)** ·
 
+**FR version** ·
+
 ```
+═══════════════════════════════════════════════════════════════════
 Bienvenue dans PhantomOS
 
-PhantomOS · workspace agentic pour opérateurs DTC. Pas de scope préalable.
-Tu décides ce qui rentre. Le système accueille ton métier · creative,
-tracking, media buy, brand, ops, business, lifecycle.
+PhantomOS est un workspace où vit ton opération DTC. Tu encodes ta marque
+une fois (produits · audiences · stratégie), le système raisonne, exécute
+et apprend avec toi à travers les sessions.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Les outils d'IA classiques oublient entre les conversations. Les workspaces
+attendent que tu fasses le travail. PhantomOS garde ton contexte métier
+vivant et opère dessus à travers 80 skills et 21 doctrines canon.
+
+═══════════════════════════════════════════════════════════════════
 
   PANORAMA 360° · 7 territoires métiers DTC
   ─────────────────────────────────────────────────────────────────────
@@ -94,16 +101,74 @@ tracking, media buy, brand, ops, business, lifecycle.
   ◐ Lifecycle & CRO
     PDP · landing · email flows · upsell · LTV
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+═══════════════════════════════════════════════════════════════════
 
-  Où tu veux commencer ?
+  Pour démarrer
   ─────────────────────────────────────────────────────────────────────
-  · Tu peux drill un territoire (juste demande "creative", "tracking", etc)
-  · Tu peux setup ta première brand direct (`/phantom` sans arg)
-  · Tu peux scan ce qui existe en skills (`/skills`)
+
+  Colle une URL de marque (Shopify · landing · etc) ou dis-moi sur quoi
+  tu opères. Je cartographie en ~5 minutes.
+
+  Si tu veux comprendre l'architecture et la philosophie en profondeur
+  avant de démarrer · `/about`
 
   ─────────────────────────────────────────────────────────────────────
   ✓ shipped  ◐ partial  ○ open territoire  ✗ absent  ⚠ critique
+```
+
+**EN version** ·
+
+```
+═══════════════════════════════════════════════════════════════════
+Welcome to PhantomOS
+
+PhantomOS is a workspace where your DTC operation lives. You encode
+your brand once (products, audiences, strategy), the system reasons,
+executes, and learns with you across sessions.
+
+Standard AI tools forget between conversations. Workspaces wait for
+you to do the work. PhantomOS keeps your business context alive and
+operates on it through 80 skills and 21 canon doctrines.
+
+═══════════════════════════════════════════════════════════════════
+
+  360° PANORAMA · 7 DTC territories
+  ─────────────────────────────────────────────────────────────────────
+
+  ✓ Creative & Copy Production
+    Paid angles · copy briefs · creative composition · DR sales letters
+
+  ○ Tracking & GTM
+    Meta/Google pixels · server-side · consent mode · coverage audits
+
+  ✓ Media Buy & Performance
+    Meta campaigns · perf audits · score matrices · brief-day
+
+  ✓ Brand Strategy
+    Positioning canvas · voice 4D · archetypes · purpose
+
+  ◐ Ops & Workflow
+    Todos · agendas · onboarding · setup · scripts
+
+  ○ Business Pilotage
+    Unit economics · WBR · cohort retention · roadmap
+
+  ◐ Lifecycle & CRO
+    PDP · landing · email flows · upsell · LTV
+
+═══════════════════════════════════════════════════════════════════
+
+  Get started
+  ─────────────────────────────────────────────────────────────────────
+
+  Paste a brand URL (Shopify · landing · etc) or tell me what you operate.
+  I map it in about 5 minutes.
+
+  If you want to understand the architecture and philosophy in depth
+  before starting · `/about`
+
+  ─────────────────────────────────────────────────────────────────────
+  ✓ shipped  ◐ partial  ○ open territory  ✗ absent  ⚠ critical
 ```
 
 **Statut canon par territoire (référence interne · ne pas surfacer comme jargon)** ·
@@ -115,8 +180,8 @@ tracking, media buy, brand, ops, business, lifecycle.
 | Media Buy & Performance | ✓ shipped | `audit-meta-account`, `analyze-perf`, `routine-perf`, `score-matrix`, `brief-day`, `produce-paid-matrix` | |
 | Brand Strategy | ✓ shipped | positioning canvas, voice 4D Nielsen Norman, archetypes 12/12 Mark+Pearson, purpose Moore (skills brand canon shipped v2.65-v2.79) | |
 | Ops & Workflow | ◐ partial | todos · setup · onboard-brand · scaffold-extension | extensions à venir |
-| Business Pilotage | ◐ partial | (skills core shipped) | NEW backlog v2.79.x · unit economics, WBR, cohort retention |
-| Lifecycle & CRO | ◐ partial | (skills landing/PDP partials) | NEW backlog v2.81+ · email flows, upsell, LTV |
+| Business Pilotage | ◐ partial | (aucun skill shipped · invocation freestyle prose dispo) | NEW backlog v2.79.x · unit economics, WBR, cohort retention |
+| Lifecycle & CRO | ◐ partial | (aucun skill shipped · invocation freestyle prose dispo) | NEW backlog v2.81+ · email flows, upsell, LTV |
 
 **Transparency canon · panorama ne ment pas.** Les territoires `○ open` annoncent honnêtement *"invocable freestyle prose ou backlog skill explicite"*. Les territoires `◐ partial` annoncent *"skills shipped et NEW à venir"*. Pas de faux marketing, pas de territoire surévalué.
 

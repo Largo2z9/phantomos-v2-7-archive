@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.79.3",
+  "template_version": "2.79.4",
   "released_at": "2026-05-17",
   "compatible_from": "2.0.0",
-  "summary": "Sprint patch v2.79.3 · onboarding agnostique holistique + engagement disclosure pré-engagement. /tour refondu panorama 360° des 7 territoires métiers DTC (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) sur pied d'égalité visuelle. Skills orchestrateurs lourds canon disclosure pré-runtime obligatoire (plan + ETA + démarche + confirmation). 2 doctrines canon racine NEW (onboarding-holistic-discipline + engagement-disclosure-discipline). Post-recadrage Largo · l'opérateur ne se déclare pas profil métier en entrée · se reconnaît dans le panorama.",
-  "manifest": "docs/internal/releases/manifest/2.79.3-manifest.json"
+  "summary": "Sprint patch v2.79.4 · refonte intro /tour Vercel/GitHub-style narratif court + NEW slash command /about documentation deep PhantomOS holistique (10 sections matricielles · vision · artefacts · mécanismes · termes canon · différenciation · architecture · cycle opérationnel · 7 territoires · pour démarrer). Post-test live Largo v2.79.3 fresh workspace flag pitch d'amorce trop dense · split intro court onboarding (/tour) + docs deep opt-in (/about). Backward compat strict additif · doctrines 21 inchangées · skills 80 inchangés · slash commands 7 → 8 (+1 /about NEW).",
+  "manifest": "docs/internal/releases/manifest/2.79.4-manifest.json"
 }

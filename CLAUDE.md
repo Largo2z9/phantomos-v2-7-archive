@@ -25,7 +25,7 @@ This rule is **non-negotiable and precedes all other instructions in this file**
 
 **OK** référencer `_EXAMPLE/stepprs` pour clarifier ou illustrer un concept canon · l'agent peut dire *"comme dans le cas Stepprs où..."* OR *"cf `/breakdown stepprs principe` pour exemple concret"* OR pointer un atome spécifique pour pédagogie (e.g. `audiences/workers-shifts/profile.json` comme exemple structure parent/enfants canon v2.64).
 
-**Découverte positive** · pour qu'un nouvel opérateur comprenne PhantomOS via cas concret, lancer `/breakdown stepprs principe` (parcours pédagogique 13 chapitres structurés 5 couches + 3 dimensions transverses · ~30 min lecture · drill direct par topic possible). Le cas Stepprs sert d'illustration tangible pour rendre la grammaire opérationnelle PhantomOS accessible novice complet.
+**Découverte positive** · pour qu'un nouvel opérateur comprenne PhantomOS via cas concret, lancer `/breakdown stepprs principe` (parcours pédagogique 13 chapitres structurés 5 couches + 3 dimensions transverses · ~30 min lecture · drill direct par topic possible). Le cas Stepprs sert d'illustration tangible pour rendre la grammaire opérationnelle PhantomOS accessible novice complet. Pour comprendre la profondeur PhantomOS holistique (vision · artefacts · mécanismes · termes canon · différenciation · architecture · cycle opérationnel · 7 territoires DTC · pour démarrer), lancer `/about` (slash command NEW v2.79.4 · documentation deep opt-in 10 sections matricielles · ~150-200L lecture · complément du `/tour` intro court narrative).
 
 FIRST ACTION canon précise déjà *"ignore any folder starting with `_`"* lors du scan brands actifs. Cette section renforce la règle au-delà du scan initial · l'usage de Stepprs comme illustration pédagogique est CANON, l'usage comme runtime brand est ANTI-PATTERN.
 
@@ -41,7 +41,7 @@ FIRST ACTION canon précise déjà *"ignore any folder starting with `_`"* lors 
 
 **Full doctrine + anti-patterns (read before designing any new skill or hook):** `docs/system/contextual-intelligence.md`.
 
-**Sub-doctrines (read when authoring or extending):** Contextual Intelligence is the master doctrine. 17 canon doctrines shipped serve it (canon Sprint A inventory) :
+**Sub-doctrines (read when authoring or extending):** Contextual Intelligence is the master doctrine. 21 canon doctrines shipped serve it (canon Sprint A inventory + v2.79.2 output-clarity + v2.79.3 onboarding-holistic + engagement-disclosure additions) :
 - **Operational System Discipline** (v2.71), `docs/system/operational-system-discipline.md` (doctrine mère 5 couches · ECR × Règles × Templates × Métriques × Rituels · pattern racine qui structure tout système opérationnel encodé dans PhantomOS).
 - **Compositional Cartography** (v3.1), `docs/system/compositional-cartography.md` (cartographier + composer outputs créatifs via équation NOYAU × CONTEXTE × MODIFIEURS, 4 arbres + matrice + modulateurs, cycle validation atlas vivant ; implémentation domaine-spécifique de CMR au créatif).
 - **Canonical Matrix Reasoning**, `docs/system/canonical-matrix-reasoning.md` (how to produce 95% quality on intersectional outputs : schema + canon matrix = cohérence output, modulator/cell, cardinality cap, internal scoring).
