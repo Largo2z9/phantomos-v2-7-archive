@@ -1,6 +1,7 @@
 ---
 name: phantom
 description: Cockpit PhantomOS. Sans arg, vue workspace (tous brands + état global). Avec un brand slug, vue détaillée du brand. Read-only.
+version: v2.79.2
 ---
 
 # /phantom, cockpit
@@ -110,18 +111,18 @@ Une ligne compacte par brand, ordonnée par activité récente :
 {icon} {slug}              L{level}    {entity_summary}    last {time_ago}
 ```
 
-Icônes :
-- `🟢` : actif (last session < 7j) et niveau ≥ L2
-- `🟡` : actif mais sub-L2, ou L2+ mais inactif (7-30j)
-- `⚪` : dormant (> 30j sans session)
+Icônes (canon unifié v2.79.2) :
+- `✓` : actif (last session < 7j) et niveau ≥ L2
+- `◐` : actif mais sub-L2, ou L2+ mais inactif (7-30j)
+- `○` : dormant (> 30j sans session)
 
 `entity_summary` : count condensé "{products}P / {audiences}A / {angles}An / {tests}T". Skip si entité absente.
 
 Exemples :
 ```
-🟢 vitatone              L2     1P / 5A / 8An / 3T    last 14h
-🟡 peaktrek            L1     1P / 2A / 0An         last 6d
-⚪ northsense           L2     1P / 4A / 5An         last 47d
+✓ vitatone              L2     1P / 5A / 8An / 3T    last 14h
+◐ peaktrek            L1     1P / 2A / 0An         last 6d
+○ northsense           L2     1P / 4A / 5An         last 47d
 ```
 
 ### Cross-brand metrics
@@ -146,7 +147,7 @@ Anti-pattern : *"  · Lancer un audit Meta dès que possible"* (passif, l'opéra
 
 ## Mode brand
 
-Vue détaillée d'un brand spécifique. **Page menu workspace structurée 6 sections obligatoires avec dividers `────` (v2.79.1+).** Adaptive selon `brand.json#identity.business_model` v2.4 NEW. **Section 6 NEW v2.79.1 · Decomposition Visibility cockpit brand state** (rendu matriciel canon doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+ post-output brand state).
+Vue détaillée d'un brand spécifique. **Page sobre structurée 4 sections (v2.79.2+) · ALERTES · ÉTAT · ACTIONS · Drill footer.** Adaptive selon `brand.json#identity.business_model` v2.4 NEW. Iconographie unifiée canon · `✓` complet · `◐` partiel · `○` vide · `✗` absent · `⚠` critique.
 
 ### Sources à lire (read-only, dans l'ordre)
 
@@ -168,71 +169,57 @@ Vue détaillée d'un brand spécifique. **Page menu workspace structurée 6 sect
 16. `.phantom/active-tasks.json` (si existe) → skills en cours runtime (mine-voc, score-matrix, sync-notion-atlas).
 17. `.phantom/context-engine-events.jsonl` → mutations 24h.
 
-### Format de rendu brand (6 sections obligatoires v2.79.1+)
+### Format de rendu brand (4 sections obligatoires v2.79.2+)
 
 ```
-PhantomOS · brand : {brand_name}
-══════════════════════════════════════════════
-Cartographie    {level}/3 niveaux   {progress_bar}  ~{pct}% rempli
-Modèle · {business_model_label} · sector {sector}
-Dernière session   {time_ago} · {tests_actifs} tests live · {backlog} hypothèses
+{Brand_name}                                                  Cartographie {pct}%
+{business_model_label} · {niche}                              {key_metric_brand}
 
-──── EN COURS ────
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🔥 Hot spots
-{hot_spots_list}
+  ALERTES                                                          Sévérité
+  ─────────────────────────────────────────────────────────────────────
+  {alerte 1}                                                   critique
+  {alerte 2}                                                   critique
+  {alerte 3}                                                   majeur
+  {alerte 4}                                                   majeur
 
-⏳ Background actif
-{background_tasks}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🆕 Récent 24h
-{recent_mutations}
+  ÉTAT
+  ─────────────────────────────────────────────────────────────────────
+  Marque              ✓ encodée
+  Produits ({N})      ◐ partiels       {commentaire condensé}
+  Audiences ({N})     ◐ {x sur N} sourcée  {commentaire condensé}
+  Angles paid ({N})   ○ vides
+  Stratégie           ✗ pas de focus
+  Roadmap             ✗ absente
 
-──── WORKSPACE NAVIGATION ────
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Matière brand
-{matiere_brand_adapted_per_business_model}
+  ACTIONS
+  ─────────────────────────────────────────────────────────────────────
+  1. {Action verbalisée}                          {débloque X}
+  2. {Action verbalisée}                          {débloque Y}
+  3. {Action verbalisée}                          {débloque Z}
 
-Production créative
-{creative_outputs}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Stratégie & opérationnel
-{ops_entities}
+  Drill                /phantom {slug} {audiences | products | strategy}
+  Rechercher           /phantom search "<terme>"
+  Aide                 /phantom ?
 
-──── ACTIONS PRIORITAIRES ────
-
-   · `{paste-ready commande}` ({why})
-   · `{paste-ready commande}` ({why})
-   · ...
-
-──── DRILL & EXPLORATION ────
-
-   Entités drillables           /phantom {brand} {entity}
-   Drill produit                /phantom {brand} products {p_slug} {sub}
-   Drill audience               /phantom {brand} audiences {audience-slug}
-   Drill matrix                 /phantom {brand} matrix
-   Recherche cross-brand        /phantom search "{keyword}"
-   Historique mutations         /phantom recent
-   Bibliothèque métier          /phantom canon
-
-──── DECOMPOSITION VISIBILITY (canon v2.79+) ────
-
-NIVEAU 1 · Décomposition produit cross-products
-{niveau_1_table_per_product}
-
-NIVEAU 2 · Many-to-many · pain × audience matrix cross-atlas
-{niveau_2_matrix_ascii}
-
-NIVEAU 3 · Positionnement filtre par stage business
-{niveau_3_stage_table}
-
-NIVEAU 4 · Méthode pédagogique verbale
-{niveau_4_method_verbatim}
+  ─────────────────────────────────────────────────────────────────────
+  ✓ complet  ◐ partiel  ○ vide  ✗ absent  ⚠ critique
 ```
+
+**Grammaire canon v2.79.2.** 4 sections strictes · ALERTES (sévérité criticité) · ÉTAT (santé encodage entités) · ACTIONS (top 3 numérotées) · Drill footer (3 lignes + légende iconographie). Density modérée · whitespace généreux · une chose par ligne · séparateurs ━━━ entre sections. Pas de tableaux nested 3 métriques empilées. Pas de skill names exposés (verbalisation action backstage).
 
 ### Section 1 · Header
 
-- **Cartographie level** + progress bar visuelle ASCII (existing pattern v2.36+)
+Header sobre 2 lignes · brand name + cartographie pct (right-aligned) · business_model label + niche + key metric brand (right-aligned).
+
+- **Cartographie pct** · lecture `status.json#completeness_scores` · convertir niveau L1/L2/L3 + completeness_scores composite en pct unique 0-100% (~33% par niveau atteint).
 - **Modèle business** · lecture `brand.json#identity.business_model` v2.4 NEW · label opérateur-facing canonique ·
   - `DTC` → "DTC pure"
   - `service` → "service (B2B)"
@@ -240,311 +227,136 @@ NIVEAU 4 · Méthode pédagogique verbale
   - `subscription` → "subscription / SaaS"
   - `marketplace` → "marketplace"
   - Fallback (champ absent) → "modèle à cadrer"
-- **Last session** · tests live count · backlog hypothèses count
+- **Key metric brand** · ARR estimée OR niche + sous-secteur OR tests live count (selon ce qui est observable).
 
-### Section 2 · EN COURS (intelligence contextuelle variable)
+### Section 2 · ALERTES (santé brand actionnable)
 
-Scan automatique de signaux. **Trois sous-blocs, chacun skip-if-empty pour rester compact.**
+Scan automatique de signaux. **Une seule liste, ordre sévérité descendante (critique → majeur → mineur).**
 
-**🔥 Hot spots** · scan signaux saillants. Max 5 lignes affichées.
-- Angles essoufflés (`status: fatigued` OR ROAS chute ≥30% sur 14j)
-- Frictions bloquantes (`severity_score ≥7`)
-- Audiences hypothèses sans mining récent (`verbatim_density < 5` OR `last_mining_at > 90j`)
-- Briefs draft depuis >5j
-- Pubs essoufflées (`status: fatigued`)
-- Decisions en attente (`pending-validations.md` non-empty)
+Sources scan ·
+- Angles essoufflés (`status: fatigued` OR ROAS chute ≥30% sur 14j) · sévérité critique
+- Frictions bloquantes (`severity_score ≥7`) · sévérité critique
+- Décomposition produit incomplète (mécanismes/bénéfices vides) · sévérité majeure
+- Sourcing audiences insuffisant (`verbatim_density < 5` OR `last_mining_at > 90j`) · sévérité majeure
+- Stage business indéterminable (financiers absents) · sévérité majeure
+- Briefs draft depuis >5j · sévérité mineure
+- Décisions en attente (`pending-validations.md` non-empty) · sévérité variable selon contenu
 
-Format · 1 ligne par hot spot · si zéro hot spot, afficher "🟢 Workspace serein" OU skip section entière.
+Format ligne · `{alerte verbalisée}{whitespace}{sévérité}`. Max 6 alertes affichées. Si zéro alerte, afficher `✓ Brand serein` OU skip section entière (whitespace conservé).
 
-**⏳ Background actif** · scan `.phantom/active-tasks.json` ou équivalent.
-- Skills en cours runtime (mine-voc running 60%, score-matrix refresh, sync-notion-atlas pull running)
-- Format · 1 ligne par task avec % et ETA
+**Tâches de fond actives** · scan `.phantom/active-tasks.json` ou équivalent · si présent, surface ligne unique en bas section ALERTES · `◐ {N} tâche(s) de fond en cours · {synthèse 1 ligne}`. Skip si zéro.
 
-Si zéro background, skip section.
+### Section 3 · ÉTAT (santé encodage entités)
 
-**🆕 Récent 24h** · scan `.phantom/context-engine-events.jsonl` cap 5 events les plus saillants.
-- Créations, validations, scaling, mutations canon
-- Format · 1 ligne par event compact
-
-Si zéro mutation 24h, skip section.
-
-### Section 3 · WORKSPACE NAVIGATION (vraie mini-app)
-
-**Rendering adaptatif par `business_model`. Cf section dédiée "Business model adaptation" plus bas pour la table complète.**
+**Rendering adaptatif par `business_model`. Cf section dédiée "Business model adaptation" plus bas pour la table complète.** Liste plate · une entité par ligne · icône canon unifiée + label + commentaire condensé. Pas de tableaux nested 3 métriques empilées.
 
 #### Si `business_model: DTC` (default)
 
 ```
-Matière brand
-   ✓ brand                     {identity_summary}
-
-   Audiences ({count})
-   ├─ {audience_slug_1}                   {validation_label}
-   │  ├─ profile                          identity · voice · behavior
-   │  ├─ pain_points ({N})                {PNT-NN top-1} · {PNT-NN top-2} · {PNT-NN top-3}
-   │  └─ objections ({N})                 {OBJ-NN top-1} · {OBJ-NN top-2} · {OBJ-NN top-3}
-   ├─ {audience_slug_2}                   ...
-   └─ ... (selon scaling rules audiences si > 4)
-
-   Ligne produits ({count})
-   └─ {product_slug_1}                    {hero_badge} {validation_status}
-      ├─ spec                             composition · mécanismes ({N}) · bénéfices ({N})
-      ├─ offres ({N})                     {brief summary}
-      ├─ funnel                           TOF/MOF/BOF coverage
-      └─ frictions ({N})                  severity max {X}/10 · {N_bloquantes} bloquantes (≥7)
-   └─ ... (selon scaling rules produits)
-
-Production créative
-   Angles ({count})            {live}/{fatigued}/{validated} · {lineage_signal}
-   ├─ {Top winners 2-3}
-   ├─ {Essoufflés à refresh}
-   └─ /phantom {brand} angles
-
-   Pubs Meta ({count})         TOF/MOF/BOF {N/M/K}
-   ├─ Top winners scalés       {ids}
-   ├─ Essoufflées              {ids} (refresh recommandé)
-   └─ Drafts                   {N} en attente
-
-   Briefs ({count})            {N_draft} draft · {N_shipped} shipped · {N_validated} validés
-
-Stratégie & opérationnel
-   {✓⚠✗} Roadmap                          {current_phase_summary}
-   {✓⚠✗} Strategy                         focus {focus_summary}
-   {✓⚠✗} Learnings                        {recent_count} récents · {promoted_count} promus canon
-   {✓⚠✗} Matrix priorités                 {staleness} · top territoire {description}
+  Marque              ✓ encodée            {identity_summary 1 ligne}
+  Produits ({N})      {✓◐○✗}              {commentaire condensé · ex "spec partielle"}
+  Audiences ({N})     {✓◐○✗}              {commentaire · ex "1 sur 5 sourcée"}
+  Angles paid ({N})   {✓◐○✗}              {commentaire · ex "vides"}
+  Pubs Meta ({N})     {✓◐○✗}              TOF/MOF/BOF {N/M/K} · {live}/{fatigued}
+  Briefs ({N})        {✓◐○✗}              {N_draft} draft · {N_shipped} shipped
+  Stratégie           {✓◐○✗}              {focus 1 ligne OU "pas de focus"}
+  Roadmap             {✓◐○✗}              {current_phase OU "absente"}
+  Learnings           {✓◐○✗}              {recent_count} récents
 ```
 
-Note ontologie pure v2.64 · pain_points + objections sont sub-folder OWNED dans audiences/{slug}/ (expression subjective audience-specific) · frictions sub-folder OWNED dans products/{slug}/ (usage produit-specific). Plus de top-level brand-wide sections séparées. Drill via `/phantom {brand} audiences {slug}` (audience-drill 360° expose pain + objections inline) et `/phantom {brand} products {slug}` (product-drill 360° expose frictions inline).
+Note ontologie pure v2.64 · pain_points + objections sont sub-folder dans audiences/{slug}/ (expression subjective audience-specific) · frictions sub-folder dans products/{slug}/ (usage produit-specific). Plus de top-level brand-wide sections séparées. Drill via `/phantom {brand} audiences {slug}` (audience-drill 360° expose pain + objections inline) et `/phantom {brand} products {slug}` (product-drill 360° expose frictions inline).
 
 #### Si `business_model: hybrid`
 
 ```
-Matière brand
-   ✓ brand                     {identity_summary}
-                               business · {primary} + {secondary} ({weight indicator})
-
-   {Primary_layer_label} (e.g. "Réseau cliniques · 20+ détectées")
-   └─ {locations cartographiées count OR "à cartographier" si 0}
-
-   Ligne produits ({count})
-   └─ {comme DTC nested}
-
-   Audiences ({count}) · 2 layers
-   ├─ Patient {primary_layer} ({N})
-   └─ Acheteur produit ({N})
-
-Production créative
-   {idem DTC adapté aux 2 audiences}
-
-Stratégie & opérationnel
-   {idem DTC}
+  Marque              ✓ encodée            {identity} · {primary} + {secondary} ({weight})
+  {Primary_layer}     {✓◐○✗}              {locations cartographiées count OR "à cartographier"}
+  Produits ({N})      {✓◐○✗}              {idem DTC}
+  Audiences ({N})     {✓◐○✗}              2 layers · {N_primary} {primary_layer} · {N_buyer} acheteurs
+  Angles paid ({N})   {✓◐○✗}              {idem DTC}
+  Pubs Meta ({N})     {✓◐○✗}              {idem DTC + campagnes locales}
+  Stratégie           {✓◐○✗}              {idem DTC}
+  Roadmap             {✓◐○✗}              {idem DTC}
 ```
 
 #### Si `business_model: service`
 
 ```
-Matière brand
-   ✓ brand                     {identity_summary} · service-only B2B
-
-   Services / Packages ({count})
-   ├─ {service_slug_1}                      {validation_status}
-   │  ├─ livrables             {description}
-   │  ├─ process               {N_steps}
-   │  ├─ outcomes              chain
-   │  └─ pricing tier          {2k-15k/mois OR forfait}
-   └─ ...
-
-   ICPs B2B ({count}) · sales-cycle
-   ├─ {icp_1}                  {sales_cycle_days}j · {budget_range}
-   └─ ...
-
-Production créative
-   Angles lead-gen ({count})   case-study × {N} · contrarian POV × {N} · méthodologie × {N}
-   Pipeline deals              {N_qualifiés} · MRR projeté {amount} · {N_closing_semaine}
-   Case studies                {N} publiés
-
-Stratégie & opérationnel
-   {idem DTC, "Pipeline" remplace "Pubs Meta"}
+  Marque              ✓ encodée            {identity} · service-only B2B
+  Services ({N})      {✓◐○✗}              {pricing_tier} · {N_outcomes} outcomes
+  ICPs B2B ({N})      {✓◐○✗}              sales-cycle · {N} ICPs cartographiés
+  Angles lead-gen     {✓◐○✗}              case-study × {N} · contrarian × {N}
+  Pipeline deals      {✓◐○✗}              {N_qualifiés} · MRR projeté {amount}
+  Case studies        {✓◐○✗}              {N} publiés
+  Stratégie           {✓◐○✗}              {focus 1 ligne}
+  Roadmap             {✓◐○✗}              {current_phase}
 ```
 
 #### Si `business_model: subscription` OR `marketplace`
 
-Adapter le label "Ligne produits" en "Plans / Tiers" (subscription) ou "Sellers / Catalog" (marketplace). Audiences = users/subscribers ou acheteurs/vendeurs (2 sides). Production créative = retention angles, churn-fighters (subscription) ou liquidité matching (marketplace).
+Adapter le label "Produits" en "Plans / Tiers" (subscription) ou "Catalog / Sellers" (marketplace). Audiences = users/subscribers ou acheteurs/vendeurs (2 sides). Productions créatives = retention angles, churn-fighters (subscription) ou liquidité matching (marketplace).
 
-#### Icônes status entités (universel)
+#### Icônes status entités (canon unifié v2.79.2)
 
-- `✓` : entité encodée, fraîche (updated < 7j)
-- `⚠` : encodée avec gaps ou stale (7-14j ou completeness <70%)
-- `✗` : absente ou bloquante
-- `🔥` : stale critique (>90j) ou tests en chute libre
-- `⏳` : mining ou sync en cours
-- `🆕` : créé <24h
+- `✓` : entité encodée, complète et fraîche (updated < 7j)
+- `◐` : entité encodée mais partielle (gaps OR stale 7-14j OR completeness < 70%)
+- `○` : entité absente / vide / pas encore encodée
+- `✗` : entité absente ET bloquante pour le flow brand
+- `⚠` : critique (stale > 90j OU tests en chute libre OU décision en attente bloquante)
 
-Ordre canon Stratégie & ops · Frictions → Roadmap → Strategy → Learnings → Matrix.
+Légende affichée en pied de chaque output `/phantom {brand}`. Ordre stratégie & ops · Stratégie → Roadmap → Learnings (frictions exposées via product-drill).
 
-### Section 4 · ACTIONS PRIORITAIRES
+### Section 4 · ACTIONS (top 3 numérotées)
 
-3-5 paste-ready commands max, dérivées dynamique du state ·
-- Si hot spots présents · top-1 action = traiter hot spot #1
-- Si fresh brand state · top-1 = "cadre le business" + "confirme hero" + "lance mining audiences"
-- Si mature brand · top-1 = action sur essoufflés / frictions bloquantes / drafts en attente
-- Format canon · `· \`{commande paste-ready}\` ({why one-line clause})`
-
-Sources d'extraction ·
-- Tests fatiguing → *"  · `refresh l'angle {angle_id}` (ROAS -42% sur 14j)"*
-- Audiences témoignages vide → *"  · `récupère les témoignages clients sur {slug}` ({N} audiences à valider)"*
-- Frictions bloquantes → *"  · `traite la friction {FRC-NN}` (severity 9/10, bloque {audience})"*
-- Briefs draft stale → *"  · `relance le brief {BRF-NN}` (draft depuis {N}j)"*
-- Stale > 14j sur entité critique → *"  · `mets à jour {entity}` (dernière modif {N}j)"*
-- Niveau sub-L2 → *"  · `densifie le contexte de {slug}` ({N} champs manquants)"*
-
-Anti-pattern · *"  · Lancer mine-voc dès que possible"* (passif). Always paste-ready, always specific.
-
-### Section 5 · DRILL & EXPLORATION
-
-Format · 6-7 lignes navigation explicite (adapter la liste entités drillables selon business_model) ·
+Max 3 actions verbalisées, ordonnées par priorité descendante. **Format canon strict** ·
 
 ```
-   Entités drillables           /phantom {brand} {angles | audiences | produits | offers
-                                                 | funnel | roadmap | strategy
-                                                 | learnings | briefs | tests | matrix}
-   Drill audience 360°          /phantom {brand} audiences {slug}           (profile + pain + objections + cross-refs)
-   Drill product 360°           /phantom {brand} products {slug}            (spec + offers + funnel + frictions + cross-refs)
-   Drill produit (sub)          /phantom {brand} products {p_slug} {mechanisms | benefits | offers}
-   Drill matrix                 /phantom {brand} matrix
-   Recherche cross-brand        /phantom search "{keyword}"
-   Historique mutations         /phantom recent
-   Bibliothèque métier          /phantom canon
+  1. {Action verbalisée}                          {débloque X}
+  2. {Action verbalisée}                          {débloque Y}
+  3. {Action verbalisée}                          {débloque Z}
+```
+
+Hard rules ·
+- Action verbalisée en langue naturelle opérateur · jamais skill name exposé (skill route backstage)
+- Rationale 1 ligne max · format `débloque {entité OR état}` OR `règle {alerte critique}`
+- Pas de backtick + texte naturel mixés (texte plain uniquement)
+- Si zéro action prioritaire (brand mature serein), skip section et afficher *"Brand serein. Profite du calme."*
+
+Sources d'extraction (action verbalisée) ·
+- Tests fatiguing → "Refresh l'angle essoufflé sur {audience}" · débloque ROAS
+- Audiences sans voix client → "Récupère la voix client manquante sur {N} audiences" · débloque sourcing
+- Frictions bloquantes → "Traite la friction bloquante sur {audience}" · règle severity 9/10
+- Briefs draft stale → "Relance le brief en draft depuis {N} jours"
+- Stale > 14j sur entité critique → "Mets à jour {entité}" · dernière modif {N}j
+- Niveau sub-L2 → "Densifie le contexte brand" · {N} champs manquants
+- Décomposition produit vide → "Cartographie les mécanismes du produit hero" · débloque copy + paid
+- Stage business indéterminable → "Cadre le stage business (ARR / proof points / domain age)"
+
+Anti-pattern strict · skill names exposés ("Lancer mine-voc dès que possible", "Run produce-paid-angles") · backtick + commande paste-ready dans action. Le `/phantom` v2.79.2 verbalise · l'agent route le skill backstage si l'opérateur valide.
+
+### Section 5 · Drill (footer minimaliste, max 3 lignes + légende)
+
+Format strict 3 lignes navigation + légende iconographie au pied ·
+
+```
+  Drill                /phantom {slug} {audiences | products | strategy}
+  Rechercher           /phantom search "<terme>"
+  Aide                 /phantom ?
+
+  ─────────────────────────────────────────────────────────────────────
+  ✓ complet  ◐ partiel  ○ vide  ✗ absent  ⚠ critique
 ```
 
 Substitutions selon business_model ·
-- `service` · remplace `produits` par `services`, `funnel` par `pipeline`
-- `subscription` · remplace `produits` par `plans`
-- `marketplace` · remplace `produits` par `catalog`
+- `service` · remplace `products` par `services`
+- `subscription` · remplace `products` par `plans`
+- `marketplace` · remplace `products` par `catalog`
 
-### Section 6 · Decomposition Visibility cockpit brand state (canon v2.79+)
-
-**MANDATORY post-output brand state cockpit.** Après affichage état brand cockpit (identity · positioning · audiences · products · offers · angles · strategy · learnings), rendu obligatoire matriciel multi-niveau canon doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+. Sans cette Section, le cockpit reste prose-only · l'opérateur ne voit jamais la vue d'ensemble matricielle (product × pain × audience × positionnement × stage business) · output invalide.
-
-Pattern systémique racine canon · *"l'agent doit PROUVER qu'il a compris en MONTRANT sa réflexion"*. Cockpit `/phantom {brand}` = trigger principal opérateur-facing pour voir l'état brand · DOIT appliquer canon decomposition-visibility-discipline v2.79+ au même titre que skills consumers (snapshot-brand · build-atlas-complete · profile-audience · define-specs).
-
-**Sources à lire** · `brands/{slug}/_snapshot.md` (digest) + `products/{slug}/spec.json` (specs · mécanismes · bénéfices 3 couches) + `audiences/{slug}/profile.json` (psychology · pain_points sub-folder) + `audiences/{slug}/pain_points/*.json` (PNT-NN labels) + `strategy.json` (current_focus · stage si déclaré) + `brand.json` (proof points · ARR signals · domain age si encoded).
-
-#### NIVEAU 1 · Décomposition produit cross-products
-
-Pour chaque produit encoded brand · table compacte décomposition specs · mécanismes · bénéfices 3 couches canon `docs/system/pain-benefit-chain.md` (functional · emotional · identity, layer chargé identifié explicit) ·
-
-```
-PRODUCT {product_name}
-SPECS                   MÉCANISMES                   BÉNÉFICES 3 couches
-{atome spec 1}          {atome action 1}             Functional · {bénéfice}
-{atome spec 2}          {atome action 2}             Emotional  · {bénéfice}
-                                                     Identity   · {bénéfice}
-                                                                  ← layer chargé
-```
-
-Itérer pour les N produits encoded brand. Si produit unique · une table. Si multi-produits · N tables compactes empilées (séparateur visuel entre). Si zéro produit encoded · skip NIVEAU 1 + flag *"NIVEAU 1 indisponible · zéro produit encoded · lance `snapshot {brand} avec {url}`"*.
-
-**Scaling rules N produits NIVEAU 1** ·
-- 1-3 produits · tables full empilées
-- 4-10 produits · tables top-3 par hero_flag + activité créa + footer *"+{N-3} autres produits · /phantom {brand} products"*
-- 11+ produits · top-3 only + drill obligatoire référé
-
-#### NIVEAU 2 · Many-to-many · pain × audience matrix cross-atlas
-
-Matrice ASCII OBLIGATOIRE cross-products + cross-audiences · skip = invalid output. Décompose explicitement quelle douleur frappe quelle audience avec intensité primary vs secondary ·
-
-```
-                          {audience_1}     {audience_2}     {audience_3}     {audience_N}
-                          (slug)           (slug)           (slug)           (slug)
-PNT-01 {pain label}         ✓✓ PRIMARY        ·               ✓                ·
-PNT-02 {pain label}            ·          ✓✓ PRIMARY          ·                ✓
-PNT-03 {pain label}            ✓              ✓           ✓✓ PRIMARY           ·
-PNT-NN ...
-──────────────────────────────────────────────────────────────────────────────────
-Espace blanc paid              ·          INCONTESTÉ          ·                ·
-(compétitif intel)                        ({N} concurrents
-                                           sur axe unique)
-```
-
-Légende canon · `✓✓ PRIMARY` (douleur dominante audience) · `✓` (douleur secondaire affecte audience) · `·` (zéro affect). Row `Espace blanc paid` (optional · ship si signal compétitif intel détecté dans `learnings.json` OU `angles/` lineage_signal) · pour chaque audience, repère où concurrence est faible/inexistante sur l'angle · opportunité paid prioritaire.
-
-Si zéro audience encoded OU zéro pain_points encoded · skip NIVEAU 2 + flag *"NIVEAU 2 indisponible · {missing_entity} à cartographier · lance `mine-voc {brand}` OR `/phantom {brand} audiences`"*.
-
-#### NIVEAU 3 · Positionnement filtre par stage business
-
-Stage business détecté (signal `brand.json#financials.arr_estimated` OU `brand.json#proof_points` OU `brand.json#domain_age` OU `strategy.json#stage` si déclaré) OU opérateur-déclaré. Table canon ·
-
-```
-STAGE détecté            {early | growth | scale | inconnu}
-ARR estimée              {signal range OR "non observable"}
-
-AUDIENCE PRIORITAIRE     {audience slug + rationale 1 ligne}
-ANGLES DOMINANTS         {3-5 angle ids ranked top depuis angles/}
-POSITIONING STATEMENT    {Moore format si produce-positioning-canvas
-                          shipped · sinon stage hypothèse 1 ligne}
-
-Distinction critique opérateur ·
-Audience produit-fit     {toutes audiences encoded · audience-1 · audience-2 · audience-3 · ...}
-Audience ciblage créa    {filter sub-set selon positioning targeting stage-aware · ex audience-2 only stage early}
-```
-
-**Stage detection signals** · early (ARR < 500k · domain age < 2 ans · proof points < 5) · growth (ARR 500k-3M · domain age 2-5 ans · proof points 5-20) · scale (ARR > 3M · domain age > 5 ans · proof points 20+). ARR signal absent ET proof points absents ET domain age inconnu → flag `stage = inconnu` · ne pas inventer.
-
-**Distinction audience produit-fit vs ciblage créa** · audience produit-fit = toutes audiences encoded pertinentes pour le produit (surface large NIVEAU 2 matrice tous ✓✓ P et ✓ S). Audience ciblage créa = sub-set filtré par positionnement stage-aware (surface étroite NIVEAU 3 filtre). Confusion = leak runtime · opérateur dépense paid sur audiences hors ciblage stage.
-
-#### NIVEAU 4 · Méthode pédagogique verbale
-
-Verbaliser méthode décomposition canon · l'opérateur sait COMMENT le cockpit a été lu, pas seulement QUOI ·
-
-```
-J'ai cartographié l'état brand {brand} en 4 niveaux canon ·
-1. Décomposition produit · specs/mécanismes/bénéfices 3 couches
-   (functional · emotional · identity, layer chargé identifié)
-2. Many-to-many · {N} pains × {M} audiences (matrix primary/secondary
-   affectations · espace blanc paid si signal compétitif)
-3. Stage business · {stage détecté} → audience prioritaire {slug} ·
-   {3-5 angles dominants}
-4. Positionnement filter · {produit-fit toutes audiences} vs
-   {ciblage créa sub-set stage-aware}
-
-État actuel atlas · {level}/3 niveaux · {N_missing} entités à enrichir.
-Skills route possibles downstream · {produce-paid-angles si Gate B passé} ·
-{score-matrix si N audiences ≥ 3} · {creative-brief-composer si angles ranked}.
-```
-
-Adapter verbatim selon stage atlas (level 1 fresh · level 2 mid · level 3 mature) · level 1 verbatim invite *"continue à cadrer le business · `snapshot {brand}` · `mine-voc {brand}`"* · level 3 verbatim invite *"l'atlas est opérable cross-skills downstream · valide angles · lance score-matrix"*.
-
-#### Hard Rules canon strict (Section 6)
-
-- **HR-DVD-PHANTOM-1.** Section 6 Decomposition Visibility obligatoire post-output brand state cockpit (post-Section 5 DRILL & EXPLORATION). JAMAIS skip cette Section. Cockpit prose-only sans matrices = invalid output v2.79.1+.
-- **HR-DVD-PHANTOM-2.** 4 niveaux matriciels canon obligatoires (NIVEAU 1 + NIVEAU 2 + NIVEAU 3 + NIVEAU 4). Skip 1 niveau = invalid output. Manquant data source → flag explicit + skill route corrective (pas skip silent).
-- **HR-DVD-PHANTOM-3.** Méthode pédagogique verbale obligatoire post-matrices (NIVEAU 4). JAMAIS ship matrices raw sans explication méthode. Opérateur consolide grammaire mentale cross-sessions.
-- **HR-DVD-PHANTOM-4.** Stage business filter explicit si signal détectable (ARR/proof points/domain age dans `brand.json`). Stage inconnu = flag explicit `stage = inconnu` · jamais inventer. Single-audience assumption sans stage filter = anti-pattern.
-- **HR-DVD-PHANTOM-5.** Distinction audience produit-fit (surface large) vs audience ciblage créa (surface étroite stage-aware) explicit NIVEAU 3. Confusion = leak runtime · paid dépensé hors ciblage stage.
-- **HR-DVD-PHANTOM-6.** Backward compat strict additif · Sections 1-5 existing brand mode preserved · Section 6 NEW append after Section 5 sans muter rendering existing. Read-only constraint cockpit respect (zéro mutation pendant rendu).
-
-#### Anti-patterns canon strict (Section 6)
-
-- **AP-DVD-PHANTOM-1.** Output cockpit brand state prose-only sans matrices ASCII (Sections 1-5 rendus correctement · Section 6 skip). Opérateur reçoit cockpit opaque · trust ou rejet binaire · drill granulaire impossible. Pattern correctif · HR-DVD-PHANTOM-1 enforcement.
-- **AP-DVD-PHANTOM-2.** Skip niveau matriciel (4 obligatoires strict). Ex · NIVEAU 1 + NIVEAU 2 only · skip NIVEAU 3 stage filter et NIVEAU 4 pédagogie. Output dégradé · pensée systémique incomplète. Pattern correctif · HR-DVD-PHANTOM-2 enforcement.
-- **AP-DVD-PHANTOM-3.** Many-to-many implicite (NIVEAU 2 prose narrative au lieu de matrice ASCII). Opérateur déduit relations · drift mental model · pensée 1:1 fausse persiste. Pattern correctif · matrice NIVEAU 2 ASCII obligatoire forcée HR-DVD-PHANTOM-2.
-- **AP-DVD-PHANTOM-4.** Stage business absent du filtre positionnement (NIVEAU 3 sans stage row). Recommandation 1 audience focus permanente toutes stages business. Saturation auction stage 3M+ ARR garantie. Pattern correctif · HR-DVD-PHANTOM-4 enforcement.
-- **AP-DVD-PHANTOM-5.** Skip pédagogie verbale méthode (NIVEAU 4 absent). Opérateur reçoit décomposition sans grammaire mentale · apprentissage zéro · dépendance permanent agent. Pattern correctif · HR-DVD-PHANTOM-3 enforcement.
-- **AP-DVD-PHANTOM-6.** Confond audience produit-fit (toutes encoded) avec audience ciblage créa (sub-set stage-aware filtré). Décision stratégique aveugle · scaling perte ROAS. Pattern correctif · HR-DVD-PHANTOM-5 enforcement.
-
-#### Cross-refs canon
-
-- `docs/system/decomposition-visibility-discipline.md` v2.79+ · doctrine racine 4 niveaux canon (HR-DVD-1 à HR-DVD-8 · AP-DVD-1 à AP-DVD-8)
-- `docs/system/pain-benefit-chain.md` · 3 couches bénéfices canon (functional · emotional · identity · aspirational) · NIVEAU 1 consume
-- `docs/system/audience-cartography.md` v2.64 · parent/enfants sémantique pure · NIVEAU 2 consume audiences
-- `docs/system/canonical-matrix-reasoning.md` · schema + matrice canon = cohérence output 95% qualité · pattern miroir
-- Sister skills v2.78.2 / v2.79 consumers · `snapshot-brand` (Phase Atlas Visibility v1.x · Movement 3-4) · `build-atlas-complete` v1.6.0 (Phase 8.5 Atlas Visibility Matriciel · pattern source de référence) · `profile-audience` (NIVEAU 2 pain × audience consume) · `define-specs` (NIVEAU 1 specs/mécanismes/bénéfices consume)
-- Forward-compat v2.80 · `produce-positioning-canvas` (Moore format NIVEAU 3 Positioning Statement) · `define-brand-voice` (4D cohérence NIVEAU 3)
+Pas de listing exhaustif entités drillables, pas de "Bibliothèque métier", pas de "Historique changements". L'opérateur découvre les autres entités via `/phantom ?`.
 
 ---
 
-## Scaling rules · produits dans WORKSPACE NAVIGATION
+## Scaling rules · produits dans ÉTAT
 
 Règle universelle de rendering applied à la sous-section "Ligne produits" (ou équivalent business_model) de Matière brand.
 
@@ -1148,17 +960,17 @@ Rendering (top 5 max) :
    · `{paste-ready commande}` ({why})
 ```
 
-`priority_icon` : `🔥` (urgent : tests fatigués, brand stale > 30j sur entité critique), `⚡` (à faire bientôt : audiences en mining vide, angles draft), `·` (peut attendre).
+`priority_icon` (canon unifié v2.79.2) : `⚠` (critique : tests fatigués, brand stale > 30j sur entité critique), `◐` (à faire bientôt : audiences sans voix client, angles draft), `·` (peut attendre).
 
 Exemple :
 ```
-🔥 [vitatone] 2 angles ROAS en chute libre depuis 7j
+⚠ [vitatone] 2 angles ROAS en chute libre depuis 7j
    · `refresh les angles fatigués sur vitatone`
 
-⚡ [glowco] 7 audiences en hypothèse, aucun verbatim encore
-   · `lance mine-voc sur glowco`
+◐ [glowco] 7 audiences en hypothèse, aucune voix client encore
+   · `lance la voix client sur glowco`
 
-⚡ [glowco] strategy.json sans focus Q2 posé
+◐ [glowco] strategy.json sans focus Q2 posé
    · `pose le focus Q2 de glowco`
 
 · [northsense] dormant depuis 47j, peut-être à archiver
@@ -1169,8 +981,8 @@ Exemple :
 
 | Slot | Rôle |
 |---|---|
-| 1 | Action 🔥 #1 (paste-ready) |
-| 2 | Action ⚡ #2 (paste-ready) |
+| 1 | Action ⚠ #1 (paste-ready) |
+| 2 | Action ◐ #2 (paste-ready) |
 | 3 | *"Drill {brand_slug}"* du brand qui concentre le plus d'actions |
 | 4 | *"Retour workspace"* |
 
@@ -1308,9 +1120,9 @@ Coefficient cumulé : {1.1}
 ┌───────────────────────────┬──────┬──────┬──────┬──────┬──────┐
 │ Sous-groupe audience      │ aud  │ prod │ cat  │ brand│ temp │
 ├───────────────────────────┼──────┼──────┼──────┼──────┼──────┤
-│ chute-post-grossesse      │ 55🔥 │ 42   │ 38   │ 0    │ 28   │
-│ croissance-projet         │ 48   │ 52🔥 │ 0    │ 35   │ 0    │
-│ stress-hormonal           │ 32   │ 28   │ 41🔥 │ 0    │ 22   │
+│ chute-post-grossesse      │ 55 ★ │ 42   │ 38   │ 0    │ 28   │
+│ croissance-projet         │ 48   │ 52 ★ │ 0    │ 35   │ 0    │
+│ stress-hormonal           │ 32   │ 28   │ 41 ★ │ 0    │ 22   │
 └───────────────────────────┴──────┴──────┴──────┴──────┴──────┘
 
 Top 3 territoires
@@ -1328,7 +1140,7 @@ Actions prioritaires
   · `crée des angles publicitaires {brand} pour combler le trou angle brand sur chute-post-grossesse`
 ```
 
-Icône `🔥` sur la cellule top par row. Légende colonnes (sources d'angle) : aud (depuis l'audience), prod (depuis le produit), cat (depuis la catégorie), brand (depuis la brand), temp (depuis un moment / saison).
+Icône `★` sur la cellule top par row. Légende colonnes (sources d'angle) : aud (depuis l'audience), prod (depuis le produit), cat (depuis la catégorie), brand (depuis la brand), temp (depuis un moment / saison).
 
 ---
 
@@ -1558,17 +1370,18 @@ Hard rule : **toujours offrir un next move dans l'empty state**. Jamais juste *"
 
 Étend la table d'icônes existante (mode brand, mode entity-drill, mode workspace) avec :
 
-| Icône | Sens |
+| Icône | Sens (canon unifié v2.79.2) |
 |---|---|
-| `✓` | encodé, frais (< 7j) |
-| `⚠` | encodé avec gaps ou stale (7-14j) |
-| `✗` | absent ou bloquant |
-| `○` | non connecté (sources) |
-| `🔥` | stale critique (> 90j) ou tests en chute libre |
-| `⏳` | mining ou sync en cours (background task active) |
-| `🆕` | créé < 24h (highlight des derniers ajouts) |
+| `✓` | encodé, complet, frais (< 7j) |
+| `◐` | encodé partiel (gaps OR stale 7-14j OR completeness < 70%) OU tâche de fond en cours |
+| `○` | absent / vide / pas encore encodé / non connecté (sources) |
+| `✗` | absent ET bloquant pour le flow brand |
+| `⚠` | critique (stale > 90j OU tests en chute libre OU décision bloquante) |
+| `★` | top cellule par row (matrice priorisation uniquement) |
 
-Application : utiliser `🔥` quand un test ROAS chute ≥30% sur 14j ou quand un brand a > 90j sans activité. `⏳` quand `_mining_status: "running"` détecté ou un sub-agent background actif. `🆕` quand `meta.created_at` < 24h ou si jamais affiché à l'opérateur (track via `awareness.json#/items_seen[]`, futur P2).
+Application · utiliser `⚠` quand un test ROAS chute ≥30% sur 14j ou quand un brand a > 90j sans activité. `◐` quand `_mining_status: "running"` détecté ou une tâche de fond sub-agent en cours. Pas d'icône "créé < 24h" (signal dérivable depuis Section ALERTES si pertinent · pas iconographié).
+
+**Hard rule iconographie v2.79.2.** Système unique strict · `✓ ◐ ○ ✗ ⚠ ★`. JAMAIS d'emoji couleur (cercles colorés, flammes, éclairs, sabliers, badges NEW). JAMAIS d'emoji décoratif. Légende affichée au pied de chaque output `/phantom {brand}`.
 
 ---
 
@@ -1597,14 +1410,14 @@ Application : utiliser `🔥` quand un test ROAS chute ≥30% sur 14j ou quand u
 
 ## Constraints (tous modes)
 
-- **Read-only.** Aucune mutation. Si l'opérateur demande ensuite de fix quelque chose, propose le skill approprié, ne fais pas la mutation toi-même.
-- **One screen output.** Workspace mode · 30 lignes max. **Brand mode · 140-180 lignes max v2.79.1+ (page menu workspace structurée 6 sections obligatoires avec dividers `────` · Sections 1-5 ≤ 80 lignes + Section 6 Decomposition Visibility ≤ 100 lignes, cf section *Mode brand*).** **Entity-drill mode · 60-70 lignes max (drill enrichi cross-refs + actions, cf section *Pattern enrichi*).** Item mode · 40-60 lignes max selon entity.
-- **Decomposition Visibility cockpit brand state (v2.79.1+).** Section 6 obligatoire post-Section 5 (DRILL & EXPLORATION) sur tout `/phantom {brand}`. 4 niveaux matriciels canon obligatoires (NIVEAU 1 décomposition produit · NIVEAU 2 many-to-many pain × audience matrix · NIVEAU 3 stage business filter · NIVEAU 4 pédagogie verbale). Skip 1 niveau = invalid output. Doctrine racine `docs/system/decomposition-visibility-discipline.md` v2.79+. Détail Section 6 ci-dessus.
-- **Pas de jargon doctrine.** Filtre `_jargon_bank.json` post-render v2.42+ (cf section *Post-render jargon filter*). Traduit en mots métier (validé / hypothèse / fatigué).
+- **Read-only.** Aucun changement persistant. Si l'opérateur demande ensuite de fix quelque chose, propose le skill approprié, ne fais pas le changement toi-même.
+- **One screen output.** Workspace mode · 30 lignes max. **Brand mode · 60-90 lignes max v2.79.2+ (page sobre structurée 4 sections obligatoires · ALERTES ≤ 12 lignes · ÉTAT ≤ 15 lignes · ACTIONS ≤ 8 lignes · Drill footer ≤ 6 lignes, cf section *Mode brand*).** **Entity-drill mode · 60-70 lignes max (drill enrichi cross-refs + actions, cf section *Pattern enrichi*).** Item mode · 40-60 lignes max selon entity.
+- **Density modérée v2.79.2.** Séparateurs ━━━ entre sections (pas ────). Whitespace généreux. Une chose par ligne · jamais 3 métriques empilées. Iconographie unifiée `✓ ◐ ○ ✗ ⚠` · zéro emoji couleur. Pédagogie matricielle 4 niveaux (NIVEAU 1-4) déléguée à `/breakdown` + `/bird` + skills consumers · pas dans `/phantom` (scan rapide santé brand, pas reverse engineering pédagogique).
+- **Pas de jargon doctrine.** Filtre `_jargon_bank.json` post-render v2.42+ (cf section *Post-render jargon filter*). Traduit en mots métier (validé / hypothèse / fatigué / fiche incomplète / voix client manquante / tâche de fond).
 - **Honest staleness.** Si une entité n'a pas été touchée depuis 90j, dis-le. Si snapshot date > 1h, regenère silencieusement avant d'afficher.
 - **Workspace est le default.** `/phantom` sans argument lande toujours au niveau workspace (sauf bootstrap si 0 brand). L'opérateur drille explicitement via `/phantom {slug}`. Pattern terminal-like, jamais court-circuiter la navigation.
 - **Drill par étape, pas en bloc.** `/phantom {slug}` montre le brand. `/phantom {slug} {entity}` zoome sur une entité. Évite de tout dump en une fois ; économie de contexte ET de lisibilité.
-- **Next-suggested = paste-ready.** Toutes les actions surfacées dans Actions prioritaires doivent être copiables verbatim dans le prompt suivant. Format : *"  · `{commande exacte}` ({why})"*. Jamais de conseil passif type *"Lancer mine-voc dès que possible"*.
+- **Actions verbalisées.** Section ACTIONS (top 3 numérotées) en langue naturelle opérateur · jamais skill name exposé · pas de backtick + texte naturel mixés. Le skill route backstage si l'opérateur valide. Anti-pattern · *"`refresh-angles {brand}`"* ou *"Lancer mine-voc dès que possible"*.
 - **Navigation cliquable systématique.** Chaque rendering `/phantom` (workspace, brand, entity-drill) se conclut PAR un AskUserQuestion natif qui propose la navigation suivante. Voir section *Navigation interactive* ci-dessous.
 
 ---

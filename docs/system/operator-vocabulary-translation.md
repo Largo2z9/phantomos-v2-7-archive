@@ -93,6 +93,18 @@ Cette règle s'étend aux concepts canon : atlas, canon, validations, fiches, co
 | phase 1 Q3-2026 in-progress (phantom-modes) | Q3-2026 · phase 1 en cours | Q3-2026 · phase 1 in progress |
 | CA monthly +35% target (phantom-modes) | CA mensuel · +35% visé | monthly revenue · +35% target |
 | TOF/MOF/BOF (phantom-modes · canon term gardé) | TOF/MOF/BOF | TOF/MOF/BOF |
+| coquilles vides | données manquantes | empty shells · missing data |
+| passe légère | fiche incomplète | partial pass · incomplete record |
+| spec light | spec incomplète | partial spec · incomplete spec |
+| verbatims sparse | voix client manquante | sparse verbatims · missing customer voice |
+| background actif | tâche de fond | active background task |
+| mutation | changement | change |
+| hot spots | alertes | hot spots · alerts |
+| freestyle prose | prose libre | free prose |
+| skill names exposés (ex `produce-paid-angles`) | action verbalisée (ex *"générer angles paid"*) · skill backstage | verbalized action · skill backstage |
+| Strategy / Learnings / Matrix (headers EN dans output FR) | Stratégie / Apprentissages / Matrice | Strategy / Learnings / Matrix |
+| fog | flou (sauf canon `/bird` signature avec définition pied) | fog (kept canon `/bird` signature with footer definition) |
+| drill 360° (verbose) | drill (cap verbose · canon command name) | drill (cap verbose · canon command name) |
 
 ## Output policy
 
@@ -132,4 +144,5 @@ Substance préservée. Jargon retiré. Operator junior comprend sans doc.
 
 - CLAUDE.md root § Operator contract (règle no_jargon_to_operator)
 - `lexicon.md` (vocabulaire interne canon · NE doit PAS leak operator)
+- `output-clarity-discipline.md` v2.79.2+ (HR-OCD-2 enforcement runtime · Section 5 mapping 12 termes Phantom-interne · cross-ref bidirectionnelle)
 - Mémoire user `feedback_no_jargon_to_operator.md`

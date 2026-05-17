@@ -1,7 +1,7 @@
 ---
 name: breakdown
-description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). 13 topics drillables structurés en 5 couches d'un système opérationnel plus 3 dimensions transverses · principe · atomicité · fractalité · composition · matrices · règles · templates · métriques · rituels · production · intelligence · apprentissage · extension. Ordre suggéré 1 à 10 (parcours couches) puis 11 à 13 (transverses qui scellent le parcours). Drill direct possible sur tout topic. Patch v2.79.1 · section transversale Decomposition Visibility canon (4 niveaux matriciels appliqués cas Stepprs encoded · doctrine racine cross-skills opérateur-facing).
-version: 2.79.1
+description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). 13 topics drillables structurés en 5 couches d'un système opérationnel plus 3 dimensions transverses · principe · atomicité · fractalité · composition · matrices · règles · templates · métriques · rituels · production · intelligence · apprentissage · extension. Ordre suggéré 1 à 10 (parcours couches) puis 11 à 13 (transverses qui scellent le parcours). Drill direct possible sur tout topic. Patch v2.79.2 · hygiène cohérente sprint slash commands (iconographie unique ✓ ◐ ○ ✗ ⚠ · légende canonique pied de fiche · headers FR sobres maintenus). Patch v2.79.1 · section transversale Decomposition Visibility canon (4 niveaux matriciels appliqués cas Stepprs encoded · doctrine racine cross-skills opérateur-facing).
+version: 2.79.2
 ---
 
 # `/breakdown stepprs {topic}` · vitrine pédagogique PhantomOS
@@ -123,6 +123,11 @@ POUR ALLER PLUS LOIN
   → {action 1}                /breakdown stepprs {topic}
   → {action 2}                /breakdown stepprs {topic}
   → Continuer le parcours     /breakdown stepprs {topic+1}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Légende iconographie (canon sprint v2.79.2)
+  ✓ complet OK    ◐ partiel    ○ vide    ✗ absent    ⚠ critique
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 **Règles strictes pour l'agent runtime** ·
@@ -132,13 +137,15 @@ POUR ALLER PLUS LOIN
 - **Vocabulaire universel** · première occurrence d'un terme métier, expliquer inline en langue courante. Exemple · "DTC (vente directe au consommateur, sans intermédiaire)". Exemple · "scale (passer du test au volume)". Exemple · "audience (le groupe de personnes visé)".
 - **Verbatims sourcés** conservés littéralement, jamais paraphrasés
 - **ZERO em-dash** (le caractère tiret-cadratin). Substituer par parenthèses, virgule, point, deux-points, ou middle dot (·)
+- **Iconographie unique canon sprint v2.79.2** · ✓ complet OK · ◐ partiel · ○ vide · ✗ absent · ⚠ critique. Légende canonique placée en pied de fiche output (cf format canonique). JAMAIS emoji couleur (🔥 🟢 🟡 🔴 ✅ ❌) sur output.
 - **Ton institutionnel mesuré**, jamais sales-bro ("L'erreur que la plupart font", "Faux.")
 - **Livrable concret en tête** · valeur d'abord, mécanique après
 - **Diagramme cartographique ASCII** obligatoire dans la section "ce qui le rend possible"
 - **✦ markers sobres** pour annotations qui décompressent un point dense
+- **Density modérée** · séparateurs ━━━━━━ entre sections majeures de la fiche (cohérent sprint v2.79.2)
 - **Fiche ~30 lignes max**, drill en fin
 - **Section transversale Decomposition Visibility canon v2.79+ obligatoire** sur les chapitres `principe` · `atomicite` · `composition` · `matrices` · `production`. L'agent ship en synthèse les 4 niveaux matriciels appliqués au cas Stepprs encoded (NIVEAU 1 décomposition produit · NIVEAU 2 many-to-many · NIVEAU 3 stage filter · NIVEAU 4 pédagogie verbale). Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+.
-- **4 niveaux matriciels appliqués cas Stepprs réel encoded** (workers-shifts + chronic-pain-45+ audiences, massage-insoles product, atomes encodés `brands/_EXAMPLE/`). Jamais projection hypothétique sur ces chapitres : sourcing depuis le workspace canon.
+- **4 niveaux matriciels appliqués cas Stepprs réel encoded** (workers-shifts + chronic-pain-45+ audiences, massage-insoles product, atomes encodés `brands/_EXAMPLE/`). Jamais projection hypothétique sur ces chapitres · sourcing depuis le workspace canon.
 - **Cross-ref doctrine canon racine** `decomposition-visibility-discipline.md` cité explicit en clôture de synthèse pour les chapitres consumer.
 
 ## Topic guides · ce que l'agent doit produire par topic

@@ -28,70 +28,41 @@ Charger `.skills/skills/bird/SKILL.md` et suivre son workflow (1 détection bran
 - HR-5 · Révélation > confirmation (1 fois sur 3 doit révéler "ah merde j'avais oublié X")
 - HR-6 · Zéro em-dash
 - HR-7 · Investigation posture (zones étiquetées observé / déduit / déclaré / inconnu)
-- HR-8 · Decomposition Visibility territoire-level obligatoire post-grille (canon v2.79+, 4 niveaux matriciels)
+- HR-8 · Iconographie unifiée canon (✓ ◐ ○ ✗ ⚠ pour état · ▓░ pour complétion · zéro emoji couleur · légende au pied)
 
-## Decomposition Visibility territoire-level (canon v2.79+)
+## Iconographie canon
 
-Après affichage vue d'ensemble territoire brand (zones acquises · en cours · non engagées · non cartographiées), rendu obligatoire matriciel territoire-level canon `docs/system/decomposition-visibility-discipline.md` v2.79+. Pattern miroir `build-atlas-complete` v1.6.0 Phase Atlas Visibility, adapté vue d'ensemble territoire (pas build complet).
+Symboles uniques cohérents cross-commands opérateur-facing (cf `/phantom` pair canon) ·
 
-### NIVEAU 1 · Décomposition produit territoire-level
+| Symbole | Sens |
+|---|---|
+| `✓` | acquis · observé |
+| `◐` | en cours · partiel |
+| `○` | identifié · non engagé |
+| `✗` | absent · non cartographié |
+| `⚠` | alerte · attention requise |
+| `▓░` | barre de complétion (visuel territoire) |
+| `►` | position courante |
+| `──▶` | dépendance entre zones |
 
-Vue d'ensemble produits encoded territoire · table compacte cross-products status encoded vs manquant ·
+Légende rendue au pied de chaque output (jamais en tête). Zéro emoji couleur (🔥 🟢 🟡 🔴 etc) où que ce soit dans l'output.
 
-```
-PRODUITS ENCODÉS dans le territoire
-PRODUCT             SPECS          MÉCANISMES        BÉNÉFICES 3 couches
-[product-1]         encoded        encoded           functional · emotional · identity
-[product-2]         encoded        partial           functional only (gap emotional/identity)
-[product-N]         absent         absent            non cartographié
-```
+## Lexique opérateur
 
-Status canon · `encoded` (entité présente atomes complets) · `partial` (entité présente atomes incomplets) · `absent` (entité non cartographiée territoire).
+Substitutions canon pour rester accessible non-expert ·
 
-### NIVEAU 2 · Many-to-many territoire-level
+| Interne | Opérateur-facing |
+|---|---|
+| données manquantes | (zone vide cartographiée) |
+| fiche incomplète | (zone observée partielle) |
+| spec incomplète | (entité encodée atomes manquants) |
+| voix client manquante | (pas de verbatims sourcés) |
+| tâche de fond | (skill en exécution silencieuse) |
+| changement | (mutation entité) |
+| alertes | (zones à surveiller) |
+| action verbalisée | (jamais le nom du skill brut · *"creuser la zone"* pas *"scope X"*) |
 
-Matrice ASCII cross-atlas vue d'ensemble · quelle douleur encoded affecte quelle audience encoded territoire ·
-
-```
-                       Audience-1    Audience-2    Audience-3   Audience-N
-                       (slug)        (slug)        (slug)       (slug)
-PNT-01 [pain encoded]     ✓✓ P (sourced)   ·       ✓ S (hyp)      ·
-PNT-02 [pain encoded]        ·         ✓✓ P (hyp)     ·         ✓ S (sourced)
-PNT-NN [pain absent]      gap          gap          gap         gap
-```
-
-Légende canon · `✓✓ P` PRIMARY · `✓ S` SECONDARY · `·` NONE · `gap` non cartographié territoire. Status `(sourced)` verbatims présents · `(hyp)` hypothèse confidence 0.5 valide (canon `progressive-cartography-discipline.md`).
-
-### NIVEAU 3 · Positionnement filtre stage business territoire-level
-
-Stage business détecté · table canon vue d'ensemble territoire ·
-
-```
-STAGE détecté            [early | growth | scale | inconnu]
-ARR signal               [range ou flag inconnu]
-
-AUDIENCE PRIORITAIRE     [audience slug + rationale 1 ligne]
-GAPS TERRITOIRE          [3 gaps à combler · ex audience-N profile manquant ·
-                          PNT-NN non sourcé · stage signal absent]
-SKILLS DOWNSTREAM        [routes possibles · ex `/scope {zone}` · `profile-audience` ·
-                          `mine-voc --focus={pain}` · `audit-meta-account`]
-```
-
-**HR · Stage business filter territoire-level obligatoire si signal détectable.** Stage inconnu acceptable seulement si zéro signal · NEVER inventer.
-
-### NIVEAU 4 · Méthode pédagogique verbale territoire-level
-
-Verbaliser ce que vue d'ensemble montre cross-territoire · l'opérateur sait COMMENT le territoire a été lu ·
-
-> *"J'ai lu le territoire {brand} en 4 niveaux canon ·*
-> *1. Décomposition produits · {N} produits encoded · {N} partials · {N} absents*
-> *2. Many-to-many · {N} pains × {M} audiences (matrix encoded/sourced/hypothèse · gaps territoire visibles)*
-> *3. Stage business · {stage détecté} → audience prioritaire {slug} · gaps territoire identifiés*
-> *4. Navigation · zones complétées · zones en cours · zones manquantes. Skills downstream recommandés · {liste}*
->
-> *Vue d'ensemble est lecture, pas construction · pour creuser une zone use `/scope {zone}` · pour construire l'atlas complet use `build-atlas-complete`."*
-
-**HR · Méthode pédagogique verbale territoire-level obligatoire.** Skip = opérateur ne sait pas comment la lecture territoire a été menée · navigation downstream aveugle.
+`fog` reste canon `/bird` signature. Définition au pied de chaque output · *"fog = zone identifiée non engagée ou non cartographiée, point aveugle du territoire"*.
 
 ## Source de vérité
 
@@ -100,10 +71,8 @@ Verbaliser ce que vue d'ensemble montre cross-territoire · l'opérateur sait CO
 ## Cross-refs canon
 
 - `/scope` · pair canon · PRODUIT la `brands/{slug}/scope-map.md` que `/bird` lit
-- `docs/system/decomposition-visibility-discipline.md` v2.79+ · canon racine 4 niveaux matriciels (territoire-level vs product-level v2.78.2)
 - `docs/system/investigation-posture.md` · étiquettes observé / déduit / déclaré / inconnu utilisées pour catégoriser zones
-- `.skills/skills/build-atlas-complete/SKILL.md` v1.6.0 · Phase Atlas Visibility product-level miroir reproductible (bird = territoire-level lecture · build-atlas-complete = product-level construction)
-- `.skills/skills/snapshot-brand/SKILL.md` v2.78.2 · sister consumer canon decomposition visibility (Movement 3-4 product-level)
+- `.skills/skills/snapshot-brand/SKILL.md` v2.78.2 · sister consumer canon brand entity opérateur-facing
 - `.skills/skills/profile-audience/SKILL.md` v2.78.2 · sister consumer matrice audience × pain × angle × stage
 - `.skills/skills/brief-day/SKILL.md` · navigator macro cross-brands au start (vs bird qui zoome 1 brand)
 - `.skills/skills/resume-session/SKILL.md` · reprise narrative thread actif (vs bird spatial macro)

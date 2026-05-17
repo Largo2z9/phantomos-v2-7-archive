@@ -1,0 +1,62 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.79.2",
+  "released_at": "2026-05-17",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 80,
+  "skills_count_after": 80,
+  "slash_commands_count_before": 7,
+  "slash_commands_count_after": 7,
+  "doctrines_count_before": 18,
+  "doctrines_count_after": 19,
+  "summary": "Patch hygiène + clarté livrable opérateur-facing v2.79.2 cross 5 surfaces · refonte /phantom retire Section 6 Decomposition Visibility (canon DVD scope révisé `/phantom` exclu cockpit scan rapide) + refonte /bird iconographie + refonte /breakdown + audit 4 autres slash commands cohérence + NEW doctrine output-clarity-discipline + patch CLAUDE.md root sommaire 14 → 15 doctrines + Skill routing v2.79.2 scope révisé + patch doctrine Decomposition Visibility v2.79.1+ → v2.79.2 (Section 8 + HR-DVD-9 + Section 14 scope révisé `/phantom` exclu · 4 couches enforcement runtime au lieu de 5) · D#435 captured (termes niveaux distincts canon · 3 niveaux atlas richesse hypothèse/sourced/production-ready ≠ 4 NIVEAUX DVD pédagogiques · scope `/phantom` exclu canon DVD · alignement cross-files v2.79.2) · close audit Largo test live KaraCare workspace v2.79.1 flag 14 problèmes structurels · backward compat strict additif sur sémantique (clarté ≠ casse fonctionnelle).",
+  "audit_amont": {
+    "context_test_live_karacare_v2_79_1": "Largo test live sur phantom-test-v277 workspace v2.79.1 post-enforcement runtime · 14 problèmes structurels flag · iconographie hétérogène cross-commands + jargon doctrinal leak runtime (12 termes internes opérateur-facing) + cockpit `/phantom` surchargé Section 6 Decomposition Visibility appliquée canon DVD universelle (4 NIVEAUX matriciels + 6 HR + 6 AP · +135L) alors que cockpit = scan rapide santé brand ≠ pédagogie reverse engineering + incohérence terminologie niveaux (header `/phantom` `Cartographie 1/3 niveaux` suggérant 3 niveaux progression alors que doctrine DVD canon v2.79+ affiche 4 NIVEAUX matriciels obligatoires · confusion lecteur)",
+    "flag_largo": "Audit flag 14 problèmes structurels post-enforcement runtime v2.79.1 · cible Vercel/GitHub clarity livrable opérateur-facing",
+    "diagnostic_gap": "Enforcement runtime canon DVD v2.79.1 appliqué universellement cross-slash commands inapproprié pour `/phantom` cockpit scan rapide · pattern systémique canon `enforcement runtime ne doit pas s'appliquer universellement` · calibrer profondeur livrable à complexité requête (memory canon `no_overengineer`) · pédagogie matricielle pertinente sur `/bird` territoire-level plus `/breakdown` parcours pédagogique · cockpit scan rapide doit rester sobre"
+  },
+  "patches_structurels": [
+    "Refonte /phantom output v2.79.2 (Agent 1) · retire Section 6 Decomposition Visibility (canon DVD scope révisé `/phantom` exclu) · iconographie unifiée canon (✓ complet · ◐ partiel · ○ vide · ✗ absent · ⚠ critique) · dejargonisation 12 termes · header 'Cartographie {N}% rempli' (remplace ambigu 'Cartographie 1/3 niveaux' cf D#435) · grammaire 4 sections strictes (ALERTES · ÉTAT · ACTIONS · Drill footer)",
+    "Refonte /bird output v2.79.2 (Agent 2) · iconographie unifiée canon miroir /phantom · dejargonisation cohérente · retire Decomposition Visibility territoire-level enforcement universelle · pattern matriciel canon préservé sur synthesis stratégique territoire-level (cohérence canon DVD scope révisé)",
+    "Refonte /breakdown v2.79.2 + audit 4 autres slash commands cohérence (Agent 3) · /breakdown clarté pédagogique cas Stepprs 13 chapitres préservé · 4 NIVEAUX Decomposition Visibility préservés (canon DVD scope /breakdown consumer) · audit cohérence iconographie + dejargonisation cross /scope + /skills + /tour + /lexicon",
+    "NEW doctrine output-clarity-discipline.md (Agent 4) · doctrine canon clarté livrable opérateur-facing · iconographie unifiée + dejargonisation systémique + grammaire 4 sections cockpit + scope canon DVD révisé `/phantom` exclu + patch CLAUDE.md root sommaire 14 → 15 doctrines",
+    "Patch CLAUDE.md root § Skill routing v2.79.2 (Agent 5) · retire `/phantom {brand}` des triggers verbaux canon DVD · garde `/bird {brand}` plus `/breakdown {brand}` · ajoute nuance scope `/phantom` exception cockpit scan rapide · anti-pattern strict révisé · bump sub-section header v2.79.1 → v2.79.2",
+    "Patch doctrine decomposition-visibility-discipline.md v2.79.1+ → v2.79.2 (Agent 5) · Section 8 retire `/phantom` des slash commands consumers · ajoute Exclusion canon v2.79.2 `/phantom` cockpit scan rapide · HR-DVD-9 scope révisé · Section 14 Position 5 couches → 4 couches enforcement runtime coverage · Frontmatter v2.79.1+ → v2.79.2 plus Status updated"
+  ],
+  "files_patched": [
+    {"file": ".claude/commands/phantom.md", "scope": "Refonte v2.79.2 (Agent 1) · retire Section 6 DVD · iconographie unifiée · dejargonisation · header 'Cartographie {N}% rempli'"},
+    {"file": ".claude/commands/bird.md", "scope": "Refonte v2.79.2 (Agent 2) · iconographie unifiée miroir /phantom · dejargonisation"},
+    {"file": ".skills/skills/bird/SKILL.md", "scope": "Miroir refonte v2.79.2 (Agent 2)"},
+    {"file": ".claude/commands/breakdown.md", "scope": "Refonte v2.79.2 (Agent 3) · clarté pédagogique cas Stepprs préservée · 4 NIVEAUX DVD canon préservés"},
+    {"file": ".claude/commands/scope.md", "scope": "Audit cohérence iconographie + dejargonisation (Agent 3)"},
+    {"file": ".claude/commands/skills.md", "scope": "Audit cohérence iconographie + dejargonisation (Agent 3)"},
+    {"file": ".claude/commands/tour.md", "scope": "Audit cohérence iconographie + dejargonisation (Agent 3)"},
+    {"file": ".claude/commands/lexicon.md", "scope": "Audit cohérence iconographie + dejargonisation (Agent 3)"},
+    {"file": "docs/system/output-clarity-discipline.md", "scope": "NEW doctrine canon clarté livrable opérateur-facing (Agent 4)"},
+    {"file": "CLAUDE.md", "scope": "Sommaire 14 → 15 doctrines (Agent 4 NEW entry output-clarity-discipline) + Skill routing v2.79.2 scope révisé (Agent 5 · retire /phantom des triggers canon DVD · nuance scope cockpit scan rapide)"},
+    {"file": "docs/system/decomposition-visibility-discipline.md", "scope": "v2.79.1+ → v2.79.2 (Agent 5) · Section 8 retire /phantom consumers · HR-DVD-9 scope révisé · Section 14 4 couches enforcement runtime · Frontmatter + Status updated"},
+    {"file": "../../../decisions.md", "scope": "D#435 captured workspace ROOT (Agent 5) · termes niveaux distincts canon + scope /phantom exclu DVD + alignement cross-files v2.79.2"},
+    {"file": "_version.json", "scope": "Bump 2.79.1 → 2.79.2 + manifest path 2.79.2 + summary updated (Agent 5)"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.79.2 prepended (Agent 5)"},
+    {"file": "docs/internal/releases/manifest/2.79.2-manifest.json", "scope": "NEW · this manifest (Agent 5)"}
+  ],
+  "clarity_coverage": {
+    "layer_1_doctrine_canon_racine_NEW": "output-clarity-discipline.md v2.79.2 (Agent 4)",
+    "layer_2_claude_md_root_patch": "Sommaire 14 → 15 doctrines + Skill routing v2.79.2 scope révisé `/phantom` exclu canon DVD",
+    "layer_3_7_slash_commands_audit": "/phantom refonte + /bird refonte + /breakdown refonte + audit cohérence /scope + /skills + /tour + /lexicon",
+    "layer_4_bird_skill_miroir": ".skills/skills/bird/SKILL.md miroir refonte v2.79.2",
+    "layer_5_decomposition_visibility_scope_revision": "decomposition-visibility-discipline.md v2.79.1+ → v2.79.2 · scope `/phantom` exclu · 4 couches enforcement runtime au lieu de 5"
+  },
+  "decisions_captured": ["D#435"],
+  "backlog_v279_2_plus": [
+    "Re-test live workspace fresh v2.79.2 sur KaraCare pour valider clarté cockpit `/phantom` simplifié + iconographie unifiée + dejargonisation effective",
+    "Sprint v2.79.x business pilotage · unit economics + WBR + cohort retention + audit-klaviyo-flows",
+    "Sprint v2.80.x DR copywriting production · sales letter + email sequence + big-idea-canon + audit-proof-coverage",
+    "Sprint v2.81+ CRO + lifecycle · audit-pdp + audit-landing + flow-builder-klaviyo",
+    "Pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md)",
+    "Port unfog skill source root (3e pair canon avec scope/bird)"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.79.2 = git revert HEAD strict · CLAUDE.md sub-section Skill routing v2.79.2 retirable (revert v2.79.1) · doctrine output-clarity-discipline.md NEW retirable · doctrine decomposition-visibility-discipline.md v2.79.2 patches retirables (revert v2.79.1+ Section 8 + HR-DVD-9 + Section 14) · 7 slash commands refontes retirables (revert versions précédentes) · semantic spec preserved cross-files · 4 skills consumers v2.78.2 non affectés · queries verbal trigger canon DVD non affectés"
+}

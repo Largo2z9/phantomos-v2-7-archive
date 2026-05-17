@@ -7,6 +7,69 @@
 
 ---
 
+## v2.79.2 · 2026-05-17 · Patch hygiène + clarté livrable opérateur-facing cross 5 surfaces · NEW doctrine output-clarity-discipline + scope révisé Decomposition Visibility (`/phantom` exclu cockpit scan rapide) + D#435 termes niveaux distincts canon
+
+**Why** · Test live workspace v2.79.1 sur KaraCare a flag 14 problèmes structurels post-enforcement runtime v2.79.1. Parmi eux · (1) incohérence terminologie niveaux · header `/phantom` v2.79.1 affichait "Cartographie 1/3 niveaux" suggérant 3 niveaux de progression alors que doctrine Decomposition Visibility canon v2.79+ affiche 4 NIVEAUX matriciels obligatoires · confusion lecteur. (2) Iconographie hétérogène cross-commands · symboles différents pour même état entité cross `/phantom` plus `/bird`. (3) Jargon doctrinal leak runtime · 12 termes internes exposés opérateur-facing (canonical / framework / SOP / quality-spec / catalogue / entity / field / schema / mutation / proposal / encoding / discovery). (4) Cockpit `/phantom` trop chargé post-v2.79.1 · Section 6 Decomposition Visibility (4 NIVEAUX matriciels + 6 HR + 6 AP · +135L) appliquée canon DVD universelle alors que cockpit = scan rapide santé brand (ALERTES + ÉTAT + ACTIONS + Drill footer suffisent) ≠ pédagogie reverse engineering. Pattern systémique canon · enforcement runtime ne doit pas s'appliquer universellement · calibrer profondeur livrable à complexité requête (memory canon `no_overengineer`).
+
+**What** · 9 patches structurels cross 4 surfaces parallèle (Agents 1-4) plus 3 jobs séquentiels release engineering (Agent 5).
+
+**Patches structurels (9)** ·
+
+1. **Refonte `/phantom` output v2.79.2** (Agent 1) · retire Section 6 Decomposition Visibility (canon DVD scope révisé `/phantom` exclu cockpit scan rapide) · iconographie unifiée canon (`✓` complet · `◐` partiel · `○` vide · `✗` absent · `⚠` critique) · dejargonisation 12 termes (operator-facing seulement) · header "Cartographie {N}% rempli" (remplace ambigu "Cartographie 1/3 niveaux" cf D#435) · grammaire 4 sections strictes (ALERTES · ÉTAT · ACTIONS · Drill footer).
+
+2. **Refonte `/bird` output v2.79.2** (Agent 2) · iconographie unifiée canon miroir `/phantom` · dejargonisation cohérente · retire Decomposition Visibility territoire-level enforcement universelle · pattern matriciel canon préservé sur synthesis stratégique territoire-level (cohérence canon DVD scope révisé).
+
+3. **Refonte `/breakdown` v2.79.2 + audit 4 autres slash commands** (Agent 3) · `/breakdown` clarté pédagogique cas Stepprs 13 chapitres préservé · 4 NIVEAUX Decomposition Visibility préservés (canon DVD scope `/breakdown` consumer) · audit cohérence iconographie + dejargonisation cross `/scope` + `/skills` + `/tour` + `/lexicon`.
+
+4. **NEW doctrine `output-clarity-discipline.md`** (Agent 4) · doctrine canon clarté livrable opérateur-facing · iconographie unifiée + dejargonisation systémique + grammaire 4 sections cockpit + scope canon DVD révisé (`/phantom` exclu) + patch CLAUDE.md root sommaire 14 → 15 doctrines.
+
+5. **Patch CLAUDE.md root § Skill routing v2.79.2** (Agent 5 · ce job) · retire `/phantom {brand}` des triggers verbaux canon DVD · garde `/bird {brand}` plus `/breakdown {brand}` · ajoute nuance scope `/phantom` exception cockpit scan rapide · anti-pattern strict révisé "synthèse brand opérateur-facing prose-only sans matrices ASCII = invalid output canon SAUF `/phantom` (cockpit scan rapide)" · bump sub-section header v2.79.1 → v2.79.2.
+
+6. **Patch doctrine `decomposition-visibility-discipline.md` v2.79.1+ → v2.79.2** (Agent 5 · ce job) · Section 8 retire `/phantom` des slash commands consumers · garde `/bird` plus `/breakdown` plus `/scope` plus `/tour` · ajoute Exclusion canon v2.79.2 `/phantom` cockpit scan rapide. HR-DVD-9 scope révisé · matrices ASCII obligatoires sur queries verbal trigger plus slash commands `/bird` et `/breakdown` plus skills consumers brand synthesis stratégique · EXCLUSION `/phantom`. Section 14 Position 5 couches → 4 couches enforcement runtime canon v2.79.2 coverage (doctrine + CLAUDE.md skill routing + skills consumers + `/bird`/`/breakdown` + queries verbal). Frontmatter v2.79.1+ → v2.79.2 plus Status updated.
+
+7. **D#435 captured dans decisions.md workspace ROOT** (Agent 5 · ce job) · termes niveaux distincts canon (3 niveaux atlas richesse hypothèse/sourced/production-ready ≠ 4 NIVEAUX Decomposition Visibility) · scope `/phantom` exclu canon DVD · alignement cross-files v2.79.2 (doctrine + CLAUDE.md root + `/phantom` output + output-clarity-discipline NEW).
+
+8. **Release engineering complet** (Agent 5 · ce job) · `_version.json` bumped 2.79.1 → 2.79.2 plus released_at 2026-05-17 plus summary updated plus manifest path 2.79.2 · `CHANGELOG.md` entry v2.79.2 prepended (this entry) · NEW `docs/internal/releases/manifest/2.79.2-manifest.json` selon pattern miroir 2.79.1-manifest.json.
+
+**Pattern systémique fermé · clarté livrable canon v2.79.2**
+
+```
+Layer 1 · NEW doctrine output-clarity-discipline.md       ✓ v2.79.2
+Layer 2 · CLAUDE.md root skill routing v2.79.2            ✓ scope révisé
+Layer 3 · 7 slash commands audit (cohérence iconographie) ✓ cross-commands
+Layer 4 · /bird skill miroir refonte                      ✓ v0.3.0
+Layer 5 · doctrine Decomposition Visibility scope révisé  ✓ v2.79.2
+```
+
+Plus de jargon doctrinal leak runtime. Plus d'iconographie hétérogène cross-commands. Plus de cockpit `/phantom` surchargé canon DVD universelle inappropriée. Calibrage canon profondeur livrable à complexité requête respecté (memory canon `no_overengineer`).
+
+**Backward compat strict additif sur sémantique** · clarté ≠ casse fonctionnelle. Skills consumers v2.78.2 préservés (snapshot-brand + build-atlas-complete + profile-audience + define-specs canon DVD scope inchangé). Slash commands `/bird` plus `/breakdown` canon DVD preserved. Queries verbal trigger preserved. Skills synthesis stratégique brand-related canon DVD preserved. `/phantom` cockpit scan rapide simplifié sans casser navigation existing.
+
+**Skills count 80 (inchangé) · slash commands 7 (inchangé) · doctrines 18 → 19 (+1 NEW output-clarity-discipline).**
+
+**Files patched (9-10)** ·
+- `.claude/commands/phantom.md` refonte v2.79.2 (Agent 1)
+- `.claude/commands/bird.md` refonte v2.79.2 (Agent 2)
+- `.skills/skills/bird/SKILL.md` miroir refonte (Agent 2)
+- `.claude/commands/breakdown.md` refonte v2.79.2 (Agent 3)
+- `.claude/commands/scope.md` audit cohérence (Agent 3)
+- `.claude/commands/skills.md` audit cohérence (Agent 3)
+- `.claude/commands/tour.md` audit cohérence (Agent 3)
+- `.claude/commands/lexicon.md` audit cohérence (Agent 3)
+- `docs/system/output-clarity-discipline.md` NEW (Agent 4)
+- `CLAUDE.md` root § Skill routing v2.79.2 + sommaire 14 → 15 doctrines (Agent 4 + Agent 5)
+- `docs/system/decomposition-visibility-discipline.md` v2.79.2 (Agent 5)
+- `decisions.md` workspace ROOT D#435 captured (Agent 5)
+- `_version.json` bumped 2.79.2 (Agent 5)
+- `CHANGELOG.md` v2.79.2 entry (this entry · Agent 5)
+- `docs/internal/releases/manifest/2.79.2-manifest.json` NEW (Agent 5)
+
+**D#435 captured** · Sprint v2.79.2 termes niveaux distincts canon + scope `/phantom` exclu DVD + alignement cross-files v2.79.2 (close audit Largo test live KaraCare v2.79.1 flag 14 problèmes structurels · pattern reproductible refactor cockpit scan rapide vs pédagogie reverse engineering · memory canon `no_overengineer` plus `largo_cognitive_profile` plus `jargon_enforcement_runtime` cohérents canon).
+
+**Backlog v2.79.2+** · Re-test live workspace fresh v2.79.2 sur KaraCare pour valider clarté cockpit `/phantom` simplifié + iconographie unifiée + dejargonisation effective · Sprint v2.79.x business pilotage (unit economics + WBR + cohort retention + audit-klaviyo-flows) · Sprint v2.80.x DR copywriting production · Sprint v2.81+ CRO + lifecycle · Pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md) · Port unfog skill source root (3e pair canon avec scope/bird).
+
+---
+
 ## v2.79.1 · 2026-05-17 · Patch enforcement runtime · Decomposition Visibility Discipline cross-slash commands + CLAUDE.md skill routing + HR-DVD-9 NEW
 
 **Why** · Test live workspace v2.79.0 sur KaraCare a révélé gap enforcement runtime · doctrine `decomposition-visibility-discipline.md` shipped v2.79.0 + 4 skills consumers patchés (snapshot-brand + build-atlas-complete + profile-audience + define-specs) MAIS · queries verbal "résume-moi ce que tu as compris sur KaraCare en cartographie" font freestyle prose sans déclencher 4 niveaux matriciels canon. Largo flag · "on peut visualiser aussi dans les commandes /phantom non ?". Pattern systémique identique au memory canon `jargon_enforcement_runtime` · audit doctrinal seul insuffisant · enforcement runtime nécessaire cross-niveau.
