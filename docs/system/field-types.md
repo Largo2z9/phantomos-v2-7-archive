@@ -1,4 +1,4 @@
-# Field Types — Canon
+# Field Types · Canon
 
 > Canonical reference for `_field_types` values. Read this when unsure how to tag a field. Every brand JSON has a top-level `_field_types` map using glob patterns (`identity.*`, `market.competitors[].name`). Validation enforced by `validate-resources` check 11b and `validate-schema-canon`.
 
@@ -10,7 +10,7 @@
 |------|-------------|---------------------|
 | `observed` | Could a stranger verify this by looking at the brand's site/data right now? | Observable fact, captured as-is, not computed. |
 | `stated` | Did the brand (or operator on behalf of the brand) declare this about itself? | Brand's own claim, accepted at face value. |
-| `structured` | Is this an observation that a framework/model classified into a canonical shape? | Framework-applied observation — factual raw material, canonical slot. |
+| `structured` | Is this an observation that a framework/model classified into a canonical shape? | Framework-applied observation, factual raw material, canonical slot. |
 | `derived` | Is this the output of a computation over other fields? | Computed from other fields. **Never filled manually.** |
 
 **If two tests pass** → pick the most specific : `derived` > `structured` > `stated` > `observed`.
@@ -79,9 +79,9 @@ Migration is automatic on the next write. See CHANGELOG v2.1.0.
 
 ## Cross-references
 
-- `docs/system/architecture.md § Field Type System` — general entity architecture context
-- `.skills/skills/validate-resources/SKILL.md` § 11b — consistency check enforced on every brand
-- `.skills/skills/validate-schema-canon/SKILL.md` — enum constraint on schema drafts
-- `.skills/skills/propose-schema-draft/SKILL.md` — applied when proposing new entity schemas
-- `.skills/skills/scaffold-entity-files/SKILL.md` § Mode data-first — default tagging on instance creation
-- `.skills/skills/ingest-resource/SKILL.md` § Respect _field_types — per-write enforcement
+- `docs/system/architecture.md § Field Type System` · general entity architecture context
+- `.skills/skills/validate-resources/SKILL.md` § 11b · consistency check enforced on every brand
+- `.skills/skills/validate-schema-canon/SKILL.md` · enum constraint on schema drafts
+- `.skills/skills/propose-schema-draft/SKILL.md` · applied when proposing new entity schemas
+- `.skills/skills/scaffold-entity-files/SKILL.md` § Mode data-first · default tagging on instance creation
+- `.skills/skills/ingest-resource/SKILL.md` § Respect _field_types · per-write enforcement

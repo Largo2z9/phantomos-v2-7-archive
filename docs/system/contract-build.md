@@ -1,4 +1,4 @@
-# Contract — Build & Execute
+# Contract · Build & Execute
 
 > **Load this doc when:** the agent is about to trigger a `type: builder` or `type: orchestrator` skill, or switch from Build mode to Execute mode on a deliverable.
 > **Otherwise:** ignore. The root `CLAUDE.md` loads this on demand via pointer.

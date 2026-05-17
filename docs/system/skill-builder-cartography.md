@@ -1,4 +1,4 @@
-# Skill-builder cartography — pattern for business-domain skills
+# Skill-builder cartography · pattern for business-domain skills
 
 > Guidance for building business-domain skills (audit, setup, roadmap, CRO, SEO, creative brief, competitor scan, etc.) in PhantomOS. Counters the anti-pattern "code the skill's method first, figure out where the data comes from later". The correct order is : map domain variables → identify gaps vs existing schema → extend the schema via `scaffold-extension` → THEN code the method.
 
@@ -19,7 +19,7 @@ Cross-ref : `cartograph/SKILL.md`, (build-agent Step 2b), (cartograph creation).
 
 ## Why
 
-A business-domain skill is a context consumer. If the context lacks the required granularity, the skill produces generic output. Example : an `audit-offers` that looks only at `offers.json` misses brand-level mechanics (GWP, shipping, referral, loyalty, funnels) — it misses 50% of the audit surface and returns flat recommendations.
+A business-domain skill is a context consumer. If the context lacks the required granularity, the skill produces generic output. Example : an `audit-offers` that looks only at `offers.json` misses brand-level mechanics (GWP, shipping, referral, loyalty, funnels), it misses 50% of the audit surface and returns flat recommendations.
 
 The real PhantomOS moat : **structure grows with need**. Schemas extensible per domain, without adding core code. Skills consume structured data, not free text. For this to hold, cartography precedes method.
 
@@ -27,7 +27,7 @@ The real PhantomOS moat : **structure grows with need**. Schemas extensible per 
 
 ## The 5 phases of the pattern
 
-### Phase 1 — Map domain variables
+### Phase 1 · Map domain variables
 
 Exhaustively list everything that enters the expert judgment on the topic. For each variable, drill down to the atomic field an agent could read or write.
 
@@ -42,37 +42,37 @@ Example for `audit-offers` :
 | Funnel | cart bumps, post-purchase, upsells, scarcity, urgency |
 | Historical performance | AOV, LTV, conversion rate, subscription retention |
 
-### Phase 2 — Identify gaps vs existing schema
+### Phase 2 · Identify gaps vs existing schema
 
 For each variable in the cartography, check where it lives in the current schema. Three possible cases :
 
-- **✅ Home exists cleanly** — variable lives in a native field (e.g., `spec.json#/pricing/price`)
-- **⚠️ Home exists but incomplete** — an approximate field exists but doesn't capture the required granularity. Option : enrich the schema via sidecar `*.extensions.json`, OR flag as non-native and look for a custom home
-- **❌ Orphaned** — no place in the current schema. Candidate for custom entity
+- **✅ Home exists cleanly** · variable lives in a native field (e.g., `spec.json#/pricing/price`)
+- **⚠️ Home exists but incomplete** · an approximate field exists but doesn't capture the required granularity. Option : enrich the schema via sidecar `*.extensions.json`, OR flag as non-native and look for a custom home
+- **❌ Orphaned** · no place in the current schema. Candidate for custom entity
 
-### Phase 3 — 5-dimension gate (via scaffold-extension)
+### Phase 3 · 5-dimension gate (via scaffold-extension)
 
 Before creating a custom entity, verify :
 
 1. **Does the intent exist in core entities ?** Yes → route to core enrichment, not extension
 2. **Can we extend sidecar `brand.extensions.json` or `{entity}.extensions.json` ?** Yes → sidecar, new entity not justified
-3. **Can we map to a modified existing schema ?** Yes → modify core schema (breaking change — requires migration)
+3. **Can we map to a modified existing schema ?** Yes → modify core schema (breaking change, requires migration)
 4. **Is a custom entity justified ?** (high cardinality, own lifecycle, scope different from core)
 5. **Risk of redundancy with an existing entity ?** Check explicitly
 
 All 5 pass → scaffold a custom entity.
 
-### Phase 4 — Schema + instance proposal
+### Phase 4 · Schema + instance proposal
 
 scaffold-extension generates :
 
-- `brands/{slug}/custom/{entity_name}/schema.json` — JSON Schema for the custom entity
-- `brands/{slug}/custom/{entity_name}/{data}.json` — instance file to populate
+- `brands/{slug}/custom/{entity_name}/schema.json` · JSON Schema for the custom entity
+- `brands/{slug}/custom/{entity_name}/{data}.json` · instance file to populate
 - Validation rules + field types
 
 The operator validates the schema before the instance is populated.
 
-### Phase 5 — Registration in `index.json#/extensions[]`
+### Phase 5 · Registration in `index.json#/extensions[]`
 
 ```json
 {
@@ -93,11 +93,11 @@ Registration = discovery contract for future skills. A skill like `audit-offers`
 
 ---
 
-## Worked example 1 — `commercial_mechanics` (Northsense)
+## Worked example 1 · `commercial_mechanics` (Northsense)
 
 **Context** : the Northsense snapshot detected 5 site-wide commercial mechanics (Spring Days GWP at 80€, free shipping at 69€, 15/15€ referral, loyalty points program, clone handles `*_sca_clone_freegift` for gift funnel). No home in `offers.json` (product scope only).
 
-### Phase 1 — Cartography
+### Phase 1 · Cartography
 
 Common variables across the 5 mechanics : trigger (cart/order/account condition), reward (type + value), scope (cart/order/account/product), active_from/to, source_urls.
 
@@ -108,21 +108,21 @@ Type-specific variables :
 - Loyalty : `trigger.account_state` + `reward.points`
 - Funnel clone : `trigger.product_required` + `reward.product_gift` (clone-linked)
 
-### Phase 2 — Gap
+### Phase 2 · Gap
 
 No home in the 6 core entities (brand / product / offer / profile / learning / strategy). `brand.json` has a `commercial` block but the scope is too narrow. `offers.json` is product-scope only.
 
-### Phase 3 — Gate
+### Phase 3 · Gate
 
 1. Does the intent exist in core ? No
-2. Sidecar `brand.extensions.json` ? Bad fit — high cardinality, own lifecycle, frequent updates
+2. Sidecar `brand.extensions.json` ? Bad fit, high cardinality, own lifecycle, frequent updates
 3. Modify core schema ? Breaking change rejected
 4. Custom entity justified ? Yes
 5. Redundancy ? No, different from `offers` (cart/order-trigger vs SKU-prepay)
 
 → route-to-new-custom-entity.
 
-### Phase 4 — Schema
+### Phase 4 · Schema
 
 `brands/northsense/custom/commercial_mechanics/schema.json` :
 
@@ -165,7 +165,7 @@ No home in the 6 core entities (brand / product / offer / profile / learning / s
 }
 ```
 
-### Phase 5 — Registration
+### Phase 5 · Registration
 
 Registered in `brands/northsense/index.json#/extensions[]` (see Phase 5 of the main pattern).
 
@@ -175,11 +175,11 @@ A future `audit-offers` skill can now consume **both** :
 - `offer_groups[].offers[]` → SKU-level analysis (prepay, cadences, discounts)
 - `custom/commercial_mechanics/mechanics.json` → brand-level analysis (GWP thresholds, shipping, loyalty)
 
-And cross both for a recommendation like : *"your Spring Days GWP at 80€ is too high vs estimated average cart X€ — 60% of carts don't reach it, you lose the anchoring effect"*. Business advice, not generic.
+And cross both for a recommendation like : *"your Spring Days GWP at 80€ is too high vs estimated average cart X€, 60% of carts don't reach it, you lose the anchoring effect"*. Business advice, not generic.
 
 ---
 
-## Worked example 2 — [TO COMPLETE — high-stake candidate]
+## Worked example 2 · [TO COMPLETE · high-stake candidate]
 
 Three possible candidates, by order of business stake :
 
@@ -198,26 +198,26 @@ Competitor entity with competitor-scoped creative library, positioning tracked o
 
 ## Anti-patterns to avoid
 
-- **Dumping into `learnings.json`** — learnings = append-only facts, not a structured entity. If you have 5 structurally similar items, it's not a learning, it's a custom entity.
-- **Overloading `brand.json`** — brand.json is identity, not catalog. If a field has cardinality N, it doesn't go directly in brand.json ; it goes into a sub-structure or a custom entity.
-- **Polymorphic over-engineering** — a schema that accepts every input type via complex `oneOf` / `anyOf`. Beyond 3 distinct variants, split into separate entities.
-- **Skipping Phase 1 cartography** — the most common mistake. Agent codes the method, then realizes 40% of the fields it wants to read don't exist, patches with free text. Output = generic.
-- **Coding without registration** — a custom entity not registered in `index.json#/extensions[]` is invisible to other skills. De facto orphaned.
+- **Dumping into `learnings.json`** · learnings = append-only facts, not a structured entity. If you have 5 structurally similar items, it's not a learning, it's a custom entity.
+- **Overloading `brand.json`** · brand.json is identity, not catalog. If a field has cardinality N, it doesn't go directly in brand.json ; it goes into a sub-structure or a custom entity.
+- **Polymorphic over-engineering** · a schema that accepts every input type via complex `oneOf` / `anyOf`. Beyond 3 distinct variants, split into separate entities.
+- **Skipping Phase 1 cartography** · the most common mistake. Agent codes the method, then realizes 40% of the fields it wants to read don't exist, patches with free text. Output = generic.
+- **Coding without registration** · a custom entity not registered in `index.json#/extensions[]` is invisible to other skills. De facto orphaned.
 
 ---
 
 ## When NOT to extend
 
-- **One-off** — data a single skill consumes and that won't recur elsewhere. Put it as a skill argument, not an entity.
-- **Temporary** — session context, not relevant next time. Use `session-state.md`.
-- **External-only** — data that lives better in the external tool (e.g., analytics dashboards). Link via URL in learnings, do not duplicate.
+- **One-off** · data a single skill consumes and that won't recur elsewhere. Put it as a skill argument, not an entity.
+- **Temporary** · session context, not relevant next time. Use `session-state.md`.
+- **External-only** · data that lives better in the external tool (e.g., analytics dashboards). Link via URL in learnings, do not duplicate.
 
 ---
 
 ## Cross-references
 
-- `.skills/skills/scaffold-extension/SKILL.md` — the orchestrator implementing this pattern
-- `docs/system/extending.md` — general extension doctrine
-- `agent-design-guide.md` — building agents that consume custom entities
-- (2026-04-19) — dual-mode scaffold-extension
-- (2026-04-19) — "extend before create" rule
+- `.skills/skills/scaffold-extension/SKILL.md` · the orchestrator implementing this pattern
+- `docs/system/extending.md` · general extension doctrine
+- `agent-design-guide.md` · building agents that consume custom entities
+- (2026-04-19) · dual-mode scaffold-extension
+- (2026-04-19) · "extend before create" rule

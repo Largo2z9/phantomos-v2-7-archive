@@ -1,0 +1,54 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.76.0",
+  "released_at": "2026-05-16",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 70,
+  "skills_count_after": 70,
+  "slash_commands_count_before": 5,
+  "slash_commands_count_after": 5,
+  "doctrines_count_before": 13,
+  "doctrines_count_after": 13,
+  "summary": "Sprint majeur v2.76.0 · refactor pro-grade tour.md onboarding · conseil 5 agents experts + 4 agents wave 1 · 10 patches consolidés Tier 1 + Tier 2.",
+  "audit_amont": {
+    "agents_experts": [
+      "UX Product Designer SaaS pro (Vercel/Linear/Stripe pattern)",
+      "Conversational AI Designer (ChatGPT custom GPTs/Claude Projects/Linear AI)",
+      "Information Architect (NN/g progressive disclosure/Miller's law)",
+      "DTC Marketing Strategist (positioning différenciateur USPs cible)",
+      "Technical Writer (institutional voice/accessibility/jargon)"
+    ],
+    "verdict_convergent": "DRIFT MAJEUR cross-axes · institutional voice + cognitive load + jargon doctrine leaks + sales-bro + register casual + smart suggestions absentes"
+  },
+  "patches_tier_1_P0": [
+    "Milestone 1 entry hook refactor · value prop institutionnelle + 3 paths outcome-driven + ton institutional SaaS pro",
+    "Milestone 5 capacités MENU refactor · USP killer top + 6 capacités bullets + adaptive AskUserQuestion + élasticité scope",
+    "Milestone 6 panorama split 6a+6b · concept skills + commande critique Path-aware + différenciation canon + drill on-demand",
+    "Em-dash purge 52 → 0 cross-file",
+    "Strip operator-facing doctrine leaks 30+ (Schwartz/OTRB/13 chapitres/5 couches/ontologie sémantique/PNT-NN paths)"
+  ],
+  "patches_tier_2_P1": [
+    "Smart suggestions canon throughout · 33% → 80% · NEW Milestones 2/3/6/7/9",
+    "Register unification · purge 'wow moment' 8× + contractions casual → 0",
+    "Positioning différenciation explicit · Notion/Airtable/SOPs vs PhantomOS",
+    "Élasticité scope mention canon phantomos_elastic_scope",
+    "Claims sourcing fluff retiré · qualitatif honnête"
+  ],
+  "files_patched": [
+    {
+      "file": ".claude/commands/tour.md",
+      "size_before_lines": 439,
+      "size_after_lines": 534,
+      "delta": "+95",
+      "scope": "10 patches consolidés cross-Milestones 1/2/3/5/6/7/8/9"
+    }
+  ],
+  "decisions_captured": ["D#423"],
+  "backlog_v276_plus": [
+    "Frontmatter description shrink (1500+ chars · UI autocomplete tronque)",
+    "Memory anchors post-tour · /concepts ou /lexicon refresher"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.76.0 = git revert HEAD strict (1 file patch · 10 patches retirables · semantic spec logique Milestones 1-9 preserved)"
+}

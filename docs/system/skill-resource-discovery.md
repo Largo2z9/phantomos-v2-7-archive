@@ -1,10 +1,10 @@
-# Skill resource discovery — runtime pattern
+# Skill resource discovery · runtime pattern
 
 > How skills find and consume knowledge from `resources/` at runtime without any tagging by the operator. Pattern : structured schemas (mandatory) → primary reasoning (LLM) → resource discovery (FTS5) → confrontation → coherence validation. Zero maintenance when adding or removing resources.
 
 ## The problem this solves
 
-Previous approach considered tagging every resource with `applies_when: {vertical, brand_type, skill_names}` so skills could know which resources to consult. Rejected — maintenance hell. Every time an operator adds a doc, someone has to update the tags. Every time a skill is created, someone has to re-tag all resources that might apply. Drift is guaranteed.
+Previous approach considered tagging every resource with `applies_when: {vertical, brand_type, skill_names}` so skills could know which resources to consult. Rejected, maintenance hell. Every time an operator adds a doc, someone has to update the tags. Every time a skill is created, someone has to re-tag all resources that might apply. Drift is guaranteed.
 
 **The new approach : discovery at runtime via FTS5.** Resources are indexed automatically on ingestion. Skills query the index with keywords derived from their current context. The match is content-driven, not tag-driven. A doc deposited 6 months ago can be rediscovered the moment its content matches a new context.
 
@@ -30,11 +30,11 @@ Every skill that consumes knowledge follows this order :
 8. Ship to operator (or revise if blocking)
 ```
 
-**Priority rule** — brand facts always win. If a retrieved resource says one thing and `brand.json` says another, the brand wins. Resources enrich, they don't override.
+**Priority rule** · brand facts always win. If a retrieved resource says one thing and `brand.json` says another, the brand wins. Resources enrich, they don't override.
 
 ## Each step in detail
 
-### Step 1 — Load structured schemas
+### Step 1 · Load structured schemas
 
 The skill's frontmatter declares `inputs_required`. For a creative audit :
 
@@ -49,13 +49,13 @@ inputs_required:
 
 All loaded before any reasoning. These are the source of truth.
 
-### Step 2 — Primary reasoning
+### Step 2 · Primary reasoning
 
 The skill + LLM reason on the loaded schemas. Produces preliminary conclusions or questions. At this stage, the skill does NOT hit external resources. It thinks with what the brand declared first.
 
 Why first reasoning, then retrieval : the reasoning itself generates the KEYWORDS that the retrieval will use. If we retrieved first with blind keywords, we'd get low-signal chunks. Reasoning narrows the search space.
 
-### Step 3 — Derive context keywords
+### Step 3 · Derive context keywords
 
 From the primary reasoning + loaded schemas, the skill builds a keyword string for FTS5. Examples :
 
@@ -78,7 +78,7 @@ checkpoint 5.4:
 
 Variables like `{vertical}` are filled at runtime from the loaded brand schemas.
 
-### Step 4 — Call discover-resources
+### Step 4 · Call discover-resources
 
 ```bash
 python3 .skills/discover-resources.py \
@@ -93,21 +93,21 @@ Returns top-K chunks ranked by BM25 + optional recency boost. Each chunk comes w
 
 Skill consumes the JSON output. Typically injects the top 3-5 snippets into its reasoning context as retrieved evidence.
 
-### Step 5 — Confront reasoning with resources
+### Step 5 · Confront reasoning with resources
 
 Three outcomes :
 
 - **Resource confirms reasoning** → reasoning strengthened, cite the resource in the output as support
 - **Resource enriches reasoning** → incorporate the new angle, credit the resource
-- **Resource contradicts reasoning** → check against brand facts first (brand wins), then either discard the resource as not applicable, or revise reasoning if the resource is more authoritative (rare — only if resource is flagged `source_of_truth`)
+- **Resource contradicts reasoning** → check against brand facts first (brand wins), then either discard the resource as not applicable, or revise reasoning if the resource is more authoritative (rare · only if resource is flagged `source_of_truth`)
 
 **If resource contradicts brand fact** → resource is ignored, brand fact stands. Period.
 
-### Step 6 — Compose output
+### Step 6 · Compose output
 
 The skill writes its deliverable (audit report, brief, analysis, whatever). Output cites : retrieved resources by `file_path` if their content shaped a conclusion, brand fields by path if a brand fact drove a finding, inferences explicitly tagged as such.
 
-### Step 7 — Validate-output-coherence
+### Step 7 · Validate-output-coherence
 
 Before shipping to operator, the skill calls `validate-output-coherence` sub-skill :
 
@@ -119,20 +119,20 @@ The sub-skill checks : schema consistency (referenced fields exist), fact consis
 
 Returns `{ok: bool, warnings: [...], blocking_issues: [...]}`.
 
-### Step 8 — Ship or revise
+### Step 8 · Ship or revise
 
 - `ok: true` + no warnings → ship to operator
-- `ok: true` + warnings → ship to operator with warnings surfaced as footnote ("I noted some style drift — want me to revise ?")
+- `ok: true` + warnings → ship to operator with warnings surfaced as footnote ("I noted some style drift · want me to revise ?")
 - `ok: false` (blocking_issues present) → skill attempts one revision using the flagged issues as correction cues, re-validates, then ships. Two failed revisions = escalate to operator with explanation.
 
 ## How this interacts with existing primitives
 
-- `.skills/memory-index.py` — indexes `resources/{frameworks,guides,catalogues,sops,conventions,quality-specs,templates,routing}/` automatically. No action from operator.
-- `.skills/ensure-memory-fresh.py` — keeps the index up-to-date. Called by any skill that needs fresh state.
-- `.skills/discover-resources.py` — the primitive skills call to query the index.
-- `.skills/skills/validate-output-coherence/SKILL.md` — the final gate sub-skill.
-- `resources/schemas/sop.schema.json` — SOPs declare `resource_discovery` blocks per contextual checkpoint.
-- `resources/sops/audit-meta-global.md` — reference SOP showing the pattern in practice (contextual checkpoints have `tier: contextual` + `resource_discovery: {...}`).
+- `.skills/memory-index.py` · indexes `resources/{frameworks,guides,catalogues,sops,conventions,quality-specs,templates,routing}/` automatically. No action from operator.
+- `.skills/ensure-memory-fresh.py` · keeps the index up-to-date. Called by any skill that needs fresh state.
+- `.skills/discover-resources.py` · the primitive skills call to query the index.
+- `.skills/skills/validate-output-coherence/SKILL.md` · the final gate sub-skill.
+- `resources/schemas/sop.schema.json` · SOPs declare `resource_discovery` blocks per contextual checkpoint.
+- `resources/sops/audit-meta-global.md` · reference SOP showing the pattern in practice (contextual checkpoints have `tier: contextual` + `resource_discovery: {...}`).
 
 ## What NOT to do
 
@@ -164,6 +164,6 @@ If these become bottlenecks in practice, add a semantic layer : local embeddings
 
 ## Related docs
 
-- `docs/system/sop-skill-conversion.md` — where the canonical skill/SOP/doc separation is defined
-- `docs/system/skill-architecture-redteam.md` — the red team findings that motivated this design
-- `docs/system/skill-builder-cartography.md` — when to scaffold a new custom entity vs add a resource doc
+- `docs/system/sop-skill-conversion.md` · where the canonical skill/SOP/doc separation is defined
+- `docs/system/skill-architecture-redteam.md` · the red team findings that motivated this design
+- `docs/system/skill-builder-cartography.md` · when to scaffold a new custom entity vs add a resource doc

@@ -84,30 +84,30 @@ Custom skills can read core and custom entities. They can also read sidecar sche
 
 ### 4. External pipeline integrations
 
-Scrapers, watchers, scheduled jobs, third-party API pulls — any code that brings external data into the workspace. Implemented as custom skills that execute the pipeline (via subprocess, MCP call, or inline code) and write the output into custom entities through the mutation gate. The pipeline is a skill like any other from the agent's perspective; what makes it a pipeline is that its output is a data capture, not a reasoning output.
+Scrapers, watchers, scheduled jobs, third-party API pulls, any code that brings external data into the workspace. Implemented as custom skills that execute the pipeline (via subprocess, MCP call, or inline code) and write the output into custom entities through the mutation gate. The pipeline is a skill like any other from the agent's perspective; what makes it a pipeline is that its output is a data capture, not a reasoning output.
 
 ## The three governance rules
 
 For extensions to stay **interoperable, discoverable, and usable across time**, three rules are non-negotiable.
 
-**Rule 1 — Declared schema.** Every custom entity and sidecar ships with a JSON Schema following the canon conventions of the core: `_version` field, `_schema` identifier, `_field_types` metadata, explicit required fields. `validate-resources` refuses extensions that do not comply. Without a schema, the extension is opaque to the agent and to other skills.
+**Rule 1 · Declared schema.** Every custom entity and sidecar ships with a JSON Schema following the canon conventions of the core: `_version` field, `_schema` identifier, `_field_types` metadata, explicit required fields. `validate-resources` refuses extensions that do not comply. Without a schema, the extension is opaque to the agent and to other skills.
 
-**Rule 2 — Registered or discovered.** Every **custom entity** adds an entry to `index.json → extensions[]`, the central registry. This makes it discoverable to the agent through `query-context` and visible when the operator asks *"what does this brand encode beyond the core?"*. **Sidecars** (`{entity}.extensions.json`) are discovered by convention — the agent walks core entity files and reads the sibling sidecar automatically if present. Unregistered custom entities are invisible to the agent, which defeats the point. Missing sidecars are silently ignored by design, which is the correct behavior.
+**Rule 2 · Registered or discovered.** Every **custom entity** adds an entry to `index.json → extensions[]`, the central registry. This makes it discoverable to the agent through `query-context` and visible when the operator asks *"what does this brand encode beyond the core?"*. **Sidecars** (`{entity}.extensions.json`) are discovered by convention, the agent walks core entity files and reads the sibling sidecar automatically if present. Unregistered custom entities are invisible to the agent, which defeats the point. Missing sidecars are silently ignored by design, which is the correct behavior.
 
-**Rule 3 — README documenting purpose and cross-references.** Every extension carries a short README explaining what it is, why it was added, which core entities it references, and which skills consume it. This is editorial discipline, not ceremony. Without the README, the extension becomes technical debt for the operator's future self.
+**Rule 3 · README documenting purpose and cross-references.** Every extension carries a short README explaining what it is, why it was added, which core entities it references, and which skills consume it. This is editorial discipline, not ceremony. Without the README, the extension becomes technical debt for the operator's future self.
 
-## How to add an extension — the canonical path
+## How to add an extension · the canonical path
 
-In V1 the operator performs the four steps manually. A complete copy-paste-ready example lives at `brands/_TEMPLATE/custom/_EXAMPLE/competitor_pricing/` — clone it as a starting point.
+In V1 the operator performs the four steps manually. A complete copy-paste-ready example lives at `brands/_TEMPLATE/custom/_EXAMPLE/competitor_pricing/`, clone it as a starting point.
 
 1. **Create the folder** `brands/{slug}/custom/{entity_type}/` with `schema.json`, data files, and `README.md`. Use `_EXAMPLE/competitor_pricing/schema.json` as a canon-compliant reference; adjust fields to your domain.
-2. **Register in `index.json`** — add an entry under the `extensions` section (see format below).
-3. **Validate via `validate-resources`** — ask the agent *"validate"* or *"check the workspace"* in natural language; the agent invokes the skill and reports any canon violation.
+2. **Register in `index.json`**, add an entry under the `extensions` section (see format below).
+3. **Validate via `validate-resources`**, ask the agent *"validate"* or *"check the workspace"* in natural language; the agent invokes the skill and reports any canon violation.
 4. **If a skill is needed** to populate or query the extension, create it under `.skills/skills/custom/` following `.skills/how-to-build-skills.md`.
 
 ### Registering a custom entity in `index.json`
 
-`index.json` is the central registry of the workspace. It has a top-level structure with `resources`, `stats`, `id_prefixes`, and `extensions`. The `extensions` array lists every custom entity type, with its scope, schema pointer, cross-references to core entities, and the skill that owns it (if any). Add an entry once per entity type — not per instance.
+`index.json` is the central registry of the workspace. It has a top-level structure with `resources`, `stats`, `id_prefixes`, and `extensions`. The `extensions` array lists every custom entity type, with its scope, schema pointer, cross-references to core entities, and the skill that owns it (if any). Add an entry once per entity type, not per instance.
 
 **Top-level `index.json` skeleton** (relevant sections only):
 
@@ -211,7 +211,7 @@ The agent resolves `brand.extensions.*` to `brands/{active_slug}/brand.extension
 
 ### Running `validate-resources` on extensions
 
-The operator triggers validation in natural language — *"validate"*, *"audit the workspace"*, *"check this brand"*. The agent invokes the `validate-resources` skill which walks:
+The operator triggers validation in natural language, *"validate"*, *"audit the workspace"*, *"check this brand"*. The agent invokes the `validate-resources` skill which walks:
 
 - Core entity files against core schemas in `resources/schemas/`.
 - Every custom entity under `brands/*/custom/*/` against its declared `schema.json`.
@@ -220,9 +220,9 @@ The operator triggers validation in natural language — *"validate"*, *"audit t
 
 Output: `0 critical / N major / M minor / K info`. Major or critical means the extension is not in valid state and should be fixed before the agent consumes it.
 
-### `scaffold-extension` — orchestrator (shipped V1.5)
+### `scaffold-extension` · orchestrator (shipped V1.5)
 
-A single monolithic skill cannot handle everything an extension requires — business coherence across tags, naming discipline, cross-reference validation, schema canon enforcement, and data safety. Attempting it in one skill produces either a skill that misses edge cases or a skill too vague to validate.
+A single monolithic skill cannot handle everything an extension requires, business coherence across tags, naming discipline, cross-reference validation, schema canon enforcement, and data safety. Attempting it in one skill produces either a skill that misses edge cases or a skill too vague to validate.
 
 `scaffold-extension` is an **orchestrator** composing nine single-responsibility sub-skills, each with a clear type and bounded permissions:
 
@@ -231,7 +231,7 @@ A single monolithic skill cannot handle everything an extension requires — bus
 | `analyze-extension-intent` | Capture operator intent, extract attributes (data type, source, frequency, cross-references). Three focused questions maximum. | curator |
 | `check-existing-coverage` | Walk five dimensions in order (core entities, active-brand sidecars, active-brand custom entities, sibling-brand custom entities, shared resources). Return a verdict: `route-to-*` (halt, write into existing), `partial-reuse` (scaffold with cross_refs), or `genuinely-new` (full scaffold). Blocks semantic duplication. | curator |
 | `propose-schema-draft` | Compose a JSON Schema draft following canon conventions, pulling patterns from `resources/schemas/`. | producer |
-| `validate-naming` | Verify naming — no collision with core entities, no duplicate with existing extensions, kebab-case, MECE with what exists. | curator |
+| `validate-naming` | Verify naming, no collision with core entities, no duplicate with existing extensions, kebab-case, MECE with what exists. | curator |
 | `check-cross-refs` | Identify the core entities the extension must reference. Validate that referenced IDs resolve. Prevents broken refs at creation. | curator |
 | `validate-schema-canon` | Validate the draft against conventions (`_version`, `_schema`, `_field_types`). Reuses `validate-resources check 13b` logic. | curator |
 | `scaffold-entity-files` | Write the extension's physical files (schema.json, README.md, optional example instance in brand workspace) or the sidecar file. Writes to `brands/{slug}/custom/` or `brands/{slug}/{entity}.extensions.json`. Never touches `.skills/`. | curator |
@@ -244,16 +244,16 @@ The orchestrator runs them in sequence with operator-visible checkpoints between
 
 Three protection layers against breaking existing data:
 
-1. **Mutation gate** — every write passes through `write_to_context()`. No silent JSON edits.
-2. **Sidecar-only extensions** — core schemas are never modified; extensions are additive through sidecars.
-3. **Upstream validation** — `check-cross-refs` and `validate-schema-canon` run **before** `scaffold-entity-files` and `scaffold-skill-stub`. If a conflict or schema violation is detected, the orchestrator halts before writing anything. A malformed schema never lands.
+1. **Mutation gate**, every write passes through `write_to_context()`. No silent JSON edits.
+2. **Sidecar-only extensions**, core schemas are never modified; extensions are additive through sidecars.
+3. **Upstream validation**, `check-cross-refs` and `validate-schema-canon` run **before** `scaffold-entity-files` and `scaffold-skill-stub`. If a conflict or schema violation is detected, the orchestrator halts before writing anything. A malformed schema never lands.
 
 ### Two modes of invocation
 
 `scaffold-extension` accepts both sides of the operator's reality:
 
-- **Intent-first** — operator brings an intention, no data in hand. *"Je voudrais tracker mes concurrents Meta dans le temps."* The skill creates the structure (schema, folder, README, optional populating skill stub), empty. Operator populates later.
-- **Data-first** — operator brings a concrete data block from their operational work (analysis, report, structured extraction). *"Voici ma marge de contribution par channel sur Q1, range-la proprement dans ma brand."* The skill parses the data, applies the five-dimension gate, then either routes to the existing encoding (no scaffold, write into existing) or scaffolds and populates with the provided data in a single flow.
+- **Intent-first** · operator brings an intention, no data in hand. *"Je voudrais tracker mes concurrents Meta dans le temps."* The skill creates the structure (schema, folder, README, optional populating skill stub), empty. Operator populates later.
+- **Data-first** · operator brings a concrete data block from their operational work (analysis, report, structured extraction). *"Voici ma marge de contribution par channel sur Q1, range-la proprement dans ma brand."* The skill parses the data, applies the five-dimension gate, then either routes to the existing encoding (no scaffold, write into existing) or scaffolds and populates with the provided data in a single flow.
 
 The five-dimension gate (`check-existing-coverage`, Phase 2) is the pivot in both modes. Match against existing encoding wins over scaffolding new. Scaffold is the last resort, not the default.
 
@@ -261,17 +261,17 @@ The five-dimension gate (`check-existing-coverage`, Phase 2) is the pivot in bot
 
 Three entry points, in increasing specificity:
 
-- **Main agent orchestration gate** (first line) — every build intent, whether scaffold or skill, passes through the main agent's orchestration gate first (see root `CLAUDE.md § Orchestration gate`). The gate applies the five-dimension check via the `check-existing-coverage` logic. If an existing structure already covers the intent, the main agent routes there and no scaffold happens. Scaffold is the last resort, not the default.
-- **Direct invocation** — operator explicitly says *"scaffold un tracker pour mes concurrents Meta"*, *"crée une extension pour mes cohortes financières"*, *"ajoute un sidecar à ma brand pour le supplier lead time"*. Even with explicit intent, `scaffold-extension` Phase 2 (`check-existing-coverage`) still runs as a safety gate. Operator can override if the gate finds a match but they have a reason to duplicate.
-- **Via `build-agent` delegation** — when `build-agent` analyzes an intent in Step 2b and detects the request maps to a simple extension (custom entity + optional populating skill, or a sidecar), it delegates to `scaffold-extension`. `build-agent` keeps the general architecture role; `scaffold-extension` is the specialist for the extension canonical path. Both go through the five-dimension gate before any write.
+- **Main agent orchestration gate** (first line) · every build intent, whether scaffold or skill, passes through the main agent's orchestration gate first (see root `CLAUDE.md § Orchestration gate`). The gate applies the five-dimension check via the `check-existing-coverage` logic. If an existing structure already covers the intent, the main agent routes there and no scaffold happens. Scaffold is the last resort, not the default.
+- **Direct invocation** · operator explicitly says *"scaffold un tracker pour mes concurrents Meta"*, *"crée une extension pour mes cohortes financières"*, *"ajoute un sidecar à ma brand pour le supplier lead time"*. Even with explicit intent, `scaffold-extension` Phase 2 (`check-existing-coverage`) still runs as a safety gate. Operator can override if the gate finds a match but they have a reason to duplicate.
+- **Via `build-agent` delegation** · when `build-agent` analyzes an intent in Step 2b and detects the request maps to a simple extension (custom entity + optional populating skill, or a sidecar), it delegates to `scaffold-extension`. `build-agent` keeps the general architecture role; `scaffold-extension` is the specialist for the extension canonical path. Both go through the five-dimension gate before any write.
 
 ### Live execution pattern
 
-The orchestrator runs inline in the main session (subagent_safe: false). Each of the nine phases surfaces a checkpoint to the operator where relevant. Halt conditions at every phase: operator refusal, validator blocker, unresolved cross-reference. On halt, no files are written — the workspace remains in its previous state.
+The orchestrator runs inline in the main session (subagent_safe: false). Each of the nine phases surfaces a checkpoint to the operator where relevant. Halt conditions at every phase: operator refusal, validator blocker, unresolved cross-reference. On halt, no files are written, the workspace remains in its previous state.
 
 The canonical reference for what the output looks like is `brands/_TEMPLATE/custom/_EXAMPLE/competitor_pricing/`. Cloning that example manually is still supported for operators who prefer the manual path.
 
-## Worked example — competitor ad tracking
+## Worked example · competitor ad tracking
 
 An operator wants to track competitor Meta ads with screenshot, detected angle, first-seen date, and perceived effectiveness score.
 
@@ -296,11 +296,11 @@ The core `brand.json` is untouched. The `angle-registry.md` is referenced, not d
 
 **Not a way around `write_to_context`.** All writes to custom entities follow the same mutation gate as core entities. No direct JSON editing. The mutation rule is universal.
 
-## Promotion path — when an extension graduates to core
+## Promotion path · when an extension graduates to core
 
-Some extensions prove valuable enough across multiple brands that they should no longer be custom. When an operator (or the wider ecosystem, once extensions are shared) ships the same custom entity type three or more times, it becomes a candidate for promotion to a vertical pack or to the core itself. The promotion process is not automated in V1 — it goes through a manual review: the pattern is codified into `resources/schemas/` as a shipped schema, existing custom instances migrate, skills are updated to treat the former extension as first-class. This path mirrors the promotion from brand-level learnings to shared resources, but at the data-type level.
+Some extensions prove valuable enough across multiple brands that they should no longer be custom. When an operator (or the wider ecosystem, once extensions are shared) ships the same custom entity type three or more times, it becomes a candidate for promotion to a vertical pack or to the core itself. The promotion process is not automated in V1, it goes through a manual review: the pattern is codified into `resources/schemas/` as a shipped schema, existing custom instances migrate, skills are updated to treat the former extension as first-class. This path mirrors the promotion from brand-level learnings to shared resources, but at the data-type level.
 
-## V1 known limits — honest flags
+## V1 known limits · honest flags
 
 The extension layer ships production-ready for V1 with the following known limitations. Each is documented, bounded, and on the roadmap.
 
@@ -309,7 +309,7 @@ The extension layer ships production-ready for V1 with the following known limit
 - Sidecar semantic divergence when a sidecar field contradicts a core field (e.g., `pricing_currency = "EUR"` in core, `financial_currency = "USD"` in sidecar). Currently flagged by operator review, not automated check.
 - Schema version drift when the core template upgrades and existing custom extensions still point to an older `_version`. Migration framework planned V1.x.
 
-**Concurrency is operator-responsibility.** Two parallel sessions writing to `index.json` or to the same custom entity can race. File locking via `write_to_context` is on the V1.x list — until then, avoid multi-session simultaneous edits on the same brand.
+**Concurrency is operator-responsibility.** Two parallel sessions writing to `index.json` or to the same custom entity can race. File locking via `write_to_context` is on the V1.x list · until then, avoid multi-session simultaneous edits on the same brand.
 
 **Mutation gate is convention, not enforcement.** A custom skill that writes directly to JSON files bypasses `write_to_context` without detection. Hash-based audit tooling to flag bypasses is planned. Until then, rely on skill authoring discipline (see `.skills/how-to-build-skills.md`).
 
@@ -337,9 +337,9 @@ Doctrine canon NEW v2.75.0 · `docs/system/extension-discovery-discipline.md`.
 
 ## Related canon
 
-- `lexicon.md § Method — the encoding discipline` — definitions of extension, custom entity, sidecar schema, core vs custom namespace.
-- `docs/system/architecture.md` — the core data model the extension layer builds on.
-- `docs/system/patterns.md § Skill Taxonomy` — classification rules that apply equally to custom skills.
-- `docs/system/voice.md` — writing conventions that custom skill authors follow.
-- `.skills/how-to-build-skills.md` — authoring guide used for both core and custom skills.
-- `docs/vision/roadmap.md` — `scaffold-extension` builder skill and external pipeline formalization are on the R&D list.
+- `lexicon.md § Method · the encoding discipline`, definitions of extension, custom entity, sidecar schema, core vs custom namespace.
+- `docs/system/architecture.md` · the core data model the extension layer builds on.
+- `docs/system/patterns.md § Skill Taxonomy` · classification rules that apply equally to custom skills.
+- `docs/system/voice.md` · writing conventions that custom skill authors follow.
+- `.skills/how-to-build-skills.md` · authoring guide used for both core and custom skills.
+- `docs/vision/roadmap.md` · `scaffold-extension` builder skill and external pipeline formalization are on the R&D list.

@@ -7,6 +7,127 @@
 
 ---
 
+## v2.77.0 · 2026-05-17 · Sprint majeur · hygiène globale workspace-template + onboarding Jarvis + /scope + /bird + doctrine skill-routing-discipline
+
+**Why** · Largo demande recadrage workspace-template canonical avant go-to-market · "checker hygiène globale ton + positionnement, onboarding patché et guidé, /scope sujet précis pour forcer pertinence système". Sprint A audit READ-ONLY 3 agents parallèle (hygiène cross-files + onboarding Jarvis-style + /scope auto-déclenchement) · Sprint B 5 agents parallèle scope disjoint pour patches structurels · Sprint C verification 9 cross-checks.
+
+**What** · 12 patches structurels livrés via 5 agents wave 1 parallèle ·
+
+**Patches structurels (12)** ·
+
+1. **Em-dash purge foundation docs** · 697 occurrences supprimées cross 26 docs (`docs/system/`) · voice.md L113 directive aligné canon `no_em_dash` (interdit partout) · substitution context-sensitive middle dot · virgule · point · parenthèses
+2. **CLAUDE.md sommaire 13 doctrines canon shipped** · section L44-62 renommée · 12 sub-doctrines + Contextual Intelligence master listés funnel order canon (OSD v2.71 · Compositional Cartography v3.1 · CMR · Investigation Posture · Audiences Cartography v2.64 · Pain Benefit Chain · Progressive Cartography v2.68 · Extension Discovery v2.75 · Scope Extension v2.65 · Territory v2.67 · Connectivity Layering · Notion Bridge v2.57+) · Authoring infrastructure préservée bloc séparé
+3. **CLAUDE.md L95 skill-routing-discipline ref shipped** · `NEW à créer si gap` carried v2.55→v2.74.1 backlog remplacé par référence shipped doctrine canon
+4. **CLAUDE.md L177 entity count 7 with angle** · `6 core entities per brand` → `7 core entities · brand, product spec, offers, audience profile, angle, learnings, strategy` cohérent atlas auto-cartographie PhantomOS · Context DB table enrichie ligne angle
+5. **Architecture.md cross-fichier intra align** · L43+L57+L92 (3 occurrences entity count 6→7) patchées intra-fichier cohérent L10
+6. **Doctrine NEW skill-routing-discipline.md** · 391 lignes 14 sections canon-style miroir (extension-discovery + op-system pattern) · 5-phase routing protocol (mapping → manifest registry → disambiguation rules → /scope fallback → freestyle last resort) · ferme gap doctrine fantôme · cross-refs CMR + investigation-posture + extension-discovery + OSD + DRGFP
+7. **Port `/scope` workspace-template** · `.skills/skills/scope/SKILL.md` 274L layer:meta · 5 sections canon investigation-posture intégrées (Observé · Déduit · Inconnu · Leviers · Close ouvert) · 2 modes LEARN/BUILD + 5 phases + Excalidraw + chain `--for-skill=`
+8. **Port `/bird` workspace-template** · `.skills/skills/bird/SKILL.md` 267L layer:meta navigator · HR-7 alignement investigation-posture · hook unfog (pas shipped) remplacé par `/scope` · persistence paths brand-level
+9. **2 NEW slash commands pointers** · `.claude/commands/scope.md` + `.claude/commands/bird.md` · description compact + cohérent pattern 5 existing
+10. **Tour.md Milestone 5 Jarvis insert** · 3 lignes mesurées proposition connexion outils externes (Meta Ads · Calendar · Notion · Supabase · Shopify · autres) · trigger phrase opérateur "connecte mes outils" · ligne 203 entre mapping skills sous le capot et adaptation profil détecté · jamais nommer connect-mcp-server à l'opérateur (sous le capot only)
+11. **4 skills consumer Step 0 Jarvis bridge** · audit-meta-account + mine-vom + sync-notion-atlas + brief-day (degraded mode google-calendar + supabase) · pattern AskUserQuestion 2 options (a) guidage connect-mcp-server (b) fallback declarative interview · default proactif Jarvis · ferme anti-pattern systémique
+12. **Schema brand v2.1 → v2.2 cohérence cross-skills** · validate-resources L753 + snapshot-brand L1132 + migrate-workspace L167 bonus patches stale refs
+
+**Pattern systémique résolu** · workspace-template avait drift cross-files post-canon évolution rapide (10 releases v2.55→v2.76 en session unique) · doctrine fantôme `skill-routing-discipline` référencée v2.55 jamais shippée · em-dash policy contradictoire (Memory canon vs voice.md) · entity count incohérent intra-fichier (6 vs 7 angle) · anti-pattern Jarvis systémique (4 skills consumer connect-mcp-server non proactif) · `/scope` + `/bird` pair canon root largo-kb jamais portés template. v2.77.0 ferme ces gaps via Sprint hygiène complet (Sprint A audit + Sprint B 5 agents + Sprint C verification).
+
+**Backward compat strict additif** · 1 NEW doctrine (additive · skill-routing-discipline) + 2 NEW skills (additive · scope + bird) + 2 NEW slash commands (additive · scope + bird) + 12 patches cohérence cross-files (no breaking) · skills count 70 → 72 (+2) · slash commands 5 → 7 (+2) · doctrines 13 → 14 (+1).
+
+**Files patched (16 + 4 NEW)** ·
+- `CLAUDE.md` (3 patches structurels · sommaire 13 doctrines + L95 ref + L177 entity 7)
+- `docs/system/architecture.md` (3 occurrences entity count align L43+L57+L92)
+- `docs/system/skill-routing-discipline.md` NEW (391L · 14 sections)
+- `.skills/skills/scope/SKILL.md` NEW (274L layer:meta)
+- `.skills/skills/bird/SKILL.md` NEW (267L layer:meta)
+- `.claude/commands/scope.md` NEW (42L)
+- `.claude/commands/bird.md` NEW (41L)
+- `.skills/_manifest.json` regen (72 skills · scope + bird layer:meta confirmé)
+- `.claude/commands/tour.md` (Milestone 5 Jarvis insert ligne 203)
+- `.skills/skills/audit-meta-account/SKILL.md` (Step 0 Jarvis bridge)
+- `.skills/skills/mine-vom/SKILL.md` (Step 0 Jarvis bridge)
+- `.skills/skills/sync-notion-atlas/SKILL.md` (Step 0 Jarvis bridge)
+- `.skills/skills/brief-day/SKILL.md` (Step 1 degraded mode Jarvis bridge)
+- `.skills/skills/validate-resources/SKILL.md` (L753 schema brand 2.2)
+- `.skills/skills/snapshot-brand/SKILL.md` (L1132 schema brand 2.2)
+- `.skills/skills/migrate-workspace/SKILL.md` (L167 schema brand 2.2 bonus)
+- 26 foundation docs em-dash purge complète (`docs/system/*.md`)
+- `_version.json` 2.76.0 → 2.77.0
+- `CHANGELOG.md` v2.77.0 entry (this entry)
+- `docs/internal/releases/manifest/2.77.0-manifest.json` NEW
+
+**D#424-D#427 captured** ·
+- D#424 · Em-dash policy purge complète foundation docs (Memory canon `no_em_dash` prime sur voice.md L113 ancien · cohérence stricte cross-canon go-to-market defendable)
+- D#425 · Entity count canon 7 with angle (cohérent atlas auto-cartographie PhantomOS · schema angle/1.4 shipped · registry angle-mechanics)
+- D#426 · NEW doctrine skill-routing-discipline.md shipped (close gap fantôme L83 référencée v2.55 jamais shippée · 5-phase routing protocol canon)
+- D#427 · /scope + /bird port workspace-template (pair canon root largo-kb shipped template · 5 sections investigation-posture canon alignment · skills 70 → 72 · slash commands 5 → 7)
+
+**Backlog v2.77+** · 30 files em-dash restants docs/internal + docs/product + docs/vision · pattern Jarvis propagation 2 skills MCP-dépendants (watch-competitors + trendtrack-enrich-brand) · port unfog (3e pair canon avec scope/bird) · convention argument-hint accolades non-quotées PyYAML strict documentation `_TEMPLATE/SKILL.md`.
+
+---
+
+## v2.76.0 · 2026-05-16 · Sprint majeur · refactor pro-grade tour.md onboarding · 5 audits experts + 4 agents wave 1
+
+**Why** · Largo test live workspace fresh v2.75.1 a flag "ton conversationnel friendly trop léger · présentation faible · pas niveau institutional pro SaaS". Conseil de 5 agents experts (UX Product Designer SaaS pro · Conversational AI Designer · Information Architect · DTC Marketing Strategist · Technical Writer) convergent · DRIFT MAJEUR cross-axes · institutional voice + cognitive load + jargon doctrine leaks + sales-bro + register casual + smart suggestions absentes. Sprint refactor pro-grade requis.
+
+**What** · 10 patches consolidés livrés via 4 agents wave 1 parallèle scope disjoint ·
+
+**Tier 1 · P0 critiques (5)** ·
+1. Milestone 1 entry hook refactor · ouverture value prop institutionnelle + 3 paths outcome-driven + ton institutional SaaS pro (drop "Salut/on attaque/Avant de plonger/Want to go")
+2. Milestone 5 capacités MENU refactor · USP killer top + 6 capacités bullets + adaptive AskUserQuestion profile-specific + élasticité scope explicit
+3. Milestone 6 panorama split 6a+6b · concept skills + 1 commande critique Path-aware + différenciation canon (Notion/Airtable/SOPs vs PhantomOS) + drill on-demand
+4. Em-dash purge 52 → 0 cross-file (canon `no_em_dash` strict)
+5. Strip operator-facing doctrine leaks 30+ identifiés (Schwartz/OTRB · 13 chapitres · 5 couches · ontologie sémantique pure · PNT-NN paths) canon `no_jargon_to_operator`
+
+**Tier 2 · P1 important (5)** ·
+6. Smart suggestions canon throughout · 33% → 80% ratio · AskUserQuestion NEW Milestones 2/3/6/7/9 context-aware profile-adapted
+7. Register unification cross-tour · purge "wow moment" 8× → "synthesis turn" · "on bascule/voit pas/tu me colles/park it/Si t'as" → 0 · maintain tutoiement zero contractions casual
+8. Positioning différenciation explicit · "Notion stocke · Airtable structure · SOPs documentent · PhantomOS opère via agent" Milestone 6
+9. Élasticité scope mention canon `phantomos_elastic_scope` · "système accueille au-delà du paid · copywriting/audit/domotique/perso/hobby/n'importe quel métier"
+10. Claims sourcing fluff retiré · "coût marginal tend vers zéro" + "5 min" → qualitatif honnête
+
+**Pattern systémique résolu** · tour.md était mélange historique cumulé cross-sprints (canon v2.62 prose conversational + v2.74.0 capacités MENU marketing exclusive + quad/penta commands prose dense + register casual legacy + jargon doctrine leaks accidentels). v2.76.0 refactor synthétique pro-grade cohérent canon UX Vercel/Linear/Stripe.
+
+**Backward compat strict additif** · 1 file patched (534 lignes · +95 vs 439 pré-patch) · Milestones 1-9 spec logique preserved (cascade Path a/b/c · AskUserQuestion canon · banned cadences · table illustrative triggers naming) · seul wording/tone/format substitutions · skills count 70 → 70 · slash commands 5 → 5 · doctrines 13 → 13.
+
+**Files patched** ·
+- `.claude/commands/tour.md` 439L → 534L · 10 patches consolidés cross-Milestones 1/2/3/5/6/7/8/9
+- `_version.json` 2.75.1 → 2.76.0
+- `CHANGELOG.md` v2.76.0 entry (this entry)
+- `docs/internal/releases/manifest/2.76.0-manifest.json` NEW
+
+**D#423 captured.**
+
+**Backlog v2.76+** · frontmatter description shrink (UI autocomplete tronque) · memory anchors post-tour `/concepts` ou refresher.
+
+---
+
+## v2.75.1 · 2026-05-16 · Patch tour.md Milestone 6 enrichi · panorama PhantomOS garanti onboarding
+
+**Why** · Feedback Largo session live test workspace fresh v2.75.0 · "il faut surtout que la commande tour communique avec breakdown · principes · lexicons · pour qu'au moins une fois, même si l'opérateur décline les paths, il ait conscience de son environnement pendant les 3-4 premières questions". Le Milestone 6 actuel mentionnait quad commands `/skills /phantom /breakdown /lexicon` (depuis v2.74.0) mais sans présenter les 5 comme système cohérent complémentaire + sans donner les principes canon de fond + sans wow effect link explicit.
+
+**What** · Patch ciblé Milestone 6 enrichi ·
+
+**1. 5 universal entry points complémentaires** (pas redondants · use cases distincts canon) ·
+- `/tour` · onboarding chronologique (où tu es maintenant · replayable)
+- `/breakdown stepprs {topic}` · vitrine pédagogique via cas concret (13 chapitres drillables)
+- `/lexicon` · vocabulaire opérateur-facing prompting (13 magic keywords canon)
+- `/skills` · catalogue navigable des capacités
+- `/phantom {brand}` · cockpit visualisation état brand active
+
+**2. 3 principes canon synthétiques** (accessible novice · pas dense doctrine)
+- Territoire stable vs production runtime
+- Intelligence contextuelle, pas formulaires à remplir
+- 5 couches d'un système opérationnel (modèle · règles · templates · métriques · rituels)
+
+**3. Wow effect cross-link** · `/breakdown stepprs principe` pour voir grammaire opérationnelle via cas Stepprs en 30 min.
+
+**Garanti même Path (c) discovery-only** · Milestone 2 spec L118 + Milestone 5 spec L172 confirment Path c → Milestone 5 → Milestone 6 → Milestone 8 · l'opérateur a au moins une fois conscience environnement panorama enrichi même s'il décline configuration.
+
+**Backward compat strict additif** · seul Milestone 6 paragraphe "First" enrichi · Milestones 1-5 + 7-9 unchanged · Second paragraph universal entry point unchanged · banned cadences + pattern naming + table illustrative + awareness writes preserved verbatim. 1 file patched · +17/-3 lignes.
+
+**D#422 captured.**
+
+---
+
 ## v2.75.0 · 2026-05-16 · Sprint majeur · extension-discovery-discipline · auto-consume NEW entities
 
 **Why** · v2.72.0 Patch 5 audit READ-ONLY a flaggé gap structurel · 4 orchestrateurs production (score-matrix · produce-paid-matrix · creative-brief-composer · build-atlas-complete) hard-coded entity types · zéro lecture manifest runtime · NEW entities scaffolded via scaffold-extension v1.2.0 registered correctement mais NOT auto-consumed. Sprint dédié 8-10h estimé. Largo a explicitement demandé "gros chantier". 6 agents parallèle 2 waves.

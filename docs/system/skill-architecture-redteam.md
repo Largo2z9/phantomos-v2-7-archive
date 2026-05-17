@@ -1,25 +1,25 @@
-# Skill architecture red team — 50-scenario synthesis
+# Skill architecture red team · 50-scenario synthesis
 
 > Red team audit run through 5 independent agents on the proposed PhantomOS skill architecture (4-level taxonomy + creative library 3-layer). Goal : stress the proposal before implementation. 50 scenarios covering day-to-day agency / edge cases / cross-brand scale / diagnostic / generative production. Source of truth for the architecture decisions that follow.
 
 > **Subsequent architecture decisions** :
 > - SOPs (methodologies) live in `resources/sops/` (existing location inside the resources architecture, not a new directory)
-> - Level above brands = `_workspace/` (agnostic to operator profile — agency / solo / multi-brand manager), not `_agency/`
-> - Canonical separation skills (execution) vs SOPs (methodology) vs docs (reference) — see `docs/system/sop-skill-conversion.md`
+> - Level above brands = `_workspace/` (agnostic to operator profile, agency / solo / multi-brand manager), not `_agency/`
+> - Canonical separation skills (execution) vs SOPs (methodology) vs docs (reference), see `docs/system/sop-skill-conversion.md`
 > - Worked example : `resources/sops/audit-meta-global.md` (40+ checkpoints, 7 layers, expert-grade)
 
 ## Architecture under test
 
 **4-level taxonomy** :
-- Orchestrator — operator-invokable via natural language
-- Domain skill — operator or orchestrator invokable
-- Sub-skill — callable only by other skills, no operator-facing triggers
-- Primitive — Python script, no SKILL.md
+- Orchestrator · operator-invokable via natural language
+- Domain skill · operator or orchestrator invokable
+- Sub-skill · callable only by other skills, no operator-facing triggers
+- Primitive · Python script, no SKILL.md
 
 **Creative library 3 layers** :
-- Layer 1 — Decomposition schema (universal, owner-agnostic)
-- Layer 2 — Library instances (owner-flagged us/competitor)
-- Layer 3 — Transforms / remix (swap_audience / swap_product / swap_proof)
+- Layer 1 · Decomposition schema (universal, owner-agnostic)
+- Layer 2 · Library instances (owner-flagged us/competitor)
+- Layer 3 · Transforms / remix (swap_audience / swap_product / swap_proof)
 
 **Proposed skills** : audit-creatives, brief-ads, competitor-creative-intel, test-matrix-generator (orchestrators) ; decompose-ad, remix-ad, import-competitor-ad (domain) ; angle-gap-detector, awareness-coverage-mapper, proof-diversity-checker, hook-pattern-classifier, fatigue-detector (sub) ; write-to-context, memory-index, build-brand-snapshot (primitives).
 
@@ -27,7 +27,7 @@
 
 ## Convergent findings (3+ agents agree)
 
-### GAP #1 — Sub-skill rigidity (4 agents)
+### GAP #1 · Sub-skill rigidity (4 agents)
 
 Day-to-day + edge cases + cross-brand + diagnostic report the same tension : several proposed "sub-skills" are in fact legitimate operator entry points. Examples :
 
@@ -37,18 +37,18 @@ Day-to-day + edge cases + cross-brand + diagnostic report the same tension : sev
 
 **Verdict** : the binary sub vs domain distinction is insufficient. Either add a sub→domain promotion criterion (e.g., ≥3 standalone invocations/month) or make every sub-skill dual-surface via an `operator_facing: true|false` flag.
 
-### GAP #2 — Orchestration contract undefined (5 agents)
+### GAP #2 · Orchestration contract undefined (5 agents)
 
 Every agent hit the same limit : the taxonomy defines the levels but not the **orchestration patterns**. Missing :
 
-- **Fan-out** : `audit-creatives` on 5 brands in parallel — who spawns the subagents ?
-- **Pipe** : `audit → brief` chaining — who passes what to the next ?
-- **Batch** : `decompose-ad × 20 ads at once` — input[] contract or external loop ?
+- **Fan-out** : `audit-creatives` on 5 brands in parallel · who spawns the subagents ?
+- **Pipe** : `audit → brief` chaining · who passes what to the next ?
+- **Batch** : `decompose-ad × 20 ads at once` · input[] contract or external loop ?
 - **Aggregate** : composing N subagent outputs into a single ranked/filtered report
 
-**Verdict** : need a documented `orchestration primitives` layer — not just "it's an orchestrator" but "how an orchestrator fans out / pipes / aggregates / batches". Otherwise every orchestrator reinvents.
+**Verdict** : need a documented `orchestration primitives` layer · not just "it's an orchestrator" but "how an orchestrator fans out / pipes / aggregates / batches". Otherwise every orchestrator reinvents.
 
-### GAP #3 — Missing `_workspace/` layer (cross-brand agent, devastating)
+### GAP #3 · Missing `_workspace/` layer (cross-brand agent, devastating)
 
 Current architecture caps at **N=3-5 brands** before collapse. No layer above `brands/{slug}/` for :
 
@@ -61,7 +61,7 @@ Current architecture caps at **N=3-5 brands** before collapse. No layer above `b
 
 **Verdict** : `_workspace/` layer is **P0 blocker** for multi-brand adoption. Without it, PhantomOS = solo workspace, not workspace OS.
 
-### GAP #4 — Structured data gaps = moat fails (generative agent, devastating)
+### GAP #4 · Structured data gaps = moat fails (generative agent, devastating)
 
 Generative audit : **60% of outputs would be ChatGPT-equivalent** without :
 
@@ -71,9 +71,9 @@ Generative audit : **60% of outputs would be ChatGPT-equivalent** without :
 - `proof_assets` library (reviews, studies, testimonials, referenceable) instead of loose text
 - `compliance_rules` per brand (claims allowed/banned) instead of tacit convention
 
-**Verdict** : the "zero re-briefing moat" is theoretical until these entities exist. These 5 entities are **P0 foundation** — without them the creative library produces generic output.
+**Verdict** : the "zero re-briefing moat" is theoretical until these entities exist. These 5 entities are **P0 foundation** · without them the creative library produces generic output.
 
-### GAP #5 — Events.jsonl underutilized (diagnostic agent)
+### GAP #5 · Events.jsonl underutilized (diagnostic agent)
 
 Current events.jsonl = mutations to brand/operator JSON only. Missing :
 
@@ -82,19 +82,19 @@ Current events.jsonl = mutations to brand/operator JSON only. Missing :
 - Daily perf snapshots per ad/offer
 - Structured profile edits (actor, before/after hash, rationale, triggering_session)
 
-**50% of operator "why" questions undiagnosable** today. No need for a `diagnose-X` skill family — this is an **indexing problem, not a reasoning problem**.
+**50% of operator "why" questions undiagnosable** today. No need for a `diagnose-X` skill family · this is an **indexing problem, not a reasoning problem**.
 
-### GAP #6 — Missing query + action layer (day-to-day agent)
+### GAP #6 · Missing query + action layer (day-to-day agent)
 
 Architecture covers ingestion (import/decompose) and analysis (audit/detect) but **nothing for** :
 
-- `query-creative-library` — read Layer 2 with filters (top performers, by angle, by owner)
-- `recommend-creative-action` — post-analysis decision layer (cut/refresh/scale/kill)
-- `compare-ads` pairwise — why ad A works vs ad B flops (cross-brand causal)
+- `query-creative-library` · read Layer 2 with filters (top performers, by angle, by owner)
+- `recommend-creative-action` · post-analysis decision layer (cut/refresh/scale/kill)
+- `compare-ads` pairwise · why ad A works vs ad B flops (cross-brand causal)
 
 **Verdict** : without query + action layers, the operator bypasses the skills and freestyles their questions → loss of context persistence.
 
-### GAP #7 — Layer 3 transforms orphaned (day-to-day agent)
+### GAP #7 · Layer 3 transforms orphaned (day-to-day agent)
 
 Transforms (swap_audience / swap_product / swap_proof) = a "layer" described but **never mapped** to skill / primitive / data.
 
@@ -109,13 +109,13 @@ Transforms (swap_audience / swap_product / swap_proof) = a "layer" described but
 ## Categorical findings (1-2 agents)
 
 ### Taxonomy rigidity (edge cases)
-Operators bend skills — batch mode, skip gates, conditional field selection. Fix : every skill accepts standard modifier params (`--fields`, `--skip-gate`, `--batch`, `--dry-run`).
+Operators bend skills, batch mode, skip gates, conditional field selection. Fix : every skill accepts standard modifier params (`--fields`, `--skip-gate`, `--batch`, `--dry-run`).
 
 ### Introspection skills (edge cases)
 "What is angle-gap-detector ?" "Why does this skill use Meta Ad Library ?" Zero queryable skill metadata. Fix : manifest schema with `description + rationale + design_decisions + prereqs`.
 
 ### Live skill modification (edge cases)
-"Add a step to audit-creatives" — permanent (commit) vs one-shot (session) indistinct. Fix : `/skills edit` flow with approval gate.
+"Add a step to audit-creatives", permanent (commit) vs one-shot (session) indistinct. Fix : `/skills edit` flow with approval gate.
 
 ### Owner-biased naming (day-to-day)
 `import-competitor-ad` violates the Layer 1 "owner-agnostic" principle. Rename `import-ad(owner: us|competitor)`.
@@ -136,37 +136,37 @@ decompose-ad tags dimensions (angle, hook, creator, offer_type) but **nothing ag
 
 ## Actionable priorities
 
-### P0 — Blockers before shipping creative library
+### P0 · Blockers before shipping creative library
 
-1. **Scaffold missing core entities** — `brand_voice_axes`, `audience_segments` enriched, `offers` typed, `proof_assets`, `compliance_rules`. Without these, moat fails. Scaffold-extension candidate × 5.
-2. **Decide the sub-skill model** — explicit promotion criterion OR dual-mode `operator_facing`. Document in agent-design-guide.
-3. **Orchestration contract** — separate doc defining fan-out / pipe / batch / aggregate patterns. All orchestrators reference it.
-4. **Layer 3 transforms = primitives** — decision documented, no recurring debate.
-5. **Rename owner-agnostic** — `import-competitor-ad` → `import-ad`, `competitor-creative-intel` → `creative-intel` with an owner filter.
+1. **Scaffold missing core entities**, `brand_voice_axes`, `audience_segments` enriched, `offers` typed, `proof_assets`, `compliance_rules`. Without these, moat fails. Scaffold-extension candidate × 5.
+2. **Decide the sub-skill model**, explicit promotion criterion OR dual-mode `operator_facing`. Document in agent-design-guide.
+3. **Orchestration contract**, separate doc defining fan-out / pipe / batch / aggregate patterns. All orchestrators reference it.
+4. **Layer 3 transforms = primitives**, decision documented, no recurring debate.
+5. **Rename owner-agnostic**, `import-competitor-ad` → `import-ad`, `competitor-creative-intel` → `creative-intel` with an owner filter.
 
-### P1 — Architecture scale
+### P1 · Architecture scale
 
-6. **`_workspace/` layer** — `_workspace/taxonomies/`, `_workspace/entities/` (creators, competitors), `_workspace/portfolio/index.db`, `_workspace/conventions/`. Blocker beyond N=3 brands.
-7. **Portfolio orchestrator tier** — 5th level, `portfolio-*` skills with subagent fan-out.
-8. **Canonical schemas + extension** — minimal core (offer, creative, creator, mechanic) + `_extra` brand-specific field for portfolio queries.
-9. **Learning promotion mechanism** — `promote-learning` skill : local brand learning → `_workspace/conventions/` versioned.
-10. **Events.jsonl enrichment** — guardrail_block, skill_version_hash, perf_snapshot, profile_edit structured events.
+6. **`_workspace/` layer**, `_workspace/taxonomies/`, `_workspace/entities/` (creators, competitors), `_workspace/portfolio/index.db`, `_workspace/conventions/`. Blocker beyond N=3 brands.
+7. **Portfolio orchestrator tier**, 5th level, `portfolio-*` skills with subagent fan-out.
+8. **Canonical schemas + extension**, minimal core (offer, creative, creator, mechanic) + `_extra` brand-specific field for portfolio queries.
+9. **Learning promotion mechanism**, `promote-learning` skill : local brand learning → `_workspace/conventions/` versioned.
+10. **Events.jsonl enrichment**, guardrail_block, skill_version_hash, perf_snapshot, profile_edit structured events.
 
-### P2 — Observability + query/action layers
+### P2 · Observability + query/action layers
 
-11. **Query-library skill** — read Layer 2 with filters (top, by angle, by owner, temporal).
-12. **Recommend-action skill** — post-analysis decision layer (cut/refresh/scale/kill).
-13. **Compare-ads pairwise skill** — causal diff between 2 ads.
-14. **Dimensional rollups** — angle_stats / creator_stats / offer_type_stats materialized tables.
-15. **Standard modifier params** — `--fields`, `--skip-gate`, `--batch`, `--dry-run` on all skills.
+11. **Query-library skill**, read Layer 2 with filters (top, by angle, by owner, temporal).
+12. **Recommend-action skill**, post-analysis decision layer (cut/refresh/scale/kill).
+13. **Compare-ads pairwise skill**, causal diff between 2 ads.
+14. **Dimensional rollups**, angle_stats / creator_stats / offer_type_stats materialized tables.
+15. **Standard modifier params**, `--fields`, `--skip-gate`, `--batch`, `--dry-run` on all skills.
 
-### P3 — Scope expansion (lifecycle pillar)
+### P3 · Scope expansion (lifecycle pillar)
 
-16. **LP decomposition** — `lp_decompositions` mirroring `ad_decompositions`.
-17. **Email sequences** — `email_templates`, `email_sequences`, `customer_journeys` entities.
-18. **Test matrices entity** — log hypothesis/result for feedback loop.
-19. **Media plans entity** — `channel_benchmarks`, `launch_phases` templates.
-20. **Client deliverables** — structured output schema + `client_profile.comms_style`.
+16. **LP decomposition**, `lp_decompositions` mirroring `ad_decompositions`.
+17. **Email sequences**, `email_templates`, `email_sequences`, `customer_journeys` entities.
+18. **Test matrices entity**, log hypothesis/result for feedback loop.
+19. **Media plans entity**, `channel_benchmarks`, `launch_phases` templates.
+20. **Client deliverables**, structured output schema + `client_profile.comms_style`.
 
 ---
 
@@ -178,12 +178,12 @@ decompose-ad tags dimensions (angle, hook, creator, offer_type) but **nothing ag
 | D2 | Orchestration primitives | Ad-hoc per orchestrator / central doc + helpers / framework | Central doc `orchestration-patterns.md` + optional helpers |
 | D3 | `_workspace/` layer | Skip V1 / scaffold ready V1 / later | Scaffold empty V1 structure, populate as needed |
 | D4 | Layer 3 transforms | Primitives / sub-skills / internal | Primitives (pure functions) |
-| D5 | Core entity additions | Ship 5 at once / incremental / per need | Incremental (brand_voice_axes first — touches all skills) |
+| D5 | Core entity additions | Ship 5 at once / incremental / per need | Incremental (brand_voice_axes first, touches all skills) |
 | D6 | Portfolio orchestrator tier | New level / reuse existing orch with flag | New level `type: portfolio-orchestrator` explicit |
 
 ---
 
-## Annex — 50 scenarios condensed
+## Annex · 50 scenarios condensed
 
 ### Day-to-day (10)
 Weekly creative audit → orchestrator `audit-creatives` ✓ | Brief 5 ads on sleep angle → gap `brief-writer` missing | Import 12 competitor screenshots → bulk contract to define | Compare hooks us/Kara/competitor → `snapshot-portfolio` missing | Test matrix 3×2×2 → Layer 3 transforms unclear | "Best ad this month" → `query-creative-library` missing | Prep client review → mode param internal/client | Ad works A flops B → `compare-ads` missing | Onboard new brand → rename owner-agnostic | Fatigue check → sub invocable direct missing.

@@ -1,6 +1,6 @@
-# Skill Authoring Discipline (SAD) — Operating Doctrine
+# Skill Authoring Discipline (SAD) · Operating Doctrine
 
-> Working draft — R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` in Release mode. **SAD is the meta-discipline above SED + CMR.** It governs how skills consuming the substrate (SED) and the production mechanism (CMR) are created, evolve, compose, and fail safely. Without SAD, skill authors re-invent gates session-to-session, doctrines drift in the absence of governance, and the system depends on the maintainer's mental arbitration to stay coherent.
+> Working draft, R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` in Release mode. **SAD is the meta-discipline above SED + CMR.** It governs how skills consuming the substrate (SED) and the production mechanism (CMR) are created, evolve, compose, and fail safely. Without SAD, skill authors re-invent gates session-to-session, doctrines drift in the absence of governance, and the system depends on the maintainer's mental arbitration to stay coherent.
 
 ---
 
@@ -12,7 +12,7 @@ Every skill PhantomOS ships obeys an implicit contract: it declares what kind of
 
 SAD names the contract. It absorbs the cartography of skill authoring (`skill-builder-cartography.md`), the creation protocol with its graduation matrix (`skill-creation-protocol.md`), the red-team posture for skill design (`skill-architecture-redteam.md`), the resource discovery pattern (`skill-resource-discovery.md`), the SOP-to-skill conversion methodology (`sop-skill-conversion.md`), and the skill taxonomy + model routing rules (`patterns.md`). It adds three rules previously implicit: **frontmatter triad** (CMR-compliance machine-verifiable), **Skill Composition Contract** (how skills chain stably), and **Failure doctrine** (what happens when a skill violates its contract at runtime).
 
-It also absorbs as a sub-corpus the system-level concerns that govern *the workspace as it lives* — hooks, Build vs Release, updates, provider-agnostic dimension. These touch every skill but are not skill-internal ; they are the lifecycle envelope around skills.
+It also absorbs as a sub-corpus the system-level concerns that govern *the workspace as it lives*, hooks, Build vs Release, updates, provider-agnostic dimension. These touch every skill but are not skill-internal ; they are the lifecycle envelope around skills.
 
 ---
 
@@ -32,33 +32,33 @@ SAD fixes all three: by codifying authoring rules, by formalizing composition co
 
 SAD operates at three layers:
 
-**Layer 1 — Single skill authoring.** What makes one skill well-formed. Frontmatter declarations, type taxonomy (producer / curator / capturer / orchestrator / navigator / builder / shared), CMR-compliance binary, hard rules, persistence pattern, model routing.
+**Layer 1 · Single skill authoring.** What makes one skill well-formed. Frontmatter declarations, type taxonomy (producer / curator / capturer / orchestrator / navigator / builder / shared), CMR-compliance binary, hard rules, persistence pattern, model routing.
 
-**Layer 2 — Skill composition.** How skills chain reliably. `consumes:` declaration, output contract for downstream consumers, orchestrator patterns, ticket lifecycle for long deliverables.
+**Layer 2 · Skill composition.** How skills chain reliably. `consumes:` declaration, output contract for downstream consumers, orchestrator patterns, ticket lifecycle for long deliverables.
 
-**Layer 3 — System lifecycle (sub-corpus).** How the whole skill ecosystem evolves over time. Hooks, Build/Release governance, updates mechanism, provider-agnostic dimension, deprecation paths.
+**Layer 3 · System lifecycle (sub-corpus).** How the whole skill ecosystem evolves over time. Hooks, Build/Release governance, updates mechanism, provider-agnostic dimension, deprecation paths.
 
 The doctrine is layered because the answers differ at each layer. *"Should this be a skill?"* is layer 1. *"Should this skill chain into that one?"* is layer 2. *"Should this hook fire on every workspace mutation or only some?"* is layer 3.
 
 ---
 
-## 4. Minimum anatomy — what makes a skill SAD-compliant
+## 4. Minimum anatomy · what makes a skill SAD-compliant
 
 A skill satisfies SAD if and only if it carries:
 
 | # | Invariant | Why it is load-bearing |
 |---|---|---|
 | 1 | **`type:` declared** in frontmatter, valid taxonomy member (producer / curator / capturer / orchestrator / navigator / builder / shared). | Type drives default model, subagent_safe, permissions baseline. Type-missing skills are refused by `validate-resources`. |
-| 2 | **CMR-compliance frontmatter triad** — `reasoning_pattern: matrix-driven` (or `null` for explicit no-matrix), `matrix_mode: coding | generating | pipeline | hybrid` (when matrix-driven), `consumes: [{path, min_version}]`. | Makes CMR-compliance machine-verifiable. Skills without `reasoning_pattern` declared fail the SAD check. |
-| 2bis | **Isolation scope declared** (v2.37+) — `isolation_scope: brand_only | cross_brand_with_gate | workspace_global`. Default `brand_only` if absent (auto-applied + warning). `cross_brand_with_gate` requires explicit AskUserQuestion gate documented in Step prose. `workspace_global` reserved for infrastructure skills (validate-resources, hygiene-audit, build-manifest) and requires justification in description. Full doctrine `docs/system/brand-isolation-discipline.md`. | Empêche cross-contamination silencieuse data multi-brand (red team finding A7). Critique en context agency multi-clients. |
-| 2ter | **Prerequisites declared** (v2.37 optional, v2.38+ recommended, v2.39+ required for `producer` / `orchestrator`) — `prerequisites: []` array. Each entry declares `field` (snake_case path), `level` (L1 / L2 / L3), and level-specific keys (`auto_pull` + `freshness_ttl_days` for L1, `options[]` for L2, `fallback` + `confidence_default` for L3). Validated against `resources/schemas/skill-prerequisites.schema.json`. Each `field` MUST be referenced in Step 0bis prose (drift frontmatter ↔ Step 0bis = MAJOR finding). Full doctrine `docs/system/dependency-resolution-protocol.md` (DRGFP). | Canonise gap-filling au Step 0bis. Empêche silent corruption (L1 sans freshness), ask fatigue (L2 cumul), output flou (L3 sans audit trail). Couplé confidence-propagation v2.37. Backward compat : skills sans `prerequisites` field continuent à valider en v2.38. |
+| 2 | **CMR-compliance frontmatter triad**, `reasoning_pattern: matrix-driven` (or `null` for explicit no-matrix), `matrix_mode: coding | generating | pipeline | hybrid` (when matrix-driven), `consumes: [{path, min_version}]`. | Makes CMR-compliance machine-verifiable. Skills without `reasoning_pattern` declared fail the SAD check. |
+| 2bis | **Isolation scope declared** (v2.37+), `isolation_scope: brand_only | cross_brand_with_gate | workspace_global`. Default `brand_only` if absent (auto-applied + warning). `cross_brand_with_gate` requires explicit AskUserQuestion gate documented in Step prose. `workspace_global` reserved for infrastructure skills (validate-resources, hygiene-audit, build-manifest) and requires justification in description. Full doctrine `docs/system/brand-isolation-discipline.md`. | Empêche cross-contamination silencieuse data multi-brand (red team finding A7). Critique en context agency multi-clients. |
+| 2ter | **Prerequisites declared** (v2.37 optional, v2.38+ recommended, v2.39+ required for `producer` / `orchestrator`), `prerequisites: []` array. Each entry declares `field` (snake_case path), `level` (L1 / L2 / L3), and level-specific keys (`auto_pull` + `freshness_ttl_days` for L1, `options[]` for L2, `fallback` + `confidence_default` for L3). Validated against `resources/schemas/skill-prerequisites.schema.json`. Each `field` MUST be referenced in Step 0bis prose (drift frontmatter ↔ Step 0bis = MAJOR finding). Full doctrine `docs/system/dependency-resolution-protocol.md` (DRGFP). | Canonise gap-filling au Step 0bis. Empêche silent corruption (L1 sans freshness), ask fatigue (L2 cumul), output flou (L3 sans audit trail). Couplé confidence-propagation v2.37. Backward compat : skills sans `prerequisites` field continuent à valider en v2.38. |
 | 3 | **Disambiguation declared** when triggers overlap with sibling skills. `disambiguates_against: {skill_name: routing_condition}` block in frontmatter. | When 2+ skills match an operator intent, the manifest entry's `disambiguates_against` resolves the routing. Without it, the agent guesses. |
 | 4 | **Hard rules numbered and explicit.** Each Hard Rule is a one-line, refusable invariant ("audit ≠ rewrite", "verbatim anchor required per cell", "score never exposed"). | Implicit rules drift. Numbered rules are auditable, refusable by hooks, traceable to violations. |
 | 5 | **Persistence path declared** when the skill writes artifacts. `Persistence: brands/{slug}/audits/{date}-{id}.md` or equivalent. | Operators expect to find what was produced. Skills that write nowhere or to ad-hoc paths break the workflow. |
-| 6 | **Operator-facing language** — no doctrine acronyms (CI / SED / CMR / SAD / PTD), no internal jargon (`field_path`, `_field_types`, `mode=proposed`), no path leaks except for legitimate references. | Per CI surface contract. Acronym leak in operator output = violation. |
+| 6 | **Operator-facing language**, no doctrine acronyms (CI / SED / CMR / SAD / PTD), no internal jargon (`field_path`, `_field_types`, `mode=proposed`), no path leaks except for legitimate references. | Per CI surface contract. Acronym leak in operator output = violation. |
 | 7 | **`extend_before_create` honored.** New skill author confirms (in commit message or capture-learning entry) that no existing skill could be extended (new mode, new phase, conditional input) before creating a sibling. | Sibling skills duplicate gate logic and fragment operator mental model. Pattern validated S31 (`integrate-variable` rejected for `scaffold-extension` dual-mode). |
-| 8 | **Output declared** — what the skill returns to the agent vs writes to disk. Layer A (audit trace) vs Layer B (operator output) separation explicit when the skill is matrix-driven. | Without explicit output declaration, the agent guesses at consumption. Downstream skills break. |
-| 9 | **Failure mode declared** — what happens when a Hard Rule is violated at runtime (refuse, fall back, surface to operator, route to `capture-learning`). | The default is silent failure. Explicit failure mode prevents that. |
+| 8 | **Output declared**, what the skill returns to the agent vs writes to disk. Layer A (audit trace) vs Layer B (operator output) separation explicit when the skill is matrix-driven. | Without explicit output declaration, the agent guesses at consumption. Downstream skills break. |
+| 9 | **Failure mode declared**, what happens when a Hard Rule is violated at runtime (refuse, fall back, surface to operator, route to `capture-learning`). | The default is silent failure. Explicit failure mode prevents that. |
 | 10 | **`recommended_model` + `subagent_safe`** declared. Routing matrix per `patterns.md § Model Routing`. | Skills run on the wrong model produce wrong-cardinality outputs. Subagent-unsafe skills launched in subagents corrupt state. Both must be machine-checkable. |
 
 ---
@@ -67,21 +67,21 @@ A skill satisfies SAD if and only if it carries:
 
 When skills chain (orchestrator → sub-skill, producer → capturer, paid-angles → copy-brief → analyze-copy), the composition is fragile by default. SAD codifies what makes chains stable.
 
-**5.1 — `consumes:` declaration mandatory.** Every skill that reads from another skill's output, or from a canon file, declares the source path and minimum compatible version : `consumes: [{path: "shared-resources/copywriting-canon/frameworks/angles-biases-matrix.md", min_version: "1.0.0"}]`. A canon major version bump triggers a re-test list of consumer skills, surfaced in the upgrade flow.
+**5.1 · `consumes:` declaration mandatory.** Every skill that reads from another skill's output, or from a canon file, declares the source path and minimum compatible version : `consumes: [{path: "shared-resources/copywriting-canon/frameworks/angles-biases-matrix.md", min_version: "1.0.0"}]`. A canon major version bump triggers a re-test list of consumer skills, surfaced in the upgrade flow.
 
-**5.2 — Output contract stable.** A producer skill declares its output schema (Layer B operator output) and treats it as a public interface. Breaking changes require a major version bump and migration path for consumers.
+**5.2 · Output contract stable.** A producer skill declares its output schema (Layer B operator output) and treats it as a public interface. Breaking changes require a major version bump and migration path for consumers.
 
-**5.3 — Orchestrator patterns.** Four canonical orchestration patterns (named in `skill-architecture-redteam.md`):
-- *Sequential pipe* — A → B → C, each consuming the prior. Default for chain-style production.
-- *Fan-out* — A produces N inputs, B…M run in parallel on each. Used for multi-audience exploration.
-- *Batch aggregate* — N independent runs collapsed into a single synthesis. Used for cross-brand learning.
-- *Conditional branch* — A produces a routing signal, B *or* C runs based on it. Used for skill disambiguation flows.
+**5.3 · Orchestrator patterns.** Four canonical orchestration patterns (named in `skill-architecture-redteam.md`):
+- *Sequential pipe* · A → B → C, each consuming the prior. Default for chain-style production.
+- *Fan-out* · A produces N inputs, B…M run in parallel on each. Used for multi-audience exploration.
+- *Batch aggregate* · N independent runs collapsed into a single synthesis. Used for cross-brand learning.
+- *Conditional branch* · A produces a routing signal, B *or* C runs based on it. Used for skill disambiguation flows.
 
 Each pattern has its own composition rules, declared in the orchestrator's SKILL.md.
 
-**5.4 — Ticket lifecycle for long deliverables.** Any skill whose execution exceeds ~10 min, spans sessions, orchestrates 2+ sub-skills, or produces a client-facing deliverable opens a ticket in `brands/{slug}/tickets/`. Operator interacts via `where is ticket X` / `pause` / `resume` / `close`. Skill is responsible for emitting events the ticket consumes.
+**5.4 · Ticket lifecycle for long deliverables.** Any skill whose execution exceeds ~10 min, spans sessions, orchestrates 2+ sub-skills, or produces a client-facing deliverable opens a ticket in `brands/{slug}/tickets/`. Operator interacts via `where is ticket X` / `pause` / `resume` / `close`. Skill is responsible for emitting events the ticket consumes.
 
-**5.5 — Backwards compatibility.** A skill chain that was working continues to work after either skill in the chain is upgraded — unless the upgrade is a major version bump, in which case the migration path is explicit.
+**5.5 · Backwards compatibility.** A skill chain that was working continues to work after either skill in the chain is upgraded, unless the upgrade is a major version bump, in which case the migration path is explicit.
 
 ---
 
@@ -89,19 +89,19 @@ Each pattern has its own composition rules, declared in the orchestrator's SKILL
 
 **When applicable.** Any skill of `type: producer | curator` whose intent touches a domain that has an atlas canon (copywriting today, paid / brand / offer / funnel / cro / email / analytics / mining once shipped). The contract is bidirectional : the skill CONSUMES canon at production time, and IF it captures outcomes, it FEEDS canon via `validations[]` promotion. Skipping either side breaks the compound (atlas vivant) and re-introduces the drift the atlas was built to remove.
 
-**5bis.1 — Consume pattern (mandatory if the skill touches canon).** The skill loads relevant canon layers in Step 0bis, before production :
+**5bis.1 · Consume pattern (mandatory if the skill touches canon).** The skill loads relevant canon layers in Step 0bis, before production :
 1. Identify useful canon layers (frameworks, hooks, archétypes-voix, niveaux-schwartz, etc. for copy ; equivalent layers for other atlases when they ship).
 2. Load `resources/canon/{atlas}/{layer}/*.json` filtered by `when_works`, `when_avoid`, `combines_with`, against the runtime context (audience profile, brand voice, Schwartz stage, format).
 3. Hold the selected canon ids in working memory.
 4. At production time, tag the output with the selected `canon_*_id` in the LIGNAGE block (Layer B operator output). Lignage absent = output non-traçable = bug.
 
-**5bis.2 — Feed pattern (mandatory if the skill captures outcomes).** When the skill captures an outcome (perf media signal, operator validation, explicit correction), it proposes a promotion canon :
+**5bis.2 · Feed pattern (mandatory if the skill captures outcomes).** When the skill captures an outcome (perf media signal, operator validation, explicit correction), it proposes a promotion canon :
 1. Detect which canon tool was consumed in production (read the lignage on the output entity).
 2. If the outcome is a strong signal (positive or negative), draft an entry into `resources/canon/{atlas}/{layer}/{tool}.json#/validations[]` with brand, session, outcome.
 3. Operator gate explicit before write. Jamais auto-promote.
 4. Append-only. Historical validations persist, dated, never rewritten.
 
-**5bis.3 — Anti-patterns.**
+**5bis.3 · Anti-patterns.**
 
 | Symptôme | Fix |
 |---|---|
@@ -111,7 +111,7 @@ Each pattern has its own composition rules, declared in the orchestrator's SKILL
 | Hardcoding a canon tool in skill code instead of reading from canon | Convention-guard refuses hardcoded canon constants in `.skills/skills/**` |
 | Reading `combines_with` without checking `when_avoid` | Combination shipped contradictory ; lint to add |
 
-**5bis.4 — Reference implementations (v2.27).**
+**5bis.4 · Reference implementations (v2.27).**
 - `produce-paid-angles` : Step 0bis canon load (frameworks, hooks, angles, niveaux-schwartz, archétypes-voix) + Step 11 LIGNAGE output + persistance brand-side `brands/{slug}/angles/{ANG-N}.json`.
 - `produce-copy-brief` : reads source angle lignage, prepends LIGNAGE block, consumes archétypes-voix + objections + leads + formats-livrables.
 - `mine-voc` : Step 3 4-lens coding with additive canon tagging on every Layer A verbatim (`canon_schwartz_conscience_id`, `canon_emotion_id`, `canon_objection_pattern_id`).
@@ -121,42 +121,42 @@ Full atlas doctrine : `docs/system/atlas-canon-copy.md`. Decision lineage : `dec
 
 ---
 
-## 6. Failure doctrine — what happens when a Hard Rule is violated at runtime
+## 6. Failure doctrine · what happens when a Hard Rule is violated at runtime
 
 Doctrines that lack a failure mode rely on the maintainer's review to catch violations. At scale (20+ operators, hundreds of skill invocations per day), this breaks.
 
-**6.1 — Invariant-violation hook.** A new hook (`invariant-violation-detector.py`) inspects skill outputs at end-of-turn. It looks for canonical violations:
+**6.1 · Invariant-violation hook.** A new hook (`invariant-violation-detector.py`) inspects skill outputs at end-of-turn. It looks for canonical violations:
 - Score leakage (numbers like `87/100` or `density: 4.2/5` in operator-facing output)
 - Modulator missing (multi-block output without `voice_consistency_cross_block` check)
 - Verbatim anchor missing (generating mode without `voc_id` per cell)
 - Frontmatter CMR incomplete (matrix-driven skill without `matrix_mode` or `consumes`)
 - Persona drift (multi-block output where persona varies > 1 step)
 
-**6.2 — Routing on violation.**
+**6.2 · Routing on violation.**
 - *Mechanical violation* (frontmatter missing, schema invalid) → refuse, surface to operator with redirect.
 - *Semantic violation* (style drift, score leak) → log as `capture-learning` candidate, surface to the operator as flag, do not block operator output.
 
-**6.3 — Cumulative pattern detection.** When the same skill produces ≥3 violations of the same type within a 7-day window, the violation graduates to a *pattern* and is auto-routed to `correct-skill` [backlog, not shipped] for hard rule integration.
+**6.3 · Cumulative pattern detection.** When the same skill produces ≥3 violations of the same type within a 7-day window, the violation graduates to a *pattern* and is auto-routed to `correct-skill` [backlog, not shipped] for hard rule integration.
 
-**6.4 — Operator transparency.** Operator sees only relevant flags ("audit-pass score plafonné à 8/10 — copy needs market validation before promoted to 9-10"). Internal mechanics (which rule, which violation count, which routing) stay in Layer A trace.
+**6.4 · Operator transparency.** Operator sees only relevant flags ("audit-pass score plafonné à 8/10, copy needs market validation before promoted to 9-10"). Internal mechanics (which rule, which violation count, which routing) stay in Layer A trace.
 
 ---
 
-## 7. Sub-corpus — System Lifecycle & Enforcement
+## 7. Sub-corpus · System Lifecycle & Enforcement
 
 The temporal dimension of the skill ecosystem. How the whole system evolves and stays consistent.
 
-**7.1 — Hooks transverses.** Six active hooks today (mutation-guard, convention-guard, budget-warn, checkpoint-resolver, post-write-flush, turn-end-audit) + invariant-violation-detector to add. Each hook is mechanical (refuses an invalid state ; never debates the model). Hooks are versioned semver, manifested in `.claude/hooks/_manifest.json`.
+**7.1 · Hooks transverses.** Six active hooks today (mutation-guard, convention-guard, budget-warn, checkpoint-resolver, post-write-flush, turn-end-audit) + invariant-violation-detector to add. Each hook is mechanical (refuses an invalid state ; never debates the model). Hooks are versioned semver, manifested in `.claude/hooks/_manifest.json`.
 
-**7.2 — Build vs Release governance.** Two strict modes (codified in project `CLAUDE.md`). Build mode = R&D, touches `research/`, `sandbox/`, `schemas/`, project docs. Release mode = ships to `workspace-template/`, requires manifest, version bump, sync to derived workspaces. Cross-mode commits are refused.
+**7.2 · Build vs Release governance.** Two strict modes (codified in project `CLAUDE.md`). Build mode = R&D, touches `research/`, `sandbox/`, `schemas/`, project docs. Release mode = ships to `workspace-template/`, requires manifest, version bump, sync to derived workspaces. Cross-mode commits are refused.
 
-**7.3 — Update mechanism.** `_version.json` per workspace, `docs/releases/{version}-manifest.json` per release, `update-workspace` orchestrator skill, `docs/system/updates.md` doctrine. Type taxonomy: doc / skill-added / renamed / removed / schema-bump / infra / breaking. Migration scripts mandatory for breaking.
+**7.3 · Update mechanism.** `_version.json` per workspace, `docs/releases/{version}-manifest.json` per release, `update-workspace` orchestrator skill, `docs/system/updates.md` doctrine. Type taxonomy: doc / skill-added / renamed / removed / schema-bump / infra / breaking. Migration scripts mandatory for breaking.
 
-**7.4 — Provider-agnostic dimension.** Skills declare `recommended_model` per provider class (Sonnet / Opus / Gemini / Codex). When provider-agnostic full doctrine ships, model-class mapping is centralized. Today, default Anthropic class ; other providers fall back gracefully.
+**7.4 · Provider-agnostic dimension.** Skills declare `recommended_model` per provider class (Sonnet / Opus / Gemini / Codex). When provider-agnostic full doctrine ships, model-class mapping is centralized. Today, default Anthropic class ; other providers fall back gracefully.
 
-**7.5 — Catalogue size hygiene.** When the skill catalogue exceeds 60 skills, the `?` shortcut response shifts from listing to *recommendation* (one skill recommended in context, not a menu). Threshold codified to anticipate operator overwhelm.
+**7.5 · Catalogue size hygiene.** When the skill catalogue exceeds 60 skills, the `?` shortcut response shifts from listing to *recommendation* (one skill recommended in context, not a menu). Threshold codified to anticipate operator overwhelm.
 
-**7.6 — Deprecation path.** A skill marked for retirement enters a `[DEPRECATED Sxx]` window of ≥30 days, during which consumers must migrate. After window, removal. Refusal of new consumer adoption during deprecation window is enforced by the manifest builder.
+**7.6 · Deprecation path.** A skill marked for retirement enters a `[DEPRECATED Sxx]` window of ≥30 days, during which consumers must migrate. After window, removal. Refusal of new consumer adoption during deprecation window is enforced by the manifest builder.
 
 ---
 
@@ -173,11 +173,11 @@ The temporal dimension of the skill ecosystem. How the whole system evolves and 
 | **Skill type missing** | Skill author forgets to declare `type:`. | `validate-resources` refuses CRITICAL. |
 | **Sub-skill exposed as orchestrator** | A sub-skill with `subagent_safe: false` accidentally invoked at top level. | `recommended_model` + `subagent_safe` matrix in `patterns.md § Model Routing`. |
 | **Build/Release cross-contamination** | Commit touches both `research/` and `workspace-template/`. | Pre-commit hook refuses ; project CLAUDE.md enforces. |
-| **Deprecation without window** | Skill removed without `[DEPRECATED]` window, consumers break overnight. | Deprecation governance — minimum 30-day window. |
+| **Deprecation without window** | Skill removed without `[DEPRECATED]` window, consumers break overnight. | Deprecation governance, minimum 30-day window. |
 
 ---
 
-## 9. Decision-aid — when authoring a new skill
+## 9. Decision-aid · when authoring a new skill
 
 The skill author asks, in this order:
 
@@ -196,22 +196,22 @@ The skill author asks, in this order:
 
 ## 10. Cross-references
 
-- **`contextual-intelligence.md`** — master doctrine. SAD operationalizes the surface contract of CI for every skill that ships.
-- **`canonical-matrix-reasoning-2026-04-26.md`** — CMR. SAD's CMR-compliance frontmatter triad is the machine-verifiable bridge between SAD authoring and CMR invariants.
-- **`schema-encoding-discipline-2026-04-26.md`** — SED. Skills must respect SED at the substrate layer (mutation gate, sourcing tags, triangulation, layer separation).
-- **`provenance-trust-discipline-scope-2026-04-26.md`** *(R&D zone, lives in `research/` until promotion triggers hit)* — PTD scope. When PTD ships full, SAD will extend with third-party authoring rules (signing, provenance, sandbox).
-- **`doctrine-governance-2026-04-26.md`** — meta-process for amending SAD itself.
-- **`skill-builder-cartography.md`** — pre-existing input. Domain vars → schema → code mapping.
-- **`skill-creation-protocol.md`** — pre-existing input. Graduation matrix, gates, extend-first.
-- **`skill-architecture-redteam.md`** — pre-existing input. Anti-patterns, design invariants.
-- **`skill-resource-discovery.md`** — pre-existing input. FTS5 runtime + priority rules.
-- **`sop-skill-conversion.md`** — pre-existing input. Methodology vs execution separation.
-- **`patterns.md`** — pre-existing input. Skill taxonomy + Model routing.
-- **`skill-authoring-toolkit.md`** — optional companion. Names the prompt engineering patterns that the doctrines apply implicitly (dense prompting principles, magic keywords curated, interaction patterns, upstream questioning). Levers not constraints. Cross-ref to `operator-kb/02-ai/prompting/` for full library.
-- **`extending.md`** — extension layer rules ; SED chapter that SAD references for custom skills.
-- **`atlas-canon-copy.md`** — atlas canon copy doctrine (11 layers, schema `canon-tool/1.0`, bidirectional contract). Referenced by SAD § 5bis. Decision lineage D#382 D#383 D#391.
-- **`brand-isolation-discipline.md`** — doctrine isolation v2.37+. Frontmatter `isolation_scope` enum [brand_only, cross_brand_with_gate, workspace_global]. Default `brand_only` enforced. Empêche cross-contamination multi-brand (red team finding A7).
-- **Hooks** — `mutation-guard`, `convention-guard`, `budget-warn`, `checkpoint-resolver`, `post-write-flush`, `turn-end-audit`, `invariant-violation-detector` (to add).
+- **`contextual-intelligence.md`** · master doctrine. SAD operationalizes the surface contract of CI for every skill that ships.
+- **`canonical-matrix-reasoning-2026-04-26.md`** · CMR. SAD's CMR-compliance frontmatter triad is the machine-verifiable bridge between SAD authoring and CMR invariants.
+- **`schema-encoding-discipline-2026-04-26.md`** · SED. Skills must respect SED at the substrate layer (mutation gate, sourcing tags, triangulation, layer separation).
+- **`provenance-trust-discipline-scope-2026-04-26.md`** *(R&D zone, lives in `research/` until promotion triggers hit)* · PTD scope. When PTD ships full, SAD will extend with third-party authoring rules (signing, provenance, sandbox).
+- **`doctrine-governance-2026-04-26.md`** · meta-process for amending SAD itself.
+- **`skill-builder-cartography.md`** · pre-existing input. Domain vars → schema → code mapping.
+- **`skill-creation-protocol.md`** · pre-existing input. Graduation matrix, gates, extend-first.
+- **`skill-architecture-redteam.md`** · pre-existing input. Anti-patterns, design invariants.
+- **`skill-resource-discovery.md`** · pre-existing input. FTS5 runtime + priority rules.
+- **`sop-skill-conversion.md`** · pre-existing input. Methodology vs execution separation.
+- **`patterns.md`** · pre-existing input. Skill taxonomy + Model routing.
+- **`skill-authoring-toolkit.md`** · optional companion. Names the prompt engineering patterns that the doctrines apply implicitly (dense prompting principles, magic keywords curated, interaction patterns, upstream questioning). Levers not constraints. Cross-ref to `operator-kb/02-ai/prompting/` for full library.
+- **`extending.md`** · extension layer rules ; SED chapter that SAD references for custom skills.
+- **`atlas-canon-copy.md`** · atlas canon copy doctrine (11 layers, schema `canon-tool/1.0`, bidirectional contract). Referenced by SAD § 5bis. Decision lineage D#382 D#383 D#391.
+- **`brand-isolation-discipline.md`** · doctrine isolation v2.37+. Frontmatter `isolation_scope` enum [brand_only, cross_brand_with_gate, workspace_global]. Default `brand_only` enforced. Empêche cross-contamination multi-brand (red team finding A7).
+- **Hooks** · `mutation-guard`, `convention-guard`, `budget-warn`, `checkpoint-resolver`, `post-write-flush`, `turn-end-audit`, `invariant-violation-detector` (to add).
 
 ---
 
@@ -235,15 +235,15 @@ Cross-ref canon · `docs/system/operational-system-discipline.md` v2.71 (doctrin
 
 1. **Failure doctrine cumulative threshold.** "≥3 violations of the same type within 7 days = pattern" is a working rule, not validated. To be tuned after first month of invariant-violation-detector live.
 
-2. **Sub-corpus System Lifecycle scope.** Hooks, Build/Release, updates, provider-agnostic — all genuinely belong here, but the sub-corpus risks growing into its own doctrine. Boundary: anything that touches the workspace as it *lives* over time = SAD lifecycle. Anything brand-side temporal = SED memory & observability. Boundary may need re-arbitration.
+2. **Sub-corpus System Lifecycle scope.** Hooks, Build/Release, updates, provider-agnostic, all genuinely belong here, but the sub-corpus risks growing into its own doctrine. Boundary: anything that touches the workspace as it *lives* over time = SAD lifecycle. Anything brand-side temporal = SED memory & observability. Boundary may need re-arbitration.
 
-3. **Third-party skill authoring.** When community contributions ship (cf PTD scope), SAD will need a "third-party authoring" section — signing, provenance, sandbox canon namespace. Drafted in PTD scope today, will move to SAD when PTD graduates.
+3. **Third-party skill authoring.** When community contributions ship (cf PTD scope), SAD will need a "third-party authoring" section, signing, provenance, sandbox canon namespace. Drafted in PTD scope today, will move to SAD when PTD graduates.
 
 4. **Catalogue threshold for `?` shortcut.** "60 skills" is approximate. Real threshold is when operators report overwhelm. To be measured, not declared.
 
 5. **Skill Composition Contract versioning.** Today implicit. Should each producer skill version its output schema explicitly (so consumers can target a specific version) ? Adds overhead. Working rule: version the canon, version the skill ; output schema follows the skill version. Re-arbitrate if breaking changes recur.
 
-6. **Failure doctrine + CI semantic-trust tension.** CI says "trust the model on semantic, in-session memory fixes". Failure doctrine says "detect semantic violations and route to capture-learning". These are not in conflict (semantic violations CAN be detected mechanically — score leakage, missing modulator are syntactically detectable), but the boundary needs articulation.
+6. **Failure doctrine + CI semantic-trust tension.** CI says "trust the model on semantic, in-session memory fixes". Failure doctrine says "detect semantic violations and route to capture-learning". These are not in conflict (semantic violations CAN be detected mechanically, score leakage, missing modulator are syntactically detectable), but the boundary needs articulation.
 
 ---
 
@@ -255,10 +255,10 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 
 ## 12. Status
 
-- **Draft v0.1** — research zone, Build mode, .
-- **Promotion criterion** — to be reviewed by the maintainer, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` once cross-references with CI / SED / CMR / PTD scope are validated and the 5 pre-existing skill-* docs are confirmed consolidated as referenced inputs (not deprecated, kept as detail references).
-- **First applications** — frontmatter triad pass on 6 CMR-adjacent skills, mass `reasoning_pattern: null` declaration on 49 non-matrix skills, invariant-violation-detector hook draft, catalogue size measurement.
+- **Draft v0.1** · research zone, Build mode, .
+- **Promotion criterion** · to be reviewed by the maintainer, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` once cross-references with CI / SED / CMR / PTD scope are validated and the 5 pre-existing skill-* docs are confirmed consolidated as referenced inputs (not deprecated, kept as detail references).
+- **First applications** · frontmatter triad pass on 6 CMR-adjacent skills, mass `reasoning_pattern: null` declaration on 49 non-matrix skills, invariant-violation-detector hook draft, catalogue size measurement.
 
 ---
 
-*Doctrine — consolidates 5 previously-scattered skill-* docs (skill-builder-cartography, skill-creation-protocol, skill-architecture-redteam, skill-resource-discovery, sop-skill-conversion) + patterns.md skill sections + sub-corpus System Lifecycle & Enforcement (hooks, Build/Release, updates, provider-agnostic). Sister to SED, CMR, PTD scope under CI master.*
+*Doctrine · consolidates 5 previously-scattered skill-* docs (skill-builder-cartography, skill-creation-protocol, skill-architecture-redteam, skill-resource-discovery, sop-skill-conversion) + patterns.md skill sections + sub-corpus System Lifecycle & Enforcement (hooks, Build/Release, updates, provider-agnostic). Sister to SED, CMR, PTD scope under CI master.*

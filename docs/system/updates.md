@@ -1,4 +1,4 @@
-# Publishing Updates — Maintainer Doctrine
+# Publishing Updates · Maintainer Doctrine
 
 How to ship a clean PhantomOS update that testers can install without breaking their data.
 
@@ -130,9 +130,9 @@ Every release, in order:
 
 ## Pre-release gate
 
-Before bumping `_version.json` and committing a release, every check below **must pass**. If any fails, you're still in Build mode — go fix it, re-check.
+Before bumping `_version.json` and committing a release, every check below **must pass**. If any fails, you're still in Build mode, go fix it, re-check.
 
-### Gate 1 — Template diff-clean
+### Gate 1 · Template diff-clean
 The `workspace-template/` tree has no references to R&D paths (`sandbox/`, `schemas/` as extended schemas, `research/` at the project-R&D level, `data-layer/`, `shared-resources/` when not promoted). Check:
 
 ```bash
@@ -141,10 +141,10 @@ grep -rE "sandbox/|05-projects/context-engine/(sandbox|schemas|research|data-lay
 
 Zero matches expected. Any match = a Build-mode ref leaked into Release. Remove or rephrase before ship.
 
-### Gate 2 — Every change is in the manifest
+### Gate 2 · Every change is in the manifest
 Run `git diff v{previous}..HEAD -- workspace-template/` and verify every changed file is declared in `docs/releases/{new_version}-manifest.json → changes[]`. Unlisted change = silent behavior change for testers. Either add to manifest with a real `note:` field, or revert.
 
-### Gate 3 — Schema bumps have migration scripts
+### Gate 3 · Schema bumps have migration scripts
 For every `schema-bump` entry in the manifest, the `migration_script` path must exist and be executable. Smoke-test it on `brands/_EXAMPLE/` locally before ship:
 
 ```bash
@@ -153,10 +153,10 @@ python3 operations/migrations/{schema}-v{from}-to-v{to}.py brands/_EXAMPLE/
 
 Migration script missing or failing = release blocked.
 
-### Gate 4 — Breaking changes explicitly confirmed
+### Gate 4 · Breaking changes explicitly confirmed
 If `manifest.breaking == true` or any change has `requires_confirmation: true`, the `notes` field **must** spell out the operator action required. Vague `notes` = testers will either skip the update or brick their workspace.
 
-### Gate 5 — Sync verified
+### Gate 5 · Sync verified
 After commit but before tag:
 
 ```bash
@@ -166,10 +166,10 @@ diff -rq workspace-template/ /Users/{user}/phantomos-test-clean/
 
 Zero diffs expected. Any diff = the sync step was skipped and testers pulling from the clone repos get stale code.
 
-### Gate 6 — CHANGELOG and _version agree
+### Gate 6 · CHANGELOG and _version agree
 `CHANGELOG.md` top entry must match `_version.json → template_version` and `docs/releases/` must contain the corresponding `{version}-manifest.json`. Mismatch = one of the three was forgotten.
 
-### Gate 7 — R&D hygiene check (weekly, not per-release)
+### Gate 7 · R&D hygiene check (weekly, not per-release)
 Run `python3 05-projects/context-engine/hygiene-audit.py`. Parasitic files, top-level orphans, or stale+unreferenced items in the R&D zone won't block the release but should be cleaned before they accumulate.
 
 ---
@@ -178,15 +178,15 @@ Run `python3 05-projects/context-engine/hygiene-audit.py`. Parasitic files, top-
 
 ## Anti-patterns
 
-- **Ambiguous `note:` fields** — "misc fixes" tells the receiver's agent nothing. Be specific: what file, what behavior changed.
-- **Missing migration script on schema-bump** — the receiver cannot infer the transformation. Ship the script or don't bump the schema.
-- **Touching operator data in a non-schema-bump change** — every change type except `schema-bump` must be operator-data-safe by definition.
-- **Chaining multiple breaking changes in one release** — split into separate versions so the operator can confirm each independently.
-- **Renaming a skill without aliases** — existing references (in other skills, docs, awareness) break. Keep at least one release of alias before dropping.
+- **Ambiguous `note:` fields** · "misc fixes" tells the receiver's agent nothing. Be specific: what file, what behavior changed.
+- **Missing migration script on schema-bump** · the receiver cannot infer the transformation. Ship the script or don't bump the schema.
+- **Touching operator data in a non-schema-bump change** · every change type except `schema-bump` must be operator-data-safe by definition.
+- **Chaining multiple breaking changes in one release** · split into separate versions so the operator can confirm each independently.
+- **Renaming a skill without aliases** · existing references (in other skills, docs, awareness) break. Keep at least one release of alias before dropping.
 
 ---
 
-## Bonus — auto-generating the manifest
+## Bonus · auto-generating the manifest
 
 `python3 .skills/build-update-manifest.py {from_version} {to_version}` diffs two git revs of the template and pre-fills the manifest at ~80%. You review and add the schema-bumps and breaking changes manually (the diff cannot infer schema semantics).
 
@@ -196,7 +196,7 @@ Run `python3 05-projects/context-engine/hygiene-audit.py`. Parasitic files, top-
 
 Once a release is tagged, partners running PhantomOS locally need a way to know an update is available and a one-line command to install it. The maintainer choice for v2.10.x:
 
-**Channel** — partners receive a single Slack DM (or email if no Slack) when a release ships. No mailing list, no auto-pull, no broadcast. The maintainer pings each partner directly. Manual but predictable.
+**Channel** · partners receive a single Slack DM (or email if no Slack) when a release ships. No mailing list, no auto-pull, no broadcast. The maintainer pings each partner directly. Manual but predictable.
 
 **Notification template (maintainer side):**
 
@@ -212,22 +212,22 @@ Once a release is tagged, partners running PhantomOS locally need a way to know 
 4. Skill reads `_version.json` (current installed) vs new `_version.json` (target), finds all manifests between, applies each by type, surfaces a plain-language recap. Partner data untouched.
 
 **What the partner does NOT need:**
-- Reading every CHANGELOG entry between their installed version and target — `update-workspace` summarizes
-- Manually running migration scripts — delegated to `migrate-workspace` automatically on schema-bump
-- Worrying about credentials.env or learnings.json — explicitly preserved (see § Template vs operator data above)
+- Reading every CHANGELOG entry between their installed version and target · `update-workspace` summarizes
+- Manually running migration scripts · delegated to `migrate-workspace` automatically on schema-bump
+- Worrying about credentials.env or learnings.json · explicitly preserved (see § Template vs operator data above)
 
 **When a partner skips updates** (e.g. doesn't pull for 6 weeks): the next pull may bridge multiple releases. `update-workspace` handles N-step chained updates by reading all manifests in version order. No manual intermediate step required.
 
-**Auto-update at session start** — out of scope for v2.10.x. Considered, deferred (server infra needed, low ROI vs manual notif on a 5-50 partner cohort).
+**Auto-update at session start** · out of scope for v2.10.x. Considered, deferred (server infra needed, low ROI vs manual notif on a 5-50 partner cohort).
 
 ---
 
 ## Related
 
-- `_version.json` — current template version registry.
-- `docs/releases/` — every release manifest lives here, one file per version.
-- `operations/migrations/` — every schema migration script lives here.
-- `.skills/skills/update-workspace/SKILL.md` — the receiver's installer.
-- `.skills/skills/migrate-workspace/SKILL.md` — delegated schema migration.
-- `operator/installation.json` — partner-local version state (initialized at first install, updated on every successful update-workspace run).
-- `CHANGELOG.md` — human-readable companion to the machine manifests.
+- `_version.json` · current template version registry.
+- `docs/releases/` · every release manifest lives here, one file per version.
+- `operations/migrations/` · every schema migration script lives here.
+- `.skills/skills/update-workspace/SKILL.md` · the receiver's installer.
+- `.skills/skills/migrate-workspace/SKILL.md` · delegated schema migration.
+- `operator/installation.json` · partner-local version state (initialized at first install, updated on every successful update-workspace run).
+- `CHANGELOG.md` · human-readable companion to the machine manifests.

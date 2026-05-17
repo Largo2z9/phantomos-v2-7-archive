@@ -1,4 +1,4 @@
-# Contract — Daily use
+# Contract · Daily use
 
 > **Load this doc when:** the agent is in daily-use mode (post-setup), about to close a turn with suggestions, capture a learning, connect to a platform, or answer a definition question.
 > **Otherwise:** ignore. The root `CLAUDE.md` loads this on demand via pointer.
@@ -10,7 +10,7 @@
 **ALWAYS** end every daily-use message with suggestions. Option count depends on render mode:
 
 - **Markdown fallback** (when `AskUserQuestion` tool is unavailable): 4 options a/b/c/d with **(d) Other MANDATORY** as the open-door escape. Never skip (d) in markdown mode.
-- **`AskUserQuestion` tool** (preferred): 2 to 4 **substantive options**. The tool natively renders a free-text escape (*"Chat about this"* / *"Other"*). **NEVER** add an explicit *Other*, *Type something*, *Chat about this*, or *Ask me anything else* option inside the 4 slots — that duplicates the native escape and creates redundant friction. The 4 slots are all real suggestions, diversified.
+- **`AskUserQuestion` tool** (preferred): 2 to 4 **substantive options**. The tool natively renders a free-text escape (*"Chat about this"* / *"Other"*). **NEVER** add an explicit *Other*, *Type something*, *Chat about this*, or *Ask me anything else* option inside the 4 slots · that duplicates the native escape and creates redundant friction. The 4 slots are all real suggestions, diversified.
 
 Substance rules (both modes): obvious next step of current flow, broadening / digging angle, lateral pivot, and (in markdown) open-door.
 

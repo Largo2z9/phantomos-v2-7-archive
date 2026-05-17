@@ -17,7 +17,7 @@ SOPs are resources (knowledge). Skills are code (execution). The line is clear.
 
 ## The 5 common scenarios
 
-### Scenario A — Operator imports a methodology doc that has no matching skill
+### Scenario A · Operator imports a methodology doc that has no matching skill
 
 **Example** : operator drags in a PDF `"Guide audit landing page - 2026.pdf"` from a client or a past workshop.
 
@@ -30,7 +30,7 @@ SOPs are resources (knowledge). Skills are code (execution). The line is clear.
 
 **Key**: no mini-skill exists yet to execute the checks. The SOP sits as pure knowledge until someone builds skills for it or executes manually.
 
-### Scenario B — Operator wants to turn an existing SOP into an executable skill family
+### Scenario B · Operator wants to turn an existing SOP into an executable skill family
 
 **Example** : operator has `resources/sops/audit-meta-global.md` with 40 checkpoints. Wants the system to actually run them.
 
@@ -45,7 +45,7 @@ SOPs are resources (knowledge). Skills are code (execution). The line is clear.
 
 **Key**: the SOP is the blueprint. Skills are generated FROM the SOP, not the reverse.
 
-### Scenario C — Operator creates a skill that implements a methodology implicitly
+### Scenario C · Operator creates a skill that implements a methodology implicitly
 
 **Example** : operator asks `"crée un skill qui audite nos audiences Meta et me dit si elles sont bien configurées"`.
 
@@ -59,7 +59,7 @@ SOPs are resources (knowledge). Skills are code (execution). The line is clear.
 
 **Key**: even when the operator thinks in terms of "a skill", the underlying methodology is extracted to an SOP if it's multi-step.
 
-### Scenario D — Existing skill needs an SOP (retroactive methodology extraction)
+### Scenario D · Existing skill needs an SOP (retroactive methodology extraction)
 
 **Example** : `snapshot-brand` SKILL.md currently contains both methodology AND execution logic. Operator or maintainer wants to clean the separation.
 
@@ -74,7 +74,7 @@ SOPs are resources (knowledge). Skills are code (execution). The line is clear.
 
 **Key**: bidirectional conversion is supported. Legacy skills that embed methodology can be refactored.
 
-### Scenario E — Orchestrator needs to discover which SOPs are relevant
+### Scenario E · Orchestrator needs to discover which SOPs are relevant
 
 **Example** : operator says *"audit complet sur northsense"*. `audit-global` orchestrator must find all relevant SOPs.
 
@@ -89,7 +89,7 @@ SOPs are resources (knowledge). Skills are code (execution). The line is clear.
 
 ---
 
-## Decision tree — where does this piece of knowledge go?
+## Decision tree · where does this piece of knowledge go?
 
 Operator is about to save something. Apply in order :
 
@@ -125,10 +125,10 @@ Output to operator / disk / report
 
 Rules :
 
-- **Orchestrator never skips the SOP** — if an SOP exists for the use case, the orchestrator reads it. No hardcoded sequences in orchestrator code.
-- **SOP never calls skills directly** — the SOP describes which skill to call; the orchestrator actually calls them. SOPs are passive documents.
-- **Mini-skills never read SOPs** — mini-skills are atomic. They do their job. SOPs live above their concern.
-- **Mini-skills can consult docs** — for "what is a healthy audience" reference, a mini-skill can read from `docs/` or `resources/guides/`.
+- **Orchestrator never skips the SOP** · if an SOP exists for the use case, the orchestrator reads it. No hardcoded sequences in orchestrator code.
+- **SOP never calls skills directly** · the SOP describes which skill to call; the orchestrator actually calls them. SOPs are passive documents.
+- **Mini-skills never read SOPs** · mini-skills are atomic. They do their job. SOPs live above their concern.
+- **Mini-skills can consult docs** · for "what is a healthy audience" reference, a mini-skill can read from `docs/` or `resources/guides/`.
 
 ---
 
@@ -136,29 +136,29 @@ Rules :
 
 SOPs are living documents. Their lifecycle :
 
-1. **Draft** (`status: draft`) — proposed but not validated. Invocable only via explicit operator opt-in.
-2. **Active** (`status: active`) — default. Orchestrators may invoke freely.
-3. **Revision needed** (`status: revision`) — flagged by validate-resources (stale > 180d + no reviews) or by operator. Still usable but surfaced for review.
-4. **Deprecated** (`status: deprecated` + `deprecated_since` + `replaced_by`) — don't invoke. Kept for audit trail and legacy reference.
+1. **Draft** (`status: draft`), proposed but not validated. Invocable only via explicit operator opt-in.
+2. **Active** (`status: active`), default. Orchestrators may invoke freely.
+3. **Revision needed** (`status: revision`), flagged by validate-resources (stale > 180d + no reviews) or by operator. Still usable but surfaced for review.
+4. **Deprecated** (`status: deprecated` + `deprecated_since` + `replaced_by`), don't invoke. Kept for audit trail and legacy reference.
 
-Never delete an SOP — deprecate it. Preserves traceability for decisions that relied on older methodology.
+Never delete an SOP, deprecate it. Preserves traceability for decisions that relied on older methodology.
 
 ---
 
-## Example — `audit-meta-global` end-to-end
+## Example · `audit-meta-global` end-to-end
 
 Reference implementation of the pattern :
 
 - **SOP** : `resources/sops/audit-meta-global.md` (40+ checkpoints in 7 layers, shipped v2.6.17)
-- **Orchestrator** : `.skills/skills/audit-meta-global/SKILL.md` (to build — reads the SOP, iterates checkpoints)
-- **Mini-skills** : `check-pixel-deployment`, `check-capi-deployment`, `check-event-deduplication`, etc. (40+ to build — each atomic)
+- **Orchestrator** : `.skills/skills/audit-meta-global/SKILL.md` (to build · reads the SOP, iterates checkpoints)
+- **Mini-skills** : `check-pixel-deployment`, `check-capi-deployment`, `check-event-deduplication`, etc. (40+ to build · each atomic)
 - **Docs referenced** : `docs/system/skill-builder-cartography.md` (when to scaffold new entity for checkpoints that need custom data)
 
 Build order :
 
-1. SOP ships first (done — see `resources/sops/audit-meta-global.md`).
-2. Orchestrator `audit-meta-global` scaffolded — reads SOP, manages mini-skill fallback when absent.
-3. Mini-skills scaffolded incrementally — P0 checkpoints first (tracking foundations), then P1, then P2/P3.
+1. SOP ships first (done, see `resources/sops/audit-meta-global.md`).
+2. Orchestrator `audit-meta-global` scaffolded, reads SOP, manages mini-skill fallback when absent.
+3. Mini-skills scaffolded incrementally, P0 checkpoints first (tracking foundations), then P1, then P2/P3.
 4. Each new mini-skill registered, SOP's checkpoint updated to reference it, orchestrator automatically uses it.
 
 This progression lets the operator get partial audits (P0-only) from day 1, even before all 40 mini-skills exist. The SOP is the planning document that makes incremental shipping rational.
@@ -167,11 +167,11 @@ This progression lets the operator get partial audits (P0-only) from day 1, even
 
 ## Cross-references
 
-- `resources/schemas/sop.schema.json` — SOP frontmatter validation schema
-- `resources/sops/audit-meta-global.md` — reference SOP
-- `.skills/skills/build-agent/SKILL.md` — for SOP → skill generation (Scenario B)
-- `.skills/skills/scaffold-skill-stub/SKILL.md` — for mini-skill scaffolding
-- `.skills/skills/ingest-resource/SKILL.md` — for doc → SOP classification (Scenario A)
-- `docs/system/skill-architecture-redteam.md` — red team findings that motivated this separation
-- `docs/system/skill-builder-cartography.md` — related pattern for scaffolding entities (not skills)
-- `docs/system/extending.md` — general extension doctrine
+- `resources/schemas/sop.schema.json` · SOP frontmatter validation schema
+- `resources/sops/audit-meta-global.md` · reference SOP
+- `.skills/skills/build-agent/SKILL.md` · for SOP → skill generation (Scenario B)
+- `.skills/skills/scaffold-skill-stub/SKILL.md` · for mini-skill scaffolding
+- `.skills/skills/ingest-resource/SKILL.md` · for doc → SOP classification (Scenario A)
+- `docs/system/skill-architecture-redteam.md` · red team findings that motivated this separation
+- `docs/system/skill-builder-cartography.md` · related pattern for scaffolding entities (not skills)
+- `docs/system/extending.md` · general extension doctrine

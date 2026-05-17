@@ -6,7 +6,7 @@
 
 ---
 
-## Pattern 1 — Generate product copy (hook, description, email)
+## Pattern 1 · Generate product copy (hook, description, email)
 
 **When to use**: you want to produce advertising or editorial content for a product.
 
@@ -50,7 +50,7 @@ if signal_list:
 
 ---
 
-## Pattern 2 — Generate ad hooks (Meta, TikTok)
+## Pattern 2 · Generate ad hooks (Meta, TikTok)
 
 **When to use**: creative brief, variation generator, angle A/B test.
 
@@ -86,7 +86,7 @@ If `resources/catalogues/angles.json` absent: generate from universal patterns (
 
 ---
 
-## Pattern 3 — Generate a creative brief
+## Pattern 3 · Generate a creative brief
 
 **When to use**: brief for designer, creative, motion, photo.
 
@@ -116,7 +116,7 @@ If the operator doesn't specify a product:
 
 ---
 
-## Pattern 4 — Analyze performance (with learnings)
+## Pattern 4 · Analyze performance (with learnings)
 
 **When to use**: piloting agent, weekly routine, anomaly diagnostic.
 
@@ -140,7 +140,7 @@ signal("⚠ Active learning {LRN-XXX} says: {fact}. Check before applying.")
 
 ---
 
-## Pattern 5 — Onboarding agent (new product, new audience)
+## Pattern 5 · Onboarding agent (new product, new audience)
 
 **When to use**: snapshot-brand + ingest for a new product. The agent receives a URL and raw data.
 
@@ -167,10 +167,10 @@ if new_slug in existing_products:
 
 ## General rules (apply to all patterns)
 
-1. **Load the minimum sufficient** — don't inject everything. A creative brief doesn't need learnings.
-2. **Always flag inferences** — if a field is null and the agent assumes something, flag at end of output.
-3. **Never invent a number** — price, rate, revenue. If null → omit or ask.
-4. **Index-first for learnings** — `learnings-index.json` first, targeted entries after.
-5. **brand.json first** — tone always comes from brand.json. Load brand before generating copy.
-6. **One signal per output** — group all `⚠` at the end. Not one signal per field.
-7. **Propose next step** — every agent output ends with a concrete action ("To enrich, say Ingest…").
+1. **Load the minimum sufficient**, don't inject everything. A creative brief doesn't need learnings.
+2. **Always flag inferences**, if a field is null and the agent assumes something, flag at end of output.
+3. **Never invent a number**, price, rate, revenue. If null → omit or ask.
+4. **Index-first for learnings**, `learnings-index.json` first, targeted entries after.
+5. **brand.json first**, tone always comes from brand.json. Load brand before generating copy.
+6. **One signal per output**, group all `⚠` at the end. Not one signal per field.
+7. **Propose next step**, every agent output ends with a concrete action ("To enrich, say Ingest…").

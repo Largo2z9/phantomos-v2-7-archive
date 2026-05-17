@@ -121,6 +121,11 @@ Je ne le vois pas actif sur ta session.
 
 Pas de fallback silencieux. Le bridge requiert MCP actif.
 
+**Si MCP Notion absent** · AskUserQuestion 2 options ·
+- (a) "Je te guide pour connecter Notion maintenant (2 min via connect-mcp-server target=notion)"
+- (b) "Je bascule en mode export markdown standalone (j'écris les fichiers JSON, tu push manuellement vers Notion plus tard)"
+Default proactif Jarvis · (a) si l'opérateur a le temps.
+
 **L3 degraded** (schemas canon v2.56+ requis) ·
 - Verify presence de `resources/schemas/friction.schema.json` + `resources/schemas/roadmap.schema.json` + `resources/schemas/brief.schema.json`. Ces schemas sont v2.56+ pré-requis pour Phase A.
 - Si absents · workspace-template stale détecté · flag explicite à l'opérateur · *"Le template workspace est antérieur à v2.56. Les schemas friction.schema + roadmap.schema sont requis pour le sync Phase A. Mets à jour le workspace via update-workspace avant de relancer."*. Refuse to ship. DRGFP gate strict.

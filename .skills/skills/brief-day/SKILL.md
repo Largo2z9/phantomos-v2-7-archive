@@ -54,6 +54,10 @@ Read in parallel, no operator visibility:
 - `operator/profile.json`: preferences.conversation_register, identity.profile, preferences.tracking
 - `session-state.md` last 10 activity log lines if present
 
+**Si MCP google-calendar absent** · degraded mode silencieux (no agenda block dans le brief) + 1 ligne mesurée Jarvis en bas du brief ·
+"Calendrier non branché · `connecte mes outils` quand tu veux l'agenda dedans"
+**Si MCP supabase absent** · même pattern · degraded mode + 1 ligne Jarvis.
+
 ## Step 2 — Classify what matters (silent)
 
 Bucket detected signals:

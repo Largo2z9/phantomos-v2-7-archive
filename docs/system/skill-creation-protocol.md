@@ -6,10 +6,10 @@
 
 A skill is proposed when the operator performs a task that matches at least one of these signals :
 
-1. **Repetition** — same task executed ≥ 2 times on the same or different brands
-2. **Genericity** — task applicable to other brands or to workspace-level, not a one-off
-3. **High token cost** — task consumes > 10k tokens per execution (structured brief, multi-layer audit, complex analysis)
-4. **Pattern identified by learn-from-session** — at session close, detection of a workflow the operator might want to automate
+1. **Repetition**, same task executed ≥ 2 times on the same or different brands
+2. **Genericity**, task applicable to other brands or to workspace-level, not a one-off
+3. **High token cost**, task consumes > 10k tokens per execution (structured brief, multi-layer audit, complex analysis)
+4. **Pattern identified by learn-from-session**, at session close, detection of a workflow the operator might want to automate
 
 **Who proposes** : the agent, not the operator. The operator asks for an action ; the agent notes the pattern mentally ; at session close (or when the pattern repeats), it surfaces the creation proposal.
 
@@ -17,7 +17,7 @@ A skill is proposed when the operator performs a task that matches at least one 
 
 Before building anything, classify the request :
 
-### Specific — one skill is enough
+### Specific · one skill is enough
 
 Criteria :
 - Atomic action or a short linear procedure (< 5 steps)
@@ -32,7 +32,7 @@ Examples :
 
 **Build** : `scaffold-skill-stub` → one SKILL.md file + optional associated script. No SOP required.
 
-### Heavy — SOP + orchestrator + mini-skills
+### Heavy · SOP + orchestrator + mini-skills
 
 Criteria :
 - Multi-step procedure with conditional decisions
@@ -49,11 +49,11 @@ Examples :
 - "Competitor intelligence across a vertical"
 
 **Build** : three-step process :
-1. **SOP first** — methodology written as a paid-consultant document : checkpoints with severity, reasoning layer, resource discovery, scenario variants
-2. **Orchestrator skill** — thin executor that reads the SOP and calls mini-skills
-3. **Mini-skills incremental** — atomic checks/actions, built progressively as checkpoints are implemented
+1. **SOP first**, methodology written as a paid-consultant document : checkpoints with severity, reasoning layer, resource discovery, scenario variants
+2. **Orchestrator skill**, thin executor that reads the SOP and calls mini-skills
+3. **Mini-skills incremental**, atomic checks/actions, built progressively as checkpoints are implemented
 
-### Macro — multiple orchestrators
+### Macro · multiple orchestrators
 
 Criteria :
 - Very broad business vision covering multiple dimensions (e.g., "global audit" = Meta + Shopify + tracking + email + SEO)
@@ -78,7 +78,7 @@ audit-global (macro orchestrator)
 
 ---
 
-## Operator control — always
+## Operator control · always
 
 Three moments where the operator must validate :
 
@@ -94,7 +94,7 @@ Operator accepts → agent starts the scaffolding phase. Operator refuses or "la
 
 **CRITICAL** : when a heavy skill is about to cascade multiple subagents or execute a long sequence, it MUST request confirmation before embarking.
 
-Example — orchestrator `audit-meta-global` at start :
+Example, orchestrator `audit-meta-global` at start :
 
 > "I'm about to run the full Meta audit on Northsense. Here's what's going to execute :
 > - 40 checkpoints organized across 7 layers
@@ -102,7 +102,7 @@ Example — orchestrator `audit-meta-global` at start :
 > - Mini-skills called : check-pixel-deployment, check-capi-deployment, check-audience-exclusions, ... (full list below or on request)
 > - Output : markdown report + appended actionable items in pending-validations
 >
-> Scenario (default : new-client-discovery) — alternatives : pre-scaling-diagnostic, post-incident-diagnostic, quarterly-review, agency-switching.
+> Scenario (default : new-client-discovery), alternatives : pre-scaling-diagnostic, post-incident-diagnostic, quarterly-review, agency-switching.
 >
 > Run as-is, different scenario, or do you want to reframe ?"
 
@@ -118,9 +118,9 @@ Every skill mutating data (via write-to-context) goes through workflow-integrity
 
 ---
 
-## learn-from-session — continuous enrichment
+## learn-from-session · continuous enrichment
 
-`learn-from-session` is called at session close. Its mission is not limited to persisting decisions — it also **proposes system improvements** :
+`learn-from-session` is called at session close. Its mission is not limited to persisting decisions, it also **proposes system improvements** :
 
 ### Skill candidates at close
 
@@ -145,7 +145,7 @@ Scan the conversation for :
 
 Example :
 
-> "We discussed during the session that the GWP Spring Days pattern at Northsense only performs if the average AOV is above the threshold — that's a business insight. Want me to add it to the reasoning layer of checkpoint 4.x in audit-meta-global, or as a separate framework ?"
+> "We discussed during the session that the GWP Spring Days pattern at Northsense only performs if the average AOV is above the threshold, that's a business insight. Want me to add it to the reasoning layer of checkpoint 4.x in audit-meta-global, or as a separate framework ?"
 
 ### Convention or rule promotion candidates
 
@@ -182,10 +182,10 @@ Preserves traceability for retrospective audits.
 
 ## Cross-references
 
-- `docs/system/sop-skill-conversion.md` — the 5 SOP ↔ skill conversion scenarios
-- `docs/system/skill-builder-cartography.md` — when to extend a schema before creating a skill
-- `docs/system/skill-resource-discovery.md` — how skills find resources at runtime
-- `.skills/skills/learn-from-session/SKILL.md` — updated with enrichment detection rules
-- `.skills/skills/build-agent/SKILL.md` — scaffolding orchestrator
-- `.skills/skills/scaffold-skill-stub/SKILL.md` — creation primitive
-- Memory feedback `extend_before_create` — canonical rule
+- `docs/system/sop-skill-conversion.md` · the 5 SOP ↔ skill conversion scenarios
+- `docs/system/skill-builder-cartography.md` · when to extend a schema before creating a skill
+- `docs/system/skill-resource-discovery.md` · how skills find resources at runtime
+- `.skills/skills/learn-from-session/SKILL.md` · updated with enrichment detection rules
+- `.skills/skills/build-agent/SKILL.md` · scaffolding orchestrator
+- `.skills/skills/scaffold-skill-stub/SKILL.md` · creation primitive
+- Memory feedback `extend_before_create` · canonical rule

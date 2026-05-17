@@ -41,14 +41,26 @@ FIRST ACTION canon précise déjà *"ignore any folder starting with `_`"* lors 
 
 **Full doctrine + anti-patterns (read before designing any new skill or hook):** `docs/system/contextual-intelligence.md`.
 
-**Sub-doctrines (read when authoring or extending):** Contextual Intelligence is the master. Six operating disciplines serve it:
+**Sub-doctrines (read when authoring or extending):** Contextual Intelligence is the master doctrine. 13 canon doctrines shipped serve it (canon Sprint A inventory) :
+- **Operational System Discipline** (v2.71), `docs/system/operational-system-discipline.md` (doctrine mère 5 couches · ECR × Règles × Templates × Métriques × Rituels · pattern racine qui structure tout système opérationnel encodé dans PhantomOS).
+- **Compositional Cartography** (v3.1), `docs/system/compositional-cartography.md` (cartographier + composer outputs créatifs via équation NOYAU × CONTEXTE × MODIFIEURS, 4 arbres + matrice + modulateurs, cycle validation atlas vivant ; implémentation domaine-spécifique de CMR au créatif).
+- **Canonical Matrix Reasoning**, `docs/system/canonical-matrix-reasoning.md` (how to produce 95% quality on intersectional outputs : schema + canon matrix = cohérence output, modulator/cell, cardinality cap, internal scoring).
 - **Investigation Posture**, `docs/system/investigation-posture.md` (cartographier avant affirmer · confidence chain explicit · drill-down macro = opérateur · 5 sections obligatoires sur tout output stratégique · observé / déduit / inconnu / leviers / close ouvert).
-- **Substrate**, `docs/system/schema-encoding-discipline.md` (how to encode rigorously: mutation rule, _field_types, sourcing tags, triangulation, append-only, memory layers).
-- **Production**, `docs/system/canonical-matrix-reasoning.md` (how to produce 95% quality on intersectional outputs: schema + canon matrix, modulator/cell, cardinality cap, internal scoring).
-- **Authoring**, `docs/system/skill-authoring-discipline.md` (how to create/extend skills: type taxonomy, frontmatter triad, composition contracts, lifecycle, failure doctrine).
-- **Provenance**, `docs/system/provenance-trust-discipline-scope.md` (scope only, multi-operator, canon-as-product, marketplace skills ; full doctrine when triggers hit).
-- **Compositional Cartography**, `docs/system/compositional-cartography.md` (cartographier + composer outputs créatifs via équation v3.1 NOYAU × CONTEXTE × MODIFIEURS, 4 arbres + matrice + modulateurs, cycle validation atlas vivant ; implémentation domaine-spécifique de CMR au créatif).
-Doctrine governance (promotion, amendment, retraction, conflict resolution): `docs/system/doctrine-governance.md`.
+- **Audiences Cartography** (v2.64), `docs/system/audience-cartography.md` (parent/enfants sémantique pure · 4 mouvements + 3 axes · hand-off pédagogique vers mine-voc).
+- **Pain Benefit Chain**, `docs/system/pain-benefit-chain.md` (functional · identity · emotional · aspirational · chaînage canonique douleur/bénéfice pour audience et copy).
+- **Progressive Cartography Discipline** (v2.68), `docs/system/progressive-cartography-discipline.md` (hypothèse confidence 0.5 valide vers sourced · cartographier ≠ produire · seul producer paid requiert 5+ verbatims).
+- **Extension Discovery Discipline** (v2.75), `docs/system/extension-discovery-discipline.md` (scaffold × register × discovery × consume · pipeline NEW entities auto-consommées par skills downstream).
+- **Scope Extension Discipline** (v2.65), `docs/system/scope-extension-discipline.md` (canon élasticité scope opérateur-driven · PhantomOS accueille n'importe quel domaine encodé).
+- **Territory Discipline** (v2.67), `docs/system/territory-discipline.md` (substrat stable vs productions runtime · séparation fondations encodées et outputs générés).
+- **Connectivity Layering**, `docs/system/connectivity-layering.md` (3 layers · MCP au niveau Claude Code + APIs callables via skills + scripts opérations shippés · jamais confondre).
+- **Notion Bridge Doctrine** (v2.57+), `docs/system/notion-bridge-doctrine.md` (bidirectionnel pull/push · PhantomOS source de vérité · Notion miroir consultable opérateur).
+
+**Authoring infrastructure (skill builders, not canon doctrines)** :
+- **Substrate**, `docs/system/schema-encoding-discipline.md` (encoding rigor : mutation rule, _field_types, sourcing tags, triangulation, append-only, memory layers).
+- **Authoring**, `docs/system/skill-authoring-discipline.md` (skill creation/extension : type taxonomy, frontmatter triad, composition contracts, lifecycle, failure doctrine).
+- **Provenance**, `docs/system/provenance-trust-discipline-scope.md` (scope, multi-operator, canon-as-product, marketplace skills ; full doctrine when triggers hit).
+
+Doctrine governance (promotion, amendment, retraction, conflict resolution) : `docs/system/doctrine-governance.md`.
 
 **Investigation posture · règle absolue.** Tout skill produisant une synthèse stratégique (snapshot-brand Movement 3-4, profile-audience, produce-paid-angles, brief-day, audit-meta-account, analyst-perf, decompose-ad, produce-copy-brief, etc.) DOIT structurer son output en 5 sections explicites · **Observé** (faits sourcés) · **Déduit** (hypothèses avec confidence chain · forte / moyenne / faible / TRÈS faible) · **Inconnu** (variables non observables à creuser) · **Leviers** (skills / actions / sources pour lever les inconnues) · **Close ouvert** (UNE question macro · opérateur arbitre où creuser). JAMAIS affirmer une hypothèse comme un fait. JAMAIS inventer des personas / audiences présentés comme analytiques sans data verbatim. JAMAIS clôturer la conversation avec une synthèse complète · l'agent ouvre la porte au drill-down. Full doctrine `docs/system/investigation-posture.md`.
 
@@ -80,7 +92,7 @@ Si le skill n'existe pas pour un output demandé, l'agent flag le gap explicitem
 
 **Exception** · conversation libre (questions, clarifications, debug, doctrine discussion) reste en prose libre. La règle s'applique au contenu stratégique livré, pas au dialogue conversationnel.
 
-Full doctrine · `docs/system/canonical-matrix-reasoning.md` + `docs/system/skill-routing-discipline.md` (NEW à créer si gap).
+Full doctrine · `docs/system/canonical-matrix-reasoning.md` + `docs/system/skill-routing-discipline.md` (skill routing canon · cross-ref Investigation Posture + CMR + /scope).
 
 **Operator-facing rule absolue.** **NEVER** expose doctrine names (Contextual Intelligence, Schema Encoding Discipline, Canonical Matrix Reasoning, Skill Authoring Discipline, Provenance & Trust Discipline) or their acronyms in operator-facing output. Operators feel the *effects* (output 95% quality, agent that synthesizes instead of form-filling, reproducible across sessions); they never read the *names*. If an acronym leaks in operator output, that is a bug. Doctrine documents are for skill authors and contributors only, kept in `docs/system/` (not user-facing).
 
@@ -162,7 +174,7 @@ Full canon `docs/system/contextual-intelligence.md § No orphan output`.
 ---
 
 ## Mutation rule
-6 core entities per brand: **brand, product spec, offers, audience profile, learnings, strategy**. Plus **extensions** (custom entities under `brands/{slug}/custom/` and sidecars `{entity}.extensions.json`), see `docs/system/extending.md`.
+7 core entities per brand : **brand, product spec, offers, audience profile, angle, learnings, strategy**. Plus **extensions** (custom entities under `brands/{slug}/custom/` and sidecars `{entity}.extensions.json`), see `docs/system/extending.md`.
 **CRITICAL:** every mutation goes through `write_to_context(field_path, value, source, confidence, mode="proposed")`. **YOU MUST NEVER** edit JSON directly. Specifically: **NEVER use the `Edit`, `Write`, or `NotebookEdit` tools on any `.json` file under `brands/` or `operator/`**. These tools bypass the mutation gate, skip the event log, and corrupt the proposal/acceptance workflow. The mutation gate is non-optional, if `write_to_context` does not cover your case, surface the gap to the operator, do not hand-edit.
 **ALWAYS** after any write under `brands/{slug}/custom/` or `{entity}.extensions.json`: trigger `validate-resources` on that brand silently. Flag any MAJOR/CRITICAL output to the operator. Keeps extension layer governance machine-enforced, not opt-in.
 **ALWAYS** after any write to a brand's core files (`brand.json`, `products/*/spec.json`, `products/*/offers.json`, `audiences/*/profile.json`, `strategy.json`, `learnings.json`, `status.json`): rebuild the snapshot via `python3 .skills/build-brand-snapshot.py {slug}` so the digest stays fresh. Silent. ~50ms per brand.
@@ -199,10 +211,11 @@ In post-setup daily-use mode, **YOU MUST** load `docs/system/contract-daily.md` 
 | Product | `products/{slug}/spec.json` | Specs, mechanism, benefits, problems, pricing |
 | Offer | `products/{slug}/offers.json` | Active offers, bundles, pricing, landing pages |
 | Audience | `audiences/{slug}/profile.json` | Psychology, pain/benefit chains, objections ("persona" = marketing alias) |
-| Learnings | `learnings.json` | Append-only: API workarounds, compliance, test results |
+| Angle | `angles/{slug}/angle.json` | Formula Obs+Tension+Reframe+Bridge, audience targeting, hook variants, registry angle-mechanics |
+| Learnings | `learnings.json` | Append-only : API workarounds, compliance, test results |
 | Strategy | `strategy.json` | Annual goals, monthly targets, current focus |
 
-**Dependency order**: Brand → Product → Offers → Strategy. Audience parallel. Learnings append-only, feeds all.
+**Dependency order** : Brand → Product → Offers → Strategy. Audience + Angle parallel. Learnings append-only, feeds all.
 
 **Brand OS files**: `CLAUDE.md | todos.md | status.json | config.json | session-state.md | credentials.env | pending-validations.md | sources/`. **NEVER** auto-load `sources/`.
 

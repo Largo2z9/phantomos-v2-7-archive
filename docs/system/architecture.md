@@ -1,4 +1,4 @@
-# PhantomOS — Architecture Reference
+# PhantomOS · Architecture Reference
 
 > Technical deep-dive. Not auto-loaded. Read on demand.
 > For the main workspace reference, see CLAUDE.md.
@@ -7,23 +7,23 @@
 
 ## Positioning
 
-**Product level** — PhantomOS ships as an agentic workspace for **DTC paid acquisition operators**. Default entities (brand / product / offer / audience / angle / learnings / strategy) are validated at scale on DTC e-commerce.
+**Product level** · PhantomOS ships as an agentic workspace for **DTC paid acquisition operators**. Default entities (brand / product / offer / audience / angle / learnings / strategy) are validated at scale on DTC e-commerce.
 
-**Thesis level** — PhantomOS is designed as an **extensible substrate for encoding any operator domain** that an agent can operate on. DTC paid acquisition is the current incarnation. Other domains (legal, health, enterprise, brick-and-mortar) require custom encoding ; no shipped vertical pack today.
+**Thesis level** · PhantomOS is designed as an **extensible substrate for encoding any operator domain** that an agent can operate on. DTC paid acquisition is the current incarnation. Other domains (legal, health, enterprise, brick-and-mortar) require custom encoding ; no shipped vertical pack today.
 
-**Design discipline — extractibility test (binary).** For every core feature: *"if I rename 'brand' to 'matter' (legal) / 'creator' (personal brand) / 'account' (SaaS) / 'venue' (hospitality), does it still hold?"* Yes → core. No → isolate in a vertical pack. This rule makes the agnostic thesis falsifiable in continuous design, not aspirational marketing.
+**Design discipline · extractibility test (binary).** For every core feature: *"if I rename 'brand' to 'matter' (legal) / 'creator' (personal brand) / 'account' (SaaS) / 'venue' (hospitality), does it still hold?"* Yes → core. No → isolate in a vertical pack. This rule makes the agnostic thesis falsifiable in continuous design, not aspirational marketing.
 
 ---
 
 ## Canonical vocabulary
 
-PhantomOS implements a discipline named **Context Layering** — a more granular variant of context engineering (Lütke, Karpathy, June 2025). Four first-class concepts:
+PhantomOS implements a discipline named **Context Layering**, a more granular variant of context engineering (Lütke, Karpathy, June 2025). Four first-class concepts:
 
 | Concept | What it is | Where it lives in PhantomOS |
 |---------|------------|-----------------------------|
 | **Context Layering** | The discipline of building, layer by layer, the environment in which the agent reasons. | Whole workspace : OS layer + KB layer + Context DB. |
-| **Decision Trace** | The logged *reasoning* behind a correction — not the correction itself. Transforms learnings from "what" to "why". | `learnings.json` entries with `reasoning` / `trace` field. Captured by `capture-learning` / `learn-from-session`. |
-| **Skill Graph** | Atomic interconnected nodes — entry via index, selective traversal, never monolithic ingestion. | `resources/catalogues/` + `routing/` + cross-refs by ID + `index.json`. |
+| **Decision Trace** | The logged *reasoning* behind a correction, not the correction itself. Transforms learnings from "what" to "why". | `learnings.json` entries with `reasoning` / `trace` field. Captured by `capture-learning` / `learn-from-session`. |
+| **Skill Graph** | Atomic interconnected nodes, entry via index, selective traversal, never monolithic ingestion. | `resources/catalogues/` + `routing/` + cross-refs by ID + `index.json`. |
 | **Feedback Loop** | Agent proposes → operator corrects → Decision Trace logged → Skill Graph enriched → agent proposes better. | Defines the compound effect claimed in README. |
 
 These four terms are the external canon (tweet, LinkedIn, pitch, README, consulting collateral). Use them.
@@ -36,11 +36,11 @@ These four terms are the external canon (tweet, LinkedIn, pitch, README, consult
 
 PhantomOS is a **structured context store with deterministic injection**. It's neither vector RAG nor GraphRAG. It's a third pattern.
 
-**Classic vector RAG** — you index documents into embeddings, run a cosine similarity search, inject the closest chunks. Probabilistic, uncontrolled retrieval.
+**Classic vector RAG** · you index documents into embeddings, run a cosine similarity search, inject the closest chunks. Probabilistic, uncontrolled retrieval.
 
-**GraphRAG (Microsoft, 2024)** — you automatically extract entities and relationships from text, build a graph, traverse it for multi-hop retrieval ("find concepts linked to X in 2 hops"). Discovery of hidden relationships, but approximate by nature.
+**GraphRAG (Microsoft, 2024)** · you automatically extract entities and relationships from text, build a graph, traverse it for multi-hop retrieval ("find concepts linked to X in 2 hops"). Discovery of hidden relationships, but approximate by nature.
 
-**PhantomOS** — the operator explicitly defines the entities (brand, product, offer, audience, learnings, strategy) and their relationships (cross-refs by ID). The agent loads only entities relevant to its intent via deterministic rules. Zero probability, zero ambiguity.
+**PhantomOS** · the operator explicitly defines the entities (brand, product, offer, audience, angle, learnings, strategy) and their relationships (cross-refs by ID). The agent loads only entities relevant to its intent via deterministic rules. Zero probability, zero ambiguity.
 
 ```
 Vector RAG → cosine similarity → floating chunks
@@ -54,7 +54,7 @@ The problem of vector RAG for an operator workspace: it doesn't know what it loa
 
 The problem of GraphRAG for this use case: relationships between e-commerce entities are not discovered, they are defined. That a product targets an audience, that this audience has price-related objections, that these objections imply a specific angle, this is a strategic decision, not a relationship to discover in raw text.
 
-PhantomOS assumes that **structure is known**. The 6 entities are fixed, their fields are tagged (`_field_types`), their relationships are explicit (via ID). In exchange: max precision, zero relationship hallucination, controlled context budget.
+PhantomOS assumes that **structure is known**. The 7 entities are fixed, their fields are tagged (`_field_types`), their relationships are explicit (via ID). In exchange : max precision, zero relationship hallucination, controlled context budget.
 
 ### Technical components
 
@@ -71,11 +71,11 @@ PhantomOS assumes that **structure is known**. The 6 entities are fixed, their f
 
 ### What distinguishes it from classic RAG
 
-1. **Deterministic retrieval** — the agent knows exactly what it loads. No random chunks.
+1. **Deterministic retrieval**, the agent knows exactly what it loads. No random chunks.
 2. **Strict data contract**. Each field has a type (`observed | stated | derived | structured`). The agent cannot confuse a fact with an inference.
-3. **Lazy loading by index** — learnings.json can have 500 entries, the agent only loads 3 via learnings-index.json.
-4. **Managed context budget** — ≤8k tokens for a brand session, planned.
-5. **Incremental enrichment** — each session adds value without starting over.
+3. **Lazy loading by index**, learnings.json can have 500 entries, the agent only loads 3 via learnings-index.json.
+4. **Managed context budget**, ≤8k tokens for a brand session, planned.
+5. **Incremental enrichment**, each session adds value without starting over.
 
 ### What it is not
 
@@ -83,17 +83,17 @@ PhantomOS assumes that **structure is known**. The 6 entities are fixed, their f
 - Not a vector store (no embeddings)
 - Not a database (no SQL query, no transactions)
 - Not an agent framework (no built-in multi-agent orchestration)
-- **Not an action tool** — PhantomOS doesn't generate copy, launch campaigns, or run analysis. The skills plugged into it do.
+- **Not an action tool** · PhantomOS doesn't generate copy, launch campaigns, or run analysis. The skills plugged into it do.
 
 ### Core principle: standardized data receptacle
 
 PhantomOS is a **receptacle**. Its only role is to maintain brand data in a structured, standardized, exploitable format for any agent.
 
-**Standardized** — the 6 entities have a fixed versioned schema (`_version: "1.0"`), fields tagged by type (`_field_types`), and cross-refs by ID. A brand configured in PhantomOS has exactly the same structure as another, enabling comparison, aggregation, migration.
+**Standardized** · the 7 entities have a fixed versioned schema (`_version: "1.0"`), fields tagged by type (`_field_types`), and cross-refs by ID. A brand configured in PhantomOS has exactly the same structure as another, enabling comparison, aggregation, migration.
 
-**Exploitable** — data is pure JSON. Any LLM, any tool, any pipeline can read it without a proprietary SDK dependency. A brand configured today in Claude Code can be consumed tomorrow by GPT-4, a Python pipeline, or a Looker dashboard. The data survives tool changes.
+**Exploitable** · data is pure JSON. Any LLM, any tool, any pipeline can read it without a proprietary SDK dependency. A brand configured today in Claude Code can be consumed tomorrow by GPT-4, a Python pipeline, or a Looker dashboard. The data survives tool changes.
 
-**Receptacle** — action skills (generate a hook, launch a Meta campaign, produce a creative brief) are not part of the receptacle. They plug in and consume the context it maintains. The receptacle has no opinion on what is done with the data, it just guarantees the data is there, structured, and up to date.
+**Receptacle** · action skills (generate a hook, launch a Meta campaign, produce a creative brief) are not part of the receptacle. They plug in and consume the context it maintains. The receptacle has no opinion on what is done with the data, it just guarantees the data is there, structured, and up to date.
 
 ### Possible evolution to GraphRAG (V3+)
 
@@ -165,7 +165,7 @@ SOPs (execution workflows) ← Templates (output formats)
  ↓ validated by
 Quality Specs (evaluation criteria)
 
-Conventions (platform rules) — transversal, consulted by SOPs
+Conventions (platform rules), transversal, consulted by SOPs
 ```
 
 ---
@@ -207,7 +207,7 @@ If exceeded: compress session-state first, then trim reference sections, then ca
 - **Ramification**: Catalogues >12 entries → tag `[RAMIFY]`. SOPs >20 steps → split.
 - **Context DB is facts only**: No strategy in brand entity files. Operational learnings → `learnings.json` (append-only, never delete, archive with `status: "archived"`).
 - **Credentials are gitignored**: `credentials.env` and `credentials_shared.env`. Never commit.
-- **OS files auto-maintained**: status.json, workspace-status.json, session-state.md, promote-backlog.json — rebuilt by skills. Manual edits overwritten.
+- **OS files auto-maintained**: status.json, workspace-status.json, session-state.md, promote-backlog.json · rebuilt by skills. Manual edits overwritten.
 - **Never load `sources/` in context**: Raw file archive. Access only on explicit request.
 - **Never invent resource types**: 7 types are fixed. New type = structural decision + approval.
 - **Never write to `_TEMPLATE/` or `_EXAMPLE/`**: Read-only references.
@@ -233,18 +233,18 @@ Planned evolutions in `roadmap.md` (same folder) P1-P3.
 
 ---
 
-## Connectivity Pattern — Tool Registry
+## Connectivity Pattern · Tool Registry
 
 PhantomOS has no permanent auto-sync with external platforms (Meta Ads, Shopify, Klaviyo, GA4, Notion, ClickUp, calendar). But Claude Code **can natively call any API** when a skill needs it. Full pattern:
 
-1. **On demand** — operator asks *"weekly Meta reporting"* → agent checks if it has the key → if not, asks, operator hands it once → no more back and forth.
-2. **Persistence** — tokens/API keys in `credentials.env` (gitignored, brand-level) or `credentials_shared.env` (workspace-level). Once configured, it's set.
-3. **Assisted setup** — the agent guides the connection (scopes, endpoint, permissions), not *"hand me the key and figure it out yourself"*.
-4. **Doc gate mandatory before setup** — see `CLAUDE.md § Build → Execute gates (Gate 1: Access)`. The agent reads the official docs (WebFetch) and fills `resources/conventions/{platform}.json` BEFORE touching a token: rate limits, OAuth scopes, known pitfalls.
-5. **Persisted conventions** — `resources/conventions/{platform}.json` filled over time. Reusable cross-brand, shareable via Git.
-6. **One-time setup** — once per platform. Next time the agent uses it directly without re-asking.
+1. **On demand**, operator asks *"weekly Meta reporting"* → agent checks if it has the key → if not, asks, operator hands it once → no more back and forth.
+2. **Persistence**, tokens/API keys in `credentials.env` (gitignored, brand-level) or `credentials_shared.env` (workspace-level). Once configured, it's set.
+3. **Assisted setup**, the agent guides the connection (scopes, endpoint, permissions), not *"hand me the key and figure it out yourself"*.
+4. **Doc gate mandatory before setup**, see `CLAUDE.md § Build → Execute gates (Gate 1: Access)`. The agent reads the official docs (WebFetch) and fills `resources/conventions/{platform}.json` BEFORE touching a token: rate limits, OAuth scopes, known pitfalls.
+5. **Persisted conventions**, `resources/conventions/{platform}.json` filled over time. Reusable cross-brand, shareable via Git.
+6. **One-time setup**, once per platform. Next time the agent uses it directly without re-asking.
 
-**Reply script — when the operator asks "can you connect to my spaces?"** Never *"no live connectors in V1"* (product false-negative). Reply:
+**Reply script · when the operator asks "can you connect to my spaces?"** Never *"no live connectors in V1"* (product false-negative). Reply:
 
 > *"No permanent auto-sync, but I connect natively on demand when a skill needs it. Example: you ask [adapted scenario] → I ask for your token once → you hand it → I file it locally → next time I'm operational direct. Same pattern for [2-3 relevant platforms]. Want to connect a platform now, or keep going without for now?"*
 

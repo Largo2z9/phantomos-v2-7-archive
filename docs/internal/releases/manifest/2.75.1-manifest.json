@@ -1,0 +1,38 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.75.1",
+  "released_at": "2026-05-16",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 70,
+  "skills_count_after": 70,
+  "slash_commands_count_before": 5,
+  "slash_commands_count_after": 5,
+  "doctrines_count_before": 13,
+  "doctrines_count_after": 13,
+  "summary": "Patch tour.md Milestone 6 enrichi · panorama PhantomOS complet pour conscience environnement opérateur garantie pendant onboarding · 5 universal entry points complémentaires + 3 principes canon synthétiques + wow effect cross-link.",
+  "patches": [
+    {
+      "file": ".claude/commands/tour.md",
+      "lines_affected": "182-206 (Milestone 6 paragraphe First)",
+      "diff": "+17/-3",
+      "changes": [
+        "5 universal entry points complémentaires (/tour + /breakdown + /lexicon + /skills + /phantom · use cases distincts canon)",
+        "3 principes canon synthétiques accessibles novice (Territoire vs production · Intelligence contextuelle · 5 couches)",
+        "Wow effect cross-link /breakdown stepprs principe",
+        "Milestone 6 hit garanti même Path (c) discovery-only"
+      ]
+    }
+  ],
+  "preserved_verbatim": [
+    "Milestone 6 Second paragraph universal entry point (existing v2.62)",
+    "Banned cadences",
+    "Pattern naming sans demander slug",
+    "Trigger naturel table illustrative",
+    "Awareness writes line",
+    "Milestones 1-5 + 7-9 unchanged"
+  ],
+  "decisions_captured": ["D#422"],
+  "rollback_strategy": "Strict additif backward compat · revert v2.75.1 = git revert HEAD strict (1 file 1 hunk +17/-3 lignes)"
+}

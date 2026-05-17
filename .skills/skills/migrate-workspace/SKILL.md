@@ -164,7 +164,7 @@ Operator says "migrate all brands" or "batch migration":
 - offers.json: +`contents.duration_type`, +`duration_servings`, +`cure_metadata`, +`incentives.duration_tiers`, +`loyalty`, +`offer_groups[].offers[].tags` (v2 schema — legacy v1.x was `offers[].tags`)
 
 **Migration steps:**
-1. Read `_version` from `brands/_TEMPLATE` (living source) per entity, then align every instance file to the same value. The field is `_version` on every file (not `_template_version`, inherited drift). Current values: spec.json=1.8, offers.json=2.0, brand.json=2.1, profile.json=1.2.
+1. Read `_version` from `brands/_TEMPLATE` (living source) per entity, then align every instance file to the same value. The field is `_version` on every file (not `_template_version`, inherited drift). Current values: spec.json=1.8, offers.json=2.0, brand.json=2.2, profile.json=1.2.
 2. Add `_field_types` and `_changelog` entries from `_TEMPLATE/products/_example/`.
 3. Do NOT touch existing data. New blocks stay null until next snapshot.
 4. Validation: rerun validate-resources, must pass without error.

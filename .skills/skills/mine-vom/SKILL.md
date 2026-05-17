@@ -54,6 +54,11 @@ Framework canon: `resources/frameworks/vom-mining.md`. Mandatory read at first i
 
 ## Step 0 — First-party data ask
 
+**Si MCP youtube-transcript absent** · AskUserQuestion 2 options ·
+- (a) "Je te guide pour connecter youtube-transcript maintenant (2 min via connect-mcp-server)"
+- (b) "Je bascule en mode manual paste (tu colles les transcripts ou URLs, je structure)"
+Default proactif Jarvis · (a) si l'opérateur a le temps.
+
 Before scraping anything, ask the operator what they already have. Operators routinely have notes from sector conferences, paid Statista or Mintel reports, terrain observations from sales calls, or screenshots of Reddit threads they captured on the fly. Mining public sources when the operator already holds curated material is wasteful and produces weaker synthesis.
 
 Ask, verbatim:

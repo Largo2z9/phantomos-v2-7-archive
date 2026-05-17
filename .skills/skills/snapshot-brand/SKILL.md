@@ -1129,7 +1129,7 @@ The `_TEMPLATE` is at v1.8. When scraping a product page, you must look for and 
 - `incentives.loyalty` · loyalty program (points, tiers, sign_up_bonus).
 - `offer_groups[].offers[].tags[]` · free tags at offer level (v2 schema; legacy `offers[].tags[]` is v1.x).
 
-**Automatic stamping:** each entity file carries its own `_version` field matching the schema it was built against. Current baseline (read live from `_TEMPLATE`): `brand.json _version=2.1`, `products/{slug}/spec.json _version=1.8`, `products/{slug}/offers.json _version=2.0`, `audiences/{slug}/profile.json _version=1.2`. After a fresh scaffold via `cp -r _TEMPLATE brands/{slug}`, these values are inherited automatically. Never hardcode version expectations · always read from `_TEMPLATE` first.
+**Automatic stamping:** each entity file carries its own `_version` field matching the schema it was built against. Current baseline (read live from `_TEMPLATE`): `brand.json _version=2.2`, `products/{slug}/spec.json _version=1.8`, `products/{slug}/offers.json _version=2.0`, `audiences/{slug}/profile.json _version=1.2`. After a fresh scaffold via `cp -r _TEMPLATE brands/{slug}`, these values are inherited automatically. Never hardcode version expectations · always read from `_TEMPLATE` first.
 
 ---
 

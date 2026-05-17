@@ -8,28 +8,28 @@
 
 Post-scrape / post-setup close. The operator profile (inferred at setup-brand Step 1 or later) picks the variant. If mixed or ambiguous profile, propose the dominant variant with (d) "Other, tell me".
 
-*Variant A — solo-brand-live* (one live brand with history, possible access, solo or small team):
+*Variant A · solo-brand-live* (one live brand with history, possible access, solo or small team):
 > Context is about 60% set. Before we ship a deliverable, 3 chantiers to arbitrate:
 > (a) Validate the inferred (audience, positioning) before we use it everywhere
 > (b) Set up access to the platforms you use (2 min per platform, documented for reuse)
 > (c) Surface your past operational learnings (campaigns run, rules learned)
 > (d) Other, tell me
 
-*Variant B — early-founder pre-launch* (no site, idea or MVP, no ads history):
+*Variant B · early-founder pre-launch* (no site, idea or MVP, no ads history):
 > Context is set but your operational past is empty (normal, you're starting). 3 chantiers to arbitrate:
 > (a) Structure your offer and value proposition before touching acquisition
 > (b) Dig into your target audience beyond intuition (concrete pains, objections)
 > (c) Test messaging on a sample before scaling
 > (d) Other, tell me
 
-*Variant C — creator-led* (monetized personal audience, mix organic plus paid, existing content archive):
+*Variant C · creator-led* (monetized personal audience, mix organic plus paid, existing content archive):
 > Context is set from the site. But your real signals are in your content archive. 3 chantiers to arbitrate:
 > (a) File your top 10 posts and your DMs (your real audience study)
 > (b) Map past collabs and what converted (if any)
 > (c) Set up organic vs paid tracking so I reason on the right signals
 > (d) Other, tell me
 
-*Variant D — agency-portfolio* (3+ client brands, reproducibility scope, no personal access):
+*Variant D · agency-portfolio* (3+ client brands, reproducibility scope, no personal access):
 > You arrive with {N} brands. Before we dive into one, 3 chantiers to arbitrate:
 > (a) Structure the multi-brand approach (prioritize which brand to start with, why)
 > (b) Access request script for your clients (reusable, templatable cross-brand)
@@ -58,9 +58,9 @@ Examples of dense signals that deserve sharpening:
 
 Progressive enrichment of the brand Context DB. Agents can operate at Level 1, deepen at Level 2, pilot at Level 3.
 
-- **Level 1** — brand identity + hero product + primary audience → agents can work
-- **Level 2** — benefit chains + competitors + offers + tone details → targeted content
-- **Level 3** — financials + strategy + seasonality + learnings → operational piloting
+- **Level 1** · brand identity + hero product + primary audience → agents can work
+- **Level 2** · benefit chains + competitors + offers + tone details → targeted content
+- **Level 3** · financials + strategy + seasonality + learnings → operational piloting
 
 ---
 
@@ -145,7 +145,7 @@ The `recommended_model` + `subagent_safe` pair is the contract. The agent **NEVE
 
 ### Primary disambiguation rule
 
-**Curator vs Navigator** — the sharpest frontier. Decide by **who invokes the skill**, not who consumes its output:
+**Curator vs Navigator** · the sharpest frontier. Decide by **who invokes the skill**, not who consumes its output:
 - Invoked by another skill in a pipeline (agent-to-agent) → **Curator**
 - Invoked by the operator directly for orientation → **Navigator**
 
@@ -153,7 +153,7 @@ The `recommended_model` + `subagent_safe` pair is the contract. The agent **NEVE
 
 ### Secondary disambiguation rule
 
-**Orchestrator vs skill-with-steps** — having numbered internal Steps does **NOT** make a skill an Orchestrator. The test is: *does it literally call N ≥ 2 named skills as sub-steps?*
+**Orchestrator vs skill-with-steps** · having numbered internal Steps does **NOT** make a skill an Orchestrator. The test is: *does it literally call N ≥ 2 named skills as sub-steps?*
 
 `audit-meta-account` has Steps 1A/1B but calls no other skill → it is a Producer with internal structure. `setup-brand` calls `snapshot-brand` (Step 0) + chains Step 1-5 logic → Orchestrator.
 
@@ -198,7 +198,7 @@ subagent_safe: true
 
 A skill is not a wrapper around "ask the LLM to do X". A skill incarnates the **reasoning of a senior domain expert**: their framework, their key variables, their matrices, their thresholds, their formulas. The agent replicates the rigor of an artisan, it never improvises domain reasoning.
 
-### Complexity gate — apply only when it matters
+### Complexity gate · apply only when it matters
 
 **CRITICAL:** this expert-methodology discipline applies to **complex tasks only**. Over-engineering a simple task is a failure mode as bad as under-engineering a complex one.
 
@@ -225,21 +225,21 @@ Examples :
 
 Before generating any skill, **YOU MUST** identify:
 
-- **Canonical expert persona** — who incarnates this task at senior level in the real world? (e.g. senior media buyer for Meta audit, email deliverability engineer for Klaviyo audit, direct response copywriter for creative brief)
-- **Expert's reasoning framework** — which methodology they apply (AIDA, RFM, DMARC, JTBD, STPD, etc.)
-- **Key variables they compute** — thresholds, metrics, signals the expert tracks
-- **Structuring matrix** — 2D or 3D grid that encodes their decisions (e.g. audience awareness × pain intensity × angle type for hooks ; IP × domain × list freshness × warmup phase for deliverability)
-- **Formulas / heuristics** — numeric or decisional, if applicable
+- **Canonical expert persona** · who incarnates this task at senior level in the real world? (e.g. senior media buyer for Meta audit, email deliverability engineer for Klaviyo audit, direct response copywriter for creative brief)
+- **Expert's reasoning framework** · which methodology they apply (AIDA, RFM, DMARC, JTBD, STPD, etc.)
+- **Key variables they compute** · thresholds, metrics, signals the expert tracks
+- **Structuring matrix** · 2D or 3D grid that encodes their decisions (e.g. audience awareness × pain intensity × angle type for hooks ; IP × domain × list freshness × warmup phase for deliverability)
+- **Formulas / heuristics** · numeric or decisional, if applicable
 
 ### Where this expertise lives
 
-- **`resources/frameworks/*.md`** — methodology artifacts (AIDA applied to DTC, RFM segmentation, email deliverability rules, creative hook framework, etc.)
-- **`resources/catalogues/*.json`** — enumerated expert-curated lists (tested angles, proven mechanics, rejected patterns, etc.)
-- **`resources/quality-specs/*.md`** — binary criteria grids an expert uses to validate an output (hook quality 5 criteria, email deliverability checklist, brief completeness, etc.)
-- **`resources/conventions/*.json`** — platform-specific expert knowledge (API rate limits, scopes, pitfalls, anti-ban rules)
-- **`resources/sops/*.md`** — step-by-step expert procedures when the order matters
+- **`resources/frameworks/*.md`** · methodology artifacts (AIDA applied to DTC, RFM segmentation, email deliverability rules, creative hook framework, etc.)
+- **`resources/catalogues/*.json`** · enumerated expert-curated lists (tested angles, proven mechanics, rejected patterns, etc.)
+- **`resources/quality-specs/*.md`** · binary criteria grids an expert uses to validate an output (hook quality 5 criteria, email deliverability checklist, brief completeness, etc.)
+- **`resources/conventions/*.json`** · platform-specific expert knowledge (API rate limits, scopes, pitfalls, anti-ban rules)
+- **`resources/sops/*.md`** · step-by-step expert procedures when the order matters
 
-### Gate expertise — NEVER generate without codified methodology
+### Gate expertise · NEVER generate without codified methodology
 
 If the required expert methodology is **not yet codified** in any of the locations above, **STOP** generation (Gate doc extended). Build the methodology artifact first via `ingest-resource` + WebFetch on authoritative sources. Only then generate the skill that consumes it.
 
@@ -254,7 +254,7 @@ Each framework codified once is reused by every future skill in that domain. One
 When presenting the architecture of a skill to the operator, **YOU MUST** translate this expert methodology into operator value :
 
 - ❌ *"Missing: convention Klaviyo, framework deliverability, framework RFM"*
-- ✅ *"The expert way I'll reason : like an email deliverability engineer, applying identity rules (SPF/DKIM/DMARC), warm-up curves, bounce and complaint thresholds, a matrix IP × domain × list × phase. Missing in your workspace today — I'll build these references first (1h), then run the audit."*
+- ✅ *"The expert way I'll reason : like an email deliverability engineer, applying identity rules (SPF/DKIM/DMARC), warm-up curves, bounce and complaint thresholds, a matrix IP × domain × list × phase. Missing in your workspace today · I'll build these references first (1h), then run the audit."*
 
 The operator sees *how the expert thinks*, not the internal filename of the framework. See CLAUDE.md § Operator contract for the jargon translation rule.
 
@@ -293,11 +293,11 @@ Apply in order. Stop at the first definitive answer.
 
 - `learn-from-session` writes to **project docs** (session-log, project-state). Never writes to brand entities or extensions.
 - `capture-learning` writes to **one brand's learnings.json**. Stays within core. Never creates new schemas.
-- `scaffold-extension` writes to **brand custom entities or sidecars** (optionally stub skill). Only when genuinely new — the five-dimension gate in Phase 2 routes to existing structures if coverage exists.
+- `scaffold-extension` writes to **brand custom entities or sidecars** (optionally stub skill). Only when genuinely new · the five-dimension gate in Phase 2 routes to existing structures if coverage exists.
 - `build-agent` writes to **`.skills/skills/`** (generates new skills). Delegates to `scaffold-extension` when the intent is a simple extension pattern.
 
 ### The orchestration gate
 
-Every build decision (capture-learning excepted — it's always safe, append-only, trivial) passes through the main agent's orchestration gate first. Before invoking `scaffold-extension` or `build-agent`, the main agent applies the five-dimension check (core entities / active-brand sidecars / active-brand custom entities / sibling-brand custom entities / shared resources). If any matches, routes to existing. Build only when genuinely new.
+Every build decision (capture-learning excepted, it's always safe, append-only, trivial) passes through the main agent's orchestration gate first. Before invoking `scaffold-extension` or `build-agent`, the main agent applies the five-dimension check (core entities / active-brand sidecars / active-brand custom entities / sibling-brand custom entities / shared resources). If any matches, routes to existing. Build only when genuinely new.
 
 Full orchestration rule → root `CLAUDE.md § Orchestration gate`.

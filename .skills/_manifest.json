@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-16T17:29:47Z",
-  "_count": 70,
+  "_generated_at": "2026-05-16T22:34:35Z",
+  "_count": 72,
   "skills": [
     {
       "name": "adapt-from-competitor",
@@ -106,6 +106,42 @@
       "isolation_scope": "brand_only",
       "layer": "production",
       "path": ".skills/skills/audit-meta-account/SKILL.md"
+    },
+    {
+      "name": "bird",
+      "type": "navigator",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "none",
+      "triggers": {
+        "fr": [
+          "où on en est",
+          "j'ai perdu le fil",
+          "fais-moi un bird",
+          "vue d'oiseau",
+          "/bird",
+          "/bird all",
+          "/bird --zoom {zone}"
+        ],
+        "en": [
+          "where are we",
+          "I lost the thread",
+          "give me a bird's eye",
+          "/bird",
+          "/bird all",
+          "/bird --zoom {zone}"
+        ]
+      },
+      "disambiguates_against": {
+        "brief-day": "bird zoom sur 1 brand/projet (recadrage session) · brief-day scan workspace entier au start (todos, P0/P1, status portfolio cross-brands).",
+        "goodnight": "bird ouverture/recadrage milieu de session · goodnight clôture fin journée.",
+        "generate-handoff": "bird = lecture rapide état (consommé immédiatement) · generate-handoff = artefact dense pour prochaine session.",
+        "scope": "bird LIT la carte d'un projet existant · scope CRÉE la carte d'un sujet flou. Pair canon.",
+        "resume-session": "bird = vue spatiale macro territoire · resume-session = reprise narrative du dernier thread actif."
+      },
+      "isolation_scope": "workspace_global",
+      "layer": "meta",
+      "path": ".skills/skills/bird/SKILL.md"
     },
     {
       "name": "brief-day",
@@ -995,9 +1031,9 @@
         ]
       },
       "disambiguates_against": {
-        "produce-paid-angles": "route to produce-paid-angles when operator wants ANGLE IDEATION (matrice ranked) — produce-copy-brief is the downstream brief generation on a chosen angle",
-        "ingest-resource": "route to ingest-resource when operator drops a brief reference doc to digest — that's input ingestion, not output generation",
-        "mine-voc": "route to mine-voc when audience is thin (no verbatims encoded yet) — copy-brief needs verbatim density to anchor hooks credibly"
+        "produce-paid-angles": "route to produce-paid-angles when operator wants ANGLE IDEATION (matrice ranked) · produce-copy-brief is the downstream brief generation on a chosen angle",
+        "ingest-resource": "route to ingest-resource when operator drops a brief reference doc to digest · that's input ingestion, not output generation",
+        "mine-voc": "route to mine-voc when audience is thin (no verbatims encoded yet) · copy-brief needs verbatim density to anchor hooks credibly"
       },
       "isolation_scope": "brand_only",
       "layer": "production",
@@ -1405,6 +1441,39 @@
       "path": ".skills/skills/scaffold-skill-stub/SKILL.md"
     },
     {
+      "name": "scope",
+      "type": "producer",
+      "model": "sonnet",
+      "subagent_safe": true,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "scope",
+          "cartographie",
+          "mappe",
+          "aide-moi à comprendre",
+          "qu'est-ce que j'oublie sur",
+          "avant de setup tel agent"
+        ],
+        "en": [
+          "scope",
+          "map this",
+          "help me understand",
+          "what am I missing on",
+          "before I set up an agent"
+        ]
+      },
+      "disambiguates_against": {
+        "bird": "scope CRÉE la carte d'un sujet flou (cartographie générative). bird LIT la carte produite par scope et la rend visible comme territoire navigable. Pair canon · scope → produce scope-map, bird → consume scope-map.",
+        "create-skill": "scope mappe les paramètres d'un futur skill (carte amont). create-skill génère le SKILL.md final une fois le scope fait.",
+        "learn-from-session": "scope explore un sujet nouveau et produit une carte. learn-from-session persiste les acquis d'une session existante.",
+        "analyze-extension-intent": "scope cartographie un domaine ou système avant build. analyze-extension-intent évalue si un besoin opérateur justifie une extension canon (NEW entity / domain / source / skill)."
+      },
+      "isolation_scope": "workspace_global",
+      "layer": "meta",
+      "path": ".skills/skills/scope/SKILL.md"
+    },
+    {
       "name": "score-matrix",
       "type": "producer",
       "model": "sonnet",
@@ -1552,8 +1621,8 @@
         ]
       },
       "disambiguates_against": {
-        "mine-vom": "route to mine-vom when operator wants market customer voice (vernacular, white-spaces from forum/review verbatim) — that's qualitative; deep-dive is structural/strategic",
-        "watch-competitors": "route to watch-competitors when operator wants recurring creative monitoring of named competitors — different cadence, different output",
+        "mine-vom": "route to mine-vom when operator wants market customer voice (vernacular, white-spaces from forum/review verbatim) · that's qualitative; deep-dive is structural/strategic",
+        "watch-competitors": "route to watch-competitors when operator wants recurring creative monitoring of named competitors · different cadence, different output",
         "mine-voc": "route to mine-voc when operator wants brand-bound customer voice"
       },
       "isolation_scope": "brand_only",

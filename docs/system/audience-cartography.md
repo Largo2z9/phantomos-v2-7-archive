@@ -12,7 +12,7 @@ The fix is not better extraction. It is a different posture. The agent presents 
 
 The agent must run these four movements in order during Step 5 of `snapshot-brand`. Each movement has a hard contract.
 
-### Movement 1 — Raw observations
+### Movement 1 · Raw observations
 
 Before any classification, the agent names what the page literally said. No interpretation, no inference, just observations with their source. Format:
 
@@ -20,15 +20,15 @@ Before any classification, the agent names what the page literally said. No inte
 
 **Why this matters.** The operator immediately sees the raw material the agent is working with. If the page is thin, this exposes it without hiding behind a confident-looking classification. If the page is rich, the operator can spot signals the agent is about to under-weight. This movement is **never skipped**, even when observations are thin. *"La page n'a quasiment rien dit côté audience"* is a valid Movement 1 output and is more useful than a fabricated profile.
 
-### Movement 2 — Cartography axes
+### Movement 2 · Cartography axes
 
 The agent proposes 2 to 3 alternative **cartography axes** for slicing the audience. Each axis is a different way of cutting the same population. The operator picks the axis that matches what they see in performance data, not what the agent guesses.
 
 The three canonical axes:
 
-- **Pain-driven** — slice by what hurts (e.g. *"want to grow"* vs *"losing hair"*). Best when the product addresses two distinct emotional states with different urgency profiles. Drives different copy registers (aspirational vs urgent).
-- **Situational** — slice by life moment or context (e.g. *"post-grossesse"* vs *"stress longue durée"* vs *"chute saisonnière"*). Best when the product hits the same pain in different trigger contexts. Drives different acquisition windows and different creative casting.
-- **Demographic / cultural** — slice by who they are (e.g. *"jeunes femmes voilées"* vs *"jeunes femmes non voilées"*). Best when cultural codes shape both the visual world of the creative and the channel mix (e.g. influence-heavy on one segment, paid-cold-heavy on the other). Demographic axes are **rarely the dominant axis** for paid acquisition — they tend to be modulators within a pain axis or a situational axis. Surface them when the operator's channel mix or creative casting clearly diverges by demographic.
+- **Pain-driven** · slice by what hurts (e.g. *"want to grow"* vs *"losing hair"*). Best when the product addresses two distinct emotional states with different urgency profiles. Drives different copy registers (aspirational vs urgent).
+- **Situational** · slice by life moment or context (e.g. *"post-grossesse"* vs *"stress longue durée"* vs *"chute saisonnière"*). Best when the product hits the same pain in different trigger contexts. Drives different acquisition windows and different creative casting.
+- **Demographic / cultural** · slice by who they are (e.g. *"jeunes femmes voilées"* vs *"jeunes femmes non voilées"*). Best when cultural codes shape both the visual world of the creative and the channel mix (e.g. influence-heavy on one segment, paid-cold-heavy on the other). Demographic axes are **rarely the dominant axis** for paid acquisition, they tend to be modulators within a pain axis or a situational axis. Surface them when the operator's channel mix or creative casting clearly diverges by demographic.
 
 **Format the agent uses to present axes:**
 
@@ -44,7 +44,7 @@ The three canonical axes:
 
 **Hard rule.** The agent **always** proposes at least 2 axes, **always** marks one as the default hypothesis with a one-line rationale tied to a Movement 1 observation, **always** invites the operator to override. Single-axis proposals are a regression to form-fill.
 
-### Movement 3 — Hierarchy mère / sous-audiences
+### Movement 3 · Hierarchy mère / sous-audiences
 
 Once the operator picks an axis, the agent proposes a hierarchy: 2 to 3 **mother audiences** with 1 to 3 **sub-audiences** under each. Mother audiences carry the strategic positioning. Sub-audiences carry the situational or demographic refinement that drives creative casting and channel choice.
 
@@ -62,7 +62,7 @@ A flat audience list with no hierarchy is the wrong default. Sub-audiences must 
 
 The agent never grinds the operator with 5 questions to fill 5 audiences. It proposes the full hierarchy in one move, defaulted with hypothesis status, and lets the operator trim or expand.
 
-### Movement 4 — Hand-off pédagogique
+### Movement 4 · Hand-off pédagogique
 
 Before closing Step 5, the agent explicitly tells the operator how the audience encoding will be **exploited downstream**. This is the pedagogy step. It anchors why we did the work and points to the next skill in the chain.
 
@@ -99,11 +99,11 @@ It produced a flat single audience with no axis declaration, no hierarchy, no ha
 
 ## Cross-references
 
-- `.skills/skills/snapshot-brand/SKILL.md § Step 5` — implementation
-- `.skills/skills/mine-voc/SKILL.md` — downstream consumer, reads audiences and enriches them with verbatim
-- `.skills/skills/produce-paid-angles/SKILL.md` — downstream consumer, reads enriched audiences to produce angles
-- `docs/system/contextual-intelligence.md` — master doctrine, "no form-fill, propose multiple framings"
-- `resources/schemas/profile.schema.json` — `meta.scope` (broad / segment / micro), `meta.parent_slug`, `meta.validation_status` (hypothesis → tested → validated → scaled → fatigued)
+- `.skills/skills/snapshot-brand/SKILL.md § Step 5` · implementation
+- `.skills/skills/mine-voc/SKILL.md` · downstream consumer, reads audiences and enriches them with verbatim
+- `.skills/skills/produce-paid-angles/SKILL.md` · downstream consumer, reads enriched audiences to produce angles
+- `docs/system/contextual-intelligence.md` · master doctrine, "no form-fill, propose multiple framings"
+- `resources/schemas/profile.schema.json` · `meta.scope` (broad / segment / micro), `meta.parent_slug`, `meta.validation_status` (hypothesis → tested → validated → scaled → fatigued)
 
 ## Anti-patterns
 

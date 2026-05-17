@@ -61,6 +61,11 @@ Senior media buyer account health check. Two modes based on API access. Observat
 
 (a) → run setup flow, then Step 1A. (b) → Step 1B.
 
+**Si MCP/token absent** · AskUserQuestion 2 options ·
+- (a) "Je te guide pour connecter Meta maintenant (2 min via connect-mcp-server)"
+- (b) "Je bascule en mode declarative interview (tu me donnes les données à la voix, je structure)"
+Default proactif Jarvis · (a) si l'opérateur a le temps, sinon fallback (b) sans blocker.
+
 ---
 
 ## Step 1A — API mode (default when token available)
