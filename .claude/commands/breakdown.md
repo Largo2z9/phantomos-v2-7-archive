@@ -1,6 +1,7 @@
 ---
 name: breakdown
-description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). 13 topics drillables structurés en 5 couches d'un système opérationnel plus 3 dimensions transverses · principe · atomicité · fractalité · composition · matrices · règles · templates · métriques · rituels · production · intelligence · apprentissage · extension. Ordre suggéré 1 à 10 (parcours couches) puis 11 à 13 (transverses qui scellent le parcours). Drill direct possible sur tout topic.
+description: Vitrine pédagogique PhantomOS via le cas Stepprs (brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com avec certains financials et verbatims mockés pour la pédagogie). 13 topics drillables structurés en 5 couches d'un système opérationnel plus 3 dimensions transverses · principe · atomicité · fractalité · composition · matrices · règles · templates · métriques · rituels · production · intelligence · apprentissage · extension. Ordre suggéré 1 à 10 (parcours couches) puis 11 à 13 (transverses qui scellent le parcours). Drill direct possible sur tout topic. Patch v2.79.1 · section transversale Decomposition Visibility canon (4 niveaux matriciels appliqués cas Stepprs encoded · doctrine racine cross-skills opérateur-facing).
+version: 2.79.1
 ---
 
 # `/breakdown stepprs {topic}` · vitrine pédagogique PhantomOS
@@ -136,6 +137,9 @@ POUR ALLER PLUS LOIN
 - **Diagramme cartographique ASCII** obligatoire dans la section "ce qui le rend possible"
 - **✦ markers sobres** pour annotations qui décompressent un point dense
 - **Fiche ~30 lignes max**, drill en fin
+- **Section transversale Decomposition Visibility canon v2.79+ obligatoire** sur les chapitres `principe` · `atomicite` · `composition` · `matrices` · `production`. L'agent ship en synthèse les 4 niveaux matriciels appliqués au cas Stepprs encoded (NIVEAU 1 décomposition produit · NIVEAU 2 many-to-many · NIVEAU 3 stage filter · NIVEAU 4 pédagogie verbale). Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+.
+- **4 niveaux matriciels appliqués cas Stepprs réel encoded** (workers-shifts + chronic-pain-45+ audiences, massage-insoles product, atomes encodés `brands/_EXAMPLE/`). Jamais projection hypothétique sur ces chapitres : sourcing depuis le workspace canon.
+- **Cross-ref doctrine canon racine** `decomposition-visibility-discipline.md` cité explicit en clôture de synthèse pour les chapitres consumer.
 
 ## Topic guides · ce que l'agent doit produire par topic
 
@@ -915,6 +919,91 @@ Tu n'es jamais coincé. Le système n'est pas un cadre rigide où tout ce qui n'
 
 ---
 
+## Section transversale · Decomposition Visibility canon v2.79+
+
+Le cas Stepprs encodé dans le workspace `brands/_EXAMPLE/` illustre les 4 niveaux matriciels canon `decomposition-visibility-discipline` qui s'appliquent à tout brand opérateur-facing. Cette section synthétise comment les chapitres précédents (principe · atomicité · composition · matrices · production) montent ensemble en 1 pattern reproductible. À garder en filigrane pendant le drill par topic, et à reverbaliser quand l'opérateur passe de Stepprs au scaffold de sa propre marque.
+
+### NIVEAU 1 · Décomposition produit Stepprs (massage insoles)
+
+3 strates orthogonales · ce que le produit EST · ce qu'il FAIT · ce que ça CHANGE.
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│ NIVEAU 1 · Décomposition produit (canon strata) · Stepprs            │
+├──────────────────────────────────────────────────────────────────────┤
+│ SPECS · ce que le produit EST                                        │
+│   semelle massage 3 couches · mousse à mémoire de forme ·            │
+│   soutien voûte plantaire · épaisseur 5mm · format universel         │
+├──────────────────────────────────────────────────────────────────────┤
+│ MÉCANISMES · ce que le produit FAIT                                  │
+│   mousse mémoire épouse la voûte · redistribution de pression        │
+│   sur les 3 zones d'appui · absorption de choc talon · soutien       │
+│   dynamique sur cycle de marche                                      │
+├──────────────────────────────────────────────────────────────────────┤
+│ BÉNÉFICES 3 couches · ce que ça CHANGE                               │
+│   functional · fin de douleur talon réveil · pieds tiennent 8h+      │
+│   emotional · sérénité fin de shift · plus de peur du lendemain      │
+│   identity · pro qui prend soin de son corps · parent prévoyant      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+Le stack functional · emotional · identity vit dans la doctrine `pain-benefit-chain` canon. Skip 1 couche (functional seule) · différenciation premium impossible · positionnement single-layer.
+
+### NIVEAU 2 · Many-to-many Stepprs (pain × audience)
+
+1 produit · N pains · M audiences. Matrice force pensée systémique correcte. Évite la trap 1:1 (1 produit · 1 pain · 1 audience) qui plafonne le scaling.
+
+```
+┌────────────────────────────┬─────────────────┬───────────────────┐
+│                            │ workers-shifts  │ chronic-pain-45+  │
+├────────────────────────────┼─────────────────┼───────────────────┤
+│ talalgie réveil            │     ✓✓ P        │      ✓✓ P         │
+│ fatigue podale fin de jour │     ✓✓ P        │       ✓ S         │
+│ douleur métatarsienne      │      ✓ S        │      ✓✓ P         │
+│ tension lombaire chronique │      ✓ S        │       ✓ S         │
+│ inflammation aponévrose    │       ·         │      ✓✓ P         │
+├────────────────────────────┼─────────────────┼───────────────────┤
+│ Espace blanc paid          │   emerging      │    weak           │
+└────────────────────────────┴─────────────────┴───────────────────┘
+
+Légende · ✓✓ P = PRIMARY (pain dominant) · ✓ S = SECONDARY · · = NONE
+```
+
+Lecture · talalgie réveil est PRIMARY sur les 2 audiences encodées (candidate hero horizontal). Inflammation aponévrose est PRIMARY seulement sur chronic-pain-45+ (candidate niche vertical). La même semelle sert 2 contextes business via 2 hooks calibrés.
+
+### NIVEAU 3 · Positionnement filtre par stage business Stepprs
+
+Audience produit-fit (qui le produit peut servir) ≠ audience ciblage créa (qui la communication mène en priorité au stage business courant). Distinction stratégique explicit.
+
+```
+┌──────────┬───────────────┬──────────────────┬──────────────────────────┐
+│ Stage    │ ARR target    │ Audience focus   │ Angle dominant Stepprs   │
+├──────────┼───────────────┼──────────────────┼──────────────────────────┤
+│ early    │ 0 → 500k      │ 1 audience       │ angle hero "premier pas  │
+│          │               │ workers-shifts   │ matin" × pain talalgie   │
+├──────────┼───────────────┼──────────────────┼──────────────────────────┤
+│ growth   │ 500k → 3M     │ 2 audiences      │ hero workers + variante  │
+│          │               │ workers + chronic│ reassurance chronic-pain │
+├──────────┼───────────────┼──────────────────┼──────────────────────────┤
+│ scale    │ 3M+           │ 3-4 audiences    │ matrice complète angles  │
+│          │               │ + sous-pockets   │ × audiences × saisons    │
+└──────────┴───────────────┴──────────────────┴──────────────────────────┘
+```
+
+Audience produit-fit Stepprs · large (workers-shifts + chronic-pain-45+ + 5 sous-pockets cartographiées). Audience ciblage créa au stade early · étroite (workers-shifts seule, learning efficient). Confondre les deux · single-audience permanente même à 3M+ ARR · saturation auction garantie.
+
+### NIVEAU 4 · Méthode pédagogique verbale
+
+Verbaliser le HOW à l'opérateur AVANT et APRÈS la décomposition. Verbatim canon ·
+
+- *"J'ai décomposé le produit Stepprs en 4 niveaux logiques · ce qu'il EST (semelle 3 couches mousse mémoire), ce qu'il FAIT (redistribution pression + absorption choc), ce que ça CHANGE (functional fin de douleur · emotional sérénité · identity pro qui prend soin), à QUI ça répond (matrice many-to-many pain × audience)."*
+- *"Puis filtre POSITIONNEMENT par stage business · early stage Stepprs focus workers-shifts, growth ajoute chronic-pain-45+, scale ouvre la matrice complète angles × audiences × saisons."*
+- *"L'audience produit-fit Stepprs (qui la semelle peut servir, surface large) n'est PAS l'audience ciblage créa (qui la communication mène en priorité au stade business courant, surface étroite stage-aware)."*
+
+Pattern reproductible · l'opérateur encode SA marque en réappliquant les 4 niveaux. Même grammaire, brand différente, output canon. C'est la promesse PhantomOS · grammaire transférable, pas template figé.
+
+Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+ canon racine cross-skills opérateur-facing.
+
 ## Anti-patterns à éviter dans toute fiche
 
 - Dump prose continue sans diagramme
@@ -925,11 +1014,15 @@ Tu n'es jamais coincé. Le système n'est pas un cadre rigide où tout ce qui n'
 - Fiche au-delà de 35 lignes
 - Vocabulaire technique sans explication inline première occurrence
 - Présupposé de connaissance marketing (audience, DTC, scale, angle) sans expliquer en langue courante
+- Vitrine pédagogique prose-only sans matrices appliquées au cas Stepprs (canon DVD v2.79+ trahi)
+- Chapitre composition ou matrices sans rendu matrice canon (NIVEAU 1, 2, 3 ASCII obligatoires sur synthesis)
+- Skip pédagogie verbale méthode (verbatim *"j'ai décomposé en 4 niveaux logiques"* obligatoire sur synthesis)
 
 ## Cross-refs canon
 
 **Doctrine mère** ·
 - `docs/system/operational-system-discipline.md` (NEW v2.71.0 · les 5 couches d'un système opérationnel comme grammaire pédagogique mère)
+- `docs/system/decomposition-visibility-discipline.md` (v2.79+ canon racine cross-skills opérateur-facing · 4 niveaux matriciels obligatoires sur synthèse stratégique · doctrine sœur Investigation Posture + Canonical Matrix Reasoning + Skill Routing Discipline)
 
 **Doctrines couche 1 (modèle)** ·
 - `docs/system/compositional-cartography.md` (équation NOYAU × CONTEXTE × MODIFICATEURS)
@@ -955,7 +1048,15 @@ Tu n'es jamais coincé. Le système n'est pas un cadre rigide où tout ce qui n'
 **Slash commands frères** ·
 - `/tour` (onboarding complet PhantomOS)
 - `/skills` (menu navigable des skills)
-- `/phantom` (state cockpit brand active)
+- `/phantom` (state cockpit brand active · canon v2.77 + v2.79.1 · 4 niveaux matriciels brand opérateur-facing)
+- `/bird` (vue d'oiseau projet · canon v2.79.1 · pattern matriciel synthèse)
+- `/scope` (cartographie paramètres décidables · canon v2.79.1 · pattern matriciel scoping)
+
+**Sister skills v2.78.2+/v2.79+ consumers Decomposition Visibility canon** ·
+- `snapshot-brand` (Phase output Movement 3-4 · matrices 4 niveaux brand encoded)
+- `build-atlas-complete` (Phase output pipeline canonical · atlas matriciel multi-niveau)
+- `profile-audience` (output enrichi matrice audience × pain × angle × stage)
+- `define-specs` (output 3 niveaux specs · mécanismes · bénéfices matrice obligatoire)
 
 **Discovery cross-link** ·
 - `_EXAMPLE/stepprs/README.md` pointe vers `/breakdown stepprs`

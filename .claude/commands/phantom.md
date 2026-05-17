@@ -146,7 +146,7 @@ Anti-pattern : *"  · Lancer un audit Meta dès que possible"* (passif, l'opéra
 
 ## Mode brand
 
-Vue détaillée d'un brand spécifique. **Page menu workspace structurée 5 sections obligatoires avec dividers `────`.** Adaptive selon `brand.json#identity.business_model` v2.4 NEW.
+Vue détaillée d'un brand spécifique. **Page menu workspace structurée 6 sections obligatoires avec dividers `────` (v2.79.1+).** Adaptive selon `brand.json#identity.business_model` v2.4 NEW. **Section 6 NEW v2.79.1 · Decomposition Visibility cockpit brand state** (rendu matriciel canon doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+ post-output brand state).
 
 ### Sources à lire (read-only, dans l'ordre)
 
@@ -168,7 +168,7 @@ Vue détaillée d'un brand spécifique. **Page menu workspace structurée 5 sect
 16. `.phantom/active-tasks.json` (si existe) → skills en cours runtime (mine-voc, score-matrix, sync-notion-atlas).
 17. `.phantom/context-engine-events.jsonl` → mutations 24h.
 
-### Format de rendu brand (5 sections obligatoires)
+### Format de rendu brand (6 sections obligatoires v2.79.1+)
 
 ```
 PhantomOS · brand : {brand_name}
@@ -214,6 +214,20 @@ Stratégie & opérationnel
    Recherche cross-brand        /phantom search "{keyword}"
    Historique mutations         /phantom recent
    Bibliothèque métier          /phantom canon
+
+──── DECOMPOSITION VISIBILITY (canon v2.79+) ────
+
+NIVEAU 1 · Décomposition produit cross-products
+{niveau_1_table_per_product}
+
+NIVEAU 2 · Many-to-many · pain × audience matrix cross-atlas
+{niveau_2_matrix_ascii}
+
+NIVEAU 3 · Positionnement filtre par stage business
+{niveau_3_stage_table}
+
+NIVEAU 4 · Méthode pédagogique verbale
+{niveau_4_method_verbatim}
 ```
 
 ### Section 1 · Header
@@ -407,6 +421,126 @@ Substitutions selon business_model ·
 - `service` · remplace `produits` par `services`, `funnel` par `pipeline`
 - `subscription` · remplace `produits` par `plans`
 - `marketplace` · remplace `produits` par `catalog`
+
+### Section 6 · Decomposition Visibility cockpit brand state (canon v2.79+)
+
+**MANDATORY post-output brand state cockpit.** Après affichage état brand cockpit (identity · positioning · audiences · products · offers · angles · strategy · learnings), rendu obligatoire matriciel multi-niveau canon doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+. Sans cette Section, le cockpit reste prose-only · l'opérateur ne voit jamais la vue d'ensemble matricielle (product × pain × audience × positionnement × stage business) · output invalide.
+
+Pattern systémique racine canon · *"l'agent doit PROUVER qu'il a compris en MONTRANT sa réflexion"*. Cockpit `/phantom {brand}` = trigger principal opérateur-facing pour voir l'état brand · DOIT appliquer canon decomposition-visibility-discipline v2.79+ au même titre que skills consumers (snapshot-brand · build-atlas-complete · profile-audience · define-specs).
+
+**Sources à lire** · `brands/{slug}/_snapshot.md` (digest) + `products/{slug}/spec.json` (specs · mécanismes · bénéfices 3 couches) + `audiences/{slug}/profile.json` (psychology · pain_points sub-folder) + `audiences/{slug}/pain_points/*.json` (PNT-NN labels) + `strategy.json` (current_focus · stage si déclaré) + `brand.json` (proof points · ARR signals · domain age si encoded).
+
+#### NIVEAU 1 · Décomposition produit cross-products
+
+Pour chaque produit encoded brand · table compacte décomposition specs · mécanismes · bénéfices 3 couches canon `docs/system/pain-benefit-chain.md` (functional · emotional · identity, layer chargé identifié explicit) ·
+
+```
+PRODUCT {product_name}
+SPECS                   MÉCANISMES                   BÉNÉFICES 3 couches
+{atome spec 1}          {atome action 1}             Functional · {bénéfice}
+{atome spec 2}          {atome action 2}             Emotional  · {bénéfice}
+                                                     Identity   · {bénéfice}
+                                                                  ← layer chargé
+```
+
+Itérer pour les N produits encoded brand. Si produit unique · une table. Si multi-produits · N tables compactes empilées (séparateur visuel entre). Si zéro produit encoded · skip NIVEAU 1 + flag *"NIVEAU 1 indisponible · zéro produit encoded · lance `snapshot {brand} avec {url}`"*.
+
+**Scaling rules N produits NIVEAU 1** ·
+- 1-3 produits · tables full empilées
+- 4-10 produits · tables top-3 par hero_flag + activité créa + footer *"+{N-3} autres produits · /phantom {brand} products"*
+- 11+ produits · top-3 only + drill obligatoire référé
+
+#### NIVEAU 2 · Many-to-many · pain × audience matrix cross-atlas
+
+Matrice ASCII OBLIGATOIRE cross-products + cross-audiences · skip = invalid output. Décompose explicitement quelle douleur frappe quelle audience avec intensité primary vs secondary ·
+
+```
+                          {audience_1}     {audience_2}     {audience_3}     {audience_N}
+                          (slug)           (slug)           (slug)           (slug)
+PNT-01 {pain label}         ✓✓ PRIMARY        ·               ✓                ·
+PNT-02 {pain label}            ·          ✓✓ PRIMARY          ·                ✓
+PNT-03 {pain label}            ✓              ✓           ✓✓ PRIMARY           ·
+PNT-NN ...
+──────────────────────────────────────────────────────────────────────────────────
+Espace blanc paid              ·          INCONTESTÉ          ·                ·
+(compétitif intel)                        ({N} concurrents
+                                           sur axe unique)
+```
+
+Légende canon · `✓✓ PRIMARY` (douleur dominante audience) · `✓` (douleur secondaire affecte audience) · `·` (zéro affect). Row `Espace blanc paid` (optional · ship si signal compétitif intel détecté dans `learnings.json` OU `angles/` lineage_signal) · pour chaque audience, repère où concurrence est faible/inexistante sur l'angle · opportunité paid prioritaire.
+
+Si zéro audience encoded OU zéro pain_points encoded · skip NIVEAU 2 + flag *"NIVEAU 2 indisponible · {missing_entity} à cartographier · lance `mine-voc {brand}` OR `/phantom {brand} audiences`"*.
+
+#### NIVEAU 3 · Positionnement filtre par stage business
+
+Stage business détecté (signal `brand.json#financials.arr_estimated` OU `brand.json#proof_points` OU `brand.json#domain_age` OU `strategy.json#stage` si déclaré) OU opérateur-déclaré. Table canon ·
+
+```
+STAGE détecté            {early | growth | scale | inconnu}
+ARR estimée              {signal range OR "non observable"}
+
+AUDIENCE PRIORITAIRE     {audience slug + rationale 1 ligne}
+ANGLES DOMINANTS         {3-5 angle ids ranked top depuis angles/}
+POSITIONING STATEMENT    {Moore format si produce-positioning-canvas
+                          shipped · sinon stage hypothèse 1 ligne}
+
+Distinction critique opérateur ·
+Audience produit-fit     {toutes audiences encoded · audience-1 · audience-2 · audience-3 · ...}
+Audience ciblage créa    {filter sub-set selon positioning targeting stage-aware · ex audience-2 only stage early}
+```
+
+**Stage detection signals** · early (ARR < 500k · domain age < 2 ans · proof points < 5) · growth (ARR 500k-3M · domain age 2-5 ans · proof points 5-20) · scale (ARR > 3M · domain age > 5 ans · proof points 20+). ARR signal absent ET proof points absents ET domain age inconnu → flag `stage = inconnu` · ne pas inventer.
+
+**Distinction audience produit-fit vs ciblage créa** · audience produit-fit = toutes audiences encoded pertinentes pour le produit (surface large NIVEAU 2 matrice tous ✓✓ P et ✓ S). Audience ciblage créa = sub-set filtré par positionnement stage-aware (surface étroite NIVEAU 3 filtre). Confusion = leak runtime · opérateur dépense paid sur audiences hors ciblage stage.
+
+#### NIVEAU 4 · Méthode pédagogique verbale
+
+Verbaliser méthode décomposition canon · l'opérateur sait COMMENT le cockpit a été lu, pas seulement QUOI ·
+
+```
+J'ai cartographié l'état brand {brand} en 4 niveaux canon ·
+1. Décomposition produit · specs/mécanismes/bénéfices 3 couches
+   (functional · emotional · identity, layer chargé identifié)
+2. Many-to-many · {N} pains × {M} audiences (matrix primary/secondary
+   affectations · espace blanc paid si signal compétitif)
+3. Stage business · {stage détecté} → audience prioritaire {slug} ·
+   {3-5 angles dominants}
+4. Positionnement filter · {produit-fit toutes audiences} vs
+   {ciblage créa sub-set stage-aware}
+
+État actuel atlas · {level}/3 niveaux · {N_missing} entités à enrichir.
+Skills route possibles downstream · {produce-paid-angles si Gate B passé} ·
+{score-matrix si N audiences ≥ 3} · {creative-brief-composer si angles ranked}.
+```
+
+Adapter verbatim selon stage atlas (level 1 fresh · level 2 mid · level 3 mature) · level 1 verbatim invite *"continue à cadrer le business · `snapshot {brand}` · `mine-voc {brand}`"* · level 3 verbatim invite *"l'atlas est opérable cross-skills downstream · valide angles · lance score-matrix"*.
+
+#### Hard Rules canon strict (Section 6)
+
+- **HR-DVD-PHANTOM-1.** Section 6 Decomposition Visibility obligatoire post-output brand state cockpit (post-Section 5 DRILL & EXPLORATION). JAMAIS skip cette Section. Cockpit prose-only sans matrices = invalid output v2.79.1+.
+- **HR-DVD-PHANTOM-2.** 4 niveaux matriciels canon obligatoires (NIVEAU 1 + NIVEAU 2 + NIVEAU 3 + NIVEAU 4). Skip 1 niveau = invalid output. Manquant data source → flag explicit + skill route corrective (pas skip silent).
+- **HR-DVD-PHANTOM-3.** Méthode pédagogique verbale obligatoire post-matrices (NIVEAU 4). JAMAIS ship matrices raw sans explication méthode. Opérateur consolide grammaire mentale cross-sessions.
+- **HR-DVD-PHANTOM-4.** Stage business filter explicit si signal détectable (ARR/proof points/domain age dans `brand.json`). Stage inconnu = flag explicit `stage = inconnu` · jamais inventer. Single-audience assumption sans stage filter = anti-pattern.
+- **HR-DVD-PHANTOM-5.** Distinction audience produit-fit (surface large) vs audience ciblage créa (surface étroite stage-aware) explicit NIVEAU 3. Confusion = leak runtime · paid dépensé hors ciblage stage.
+- **HR-DVD-PHANTOM-6.** Backward compat strict additif · Sections 1-5 existing brand mode preserved · Section 6 NEW append after Section 5 sans muter rendering existing. Read-only constraint cockpit respect (zéro mutation pendant rendu).
+
+#### Anti-patterns canon strict (Section 6)
+
+- **AP-DVD-PHANTOM-1.** Output cockpit brand state prose-only sans matrices ASCII (Sections 1-5 rendus correctement · Section 6 skip). Opérateur reçoit cockpit opaque · trust ou rejet binaire · drill granulaire impossible. Pattern correctif · HR-DVD-PHANTOM-1 enforcement.
+- **AP-DVD-PHANTOM-2.** Skip niveau matriciel (4 obligatoires strict). Ex · NIVEAU 1 + NIVEAU 2 only · skip NIVEAU 3 stage filter et NIVEAU 4 pédagogie. Output dégradé · pensée systémique incomplète. Pattern correctif · HR-DVD-PHANTOM-2 enforcement.
+- **AP-DVD-PHANTOM-3.** Many-to-many implicite (NIVEAU 2 prose narrative au lieu de matrice ASCII). Opérateur déduit relations · drift mental model · pensée 1:1 fausse persiste. Pattern correctif · matrice NIVEAU 2 ASCII obligatoire forcée HR-DVD-PHANTOM-2.
+- **AP-DVD-PHANTOM-4.** Stage business absent du filtre positionnement (NIVEAU 3 sans stage row). Recommandation 1 audience focus permanente toutes stages business. Saturation auction stage 3M+ ARR garantie. Pattern correctif · HR-DVD-PHANTOM-4 enforcement.
+- **AP-DVD-PHANTOM-5.** Skip pédagogie verbale méthode (NIVEAU 4 absent). Opérateur reçoit décomposition sans grammaire mentale · apprentissage zéro · dépendance permanent agent. Pattern correctif · HR-DVD-PHANTOM-3 enforcement.
+- **AP-DVD-PHANTOM-6.** Confond audience produit-fit (toutes encoded) avec audience ciblage créa (sub-set stage-aware filtré). Décision stratégique aveugle · scaling perte ROAS. Pattern correctif · HR-DVD-PHANTOM-5 enforcement.
+
+#### Cross-refs canon
+
+- `docs/system/decomposition-visibility-discipline.md` v2.79+ · doctrine racine 4 niveaux canon (HR-DVD-1 à HR-DVD-8 · AP-DVD-1 à AP-DVD-8)
+- `docs/system/pain-benefit-chain.md` · 3 couches bénéfices canon (functional · emotional · identity · aspirational) · NIVEAU 1 consume
+- `docs/system/audience-cartography.md` v2.64 · parent/enfants sémantique pure · NIVEAU 2 consume audiences
+- `docs/system/canonical-matrix-reasoning.md` · schema + matrice canon = cohérence output 95% qualité · pattern miroir
+- Sister skills v2.78.2 / v2.79 consumers · `snapshot-brand` (Phase Atlas Visibility v1.x · Movement 3-4) · `build-atlas-complete` v1.6.0 (Phase 8.5 Atlas Visibility Matriciel · pattern source de référence) · `profile-audience` (NIVEAU 2 pain × audience consume) · `define-specs` (NIVEAU 1 specs/mécanismes/bénéfices consume)
+- Forward-compat v2.80 · `produce-positioning-canvas` (Moore format NIVEAU 3 Positioning Statement) · `define-brand-voice` (4D cohérence NIVEAU 3)
 
 ---
 
@@ -1464,7 +1598,8 @@ Application : utiliser `🔥` quand un test ROAS chute ≥30% sur 14j ou quand u
 ## Constraints (tous modes)
 
 - **Read-only.** Aucune mutation. Si l'opérateur demande ensuite de fix quelque chose, propose le skill approprié, ne fais pas la mutation toi-même.
-- **One screen output.** Workspace mode · 30 lignes max. **Brand mode · 60-80 lignes max (page menu workspace structurée 5 sections obligatoires avec dividers `────`, cf section *Mode brand*).** **Entity-drill mode · 60-70 lignes max (drill enrichi cross-refs + actions, cf section *Pattern enrichi*).** Item mode · 40-60 lignes max selon entity.
+- **One screen output.** Workspace mode · 30 lignes max. **Brand mode · 140-180 lignes max v2.79.1+ (page menu workspace structurée 6 sections obligatoires avec dividers `────` · Sections 1-5 ≤ 80 lignes + Section 6 Decomposition Visibility ≤ 100 lignes, cf section *Mode brand*).** **Entity-drill mode · 60-70 lignes max (drill enrichi cross-refs + actions, cf section *Pattern enrichi*).** Item mode · 40-60 lignes max selon entity.
+- **Decomposition Visibility cockpit brand state (v2.79.1+).** Section 6 obligatoire post-Section 5 (DRILL & EXPLORATION) sur tout `/phantom {brand}`. 4 niveaux matriciels canon obligatoires (NIVEAU 1 décomposition produit · NIVEAU 2 many-to-many pain × audience matrix · NIVEAU 3 stage business filter · NIVEAU 4 pédagogie verbale). Skip 1 niveau = invalid output. Doctrine racine `docs/system/decomposition-visibility-discipline.md` v2.79+. Détail Section 6 ci-dessus.
 - **Pas de jargon doctrine.** Filtre `_jargon_bank.json` post-render v2.42+ (cf section *Post-render jargon filter*). Traduit en mots métier (validé / hypothèse / fatigué).
 - **Honest staleness.** Si une entité n'a pas été touchée depuis 90j, dis-le. Si snapshot date > 1h, regenère silencieusement avant d'afficher.
 - **Workspace est le default.** `/phantom` sans argument lande toujours au niveau workspace (sauf bootstrap si 0 brand). L'opérateur drille explicitement via `/phantom {slug}`. Pattern terminal-like, jamais court-circuiter la navigation.

@@ -41,7 +41,7 @@ FIRST ACTION canon précise déjà *"ignore any folder starting with `_`"* lors 
 
 **Full doctrine + anti-patterns (read before designing any new skill or hook):** `docs/system/contextual-intelligence.md`.
 
-**Sub-doctrines (read when authoring or extending):** Contextual Intelligence is the master doctrine. 13 canon doctrines shipped serve it (canon Sprint A inventory) :
+**Sub-doctrines (read when authoring or extending):** Contextual Intelligence is the master doctrine. 14 canon doctrines shipped serve it (canon Sprint A inventory) :
 - **Operational System Discipline** (v2.71), `docs/system/operational-system-discipline.md` (doctrine mère 5 couches · ECR × Règles × Templates × Métriques × Rituels · pattern racine qui structure tout système opérationnel encodé dans PhantomOS).
 - **Compositional Cartography** (v3.1), `docs/system/compositional-cartography.md` (cartographier + composer outputs créatifs via équation NOYAU × CONTEXTE × MODIFIEURS, 4 arbres + matrice + modulateurs, cycle validation atlas vivant ; implémentation domaine-spécifique de CMR au créatif).
 - **Canonical Matrix Reasoning**, `docs/system/canonical-matrix-reasoning.md` (how to produce 95% quality on intersectional outputs : schema + canon matrix = cohérence output, modulator/cell, cardinality cap, internal scoring).
@@ -52,6 +52,7 @@ FIRST ACTION canon précise déjà *"ignore any folder starting with `_`"* lors 
 - **Extension Discovery Discipline** (v2.75), `docs/system/extension-discovery-discipline.md` (scaffold × register × discovery × consume · pipeline NEW entities auto-consommées par skills downstream).
 - **Scope Extension Discipline** (v2.65), `docs/system/scope-extension-discipline.md` (canon élasticité scope opérateur-driven · PhantomOS accueille n'importe quel domaine encodé).
 - **Territory Discipline** (v2.67), `docs/system/territory-discipline.md` (substrat stable vs productions runtime · séparation fondations encodées et outputs générés).
+- **Decomposition Visibility Discipline** (v2.79+), `docs/system/decomposition-visibility-discipline.md` (l'agent doit PROUVER qu'il a compris en MONTRANT sa réflexion · 4 niveaux matriciels obligatoires + pédagogie verbale cross-skills opérateur-facing).
 - **Connectivity Layering**, `docs/system/connectivity-layering.md` (3 layers · MCP au niveau Claude Code + APIs callables via skills + scripts opérations shippés · jamais confondre).
 - **Notion Bridge Doctrine** (v2.57+), `docs/system/notion-bridge-doctrine.md` (bidirectionnel pull/push · PhantomOS source de vérité · Notion miroir consultable opérateur).
 
@@ -89,6 +90,25 @@ Doctrine governance (promotion, amendment, retraction, conflict resolution) : `d
 **Fallback systémique manifest (v2.56+).** Si l'output stratégique demandé ne match aucun mapping explicite ci-dessus, l'agent DOIT scanner `.skills/_manifest.json` (triggers FR + EN par skill) avant de freestyle. Si un trigger match l'intent opérateur → invoke le skill via Task tool. Si zéro match → flag gap à l'opérateur et propose `create-skill`. JAMAIS freestyle prose comme premier réflexe. Conscience skill = mapping explicite (rapide) + manifest scan (filet de sécurité, couvre les NEW skills non-encore mappés ici).
 
 Si le skill n'existe pas pour un output demandé, l'agent flag le gap explicitement à l'opérateur et propose de créer le skill via `create-skill`. Il ne remplit JAMAIS le gap par freestyle prose.
+
+**Skill routing v2.79.1 · synthèse brand opérateur-facing.** Tout output synthèse brand entity opérateur-facing (output user-visible · pas plumbing silent capture) DOIT rendre les 4 niveaux matriciels canon `decomposition-visibility-discipline.md` (v2.79+) · même quand aucun skill consumer spécifique n'est routé (freestyle prose).
+
+Triggers verbaux qui forcent le pattern matriciel obligatoire ·
+
+- "résume" / "synthèse" / "cartographie" / "récapitule" / "présente" sur brand entity
+- "ce que tu as compris" / "ce que tu sais" sur brand
+- "/phantom {brand}" / "/bird {brand}" / "/breakdown {brand}" commands
+- Output stratégique brand-related opérateur-facing (post-snapshot-brand · post-build-atlas-complete · post-profile-audience · post-define-specs · plus skills synthesis brand-adjacent)
+
+4 niveaux matriciels canon obligatoires output ·
+- NIVEAU 1 · décomposition produit (specs · mécanismes · bénéfices 3 couches)
+- NIVEAU 2 · matrice many-to-many product × pain × audience (ASCII)
+- NIVEAU 3 · positionnement filtre par stage business (early/growth/scale)
+- NIVEAU 4 · méthode pédagogique verbale méthode décomposition
+
+Anti-pattern strict · synthèse brand opérateur-facing prose-only sans matrices ASCII = invalid output canon. Pattern systémique `l'agent doit PROUVER qu'il a compris en MONTRANT sa réflexion`.
+
+Voir doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+.
 
 **Exception** · conversation libre (questions, clarifications, debug, doctrine discussion) reste en prose libre. La règle s'applique au contenu stratégique livré, pas au dialogue conversationnel.
 

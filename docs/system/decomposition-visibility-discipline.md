@@ -1,6 +1,6 @@
 # Decomposition Visibility Discipline · Operating Doctrine
 
-> Canonique v2.78.2+. Doctrine canon qui codifie comment l'agent rend visible sa décomposition de réflexion plus son reverse engineering à l'opérateur pendant l'encoding et la synthesis cross-skills. Doctrine sœur de `investigation-posture.md` (rigueur output 5 sections), `canonical-matrix-reasoning.md` (qualité output cross-cell schema plus matrice), et `skill-routing-discipline.md` (canon routing 5 phases). Ferme le gap *"l'agent encode silencieusement sans présenter visuellement la décomposition produit, le mapping many-to-many, le filtre stage business, et la méthode pédagogique"* flag systémique Sprint v2.78.2 post-test live KaraCare workspace v2.78.0.
+> Canonique v2.79.1+. Doctrine canon qui codifie comment l'agent rend visible sa décomposition de réflexion plus son reverse engineering à l'opérateur pendant l'encoding et la synthesis cross-skills plus cross-slash commands plus queries verbal freestyle. Doctrine sœur de `investigation-posture.md` (rigueur output 5 sections), `canonical-matrix-reasoning.md` (qualité output cross-cell schema plus matrice), et `skill-routing-discipline.md` (canon routing 5 phases). Ferme le gap *"l'agent encode silencieusement sans présenter visuellement la décomposition produit, le mapping many-to-many, le filtre stage business, et la méthode pédagogique"* flag systémique Sprint v2.78.2 post-test live KaraCare workspace v2.78.0 plus gap *"queries verbal résume/cartographie freestyle prose sans déclencher 4 niveaux matriciels canon"* flag systémique Sprint v2.79.1 post-test live KaraCare workspace v2.79.0 (HR-DVD-9 enforcement runtime).
 
 ---
 
@@ -227,31 +227,56 @@ L'agent explique TOUJOURS verbalement comment il a décomposé · vocabulaire ca
 
 ---
 
-## 8. Skills consumers (cross-skills application)
+## 8. Skills consumers (cross-skills application exhaustif)
 
-Skills v2.78.2+ qui consomment Decomposition Visibility Discipline ·
+### Skills consumers v2.78.2 (Phase Output Decomposition Visibility shipped)
 
-- **snapshot-brand** · Phase output Movement 3-4 (positionnement + audience cartographie) · NEW section *"Decomposition Visibility"* qui présente les 4 niveaux canon AVANT ship synthèse stratégique opérateur-facing.
-- **build-atlas-complete** · Phase output pipeline canonical · NEW section atlas matriciel multi-niveau · décomposition produit + many-to-many + stage filter + pédagogie verbale embarqués.
-- **profile-audience** · Output enrichi matrice audience × pain × angle × stage · ne ship plus prose persona-only · matrice obligatoire.
-- **define-specs** · Output 3 niveaux specs/mécanismes/bénéfices matrice obligatoire · ne ship plus liste flat specs.
-- **produce-positioning-canvas** (v2.80 future) · consume cohérence stage business filter · positioning canvas stage-aware.
-- **map-angles** · consume cohérence many-to-many positioning · angles ranking matrice pain × audience.
+- **snapshot-brand** v1.5.0 · Phase Output Decomposition Visibility post-IP · NEW section *"Decomposition Visibility"* qui présente les 4 niveaux canon AVANT ship synthèse stratégique opérateur-facing.
+- **build-atlas-complete** v1.6.0 · Phase Output Atlas Visibility Matriciel multi-niveau · décomposition produit + many-to-many + stage filter + pédagogie verbale embarqués.
+- **profile-audience** v1.7.0 · Output Audience Visibility Matriciel · ne ship plus prose persona-only · matrice obligatoire pain × angle × stage.
+- **define-specs** v1.3.0 · HR8.5 Specs Visibility Matriciel 3 niveaux · ne ship plus liste flat specs · matrice obligatoire specs/mécanismes/bénéfices 3 couches.
+
+### Slash commands consumers v2.79.1 (NEW patches enforcement runtime)
+
+- **/phantom** command + skill · Section Decomposition Visibility cockpit brand state · ship 4 niveaux matriciels canon dans cartographie brand opérateur-facing.
+- **/bird** command + skill · pattern matriciel multi-niveau territoire-level · vue d'oiseau projet/brand rend matrices canon visibles.
+- **/breakdown** command · Section Decomposition Visibility cross-cas pédagogique Stepprs · parcours 13 chapitres consume 4 niveaux canon.
+- **/scope** command + skill · 5 sections IP cohérence (sister canon v2.77) · BUILD mode scoping consume decomposition visibility cross-phase.
+- **/tour** command · trigger contextual canon (cohérence onboarding) · onboarding novice expose pattern 4 niveaux progressif.
+
+### Skills synthesis stratégique brand-related opérateur-facing
+
+- **produce-positioning-canvas** v2.80 (Geoffrey Moore output) · consume cohérence stage business filter · positioning canvas stage-aware.
+- **define-brand-voice** v2.80 (Nielsen Norman 4D output) · consume canon decomposition cross-cell voice × audience × stage.
+- **validate-brand-voice-consistency** v2.80 (cross-touchpoint validator output) · consume canon cohérence cross-output touchpoints brand opérateur-facing.
+- **map-mechanisms / map-specs / map-benefits / map-audiences / map-angles** (v2.58 mappers) · consume canon decomposition cross-cell pain × audience × angle.
+- **produce-paid-angles** (formula OTRB output) · consume cohérence many-to-many positioning · angles ranking matrice pain × audience × stage.
+- **creative-brief-composer** (orchestrator output) · consume canon matriciel cross-cell brief × variants × angle.
+- **audit-meta-account / routine-perf / analyze-perf** (ops paid synthesis) · consume canon stage filter pour calibrer recommandations stage-aware (test/maintain/scale audit lens · pacing stage-aware recos · diagnostic CPA/ROAS stage-calibré).
+- **mine-voc / mine-vom** (voice mining output) · consume canon many-to-many verbatims × audience × pain pour synthèse VoC matricielle.
 - **decompose-ad** · consume canon decomposition pour cross-reference ad reverse-engineering vs decomposition canon brand.
 - **adapt-from-competitor** · consume canon decomposition pour cross-reference competitor positioning vs brand canon decomposition.
-- **audit-meta-account** · consume canon stage filter pour calibrer recommandations stage-aware (test/maintain/scale audit lens).
-- **routine-perf** · consume canon stage filter pour pacing stage-aware recos.
 
-Skills NON-consumers (zéro application) ·
+### Skills capturer / mutation gate silent (NOT applicable · output non opérateur-facing)
 
-- **import-meta-results** · capturer silent, no synthesis stratégique opérateur-facing.
-- **learn-from-session** capture · capturer silent batch background.
-- **validate-resources** · mutation gate trivial, no synthesis.
-- **check-cross-refs** · mutation gate, no synthesis.
+- **learn-from-session** · capture silent batch background.
+- **import-meta-results** · capture silent, no synthesis stratégique opérateur-facing.
+- **write-to-context.py** · mutation primitive gate, no synthesis.
+- **validate-resources** · check silent mutation gate.
+- **check-cross-refs** · check silent mutation gate.
 - **build-agent** · orchestrator pure routing, no synthesis stratégique.
 - **scaffold-skill-stub** · builder structural, no synthesis stratégique.
 
-Pattern canon · seuls skills produisant synthèse stratégique opérateur-facing déclenchent decomposition visibility. Pas trigger universel · garde-fou anti-noise.
+### Queries verbal opérateur-facing (trigger canon enforcement runtime)
+
+Queries verbal qui forcent le pattern matriciel 4 niveaux canon obligatoires même sans skill consumer spécifique routé ·
+
+- *"résume"* / *"synthèse"* / *"cartographie"* / *"récapitule"* / *"présente"*
+- *"ce que tu as compris"* / *"ce que tu sais"*
+- Sur brand entity / atlas / audience / produit
+- → 4 niveaux matriciels obligatoires même sans skill consumer routé (freestyle prose query verbal)
+
+Pattern canon · seuls outputs produisant synthèse stratégique opérateur-facing déclenchent decomposition visibility. Pas trigger universel · garde-fou anti-noise. Enforcement runtime obligatoire cross-slash commands + skills synthesis brand-related + queries verbal (cf HR-DVD-9).
 
 ---
 
@@ -313,6 +338,8 @@ Pattern canon · seuls skills produisant synthèse stratégique opérateur-facin
 
 **HR-DVD-8.** Triggers respect (§9 décision-aid applicable). Skills consumer applicable seulement (synthèse stratégique opérateur-facing). JAMAIS trigger universel toutes skills. Garde-fou anti-noise · DVD activate seulement cross-skills opérateur-facing synthesis stratégique.
 
+**HR-DVD-9 · Enforcement runtime obligatoire output brand-related opérateur-facing.** Même quand aucun skill consumer spécifique n'est routé (freestyle prose query verbal *"résume cartographie"*), l'agent DOIT rendre les 4 niveaux matriciels canon dans output user-facing brand entity. Pattern systémique cross-slash commands plus skills synthesis stratégique brand-related. Antidote au freestyle prose-only gap test live KaraCare v2.79.0 identifié. Cohérent memory canon `jargon_enforcement_runtime` pattern (audit doctrinal seul insuffisant · enforcement runtime nécessaire).
+
 ---
 
 ## 12. Anti-patterns canon
@@ -373,24 +400,24 @@ Agent ship NIVEAU 3 sans stage filter ARR target. Recommandation 1 audience focu
 
 Decomposition Visibility Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71 ·
 
-**Couche 2 · Règles (heuristiques décision).** 8 Hard Rules canon strict (HR-DVD-1 à HR-DVD-8) sont heuristiques décision canon · *"si synthèse stratégique opérateur-facing alors 4 niveaux obligatoires"*. Pattern miroir `investigation-posture.md` 5 sections obligatoires plus `skill-routing-discipline.md` 5 phases routing.
+**Couche 2 · Règles (heuristiques décision).** 9 Hard Rules canon strict (HR-DVD-1 à HR-DVD-9) sont heuristiques décision canon · *"si synthèse stratégique opérateur-facing alors 4 niveaux obligatoires"* plus enforcement runtime cross-slash commands plus queries verbal freestyle (HR-DVD-9). Pattern miroir `investigation-posture.md` 5 sections obligatoires plus `skill-routing-discipline.md` 5 phases routing.
 
 **Couche 3 · Templates (raccourcis combinaisons gagnantes).** Matrices ASCII canon NIVEAU 1 strata, NIVEAU 2 many-to-many, NIVEAU 3 stage filter sont templates canon réutilisables cross-brands. Pattern miroir `resources/templates/*` canon plus `_TEMPLATE/` scaffolds brand.
 
-**Couche 5 · Rituels (cadence opérationnelle).** Trigger systémique cross-skills opérateur-facing canon (§9 triggers activate). Rituel canon agent par invocation skill consumer (snapshot-brand · profile-audience · build-atlas-complete · etc.). Pattern miroir `routine-perf` daily plus `analyze-perf` weekly.
+**Couche 5 · Rituels (cadence opérationnelle).** Trigger systémique cross-skills opérateur-facing plus cross-slash commands plus queries verbal *"résume / cartographie"* enforcement runtime canon (§9 triggers activate plus HR-DVD-9 runtime). Rituel canon agent par invocation skill consumer (snapshot-brand · profile-audience · build-atlas-complete · etc.) plus rituel canon agent par slash command (/phantom · /bird · /breakdown · /scope · /tour) plus rituel canon agent par query verbal freestyle prose brand-related. Pattern miroir `routine-perf` daily plus `analyze-perf` weekly.
 
-**Couche 4 · Métriques additionnelle.** % skills consumer adoptés DVD canon trackable via `_field_types` audit trail plus `learnings.json` append-only. Métrique convergente · DVD adoption rate cross-skills v2.78.2 baseline.
+**Couche 4 · Métriques additionnelle.** % skills consumer adoptés DVD canon trackable via `_field_types` audit trail plus `learnings.json` append-only. Métrique convergente · DVD adoption rate cross-skills (4 v2.78.2 plus 3 slash commands plus skills synthesis stratégique brand-related = N total) baseline v2.79.1 enforcement runtime.
 
 ---
 
 ## Status
 
-- **Canonique v2.78.2+.** Codifie pattern systémique cross-skills opérateur-facing identifié post-test live KaraCare workspace v2.78.0. Ferme gap structurel *"l'agent encode silencieusement sans présenter visuellement la décomposition produit, le mapping many-to-many, le filtre stage business, et la méthode pédagogique"*.
+- **Canonique v2.79.1+.** Codifie pattern systémique cross-skills opérateur-facing identifié post-test live KaraCare workspace v2.78.0 plus enforcement runtime obligatoire cross-slash commands plus queries verbal freestyle identifié post-test live KaraCare workspace v2.79.0. Ferme gap structurel *"l'agent encode silencieusement sans présenter visuellement la décomposition produit, le mapping many-to-many, le filtre stage business, et la méthode pédagogique"* plus gap *"queries verbal résume/cartographie freestyle prose sans déclencher 4 niveaux matriciels canon"*.
 - **Doctrine sœur** · investigation-posture.md (rigueur output 5 sections drill) · canonical-matrix-reasoning.md (qualité output cross-cell schema plus matrice) · skill-routing-discipline.md v2.77 (canon routing 5 phases) · pacing-discipline.md v2.78 (stage filter ARR canon).
-- **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills legacy pre-v2.78.2 conservent output prose-only jusqu'à patch · v2.78.2+ migration progressive consume canon.
-- **First applications** · skills consumers v2.78.2 patched · snapshot-brand (Phase output Movement 3-4) plus build-atlas-complete (Phase output pipeline canonical) plus profile-audience (output enrichi matrice) plus define-specs (output 3 niveaux strata).
-- **Promotion criterion** · à reviewer après 5+ skills consumer migrated consume canon DVD plus 1 audit cross-brand visibility convergence plus learnings.json append patterns DVD adoption rate stable 80%+.
+- **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills legacy pre-v2.78.2 conservent output prose-only jusqu'à patch · v2.78.2+ migration progressive consume canon · v2.79.1 enforcement runtime obligatoire cross-slash commands plus queries verbal freestyle.
+- **First applications** · skills consumers v2.78.2 patched · snapshot-brand v1.5.0 (Phase Output Decomposition Visibility post-IP) plus build-atlas-complete v1.6.0 (Phase Output Atlas Visibility Matriciel) plus profile-audience v1.7.0 (Output Audience Visibility Matriciel) plus define-specs v1.3.0 (HR8.5 Specs Visibility Matriciel). Slash commands consumers v2.79.1 patched · /phantom plus /bird plus /breakdown plus /scope plus /tour. Skills synthesis stratégique brand-related opérateur-facing v2.79.1 enforcement runtime (produce-positioning-canvas · define-brand-voice · validate-brand-voice-consistency · map-mechanisms/specs/benefits/audiences/angles · produce-paid-angles · creative-brief-composer · audit-meta-account · routine-perf · analyze-perf · mine-voc · mine-vom · decompose-ad · adapt-from-competitor).
+- **Promotion criterion** · à reviewer après 5+ skills consumer migrated consume canon DVD plus 1 audit cross-brand visibility convergence plus learnings.json append patterns DVD adoption rate stable 80%+ plus zero freestyle prose-only output brand-related opérateur-facing cross 3+ workspaces consécutifs.
 
 ---
 
-*Doctrine canonique skill-author-facing plus agent-facing. Canonise pattern 4 niveaux obligatoires (décomposition produit · many-to-many · stage filter · pédagogie verbale) plus 8 Hard Rules canon strict plus 8 anti-patterns canonisés. Ferme gap structurel *"agent encode silencieusement sans HOW visible opérateur"*. Pattern miroir investigation-posture.md (rigueur drill cross-output) plus canonical-matrix-reasoning.md (qualité cell par cell) plus skill-routing-discipline.md (canon routing UPSTREAM) plus pacing-discipline.md (stage filter ARR canon).*
+*Doctrine canonique skill-author-facing plus agent-facing. Canonise pattern 4 niveaux obligatoires (décomposition produit · many-to-many · stage filter · pédagogie verbale) plus 9 Hard Rules canon strict (HR-DVD-1 à HR-DVD-9) plus 8 anti-patterns canonisés. Ferme gap structurel *"agent encode silencieusement sans HOW visible opérateur"* plus gap *"queries verbal freestyle prose sans 4 niveaux matriciels"* via HR-DVD-9 enforcement runtime. Pattern miroir investigation-posture.md (rigueur drill cross-output) plus canonical-matrix-reasoning.md (qualité cell par cell) plus skill-routing-discipline.md (canon routing UPSTREAM) plus pacing-discipline.md (stage filter ARR canon).*

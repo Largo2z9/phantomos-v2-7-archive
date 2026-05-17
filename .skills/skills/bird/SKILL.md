@@ -1,7 +1,7 @@
 ---
 name: bird
 type: navigator
-version: "0.1.0"
+version: "0.2.0"
 recommended_model: sonnet
 subagent_safe: true
 user_invocable: true
@@ -30,6 +30,7 @@ pipeline:
   postconditions:
     - "vue spatiale ASCII rendue (grille de zones ou anatomie zone)"
     - "≥2 zones en fog → hook 1-ligne vers extension-discovery / scope si pertinent"
+    - "Section Decomposition Visibility territoire-level rendue post-grille (4 niveaux matriciels canon v2.79+)"
 ---
 
 # Bird · Vue d'oiseau projet
@@ -87,6 +88,19 @@ Les zones du bird portent leur étiquette d'origine ·
 - **Non cartographié** = inconnu (zone implicite jamais formalisée, fog detection)
 
 Cross-ref `docs/system/investigation-posture.md`.
+
+### HR-8 · Decomposition Visibility territoire-level obligatoire (canon v2.79+)
+
+Post-affichage grille vue d'ensemble territoire (Step 4 macro OR Step 5 micro --zoom OR Step 6 all), rendu OBLIGATOIRE section *"Decomposition Visibility territoire-level"* 4 niveaux matriciels canon `docs/system/decomposition-visibility-discipline.md` v2.79+ ·
+
+- **NIVEAU 1** · Décomposition produits encoded territoire (specs · mécanismes · bénéfices status encoded/partial/absent)
+- **NIVEAU 2** · Matrice many-to-many pain × audience cross-atlas vue d'ensemble (status sourced/hypothèse · gaps territoire visibles)
+- **NIVEAU 3** · Positionnement filtre stage business territoire-level (stage détecté · audience prioritaire · gaps territoire · skills downstream routes)
+- **NIVEAU 4** · Méthode pédagogique verbale territoire-level (verbaliser COMMENT la lecture territoire a été menée · navigation suggestions)
+
+Skip 1 niveau = invalid output. Pattern miroir `build-atlas-complete` v1.6.0 Phase Atlas Visibility (product-level construction), adapté ici territoire-level (vue d'ensemble lecture).
+
+**Sister command** · `/scope` crée la carte, `/bird` lit la carte. Pattern cohérence pair canon cross-slash commands opérateur-facing v2.79.1.
 
 ## Modes
 
@@ -185,6 +199,73 @@ Vision · {1 à 2 lignes du positionnement, sobre, accessible}
 
 **Hook scope (léger)** · déclenché automatiquement par `/bird` quand le territoire présente ≥2 zones en fog (`░` ou `?`) ou des couplages implicites entre zones actives non formalisés. Strictement 1 ligne, ne nommer que l'angle mort le plus critique. Ne jamais faire l'audit ici, juste signaler le pointeur vers `/scope`.
 
+### 4.5. Decomposition Visibility territoire-level (canon v2.79+, OBLIGATOIRE post-grille)
+
+**MANDATORY** post-affichage grille macro · présenter synthèse matricielle territoire-level canon doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+. Pattern miroir `build-atlas-complete` v1.6.0 Phase Atlas Visibility, adapté ici territoire-level (vue d'ensemble lecture vs product-level construction).
+
+Sans cette section post-grille, l'opérateur ne voit jamais le degré de cartographie territoire matriciel (produits encoded / pains × audiences sourced vs hypothèse / gaps territoire / stage business filter) · output bird reste spatial-only · invalid.
+
+#### NIVEAU 1 · Décomposition produits territoire-level
+
+Vue d'ensemble produits encoded territoire · table compacte cross-products status ·
+
+```
+PRODUITS ENCODÉS dans le territoire
+PRODUCT             SPECS          MÉCANISMES        BÉNÉFICES 3 couches
+[product-1]         encoded        encoded           functional · emotional · identity
+[product-2]         encoded        partial           functional only (gap emotional/identity)
+[product-N]         absent         absent            non cartographié
+```
+
+Status canon · `encoded` (entité présente atomes complets) · `partial` (entité présente atomes incomplets) · `absent` (entité non cartographiée). Itérer cross-products encoded brand.
+
+#### NIVEAU 2 · Many-to-many territoire-level
+
+Matrice ASCII cross-atlas vue d'ensemble · quelle douleur encoded affecte quelle audience encoded territoire ·
+
+```
+                       Audience-1    Audience-2    Audience-3   Audience-N
+                       (slug)        (slug)        (slug)       (slug)
+PNT-01 [pain encoded]     ✓✓ P (sourced)   ·       ✓ S (hyp)      ·
+PNT-02 [pain encoded]        ·         ✓✓ P (hyp)     ·         ✓ S (sourced)
+PNT-NN [pain absent]      gap          gap          gap         gap
+```
+
+Légende canon · `✓✓ P` PRIMARY · `✓ S` SECONDARY · `·` NONE · `gap` non cartographié territoire. Status `(sourced)` verbatims présents · `(hyp)` hypothèse confidence 0.5 valide (canon `progressive-cartography-discipline.md`).
+
+**HR · Status hypothèse/sourced par cell explicit (validation visibility).** Skip = opérateur ne sait pas degré de validation par cell · décision downstream aveugle.
+
+#### NIVEAU 3 · Positionnement filtre stage business territoire-level
+
+Stage business détecté · table canon vue d'ensemble territoire ·
+
+```
+STAGE détecté            [early | growth | scale | inconnu]
+ARR signal               [range ou flag inconnu]
+
+AUDIENCE PRIORITAIRE     [audience slug + rationale 1 ligne]
+GAPS TERRITOIRE          [3 gaps à combler · ex audience-N profile manquant ·
+                          PNT-NN non sourcé · stage signal absent]
+SKILLS DOWNSTREAM        [routes possibles · ex `/scope {zone}` · `profile-audience` ·
+                          `mine-voc --focus={pain}` · `audit-meta-account`]
+```
+
+**HR · Stage business filter territoire-level obligatoire si signal détectable.** ARR signal absent ET proof points absents → flag `stage = inconnu` · NEVER inventer.
+
+#### NIVEAU 4 · Méthode pédagogique verbale territoire-level
+
+Verbaliser ce que vue d'ensemble montre cross-territoire · l'opérateur sait COMMENT le territoire a été lu ·
+
+> *"J'ai lu le territoire {brand} en 4 niveaux canon ·*
+> *1. Décomposition produits · {N} produits encoded · {N} partials · {N} absents*
+> *2. Many-to-many · {N} pains × {M} audiences (matrix encoded/sourced/hypothèse · gaps territoire visibles)*
+> *3. Stage business · {stage détecté} → audience prioritaire {slug} · gaps territoire identifiés*
+> *4. Navigation · zones complétées · zones en cours · zones manquantes. Skills downstream recommandés · {liste}*
+>
+> *Vue d'ensemble est lecture, pas construction · pour creuser une zone use `/scope {zone}` · pour construire l'atlas complet use `build-atlas-complete`."*
+
+**HR · Méthode pédagogique verbale territoire-level obligatoire.** Skip = opérateur ne sait pas comment la lecture territoire a été menée · navigation downstream aveugle.
+
 ### 5. Format output micro (--zoom)
 
 Quand `/bird --zoom {zone}` est invoqué · afficher l'anatomie d'une seule zone.
@@ -253,15 +334,25 @@ Drill · `/bird {nom}` pour entrer dans une brand
 - Métaphores ludiques pour les noms de zones
 - Jargon projet brut non expliqué dans les labels
 - Prose narrative dans le bloc bas
+- **AP-NEW · Vue d'ensemble prose-only sans matrices territoire-level (v0.2.0)** · NEVER ship grille spatiale sans Section Decomposition Visibility territoire-level post-grille · matrices ASCII NIVEAU 1 + NIVEAU 2 + NIVEAU 3 obligatoires (canon `docs/system/decomposition-visibility-discipline.md` v2.79+).
+- **AP-NEW · Skip status hypothèse/sourced par cell matrice NIVEAU 2 (v0.2.0)** · NEVER ship matrice many-to-many sans étiquettes `(sourced)` ou `(hyp)` par cell · opérateur ne sait pas degré de validation · décision downstream aveugle.
+- **AP-NEW · Skip méthode pédagogique verbale territoire-level NIVEAU 4 (v0.2.0)** · NEVER ship matrices canon sans verbatim explicit méthode lecture territoire · opérateur ne sait pas COMMENT le bird a lu le territoire.
+- **AP-NEW · Stage business filter absent territoire-level NIVEAU 3 (v0.2.0)** · NEVER skip stage filter si signal détectable territoire · stage = inconnu acceptable seulement si zéro signal · NEVER inventer.
 
 ## Cross-référence
 
-- **scope (pair canon)** · `/scope` produit la `brands/{slug}/scope-map.md` que `/bird` lit. Sans scope-map, `/bird` opère en mode dégradé sur status.json + structure dossiers.
+- **scope (pair canon)** · `/scope` produit la `brands/{slug}/scope-map.md` que `/bird` lit. Sans scope-map, `/bird` opère en mode dégradé sur status.json + structure dossiers. Pair canon `scope crée la carte · bird lit la carte`.
+- **Decomposition Visibility Discipline (v2.79+)** · `docs/system/decomposition-visibility-discipline.md` doctrine racine 4 niveaux matriciels canon (territoire-level adaptation product-level v2.78.2).
+- **build-atlas-complete (v1.6.0)** · Phase Atlas Visibility product-level miroir reproductible (bird = territoire-level lecture · build-atlas-complete = product-level construction). Pattern cohérence cross-skills.
+- **snapshot-brand (v2.78.2)** · sister consumer canon decomposition visibility Movement 3-4 product-level.
+- **profile-audience (v2.78.2)** · sister consumer matrice audience × pain × angle × stage.
 - **brief-day** · briefing macro cross-brands au start de session. `/bird` zoome sur 1 brand spécifique.
 - **resume-session** · reprise narrative thread actif. `/bird` est spatial macro, `resume-session` est narratif local.
 - **Investigation Posture** · `docs/system/investigation-posture.md` (étiquettes observé / déduit / inconnu utilisées pour catégoriser zones).
 - **brands/{slug}/_snapshot.md** · digest 1-2KB lu en priorité pour vue brand state rapide (cf `docs/system/architecture.md`).
 
 ## Version
+
+**v0.2.0** · ship Decomposition Visibility territoire-level canon v2.79+. NEW Section 4.5 post-grille macro · 4 niveaux matriciels obligatoires (NIVEAU 1 décomposition produits territoire encoded/partial/absent · NIVEAU 2 many-to-many pain × audience cross-atlas avec status sourced/hypothèse · gaps territoire · NIVEAU 3 positionnement filtre stage business territoire-level + gaps territoire + skills downstream routes · NIVEAU 4 méthode pédagogique verbale lecture territoire). Pattern miroir `build-atlas-complete` v1.6.0 Phase Atlas Visibility (product-level construction adapté ici territoire-level lecture). Doctrine racine · `docs/system/decomposition-visibility-discipline.md` v2.79+. Sister command `/scope` pair canon `scope crée la carte · bird lit la carte`. NEW HR-8 Decomposition Visibility territoire-level obligatoire · NEW AP-NEW 4 anti-patterns canon. Backward compat strict additif · Steps 1-4 (détection · cartographie · composition · format macro) preserved · Step 5 micro --zoom preserved · Step 6 all preserved.
 
 v0.1.0 · port workspace-template depuis root largo-kb. Aligné canon · scope-map.md persisté dans `brands/{slug}/`, hook scope (pas unfog · skill non-shipped workspace-template v0.1), étiquettes investigation-posture (observé / déduit / déclaré / inconnu) intégrées dans les zones. Extensions prévues · v0.2 vue temporelle (timeline activité par zone), v0.3 diff inter-sessions (zones bougé depuis dernière invocation).

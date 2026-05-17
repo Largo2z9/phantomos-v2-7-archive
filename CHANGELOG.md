@@ -7,6 +7,54 @@
 
 ---
 
+## v2.79.1 · 2026-05-17 · Patch enforcement runtime · Decomposition Visibility Discipline cross-slash commands + CLAUDE.md skill routing + HR-DVD-9 NEW
+
+**Why** · Test live workspace v2.79.0 sur KaraCare a révélé gap enforcement runtime · doctrine `decomposition-visibility-discipline.md` shipped v2.79.0 + 4 skills consumers patchés (snapshot-brand + build-atlas-complete + profile-audience + define-specs) MAIS · queries verbal "résume-moi ce que tu as compris sur KaraCare en cartographie" font freestyle prose sans déclencher 4 niveaux matriciels canon. Largo flag · "on peut visualiser aussi dans les commandes /phantom non ?". Pattern systémique identique au memory canon `jargon_enforcement_runtime` · audit doctrinal seul insuffisant · enforcement runtime nécessaire cross-niveau.
+
+**What** · 5 patches structurels enforcement runtime via 5 agents parallèle scope disjoint.
+
+**Patches structurels (5)** ·
+
+1. **CLAUDE.md root** (284 → 303L · +19L) · Sommaire 13 → 14 doctrines (NEW entry Decomposition Visibility Discipline inséré après Territory Discipline · avant Connectivity Layering · funnel order canon respecté). NEW sub-section Skill routing v2.79.1 ajoutée APRÈS Fallback systémique manifest (v2.56+) · triggers verbaux explicit (`résume` / `synthèse` / `cartographie` / `récapitule` / `présente` / `ce que tu as compris` / `/phantom {brand}` / `/bird {brand}` / `/breakdown {brand}`) · 4 niveaux matriciels obligatoires liste · anti-pattern strict prose-only sans matrices = invalid output canon.
+
+2. **`/phantom` command** (1550 → 1685L · +135L) · NEW Section 6 Decomposition Visibility cockpit brand state insérée entre Section 5 DRILL+EXPLORATION et `## Scaling rules`. 4 NIVEAUX matriciels canon (NIVEAU 1 décomposition produit · NIVEAU 2 many-to-many pain × audience · NIVEAU 3 stage business filter · NIVEAU 4 pédagogie verbale) miroir pattern build-atlas-complete v1.6.0 Phase 8.5. Top-of-file rendering template enrichi avec divider `──── DECOMPOSITION VISIBILITY (canon v2.79+) ────` + 4 placeholders NIVEAU. Title bump 5 → 6 sections. 6 HR-DVD-PHANTOM-1 à -6 + 6 AP-DVD-PHANTOM-1 à -6 ajoutés.
+
+3. **`/bird` command + skill** (bird.md 42 → 109L · bird/SKILL.md 268 → 358L · v0.1.0 → v0.2.0) · NEW Section Decomposition Visibility territoire-level adaptée vs product-level v2.78.2 (vue d'ensemble lecture vs construction). 4 NIVEAUX territoire-level (NIVEAU 1 décomposition produits cross-products encoded/partial/absent · NIVEAU 2 matrice pain × audience cross-atlas avec status `(sourced)`/`(hyp)` per cell · NIVEAU 3 stage business filter + gaps territoire + skills downstream routes · NIVEAU 4 pédagogie verbale territoire). HR-8 (4 niveaux obligatoires) + 4 AP-NEW ajoutés.
+
+4. **`/breakdown` command** (963 → 1063L · +100L · v2.79.1 frontmatter bump) · NEW Section transversale `Decomposition Visibility canon v2.79+` insérée avant Anti-patterns. Cas Stepprs réel encoded dans `brands/_EXAMPLE/` utilisé comme exemple pédagogique cross-cas embarquant les 4 niveaux matriciels (NIVEAU 1 specs/mécanismes/bénéfices massage-insoles · NIVEAU 2 matrice many-to-many pain × audience workers-shifts + chronic-pain-45+ × 5 pains · NIVEAU 3 stage filter early/growth/scale ARR · NIVEAU 4 verbatim canon pédagogie verbale 3 quotes reproductibles). 13 chapitres existing préservés intacts. 3 HR + 3 AP NEW.
+
+5. **Doctrine canon racine `decomposition-visibility-discipline.md`** (396 → 423L · +27L · v2.78.2+ → v2.79.1+) · Section 8 Skills consumers enrichie exhaustif · 4 sous-sections (4 skills v2.78.2 + 5 slash commands v2.79.1 + 14 skills synthesis stratégique brand-related + 7 skills NOT applicable capturer/silent + 7 queries verbal trigger). NEW HR-DVD-9 enforcement runtime obligatoire output brand-related opérateur-facing même freestyle prose (antidote gap KaraCare v2.79.0 · cohérent memory canon `jargon_enforcement_runtime`). Section 14 Position 5 couches updated · Couche 2 (9 HR-DVD-1 à HR-DVD-9) · Couche 4 (métrique baseline v2.79.1) · Couche 5 (enforcement runtime cross-slash commands + queries verbal).
+
+**Pattern systémique enforcement runtime fermé · 5 niveaux coverage**
+
+```
+Niveau 1 · Doctrine canon racine                ✓ v2.79.1+
+Niveau 2 · CLAUDE.md root skill routing absolue ✓ v2.79.1 patch
+Niveau 3 · 4 skills consumers (v2.78.2 Phase Output)
+Niveau 4 · 4 slash commands consumers (/phantom + /bird + /breakdown + /scope cohérence)
+Niveau 5 · Queries verbal trigger (7 triggers explicit · résume/synthèse/cartographie/etc.)
+```
+
+Plus de gap freestyle prose possible sur output brand-related opérateur-facing. Antidote complet au pattern `audit doctrinal seul insuffisant` flag systémique (cf memory canon `jargon_enforcement_runtime`).
+
+**Backward compat strict additif** · 4 commands + doctrine + CLAUDE.md root · existing sections + chapitres + skills consumers préservés intacts · NEW sections + sub-sections additif strict. Skills count 80 inchangé · slash commands 7 inchangé (4 patches) · doctrines 18 inchangé (1 patch · pas NEW).
+
+**Files patched (5)** ·
+- `CLAUDE.md` root (sommaire 14 doctrines + Skill routing v2.79.1)
+- `.claude/commands/phantom.md` (Section 6 cockpit brand state)
+- `.claude/commands/bird.md` + `.skills/skills/bird/SKILL.md` (territoire-level)
+- `.claude/commands/breakdown.md` (cas Stepprs pédagogique transversal)
+- `docs/system/decomposition-visibility-discipline.md` (Section 8 + HR-DVD-9 + Section 14)
+- `_version.json` 2.79.0 → 2.79.1
+- `CHANGELOG.md` v2.79.1 entry (this entry)
+- `docs/internal/releases/manifest/2.79.1-manifest.json` NEW
+
+**D#434 captured** · Sprint v2.79.1 enforcement runtime decomposition-visibility-discipline cross 5 niveaux (close gap test live KaraCare v2.79.0 · pattern systémique reproductible doctrine + CLAUDE.md routing + skills consumers + slash commands + queries verbal · antidote canon `audit doctrinal seul insuffisant` cohérent memory canon `jargon_enforcement_runtime`).
+
+**Backlog v2.79.1+** · Re-test live workspace fresh v2.79.1 sur KaraCare pour valider enforcement runtime rendu (matrices ASCII + pédagogie verbale + many-to-many + stage filter sur queries verbal "résume cartographie" + commands /phantom /bird /breakdown) · Sprint v2.79.x business pilotage (unit economics + WBR + cohort retention + audit-klaviyo-flows) · Sprint v2.80.x DR copywriting production · Sprint v2.81+ CRO + lifecycle.
+
+---
+
 ## v2.79.0 · 2026-05-17 · Sprint majeur · brand strategy frameworks + Decomposition Visibility Discipline (release groupée Sprint v2.80 + Sprint v2.78.2)
 
 **Why** · Post-test live workspace v2.78.0 sur KaraCare · Largo a flag gap structurel cross-skills opérateur-facing · l'agent encode silencieusement sans présenter visuellement (1) la décomposition produit specs/mécanismes/bénéfices · (2) le mapping many-to-many product × pain × audience · (3) le positionnement filtre par stage business · (4) la méthode pédagogique verbale. Profil cognitif Largo (memory canon `largo_cognitive_profile` · systematizer-strategist visuel · cartographie = mécanisme réduction d'incertitude) demande visualisation matricielle systémique. Plus Sprint A bis 5 agents experts audit a flag P0 critical brand strategist 6/10 CONDITIONAL · archetypes 6/12 Mark+Pearson · tone_of_voice 4-enum vs Nielsen Norman 4D · positioning canvas Geoffrey Moore absent.
