@@ -1,7 +1,7 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-17T16:45:12Z",
-  "_count": 80,
+  "_generated_at": "2026-05-18T21:18:37Z",
+  "_count": 81,
   "skills": [
     {
       "name": "adapt-from-competitor",
@@ -803,6 +803,38 @@
       "isolation_scope": "brand_only",
       "layer": "meta",
       "path": ".skills/skills/export-session/SKILL.md"
+    },
+    {
+      "name": "import-archive",
+      "type": "orchestrator",
+      "model": "sonnet",
+      "subagent_safe": false,
+      "mode": "proposed",
+      "triggers": {
+        "fr": [
+          "importe ce dossier",
+          "ingère cet archive",
+          "drop ce client folder",
+          "j'ai un dossier client",
+          "importe le portfolio brand"
+        ],
+        "en": [
+          "import this folder",
+          "ingest archive",
+          "drop this client folder",
+          "import portfolio"
+        ]
+      },
+      "disambiguates_against": {
+        "ingest-resource": "ingest-resource ingère 1 fichier text/notes/transcript spécifique. import-archive orchestre N fichiers mixed-content vrac en autonomie.",
+        "import-asset": "import-asset ingère 1 asset visuel spécifique. import-archive route les visuels détectés vers import-asset en parallèle des autres fichiers.",
+        "onboard-brand": "onboard-brand chain setup→snapshot→ingest sur brand nouvelle depuis URL. import-archive ingère matière préexistante vers brand existante OU nouvelle (route setup-brand si nouvelle).",
+        "sync-notion-atlas": "sync-notion-atlas pull workspace Notion structuré (11 collections canon). import-archive route exports Notion isolés (.md, .csv) vers ingest-resource OR sync-notion-atlas selon structure détectée.",
+        "connect-source": "connect-source connecte une plateforme externe via credentials. import-archive ingère un dossier de fichiers, route les config files détectés vers connect-source si pertinent."
+      },
+      "isolation_scope": "brand_only",
+      "layer": "territoire",
+      "path": ".skills/skills/import-archive/SKILL.md"
     },
     {
       "name": "import-asset",

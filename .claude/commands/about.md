@@ -1,7 +1,7 @@
 ---
 name: about
 description: Documentation deep PhantomOS · vision, artefacts, mécanismes, termes canon, ce qui le rend singulier. Backup exhaustif de `/tour` (qui est l'explication conversationnelle guidée). Pour comprendre l'architecture et la philosophie d'un bloc.
-version: v2.80.3
+version: v2.81.0
 ---
 
 # /about · documentation deep PhantomOS
@@ -49,14 +49,13 @@ enrichit la connaissance disponible pour les sessions suivantes.
 
 ## 2. Pourquoi ça existe
 
-Le métier DTC fonctionne sur trois friction structurelles non résolues
-par les outils standards.
+Le métier DTC fonctionne sur trois friction structurelles.
 
   ─────────────────────────────────────────────────────────────────────
 
   Contexte client réinventé chaque session
-  Tu re-brief ton LLM à chaque conversation. Ce que tu as dit hier
-  est perdu. La connaissance ne s'accumule jamais.
+  Tu re-brief ta conversation à chaque démarrage. Ce que tu as dit
+  hier est perdu. La connaissance ne s'accumule jamais.
 
   Process fragmentés
   Ta connaissance métier vit éclatée entre un outil de doc, un de
@@ -193,8 +192,8 @@ Quatre propriétés que PhantomOS tient ensemble, par conception.
 
   ─────────────────────────────────────────────────────────────────────
 
-  La plupart des outils tiennent une de ces propriétés. PhantomOS
-  est construit pour les tenir toutes les quatre en même temps.
+  PhantomOS est construit pour tenir ces quatre propriétés en même
+  temps, par conception.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

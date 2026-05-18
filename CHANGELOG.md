@@ -7,6 +7,47 @@
 
 ---
 
+## v2.81.0 · 2026-05-18 · Sprint MINOR · multi-entry onboarding canon 4 portes MECE + first 30 minutes + NEW doctrine entry-arc-discipline + NEW skill import-archive · D#445 captured
+
+**Why** · Audit 4 agents consolidé amont (canon shipped inventory · patterns boîtes premium Linear/Supabase/Stripe/Vercel/GitHub · 6 profils opérateur attendus · gaps /tour v2.80.3) a confirmé que `/tour` mono-arc conversational disqualifiait 5 profils sur 6 dans les 10 premières minutes (cas Abyss tracking-GTM central · creative strategist · media buyer · agency owner · solo founder). Path unique = friction adoption forte. Patterns boîtes premium adoptés cross secteur · Multi-entry tuilé (Linear · Supabase · Stripe) · First deliverable artefact live (Vercel · Stripe · Supabase) · Progressive disclosure next steps (Vercel · GitHub).
+
+**What** · Sprint v2.81.0 MINOR patches 4 surfaces structurelles parallèle scope disjoint (3 agents + release engineering ce job) · multi-entry onboarding canon 4 portes MECE post-tour · sélection explicite primaire (M1 splitter AskUserQuestion 4 options) + détection passive parallèle (URL collée bypass Porte B · snapshot-brand chain) · first 30 minutes encadré · sélection porte → setup → first deliverable concret ~30 min total · NEW M5b first deliverable skill canon lancé 5-15 min (wow effect honnête preview loyale déclarée).
+
+**Patches structurels (4 surfaces · 3 agents parallèle + release engineering)** ·
+
+1. **Refonte `/tour` v2.80.3 → v2.81.0** (Agent 1) · M1 splitter AskUserQuestion 4 portes équivalentes visuellement (A conversationnel arc substance · B brand-first URL → snapshot-brand · C import existant text/visuels/APIs/Notion/vrac · D progressif libre pattern detection daemon) · NEW M5b first deliverable skill canon lancé 5-15 min après sélection porte · canons Vincent runtime slugs `exit:setup` et `pivot:{volet}` dans AskUserQuestion post-M1 · audit ton premium M6 zéro concurrent nommé enforced cross-canon · bilingual FR + EN trigger phrases.
+
+2. **NEW doctrine `entry-arc-discipline.md` v2.81.0** (Agent 2) · 13 sections canon-style miroir SED-X + EDD + OHD · 8 HR-EAD + 8 AP-EAD enforcement runtime · 4 portes MECE codifiées · first 30 minutes canon · skills wirage par porte (catalogue existant 80% couverture · pas NEW skills MVP sauf import-archive orchestrator porte C) · canons Vincent runtime slugs · ton premium cross-canon zéro concurrent nommé. Patch /about §6 audit résiduels concurrents nommés résiduels post-v2.80.3.
+
+3. **NEW skill `import-archive`** (Agent 3) · type orchestrator · porte C consumer canon · drop dossier vrac mixed-content (text · visuels · APIs · Notion exports · mélange) · 8 HR-IA enforcement runtime · chain ingest-resource + import-asset + connect-source + sync-notion-atlas selon classification automatique items · disclosure pré-engagement obligatoire (cohérent EDD v2.79.5 + NIVEAU 0 DVD v2.79.5+) · `subagent_safe: true` · `recommended_model: sonnet`.
+
+4. **Release engineering** (ce job) · `_version.json` 2.80.3 → 2.81.0 MINOR + summary multi-entry détaillé · `CHANGELOG.md` v2.81.0 entry prepended · `docs/internal/releases/manifest/2.81.0-manifest.json` NEW · `CLAUDE.md` root sommaire doctrines 23 → 24 (NEW entry-arc-discipline) + skills 80 → 81 · `decisions.md` workspace ROOT D#445 captured · memory canon `phantomos_state` updated v2.81.0 + NEW memory canon `entry_arc_4_doors`.
+
+**Pattern systémique fermé** · `/tour` v2.81.0 redevient le splitter 4 portes MECE accueillant tous les profils opérateur (DTC senior creative strategist · media buyer · agency owner · solo founder · auditeur tracking-GTM Abyss · curieux progressif). First 30 minutes canon · porte → setup → first deliverable concret encadré. NEW skill import-archive orchestrator complète couverture porte C (drop vrac mixed-content). NEW doctrine entry-arc-discipline.md canonise patterns runtime cross /tour + skills wirés · enforcement HR-EAD + AP-EAD. Ton premium canon Largo enforced cross-canon (zéro concurrent nommé · registre GitHub/Vercel · on affirme avec conviction sans takedown).
+
+**Backward compat strict additif** · skills 80 → 81 (+1 NEW import-archive) · slash commands 10 inchangé · doctrines 23 → 24 (+1 NEW entry-arc-discipline) · zéro BREAKING data opérateur · zéro impact workspace existing · revert v2.81.0 = git revert HEAD strict · NEW doctrine retirable · NEW skill retirable · /tour revert v2.80.3 possible · skills shipped wirés non affectés.
+
+**Files patched** ·
+- `.claude/commands/tour.md` v2.80.3 → v2.81.0 (refonte M1 splitter 4 portes + NEW M5b first deliverable + canons Vincent runtime slugs + audit ton premium M6 + bilingual)
+- `docs/system/entry-arc-discipline.md` NEW v2.81.0 (13 sections canon-style miroir · 8 HR-EAD + 8 AP-EAD)
+- `.skills/skills/import-archive/SKILL.md` NEW v0.1.0 (orchestrator porte C consumer · 8 HR-IA · chain 4 skills)
+- `.claude/commands/about.md` patch §6 audit résiduels concurrents nommés
+- `.skills/_manifest.json` rebuilt v2.81.0 (+1 entry import-archive)
+- `CLAUDE.md` root sommaire doctrines 23 → 24 + skills count 80 → 81
+- `_version.json` 2.80.3 → 2.81.0 MINOR + summary détaillé multi-entry
+- `CHANGELOG.md` entry v2.81.0 prepended (this entry)
+- `docs/internal/releases/manifest/2.81.0-manifest.json` NEW
+
+**Backlog v2.81+** ·
+- Re-test live workspace fresh v2.81.0 sur `~/dev/phantom-test-v280_3/` pour valider M1 splitter rendu + M5b first deliverable + ton premium /about
+- Skills tracking-GTM territoire NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode) backlog v2.82+ (cas Abyss central prio haute)
+- Sprint v2.81 lifecycle CRO skills NEW (PDP · landing · email flows · upsell · LTV) backlog historique
+- Templates `resources/onboarding-arcs/` par profil opérateur (agency · solo founder · auditeur) backlog v2.83+
+
+**Skills count 81 (+1 NEW import-archive) · slash commands 10 (inchangé · refonte /tour) · doctrines 24 (+1 NEW entry-arc-discipline).**
+
+---
+
 ## v2.80.3 · 2026-05-18 · Sprint patch · onboarding conversationnel guidé tour à tour complet + ton premium canon · D#444 captured
 
 **Why** · Deux test live Largo successifs sur fresh workspace post-v2.80.1 ont flag 2 régressions cumulées de l'onboarding · (a) panorama balancé d'un seul bloc en Milestone 1 puis attente texte libre nu ("tu veux commencer par quoi ?") perdant le tour à tour guidé conversationnel d'avant v2.79.4 · (b) amorce amputée saute direct au choix de territoire sans dire ce qu'est PhantomOS, sa vision, comment il raisonne ("ça ne me va pas, tu ne présentes aucunement ce qu'est PhantomOS, vision, doctrine etc ?"). Audit ton parallèle sur /about a flag pattern non premium · §6 Différenciation avec matrice comparative chiffrée vs ChatGPT/Notion/ClickUp/Airtable + paragraphes takedown nommés · "le ton où on démontre Notion, Airtable, ce n'est pas classe, pas premium, pas ce que ferait un GitHub ou un Vercel". Plus deux canons Vincent à intégrer · porte de sortie setup toujours visible (sortir tunnel sans friction) et pivot cross-subject (sujets imbriqués · bifurquer latéralement).

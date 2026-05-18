@@ -1,8 +1,8 @@
 {
   "_schema": "jargon-bank/1.0",
-  "_generated_at": "2026-05-17",
+  "_generated_at": "2026-05-18",
   "_source": "docs/system/operator-vocabulary-translation.md",
-  "_total_entries": 80,
+  "_total_entries": 92,
   "entries": [
     {
       "internal": [
@@ -758,6 +758,114 @@
       ],
       "operator_fr": "TOF/MOF/BOF",
       "operator_en": "TOF/MOF/BOF",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "coquilles vides"
+      ],
+      "operator_fr": "données manquantes",
+      "operator_en": "empty shells · missing data",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "passe légère"
+      ],
+      "operator_fr": "fiche incomplète",
+      "operator_en": "partial pass · incomplete record",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "spec light"
+      ],
+      "operator_fr": "spec incomplète",
+      "operator_en": "partial spec · incomplete spec",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "verbatims sparse"
+      ],
+      "operator_fr": "voix client manquante",
+      "operator_en": "sparse verbatims · missing customer voice",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "background actif"
+      ],
+      "operator_fr": "tâche de fond",
+      "operator_en": "active background task",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "mutation"
+      ],
+      "operator_fr": "changement",
+      "operator_en": "change",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "hot spots"
+      ],
+      "operator_fr": "alertes",
+      "operator_en": "hot spots · alerts",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "freestyle prose"
+      ],
+      "operator_fr": "prose libre",
+      "operator_en": "free prose",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "skill names exposés (ex `produce-paid-angles`)"
+      ],
+      "operator_fr": "action verbalisée (ex *\"générer angles paid\"*) · skill backstage",
+      "operator_en": "verbalized action · skill backstage",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "Strategy / Learnings / Matrix (headers EN dans output FR)"
+      ],
+      "operator_fr": "Stratégie / Apprentissages / Matrice",
+      "operator_en": "Strategy / Learnings / Matrix",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "fog"
+      ],
+      "operator_fr": "flou (sauf canon `/bird` signature avec définition pied)",
+      "operator_en": "fog (kept canon `/bird` signature with footer definition)",
+      "case_sensitive": false,
+      "context": "phantom-modes"
+    },
+    {
+      "internal": [
+        "drill 360° (verbose)"
+      ],
+      "operator_fr": "drill (cap verbose · canon command name)",
+      "operator_en": "drill (cap verbose · canon command name)",
       "case_sensitive": false,
       "context": "phantom-modes"
     }

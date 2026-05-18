@@ -1,0 +1,57 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.81.0",
+  "released_at": "2026-05-18",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 80,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 23,
+  "doctrines_count_after": 24,
+  "summary": "Sprint MINOR v2.81.0 · multi-entry onboarding canon · 4 portes MECE post-tour (A conversationnel arc substance · B brand-first URL → snapshot-brand · C import existant text/visuels/APIs/Notion/vrac · D progressif libre pattern detection daemon) · first 30 minutes encadré avec NEW M5b first deliverable lancé 5-15 min (wow effect honnête preview loyale déclarée) · NEW doctrine entry-arc-discipline.md v2.81.0 (13 sections canon-style miroir SED-X + EDD + OHD · 8 HR-EAD + 8 AP-EAD enforcement runtime) · NEW skill import-archive orchestrator (porte C consumer · drop dossier vrac mixed-content · chain ingest-resource + import-asset + connect-source + sync-notion-atlas selon classification automatique · 8 HR-IA) · canons Vincent runtime slugs `exit:setup` et `pivot:{volet}` dans AskUserQuestion post-M1 · ton premium cross-canon zéro concurrent nommé enforced (HR-EAD-6).",
+  "audit_amont": {
+    "agents_consolides": "4 agents read-only scope disjoint amont · (1) audit canon shipped (skills 80 · slash commands 10 · doctrines 23 · 6 territoires DTC couverts) · (2) audit patterns boîtes premium cross secteur (Linear · Supabase · Stripe · Vercel · GitHub · Notion · ClickUp) · (3) audit 6 profils opérateur attendus (DTC senior creative strategist · media buyer · agency owner · solo founder · auditeur tracking-GTM Abyss · curieux progressif) · (4) audit gaps /tour v2.80.3 (mono-arc conversational · /tour fresh workspace ne couvre que 1 profil sur 6)",
+    "verdict_consolide": "/tour v2.80.3 mono-arc conversational disqualifiait 5 profils sur 6 dans les 10 premières minutes (cas Abyss tracking-GTM central). Path unique = friction adoption forte. Multi-entry justifié structurellement. Patterns boîtes premium adoptés cross secteur · Multi-entry tuilé + First deliverable artefact live + Progressive disclosure next steps.",
+    "informe_plan_v2_81": "Plan v2.81 multi-entry · 4 portes MECE post-tour · sélection explicite primaire (M1 splitter AskUserQuestion) + détection passive parallèle (URL collée bypass Porte B) · first 30 minutes canon · NEW M5b first deliverable · canons Vincent runtime slugs · NEW skill import-archive porte C consumer drop vrac"
+  },
+  "patches_structurels": [
+    "/tour v2.80.3 → v2.81.0 · refonte M1 splitter AskUserQuestion 4 portes MECE équivalentes visuellement (A conversationnel · B brand-first · C import existant · D progressif libre) + NEW M5b first deliverable skill canon lancé 5-15 min + canons Vincent runtime slugs `exit:setup` et `pivot:{volet}` + audit ton premium M6 zéro concurrent nommé enforced + bilingual FR + EN trigger phrases",
+    "NEW doctrine entry-arc-discipline.md v2.81.0 · 13 sections canon-style miroir SED-X + EDD + OHD · 8 HR-EAD + 8 AP-EAD enforcement runtime · 4 portes MECE codifiées · first 30 minutes canon · skills wirage par porte · canons Vincent runtime slugs · ton premium cross-canon",
+    "NEW skill import-archive · type orchestrator · porte C consumer canon · drop dossier vrac mixed-content (text · visuels · APIs · Notion exports · mélange) · 8 HR-IA enforcement runtime · chain ingest-resource + import-asset + connect-source + sync-notion-atlas selon classification automatique items · disclosure pré-engagement obligatoire · subagent_safe: true · recommended_model: sonnet",
+    "Patch /about §6 · audit résiduels concurrents nommés résiduels post-v2.80.3 · canon ton premium enforcement runtime cross-canon"
+  ],
+  "files_patched": [
+    {"file": ".claude/commands/tour.md", "scope": "v2.80.3 → v2.81.0 · refonte M1 splitter 4 portes + NEW M5b first deliverable + canons Vincent runtime slugs + audit ton premium M6 + bilingual"},
+    {"file": "docs/system/entry-arc-discipline.md", "scope": "NEW v2.81.0 · 13 sections canon-style miroir · 8 HR-EAD + 8 AP-EAD"},
+    {"file": ".skills/skills/import-archive/SKILL.md", "scope": "NEW v0.1.0 · orchestrator porte C consumer · 8 HR-IA · chain 4 skills"},
+    {"file": ".claude/commands/about.md", "scope": "patch §6 audit résiduels concurrents nommés"},
+    {"file": ".skills/_manifest.json", "scope": "rebuilt v2.81.0 (+1 entry import-archive)"},
+    {"file": "CLAUDE.md", "scope": "root sommaire doctrines 23 → 24 + skills count 80 → 81"},
+    {"file": "_version.json", "scope": "2.80.3 → 2.81.0 MINOR + summary détaillé multi-entry"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.81.0 prepended"},
+    {"file": "docs/internal/releases/manifest/2.81.0-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "multi_entry_coverage": {
+    "portes_mece": {
+      "porte_a_conversationnel": "Opérateur arrivé sans contexte · découvre PhantomOS via arc substance guidé tour à tour 5 volets (pourquoi · comment raisonne · ce qui rend singulier · cycle · 7 territoires) · path canon v2.80.3 préservé",
+      "porte_b_brand_first": "Opérateur arrive avec brand existante · colle URL → chain snapshot-brand · setup-brand pré-rempli depuis scrape · first deliverable preview brand 5-15 min",
+      "porte_c_import_existant": "Opérateur arrive avec assets/sources existantes · drop text (ingest-resource) · visuels (import-asset) · APIs credentials (connect-source) · Notion export (sync-notion-atlas) · dossier vrac mixed-content (import-archive NEW orchestrator)",
+      "porte_d_progressif_libre": "Opérateur curieux explore sans engager · pattern detection daemon active · capture passive intentions opérateur · suggère porte adaptée quand seuil hit"
+    },
+    "first_30_minutes_canon": "Sélection porte (1-2 min) → setup minimum viable (5-15 min) → first deliverable concret encadré (10-15 min) · total ~30 min · NEW M5b first deliverable skill canon lancé 5-15 min après sélection porte · wow effect honnête preview loyale déclarée (jamais promesse au-delà capacité réelle)",
+    "skills_wirage_par_porte": "Catalogue existant 80% couverture · pas NEW skills MVP sauf import-archive orchestrator NEW porte C · Porte A · /tour M2 arc substance + skills navigateurs (/bird /breakdown) · Porte B · snapshot-brand chain + setup-brand · Porte C · ingest-resource + import-asset + connect-source + sync-notion-atlas + import-archive NEW · Porte D · pattern detection daemon + smart-suggest",
+    "canons_vincent_runtime": "Slugs `exit:setup` (porte de sortie setup toujours visible · sortir tunnel sans friction) et `pivot:{volet}` (pivot cross-subject quand sujets imbriqués · bifurquer latéralement) dans toute AskUserQuestion post-M1 cross 4 portes",
+    "ton_premium_cross_canon": "Zéro concurrent nommé enforced HR-EAD-6 · registre GitHub/Vercel · on affirme avec conviction sans takedown comparatif · s'applique cross /tour + skills wirés par porte + /about · /about §6 patch audit résiduels concurrents nommés résiduels post-v2.80.3"
+  },
+  "decisions_captured": ["D#445"],
+  "backlog_v281_plus": [
+    "Re-test live workspace fresh v2.81.0 sur `~/dev/phantom-test-v280_3/` pour valider M1 splitter rendu + M5b first deliverable + ton premium /about",
+    "Skills tracking-GTM territoire NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode) backlog v2.82+ · cas Abyss central prio haute",
+    "Sprint v2.81 lifecycle CRO skills NEW (PDP · landing · email flows · upsell · LTV) backlog historique",
+    "Templates `resources/onboarding-arcs/` par profil opérateur (agency · solo founder · auditeur) backlog v2.83+"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.81.0 = git revert HEAD strict · NEW doctrine retirable · NEW skill retirable · /tour revert v2.80.3 possible · skills shipped wirés non affectés"
+}
