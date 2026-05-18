@@ -1,0 +1,47 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.80.1",
+  "released_at": "2026-05-18",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 80,
+  "skills_count_after": 80,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 23,
+  "doctrines_count_after": 23,
+  "summary": "Sprint patch v2.80.1 · refonte /tour onboarding en prose conversationnelle native (zéro interface ASCII boxes/tableaux/séparateurs · réservée aux slash commands cockpit) + patch doctrine onboarding-holistic-discipline v2.79.3 → v2.80.1 NEW HR-OHD-9 + AP-OHD-9 enforcement runtime + NEW Section 'Rendu prose conversationnelle native'. 2 surfaces patchées scope disjoint · Agent 1 refonte /tour (retire ASCII boxes/tableaux/séparateurs/légende iconographie · transforme panorama 360° en prose narrative · action close prose intégrée) · Agent 2 patch doctrine canon · plus release engineering (ce job · _version + CHANGELOG + manifest + decisions + memory). Post-test live Largo v2.80.0 fresh workspace recadrage FORT · 'je ne veux pas d'interface, pas cette espèce d'interface que tu fais, uniquement pour les commandes slash Phantom. Je veux juste des messages natifs pendant tout l'onboarding.' Distinction canon claire · slash commands `/phantom` `/bird` `/breakdown` `/about` `/update` `/version` = OK matriciel ASCII boxes (canon UI cockpit · interface structurée acceptable) · onboarding `/tour` + premiers messages opérateur = prose conversationnelle native uniquement (zéro interface ASCII boxes/tableaux/séparateurs structurés). Backward compat strict additif · skills 80 inchangé · slash commands 10 inchangé · doctrines 23 inchangée (extension v2.79.3 → v2.80.1, pas NEW doctrine) · zéro BREAKING data opérateur. D#443 captured.",
+  "audit_amont": {
+    "context_recadrage_largo": "Largo test live v2.80.0 fresh workspace · invoke /tour onboarding · recadrage FORT 'je ne veux pas d'interface, pas cette espèce d'interface que tu fais, uniquement pour les commandes slash Phantom. Je veux juste des messages natifs pendant tout l'onboarding.' L'opérateur arrive et s'attend à un accueil humain naturel · pas à une interface technique structurée. Mismatch d'attente = friction adoption.",
+    "diagnostic_gap_systemique": "/tour v2.79.4 → v2.80.0 rendait panorama 360° en interface ASCII matricielle (boxes ━━━ ═══ ───── · tableau territoires · légende iconographie · bloc visuel intro · action close en bloc). Pattern hérité des skills synthesis brand (decomposition-visibility-discipline v2.79.2 4 niveaux matriciels) appliqué littéralement à l'onboarding · friction novice premier contact. Pas de canon distinguant onboarding (premier contact opérateur novice · accueil humain) vs slash commands cockpit (opérateur déjà aligné · interface structurée OK).",
+    "use_case_declencheur": "Test live Largo v2.80.0 fresh workspace · pitch /tour rendu en boxes ASCII flag 'interface technique' au lieu d'accueil prose naturelle. Cohérent memory canon Largo `phantomos_pitch_posture` (institutionnel sérieux + accessible) + `solutions_not_observations` (output prose native = solution actionnable conversationnelle) + `iterative_validation` (test live + recadrage rapide)."
+  },
+  "patches_structurels": [
+    "Refonte /tour onboarding v2.79.4 → v2.80.1 (Agent 1) · retire toutes les boxes ASCII (━━━ ═══ ───── · séparateurs structurés) · retire tableau territoires + légende iconographie + bloc visuel intro + action close en bloc · transforme panorama 360° en prose narrative · action close en phrase intégrée prose. Onboarding = prose conversationnelle native uniquement.",
+    "Patch doctrine onboarding-holistic-discipline.md v2.79.3 → v2.80.1 (Agent 2) · NEW HR-OHD-9 enforcement runtime (onboarding prose conversationnelle native obligatoire · pattern matriciel ASCII réservé slash commands cockpit) + NEW AP-OHD-9 anti-pattern (onboarding rendu avec interface ASCII · confondu avec slash command UI) + NEW Section 'Rendu prose conversationnelle native' clarifie distinction canon onboarding prose vs slash commands matriciel."
+  ],
+  "files_patched": [
+    {"file": ".claude/commands/tour.md", "scope": "Refonte v2.79.4 → v2.80.1 · prose conversationnelle native (Agent 1)"},
+    {"file": "docs/system/onboarding-holistic-discipline.md", "scope": "Patch v2.79.3 → v2.80.1 · NEW HR-OHD-9 + AP-OHD-9 + NEW Section Rendu prose conversationnelle native (Agent 2)"},
+    {"file": "../../../decisions.md", "scope": "D#443 captured workspace ROOT (ce job · release engineering)"},
+    {"file": "_version.json", "scope": "Bump 2.80.0 → 2.80.1 PATCH + manifest path 2.80.1 + summary refonte /tour prose native (ce job · release engineering)"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.80.1 prepended (ce job · release engineering)"},
+    {"file": "docs/internal/releases/manifest/2.80.1-manifest.json", "scope": "NEW · this manifest (ce job · release engineering)"}
+  ],
+  "prose_native_canon": {
+    "slash_commands_matriciel_ascii": {
+      "scope": "Canon UI cockpit · interface structurée acceptable",
+      "commands_concernees": ["/phantom", "/bird", "/breakdown", "/about", "/update", "/version"],
+      "rendu_canon": "ASCII boxes (━━━ ═══ ─────) + tableaux structurés + légende iconographie au pied + sections matricielles + ALERTES / ÉTAT / ACTIONS / Drill footer · cohérent decomposition-visibility-discipline v2.79.5+ + output-clarity-discipline v2.79.2+"
+    },
+    "onboarding_prose_conversationnelle_native": {
+      "scope": "Premier contact opérateur novice · accueil humain naturel · zéro interface technique",
+      "surfaces_concernees": ["/tour (slash command onboarding)", "premiers messages agent post-tour"],
+      "rendu_canon": "Prose narrative naturelle avec paragraphes · retours ligne entre paragraphes · phrases intégrées (panorama 360° en prose · pas tableau · action close en phrase · pas bloc visuel) · zéro boxes ASCII · zéro tableaux · zéro légendes iconographie · zéro séparateurs structurés"
+    },
+    "rationale_canon": "L'opérateur novice arrive et s'attend à un accueil humain naturel · pas à une interface technique structurée. Mismatch d'attente = friction adoption. Slash commands cockpit (opérateur déjà aligné post-onboarding) = interface structurée OK pour pilotage rapide. Distinction canon stricte enforced HR-OHD-9 + AP-OHD-9 v2.80.1+."
+  },
+  "decisions_captured": ["D#443"],
+  "rollback_strategy": "Strict additif backward compat · revert v2.80.1 = git revert HEAD strict · refonte /tour retirable (revert v2.79.4 narrative Vercel-style) · patch doctrine retirable (revert v2.79.3 sans HR-OHD-9 + AP-OHD-9) · zéro impact runtime fonctionnel opérateurs · zéro BREAKING data opérateur · zéro impact skills/slash commands/autres doctrines"
+}

@@ -1,12 +1,12 @@
 # Onboarding Holistic Discipline · Operating Doctrine
 
-> Canonique v2.79.3. Doctrine canon qui codifie la porte d'entrée opérateur PhantomOS. Onboarding agnostique (aucun typage métier à l'entrée) plus holistique (panorama 360° des territoires capability-mapped sur pied d'égalité visuelle). Doctrine sœur de `scope-extension-discipline.md` (canon élasticité scope opérateur-driven · racine philosophique), `output-clarity-discipline.md` v2.79.2 (iconographie canon + headers FR sobres dans panorama), `engagement-disclosure-discipline.md` v2.79.3 (disclosure gros skills · sister porte d'entrée), `pattern-detection-triggers.md` (smart suggest daemon apprentissage par usage), et `voice.md` (registre · ton accueil). Ferme le gap *"l'onboarding /tour survend creative/copywriting/brand-strategist alors que PhantomOS accueille n'importe quel métier DTC encodé · un opérateur tracking-GTM ne se reconnaît pas et ressent friction adoption"* flag systémique Sprint v2.79.3 post-audit Largo recadrage panorama 360°.
+> Canonique v2.80.1. Doctrine canon qui codifie la porte d'entrée opérateur PhantomOS. Onboarding agnostique (aucun typage métier à l'entrée) plus holistique (panorama 360° des territoires capability-mapped sur pied d'égalité visuelle) plus rendu EN PROSE CONVERSATIONNELLE NATIVE (pas d'interface ASCII boxes/tableaux/séparateurs structurés · réservée aux slash commands cockpit). Doctrine sœur de `scope-extension-discipline.md` (canon élasticité scope opérateur-driven · racine philosophique), `output-clarity-discipline.md` v2.79.2 (iconographie canon + headers FR sobres dans panorama), `engagement-disclosure-discipline.md` v2.79.3 (disclosure gros skills · sister porte d'entrée), `pattern-detection-triggers.md` (smart suggest daemon apprentissage par usage), et `voice.md` (registre · ton accueil). Ferme le gap *"l'onboarding /tour survend creative/copywriting/brand-strategist alors que PhantomOS accueille n'importe quel métier DTC encodé · un opérateur tracking-GTM ne se reconnaît pas et ressent friction adoption"* flag systémique Sprint v2.79.3 post-audit Largo recadrage panorama 360° plus gap v2.80.1 *"/tour rendu en interface ASCII boxes/tableaux/séparateurs structurés · l'opérateur recadre · je ne veux pas d'interface, juste des messages natifs"* flag test live Largo Sprint v2.80.0.
 
 ---
 
 ## 1. Thèse fondatrice
 
-> L'onboarding PhantomOS est agnostique plus holistique. Pas de typage opérateur à l'entrée · panorama 360° de toutes les capacités sur pied d'égalité. L'opérateur découvre l'étendue · se reconnaît dans le panorama · choisit où commencer · sans avoir à se déclarer profil métier.
+> L'onboarding PhantomOS est agnostique (pas de typage opérateur à l'entrée) plus holistique (panorama 360° de toutes les capacités sur pied d'égalité) plus EN PROSE CONVERSATIONNELLE NATIVE (pas d'interface ASCII boxes/tableaux/séparateurs structurés · réservée aux slash commands cockpit). L'opérateur découvre l'étendue · se reconnaît dans le panorama · choisit où commencer · sans avoir à se déclarer profil métier · sans interface qui rompt le flow conversationnel.
 
 **Définition canon onboarding holistique** · ensemble des pratiques opérationnelles qui forcent la porte d'entrée PhantomOS à accueillir tout opérateur DTC sans le filtrer ni le catégoriser à priori, en présentant l'étendue capability-mapped du système au scan rapide. Onboarding canon répond à 4 questions miroir ·
 
@@ -48,7 +48,9 @@ Sans Onboarding Holistic Discipline canon ·
 
 6. **Re-entrée onboarding figée.** `/tour` post-setup initial figé sur déclaration T0 = perte d'opportunité découverte progressive. L'opérateur évolue · son workspace évolue · le panorama doit refléter l'état actuel pas l'état T0 figé.
 
-Onboarding Holistic Discipline = doctrine canon qui ferme ces 6 gaps via panorama 360° de 7 territoires capability-mapped + zéro typage entrée + apprentissage par usage + re-entrée évolutive + 8 Hard Rules enforcement runtime.
+7. **Onboarding rendu en interface ASCII boxes/tableaux/séparateurs structurés.** Cas test live Largo Sprint v2.80.0 · `/tour` rendu en panorama 360° formaté ASCII boxes (━━━ ─── tableaux structurés · légende iconographie ✓ ◐ ○ ✗ ⚠ au pied · grille visuelle) · pattern matriciel canon réservé aux slash commands cockpit (`/phantom` `/bird` `/breakdown` `/about` `/update` `/version`) appliqué par erreur à l'onboarding. Recadrage opérateur direct · *"je ne veux pas d'interface · uniquement pour les commandes slash Phantom · juste des messages natifs pendant tout l'onboarding"*. L'onboarding (`/tour` plus premiers messages opérateur) DOIT être prose conversationnelle native · pas d'interface · pas de structure ASCII · pas de tableau. Pattern miroir AP-OHD-9.
+
+Onboarding Holistic Discipline = doctrine canon qui ferme ces 7 gaps via panorama 360° de 7 territoires capability-mapped en PROSE CONVERSATIONNELLE NATIVE + zéro typage entrée + apprentissage par usage + re-entrée évolutive + 9 Hard Rules enforcement runtime.
 
 ---
 
@@ -265,7 +267,44 @@ Anti-typage canon strict v2.79.3+ ·
 
 ---
 
-## 10. Re-entrée onboarding · découverte continue
+## 10. Rendu prose conversationnelle native · onboarding vs slash commands
+
+Distinction canon v2.80.1+ rendu surface onboarding versus surface slash commands cockpit ·
+
+**Distinction canon binaire** ·
+
+| Surface | Format canon | Pattern |
+|---|---|---|
+| Slash commands cockpit (`/phantom` `/bird` `/breakdown` `/about` `/update` `/version`) | Format matriciel ASCII (boxes ━━━ ─── tableaux structurés · légende iconographie · panorama grille) | Canon UI cockpit · scan rapide structuré |
+| Onboarding (`/tour` plus premiers messages opérateur) | Prose conversationnelle native (paragraphes naturels · retours ligne entre paragraphes) | Canon accueil flow conversationnel |
+
+**Pattern prose conversationnelle native canon** ·
+
+- Paragraphes naturels enchaînés · phrases complètes · pas de fragmentation bullet
+- Retours ligne entre paragraphes pour respirer · pas de séparateurs visuels structurés
+- ZÉRO box ASCII · ZÉRO tableau structuré · ZÉRO séparateur ═══ ━━━ ─── dans rendu opérateur
+- Panorama 360° inclus dans prose narrative · pas tableau structuré · les 7 territoires verbalisés en flow conversationnel naturel
+- Action close en phrase intégrée au flow conversationnel · pas bloc visuel structuré
+- Statut canon territoires (shipped · partial · ouvert) verbalisé en prose · pas iconographie ✓ ◐ ○ avec légende au pied
+- Aucune légende iconographique structurée en pied de message
+
+**Exemple canon prose onboarding `/tour` v2.80.1+** ·
+
+> Salut. Je suis l'agent PhantomOS · ton workspace pour opérer la croissance e-commerce. Je couvre 7 territoires métiers DTC à plat · creative et copywriting paid, tracking et GTM, media buy performance, brand strategy, ops et workflow, business pilotage, lifecycle et CRO. Tu peux scanner pour repérer où tu opères aujourd'hui.
+>
+> Côté shipped opérationnel, creative production a 12 skills canon, media buy 8 skills, brand strategy 6 skills, ops 10 skills. Business pilotage et lifecycle sont actifs partial. Tracking GTM ouvert · backlog skills NEW v2.80.
+>
+> Pour démarrer, dis-moi simplement sur quoi tu veux travailler. Brand à setup, audit perf à lancer, angle paid à creuser, peu importe le point d'entrée · le système accueille.
+
+**Anti-pattern strict miroir AP-OHD-9** ·
+
+Onboarding `/tour` rendu en interface ASCII boxes structurées (`┌─────┐ │     │ └─────┘` · tableaux Markdown · séparateurs ━━━ ─── ═══ · grille panorama avec colonnes alignées · légende iconographique ✓ ◐ ○ ✗ ⚠ structurée au pied). Pattern matriciel canon est ANTI-PATTERN sur onboarding · cassure flow conversationnel · violation recadrage opérateur direct *"je ne veux pas d'interface, juste des messages natifs"*.
+
+**Implication canon** · l'onboarding accueille en conversation native · le cockpit slash commands structure en UI matricielle ASCII. Confondre les deux casse le flow porte d'entrée · provoque friction adoption · viole le recadrage opérateur Sprint v2.80.0.
+
+---
+
+## 11. Re-entrée onboarding · découverte continue
 
 Re-entrée canon `/tour` v2.79.3+ évolutive ·
 
@@ -287,7 +326,7 @@ Re-entrée canon `/tour` v2.79.3+ évolutive ·
 
 ---
 
-## 11. Hard Rules canon (HR-OHD-1 à HR-OHD-8)
+## 12. Hard Rules canon (HR-OHD-1 à HR-OHD-9)
 
 ### HR-OHD-1 · Panorama 360° canon · 7 territoires capability-mapped pied d'égalité
 
@@ -321,9 +360,13 @@ Profil opérateur émerge par observation usage cross-session (pattern-detection
 
 Frontmatter `operator/profile.json#identity` DOIT NOT contenir enum métier figé (`profile` · `archetype` · `specialty` · `role` · etc.). Profil opérateur reste observable par usage cross-session, dérivable post-3+ sessions, jamais figé T0. Cross-ref `phantomos_elastic_scope` memory canon. Violation = bug invalid output onboarding canon (force typage upfront).
 
+### HR-OHD-9 · Onboarding rendu prose conversationnelle native obligatoire
+
+Onboarding (`/tour` plus premiers messages opérateur) DOIT être prose conversationnelle native. ZÉRO interface ASCII (boxes `┌─────┐ │     │ └─────┘` · séparateurs ━━━ ─── ═══ · tableaux structurés Markdown · légende iconographique structurée au pied · panorama 360° en grille avec colonnes alignées). Pattern matriciel ASCII réservé STRICT aux slash commands cockpit (`/phantom` `/bird` `/breakdown` `/about` `/update` `/version`). Onboarding rendu en flow conversationnel · paragraphes naturels · retours ligne entre paragraphes · statut canon territoires verbalisé en prose. Violation = bug invalid output onboarding canon (interface ASCII casse flow conversationnel · pattern miroir AP-OHD-9 · viole recadrage opérateur Sprint v2.80.0).
+
 ---
 
-## 12. Anti-patterns canon (AP-OHD-1 à AP-OHD-8)
+## 13. Anti-patterns canon (AP-OHD-1 à AP-OHD-9)
 
 ### AP-OHD-1 · /tour demande "tu fais quoi" en porte d'entrée
 
@@ -357,45 +400,49 @@ Frontmatter operator/profile.json ship enum métier figé · `identity.profile: 
 
 Surface ship restriction enum-based · brand strategist bloqué d'invoke skills tracking GTM · tracking specialist bloqué d'invoke skills brand strategy. Gating profil contraint · scope élastique violé · opérateur cross-territoire impossible. Pattern canon · zéro filtre profil bloquant · liberté cross-territoire stricte. Pattern correctif · HR-OHD-2 plus HR-OHD-8 enforcement runtime.
 
+### AP-OHD-9 · Onboarding rendu avec interface ASCII boxes/tableaux/séparateurs structurés
+
+`/tour` plus premiers messages onboarding rendus avec interface ASCII boxes (`┌─────┐ │     │ └─────┘` · panorama 360° en grille structurée avec colonnes alignées · tableaux Markdown structurés · séparateurs visuels ━━━ ─── ═══ · légende iconographie ✓ ◐ ○ ✗ ⚠ au pied du message · même pattern matriciel que slash commands cockpit `/phantom` `/bird` `/breakdown` `/about`). Confusion onboarding avec slash command UI · flow conversationnel cassé · friction adoption · violation recadrage opérateur direct *"je ne veux pas d'interface · uniquement pour les commandes slash · juste des messages natifs"* (cas test live Largo Sprint v2.80.0). Pattern canon · onboarding prose conversationnelle native strict · panorama 360° verbalisé en flow naturel · statut territoires en prose · zéro structure ASCII. Pattern correctif · HR-OHD-9 enforcement runtime.
+
 ---
 
-## 13. Cross-refs
+## 14. Cross-refs
 
-- `scope-extension-discipline.md` v2.65 · canon élasticité scope opérateur-driven · racine philosophique · OHD opérationnalise SED-X pour cas concret onboarding porte d'entrée
-- `output-clarity-discipline.md` v2.79.2 · iconographie canon v2.79.2 unique (HR-OHD-5) plus headers FR sobres dans panorama · OHD applique OCD à la surface onboarding
-- `tour.md` command · refondu v2.79.3 panorama 360° canon · OHD est doctrine canon que `/tour` consomme
+- `output-clarity-discipline.md` v2.79.2 · iconographie canon v2.79.2 unique (HR-OHD-5 dans panorama state ASCII slash commands · pas onboarding prose) plus headers FR sobres dans panorama · OHD applique OCD à la surface onboarding (prose native) et slash commands (ASCII canon)
+- `tour.md` command · refondu v2.80.1 prose conversationnelle native canon · OHD est doctrine canon que `/tour` consomme
 - `engagement-disclosure-discipline.md` v2.79.3 · sister doctrine · disclosure gros skills · OHD plus EDD = paire porte d'entrée canon (entrée + invocation skills)
 - `pattern-detection-triggers.md` · smart suggest daemon apprentissage par usage · HR-OHD-6 mécanisme
 - `learn-from-session.md` Trigger 8 · capture usage opérateur post-session · HR-OHD-6 mécanisme
-- `voice.md` · registre · ton accueil · OHD complète voice canon avec layer onboarding
+- `voice.md` · registre · ton accueil · OHD complète voice canon avec layer onboarding prose native
 - `contextual-intelligence.md` · master doctrine · OHD est sub-doctrine opérationnelle scope onboarding
+- `scope-extension-discipline.md` v2.65 · canon élasticité scope opérateur-driven · racine philosophique · OHD opérationnalise SED-X pour cas concret onboarding porte d'entrée
 
 ---
 
-## 14. Position dans le système opérationnel 5 couches
+## 15. Position dans le système opérationnel 5 couches
 
 Onboarding Holistic Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71 · OHD est la PORTE D'ENTRÉE canon · couche racine accueil opérateur sans typage.
 
-**Couche 2 · Règles (heuristiques décision).** 8 Hard Rules canon strict (HR-OHD-1 à HR-OHD-8) sont heuristiques décision canon · *"si onboarding /tour opérateur-facing alors panorama 360° agnostique 7 territoires obligatoires"* enforcement runtime cross-surface onboarding. Pattern miroir `output-clarity-discipline.md` 8 Hard Rules · `decomposition-visibility-discipline.md` 9 Hard Rules.
+**Couche 2 · Règles (heuristiques décision).** 9 Hard Rules canon strict (HR-OHD-1 à HR-OHD-9) sont heuristiques décision canon · *"si onboarding /tour opérateur-facing alors panorama 360° agnostique 7 territoires obligatoires EN PROSE CONVERSATIONNELLE NATIVE"* enforcement runtime cross-surface onboarding. Distinction canon binaire onboarding (prose native) versus slash commands cockpit `/phantom` `/bird` `/breakdown` `/about` `/update` `/version` (format matriciel ASCII canon). Confondre les deux casse flow conversationnel porte d'entrée. Pattern miroir `output-clarity-discipline.md` 8 Hard Rules · `decomposition-visibility-discipline.md` 9 Hard Rules.
 
-**Couche 3 · Templates (raccourcis combinaisons gagnantes).** Panorama 360° canon 7 territoires capability-mapped plus grammaire annonce stable (nom court · descriptif 1 ligne · capacités 3-5 · statut canon) sont templates canon réutilisables cross-`/tour` invocations. Pattern miroir `resources/templates/*` canon.
+**Couche 3 · Templates (raccourcis combinaisons gagnantes).** Panorama 360° canon 7 territoires capability-mapped plus grammaire annonce stable (nom court · descriptif 1 ligne · capacités 3-5 · statut canon) sont templates canon réutilisables cross-`/tour` invocations · verbalisés en prose narrative pour onboarding et structurés ASCII pour slash commands cockpit. Pattern miroir `resources/templates/*` canon.
 
-**Couche 5 · Rituels (cadence opérationnelle).** Trigger systémique porte d'entrée onboarding T0 plus re-entrée évolutive `/tour` post-setup initial enforcement runtime canon. Rituel canon agent par session opérateur first contact plus rituel canon agent par re-entrée découverte continue. Pattern miroir `brief-day` daily plus `routine-perf` weekly.
+**Couche 5 · Rituels (cadence opérationnelle).** Trigger systémique porte d'entrée onboarding T0 plus re-entrée évolutive `/tour` post-setup initial enforcement runtime canon. Rituel canon agent par session opérateur first contact (prose native flow conversationnel) plus rituel canon agent par re-entrée découverte continue. Pattern miroir `brief-day` daily plus `routine-perf` weekly.
 
-**Couche 4 · Métriques additionnelle.** % opérateurs reconnaissant leur territoire au scan rapide 10-15 secondes trackable via `learnings.json` append-only · adoption rate cross-territoire vs concentrated creative-only. Métrique convergente · OHD adoption rate cross-opérateur baseline v2.79.3 enforcement runtime.
+**Couche 4 · Métriques additionnelle.** % opérateurs reconnaissant leur territoire au scan rapide 10-15 secondes trackable via `learnings.json` append-only · adoption rate cross-territoire vs concentrated creative-only · plus zéro leak interface ASCII dans onboarding cross-sessions consécutives. Métrique convergente · OHD adoption rate cross-opérateur baseline v2.80.1 enforcement runtime.
 
-**Position canon racine onboarding.** OHD est la couche racine accueil opérateur · prédicate à toute interaction post-T0. Sans OHD canon, adoption fragmentée brand-strategy-only · opérateurs hors-profil-survendu friction · scope élastique violé. Avec OHD canon, adoption distribuée cross-territoire · opérateurs reconnaissent leur métier dès T0 · scope élastique préservé.
+**Position canon racine onboarding.** OHD est la couche racine accueil opérateur · prédicate à toute interaction post-T0. Sans OHD canon, adoption fragmentée brand-strategy-only · opérateurs hors-profil-survendu friction · scope élastique violé · interface ASCII casse flow conversationnel. Avec OHD canon, adoption distribuée cross-territoire · opérateurs reconnaissent leur métier dès T0 en prose native · scope élastique préservé.
 
 ---
 
 ## Status
 
-- **Canonique v2.79.3.** Codifie pattern porte d'entrée opérateur PhantomOS agnostique plus holistique identifié post-audit Largo recadrage panorama 360°. Ferme gap structurel *"l'onboarding /tour survend creative/copywriting/brand-strategist · opérateurs hors-profil ne se reconnaissent pas · friction adoption"* via 7 territoires capability-mapped pied d'égalité plus 8 Hard Rules canon strict (HR-OHD-1 à HR-OHD-8) enforcement runtime.
-- **Doctrine sœur** · scope-extension-discipline.md v2.65 (canon élasticité scope opérateur-driven · racine philosophique) · output-clarity-discipline.md v2.79.2 (iconographie canon plus headers FR sobres) · engagement-disclosure-discipline.md v2.79.3 NEW (disclosure gros skills · paire porte d'entrée) · pattern-detection-triggers.md (smart suggest daemon HR-OHD-6) · voice.md (registre · ton accueil).
-- **Backward compat** · strict additif · doctrine NEW n'override aucune existing. `/tour` legacy pre-v2.79.3 conserve typologie typée jusqu'à patch · v2.79.3+ refonte panorama 360° canon obligatoire.
-- **First applications** · Sprint v2.79.3 patches `/tour` command refonte panorama 360° plus `operator/profile.json` schema cleanup (zéro enum métier figé HR-OHD-8) plus `engagement-disclosure-discipline.md` sister doctrine NEW. Skills onboarding-adjacents v2.79.3+ migration progressive enforce panorama 360°.
-- **Promotion criterion** · à reviewer après 5+ opérateurs hors-profil-survendu reconnaissent leur territoire au scan 10-15 secondes plus 1 audit cross-opérateur adoption rate cross-territoire convergence plus learnings.json append patterns OHD adoption rate stable 80%+ plus zero typage upfront leak `/tour` consécutifs 3+ sessions.
+- **Canonique v2.80.1.** Codifie pattern porte d'entrée opérateur PhantomOS agnostique plus holistique plus rendu PROSE CONVERSATIONNELLE NATIVE canon. Bump v2.79.3 → v2.80.1 post-cas test live Largo Sprint v2.80.0 (`/tour` rendu en interface ASCII boxes/tableaux/séparateurs structurés · recadrage opérateur direct *"je ne veux pas d'interface · uniquement pour les commandes slash Phantom · juste des messages natifs"*). Ferme gap structurel *"l'onboarding /tour survend creative/copywriting/brand-strategist · opérateurs hors-profil ne se reconnaissent pas · friction adoption"* (v2.79.3) plus gap *"/tour rendu en interface ASCII confondu avec slash command UI · viole flow conversationnel porte d'entrée"* (v2.80.1) via 7 territoires capability-mapped pied d'égalité en prose native plus 9 Hard Rules canon strict (HR-OHD-1 à HR-OHD-9) plus 9 anti-patterns (AP-OHD-1 à AP-OHD-9) enforcement runtime.
+- **Doctrine sœur** · scope-extension-discipline.md v2.65 (canon élasticité scope opérateur-driven · racine philosophique) · output-clarity-discipline.md v2.79.2 (iconographie canon plus headers FR sobres dans slash commands ASCII · pas onboarding prose) · engagement-disclosure-discipline.md v2.79.3 (disclosure gros skills · paire porte d'entrée) · pattern-detection-triggers.md (smart suggest daemon HR-OHD-6) · voice.md (registre · ton accueil prose native).
+- **Backward compat** · strict additif · v2.80.1 n'override aucune règle existing. HR-OHD-9 plus AP-OHD-9 NEW enrichissent canon sans rétro-casser. `/tour` legacy pre-v2.80.1 conserve rendu ASCII jusqu'à patch · v2.80.1+ refonte prose conversationnelle native canon obligatoire.
+- **First applications** · Sprint v2.80.1 patches `/tour` command refonte prose conversationnelle native (cas test live Largo Sprint v2.80.0 recadrage) plus distinction canon binaire onboarding prose native versus slash commands cockpit `/phantom` `/bird` `/breakdown` `/about` `/update` `/version` ASCII matriciel. Skills onboarding-adjacents v2.80.1+ migration progressive enforce prose native.
+- **Promotion criterion** · à reviewer après 5+ opérateurs hors-profil-survendu reconnaissent leur territoire au scan 10-15 secondes en prose native plus 1 audit cross-opérateur adoption rate cross-territoire convergence plus learnings.json append patterns OHD adoption rate stable 80%+ plus zero typage upfront leak `/tour` consécutifs 3+ sessions plus zéro leak interface ASCII dans onboarding consécutif 5+ sessions.
 
 ---
 
-*Doctrine canonique skill-author-facing plus agent-facing. Canonise porte d'entrée opérateur PhantomOS agnostique (zéro typage T0) plus holistique (panorama 360° 7 territoires capability-mapped pied d'égalité) plus 8 Hard Rules canon strict (HR-OHD-1 à HR-OHD-8) plus 8 anti-patterns canonisés. Ferme gap structurel *"l'onboarding /tour survend creative/copywriting/brand-strategist · opérateurs hors-profil ne se reconnaissent pas"* via HR-OHD-1 à HR-OHD-8 enforcement runtime. Pattern miroir scope-extension-discipline.md v2.65 (canon élasticité scope opérateur-driven · racine philosophique) plus output-clarity-discipline.md v2.79.2 (iconographie canon plus headers FR sobres) plus engagement-disclosure-discipline.md v2.79.3 NEW (disclosure gros skills · paire porte d'entrée). OHD est la couche racine accueil opérateur · prédicate à toute interaction post-T0 · scope élastique préservé dès T0.*
+*Doctrine canonique skill-author-facing plus agent-facing. Canonise porte d'entrée opérateur PhantomOS agnostique (zéro typage T0) plus holistique (panorama 360° 7 territoires capability-mapped pied d'égalité) plus rendu prose conversationnelle native (canon v2.80.1 post-recadrage Largo Sprint v2.80.0) plus 9 Hard Rules canon strict (HR-OHD-1 à HR-OHD-9) plus 9 anti-patterns canonisés (AP-OHD-1 à AP-OHD-9). Ferme gap structurel *"l'onboarding /tour survend creative/copywriting/brand-strategist · opérateurs hors-profil ne se reconnaissent pas"* (v2.79.3) plus gap *"/tour rendu en interface ASCII boxes/tableaux structurés · viole flow conversationnel"* (v2.80.1) via HR-OHD-1 à HR-OHD-9 enforcement runtime. Pattern miroir scope-extension-discipline.md v2.65 (canon élasticité scope opérateur-driven · racine philosophique) plus output-clarity-discipline.md v2.79.2 (iconographie canon plus headers FR sobres) plus engagement-disclosure-discipline.md v2.79.3 (disclosure gros skills · paire porte d'entrée). OHD est la couche racine accueil opérateur · prédicate à toute interaction post-T0 · scope élastique préservé dès T0 · prose native canon strict.*

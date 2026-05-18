@@ -7,6 +7,49 @@
 
 ---
 
+## v2.80.1 · 2026-05-18 · Sprint patch · refonte /tour onboarding en prose conversationnelle native + patch doctrine onboarding-holistic-discipline NEW HR-OHD-9 + AP-OHD-9 · D#443 captured
+
+**Why** · Test live Largo v2.80.0 fresh workspace · invoke `/tour` onboarding · recadrage FORT · *"je ne veux pas d'interface, pas cette espèce d'interface que tu fais, uniquement pour les commandes slash Phantom. Je veux juste des messages natifs pendant tout l'onboarding."* `/tour` v2.79.4 → v2.80.0 rendait panorama 360° en interface ASCII matricielle (boxes ━━━ ═══ ───── · tableau territoires · légende iconographie · bloc visuel intro · action close en bloc). Pattern hérité skills synthesis brand (decomposition-visibility-discipline v2.79.2 4 niveaux matriciels) appliqué littéralement à l'onboarding · friction novice premier contact. L'opérateur arrive et s'attend à un accueil humain naturel · pas à une interface technique structurée. Mismatch d'attente = friction adoption.
+
+**What** · Sprint patch v2.80.1 patches 2 surfaces structurelles parallèle scope disjoint (2 agents + release engineering ce job) · refonte `/tour` onboarding en prose conversationnelle native (zéro interface ASCII boxes/tableaux/séparateurs · réservée slash commands cockpit) + patch doctrine `onboarding-holistic-discipline.md` v2.79.3 → v2.80.1 NEW HR-OHD-9 + AP-OHD-9 enforcement runtime + NEW Section "Rendu prose conversationnelle native". Distinction canon claire formalisée.
+
+**Patches structurels (2 surfaces scope disjoint)** ·
+
+1. **Refonte `/tour` onboarding v2.79.4 → v2.80.1** (Agent 1) · retire toutes les boxes ASCII (━━━ ═══ ─────) + séparateurs structurés · retire tableau territoires + légende iconographie + bloc visuel intro + action close en bloc · transforme panorama 360° en prose narrative · action close en phrase intégrée prose · onboarding = prose conversationnelle native uniquement.
+
+2. **Patch doctrine `onboarding-holistic-discipline.md` v2.79.3 → v2.80.1** (Agent 2) · NEW HR-OHD-9 enforcement runtime (onboarding prose conversationnelle native obligatoire · pattern matriciel ASCII réservé slash commands cockpit) + NEW AP-OHD-9 anti-pattern (onboarding rendu avec interface ASCII · confondu avec slash command UI) + NEW Section "Rendu prose conversationnelle native" clarifie distinction canon onboarding prose vs slash commands matriciel.
+
+**Distinction canon claire formalisée v2.80.1**
+
+```
+Slash commands cockpit (canon UI · interface structurée acceptable)         · /phantom · /bird · /breakdown · /about · /update · /version
+   Rendu canon · ASCII boxes + tableaux structurés + légende iconographie + sections matricielles · ALERTES / ÉTAT / ACTIONS / Drill footer
+
+Onboarding (premier contact opérateur novice · accueil humain naturel)      · /tour + premiers messages agent post-tour
+   Rendu canon · prose narrative naturelle + paragraphes + retours ligne + phrases intégrées · zéro boxes ASCII · zéro tableaux · zéro légendes iconographie · zéro séparateurs structurés
+```
+
+**Rationale canon** · L'opérateur novice arrive et s'attend à un accueil humain naturel · pas à une interface technique structurée. Mismatch d'attente = friction adoption. Slash commands cockpit (opérateur déjà aligné post-onboarding) = interface structurée OK pour pilotage rapide. Distinction canon stricte enforced HR-OHD-9 + AP-OHD-9 v2.80.1+.
+
+**Backward compat strict additif** · refonte `/tour` retirable (revert v2.79.4 narrative Vercel-style) · patch doctrine retirable (revert v2.79.3 sans HR-OHD-9 + AP-OHD-9) · skills 80 inchangé · doctrines 23 inchangée (extension v2.79.3 → v2.80.1, pas NEW doctrine) · slash commands 10 inchangé · zéro BREAKING data opérateur · zéro impact runtime fonctionnel opérateurs · zéro impact skills + autres doctrines + autres slash commands.
+
+**Files patched (6)** ·
+- `.claude/commands/tour.md` refonte v2.79.4 → v2.80.1 prose conversationnelle native (Agent 1)
+- `docs/system/onboarding-holistic-discipline.md` patch v2.79.3 → v2.80.1 NEW HR-OHD-9 + AP-OHD-9 + NEW Section Rendu prose (Agent 2)
+- `../../../decisions.md` workspace ROOT · D#443 captured (ce job · release engineering)
+- `_version.json` bumped 2.80.0 → 2.80.1 PATCH (ce job · release engineering)
+- `CHANGELOG.md` v2.80.1 entry prepended (this entry · ce job · release engineering)
+- `docs/internal/releases/manifest/2.80.1-manifest.json` NEW (ce job · release engineering)
+
+**D#443 captured** ·
+- **D#443** · Sprint v2.80.1 onboarding prose conversationnelle native canon. Test live Largo v2.80.0 fresh workspace `/tour` recadrage FORT · onboarding `/tour` + premiers messages opérateur = prose conversationnelle native uniquement · slash commands `/phantom` `/bird` `/breakdown` `/about` `/update` `/version` = OK matriciel ASCII boxes (canon UI cockpit). Refonte `/tour` v2.79.4 → v2.80.1 retire toutes boxes ASCII + tableau territoires + légende iconographie + bloc visuel intro · transforme panorama 360° en prose narrative. Patch doctrine `onboarding-holistic-discipline.md` v2.79.3 → v2.80.1 · NEW HR-OHD-9 + AP-OHD-9 enforcement runtime. Cohérent memory canon Largo · `phantomos_pitch_posture` (institutionnel sérieux + accessible) · `iterative_validation` (test live + recadrage rapide) · `solutions_not_observations` (output prose native = solution actionnable conversationnelle). Backward compat strict additif · skills 80 · slash commands 10 · doctrines 23 (extension, pas NEW). Cross-refs · D#436 onboarding-holistic foundation · D#438 split intro /tour + /about deep doc · D#442 pipeline update canon (sprint précédent).
+
+**Backlog v2.80.1+** · Re-test live workspace fresh v2.80.1 sur opérateur novice (Abyss + testeur alpha) pour valider `/tour` prose native + premiers messages post-tour · audit autres surfaces opérateur-facing (messages agent post-onboarding · acks initiaux · welcome flow brand setup) pour cohérence prose native si applicable · backlog v2.80.0+ pipeline update preserved (CLI standalone · package manager · monitoring telemetry · auto-notification · Issue 7 panorama 11 territoires · tracking-GTM skills · business pilotage · DR copywriting · CRO + lifecycle · pre-commit hook em-dash sweep).
+
+**Skills count 80 (inchangé) · slash commands 10 (inchangé · refonte /tour seulement) · doctrines 23 (inchangée · extension v2.79.3 → v2.80.1, pas NEW).**
+
+---
+
 ## v2.80.0 · 2026-05-18 · Sprint MAJOR · pipeline update canon opérateur-facing + migrations framework · NEW /update + /version + NEW doctrine update-distribution-discipline + NEW framework migrations · D#442 captured
 
 **Why** · Largo question 2026-05-18 · *"comment ça se passe pour les mises à jour ? Est-ce qu'ils peuvent faire une commande automatique ? Pour que ce soit pro et scalable ?"*. État actuel manuel · opérateur clone Largo2z9/phantomos · git pull manuel · risque écraser brands/ + operator state · pas de check version · pas de disclosure · pas de migrations canon pour BREAKING. Friction adoption forte cohérent shipped product niveau Vercel/GitHub. Cible scalable 20-50 opérateurs Abyss + testeurs alpha sans friction. Question additionnelle Largo · *"preserve son contexte chargé (brands + ressources + ajouts) + adapter ancien workspace aux changements de fondation (schemas · structure entités)"*.

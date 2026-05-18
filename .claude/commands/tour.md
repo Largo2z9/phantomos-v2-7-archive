@@ -1,7 +1,7 @@
 ---
 name: tour
-version: v2.79.4
-description: PhantomOS onboarding holistique 360°. Lance panorama 7 territoires DTC dès Step 1, opérateur reconnaît son métier (creative · tracking · media buy · brand · ops · business · lifecycle), choisit librement où drill. Pas de typage profil initial (doctrine onboarding-holistic-discipline.md v2.79.3 · canon HR-OHD-2). Replayable via `/tour`. Documentation deep opt-in via `/about` (architecture + philosophie pour opérateur curieux). Update v2.79.4 · refonte intro narratif court Vercel/GitHub-style + action close pointeur `/about` NEW (1 phrase dense remplacée 6-7 lignes narratives bilingual FR/EN). Update v2.79.3 · refonte panorama 360° agnostique + suppression questions profil métier. Update v2.64 · ontologie sémantique pure · pain_points + objections sub-folder OWNED audiences/{slug}/ · frictions sub-folder OWNED products/{slug}/. Update v2.62 · onboarding refresh 4 NEW orchestrators (build-atlas-complete · produce-paid-matrix · creative-brief-composer · sync-notion-atlas).
+version: v2.80.1
+description: Onboarding PhantomOS · prose conversationnelle native · zéro interface ASCII (réservée aux slash commands `/phantom` `/bird` `/breakdown` `/about`). Refonte v2.80.1 · retire boxes ASCII et tableau territoires structuré des rendus opérateur, transforme panorama 360° en prose narrative bilingual FR/EN, action close en prose. Pattern matriciel canon reste sur slash commands seulement, jamais sur l'onboarding. Replayable via `/tour`. Documentation deep opt-in via `/about` (architecture + philosophie pour opérateur curieux). Mémoire canon Largo · `feedback_no_em_dash`, `feedback_no_jargon_to_operator`, `feedback_no_overengineer`, `largo_cognitive_profile` (matriciel = SLASH COMMANDS, pas onboarding). Conserve doctrine v2.79.3 panorama 360° agnostique + zéro typage profil métier initial (HR-OHD-2).
 ---
 
 # Tour · PhantomOS Onboarding
@@ -9,6 +9,8 @@ description: PhantomOS onboarding holistique 360°. Lance panorama 7 territoires
 Executable instructions for the agent. This command handles both first-run onboarding and replay presentation. Read top to bottom before acting.
 
 **Doctrine de référence** · `docs/system/onboarding-holistic-discipline.md` (v2.79.3 · panorama 360° agnostique · zéro typage profil métier initial · HR-OHD-2). Si un orchestrator est appelé en aval (`setup-brand` · `onboard-brand`) · cross-ref `docs/system/engagement-disclosure-discipline.md` (v2.79.3 · disclosure pré-engagement).
+
+**Posture de rendu canon v2.80.1.** L'onboarding (`/tour` + premiers messages opérateur) est en **prose conversationnelle native**. Zéro interface ASCII (pas de boxes `━━━` `═══` `─────`, pas de tableau territoires structuré, pas de légende iconographie au pied). Le pattern matriciel ASCII reste réservé aux slash commands `/phantom` `/bird` `/breakdown` `/about`. L'onboarding doit ressembler à une intro humaine naturelle, comme un opérateur senior accueille un nouvel arrivant.
 
 ---
 
@@ -57,135 +59,57 @@ Every tour hits these in order. Milestones can fuse when a single operator turn 
 
 ### Milestone 1 · Bienvenue + panorama 360°
 
-**First-run** · ouvrir par accueil sobre + panorama matriciel 7 territoires métiers DTC sur pied d'égalité visuelle. L'opérateur découvre l'étendue PhantomOS et reconnaît son métier dans la carte. **Jamais** demander *"tu fais quoi"* / *"ton métier"* / *"ton rôle"* / *"ton profil"* en amont du panorama (canon HR-OHD-2 doctrine `onboarding-holistic-discipline.md`).
+**First-run** · ouvrir par accueil sobre + panorama narratif 7 territoires métiers DTC en prose. L'opérateur découvre l'étendue PhantomOS et reconnaît son métier dans la prose. **Jamais** demander *"tu fais quoi"* / *"ton métier"* / *"ton rôle"* / *"ton profil"* en amont du panorama (canon HR-OHD-2 doctrine `onboarding-holistic-discipline.md`).
 
-**Output pattern (à adapter language opérateur · FR/EN détecté, jamais codé en dur)** ·
+**Rendu opérateur · prose conversationnelle native (à adapter language opérateur · FR/EN détecté, jamais codé en dur). Zéro box ASCII. Zéro tableau structuré. Zéro légende au pied.**
 
-**FR version** ·
-
-```
-═══════════════════════════════════════════════════════════════════
-Bienvenue dans PhantomOS
-
-PhantomOS est un workspace où vit ton opération DTC. Tu encodes ta marque
-une fois (produits · audiences · stratégie), le système raisonne, exécute
-et apprend avec toi à travers les sessions.
-
-Les outils d'IA classiques oublient entre les conversations. Les workspaces
-attendent que tu fasses le travail. PhantomOS garde ton contexte métier
-vivant et opère dessus à travers 80 skills et 21 doctrines canon.
-
-═══════════════════════════════════════════════════════════════════
-
-  PANORAMA 360° · 7 territoires métiers DTC
-  ─────────────────────────────────────────────────────────────────────
-
-  ✓ Creative & Copy Production
-    Angles paid · briefs copy · creatives composition · sales letters DR
-
-  ○ Tracking & GTM
-    Pixels Meta/Google · server-side · consent mode · audits coverage
-
-  ✓ Media Buy & Performance
-    Campagnes Meta · audits perf · score matrices · brief-day
-
-  ✓ Brand Strategy
-    Positioning canvas · voice 4D · archetypes · purpose
-
-  ◐ Ops & Workflow
-    Todos · agendas · onboarding · setup · scripts
-
-  ○ Business Pilotage
-    Unit economics · WBR · cohort retention · roadmap
-
-  ◐ Lifecycle & CRO
-    PDP · landing · email flows · upsell · LTV
-
-═══════════════════════════════════════════════════════════════════
-
-  Pour démarrer
-  ─────────────────────────────────────────────────────────────────────
-
-  Colle une URL de marque (Shopify · landing · etc) ou dis-moi sur quoi
-  tu opères. Je cartographie en ~5 minutes.
-
-  Si tu veux comprendre l'architecture et la philosophie en profondeur
-  avant de démarrer · `/about`
-
-  ─────────────────────────────────────────────────────────────────────
-  ✓ shipped  ◐ partial  ○ open territoire  ✗ absent  ⚠ critique
-```
-
-**EN version** ·
+**FR version** · pattern de prose à rendre ·
 
 ```
-═══════════════════════════════════════════════════════════════════
-Welcome to PhantomOS
+Bienvenue dans PhantomOS.
 
-PhantomOS is a workspace where your DTC operation lives. You encode
-your brand once (products, audiences, strategy), the system reasons,
-executes, and learns with you across sessions.
+PhantomOS est un workspace où vit ton opération DTC. Tu encodes ta marque une fois (produits · audiences · stratégie), le système raisonne, exécute et apprend avec toi à travers les sessions.
 
-Standard AI tools forget between conversations. Workspaces wait for
-you to do the work. PhantomOS keeps your business context alive and
-operates on it through 80 skills and 21 canon doctrines.
+Les outils d'IA classiques oublient entre les conversations. Les workspaces attendent que tu fasses le travail. PhantomOS garde ton contexte métier vivant et opère dessus à travers 80 skills et 23 doctrines canon.
 
-═══════════════════════════════════════════════════════════════════
+PhantomOS couvre sept territoires métiers DTC sur pied d'égalité · la production créative et copy (angles paid · briefs copy · creatives composition · sales letters DR), le tracking et GTM (pixels Meta/Google · server-side · consent mode · audits coverage), le media buy et performance (campagnes Meta · audits perf · score matrices · brief-day), la brand strategy (positioning canvas · voice 4D · archetypes · purpose), les ops et workflow (todos · agendas · onboarding · setup · scripts), le pilotage business (unit economics · WBR · cohort retention · roadmap), et le lifecycle et CRO (PDP · landing · email flows · upsell · LTV).
 
-  360° PANORAMA · 7 DTC territories
-  ─────────────────────────────────────────────────────────────────────
+Certains territoires sont shippés solides aujourd'hui (creative, media buy, brand). D'autres sont partiels avec des skills core existants et des skills NEW à venir (ops, business pilotage, lifecycle CRO). Le territoire tracking et GTM est ouvert · invocable freestyle prose ou via skills NEW backlog v2.80.x.
 
-  ✓ Creative & Copy Production
-    Paid angles · copy briefs · creative composition · DR sales letters
-
-  ○ Tracking & GTM
-    Meta/Google pixels · server-side · consent mode · coverage audits
-
-  ✓ Media Buy & Performance
-    Meta campaigns · perf audits · score matrices · brief-day
-
-  ✓ Brand Strategy
-    Positioning canvas · voice 4D · archetypes · purpose
-
-  ◐ Ops & Workflow
-    Todos · agendas · onboarding · setup · scripts
-
-  ○ Business Pilotage
-    Unit economics · WBR · cohort retention · roadmap
-
-  ◐ Lifecycle & CRO
-    PDP · landing · email flows · upsell · LTV
-
-═══════════════════════════════════════════════════════════════════
-
-  Get started
-  ─────────────────────────────────────────────────────────────────────
-
-  Paste a brand URL (Shopify · landing · etc) or tell me what you operate.
-  I map it in about 5 minutes.
-
-  If you want to understand the architecture and philosophy in depth
-  before starting · `/about`
-
-  ─────────────────────────────────────────────────────────────────────
-  ✓ shipped  ◐ partial  ○ open territory  ✗ absent  ⚠ critical
+Pour démarrer · colle une URL de marque (Shopify · landing · etc) ou dis-moi sur quoi tu opères · je cartographie en environ 5 minutes. Si tu veux comprendre l'architecture et la philosophie en profondeur avant, lance `/about`.
 ```
 
-**Statut canon par territoire (référence interne · ne pas surfacer comme jargon)** ·
+**EN version** · pattern of prose to render ·
+
+```
+Welcome to PhantomOS.
+
+PhantomOS is a workspace where your DTC operation lives. You encode your brand once (products · audiences · strategy), the system reasons, executes, and learns with you across sessions.
+
+Standard AI tools forget between conversations. Workspaces wait for you to do the work. PhantomOS keeps your business context alive and operates on it through 80 skills and 23 canon doctrines.
+
+PhantomOS covers seven DTC territories on equal footing · creative and copy production (paid angles · copy briefs · creative composition · DR sales letters), tracking and GTM (Meta/Google pixels · server-side · consent mode · coverage audits), media buy and performance (Meta campaigns · perf audits · score matrices · brief-day), brand strategy (positioning canvas · voice 4D · archetypes · purpose), ops and workflow (todos · agendas · onboarding · setup · scripts), business pilotage (unit economics · WBR · cohort retention · roadmap), and lifecycle and CRO (PDP · landing · email flows · upsell · LTV).
+
+Some territories are solidly shipped today (creative, media buy, brand). Others are partial with core skills existing and NEW skills coming (ops, business pilotage, lifecycle CRO). The tracking and GTM territory is open · invocable freestyle prose or via NEW skills in the v2.80.x backlog.
+
+To get started · paste a brand URL (Shopify · landing · etc) or tell me what you operate · I map it in about 5 minutes. If you want to understand the architecture and philosophy in depth before, launch `/about`.
+```
+
+**Statut canon par territoire (référence interne · ne pas surfacer comme jargon · ne pas rendre en tableau opérateur)** ·
 
 | Territoire | Statut | Skills core shipped (illustratif) | Skills NEW backlog |
 |---|---|---|---|
-| Creative & Copy Production | ✓ shipped | `produce-paid-angles`, `produce-copy-brief`, `compose-creative`, `creative-brief-composer`, `decompose-ad`, `decompose-angle` | (extensions possibles via `create-skill`) |
-| Tracking & GTM | ○ open territoire | (aucun skill shipped) | NEW backlog v2.80 · invocable freestyle prose ou via skill backlog explicite |
-| Media Buy & Performance | ✓ shipped | `audit-meta-account`, `analyze-perf`, `routine-perf`, `score-matrix`, `brief-day`, `produce-paid-matrix` | |
-| Brand Strategy | ✓ shipped | positioning canvas, voice 4D Nielsen Norman, archetypes 12/12 Mark+Pearson, purpose Moore (skills brand canon shipped v2.65-v2.79) | |
-| Ops & Workflow | ◐ partial | todos · setup · onboard-brand · scaffold-extension | extensions à venir |
-| Business Pilotage | ◐ partial | (aucun skill shipped · invocation freestyle prose dispo) | NEW backlog v2.79.x · unit economics, WBR, cohort retention |
-| Lifecycle & CRO | ◐ partial | (aucun skill shipped · invocation freestyle prose dispo) | NEW backlog v2.81+ · email flows, upsell, LTV |
+| Creative & Copy Production | shipped solid | `produce-paid-angles`, `produce-copy-brief`, `compose-creative`, `creative-brief-composer`, `decompose-ad`, `decompose-angle` | extensions possibles via `create-skill` |
+| Tracking & GTM | open territoire | aucun skill shipped | NEW backlog v2.80 · invocable freestyle prose ou via skill backlog explicite |
+| Media Buy & Performance | shipped solid | `audit-meta-account`, `analyze-perf`, `routine-perf`, `score-matrix`, `brief-day`, `produce-paid-matrix` | |
+| Brand Strategy | shipped solid | positioning canvas, voice 4D Nielsen Norman, archetypes 12/12 Mark+Pearson, purpose Moore (skills brand canon shipped v2.65-v2.79) | |
+| Ops & Workflow | partiel | todos · setup · onboard-brand · scaffold-extension | extensions à venir |
+| Business Pilotage | partiel | aucun skill shipped · invocation freestyle prose dispo | NEW backlog v2.79.x · unit economics, WBR, cohort retention |
+| Lifecycle & CRO | partiel | aucun skill shipped · invocation freestyle prose dispo | NEW backlog v2.81+ · email flows, upsell, LTV |
 
-**Transparency canon · panorama ne ment pas.** Les territoires `○ open` annoncent honnêtement *"invocable freestyle prose ou backlog skill explicite"*. Les territoires `◐ partial` annoncent *"skills shipped et NEW à venir"*. Pas de faux marketing, pas de territoire surévalué.
+**Transparency canon · le panorama narratif ne ment pas.** Les territoires `open` annoncent honnêtement *"invocable freestyle prose ou backlog skill explicite"*. Les territoires `partiels` annoncent *"skills shipped et NEW à venir"*. Pas de faux marketing, pas de territoire surévalué. La prose dit la vérité sur l'état canon.
 
-**Replay** · short acknowledgement + panorama mis à jour selon état workspace actuel (cf. § Re-entrée /tour évolutive ci-dessous).
+**Replay** · short acknowledgement + panorama narratif mis à jour selon état workspace actuel (cf. § Re-entrée /tour évolutive ci-dessous).
 
 > Bienvenue back. Que veux-tu revisiter ?
 
@@ -193,9 +117,9 @@ Skip to Milestone 4 directly in replay mode (close adapté).
 
 ### Milestone 2 · L'opérateur choisit où commencer
 
-Après le panorama, attendre la réponse opérateur. Trois patterns possibles :
+Après le panorama narratif, attendre la réponse opérateur. Trois patterns possibles :
 
-- **Drill territoire** · l'opérateur dit *"creative"* / *"tracking"* / *"media buy"* / *"brand"* / *"ops"* / *"business"* / *"lifecycle"* → l'agent zoom le territoire (3-5 capacités détaillées + skills cités + invocation possible).
+- **Drill territoire** · l'opérateur dit *"creative"* / *"tracking"* / *"media buy"* / *"brand"* / *"ops"* / *"business"* / *"lifecycle"* → l'agent zoom le territoire (3-5 capacités détaillées en prose + skills cités + invocation possible).
 - **Setup direct** · l'opérateur veut configurer une brand immédiatement (URL, description, *"on configure"*) → router vers `setup-brand` orchestrator (cross-ref disclosure pré-engagement `engagement-disclosure-discipline.md` v2.79.3).
 - **Skill scan** · l'opérateur veut scanner le catalogue → `/skills`.
 - **Free-text autre** · l'opérateur exprime un intent non-listé → l'agent interprète et route vers le bon territoire ou skill (jamais re-poser une question type *"tu fais quoi"*).
@@ -208,129 +132,84 @@ Write the selected mode to `/operator/awareness.json` as a transient field `tour
 
 ### Milestone 3 · Drill territoire (conditional)
 
-**Si l'opérateur a choisi de drill un territoire en Milestone 2**, l'agent zoom sur ce territoire avec un sous-panorama détaillé. Pattern par territoire ·
+**Si l'opérateur a choisi de drill un territoire en Milestone 2**, l'agent zoom sur ce territoire avec un sous-panorama en prose conversationnelle. Zéro box ASCII. Zéro tableau. Juste prose narrative qui décrit les capacités câblées et le démarrage possible.
 
-**Creative & Copy Production drill** ·
-
-```
-Creative & Copy Production · drill
-
-  Capacités câblées
-  · Cartographier audiences + angles paid (build-atlas-complete chain)
-  · Décomposer une créa concurrente (decompose-ad)
-  · Produire brief copy + variants visuels (creative-brief-composer)
-  · Adapter une créa concurrente vers ta marque (adapt-from-competitor)
-  · Sales letters DR (produce-copy-brief mode long-form)
-
-  Pour démarrer
-  · Paste l'URL d'une marque · je cartographie en 5 min
-  · Ou paste l'URL d'une ad concurrente · je la décompose en 11 atoms
-```
-
-**Tracking & GTM drill** ·
+**Creative & Copy Production drill** · rendu prose ·
 
 ```
-Tracking & GTM · drill
+Creative et copy production · drill.
 
-  Territoire ○ open · NEW skills backlog v2.80
+Les capacités câblées aujourd'hui · cartographier audiences et angles paid (chain `build-atlas-complete`), décomposer une créa concurrente (`decompose-ad`), produire un brief copy avec variants visuels (`creative-brief-composer`), adapter une créa concurrente vers ta marque (`adapt-from-competitor`), sales letters DR (`produce-copy-brief` mode long-form).
 
-  Capacités annoncées (invocables freestyle prose ou via skill backlog)
-  · Audit pixels Meta/Google sur un compte
-  · Validation server-side tracking (CAPI · Enhanced Conversions)
-  · Diagnostic consent mode (CMP · GDPR · iOS 14.5+)
-  · Coverage analytics (GA4 · Server GTM)
-
-  Pour démarrer
-  · Décris ton stack tracking actuel · je diagnostique freestyle
-  · Ou attend la release skill v2.80 pour invocation structurée
+Pour démarrer · paste l'URL d'une marque, je cartographie en 5 min. Ou paste l'URL d'une ad concurrente, je la décompose en 11 atoms.
 ```
 
-**Media Buy & Performance drill** ·
+**Tracking & GTM drill** · rendu prose ·
 
 ```
-Media Buy & Performance · drill
+Tracking et GTM · drill.
 
-  Capacités câblées
-  · Audit setup compte Meta (audit-meta-account · dimensions canoniques)
-  · Routine perf quotidienne (routine-perf · flags binaires)
-  · Analyse perf end-to-end (analyze-perf · CPA/ROAS/COS cross-ref)
-  · Score matrice angles × audiences top-3 (produce-paid-matrix)
-  · Brief-day état brand actuel (brief-day)
+Territoire ouvert aujourd'hui · NEW skills backlog v2.80.
 
-  Pour démarrer
-  · Connecte ton compte Meta · je lance un audit setup
-  · Ou paste un export perf · je diagnostique cross-ref
+Les capacités annoncées (invocables freestyle prose ou via skill backlog) · audit pixels Meta/Google sur un compte, validation server-side tracking (CAPI · Enhanced Conversions), diagnostic consent mode (CMP · GDPR · iOS 14.5+), coverage analytics (GA4 · Server GTM).
+
+Pour démarrer · décris ton stack tracking actuel, je diagnostique freestyle. Ou attend la release skill v2.80 pour invocation structurée.
 ```
 
-**Brand Strategy drill** ·
+**Media Buy & Performance drill** · rendu prose ·
 
 ```
-Brand Strategy · drill
+Media buy et performance · drill.
 
-  Capacités câblées
-  · Positioning canvas Moore (purpose · audience · category · differentiator)
-  · Voice 4D Nielsen Norman (formal/casual · serious/funny · respectful/irreverent · matter-of-fact/enthusiastic)
-  · Archetypes 12/12 Mark+Pearson (caregiver · creator · explorer · hero · etc.)
-  · Voice consistency validator cross-outputs
+Les capacités câblées aujourd'hui · audit setup compte Meta (`audit-meta-account` dimensions canoniques), routine perf quotidienne (`routine-perf` flags binaires), analyse perf end-to-end (`analyze-perf` CPA/ROAS/COS cross-ref), score matrice angles × audiences top-3 (`produce-paid-matrix`), brief-day état brand actuel (`brief-day`).
 
-  Pour démarrer
-  · Décris ta marque ou paste URL · je propose positioning + voice
-  · Ou drill un sous-axe (positioning · voice · archetype)
+Pour démarrer · connecte ton compte Meta, je lance un audit setup. Ou paste un export perf, je diagnostique cross-ref.
 ```
 
-**Ops & Workflow drill** ·
+**Brand Strategy drill** · rendu prose ·
 
 ```
-Ops & Workflow · drill
+Brand strategy · drill.
 
-  Territoire ◐ partial · shipped + extensions à venir
+Les capacités câblées aujourd'hui · positioning canvas Moore (purpose · audience · category · differentiator), voice 4D Nielsen Norman (formal/casual · serious/funny · respectful/irreverent · matter-of-fact/enthusiastic), archetypes 12/12 Mark+Pearson (caregiver · creator · explorer · hero · etc), voice consistency validator cross-outputs.
 
-  Capacités câblées
-  · Todos système (P0-P3 · energy levels · dependencies)
-  · Onboarding nouveaux opérateurs (onboard-operator)
-  · Setup nouvelle marque (setup-brand orchestrator)
-  · Scaffold extension (nouveau type d'objet, domaine, source)
-
-  Pour démarrer
-  · Décris ton workflow actuel · je propose améliorations
-  · Ou drill un sous-axe (todos · setup · onboarding · extension)
+Pour démarrer · décris ta marque ou paste URL, je propose positioning et voice. Ou drill un sous-axe (positioning · voice · archetype).
 ```
 
-**Business Pilotage drill** ·
+**Ops & Workflow drill** · rendu prose ·
 
 ```
-Business Pilotage · drill
+Ops et workflow · drill.
 
-  Territoire ◐ partial · NEW skills backlog v2.79.x
+Territoire partiel · shipped et extensions à venir.
 
-  Capacités annoncées
-  · Unit economics (LTV/CAC · payback · contribution margin)
-  · WBR (Weekly Business Review · KPIs canon e-com)
-  · Cohort retention analysis
-  · Roadmap trimestrielle (produce-strategy)
+Les capacités câblées aujourd'hui · todos système (P0-P3 · energy levels · dependencies), onboarding nouveaux opérateurs (`onboard-operator`), setup nouvelle marque (`setup-brand` orchestrator), scaffold extension (nouveau type d'objet, domaine, source).
 
-  Pour démarrer
-  · Paste tes data financières · je freestyle diagnostic
-  · Ou attend skills NEW v2.79.x pour invocation structurée
+Pour démarrer · décris ton workflow actuel, je propose améliorations. Ou drill un sous-axe (todos · setup · onboarding · extension).
 ```
 
-**Lifecycle & CRO drill** ·
+**Business Pilotage drill** · rendu prose ·
 
 ```
-Lifecycle & CRO · drill
+Business pilotage · drill.
 
-  Territoire ◐ partial · NEW skills backlog v2.81+
+Territoire partiel · NEW skills backlog v2.79.x.
 
-  Capacités annoncées
-  · PDP optimization (Product Detail Page · conversion drivers)
-  · Landing page composition (sections canon DR)
-  · Email flows lifecycle (welcome · abandoned cart · post-purchase · winback)
-  · Upsell architecture
-  · LTV optimization
+Les capacités annoncées · unit economics (LTV/CAC · payback · contribution margin), WBR (Weekly Business Review · KPIs canon e-com), cohort retention analysis, roadmap trimestrielle (`produce-strategy`).
 
-  Pour démarrer
-  · Décris ton stack lifecycle actuel · je freestyle diagnostic
-  · Ou attend skills NEW v2.81+ pour invocation structurée
+Pour démarrer · paste tes data financières, je freestyle diagnostic. Ou attend skills NEW v2.79.x pour invocation structurée.
+```
+
+**Lifecycle & CRO drill** · rendu prose ·
+
+```
+Lifecycle et CRO · drill.
+
+Territoire partiel · NEW skills backlog v2.81+.
+
+Les capacités annoncées · PDP optimization (Product Detail Page · conversion drivers), landing page composition (sections canon DR), email flows lifecycle (welcome · abandoned cart · post-purchase · winback), upsell architecture, LTV optimization.
+
+Pour démarrer · décris ton stack lifecycle actuel, je freestyle diagnostic. Ou attend skills NEW v2.81+ pour invocation structurée.
 ```
 
 Après le drill territoire, l'agent invite à l'action concrète (setup brand OR invocation skill OR drill plus profond OR retour panorama). Free-text escape natif si l'opérateur veut pivoter.
@@ -372,40 +251,32 @@ L'agent annonce la durée du wedge, le livrable attendu, et lance via Task tool 
 
 ### Milestone 6 · Skill concept + universal entry point
 
-Présenter le concept canon **skills** + commande critique selon territoire actif. Format semi plain text + bullets sobres.
+Présenter le concept canon **skills** + commande critique selon territoire actif. Prose conversationnelle, pas bullets décoratifs.
+
+Pattern de rendu prose ·
 
 ```
-**Concept canon · skills.** Tu décris ton intent en français normal · l'agent route vers le bon skill · pas de syntaxe à mémoriser. Skills tournent sur ta donnée encodée, pas sur knowledge générale.
+Concept canon · skills. Tu décris ton intent en français normal, l'agent route vers le bon skill, pas de syntaxe à mémoriser. Les skills tournent sur ta donnée encodée, pas sur de la knowledge générale.
 
-**Commande critique selon ton territoire.**
+Commande critique selon ton territoire actif.
 ```
 
-Suivi d'UNE commande critique territory-aware ·
+Suivi d'UNE commande critique territory-aware en prose ·
 
-- Territoire Creative / Media Buy / Brand → *"`/skills` pour découvrir le catalogue navigable"*
-- Territoire Tracking / Business / Lifecycle (○ et ◐) → *"décris ton intent en prose · je freestyle ou propose le skill backlog v2.80+"*
-- Territoire Ops → *"`/phantom {brand}` pour cockpit état de ta marque · read-only · sans risque à explorer"*
+- Territoire Creative / Media Buy / Brand → *"`/skills` pour découvrir le catalogue navigable."*
+- Territoire Tracking / Business / Lifecycle (open et partiel) → *"Décris ton intent en prose, je freestyle ou propose le skill backlog v2.80+."*
+- Territoire Ops → *"`/phantom {brand}` pour cockpit état de ta marque, read-only, sans risque à explorer."*
 
-**Différenciation canon · à injecter juste après le concept skills, 2-3 lignes ·**
-
-```
-**Différenciation canon.**
-- Notion stocke du texte indexable.
-- Airtable structure des données interrogeables.
-- SOPs documentent des process humains.
-- PhantomOS opère sur ton univers business via un agent. Trois piliers · territoire stable, productions runtime à la demande, extensibilité canon.
-```
-
-**Quatre autres commandes via smart suggestion** ·
+**Différenciation canon · à injecter juste après le concept skills, en prose courte ·**
 
 ```
-**Quatre autres commandes t'accompagnent dans la durée.**
+Différenciation canon. Notion stocke du texte indexable. Airtable structure des données interrogeables. Les SOPs documentent des process humains. PhantomOS opère sur ton univers business via un agent. Trois piliers · territoire stable, productions runtime à la demande, extensibilité canon.
+```
 
-- `/tour` · revisiter ce panorama 360° à tout moment
-- `/lexicon` · vocabulaire qui débloque les bons skills quand tu prompts
-- `/breakdown stepprs` · vitrine pédagogique via cas concret réel
-- `/skills` · catalogue navigable des capacités (recherche par intent)
-- `/phantom {brand}` · cockpit état d'une marque active
+**Quatre autres commandes via smart suggestion en prose** ·
+
+```
+Quatre autres commandes t'accompagnent dans la durée · `/tour` pour revisiter ce panorama à tout moment, `/lexicon` pour le vocabulaire qui débloque les bons skills quand tu prompts, `/breakdown stepprs` pour la vitrine pédagogique via cas concret réel, `/skills` pour le catalogue navigable des capacités (recherche par intent), et `/phantom {brand}` pour le cockpit état d'une marque active.
 ```
 
 **Universal entry point · two-sided integration.** Une phrase prose qui explique que le workspace est le même reference point cross Claude interfaces (terminal CC · web claude.ai · desktop app) et que les outils externes (Drive · Sheets · Gmail · Calendar · Notion · ClickUp · plateformes paid · analytics · CRM) connectent au workspace on-demand quand un skill en a besoin.
@@ -420,7 +291,7 @@ Surface la **synthesis paragraph** que `snapshot-brand` Step 7 a généré (4-6 
 
 **Pose les bases de la suite après la synthèse, AVANT la question de validation.**
 
-> *"Tu peux valider, corriger ou rejeter point par point ce que je viens d'encoder, je retiens. La commande `/phantom {brand_slug}` ouvre à tout moment la vue arborescente : produits, audiences avec leur statut, offres. Le statut 'à valider' que tu verras un peu partout est volontaire : c'est une hypothèse de travail à confirmer avec du verbatim client juste après, pas une vérité plaquée depuis la page."*
+> *"Tu peux valider, corriger ou rejeter point par point ce que je viens d'encoder, je retiens. La commande `/phantom {brand_slug}` ouvre à tout moment la vue arborescente · produits, audiences avec leur statut, offres. Le statut 'à valider' que tu verras un peu partout est volontaire · c'est une hypothèse de travail à confirmer avec du verbatim client juste après, pas une vérité plaquée depuis la page."*
 
 End with :
 
@@ -430,9 +301,9 @@ End with :
 
 **Snapshot failure modes · fallback messaging.** Snapshot-brand may fail or return thin data. Three failure cases, three operator-facing handlings (always honest, always offers a path forward · never ends on apology):
 
-- **URL 404 / DNS error / paywalled** → *"L'URL ne répond pas. Si tu as une autre URL pour cette marque ou si tu peux me transmettre la home en texte, je repars dessus. Sinon bascule vers le mode conversational : tu me décris la marque en deux lignes et je construis depuis tes réponses."*
-- **JS-heavy SPA / scraping incomplet** → *"Le site est rendu côté JavaScript et le scraper accède à peu de contenu. J'ai capté {X éléments} mais la moitié manque. Trois options : transmets-moi le copy hero + 2-3 prix dans le chat, connecte Chrome MCP pour un scrape complet, ou bascule vers le mode conversational."*
-- **Page trop fine (sub-confidence threshold)** → *"La page est trop légère pour auto-snapshot ({score} %). Trois questions courtes suffisent à calibrer : qu'est-ce que ce produit fait concrètement, qui l'achète, quel format / cure. Réponds, je construis."*
+- **URL 404 / DNS error / paywalled** → *"L'URL ne répond pas. Si tu as une autre URL pour cette marque ou si tu peux me transmettre la home en texte, je repars dessus. Sinon bascule vers le mode conversational · tu me décris la marque en deux lignes et je construis depuis tes réponses."*
+- **JS-heavy SPA / scraping incomplet** → *"Le site est rendu côté JavaScript et le scraper accède à peu de contenu. J'ai capté {X éléments} mais la moitié manque. Trois options · transmets-moi le copy hero + 2-3 prix dans le chat, connecte Chrome MCP pour un scrape complet, ou bascule vers le mode conversational."*
+- **Page trop fine (sub-confidence threshold)** → *"La page est trop légère pour auto-snapshot ({score} %). Trois questions courtes suffisent à calibrer · qu'est-ce que ce produit fait concrètement, qui l'achète, quel format / cure. Réponds, je construis."*
 
 Never close the synthesis turn on a pure apology. Always pair the failure with a path the operator can take in the next turn.
 
@@ -453,7 +324,7 @@ Before composing any close, the agent runs an internal reasoning step (extended 
 1. **What the operator has revealed so far.** Their language, their concerns, their hesitations, what they questioned and what they accepted without challenging. **Pas de typage profil métier** (canon HR-OHD-2 doctrine onboarding-holistic-discipline.md) · l'agent infère SEULEMENT depuis les signaux verbaux organiques, jamais via question explicite.
 2. **What has already been covered.** Read `/operator/awareness.json → paths_explored` and `concepts_introduced`. The close never proposes angles already exhausted.
 3. **Quel territoire actif** (Milestone 2-3) **et quelles capacités drillées**. Les options proposées s'alignent sur le territoire actif, pas sur un profil métier supposé.
-4. **What pivot or broadening would serve them.** Decide the right mix per close : all dig-deeper, mix of dig-deeper and reorient, lateral only · whatever serves this specific conversation.
+4. **What pivot or broadening would serve them.** Decide the right mix per close · all dig-deeper, mix of dig-deeper and reorient, lateral only · whatever serves this specific conversation.
 5. **Compose 4 options** · one action, three others reflectively composed.
 
 #### Non-negotiable constraints (always true regardless of reflection)
@@ -546,7 +417,7 @@ If operator reached the end of the tour AND first-skill has not been built (`awa
 - Territoire actif Creative → 4 missions adaptées (build-atlas-complete · creative-brief-composer · decompose-angle · *"Lancement immédiat, ou report ultérieur ?"*)
 - Territoire actif Media Buy → 4 missions adaptées (audit-meta-account · produce-paid-matrix · routine-perf · *"Lancement immédiat, ou report ultérieur ?"*)
 - Territoire actif Brand → 4 missions adaptées (positioning canvas · voice 4D · archetype 12/12 · *"Lancement immédiat, ou report ultérieur ?"*)
-- Territoire actif Tracking / Business / Lifecycle (○ et ◐) → 4 missions adaptées freestyle OR backlog skills (selon état canon)
+- Territoire actif Tracking / Business / Lifecycle (open et partiel) → 4 missions adaptées freestyle OR backlog skills (selon état canon)
 - Territoire actif Ops → 4 missions adaptées (setup-brand · onboard-brand · scaffold-extension · *"Lancement immédiat, ou report ultérieur ?"*)
 
 Free-text escape natif géré par `AskUserQuestion`. Les autres missions non listées restent accessibles via free-text.
@@ -558,34 +429,19 @@ If declined → `awareness.first_skill_offered += 1`. Do not push again this ses
 
 ## Re-entrée /tour évolutive (replay)
 
-Quand l'opérateur revient sur `/tour` post-setup initial, le panorama est mis à jour selon l'état workspace actuel ·
+Quand l'opérateur revient sur `/tour` post-setup initial, le panorama est mis à jour en prose conversationnelle selon l'état workspace actuel. Zéro box ASCII, zéro tableau structuré · juste prose narrative qui décrit le workspace réel.
+
+Pattern de rendu prose replay ·
 
 ```
-Workspace actuel · N brand(s) encodée(s) · territoires actifs · {liste} · territoires latents · {liste}
+Workspace actuel · {N} brand(s) encodée(s). Les territoires actifs sont {liste textuelle prose}. Les territoires latents sont {liste textuelle prose}.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Aujourd'hui, ton workspace tourne sur sept territoires DTC. La creative et copy production est active avec {N} productions et {N} angles. Le tracking et GTM reste non engagé. Le media buy et performance est actif avec {N} audits et {N} routines. La brand strategy est active avec positioning encodé. Les ops et workflow tournent (todos · agendas). Le business pilotage n'est pas encore engagé (skills NEW v2.79.x à venir). Le lifecycle et CRO est partiel ({description état}).
 
-  PANORAMA 360° · 7 territoires métiers DTC
-  ─────────────────────────────────────────────────────────────────────
-
-  ✓ Creative & Copy Production       [actif · {N} productions · {N} angles]
-  ○ Tracking & GTM                   [non engagé]
-  ✓ Media Buy & Performance          [actif · {N} audits · {N} routines]
-  ✓ Brand Strategy                   [actif · positioning encodé]
-  ◐ Ops & Workflow                   [actif · todos · agendas]
-  ○ Business Pilotage                [non engagé · skills NEW v2.79.x]
-  ◐ Lifecycle & CRO                  [partiel · {description état}]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-  Où tu veux reprendre ?
-  · Drill un territoire actif (productions à pousser)
-  · Engager un territoire latent
-  · Setup une nouvelle brand
-  · Just refreshing
+Où tu veux reprendre · drill un territoire actif (productions à pousser), engager un territoire latent, setup une nouvelle brand, ou juste refreshing ?
 ```
 
-Le statut par territoire est dérivé live de l'état workspace (brands encodées · skills usagés · derniers outputs).
+Le statut par territoire est dérivé live de l'état workspace (brands encodées · skills usagés · derniers outputs). Le rendu reste prose narrative · jamais tableau structuré, jamais légende au pied.
 
 ---
 
@@ -612,11 +468,11 @@ On each milestone completion, write to `/operator/awareness.json` via `write_to_
 When `tour_status = "completed"` and operator calls `/tour` ·
 
 - Skip blase collection (already in `profile.json`).
-- **Pas de question profil métier** (canon HR-OHD-2) · le panorama re-entrée affiche l'état workspace actuel + territoires actifs/latents directement.
-- Short intro · une phrase recap + panorama updated.
+- **Pas de question profil métier** (canon HR-OHD-2) · le panorama re-entrée affiche l'état workspace actuel en prose + territoires actifs/latents narratifs directement.
+- Short intro · une phrase recap + panorama prose updated.
 - Close with adapted options ·
   - *"Drill un territoire actif"* (montrer quels territoires sont actifs depuis `paths_explored`)
-  - *"Engager un territoire latent"* (montrer quels territoires sont open `○` ou partial `◐`)
+  - *"Engager un territoire latent"* (montrer quels territoires sont open ou partiel)
   - *"Configure another brand"*
   - *"Just refreshing"* · accompanied in prose by *"au passage · `/phantom` pour la vue d'état du workspace, `/skills` pour la liste des fonctions, `/learn-from-session` pour verrouiller une règle après une correction."*
 
@@ -626,11 +482,12 @@ Do not write `tour_status` back to `in_progress` on replay. Replay does not cons
 
 ## Constraints (non-negotiable)
 
-- **Doctrine de référence** · `docs/system/onboarding-holistic-discipline.md` v2.79.3. HR-OHD-2 · zéro question profil métier initial. Panorama 360° en premier output toujours.
+- **Doctrine de référence** · `docs/system/onboarding-holistic-discipline.md` v2.79.3. HR-OHD-2 · zéro question profil métier initial. Panorama narratif en premier output toujours.
+- **Posture de rendu v2.80.1 · prose conversationnelle native.** L'onboarding `/tour` est exclusivement prose. Zéro box ASCII (`━━━` `═══` `─────`), zéro tableau territoires structuré, zéro légende iconographie au pied dans les rendus opérateur. Pattern matriciel réservé aux slash commands `/phantom` `/bird` `/breakdown` `/about`. Les milestones internes M1-M9 peuvent garder structure markdown (titres H2/H3 · listes · tableaux) pour la lisibilité du SKILL.md lui-même, mais les exemples de rendu opérateur DOIVENT être prose conversationnelle native.
 - **Voice canon 100%.** Prose first, load-bearing terms only (stateful, runtime, encode, operate, contract), refused terms banned (powerful, supercharge, intelligent, seamless). No coach-phrase, no triple-parallel punchline. See `docs/system/voice.md`.
 - **No section headers in operator-facing output.** The tour milestones are internal structure for the agent. The output to the operator flows as conversation, not as a labeled document.
 - **No decorative metaphor.** Banned metaphors in operator-facing speech · *nerve center*, *command center*, *single source of truth* (as slogan), *your second brain*.
-- **Iconographie canon v2.79.2** · ✓ shipped · ◐ partial · ○ open territoire · ✗ absent · ⚠ critique. Légende au pied du panorama. Pas d'emoji couleur (🔥🟢🟡🔴 banned).
+- **Iconographie canon v2.79.2 réservée slash commands matriciels.** Les symboles `✓ shipped` · `◐ partial` · `○ open territoire` · `✗ absent` · `⚠ critique` restent valides sur `/phantom` `/bird` `/breakdown` `/about` (slash commands où le pattern matriciel ASCII est canon). Sur `/tour` onboarding · zéro iconographie symbole, zéro légende au pied. Statuts décrits en prose ("shippés solides aujourd'hui", "partiels", "ouvert", "non engagé"). Pas d'emoji couleur (banned).
 - **Register downshift on signal.** Any operator expression of confusion, hesitation, or request for simpler language triggers an immediate drop of register. Do not preface with *"sure, let me explain more simply"* (condescending). Just do it, silently.
 - **AskUserQuestion option count.** 2 to 4 **substantive** suggestions depending on the milestone. **Never** pad with filler options.
 - **Runtime rules in replies.** No em dashes in operator-facing replies (period, comma, or two sentences). No decorative emoji. Operator language matches detected input.
@@ -638,7 +495,7 @@ Do not write `tour_status` back to `in_progress` on replay. Replay does not cons
 - **Never expose file paths, field names, function names** (*write_to_context*, *Task*, *WebFetch*) in operator-facing replies.
 - **Respect conversation register detection continuously.**
 - **Mutation gate.** All writes to `profile.json` and `awareness.json` go through `write_to_context(field_path, value, source, confidence, mode)`. Never edit JSON directly.
-- **Cross-ref doctrine** · `onboarding-holistic-discipline.md` (panorama 360° canon) plus `engagement-disclosure-discipline.md` (disclosure pré-engagement quand orchestrator appelé en aval) plus `output-clarity-discipline.md` (iconographie unique + dejargonisation + headers FR sobres + one thing per line · canon v2.79.2 cross-outputs opérateur-facing).
+- **Cross-ref doctrine** · `onboarding-holistic-discipline.md` (panorama 360° canon · prose narrative onboarding v2.80.1) plus `engagement-disclosure-discipline.md` (disclosure pré-engagement quand orchestrator appelé en aval) plus `output-clarity-discipline.md` (iconographie unique + dejargonisation + headers FR sobres + one thing per line · canon v2.79.2 cross-outputs slash commands matriciels opérateur-facing).
 
 ---
 
@@ -652,9 +509,9 @@ If the operator expresses fatigue (*"on reprendra"*, *"pas aujourd'hui"*, *"plus
 
 ## Related canon
 
-- `docs/system/onboarding-holistic-discipline.md` · doctrine racine panorama 360° agnostique (v2.79.3)
+- `docs/system/onboarding-holistic-discipline.md` · doctrine racine panorama 360° agnostique (v2.79.3) · onboarding prose narrative canon v2.80.1
 - `docs/system/engagement-disclosure-discipline.md` · disclosure pré-engagement orchestrators (v2.79.3)
-- `docs/system/output-clarity-discipline.md` · iconographie unique + standards opérateur-facing (v2.79.2)
+- `docs/system/output-clarity-discipline.md` · iconographie unique + standards opérateur-facing slash commands matriciels (v2.79.2)
 - `lexicon.md` · canonical vocabulary to use verbatim
 - `docs/system/voice.md` · writing register and anti-patterns
 - `docs/vision/prisms.md` · angles to pull from for path expansions
