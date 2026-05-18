@@ -1,7 +1,7 @@
 ---
 name: update-workspace
 type: orchestrator
-version: "1.0.0"
+version: "1.1.0"
 recommended_model: sonnet
 layer: meta
 reasoning_pattern: null
@@ -36,6 +36,33 @@ disambiguates_against:
 # Skill: Update Workspace
 
 Applies release updates to an installed PhantomOS workspace. Preserves operator data, syncs template files, runs migrations when schemas bump.
+
+---
+
+## Pipeline canon v2.80.0+
+
+Skill consommé par la slash command `/update` (canon Sprint v2.80.0). Doctrine de référence · `docs/system/update-distribution-discipline.md` v2.80.0 (Update Distribution Discipline).
+
+**Position dans le pipeline canon ·**
+
+- L'opérateur invoque `/update` (slash command opérateur-facing).
+- `/update` route vers `update-workspace` (ce skill, orchestrator).
+- `update-workspace` détecte les BREAKING changes dans la chaîne de manifests.
+- Si BREAKING détecté → délègue à `migrate-workspace` (curator) qui consume les scripts du framework `migrations/` (canon v2.80.0 · scripts Python par BREAKING release).
+- Backup pre-migration obligatoire dans `_archive/migrations/pre-v{version}-{date}/`.
+- Rollback path canon disponible via `/update --rollback {version}`.
+
+**Contrat opérateur-facing canon v2.80.0 ·**
+
+- Disclosure pré-update obligatoire (cohérent `engagement-disclosure-discipline.md` v2.79.5 · plan + ETA + démarche + close binaire confirmation).
+- NIVEAU 0 paramètres décomposés exposés AVANT exécution (cohérent `decomposition-visibility-discipline.md` v2.79.5+).
+- Preserve operator state strict · brands/ + operator/ + credentials + session-state + learnings intacts.
+- Migrations versionnées automatiques pour BREAKING changes (jamais silent).
+- Backup pre-migration obligatoire (rollback path canon).
+
+**Anti-patterns stricts ·** update silent sans disclosure · écrasement brands/operator/credentials · BREAKING appliqué sans migration script idempotent · absence backup pre-migration · absence rollback path.
+
+---
 
 ## Tone
 
@@ -145,14 +172,23 @@ If flags or migration warnings: surface as a short action list, not a report dum
 - **NEVER** touch operator data. If uncertain whether a file is template or operator-owned, treat as operator-owned.
 - **NEVER** skip schema-bump migrations. Data integrity > speed.
 - **NEVER** apply a breaking manifest without explicit operator confirmation.
+- **NEVER** update silent sans disclosure pré-engagement (canon v2.80.0).
+- **NEVER** absence de backup pre-migration `_archive/migrations/pre-v{version}-{date}/` (canon v2.80.0).
+- **NEVER** absence de rollback path (canon v2.80.0 · `/update --rollback {version}`).
 - **ALWAYS** regenerate `.skills/_manifest.json` and `brands/{slug}/_snapshot.md` post-update.
 - **ALWAYS** write to `/operator/installation.json → history[]` before marking update complete.
+- **ALWAYS** expose NIVEAU 0 paramètres décomposés AVANT exécution (canon v2.80.0).
 
 ---
 
 ## Related
 
-- `docs/system/updates.md` — doctrine for publishing clean updates.
-- `docs/releases/{version}-manifest.json` — per-release change manifest.
-- `.skills/skills/migrate-workspace/SKILL.md` — delegated schema migration.
-- `_version.json` — target version registry.
+- `docs/system/update-distribution-discipline.md` (v2.80.0) · doctrine canon pattern de mise à jour PhantomOS.
+- `docs/system/updates.md` · doctrine for publishing clean updates.
+- `docs/system/engagement-disclosure-discipline.md` (v2.79.5) · disclosure pré-engagement.
+- `docs/system/decomposition-visibility-discipline.md` (v2.79.5+) · NIVEAU 0 paramètres décomposés.
+- `docs/releases/{version}-manifest.json` · per-release change manifest.
+- `.skills/skills/migrate-workspace/SKILL.md` · delegated schema migration (consume `migrations/` framework v2.80.0).
+- `migrations/` · framework canon v2.80.0 (scripts Python par BREAKING release).
+- `_version.json` · target version registry.
+- `.claude/commands/update.md` · slash command opérateur-facing canon v2.80.0.

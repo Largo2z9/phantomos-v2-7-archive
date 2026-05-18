@@ -1,0 +1,85 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.80.0",
+  "released_at": "2026-05-18",
+  "type": "major",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 80,
+  "skills_count_after": 80,
+  "slash_commands_count_before": 8,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 22,
+  "doctrines_count_after": 23,
+  "summary": "Sprint v2.80.0 MAJOR · pipeline update canon opérateur-facing + migrations framework. NEW slash command /update (opérateur-facing · check _version local vs latest tag Largo2z9/phantomos · disclosure pré-update canon cohérent EDD v2.79.5 + NIVEAU 0 paramètres décomposés DVD v2.79.5+ · backup operator state vers `_archive/migrations/pre-v{version}-{date}/` · apply migrations ordered idempotent si BREAKING · rsync canon preserve operator state strict exclude brands + operator + .phantom + credentials + .workflow.json + todos custom · confirm + rollback path). NEW slash command /version (current + latest + changelog summary + delta + history mode). NEW doctrine canon racine update-distribution-discipline.md (13 sections canon-style miroir · 8 HR-UDD + 8 AP-UDD · 3 types changements canon additive/transform/deprecate · semver strict MAJOR/MINOR/PATCH · pipeline migrations versionnées · preserve operator state canon · backup + rollback canon · GitHub Releases canon). NEW migrations framework workspace-template/migrations/ (README · _template.py canon 4 méthodes obligatoires check_required + run_transformation + validate_state + rollback · idempotent + backup pré-migration canon · 2.80.0-pipeline-update-canon.py historique premier script additif). GitHub Releases tags rétroactifs v2.65 → v2.79.5 sur Largo2z9/phantomos (changelog publique parsé · traçabilité shipped product). CLAUDE.md root sommaire 22 → 23 doctrines · 8 → 10 slash commands · NEW operator contract row update workspace + wire skills update-workspace + migrate-workspace existing à pipeline NEW. 4 agents parallèle scope disjoint · Agent 1 doctrine NEW + GitHub Releases tags · Agent 2 slash commands NEW · Agent 3 migrations framework NEW · Agent 4 CLAUDE.md root + wire skills · plus release engineering (ce job · _version + CHANGELOG + manifest + decisions + memory). Cible scalable 20-50 opérateurs Abyss / testeurs alpha sans friction. D#442 captured. Backward compat strict additif · doctrines 22 → 23 (+1 NEW update-distribution-discipline) · slash commands 8 → 10 (+2 NEW /update + /version) · skills 80 inchangé · zéro BREAKING data opérateur.",
+  "audit_amont": {
+    "context_question_largo": "Largo question 2026-05-18 · \"comment ça se passe pour les mises à jour ? Est-ce qu'ils peuvent faire une commande automatique ? Pour que ce soit pro et scalable ?\". État actuel manuel · opérateur clone Largo2z9/phantomos · git pull manuel · risque écraser brands/ + operator state · pas de check version · pas de disclosure · pas de migrations canon pour BREAKING. Friction adoption forte cohérent shipped product niveau Vercel/GitHub.",
+    "cible_scalable": "Scalable 20-50 opérateurs Abyss + testeurs alpha sans friction · niveau pro shipped product. Question additionnelle Largo · \"preserve son contexte chargé (brands + ressources + ajouts) + adapter ancien workspace aux changements de fondation (schemas · structure entités)\". Cohérent territory-discipline v2.67 (substrate canon vs production runtime opérateur).",
+    "diagnostic_gap_systemique": "Pipeline update opérateur-facing zéro canon · git pull manuel sans semver discipline · zéro migration framework idempotent · zéro preserve operator state strict · zéro backup pre-migration · zéro rollback path · zéro disclosure pré-update · zéro version check local vs latest. Gap shipped product canon vs niveau alpha interne.",
+    "use_case_declencheur": "Opérateur Abyss / testeur alpha workspace v2.79.5 reçoit notification release v2.80.0 ship · besoin update workspace canon sans perdre son contexte chargé (brands encoded + operator state + credentials + session-state + todos custom) · Largo ship futures versions avec BREAKING changes schemas/entités possibles · besoin migrations versionnées idempotentes canon."
+  },
+  "patches_structurels": [
+    "NEW slash command /update (Agent 2) opérateur-facing · check _version local vs latest tag Largo2z9/phantomos · disclosure pré-update canon cohérent EDD v2.79.5 + NIVEAU 0 paramètres décomposés DVD v2.79.5+ · backup operator state vers `_archive/migrations/pre-v{version}-{date}/` · apply migrations ordered idempotent si BREAKING · rsync canon preserve operator state strict · confirm + rollback path canon `/update --rollback {version}`",
+    "NEW slash command /version (Agent 2) · current + latest + changelog summary + delta + history mode · opérateur visibilité état workspace shipped product",
+    "NEW doctrine canon racine update-distribution-discipline.md (Agent 1) · 13 sections canon-style miroir · 8 HR-UDD + 8 AP-UDD · 3 types changements canon (additive · transform · deprecate) · semver strict MAJOR/MINOR/PATCH · pipeline migrations versionnées · preserve operator state canon · backup + rollback canon · GitHub Releases canon",
+    "NEW migrations framework workspace-template/migrations/ (Agent 3) · README · _template.py canon 4 méthodes obligatoires (check_required · run_transformation · validate_state · rollback) idempotent + backup pré-migration canon · 2.80.0-pipeline-update-canon.py historique premier script additif",
+    "GitHub Releases tags rétroactifs v2.65 → v2.79.5 sur Largo2z9/phantomos (Agent 1) · changelog publique parsé · traçabilité shipped product",
+    "CLAUDE.md root patches (Agent 4) · sommaire 22 → 23 doctrines (+1 NEW update-distribution-discipline) · 8 → 10 slash commands (+2 NEW /update + /version) · NEW operator contract row update workspace · wire skills update-workspace + migrate-workspace existing à pipeline NEW"
+  ],
+  "files_patched": [
+    {"file": ".claude/commands/update.md", "scope": "NEW slash command opérateur-facing /update (Agent 2)"},
+    {"file": ".claude/commands/version.md", "scope": "NEW slash command opérateur-facing /version (Agent 2)"},
+    {"file": "docs/system/update-distribution-discipline.md", "scope": "NEW doctrine canon racine 13 sections + 8 HR-UDD + 8 AP-UDD (Agent 1)"},
+    {"file": "migrations/README.md", "scope": "NEW migrations framework README (Agent 3)"},
+    {"file": "migrations/_template.py", "scope": "NEW template canon 4 méthodes obligatoires (Agent 3)"},
+    {"file": "migrations/2.80.0-pipeline-update-canon.py", "scope": "NEW historique premier script additif (Agent 3)"},
+    {"file": ".skills/skills/update-workspace/SKILL.md", "scope": "Wire existing à pipeline NEW v2.80.0 (Agent 4)"},
+    {"file": ".skills/skills/migrate-workspace/SKILL.md", "scope": "Wire existing à pipeline NEW v2.80.0 (Agent 4)"},
+    {"file": "CLAUDE.md", "scope": "Root sommaire 22 → 23 doctrines · 8 → 10 slash commands · NEW operator contract row update workspace (Agent 4)"},
+    {"file": "../../../decisions.md", "scope": "D#442 captured workspace ROOT (ce job · release engineering)"},
+    {"file": "_version.json", "scope": "Bump 2.79.5 → 2.80.0 MAJOR + manifest path 2.80.0 + summary détaillé (ce job · release engineering)"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.80.0 prepended (ce job · release engineering)"},
+    {"file": "docs/internal/releases/manifest/2.80.0-manifest.json", "scope": "NEW · this manifest (ce job · release engineering)"},
+    {"file": "GitHub Largo2z9/phantomos", "scope": "Tags rétroactifs v2.65 → v2.79.5 + tag v2.80.0 (Agent 1)"}
+  ],
+  "update_pipeline_coverage": {
+    "slash_commands_operateur_facing": [
+      "/update · check _version local vs latest tag GitHub · disclosure pré-update canon · backup operator state · apply migrations ordered idempotent · rsync canon preserve state · confirm + rollback path",
+      "/version · current + latest + changelog summary + delta + history mode"
+    ],
+    "doctrine_canon_racine": "docs/system/update-distribution-discipline.md v2.80.0 · 13 sections canon-style miroir SED-X · 8 HR-UDD + 8 AP-UDD enforcement runtime · 3 types changements (additive · transform · deprecate) · semver strict MAJOR/MINOR/PATCH · pipeline migrations versionnées · preserve operator state canon · backup + rollback canon · GitHub Releases canon",
+    "framework_migrations": "workspace-template/migrations/ · README + _template.py canon 4 méthodes obligatoires (check_required · run_transformation · validate_state · rollback) idempotent + backup pré-migration canon `_archive/migrations/pre-v{version}-{date}/` + 2.80.0-pipeline-update-canon.py historique premier script additif",
+    "skills_wires_existing": [
+      "update-workspace (skill type operations existing) wire à pipeline NEW v2.80.0",
+      "migrate-workspace (skill type operations existing) wire à pipeline NEW v2.80.0"
+    ],
+    "github_releases": "Tags rétroactifs v2.65 → v2.79.5 sur Largo2z9/phantomos · changelog publique parsé · traçabilité shipped product canon",
+    "backup_canon": "_archive/migrations/pre-v{version}-{date}/ obligatoire pré-migration (state opérateur archivé · brands + operator + credentials + .phantom + session-state + todos custom préservés strict)",
+    "rollback_canon": "/update --rollback {version} canon · revert template files via git checkout {version_tag} -- . + restore operator state from `_archive/migrations/pre-v{version}-{date}/` + validate state coherent post-rollback"
+  },
+  "semver_canon": {
+    "MAJOR": "NEW slash command OU NEW framework canon racine OU BREAKING schema entité opérateur (e.g. v2.80.0 NEW /update + /version + NEW migrations framework)",
+    "MINOR": "NEW skill OU NEW doctrine OU NEW resource OU NEW capability additive (e.g. v2.79.x NEW skill ou doctrine)",
+    "PATCH": "Hygiène fixes OR extensions doctrines existing OR skill patches non-BREAKING (e.g. v2.79.5 extensions DVD + EDD)"
+  },
+  "3_types_changements": {
+    "additive": "NEW slash command · NEW skill · NEW doctrine · NEW resource · NEW field optionnel · backward compat strict · zéro migration data requise · rsync canon suffit",
+    "transform": "Field rename OR schema bump OR entity restructure · backward compat additif possible OR BREAKING ciblé · migration script idempotent obligatoire (check_required · run_transformation · validate_state · rollback) · backup pré-migration canon obligatoire",
+    "deprecate": "Field deprecated OR skill deprecated OR doctrine deprecated · transition period documented · migration script idempotent obligatoire pour cleanup post-period · alerts opérateur disclosure pré-update"
+  },
+  "decisions_captured": ["D#442"],
+  "backlog_v280_plus": [
+    "CLI standalone phantomos-update (Option B mature) · binary distribué cross-platform · backlog v2.80.x post-validation MVP /update slash command",
+    "Package manager registry (Option C mature) · npm/pip-like distribution PhantomOS skills + doctrines + framework · backlog v2.81+ post-validation Option B CLI",
+    "Monitoring updates opérateurs · telemetry anonymized adoption rates per version · backlog v2.82+ post-scale 20-50 opérateurs",
+    "Auto-notification new release · opérateur notified workspace startup si latest > local · backlog v2.80.x quick win post-MVP",
+    "Issue 7 panorama 7 vs 11 territoires architectural (backlog v2.79.4) · manque Customer Service · Influencer/UGC · Logistics · Data/BI vs claim panorama 360° onboarding-holistic-discipline v2.79.3 non tenue · refactor cascade · décision Largo + sprint dédié",
+    "Sprint v2.80.x · 4-6 skills tracking-GTM NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode) · prérequis brief tracking specialist solide",
+    "Sprint v2.79.x business pilotage backlog v2.79.1 (unit economics + WBR + cohort retention + audit-klaviyo-flows)",
+    "Sprint v2.80.x DR copywriting production backlog v2.79.1 (sales letter + email sequence + big-idea-canon + audit-proof-coverage)",
+    "Sprint v2.81+ CRO + lifecycle backlog v2.79.1 (audit-pdp + audit-landing + flow-builder-klaviyo)",
+    "Pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md)",
+    "Re-test live workspace fresh v2.80.0 sur opérateur novice (Abyss + testeur alpha) pour valider /update + /version + preserve operator state + rollback path"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.80.0 = git revert HEAD strict · 2 slash commands retirables (/update + /version) · 1 doctrine retirable (update-distribution-discipline) · migrations framework retirable (additif zéro impact data) · 2 skills wired revert à versions pre-v2.80 · zéro impact runtime fonctionnel opérateurs · zéro BREAKING data opérateur"
+}

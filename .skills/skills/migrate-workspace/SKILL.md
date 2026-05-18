@@ -1,7 +1,7 @@
 ---
 name: migrate-workspace
 type: curator
-version: "1.0.0"
+version: "1.1.0"
 recommended_model: sonnet
 layer: meta
 reasoning_pattern: null
@@ -28,7 +28,40 @@ Explique les changements en langage courant : ce qui sera ajouté, ce qui change
 # Skill: Migrate Instance
 
 Safely brings an existing brand instance in line with a newer template version.
-Handles field additions, renames, restructuring, and deprecations — without data loss.
+Handles field additions, renames, restructuring, and deprecations, without data loss.
+
+---
+
+## Pipeline canon v2.80.0+
+
+Skill consommé par `update-workspace` (orchestrator) quand BREAKING détecté dans la chaîne de manifests. Doctrine de référence · `docs/system/update-distribution-discipline.md` v2.80.0 (Update Distribution Discipline).
+
+**Position dans le pipeline canon ·**
+
+- L'opérateur invoque `/update` (slash command opérateur-facing canon v2.80.0).
+- `/update` route vers `update-workspace` (orchestrator).
+- `update-workspace` détecte BREAKING dans la chaîne de manifests.
+- `update-workspace` délègue à `migrate-workspace` (ce skill, curator) via Task tool.
+- `migrate-workspace` consume les scripts du framework `migrations/` (canon v2.80.0 · scripts Python par BREAKING release · 1 script par version BREAKING).
+
+**Framework `migrations/` canon v2.80.0 ·**
+
+Chaque script de migration Python suit le contrat canon · 4 méthodes obligatoires ·
+
+- `check_required(instance_path) -> bool` · détermine si la migration s'applique à l'instance (idempotent · safe à appeler plusieurs fois).
+- `run_transformation(instance_path) -> dict` · applique la transformation (additive · deprecate jamais supprime · backup pre-write).
+- `validate_state(instance_path) -> dict` · valide l'état post-transformation (integrity check · flags surfacés).
+- `rollback(instance_path, backup_path) -> bool` · restaure l'instance depuis le backup pre-migration (`_archive/migrations/pre-v{version}-{date}/`).
+
+**Contrat opérateur-facing canon v2.80.0 ·**
+
+- Idempotent · safe à ré-exécuter sans dommage (check_required gate).
+- Backup pre-migration obligatoire `_archive/migrations/pre-v{version}-{date}/` (jamais migration sans backup).
+- Rollback path canon · `rollback()` méthode disponible par script.
+- Preserve operator state strict · jamais delete data (deprecate via `_deprecated_{name}`).
+- Plan présenté à l'opérateur avant exécution (cohérent engagement-disclosure-discipline v2.79.5).
+
+**Anti-patterns stricts ·** migration sans backup · delete data (vs deprecate) · script non-idempotent · absence rollback method · application silent sans plan opérateur.
 
 ---
 
