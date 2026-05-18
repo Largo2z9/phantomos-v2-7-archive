@@ -1,7 +1,7 @@
 ---
 name: produce-copy-brief
 type: producer
-version: "1.6.0"
+version: "1.7.0"
 isolation_scope: brand_only
 layer: production
 recommended_model: sonnet
@@ -24,6 +24,7 @@ consumes:
   - path: docs/doctrine/pain-benefit-chain-doctrine.md
   - path: docs/doctrine/breakthrough-advertising-5-stages.md
 description: >
+  v1.7.0 (v2.79.5 engagement disclosure NIVEAU 0 paramètres décomposés) · Section pré-runtime ajoutée AVANT Step 0 · expose 6 paramètres décomposés au runtime (audience target · format brief · angle source · persuasion structure · proof points · hypothèses figées · biais à éviter) avec POURQUOI chacun + close binaire OK ou ajuste. Cross-ref doctrines `docs/system/decomposition-visibility-discipline.md` v2.79.5+ + `docs/system/engagement-disclosure-discipline.md` v2.79.5+. Backward compat strict additif (Steps 0-8 runtime preserved · seul l'amont disclosure change).
   v1.6.0 (v2.64 ontologie sémantique pure · pain_points + objections sub-audience) · Step 1 read encoded data refactor · pain_points lus depuis `audiences/{audience-slug}/pain_points/*.json` (sub-audience NEW v2.64 · owned natif par parent path) · objections lues depuis `audiences/{audience-slug}/objections/*.json` (sub-audience NEW v2.64). Section "Objections to neutralize" du brief cite désormais OBJ-NN canonical IDs depuis sub-audience. Section "Pain to activate" cite PNT-NN canonical sub-audience. Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved.
   v1.5.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · Step 1 read encoded data refactor · pain_points lus depuis `pain_points/*.json filtered by affected_audiences contains audience_slug` (collection top-level NEW v2.63) · objections lues depuis `objections/*.json filtered idem`. Section "Objections to neutralize" du brief cite désormais OBJ-NN canonical IDs + cross-ref objections collection. Section "Pain to activate" cite PNT-NN canonical + cross-ref pain_points collection. Backward compat lecture profile.pain_points[] + profile.objections[] legacy preserved (pre-v2.63 brands).
   v1.4.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, objections-mapping, pain-benefit-chain, breakthrough-advertising-5-stages). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
@@ -98,6 +99,75 @@ Frameworks consumed (read once at first invocation, then internalized):
 - `resources/templates/hook-formulas.md` · fallback hook library when verbatim anchor is weak.
 
 The skill consumes these verbatim. No improvisation on hook quality threshold, no improvisation on objection-proof mapping.
+
+---
+
+## Engagement disclosure pré-runtime · NIVEAU 0 paramètres décomposés (canon v2.79.5)
+
+Avant Step 0 (Resolve audience, angle, channel), expose ce disclosure NIVEAU 0 à l'opérateur. Pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-discipline.md` v2.79.5. Le but · rendre les paramètres décomposés que ce skill va mobiliser visibles AVANT exécution, pour que l'opérateur s'engage en conscience et puisse ajuster un paramètre avant de brûler le runtime brief.
+
+```
+Paramètres posés · ce sur quoi je pars
+─────────────────────────────────────────────────────────────
+
+  1. Audience target
+     {audience_slug_résolu Step 0} · segment atlas brand sélectionné
+     POURQUOI · {raison priority · ex "audience demandée explicite"
+     OR "match unique tags + identity.label" OR "audience mère
+     validée Gate A précédent"}
+
+  2. Format brief
+     {short copy / long copy / sales letter DR / VSL script /
+     email sequence / landing block / ad copy Meta / autre}
+     POURQUOI ce format · {ex "channel Meta default · stack signals"
+     OR "operator explicit demand short copy ad" OR "configuration
+     agency standard encoded operator/profile.json#preferences"}
+
+  3. Angle source
+     {ANG-NN existing atlas brand angles/ OR NEW angle non-encoded}
+     POURQUOI cet angle · {ex "top-ranked produce-paid-angles run
+     <24h" OR "operator chose Miroir post-grossesse" OR "highest
+     verbatim density on this audience pocket"}
+
+  4. Persuasion structure
+     {Halbert / Sugarman / StoryBrand / AIDA / PAS / BAB / 4Ps / autre}
+     POURQUOI ce framework · {ex "Sugarman slippery slide pour long
+     copy DR-aggressive" OR "AIDA short copy Meta feed" OR
+     "StoryBrand landing identity-anchor"}. Si lignage canon present
+     dans angle.json, framework_canon_id prime · le brief respecte
+     ce qui a déjà été choisi en amont.
+
+  5. Proof points
+     Inventoriés depuis atlas brand · testimonials · stats · awards ·
+     authority endorsements · scientific
+     POURQUOI ces preuves · {ex "objection price-skepticism →
+     pair avec study clinique souche probiotique"
+     OR "objection 'just marketing' → social Trustpilot + authority
+     sage-femme"}. Mapping objection-proof per proof-registry canon.
+
+  6. Hypothèses figées
+     Stage conscience audience · {unaware → most-aware ·
+     lu market_position.awareness_level}
+     Canal · {landing / email / Meta / TikTok / SMS · default
+     INFER depuis stack + brand focus}
+     Pricing leverage · {urgency active / bundle / risk-reversal /
+     scarcity · lu offers.json active offer matching channel}
+
+  7. Biais à éviter
+     · Features-listing (énumérer specs sans translation bénéfice)
+     · Benefit flou (promesse vague non-actionnable)
+     · Sur-promesses (claims interdits plateforme + trust contract)
+     · Clichés DR (registre "secret million", "découverte choc",
+       formulations qui flaggent ad review Meta)
+
+─────────────────────────────────────────────────────────────
+
+  OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?
+```
+
+ATTENDS confirmation explicite avant de lancer Step 0. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set OR si l'opérateur a flag `--no-disclosure` explicit OR si N usages successifs >= seuil expert (`auto_skip_after_n_calls` true). Sinon · disclosure obligatoire canon v2.79.5.
+
+Cross-ref doctrines racine `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-discipline.md` v2.79.5.
 
 ---
 

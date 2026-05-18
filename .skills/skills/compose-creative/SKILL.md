@@ -1,6 +1,6 @@
 ---
 name: compose-creative
-version: 1.6.0
+version: 1.7.0
 type: producer
 isolation_scope: brand_only
 layer: production
@@ -11,6 +11,7 @@ operator_facing: true
 reasoning_pattern: matrix-driven
 matrix_mode: composing
 patch_notes:
+  v1.7.0: "v2.79.5 engagement disclosure NIVEAU 0 paramètres décomposés · Section pré-runtime ajoutée AVANT HR1 (detect input mode) · expose 6 paramètres décomposés au runtime (brief source · mécanique creative · variants visuels · hook variants · packshot/asset · hypothèses figées · biais à éviter) avec POURQUOI chacun + close binaire OK ou ajuste. Cross-ref doctrines `docs/system/decomposition-visibility-discipline.md` v2.79.5+ + `docs/system/engagement-disclosure-discipline.md` v2.79.5+. Backward compat strict additif (HR1-HR7 runtime preserved · seul l'amont disclosure change)."
   v1.6.0: "v2.64 ontologie sémantique pure pain_points + objections sub-audience · HR2 CONTEXTE refactor · `context.pain_point` lookup canonical `audiences/{audience_slug}/pain_points/{PNT-NN}.json` (sub-audience NEW v2.64 · owned natif par parent path). HR5 persist · creative.json#context.pain_point_ref stage PNT-NN canonical (lookup chain sub-audience d'abord). Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved. Cohérent ontologie sémantique cross-skill (produce-paid-angles v1.10 + produce-copy-brief v1.6 + decompose-angle v1.2 idem refactor)."
   v1.5.0: "v2.63 ontologie pure pain_points + objections collections top-level · HR2 CONTEXTE refactor · `context.pain_point` lookup canonique `pain_points/{PNT-NN}.json` filtered by affected_audiences contains audience_slug (au lieu de profile.problem_map[idx] legacy sub-field). HR5 persist · creative.json#context.pain_point_ref stage PNT-NN canonical (au lieu de pain_extract text legacy seul). Backward compat lecture profile.pain_points[] preserved (pre-v2.63 brands · skip canonical ref, fallback pain text inline). Cohérent ontologie pure cross-skill (produce-paid-angles v1.9 + produce-copy-brief v1.5 + decompose-angle v1.1 idem refactor)."
   v1.4.2: "v2.51 operator-fiche-output canonique template applied · header + gate + footer refactor langage métier. Operator output template (HR6) refactor selon canonique resources/templates/operator-fiche-output.md · header `═══ {BRAND_HUMAIN} · Pub n°{N} ═══` + sous-titre plain language (drop `COMPOSE CREATIVE · CRT-N`). Section 1 / Section 2 / Section 3 réécrites plain language (drop `format: static_image | ratio: 4:5` JSON-style, drop `intent_mix` enum, drop `craft_mode density=0.6`, drop `concept_id: cpt_brand_audience_001`). Bloc `TAGS RETRIEVAL` retiré du template rendu operator (vit backstage dans creative.json pour retrieval programmatique). Footer · 1 reco soft offer 1 ligne max, pas menu. HR3.4 retry wording `compositing externe recommandé v2.35` clean → wording métier. HR-COMPOSITE soft offers wording cohérent canonique sans nommer skills."
@@ -21,6 +22,7 @@ patch_notes:
   v1.0.2: "v2.36 frictions runtime patch. HR3 step 3 explicit aspect_ratio param (4:5 default Meta feed). HR3.4 adaptive retry policy (max 3 retries scenes complexes vs 2 packshot only) + label_compositing_required flag forward to compose-overlay-text v2.37. HR3.5 post-gen aspect_ratio normalize via PIL crop centre si fal.ai output ratio differe target."
   v1.0.1: "v2.35 alignment. visual_identity path fallback (spec.json#visual_identity OR sibling visual_identity.json with _belongs_to pointer). HR1.4 + HR3.1 patched + consumes paths extended."
 description: >
+  v1.7.0 (v2.79.5 engagement disclosure NIVEAU 0 paramètres décomposés) · Section pré-runtime ajoutée AVANT HR1 detect input mode · expose 6 paramètres décomposés au runtime (brief source · mécanique creative · variants visuels · hook variants OTRB · packshot/asset · hypothèses figées · biais à éviter) avec POURQUOI chacun + close binaire OK ou ajuste. Cross-ref doctrines decomposition-visibility-discipline + engagement-disclosure-discipline v2.79.5+. Backward compat strict additif.
   v1.6.0 (v2.64 ontologie sémantique pure · pain_points + objections sub-audience) · context.pain_point reference refactor · lookup `audiences/{audience_slug}/pain_points/{PNT-NN}.json` canonical sub-audience (owned natif par parent path). creative.json stage maintenant ref `context.pain_point_ref: "PNT-NN"` canonical depuis sub-audience. Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved.
   v1.5.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · context.pain_point reference refactor · lookup `pain_points/{PNT-NN}.json` canonical (au lieu de profile.pain_points[idx] sub-field legacy). creative.json stage maintenant ref `context.pain_point_ref: "PNT-NN"` canonical. Backward compat lecture profile.pain_points[] legacy preserved (pre-v2.63 brands).
   v1.4.3 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (angle-anatomy, hooks-method, pain-benefit-chain, breakthrough-advertising-5-stages). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
@@ -165,6 +167,81 @@ Avant assemblage compositionnel (Step 1), scanner prerequisites :
 3. L3 degraded · si `brand.creative_zone` absent → fallback `brand_personality` · confidence 0.6 · flag _gaps
 
 Output state map + confidence_chain[] init.
+
+---
+
+## Engagement disclosure pré-runtime · NIVEAU 0 paramètres décomposés (canon v2.79.5)
+
+Avant HR1 (detect input mode + load pre-requisites), expose ce disclosure NIVEAU 0 à l'opérateur. Pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-discipline.md` v2.79.5. Le but · rendre les paramètres décomposés que ce skill va mobiliser visibles AVANT exécution. Coût compose-creative = appel fal.ai nano-banana-2/edit facturé (token + crédit image gen). Disclosure protège l'opérateur d'un run qui part sur mauvais asset / mauvaise mécanique.
+
+```
+Paramètres posés · ce sur quoi je pars
+─────────────────────────────────────────────────────────────
+
+  1. Brief source
+     {brief markdown atlas brand `products/{slug}/brief-{angle_id}.md`
+     OR angle.json seul (mode hypothèse from scratch)}
+     POURQUOI ce brief · {ex "brief copy déjà produit produce-copy-brief
+     <24h, source de vérité pour copy"
+     OR "pas de brief existant, je compose depuis angle + profile +
+     canon copy"}
+
+  2. Mécanique creative
+     Sélection depuis `resources/registries/creative-mechanics-registry.md`
+     {ex avant-après · démonstration · témoignage UGC · stat-choc ·
+     question-callout · contrarian · before-after · split-screen · autre}
+     POURQUOI cette mécanique · {ex "audience problem-aware →
+     avant-après ancrage somatique" OR "objection 'just marketing'
+     → démonstration mécanisme + proof scientifique" OR "stage
+     conscience unaware → stat-choc pour briser pattern"}
+
+  3. Variants visuels
+     {N variants · default 1 single OR 2-3 si A/B test demandé}
+     POURQUOI cette variance · {ex "single ship rapide pour test
+     baseline" OR "3 variants croisent hook × mécanique × asset
+     pour ladder A/B" OR "operator explicit demand N"}
+
+  4. Hook variants
+     OTRB · Observation × Tension × Reframe × Bridge
+     {N hooks générés · default 3 hooks variants quality spec ≥4/5}
+     POURQUOI ces variants · {ex "hook 1 verbatim exact, hook 2
+     verbatim sémantique, hook 3 formula contre-intuitive"}. Structure
+     canon angle-anatomy doctrine, pas freestyle.
+
+  5. Packshot/asset
+     Source · {visual_identity.assets_canonical.{slot}
+     _validated_by_operator: true OR primary_front packshot OR
+     fallback full_regen (no canonical asset)}
+     POURQUOI cet asset · {ex "packshot canon validé pixel-exact
+     mode layered" OR "pas de canonical, full_regen scène complète
+     avec produit hallucination accepted" OR "layered + logo + badge
+     multi-layer composite pour ad branded complet"}
+
+  6. Hypothèses figées
+     Format paid · {Meta vs organic (TikTok / Reels / Stories) ·
+     default Meta si stack signals}
+     Ratio aspect · {1:1 default Meta feed · 4:5 feed mobile
+     optimized · 9:16 Stories/Reels · adapté placement}
+     Placement · {feed / story / reel / carousel · inféré stack +
+     brand focus + format demandé}
+
+  7. Biais à éviter
+     · Over-design (visuel surchargé qui dilue le hook · canon
+       v2.51 craft_mode density modérée default)
+     · Template visuel répétitif (cluster-deduplication contre
+       formats identiques cross-runs)
+     · Cliché créa DTC FR (registre "transformation 30 jours",
+       "avant-après photoshop évident", "fond blanc isolé sans
+       contexte" si audience demande scène-de-vie)
+
+─────────────────────────────────────────────────────────────
+
+  OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?
+```
+
+ATTENDS confirmation explicite avant de lancer HR1. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set OR si l'opérateur a flag `--no-disclosure` explicit OR si N usages successifs >= seuil expert (`auto_skip_after_n_calls` true). Sinon · disclosure obligatoire canon v2.79.5.
+
+Cross-ref doctrines racine `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-discipline.md` v2.79.5.
 
 ---
 

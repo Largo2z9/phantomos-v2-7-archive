@@ -1,6 +1,6 @@
 # Engagement Disclosure Discipline · Operating Doctrine
 
-> Canonique v2.79.3. Doctrine canon qui codifie le gate pré-engagement obligatoire avant tout lancement de skill orchestrateur ou producer heavy. L'opérateur doit recevoir un disclosure explicit (plan · ETA · démarche · demande confirmation) AVANT que le cycle démarre. Doctrine sœur de `output-clarity-discipline.md` v2.79.2 (iconographie + headers FR sobres respectés dans rendu disclosure), `pacing-discipline.md` (rythme cohérent disclosure rhythm), `delegation-pattern.md` (sub-agents disclosure cohérent), `decomposition-visibility-discipline.md` v2.79.2 (visibilité processus PENDANT cycle · EDD couvre AMONT pré-engagement). Ferme le gap *"skills orchestrateurs lourds lancent silencieusement post-trigger opérateur · 15-45 min runtime sans conscience préalable · opérateur captif mi-parcours sans validation explicit"* flag systémique Sprint v2.79.3 post-audit Largo skills orchestrators canon (build-atlas-complete · onboard-brand · creative-brief-composer · produce-paid-matrix · mine-voc · audit-meta-account · setup-brand · launch-intelligence-deep).
+> Canonique v2.79.5. Doctrine canon qui codifie le gate pré-engagement obligatoire avant tout lancement de skill orchestrateur ou producer heavy ou skill intelligence compositionnelle (atlas × métier). L'opérateur doit recevoir un disclosure explicit (plan · paramètres décomposés sur skills intelligence compositionnelle · ETA · démarche · demande confirmation) AVANT que le cycle démarre. Doctrine sœur de `output-clarity-discipline.md` v2.79.2 (iconographie + headers FR sobres respectés dans rendu disclosure), `pacing-discipline.md` (rythme cohérent disclosure rhythm), `delegation-pattern.md` (sub-agents disclosure cohérent), `decomposition-visibility-discipline.md` v2.79.5+ (sister doctrine pre-exec · NIVEAU 0 paramètres décomposés pre-exec · NIVEAUX 1-4 visibilité processus PENDANT cycle · EDD couvre AMONT pré-engagement disclosure enrichi). Ferme le gap *"skills orchestrateurs lourds lancent silencieusement post-trigger opérateur · 15-45 min runtime sans conscience préalable · opérateur captif mi-parcours sans validation explicit"* flag systémique Sprint v2.79.3 post-audit Largo skills orchestrators canon (build-atlas-complete · onboard-brand · creative-brief-composer · produce-paid-matrix · mine-voc · audit-meta-account · setup-brand · launch-intelligence-deep) plus gap *"skills intelligence compositionnelle (atlas × métier) lancent avec plan + ETA + démarche mais sans POURQUOI explicit sur paramètres d'entrée · l'opérateur valide à l'aveugle, pas en conscience expert métier"* flag systémique Sprint v2.79.5 post-test live Liv Happyfood mine-voc workspace v2.79.4 (HR-EDD-9 enforcement runtime · paramètres décomposés disclosure enrichi).
 
 ---
 
@@ -52,9 +52,9 @@ Engagement Disclosure Discipline = doctrine canon qui ferme ces 6 gaps via 5 tri
 
 ---
 
-## 3. Triggers canon obligatoires · 5 conditions qui forcent le disclosure pré-engagement
+## 3. Triggers canon obligatoires · 6 conditions qui forcent le disclosure pré-engagement
 
-Disclosure pré-engagement OBLIGATOIRE dès qu'un des 5 triggers canon se déclenche · chaque trigger est canon (pas optionnel) ·
+Disclosure pré-engagement OBLIGATOIRE dès qu'un des 6 triggers canon se déclenche · chaque trigger est canon (pas optionnel) ·
 
 ### Trigger 1 · Type orchestrator
 
@@ -76,56 +76,84 @@ Agent main délégue 2+ sub-skills via Task tool (orchestration multi-agent). Pa
 
 Skill producer paid heavy avec output livrable client-facing critique. Skills canon · `produce-paid-angles` (formula Obs+Tension+Reframe+Bridge) · `produce-copy-brief` (écrit court ou long persuasion) · `compose-creative` (composition pub finale). Routing automatique · agent lit `output_classification: livrable_client_facing` frontmatter · si vrai · disclosure pré-engagement obligatoire avec annonce critique business explicit.
 
-**Pattern canon multiplicatif.** Les 5 triggers sont OR · l'activation d'un seul trigger suffit pour déclencher le disclosure. Pattern miroir équation Operational System Discipline v2.71 (déclenchement canon enforcement runtime).
+### Trigger 6 · Intelligence compositionnelle (atlas × métier)
+
+Skills qui raisonnent sur brand encoded (atlas substrat) × domaine métier (audience · pain · canal · query · positionnement · paid · creative). Composent intelligence émergente cross-cell atlas. Skills canon · `mine-voc` · `mine-vom` · `profile-audience` · `produce-paid-angles` · `produce-paid-matrix` · `produce-copy-brief` · `compose-creative` · `build-atlas-complete` · `creative-brief-composer` · `decompose-ad` · `adapt-from-competitor` · `audit-meta-account` · `analyze-perf` · `routine-perf` · `score-matrix` · `snapshot-brand` (post-IP synthesis stratégique). Obligation NEW v2.79.5 · NIVEAU 0 paramètres décomposés explicit pre-exec (audience cible · pains prioritaires · canaux · queries · hypothèses figées · biais à éviter avec POURQUOI pour chaque). Routing automatique · agent détecte skill scope intelligence compositionnelle pre-execution · disclosure enrichi obligatoire (pattern v2.79.5+ Plan + Paramètres décomposés + ETA + Démarche + Confirmation). Cross-ref `decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0.
+
+**Pattern canon multiplicatif.** Les 6 triggers sont OR · l'activation d'un seul trigger suffit pour déclencher le disclosure. Trigger 6 enrichit pattern disclosure (5 éléments au lieu de 4 · paramètres décomposés ajouté). Pattern miroir équation Operational System Discipline v2.71 (déclenchement canon enforcement runtime).
 
 ---
 
-## 4. Pattern disclosure canon · 4 éléments obligatoires
+## 4. Pattern disclosure canon · 5 éléments obligatoires (v2.79.5)
 
-Disclosure pré-engagement canon décompose en 4 éléments orthogonaux mesurables et présentables ·
+Disclosure pré-engagement canon décompose en 5 éléments orthogonaux mesurables et présentables · pattern v2.79.5 enrichi avec NEW élément Paramètres décomposés obligatoire pour skills intelligence compositionnelle (Trigger 6) ·
 
 ```
 ÉLÉMENT 1 · Plan (N étapes ordonnées · max 6-8)
    ↓
-ÉLÉMENT 2 · ETA (chiffré minutes ou range realistic)
+ÉLÉMENT 2 · Paramètres décomposés (NEW v2.79.5 · skills intelligence compositionnelle Trigger 6)
    ↓
-ÉLÉMENT 3 · Démarche (implication + livrable)
+ÉLÉMENT 3 · ETA (chiffré minutes ou range realistic)
    ↓
-ÉLÉMENT 4 · Confirmation (close binaire explicit)
+ÉLÉMENT 4 · Démarche (implication + livrable)
+   ↓
+ÉLÉMENT 5 · Confirmation (close binaire explicit)
 ```
 
-**Pattern canon multiplicatif.** Les 4 éléments sont multiplicatifs · l'absence d'un seul élément fait s'effondrer la qualité disclosure systémique. Pattern miroir équation Operational System Discipline v2.71 (multiplicatif strict).
+**Pattern canon multiplicatif.** Les 5 éléments sont multiplicatifs sur skills intelligence compositionnelle (Trigger 6) · l'absence d'un seul élément fait s'effondrer la qualité disclosure systémique. Pattern miroir équation Operational System Discipline v2.71 (multiplicatif strict). **Backward compat strict additif** · skills mécaniques type validate · capture · scaffold (Triggers 1-5 uniquement · pas Trigger 6) conservent pattern v2.79.3 (4 éléments · Plan + ETA + Démarche + Confirmation). Paramètres décomposés obligatoire UNIQUEMENT sur Trigger 6 activé.
 
 ### Élément 1 · Plan
 
 N étapes ordonnées avec headers courts (max 6-8 étapes cap strict). Verbalisation opérateur-facing canon (zéro jargon interne · zéro skill names exposés · zéro field paths). Format `1. {Étape verbalisée}` numéroté · 1 ligne par étape. Headers courts FR sobres cohérent `output-clarity-discipline.md` v2.79.2 HR-OCD-3.
 
-### Élément 2 · ETA
+### Élément 2 · Paramètres décomposés (NEW v2.79.5 · skills intelligence compositionnelle uniquement)
+
+6 éléments canon obligatoires décomposés AVANT exécution skill intelligence compositionnelle (atlas × métier · Trigger 6). Reverse engineering visible pre-exec · l'opérateur valide consciemment paramètres avant lancement ·
+
+- **Audience cible** · segment atlas brand consommé (audience_id · slug) · POURQUOI ce segment (pas un autre · stage filter · priorité)
+- **Pains prioritaires** · liste ordonnée pains depuis atlas audience · POURQUOI cet ordre (densité verbatims · pain dominant)
+- **Canaux / sources** · ranking sources mining (Reddit · Trustpilot · YouTube · etc.) · POURQUOI ce ranking (vernaculaire · densité)
+- **Queries / critères opératoires** · mots-clés primaires + variants vernaculaires + critères tri · POURQUOI dimensions (couverture pain · matching audience)
+- **Hypothèses figées** · ce que l'agent présume SANS validation · explicit OPÉRATEUR PEUT CHALLENGER avant lancement
+- **Biais à éviter** · biais structurels corpus/source (Reddit skew · Trustpilot rage · YouTube paid · cherry-pick) · explicit risk flag pre-exec
+
+Format canon · table 6 lignes avec POURQUOI colonne. Pattern miroir `decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0. Trigger 6 active obligatoirement · skills mécaniques (Triggers 1-5 uniquement) skip cet élément.
+
+### Élément 3 · ETA
 
 Estimation realistic chiffrée minutes ou range. Format canon `~{X-Y minutes}` OR `~{X minutes}` cap strict. JAMAIS *"rapide"* · *"long"* · *"un instant"* · *"patience"* · *"vite"*. Realistic = lower bound observée best case · upper bound observée worst case. Range si variance >30% · single chiffre si variance <30%.
 
-### Élément 3 · Démarche
+### Élément 4 · Démarche
 
 Ce qui se passe dans le cycle · décomposé 2 facettes ·
 - **Implication opérateur** · ce qu'il doit fournir pendant le cycle (input · validation · décisions · accès credentials). Format 1 ligne sobre.
 - **Livrable final** · ce qu'il obtient à la fin (output verbalisé opérateur-facing · pas plumbing). Format 1 ligne sobre.
 
-### Élément 4 · Confirmation
+### Élément 5 · Confirmation
 
-Close binaire explicit obligatoire. Format canon `OK pour lancer ? · ou tu préfères attendre / faire autre chose`. Variantes acceptables · `Lance / Plus tard` · `OK / J'attends`. JAMAIS opt-in default silent (agent lance sans validation). JAMAIS menu 4+ options equal-weight. Toujours close binaire explicit.
+Close binaire explicit obligatoire. Format canon `OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?` (variante intelligence compositionnelle Trigger 6) · `OK pour lancer ? · ou tu préfères attendre / faire autre chose` (variante skills mécaniques Triggers 1-5). Variantes acceptables · `Lance / Plus tard` · `OK / J'attends`. JAMAIS opt-in default silent (agent lance sans validation). JAMAIS menu 4+ options equal-weight. Toujours close binaire explicit.
 
 ---
 
-## 5. Format output canon disclosure
+## 5. Format output canon disclosure (v2.79.5 enrichi)
 
-Output disclosure canon respecte format stable cross-skills orchestrators + producers heavy ·
+Output disclosure canon respecte format stable cross-skills orchestrators + producers heavy + skills intelligence compositionnelle (Trigger 6 NEW v2.79.5) ·
 
 ```
 {Skill name verbalisé opérateur-facing} · ce qui va se passer
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Paramètres posés · ce sur quoi je pars
+  ─────────────────────────────────────────────────────────────
+  Audience cible        {segment atlas} · POURQUOI ce choix
+  Pains prioritaires    {liste ordonnée} · POURQUOI cet ordre
+  Canaux                {ranking sources} · POURQUOI ce ranking
+  Queries opératoires   {mots-clés + variants} · POURQUOI dimensions
+  Hypothèses figées     {ce que je présume sans valider}
+  Biais à éviter        {risk flags du corpus/source}
 
   Plan
-  ─────────────────────────────────────────────────────────────────────
+  ─────────────────────────────────────────────────────────────
   1. {Étape 1 verbalisée}
   2. {Étape 2 verbalisée}
   3. {Étape 3 verbalisée}
@@ -135,7 +163,30 @@ Output disclosure canon respecte format stable cross-skills orchestrators + prod
   Implication   {ce que tu dois fournir}
   Livrable      {ce que tu obtiens à la fin}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?
+
+  Légende · ✓ complet  ◐ partiel  ○ vide  ✗ absent  ⚠ critique
+```
+
+**Variante skills mécaniques (Triggers 1-5 uniquement · sans Trigger 6 intelligence compositionnelle)** · disclosure pattern v2.79.3 preserved (4 éléments · Plan + ETA + Démarche + Confirmation · sans Paramètres décomposés section). Backward compat strict additif.
+
+```
+{Skill name verbalisé opérateur-facing} · ce qui va se passer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Plan
+  ─────────────────────────────────────────────────────────────
+  1. {Étape 1 verbalisée}
+  2. {Étape 2 verbalisée}
+  ...
+
+  ETA           ~{X-Y minutes}
+  Implication   {ce que tu dois fournir}
+  Livrable      {ce que tu obtiens à la fin}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   OK pour lancer ? · ou tu préfères attendre / faire autre chose
 
@@ -145,11 +196,12 @@ Output disclosure canon respecte format stable cross-skills orchestrators + prod
 **Règles canon format disclosure** ·
 
 - Skill name verbalisé opérateur-facing (zéro `produce-paid-matrix` · OUI *"Atlas paid · matrice angles × audiences ranked"*)
-- Séparateur ━━━ macro-section disclosure · ─── sous-section Plan
+- Séparateur ━━━ macro-section disclosure · ─── sous-section Plan + Paramètres décomposés
+- Paramètres décomposés section AVANT Plan section sur skills intelligence compositionnelle (Trigger 6) · format table 6 lignes avec POURQUOI colonne
 - Plan headers courts FR sobres (max 6-8 étapes cap strict)
 - ETA chiffré realistic minutes ou range (jamais vague)
 - Implication + Livrable 1 ligne sobre chacun
-- Close binaire explicit obligatoire
+- Close binaire explicit obligatoire (variante intelligence compositionnelle invite ajustement paramètres)
 - Légende iconographie au pied (cohérent HR-OCD-8)
 
 ---
@@ -270,6 +322,10 @@ Plan disclosure max 6-8 étapes cap strict. Headers courts FR sobres cohérent `
 
 Disclosure rendu respecte iconographie canon `output-clarity-discipline.md` v2.79.2 strict (✓ ◐ ○ ✗ ⚠). Légende systématique au pied disclosure (cohérent HR-OCD-8). Zéro emoji couleur. Zéro émoticône décoratif. Violation = bug invalid pattern canon (cohérence visuelle cassée).
 
+### HR-EDD-9 · Skills intelligence compositionnelle (atlas × métier) · disclosure DOIT inclure NIVEAU 0 paramètres décomposés
+
+Skills intelligence compositionnelle (Trigger 6 v2.79.5) · disclosure pré-engagement DOIT inclure NIVEAU 0 paramètres décomposés (6 éléments · audience cible · pains prioritaires · canaux · queries · hypothèses figées · biais à éviter) avec POURQUOI explicit pour chaque. Cross-ref `decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 (sister doctrine pre-exec). Skills canon scope · `mine-voc` · `mine-vom` · `profile-audience` · `produce-paid-angles` · `produce-paid-matrix` · `produce-copy-brief` · `compose-creative` · `build-atlas-complete` · `creative-brief-composer` · `decompose-ad` · `adapt-from-competitor` · `audit-meta-account` · `analyze-perf` · `routine-perf` · `score-matrix` · `snapshot-brand` (post-IP synthesis stratégique). Pattern disclosure enrichi v2.79.5 (5 éléments · Plan + Paramètres décomposés + ETA + Démarche + Confirmation). Backward compat strict additif · skills mécaniques (Triggers 1-5 uniquement · validate · capture · scaffold) conservent pattern v2.79.3 (4 éléments · Plan + ETA + Démarche + Confirmation · sans Paramètres décomposés). Violation = bug invalid pattern canon (skill intelligence compositionnelle disclosure sans NIVEAU 0 paramètres décomposés · opérateur valide à l'aveugle paramètres · captivité paramétrique persiste).
+
 ---
 
 ## 12. Anti-patterns canon (AP-EDD-1 à AP-EDD-8)
@@ -306,6 +362,10 @@ Pattern bug · disclosure désactivé par défaut · opérateur doit l'activer m
 
 Disclosure ship Plan + ETA + Démarche mais skip Confirmation explicit. Agent lance skill par défaut · opérateur n'a pas validé consciemment. Pattern canon · close binaire explicit obligatoire `OK / J'attends` · `Lance / Plus tard`. Pattern correctif · HR-EDD-3 enforcement.
 
+### AP-EDD-9 · Skill intelligence compositionnelle disclosure sans paramètres décomposés
+
+Agent reçoit trigger skill intelligence compositionnelle (atlas × métier · `mine-voc` · `profile-audience` · `produce-paid-angles` · `build-atlas-complete` · etc. · Trigger 6 v2.79.5) · ship disclosure pattern v2.79.3 pre-NIVEAU 0 (Plan + ETA + démarche + confirmation) MAIS sans Paramètres décomposés section (audience cible · pains · canaux · queries · hypothèses · biais). Pattern v2.79.3 disclosure OBSOLETE pour skills intelligence compositionnelle (OK preserved pour skills mécaniques type validate · capture · scaffold · Triggers 1-5 uniquement). L'opérateur valide à l'aveugle paramètres (*"OK lance"*) · captivité paramétrique persiste · ne peut pas corriger paramètres en amont · doit attendre output mi-parcours pour challenger. Captivité silencieuse fermée (HR-EDD-1 à HR-EDD-8) mais captivité paramétrique ouverte. Pattern canon · disclosure enrichi v2.79.5+ obligatoire skills intelligence compositionnelle (5 éléments · Plan + Paramètres décomposés + ETA + Démarche + Confirmation) · cross-ref `decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0. Pattern correctif · HR-EDD-9 enforcement.
+
 ---
 
 ## 13. Cross-refs
@@ -313,7 +373,7 @@ Disclosure ship Plan + ETA + Démarche mais skip Confirmation explicit. Agent la
 - `output-clarity-discipline.md` v2.79.2 · iconographie canon 5 symboles + headers FR sobres + density modérée respectés dans rendu disclosure (HR-EDD-8 cross-ref HR-OCD-1 + HR-OCD-3 + HR-OCD-7 + HR-OCD-8)
 - `pacing-discipline.md` · rythme outputs · cohérent disclosure rhythm cross-skills orchestrators stage-aware
 - `voice.md` · registre disclosure · ton sobre opérateur-facing · zéro emoji décoratif
-- `decomposition-visibility-discipline.md` v2.79.2 · EDD couvre AMONT pré-engagement · DVD couvre PENDANT runtime (4 niveaux visibilité matricielle) · cumulatifs canon pas redondants
+- `decomposition-visibility-discipline.md` v2.79.5+ · sister doctrine pre-exec · EDD couvre AMONT pré-engagement disclosure enrichi (5 éléments · Paramètres décomposés ajouté Trigger 6 intelligence compositionnelle) · DVD couvre NIVEAU 0 paramètres décomposés pre-exec (sister doctrine canon) + NIVEAUX 1-4 visibilité matricielle PENDANT/APRÈS runtime · cumulatifs canon pas redondants · cross-ref bidirectionnel obligatoire
 - `delegation-pattern.md` · sub-agents disclosure cohérent (Trigger 4 · 2+ sub-skills déployés annoncé explicit pre-execution)
 - `autonomous-correction-pattern.md` · corrections silent OK · disclosure pas requis (cf §4 retry silently mutation-guard refus)
 - `skill-authoring-discipline.md` · auteur skill canon doit checker triggers EDD lors authoring (frontmatter `type` + `expected_duration_minutes` + `spans_sessions` + `output_classification`)
@@ -327,26 +387,26 @@ Disclosure ship Plan + ETA + Démarche mais skip Confirmation explicit. Agent la
 
 Engagement Disclosure Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71 ·
 
-**Couche 2 · Règles (heuristiques décision).** 8 Hard Rules canon strict (HR-EDD-1 à HR-EDD-8) sont heuristiques décision canon · *"si skill avec un des 5 triggers canon alors disclosure pré-engagement obligatoire"* enforcement runtime cross-skills orchestrators + producers heavy. Pattern miroir `output-clarity-discipline.md` 8 Hard Rules · `decomposition-visibility-discipline.md` 9 Hard Rules · `investigation-posture.md` 5 sections obligatoires.
+**Couche 2 · Règles (heuristiques décision).** 9 Hard Rules canon strict (HR-EDD-1 à HR-EDD-9) sont heuristiques décision canon · *"si skill avec un des 6 triggers canon alors disclosure pré-engagement obligatoire"* enforcement runtime cross-skills orchestrators + producers heavy + skills intelligence compositionnelle (NEW v2.79.5 · HR-EDD-9 disclosure enrichi Paramètres décomposés). Pattern miroir `output-clarity-discipline.md` 8 Hard Rules · `decomposition-visibility-discipline.md` 10 Hard Rules · `investigation-posture.md` 5 sections obligatoires.
 
-**Couche 3 · Templates (raccourcis combinaisons gagnantes).** Format disclosure canon (skill name verbalisé · séparateurs ━━ ─── · Plan headers courts · ETA chiffré · Implication + Livrable · Confirmation close binaire · légende pied) est template canon réutilisable cross-skills orchestrators + producers heavy. Pattern miroir `resources/templates/*` canon.
+**Couche 3 · Templates (raccourcis combinaisons gagnantes).** Format disclosure canon enrichi v2.79.5 (skill name verbalisé · séparateurs ━━ ─── · Paramètres décomposés table 6 lignes avec POURQUOI colonne sur Trigger 6 · Plan headers courts · ETA chiffré · Implication + Livrable · Confirmation close binaire · légende pied) est template canon réutilisable cross-skills orchestrators + producers heavy + skills intelligence compositionnelle. Backward compat strict additif · template v2.79.3 (4 éléments sans Paramètres décomposés) preserved pour skills mécaniques (Triggers 1-5 uniquement · validate · capture · scaffold). Pattern miroir `resources/templates/*` canon.
 
-**Couche 5 · Rituels (cadence opérationnelle).** Trigger systémique pre-execution cross-skills orchestrators + producers heavy · agent calcule pre-execution si un des 5 triggers canon s'active · si oui · disclosure obligatoire AVANT exécution. Rituel canon agent par skill orchestrateur invocation. Pattern miroir `decomposition-visibility-discipline.md` HR-DVD-9 enforcement runtime cross-slash commands.
+**Couche 5 · Rituels (cadence opérationnelle).** Trigger systémique pre-execution cross-skills orchestrators + producers heavy + skills intelligence compositionnelle (Trigger 6 NEW v2.79.5) · agent calcule pre-execution si un des 6 triggers canon s'active · si oui · disclosure obligatoire AVANT exécution (enrichi Paramètres décomposés si Trigger 6 activé). Rituel canon agent par skill orchestrateur invocation + rituel canon agent par skill intelligence compositionnelle invocation expose NIVEAU 0 paramètres décomposés pre-exec. Pattern miroir `decomposition-visibility-discipline.md` HR-DVD-9 enforcement runtime cross-slash commands + HR-DVD-10 enforcement runtime pre-exec sur skills intelligence compositionnelle.
 
-**Couche 4 · Métriques additionnelle.** % skills orchestrators canon-conformes (disclosure pré-engagement shipped) trackable via `learnings.json` append-only · Trigger 8 daemon scan disclosure absence post-skill completion étendu EDD violation. Métrique convergente · EDD adoption rate cross-skills baseline v2.79.3 enforcement runtime.
+**Couche 4 · Métriques additionnelle.** % skills orchestrators canon-conformes (disclosure pré-engagement shipped) plus % skills intelligence compositionnelle canon-conformes (disclosure enrichi Paramètres décomposés shipped) trackable via `learnings.json` append-only · Trigger 8 daemon scan disclosure absence post-skill completion étendu EDD violation. Métrique convergente · EDD adoption rate cross-skills baseline v2.79.5 enforcement runtime enrichi (16 skills intelligence compositionnelle scope NEW v2.79.5 · cohérent DVD v2.79.5 scope identique).
 
-EDD est le GATE pré-runtime canon · couche AMONT entre intent opérateur et exécution skill orchestrator/producer heavy. Cohérent avec tickets system canon AVAL (`brands/{slug}/tickets/` tracking runtime). Couches cumulatives multiplicatives · AMONT consent + AVAL tracking = pattern engagement opérateur complet.
+EDD est le GATE pré-runtime canon · couche AMONT entre intent opérateur et exécution skill orchestrator/producer heavy/intelligence compositionnelle. Cohérent avec tickets system canon AVAL (`brands/{slug}/tickets/` tracking runtime). Couches cumulatives multiplicatives · AMONT consent (Plan + ETA + Démarche + Confirmation + Paramètres décomposés sur Trigger 6) + AVAL tracking = pattern engagement opérateur complet.
 
 ---
 
 ## Status
 
-- **Canonique v2.79.3.** Codifie pattern systémique cross-skills orchestrators + producers heavy identifié post-audit Largo skills canon (build-atlas-complete · onboard-brand · creative-brief-composer · produce-paid-matrix · mine-voc · audit-meta-account · setup-brand · launch-intelligence-deep). Ferme gap structurel *"skills orchestrateurs lourds lancent silencieusement post-trigger opérateur · 15-45 min runtime sans conscience préalable · opérateur captif mi-parcours sans validation explicit"*.
-- **Doctrine sœur** · output-clarity-discipline.md v2.79.2 (iconographie + headers FR sobres respectés rendu disclosure) · pacing-discipline.md (rythme cohérent) · decomposition-visibility-discipline.md v2.79.2 (visibilité PENDANT cycle · EDD couvre AMONT pré-engagement · cumulatifs canon) · delegation-pattern.md (sub-agents disclosure cohérent Trigger 4) · voice.md (registre sobre opérateur-facing) · skill-authoring-discipline.md (auteur skill canon doit checker triggers EDD).
-- **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills orchestrators legacy pre-v2.79.3 conservent lancement silent jusqu'à patch · v2.79.3+ migration progressive enforce disclosure pré-engagement.
-- **First applications** · Sprint v2.79.3 patches skills orchestrators canon parallèle · build-atlas-complete · onboard-brand · creative-brief-composer · produce-paid-matrix · launch-intelligence-deep + skills producers heavy · mine-voc · audit-meta-account · produce-paid-angles · produce-copy-brief · compose-creative · decompose-ad. Frontmatter SKILL.md enrichi `expected_duration_minutes` + `spans_sessions` + `output_classification` pour routing canon.
-- **Promotion criterion** · à reviewer après 10+ skills orchestrators + producers heavy patched canon-conformes plus 1 audit cross-brand disclosure adoption rate convergence plus learnings.json append patterns EDD adoption rate stable 80%+ plus zéro captivité silencieuse opérateur cross 3+ workspaces consécutifs.
+- **Canonique v2.79.5.** Codifie pattern systémique cross-skills orchestrators + producers heavy identifié post-audit Largo skills canon (build-atlas-complete · onboard-brand · creative-brief-composer · produce-paid-matrix · mine-voc · audit-meta-account · setup-brand · launch-intelligence-deep) plus NEW skills intelligence compositionnelle (atlas × métier · Trigger 6 v2.79.5) identifié post-test live Liv Happyfood mine-voc workspace v2.79.4 (HR-EDD-9 enforcement runtime · disclosure enrichi Paramètres décomposés · 16 skills canon scope). Ferme gap structurel *"skills orchestrateurs lourds lancent silencieusement post-trigger opérateur · 15-45 min runtime sans conscience préalable · opérateur captif mi-parcours sans validation explicit"* plus gap *"skills intelligence compositionnelle (atlas × métier) lancent avec disclosure pattern v2.79.3 mais sans POURQUOI explicit sur paramètres d'entrée · l'opérateur valide à l'aveugle, pas en conscience expert métier"*.
+- **Doctrine sœur** · output-clarity-discipline.md v2.79.2 (iconographie + headers FR sobres respectés rendu disclosure) · pacing-discipline.md (rythme cohérent) · decomposition-visibility-discipline.md v2.79.5+ (sister doctrine pre-exec · NIVEAU 0 paramètres décomposés pre-exec · NIVEAUX 1-4 visibilité PENDANT cycle · EDD couvre AMONT pré-engagement disclosure enrichi · cumulatifs canon cross-ref bidirectionnel obligatoire) · delegation-pattern.md (sub-agents disclosure cohérent Trigger 4) · voice.md (registre sobre opérateur-facing) · skill-authoring-discipline.md (auteur skill canon doit checker triggers EDD).
+- **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills orchestrators legacy pre-v2.79.3 conservent lancement silent jusqu'à patch · v2.79.3+ migration progressive enforce disclosure pré-engagement pattern 4 éléments · v2.79.5 NEW Trigger 6 intelligence compositionnelle + pattern enrichi 5 éléments (Paramètres décomposés ajouté · cohérent DVD NIVEAU 0 sister doctrine) · skills mécaniques (Triggers 1-5 uniquement · validate · capture · scaffold) conservent pattern v2.79.3 (4 éléments preserved).
+- **First applications** · Sprint v2.79.3 patches skills orchestrators canon parallèle · build-atlas-complete · onboard-brand · creative-brief-composer · produce-paid-matrix · launch-intelligence-deep + skills producers heavy · mine-voc · audit-meta-account · produce-paid-angles · produce-copy-brief · compose-creative · decompose-ad. Frontmatter SKILL.md enrichi `expected_duration_minutes` + `spans_sessions` + `output_classification` pour routing canon. Sprint v2.79.5 patches skills intelligence compositionnelle (Trigger 6 · 16 skills scope cohérent DVD v2.79.5 · mine-voc · mine-vom · profile-audience · produce-paid-angles · produce-paid-matrix · produce-copy-brief · compose-creative · build-atlas-complete · creative-brief-composer · decompose-ad · adapt-from-competitor · audit-meta-account · analyze-perf · routine-perf · score-matrix · snapshot-brand post-IP).
+- **Promotion criterion** · à reviewer après 10+ skills orchestrators + producers heavy + skills intelligence compositionnelle patched canon-conformes plus 1 audit cross-brand disclosure adoption rate convergence plus learnings.json append patterns EDD adoption rate stable 80%+ plus zéro captivité silencieuse opérateur plus zéro captivité paramétrique opérateur cross 3+ workspaces consécutifs.
 
 ---
 
-*Doctrine canonique skill-author-facing plus agent-facing. Canonise pattern 5 triggers canon obligatoires (orchestrator type · duration >5 min · spans sessions · 2+ sub-skills · producer heavy paid) plus 4 éléments disclosure pattern (Plan · ETA · Démarche · Confirmation) plus 8 Hard Rules canon strict (HR-EDD-1 à HR-EDD-8) plus 8 anti-patterns canonisés. Ferme gap structurel *"skills orchestrateurs lourds lancent silencieusement · opérateur captif mi-parcours sans validation explicit"* via HR-EDD-1 à HR-EDD-8 enforcement runtime pre-execution. Pattern miroir output-clarity-discipline.md (iconographie + headers FR rendu disclosure) plus decomposition-visibility-discipline.md (visibilité PENDANT cycle cumulatif) plus delegation-pattern.md (sub-agents disclosure) plus tickets system canon AVAL (tracking runtime cumulatif).*
+*Doctrine canonique skill-author-facing plus agent-facing. Canonise pattern 6 triggers canon obligatoires (orchestrator type · duration >5 min · spans sessions · 2+ sub-skills · producer heavy paid · intelligence compositionnelle atlas × métier NEW v2.79.5) plus 5 éléments disclosure pattern enrichi v2.79.5 (Plan · Paramètres décomposés NEW v2.79.5 sur Trigger 6 · ETA · Démarche · Confirmation · backward compat strict 4 éléments preserved pour Triggers 1-5 uniquement) plus 9 Hard Rules canon strict (HR-EDD-1 à HR-EDD-9) plus 9 anti-patterns canonisés (AP-EDD-1 à AP-EDD-9). Ferme gap structurel *"skills orchestrateurs lourds lancent silencieusement · opérateur captif mi-parcours sans validation explicit"* plus gap *"skills intelligence compositionnelle lancent avec disclosure mais sans POURQUOI explicit sur paramètres d'entrée · l'opérateur valide à l'aveugle"* via HR-EDD-1 à HR-EDD-9 enforcement runtime pre-execution. Pattern miroir output-clarity-discipline.md (iconographie + headers FR rendu disclosure) plus decomposition-visibility-discipline.md v2.79.5+ (sister doctrine pre-exec · NIVEAU 0 paramètres décomposés · cross-ref bidirectionnel) plus delegation-pattern.md (sub-agents disclosure) plus tickets system canon AVAL (tracking runtime cumulatif).*

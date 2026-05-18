@@ -1,19 +1,20 @@
 # Decomposition Visibility Discipline · Operating Doctrine
 
-> Canonique v2.79.2. Doctrine canon qui codifie comment l'agent rend visible sa décomposition de réflexion plus son reverse engineering à l'opérateur pendant l'encoding et la synthesis cross-skills plus cross-slash commands `/bird` et `/breakdown` plus queries verbal freestyle. Doctrine sœur de `investigation-posture.md` (rigueur output 5 sections), `canonical-matrix-reasoning.md` (qualité output cross-cell schema plus matrice), et `skill-routing-discipline.md` (canon routing 5 phases). Ferme le gap *"l'agent encode silencieusement sans présenter visuellement la décomposition produit, le mapping many-to-many, le filtre stage business, et la méthode pédagogique"* flag systémique Sprint v2.78.2 post-test live KaraCare workspace v2.78.0 plus gap *"queries verbal résume/cartographie freestyle prose sans déclencher 4 niveaux matriciels canon"* flag systémique Sprint v2.79.1 post-test live KaraCare workspace v2.79.0 (HR-DVD-9 enforcement runtime). Scope révisé Sprint v2.79.2 post-audit Largo test live KaraCare v2.79.1 · `/phantom` exclu du scope (cockpit scan rapide ≠ pédagogie reverse engineering · cf D#435).
+> Canonique v2.79.5. Doctrine canon qui codifie comment l'agent rend visible sa décomposition de réflexion plus son reverse engineering à l'opérateur AVANT exécution (NIVEAU 0 paramètres décomposés pré-exec · intelligence compositionnelle visible) ET pendant l'encoding et la synthesis cross-skills plus cross-slash commands `/bird` et `/breakdown` plus queries verbal freestyle (NIVEAUX 1-4 post-exec). Doctrine sœur de `investigation-posture.md` (rigueur output 5 sections), `canonical-matrix-reasoning.md` (qualité output cross-cell schema plus matrice), `skill-routing-discipline.md` (canon routing 5 phases), et `engagement-disclosure-discipline.md` v2.79.5+ (sister doctrine pre-exec · disclosure paramètres décomposés). Ferme le gap *"l'agent encode silencieusement sans présenter visuellement la décomposition produit, le mapping many-to-many, le filtre stage business, et la méthode pédagogique"* flag systémique Sprint v2.78.2 post-test live KaraCare workspace v2.78.0 plus gap *"queries verbal résume/cartographie freestyle prose sans déclencher 4 niveaux matriciels canon"* flag systémique Sprint v2.79.1 post-test live KaraCare workspace v2.79.0 (HR-DVD-9 enforcement runtime) plus gap *"skills intelligence compositionnelle (atlas × métier) lancent avec plan + ETA + démarche mais sans POURQUOI explicit sur paramètres d'entrée · l'opérateur valide à l'aveugle, pas en conscience expert métier"* flag systémique Sprint v2.79.5 post-test live Liv Happyfood mine-voc workspace v2.79.4 (HR-DVD-10 enforcement runtime · NIVEAU 0 paramètres décomposés). Scope révisé Sprint v2.79.2 post-audit Largo test live KaraCare v2.79.1 · `/phantom` exclu du scope (cockpit scan rapide ≠ pédagogie reverse engineering · cf D#435).
 
 ---
 
 ## 1. Thèse fondatrice
 
-> L'agent doit PROUVER qu'il a compris en MONTRANT sa réflexion. Pas juste produire un output. Montrer le chemin · décomposition produit, mapping many-to-many, filtre stage business, méthode pédagogique. Sans visibilité, pas de validation, pas de qualité.
+> L'agent doit PROUVER qu'il a compris en MONTRANT sa réflexion. Pas juste produire un output. Montrer le chemin AVANT exécution (intelligence compositionnelle pré-exécution = reverse engineering visible · NIVEAU 0 paramètres décomposés · audience cible · pains prioritaires · canaux · queries · hypothèses figées · biais à éviter) ET pendant l'encoding (NIVEAUX 1-4 · décomposition produit · mapping many-to-many · filtre stage business · méthode pédagogique). Sans visibilité, pas de validation, pas de qualité.
 
-**Définition canon decomposition visibility** · ensemble des pratiques opérationnelles qui forcent l'agent à présenter visuellement sa décomposition de réflexion (4 niveaux obligatoires) plus à expliciter verbalement sa méthode AVANT de livrer toute synthèse stratégique cross-skills opérateur-facing. Visibility canon répond à 4 questions miroir ·
+**Définition canon decomposition visibility** · ensemble des pratiques opérationnelles qui forcent l'agent à présenter visuellement sa décomposition de réflexion (NIVEAU 0 paramètres décomposés pré-exec sur skills intelligence compositionnelle · NIVEAUX 1-4 post-exec sur synthèse stratégique opérateur-facing) plus à expliciter verbalement sa méthode AVANT de lancer skill ET AVANT de livrer toute synthèse stratégique cross-skills opérateur-facing. Visibility canon répond à 5 questions miroir ·
 
-1. *"Comment l'agent a-t-il décomposé le produit ?"* (NIVEAU 1 · specs + mécanismes + bénéfices 3 couches)
-2. *"Comment l'agent mappe-t-il produit × pain × audience ?"* (NIVEAU 2 · matrice many-to-many)
-3. *"Comment l'agent filtre-t-il par stage business ?"* (NIVEAU 3 · table stage early/growth/scale)
-4. *"Comment l'agent explique-t-il sa méthode à l'opérateur ?"* (NIVEAU 4 · pédagogie verbale explicit)
+1. *"Pourquoi l'agent part-il sur CES paramètres précis ?"* (NIVEAU 0 · paramètres d'entrée décomposés · audience cible · pains prioritaires · canaux · queries · hypothèses figées · biais à éviter avec POURQUOI explicit · pre-exec)
+2. *"Comment l'agent a-t-il décomposé le produit ?"* (NIVEAU 1 · specs + mécanismes + bénéfices 3 couches)
+3. *"Comment l'agent mappe-t-il produit × pain × audience ?"* (NIVEAU 2 · matrice many-to-many)
+4. *"Comment l'agent filtre-t-il par stage business ?"* (NIVEAU 3 · table stage early/growth/scale)
+5. *"Comment l'agent explique-t-il sa méthode à l'opérateur ?"* (NIVEAU 4 · pédagogie verbale explicit)
 
 **Différenciation canon vs LLM black box** ·
 
@@ -35,6 +36,8 @@ Cette doctrine canonise le pattern systémique cross-skills opérateur-facing. T
 ## 2. Les 6 raisons systémiques
 
 Pourquoi decomposition visibility est canon obligatoire (pas optionnel) ·
+
+**Cas test live canon v2.79.5 · Liv Happyfood mine-voc post-disclosure pattern v2.79.3.** Sprint v2.79.5 post-test live Liv Happyfood (brand konjac box DTC) workspace v2.79.4 · l'agent annonce disclosure pré-engagement canon (plan + ETA + démarche · cohérent EDD v2.79.3) MAIS sans POURQUOI explicit sur paramètres d'entrée mine-voc (audience cible reformulée · pains prioritaires hiérarchisés · canaux mining choisis · queries scrape opérées · critères tri verbatims · hypothèses figées sur segment · biais structurels Reddit/Trustpilot). L'opérateur valide à l'aveugle (*"OK lance"*) sans conscience expert métier sur paramètres. Mi-parcours · l'opérateur réalise audience cible mal calibrée · pains prioritaires inversés · canaux mining incomplets. Rework évitable si NIVEAU 0 paramètres décomposés avait été exposé pré-exec. Gap canon flag systémique · `engagement-disclosure-discipline.md` v2.79.3 ferme captivité silencieuse (pas de disclosure) MAIS pas captivité paramétrique (disclosure paramètres invisible). Doctrine NEW v2.79.5 ferme ce gap via NIVEAU 0 paramètres décomposés pre-exec obligatoire pour skills intelligence compositionnelle (atlas × métier).
 
 ### Raison 1 · Visibilité = condition de confiance
 
@@ -62,11 +65,13 @@ ChatGPT, Claude, Notion AI = boîte noire opaque. PhantomOS canon = agent PROUVE
 
 ---
 
-## 3. Le pattern canon · 4 niveaux obligatoires
+## 3. Le pattern canon · 5 niveaux obligatoires (NIVEAU 0 pre-exec + NIVEAUX 1-4 post-exec)
 
-Decomposition visibility canon décompose en 4 niveaux orthogonaux measurables et présentables ·
+Decomposition visibility canon décompose en 5 niveaux orthogonaux measurables et présentables · NIVEAU 0 obligatoire AVANT exécution skills intelligence compositionnelle (atlas × métier) · NIVEAUX 1-4 obligatoires PENDANT/APRÈS synthèse stratégique opérateur-facing ·
 
 ```
+NIVEAU 0 · Paramètres d'entrée décomposés (pre-exec · skills intelligence compositionnelle)
+   ↓
 NIVEAU 1 · Décomposition produit (specs · mécanismes · bénéfices)
    ↓
 NIVEAU 2 · Many-to-many (product × pain × audience)
@@ -76,11 +81,109 @@ NIVEAU 3 · Positionnement filtre par stage business
 NIVEAU 4 · Méthode pédagogique verbale
 ```
 
-**Pattern canon multiplicatif.** Les 4 niveaux sont multiplicatifs · l'absence d'un seul niveau fait s'effondrer la visibilité systémique. Pattern miroir équation Operational System Discipline v2.71 (ECR × Règles × Templates × Métriques × Rituels).
+**Pattern canon multiplicatif.** Les 5 niveaux sont multiplicatifs · l'absence d'un seul niveau fait s'effondrer la visibilité systémique. Pattern miroir équation Operational System Discipline v2.71 (ECR × Règles × Templates × Métriques × Rituels).
 
-**Cardinalité canon stricte.** Toujours 4 niveaux. Jamais 3 (skip bénéfices 3 couches). Jamais 5 (over-engineer noise). 4 est le cap canon issu du test live KaraCare workspace v2.78.0.
+**Cardinalité canon stricte.** Toujours 5 niveaux pour skills intelligence compositionnelle (NIVEAU 0 + NIVEAUX 1-4). Toujours 4 niveaux pour skills synthesis stratégique post-exec sans intelligence compositionnelle pré-exec (NIVEAUX 1-4 seulement · skills mécaniques type snapshot-brand · profile-audience direct sans atlas × métier paramétrique). Jamais 3 (skip bénéfices 3 couches). Jamais 6+ (over-engineer noise). Cap canon issu test live KaraCare workspace v2.78.0 (4 niveaux post-exec) + test live Liv Happyfood v2.79.4 (NIVEAU 0 pre-exec ajouté).
 
-**Ordre canon prescriptif.** NIVEAU 1 d'abord (matériel objectif sourçable), NIVEAU 2 ensuite (relations systémiques), NIVEAU 3 troisième (filtre stratégique), NIVEAU 4 verbatim explicit (pédagogie méthode). Inversion d'ordre · drift mental model opérateur.
+**Ordre canon prescriptif.** NIVEAU 0 d'abord pre-exec sur skills intelligence compositionnelle (paramètres décomposés AVANT lancement · reverse engineering visible pre-exec), NIVEAU 1 ensuite post-exec (matériel objectif sourçable), NIVEAU 2 troisième (relations systémiques), NIVEAU 3 quatrième (filtre stratégique), NIVEAU 4 verbatim explicit (pédagogie méthode). Inversion d'ordre · drift mental model opérateur.
+
+---
+
+## 3.0. NIVEAU 0 · Paramètres d'entrée décomposés (pre-exec · skills intelligence compositionnelle)
+
+L'agent DÉCOMPOSE ses paramètres d'entrée AVANT exécution skill intelligence compositionnelle (atlas × métier). Reverse engineering visible AVANT lancement · pas après. L'opérateur valide en conscience expert métier · peut challenger / ajuster / corriger avant que le skill ne lance.
+
+**Définition canon intelligence compositionnelle (atlas × métier).** Skills qui raisonnent sur brand encoded (atlas substrat) × domaine métier (audience · pain · canal · query · positionnement · paid · creative). Composent intelligence émergente cross-cell atlas. Skills canon · `mine-voc` · `mine-vom` · `profile-audience` · `produce-paid-angles` · `produce-paid-matrix` · `produce-copy-brief` · `compose-creative` · `build-atlas-complete` · `creative-brief-composer` · `decompose-ad` · `adapt-from-competitor` · `audit-meta-account` · `analyze-perf` · `routine-perf` · `score-matrix` · `snapshot-brand` (post-IP synthesis stratégique).
+
+**Skills exclus NIVEAU 0** · skills mécaniques type `validate-resources` · `check-cross-refs` · `write-to-context` · `learn-from-session` · `capture-learning` · `scaffold-skill-stub` · `build-agent` · `import-meta-results` · `import-asset` · `craft-packshot` · `setup-brand` step 1-3 (collect identity). Pas intelligence compositionnelle · skip NIVEAU 0 direct.
+
+**6 éléments canon obligatoires NIVEAU 0** ·
+
+```
+┌──────────────────────────────────────────────────────────────────────────┐
+│ NIVEAU 0 · Paramètres d'entrée décomposés (pre-exec)                     │
+├──────────────────────────────────────────────────────────────────────────┤
+│ 1. AUDIENCE CIBLE                                                        │
+│    · segment atlas brand consommé (audience_id · slug)                   │
+│    · POURQUOI ce segment (pas un autre · stage filter · priorité)        │
+│                                                                          │
+│ 2. PAINS / JOBS PRIORITAIRES                                             │
+│    · liste ordonnée pains depuis atlas audience (pain_id · slug)         │
+│    · POURQUOI cet ordre (verbatims densité · pain dominant ✓✓ P)         │
+│                                                                          │
+│ 3. CANAUX / SOURCES                                                      │
+│    · ranking sources mining (Reddit r/sub · Trustpilot · YouTube · etc.) │
+│    · priorité × densité × pertinence par canal                           │
+│    · POURQUOI ce ranking (vernaculaire audience · densité verbatims)     │
+│                                                                          │
+│ 4. QUERIES / CRITÈRES OPÉRATOIRES                                        │
+│    · mots-clés primaires + variants vernaculaires audience               │
+│    · critères tri verbatims (densité · récence · pertinence)             │
+│    · POURQUOI ces dimensions (couverture pain · audience matching)       │
+│                                                                          │
+│ 5. HYPOTHÈSES FIGÉES                                                     │
+│    · ce que l'agent présume SANS validation (segment · pain dominant)    │
+│    · explicit OPÉRATEUR PEUT CHALLENGER avant lancement                  │
+│                                                                          │
+│ 6. BIAIS À ÉVITER                                                        │
+│    · biais structurels corpus/source (Reddit demographic skew · TP rage) │
+│    · biais sélection queries (overfit vernaculaire · cherry-pick)        │
+│    · explicit risk flag pre-exec                                         │
+└──────────────────────────────────────────────────────────────────────────┘
+```
+
+**Exemple canon Liv Happyfood mine-voc (post-test live v2.79.5)** ·
+
+```
+NIVEAU 0 · Paramètres mine-voc Liv Happyfood box konjac
+─────────────────────────────────────────────────────────────────────────
+
+1. AUDIENCE CIBLE
+   · audience_id: foodies-flexitariens-25-45-france
+   · POURQUOI · stage early (ARR <500k) · PRIMARY audience profile-fit
+     atlas v0.3 · pain dominant ✓✓ P "ras-le-bol pâtes/riz blancs"
+
+2. PAINS PRIORITAIRES (ordre)
+   · pain_1: monotonie glycémique pâtes/riz blancs (✓✓ P 70%+ verbatims)
+   · pain_2: charge mentale composition repas sains (✓ S 40-50%)
+   · pain_3: peur prise poids / cravings sucre/glucides (✓ S 30-40%)
+   · POURQUOI ordre · densité verbatims atlas pre-mine · pain_1 dominant
+
+3. CANAUX MINING (ranking)
+   · r/Flexitarian (priorité 1 · densité vernaculaire haute)
+   · r/Konjac + r/intermittentfasting (priorité 2 · sub-segment overlap)
+   · Trustpilot Liv Happyfood + concurrents box konjac (priorité 3)
+   · YouTube reviews konjac/shirataki FR (priorité 4)
+   · POURQUOI ranking · densité vernaculaire FR audience cible flexi
+
+4. QUERIES OPÉRATOIRES
+   · primaires: "konjac box", "shirataki", "pâtes konjac avis"
+   · variants vernaculaires: "konjac ça marche", "shirataki goût",
+     "konjac perte poids", "box repas konjac"
+   · critères tri: densité (>3 verbatims thread) · récence (<12 mois)
+     · pertinence (audience flexi FR · pas keto US)
+   · POURQUOI dimensions · couverture pain_1+pain_2 · matching audience
+
+5. HYPOTHÈSES FIGÉES (opérateur peut challenger)
+   · h1: audience cible = flexi 25-45 FR (PAS keto stricte · PAS véganes)
+   · h2: pain dominant = monotonie glycémique (PAS perte poids primaire)
+   · h3: canal Reddit FR > Trustpilot pour vernaculaire authentique
+
+6. BIAIS À ÉVITER
+   · Reddit demographic skew (homme tech-savvy · sous-représente femmes 35+)
+   · Trustpilot rage skew (verbatims polarisés négatifs · pas neutre)
+   · YouTube influencer paid skew (verbatims commerciaux · pas organic)
+   · Cherry-pick vernaculaire qui matche hypothèse h2 (confirmation bias)
+
+─────────────────────────────────────────────────────────────────────────
+OK avec ces paramètres ? Tu ajustes lequel avant que je lance mine-voc ?
+```
+
+**Pattern canon disclosure NIVEAU 0.** Skill intelligence compositionnelle expose NIVEAU 0 paramètres décomposés AVANT lancement · cohérent `engagement-disclosure-discipline.md` v2.79.5+ pattern enrichi (Plan + **Paramètres décomposés** + ETA + Démarche + Confirmation). L'opérateur valide consciemment paramètres avant exécution · peut challenger / corriger / ajuster en amont.
+
+**Anti-pattern niveau 0.** Skill intelligence compositionnelle lance avec disclosure pattern v2.79.3 pre-NIVEAU 0 (Plan + ETA + démarche + confirmation MAIS sans paramètres décomposés). L'opérateur valide à l'aveugle · découvre paramètres mi-parcours · rework évitable. Pattern correctif · HR-DVD-10 enforcement.
+
+**Distinction canon NIVEAU 0 vs NIVEAUX 1-4.** NIVEAU 0 = pre-exec (AVANT skill lance · paramètres d'entrée décomposés · opérateur valide consciemment). NIVEAUX 1-4 = post-exec (PENDANT/APRÈS skill exécute · décomposition produit + many-to-many + stage filter + pédagogie verbale · opérateur drill granulaire output). Couches cumulatives pas redondantes · pre-exec consent + post-exec drill = pattern visibilité complet cross-skills intelligence compositionnelle.
 
 ---
 
@@ -341,6 +444,8 @@ Pattern canon · seuls outputs produisant synthèse stratégique opérateur-faci
 
 **HR-DVD-9 · Enforcement runtime obligatoire output brand-related opérateur-facing (scope révisé v2.79.2).** Même quand aucun skill consumer spécifique n'est routé (freestyle prose query verbal *"résume cartographie"*), l'agent DOIT rendre les 4 niveaux matriciels canon dans output user-facing brand entity. Scope canon v2.79.2 · matrices ASCII obligatoires sur (1) queries verbal trigger (*"résume"* · *"synthèse"* · *"cartographie"* · *"récapitule"* · *"présente"* · *"ce que tu as compris"* · *"ce que tu sais"*) + (2) slash commands `/bird` et `/breakdown` + (3) skills consumers synthesis stratégique brand-related (snapshot-brand · build-atlas-complete · profile-audience · define-specs · produce-positioning-canvas · define-brand-voice · validate-brand-voice-consistency · etc.). **EXCLUSION canon v2.79.2** · `/phantom` cockpit scan rapide où ALERTES + ÉTAT + ACTIONS + Drill footer suffisent (alertes santé décomposition 3 lignes signalent gaps · router vers `/bird` ou `/breakdown` pour pédagogie matricielle). Pattern systémique cross-skills synthesis stratégique brand-related. Antidote au freestyle prose-only gap test live KaraCare v2.79.0 identifié. Cohérent memory canon `jargon_enforcement_runtime` pattern (audit doctrinal seul insuffisant · enforcement runtime nécessaire) plus memory canon `no_overengineer` (calibrer profondeur livrable à complexité requête).
 
+**HR-DVD-10 · Skills intelligence compositionnelle (atlas × métier) DOIVENT exposer NIVEAU 0 paramètres décomposés AVANT exécution.** 6 éléments obligatoires (audience cible · pains prioritaires · canaux · queries · hypothèses figées · biais à éviter) avec POURQUOI explicit pour chaque. Skills canon scope · `mine-voc` · `mine-vom` · `profile-audience` · `produce-paid-angles` · `produce-paid-matrix` · `produce-copy-brief` · `compose-creative` · `build-atlas-complete` · `creative-brief-composer` · `decompose-ad` · `adapt-from-competitor` · `audit-meta-account` · `analyze-perf` · `routine-perf` · `score-matrix` · `snapshot-brand` (post-IP synthesis stratégique). Cross-ref `engagement-disclosure-discipline.md` v2.79.5+ pattern disclosure enrichi (Plan + Paramètres décomposés + ETA + Démarche + Confirmation). Pattern systémique pre-exec · cross-skills intelligence compositionnelle. Antidote au gap test live Liv Happyfood v2.79.4 identifié (disclosure pattern v2.79.3 OK pour captivité silencieuse · pas pour captivité paramétrique). Violation = bug invalid pattern canon (skill intelligence compositionnelle lance sans NIVEAU 0 paramètres décomposés · opérateur valide à l'aveugle).
+
 ---
 
 ## 12. Anti-patterns canon
@@ -377,11 +482,17 @@ Agent ship NIVEAU 1 specs + mécanismes + bénéfices functional only (skip emot
 
 Agent ship NIVEAU 3 sans stage filter ARR target. Recommandation 1 audience focus permanente toutes stages business. Saturation auction stage 3M+ garantie. Pattern canon · stage filter ARR canon early/growth/scale obligatoire NIVEAU 3 table. Pattern correctif · HR-DVD-5 enforcement.
 
+### AP-DVD-10 · Skill intelligence compositionnelle lance sans NIVEAU 0 paramètres décomposés
+
+Agent reçoit trigger skill intelligence compositionnelle (atlas × métier · `mine-voc` · `profile-audience` · `produce-paid-angles` · `build-atlas-complete` · etc.) · expose disclosure pré-engagement pattern v2.79.3 (Plan + ETA + démarche + confirmation) MAIS sans paramètres décomposés (audience cible · pains · canaux · queries · hypothèses · biais). L'opérateur valide à l'aveugle (*"OK lance"*) · ne peut pas corriger paramètres en amont · doit attendre output mi-parcours pour challenger. Captivité paramétrique persiste · rework évitable mi-parcours. Pattern canon · NIVEAU 0 obligatoire pre-exec sur skills intelligence compositionnelle · disclosure enrichi v2.79.5+ (Plan + Paramètres décomposés + ETA + Démarche + Confirmation). Pattern correctif · HR-DVD-10 enforcement.
+
 ---
 
 ## 13. Lexique
 
-- **Décomposition** · pattern 4 niveaux canon (specs · mécanismes · bénéfices · many-to-many) plus stage filter plus pédagogie verbale. Cap 4 niveaux strict.
+- **Décomposition** · pattern 5 niveaux canon (NIVEAU 0 paramètres pré-exec + NIVEAUX 1-4 post-exec · specs · mécanismes · bénéfices · many-to-many) plus stage filter plus pédagogie verbale. Cap 5 niveaux strict pour skills intelligence compositionnelle · cap 4 niveaux pour skills synthesis post-exec sans intelligence compositionnelle pré-exec.
+- **Intelligence compositionnelle (atlas × métier)** · skills qui raisonnent sur brand encoded (atlas substrat) × domaine métier (audience · pain · canal · query · positionnement · paid · creative). Skills canon scope · mine-voc · mine-vom · profile-audience · produce-paid-angles · produce-paid-matrix · produce-copy-brief · compose-creative · build-atlas-complete · creative-brief-composer · decompose-ad · adapt-from-competitor · audit-meta-account · analyze-perf · routine-perf · score-matrix · snapshot-brand (post-IP). Trigger NIVEAU 0 obligatoire pre-exec.
+- **NIVEAU 0** · paramètres d'entrée décomposés pre-exec sur skills intelligence compositionnelle. 6 éléments canon obligatoires (audience cible · pains prioritaires · canaux · queries · hypothèses figées · biais à éviter) avec POURQUOI explicit pour chaque. Reverse engineering visible AVANT lancement.
 - **Visibilité** · présentation matricielle ASCII obligatoire plus pédagogie verbale verbatim. Opposé · prose-only opaque.
 - **Reverse engineering** · HOW explicit cross-step. Opérateur drill granulaire chaque niveau de décomposition. Opposé · trust ou rejet binaire output.
 - **Many-to-many** · matrice product × pain × audience canon. 1 produit · N pains · M audiences. Force pensée systémique correcte.
@@ -399,28 +510,28 @@ Agent ship NIVEAU 3 sans stage filter ARR target. Recommandation 1 audience focu
 
 ## 14. Position dans le système opérationnel 5 couches
 
-Decomposition Visibility Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71 · enforcement runtime canon v2.79.2 couvre 4 couches coverage (scope révisé · `/phantom` exclu cockpit scan rapide) ·
+Decomposition Visibility Discipline opère sur 5 couches simultanément du multiplicatif Operational System Discipline v2.71 · enforcement runtime canon v2.79.5 couvre 5 couches coverage (NIVEAU 0 pre-exec ajouté en amont · scope révisé `/phantom` exclu cockpit scan rapide preserved) ·
 
-**Couche 2 · Règles (heuristiques décision).** 9 Hard Rules canon strict (HR-DVD-1 à HR-DVD-9) sont heuristiques décision canon · *"si synthèse stratégique opérateur-facing alors 4 niveaux obligatoires"* plus enforcement runtime cross-slash commands `/bird` plus `/breakdown` plus queries verbal freestyle (HR-DVD-9 v2.79.2 scope révisé). Pattern miroir `investigation-posture.md` 5 sections obligatoires plus `skill-routing-discipline.md` 5 phases routing.
+**Couche 2 · Règles (heuristiques décision).** 10 Hard Rules canon strict (HR-DVD-1 à HR-DVD-10) sont heuristiques décision canon · *"si synthèse stratégique opérateur-facing alors 4 niveaux post-exec obligatoires"* (HR-DVD-1 à HR-DVD-9) plus *"si skill intelligence compositionnelle (atlas × métier) alors NIVEAU 0 paramètres décomposés pre-exec obligatoire"* (HR-DVD-10 v2.79.5) plus enforcement runtime cross-slash commands `/bird` plus `/breakdown` plus queries verbal freestyle (HR-DVD-9 v2.79.2 scope révisé). Pattern miroir `investigation-posture.md` 5 sections obligatoires plus `skill-routing-discipline.md` 5 phases routing plus `engagement-disclosure-discipline.md` v2.79.5+ pattern disclosure enrichi (sister doctrine pre-exec).
 
-**Couche 3 · Templates (raccourcis combinaisons gagnantes).** Matrices ASCII canon NIVEAU 1 strata, NIVEAU 2 many-to-many, NIVEAU 3 stage filter sont templates canon réutilisables cross-brands. Pattern miroir `resources/templates/*` canon plus `_TEMPLATE/` scaffolds brand.
+**Couche 3 · Templates (raccourcis combinaisons gagnantes).** Matrice ASCII canon NIVEAU 0 (6 éléments paramètres pre-exec · audience · pains · canaux · queries · hypothèses · biais) plus matrices ASCII canon NIVEAU 1 strata, NIVEAU 2 many-to-many, NIVEAU 3 stage filter sont templates canon réutilisables cross-brands cross-skills intelligence compositionnelle. Pattern miroir `resources/templates/*` canon plus `_TEMPLATE/` scaffolds brand.
 
-**Couche 5 · Rituels (cadence opérationnelle).** Trigger systémique cross-skills opérateur-facing plus cross-slash commands `/bird` plus `/breakdown` plus queries verbal *"résume / cartographie"* enforcement runtime canon (§9 triggers activate plus HR-DVD-9 v2.79.2 runtime). Rituel canon agent par invocation skill consumer (snapshot-brand · profile-audience · build-atlas-complete · etc.) plus rituel canon agent par slash command `/bird` (vue territoire-level) ou `/breakdown` (parcours pédagogique cas Stepprs) plus rituel canon agent par query verbal freestyle prose brand-related. Pattern miroir `routine-perf` daily plus `analyze-perf` weekly.
+**Couche 5 · Rituels (cadence opérationnelle).** Trigger systémique pre-exec cross-skills intelligence compositionnelle (NIVEAU 0 paramètres décomposés AVANT lancement · HR-DVD-10) plus trigger systémique post-exec cross-skills opérateur-facing plus cross-slash commands `/bird` plus `/breakdown` plus queries verbal *"résume / cartographie"* enforcement runtime canon (§9 triggers activate plus HR-DVD-9 v2.79.2 runtime plus HR-DVD-10 v2.79.5 pre-exec runtime). Rituel canon agent par invocation skill intelligence compositionnelle (mine-voc · profile-audience · build-atlas-complete · produce-paid-angles · etc.) expose NIVEAU 0 paramètres pre-exec PUIS NIVEAUX 1-4 post-exec. Rituel canon agent par slash command `/bird` (vue territoire-level) ou `/breakdown` (parcours pédagogique cas Stepprs) plus rituel canon agent par query verbal freestyle prose brand-related. Pattern miroir `routine-perf` daily plus `analyze-perf` weekly.
 
-**Couche 4 · Métriques additionnelle.** % skills consumer adoptés DVD canon trackable via `_field_types` audit trail plus `learnings.json` append-only. Métrique convergente · DVD adoption rate cross-skills (4 v2.78.2 plus 2 slash commands consumers `/bird` plus `/breakdown` plus skills synthesis stratégique brand-related = N total) baseline v2.79.2 enforcement runtime scope révisé.
+**Couche 4 · Métriques additionnelle.** % skills intelligence compositionnelle adoptés DVD canon NIVEAU 0 pre-exec trackable via `learnings.json` append-only. Métrique convergente · DVD adoption rate cross-skills intelligence compositionnelle (16 skills canon scope NIVEAU 0 baseline v2.79.5 enforcement runtime pre-exec) plus DVD adoption rate post-exec cross-skills synthesis stratégique brand-related (4 v2.78.2 plus 2 slash commands consumers `/bird` plus `/breakdown` plus skills synthesis stratégique brand-related = N total baseline v2.79.2 enforcement runtime scope révisé).
 
-**4 couches enforcement runtime canon v2.79.2 coverage** · (1) doctrine canon racine + (2) CLAUDE.md skill routing v2.79.2 + (3) skills consumers brand synthesis stratégique + (4) slash commands `/bird` et `/breakdown` plus queries verbal trigger. **Exclusion canon v2.79.2** · `/phantom` cockpit scan rapide (grammaire 4 sections ALERTES + ÉTAT + ACTIONS + Drill footer) reste hors scope decomposition visibility · pattern miroir memory canon `no_overengineer`.
+**5 couches enforcement runtime canon v2.79.5 coverage** · (1) doctrine canon racine DVD + (2) CLAUDE.md skill routing v2.79.2+ + (3) skills intelligence compositionnelle NIVEAU 0 pre-exec (HR-DVD-10 v2.79.5) + (4) skills consumers brand synthesis stratégique post-exec (HR-DVD-9 v2.79.2) + (5) slash commands `/bird` et `/breakdown` plus queries verbal trigger. **Exclusion canon v2.79.2 preserved** · `/phantom` cockpit scan rapide (grammaire 4 sections ALERTES + ÉTAT + ACTIONS + Drill footer) reste hors scope decomposition visibility · pattern miroir memory canon `no_overengineer`.
 
 ---
 
 ## Status
 
-- **Canonique v2.79.2.** Codifie pattern systémique cross-skills opérateur-facing identifié post-test live KaraCare workspace v2.78.0 plus enforcement runtime obligatoire cross-slash commands plus queries verbal freestyle identifié post-test live KaraCare workspace v2.79.0 plus scope révisé post-audit Largo test live KaraCare v2.79.1 (`/phantom` exclu cockpit scan rapide · cf D#435). Ferme gap structurel *"l'agent encode silencieusement sans présenter visuellement la décomposition produit, le mapping many-to-many, le filtre stage business, et la méthode pédagogique"* plus gap *"queries verbal résume/cartographie freestyle prose sans déclencher 4 niveaux matriciels canon"* plus clarifie scope cockpit (`/phantom` scan rapide ≠ pédagogie reverse engineering).
-- **Doctrine sœur** · investigation-posture.md (rigueur output 5 sections drill) · canonical-matrix-reasoning.md (qualité output cross-cell schema plus matrice) · skill-routing-discipline.md v2.77 (canon routing 5 phases) · pacing-discipline.md v2.78 (stage filter ARR canon) · output-clarity-discipline.md v2.79.2 NEW (clarté livrable opérateur-facing).
-- **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills legacy pre-v2.78.2 conservent output prose-only jusqu'à patch · v2.78.2+ migration progressive consume canon · v2.79.1 enforcement runtime obligatoire cross-slash commands plus queries verbal freestyle · v2.79.2 scope révisé `/phantom` exclu (cockpit scan rapide preserved).
-- **First applications** · skills consumers v2.78.2 patched · snapshot-brand v1.5.0 (Phase Output Decomposition Visibility post-IP) plus build-atlas-complete v1.6.0 (Phase Output Atlas Visibility Matriciel) plus profile-audience v1.7.0 (Output Audience Visibility Matriciel) plus define-specs v1.3.0 (HR8.5 Specs Visibility Matriciel). Slash commands consumers v2.79.2 (scope révisé) · `/bird` plus `/breakdown` plus `/scope` plus `/tour` (`/phantom` EXCLU cockpit scan rapide). Skills synthesis stratégique brand-related opérateur-facing v2.79.1 enforcement runtime (produce-positioning-canvas · define-brand-voice · validate-brand-voice-consistency · map-mechanisms/specs/benefits/audiences/angles · produce-paid-angles · creative-brief-composer · audit-meta-account · routine-perf · analyze-perf · mine-voc · mine-vom · decompose-ad · adapt-from-competitor).
-- **Promotion criterion** · à reviewer après 5+ skills consumer migrated consume canon DVD plus 1 audit cross-brand visibility convergence plus learnings.json append patterns DVD adoption rate stable 80%+ plus zero freestyle prose-only output brand-related opérateur-facing cross 3+ workspaces consécutifs.
+- **Canonique v2.79.5.** Codifie pattern systémique cross-skills opérateur-facing identifié post-test live KaraCare workspace v2.78.0 plus enforcement runtime obligatoire cross-slash commands plus queries verbal freestyle identifié post-test live KaraCare workspace v2.79.0 plus scope révisé post-audit Largo test live KaraCare v2.79.1 (`/phantom` exclu cockpit scan rapide · cf D#435) plus NEW NIVEAU 0 paramètres décomposés pre-exec sur skills intelligence compositionnelle (atlas × métier) identifié post-test live Liv Happyfood mine-voc workspace v2.79.4 (HR-DVD-10 enforcement runtime · disclosure pattern v2.79.3 OK pour captivité silencieuse pas pour captivité paramétrique). Ferme gap structurel *"l'agent encode silencieusement sans présenter visuellement la décomposition produit, le mapping many-to-many, le filtre stage business, et la méthode pédagogique"* plus gap *"queries verbal résume/cartographie freestyle prose sans déclencher 4 niveaux matriciels canon"* plus gap *"skills intelligence compositionnelle (atlas × métier) lancent avec disclosure mais sans POURQUOI explicit sur paramètres d'entrée · l'opérateur valide à l'aveugle"* plus clarifie scope cockpit (`/phantom` scan rapide ≠ pédagogie reverse engineering).
+- **Doctrine sœur** · investigation-posture.md (rigueur output 5 sections drill) · canonical-matrix-reasoning.md (qualité output cross-cell schema plus matrice) · skill-routing-discipline.md v2.77 (canon routing 5 phases) · pacing-discipline.md v2.78 (stage filter ARR canon) · output-clarity-discipline.md v2.79.2 (clarté livrable opérateur-facing) · engagement-disclosure-discipline.md v2.79.5+ NEW (sister doctrine pre-exec · disclosure paramètres décomposés enrichi).
+- **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills legacy pre-v2.78.2 conservent output prose-only jusqu'à patch · v2.78.2+ migration progressive consume canon · v2.79.1 enforcement runtime obligatoire cross-slash commands plus queries verbal freestyle · v2.79.2 scope révisé `/phantom` exclu (cockpit scan rapide preserved) · v2.79.5 NEW NIVEAU 0 paramètres décomposés pre-exec sur skills intelligence compositionnelle (16 skills canon scope · disclosure pattern v2.79.3 reste OK pour skills mécaniques type validate · capture · scaffold).
+- **First applications** · skills consumers v2.78.2 patched · snapshot-brand v1.5.0 (Phase Output Decomposition Visibility post-IP) plus build-atlas-complete v1.6.0 (Phase Output Atlas Visibility Matriciel) plus profile-audience v1.7.0 (Output Audience Visibility Matriciel) plus define-specs v1.3.0 (HR8.5 Specs Visibility Matriciel). Slash commands consumers v2.79.2 (scope révisé) · `/bird` plus `/breakdown` plus `/scope` plus `/tour` (`/phantom` EXCLU cockpit scan rapide). Skills synthesis stratégique brand-related opérateur-facing v2.79.1 enforcement runtime (produce-positioning-canvas · define-brand-voice · validate-brand-voice-consistency · map-mechanisms/specs/benefits/audiences/angles · produce-paid-angles · creative-brief-composer · audit-meta-account · routine-perf · analyze-perf · mine-voc · mine-vom · decompose-ad · adapt-from-competitor). Skills intelligence compositionnelle scope NIVEAU 0 pre-exec v2.79.5 (16 skills · mine-voc · mine-vom · profile-audience · produce-paid-angles · produce-paid-matrix · produce-copy-brief · compose-creative · build-atlas-complete · creative-brief-composer · decompose-ad · adapt-from-competitor · audit-meta-account · analyze-perf · routine-perf · score-matrix · snapshot-brand post-IP).
+- **Promotion criterion** · à reviewer après 5+ skills intelligence compositionnelle migrated consume canon DVD NIVEAU 0 pre-exec plus 1 audit cross-brand visibility convergence plus learnings.json append patterns DVD adoption rate stable 80%+ plus zero captivité paramétrique opérateur-facing cross 3+ workspaces consécutifs.
 
 ---
 
-*Doctrine canonique skill-author-facing plus agent-facing. Canonise pattern 4 niveaux obligatoires (décomposition produit · many-to-many · stage filter · pédagogie verbale) plus 9 Hard Rules canon strict (HR-DVD-1 à HR-DVD-9) plus 8 anti-patterns canonisés. Ferme gap structurel *"agent encode silencieusement sans HOW visible opérateur"* plus gap *"queries verbal freestyle prose sans 4 niveaux matriciels"* via HR-DVD-9 enforcement runtime. Pattern miroir investigation-posture.md (rigueur drill cross-output) plus canonical-matrix-reasoning.md (qualité cell par cell) plus skill-routing-discipline.md (canon routing UPSTREAM) plus pacing-discipline.md (stage filter ARR canon).*
+*Doctrine canonique skill-author-facing plus agent-facing. Canonise pattern 5 niveaux canon (NIVEAU 0 paramètres pré-exec · NIVEAU 1 décomposition produit · NIVEAU 2 many-to-many · NIVEAU 3 stage filter · NIVEAU 4 pédagogie verbale) plus 10 Hard Rules canon strict (HR-DVD-1 à HR-DVD-10) plus 9 anti-patterns canonisés (AP-DVD-1 à AP-DVD-8 plus AP-DVD-10). Ferme gap structurel *"agent encode silencieusement sans HOW visible opérateur"* plus gap *"queries verbal freestyle prose sans 4 niveaux matriciels"* plus gap *"skills intelligence compositionnelle (atlas × métier) lancent avec disclosure mais sans POURQUOI explicit sur paramètres d'entrée"* via HR-DVD-9 plus HR-DVD-10 enforcement runtime. Pattern miroir investigation-posture.md (rigueur drill cross-output) plus canonical-matrix-reasoning.md (qualité cell par cell) plus skill-routing-discipline.md (canon routing UPSTREAM) plus pacing-discipline.md (stage filter ARR canon) plus engagement-disclosure-discipline.md v2.79.5+ (sister doctrine pre-exec · disclosure paramètres décomposés enrichi).*

@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.79.4",
-  "released_at": "2026-05-17",
+  "template_version": "2.79.5",
+  "released_at": "2026-05-18",
   "compatible_from": "2.0.0",
-  "summary": "Sprint patch v2.79.4 · refonte intro /tour Vercel/GitHub-style narratif court + NEW slash command /about documentation deep PhantomOS holistique (10 sections matricielles · vision · artefacts · mécanismes · termes canon · différenciation · architecture · cycle opérationnel · 7 territoires · pour démarrer). Post-test live Largo v2.79.3 fresh workspace flag pitch d'amorce trop dense · split intro court onboarding (/tour) + docs deep opt-in (/about). Backward compat strict additif · doctrines 21 inchangées · skills 80 inchangés · slash commands 7 → 8 (+1 /about NEW).",
-  "manifest": "docs/internal/releases/manifest/2.79.4-manifest.json"
+  "summary": "Sprint patch v2.79.5 · intelligence compositionnelle pré-exécution. NIVEAU 0 paramètres décomposés canonisé (Decomposition Visibility extension v2.79.5+) + Paramètres décomposés section Engagement Disclosure (v2.79.5). 6 skills patchés (mine-voc · profile-audience · produce-paid-angles · produce-copy-brief · compose-creative · build-atlas-complete) · l'agent décompose ses paramètres d'entrée AVANT exécution skill intelligence compositionnelle (atlas × métier) · reverse engineering visible · 6 éléments canon (audience cible · pains prioritaires · canaux · queries · hypothèses figées · biais) avec POURQUOI explicit chacun. Post-test live Largo v2.79.4 fresh workspace flag · mine-voc Liv Happyfood disclosure annonce plan/ETA/démarche MAIS pas paramètres précis · opérateur validait à l'aveugle.",
+  "manifest": "docs/internal/releases/manifest/2.79.5-manifest.json"
 }

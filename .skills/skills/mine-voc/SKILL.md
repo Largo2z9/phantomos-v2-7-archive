@@ -1,7 +1,7 @@
 ---
 name: mine-voc
 type: producer
-version: "1.3.1"
+version: "1.4.0"
 isolation_scope: brand_only
 layer: territoire
 recommended_model: sonnet
@@ -13,6 +13,7 @@ consumes:
   - path: docs/doctrine/pain-benefit-chain-doctrine.md
   - path: docs/doctrine/objections-mapping-doctrine.md
 description: >
+  v1.4.0 (v2.79.5 decomposition visibility NIVEAU 0) · NEW section "Engagement disclosure pré-runtime v2.79.5+" enrichie avec NIVEAU 0 paramètres décomposés (Audience cible · Pains prioritaires · Canaux · Queries opératoires · Hypothèses figées · Biais à éviter · POURQUOI chaque). L'agent expose 6 paramètres contextualisés brand + raisonnement métier expert visible AVANT scrape. Exemple canonisé Liv Happyfood (box konjac · femmes 30-45 actives urbaines · pains JTBD konjac · canaux ranked densité × signal · queries fonctionnel + émotionnel · hypothèses figées · biais à éviter). ATTENDS confirmation explicite paramètres AVANT scrape. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 + `docs/system/engagement-disclosure-discipline.md` v2.79.5 Paramètres décomposés. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` OR `--no-disclosure` explicit. Backward compat strict additif (cycle runtime préservé · seul l'amont disclosure change).
   v1.3.0 (v2.64 ontologie sémantique pure) · pain_points + objections passent en SUB-AUDIENCE · stage `brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json` entités complètes (owned natif par l'audience). Generation IDs PNT-NN/OBJ-NN scan désormais `brands/{slug}/audiences/*/pain_points/*.json` filesystem (incrémental cross-audiences). Pattern · pain et objection appartiennent sémantiquement à une audience · sub-parent path canonical (au lieu de top-level v2.63 avec affected_audiences[] array). Backward compat strict additif · lecture fallback `brands/{slug}/pain_points/*.json` + `brands/{slug}/objections/*.json` top-level v2.63 si sub-parent vide OR absent. Profile sub-fields legacy v1.7 read fallback aussi preserved.
   v1.2.0 (v2.63 ontologie pure) · pain_points + objections passent en COLLECTIONS top-level séparées · stage `brands/{slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/objections/{OBJ-NN}.json` entités complètes avec `affected_audiences: [a_slug]`. BREAKING profile.json schema v2.0 (sub-fields legacy `profile.pain_points[]` / `profile.objections[]` DEPRECATED en write · read backward compat preserved). Pattern miroir friction.schema (top-level collection). Cross-audience reference natif via affected_audiences[].
   v1.1.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (pain-benefit-chain, objections-mapping). Skill peut consume ces doctrines canon pour informer production sans dépendre schemas exacts.
@@ -58,13 +59,26 @@ Mine Voice of Customer for an existing brand. Read what the brand's actual custo
 
 ---
 
-## Engagement disclosure pré-runtime · canon v2.79.3
+## Engagement disclosure pré-runtime · canon v2.79.5+ (NIVEAU 0 paramètres décomposés)
 
-Avant de lancer le mining VoC, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3) ·
+Avant de lancer le mining VoC, expose ce disclosure ENRICHI à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.5 Paramètres décomposés + `docs/system/decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 pré-exec). Le disclosure v2.79.5 ajoute NIVEAU 0 paramètres décomposés AVANT le plan · l'agent contextualise sur la brand cible · 6 paramètres opérationnels + raisonnement métier expert visible (POURQUOI chaque choix). L'opérateur valide ou ajuste les paramètres AVANT le scrape.
+
+### Format canonique disclosure v2.79.5+ enrichi
 
 ```
 Mining voix client · ce qui va se passer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Paramètres posés · ce sur quoi je pars
+  ─────────────────────────────────────────────────────────────────────
+  Audience cible        {segment atlas} · POURQUOI ce choix
+  Pains prioritaires    {liste ordonnée} · POURQUOI cet ordre
+  Canaux                {ranking sources} · POURQUOI ce ranking
+  Queries opératoires   {mots-clés + variants} · POURQUOI dimensions
+  Hypothèses figées     {ce que je présume sans valider}
+  Biais à éviter        {risk flags du corpus/source}
+
+  OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?
 
   Plan
   ─────────────────────────────────────────────────────────────────────
@@ -77,7 +91,7 @@ Mining voix client · ce qui va se passer
   7. Routing structuré dans entités (pain_points · objections · vocabulary)
 
   ETA           ~10-20 min (selon densité corpus disponible)
-  Implication   tu dis si tu as du first-party d'abord · puis tu valides la synthèse
+  Implication   tu valides paramètres d'abord · tu dis si first-party · puis tu valides la synthèse
   Livrable      synthèse 3 mouvements + corpus Layer A archivé + mutations entités proposées
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -85,9 +99,84 @@ Mining voix client · ce qui va se passer
   OK pour lancer ? · ou tu préfères attendre / faire autre chose
 ```
 
-ATTENDS confirmation explicite avant de lancer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.3.
+### Pattern obligatoire NIVEAU 0
 
-Cross-ref doctrine racine `docs/system/engagement-disclosure-discipline.md` v2.79.3.
+L'agent expose **6 paramètres décomposés contextualisés** sur la brand cible (lecture `brand.json` + `audiences/*/profile.json` + `products/*/spec.json` upstream). Pour chaque paramètre, **POURQUOI explicit** (raisonnement métier expert visible · pas implicite). L'opérateur voit le raisonnement avant le run · il peut ajuster avant la consommation de tokens scrape.
+
+1. **Audience cible** · segment atlas (depuis `audiences/*/profile.json` encoded). POURQUOI ce focus · cohérence avec positioning brand encoded + densité corpus attendue.
+2. **Pains prioritaires** · liste ordonnée 2-4 pains JTBD (depuis brand context + niche category). POURQUOI cet ordre · dominance marché + intensité signal expected.
+3. **Canaux** · ranking sources scrape ordonnées (Trustpilot > forums > Reddit > TikTok comments etc.). POURQUOI ce ranking · densité × pertinence × signal direct vs indirect.
+4. **Queries opératoires** · mots-clés primaires + variants vernaculaires (incluant fonctionnel + émotionnel). POURQUOI ces dimensions · capturer la chaîne pain → solution → produit-aware sur les deux axes.
+5. **Hypothèses figées** · ce que l'agent présume SANS valider (e.g. langue · pas de différentiation H/F · Schwartz stage dominant). L'opérateur sait ce qui n'est pas vérifié.
+6. **Biais à éviter** · risk flags du corpus / source (sur-pondération Trustpilot biais positif marque · under-rep Reddit biais critique platform · imported widgets non-vérifiables). L'agent flagge ce qui pourrait fausser le read avant le scrape.
+
+### Exemple concret canonisé · mine-voc sur Liv Happyfood (box konjac minceur)
+
+```
+Mining voix client · Liv Happyfood · ce qui va se passer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Paramètres posés · ce sur quoi je pars
+  ─────────────────────────────────────────────────────────────────────
+  Audience cible        Femmes 30-45 actives urbaines (60% atlas brand hero)
+                        POURQUOI · pas le sportif intensif · positionnement
+                        minceur clean encodé brand.json#positioning
+
+  Pains prioritaires    1. Faim entre repas / snacking compulsif
+                        2. Coupe-faim sans frustration
+                        3. Transit / digestion lourde
+                        POURQUOI · 3 JTBD konjac dominants marché FR
+                        (densité signal expected category)
+
+  Canaux                1. Avis Trustpilot Liv (densité × signal direct)
+                        2. Forums minceur FR (Doctissimo · AuFéminin)
+                        3. Reddit r/loseit (cross-cultural sanity check)
+                        4. TikTok comments #konjac (vernaculaire récent)
+                        POURQUOI · ordre = densité × pertinence + signal
+                        brand-direct avant marché-indirect
+
+  Queries opératoires   Fonctionnel · "konjac avis" · "coupe faim"
+                        "ventre plat naturel" · "minceur sans frustration"
+                        Émotionnel · "j'en peux plus régime" · "marre faim"
+                        "envie sucre soir" · variants vernaculaires
+                        POURQUOI · fonctionnel pour pain explicit
+                        émotionnel pour chaîne deep / identitaire
+
+  Hypothèses figées     H1 · audience FR (pas de scrape EN)
+                        H2 · pas de différentiation H/F dans coding
+                        H3 · Schwartz dominant solution-aware (cherchent
+                             coupe-faim · pas unaware du problème)
+
+  Biais à éviter        Sur-pondération Trustpilot · biais positif marque
+                        (clients satisfaits sur-représentés)
+                        Under-rep Reddit · biais critique platform
+                        (non-buyers vocaux sur-représentés)
+                        Imported widgets non-vérifiables · downweight
+
+  OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?
+
+  Plan
+  ─────────────────────────────────────────────────────────────────────
+  1. Check données first-party (export Shopify · Klaviyo Liv · NPS)
+  2. Détection sources publiques + crawl plan triage
+  3. Scrape verbatims (Trustpilot · widgets natifs · forums · Reddit)
+  4. Coding 4 lentilles (theme · JTBD · Schwartz · pain category)
+  5. Détection patterns + gap brand-stated vs customer-said
+  6. Synthèse 3 mouvements opérateur-facing
+  7. Routing structuré dans entités sub-audience canonical v2.64
+
+  ETA           ~15 min (selon densité corpus disponible)
+  Implication   tu valides paramètres d'abord · first-party si dispo · synthèse
+  Livrable      synthèse 3 mouvements + corpus Layer A + mutations proposées
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  OK pour lancer ? · ou tu préfères attendre / faire autre chose
+```
+
+ATTENDS confirmation explicite paramètres AVANT lancement scrape. L'opérateur peut · (a) valider tout · (b) ajuster un paramètre spécifique (e.g. "ajoute Sephora dans canaux", "Schwartz product-aware pas solution-aware", "biais TikTok à intégrer"), (c) abandonner / différer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set OR si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.5+.
+
+Cross-ref doctrines · `docs/system/decomposition-visibility-discipline.md` v2.79.5+ (NIVEAU 0 pré-exec) + `docs/system/engagement-disclosure-discipline.md` v2.79.5 (Paramètres décomposés section).
 
 ---
 
@@ -503,4 +592,5 @@ Three contexts surface this skill.
 - **1.0.2** (v2.29.0 alignment verify) — `awareness_stage` rename confirmed in Layer A entry shape and profile routing (`pain_points[].awareness_stage` consumes `_shared/awareness-stage.json` $ref, 5 canoniques). Canon tagging field names unchanged: `canon_schwartz_conscience_id` reste tel quel car pointe vers la fiche canon copy `niveaux-schwartz/conscience.json`, pas vers l'enum `awareness_stage` d'`angle.lineage`. No structural patches needed beyond verify.
 - **1.1.0** (v2.58 coverage extend) · Step 6 routing étendu pour combler 3 orphans audit v2.57. P1 · `spec.benefits[].emotional_signal` + `.latency_min` / `.latency_max` + `.evidence_verbatim[]` write-side (v1.10 NEW fields activated, staged depuis JTBD emotional + theme=benefit coding). P2 · `profile.pain_points[].pain_id` + `profile.objections[].objection_id` stable ID generation pattern PNT-NN / OBJ-NN (v1.7 NEW canonical IDs, fixe faille cross-ref `friction.cross_refs.{pain_point_ids, objection_ids}` qui peut désormais référencer canon). Backward compat strict (additif only).
 - **1.2.0** (v2.63 ontologie pure) · BREAKING refactor write-side · pain_points + objections passent en COLLECTIONS TOP-LEVEL séparées miroir pattern friction.schema. Stage `brands/{slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/objections/{OBJ-NN}.json` entités complètes avec `affected_audiences: [a_slug]` array (cross-audience natif). Fini sub-field `profile.pain_points[]` / `profile.objections[]` legacy writes. Profile schema v2.0 BREAKING post-migration · sub-fields legacy DEPRECATED write · read backward compat preserved (fallback lecture profile.json brownfield v1.7). Generation IDs PNT-NN / OBJ-NN scan désormais `brands/{slug}/{pain_points|objections}/*.json` filesystem au lieu de sub-fields profile. Pattern canonical · top-level collection avec cross-audience reference via affected_audiences[]. produces_proposals_for ajouté en frontmatter (paths NEW + legacy refs marquées DEPRECATED).
+- **1.4.0** (v2.79.5 decomposition visibility NIVEAU 0) · Section "Engagement disclosure pré-runtime" enrichie v2.79.3 → v2.79.5+ avec NIVEAU 0 paramètres décomposés (6 paramètres canonisés · Audience cible · Pains prioritaires · Canaux · Queries opératoires · Hypothèses figées · Biais à éviter · POURQUOI explicit chacun · raisonnement métier expert visible AVANT scrape). Exemple concret canonisé in-line · Liv Happyfood box konjac (audience femmes 30-45 actives urbaines · pains JTBD konjac dominants FR · canaux ranked densité × signal · queries fonctionnel + émotionnel · hypothèses figées · biais à éviter). ATTENDS confirmation explicite paramètres AVANT lancement scrape. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` OR `--no-disclosure` explicit. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 + `docs/system/engagement-disclosure-discipline.md` v2.79.5 Paramètres décomposés. Backward compat strict additif · cycle runtime préservé · seul l'amont disclosure change.
 - **1.3.0** (v2.64 ontologie sémantique pure) · pain_points + objections passent en SUB-AUDIENCE (`brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json`). Pattern · ces entités appartiennent sémantiquement à une audience (owned natif par parent path), plus besoin d'un array `affected_audiences[]` cross-audience tracking. Generation IDs PNT-NN/OBJ-NN scan désormais `brands/{slug}/audiences/*/pain_points/*.json` + `audiences/*/objections/*.json` cross-audiences pour next id. Si un pain/objection similaire détecté dans deux audiences, stage UNE entité par audience parente (pas de dedup cross-audience · l'appartenance sémantique précède le tracking). Backward compat strict additif · lecture fallback transparent `brands/{slug}/pain_points/{PNT-NN}.json` + `objections/{OBJ-NN}.json` top-level v2.63 si sub-audience vide OR absent. profile sub-fields legacy v1.7 toujours read fallback (audit historique). Write-side v1.3.0 stage exclusivement sub-audience canonical. produces_proposals_for frontmatter enrichi avec paths NEW sub-audience + legacy refs marquées DEPRECATED.

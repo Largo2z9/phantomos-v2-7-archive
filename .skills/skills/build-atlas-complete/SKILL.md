@@ -1,7 +1,7 @@
 ---
 name: build-atlas-complete
 type: orchestrator
-version: "1.6.1"
+version: "1.7.0"
 recommended_model: sonnet
 reasoning_pattern: null
 mode: proposed
@@ -18,6 +18,7 @@ extension_hooks:
   - product_entity
   - friction_entity
 description: >
+  v1.7.0 (v2.79.5 engagement disclosure NIVEAU 0 paramètres décomposés) · Section pré-runtime étendue · NIVEAU 0 ajouté en complément du disclosure plan/ETA/implication/livrable v2.79.3 existant · expose 6 paramètres décomposés au runtime (scope cartographier · profondeur cible · audiences à profiler · angles à générer · hypothèses figées · biais à éviter) avec POURQUOI chacun + close binaire OK ou ajuste · adapté au cycle 7 phases orchestrateur. Cross-ref doctrines decomposition-visibility-discipline + engagement-disclosure-discipline v2.79.5+. Backward compat strict additif (Phases 1-9 runtime preserved · seul l'amont disclosure enrichi).
   v1.6.0 (v2.78.2 decomposition visibility refactor) · NEW Phase Output Atlas Visibility Matriciel Multi-niveau obligatoire post-encoding entités (avant Step 9 Close) · 4 niveaux canon obligatoires (Décomposition produit cross-products · Many-to-many pain × audience matrix cross-atlas · Positionnement filtre par stage business · Méthode pédagogique verbale). Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` NEW v2.78.2. Distinction explicit audience produit-fit (toutes encoded) vs audience ciblage créa (filter sub-set positioning targeting). Backward compat strict additif (Phases 1-7 + Step 8 stage + Step 9 close preserved · NEW phase output insérée entre Step 8 et Step 9). HR-NEW + AP-NEW ajoutés guardrails.
   v1.4.0 (v2.68 progressive cartography refactor) · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot-brand · gate intermédiaire 1 · Phase 3 map-audiences hiérarchique parent/enfants · gate intermédiaire 2 · Phase 4 mine-voc + profile-audience enrichissement per audience). Mode `--fast-track` opérateur expert bypass gates auto-validate (opt-in flag OR config `auto_validate_after_n_brands` true). Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0 où gates étaient Gate A audiences + Gate B angles seulement). Cross-ref doctrine `docs/system/progressive-cartography-discipline.md` NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs light · fast-track flag opt-in default off · gates A+B angles preserved après Phase 4).
   v1.3.0 (v2.67 territoire-pure refactor) · Steps 8-9 stripped (produce-copy-brief + compose-creative) · align doctrine `docs/system/territory-discipline.md` shipped v2.67. Orchestrator scope = territoire substrat only · productions briefs+créas via `creative-brief-composer` post-atlas downstream (separate skill, separate invocation). Output explicite · complete strategic atlas substrate (specs + offers + audiences + angles + territoires scorés). BREAKING · operators v1.x qui invoquaient pour briefs+créas doivent invoquer `creative-brief-composer` post-`build-atlas-complete`. Migration documentée CHANGELOG v2.67.0. Backward compat strict additif sur Steps 1-7 unchanged (territoire chain preserved).
@@ -98,6 +99,8 @@ disambiguates_against:
   profile-audience: "route to profile-audience standalone when operator wants audiences only, not the full strategic atlas."
   score-matrix: "route to score-matrix standalone when atlas is already populated and operator wants only territory prioritization."
 patch_notes:
+  v1.7.0:
+    - "v2.79.5 engagement disclosure NIVEAU 0 paramètres décomposés · Section pré-runtime étendue (v2.79.3 plan/ETA/implication/livrable preserved · NIVEAU 0 6 paramètres décomposés ajouté en amont juste avant le plan) · expose au runtime · scope cartographier (brand entière vs scope partiel) · profondeur cible (substrate light hypothèse vs sourced 5+ verbatims) · audiences à profiler (N) · angles à générer (N par audience) · hypothèses figées (positioning canvas / voice 4D / whitespace) · biais à éviter (sur-engineering premier cycle / cartographier sans données / skip phases). Cross-ref doctrines decomposition-visibility-discipline + engagement-disclosure-discipline v2.79.5+. Backward compat strict additif (Phases 1-9 preserved · disclosure pré-runtime enrichi)."
   v1.6.0:
     - "v2.78.2 decomposition visibility refactor · NEW Phase Output Atlas Visibility Matriciel Multi-niveau insérée entre Step 8 (stage territories) et Step 9 (Close Investigation Posture)"
     - "4 niveaux canon obligatoires · NIVEAU 1 Décomposition produit cross-products (specs · mécanismes · bénéfices 3 couches functional/emotional/identity) · NIVEAU 2 Many-to-many pain × audience matrix cross-atlas (ASCII obligatoire) · NIVEAU 3 Positionnement filtre par stage business (early/growth/scale · audience produit-fit vs ciblage créa distinction) · NIVEAU 4 Méthode pédagogique verbale"
@@ -151,9 +154,82 @@ Chairman orchestrating a territoire substrate pipeline that produces the complet
 
 ---
 
-## Engagement disclosure pré-runtime · canon v2.79.3
+## Engagement disclosure pré-runtime · canon v2.79.3 + NIVEAU 0 v2.79.5
 
-Avant de lancer l'orchestration, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3) ·
+Avant de lancer l'orchestration, expose ce disclosure à l'opérateur en DEUX phases successives (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3 + `docs/system/decomposition-visibility-discipline.md` v2.79.5).
+
+**Phase A · NIVEAU 0 paramètres décomposés (v2.79.5)** · expose les paramètres décomposés que l'orchestrateur va mobiliser. Build-atlas-complete est le skill orchestrateur le plus complexe du canon (7 paliers · 30-90 min · MCP optionnel · gates intermédiaires + Gate A + Gate B). Disclosure NIVEAU 0 obligatoire AVANT le plan/ETA pour que l'opérateur ajuste un paramètre racine (scope · profondeur · cardinalité audiences/angles) avant de brûler 30+ min.
+
+```
+Paramètres posés · ce sur quoi je pars
+─────────────────────────────────────────────────────────────
+
+  1. Scope cartographier
+     {brand entière (default · all 7 phases) OR scope partiel
+     (audience X + angle Y) OR scope mère + sous-poches uniquement}
+     POURQUOI · {ex "premier cycle atlas brand · scope complet"
+     OR "atlas brand déjà cartographié 80% · refresh partiel
+     2 audiences" OR "operator explicit demand subset"}
+
+  2. Profondeur cible
+     {substrate light (hypothèse confidence 0.5 valide · doctrine
+     progressive-cartography v2.68) OR sourced (5+ verbatims par
+     pain canonical · mine-voc enrichissement complet) OR mixte
+     (mère sourced + sous-poches light)}
+     POURQUOI ce niveau · {ex "premier cycle, hypothèse sourceable
+     downstream · progressive cartography" OR "brand mature à
+     scale · exige sourced complet pour producer paid"
+     OR "MCP signals limités, hypothèse pragmatique"}
+
+  3. Audiences à profiler
+     {N audiences · default 3-5 mère + 2-4 sous-poches par mère ·
+     cap Phase 6 top-3 par défaut}
+     POURQUOI ce nombre · {ex "audience tree 4 mères posées Phase 3,
+     enrichissement top-3 par density signal" OR "operator demand
+     explicit N audiences" OR "MCP Reddit + Trustpilot mince ·
+     scope reduit"}
+
+  4. Angles à générer
+     {N par audience · default top-5 angles ranked produce-paid-angles ·
+     cap Phase 7 top-3 axes créatifs}
+     POURQUOI cette variance · {ex "5 angles ranked par audience
+     top-3 puis dédoublonnés cross-audience cluster-deduplication ·
+     top-3 axes créatifs sélectionnés" OR "brand mature ·
+     scope reduit top-3 angles top audience pour itération
+     focus"}
+
+  5. Hypothèses figées
+     Positioning canvas en place · {OUI lu brand.json#positioning
+     OR NON · canvas inféré spec.market_context + competitors
+     ou propose-positioning-canvas suggéré post-atlas}
+     Voice 4D définie · {OUI brand.json#tone_of_voice complet
+     OR NON · voice inférée + flag inconnu Investigation Posture}
+     Territoire whitespace identifié · {OUI lu brand.market.white_spaces
+     OR NON · whitespace dérivé Phase 7 score-matrix · top axes
+     créatifs = territoires whitespace par construction}
+
+  6. Biais à éviter
+     · Sur-engineering atlas premier cycle (encoder 8 audiences ×
+       7 angles = 56 angles · canon = top-3 audience × top-5 angles
+       puis cap top-3 axes · scope discipline territory-discipline
+       v2.67)
+     · Cartographier sans données (lancer Phase 6 angles avant
+       Phase 4 mine-voc · canon HR4.5 verbatim density floor
+       gate strict)
+     · Skip phases (sauter Phase 3 map-audiences pour gagner
+       temps · audiences inférées sans framework 4 questions =
+       audience tree fragile · canon progressive-cartography v2.68
+       refuse skip)
+
+─────────────────────────────────────────────────────────────
+
+  OK avec ces paramètres ? Tu ajustes lequel avant que je passe
+  au plan + ETA ?
+```
+
+ATTENDS confirmation explicite Phase A avant d'enchaîner Phase B (plan + ETA + implication + livrable v2.79.3). Si opérateur ajuste un paramètre racine (ex "scope partiel 2 audiences" OR "profondeur sourced obligatoire"), recalibrer le plan + ETA en conséquence avant Phase B.
+
+**Phase B · disclosure plan + ETA + implication + livrable (v2.79.3 preserved)** ·
 
 ```
 Build atlas complet · ce qui va se passer
@@ -178,9 +254,9 @@ Build atlas complet · ce qui va se passer
   OK pour lancer ? · ou tu préfères attendre / faire autre chose
 ```
 
-ATTENDS confirmation explicite avant de lancer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.3.
+ATTENDS confirmation explicite Phase B avant de lancer Step 0. Court-circuit (Phase A + Phase B) autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit OR si N usages successifs >= seuil expert (`auto_skip_after_n_calls` true). Sinon · disclosure 2 phases obligatoire canon v2.79.3 + v2.79.5.
 
-Cross-ref doctrine racine `docs/system/engagement-disclosure-discipline.md` v2.79.3.
+Cross-ref doctrines racine `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-discipline.md` v2.79.5.
 
 ---
 

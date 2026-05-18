@@ -7,6 +7,58 @@
 
 ---
 
+## v2.79.5 · 2026-05-18 · Sprint patch · intelligence compositionnelle pré-exécution · NIVEAU 0 paramètres décomposés canonisé · 2 doctrines étendues · 6 skills patchés · D#441 captured
+
+**Why** · Test live Largo v2.79.4 fresh workspace `~/dev/phantom-test-v279_3/` mine-voc sur brand Liv Happyfood a flag gap systémique · disclosure pré-engagement (engagement-disclosure-discipline v2.79.3) annonce plan + ETA + démarche AVANT lancer skill, MAIS pas POURQUOI ces paramètres précis (audience cible · pains prioritaires · canaux mining · queries scrape · hypothèses figées · biais à éviter). L'opérateur valide à l'aveugle, pas en conscience expert métier, ne peut pas corriger en amont (doit attendre output pour challenger). Reverse engineering visible obligatoire en amont, pas seulement en aval.
+
+**What** · Pattern canon NEW · tout skill basé sur intelligence compositionnelle (atlas × métier · raisonne sur brand encoded · récursive) DOIT exposer NIVEAU 0 paramètres décomposés AVANT exécution. 6 éléments canon obligatoires (audience cible · pains prioritaires · canaux · queries opératoires · hypothèses figées · biais à éviter) avec POURQUOI explicit chacun + close binaire confirmation. Memory canon `extend_before_create` respecté · 2 doctrines existing étendues (pas NEW doctrine).
+
+**Patches structurels (3 parallèle)** ·
+
+1. **Doctrine `decomposition-visibility-discipline.md` v2.79.2+ → v2.79.5+** (Agent 1) · NEW NIVEAU 0 pré-exec ajouté AVANT les 4 niveaux post-exec existing · 6 paramètres décomposés avec POURQUOI explicit chacun · HR-DVD-10 + AP-DVD-10 enforcement runtime · pattern obligatoire skills intelligence compositionnelle.
+
+2. **Doctrine `engagement-disclosure-discipline.md` v2.79.3 → v2.79.5** (Agent 1) · NEW Trigger 6 intelligence compositionnelle ajouté aux 5 triggers existing · NEW Paramètres décomposés section dans pattern disclosure (6 éléments canon + POURQUOI explicit) · HR-EDD-9 + AP-EDD-9 enforcement runtime · cross-ref decomposition-visibility-discipline.md v2.79.5+ NIVEAU 0.
+
+3. **6 skills patchés NIVEAU 0 paramètres décomposés section v2.79.5** (Agents 2-3) · mine-voc · profile-audience · produce-paid-angles · produce-copy-brief · compose-creative · build-atlas-complete · pattern obligatoire 6 éléments + POURQUOI explicit + close binaire "OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?" · l'opérateur valide en conscience expert métier, pas à l'aveugle.
+
+**Pattern systémique fermé · intelligence compositionnelle pré-exécution canon v2.79.5**
+
+```
+Layer 1 · skill intelligence compositionnelle invoqué (atlas × métier · récursive)               ✓ canon
+Layer 2 · disclosure pré-engagement plan + ETA + démarche (EDD v2.79.3)                          ✓ canon
+Layer 3 · NIVEAU 0 paramètres décomposés (6 éléments + POURQUOI explicit) NEW v2.79.5            ✓ NEW
+Layer 4 · close binaire "OK avec ces paramètres ? Tu ajustes lequel ?" opérateur valide conscience expert ✓ NEW
+Layer 5 · skill exécuté · output 4 niveaux matriciels post-exec (DVD v2.79.2+)                   ✓ canon
+```
+
+L'opérateur novice valide en conscience expert métier, pas à l'aveugle. Asymétrie reverse engineering visible amont (paramètres) vs aval (output) fermée. Memory canon `largo_cognitive_profile` reinforced (systematizer-strategist visuel · cartographie réduction d'incertitude).
+
+**Backward compat strict additif** · 2 doctrines extensions retirables (DVD revert v2.79.2+ · EDD revert v2.79.3) · 6 skills NIVEAU 0 section retirable (cycle runtime préservé) · doctrines 22 inchangées (extensions, pas NEW) · skills 80 inchangés · slash commands 8 inchangés. Zéro impact runtime fonctionnel.
+
+**Files patched (13)** ·
+- `docs/system/decomposition-visibility-discipline.md` extension v2.79.5+ NEW NIVEAU 0 pré-exec + HR-DVD-10 + AP-DVD-10 (Agent 1)
+- `docs/system/engagement-disclosure-discipline.md` extension v2.79.5 NEW Trigger 6 + Paramètres décomposés section + HR-EDD-9 + AP-EDD-9 (Agent 1)
+- `.skills/skills/mine-voc/SKILL.md` NEW NIVEAU 0 section v2.79.5 (Agent 2)
+- `.skills/skills/profile-audience/SKILL.md` NEW NIVEAU 0 section v2.79.5 (Agent 2)
+- `.skills/skills/produce-paid-angles/SKILL.md` NEW NIVEAU 0 section v2.79.5 (Agent 3)
+- `.skills/skills/produce-copy-brief/SKILL.md` NEW NIVEAU 0 section v2.79.5 (Agent 3)
+- `.skills/skills/compose-creative/SKILL.md` NEW NIVEAU 0 section v2.79.5 (Agent 3)
+- `.skills/skills/build-atlas-complete/SKILL.md` NEW NIVEAU 0 section v2.79.5 (Agent 3)
+- `CLAUDE.md` root NEW sub-section `Skill routing v2.79.5 · intelligence compositionnelle pré-exécution` (Agent 4 · ce job)
+- `../../../decisions.md` workspace ROOT · D#441 captured (Agent 4 · ce job)
+- `_version.json` bumped 2.79.4 → 2.79.5 (Agent 4 · ce job)
+- `CHANGELOG.md` v2.79.5 entry prepended (this entry · Agent 4 · ce job)
+- `docs/internal/releases/manifest/2.79.5-manifest.json` NEW (Agent 4 · ce job)
+
+**D#441 captured** ·
+- **D#441** · Sprint v2.79.5 intelligence compositionnelle pré-exécution canon · NEW NIVEAU 0 paramètres décomposés AVANT exécution skill intelligence compositionnelle (atlas × métier · récursive) · 6 éléments obligatoires (audience cible · pains prioritaires · canaux · queries opératoires · hypothèses figées · biais à éviter) avec POURQUOI explicit chacun + close binaire confirmation. Use case déclencheur · test live Largo v2.79.4 fresh workspace mine-voc Liv Happyfood flag disclosure annonçait plan/ETA/démarche MAIS pas POURQUOI paramètres précis · opérateur validait à l'aveugle. Memory canon `extend_before_create` respecté · 2 doctrines existing étendues (DVD v2.79.5+ NIVEAU 0 pré-exec + EDD v2.79.5 Trigger 6 + Paramètres décomposés section). 6 skills patchés (mine-voc · profile-audience · produce-paid-angles · produce-copy-brief · compose-creative · build-atlas-complete). Cross-refs · D#436 onboarding-holistic + D#437 engagement-disclosure (canon foundation) · D#440 hygiène BUILD (sprint précédent même session) · memory canon `iterative_validation` + `solutions_not_observations` + `largo_cognitive_profile` reinforced.
+
+**Backlog v2.79.5+** · Sprint v2.80 4-6 skills tracking-GTM NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode) · Sprint v2.79.x business pilotage backlog v2.79.1 · Sprint v2.80.x DR copywriting production backlog v2.79.1 · Sprint v2.81+ CRO + lifecycle backlog v2.79.1 · Issue 7 panorama 11 territoires backlog architectural v2.79.4 · Pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md) · Re-test live workspace fresh v2.79.5 sur opérateur novice pour valider NIVEAU 0 paramètres décomposés + POURQUOI explicit cross 6 skills patchés.
+
+**Skills count 80 (inchangé) · slash commands 8 (inchangé) · doctrines 22 (inchangé · extensions DVD + EDD, pas NEW).**
+
+---
+
 ## v2.79.4 · 2026-05-17 · Sprint patch · refonte intro /tour Vercel/GitHub-style narratif court + NEW slash command /about documentation deep PhantomOS holistique · D#438 captured
 
 **Why** · Post-test live Largo v2.79.3 fresh workspace `~/dev/phantom-test-v279_3` a flag pitch d'amorce trop dense pédagogie opérateur novice. /tour v2.79.3 livrait panorama 360° des 7 territoires DTC sur pied d'égalité visuelle (canon onboarding-holistic-discipline) MAIS · intro d'amorce 1 phrase dense insuffisante · opérateur novice n'avait pas le contexte pour comprendre la profondeur PhantomOS avant d'arriver dans le panorama. Pattern systémique canon · standards onboarding Vercel/GitHub shipped product · intro courte narrative (rapide démarrage) + docs deep opt-in (compréhension profondeur opérateur conscient). Split intro court vs deep doc · cohérent memory canon `phantomos_pitch_posture` (institutionnel sérieux + accessible + zéro jargon + différenciation produit/kit explicite + couverture exhaustive angles).

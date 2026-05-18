@@ -115,6 +115,12 @@ Anti-pattern strict · synthèse brand opérateur-facing prose-only sans matrice
 
 Voir doctrine `docs/system/decomposition-visibility-discipline.md` v2.79.2.
 
+**Skill routing v2.79.5 · intelligence compositionnelle pré-exécution.** Tout skill basé sur intelligence compositionnelle (atlas × métier · raisonne sur brand encoded) DOIT exposer NIVEAU 0 paramètres décomposés AVANT exécution. Pattern canon · 6 éléments obligatoires (audience cible · pains prioritaires · canaux · queries opératoires · hypothèses figées · biais à éviter) avec POURQUOI explicit chacun. L'opérateur valide en conscience expert métier, pas à l'aveugle.
+
+Skills concernés v2.79.5 (6 patchés) · mine-voc · profile-audience · produce-paid-angles · produce-copy-brief · compose-creative · build-atlas-complete.
+
+Anti-pattern strict · skill intelligence compositionnelle lance sans NIVEAU 0 décomposé · opérateur valide à l'aveugle. Cross-ref doctrines · `docs/system/decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 pré-exec + `docs/system/engagement-disclosure-discipline.md` v2.79.5 Paramètres décomposés.
+
 **Exception** · conversation libre (questions, clarifications, debug, doctrine discussion) reste en prose libre. La règle s'applique au contenu stratégique livré, pas au dialogue conversationnel.
 
 Full doctrine · `docs/system/canonical-matrix-reasoning.md` + `docs/system/skill-routing-discipline.md` (skill routing canon · cross-ref Investigation Posture + CMR + /scope).

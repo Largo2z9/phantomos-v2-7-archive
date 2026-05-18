@@ -1,7 +1,8 @@
 ---
 name: profile-audience
-version: 1.7.0
+version: 1.8.0
 patch_notes:
+  - "1.8.0 (v2.79.5 decomposition visibility NIVEAU 0) · NEW section `Engagement disclosure pré-runtime v2.79.5+` AVANT Step 0bis prerequisite check · 6 paramètres décomposés contextualisés (Audience source · Dimensions cartographier · Sources data · Granularité output · Hypothèses figées · Biais à éviter · POURQUOI explicit chacun · raisonnement métier expert visible AVANT synthèse). Exemple concret canonisé in-line. ATTENDS confirmation explicite paramètres AVANT lancement profile synthesis. HR0ter canon ajouté. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` OR `--no-disclosure` explicit. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 + `docs/system/engagement-disclosure-discipline.md` v2.79.5 Paramètres décomposés. Backward compat strict additif · cycle runtime préservé."
   - "1.7.0 (v2.78.2 decomposition visibility) · NEW Output section `Audience Visibility Matriciel` après encoding 8 dimensions canon V3 · matrice ASCII audience × pain × angle obligatoire si ≥2 pains owned sub-audience · stage business filter (early / growth / scale) si signal détectable · méthode pédagogique verbale explicit (8 dimensions résumées + many-to-many audience-pain-angle). HR10-HR14 + AP10-AP13 ajoutés. Backward compat strict additif · existing 8 dimensions + 5 sections IP preserved · operator output template v2.54 preserved (template legacy reste valide, NEW section l'enrichit). Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.78.2 (canon racine sister Sprint A)."
   - "1.2.0 · v2.39+ · Step 0ter framework awareness (4 questions cartography pédagogie inline)"
   - "1.3.0 · v2.54 investigation posture refactor surface · audiences présentées comme hypothèses avec confidence chain explicite (TRÈS faible par défaut sans mine-voc · faible 1-2 indicateurs site · moyenne mine-voc partiel · forte mine-voc + analytics convergents). Operator output template HR6 + HR8 restructurés · chaque audience porte hypothèse / confidence / indicateurs sources / validation requise / anti-pattern à respecter. Skill termine sur close drill-down macro · lancer mine-voc maintenant vs valider intuitivement et continuer. Préserve mécanismes 8 dimensions Schwartz double-stage problem_map. Refacto uniquement la posture surface · présentation comme hypothèse vs persona analytique. Cross-ref docs/system/investigation-posture.md."
@@ -18,6 +19,7 @@ subagent_safe: true
 mode: proposed
 operator_facing: true
 description: |
+  v1.8.0 (v2.79.5 decomposition visibility NIVEAU 0) · NEW section "Engagement disclosure pré-runtime v2.79.5+" AVANT Step 0bis · 6 paramètres décomposés (Audience source · Dimensions cartographier · Sources data · Granularité output · Hypothèses figées · Biais à éviter · POURQUOI chaque) · raisonnement métier expert visible AVANT synthèse profile. ATTENDS confirmation paramètres AVANT lancement. HR0ter canon. Cross-ref `decomposition-visibility-discipline.md` v2.79.5+ + `engagement-disclosure-discipline.md` v2.79.5.
   v1.7.0 (v2.78.2 decomposition visibility) · NEW Output section `Audience Visibility Matriciel` après encoding 8 dimensions canon V3 · matrice ASCII audience × pain × angle si ≥2 pains owned · stage business filter (early/growth/scale) · méthode pédagogique verbale (8 dimensions résumées + many-to-many). Backward compat strict additif.
   v1.6.0 (v2.64 ontologie sémantique pure) · pain_points + objections passent en SUB-AUDIENCE · stage `brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json` (owned natif par parent path). Read désormais depuis sub-audience direct (pas de filter affected_audiences[] nécessaire · l'audience parente est implicite). Backward compat strict additif · lecture fallback top-level v2.63 collections + profile sub-fields legacy v1.7 preserved.
   v1.5.0 (v2.63 ontologie pure) · BREAKING refactor pain_points + objections passent en COLLECTIONS TOP-LEVEL séparées · stage `brands/{slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/objections/{OBJ-NN}.json` au lieu de sub-fields profile.json legacy. Read désormais depuis collections (scan filtré par affected_audiences contains audience_slug). Profile schema v2.0 BREAKING · sub-fields legacy DEPRECATED write · read fallback preserved.
@@ -104,6 +106,145 @@ prerequisites:
 Synthétise un sub-cluster d'audience en profil 8 dimensions canon V3. Consume les outputs de mining et produit `profile.json` conforme `profile.schema v1.3`. Operator-facing avec validation gate avant write.
 
 ## Hard Rules
+
+### HR0ter · Engagement disclosure pré-runtime · canon v2.79.5+ (NIVEAU 0 paramètres décomposés)
+
+Avant Step 0bis (prerequisite check) et Step 0ter (framework awareness), expose disclosure ENRICHI à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.5 Paramètres décomposés + `docs/system/decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 pré-exec). Le disclosure v2.79.5 expose NIVEAU 0 paramètres décomposés AVANT la synthèse · l'agent contextualise sur la brand + audience encoded · 6 paramètres opérationnels + raisonnement métier expert visible (POURQUOI chaque choix). L'opérateur valide ou ajuste les paramètres AVANT que l'agent consomme tokens synthesis.
+
+#### Format canonique disclosure v2.79.5+ enrichi
+
+```
+Synthèse profil audience · ce qui va se passer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Paramètres posés · ce sur quoi je pars
+  ─────────────────────────────────────────────────────────────────────
+  Audience source       {segments atlas brand} · POURQUOI ce focus
+  Dimensions cartograph. {pyramide Maslow · Schwartz · Cialdini}
+                        POURQUOI ces dimensions
+  Sources data          {brand encoded + first-party + verbatims}
+                        POURQUOI cet ordre
+  Granularité output    {parents/enfants · N audiences} · POURQUOI
+  Hypothèses figées     {âge · canal · psychographie présumés}
+  Biais à éviter        {over-segmentation · stéréotype démographique}
+
+  OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?
+
+  Plan
+  ─────────────────────────────────────────────────────────────────────
+  1. Prerequisite check (brownfield seed · mining outputs · canon)
+  2. Framework cartography 4 questions (Q1 porte d'entrée surface)
+  3. Load canon matrices (Schwartz · archetypes · biais)
+  4. Synthesize 8 dimensions canon V3
+  5. Cross-validate Schwartz double-stage
+  6. Stage pain_points + objections sub-audience canonical
+  7. Surface draft profile en posture hypothèse (confidence chain)
+  8. Audience Visibility Matriciel (matrice × pain × angle)
+  9. Operator validation gate → write_to_context
+
+  ETA           ~5-12 min (selon densité mining + brownfield seed)
+  Implication   tu valides paramètres d'abord · puis tu valides synthèse
+  Livrable      profile.json 8 dimensions + sub-audience pain_points/objections
+                + matrice visibility + close drill-down macro
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  OK pour lancer ? · ou tu préfères attendre / faire autre chose
+```
+
+#### Pattern obligatoire NIVEAU 0
+
+L'agent expose **6 paramètres décomposés contextualisés** sur la brand + audience cible (lecture `brand.json` + `audiences/*/profile.json` brownfield seed + mining outputs upstream). Pour chaque paramètre, **POURQUOI explicit** (raisonnement métier expert visible · pas implicite). L'opérateur voit le raisonnement avant la synthèse · il peut ajuster avant la consommation de tokens.
+
+1. **Audience source** · segments atlas brand visés (depuis `brand.json#audiences` + `audiences/*/profile.json` encoded · scope sub-cluster cible). POURQUOI ce focus · positioning brand + densité signal mining disponible.
+2. **Dimensions cartographier** · pyramide Maslow (besoins) · sophistication Schwartz (1-5) · awareness stage Cialdini / Schwartz 5 stades · 8 dimensions canon V3. POURQUOI ces dimensions · canon copywriting + audience-cartography doctrine + decomposition-visibility v2.78.2 matrice many-to-many.
+3. **Sources data** · ordre · (1) brand encoded · (2) first-party (Klaviyo · Shopify · NPS · transcripts SAV) · (3) verbatims VoC / VoM mining si présents · (4) canon matrices (archetypes-voix · heuristiques-persuasion). POURQUOI cet ordre · brand-truth d'abord · first-party densité × biais minimal · third-party validation · canon pour cross-pollination identité.
+4. **Granularité output** · parents / enfants · combien d'audiences distinctes · sub-clusters · enfants ENUM `[broad | segment | micro]`. POURQUOI cette granularité · signal volume_remaining + pitch_divergent + offer_divergent (framework cartography 4 questions Q2).
+5. **Hypothèses figées** · ce que l'agent présume SANS valider (âge dominant inféré · canal d'acquisition supposé · psychographie projetée · trigger event supposé). L'opérateur sait ce qui n'est pas vérifié verbatim.
+6. **Biais à éviter** · risk flags · over-segmentation (créer micro-audience sans volume remaining justifié) · stéréotype démographique ("femme 35 donc mobile") · projection persona-marketing analytique (anti-pattern AP-2 doctrine investigation-posture · personas inventés sans data verbatim).
+
+#### Exemple concret canonisé · profile-audience sur Liv Happyfood audience-hero (femmes 30-45 minceur clean)
+
+```
+Synthèse profil audience · Liv Happyfood · audience-hero · ce qui va se passer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Paramètres posés · ce sur quoi je pars
+  ─────────────────────────────────────────────────────────────────────
+  Audience source       Femmes 30-45 actives urbaines (sub-cluster
+                        audience-hero · 60% atlas brand encoded)
+                        POURQUOI · positioning minceur clean brand.json
+                        + signal mining mine-voc 47 verbatims encoded
+                        upstream (densité OK pour synthèse moyenne)
+
+  Dimensions cartograph. 8 dimensions canon V3 · Purchase Driver
+                        Problem Map (3 niveaux surface/consequence/deep)
+                        Benefit Stack (functional/emotional/identity)
+                        Mechanism audience-side · Market Context Schwartz
+                        Alternative Map · Identity Signals · Decision
+                        POURQUOI · canon creative-formula V3 + pain-benefit
+                        chain doctrine + audience-cartography 4 mouvements
+
+  Sources data          1. brand.json + spec.json encoded (positioning
+                           minceur clean · konjac mechanism · proof points)
+                        2. Klaviyo Liv 5k NPS responses (first-party hero)
+                        3. mine-voc output Trustpilot + forums (47 verbatims)
+                        4. canon archetypes-voix (caregiver/sage map)
+                           heuristiques-persuasion (loss-aversion · social
+                           proof biais audience-side)
+                        POURQUOI · brand-truth → first-party densité →
+                        third-party validation → canon cross-pollination
+
+  Granularité output    1 audience-hero broad-level · scope segment
+                        (entre 100-500k actives FR) · pas micro-niche
+                        POURQUOI · signal volume_remaining > 200k actives
+                        FR + offer divergent (pas de sous-segment pricing
+                        différencié encore encodé)
+
+  Hypothèses figées     H1 · âge dominant 32-42 (inféré profil Klaviyo)
+                        H2 · canal acquisition Instagram + Pinterest dominé
+                             (inféré · pas verbatim)
+                        H3 · psychographie auto-déclarée "active urbaine"
+                             (matche site copy · pas mining verbatim)
+                        H4 · trigger event "post-grossesse OU rentrée
+                             post-vacances" (inféré seasonality)
+
+  Biais à éviter        Over-segmentation · ne pas créer "femme 30-35"
+                        et "femme 35-45" sub-audiences sans pitch_divergent
+                        Stéréotype démographique · "femme donc Instagram"
+                        statistique averaged-LLM → skip si pas verbatim
+                        Projection persona-marketing · anti-pattern AP-2
+                        doctrine investigation-posture (persona analytique
+                        sans data verbatim · confidence TRÈS faible flag
+                        obligatoire si zéro mining)
+
+  OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?
+
+  Plan
+  ─────────────────────────────────────────────────────────────────────
+  1. Prerequisite check (Klaviyo + mine-voc + brownfield seed)
+  2. Framework cartography Q1 porte d'entrée (pain/goal/identity)
+  3. Load canon Schwartz + archetypes + heuristiques
+  4. Synthesize 8 dimensions canon V3 (verbatim-anchored)
+  5. Cross-validate Schwartz double-stage (product × emotional)
+  6. Stage pain_points + objections sub-audience canonical v2.64
+  7. Surface draft posture hypothèse + confidence chain explicit
+  8. Audience Visibility Matriciel (audience × pains × angles)
+  9. Operator validation gate → write_to_context profile.json
+
+  ETA           ~8 min (mining + brownfield seed dispo · synthèse moyenne)
+  Implication   tu valides paramètres d'abord · puis tu valides synthèse
+  Livrable      profile.json 8 dim + sub-audience pain_points/objections
+                + matrice visibility + close drill-down macro
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  OK pour lancer ? · ou tu préfères attendre / faire autre chose
+```
+
+ATTENDS confirmation explicite paramètres AVANT lancement synthesis. L'opérateur peut · (a) valider tout · (b) ajuster un paramètre spécifique (e.g. "granularité micro pas segment", "ajoute Reddit dans sources", "biais saisonnalité à intégrer"), (c) abandonner / différer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set OR si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.5+.
+
+Cross-ref doctrines · `docs/system/decomposition-visibility-discipline.md` v2.79.5+ (NIVEAU 0 pré-exec) + `docs/system/engagement-disclosure-discipline.md` v2.79.5 (Paramètres décomposés section).
 
 ### Step 0bis · Prerequisite check (DRGFP v2.38)
 
