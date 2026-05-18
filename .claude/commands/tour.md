@@ -1,7 +1,7 @@
 ---
 name: tour
-version: v2.80.1
-description: Onboarding PhantomOS · prose conversationnelle native · zéro interface ASCII (réservée aux slash commands `/phantom` `/bird` `/breakdown` `/about`). Refonte v2.80.1 · retire boxes ASCII et tableau territoires structuré des rendus opérateur, transforme panorama 360° en prose narrative bilingual FR/EN, action close en prose. Pattern matriciel canon reste sur slash commands seulement, jamais sur l'onboarding. Replayable via `/tour`. Documentation deep opt-in via `/about` (architecture + philosophie pour opérateur curieux). Mémoire canon Largo · `feedback_no_em_dash`, `feedback_no_jargon_to_operator`, `feedback_no_overengineer`, `largo_cognitive_profile` (matriciel = SLASH COMMANDS, pas onboarding). Conserve doctrine v2.79.3 panorama 360° agnostique + zéro typage profil métier initial (HR-OHD-2).
+version: v2.80.3
+description: Onboarding PhantomOS · explication conversationnelle de PhantomOS déroulée tour à tour · prose native, zéro interface ASCII (réservée aux slash commands `/phantom` `/bird` `/breakdown` `/about`). Refonte v2.80.3 · accueil court qui dit ce qu'est PhantomOS, puis arc substance guidé (pourquoi ça existe · comment ça raisonne · ce qui le distingue · le cycle · les 7 territoires) distillé un volet à la fois via `AskUserQuestion`, piloté par l'opérateur, jamais un pavé, jamais une amorce amputée. `/about` reste le backup deep doc exhaustif, jamais un substitut de `/tour`. Conserve v2.80.1 prose native + v2.79.3 panorama agnostique + zéro typage profil métier initial (HR-OHD-2). Mémoire canon Largo · `feedback_no_em_dash`, `feedback_no_jargon_to_operator`, `feedback_no_overengineer`, `feedback_response_length`, `feedback_onboarding_native_prose`, `largo_cognitive_profile` (matriciel = SLASH COMMANDS, pas onboarding).
 ---
 
 # Tour · PhantomOS Onboarding
@@ -57,45 +57,35 @@ Calibration effects:
 
 Every tour hits these in order. Milestones can fuse when a single operator turn covers two, or reorder if the operator pulls on a thread early. Never skip without explicit operator signal.
 
-### Milestone 1 · Bienvenue + panorama 360°
+### Milestone 1 · Bienvenue + amorce substance
 
-**First-run** · ouvrir par accueil sobre + panorama narratif 7 territoires métiers DTC en prose. L'opérateur découvre l'étendue PhantomOS et reconnaît son métier dans la prose. **Jamais** demander *"tu fais quoi"* / *"ton métier"* / *"ton rôle"* / *"ton profil"* en amont du panorama (canon HR-OHD-2 doctrine `onboarding-holistic-discipline.md`).
+**First-run** · ouvrir par un accueil court qui dit **ce qu'est PhantomOS** de façon dense mais brève (3-5 lignes max), puis enchaîner sur la **première question guidée de l'arc substance** (Milestone 2). L'onboarding `/tour` est l'explication conversationnelle de PhantomOS · vision, fonctionnement, différenciation, territoires, distillés tour à tour et pilotés par l'opérateur. **Jamais** un pavé, **jamais** une amorce amputée qui saute direct au choix de territoire sans avoir dit ce qu'est le système. **Jamais** demander *"tu fais quoi"* / *"ton métier"* / *"ton rôle"* / *"ton profil"* (canon HR-OHD-2). `/about` reste le backup pour qui veut le détail exhaustif d'un coup · le mentionner en une ligne, jamais le substituer à `/tour`.
 
-**Rendu opérateur · prose conversationnelle native (à adapter language opérateur · FR/EN détecté, jamais codé en dur). Zéro box ASCII. Zéro tableau structuré. Zéro légende au pied.**
+**Rendu opérateur · prose conversationnelle native (language opérateur FR/EN détecté, jamais codé en dur). Zéro box ASCII. Zéro tableau structuré. Zéro légende au pied. Chaque tour court, jamais un pavé.**
 
-**FR version** · pattern de prose à rendre ·
-
-```
-Bienvenue dans PhantomOS.
-
-PhantomOS est un workspace où vit ton opération DTC. Tu encodes ta marque une fois (produits · audiences · stratégie), le système raisonne, exécute et apprend avec toi à travers les sessions.
-
-Les outils d'IA classiques oublient entre les conversations. Les workspaces attendent que tu fasses le travail. PhantomOS garde ton contexte métier vivant et opère dessus à travers 80 skills et 23 doctrines canon.
-
-PhantomOS couvre sept territoires métiers DTC sur pied d'égalité · la production créative et copy (angles paid · briefs copy · creatives composition · sales letters DR), le tracking et GTM (pixels Meta/Google · server-side · consent mode · audits coverage), le media buy et performance (campagnes Meta · audits perf · score matrices · brief-day), la brand strategy (positioning canvas · voice 4D · archetypes · purpose), les ops et workflow (todos · agendas · onboarding · setup · scripts), le pilotage business (unit economics · WBR · cohort retention · roadmap), et le lifecycle et CRO (PDP · landing · email flows · upsell · LTV).
-
-Certains territoires sont shippés solides aujourd'hui (creative, media buy, brand). D'autres sont partiels avec des skills core existants et des skills NEW à venir (ops, business pilotage, lifecycle CRO). Le territoire tracking et GTM est ouvert · invocable freestyle prose ou via skills NEW backlog v2.80.x.
-
-Pour démarrer · colle une URL de marque (Shopify · landing · etc) ou dis-moi sur quoi tu opères · je cartographie en environ 5 minutes. Si tu veux comprendre l'architecture et la philosophie en profondeur avant, lance `/about`.
-```
-
-**EN version** · pattern of prose to render ·
+**FR version** · pattern de prose à rendre (accueil + amorce) ·
 
 ```
-Welcome to PhantomOS.
+Bienvenue dans PhantomOS. C'est un workspace où vit ton opération DTC. Tu encodes ta marque une fois (produits, audiences, stratégie, learnings), et le système raisonne, exécute et apprend dessus avec toi à travers les sessions.
 
-PhantomOS is a workspace where your DTC operation lives. You encode your brand once (products · audiences · strategy), the system reasons, executes, and learns with you across sessions.
+Concrètement · tu ne re-décris pas ton contexte client à chaque conversation, il est encodé une fois et l'agent raisonne dessus. Tu décris ton intent en langage normal, il route vers la bonne capacité, sans syntaxe à mémoriser. Sur tout ce qui est stratégique il montre sa réflexion (ce qu'il observe, ce qu'il déduit, ce qu'il ignore) et tu corriges point par point, il retient. Chaque sortie validée enrichit ta connaissance pour la suite.
 
-Standard AI tools forget between conversations. Workspaces wait for you to do the work. PhantomOS keeps your business context alive and operates on it through 80 skills and 23 canon doctrines.
-
-PhantomOS covers seven DTC territories on equal footing · creative and copy production (paid angles · copy briefs · creative composition · DR sales letters), tracking and GTM (Meta/Google pixels · server-side · consent mode · coverage audits), media buy and performance (Meta campaigns · perf audits · score matrices · brief-day), brand strategy (positioning canvas · voice 4D · archetypes · purpose), ops and workflow (todos · agendas · onboarding · setup · scripts), business pilotage (unit economics · WBR · cohort retention · roadmap), and lifecycle and CRO (PDP · landing · email flows · upsell · LTV).
-
-Some territories are solidly shipped today (creative, media buy, brand). Others are partial with core skills existing and NEW skills coming (ops, business pilotage, lifecycle CRO). The tracking and GTM territory is open · invocable freestyle prose or via NEW skills in the v2.80.x backlog.
-
-To get started · paste a brand URL (Shopify · landing · etc) or tell me what you operate · I map it in about 5 minutes. If you want to understand the architecture and philosophy in depth before, launch `/about`.
+Je peux te dérouler ça en quelques étapes courtes · pourquoi ça existe, comment ça raisonne, ce qui le rend singulier, le cycle de travail, et les territoires que ça couvre. Tu choisis ce qu'on creuse, et tu peux passer à la configuration d'une marque à tout moment. Si tu préfères le détail complet d'un bloc, `/about` l'a en entier.
 ```
 
-**Statut canon par territoire (référence interne · ne pas surfacer comme jargon · ne pas rendre en tableau opérateur)** ·
+**EN version** · pattern of prose to render (welcome + lead-in) ·
+
+```
+Welcome to PhantomOS. It's a workspace where your DTC operation lives. You encode your brand once (products, audiences, strategy, learnings), and the system reasons, executes and learns on it with you across sessions.
+
+Concretely · you don't re-describe your customer context every conversation, it's encoded once and the agent reasons on it. You describe your intent in plain language, it routes to the right capability, no syntax to memorize. On anything strategic it shows its reasoning (what it observes, infers, still doesn't know) and you correct point by point, it remembers. Every validated output enriches your knowledge for what's next.
+
+I can walk you through it in a few short steps · why it exists, how it reasons, what makes it singular, the work cycle, and the territories it covers. You pick what we dig into, and you can jump to configuring a brand at any time. If you'd rather get the full detail in one block, `/about` has it all.
+```
+
+Puis poser **immédiatement** la première question guidée de l'arc substance (Milestone 2). Pas d'attente de texte libre nu.
+
+**Statut canon par territoire (référence interne · ne pas surfacer comme jargon · ne pas rendre en tableau opérateur · sert à alimenter le volet territoires de l'arc)** ·
 
 | Territoire | Statut | Skills core shipped (illustratif) | Skills NEW backlog |
 |---|---|---|---|
@@ -115,20 +105,40 @@ To get started · paste a brand URL (Shopify · landing · etc) or tell me what 
 
 Skip to Milestone 4 directly in replay mode (close adapté).
 
-### Milestone 2 · L'opérateur choisit où commencer
+### Milestone 2 · Arc substance guidé tour à tour
 
-Après le panorama narratif, attendre la réponse opérateur. Trois patterns possibles :
+Le cœur de l'onboarding. Une boucle conversationnelle qui distille la substance de PhantomOS, un volet à la fois, pilotée par l'opérateur. Chaque tour · une question guidée `AskUserQuestion` → l'opérateur choisit un volet → expansion **courte** (prose, calibrée au registre détecté, **jamais un pavé**) → nouvelle question guidée qui propose les volets non encore vus plus l'option d'avancer. Pas d'attente de texte libre nu. C'est le retour exact du conversationnel guidé d'avant v2.79.4.
 
-- **Drill territoire** · l'opérateur dit *"creative"* / *"tracking"* / *"media buy"* / *"brand"* / *"ops"* / *"business"* / *"lifecycle"* → l'agent zoom le territoire (3-5 capacités détaillées en prose + skills cités + invocation possible).
-- **Setup direct** · l'opérateur veut configurer une brand immédiatement (URL, description, *"on configure"*) → router vers `setup-brand` orchestrator (cross-ref disclosure pré-engagement `engagement-disclosure-discipline.md` v2.79.3).
-- **Skill scan** · l'opérateur veut scanner le catalogue → `/skills`.
-- **Free-text autre** · l'opérateur exprime un intent non-listé → l'agent interprète et route vers le bon territoire ou skill (jamais re-poser une question type *"tu fais quoi"*).
+**Volets substance canon** (l'agent verbalise l'effet opérateur, jamais les noms de doctrine · canon operator-facing) ·
 
-**Pattern · URL e-com pasted déclenche proactive chain.** Quand l'opérateur paste une URL e-com (Shopify · brand homepage · PDP) en réponse au panorama → l'agent lance `snapshot-brand` en async (background via Task tool), enchaîne setup minimal en parallèle (langue · scope solo/équipe/agency · pas de question profil métier), puis synthèse scrape Milestone 7. Anti-pattern · attendre setup Q&A complet avant lancer scrape (séquentiel · perd 1-2 min wall-time inutile).
+- **Pourquoi ça existe** · les 3 frictions DTC (contexte client réinventé chaque session, connaissance métier éclatée entre outils, apprentissages jamais capitalisés). 5-8 lignes.
+- **Comment ça raisonne** · mémoire métier persistante, l'agent route ton intent vers la bonne capacité, raisonnement cadré (pas d'impro), il montre sa réflexion. L'effet, pas les noms canon. 5-8 lignes.
+- **Ce qui le rend singulier** · les 4 propriétés tenues ensemble par conception · univers métier qui persiste, raisonnement cadré, exécution (pas que du texte), connaissance qui se capitalise. Posture premium · on affirme ce que fait PhantomOS, jamais un comparatif agressif ni de concurrent nommé/dénigré (canon ton Largo). 5-8 lignes.
+- **Le cycle** · encode une fois, opère au quotidien, capitalise en continu. 4-6 lignes.
+- **Les 7 territoires** · panorama bref des territoires DTC sur pied d'égalité (une demi-ligne chacun, équité HR-OHD-1), alimenté par la table de référence interne ci-dessus. C'est ici, pas en Milestone 1, que le panorama territoires est rendu.
 
-**Mode fast-track opérateur expert** (post-N brands setup OR flag explicit) skip les 2-3 questions setup · use defaults from `/operator/profile.json` + auto-validate.
+**Mécanique de la boucle** (réutilise le moteur réflexif Milestone 8) ·
 
-Write the selected mode to `/operator/awareness.json` as a transient field `tour_mode: "drill" | "setup" | "skills" | "freestyle"` to inform the rest of the session.
+- `AskUserQuestion`, exactement 4 options substantives, free-text natif pour le reste. Plafond harness 4 options · l'agent compose, jamais de menu figé, jamais d'option filler.
+- **Porte de sortie setup toujours visible (canon Vincent · non négociable).** Une des 4 options est TOUJOURS l'exit rapide vers la configuration d'une marque (*"Configurer une marque maintenant"*), à chaque tour, pour sortir du tunnel de questions sans friction. Single action option (miroir contrainte Milestone 8).
+- **Pivot cross-subject (canon Vincent · sujets imbriqués).** Dès que l'opérateur creuse un volet en profondeur (sous-sujets imbriqués), une des options doit permettre de pivoter latéralement vers un autre volet et d'y revenir, pas seulement creuser ou avancer. L'opérateur n'est jamais enfermé dans une seule branche.
+- Les 2 options restantes = volets substance non encore vus, composés selon les signaux. Après chaque expansion · écrire le volet vu dans `awareness.paths_explored`, ne jamais le re-proposer.
+- **Anti-stagnation** · après 3 expansions substance, glisser une ligne *"On peut continuer à creuser, pivoter sur autre chose, ou passer à une marque concrète, comme tu veux"*. Après 4-5, l'agent oriente la composition vers l'exit setup sans fermer brutalement (anti-collapse · toujours 4 options substantives).
+- Registre calibré (grounded/standard/dense/technical) selon détection live. Jamais de pavé · si un volet déborde, l'agent coupe et propose *"je peux creuser ça plus, ou on avance"*.
+
+**Sortie de l'arc · routing** (option avancer cliquée, territoire nommé, ou free-text) ·
+
+- **Drill territoire** · territoire nommé (creative / tracking / media buy / brand / ops / business / lifecycle) → Milestone 3.
+- **Setup direct** · *"configurer"* / URL collée / *"on configure"* → `setup-brand` orchestrator (disclosure pré-engagement `engagement-disclosure-discipline.md`).
+- **Skill scan** · l'opérateur veut le catalogue → `/skills`.
+- **Détail exhaustif** · l'opérateur veut tout d'un bloc → pointer `/about` (backup deep doc), puis revenir à l'arc ou avancer.
+- **Free-text autre** · intent non-listé → l'agent interprète et route, jamais re-poser *"tu fais quoi"*.
+
+**Pattern · URL e-com pasted déclenche proactive chain.** Si l'opérateur paste une URL e-com à n'importe quel tour de l'arc → lancer `snapshot-brand` en async (background), setup minimal en parallèle (langue · scope solo/équipe/agency · pas de question profil métier), synthèse Milestone 7. Anti-pattern · attendre la fin de l'arc avant de lancer le scrape.
+
+**Mode fast-track opérateur expert** (post-N brands setup OR flag explicit) · proposer d'emblée l'option avancer en tête, arc substance disponible mais non imposé.
+
+Write the active mode to `/operator/awareness.json` transient field `tour_mode: "substance" | "drill" | "setup" | "skills" | "freestyle"`.
 
 ### Milestone 3 · Drill territoire (conditional)
 
@@ -212,7 +222,7 @@ Les capacités annoncées · PDP optimization (Product Detail Page · conversion
 Pour démarrer · décris ton stack lifecycle actuel, je freestyle diagnostic. Ou attend skills NEW v2.81+ pour invocation structurée.
 ```
 
-Après le drill territoire, l'agent invite à l'action concrète (setup brand OR invocation skill OR drill plus profond OR retour panorama). Free-text escape natif si l'opérateur veut pivoter.
+Après le drill territoire, l'agent **ne s'arrête pas sur du texte libre nu** · il pose un `AskUserQuestion` (3 options substantives + action, free-text natif) pour garder le tour-à-tour guidé. Options composées selon le territoire drillé · ex pour Creative · *"Cartographier une marque depuis une URL"* / *"Décomposer une ad concurrente"* / *"Drill un sous-axe (angles · copy · créa)"* + l'option action *"Configurer une marque maintenant"*. Jamais d'option filler, jamais le même quatuor figé. Le free-text laisse pivoter vers un autre territoire ou retour panorama.
 
 ### Milestone 4 · Setup brand minimum (conditional)
 
@@ -482,7 +492,8 @@ Do not write `tour_status` back to `in_progress` on replay. Replay does not cons
 
 ## Constraints (non-negotiable)
 
-- **Doctrine de référence** · `docs/system/onboarding-holistic-discipline.md` v2.79.3. HR-OHD-2 · zéro question profil métier initial. Panorama narratif en premier output toujours.
+- **Doctrine de référence** · `docs/system/onboarding-holistic-discipline.md` v2.80.3. HR-OHD-2 · zéro question profil métier initial.
+- **Arc substance guidé tour à tour (canon v2.80.3).** `/tour` est l'explication conversationnelle de PhantomOS. Milestone 1 · accueil court qui dit ce qu'est le système (3-5 lignes, jamais amputé jusqu'à n'être qu'une liste de territoires). Milestone 2 · arc substance distillé un volet à la fois (pourquoi ça existe · comment ça raisonne · ce qui le distingue · le cycle · les 7 territoires) via `AskUserQuestion`, piloté par l'opérateur, expansions courtes, jamais d'attente texte-libre nu. **Jamais** un pavé, **jamais** déverser toute la substance d'un bloc, **jamais** sauter direct au choix de territoire sans avoir dit ce qu'est PhantomOS. `/about` est le backup deep doc exhaustif (mentionné en une ligne), jamais un substitut de `/tour`.
 - **Posture de rendu v2.80.1 · prose conversationnelle native.** L'onboarding `/tour` est exclusivement prose. Zéro box ASCII (`━━━` `═══` `─────`), zéro tableau territoires structuré, zéro légende iconographie au pied dans les rendus opérateur. Pattern matriciel réservé aux slash commands `/phantom` `/bird` `/breakdown` `/about`. Les milestones internes M1-M9 peuvent garder structure markdown (titres H2/H3 · listes · tableaux) pour la lisibilité du SKILL.md lui-même, mais les exemples de rendu opérateur DOIVENT être prose conversationnelle native.
 - **Voice canon 100%.** Prose first, load-bearing terms only (stateful, runtime, encode, operate, contract), refused terms banned (powerful, supercharge, intelligent, seamless). No coach-phrase, no triple-parallel punchline. See `docs/system/voice.md`.
 - **No section headers in operator-facing output.** The tour milestones are internal structure for the agent. The output to the operator flows as conversation, not as a labeled document.

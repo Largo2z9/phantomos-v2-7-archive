@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.80.1",
+  "template_version": "2.80.3",
   "released_at": "2026-05-18",
   "compatible_from": "2.0.0",
-  "summary": "Sprint patch v2.80.1 · refonte /tour onboarding en prose conversationnelle native (zéro interface ASCII boxes/tableaux/séparateurs · réservée aux slash commands) + patch doctrine onboarding-holistic-discipline NEW HR-OHD-9 + AP-OHD-9 enforcement runtime. Post-test live Largo v2.80.0 fresh workspace · recadrage 'pas d'interface · messages natifs onboarding'.",
-  "manifest": "docs/internal/releases/manifest/2.80.1-manifest.json"
+  "summary": "Sprint patch v2.80.3 · onboarding conversationnel guidé tour à tour complet · arc substance distillé un volet à la fois via AskUserQuestion (pourquoi · comment ça raisonne · ce qui le rend singulier · cycle · 7 territoires) avec porte de sortie setup toujours visible (canon Vincent) et pivot cross-subject (canon Vincent sujets imbriqués) · accueil court dit ce qu'est PhantomOS · /about reste backup deep doc exhaustif jamais substitut /tour. Ton premium canon Largo · /about §6 retire matrice comparative ChatGPT/Notion/ClickUp/Airtable + takedown nommé · remplace par 'Ce qui le rend singulier' (4 propriétés affirmées, zéro concurrent nommé, registre GitHub/Vercel). Doctrine onboarding-holistic-discipline étendue v2.80.1 → v2.80.3 · HR-OHD-10 + AP-OHD-10 enforcement runtime (double interdit · pavé en entrée ET amorce amputée sans substance). Post 2 test live Largo successifs v2.80.0 et v2.80.2.",
+  "manifest": "docs/internal/releases/manifest/2.80.3-manifest.json"
 }

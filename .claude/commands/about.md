@@ -1,7 +1,7 @@
 ---
 name: about
-description: Documentation deep PhantomOS · vision, artefacts, mécanismes, termes canon, différenciation. Pour comprendre l'architecture et la philosophie.
-version: v2.79.4
+description: Documentation deep PhantomOS · vision, artefacts, mécanismes, termes canon, ce qui le rend singulier. Backup exhaustif de `/tour` (qui est l'explication conversationnelle guidée). Pour comprendre l'architecture et la philosophie d'un bloc.
+version: v2.80.3
 ---
 
 # /about · documentation deep PhantomOS
@@ -37,17 +37,11 @@ enrichit la connaissance disponible pour les sessions suivantes.
 
   ─────────────────────────────────────────────────────────────────────
 
-  Ce que PhantomOS N'EST PAS
-  · Un assistant qui répond et oublie
-  · Un outil no-code de plus
-  · Un workspace passif qui attend tes inputs
-  · Un wrapper sur LLM sans canon métier
-
-  Ce que PhantomOS EST
-  · Un environnement opérationnel persistant
-  · Une marque vit dans son substrat encodé
-  · Une connaissance métier s'enrichit cycle après cycle
-  · Un agent qui raisonne sur l'univers, pas sur la question isolée
+  Le principe
+  · Ton univers métier est encodé une fois, pas re-décrit chaque session
+  · Une marque vit dans son substrat · produits, audiences, stratégie
+  · La connaissance s'enrichit cycle après cycle, elle ne se perd pas
+  · L'agent raisonne sur cet univers, pas sur une question isolée
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -64,9 +58,10 @@ par les outils standards.
   Tu re-brief ton LLM à chaque conversation. Ce que tu as dit hier
   est perdu. La connaissance ne s'accumule jamais.
 
-  Process fragmentés cross-tools
-  Notion documente, Airtable structure, ClickUp organise, ChatGPT
-  raisonne. Quatre silos, zéro intelligence métier transverse.
+  Process fragmentés
+  Ta connaissance métier vit éclatée entre un outil de doc, un de
+  données, un de tâches, un de raisonnement. Aucun ne raisonne sur
+  l'ensemble. Tu fais le pont à la main, à chaque fois.
 
   Capitalisation perdue sur les apprentissages
   Chaque test, chaque audit, chaque correction reste un signal isolé.
@@ -117,29 +112,25 @@ quatre · comprendre comment ça raisonne.
 
 ## 4. Comment ça raisonne
 
-Quatre mécanismes distinguent le raisonnement PhantomOS du raisonnement
-LLM standard.
+Quatre mécanismes structurent le raisonnement du système.
 
   ─────────────────────────────────────────────────────────────────────
 
-  Mécanisme                          Vs standard
-  ────────────────────────────       ─────────────────────────────────
-  Mémoire métier persistante         LLM contexte transactionnel,
-                                     oubli à chaque session.
+  Mémoire métier persistante
+  Ton univers encodé reste disponible session après session. Rien
+  à re-briefer.
 
-  Skill routing                      L'agent route ton intent vers le
-                                     bon skill canon (cf §7 glossaire
-                                     pour définition).
+  Skill routing
+  Tu décris ton intent en langage normal. L'agent route vers la
+  bonne capacité, sans syntaxe à mémoriser (cf §7).
 
-  Doctrines canon                    21 principes guidants. Pas
-                                     d'improvisation prose. Chaque
-                                     raisonnement stratégique structuré
-                                     selon doctrine référente.
+  Doctrines canon
+  Des principes qui cadrent chaque raisonnement stratégique. Pas
+  d'improvisation, une démarche reproductible.
 
-  Matrices visuelles                 L'agent MONTRE sa réflexion en
-                                     matrices ASCII (4 niveaux canon).
-                                     Tu vois le raisonnement, pas
-                                     juste la conclusion.
+  Réflexion montrée
+  L'agent expose son raisonnement, pas seulement sa conclusion ·
+  ce qu'il observe, ce qu'il déduit, ce qu'il ignore encore.
 
   ─────────────────────────────────────────────────────────────────────
 
@@ -178,36 +169,32 @@ arrière-plan sur chaque output validé.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
-## 6. Différenciation
+## 6. Ce qui le rend singulier
 
-Matrice comparative avec les outils que tu utilises probablement déjà.
-
-  ─────────────────────────────────────────────────────────────────────
-
-                                    Phantom  ChatGPT  Notion AI  ClickUp  Airtable
-                                    ───────  ───────  ─────────  ───────  ────────
-  Mémoire métier persistante           ✓        ✗         ◐          ✓        ✓
-  Raisonnement expert canon            ✓        ◐         ✗          ✗        ✗
-  Exécution multi-skills               ✓        ✗         ✗          ◐        ◐
-  Apprentissage continu canonisé       ✓        ✗         ✗          ✗        ✗
-  Doctrines architecturales            ✓        ✗         ✗          ✗        ✗
-  Matrices visuelles raisonnement      ✓        ✗         ✗          ✗        ✗
+Quatre propriétés que PhantomOS tient ensemble, par conception.
 
   ─────────────────────────────────────────────────────────────────────
 
-  Positionnement par concurrent
+  Un univers métier qui persiste
+  Ta marque est encodée et raisonnée d'une session à l'autre. Le
+  contexte n'est pas un copier-coller à refaire.
 
-  ChatGPT répond à la question, oublie après. PhantomOS opère sur un
-  univers métier persistant, raisonne sur le substrat encodé.
+  Un raisonnement cadré, pas improvisé
+  Des doctrines structurent chaque sortie stratégique. La démarche
+  est la même quel que soit l'opérateur ou le jour.
 
-  Notion AI génère du texte dans des docs statiques. PhantomOS exécute
-  des skills opérationnels canon sur ta donnée brand.
+  De l'exécution, pas seulement du texte
+  Le système produit des livrables opérables sur ta donnée · angles
+  paid, briefs, audits, cartographies. Pas des notes à recopier.
 
-  ClickUp organise des tâches sans raisonner sur le métier. PhantomOS
-  raisonne ET organise, le substrat alimente l'orchestration.
+  Une connaissance qui se capitalise
+  Chaque correction, chaque apprentissage validé enrichit le canon.
+  Tu ne redécouvres pas les mêmes leçons six mois plus tard.
 
-  Airtable stocke des données structurées sans intelligence métier.
-  PhantomOS encode ET raisonne, la donnée nourrit le raisonnement.
+  ─────────────────────────────────────────────────────────────────────
+
+  La plupart des outils tiennent une de ces propriétés. PhantomOS
+  est construit pour les tenir toutes les quatre en même temps.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -376,8 +363,8 @@ Trois commandes canon + setup pour entrer dans PhantomOS selon ton intent.
 
   ─────────────────────────────────────────────────────────────────────
 
-  /tour       Panorama scan rapide
-  /phantom    Workspace status
+  /tour       Explication conversationnelle guidée de PhantomOS
+  /phantom    État du workspace
   /skills     Catalogue exécutable
 
   ─────────────────────────────────────────────────────────────────────
@@ -404,7 +391,7 @@ Detect operator language at first turn (cf canon Language root CLAUDE.md). Outpu
 - "Les 4 artefacts de l'écosystème" → "The 4 ecosystem artifacts"
 - "Comment ça raisonne" → "How it reasons"
 - "Cycle opérationnel" → "Operational cycle"
-- "Différenciation" → "Differentiation"
+- "Ce qui le rend singulier" → "What makes it singular"
 - "Termes canon" → "Canon terms"
 - "Comment ça reste honnête" → "How it stays honest"
 - "Les 7 territoires DTC" → "The 7 DTC territories"
@@ -427,7 +414,7 @@ Detect operator language at first turn (cf canon Language root CLAUDE.md). Outpu
 
 ## Related canon
 
-- `docs/system/onboarding-holistic-discipline.md` · doctrine racine panorama 360° (v2.79.3)
+- `docs/system/onboarding-holistic-discipline.md` · doctrine racine onboarding (v2.80.3 · arc substance guidé · `/about` backup)
 - `docs/system/output-clarity-discipline.md` · standards Vercel-grade opérateur-facing (v2.79.2)
 - `docs/system/decomposition-visibility-discipline.md` · 4 niveaux matriciels canon (v2.79+)
 - `docs/system/investigation-posture.md` · 5 sections obligatoires stratégique

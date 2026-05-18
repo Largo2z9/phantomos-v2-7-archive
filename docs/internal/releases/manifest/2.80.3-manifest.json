@@ -1,0 +1,51 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.80.3",
+  "released_at": "2026-05-18",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 80,
+  "skills_count_after": 80,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 23,
+  "doctrines_count_after": 23,
+  "summary": "Sprint patch v2.80.3 · onboarding conversationnel guidé tour à tour complet + ton premium canon Largo. /tour Milestone 1 accueil court qui dit ce qu'est PhantomOS + Milestone 2 ARC SUBSTANCE guidé via AskUserQuestion (5 volets canon distillés un à la fois · pourquoi · comment raisonne · ce qui le rend singulier · cycle · 7 territoires) avec porte de sortie setup toujours visible (canon Vincent) + pivot cross-subject (canon Vincent sujets imbriqués). /about §6 retire matrice comparative ChatGPT/Notion/ClickUp/Airtable + takedown nommés · remplace par 4 propriétés affirmées zéro concurrent nommé (registre GitHub/Vercel). Doctrine onboarding-holistic-discipline v2.80.1 → v2.80.3 NEW HR-OHD-10 + AP-OHD-10 enforcement runtime (double interdit pavé + amorce amputée).",
+  "audit_amont": {
+    "test_live_v2_80_0_2_80_2": "2 test live Largo successifs fresh workspace post-v2.80.1 ont flag · v2.80.2 panorama balancé d'un bloc + attente texte libre nu ('je préférais quand c'était tour à tour avec des questions suggérées · là j'arrive sur un pavé') · v2.80.3 amorce amputée saute direct au choix territoire sans dire ce qu'est PhantomOS ('ça ne me va pas, tu ne présentes aucunement ce qu'est PhantomOS, vision, doctrine etc ?')",
+    "audit_ton_premium": "Largo audit /about §6 Différenciation matrice comparative chiffrée vs ChatGPT/Notion/ClickUp/Airtable + paragraphes takedown nommés · 'le ton où on démontre Notion, Airtable, ce n'est pas classe, pas premium, pas ce que ferait un GitHub ou un Vercel'",
+    "canons_vincent_a_integrer": "Porte de sortie setup toujours visible (sortir tunnel sans friction) ET pivot cross-subject (sujets imbriqués · bifurquer latéralement)"
+  },
+  "patches_structurels": [
+    "/tour v2.80.1 → v2.80.3 · Milestone 1 accueil enrichi + Milestone 2 ARC SUBSTANCE guidé tour à tour 5 volets via AskUserQuestion + canons Vincent exits/pivot + ton premium volet 'ce qui le rend singulier' zéro concurrent nommé",
+    "/about v2.79.4 → v2.80.3 · §6 refondu sans matrice comparative chiffrée + §1 §2 §4 §10 ton premium affirmatif zéro concurrent nommé + frontmatter v2.80.3 + cross-refs alignés v2.80.3",
+    "Doctrine onboarding-holistic-discipline v2.80.1 → v2.80.3 · NEW HR-OHD-10 'Arc substance guidé tour à tour · ni pavé ni amorce amputée' + NEW AP-OHD-10 'Pavé en entrée OU amorce amputée sans substance' (2 faces) + header doctrine bumpé canons Vincent + Largo explicit"
+  ],
+  "files_patched": [
+    {"file": ".claude/commands/tour.md", "scope": "v2.80.1 → v2.80.3 · 521L → 532L · arc substance guidé + canons Vincent exits/pivot + ton premium volet singulier"},
+    {"file": ".claude/commands/about.md", "scope": "v2.79.4 → v2.80.3 · 439L → 426L · ton premium §6 refondu + cross-files alignés + frontmatter"},
+    {"file": "docs/system/onboarding-holistic-discipline.md", "scope": "v2.80.1 → v2.80.3 · 448L → 458L · NEW HR-OHD-10 + AP-OHD-10 + header doctrine"},
+    {"file": "_version.json", "scope": "2.80.1 → 2.80.3 + summary détaillé arc substance + ton premium + canons Vincent"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.80.3 prepended"},
+    {"file": "docs/internal/releases/manifest/2.80.3-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "onboarding_arc_substance_coverage": {
+    "milestone_1": "Accueil court dit ce qu'est PhantomOS (3-5 lignes) · workspace stateful · encode une fois · raisonne/opère/apprend · concrètement ce que ça fait · jamais réduit à liste territoires",
+    "milestone_2_arc": "ARC SUBSTANCE guidé tour à tour · 5 volets canon distillés un à la fois (pourquoi · comment raisonne · ce qui rend singulier · cycle · 7 territoires) via AskUserQuestion 4 options · expansions courtes calibrées registre",
+    "canons_vincent": {
+      "exit_setup_toujours_visible": "Une des 4 options TOUJOURS l'exit rapide setup ('Configurer une marque maintenant') · sortir tunnel questions sans friction · single action option miroir Milestone 8",
+      "pivot_cross_subject": "Dès opérateur creuse un volet en profondeur (sous-sujets imbriqués) · une option permet pivot latéral vers autre volet + retour · jamais enfermé dans une branche"
+    },
+    "ton_premium_canon_largo": "Affirmer ce que fait PhantomOS avec conviction · ZÉRO comparatif agressif · ZÉRO concurrent nommé · ZÉRO takedown · registre GitHub/Vercel · s'applique cross /tour ET /about",
+    "anti_stagnation": "Après 3 expansions glisser 'continuer creuser · pivoter · ou avancer marque concrète' · après 4-5 orienter composition vers exit setup sans fermer brutalement (anti-collapse · toujours 4 options)"
+  },
+  "decisions_captured": ["D#444"],
+  "backlog_v280_3_plus": [
+    "Re-test live workspace fresh v2.80.3 sur `~/dev/phantom-test-v279_3/` pour valider arc substance guidé rendu + ton premium /about",
+    "Sprint v2.81 CRO + lifecycle skills NEW (PDP · landing · email flows · upsell · LTV) backlog historique",
+    "Skills tracking-GTM v2.80.x NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode) backlog v2.79.3 maintenu",
+    "Audit autres surfaces opérateur-facing pour leak concurrents nommés/takedown (canon ton premium cross-canon)"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.80.3 = git revert HEAD strict · /tour /about /doctrine revert v2.80.1/v2.79.4 possible · HR-OHD-10 + AP-OHD-10 retirables (canon racine préservé) · zéro impact runtime fonctionnel · zéro impact opérateur state."
+}

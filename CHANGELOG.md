@@ -7,6 +7,38 @@
 
 ---
 
+## v2.80.3 · 2026-05-18 · Sprint patch · onboarding conversationnel guidé tour à tour complet + ton premium canon · D#444 captured
+
+**Why** · Deux test live Largo successifs sur fresh workspace post-v2.80.1 ont flag 2 régressions cumulées de l'onboarding · (a) panorama balancé d'un seul bloc en Milestone 1 puis attente texte libre nu ("tu veux commencer par quoi ?") perdant le tour à tour guidé conversationnel d'avant v2.79.4 · (b) amorce amputée saute direct au choix de territoire sans dire ce qu'est PhantomOS, sa vision, comment il raisonne ("ça ne me va pas, tu ne présentes aucunement ce qu'est PhantomOS, vision, doctrine etc ?"). Audit ton parallèle sur /about a flag pattern non premium · §6 Différenciation avec matrice comparative chiffrée vs ChatGPT/Notion/ClickUp/Airtable + paragraphes takedown nommés · "le ton où on démontre Notion, Airtable, ce n'est pas classe, pas premium, pas ce que ferait un GitHub ou un Vercel". Plus deux canons Vincent à intégrer · porte de sortie setup toujours visible (sortir tunnel sans friction) et pivot cross-subject (sujets imbriqués · bifurquer latéralement).
+
+**What** · Sprint patch v2.80.3 patches 3 surfaces structurelles ·
+
+1. Refonte `/tour` v2.80.1 → v2.80.3 · Milestone 1 accueil court qui DIT ce qu'est PhantomOS (3-5 lignes · workspace stateful · encode une fois · raisonne/opère/apprend · différence avec chat qui oublie · jamais réduit à liste de territoires). Milestone 2 ARC SUBSTANCE guidé tour à tour · 5 volets canon (pourquoi ça existe · comment ça raisonne · ce qui le rend singulier · le cycle · les 7 territoires) distillés un volet à la fois via `AskUserQuestion` (4 options substantives composées · volets non vus + porte sortie setup toujours visible + pivot cross-subject quand sujets imbriqués · free-text natif · jamais menu figé · jamais filler) · expansions courtes calibrées au registre · awareness.paths_explored tracks volets vus. Anti-stagnation après 3-5 expansions. Sortie de l'arc routing canon (drill territoire · setup direct · skill scan · détail exhaustif /about · free-text autre).
+
+2. Refonte `/about` v2.79.4 → v2.80.3 · §6 "Différenciation" → "Ce qui le rend singulier" · supprime matrice comparative chiffrée vs concurrents nommés + paragraphes takedown · remplace par 4 propriétés affirmées avec conviction (univers métier qui persiste · raisonnement cadré pas improvisé · exécution pas que du texte · connaissance qui se capitalise) + 1 ligne sobre "la plupart des outils en tiennent une, PhantomOS les tient toutes les quatre" zéro concurrent nommé. §2 reformule friction sans nommer Notion/Airtable/ClickUp/ChatGPT. §4 retire cadrage "Vs standard / LLM" → positif. §1 "Ce que PhantomOS N'EST PAS" → "Le principe" affirmatif. §10 cross-refs alignés v2.80.3 (/tour explication conversationnelle · /about backup deep doc). Frontmatter v2.79.4 → v2.80.3.
+
+3. Patch doctrine `onboarding-holistic-discipline.md` v2.80.1 → v2.80.3 · NEW HR-OHD-10 "Arc substance guidé tour à tour · ni pavé ni amorce amputée" (5 volets canon · AskUserQuestion · 4 options · exits toujours présentes canon Vincent · pivot cross-subject canon Vincent · ton premium canon Largo · double interdit pavé+amputée). NEW AP-OHD-10 "Pavé en entrée OU amorce amputée sans substance" (2 faces du même anti-pattern). Header doctrine bumpé v2.80.3 explicit canons Vincent + Largo.
+
+**Pattern systémique fermé** · onboarding `/tour` redevient l'explication conversationnelle guidée de PhantomOS (vision · fonctionnement · différenciation · territoires distillés tour à tour, piloté opérateur, expansions courtes, porte sortie setup toujours visible, pivot cross-subject quand imbriqué). `/about` reste backup deep doc exhaustif jamais substitut. Ton premium canon Largo enforced cross /tour + /about (zéro concurrent nommé · registre GitHub/Vercel · on affirme avec conviction sans takedown comparatif).
+
+**Backward compat strict additif** · skills 80 inchangé · slash commands 10 inchangé · doctrines 23 inchangée (HR-OHD-10 + AP-OHD-10 extensions). Tests Largo v2.80.0 + v2.80.2 documentés patterns AP-OHD-10 (2 faces).
+
+**Files patched** ·
+- `.claude/commands/tour.md` v2.80.1 → v2.80.3 (521L → 532L · +11L · Milestone 1 enrichi + Milestone 2 arc substance + canons Vincent exits + pivot)
+- `.claude/commands/about.md` v2.79.4 → v2.80.3 (439L → 426L · -13L · §6 refondu sans concurrents + §1 §2 §4 §10 ton premium + frontmatter v2.80.3)
+- `docs/system/onboarding-holistic-discipline.md` v2.80.1 → v2.80.3 (448L → 458L · +10L · HR-OHD-10 + AP-OHD-10 + header bumped canons Vincent + Largo)
+- `_version.json` 2.80.1 → 2.80.3 + summary détaillé
+- `CHANGELOG.md` entry v2.80.3 prepended
+- `docs/internal/releases/manifest/2.80.3-manifest.json` NEW
+
+**Backlog v2.80.3+** ·
+- Re-test live workspace fresh v2.80.3 sur `~/dev/phantom-test-v279_3/` pour valider arc substance guidé rendu + ton premium /about
+- Sprint v2.81 CRO + lifecycle skills NEW (PDP · landing · email flows · upsell · LTV) backlog historique
+- Skills tracking-GTM v2.80.x NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode) backlog v2.79.3 maintenu
+- Audit autres surfaces opérateur-facing pour leak concurrents nommés/takedown (canon ton premium cross-canon)
+
+---
+
 ## v2.80.1 · 2026-05-18 · Sprint patch · refonte /tour onboarding en prose conversationnelle native + patch doctrine onboarding-holistic-discipline NEW HR-OHD-9 + AP-OHD-9 · D#443 captured
 
 **Why** · Test live Largo v2.80.0 fresh workspace · invoke `/tour` onboarding · recadrage FORT · *"je ne veux pas d'interface, pas cette espèce d'interface que tu fais, uniquement pour les commandes slash Phantom. Je veux juste des messages natifs pendant tout l'onboarding."* `/tour` v2.79.4 → v2.80.0 rendait panorama 360° en interface ASCII matricielle (boxes ━━━ ═══ ───── · tableau territoires · légende iconographie · bloc visuel intro · action close en bloc). Pattern hérité skills synthesis brand (decomposition-visibility-discipline v2.79.2 4 niveaux matriciels) appliqué littéralement à l'onboarding · friction novice premier contact. L'opérateur arrive et s'attend à un accueil humain naturel · pas à une interface technique structurée. Mismatch d'attente = friction adoption.
