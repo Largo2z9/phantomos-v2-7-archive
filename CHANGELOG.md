@@ -7,6 +7,21 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-discipline.md` (v2.83.0+).
 
+## [2.84.1] · 2026-05-19
+### Changed
+- `voice-doctrine.md` v2.84.0 → v2.84.1 · 5 patches post-audit Claude Web · NEW mini-section Registres canon (3 registres reference-grade · semi-public · runtime opérateur) · NEW section Conventions typographiques (séparateurs canon `·` `\|` `→` `↔` · em-dash interdit) · notes (rename pending v2.85.0+) cross-refs `*-discipline.md` · notes transparence P4 spécialise P1 + AP-VD-1/2/7 applications négatives · AP-VD-3 précision distinction AP-VD-8 · 150L pile sous cap claude-md-discipline 150
+### Notes
+- 21 fichiers `*-discipline.md` identifiés à renommer `*-doctrine.md` · sprint v2.85.0 dédié (cross-refs sibling + CLAUDE.md root + manifest skills)
+- Rejet drift audit · frontmatter `***` était hallucination · file utilise déjà `---` YAML standard
+
+## [2.84.0] · 2026-05-19
+### Added
+- NEW doctrine `voice-doctrine.md` · ton canon artefacts internes · 5 principes wording (P1-P5) · politique FR/EN canon (opérateur · décomposition · cartographie · territoire · doctrine vs discipline) · conventions casse (NOYAU/CONTEXTE/MODIFIEURS · NIVEAU 0/1-4/LIVE plafond 5-10) · famille paramétrage NEW (axe variable · paramétrage · paramétrer · pair canon cartographier ↔ paramétrer) · 8 anti-patterns (AP-VD-1 à AP-VD-8) · exception README/WELCOME semi-public
+### Changed
+- `docs/system/README.md` index · ajout `voice-doctrine` en Authoring infrastructure · `claude-md-discipline` + `changelog-discipline` listés (rattrapage) · count 24 → 27 doctrines
+### Migration
+- Aucune (cadre canon posé · pas de propagation lexicon/canon/doctrines existantes dans ce sprint · réécritures dédiées v2.84.x+)
+
 ## [2.83.0] · 2026-05-19
 ### Added
 - NEW doctrine `changelog-discipline.md` (cap 80L par release) · NEW `docs/internal/project-journal.md` (4270L préservés narrative archive)

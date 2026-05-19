@@ -12,6 +12,76 @@
 
 ---
 
+## v2.84.1 · 2026-05-19 · Sprint PATCH · voice-doctrine v2.84.0 → v2.84.1 · 5 patches post-audit Claude Web · D#451 captured
+
+Audit externe Claude Web phase 2-bis sur voice-doctrine v2.84.0 a validé "shipped" à 90% MAIS flag 4 drifts mineurs + 1 zone fragilité structurelle. Verdict détaillé · auto-conforme à ~90% (5 principes wording + 8 anti-patterns respectés en s'écrivant · zéro liaison molle · zéro sycophant · zéro adjectif vague · registre tiers maintenu). Test méta de cohérence largement passé.
+
+**4 drifts identifiés** · D1 AP-VD-3 vs AP-VD-8 chevauchement perçu (formules politesse vs pronoms conversationnels distincts mais imbriqués en pratique) · D2 cross-refs `claude-md-discipline.md` + `changelog-discipline.md` + `output-clarity-discipline.md` + `decomposition-visibility-discipline.md` listées comme legacy dans une doctrine qui déclare 'discipline' deprecated et 'doctrine' canon (auto-cohérence visible à l'œil nu) · D3 frontmatter `***` au lieu de `---` standard YAML (HALLUCINATION audit · file utilise déjà `---` · lignes 1+7 vérifiées Read tool) · D4 variation typographique séparateurs `·` prose vs `|` tables sans convention canon formalisée.
+
+**Zone fragilité structurelle** · section "Exception README / WELCOME (semi-public)" introduit un 3e registre hybride non nommé ailleurs dans le système. Trois options proposées · (Opt 1) promouvoir 'semi-public' en registre canon nommé · 3 registres listés en haut comme boussole auteur · (Opt 2) supprimer exception et appliquer reference-grade strict aussi au README · (Opt 3) externaliser dans `public-surface-doctrine.md` (mais ajoute 28e doctrine vs ripening period). Opt 1 choisie · pas nouvelle doctrine, pas simplification réductrice, pose 3 niveaux clairement.
+
+**Test de suppression strict appliqué** · P1+P4 fusion envisageable (P4 spécialise P1 ordre syntaxique d'ouverture) MAIS conservé distinct pour visibilité opérationnelle (cible un défaut d'écriture fréquent). 4 AP uniques (AP-VD-3 sycophant · AP-VD-4 adjectifs vagues · AP-VD-5 inflation marqueurs · AP-VD-8 registre runtime) + 4 applications négatives principes (AP-VD-1/2/7 négatifs P3/P4/P1 · AP-VD-6 redondant avec contract-daily). Décision · transparence assumée plutôt que suppression · checklist visible valeur opérationnelle pour auteurs (cohérent claude-md-discipline test de suppression appliqué pre-ship · mais ici redondance volontaire documentée).
+
+**5 patches consolidés v2.84.1** ·
+
+P1 · NEW mini-section "Registres canon" en haut (après Posture, avant Principes canon) · 3 registres canon (Reference-grade · Semi-public · Runtime opérateur) table 4 colonnes (Registre · Cible · Voice-doctrine applicable · Exemples) · pose boussole claire mental model auteur · cross-ref ancré dans Exception section.
+
+P2 · Notes (rename pending v2.85.0+) inline · cross-refs `claude-md-discipline` + `changelog-discipline` + `output-clarity-discipline` + `decomposition-visibility-discipline` + AP-VD-5 · politique FR/EN '21 fichiers `*-discipline.md` identifiés à renommer `*-doctrine.md` · sprint v2.85.0 dédié (cross-refs sibling doctrines + `CLAUDE.md` root + manifest skills à propager)'.
+
+P3 · Note transparence P5 section · "P4 spécialise P1 sur l'ordre syntaxique d'ouverture de phrase. Conservé distinct pour visibilité opérationnelle (cible un défaut d'écriture fréquent)". Note transparence post-AP-VD-8 · "AP-VD-1, AP-VD-2, AP-VD-7 sont des applications négatives directes de P3, P4, P1 (redondance assumée). Conservés visibles pour fonction de checklist d'écriture en post-write".
+
+P4 · AP-VD-3 wording préciser · "Aucune formule d'OUVERTURE EN MATIÈRE ('Excellente question', 'Bien sûr', 'Avec plaisir') dans les artefacts internes. Distinct d'AP-VD-8 qui cible les pronoms conversationnels (tu/vous)". Distinction explicite (entrée matière) vs AP-VD-8 (pronoms registre runtime).
+
+P5 · NEW section "Conventions typographiques" · table 5 séparateurs canon (`·` middle dot prose/listes inline · `|` tableaux markdown uniquement · `→` flèche conséquence/dépendance/transition · `↔` paires bidirectionnelles ex cartographier ↔ paramétrer · em-dash `—` interdit canon cf memory no_em_dash). Prévient drift typographique futur · formalise convention déjà appliquée implicitement.
+
+**Rejet drift D3 audit** · frontmatter `***` était hallucination Claude Web · file utilise déjà `---` standard YAML (lignes 1+7 vérifiées). Aucune action.
+
+**Compression appliquée pour maintenir cap claude-md-discipline 150L** · Versioning section 8 → 1 ligne (semver inline + test suppression juxtaposé) · Conditions d'invocation 11 → 4 lignes (2 phrases inline énumération `·`) · Exception README/WELCOME 8 → 5 lignes (1 phrase inline allègements + paragraphe applicable). Gain 17 lignes pour absorber les 15 ajouts (Registres canon 9L + Notes transparence 2L + AP-VD-3 préciser 1L + Conventions typographiques 8L · 5 patches). Résultat · 150L pile · doctrine reste sous cap claude-md-discipline strict.
+
+**Auto-conformance check v2.84.1** · 150L sous cap · em-dash référencé une fois dans Conventions typographiques pour interdire (sémantique OK · pas utilisation runtime) · auto-conformance P1-P5 + AP-VD-1à8 maintenue · notes transparence ne violent pas les principes (registre tiers factuel maintenu) · 21 fichiers chiffre concret intégré (cohérent P1 précision dense vs vague).
+
+**Backward compat strict additif** · 27 doctrines inchangé · skills 81 inchangé · slash commands 10 inchangé · voice-doctrine patches sur 1 file uniquement · zéro impact runtime (doctrine pas encore propagée).
+
+D#451 captured · voice-doctrine v2.84.1 patches post-audit consolidés · cadre canon de wording stabilisé pre-propagation downstream.
+
+**Backlog v2.84.2+ → v2.85.0** · v2.84.2 réécriture lexicon user-facing · v2.84.3 réécriture canon.md interne + correction polysémie canon (audit phase 2 découverte A 735 occurrences) · v2.84.4 audit README/WELCOME · v2.85.0 sprint rename 21 fichiers `*-discipline.md` → `*-doctrine.md` (cross-refs sibling + CLAUDE.md root + manifest skills · 2-3h estimé multi-agents parallèle scope disjoint).
+
+---
+
+## v2.84.0 · 2026-05-19 · Sprint MINOR · NEW doctrine canon voice-doctrine.md · ton reference-grade artefacts internes · D#450 captured
+
+Audit externe Claude Web phase 2 sur Phase 1 terminology-inventory v2.83.x (323 termes uniques · 12 sources analysées 5 Haiku agents parallèle + Sonnet aggregation) a identifié 9 problèmes structurels (A-I) avant d'autoriser les phases 2a-2e clean propagation. Polysémie de "canon" (735 occurrences · 3 sens distincts confondus). FR/EN inconsistencies opérateur/operator/operateur. Majuscules canon NOYAU/CONTEXTE/MODIFIEURS et NIVEAU 0/1-4/LIVE volontaires mais pas codifiées plafond. 3 axes statuts (shipped/proposed/deprecated · validated/draft/sourced · etc) confondus dans le canon. Doctrine vs discipline ambigu. 10 orphans à arbitrer (promotion ou archival). Adjectifs vagues enrichissement. Jargon doctrinal opérateur-facing leak risk.
+
+Décision pre-clean · poser cadre canon de wording avant toute réécriture pour que les phases 2a-2e appliquent une règle codifiée plutôt qu'arbitraire. Sprint v2.84.0 dédié à la doctrine canon · pas de propagation immédiate (cohérent self-sufficiency pattern v2.83.0 · test de suppression pre-ship sans soumission audit externe).
+
+**Doctrine `voice-doctrine.md` posée (138L · sous cap claude-md-discipline 150L)** ·
+
+5 principes wording (P1 précision dense · P2 verbes d'action + noms techniques assumés · P3 phrases denses courtes sans liaisons molles · P4 terme canon avant explication · P5 lecteur senior assumé · ton reference-grade comparables Stripe API · RFC IETF · PostgreSQL · Anthropic internes).
+
+Politique linguistique FR/EN canon · 5 décisions tranchées (opérateur canon · décomposition canon · cartographie canon · territoire canon · doctrine canon vs discipline réservé fichiers historiques rename). Schemas + JSON field names + paths + slugs + universal tech terms (brand, workspace, skill, agent, API, token, MCP, RAG) restent EN.
+
+Conventions de casse · plafond strict 5-10 termes majuscules réservées aux constructions architecturales fondatrices · liste canon actuelle (NOYAU · CONTEXTE · MODIFIEURS · NIVEAU 0 · NIVEAU 1-4 · NIVEAU LIVE).
+
+Famille terminologique paramétrage NEW canon (axe variable · paramétrage · paramétrer) avec pair conceptuel canon cartographier (lire/structurer) ↔ paramétrer (injecter/composer) · les deux verbes structurent les deux moments fondamentaux du cycle PhantomOS.
+
+8 anti-patterns AP-VD-1 à AP-VD-8 · périphrase pédagogique · liaisons molles · validation politesse sycophant · adjectifs vagues · inflation marqueurs priorité · jargon doctrinal opérateur-facing leak · redéveloppement acronymes · mélange registre runtime.
+
+Exception canon · README.md + WELCOME.md semi-public (phrases narratives autorisées pour intro projet · acronymes développés · cross-refs ressources canon mais pas doctrines internes · vocabulaire canon strictement applicable · pas de politesse · pas d'adjectifs vagues).
+
+Versioning amendement strict semver + test de suppression pré-amendement obligatoire (cf claude-md-discipline) pour détection redondance principes.
+
+**Auto-conformance check appliqué** · la doctrine respecte ses propres principes (P1-P5 + AP-VD-1à8 + casse + paramétrage + acronymes utilisés seuls + tu/vous absent + zéro adjectif vague + zéro liaison molle).
+
+**Scope constraint strict** · PAS DE PROPAGATION dans ce sprint. Cadre canon posé. Réécritures lexicon user-facing · canon.md interne · audit README/WELCOME · propagation 26 doctrines existantes en sprints v2.84.1 → v2.85.0 dédiés (lots 5-6 doctrines parallèle scope disjoint).
+
+**Files patched** · NEW `docs/system/voice-doctrine.md` (138L) · PATCH `docs/system/README.md` (count 24 → 27 doctrines · Authoring infrastructure section + claude-md-discipline + changelog-discipline rattrapage listés) · PATCH `CHANGELOG.md` (entry v2.84.0 Keep-a-Changelog strict) · PATCH `_version.json` (2.83.0 → 2.84.0) · NEW `docs/internal/releases/manifest/2.84.0-manifest.json` (release manifest étendu · voice_doctrine_canon block 5 décisions FR/EN + casse + famille paramétrage NEW + 8 AP-VD + exception README/WELCOME + self_conformance_check).
+
+D#450 captured · voice-doctrine canon posé avant propagation Phase 2 cleanup terminologique. Cohérent meta-pattern · cadre canon avant exécution propagation.
+
+Backward compat strict additif · 27 doctrines (était 26 + voice-doctrine + rattrapages claude-md/changelog rendus visibles index) · skills 81 inchangé · slash commands 10 inchangé · runtime semantically unchanged (doctrine pas encore propagée).
+
+---
+
 ## v2.82.1 · 2026-05-19 · Sprint PATCH · validation post-refactor v2.82.0 · D#448 captured
 
 Audit non-régression post-v2.82.0 MAJOR REFACTOR via 2 agents parallèle (mapping diff + validation statique 5 scénarios).
