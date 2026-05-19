@@ -7,6 +7,20 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-discipline.md` (v2.83.0+).
 
+## [2.84.3] · 2026-05-20
+### Changed
+- `docs/internal/canon.md` refonte STRICT voice-doctrine v2.84.1 · 413L → 149L (-64%) · 2ème propagation downstream cadre canon · application reference-grade intégrale (P1-P5 + AP-VD-1à8 + FR/EN + casse + paramétrage + conventions typographiques)
+### Added
+- NEW section canon `Sens canon du mot 'canon'` · 7 sens MECE documentés (S1 doctrine verrouillée · S2 archétype pédagogique · S3 seuil CMR 95% · S4 formule OTRB · S5 référentiel partagé · S6 copy validée · S7 terminologie normalisée FR) avec marqueurs contextuels et exemples typiques · DÉSAMBIG-2 confirmé (polysémie documentée, pas rename)
+- NEW `docs/internal/refactor/v2.84.3-preflight.md` · pré-flight consolidé 3 sub-agents Haiku parallèle (cartographie sens + cross-refs entrantes 32 + sortantes 39)
+### Fixed
+- Ref cassée · `docs/system/creative-formula.md` (path drift) → `resources/templates/creative-formula.md`
+- Ref cassée · `GETTING_STARTED.md` (fichier absent) retirée et pointée vers `docs/README.md`
+### Notes
+- Audit ancres runtime · zéro skill runtime ne référence directement `docs/internal/canon.md` (5 skills + phantom slash-command pointent vers d'autres `*-canon.md` distincts) · seule ancre formelle préservée `§ Atlas brand` (référencée depuis `atlas-brand.md:78`)
+- D#453 captured · NEW memory canon `canon_md_strict_canon`
+- Backlog DÉSAMBIG-1.5 noté · rename ciblé S4 dominant ~1066 occurrences si polysémie insuffisante à l'usage (sprint dédié 8-12h post-distribution)
+
 ## [2.84.2] · 2026-05-20
 ### Changed
 - `lexicon.md` user-facing refonte · 175L → 103L (-41%) · 1ère propagation downstream voice-doctrine v2.84.1 · application partielle scope (b) · FR/EN canon (opérateur, décomposition, etc) · AP-VD-4 adjectifs vagues retirés · AP-VD-6 zéro nom doctrine canon leaké · P1 précision dense · P3 phrases courtes · em-dash zéro · `vous`/`votre marque` registre opérateur préservés

@@ -1,0 +1,102 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.84.3",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.84.3 · 2ème propagation downstream voice-doctrine v2.84.1 · canon.md interne reference-grade STRICT · refonte 413L → 149L (-64%) · NEW section 'Sens canon du mot canon' 7 sens MECE documentés (DÉSAMBIG-2 confirmé) · pré-flight 3 sub-agents Haiku parallèle obligatoire · auto-conformance check passé.",
+  "context_amont": {
+    "trigger": "Backlog v2.84.0/v2.84.1/v2.84.2 listait v2.84.3 canon.md interne STRICT comme propagation downstream voice-doctrine. Audit Phase 1 terminology-inventory v2.83.x avait flagué polysémie canon 735 occurrences (3 sens distincts confondus minimum). Sprint v2.84.3 dédié désambiguïsation + réécriture reference-grade.",
+    "scope_choisi": "DÉSAMBIG-2 polysémie documentée (pas rename) · raisons · pas sens dominant >70% · hiérarchie imbriquée intentionnelle (S1 doctrine → S3 threshold → S4 formula → S5 library → S6 instance · S7 transversal) · DÉSAMBIG-1 rename = sprint dédié 8-12h hors scope · solution mature self-sufficiency pattern v2.83.0+"
+  },
+  "pre_flight_phase_1": {
+    "delegation": "3 sub-agents Haiku parallèle scope disjoint · wall-time ~3 min",
+    "agents": [
+      "Agent A · cartographie sens distincts (7 sens identifiés · garde-fou >4 et <8 validé)",
+      "Agent B · cross-refs entrantes (32 total · 13 formelles + 19 narratives)",
+      "Agent C · cross-refs sortantes (39 total · 2 refs cassées détectées)"
+    ],
+    "consolidated_output": "docs/internal/refactor/v2.84.3-preflight.md (note méthodologique 735 vs 2646 + 7 sens table + 32 entrantes + 39 sortantes + 2 refs cassées + 3 conditions Largo + plan Phase 3)",
+    "note_methodologique": "Phase 1 terminology-inventory v2.83.x = 735 occurrences mot 'canon' pur (token isolé) · Phase 1A pré-flight v2.84.3 = 2646 occurrences sens élargi (composés + inflexions 'canon copy', 'doctrine canon', 'canonical matrix', etc) · cohérence préservée (strates distinctes du même phénomène polysémique)"
+  },
+  "7_sens_canon_documentes": [
+    {"id": "S1", "description": "Doctrine verrouillée · source de vérité modulaire", "occ_approx": 220, "pct_corpus": "8%", "marqueurs": "doctrine canon · principe canon · règle canon"},
+    {"id": "S2", "description": "Archétype pédagogique pour tangibilité", "occ_approx": 60, "pct_corpus": "2%", "marqueurs": "cas canonique · vitrine canon · exemple canon"},
+    {"id": "S3", "description": "Seuil qualité invariant matrice production (CMR 95%)", "occ_approx": 560, "pct_corpus": "21%", "marqueurs": "seuil canon · qualité canon · 95% qualité"},
+    {"id": "S4", "description": "Formule compositionnelle typée (OTRB · parent/enfants)", "occ_approx": 1066, "pct_corpus": "40%", "marqueurs": "formule canon · compositional canon · OTRB · schema canon"},
+    {"id": "S5", "description": "Référentiel partagé cross-système", "occ_approx": 540, "pct_corpus": "20%", "marqueurs": "atlas canon · frameworks canon · library canon"},
+    {"id": "S6", "description": "Copy ou archétype validé asset library", "occ_approx": 150, "pct_corpus": "6%", "marqueurs": "canon validé · validations canon"},
+    {"id": "S7", "description": "Terminologie normalisée FR canon", "occ_approx": 50, "pct_corpus": "2%", "marqueurs": "FR canon · naming canon · terme canon"}
+  ],
+  "3_conditions_largo_integrees": [
+    "(1) Note méthodologique 735 vs 2646 occurrences clarifiée en pré-flight + manifest",
+    "(2) Audit 6 fichiers runtime sensibles révisé · zéro skill runtime ne référence directement docs/internal/canon.md (5 skills + phantom slash-command pointent vers d'autres *-canon.md distincts) · une seule ancre section critique préservée § Atlas brand pour atlas-brand.md:78",
+    "(3) Fix 2 refs cassées sortantes · creative-formula.md path drift → resources/templates/creative-formula.md · GETTING_STARTED.md absent retiré et pointé vers docs/README.md"
+  ],
+  "patches_appliques": [
+    {"file": "workspace-template/docs/internal/canon.md", "scope": "Refonte complète · 413L → 149L (-64%) · application voice-doctrine STRICT reference-grade · NEW section Sens canon du mot canon (7 sens MECE) · sections compressées · 2 refs cassées fixées · ancre § Atlas brand préservée", "rationale": "2ème propagation downstream voice-doctrine canon · test cadre canon sur fichier interne reference-grade strict"},
+    {"file": "workspace-template/docs/internal/refactor/v2.84.3-preflight.md", "scope": "NEW · pré-flight consolidé 3 sub-agents Haiku + note méthodologique + 7 sens MECE + 32 entrantes + 39 sortantes + 2 refs cassées + 3 conditions Largo + plan Phase 3", "rationale": "Documentation pré-flight obligatoire Phase 1 · traçabilité décisions désambiguïsation"}
+  ],
+  "self_conformance_check_v843": {
+    "voice_doctrine_strict_reference_grade": true,
+    "checks": [
+      "149L sous cap 200L claude-md-discipline (cap glossaire généreux) · -64% vs original 413L",
+      "P1 précision dense · acronymes développés une fois (CI · SED · CMR · SAD · PTD · JTBD · OTRB · MEC · ANG · TBD) · utilisés seuls ensuite",
+      "P2 verbes action canon (encoder · paramétrer · cartographier · composer · décomposer) + noms techniques canon (substrat · atome · axe variable · brique · cellule · pipeline)",
+      "P3 phrases denses sans liaisons molles · grep 'par ailleurs/en effet/il convient' retourne 0",
+      "P4 terme canon avant explication · pattern systématique 'X · définition'",
+      "P5 lecteur senior assumé · aucun encart pédagogique",
+      "AP-VD-1 zéro périphrase pédagogique avant terme canon",
+      "AP-VD-2 zéro liaisons molles narratives",
+      "AP-VD-3 zéro validation politesse/sycophant",
+      "AP-VD-4 zéro adjectif vague non-spécifié",
+      "AP-VD-5 zéro inflation marqueurs priorité (zéro CRITICAL/YOU MUST)",
+      "AP-VD-6 noms doctrines OK exposés (audience interne contributeurs · scope reference-grade)",
+      "AP-VD-7 acronymes utilisés seuls après première occurrence",
+      "AP-VD-8 zéro tu/vous/votre (registre tiers factuel strict · grep retourne 0)",
+      "FR canon · 'opérateur' utilisé · 'operator' sans accent absent · 'decomposition' sans accent absent",
+      "Casse canon · NOYAU/CONTEXTE/MODIFIEURS pas utilisé · OTRB acronyme OK",
+      "Conventions typographiques · `·` middle dot prose · `|` tables · `↔` paires bidirectionnelles canon (cartographier ↔ paramétrer)",
+      "Em-dash zéro · grep '—' retourne 0",
+      "Famille paramétrage NEW canon utilisée · 'paramétrer' ajouté au pipeline métier · pair cartographier ↔ paramétrer documenté"
+    ]
+  },
+  "ancres_runtime": {
+    "atlas_brand_anchor": "§ Atlas brand (entry interne) référencée depuis atlas-brand.md:78 · section ## Atlas brand préservée dans canon.md v2.84.3",
+    "skills_runtime_audit": "Zéro skill runtime ne référence docs/internal/canon.md directement (compose-creative · craft-packshot · scaffold-extension pointent vers *-canon.md distincts · model-versioning-canon.md doctrine sœur + {domain}-canon.md fichiers métier sœurs + .claude/commands/phantom-modes/canon.md slash-command mode distinct)",
+    "risk_rupture": "BAS · une seule ancre formelle préservée"
+  },
+  "refs_cassees_fixees": [
+    "creative-formula.md · canon.md workspace-template ligne 62/66 pointait vers docs/system/creative-formula.md · fichier réel à resources/templates/creative-formula.md · path corrigé v2.84.3",
+    "GETTING_STARTED.md · canon.md workspace-template lignes 318+407 mentionnaient fichier inexistant · v2.84.3 retiré et section 'Profondeur de contexte L1/L2/L3' compressée + cross-ref docs/README.md substituée"
+  ],
+  "files_patched": [
+    {"file": "workspace-template/docs/internal/canon.md", "scope": "413L → 149L · refonte voice-doctrine STRICT reference-grade"},
+    {"file": "workspace-template/docs/internal/refactor/v2.84.3-preflight.md", "scope": "NEW · pré-flight consolidé"},
+    {"file": "_version.json", "scope": "Bump 2.84.2 → 2.84.3 + summary"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.84.3 prepended"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.84.3"},
+    {"file": "docs/internal/releases/manifest/2.84.3-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["workspace-template/docs/internal/canon.md refonte voice-doctrine STRICT", "NEW pré-flight consolidé", "version + manifest + CHANGELOG + project-journal + D#453 + memory canon canon_md_strict_canon"],
+    "out_of_scope_explicit": ["context-engine/canon.md R&D 475L (v2.84.5 optional alignment cross-canon)", "v2.84.4 README/WELCOME audit application exception semi-public", "DÉSAMBIG-1.5 rename ciblé S4 dominant ~1066 occurrences (sprint dédié 8-12h post-distribution si polysémie insuffisante à l'usage · critère trigger 3+ frictions usage observées)", "v2.85.0 rename 21 fichiers *-discipline.md → *-doctrine.md (sprint dédié 2-3h multi-agents parallèle)"]
+  },
+  "decisions_captured": ["D#453"],
+  "backlog_v284_x_v285_0": [
+    "v2.84.4 · audit README.md + WELCOME.md application exception semi-public (registre canon)",
+    "v2.84.5 (optional) · alignment context-engine/canon.md R&D 475L application voice-doctrine STRICT",
+    "v2.85.0 · sprint rename 21 fichiers *-discipline.md → *-doctrine.md (cross-refs sibling + CLAUDE.md root + manifest skills · 2-3h estimé multi-agents parallèle scope disjoint)",
+    "DÉSAMBIG-1.5 (backlog post-distribution) · rename ciblé S4 dominant ~1066 occurrences si polysémie documentée insuffisante à l'usage (critère trigger 3+ frictions usage observées sessions Largo ou auteurs sur ambiguïté S4 spécifique)",
+    "Phase 2 terminology backlog · 3 questions intent restantes Largo (C majuscules NIVEAU volontaire ? · G 3 axes statuts distincts ? · H orphelins promouvoir ?)",
+    "doctrine_ripening_period revisit 2026-06-09 (T+3 weeks · 5+ informal applications criteria)"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.84.3 = git revert HEAD strict · 1 fichier canon.md refondu (413L original restauré via git history) + 1 NEW pré-flight retirable · zéro impact runtime (canon.md reference-grade interne contributeurs)."
+}
