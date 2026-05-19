@@ -7,6 +7,15 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-discipline.md` (v2.83.0+).
 
+## [2.84.4] · 2026-05-20
+### Changed
+- `README.md` · 4 patches mineurs application registre semi-public canon · acronymes DTC (ligne 3) et ROAS (ligne 9) développés à première occurrence · adjectif vague "Full honest audit" → "Detailed audit" (AP-VD-4) · cross-ref `docs/system/README.md` (doctrine interne leak) → `docs/system/extending.md` (cohérent allègement registre semi-public)
+- `WELCOME.md` · audit conformity élevée pre-audit · ZÉRO patch structurel (15L très denses · em-dash zéro · acronymes universels · ton narratif allègement permis)
+### Notes
+- 3ème propagation downstream voice-doctrine v2.84.1 · trilogie de propagations doctrinales complétée (strict canon.md v2.84.3 + partiel lexicon.md v2.84.2 + semi-public README/WELCOME v2.84.4)
+- Apprentissage cross-registres · voice-doctrine résiliente sur 3 registres canon distincts · doctrine guide application concrète selon registre cible · cadre canon validé via 3 propagations réelles
+- D#454 captured
+
 ## [2.84.3] · 2026-05-20
 ### Changed
 - `docs/internal/canon.md` refonte STRICT voice-doctrine v2.84.1 · 413L → 149L (-64%) · 2ème propagation downstream cadre canon · application reference-grade intégrale (P1-P5 + AP-VD-1à8 + FR/EN + casse + paramétrage + conventions typographiques)

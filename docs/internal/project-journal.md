@@ -12,6 +12,38 @@
 
 ---
 
+## v2.84.4 · 2026-05-20 · Sprint PATCH · 3ème propagation downstream voice-doctrine · README + WELCOME registre semi-public · trilogie complétée · D#454 captured
+
+Backlog v2.84.0-v2.84.3 listait v2.84.4 audit README/WELCOME application registre semi-public canon. Voice-doctrine v2.84.1 définit 3 registres canon (reference-grade interne / semi-public README et WELCOME / runtime opérateur). Sprint court 30-45 min complète la trilogie de propagations doctrinales avant les gros sprints v2.85.0+.
+
+**Particularité registre semi-public canon** · ton reference-grade base + allègements explicites permis · phrases narratives autorisées · acronymes développés systématiquement à chaque première occurrence (vs artefacts internes qui développent une fois et utilisent seuls ensuite) · cross-refs limitées aux ressources canon publiques (pas vers doctrines internes) · vocabulaire canon transverse intégral (opérateur, substrat, paramétrer, etc) · pas de sycophant · pas d'adjectifs vagues.
+
+**Audit README.md (67L)** · 3 violations identifiées · acronymes non développés (DTC ligne 3+ · ROAS ligne 9 · violations registre semi-public) · adjectif vague "Full honest audit" (ligne 9 · AP-VD-4) · cross-ref doctrine interne `docs/system/README.md` (ligne 66 · violation registre semi-public "pas vers doctrines internes").
+
+**4 patches README.md v2.84.4** · (1) Ligne 3 · "DTC paid acquisition operators" → "DTC (direct-to-consumer) paid acquisition operators" · (2) Ligne 9 · "stable ROAS" → "stable ROAS (return on ad spend)" · (3) Ligne 9 · "Full honest audit in" → "Detailed audit in" · (4) Ligne 66 · cross-ref `docs/system/README.md` → `docs/system/extending.md` (fichier existant orienté extension non-DTC · cohérent allègement registre semi-public · cross-ref ressources canon publiques).
+
+**Audit WELCOME.md (15L)** · conformity élevée pre-audit · ZÉRO patch structurel nécessaire · justification · 15L très denses · em-dash zéro ✓ · acronymes universels AI uniquement (pas développement requis) · ton narratif allègement permis registre semi-public · adjectifs neutres en contexte ('progressive', 'tangible' OK) · marqueurs bold structurels OK (Flow / Runtime definition / Awareness tracking / Three onboarding phases · sections semi-formelles structurées) · italique stylistique OK note technique.
+
+**Anglais préservé** · README.md et WELCOME.md restent en anglais pour audience semi-public externe (lecteurs anglo-saxons découvrant le projet). Politique FR/EN canon voice-doctrine v2.84.1 reste valide · 'opérateur' canon doctrinal français · 'operator' anglais cohérent audience externe semi-public (exemption registre).
+
+**Trilogie de propagations doctrinales complétée** ·
+
+v2.84.3 STRICT reference-grade · `canon.md` interne 413L → 149L (-64%) · AP-VD-1à8 enforcés strict · zéro tu/vous/votre · registre tiers factuel · acronymes développés une fois utilisés seuls ensuite.
+
+v2.84.2 PARTIEL user-facing (b) · `lexicon.md` user-facing 175L → 103L (-41%) · voice-doctrine appliquée SAUF AP-VD-8 (`vous`/`votre marque` préservés) SAUF noms doctrines (AP-VD-6 surface opérateur).
+
+v2.84.4 SEMI-PUBLIC · `README.md` + `WELCOME.md` · ton reference-grade base + allègements permis · phrases narratives autorisées · acronymes développés à chaque première occurrence · cross-refs limitées ressources canon publiques · marqueurs bold structurels acceptables.
+
+**Apprentissage canon-niveau cross-registres** · voice-doctrine v2.84.1 résiliente sur 3 registres canon distincts · doctrine guide application concrète selon registre cible · cadre canon validé via 3 propagations réelles consécutives sur des fichiers différents (canon.md technique strict · lexicon.md métier partiel · README/WELCOME externes semi-public) · cohérence cross-files préservée.
+
+**Backward compat strict additif** · 27 doctrines · 81 skills · 10 slash commands inchangé · README/WELCOME semi-public read-only runtime · zéro impact skills · réversible git revert.
+
+D#454 captured · trilogie de propagations voice-doctrine complétée · cadre canon prêt pour propagation systémique aux 26 doctrines existantes (v2.85.x).
+
+**Backlog v2.85.0+** · v2.85.0 sprint rename 21 fichiers `*-discipline.md` → `*-doctrine.md` (cross-refs sibling + CLAUDE.md root + manifest skills · 2-3h estimé multi-agents parallèle scope disjoint) · v2.85.x propagation voice-doctrine aux 26 doctrines existantes (alignment vocabulaire FR/EN + casse + AP-VD-1à8 + acronymes · lots 5-6 par sprint) · v2.84.5 (optional) alignment context-engine/ R&D side README · DÉSAMBIG-1.5 backlog post-distribution · doctrine_ripening_period revisit 2026-06-09 (T+3 weeks).
+
+---
+
 ## v2.84.3 · 2026-05-20 · Sprint MINOR · 2ème propagation downstream voice-doctrine · canon.md interne reference-grade STRICT 413L → 149L (-64%) · D#453 captured
 
 Backlog v2.84.0-v2.84.2 listait v2.84.3 canon.md interne STRICT comme propagation downstream voice-doctrine. Audit Phase 1 terminology-inventory v2.83.x avait flagué polysémie canon 735 occurrences (3+ sens distincts confondus). Sprint v2.84.3 dédié désambiguïsation + réécriture reference-grade.

@@ -1,0 +1,84 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.84.4",
+  "released_at": "2026-05-20",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint PATCH v2.84.4 · 3ème propagation downstream voice-doctrine v2.84.1 · application registre semi-public canon sur README.md + WELCOME.md · trilogie de propagations doctrinales complétée (strict canon.md v2.84.3 + partiel lexicon.md v2.84.2 + semi-public README/WELCOME v2.84.4) · doctrine résiliente sur 3 registres validée.",
+  "context_amont": {
+    "trigger": "Backlog v2.84.0-v2.84.3 listait v2.84.4 audit README/WELCOME application registre semi-public canon. Voice-doctrine v2.84.1 définit 3 registres canon (reference-grade interne / semi-public README et WELCOME / runtime opérateur). Sprint court 30-45 min complète la trilogie de propagations doctrinales avant les gros sprints v2.85.0+.",
+    "scope_choisi": "Application registre semi-public · ton reference-grade base + allègements explicites permis (phrases narratives autorisées · acronymes développés systématiquement à première occurrence · cross-refs limitées aux ressources canon publiques · vocabulaire canon transverse intégral · pas de sycophant · pas d'adjectifs vagues)"
+  },
+  "audit_readme_md": {
+    "size_before": 67,
+    "size_after": 67,
+    "violations_identified": [
+      "Acronymes non développés · DTC (ligne 3+) · ROAS (ligne 9) · violations registre semi-public 'Acronymes développés à chaque première occurrence'",
+      "Adjectif vague · 'Full honest audit' (ligne 9) · AP-VD-4 violation (vague 'honest')",
+      "Cross-ref doctrine interne · `docs/system/README.md` (ligne 66) · violation registre semi-public 'pas vers doctrines internes'"
+    ],
+    "patches_appliques": [
+      "Ligne 3 · 'DTC paid acquisition operators' → 'DTC (direct-to-consumer) paid acquisition operators' (acronyme développé première occurrence)",
+      "Ligne 9 · 'stable ROAS' → 'stable ROAS (return on ad spend)' (acronyme développé première occurrence)",
+      "Ligne 9 · 'Full honest audit in' → 'Detailed audit in' (adjectif vague AP-VD-4 retiré)",
+      "Ligne 66 · cross-ref `docs/system/README.md` → `docs/system/extending.md` (fichier existant orienté extension non-DTC · cohérent registre semi-public allègement permis · cross-ref ressources canon publiques)"
+    ],
+    "conformity_post_patch": [
+      "Em-dash zéro maintenu",
+      "Sycophant zéro maintenu",
+      "Ton narratif préservé (allègement registre semi-public permis)",
+      "Vocabulaire canon transverse · 'operator' anglais cohérent audience semi-public externe (politique FR/EN canon · 'opérateur' réservé canon doctrinal français · README anglais semi-public exemption registre)",
+      "Marqueurs bold structurels OK (Best fit / Conditional fit / Not fit today sections semi-formelles structurées)"
+    ]
+  },
+  "audit_welcome_md": {
+    "size_before": 15,
+    "size_after": 15,
+    "conformity_pre_audit": "élevée",
+    "violations_identified": [],
+    "patches_appliques": [],
+    "rationale_zero_patch": [
+      "15L très denses · refonte non-nécessaire",
+      "Em-dash zéro ✓",
+      "Pas d'acronymes non développés (PhantomOS nom propre · AI acronyme universel ne nécessitant pas développement)",
+      "Ton narratif autorisé (allègement registre semi-public)",
+      "Adjectifs neutres en contexte ('progressive', 'tangible' OK contexte)",
+      "Marqueurs bold structurels OK (Flow / Runtime definition / Awareness tracking / Three onboarding phases · sections semi-formelles)",
+      "Italique stylistique OK (note technique 'For agents · do not read this file as script')"
+    ]
+  },
+  "trilogie_propagation_voice_doctrine_completee": {
+    "v2.84.3_strict_reference_grade": "canon.md interne 413L → 149L (-64%) · AP-VD-1à8 enforcés strict · zéro tu/vous/votre · registre tiers factuel · acronymes développés une fois utilisés seuls ensuite",
+    "v2.84.2_partiel_user_facing_b": "lexicon.md user-facing 175L → 103L (-41%) · voice-doctrine appliquée SAUF AP-VD-8 (vous/votre marque préservés) SAUF noms doctrines (AP-VD-6 surface opérateur)",
+    "v2.84.4_semi_public": "README.md + WELCOME.md · ton reference-grade base + allègements permis · phrases narratives autorisées · acronymes développés à chaque première occurrence · cross-refs limitées ressources canon publiques · marqueurs bold structurels acceptables",
+    "apprentissage_cross_registres": "Voice-doctrine v2.84.1 résiliente sur 3 registres distincts · doctrine guide application concrète selon registre cible · cadre canon validé via 3 propagations réelles · cohérence cross-files préservée"
+  },
+  "files_patched": [
+    {"file": "workspace-template/README.md", "scope": "67L → 67L · 4 patches mineurs application registre semi-public (acronymes DTC/ROAS développés · adjectif vague retiré · cross-ref doctrine interne redirigée)"},
+    {"file": "workspace-template/WELCOME.md", "scope": "15L → 15L · ZÉRO patch · conformity élevée pre-audit"},
+    {"file": "_version.json", "scope": "Bump 2.84.3 → 2.84.4 + summary"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.84.4 prepended"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.84.4 · trilogie propagation complétée"},
+    {"file": "docs/internal/releases/manifest/2.84.4-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["workspace-template/README.md application registre semi-public", "workspace-template/WELCOME.md audit", "version + manifest + CHANGELOG + project-journal + D#454"],
+    "out_of_scope_explicit": ["context-engine/ R&D side README.md (alignment v2.84.5 optional)", "v2.85.0 rename 21 fichiers *-discipline.md → *-doctrine.md", "DÉSAMBIG-1.5 backlog post-distribution"]
+  },
+  "decisions_captured": ["D#454"],
+  "backlog_v285_0": [
+    "v2.85.0 · sprint rename 21 fichiers *-discipline.md → *-doctrine.md (cross-refs sibling + CLAUDE.md root + manifest skills · 2-3h estimé multi-agents parallèle scope disjoint)",
+    "v2.85.x · propagation voice-doctrine aux 26 doctrines existantes (alignment vocabulaire FR/EN + casse + AP-VD-1à8 + acronymes · lots 5-6 par sprint multi-agents parallèle)",
+    "DÉSAMBIG-1.5 (backlog post-distribution) · rename ciblé S4 dominant ~1066 occurrences si polysémie insuffisante à l'usage (critère trigger 3+ frictions usage observées)",
+    "Phase 2 terminology backlog · 3 questions intent restantes Largo (C majuscules NIVEAU volontaire ? · G 3 axes statuts distincts ? · H orphelins promouvoir ?)",
+    "doctrine_ripening_period revisit 2026-06-09 (T+3 weeks · 5+ informal applications criteria)"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.84.4 = git revert HEAD strict · 2 fichiers patchés mineurs · zéro impact runtime (README/WELCOME semi-public read-only)."
+}
