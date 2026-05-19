@@ -7,6 +7,30 @@
 
 ---
 
+## v2.82.1 · 2026-05-19 · Sprint PATCH · validation post-refactor v2.82.0 · D#448 captured
+
+Audit non-régression post-v2.82.0 MAJOR REFACTOR via 2 agents parallèle (mapping diff + validation statique 5 scénarios).
+
+**Mapping diff v2.81.1 → v2.82.0** (`docs/internal/refactor/v2.82.0-mapping.md`)
+· v2.81.1 332L · 92 instructions atomiques · 25 marqueurs CRITICAL/YOU MUST/ALWAYS · 17 versioning inline
+· v2.82.0 144L · 81 instructions atomiques · 2 marqueurs · 0 versioning inline
+· Distribution · 62 préservées (a) · 13 reformulées (b) · 24 externalisées (c) · 17 supprimées (d) toutes justifiées
+· Verdict · ZÉRO régression silencieuse · backward compat strict sémantique additive
+
+**Validation statique canon 5 scénarios** (`docs/internal/refactor/v2.82.0-runtime-validation.md`)
+· Scénario 1 · Onboarding fresh /tour first-run · OK
+· Scénario 2 · Resume mid-session wedge_complete: false · OK
+· Scénario 3 · Mutation gate JSON brands/operator · OK
+· Scénario 4 · Knowledge externe WebFetch trusted · OK avec backlog mineur knowledge-sourcing-discipline si pattern récurrent
+· Scénario 5 · Strategic output investigation posture 5 sections · OK
+· Verdict · runtime live OK · zéro fix bloquant requis
+
+D#448 captured · validation post-refactor v2.82.0 · ZÉRO régression silencieuse détectée · ZÉRO scénario canon cassé · backward compat sémantique additive confirmée.
+
+Backward compat strict additif · skills 81 inchangé · slash commands 10 inchangé · doctrines 25 inchangée (artefacts documentation pas canon shipped).
+
+---
+
 ## v2.82.0 · 2026-05-19 · Sprint MAJOR REFACTOR · refonte CLAUDE.md root atomique + NEW doctrine claude-md-discipline + NEW index docs/system/README.md · D#447 captured
 
 **Why** · Audit externe Claude Web sur CLAUDE.md root v2.81.1 a flag 9 problèmes structurels · pattern dégradation cumulative · file ambitieux mais contre-productif · violation propres règles · LLM ignore uniformément partie des règles au-delà capacité attention ~150-200 instructions. Negative ROI territory. 9 problèmes flag · (1) taille root file approchant limite attention LLM · (2) inflation marqueurs CRITICAL/YOU MUST diluant signal d'urgence · (3) règles-sandwich (règles englobées dans narrative explicative) · (4) méta-doctrine (méta-discours sur fonctionnement règles vs règles atomiques) · (5) MECE chevauchements sections doctrine routing/disclosure/decomposition · (6) versioning inline pollution (v2.79.5+ · v2.81.1+ partout) · (7) pollution narrative au lieu d'impératif atomique · (8) point-médian listes plates substitut bullets sur listes structurelles · (9) auto-références cycliques (root pointe doctrines · doctrines pointent root). Citation audit Claude Web · *"CLAUDE.md root v2.81.1 est ambitieux mais contre-productif · file viole ses propres règles de discipline et atteint la zone où LLM ignore uniformément partie des règles"*.

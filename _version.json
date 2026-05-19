@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.82.0",
+  "template_version": "2.82.1",
   "released_at": "2026-05-19",
   "compatible_from": "2.0.0",
-  "summary": "Sprint MAJOR REFACTOR v2.82.0 · refonte CLAUDE.md root workspace-template ≤150 lignes (atomique impératif · 3 CRITICAL/YOU MUST max · zéro versioning inline · zéro narrative doctrinale · zéro inventaire 24 doctrines détaillé) + NEW doctrine canon racine claude-md-discipline.md (pattern canon TOUT CLAUDE.md PhantomOS · 4 tailles canon par niveau · 8 HR-CMD + 8 AP-CMD enforcement runtime) + NEW docs/system/README.md (index navigable 24 → 25 doctrines canon shipped pour skill-authors · cross-refs · patterns transverses). Audit amont · Claude Web sur CLAUDE.md root v2.81.1 flag 9 problèmes structurels (taille · inflation marqueurs · règles-sandwich · méta-doctrine · MECE chevauchements · versioning inline · pollution narrative · point-médian listes plates · auto-références cycliques) · pattern dégradation cumulative · file ambitieux mais contre-productif · violation propres règles · LLM ignore uniformément partie des règles au-delà capacité attention ~150-200 instructions. Negative ROI territory. Backward compat strict SÉMANTIQUE additif · toutes règles canon préservées · juste reformat atomique · externalisation justifications/inventaires vers fichiers dédiés. Skills 81 inchangé · slash commands 10 inchangé · doctrines 24 → 25 (+1 NEW claude-md-discipline).",
-  "manifest": "docs/internal/releases/manifest/2.82.0-manifest.json"
+  "summary": "Sprint PATCH v2.82.1 · validation post-refactor v2.82.0 · mapping diff CLAUDE.md root v2.81.1 → v2.82.0 (92 → 81 instructions atomiques · 62 préservées · 13 reformulées · 24 externalisées · 17 supprimées justifiées · zéro régression silencieuse) + validation statique canon 5 scénarios représentatifs (onboarding fresh · resume mid-session · mutation gate · knowledge externe · strategic output investigation posture) · 4 scénarios OK · 1 OK avec note backlog mineur · zéro régression runtime probable. Documentation artefacts dans docs/internal/refactor/.",
+  "manifest": "docs/internal/releases/manifest/2.82.1-manifest.json"
 }

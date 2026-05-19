@@ -1,0 +1,52 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.82.1",
+  "released_at": "2026-05-19",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 25,
+  "doctrines_count_after": 25,
+  "summary": "Sprint PATCH v2.82.1 · validation post-refactor v2.82.0 MAJOR REFACTOR · 2 agents parallèle (mapping diff CLAUDE.md root v2.81.1 → v2.82.0 + validation statique canon 5 scénarios représentatifs). Distribution mapping · 62 préservées · 13 reformulées · 24 externalisées · 17 supprimées justifiées. 5 scénarios validés · onboarding fresh · resume mid-session · mutation gate · knowledge externe · strategic output investigation posture. ZÉRO régression silencieuse détectée · ZÉRO scénario canon cassé. Backward compat strict sémantique additive confirmée. Documentation artefacts dans docs/internal/refactor/. D#448 captured. Pas NEW canon ni extension · pure validation/non-régression post-refactor.",
+  "audit_amont": {
+    "trigger": "Audit externe Claude Web sur sprint v2.82.0 a flag · mapping pré/post refonte CLAUDE.md root manquant + validation runtime renvoyée à Largo. 2 priorités identifiées · PRIO 1 mapping diff structuré ligne par ligne · PRIO 2 validation statique 5 scénarios canon avant runtime live.",
+    "critique_acknowledged": "Pour MAJOR refactor system prompt root, mapping pré/post + validation 5 scénarios sont des conditions de sortie obligatoires · pas optionnelles."
+  },
+  "patches_structurels": [
+    "NEW docs/internal/refactor/v2.82.0-mapping.md (259L) · diff structuré 4 catégories (préservée · reformulée · externalisée · supprimée)",
+    "NEW docs/internal/refactor/v2.82.0-runtime-validation.md · validation statique canon 5 scénarios représentatifs"
+  ],
+  "files_patched": [
+    {"file": "docs/internal/refactor/v2.82.0-mapping.md", "scope": "NEW · 259L · mapping diff v2.81.1 → v2.82.0 · 4 catégories"},
+    {"file": "docs/internal/refactor/v2.82.0-runtime-validation.md", "scope": "NEW · validation statique canon 5 scénarios"},
+    {"file": "_version.json", "scope": "Bump 2.82.0 → 2.82.1 + summary"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.82.1 prepended"},
+    {"file": "docs/internal/releases/manifest/2.82.1-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "validation_coverage": {
+    "mapping_categories": ["preserved", "reformulated", "externalized", "removed"],
+    "scenarios_validated": [
+      "onboarding_fresh_tour_first_run",
+      "resume_mid_session_wedge_incomplete",
+      "mutation_gate_json_brands_operator",
+      "knowledge_externe_webfetch_trusted",
+      "strategic_output_investigation_posture_5_sections"
+    ],
+    "regressions_detected": 0,
+    "scenarios_ok": 4,
+    "scenarios_ok_with_minor_note": 1,
+    "scenarios_failed": 0
+  },
+  "decisions_captured": ["D#448"],
+  "backlog_v282_2_plus": [
+    "Re-test live workspace fresh v2.82.1 sur ~/dev/phantom-test-v280_3/ pour valider runtime opérateur post-refactor + validation",
+    "PRIO 3 · audit claude-md-discipline.md self-applied (4 questions · HR 8 vs 4 + AP vs HR symétriques + lignes vs cible + versioning interne) · v2.82.2 si redondance flag",
+    "PRIO 4 · sprint v2.83.0 refactor CHANGELOG (~4270L → ~1150L cible) + NEW doctrine changelog-discipline.md (cap 80L par release · sections atomiques)",
+    "Pattern méta-canon doctrine_ripening_period · 2-3 semaines pratique informelle avant codification canon · pas codifier maintenant pour respecter le pattern lui-même"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.82.1 = git revert HEAD strict · 2 fichiers documentation retirables · zéro impact runtime."
+}
