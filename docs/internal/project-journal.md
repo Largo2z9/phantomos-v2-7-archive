@@ -12,6 +12,50 @@
 
 ---
 
+## v2.84.3 · 2026-05-20 · Sprint MINOR · 2ème propagation downstream voice-doctrine · canon.md interne reference-grade STRICT 413L → 149L (-64%) · D#453 captured
+
+Backlog v2.84.0-v2.84.2 listait v2.84.3 canon.md interne STRICT comme propagation downstream voice-doctrine. Audit Phase 1 terminology-inventory v2.83.x avait flagué polysémie canon 735 occurrences (3+ sens distincts confondus). Sprint v2.84.3 dédié désambiguïsation + réécriture reference-grade.
+
+**Pré-flight Phase 1 obligatoire** · délégation 3 sub-agents Haiku parallèle scope disjoint (wall-time ~3 min) · Agent A cartographie sens distincts + Agent B cross-refs entrantes + Agent C cross-refs sortantes. Output consolidé `docs/internal/refactor/v2.84.3-preflight.md`.
+
+**Note méthodologique 735 vs 2646 occurrences** · Phase 1 terminology-inventory v2.83.x = mot 'canon' pur (token isolé) · Phase 1A pré-flight = sens élargi (composés et inflexions · 'canon copy', 'doctrine canon', 'canonical matrix', etc) · cohérence préservée (strates distinctes du même phénomène polysémique).
+
+**7 sens MECE identifiés** (vs 5-6 estimés · garde-fou >4 ✓ <8 ✓) · S1 doctrine verrouillée 8% · S2 archétype pédagogique 2% · S3 seuil qualité CMR 95% 21% · S4 formule compositionnelle OTRB 40% (dominant) · S5 référentiel partagé 20% · S6 copy validée 6% · S7 terminologie normalisée FR canon 2% · transversal. Hiérarchie imbriquée intentionnelle (S1 doctrine → S3 threshold → S4 formula → S5 library → S6 instance · S7 transversal).
+
+**Décision DÉSAMBIG-2 polysémie documentée** confirmée par Largo · rationale · pas sens dominant >70% (S4 plafonne à 40%) · hiérarchie imbriquée intentionnelle · DÉSAMBIG-1 rename = sprint dédié 8-12h hors scope v2.84.3 · solution mature self-sufficiency pattern v2.83.0+.
+
+**3 conditions Largo intégrées Phase 3** · (1) Note méthodologique 735 vs 2646 clarifiée pré-flight + manifest · (2) Audit ancres runtime révisé · **zéro skill runtime ne référence directement `docs/internal/canon.md`** (5 skills + phantom slash-command pointent vers d'autres `*-canon.md` distincts · `model-versioning-canon.md` doctrine sœur + `{domain}-canon.md` fichiers métier sœurs + `.claude/commands/phantom-modes/canon.md` slash-command mode distinct) · seule ancre formelle préservée `§ Atlas brand` (référencée depuis `atlas-brand.md:78`) · (3) Fix 2 refs cassées sortantes · `creative-formula.md` path drift → `resources/templates/creative-formula.md` + `GETTING_STARTED.md` absent retiré et section "Profondeur de contexte L1/L2/L3" compressée + cross-ref `docs/README.md` substituée.
+
+**Refonte canon.md workspace-template 413L → 149L (-64%)** · application voice-doctrine STRICT reference-grade intégrale ·
+
+P1 précision dense · acronymes développés une fois (CI · SED · CMR · SAD · PTD · JTBD · OTRB · MEC · ANG) utilisés seuls ensuite.
+P2 verbes action canon (encoder · paramétrer · cartographier · composer · décomposer) + noms techniques canon (substrat · atome · axe variable · brique · cellule · pipeline).
+P3 phrases denses sans liaisons molles · zéro "par ailleurs/en effet/il convient".
+P4 terme canon avant explication · pattern systématique 'X · définition'.
+P5 lecteur senior assumé · aucun encart pédagogique.
+AP-VD-1à8 enforcés strict · AP-VD-6 noms doctrines OK exposés ici (audience interne contributeurs · scope reference-grade) · AP-VD-8 zéro tu/vous/votre (registre tiers factuel strict) · grep retourne 0.
+FR canon · 'opérateur' utilisé · 'operator' sans accent absent · 'decomposition' sans accent absent.
+Famille paramétrage NEW canon utilisée · 'paramétrer' ajouté au pipeline métier · pair cartographier ↔ paramétrer documenté.
+Em-dash zéro · grep '—' retourne 0.
+
+**Sections compressées et préservées** · Système (7 termes core) · Objets phares métier (7 objets) · Briques typées (5) · Atlas brand (ancre § préservée) · Atlas canon copy · Mechanisms (spec) · Cellule · Sourçabilité/Provenance/Triangulation · Doctrines (6) · Disciplines (8) · Pipeline métier (verbes inline + paramétrer NEW) · Patterns d'évolution · Extension layer (D#326-332) · Vocabulaire externe (D#308) · Propriétés émergentes · Méta-vocabulaire · Cross-refs.
+
+**Sections retirées ou compressées radicalement** · preamble CONTEXT/OBJECTIVE/TYPE/AUDIENCE 4L overengineered → 1 phrase intro · footer narrative S53/S55 mise à jour 2 paragraphes retirés (versioning déjà dans CHANGELOG + project-journal) · section "Cartographie anti-flou" reformulations historiques retirée · section "Profondeur de contexte L1/L2/L3" compressée + ref cassée fixée · section "Scope produit vs thèse (D#307)" table retirée (déplacée vers project-journal historique) · versioning inline (v2.26.0, v2.28.0, v1.1+, S55, S31, D#382-383-391 narratifs) retiré (pollution AP-VD-5 type).
+
+**NEW section canon "Sens canon du mot 'canon'"** · table 7 sens MECE avec marqueurs contextuels (ante/post keywords détectables) et exemples typiques · hiérarchie imbriquée documentée · DÉSAMBIG-2 cristallisée en doctrine textuelle.
+
+**Self-conformance check v2.84.3 PASSÉ** · 149L sous cap 200L claude-md-discipline (cap glossaire généreux) · auto-conformance P1-P5 + AP-VD-1à8 maintenue · zéro em-dash · zéro tu/vous/votre · zéro EN drift · acronymes utilisés seuls après première occurrence.
+
+**Test du cadre canon voice-doctrine via 2ème propagation réelle** · cohérence cross-files validée · doctrine guide application concrète sur fichier reference-grade interne strict (vs scope partiel b lexicon user-facing v2.84.2). Apprentissage · voice-doctrine v2.84.1 fonctionne aussi bien en application stricte (canon.md) qu'en application partielle (lexicon.md) · doctrine résiliente cross-registres.
+
+**Backward compat strict additif** · 27 doctrines inchangé · skills 81 inchangé · slash commands 10 inchangé · canon.md reference-grade interne contributeurs · zéro impact runtime skills · réversible git revert.
+
+D#453 captured · canon.md interne reference-grade STRICT shipped · cadre canon voice-doctrine testé via 2ème propagation downstream · cohérence runtime validée. NEW memory canon `canon_md_strict_canon`.
+
+**Backlog v2.84.4 → DÉSAMBIG-1.5** · v2.84.4 audit README/WELCOME application exception semi-public · v2.84.5 (optional) alignment context-engine/canon.md R&D 475L · v2.85.0 sprint rename 21 fichiers `*-discipline.md` → `*-doctrine.md` (cross-refs sibling + CLAUDE.md root + manifest skills · 2-3h estimé multi-agents parallèle) · DÉSAMBIG-1.5 rename ciblé S4 dominant ~1066 occurrences si polysémie insuffisante à l'usage (critère trigger 3+ frictions usage observées).
+
+---
+
 ## v2.84.2 · 2026-05-20 · Sprint MINOR · 1ère propagation downstream voice-doctrine · lexicon user-facing 175L → 103L · D#452 captured
 
 Backlog v2.84.0/v2.84.1 listait v2.84.2 lexicon user-facing comme 1ère propagation downstream voice-doctrine. Largo a explicitement choisi scope (b) · application partielle voice-doctrine SAUF AP-VD-8 pronoms (lexicon user-facing garde `vous`/`votre marque` registre opérateur) et SAUF noms doctrines (déjà out of scope par AP-VD-6 surface opérateur).
