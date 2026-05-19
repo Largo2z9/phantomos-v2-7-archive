@@ -1,0 +1,60 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.83.0",
+  "released_at": "2026-05-19",
+  "type": "major",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 25,
+  "doctrines_count_after": 26,
+  "summary": "Sprint MAJOR v2.83.0 · Option C split structurel CHANGELOG + NEW doctrine canon racine changelog-discipline. Audit externe Claude Web v2 sur PhantomOS v2.82.1 a flag CHANGELOG.md 4270L vs ~1150L cible (3-4x sur-dimensionné · founder's curse répété · justification doctrinale par release au lieu de delta human-readable concis). 5 questions honnêtes posées · doute règle (doctrine pas CHANGELOG) · /update diff lu ? (non) · fréquence ouverture (~zéro mois) · casse si supprimé (3 surfaces réparables) · consommateur réel (marginal). Option C choisie · plus mature des 3 options évaluées · sépare deux fonctions différentes · narrative cognitive Largo (docs/internal/project-journal.md préservé strict 4270L) + public Keep-a-Changelog (CHANGELOG.md racine minimal 50-100L runtime consumable). 3 patches structurels parallèle scope disjoint · (a) split CHANGELOG (mv vers docs/internal/project-journal.md préservation narrative + NEW CHANGELOG.md minimal Keep-a-Changelog) · (b) NEW doctrine changelog-discipline.md v2.83.0 (4 HR-CHL + 4 AP-CHL STRICT · test de suppression appliqué pre-ship · cohérent enseignement audit externe v2.82.0 critique 8 HR/AP claude-md-discipline) · (c) patches /version + /update + push-phantomos.sh consumers adaptés Keep-a-Changelog format. 3 sources vérité distinctes canonisées · CHANGELOG public résumé exécutif · project-journal narrative archive · manifests JSON détails structurés. Backward compat strict additif · skills 81 inchangé · slash commands 10 inchangé · doctrines 25 → 26 (+1 NEW changelog-discipline). D#449 captured.",
+  "audit_amont": {
+    "trigger": "Audit externe Claude Web v2 sur PhantomOS v2.82.1 a flag CHANGELOG.md 4270L vs ~1150L cible · 3-4x sur-dimensionné · founder's curse répété (justification doctrinale par release au lieu de delta human-readable concis).",
+    "questions_honnetes_posees": [
+      "Doute règle · est-ce vraiment doctrine pas CHANGELOG ?",
+      "/update affiche diff lu ? (réponse · non)",
+      "Fréquence ouverture CHANGELOG ? (réponse · ~zéro mois)",
+      "Si supprimé, qu'est-ce qui casse ? (réponse · 3 surfaces · toutes réparables)",
+      "Consommateur réel vs symbolique ? (réponse · marginal hors valeur narrative cognitive)"
+    ],
+    "revelation": "Founder's curse répété · pattern identique à audit v2.82.0 sur CLAUDE.md root (file ambitieux mais contre-productif · violation propres règles). CHANGELOG public ≠ journal cognitif fondateur · deux fonctions distinctes confondues en un seul fichier.",
+    "option_C_rationale": "Plus mature des 3 options évaluées · respecte VALEUR symbolique narrative (préservation 4270L Largo cognitive archive) + livre VALEUR fonctionnelle publique (Keep-a-Changelog 50-100L runtime consumable opérateur + agents). Sépare deux audiences/fonctions au lieu de fusionner."
+  },
+  "patches_structurels": [
+    "Split CHANGELOG · mv legacy CHANGELOG.md 4270L → docs/internal/project-journal.md (préservation narrative archive Largo strict · zéro cap · format libre) + NEW CHANGELOG.md racine minimal Keep-a-Changelog convention (50-100L cible · sections atomiques Added/Changed/Removed/Fixed/Migration/Breaking · cap 80L par release entry)",
+    "NEW doctrine canon racine docs/system/changelog-discipline.md v2.83.0 (4 HR-CHL + 4 AP-CHL STRICT · test de suppression appliqué pre-ship · cohérent enseignement audit externe v2.82.0 critique 8 HR/AP claude-md-discipline · v2.83.0 corrige pattern dérive cumulative doctrines)",
+    "Patches consumers · .claude/commands/version.md (adapter nouveau format · CHANGELOG minimal + project-journal référence) · .claude/commands/update.md (diff CHANGELOG entries Keep-a-Changelog sections) · infra/scripts/push-phantomos.sh (sync CHANGELOG + project-journal vers Largo2z9/phantomos + Largo2z9/phantom-os-abyss)"
+  ],
+  "files_patched": [
+    {"file": "CHANGELOG.md", "scope": "NEW minimal Keep-a-Changelog (50-100L cible · cap 80L par release · sections atomiques Added/Changed/Removed/Fixed/Migration/Breaking)"},
+    {"file": "docs/internal/project-journal.md", "scope": "NEW préservation narrative archive Largo (4270L mv depuis legacy CHANGELOG · zéro cap · format libre)"},
+    {"file": "docs/system/changelog-discipline.md", "scope": "NEW doctrine canon racine v2.83.0 · 4 HR-CHL + 4 AP-CHL STRICT · test de suppression appliqué pre-ship"},
+    {"file": ".claude/commands/version.md", "scope": "Patch · adapter affichage version + référence CHANGELOG minimal + project-journal"},
+    {"file": ".claude/commands/update.md", "scope": "Patch · diff CHANGELOG entries Keep-a-Changelog sections"},
+    {"file": "infra/scripts/push-phantomos.sh", "scope": "Patch · sync CHANGELOG + docs/internal/project-journal.md vers 4 paths (largo-kb + Largo2z9/phantomos + Largo2z9/phantom-os-abyss + phantomos-test)"},
+    {"file": "_version.json", "scope": "Bump 2.82.1 → 2.83.0 + summary"},
+    {"file": "docs/internal/releases/manifest/2.83.0-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "changelog_canon_coverage": {
+    "3_sources_verite_distinctes": [
+      "CHANGELOG public (Keep-a-Changelog convention · 50-100L cross-releases · résumé exécutif runtime consumable)",
+      "project-journal interne (narrative cognitive Largo · zéro cap · format libre · symbolique assumée)",
+      "manifests JSON (release engineering détails structurés · per-release · audit/rollback)"
+    ],
+    "cap_par_release_entry": "80 lignes max CHANGELOG public",
+    "sections_atomiques_keep_a_changelog": ["Added", "Changed", "Removed", "Fixed", "Migration", "Breaking"],
+    "test_de_suppression_applique_pre_ship": "Doctrine NEW v2.83.0 · 4 HR-CHL atomiques retenues (pas 8 inflation pattern v2.82.0 audit externe critique) · chaque règle testée · 'si je retire cette ligne, quelle erreur concrète Claude fait ?'"
+  },
+  "decisions_captured": ["D#449"],
+  "backlog_v283_plus": [
+    "Re-test live workspace fresh v2.83.0 sur ~/dev/phantom-test-v280_3/ pour valider /version + /update rendu post-split (output Keep-a-Changelog format vs legacy verbose)",
+    "PRIO 3 backlog v2.82.2 · audit claude-md-discipline.md self-applied (HR 8 vs 4 cible · cohérent test de suppression appliqué v2.83.0)",
+    "Skills tracking-GTM territoire NEW v2.84+ (cas Abyss central · audit-tracking-coverage · setup-server-side-gtm)",
+    "Pattern méta doctrine_ripening_period · 2-3 semaines pratique informelle avant codification · pas codifier maintenant (ironique de canoniser pattern de ralentissement immédiatement)"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.83.0 = git revert HEAD strict · docs/internal/project-journal.md → CHANGELOG.md restoration (mv inverse) · NEW doctrine changelog-discipline.md retirable · 3 consumers patches reverts v2.82.1 (version.md + update.md + push-phantomos.sh) · zéro impact runtime canon shipped (skills 81 · slash commands 10 · doctrines 25 état pré-bump)."
+}

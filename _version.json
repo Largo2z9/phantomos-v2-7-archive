@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.82.1",
+  "template_version": "2.83.0",
   "released_at": "2026-05-19",
   "compatible_from": "2.0.0",
-  "summary": "Sprint PATCH v2.82.1 · validation post-refactor v2.82.0 · mapping diff CLAUDE.md root v2.81.1 → v2.82.0 (92 → 81 instructions atomiques · 62 préservées · 13 reformulées · 24 externalisées · 17 supprimées justifiées · zéro régression silencieuse) + validation statique canon 5 scénarios représentatifs (onboarding fresh · resume mid-session · mutation gate · knowledge externe · strategic output investigation posture) · 4 scénarios OK · 1 OK avec note backlog mineur · zéro régression runtime probable. Documentation artefacts dans docs/internal/refactor/.",
-  "manifest": "docs/internal/releases/manifest/2.82.1-manifest.json"
+  "summary": "Sprint MAJOR v2.83.0 · Option C split CHANGELOG · CHANGELOG.md racine Keep-a-Changelog minimal 50-100L cible (résumé exécutif runtime consumable) + docs/internal/project-journal.md préservation 4270L narrative archive Largo. NEW doctrine canon racine changelog-discipline.md v2.83.0 (4 HR-CHL + 4 AP-CHL strict · test de suppression appliqué pre-ship · audit externe v2.82.0 critique enseignement appliqué). Patches /version + /update + push-phantomos.sh adaptés nouveau format. Audit externe Claude Web v2 sur PhantomOS · 5 questions honnêtes posées · CHANGELOG 4270L vs 1150L cible · founder's curse répété. Option C plus mature · sépare narrative (Largo cognitive) et public (Keep-a-Changelog runtime). 3 sources vérité distinctes canon.",
+  "manifest": "docs/internal/releases/manifest/2.83.0-manifest.json"
 }
