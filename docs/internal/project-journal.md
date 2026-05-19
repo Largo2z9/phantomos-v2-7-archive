@@ -12,6 +12,28 @@
 
 ---
 
+## v2.84.2 · 2026-05-20 · Sprint MINOR · 1ère propagation downstream voice-doctrine · lexicon user-facing 175L → 103L · D#452 captured
+
+Backlog v2.84.0/v2.84.1 listait v2.84.2 lexicon user-facing comme 1ère propagation downstream voice-doctrine. Largo a explicitement choisi scope (b) · application partielle voice-doctrine SAUF AP-VD-8 pronoms (lexicon user-facing garde `vous`/`votre marque` registre opérateur) et SAUF noms doctrines (déjà out of scope par AP-VD-6 surface opérateur).
+
+**Audit lexicon original 175L** · jargon doctrinal exposé en surface opérateur (DRGFP, Confidence propagation, Atlas-canon-copy, Territory-discipline, Atlas-brand, Creative-formula, Dependency-resolution-protocol · 6 refs `docs/system/*-discipline.md` · violations AP-VD-6 directes) · versioning inline (v2.26.0/v2.27.0/v2.36/v2.37+/v2.38+/v1.1+/v2.32/v2.67 · S53/S55 narrative · 'red team finding A2 v2.36' · pollution AP-VD-5) · adjectifs vagues ('slim'/'robuste'/'structuré'/'explicit' · AP-VD-4) · section Atlas 4 senses MECE 17L (spec interne pure · pas user-facing) · preamble CONTEXT/OBJECTIVE/TYPE/AUDIENCE/CANON INTERNE 5 lignes overengineered.
+
+**Refonte v2.84.2 application partielle (b) voice-doctrine** · 25 entrées core préservées (Brand · Produit · Offre · Audience · Persona alias surface · Pain point · Tension · Insight · JTBD · Angle · Axe créatif · Concept/Creative/Variant fusionné 1 section · Mécanique creative distincte Mechanism spec · Awareness stage · Atome irréductible · Landing page · Campagne · Test · Résultat · Apprentissage · Positioning · Territoire · Connected source) · entrées retirées (DRGFP · Confidence propagation · Atlas 4 senses MECE · Lineage · Origin_axis · Schwartz fusionné dans Awareness) · preamble overengineered remplacé par 1 phrase d'intro · footer narrative S53/S55 remplacé par 1 ligne `Dernière mise à jour · 2026-05-20`.
+
+**Self-conformance check v2.84.2** · FR/EN canon (`opérateur` utilisé · `operator` absent) · AP-VD-4 adjectifs vagues retirés · AP-VD-6 zéro nom doctrine canon leaké (grep `DRGFP|confidence-propagation|atlas-canon-copy|territory-discipline|creative-formula|atlas-brand|dependency-resolution-protocol` retourne 0 occurrence) · P1 précision dense (termes canon utilisés une fois) · P3 phrases courtes (zéro liaison molle) · em-dash zéro · casse minuscules par défaut · AP-VD-8 EXCLU intentionnellement (registre opérateur `vous` préservé cohérent scope (b)) · versioning inline retiré.
+
+**Compression structurelle** · Concept vs Creative vs Variant (3 entrées → 1 section fusionnée 4L au lieu de 9L) · Atlas 4 senses MECE 17L → 0L (out) · Atome irréductible compressé 1 phrase au lieu de 3 phrases + technical refs.
+
+**Test du cadre canon voice-doctrine v2.84.1 via propagation réelle** · cohérence cross-files validée · doctrine guide application concrète sur un fichier de surface opérateur en respectant l'exception runtime (scope b documenté en doctrine elle-même via Registres canon). Apprentissage · le cap brand-style 80L indicatif manqué de 23L (103L final) · préservation précision opérateur priorité sur cap stricte (25 entrées métier nécessaires découverte produit). Décision pragma · 103L acceptable user-facing canon (vs original 175L = -41%) · pas refonte forced supplémentaire pour atteindre 80L au coût de précision.
+
+**Backward compat strict additif** · 27 doctrines inchangé · skills 81 inchangé · slash commands 10 inchangé · lexicon read-only runtime · zéro impact skills · réversible via git revert.
+
+D#452 captured · cadre canon voice-doctrine v2.84.1 testé via propagation réelle sur lexicon user-facing · 1er fichier downstream aligné · memory canon `voice_doctrine_canon` cohérence runtime validée.
+
+**Backlog v2.84.3 → v2.85.0** · v2.84.3 réécriture canon.md interne application voice-doctrine STRICT (reference-grade) + correction polysémie canon 735 occurrences · v2.84.4 audit README/WELCOME application exception semi-public · v2.84.5 (optional) alignment context-engine/lexicon.md R&D interne 65L · v2.85.0 sprint rename 21 fichiers `*-discipline.md` → `*-doctrine.md`.
+
+---
+
 ## v2.84.1 · 2026-05-19 · Sprint PATCH · voice-doctrine v2.84.0 → v2.84.1 · 5 patches post-audit Claude Web · D#451 captured
 
 Audit externe Claude Web phase 2-bis sur voice-doctrine v2.84.0 a validé "shipped" à 90% MAIS flag 4 drifts mineurs + 1 zone fragilité structurelle. Verdict détaillé · auto-conforme à ~90% (5 principes wording + 8 anti-patterns respectés en s'écrivant · zéro liaison molle · zéro sycophant · zéro adjectif vague · registre tiers maintenu). Test méta de cohérence largement passé.
