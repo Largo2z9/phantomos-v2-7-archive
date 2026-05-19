@@ -96,7 +96,7 @@ Doctrine governance (promotion, amendment, retraction, conflict resolution) : `d
 
 Si le skill n'existe pas pour un output demandé, l'agent flag le gap explicitement à l'opérateur et propose de créer le skill via `create-skill`. Il ne remplit JAMAIS le gap par freestyle prose.
 
-**Skill routing v2.79.2 · synthèse brand opérateur-facing.** Tout output synthèse brand entity opérateur-facing (output user-visible · pas plumbing silent capture) DOIT rendre les 4 niveaux matriciels canon `decomposition-visibility-discipline.md` (v2.79.2) · même quand aucun skill consumer spécifique n'est routé (freestyle prose).
+**Skill routing v2.81.1 · synthèse brand opérateur-facing (3 phases temporelles canon).** Tout output synthèse brand entity opérateur-facing (output user-visible · pas plumbing silent capture) DOIT rendre les 4 niveaux matriciels canon `decomposition-visibility-discipline.md` (v2.81.1+) · même quand aucun skill consumer spécifique n'est routé (freestyle prose). Couverture canon désormais 3 phases temporelles complètes · AVANT exécution (NIVEAU 0 paramètres décomposés) · PENDANT exécution (NIVEAU LIVE raisonnement thinking aloud expert · calibré par poids action) · APRÈS exécution (NIVEAUX 1-4 matrices + méthode pédagogique).
 
 Triggers verbaux qui forcent le pattern matriciel obligatoire ·
 
@@ -107,21 +107,34 @@ Triggers verbaux qui forcent le pattern matriciel obligatoire ·
 
 **Nuance scope v2.79.2 · `/phantom {brand}` exception.** Le cockpit `/phantom` est un scan rapide santé brand (ALERTES · ÉTAT · ACTIONS · Drill footer · grammaire 4 sections v2.79.2). Il ne rend PAS les 4 niveaux matriciels canon decomposition-visibility-discipline · cockpit scan rapide ≠ pédagogie reverse engineering. Alertes santé décomposition 3 lignes suffisent. La pédagogie matricielle reste sur `/bird` (vue d'oiseau territoire-level) plus `/breakdown` (parcours pédagogique cas Stepprs) plus skills consumers synthesis stratégique (snapshot-brand · build-atlas-complete · profile-audience · define-specs).
 
-4 niveaux matriciels canon obligatoires output (sur triggers ci-dessus, hors `/phantom`) ·
-- NIVEAU 1 · décomposition produit (specs · mécanismes · bénéfices 3 couches)
-- NIVEAU 2 · matrice many-to-many product × pain × audience (ASCII)
-- NIVEAU 3 · positionnement filtre par stage business (early/growth/scale)
-- NIVEAU 4 · méthode pédagogique verbale méthode décomposition
+NIVEAUX canon par phase temporelle (sur triggers ci-dessus, hors `/phantom`) ·
+- NIVEAU 0 · paramètres décomposés AVANT exécution (audience cible · pains · canaux · queries · hypothèses · biais avec POURQUOI explicit chacun · cohérent v2.79.5)
+- NIVEAU LIVE · raisonnement thinking aloud expert PENDANT exécution (calibré par poids action · prose narrative 2 niveaux abstraction macro contexte + micro many-to-many phrasé sur actions lourdes · 1-2 phrases substantives sur actions moyennes · zéro sur actions triviales · NEW v2.81.1)
+- NIVEAU 1 · décomposition produit APRÈS exécution (specs · mécanismes · bénéfices 3 couches)
+- NIVEAU 2 · matrice many-to-many product × pain × audience APRÈS exécution (ASCII)
+- NIVEAU 3 · positionnement filtre par stage business APRÈS exécution (early/growth/scale)
+- NIVEAU 4 · méthode pédagogique verbale méthode décomposition APRÈS exécution
 
 Anti-pattern strict · synthèse brand opérateur-facing prose-only sans matrices ASCII = invalid output canon SAUF `/phantom` (cockpit scan rapide où ALERTES + ÉTAT + ACTIONS + Drill footer suffisent). Pattern systémique `l'agent doit PROUVER qu'il a compris en MONTRANT sa réflexion` reste canon racine cross-skills consumers + `/bird` + `/breakdown` + queries verbal trigger.
 
-Voir doctrine `docs/system/decomposition-visibility-discipline.md` v2.79.2.
+Voir doctrine `docs/system/decomposition-visibility-discipline.md` v2.81.1+.
 
 **Skill routing v2.79.5 · intelligence compositionnelle pré-exécution.** Tout skill basé sur intelligence compositionnelle (atlas × métier · raisonne sur brand encoded) DOIT exposer NIVEAU 0 paramètres décomposés AVANT exécution. Pattern canon · 6 éléments obligatoires (audience cible · pains prioritaires · canaux · queries opératoires · hypothèses figées · biais à éviter) avec POURQUOI explicit chacun. L'opérateur valide en conscience expert métier, pas à l'aveugle.
 
 Skills concernés v2.79.5 (6 patchés) · mine-voc · profile-audience · produce-paid-angles · produce-copy-brief · compose-creative · build-atlas-complete.
 
-Anti-pattern strict · skill intelligence compositionnelle lance sans NIVEAU 0 décomposé · opérateur valide à l'aveugle. Cross-ref doctrines · `docs/system/decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 pré-exec + `docs/system/engagement-disclosure-discipline.md` v2.79.5 Paramètres décomposés.
+Anti-pattern strict · skill intelligence compositionnelle lance sans NIVEAU 0 décomposé · opérateur valide à l'aveugle. Cross-ref doctrines · `docs/system/decomposition-visibility-discipline.md` v2.81.1+ NIVEAU 0 pré-exec + `docs/system/engagement-disclosure-discipline.md` v2.79.5 Paramètres décomposés.
+
+**Skill routing v2.81.1 · NIVEAU LIVE thinking aloud pendant action.** Tout skill classé action moyenne ou lourde (cf table calibration `decomposition-visibility-discipline.md` v2.81.1+) DOIT exposer raisonnement thinking aloud expert PENDANT exécution · pas seulement disclosure NIVEAU 0 en amont et matrices NIVEAUX 1-4 en aval. Posture canon · pair senior thinking aloud expert · audit temps réel + pédagogie posture professionnelle indissociables. L'opérateur voit le raisonnement vivant (audit · peut corriger direction avant output produit) et apprend la posture experte en regardant (pédagogie).
+
+Calibration par poids action obligatoire ·
+- Action TRIVIALE (read file · grep · routing simple · <30s) · ZÉRO thinking aloud (serait du bruit)
+- Action MOYENNE (classification verbatim · décision routing skill · audit single field · 30s-3min) · 1-2 phrases substantives (observe · déduit · décide)
+- Action LOURDE (cartographie brand · audit perf · production angle · orchestrator · producer heavy · >3min) · narratif étendu obligatoire 2 niveaux abstraction · MACRO contexte (verbaliser périmètre · boutique entière · marché · volume estimé) + MICRO many-to-many phrasé (produit → spec → mécanisme → bénéfice → pain → audience en prose)
+
+Skills consumers prioritaires v2.81.1 (7 patchés) · snapshot-brand · build-atlas-complete · profile-audience · define-specs · mine-voc · audit-meta-account · score-matrix.
+
+Anti-pattern strict · action lourde exécutée silencieusement sans verbaliser le raisonnement = bug invalid canon (l'opérateur perd audit temps réel + pédagogie). Cross-ref doctrines · `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 + AP-DVD-11.
 
 **Exception** · conversation libre (questions, clarifications, debug, doctrine discussion) reste en prose libre. La règle s'applique au contenu stratégique livré, pas au dialogue conversationnel.
 
