@@ -1,0 +1,60 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.81.1",
+  "released_at": "2026-05-19",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 24,
+  "doctrines_count_after": 24,
+  "summary": "Sprint PATCH v2.81.1 · extension doctrine decomposition-visibility-discipline v2.79.5+ → v2.81.1+ avec NEW NIVEAU LIVE thinking aloud expert pendant action (intermédiaire entre NIVEAU 0 paramètres pré-exec et NIVEAUX 1-4 matrices post-exec) · NEW table calibration par poids action (triviale zéro thinking aloud / moyenne 1-2 phrases substantives observe-déduit-décide / lourde narratif étendu 2 niveaux abstraction macro contexte + micro many-to-many phrasé produit → spec → mécanisme → bénéfice → pain → audience en prose) · NEW HR-DVD-11 + AP-DVD-11 enforcement runtime · propagation 7 skills consumers prioritaires (snapshot-brand · build-atlas-complete · profile-audience · define-specs · mine-voc · audit-meta-account · score-matrix). Posture canon pair senior thinking aloud expert · audit temps réel + pédagogie posture professionnelle indissociables. 3 phases temporelles canon désormais complètes · avant (NIVEAU 0 paramètres décomposés v2.79.5+) · pendant (NIVEAU LIVE NEW v2.81.1+) · après (NIVEAUX 1-4 matrices v2.79+). Backward compat strict additif · numérotation NIVEAUX 0/1/2/3/4 préservée · NIVEAU LIVE nommé pas numéroté · skills 81 inchangé · doctrines 24 inchangée (extension HR/AP pas NEW doctrine) · slash commands 10 inchangé.",
+  "audit_amont": {
+    "test_live_largo": "Post-test live Largo cas snapshot-brand boutique macro avec produit micro · demande many-to-many phrasé en prose (produit → spec → mécanisme → bénéfice → pain → audience) · l'agent décompose paramètres avant action (NIVEAU 0 v2.79.5+) et matrices après action (NIVEAUX 1-4 v2.79+) MAIS opacité pendant action.",
+    "gap_structurel": "Opérateur perd 2 axes simultanément · (a) AUDIT temps réel · ne peut corriger si l'agent part dans une direction mauvaise AVANT que l'output soit produit · (b) PÉDAGOGIE · ne peut apprendre la posture professionnelle experte en regardant raisonner.",
+    "recadrage_canon_transverse": "Largo recadre · 'décomposer la réflexion de l'agent sur chacune de ses actions, pour que non seulement l'opérateur ait de la visibilité sur le raisonnement et s'assurer que ce soit le bon, et que lui aussi puisse apprendre d'un bon raisonnement, puisque en vérité il est pertinent et il a une posture professionnelle sérieuse et experte.' Pas juste snapshot-brand · canon transverse cross 7 skills consumers prioritaires.",
+    "informe_plan_v2_81_1": "Plan v2.81.1 PATCH · extension doctrine DVD avec NEW NIVEAU LIVE thinking aloud + propagation 7 skills consumers prioritaires. Pattern macro contexte + micro many-to-many phrasé en prose. Calibration par poids action obligatoire (triviale / moyenne / lourde)."
+  },
+  "patches_structurels": [
+    "Extension doctrine decomposition-visibility-discipline v2.79.5+ → v2.81.1+ · NEW NIVEAU LIVE thinking aloud expert pendant action · NEW table calibration par poids action (triviale zéro / moyenne 1-2 phrases / lourde narratif étendu 2 niveaux abstraction macro + micro many-to-many phrasé) · NEW HR-DVD-11 (NIVEAU LIVE obligatoire actions moyennes/lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid)",
+    "Propagation 7 skills consumers prioritaires NIVEAU LIVE template canon uniforme · macro contexte (verbaliser périmètre · boutique entière · marché · volume estimé) + micro many-to-many phrasé (produit → spec → mécanisme → bénéfice → pain → audience en prose) · snapshot-brand · build-atlas-complete · profile-audience · define-specs · mine-voc · audit-meta-account · score-matrix"
+  ],
+  "files_patched": [
+    {"file": "docs/system/decomposition-visibility-discipline.md", "scope": "v2.79.5+ → v2.81.1+ · NEW NIVEAU LIVE thinking aloud + table calibration par poids action + HR-DVD-11 + AP-DVD-11 (extension HR/AP)"},
+    {"file": ".skills/skills/snapshot-brand/SKILL.md", "scope": "NEW section NIVEAU LIVE template canon · macro contexte + micro many-to-many phrasé"},
+    {"file": ".skills/skills/build-atlas-complete/SKILL.md", "scope": "NEW section NIVEAU LIVE template canon · macro contexte + micro many-to-many phrasé"},
+    {"file": ".skills/skills/profile-audience/SKILL.md", "scope": "NEW section NIVEAU LIVE template canon · macro contexte + micro many-to-many phrasé"},
+    {"file": ".skills/skills/define-specs/SKILL.md", "scope": "NEW section NIVEAU LIVE template canon · macro contexte + micro many-to-many phrasé"},
+    {"file": ".skills/skills/mine-voc/SKILL.md", "scope": "NEW section NIVEAU LIVE template canon · macro contexte + micro many-to-many phrasé"},
+    {"file": ".skills/skills/audit-meta-account/SKILL.md", "scope": "NEW section NIVEAU LIVE template canon · macro contexte + micro many-to-many phrasé"},
+    {"file": ".skills/skills/score-matrix/SKILL.md", "scope": "NEW section NIVEAU LIVE template canon · macro contexte + micro many-to-many phrasé"},
+    {"file": "_version.json", "scope": "2.81.0 → 2.81.1 PATCH + summary détaillé NIVEAU LIVE canon"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.81.1 prepended"},
+    {"file": "docs/internal/releases/manifest/2.81.1-manifest.json", "scope": "NEW · this manifest"},
+    {"file": "decisions.md (workspace ROOT)", "scope": "D#446 captured"},
+    {"file": "memory canon project_phantomos_state", "scope": "Updated v2.81.1 + état actuel runtime 23 D# captured"},
+    {"file": "memory canon feedback_thinking_aloud_canon", "scope": "NEW memory · NIVEAU LIVE canon décomposer réflexion agent pendant action"}
+  ],
+  "thinking_aloud_canon_coverage": {
+    "phases_temporelles_canon_completes": "3 phases canon désormais · avant (NIVEAU 0 paramètres décomposés v2.79.5+) · pendant (NIVEAU LIVE NEW v2.81.1+ thinking aloud expert) · après (NIVEAUX 1-4 matrices v2.79+)",
+    "calibration_par_poids_action": {
+      "triviale": "ZÉRO thinking aloud (serait du bruit) · read file · grep · routing simple · durée <30s",
+      "moyenne": "1-2 phrases substantives obligatoires · observe / déduit / décide · classification verbatim · décision routing skill · audit single field · durée 30s-3min",
+      "lourde": "Narratif étendu obligatoire 2 niveaux abstraction · (a) MACRO contexte · verbaliser périmètre (boutique entière · marché · volume estimé) · (b) MICRO many-to-many phrasé · verbaliser chaînes (produit → spec → mécanisme → bénéfice → pain → audience en prose) · cartographie brand · audit perf · production angle · orchestrator · producer heavy · durée >3min"
+    },
+    "7_skills_consumers_prioritaires_patches_v2_81_1": "snapshot-brand · build-atlas-complete · profile-audience · define-specs · mine-voc · audit-meta-account · score-matrix · template NIVEAU LIVE canon uniforme cross 7 skills",
+    "posture_canon": "Pair senior thinking aloud expert · cohérent doctrine unfog HR-8 (mentor pas peer reviewer) · registre professionnel sérieux + accessible · zéro jargon plumbing",
+    "enforcement_runtime": "HR-DVD-11 obligatoire actions moyennes/lourdes · AP-DVD-11 opacité pendant action lourde = bug invalid · audit + pédagogie indissociables",
+    "audit_pedagogie_indissociables": "Opérateur voit raisonnement temps réel (axe audit · peut corriger avant output) et apprend posture professionnelle experte (axe pédagogie · capitalise au fil des sessions) · canon 2-en-1"
+  },
+  "decisions_captured": ["D#446"],
+  "backlog_v281_1_plus": [
+    "Re-test live workspace fresh v2.81.1 sur `~/dev/phantom-test-v280_3/` pour valider NIVEAU LIVE thinking aloud rendu sur snapshot-brand cas concret",
+    "Propagation NIVEAU LIVE à autres skills consumers post-validation pattern · decompose-ad · produce-paid-angles · produce-copy-brief · compose-creative · etc · backlog v2.81.2+",
+    "Skills tracking-GTM territoire NEW backlog v2.82+ · cas Abyss central · audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode"
+  ],
+  "rollback_strategy": "Strict additif backward compat · revert v2.81.1 = git revert HEAD strict · NIVEAU LIVE section doctrine retirable · 7 skills NIVEAU LIVE sections retirables (cycle runtime préservé) · numérotation NIVEAUX 0/1/2/3/4 préservée · revert ne casse aucun skill consumer · revert ne casse aucune doctrine sœur · revert ne casse aucune slash command"
+}

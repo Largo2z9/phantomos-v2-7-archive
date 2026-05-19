@@ -1,7 +1,8 @@
 ---
 name: profile-audience
-version: 1.8.0
+version: 1.8.1
 patch_notes:
+  - "1.8.1 (v2.81.1 decomposition visibility NIVEAU LIVE) · NEW section `Niveau LIVE · raisonnement thinking aloud pendant exécution` insérée APRÈS HR0ter disclosure NIVEAU 0 v2.79.5 et AVANT Step 0bis prerequisite check. Action LOURDE classification (synthèse audience 8 dimensions canon V3 · cross-validation Schwartz double-stage · staging pain_points + objections sub-audience canonical · ~8 min selon densité mining). NIVEAU LIVE narratif étendu obligatoire pendant exécution · 2 niveaux abstraction obligatoires (macro contexte audience sub-cluster + micro pain-benefit-chain phrasé en prose narrative sobre). Pose pair senior expert thinking aloud · audit temps réel par l'opérateur entre dimensions encodées + pédagogie posture experte indissociables. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid). Backward compat strict additif · cycle runtime préservé (HR0ter NIVEAU 0 + Step 0bis-0ter + 8 dimensions encoding + Audience Visibility Matriciel post-exec preserved)."
   - "1.8.0 (v2.79.5 decomposition visibility NIVEAU 0) · NEW section `Engagement disclosure pré-runtime v2.79.5+` AVANT Step 0bis prerequisite check · 6 paramètres décomposés contextualisés (Audience source · Dimensions cartographier · Sources data · Granularité output · Hypothèses figées · Biais à éviter · POURQUOI explicit chacun · raisonnement métier expert visible AVANT synthèse). Exemple concret canonisé in-line. ATTENDS confirmation explicite paramètres AVANT lancement profile synthesis. HR0ter canon ajouté. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` OR `--no-disclosure` explicit. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 + `docs/system/engagement-disclosure-discipline.md` v2.79.5 Paramètres décomposés. Backward compat strict additif · cycle runtime préservé."
   - "1.7.0 (v2.78.2 decomposition visibility) · NEW Output section `Audience Visibility Matriciel` après encoding 8 dimensions canon V3 · matrice ASCII audience × pain × angle obligatoire si ≥2 pains owned sub-audience · stage business filter (early / growth / scale) si signal détectable · méthode pédagogique verbale explicit (8 dimensions résumées + many-to-many audience-pain-angle). HR10-HR14 + AP10-AP13 ajoutés. Backward compat strict additif · existing 8 dimensions + 5 sections IP preserved · operator output template v2.54 preserved (template legacy reste valide, NEW section l'enrichit). Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.78.2 (canon racine sister Sprint A)."
   - "1.2.0 · v2.39+ · Step 0ter framework awareness (4 questions cartography pédagogie inline)"
@@ -19,6 +20,7 @@ subagent_safe: true
 mode: proposed
 operator_facing: true
 description: |
+  v1.8.1 (v2.81.1 decomposition visibility NIVEAU LIVE) · NEW section Niveau LIVE thinking aloud obligatoire pendant exécution (entre HR0ter NIVEAU 0 disclosure v2.79.5 et Step 0bis prerequisite check). Action LOURDE · narratif étendu 2 niveaux abstraction (macro contexte audience sub-cluster + micro pain-benefit-chain phrasé surface → consequence → deep + 3 couches bénéfice). Pose pair senior expert · audit temps réel + pédagogie indissociables. Cross-ref `decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 + AP-DVD-11. Backward compat strict additif (cycle runtime préservé).
   v1.8.0 (v2.79.5 decomposition visibility NIVEAU 0) · NEW section "Engagement disclosure pré-runtime v2.79.5+" AVANT Step 0bis · 6 paramètres décomposés (Audience source · Dimensions cartographier · Sources data · Granularité output · Hypothèses figées · Biais à éviter · POURQUOI chaque) · raisonnement métier expert visible AVANT synthèse profile. ATTENDS confirmation paramètres AVANT lancement. HR0ter canon. Cross-ref `decomposition-visibility-discipline.md` v2.79.5+ + `engagement-disclosure-discipline.md` v2.79.5.
   v1.7.0 (v2.78.2 decomposition visibility) · NEW Output section `Audience Visibility Matriciel` après encoding 8 dimensions canon V3 · matrice ASCII audience × pain × angle si ≥2 pains owned · stage business filter (early/growth/scale) · méthode pédagogique verbale (8 dimensions résumées + many-to-many). Backward compat strict additif.
   v1.6.0 (v2.64 ontologie sémantique pure) · pain_points + objections passent en SUB-AUDIENCE · stage `brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json` (owned natif par parent path). Read désormais depuis sub-audience direct (pas de filter affected_audiences[] nécessaire · l'audience parente est implicite). Backward compat strict additif · lecture fallback top-level v2.63 collections + profile sub-fields legacy v1.7 preserved.
@@ -245,6 +247,26 @@ Synthèse profil audience · Liv Happyfood · audience-hero · ce qui va se pass
 ATTENDS confirmation explicite paramètres AVANT lancement synthesis. L'opérateur peut · (a) valider tout · (b) ajuster un paramètre spécifique (e.g. "granularité micro pas segment", "ajoute Reddit dans sources", "biais saisonnalité à intégrer"), (c) abandonner / différer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set OR si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.5+.
 
 Cross-ref doctrines · `docs/system/decomposition-visibility-discipline.md` v2.79.5+ (NIVEAU 0 pré-exec) + `docs/system/engagement-disclosure-discipline.md` v2.79.5 (Paramètres décomposés section).
+
+### HR0quater · Niveau LIVE · raisonnement thinking aloud pendant exécution (canon v2.81.1+)
+
+Action classée **LOURDE** (cf table calibration `docs/system/decomposition-visibility-discipline.md` v2.81.1+ · synthèse 8 dimensions canon V3 · cross-validation Schwartz double-stage · staging pain_points + objections sub-audience canonical · ~8 min selon densité mining). NIVEAU LIVE thinking aloud expert OBLIGATOIRE pendant exécution · pas seulement HR0ter disclosure NIVEAU 0 en amont et Audience Visibility Matriciel matricielle (NIVEAUX 1-4) en aval.
+
+Pattern obligatoire · l'agent verbalise son raisonnement EN TEMPS RÉEL pendant qu'il décortique le sub-cluster audience et synthétise les 8 dimensions, en prose narrative sobre (zéro matrice ASCII en LIVE · les matrices viennent en Output Audience Visibility Matriciel post-encoding).
+
+**2 niveaux d'abstraction obligatoires** ·
+
+1. **Macro contexte audience sub-cluster** · verbaliser la compréhension du périmètre audience cible AVANT de rentrer dans le détail dimensions.
+   Exemple profile-audience · "On part d'un sub-cluster {nom audience · cardinality broad / segment / micro} qui se situe dans l'atlas brand {positioning macro brand} comme audience {hero / secondaire / entry}. Densité mining disponible · {N verbatims encoded · sources actives · porte d'entrée Q1 framework cartography détectée pain_driven / goal_driven / identity_driven}. Stade Schwartz sophistication marché probable · {1-5 inféré canon × signaux brand}. Mon hypothèse archetype-voix candidate · {caregiver / sage / hero phrasé pourquoi · pas tag brut} parce que {pattern verbatims observés + canon archetypes-voix consulté}."
+
+2. **Micro pain-benefit-chain phrasé** · verbaliser la chaîne pain × benefit pendant l'encoding 8 dimensions.
+   Exemple profile-audience · "Cette audience entre par {Q1 porte} sur pain de surface {phrasé sourced verbatim} → conséquence vécue {phrasé canon pain-benefit-chain · ce que ça génère concrètement quotidien} → pain deep racine {phrasé · trigger identitaire profond derrière la surface} → bénéfice fonctionnel attendu {ce qui doit changer extérieurement mesurable} → bénéfice émotionnel attendu {ce qui doit changer subjectivement ressenti} → bénéfice identitaire attendu {ce que l'audience veut projeter socialement après résolution}. Cross-validation Schwartz double-stage · stage produit {1-5} mais stage émotionnel audience {1-5 souvent shift en aval} parce que {raisonnement canon}."
+
+**Calibration narrative** · prose sobre · registre pair senior expert · zéro jargon plumbing (jamais `profile.json#purchase_driver`, `_field_types`, `confidence_chain[]`, `audience.lineage` en LIVE) · zéro tableau ASCII en LIVE (matrices = Output Audience Visibility Matriciel post-encoding). Adapter le tonal au registre opérateur détecté (grounded · standard · dense).
+
+**Audit + pédagogie indissociables** · le thinking aloud sert l'opérateur sur 2 axes en même temps · (a) audit temps réel · il peut corriger entre dimensions encodées si l'agent part dans une mauvaise direction d'inférence (mauvais pain deep projeté · mauvais archetype audience-side · cross-validation Schwartz incohérente) AVANT que les dimensions downstream cascadent sur cette base, (b) pédagogie · il apprend la posture stratégique experte sur cartographie audience en regardant la manière de penser une chaîne pain-benefit canon 3 couches × cross-validation Schwartz double-stage.
+
+Cross-ref · `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid).
 
 ### Step 0bis · Prerequisite check (DRGFP v2.38)
 
@@ -892,7 +914,7 @@ Mon avis · {reco macro adaptive selon verbatim_density actuelle}.
 
 ## Cross-references
 
-- `docs/system/decomposition-visibility-discipline.md` (v2.78.2 canon racine sister Sprint A) · matrice audience × pain × angle × stage business obligatoire après encoding 8 dimensions · many-to-many explicit, jamais implicite.
+- `docs/system/decomposition-visibility-discipline.md` (v2.78.2 + v2.79.5+ NIVEAU 0 + v2.81.1+ NIVEAU LIVE canon racine) · doctrine 3 phases temporelles · AVANT exec NIVEAU 0 paramètres décomposés (HR0ter) · PENDANT exec NIVEAU LIVE thinking aloud expert action LOURDE 2 niveaux abstraction macro contexte audience + micro pain-benefit-chain phrasé (HR0quater) · APRÈS exec NIVEAUX 1-4 Output Audience Visibility Matriciel · audience × pain × angle × stage business obligatoire après encoding 8 dimensions · many-to-many explicit, jamais implicite · HR-DVD-11 + AP-DVD-11 enforcement.
 - `docs/system/investigation-posture.md` (v2.54 doctrine canon) · cartographier avant affirmer · confidence chain explicit · audiences comme hypothèses (TRÈS faible par défaut sans mine-voc) · close drill-down macro · opérateur arbitre.
 - `docs/system/contextual-intelligence.md` · master doctrine, no orphan output, jargon zéro en surface.
 - `docs/system/audience-cartography.md` · doctrinal contract cartography (mère / sous-audiences, 4 movements).

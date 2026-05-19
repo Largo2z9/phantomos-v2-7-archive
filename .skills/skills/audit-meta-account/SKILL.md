@@ -1,12 +1,15 @@
 ---
 name: audit-meta-account
 type: producer
-version: "1.1.0"
+version: "1.1.1"
 isolation_scope: brand_only
 layer: production
 recommended_model: sonnet
 reasoning_pattern: null
+patch_notes:
+  v1.1.1: "v2.81.1 decomposition visibility NIVEAU LIVE · NEW section `Niveau LIVE · raisonnement thinking aloud pendant exécution` insérée AVANT Step 0 Gate access check (au début après Expert methodology). Action LOURDE classification (5-block diagnostic + API multi-endpoints + cross-reference benchmarks + score matrices output). NIVEAU LIVE narratif étendu obligatoire pendant exécution · 2 niveaux abstraction obligatoires (macro état compte santé + micro score matrices par bloc audité phrasé en prose narrative sobre). Pose pair senior media buyer thinking aloud · audit temps réel par l'opérateur entre blocs audités + pédagogie posture experte indissociables. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid). Backward compat strict additif · cycle runtime préservé (Step 0 Gate + Steps 1A/1B + 5 blocs diagnostic preserved)."
 description: >
+  v1.1.1 (v2.81.1 decomposition visibility NIVEAU LIVE) · NEW section Niveau LIVE thinking aloud obligatoire pendant exécution (entre Expert methodology et Step 0). Action LOURDE · narratif étendu 2 niveaux abstraction (macro état compte santé + micro score matrices par bloc audité phrasé en prose). Pose pair senior media buyer expert · audit temps réel + pédagogie indissociables. Cross-ref `decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 + AP-DVD-11. Backward compat strict additif (cycle runtime préservé).
   Structured audit of a Meta Ads account setup. Two modes: API-driven (default when
   token available, factual data-backed audit) or declarative interview (fallback,
   operator answers questions or sends screenshots).
@@ -39,6 +42,28 @@ Senior media buyer account health check. Two modes based on API access. Observat
 **Key variables**: CAPI event received last 7d, event_id dedup rate, domain verification status, 8-event priority order, campaign-to-adset ratio, catalog sync freshness, policy flags count.
 
 **Codified reference**: if `resources/conventions/meta-ads.json` missing or incomplete, Gate doc blocks execution until it is filled (rate limits, OAuth scopes, endpoint patterns, pitfalls).
+
+---
+
+## Niveau LIVE · raisonnement thinking aloud pendant exécution (canon v2.81.1+)
+
+Action classée **LOURDE** (cf table calibration `docs/system/decomposition-visibility-discipline.md` v2.81.1+ · 5-block diagnostic + API multi-endpoints + cross-reference benchmarks canon + score matrices output finding × impact × action). NIVEAU LIVE thinking aloud expert OBLIGATOIRE pendant exécution · pas seulement disclosure pré-engagement en amont et Output format synthèse 5 blocs en aval.
+
+Pattern obligatoire · l'agent verbalise son raisonnement EN TEMPS RÉEL pendant qu'il décortique le compte Meta et score chaque bloc diagnostic, en prose narrative sobre (zéro matrice ASCII en LIVE · le score matrices canon viennent en Output format post-audit).
+
+**2 niveaux d'abstraction obligatoires** ·
+
+1. **Macro état compte santé** · verbaliser la compréhension du périmètre compte Meta AVANT de rentrer dans le détail bloc par bloc.
+   Exemple audit-meta-account · "On part d'un compte Meta Ads {nom · stade business inféré ARR signals · domaine industrie phrasé}, qui opère depuis {age compte estimé pixel events history}, qui gère probablement {volume budget mensuel × N campaigns actives estimé endpoints API}. Mon hypothèse de pattern santé compte · {majoritairement bien setup mais détail signal critical à confirmer · OU setup correct mais structure campaigns sous-optimale · OU plusieurs gaps techniques détectés}. Les zones critiques à creuser en priorité · {1-3 axes basés signaux endpoints initial scan · pixel reliability suspect / CAPI dedup incertain / catalog sync stale}. Mon hypothèse impact opérationnel macro · {tracking solide donc data optimization OK · OU data signal compromis donc reco priorité fix tracking d'abord}."
+
+2. **Micro score matrices par bloc audité phrasé** · verbaliser chaque bloc diagnostic en prose narrative pendant l'audit.
+   Exemple audit-meta-account · "Sur ce bloc {pixel reliability / account structure / campaign architecture / catalog health / rules + safety} · finding observé {phrasé sourced endpoint · CAPI events received last 7d · dedup rate · domain verification status · 8-event priority order · campaign-to-adset ratio · catalog sync freshness · policy flags count} → status {OK / Warning / Issue phrasé pourquoi · pas tag brut} → impact opérationnel {phrasé concrètement ce que ça génère sur perf account · attribution loss · cost inefficiency · scaling block} → action recommandée {phrasé canon · pas jargon · priorité explicit}."
+
+**Calibration narrative** · prose sobre · registre pair senior media buyer expert · zéro jargon plumbing (jamais `meta-ads.json#endpoint_pattern`, `_field_types`, `confidence_chain[]`, endpoint URLs en LIVE) · zéro tableau ASCII en LIVE (score matrices canon = Output format post-audit). Adapter le tonal au registre opérateur détecté (grounded · standard · dense).
+
+**Audit + pédagogie indissociables** · le thinking aloud sert l'opérateur sur 2 axes en même temps · (a) audit temps réel · il peut corriger entre blocs audités si l'agent part dans une mauvaise direction d'inférence (mauvais finding projeté · mauvaise classification status · mauvais impact opérationnel estimé) AVANT que les downstream recos cascadent sur cette base, (b) pédagogie · il apprend la posture experte sur audit Meta Ads en regardant la manière de penser un finding × impact × action sur 5 blocs canon (pixel · structure · architecture · catalog · rules).
+
+Cross-ref · `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid).
 
 ---
 
@@ -178,3 +203,12 @@ Close with **priority action list** (top 5 by severity) and **archive** the audi
 
 - If findings confidence ≥ 8 → trigger `capture-learning` automatically
 - Critical findings (Issue severity) → append to `brands/{slug}/pending-validations.md`
+
+---
+
+## Cross-references
+
+- `docs/system/decomposition-visibility-discipline.md` v2.81.1+ NIVEAU LIVE · doctrine canon racine 3 phases temporelles · AVANT exec disclosure pré-engagement · PENDANT exec NIVEAU LIVE thinking aloud expert action LOURDE 2 niveaux abstraction macro état compte santé + micro score matrices par bloc audité phrasé · APRÈS exec Output format synthèse 5 blocs (finding × impact × action) · HR-DVD-11 + AP-DVD-11 enforcement.
+- `resources/conventions/meta-ads.json` · scopes, endpoint patterns, rate limits, pitfalls canon required Gate check.
+- `.skills/skills/audit-google-pmax/SKILL.md` · sister auditor canon PMAX Google Ads (pattern audit similaire 7 dimensions canon · même posture senior expert).
+- `.skills/skills/capture-learning/SKILL.md` · downstream auto-trigger si finding confidence ≥ 8.

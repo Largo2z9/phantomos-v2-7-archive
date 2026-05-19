@@ -1,7 +1,7 @@
 ---
 name: mine-voc
 type: producer
-version: "1.4.0"
+version: "1.4.1"
 isolation_scope: brand_only
 layer: territoire
 recommended_model: sonnet
@@ -13,6 +13,7 @@ consumes:
   - path: docs/doctrine/pain-benefit-chain-doctrine.md
   - path: docs/doctrine/objections-mapping-doctrine.md
 description: >
+  v1.4.1 (v2.81.1 decomposition visibility NIVEAU LIVE) · NEW section Niveau LIVE thinking aloud obligatoire pendant exécution (entre Engagement disclosure pré-runtime NIVEAU 0 v2.79.5 et Tone). Action LOURDE (crawl multi-sources + 4-lens coding + 7 Steps + Layer A archive + Layer B mutations). NIVEAU LIVE narratif étendu 2 niveaux abstraction (macro contexte corpus verbatims cross-canaux + micro signaux par cluster phrasé en prose). Pose pair senior expert · audit temps réel + pédagogie indissociables. Cross-ref `decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 + AP-DVD-11. Backward compat strict additif (cycle runtime préservé).
   v1.4.0 (v2.79.5 decomposition visibility NIVEAU 0) · NEW section "Engagement disclosure pré-runtime v2.79.5+" enrichie avec NIVEAU 0 paramètres décomposés (Audience cible · Pains prioritaires · Canaux · Queries opératoires · Hypothèses figées · Biais à éviter · POURQUOI chaque). L'agent expose 6 paramètres contextualisés brand + raisonnement métier expert visible AVANT scrape. Exemple canonisé Liv Happyfood (box konjac · femmes 30-45 actives urbaines · pains JTBD konjac · canaux ranked densité × signal · queries fonctionnel + émotionnel · hypothèses figées · biais à éviter). ATTENDS confirmation explicite paramètres AVANT scrape. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 + `docs/system/engagement-disclosure-discipline.md` v2.79.5 Paramètres décomposés. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` OR `--no-disclosure` explicit. Backward compat strict additif (cycle runtime préservé · seul l'amont disclosure change).
   v1.3.0 (v2.64 ontologie sémantique pure) · pain_points + objections passent en SUB-AUDIENCE · stage `brands/{slug}/audiences/{a_slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/audiences/{a_slug}/objections/{OBJ-NN}.json` entités complètes (owned natif par l'audience). Generation IDs PNT-NN/OBJ-NN scan désormais `brands/{slug}/audiences/*/pain_points/*.json` filesystem (incrémental cross-audiences). Pattern · pain et objection appartiennent sémantiquement à une audience · sub-parent path canonical (au lieu de top-level v2.63 avec affected_audiences[] array). Backward compat strict additif · lecture fallback `brands/{slug}/pain_points/*.json` + `brands/{slug}/objections/*.json` top-level v2.63 si sub-parent vide OR absent. Profile sub-fields legacy v1.7 read fallback aussi preserved.
   v1.2.0 (v2.63 ontologie pure) · pain_points + objections passent en COLLECTIONS top-level séparées · stage `brands/{slug}/pain_points/{PNT-NN}.json` + `brands/{slug}/objections/{OBJ-NN}.json` entités complètes avec `affected_audiences: [a_slug]`. BREAKING profile.json schema v2.0 (sub-fields legacy `profile.pain_points[]` / `profile.objections[]` DEPRECATED en write · read backward compat preserved). Pattern miroir friction.schema (top-level collection). Cross-audience reference natif via affected_audiences[].
@@ -177,6 +178,28 @@ Mining voix client · Liv Happyfood · ce qui va se passer
 ATTENDS confirmation explicite paramètres AVANT lancement scrape. L'opérateur peut · (a) valider tout · (b) ajuster un paramètre spécifique (e.g. "ajoute Sephora dans canaux", "Schwartz product-aware pas solution-aware", "biais TikTok à intégrer"), (c) abandonner / différer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set OR si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.5+.
 
 Cross-ref doctrines · `docs/system/decomposition-visibility-discipline.md` v2.79.5+ (NIVEAU 0 pré-exec) + `docs/system/engagement-disclosure-discipline.md` v2.79.5 (Paramètres décomposés section).
+
+---
+
+## Niveau LIVE · raisonnement thinking aloud pendant exécution (canon v2.81.1+)
+
+Action classée **LOURDE** (cf table calibration `docs/system/decomposition-visibility-discipline.md` v2.81.1+ · crawl multi-sources rate-limited + 4-lens coding par verbatim + 7 Steps cycle complet + Layer A corpus archive + Layer B mutations cross-entities). NIVEAU LIVE thinking aloud expert OBLIGATOIRE pendant exécution · pas seulement disclosure NIVEAU 0 en amont et synthèse Step 5 + mutations Step 6 en aval.
+
+Pattern obligatoire · l'agent verbalise son raisonnement EN TEMPS RÉEL pendant qu'il décortique le corpus verbatims et code 4 lentilles par signal, en prose narrative sobre (zéro matrice ASCII en LIVE · les synthèses canon viennent en Step 5 post-coding).
+
+**2 niveaux d'abstraction obligatoires** ·
+
+1. **Macro contexte corpus verbatims cross-canaux** · verbaliser la compréhension du périmètre VoC AVANT de rentrer dans le détail signal par signal.
+   Exemple mine-voc · "On part d'une brand {nom · positionnement macro} dont la VoC va surfacer sur {canaux ranked détectés × densité signal estimée}. Mon hypothèse pattern dominant · {majoritairement reviews natifs PDP réguliers · OU verbatims polarisés Trustpilot · OU densité forums spécialisés}. Stade Schwartz audience-side probable · {1-5 inféré canon × signaux brand}. Mon hypothèse de pains prioritaires candidats à confirmer par 4-lens coding · {3-5 pains visibles depuis brand.json + spec.json + JTBD framework} parce que {pattern catégorie + signaux audience-side encoded}. Les vrais axes intéressants ne sont probablement pas les bénéfices revendiqués site mais {ce que les clients soulèvent en mode unprompted}, je vais creuser cette asymétrie en priorité."
+
+2. **Micro signaux par cluster phrasé** · verbaliser les signaux 4-lens en prose narrative pendant le coding par verbatim.
+   Exemple mine-voc · "Ce verbatim {citation courte phrasée} touche · lentille JTBD {job-to-be-done dominant phrasé · what they hired the product for} → lentille Schwartz awareness {stage 1-5 phrasé · unaware / problem-aware / solution-aware / product-aware / most-aware} → lentille theme typology {cluster thématique canon · functional / emotional / identity / social} → lentille pain category {surface / consequence / deep canon pain-benefit-chain phrasé}. Cluster auquel ça appartient · {pattern croisé verbatims précédents observé phrasé}. Asymétrie remarquable · {ce que le verbatim révèle que la brand ne voit pas · phrasé canon Step 5 synthesis-first}."
+
+**Calibration narrative** · prose sobre · registre pair senior expert · zéro jargon plumbing (jamais `spec.json#problems_solved[].verbatim_quotes[]`, `_field_types`, `confidence_chain[]`, `PNT-NN` ID brut en LIVE) · zéro tableau ASCII en LIVE (synthèse canon Step 5 prose-first 3 mouvements). Adapter le tonal au registre opérateur détecté (grounded · standard · dense). Cohérent strict avec voice canon Step 5 (no form-fill recap · prose-first · synthesis IS the analysis).
+
+**Audit + pédagogie indissociables** · le thinking aloud sert l'opérateur sur 2 axes en même temps · (a) audit temps réel · il peut corriger si l'agent part dans une mauvaise direction de coding (mauvais JTBD inféré · mauvais stade Schwartz audience-side · mauvaise classification theme typology) AVANT que les downstream pain_points + objections cascadent sur cette base, (b) pédagogie · il apprend la posture experte sur Voice of Customer mining en regardant la manière de penser un cluster verbatim canon 4-lens × pain-benefit-chain.
+
+Cross-ref · `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid).
 
 ---
 
@@ -580,6 +603,7 @@ Three contexts surface this skill.
 - `.skills/build-brand-snapshot.py` — silent rebuild after Step 7 finalize. Per master mutation rule.
 - `.claude/hooks/turn-end-audit.py` — reads coherence_check events. Flags unchecked-entity-claim if Step 7 finalize did not run.
 - `docs/system/contextual-intelligence.md` — master doctrine. Validation-cascade-avoidance and trust-the-model rules govern the workflow.
+- `docs/system/decomposition-visibility-discipline.md` v2.79.5+ NIVEAU 0 + v2.81.1+ NIVEAU LIVE · doctrine racine 3 phases temporelles · AVANT exec NIVEAU 0 paramètres décomposés (Engagement disclosure pré-runtime) · PENDANT exec NIVEAU LIVE thinking aloud expert action LOURDE 2 niveaux abstraction macro contexte corpus + micro signaux par cluster 4-lens phrasé · APRÈS exec synthèse Step 5 prose-first 3 mouvements + Step 6 mutations sub-audience canonical · HR-DVD-11 + AP-DVD-11 enforcement.
 - `docs/system/voice.md` — voice canon. Operator-facing synthesis follows it strictly.
 - `resources/schemas/spec.schema.json`, `resources/schemas/profile.schema.json` — exit points for Layer B mutations. Field definitions live there.
 

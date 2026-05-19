@@ -1,6 +1,6 @@
 ---
 name: score-matrix
-version: 1.2.0
+version: 1.2.1
 type: producer
 isolation_scope: brand_only
 layer: territoire
@@ -26,7 +26,10 @@ triggers_en:
 disambiguates_against:
   - weight-dimensions: "weight-dimensions calcule pondérations dimensions audience → angle (input). score-matrix CONSOMME ces weights pour scoring final matrice."
   - produce-paid-angles: "produce-paid-angles produit des angles individuels. score-matrix priorise les COMBINAISONS audience × angle."
+patch_notes:
+  v1.2.1: "v2.81.1 decomposition visibility NIVEAU LIVE · NEW section `Niveau LIVE · raisonnement thinking aloud pendant exécution` insérée AVANT Step 0 DRGFP Manifest Registry Scan (au début Hard Rules). Action LOURDE classification (matrice Sub-cluster × Source d'angle · formule canon Impact × 3 + Vitesse × 2 + Signal × 1 · modulateurs brand × stage business × compatibility rules · top 3-5 territoires output). NIVEAU LIVE narratif étendu obligatoire pendant exécution · 2 niveaux abstraction obligatoires (macro contexte priorisation portfolio brand + micro top-3 territoires phrasé pourquoi en prose narrative sobre). Pose pair senior strategic director thinking aloud · audit temps réel par l'opérateur entre cellules scorées + pédagogie posture experte indissociables. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid). Backward compat strict additif · cycle runtime préservé (Step 0 DRGFP + formule canon + matrice scoring + top territoires + close preserved)."
 description: >
+  v1.2.1 (v2.81.1 decomposition visibility NIVEAU LIVE) · NEW section Niveau LIVE thinking aloud obligatoire pendant exécution (au début Hard Rules avant Step 0 DRGFP). Action LOURDE · narratif étendu 2 niveaux abstraction (macro contexte priorisation portfolio brand + micro top-3 territoires phrasé pourquoi en prose). Pose pair senior strategic director · audit temps réel + pédagogie indissociables. Cross-ref `decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 + AP-DVD-11. Backward compat strict additif (cycle runtime préservé).
   v1.2.0 (v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-discipline.md NEW v2.75.0.)
   v1.1.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (territoires-prioritisation). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
 consumes:
@@ -71,6 +74,26 @@ Producer skill operator-facing. Clôt la Phase 3 doctrine cartographie. Consomme
 Cohérence cross-skill : sourcing weights précomputés via `weight-dimensions`, sources d'angle alignées canon V3 (`creative-formula.md`), compatibilité awareness verrouillée doctrine canonical-matrix-reasoning.
 
 ## Hard Rules
+
+### HR0 · Niveau LIVE · raisonnement thinking aloud pendant exécution (canon v2.81.1+)
+
+Action classée **LOURDE** (cf table calibration `docs/system/decomposition-visibility-discipline.md` v2.81.1+ · matrice Sub-cluster × Source d'angle · formule canon Impact × 3 + Vitesse × 2 + Signal × 1 modulé 0.5 à 2 · modulateurs brand × stage business × compatibility rules · top 3-5 territoires output). NIVEAU LIVE thinking aloud expert OBLIGATOIRE pendant exécution · pas seulement disclosure pré-engagement en amont et top territoires + matrice scoring en aval.
+
+Pattern obligatoire · l'agent verbalise son raisonnement EN TEMPS RÉEL pendant qu'il décortique le contexte priorisation et score chaque cellule audience × angle, en prose narrative sobre (zéro matrice ASCII en LIVE · la matrice scorée finale vient en output post-scoring).
+
+**2 niveaux d'abstraction obligatoires** ·
+
+1. **Macro contexte priorisation portfolio brand** · verbaliser la compréhension du périmètre priorisation AVANT de rentrer dans le détail scoring cellule par cellule.
+   Exemple score-matrix · "On part d'une brand {nom · positionnement macro · stade business inféré} qui a {N audiences sub-clusters cartographiées × N angles produits compatibles} prêts à être scorés. Mon hypothèse de pattern priorisation · {majoritairement audiences product-fit large × angles convergents · OU portfolio fragmenté audiences niches × angles divergents · OU concentration sur 1-2 audiences-hero à exploiter en priorité}. Stage business filter détecté · {early/growth/scale phrasé pourquoi · signaux brand encoded}. Mon hypothèse de territoires gagnants candidats AVANT scoring · {2-3 axes intuitivement prometteurs basés densité signal × cohérence positioning macro}. Modulateurs canon mobilisés · {brand_equity_level · creative_zone · stage business · compatibility rules awareness × sophistication phrasé pourquoi chacun pèse}."
+
+2. **Micro top-3 territoires phrasé pourquoi** · verbaliser les territoires émergents en prose narrative pendant le scoring.
+   Exemple score-matrix · "Cette cellule {audience sub-cluster nom × source d'angle phrasé} score élevé parce que · Impact {pourquoi cet angle résout pain prioritaire de cette audience · phrasé sans chiffre brut} → Vitesse {pourquoi production rapide · proof points dispo OR vernacular calibré OR canon archetype matchant} → Signal {pourquoi traction probable · density verbatims supportants OR pattern catégorie + brand fit OR whitespace concurrentiel détecté}. Modulateur appliqué · {compatibility rule awareness × sophistication phrasé pourquoi modulateur 0.5 à 2}. Cohérence avec positioning brand · {phrasé pourquoi ce territoire renforce vs dilue le positionnement macro}. Asymétrie remarquable vs intuition AVANT scoring · {phrasé · si territoire score plus haut OR plus bas qu'attendu pourquoi}."
+
+**Calibration narrative** · prose sobre · registre pair senior strategic director · zéro jargon plumbing (jamais `scoring/matrix-{date}.json#cell_id`, `_field_types`, formules brutes `Impact × 3 + Vitesse × 2 + Signal × 1` en LIVE) · zéro tableau ASCII en LIVE (matrice scorée canon = output post-scoring). Cohérent strict Compositional Cartography §7 (no raw numeric scoring exposed to operator). Adapter le tonal au registre opérateur détecté (grounded · standard · dense).
+
+**Audit + pédagogie indissociables** · le thinking aloud sert l'opérateur sur 2 axes en même temps · (a) audit temps réel · il peut corriger entre cellules scorées si l'agent part dans une mauvaise direction d'inférence (mauvais Impact projeté · mauvais modulateur appliqué · mauvaise compatibility rule détectée · territoire candidat hors positioning) AVANT que la matrice finale cristallise sur cette base, (b) pédagogie · il apprend la posture stratégique experte sur priorisation paid DTC en regardant la manière de penser un scoring canon Impact × Vitesse × Signal × Modulateurs cross-audience × cross-angle.
+
+Cross-ref · `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid).
 
 ### Step 0 · DRGFP Manifest Registry Scan (NEW v2.75.0)
 
@@ -261,6 +284,7 @@ Marquer 🔥 sur top 1 par ligne. `0` sur cellules vierges. Aucun em-dash dans t
 - `weight-dimensions` v1.0 · sibling producer, output `dimension_weights.json` consommé en HR3
 - `creative-formula.md` V3 · 5 sources d'angle canoniques colonnes matrice
 - `docs/system/canonical-matrix-reasoning.md` · cardinalité ≤ 5, awareness compatibility hard rule
+- `docs/system/decomposition-visibility-discipline.md` v2.81.1+ NIVEAU LIVE · doctrine racine 3 phases temporelles · AVANT exec disclosure pré-engagement · PENDANT exec NIVEAU LIVE thinking aloud expert action LOURDE 2 niveaux abstraction macro contexte priorisation + micro top-3 territoires phrasé pourquoi · APRÈS exec top territoires + matrice scoring synthèse (no raw numeric scoring exposed canon Compositional Cartography §7) · HR-DVD-11 + AP-DVD-11 enforcement.
 - `docs/system/skill-authoring-discipline.md` · frontmatter triad + lifecycle
 - `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
 - `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)

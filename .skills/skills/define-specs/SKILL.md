@@ -1,6 +1,6 @@
 ---
 name: define-specs
-version: 1.3.0
+version: 1.3.1
 type: orchestrator
 recommended_model: sonnet
 subagent_safe: true
@@ -8,9 +8,11 @@ layer: territoire
 mode: proposed
 operator_facing: true
 patch_notes:
+  v1.3.1: "v2.81.1 decomposition visibility NIVEAU LIVE · NEW section `Niveau LIVE · raisonnement thinking aloud pendant exécution` insérée AVANT Step 0bis prerequisite check (au début Hard Rules). Action LOURDE classification (orchestre snapshot + Q&A + ingest-resource + encoding spec.schema v1.10 + 3 niveaux Specs Visibility Matriciel post-exec). NIVEAU LIVE narratif étendu obligatoire pendant exécution · 2 niveaux abstraction obligatoires (macro contexte produit positionnement + micro spec → mécanisme → bénéfice 3 couches phrasé en prose narrative sobre). Pose pair senior expert thinking aloud · audit temps réel par l'opérateur entre specs encodées + pédagogie posture experte indissociables. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid). Backward compat strict additif · cycle runtime préservé (Step 0bis + HR1-HR5 + Output Specs Visibility Matriciel preserved)."
   v1.3.0: "v2.78.2 decomposition-visibility-discipline · Output NEW section Specs Visibility Matriciel 3 niveaux obligatoire après encoding (specs objectifs · mécanismes · bénéfices 3 couches canon pain-benefit-chain). Méthode pédagogique verbale obligatoire. Cross-refs decomposition-visibility-discipline + pain-benefit-chain. Backward compat strict additif (existing Phases preserved)."
   v1.2.0: "v2.58 coverage extend · service_specs Q&A flow activé pour spec.identity.type service/clinical_service/hybrid (v1.11) · contraindications Q&A flow activé pour produits/services à contraintes usage. Closes 2 orphans audit v2.57. Backward compat strict additif."
 description: >
+  v1.3.1 (v2.81.1 decomposition visibility NIVEAU LIVE) · NEW section Niveau LIVE thinking aloud obligatoire pendant exécution (au début Hard Rules avant Step 0bis). Action LOURDE · narratif étendu 2 niveaux abstraction (macro contexte produit positionnement + micro spec → mécanisme → bénéfice 3 couches phrasé en prose). Pose pair senior expert · audit temps réel + pédagogie indissociables. Cross-ref `decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 + AP-DVD-11. Backward compat strict additif (cycle runtime préservé).
   v1.3.0 (v2.78.2 decomposition-visibility-discipline) · Output NEW section Specs Visibility Matriciel 3 niveaux obligatoire après encoding (specs · mécanismes · bénéfices 3 couches canon pain-benefit-chain). Méthode pédagogique verbale obligatoire. v1.2.0 (v2.58 coverage extend) · service_specs Q&A flow activé pour spec.identity.type service/clinical_service/hybrid (v1.11) · contraindications Q&A flow activé pour produits/services à contraintes usage.
 triggers_fr:
   - "définis les specs"
@@ -79,6 +81,26 @@ prerequisites:
 Posture : éducateur + collègue. Tu rassembles la matière, tu proposes l'assemblage, l'opérateur valide ou corrige. Jamais d'auto-write silencieux. Jamais d'hallucination de champ sans source.
 
 ## Hard Rules
+
+### HR0 · Niveau LIVE · raisonnement thinking aloud pendant exécution (canon v2.81.1+)
+
+Action classée **LOURDE** (cf table calibration `docs/system/decomposition-visibility-discipline.md` v2.81.1+ · orchestre snapshot + Q&A + ingest-resource + encoding spec.schema v1.10 + 3 niveaux Specs Visibility Matriciel post-exec). NIVEAU LIVE thinking aloud expert OBLIGATOIRE pendant exécution · pas seulement disclosure pré-engagement en amont et Output Specs Visibility Matriciel matricielle (NIVEAUX 1-3) en aval.
+
+Pattern obligatoire · l'agent verbalise son raisonnement EN TEMPS RÉEL pendant qu'il décortique le produit et encode chaque section spec.json, en prose narrative sobre (zéro matrice ASCII en LIVE · les matrices viennent en Output Specs Visibility Matriciel post-encoding).
+
+**2 niveaux d'abstraction obligatoires** ·
+
+1. **Macro contexte produit positionnement** · verbaliser la compréhension du périmètre produit AVANT de rentrer dans le détail spec.
+   Exemple define-specs · "On part d'un produit {nom · catégorie · sous-catégorie} qui s'inscrit dans la brand {positioning macro · stade Schwartz inféré sophistication marché} comme {hero / secondaire / entry / new launch}. Le pattern catalogue indique {hero positionne sur axe X · ce produit drainage sub-axe Y · cohérent ou divergence détectée}. Le type produit · {DTC physical / service / clinical_service / hybrid · subscription / one-shot · refill / consommable} parce que {signaux scrape + Q&A operator + ingest sources}. Mon hypothèse de mécanisme dominant · {physiologique / technique / émotionnel / identitaire} parce que {pattern claims PDP + verbatims reviews tagged si disponibles + canon catégorie}."
+
+2. **Micro spec → mécanisme → bénéfice 3 couches phrasé** · verbaliser la chaîne produit en prose narrative pendant l'encoding spec.json.
+   Exemple define-specs · "Cette spec {composition / ingrédient / feature dominante phrasé sourced PDP ou Q&A} → mécanisme physiologique ou technique {comment ça agit · phrasé canon} → bénéfice fonctionnel {ce qui change extérieurement mesurable · résolution pain de surface} + bénéfice émotionnel {ce qui change subjectivement ressenti · résolution pain conséquence} + bénéfice identitaire {ce que l'audience projette socialement · résolution pain deep racine}. Cross-référence avec spec.contraindications si produit/service à contraintes usage · {phrasé canon pourquoi contraintes obligatoires v2.58}."
+
+**Calibration narrative** · prose sobre · registre pair senior expert · zéro jargon plumbing (jamais `spec.json#identity.type`, `_field_types`, `confidence_chain[]`, schema field_path en LIVE) · zéro tableau ASCII en LIVE (matrices = Output Specs Visibility Matriciel post-encoding). Adapter le tonal au registre opérateur détecté (grounded · standard · dense).
+
+**Audit + pédagogie indissociables** · le thinking aloud sert l'opérateur sur 2 axes en même temps · (a) audit temps réel · il peut corriger entre specs encodées si l'agent part dans une mauvaise direction d'inférence (mauvais mécanisme physiologique projeté · mauvaise couche bénéfice dominante · mauvaise classification type produit/service) AVANT que les downstream consume cette base, (b) pédagogie · il apprend la posture experte sur cartographie produit en regardant la manière de penser une chaîne spec → mécanisme → bénéfice 3 couches canon pain-benefit-chain.
+
+Cross-ref · `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid).
 
 ### Step 0bis · Prerequisite check (DRGFP v2.38)
 
@@ -400,9 +422,9 @@ Validation requise · valider en bloc, corriger un champ, ou poser une question 
 - Doctrine production : `docs/system/canonical-matrix-reasoning.md`
 - Doctrine substrate : `docs/system/schema-encoding-discipline.md`
 - Doctrine authoring : `docs/system/skill-authoring-discipline.md`
-- Doctrine racine v2.78.2 : `docs/system/decomposition-visibility-discipline.md` (canon 3 niveaux specs · mécanismes · bénéfices · matrice obligatoire)
+- Doctrine racine v2.78.2 + v2.81.1+ NIVEAU LIVE : `docs/system/decomposition-visibility-discipline.md` (3 phases temporelles · AVANT exec NIVEAU 0 paramètres décomposés · PENDANT exec NIVEAU LIVE thinking aloud expert action LOURDE 2 niveaux abstraction macro produit + micro spec → mécanisme → bénéfice 3 couches phrasé · APRÈS exec NIVEAUX 1-3 Output Specs Visibility Matriciel · HR-DVD-11 + AP-DVD-11 enforcement)
 - Doctrine 3 couches bénéfices : `docs/system/pain-benefit-chain.md` (functional · emotional · identity canon Halbert/Sugarman/StoryBrand)
 - Doctrine investigation 5 sections : `docs/system/investigation-posture.md` (Observé / Déduit / Inconnu / Leviers / Close ouvert)
-- Sister skills v2.78.2 : `snapshot-brand` · `build-atlas-complete` · `profile-audience`
+- Sister skills v2.78.2 + v2.81.1+ : `snapshot-brand` · `build-atlas-complete` · `profile-audience`
 - Mutation gate : `write_to_context` (jamais Edit/Write direct sur `.json`)
 - Validation post-write : `validate-resources`

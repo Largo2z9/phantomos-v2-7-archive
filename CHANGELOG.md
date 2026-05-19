@@ -7,6 +7,55 @@
 
 ---
 
+## v2.81.1 · 2026-05-19 · Sprint PATCH · NIVEAU LIVE thinking aloud canon (extension DVD + propagation 7 skills consumers) · D#446 captured
+
+**Why** · Test live Largo post-v2.81.0 cas snapshot-brand boutique macro avec produit micro · demande many-to-many phrasé en prose (produit → spec → mécanisme → bénéfice → pain → audience). Gap structurel flag · l'agent décompose paramètres AVANT action (NIVEAU 0 v2.79.5+) et matrices APRÈS action (NIVEAUX 1-4 v2.79+) MAIS opacité PENDANT action. Opérateur perd 2 axes simultanément · (a) AUDIT temps réel · ne peut corriger si direction mauvaise AVANT que l'output soit produit · (b) PÉDAGOGIE · ne peut apprendre la posture professionnelle experte en regardant raisonner. Citation Largo · *"décomposer la réflexion de l'agent sur chacune de ses actions, pour que non seulement l'opérateur ait de la visibilité sur le raisonnement et s'assurer que ce soit le bon, et que lui aussi puisse apprendre d'un bon raisonnement, puisque en vérité il est pertinent et il a une posture professionnelle sérieuse et experte."* Pas juste snapshot-brand · canon transverse cross skills consumers.
+
+**What** · Sprint PATCH v2.81.1 patches 2 surfaces structurelles parallèle scope disjoint (3 agents · 2 autres agents structurels + release engineering ce job) · extension doctrine `decomposition-visibility-discipline.md` v2.79.5+ → v2.81.1+ avec NEW NIVEAU LIVE thinking aloud expert pendant action + propagation 7 skills consumers prioritaires.
+
+**Patches structurels (2 surfaces · 2 agents structurels + release engineering)** ·
+
+1. **Extension doctrine `decomposition-visibility-discipline.md` v2.79.5+ → v2.81.1+** (Agent 1) · NEW NIVEAU LIVE thinking aloud expert pendant action (intermédiaire entre NIVEAU 0 paramètres pré-exec et NIVEAUX 1-4 matrices post-exec) · NEW table calibration par poids action (triviale zéro thinking aloud · moyenne 1-2 phrases substantives · lourde narratif étendu 2 niveaux abstraction macro + micro many-to-many phrasé) · NEW HR-DVD-11 (NIVEAU LIVE obligatoire actions moyennes/lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid). Posture canon · pair senior thinking aloud expert · cohérent doctrine `unfog` HR-8 mentor pas peer reviewer.
+
+2. **Propagation 7 skills consumers prioritaires NIVEAU LIVE template canon** (Agent 2) · snapshot-brand · build-atlas-complete · profile-audience · define-specs · mine-voc · audit-meta-account · score-matrix · template canon uniforme · pattern macro contexte (verbaliser périmètre · boutique entière · marché · volume estimé) + micro many-to-many phrasé (produit → spec → mécanisme → bénéfice → pain → audience en prose).
+
+**3 phases temporelles canon désormais complètes** ·
+
+```
+avant   · NIVEAU 0           paramètres décomposés pré-exec  v2.79.5+
+pendant · NIVEAU LIVE NEW    thinking aloud expert           v2.81.1+
+après   · NIVEAUX 1-4        matrices post-exec              v2.79+
+```
+
+**Calibration par poids action canon** · triviale (zéro thinking aloud · serait du bruit) · moyenne (1-2 phrases substantives observe-déduit-décide) · lourde (narratif étendu obligatoire 2 niveaux abstraction · macro contexte verbalisé · micro chaînes many-to-many phrasées en prose).
+
+**Posture canon · pair senior thinking aloud expert** · audit temps réel + pédagogie posture professionnelle indissociables. L'opérateur voit raisonnement temps réel (peut corriger avant output) et apprend posture professionnelle experte (capitalise au fil des sessions). Canon 2-en-1.
+
+**Backward compat strict additif** · numérotation NIVEAUX 0/1/2/3/4 préservée · NIVEAU LIVE nommé pas numéroté · skills 81 inchangé · doctrines 24 inchangée (extension HR/AP pas NEW doctrine) · slash commands 10 inchangé · zéro BREAKING data opérateur · zéro impact workspace existing · revert v2.81.1 = git revert HEAD strict · NIVEAU LIVE section doctrine retirable · 7 skills NIVEAU LIVE sections retirables (cycle runtime préservé).
+
+**Files patched** ·
+- `docs/system/decomposition-visibility-discipline.md` v2.79.5+ → v2.81.1+ (NEW NIVEAU LIVE + table calibration par poids action + HR-DVD-11 + AP-DVD-11)
+- `.skills/skills/snapshot-brand/SKILL.md` NEW section NIVEAU LIVE template canon
+- `.skills/skills/build-atlas-complete/SKILL.md` NEW section NIVEAU LIVE template canon
+- `.skills/skills/profile-audience/SKILL.md` NEW section NIVEAU LIVE template canon
+- `.skills/skills/define-specs/SKILL.md` NEW section NIVEAU LIVE template canon
+- `.skills/skills/mine-voc/SKILL.md` NEW section NIVEAU LIVE template canon
+- `.skills/skills/audit-meta-account/SKILL.md` NEW section NIVEAU LIVE template canon
+- `.skills/skills/score-matrix/SKILL.md` NEW section NIVEAU LIVE template canon
+- `CLAUDE.md` root sommaire bump DVD mention v2.79+ → v2.79+ · v2.81.1+ NEW NIVEAU LIVE thinking aloud
+- `_version.json` 2.81.0 → 2.81.1 PATCH + summary détaillé NIVEAU LIVE canon
+- `CHANGELOG.md` entry v2.81.1 prepended (this entry)
+- `docs/internal/releases/manifest/2.81.1-manifest.json` NEW
+
+**Backlog v2.81.1+** ·
+- Re-test live workspace fresh v2.81.1 sur `~/dev/phantom-test-v280_3/` pour valider NIVEAU LIVE thinking aloud rendu sur snapshot-brand cas concret
+- Propagation NIVEAU LIVE à autres skills consumers post-validation pattern (decompose-ad · produce-paid-angles · produce-copy-brief · compose-creative · etc · backlog v2.81.2+)
+- Skills tracking-GTM territoire NEW backlog v2.82+ (cas Abyss central · audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode)
+
+**Skills count 81 (inchangé) · slash commands 10 (inchangé) · doctrines 24 (inchangée · extension HR/AP pas NEW doctrine).**
+
+---
+
 ## v2.81.0 · 2026-05-18 · Sprint MINOR · multi-entry onboarding canon 4 portes MECE + first 30 minutes + NEW doctrine entry-arc-discipline + NEW skill import-archive · D#445 captured
 
 **Why** · Audit 4 agents consolidé amont (canon shipped inventory · patterns boîtes premium Linear/Supabase/Stripe/Vercel/GitHub · 6 profils opérateur attendus · gaps /tour v2.80.3) a confirmé que `/tour` mono-arc conversational disqualifiait 5 profils sur 6 dans les 10 premières minutes (cas Abyss tracking-GTM central · creative strategist · media buyer · agency owner · solo founder). Path unique = friction adoption forte. Patterns boîtes premium adoptés cross secteur · Multi-entry tuilé (Linear · Supabase · Stripe) · First deliverable artefact live (Vercel · Stripe · Supabase) · Progressive disclosure next steps (Vercel · GitHub).

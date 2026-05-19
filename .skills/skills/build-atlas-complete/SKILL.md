@@ -1,7 +1,7 @@
 ---
 name: build-atlas-complete
 type: orchestrator
-version: "1.7.0"
+version: "1.7.1"
 recommended_model: sonnet
 reasoning_pattern: null
 mode: proposed
@@ -18,6 +18,7 @@ extension_hooks:
   - product_entity
   - friction_entity
 description: >
+  v1.7.1 (v2.81.1 decomposition visibility NIVEAU LIVE) · NEW section Niveau LIVE thinking aloud obligatoire pendant exécution (entre disclosure pré-runtime NIVEAU 0 et chain Steps 1-10). Action LOURDE orchestrateur · narratif étendu 2 niveaux abstraction (macro brand entière + micro chaînes audiences/angles cross-encoded en prose) pendant handoffs sub-skills. Pose pair senior expert · audit temps réel + pédagogie indissociables. Cross-ref `decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 + AP-DVD-11. Backward compat strict additif (cycle runtime préservé).
   v1.7.0 (v2.79.5 engagement disclosure NIVEAU 0 paramètres décomposés) · Section pré-runtime étendue · NIVEAU 0 ajouté en complément du disclosure plan/ETA/implication/livrable v2.79.3 existant · expose 6 paramètres décomposés au runtime (scope cartographier · profondeur cible · audiences à profiler · angles à générer · hypothèses figées · biais à éviter) avec POURQUOI chacun + close binaire OK ou ajuste · adapté au cycle 7 phases orchestrateur. Cross-ref doctrines decomposition-visibility-discipline + engagement-disclosure-discipline v2.79.5+. Backward compat strict additif (Phases 1-9 runtime preserved · seul l'amont disclosure enrichi).
   v1.6.0 (v2.78.2 decomposition visibility refactor) · NEW Phase Output Atlas Visibility Matriciel Multi-niveau obligatoire post-encoding entités (avant Step 9 Close) · 4 niveaux canon obligatoires (Décomposition produit cross-products · Many-to-many pain × audience matrix cross-atlas · Positionnement filtre par stage business · Méthode pédagogique verbale). Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` NEW v2.78.2. Distinction explicit audience produit-fit (toutes encoded) vs audience ciblage créa (filter sub-set positioning targeting). Backward compat strict additif (Phases 1-7 + Step 8 stage + Step 9 close preserved · NEW phase output insérée entre Step 8 et Step 9). HR-NEW + AP-NEW ajoutés guardrails.
   v1.4.0 (v2.68 progressive cartography refactor) · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot-brand · gate intermédiaire 1 · Phase 3 map-audiences hiérarchique parent/enfants · gate intermédiaire 2 · Phase 4 mine-voc + profile-audience enrichissement per audience). Mode `--fast-track` opérateur expert bypass gates auto-validate (opt-in flag OR config `auto_validate_after_n_brands` true). Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0 où gates étaient Gate A audiences + Gate B angles seulement). Cross-ref doctrine `docs/system/progressive-cartography-discipline.md` NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs light · fast-track flag opt-in default off · gates A+B angles preserved après Phase 4).
@@ -99,6 +100,8 @@ disambiguates_against:
   profile-audience: "route to profile-audience standalone when operator wants audiences only, not the full strategic atlas."
   score-matrix: "route to score-matrix standalone when atlas is already populated and operator wants only territory prioritization."
 patch_notes:
+  v1.7.1:
+    - "v2.81.1 decomposition visibility NIVEAU LIVE thinking aloud · NEW section `Niveau LIVE · raisonnement thinking aloud pendant exécution` insérée APRÈS section disclosure pré-runtime NIVEAU 0 v2.79.5 et AVANT Expert methodology + chain Steps 1-10. Action LOURDE orchestrateur (30-90 min · 7 paliers · MCP optionnel) · NIVEAU LIVE narratif étendu obligatoire pendant exécution · pas seulement disclosure NIVEAU 0 en amont et Phase Output Atlas Visibility matricielle (NIVEAUX 1-4) en aval. Pattern canon · 2 niveaux abstraction obligatoires (macro brand entière + micro chaînes audiences/angles cross-encoded phrasé en prose narrative sobre). Pose pair senior expert thinking aloud · audit temps réel par l'opérateur entre handoffs sub-skills + pédagogie posture experte indissociables. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid). Backward compat strict additif · cycle runtime préservé (Phases 1-9 + gates intermédiaires + Gate A + Gate B preserved · seul thinking aloud ajouté pendant chain skills exec)."
   v1.7.0:
     - "v2.79.5 engagement disclosure NIVEAU 0 paramètres décomposés · Section pré-runtime étendue (v2.79.3 plan/ETA/implication/livrable preserved · NIVEAU 0 6 paramètres décomposés ajouté en amont juste avant le plan) · expose au runtime · scope cartographier (brand entière vs scope partiel) · profondeur cible (substrate light hypothèse vs sourced 5+ verbatims) · audiences à profiler (N) · angles à générer (N par audience) · hypothèses figées (positioning canvas / voice 4D / whitespace) · biais à éviter (sur-engineering premier cycle / cartographier sans données / skip phases). Cross-ref doctrines decomposition-visibility-discipline + engagement-disclosure-discipline v2.79.5+. Backward compat strict additif (Phases 1-9 preserved · disclosure pré-runtime enrichi)."
   v1.6.0:
@@ -257,6 +260,28 @@ Build atlas complet · ce qui va se passer
 ATTENDS confirmation explicite Phase B avant de lancer Step 0. Court-circuit (Phase A + Phase B) autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit OR si N usages successifs >= seuil expert (`auto_skip_after_n_calls` true). Sinon · disclosure 2 phases obligatoire canon v2.79.3 + v2.79.5.
 
 Cross-ref doctrines racine `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-discipline.md` v2.79.5.
+
+---
+
+## Niveau LIVE · raisonnement thinking aloud pendant exécution (canon v2.81.1+)
+
+Action classée **LOURDE** (cf table calibration `docs/system/decomposition-visibility-discipline.md` v2.81.1+ · orchestrateur 7 paliers · 30-90 min · gates intermédiaires + Gate A + Gate B). NIVEAU LIVE thinking aloud expert OBLIGATOIRE pendant exécution · pas seulement disclosure pré-engagement NIVEAU 0 en amont et Phase Output Atlas Visibility matricielle (NIVEAUX 1-4) en aval.
+
+Pattern obligatoire · l'agent chairman verbalise son raisonnement EN TEMPS RÉEL pendant qu'il décortique la brand entière et orchestre les handoffs sub-skills, en prose narrative sobre (zéro matrice ASCII en LIVE · les matrices viennent en Phase Output Atlas Visibility post-Step 8).
+
+**2 niveaux d'abstraction obligatoires** ·
+
+1. **Macro brand entière** · verbaliser la compréhension du périmètre stratégique global AVANT de rentrer dans le détail palier par palier.
+   Exemple build-atlas-complete · "On part d'une brand qui s'adresse à {audience macro depuis brand.json existing ou snapshot}, qui opère sur {marché × stade Schwartz inféré sophistication}, qui propose {portfolio produits N hero + secondaires + entries détectés}. Le pattern catalogue cohérent · {hero positionne sur axe X · secondaires drainent vers Y · entries servent porte d'entrée Z}. Le business model est {DTC pure / subscription / hybrid} parce que {signaux scrape + offers encoded}. Mon hypothèse de territoires créatifs candidats à scorer · {3-5 axes potentiels visibles depuis specs × audiences mère}. Les angles vont probablement se cristalliser autour de {tension principale brand × pain audience-hero détecté reviews tagged Phase 2}."
+
+2. **Micro chaînes audiences/angles cross-encoded phrasé** · verbaliser les chaînes parent/enfants + angle-fit pendant l'orchestration palier par palier.
+   Exemple build-atlas-complete · "Cette audience-mère {nom · cardinality broad} se découpe en {N sous-poches détectées · entry doors distinctes · pain × consequence × deep chain phrasé} → pour chaque sous-poche · pain prioritaire {PNT-NN nom phrasé} → mécanisme reframe candidat {angle-formula Obs+Tension+Reframe+Bridge phrasé} → bénéfice 3 couches qui cible {functional · emotional · identity phrasé pourquoi cette couche dominante audience-side} → angle ranked top {score qualitatif phrasé · pas chiffre brut} → territoire créatif qui cristallise {axe macro phrasé · cohérent positioning brand}."
+
+**Calibration narrative** · prose sobre · registre pair senior expert chairman · zéro jargon plumbing (jamais `score-matrix#axe_id`, `angle.lineage.pain_ref`, `_field_types`, Task tool mechanics en LIVE) · zéro tableau ASCII en LIVE (matrices = Phase Output Atlas Visibility post-Step 8 + Step 9 close). Adapter le tonal au registre opérateur détecté (grounded · standard · dense). Le narrating chairman entre paliers reste préservé (cf section Tone "structure prête… snapshot lancé… audiences cartographiées…") · le NIVEAU LIVE l'enrichit en thinking aloud expert substantif spécifique au cas brand, pas seulement transition de phase.
+
+**Audit + pédagogie indissociables** · le thinking aloud sert l'opérateur sur 2 axes en même temps · (a) audit temps réel · il peut corriger entre handoffs sub-skills si l'agent part dans une mauvaise direction d'inférence (mauvaise audience-hero priorisée · mauvais angle-fit détecté · mauvais territoire candidat émergent) AVANT que les paliers downstream consomment 30+ min, (b) pédagogie · il apprend la posture stratégique experte chairman en regardant la manière de penser un atlas paid DTC end-to-end (macro positioning → audiences cartography → angles cristallisés → territoires scorés cohérents).
+
+Cross-ref · `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid).
 
 ---
 
@@ -778,7 +803,7 @@ Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeli
 - `.skills/skills/produce-strategy/SKILL.md` · invokable en post-Phase 9 close si l'opérateur veut cadrer le focus Q{n} sur la brand atlas-complete (strategy.schema v1.0 canon shipped v2.58)
 - `.skills/skills/creative-brief-composer/SKILL.md` · downstream production briefs+créas post-atlas (separate invocation, operator chooses axe créatif)
 - `docs/system/progressive-cartography-discipline.md` · **NEW v2.68** · progressive cartography canon (Sections 3-7 phasing · Section 8 Pattern gates light) · doctrine source v1.4.0 refactor
-- `docs/system/decomposition-visibility-discipline.md` · **NEW v2.78.2** · doctrine canon racine v1.6.0 refactor · 4 niveaux matriciels obligatoires (Décomposition produit · Many-to-many pain × audience · Stage business filter · Méthode pédagogique verbale) · audience produit-fit vs ciblage créa distinction
+- `docs/system/decomposition-visibility-discipline.md` · **NEW v2.78.2 + v2.81.1+ NIVEAU LIVE** · doctrine canon racine 3 phases temporelles · AVANT exec NIVEAU 0 paramètres décomposés (v2.79.5) · PENDANT exec NIVEAU LIVE thinking aloud expert action LOURDE orchestrateur 2 niveaux abstraction macro + micro chaînes phrasé (v2.81.1+) · APRÈS exec NIVEAUX 1-4 matrices Atlas Visibility post-Step 8 (Décomposition produit cross-products · Many-to-many pain × audience cross-atlas · Stage business filter · Méthode pédagogique verbale · audience produit-fit vs ciblage créa distinction) · HR-DVD-11 + AP-DVD-11 enforcement
 - `docs/system/pain-benefit-chain.md` · canon 3 couches bénéfices (functional · emotional · identity) · consume NIVEAU 1 Décomposition produit
 - `.skills/skills/snapshot-brand/SKILL.md` v2.78.2 cohérent · sister skill encoding products + offers + brand identity (Phase 1+2 chain)
 - `.skills/skills/profile-audience/SKILL.md` v2.78.2 cohérent · sister skill encoding audiences enrichies JTBD canon V3 8 dimensions (Phase 4b chain)
