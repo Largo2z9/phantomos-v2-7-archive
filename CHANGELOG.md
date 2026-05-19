@@ -7,6 +7,43 @@
 
 ---
 
+## v2.82.0 · 2026-05-19 · Sprint MAJOR REFACTOR · refonte CLAUDE.md root atomique + NEW doctrine claude-md-discipline + NEW index docs/system/README.md · D#447 captured
+
+**Why** · Audit externe Claude Web sur CLAUDE.md root v2.81.1 a flag 9 problèmes structurels · pattern dégradation cumulative · file ambitieux mais contre-productif · violation propres règles · LLM ignore uniformément partie des règles au-delà capacité attention ~150-200 instructions. Negative ROI territory. 9 problèmes flag · (1) taille root file approchant limite attention LLM · (2) inflation marqueurs CRITICAL/YOU MUST diluant signal d'urgence · (3) règles-sandwich (règles englobées dans narrative explicative) · (4) méta-doctrine (méta-discours sur fonctionnement règles vs règles atomiques) · (5) MECE chevauchements sections doctrine routing/disclosure/decomposition · (6) versioning inline pollution (v2.79.5+ · v2.81.1+ partout) · (7) pollution narrative au lieu d'impératif atomique · (8) point-médian listes plates substitut bullets sur listes structurelles · (9) auto-références cycliques (root pointe doctrines · doctrines pointent root). Citation audit Claude Web · *"CLAUDE.md root v2.81.1 est ambitieux mais contre-productif · file viole ses propres règles de discipline et atteint la zone où LLM ignore uniformément partie des règles"*.
+
+**What** · Sprint MAJOR REFACTOR v2.82.0 patches 3 surfaces structurelles parallèle scope disjoint (3 agents structurels + release engineering ce job) · refonte CLAUDE.md root workspace-template + NEW doctrine canon racine claude-md-discipline.md (pattern canon TOUT CLAUDE.md PhantomOS) + NEW index docs/system/README.md (navigation 24 → 25 doctrines pour skill-authors).
+
+**Patches structurels (3 surfaces · 3 agents structurels + release engineering)** ·
+
+1. **Refonte CLAUDE.md root workspace-template ≤150 lignes** (Agent 1) · atomique impératif · 3 CRITICAL/YOU MUST max global · zéro versioning inline (vers CHANGELOG) · zéro narrative doctrinale (vers fichier doctrine concerné) · zéro inventaire 24 doctrines détaillé (vers docs/system/README.md) · skill routing consolidé 1 section (vs duplication v2.81.1) · bullets remplacent point-médian sur listes structurelles · 1 règle = 1 instruction max 2 lignes.
+
+2. **NEW docs/system/README.md** (Agent 2) · index navigable 24 doctrines canon shipped pour skill-authors · versions inline pour lookup · cross-refs entre doctrines · patterns transverses (decomposition · disclosure · routing · onboarding · update · brand strategy · investigation · output clarity · territory · extension · operational system · etc.) · point d'entrée unique remplaçant inventaire dispersé dans CLAUDE.md root.
+
+3. **NEW doctrine canon racine claude-md-discipline.md** (Agent 3) · 13 sections canon-style miroir SED-X + EDD + OHD + EAD · 8 HR-CMD + 8 AP-CMD enforcement runtime · pattern canon TOUT CLAUDE.md PhantomOS · 4 tailles canon par niveau (root 150L · pillar 100L · project 120L · brand 80L) · test mental obligatoire avant ajout règle ("Si je retire cette ligne, quelle erreur concrète Claude fait ?") · externalisation versioning vers CHANGELOG · inventaire vers docs/system/README.md · justifications vers doctrines fichiers · audit externe régulier (Claude Web ou autre) sur capacité d'attention LLM runtime utile.
+
+4. **Release engineering** (ce job) · `_version.json` 2.81.1 → 2.82.0 MAJOR + summary détaillé refactor + NEW doctrine + NEW index · `CHANGELOG.md` v2.82.0 entry prepended (this entry) · `docs/internal/releases/manifest/2.82.0-manifest.json` NEW · `decisions.md` workspace ROOT D#447 captured · memory canon `phantomos_state` updated v2.82.0 + NEW memory canon `claude_md_discipline_canon` + MEMORY.md index updated.
+
+**Pattern systémique fermé** · TOUT CLAUDE.md PhantomOS (root + pillars + project + brand) respecte désormais doctrine `claude-md-discipline.md` canon racine v2.82.0 · instructions atomiques impératives uniquement · 3 CRITICAL/YOU MUST max global · zéro versioning inline · zéro narrative doctrinale · zéro inventaire détaillé · sections consolidées · bullets une instruction par ligne · tailles canon par niveau respectées · test mental obligatoire avant ajout règle. 9 problèmes audit Claude Web fermés (8 fully · 1 nuancé sur point-médian remplacé bullets sur listes structurelles uniquement · point-médian préservé sur prose).
+
+**Backward compat strict SÉMANTIQUE additif** · toutes règles canon préservées · juste reformat atomique · externalisation justifications/inventaires vers fichiers dédiés · skills 81 inchangé · slash commands 10 inchangé · doctrines 24 → 25 (+1 NEW claude-md-discipline.md) · zéro BREAKING data opérateur · zéro impact workspace existing · revert v2.82.0 = git revert HEAD strict · CLAUDE.md root reverts v2.81.1 · NEW doctrine retirable · NEW index retirable · skills consumers + autres doctrines non affectés.
+
+**Files patched** ·
+- `CLAUDE.md` root workspace-template v2.81.1 → v2.82.0 (refonte atomique ≤150L · 3 CRITICAL max · zéro versioning inline · zéro narrative · zéro inventaire détaillé · skill routing consolidé · bullets structurels)
+- `docs/system/README.md` NEW v2.82.0 (index navigable 24 doctrines canon shipped · versions inline · cross-refs · patterns transverses · point d'entrée skill-authors)
+- `docs/system/claude-md-discipline.md` NEW v2.82.0 (13 sections canon-style miroir · 8 HR-CMD + 8 AP-CMD enforcement runtime · pattern canon TOUT CLAUDE.md · 4 tailles canon par niveau · test mental avant ajout règle)
+- `_version.json` 2.81.1 → 2.82.0 MAJOR + summary détaillé refactor + NEW doctrine + NEW index
+- `CHANGELOG.md` entry v2.82.0 prepended (this entry)
+- `docs/internal/releases/manifest/2.82.0-manifest.json` NEW
+
+**Backlog v2.82.1+** ·
+- Audit autres CLAUDE.md PhantomOS selon claude-md-discipline doctrine canon racine (largo-kb root · context-engine project · pillars 01-marketing/02-ai/etc · brands) · proposer patches v2.82.1+ pour fichiers hors tailles canon ou présentant inflation marqueurs/versioning inline/narrative doctrinale
+- Re-test live workspace fresh v2.82.0 sur `~/dev/phantom-test-v280_3/` pour valider rendu opérateur post-refactor CLAUDE.md root + lookup doctrines via NEW docs/system/README.md
+- Skills tracking-GTM territoire NEW backlog v2.82+ (cas Abyss central · audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode)
+
+**Skills count 81 (inchangé) · slash commands 10 (inchangé) · doctrines 24 → 25 (+1 NEW claude-md-discipline.md).**
+
+---
+
 ## v2.81.1 · 2026-05-19 · Sprint PATCH · NIVEAU LIVE thinking aloud canon (extension DVD + propagation 7 skills consumers) · D#446 captured
 
 **Why** · Test live Largo post-v2.81.0 cas snapshot-brand boutique macro avec produit micro · demande many-to-many phrasé en prose (produit → spec → mécanisme → bénéfice → pain → audience). Gap structurel flag · l'agent décompose paramètres AVANT action (NIVEAU 0 v2.79.5+) et matrices APRÈS action (NIVEAUX 1-4 v2.79+) MAIS opacité PENDANT action. Opérateur perd 2 axes simultanément · (a) AUDIT temps réel · ne peut corriger si direction mauvaise AVANT que l'output soit produit · (b) PÉDAGOGIE · ne peut apprendre la posture professionnelle experte en regardant raisonner. Citation Largo · *"décomposer la réflexion de l'agent sur chacune de ses actions, pour que non seulement l'opérateur ait de la visibilité sur le raisonnement et s'assurer que ce soit le bon, et que lui aussi puisse apprendre d'un bon raisonnement, puisque en vérité il est pertinent et il a une posture professionnelle sérieuse et experte."* Pas juste snapshot-brand · canon transverse cross skills consumers.

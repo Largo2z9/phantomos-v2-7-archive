@@ -1,0 +1,82 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.82.0",
+  "released_at": "2026-05-19",
+  "type": "major",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 24,
+  "doctrines_count_after": 25,
+  "summary": "Sprint MAJOR REFACTOR v2.82.0 · refonte CLAUDE.md root workspace-template ≤150 lignes (atomique impératif · 3 CRITICAL/YOU MUST max · zéro versioning inline · zéro narrative doctrinale · zéro inventaire 24 doctrines détaillé · skill routing consolidé 1 section · bullets remplacent point-médian sur listes structurelles) + NEW doctrine canon racine claude-md-discipline.md (pattern canon TOUT CLAUDE.md PhantomOS · 4 tailles canon par niveau · 8 HR-CMD + 8 AP-CMD enforcement runtime) + NEW docs/system/README.md (index navigable 24 → 25 doctrines canon shipped pour skill-authors · cross-refs · patterns transverses · point d'entrée unique). Backward compat strict SÉMANTIQUE additif · toutes règles canon préservées · juste reformat atomique · externalisation justifications/inventaires vers fichiers dédiés. Skills 81 inchangé · slash commands 10 inchangé · doctrines 24 → 25 (+1 NEW claude-md-discipline.md).",
+  "audit_amont": {
+    "audit_externe_claude_web": "Audit externe Claude Web sur CLAUDE.md root v2.81.1 a flag 9 problèmes structurels · pattern dégradation cumulative · file ambitieux mais contre-productif · violation propres règles · LLM ignore uniformément partie des règles au-delà capacité attention ~150-200 instructions. Negative ROI territory.",
+    "9_problemes_structurels_flag": {
+      "1_taille": "Root file approchant limite attention LLM · ~250+ lignes dépassant capacité reading uniforme",
+      "2_inflation_marqueurs": "Inflation marqueurs CRITICAL/YOU MUST diluant signal d'urgence · ~15+ occurrences quand 3 max devrait être canon",
+      "3_regles_sandwich": "Règles englobées dans narrative explicative (règles-sandwich) · diluent l'impératif atomique",
+      "4_meta_doctrine": "Méta-discours sur fonctionnement règles vs règles atomiques (méta-doctrine) · pollue surface utile",
+      "5_mece_chevauchements": "MECE chevauchements sections doctrine routing/disclosure/decomposition · même règle répétée en variantes",
+      "6_versioning_inline": "Versioning inline pollution (v2.79.5+ · v2.81.1+ partout) · pollue lecture cross-version · place légitime = CHANGELOG.md",
+      "7_pollution_narrative": "Pollution narrative au lieu d'impératif atomique · prose explicative dilue règles",
+      "8_point_median": "Point-médian listes plates substitut bullets sur listes structurelles · format inadapté à listes parallèles",
+      "9_auto_references_cycliques": "Auto-références cycliques (root pointe doctrines · doctrines pointent root) · pas point d'entrée unique"
+    },
+    "citation_audit_claude_web": "*CLAUDE.md root v2.81.1 est ambitieux mais contre-productif · file viole ses propres règles de discipline et atteint la zone où LLM ignore uniformément partie des règles*",
+    "informe_plan_v2_82_0": "Plan v2.82.0 MAJOR REFACTOR · refonte CLAUDE.md root atomique ≤150L + NEW doctrine canon racine claude-md-discipline.md pattern canon TOUT CLAUDE.md + NEW index docs/system/README.md navigation doctrines. Backward compat strict SÉMANTIQUE additif · règles canon préservées · juste reformat atomique."
+  },
+  "patches_structurels": [
+    "Refonte CLAUDE.md root workspace-template ≤150 lignes · atomique impératif · 3 CRITICAL/YOU MUST max global · zéro versioning inline (vers CHANGELOG) · zéro narrative doctrinale (vers fichier doctrine concerné) · zéro inventaire 24 doctrines détaillé (vers docs/system/README.md) · skill routing consolidé 1 section · bullets remplacent point-médian sur listes structurelles · 1 règle = 1 instruction max 2 lignes",
+    "NEW docs/system/README.md · index navigable 24 doctrines canon shipped pour skill-authors · versions inline lookup · cross-refs entre doctrines · patterns transverses · point d'entrée unique remplaçant inventaire dispersé dans CLAUDE.md root",
+    "NEW doctrine canon racine claude-md-discipline.md · 13 sections canon-style miroir SED-X + EDD + OHD + EAD · 8 HR-CMD + 8 AP-CMD enforcement runtime · pattern canon TOUT CLAUDE.md PhantomOS · 4 tailles canon par niveau (root 150L · pillar 100L · project 120L · brand 80L) · test mental obligatoire avant ajout règle"
+  ],
+  "files_patched": [
+    {"file": "CLAUDE.md root workspace-template", "scope": "v2.81.1 → v2.82.0 refonte atomique ≤150L · 3 CRITICAL max · zéro versioning inline · zéro narrative · zéro inventaire détaillé · skill routing consolidé · bullets structurels"},
+    {"file": "docs/system/README.md", "scope": "NEW v2.82.0 · index navigable 24 doctrines canon shipped · versions inline · cross-refs · patterns transverses · point d'entrée skill-authors"},
+    {"file": "docs/system/claude-md-discipline.md", "scope": "NEW v2.82.0 · 13 sections canon-style miroir · 8 HR-CMD + 8 AP-CMD enforcement runtime · pattern canon TOUT CLAUDE.md · 4 tailles canon par niveau · test mental avant ajout règle"},
+    {"file": "_version.json", "scope": "2.81.1 → 2.82.0 MAJOR + summary détaillé refactor + NEW doctrine + NEW index"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.82.0 prepended"},
+    {"file": "docs/internal/releases/manifest/2.82.0-manifest.json", "scope": "NEW · this manifest"},
+    {"file": "decisions.md (workspace ROOT)", "scope": "D#447 captured"},
+    {"file": "memory canon project_phantomos_state", "scope": "Updated v2.82.0 · 24 doctrines → 25 doctrines · 24 D# captured D#424-D#447"},
+    {"file": "memory canon feedback_claude_md_discipline_canon", "scope": "NEW memory · tous CLAUDE.md atomiques impératifs · tailles canon par niveau · 3 CRITICAL max · zéro versioning inline / narrative / inventaire"},
+    {"file": "MEMORY.md index", "scope": "Append feedback_claude_md_discipline_canon entry"}
+  ],
+  "claude_md_canon_coverage": {
+    "tailles_canon_par_niveau": {
+      "root": "150 lignes max",
+      "pillar": "100 lignes max",
+      "project": "120 lignes max",
+      "brand": "80 lignes max"
+    },
+    "4_niveaux_fichiers_couverts": "root workspace-template · pillars (00-meta · 01-marketing · 02-ai · 03-product · 04-brand · 05-projects · 06-agency) · projects (context-engine · abyss/build · etc.) · brands (_TEMPLATE · _EXAMPLE · brands actifs we-bet etc.)",
+    "externalisation_pollution": {
+      "versioning_inline": "Vers CHANGELOG.md · pas inline dans CLAUDE.md root",
+      "inventaire_doctrines": "Vers docs/system/README.md · pas listing détaillé dans CLAUDE.md root",
+      "justifications_doctrinales": "Vers fichiers doctrines individuels · pas méta-discours dans CLAUDE.md root"
+    },
+    "9_problemes_audit_claude_web_fermes": {
+      "1_taille": "FULLY · ≤150L atomique",
+      "2_inflation_marqueurs": "FULLY · 3 CRITICAL/YOU MUST max",
+      "3_regles_sandwich": "FULLY · 1 règle = 1 instruction max 2 lignes",
+      "4_meta_doctrine": "FULLY · méta-discours externalisé doctrine claude-md-discipline.md",
+      "5_mece_chevauchements": "FULLY · skill routing consolidé 1 section · doctrines référencées 1 fois max",
+      "6_versioning_inline": "FULLY · zéro v2.X.Y inline · délégué CHANGELOG",
+      "7_pollution_narrative": "FULLY · impératif atomique uniquement",
+      "8_point_median": "NUANCED · point-médian remplacé bullets sur listes structurelles · point-médian préservé sur prose",
+      "9_auto_references_cycliques": "FULLY · point d'entrée unique docs/system/README.md · pas auto-références cycliques"
+    },
+    "8_hr_cmd_enforcement_runtime": "HR-CMD-1 à HR-CMD-8 · taille canon par niveau respectée · 3 CRITICAL max · zéro versioning inline · zéro narrative doctrinale · zéro inventaire détaillé · sections consolidées pas dupliquées · bullets une instruction par ligne · test mental obligatoire avant ajout règle",
+    "8_ap_cmd_anti_patterns": "AP-CMD-1 à AP-CMD-8 · taille hors canon · marqueurs inflation · versioning inline · narrative pollution · méta-doctrine prose · duplication MECE · point-médian listes structurelles · auto-références cycliques"
+  },
+  "decisions_captured": ["D#447"],
+  "backlog_v282_plus": [
+    "Audit autres CLAUDE.md PhantomOS selon claude-md-discipline doctrine canon racine (largo-kb root · context-engine project · pillars 01-marketing/02-ai/etc · brands) · proposer patches v2.82.1+ pour fichiers hors tailles canon ou présentant inflation marqueurs/versioning inline/narrative doctrinale",
+    "Re-test live workspace fresh v2.82.0 sur `~/dev/phantom-test-v280_3/` pour valider rendu opérateur post-refactor CLAUDE.md root + lookup doctrines via NEW docs/system/README.md",
+    "Skills tracking-GTM territoire NEW v2.82+ (cas Abyss central · audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode)"
+  ],
+  "rollback_strategy": "Strict additif SÉMANTIQUE backward compat · revert v2.82.0 = git revert HEAD strict · CLAUDE.md root reverts v2.81.1 · NEW doctrine claude-md-discipline.md retirable · NEW index docs/system/README.md retirable · skills consumers + autres doctrines non affectés · zéro BREAKING data opérateur · zéro impact workspace existing"
+}
