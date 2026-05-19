@@ -1,8 +1,8 @@
 {
   "_schema": "template-version/1.0",
-  "template_version": "2.83.0",
-  "released_at": "2026-05-19",
+  "template_version": "2.84.2",
+  "released_at": "2026-05-20",
   "compatible_from": "2.0.0",
-  "summary": "Sprint MAJOR v2.83.0 · Option C split CHANGELOG · CHANGELOG.md racine Keep-a-Changelog minimal 50-100L cible (résumé exécutif runtime consumable) + docs/internal/project-journal.md préservation 4270L narrative archive Largo. NEW doctrine canon racine changelog-discipline.md v2.83.0 (4 HR-CHL + 4 AP-CHL strict · test de suppression appliqué pre-ship · audit externe v2.82.0 critique enseignement appliqué). Patches /version + /update + push-phantomos.sh adaptés nouveau format. Audit externe Claude Web v2 sur PhantomOS · 5 questions honnêtes posées · CHANGELOG 4270L vs 1150L cible · founder's curse répété. Option C plus mature · sépare narrative (Largo cognitive) et public (Keep-a-Changelog runtime). 3 sources vérité distinctes canon.",
-  "manifest": "docs/internal/releases/manifest/2.83.0-manifest.json"
+  "summary": "Sprint MINOR v2.84.2 · 1ère propagation downstream voice-doctrine v2.84.1 · refonte `lexicon.md` user-facing 175L → 103L (-41%) brand-style application partielle (b) voice-doctrine (FR/EN canon · AP-VD-4 adjectifs vagues retirés · AP-VD-6 zéro nom doctrine canon leaké surface opérateur · P1 précision dense · P3 phrases courtes · em-dash zéro). Exclusions registre user-facing préservé · AP-VD-8 'vous'/'votre marque' préservés · vocabulaire métier classique DTC paid maintenu. Refonte structurelle · retrait section CONTEXT/OBJECTIVE/TYPE/AUDIENCE/CANON INTERNE preamble (overengineered) · retrait DRGFP + Confidence propagation entrées (jargon doctrinal leak) · compression Atlas 4 senses 17L → 0L (out · spec interne pure) · compression Lineage out · footer narrative S53/S55 versioning inline retiré. 25 entrées core préservées · Brand · Produit · Offre · Audience · Persona · Pain point · Tension · Insight · JTBD · Angle · Axe créatif · Concept/Creative/Variant fusionné · Mécanique/Mechanism distinct · Awareness stage · Atome irréductible · Landing page · Campagne · Test · Résultat · Apprentissage · Positioning · Territoire · Connected source. Auto-conforme voice-doctrine partielle (b). D#452 captured. Cadre canon voice-doctrine v2.84.1 testé via 1ère propagation · cohérence cross-files validée.",
+  "manifest": "docs/internal/releases/manifest/2.84.2-manifest.json"
 }

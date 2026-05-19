@@ -1,0 +1,65 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.84.2",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.84.2 · 1ère propagation downstream voice-doctrine v2.84.1 · refonte lexicon.md user-facing 175L → 103L (-41%) application partielle (b) voice-doctrine · cohérence cross-files validée · cadre canon voice-doctrine testé via propagation réelle.",
+  "context_amont": {
+    "trigger": "Backlog v2.84.0/v2.84.1 listait v2.84.2 lexicon user-facing comme 1ère propagation downstream voice-doctrine. Largo a explicitement choisi scope (b) application partielle · voice-doctrine appliquée SAUF AP-VD-8 pronoms (lexicon user-facing garde 'vous'/'votre marque' registre opérateur) et SAUF noms doctrines (déjà out of scope par AP-VD-6 surface opérateur).",
+    "scope_choisi": "(b) partiel · FR/EN canon + AP-VD-4 adjectifs vagues + AP-VD-6 zéro nom doctrine canon leaked + P1 précision dense + P3 phrases courtes + em-dash zéro · `vous`/`votre marque` préservés · vocabulaire métier classique DTC paid maintenu"
+  },
+  "audit_in_vs_out": {
+    "preserved_25_entries_core": ["Brand", "Produit", "Offre", "Audience", "Persona (alias surface)", "Pain point", "Tension", "Insight", "JTBD", "Angle", "Axe créatif", "Concept/Creative/Variant fusionné 1 section", "Mécanique (creative) distincte Mechanism (spec)", "Awareness stage", "Atome irréductible", "Landing page", "Campagne", "Test", "Résultat", "Apprentissage", "Positioning", "Territoire", "Connected source"],
+    "removed_jargon_doctrinal": ["DRGFP entrée entière (acronyme jargon doctrinal surface opérateur · AP-VD-6 violation)", "Confidence propagation entrée entière (doctrine name leak · AP-VD-6 violation)", "Atlas, 4 senses MECE section entière 17L (spec interne pure · pas user-facing)", "Lineage entrée entière (concept R&D · pas user-facing)", "Origin_axis entrée entière (champ schema interne · pas user-facing)", "Schwartz entrée séparée (fusionné dans Awareness stage)"],
+    "removed_versioning_inline": ["Notes v2.26.0 / v2.27.0 / v2.36 / v2.37+ / v2.38+ / v1.1+ / v2.32 / v2.67 (versioning inline pollution)", "Refs (red team finding A2 v2.36) / (audit S55) / (S55) / S53 / S55 narrative footer (R&D leak)", "Refs `docs/system/*.md` doctrines internes 6× (creative-formula.md · atlas-canon-copy.md · atlas-brand.md · territory-discipline.md · confidence-propagation.md · dependency-resolution-protocol.md · AP-VD-6 violations)"],
+    "removed_overengineered_preamble": ["Section CONTEXT/OBJECTIVE/TYPE/AUDIENCE/CANON INTERNE 5 lignes (overengineered preamble · violation P3 phrases denses sans pédagogie superflue)", "Footer narrative S53 / S55 details release 2 paragraphes (versioning inline + R&D leak)"],
+    "removed_adjectifs_vagues": ["'slim' (TYPE: Reference user-facing, slim)", "'robuste' (atlas vivant compound)", "'structuré' (data e-commerce)", "'explicit' (auditional)"],
+    "compression_structurelle": ["Concept vs Creative vs Variant 3 entrées → 1 section fusionnée (4L au lieu de 9L)", "Atlas 4 senses MECE 17L → 0L (out)", "Mécanique vs Mechanism déjà distinct préservé brefs 2L chacun", "Atome irréductible compressé 1 phrase au lieu de 3 phrases + technical refs"]
+  },
+  "patches_appliques": [
+    {"file": "workspace-template/lexicon.md", "scope": "Refonte complète · 175L → 103L (-41%) · 25 entrées core préservées · jargon doctrinal retiré · versioning inline retiré · adjectifs vagues retirés · compression structurelle · footer minimal `Dernière mise à jour · 2026-05-20`", "rationale": "1ère propagation downstream voice-doctrine v2.84.1 · test du cadre canon via propagation réelle · valide cohérence cross-files"}
+  ],
+  "self_conformance_check_v842": {
+    "voice_doctrine_partial_b": true,
+    "checks": [
+      "FR/EN canon · 'opérateur' utilisé · 'operator' absent",
+      "AP-VD-4 adjectifs vagues retirés · slim/robuste/structuré/explicit",
+      "AP-VD-6 zéro nom doctrine canon leaké surface opérateur · grep 'DRGFP|confidence-propagation|atlas-canon-copy|territory-discipline|creative-formula|atlas-brand|dependency-resolution-protocol' retourne 0 occurrence",
+      "P1 précision dense · termes canon utilisés une fois · pas redéfinition",
+      "P3 phrases courtes · zéro 'par ailleurs/en effet/il convient de noter'",
+      "Em-dash zéro · grep '—' retourne 0",
+      "Casse · minuscules par défaut sauf noms propres (Schwartz, Christensen, Mark+Pearson absents · KSM-66 exemple technique)",
+      "AP-VD-8 EXCLU (registre opérateur préservé) · 'vous' et 'votre marque' utilisés · cohérent scope (b)",
+      "Versioning inline retiré · zéro v2.X.X · zéro S55 · zéro audit Sxx"
+    ]
+  },
+  "files_patched": [
+    {"file": "workspace-template/lexicon.md", "scope": "175L → 103L · refonte voice-doctrine partielle (b)"},
+    {"file": "_version.json", "scope": "Bump 2.84.1 → 2.84.2 + summary"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.84.2 prepended"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.84.2"},
+    {"file": "docs/internal/releases/manifest/2.84.2-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["workspace-template/lexicon.md refonte voice-doctrine partielle (b)", "version + manifest + CHANGELOG + project-journal + D#452"],
+    "out_of_scope_explicit": ["context-engine/lexicon.md R&D interne (65L · reference-grade strict · v2.84.x dédié si Largo souhaite alignment cross-canon)", "réécriture canon.md interne (v2.84.3 dédié)", "audit README/WELCOME application exception semi-public (v2.84.4 dédié)", "rename 21 fichiers *-discipline.md → *-doctrine.md (v2.85.0 sprint dédié)"]
+  },
+  "decisions_captured": ["D#452"],
+  "backlog_v284_x_v285_0": [
+    "v2.84.3 · réécriture canon.md interne application voice-doctrine strict (reference-grade) + correction polysémie canon 735 occurrences (audit phase 2 découverte A)",
+    "v2.84.4 · audit README.md + WELCOME.md application exception semi-public (registre canon)",
+    "v2.84.5 (optional) · alignment context-engine/lexicon.md R&D interne 65L application voice-doctrine strict",
+    "v2.85.0 · sprint rename 21 fichiers *-discipline.md → *-doctrine.md (cross-refs sibling + CLAUDE.md root + manifest skills · 2-3h estimé multi-agents parallèle scope disjoint)",
+    "Phase 2 terminology backlog · 3 questions intent restantes Largo (C majuscules NIVEAU volontaire ? · G 3 axes statuts distincts ? · H orphelins promouvoir ?)",
+    "doctrine_ripening_period revisit 2026-06-09 (T+3 weeks · 5+ informal applications criteria)"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.84.2 = git revert HEAD strict · 1 fichier lexicon.md refondu (175L original restauré via git history) · zéro impact runtime (lexicon read-only)."
+}

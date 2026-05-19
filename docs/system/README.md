@@ -1,6 +1,6 @@
 # docs/system · index doctrines canon
 
-Index navigable des 24 doctrines canon shipped PhantomOS pour skill-authors et contributeurs. CLAUDE.md root pointe ici pour la liste exhaustive · runtime LLM n'a pas besoin de cet inventaire en contexte.
+Index navigable des 27 doctrines canon shipped PhantomOS pour skill-authors et contributeurs. CLAUDE.md root pointe ici pour la liste exhaustive · runtime LLM n'a pas besoin de cet inventaire en contexte.
 
 Pour les docs architecture (spec technique · contrats · patterns · cookbook · extending) cf section finale.
 
@@ -51,6 +51,9 @@ Contextual Intelligence est la doctrine racine. Toutes les autres doctrines la s
 - **Schema Encoding Discipline** · `schema-encoding-discipline.md` · substrate · mutation rule · `_field_types` · sourcing tags · triangulation · append-only · memory layers
 - **Skill Authoring Discipline** · `skill-authoring-discipline.md` · type taxonomy · frontmatter triad · composition contracts · lifecycle · failure doctrine
 - **Provenance Trust Discipline** · `provenance-trust-discipline-scope.md` · scope · multi-operator · canon-as-product · marketplace skills
+- **Claude-MD Discipline** (v2.82.0) · `claude-md-discipline.md` · cap fichiers · marqueurs priorité 3 max · test de suppression · refactor atomique
+- **Changelog Discipline** (v2.83.0) · `changelog-discipline.md` · Keep-a-Changelog strict · cap 80L par release · sections atomiques · split narrative archive
+- **Voice Doctrine** (v2.84.0) · `voice-doctrine.md` · ton reference-grade artefacts internes · 5 principes wording · politique FR/EN canon · conventions casse · famille paramétrage NEW · 8 anti-patterns
 
 ## Governance
 

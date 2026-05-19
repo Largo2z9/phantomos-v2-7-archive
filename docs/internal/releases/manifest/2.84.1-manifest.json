@@ -1,0 +1,66 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.84.1",
+  "released_at": "2026-05-19",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint PATCH v2.84.1 · voice-doctrine v2.84.0 → v2.84.1 · 5 patches post-audit externe Claude Web. Trigger · audit Web sur voice-doctrine.md v2.84.0 a validé 'shipped' à 90% MAIS flag 4 drifts mineurs + 1 zone fragilité structurelle. Patches consolidés sans inflation · doctrine reste 150L pile sous cap claude-md-discipline 150. Auto-conformance préservée.",
+  "context_amont": {
+    "trigger": "Audit externe Claude Web phase 2-bis sur voice-doctrine.md v2.84.0 · verdict 'shipped validé' avec recommandations patches v2.84.x. 4 drifts mineurs identifiés (D1 AP-VD-3 vs AP-VD-8 chevauchement · D2 cross-refs legacy `*-discipline.md` dans doctrine déclarant 'discipline' deprecated · D3 frontmatter `***` au lieu de `---` HALLUCINATION audit · D4 variation typographique séparateurs). 1 zone fragilité structurelle (Exception README/WELCOME = 3e registre 'semi-public' non nommé ailleurs). Test de suppression strict appliqué · 4 AP uniques + 4 applications négatives principes · décision = transparence assumée plutôt que suppression (checklist visible valeur opérationnelle).",
+    "verdict_largo": "VALIDÉ 4 patches + ALLÉGÉ 1 patch (note transparence) + REJET drift 3 audit hallucination + chiffre concret 21 fichiers `*-discipline.md` pour dimensionner sprint v2.85.0 rename."
+  },
+  "patches_appliques": [
+    {"id": "P1", "scope": "NEW mini-section 'Registres canon' en haut (3 registres canon · reference-grade · semi-public · runtime opérateur · table 4 colonnes)", "rationale": "Corrige fragilité structurelle README/WELCOME hybride 3e registre · pose boussole claire mental model auteur · cross-ref ancré dans Exception section"},
+    {"id": "P2", "scope": "Notes (rename pending v2.85.0+) inline · cross-refs claude-md-discipline + changelog-discipline + output-clarity-discipline + decomposition-visibility-discipline + AP-VD-5 · politique FR/EN '21 fichiers identifiés sprint v2.85.0 dédié'", "rationale": "Transparence drift legacy · voice-doctrine déclare 'discipline' deprecated et 'doctrine' canon · cross-refs visibles à l'œil nu doivent être marquées en attente rename programmé"},
+    {"id": "P3", "scope": "Note transparence P5 section · 'P4 spécialise P1 ordre syntaxique d'ouverture · conservé distinct pour visibilité opérationnelle' · Note transparence post-AP-VD-8 · 'AP-VD-1/2/7 applications négatives directes P3/P4/P1 · conservés visibles fonction checklist post-write'", "rationale": "Transforme test de suppression strict en transparence assumée · principes/AP doublons conservés pour valeur pédagogique checklist auteur · meta-cohérence avec claude-md-discipline test de suppression appliqué pre-ship"},
+    {"id": "P4", "scope": "AP-VD-3 wording préciser · 'Aucune formule d'OUVERTURE EN MATIÈRE ... Distinct d'AP-VD-8 qui cible les pronoms conversationnels (tu/vous)'", "rationale": "Distinction AP-VD-3 (entrée matière) vs AP-VD-8 (pronoms registre runtime) rendue explicite · évite chevauchement perçu"},
+    {"id": "P5", "scope": "NEW section 'Conventions typographiques' (séparateurs canon · table 5 lignes · `·` prose/listes inline · `|` tables markdown · `→` flèches conséquence · `↔` paires bidirectionnelles · em-dash `—` interdit canon cf no_em_dash)", "rationale": "Prévient drift typographique futur · formalise convention déjà appliquée implicitement · cohérent memory canon Largo no_em_dash"}
+  ],
+  "rejets_documentes": [
+    {"id": "REJET-D3", "audit_claim": "Frontmatter utilise `***` au lieu de `---` standard YAML", "verite_terrain": "File utilise déjà `---` YAML standard (lignes 1 et 7 vérifiées via Read tool)", "action": "Aucune · audit hallucination · rejet documenté"}
+  ],
+  "compression_appliquee": [
+    {"section": "Versioning et amendement", "before": "8 lignes (3 bullets semver + 1 ligne test suppression)", "after": "1 ligne inline (semver · patch/minor/major + test suppression en juxtaposition)", "gain": "7 lignes"},
+    {"section": "Conditions d'invocation", "before": "11 lignes (2 sous-listes 4+2 bullets)", "after": "4 lignes (2 phrases inline avec énumération `·`)", "gain": "7 lignes"},
+    {"section": "Exception README/WELCOME", "before": "8 lignes (header + 3 bullets allègements + paragraphe applicable)", "after": "5 lignes (header + 1 phrase inline allègements + paragraphe applicable)", "gain": "3 lignes"}
+  ],
+  "self_conformance_check_v841": {
+    "applied_to_itself": true,
+    "checks": [
+      "150L pile sous cap claude-md-discipline 150L (auto-conforme test de suppression appliqué Versioning + Conditions invocation + Exception)",
+      "Em-dash référencé une fois dans table Conventions typographiques pour interdire (sémantiquement OK · pas utilisation runtime)",
+      "Auto-conformance P1-P5 + AP-VD-1à8 maintenue",
+      "Notes transparence ne violent pas les principes (registre tiers factuel maintenu)",
+      "21 fichiers `*-discipline.md` chiffre concret intégré (cohérent P1 précision dense vs vague)"
+    ]
+  },
+  "files_patched": [
+    {"file": "docs/system/voice-doctrine.md", "scope": "v2.84.0 → v2.84.1 · 138L → 150L · 5 patches P1-P5 + 3 compressions · frontmatter version bumpé + description enrichie 3 registres + conventions typographiques + notes transparence"},
+    {"file": "_version.json", "scope": "Bump 2.84.0 → 2.84.1 + summary"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.84.1 prepended"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.84.1"},
+    {"file": "docs/internal/releases/manifest/2.84.1-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["5 patches voice-doctrine v2.84.0 → v2.84.1", "version + manifest + CHANGELOG + project-journal + D#451 + memory canon mise à jour"],
+    "out_of_scope_explicit": ["réécriture lexicon.md user-facing (v2.84.2 dédié)", "réécriture canon.md interne (v2.84.3 dédié)", "audit README/WELCOME application exception (v2.84.4 dédié)", "rename 21 fichiers `*-discipline.md` → `*-doctrine.md` (v2.85.0 sprint dédié 2-3h estimé)", "propagation 27 doctrines existantes alignment vocabulaire/casse/AP-VD (v2.85.0+ par lots 5-6)"]
+  },
+  "decisions_captured": ["D#451"],
+  "backlog_v284_x_v285_0": [
+    "v2.84.2 · réécriture lexicon.md user-facing application voice-doctrine (cap 80L brand-style)",
+    "v2.84.3 · réécriture canon.md interne application voice-doctrine + correction polysémie canon (audit phase 2 découverte A 735 occurrences)",
+    "v2.84.4 · audit README.md + WELCOME.md application exception semi-public",
+    "v2.85.0 · sprint rename 21 fichiers `*-discipline.md` → `*-doctrine.md` + propagation cross-refs sibling + CLAUDE.md root + manifest skills (2-3h estimé · multi-agents parallèle scope disjoint)",
+    "Phase 2 terminology backlog · 3 questions intent restantes Largo (C majuscules NIVEAU volontaire ? · G 3 axes statuts distincts ? · H orphelins promouvoir ?)",
+    "doctrine_ripening_period revisit 2026-06-09 (T+3 weeks · 5+ informal applications criteria)",
+    "Sync workspace-template → Largo2z9/phantomos via branche release/v2.84.0 + PR auto (arbitrage post-v2.84.1)"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.84.1 = git revert HEAD strict · 1 doctrine patchée additive + 4 docs metadata · zéro impact runtime."
+}

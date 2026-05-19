@@ -7,6 +7,32 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-discipline.md` (v2.83.0+).
 
+## [2.84.2] · 2026-05-20
+### Changed
+- `lexicon.md` user-facing refonte · 175L → 103L (-41%) · 1ère propagation downstream voice-doctrine v2.84.1 · application partielle scope (b) · FR/EN canon (opérateur, décomposition, etc) · AP-VD-4 adjectifs vagues retirés · AP-VD-6 zéro nom doctrine canon leaké · P1 précision dense · P3 phrases courtes · em-dash zéro · `vous`/`votre marque` registre opérateur préservés
+### Removed
+- DRGFP + Confidence propagation + Atlas 4 senses MECE + Lineage + Origin_axis + Schwartz entrées (jargon doctrinal surface opérateur ou specs internes R&D)
+- Preamble CONTEXT/OBJECTIVE/TYPE/AUDIENCE/CANON INTERNE (overengineered) · footer narrative S53/S55 (versioning inline)
+- Refs `docs/system/*-discipline.md` doctrines internes 6× (violations AP-VD-6)
+### Notes
+- 25 entrées core préservées (Brand, Produit, Offre, Audience, Persona, Pain point, Tension, Insight, JTBD, Angle, Axe créatif, Concept/Creative/Variant, Mécanique/Mechanism, Awareness, Atome irréductible, Landing page, Campagne, Test, Résultat, Apprentissage, Positioning, Territoire, Connected source)
+- D#452 captured · cadre canon voice-doctrine v2.84.1 testé via propagation réelle
+
+## [2.84.1] · 2026-05-19
+### Changed
+- `voice-doctrine.md` v2.84.0 → v2.84.1 · 5 patches post-audit Claude Web · NEW mini-section Registres canon (3 registres reference-grade · semi-public · runtime opérateur) · NEW section Conventions typographiques (séparateurs canon `·` `\|` `→` `↔` · em-dash interdit) · notes (rename pending v2.85.0+) cross-refs `*-discipline.md` · notes transparence P4 spécialise P1 + AP-VD-1/2/7 applications négatives · AP-VD-3 précision distinction AP-VD-8 · 150L pile sous cap claude-md-discipline 150
+### Notes
+- 21 fichiers `*-discipline.md` identifiés à renommer `*-doctrine.md` · sprint v2.85.0 dédié (cross-refs sibling + CLAUDE.md root + manifest skills)
+- Rejet drift audit · frontmatter `***` était hallucination · file utilise déjà `---` YAML standard
+
+## [2.84.0] · 2026-05-19
+### Added
+- NEW doctrine `voice-doctrine.md` · ton canon artefacts internes · 5 principes wording (P1-P5) · politique FR/EN canon (opérateur · décomposition · cartographie · territoire · doctrine vs discipline) · conventions casse (NOYAU/CONTEXTE/MODIFIEURS · NIVEAU 0/1-4/LIVE plafond 5-10) · famille paramétrage NEW (axe variable · paramétrage · paramétrer · pair canon cartographier ↔ paramétrer) · 8 anti-patterns (AP-VD-1 à AP-VD-8) · exception README/WELCOME semi-public
+### Changed
+- `docs/system/README.md` index · ajout `voice-doctrine` en Authoring infrastructure · `claude-md-discipline` + `changelog-discipline` listés (rattrapage) · count 24 → 27 doctrines
+### Migration
+- Aucune (cadre canon posé · pas de propagation lexicon/canon/doctrines existantes dans ce sprint · réécritures dédiées v2.84.x+)
+
 ## [2.83.0] · 2026-05-19
 ### Added
 - NEW doctrine `changelog-discipline.md` (cap 80L par release) · NEW `docs/internal/project-journal.md` (4270L préservés narrative archive)

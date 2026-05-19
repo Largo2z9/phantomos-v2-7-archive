@@ -1,0 +1,84 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.84.0",
+  "released_at": "2026-05-19",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 26,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.84.0 · NEW doctrine canon racine voice-doctrine.md · ton reference-grade artefacts internes PhantomOS · cadre canon de wording avant phases 2a-2e clean terminologique. Trigger · audit externe Claude Web phase 2 sur terminology-inventory (Phase 1 v2.83.x complète · 323 termes uniques 12 sources) a identifié 9 problèmes (A-I) dont polysémie canon · FR/EN inconsistencies · majuscules ambiguës · 3 axes statuts confondus. Décision pre-clean · poser doctrine canon de wording avant toute propagation. Doctrine pose 5 principes wording (précision dense · verbes action · phrases courtes · terme canon avant explication · lecteur senior assumé) · politique FR/EN canon (5 décisions tranchées) · conventions casse (plafond 5-10 majuscules réservées) · famille paramétrage NEW canon (axe variable · paramétrage · paramétrer · pair conceptuel canon cartographier ↔ paramétrer) · 8 anti-patterns AP-VD-1 à AP-VD-8 · exception README/WELCOME semi-public · versioning amendement strict semver + test de suppression pré-amendement. 138L · sous cap claude-md-discipline 150L. Auto-conforme (doctrine appliquée à elle-même). D#450 captured. PAS DE PROPAGATION ce sprint · réécritures lexicon/canon/doctrines existantes en sprints v2.84.x+ dédiés (v2.84.1 lexicon user-facing · v2.84.2 canon.md interne · v2.84.3 audit README/WELCOME · v2.85.0 propagation 26 doctrines par lots 5-6).",
+  "context_amont": {
+    "trigger": "Audit externe Claude Web phase 2 sur Phase 1 terminology-inventory v2.83.x (323 termes uniques 12 sources). 9 problèmes identifiés (A · polysémie canon 735 occurrences · B · FR/EN inconsistencies opérateur/operator/operateur · C · majuscules NOYAU/CONTEXTE/MODIFIEURS NIVEAU 0/1-4/LIVE volontaires · D · 3 axes statuts distincts confondus · E · pair conceptuel cartographier/paramétrer pas formalisé · F · doctrine vs discipline ambigu · G · 10 orphans à arbitrer · H · adjectifs vagues enrichissement · I · jargon doctrinal opérateur-facing leak risk).",
+    "decision_pre_clean": "Avant Phase 2a-2e propagation cleanup, poser cadre canon de wording pour que les réécritures suivantes appliquent une règle codifiée plutôt qu'arbitraire. Auto-sufficiency · pre-ship test de suppression appliqué directement sans soumission audit externe."
+  },
+  "deliverables_canon": [
+    "NEW docs/system/voice-doctrine.md (138L · 5 principes P1-P5 · politique FR/EN canon 5 décisions · conventions casse plafond strict · famille paramétrage canon NEW · 8 anti-patterns AP-VD · exception README/WELCOME · versioning semver + test de suppression amendement)",
+    "PATCH docs/system/README.md (count 24 → 27 doctrines · voice-doctrine ajouté Authoring infrastructure · claude-md-discipline + changelog-discipline rattrapage listés)",
+    "PATCH CHANGELOG.md (entry v2.84.0 Keep-a-Changelog strict · Added/Changed/Migration sections atomiques · cap respecté)",
+    "PATCH docs/internal/project-journal.md (entrée narrative archive interne v2.84.0)",
+    "PATCH _version.json (2.83.0 → 2.84.0 · summary v2.84.0)",
+    "NEW docs/internal/releases/manifest/2.84.0-manifest.json (ce manifest)"
+  ],
+  "files_patched": [
+    {"file": "docs/system/voice-doctrine.md", "scope": "NEW · 138L · doctrine canon ton reference-grade · 5P + AP-VD-1à8 + politique FR/EN + casse + paramétrage"},
+    {"file": "docs/system/README.md", "scope": "Index updated · count 24 → 27 · voice-doctrine + claude-md-discipline + changelog-discipline listés Authoring"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.84.0 prepended · Keep-a-Changelog strict"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.84.0 (post-Phase 1 terminology · pre-Phase 2 clean · cadre canon posé)"},
+    {"file": "_version.json", "scope": "Bump 2.83.0 → 2.84.0 + summary"},
+    {"file": "docs/internal/releases/manifest/2.84.0-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "voice_doctrine_canon": {
+    "principles": ["P1_precision_dense", "P2_verbes_action_noms_techniques", "P3_phrases_denses_sans_liaisons_molles", "P4_terme_canon_avant_explication", "P5_lecteur_senior_assume"],
+    "fr_en_canon_decisions": [
+      {"canon": "opérateur", "deprecated": ["operator", "operateur"]},
+      {"canon": "décomposition", "deprecated": ["decomposition"]},
+      {"canon": "cartographie", "deprecated": ["cartography (sauf noms doctrines)"]},
+      {"canon": "territoire", "deprecated": ["territory (sauf noms doctrines)"]},
+      {"canon": "doctrine", "deprecated": ["discipline (sauf fichiers historiques)"]}
+    ],
+    "majuscules_reservees_plafond": "5-10 termes total",
+    "majuscules_canon_actuel": ["NOYAU", "CONTEXTE", "MODIFIEURS", "NIVEAU 0", "NIVEAU 1-4", "NIVEAU LIVE"],
+    "famille_parametrage_canon_NEW": [
+      {"terme": "axe variable", "nature": "substantif", "replaces": ["dimension", "levier", "variable seule", "input générique"]},
+      {"terme": "paramétrage", "nature": "substantif d'action", "replaces": ["configuration", "mobilisation", "alimentation"]},
+      {"terme": "paramétrer", "nature": "verbe", "replaces": ["configurer", "mobiliser", "alimenter"]}
+    ],
+    "pair_conceptuel_canon": "cartographier (lire/structurer) ↔ paramétrer (injecter/composer)",
+    "anti_patterns_count": 8,
+    "anti_patterns_list": ["AP-VD-1_periphrase_pedagogique", "AP-VD-2_liaisons_molles_narratives", "AP-VD-3_validation_politesse_sycophant", "AP-VD-4_adjectifs_vagues", "AP-VD-5_inflation_marqueurs_priorite", "AP-VD-6_jargon_doctrinal_operateur", "AP-VD-7_redeveloppement_acronymes", "AP-VD-8_melange_registre_runtime_internes"],
+    "exception_canon": "README.md + WELCOME.md semi-public (phrases narratives autorisées pour intro projet · acronymes développés · cross-refs ressources canon mais pas doctrines internes · vocabulaire canon strictement applicable · pas de validation politesse · pas d'adjectifs vagues)"
+  },
+  "self_conformance_check": {
+    "applied_to_itself": true,
+    "checks": [
+      "P1 précision dense · termes canoniques utilisés sans redéfinition à chaque occurrence",
+      "P2 verbes d'action + noms techniques assumés · encoder/paramétrer/cartographier/composer + substrat/atome/axe variable",
+      "P3 phrases denses courtes · zéro 'par ailleurs/en effet/il convient de noter'",
+      "P4 terme canon avant explication · exemple anti/canon explicite P4 section",
+      "P5 lecteur senior assumé · zéro 'pour les non-initiés'",
+      "AP-VD-1 zéro périphrase pédagogique · AP-VD-2 zéro liaisons molles · AP-VD-3 zéro formule politesse · AP-VD-4 zéro adjectif vague · AP-VD-5 zéro emphase visuelle gras/italique pour règle · AP-VD-6 noms doctrines pas exposés opérateur-facing · AP-VD-7 acronymes utilisés seuls après première occ · AP-VD-8 zéro tu/vous registre runtime",
+      "Casse · zéro majuscule hors NOYAU/CONTEXTE/MODIFIEURS/NIVEAU 0/1-4/LIVE",
+      "Paramétrage · exemple canon section famille terminologique cité",
+      "138L · sous cap claude-md-discipline 150L"
+    ]
+  },
+  "scope_constraint": {
+    "in_scope": ["NEW voice-doctrine.md", "PATCH README.md docs/system index", "PATCH CHANGELOG.md entry", "PATCH project-journal.md narrative", "PATCH _version.json", "NEW 2.84.0-manifest.json", "D#450 capture decisions.md", "NEW memory canon feedback_voice_doctrine_canon"],
+    "out_of_scope_explicit": ["réécriture lexicon.md user-facing (v2.84.1 dédié)", "réécriture canon.md interne (v2.84.2 dédié)", "audit README.md/WELCOME.md semi-public application doctrine (v2.84.3 dédié)", "propagation 26 doctrines existantes terminologie/casse/AP-VD (v2.85.0 par lots 5-6)"]
+  },
+  "decisions_captured": ["D#450"],
+  "backlog_v284_x_plus": [
+    "v2.84.1 · réécriture lexicon.md user-facing application voice-doctrine (cap 80L brand-style)",
+    "v2.84.2 · réécriture canon.md interne application voice-doctrine + correction polysémie canon (audit externe découverte A)",
+    "v2.84.3 · audit README.md + WELCOME.md application exception semi-public",
+    "v2.85.0 · propagation 26 doctrines existantes par lots 5-6 · alignment vocabulaire FR/EN + casse + AP-VD-1à8 + acronymes",
+    "Phase 2 terminology backlog · 3 questions intent restantes Largo (C majuscules NIVEAU volontaire ? · G 3 axes statuts distincts ? · H orphelins promouvoir ?)",
+    "doctrine_ripening_period revisit 2026-06-09 (T+3 weeks · 5+ informal applications criteria)"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.84.0 = git revert HEAD strict · 1 doctrine NEW + 5 docs PATCHED additifs retirables · zéro impact runtime (cadre canon pas encore propagé)."
+}
