@@ -1,4 +1,4 @@
-# Decomposition Visibility Discipline · Operating Doctrine
+# Decomposition Visibility Doctrine · Operating Doctrine
 
 > Canonique v2.81.1+. Doctrine canon qui codifie comment l'agent rend visible sa décomposition de réflexion plus son reverse engineering à l'opérateur sur 3 phases temporelles canon · AVANT exécution (NIVEAU 0 paramètres décomposés pré-exec · intelligence compositionnelle visible) · PENDANT exécution (NIVEAU LIVE raisonnement thinking aloud expert pendant action · calibré par poids action triviale/moyenne/lourde) · APRÈS exécution (NIVEAUX 1-4 post-exec · synthesis cross-skills plus cross-slash commands `/bird` et `/breakdown` plus queries verbal freestyle). Doctrine sœur de `investigation-posture.md` (rigueur output 5 sections), `canonical-matrix-reasoning.md` (qualité output cross-cell schema plus matrice), `skill-routing-doctrine.md` (canon routing 5 phases), et `engagement-disclosure-doctrine.md` v2.79.5+ (sister doctrine pre-exec · disclosure paramètres décomposés). Ferme le gap *"l'agent encode silencieusement sans présenter visuellement la décomposition produit, le mapping many-to-many, le filtre stage business, et la méthode pédagogique"* flag systémique Sprint v2.78.2 post-test live KaraCare workspace v2.78.0 plus gap *"queries verbal résume/cartographie freestyle prose sans déclencher 4 niveaux matriciels canon"* flag systémique Sprint v2.79.1 post-test live KaraCare workspace v2.79.0 (HR-DVD-9 enforcement runtime) plus gap *"skills intelligence compositionnelle (atlas × métier) lancent avec plan + ETA + démarche mais sans POURQUOI explicit sur paramètres d'entrée · l'opérateur valide à l'aveugle, pas en conscience expert métier"* flag systémique Sprint v2.79.5 post-test live Liv Happyfood mine-voc workspace v2.79.4 (HR-DVD-10 enforcement runtime · NIVEAU 0 paramètres décomposés). Scope révisé Sprint v2.79.2 post-audit Largo test live KaraCare v2.79.1 · `/phantom` exclu du scope (cockpit scan rapide ≠ pédagogie reverse engineering · cf D#435).
 
@@ -86,7 +86,7 @@ NIVEAU 3 · Positionnement filtre par stage business
 NIVEAU 4 · Méthode pédagogique verbale
 ```
 
-**Pattern canon multiplicatif.** Les 5 niveaux sont multiplicatifs · l'absence d'un seul niveau fait s'effondrer la visibilité systémique. Pattern miroir équation Operational System Discipline v2.71 (ECR × Règles × Templates × Métriques × Rituels).
+**Pattern canon multiplicatif.** Les 5 niveaux sont multiplicatifs · l'absence d'un seul niveau fait s'effondrer la visibilité systémique. Pattern miroir équation système opérationnel (`operational-system-doctrine.md`) ECR × Règles × Templates × Métriques × Rituels.
 
 **Cardinalité canon stricte.** Toujours 5 niveaux pour skills intelligence compositionnelle (NIVEAU 0 + NIVEAUX 1-4). Toujours 4 niveaux pour skills synthesis stratégique post-exec sans intelligence compositionnelle pré-exec (NIVEAUX 1-4 seulement · skills mécaniques type snapshot-brand · profile-audience direct sans atlas × métier paramétrique). Jamais 3 (skip bénéfices 3 couches). Jamais 6+ (over-engineer noise). Cap canon issu test live KaraCare workspace v2.78.0 (4 niveaux post-exec) + test live Liv Happyfood v2.79.4 (NIVEAU 0 pre-exec ajouté).
 
@@ -292,7 +292,7 @@ Sans calibration, le thinking aloud noie. Décomposer un `read file` produit du 
 - **Durée action <30s** = triviale (read · grep · lookup manifest · routing trivial)
 - **Durée action 30s-3min** = moyenne (classification single item · décision routing · choix dans liste calibrée · audit single field · scoring angle isolé)
 - **Durée action >3min OR orchestrator type OR producer heavy** = lourde (cartographie · audit perf · production paid · matrice scoring · profile audience · ingest bulk · build atlas)
-- **Override canon** · skills `decomposition-visibility-discipline` consumers explicit (cf §existant DVD scope · skills intelligence compositionnelle atlas × métier) = toujours moyenne MINIMUM (même actions courtes restent moyenne minimum pour préserver pédagogie posture experte)
+- **Override canon** · skills `decomposition-visibility-doctrine` consumers explicit (cf §existant DVD scope · skills intelligence compositionnelle atlas × métier) = toujours moyenne MINIMUM (même actions courtes restent moyenne minimum pour préserver pédagogie posture experte)
 
 **Exemples canon application gradient** ·
 
@@ -524,7 +524,7 @@ Pattern canon · seuls outputs produisant synthèse stratégique opérateur-faci
 - Skill rituel mécanique (brief-day pure status surfacing · hygiene-audit scanner).
 - Skill conversational debug (clarification doctrine · debug technical).
 
-**Pattern canon decision-aid** · *"L'output est-il une synthèse stratégique opérateur-facing qui drive décision business ?"* OUI → trigger Decomposition Visibility Discipline. NON → skip (zéro friction noise).
+**Pattern canon decision-aid** · *"L'output est-il une synthèse stratégique opérateur-facing qui drive décision business ?"* OUI → trigger Decomposition Visibility Doctrine. NON → skip (zéro friction noise).
 
 ---
 
@@ -641,7 +641,7 @@ Agent exécute action lourde (cartographie brand · audit perf · production ang
 
 ## 14. Position dans le système opérationnel 5 couches
 
-Decomposition Visibility Discipline opère sur 5 couches simultanément du multiplicatif Operational System Discipline v2.71 · enforcement runtime canon v2.81.1+ couvre 3 phases temporelles complètes (NIVEAU 0 pré-exec + NIVEAU LIVE pendant exec + NIVEAUX 1-4 post-exec · scope révisé `/phantom` exclu cockpit scan rapide preserved) ·
+Decomposition Visibility Doctrine opère sur 5 couches simultanément du multiplicatif système opérationnel (`operational-system-doctrine.md`) · enforcement runtime canon v2.81.1+ couvre 3 phases temporelles complètes (NIVEAU 0 pré-exec + NIVEAU LIVE pendant exec + NIVEAUX 1-4 post-exec · scope révisé `/phantom` exclu cockpit scan rapide preserved) ·
 
 **Couche 2 · Règles (heuristiques décision).** 11 Hard Rules canon strict (HR-DVD-1 à HR-DVD-11) sont heuristiques décision canon · *"si synthèse stratégique opérateur-facing alors 4 niveaux post-exec obligatoires"* (HR-DVD-1 à HR-DVD-9) plus *"si skill intelligence compositionnelle (atlas × métier) alors NIVEAU 0 paramètres décomposés pre-exec obligatoire"* (HR-DVD-10 v2.79.5) plus *"si action moyenne ou lourde alors NIVEAU LIVE raisonnement thinking aloud expert pendant exec obligatoire calibré par poids action"* (HR-DVD-11 v2.81.1) plus enforcement runtime cross-slash commands `/bird` plus `/breakdown` plus queries verbal freestyle (HR-DVD-9 v2.79.2 scope révisé). Pattern miroir `investigation-posture.md` 5 sections obligatoires plus `skill-routing-doctrine.md` 5 phases routing plus `engagement-disclosure-doctrine.md` v2.79.5+ pattern disclosure enrichi (sister doctrine pre-exec) plus `entry-arc-doctrine.md` v2.81.0 (sister doctrine multi-entry post-tour).
 

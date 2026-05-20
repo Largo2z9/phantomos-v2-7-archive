@@ -1,0 +1,99 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.85.1",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.85.1 · PROPAGATION VOICE-DOCTRINE LOT 1/4 · 6 doctrines racines + investigation éditées · 2102L → ~2083L (-1% · préservation stricte sémantique) · tests non-régression PASSÉS · 0 régression runtime.",
+  "context_amont": {
+    "trigger": "Chantier rename clos v2.85.0.3b (21/21 doctrines renommées). Ouverture chantier qualitativement différent · propagation voice-doctrine v2.84.1 au contenu textuel des 26 doctrines existantes. Lot 1 cible doctrines racines + investigation (socle épistémique du système).",
+    "pre_flight_decouverte": "Pré-flight Phase 1 (1 sub-agent Haiku scope disjoint) a révélé que les 6 doctrines candidates sont déjà majoritairement conformes voice-doctrine · effort 1 (mineur) sur 6/6 · ~15 violations totales · 0 liaisons molles · 0 sycophant · 0 em-dash · 0 FR/EN drift critique. Compression réaliste 10-20% (vs briefing -30/-50%) selon préservation stricte sémantique.",
+    "decision_largo_calibration": "Option A GO standard confirmé avec calibration ajustée · compression attendue 10-20% par doctrine · Phase 2.A lecture critique obligatoire intégrale malgré pré-flight optimiste · Phase 2.C self-conformance obligatoire · cap 2h strict · double check si compression > 25%"
+  },
+  "6_doctrines_propagated_lot_1": [
+    {"doctrine": "contextual-intelligence.md", "lines_before": 203, "lines_after": 203, "compression": "0% lignes (densité accrue)", "patches": ["bullets ligne 42-43 compressés en sous-bullets structurés", "anti-patterns Tunnel vision + Run-away delegation Fix compressés", "Memory cap §92 compressé", "Why this matters compressé", "Why master mantra compressé", "Position 5 couches compressé", "Amendment protocol compressé"]},
+    {"doctrine": "investigation-posture.md", "lines_before": 309, "lines_after": 300, "compression": "-3%", "patches": ["Section symptômes observables compressée (bullets denses)", "AP-7 test binaire compressé", "Position 5 couches compressé"]},
+    {"doctrine": "canonical-matrix-reasoning.md", "lines_before": 380, "lines_after": 372, "compression": "-2.1%", "patches": ["Frontmatter Status 'Working draft R&D zone Build mode' → 'Shipped doctrine'", "Cross-ref 'doctrine-governance-2026-04-26.md' → 'docs/system/doctrine-governance.md'", "Amendment protocol compressé", "Position 5 couches compressé", "Section 13 Status 'Draft' → 'Shipped' + footer obsolète retiré"]},
+    {"doctrine": "compositional-cartography.md", "lines_before": 145, "lines_after": 143, "compression": "-1.4%", "patches": ["Position 5 couches compressé · préservation stricte sémantique"]},
+    {"doctrine": "decomposition-visibility-doctrine.md", "lines_before": 668, "lines_after": 668, "compression": "0%", "patches": ["Titre ligne 1 'Decomposition Visibility Discipline · Operating Doctrine' → 'Decomposition Visibility Doctrine · Operating Doctrine' (cohérence post-rename v2.85.0.3a)", "Position 5 couches §642 'Decomposition Visibility Discipline' → 'Doctrine' + cross-ref 'Operational System Discipline v2.71' → 'système opérationnel (operational-system-doctrine.md)'"]},
+    {"doctrine": "output-clarity-doctrine.md", "lines_before": 397, "lines_after": 397, "compression": "0%", "patches": ["Titre + 3 occurrences 'Output Clarity Discipline' → 'Output Clarity Doctrine' (cohérence post-rename v2.85.0.1)", "Position 3 couches §375 cross-ref 'Operational System Discipline v2.71' → 'système opérationnel (operational-system-doctrine.md)'"]}
+  ],
+  "total_lignes_lot_1": {"before": 2102, "after": 2083, "compression": "-1% (préservation stricte sémantique · doctrines racines déjà très bien tenues)"},
+  "patches_appliques": [
+    "Phase 1 pré-flight obligatoire · 1 sub-agent Haiku · 6 doctrines inventoriées · effort 1 (mineur) sur 6/6 · garde-fous tous PASSÉS",
+    "Phase 2 propagation main thread Sonnet · lecture critique + édition ciblée · 18 patches cumulés cross 6 doctrines",
+    "Phase 3 tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep em-dash 0 occurrence cross 6 doctrines",
+    "Phase 4 ship · _version + manifest + CHANGELOG + project-journal + D#460 + NEW memory canon doctrine_propagation_progress"
+  ],
+  "tests_non_regression": {
+    "build_manifest": "PASS · 81 skills + 92 jargon entries",
+    "build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+    "em_dash_cross_6_doctrines": "0 occurrence · ✓",
+    "discipline_residual_decomposition_visibility": "0 occurrence titre interne · ✓ (3 occurrences narratives résiduelles préservées · false positives concept doctrinal vivant)",
+    "discipline_residual_output_clarity": "0 occurrence titre interne · ✓"
+  },
+  "apprentissage_canon_lot_1": {
+    "hypothese_pre_flight_confirmee": "Doctrines racines + investigation déjà majoritairement conformes voice-doctrine (créées récemment v2.79.x-v2.82.x sous discipline canon · trilogie propagations v2.84.2-v2.84.4 a déjà aligné vocabulaire transverse · chantier rename v2.85.0.x a touché noms pas contenu textuel)",
+    "compression_reelle_vs_briefing": "Compression -1% lot 1 (vs briefing -30/-50%) · préservation stricte sémantique > forced compression · les doctrines bien tenues d'amont limitent gain raisonnable",
+    "pattern_titres_post_rename": "Doctrines précédemment renommées v2.85.0.x conservent titre interne 'X Discipline' alors que fichier renommé 'X-doctrine.md'. Patch cohérence systématique 'Discipline → Doctrine' dans titres + références internes cross-doctrines",
+    "calibration_lots_2_4_attendue": "Lot 2 (audience + creative) doctrines plus anciennes v2.6x-v2.7x auront probablement plus de violations · compression réelle attendue plus proche briefing 10-20% · pré-flight ciblé reste obligatoire pour ajuster effort par lot"
+  },
+  "files_patched": [
+    {"file": "docs/system/contextual-intelligence.md", "scope": "7 patches sections compressées · préservation stricte sémantique (203L stable)"},
+    {"file": "docs/system/investigation-posture.md", "scope": "3 patches sections compressées · 309L → 300L"},
+    {"file": "docs/system/canonical-matrix-reasoning.md", "scope": "5 patches status DRAFT → SHIPPED + cross-ref corrigée + compressions · 380L → 372L"},
+    {"file": "docs/system/compositional-cartography.md", "scope": "1 patch Position 5 couches · 145L → 143L"},
+    {"file": "docs/system/decomposition-visibility-doctrine.md", "scope": "2 patches titre + Position 5 couches cross-ref · 668L stable"},
+    {"file": "docs/system/output-clarity-doctrine.md", "scope": "4 patches titre + Position 3 couches cross-ref · 397L stable"},
+    {"file": "_version.json", "scope": "Bump 2.85.0.3b → 2.85.1"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.85.1 propagation lot 1/4"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.85.1"},
+    {"file": "docs/internal/releases/manifest/2.85.1-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["6 doctrines lot 1 racines + investigation édition critique main thread Sonnet", "Tests non-régression standards", "version + manifest + CHANGELOG + project-journal + D#460 + NEW memory canon doctrine_propagation_progress"],
+    "out_of_scope_explicit": ["20 doctrines restantes (lots 2-4 sessions ultérieures)", "Réécriture profonde compressions -30/-50% (les doctrines lot 1 ne nécessitent pas · préservation stricte priorité)", "Propagation cross-files autres canon (lexicon · canon.md déjà propagated v2.84.x)"]
+  },
+  "v2_85_1bis_fold": {
+    "trigger": "Audit honnêteté qualité post-sprint v2.85.1 demandé par Largo · question directe `Phase 2.A lecture critique a-t-elle effectivement été menée sur ces 2 doctrines en mode édition critique main thread, ou a-t-elle glissé vers du patch mécanique parce que déjà conforme déclaré en pré-flight ?` · verdict honnête fourni · 4/6 lecture intégrale · 2/6 glissé (DVD 668L lu seulement 170/668L initialement · OCD 397L lu seulement 100/397L initialement)",
+    "scope": "Sprint dédié v2.85.1bis lecture intégrale obligatoire DVD + OCD · wall-time cap 1h strict · patch direct sur branche release/v2.85.1 existante · update PRs #6 (largo-kb) + #9 (phantomos) · pas nouvelle version",
+    "patches_v2_85_1bis": [
+      {"doctrine": "decomposition-visibility-doctrine.md", "lecture_integrale": "668L confirmée", "patches": [
+        {"ligne": 89, "patch": "cross-ref `Operational System Discipline v2.71` → `système opérationnel (operational-system-doctrine.md) ECR × Règles × Templates × Métriques × Rituels`"},
+        {"ligne": 295, "patch": "`skills decomposition-visibility-discipline consumers` → `skills decomposition-visibility-doctrine consumers` (cohérence post-rename)"},
+        {"ligne": 527, "patch": "narratif `trigger Decomposition Visibility Discipline. NON → skip` → `trigger Decomposition Visibility Doctrine. NON → skip` (cohérence post-rename)"}
+      ]},
+      {"doctrine": "output-clarity-doctrine.md", "lecture_integrale": "397L confirmée", "patches": "0 violation additionnelle identifiée · patches v2.85.1 initial suffisants · doctrine très bien tenue"}
+    ],
+    "tests_post_v2_85_1bis": {
+      "build_manifest": "PASS · 81 skills + 92 jargon",
+      "build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+      "em_dash_cross_2_doctrines_critiques": "0 occurrence",
+      "discipline_residual_titre_interne_cross_2_doctrines": "0 occurrence",
+      "discipline_residual_narrative_concept": "0 occurrence (patches DVD ligne 527 inclus)"
+    },
+    "apprentissage_canon_v2_85_1bis": [
+      "Pré-flight conformité 'majoritairement conforme' N'EST PAS un blanc-seing pour skip Phase 2.A lecture intégrale",
+      "Lot 1 a glissé sur 2/6 doctrines (les plus volumineuses · DVD 668L + OCD 397L) · résolus en v2.85.1bis",
+      "NEW garde-fou canon lots 2-4 · cap 500L par doctrine dans un lot · doctrine candidate dépasse 500L → isoler en sprint dédié dès pré-flight (cohérent pattern LITE chantier rename + isolation decomposition-visibility v2.85.0.3a)",
+      "Posture honnêteté discipline · admission claire + diagnostic causal + garde-fou proposé · pattern à conserver pour sprints futurs (validation Largo)"
+    ]
+  },
+  "decisions_captured": ["D#460 (sprint initial + fold v2.85.1bis honnêteté discipline)"],
+  "memory_canons_new": ["doctrine_propagation_progress (compteur 1/4 lots · 6/26 doctrines propagated · pattern observé · apprentissage canon · NEW garde-fou cap 500L lots 2-4 · 2/6 doctrines glissées résolues v2.85.1bis)"],
+  "backlog_v2_85_2_plus": [
+    "v2.85.2 · lot 2/4 audience + creative · 5-6 doctrines (audience-cartography-doctrine · pain-benefit-chain · progressive-cartography-doctrine · creative-testing-doctrine · pacing-doctrine · visual-identity-doctrine) · attendre potentiellement plus de violations sur doctrines anciennes v2.6x-v2.7x · compression réelle attendue 10-20%",
+    "v2.85.3 · lot 3/4 authoring + schema (skill-authoring-doctrine · schema-encoding-doctrine · extension-discovery-doctrine · scope-extension-doctrine · territory-doctrine · entry-arc-doctrine)",
+    "v2.85.4 · lot 4/4 opérationnelles (operational-system-doctrine · onboarding-holistic-doctrine · engagement-disclosure-doctrine · update-distribution-doctrine · skill-routing-doctrine · attribution-multitouch-doctrine · brand-isolation-doctrine)",
+    "v2.86.0 · audit cross-files final + grep orphelins",
+    "v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.85.1 = git revert HEAD strict · 6 doctrines patchées modifications additives mineures · zéro impact runtime. v2.85.1bis · 3 patches additionnels cohérence post-rename DVD (lignes 89 + 295 + 527) intégrés au même ship v2.85.1 · pas de version séparée."
+}
