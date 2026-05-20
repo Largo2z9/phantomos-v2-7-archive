@@ -7,6 +7,32 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.85.5] · 2026-05-20
+### Changed
+- **CLÔTURE chantier propagation contenu voice-doctrine v2.84.1** · `brand-isolation-doctrine.md` propagée (68L · 1 patch principal titre `Brand isolation discipline` → `Brand Isolation Doctrine` cohérence post-rename + capitalisation canon)
+- **25/26 doctrines propagées cumulé** lots 1+2+3+4+5 · 1 doctrine restante périphérique chantier (notion-bridge OR doctrine-governance · backlog v2.86.x si nécessaire)
+### Notes
+- Sprint court 20-30 min wall-time · application STRICT cohérente lots 1-4 (Phase 1 lecture intégrale + Phase 2 édition critique + self-conformance + Phase 3 gate hygiène + Phase 4 ship)
+- Tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep em-dash 0 · grep Discipline résiduel 0
+- **BILAN CHANTIER PROPAGATION CONTENU v2.84.1 → v2.85.5** ·
+  - 17 sprints cumulés (1 doctrine NEW v2.84.0 + 3 propagations cross-files v2.84.1-v2.84.4 + 5 sprints rename v2.85.0.x + 5 sprints propagation contenu v2.85.1-v2.85.5)
+  - 25/26 doctrines propagées
+  - 147 patches cumulés cross 25 doctrines
+  - 8094L total stable (2102+1457+2121+2346+68)
+  - 0-1% compression structurelle cumulée (préservation stricte tenue 5 sprints)
+  - 0 régression runtime cumulée
+  - **Hypothèse VALIDÉE 5 lots consécutifs** · voice-doctrine propagée par ricochet plus largement qu'estimé · 3 vecteurs validés (doctrines créées sous discipline canon en amont + trilogie propagations v2.84.2-v2.84.4 + chantier rename v2.85.0.x)
+- **Patterns systémiques identifiés** cross 5 lots ·
+  - Discipline → Doctrine cohérence post-rename (115 patches cumulés)
+  - Operational System cross-ref harmonisation systémique (cross 9-10 doctrines référençantes)
+  - Generic discipline → doctrine systémique (meta-discipline · sub-discipline · etc.)
+  - Cross-refs cassées avec dates obsolètes `-2026-04-26.md` corrigées
+  - Anglicismes prose isolés patchés (skipée/négligée · explicit/explicite · capped/limitée · signaled/signalé · collapse/effondrent · operator/opérateur)
+- **Garde-fous canons codifiés en memory canons** · cap 500L par doctrine (v2.85.1bis) · Phase 2.A lecture intégrale obligatoire (v2.85.1bis) · self-conformance Phase 2.C (v2.85.1bis) · scope strict voice-doctrine (Largo politique) · filter Haiku scoring main thread Sonnet (v2.85.3) · spot-check cross-refs entrantes producer central (v2.85.4)
+- **Politique FR/EN consolidée canon** validée 5 lots · acronymes industrie EN + creative/operator/campaign FR + platform-specific EN + termes canon PhantomOS EN (canonical/load-bearing/Operator-facing)
+- D#464 captured · NEW memory canon `doctrine_propagation_complete` (clôture officielle chantier) · memory canon `doctrine_propagation_progress` finalisé 25/26
+- Backlog · v2.86.0 audit cross-files final + résolution synthesis (48 occurrences cumul) + Notion/Airtable mention operational-system §1 + 1 doctrine restante évaluation propagation
+
 ## [2.85.4] · 2026-05-20
 ### Changed
 - **PROPAGATION VOICE-DOCTRINE LOT 4/4** · 6 doctrines opérationnelles éditées critique main thread Sonnet · `operational-system-doctrine` · `attribution-multitouch-doctrine` · `skill-routing-doctrine` · `engagement-disclosure-doctrine` · `onboarding-holistic-doctrine` · `update-distribution-doctrine`

@@ -1,4 +1,4 @@
-# Brand isolation discipline
+# Brand Isolation Doctrine
 
 > Doctrine canonique v2.37+. Empêche cross-contamination data multi-brand. Critique pour usage agency multi-clients.
 
