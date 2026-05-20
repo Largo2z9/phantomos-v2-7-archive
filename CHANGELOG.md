@@ -5,7 +5,20 @@ All notable changes to PhantomOS workspace-template canon.
 Format · [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning · [SemVer](https://semver.org/spec/v2.0.0.html).
 Détails étendus par release · `docs/internal/releases/manifest/{version}-manifest.json`.
 Archive narrative Largo · `docs/internal/project-journal.md`.
-Doctrine canon · `docs/system/changelog-discipline.md` (v2.83.0+).
+Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
+
+## [2.85.0] · 2026-05-20
+### Changed
+- **Rename lot 1/4** · 6 fichiers `*-discipline.md` → `*-doctrine.md` dans `docs/system/` · alignment naming convention voice-doctrine v2.84.1 politique linguistique FR/EN canon · `attribution-multitouch` · `brand-isolation` · `changelog` · `creative-testing` · `pacing` · `visual-identity`
+- 107 cross-refs patches batch via script Python · 41 fichiers consumers patchés (docs system + docs internal + manifests + skills + slash commands + memory canons + R&D)
+### Notes
+- **Stratégie LITE** confirmée post-escalade garde-fous pré-flight Phase 1.A (3 sub-agents Haiku parallèle ont révélé 1066 cross-refs markdown + 170 non-markdown = ~1236 total · 6x estimation briefing 60-200) · scope réduit lot 1/4 (~258 refs cumulées) pour valider pattern · 15 doctrines restantes en lots dédiés v2.85.0.x sessions ultérieures
+- Tests non-régression Phase 1.D PASSÉS · build-manifest.py 81 skills + 92 jargon entries · build-brand-snapshot.py _EXAMPLE 24 lines · grep résiduel 0 occurrence anciens noms
+- 37 false positives "discipline" en prose préservés (concept doctrinal vivant · pas modifier)
+- NEW `docs/internal/refactor/v2.85.0-rename-log.md` · journal sprint détaillé
+- D#455 captured · 2 NEW memory canons (`doctrine_naming_canon` règle pérenne · `v85_0_lite_lessons` observations tactiques)
+- Backlog v2.85.0.1-3 · 15 doctrines restantes en 3 lots successifs (lot 2 mid-stakes 6 · lot 3 mid-stakes 6 · lot 4 HIGH risk 3 doctrines avec validation runtime intensive)
+- v2.85.1 propagation contenu reportée post-rename complet
 
 ## [2.84.4] · 2026-05-20
 ### Changed
@@ -58,7 +71,7 @@ Doctrine canon · `docs/system/changelog-discipline.md` (v2.83.0+).
 
 ## [2.83.0] · 2026-05-19
 ### Added
-- NEW doctrine `changelog-discipline.md` (cap 80L par release) · NEW `docs/internal/project-journal.md` (4270L préservés narrative archive)
+- NEW doctrine `changelog-doctrine.md` (cap 80L par release) · NEW `docs/internal/project-journal.md` (4270L préservés narrative archive)
 ### Changed
 - `CHANGELOG.md` racine Keep-a-Changelog strict · `/version` + `/update` lisent CHANGELOG.md + manifests JSON
 ### Migration

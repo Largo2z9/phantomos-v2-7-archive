@@ -335,14 +335,14 @@ Pattern v2.27 reproductible · learning entry trace WHAT (creative results) + WH
 - `docs/system/canonical-matrix-reasoning.md` · canon schema + matrix discipline (atlas vivant)
 - `docs/system/contextual-intelligence.md` · master doctrine semantic vs mechanical layer
 - `docs/system/confidence-propagation.md` · algèbre confidence cascade canon-tool validation
-- `docs/system/brand-isolation-discipline.md` · scope `brand_only` enforced default + canon copy exception
+- `docs/system/brand-isolation-doctrine.md` · scope `brand_only` enforced default + canon copy exception
 - `docs/system/extension-discovery-discipline.md` v2.75 · pipeline NEW entities auto-consommées
 - `learn-from-session` Trigger 9 · daemon operator gate promotion canon validations[] cross-brand
 - `audit-creative-fatigue` · sibling curator scan fatigue (vs capturer pull data ici)
 - `analyze-perf` · sibling diagnostic deep-dive (vs capturer pull brut ici)
 - `routine-perf` · sibling navigator briefing (vs capturer silent ici)
 - `capture-learning` · sibling capturer one-off (vs continuous Meta runtime ici)
-- `pacing-discipline.md` v2.78 · seuils canon partagés cross-account
+- `pacing-doctrine.md` v2.78 · seuils canon partagés cross-account
 - `resources/conventions/meta-ads.json` · Insights endpoints + rate limits + learned_rules
 - `resources/canon/copy/{hooks,frameworks,angles,archetypes-voix,heuristiques-persuasion}/*.json` · canon-tool schema v1.1 target write
 - `creative.schema v1.2` · `formula_used`, `framework_used`, `archetype_used`, `hook_used`, `objection_used`, `cta_used` source fields

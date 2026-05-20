@@ -30,9 +30,9 @@
     "Ship import-meta-results SKILL.md (349L · capturer feedback loop atlas vivant validations[] canon-tools)"
   ],
   "patches_tier_2_P1": [
-    "Ship doctrine pacing-discipline.md (288L · seuils canon ±20% spend ±2.5 freq +30% CPM drift 14j fatigue)",
-    "Ship doctrine creative-testing-discipline.md (280L · 3x3 matrix win/kill seuils canon)",
-    "Ship doctrine attribution-multitouch-discipline.md (290L · 7d-click vs 1d vs view-through canon · MER target par stage)",
+    "Ship doctrine pacing-doctrine.md (288L · seuils canon ±20% spend ±2.5 freq +30% CPM drift 14j fatigue)",
+    "Ship doctrine creative-testing-doctrine.md (280L · 3x3 matrix win/kill seuils canon)",
+    "Ship doctrine attribution-multitouch-doctrine.md (290L · 7d-click vs 1d vs view-through canon · MER target par stage)",
     "Magic keyword cleanup canon · 64 substitutions cross 14 files (Jarvis → proactif/proactif mesuré/bridge proactif context-sensitive)",
     "NEW memory canon no_jarvis_in_canon sister no_em_dash"
   ],
@@ -42,9 +42,9 @@
     {"file": ".skills/skills/audit-google-pmax/SKILL.md", "scope": "NEW · 306L orchestrator · audit complet PMAX (asset groups + audience signals + search themes + listing groups + value rules + brand exclusions) + 5 sections investigation-posture"},
     {"file": ".skills/skills/audit-creative-fatigue/SKILL.md", "scope": "NEW · 361L curator · scan creatives produced + détection fatigue (CTR decay 14-30j + CPM rise +30% WoW + frequency saturation + ROAS decay) + reco recompose-creative variant_axis pertinent"},
     {"file": ".skills/skills/import-meta-results/SKILL.md", "scope": "NEW · 349L capturer · pull Meta Insights par ad_id → écrit validations[] canon-tools → alimente decay v2.37 + N≥3 brands threshold auto-promote canon · ferme boucle produce → test → learn → promote quotidienne"},
-    {"file": "docs/system/pacing-discipline.md", "scope": "NEW · 288L 14 sections canon-style miroir · seuils canon chiffrés explicit"},
-    {"file": "docs/system/creative-testing-discipline.md", "scope": "NEW · 280L 14 sections canon-style miroir · 3x3 matrix variants + win/kill seuils canon"},
-    {"file": "docs/system/attribution-multitouch-discipline.md", "scope": "NEW · 290L 14 sections canon-style miroir · attribution windows canon par canal + iCAC/CAC/MER mapping"},
+    {"file": "docs/system/pacing-doctrine.md", "scope": "NEW · 288L 14 sections canon-style miroir · seuils canon chiffrés explicit"},
+    {"file": "docs/system/creative-testing-doctrine.md", "scope": "NEW · 280L 14 sections canon-style miroir · 3x3 matrix variants + win/kill seuils canon"},
+    {"file": "docs/system/attribution-multitouch-doctrine.md", "scope": "NEW · 290L 14 sections canon-style miroir · attribution windows canon par canal + iCAC/CAC/MER mapping"},
     {"file": "resources/conventions/google-ads.json", "scope": "Enrich · ops 2 → 13 PMAX-specific (asset_groups + audience_signals + search_themes + brand_exclusions + value_rules + listing_groups + conversion_setup + pmax_insights + negative_keywords_portfolio + smart_bidding_status + asset_strength) + learned_rules 3 → 13 + 5 operator_notes + last_updated 2026-05-17"},
     {"file": ".skills/_manifest.json", "scope": "Regen · 77 skills total · 5 NEW v2.78 confirmés"},
     {"file": ".skills/_jargon_bank.json", "scope": "Regen · 80 jargon entries"},

@@ -249,7 +249,7 @@ Index complet · `docs/system/README.md`
 - `onboarding-holistic-discipline.md` v2.80.3 · panorama 360° pré-tour
 - `operational-system-discipline.md` v2.71 · mère 5 couches
 - `output-clarity-discipline.md` v2.79.2 · standards Vercel/GitHub-grade
-- `pacing-discipline.md` · rythme outputs stage filter ARR
+- `pacing-doctrine.md` · rythme outputs stage filter ARR
 - `voice.md` · registre · ton · anti-patterns prose
 - [...14 more entries...]
 ```

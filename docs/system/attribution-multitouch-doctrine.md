@@ -1,6 +1,6 @@
 # Attribution Multitouch Discipline · Operating Doctrine
 
-> Canonique v2.78+. Doctrine canon qui codifie le cadrage attribution multi-touch stage-dependent (7d-click vs 1d-click vs view-through · Meta-reported vs Shopify actual vs TripleWhale blended · iCAC vs CAC vs MER) au-delà du *"Meta dit ROAS 3 donc on est rentable"*. Doctrine sœur de `pacing-discipline.md` (mesure pacing stage-aware) et `creative-testing-discipline.md` (ROAS attribution post-test). Ferme le gap *"attribution multi-touch canon manquant"* flag P0 Sprint v2.78 Agent media buyer. Substrat consommé par `analyze-perf` (cross-référence Sheets + Meta + Shopify) · `routine-perf` (monitoring stage-aware) · `audit-setup` (vérifie attribution windows tracking) · `audit-meta-account` (attribution audit canon) · `audit-google-pmax` (attribution GA4 cross-canon).
+> Canonique v2.78+. Doctrine canon qui codifie le cadrage attribution multi-touch stage-dependent (7d-click vs 1d-click vs view-through · Meta-reported vs Shopify actual vs TripleWhale blended · iCAC vs CAC vs MER) au-delà du *"Meta dit ROAS 3 donc on est rentable"*. Doctrine sœur de `pacing-doctrine.md` (mesure pacing stage-aware) et `creative-testing-doctrine.md` (ROAS attribution post-test). Ferme le gap *"attribution multi-touch canon manquant"* flag P0 Sprint v2.78 Agent media buyer. Substrat consommé par `analyze-perf` (cross-référence Sheets + Meta + Shopify) · `routine-perf` (monitoring stage-aware) · `audit-setup` (vérifie attribution windows tracking) · `audit-meta-account` (attribution audit canon) · `audit-google-pmax` (attribution GA4 cross-canon).
 
 ---
 
@@ -187,15 +187,15 @@ Pattern canon · 3 métriques canon CAC/MER · usage stage-aware ·
 
 ## 7. Cross-refs
 
-- `pacing-discipline.md` v2.78 · doctrine sœur · mesure pacing stage-aware · attribution windows alignment cross-doctrine
-- `creative-testing-discipline.md` v2.78 · doctrine sœur · ROAS attribution post-test · win/kill seuils consume attribution canon
+- `pacing-doctrine.md` v2.78 · doctrine sœur · mesure pacing stage-aware · attribution windows alignment cross-doctrine
+- `creative-testing-doctrine.md` v2.78 · doctrine sœur · ROAS attribution post-test · win/kill seuils consume attribution canon
 - `operational-system-discipline.md` v2.71 · doctrine mère 5 couches · cette doctrine instance multi-couches (2 Règles · 4 Métriques)
 - `investigation-posture.md` · 5 sections rigueur · skills attribution-aware (analyze-perf · audit-meta-account) ship output structuré observé/déduit/inconnu/leviers/close ouvert
 - `confidence-propagation.md` · audit trail algèbre cascade confidence · attribution divergence cross-platform préserve confidence chain
 - `skill-routing-discipline.md` v2.77 · routing canon · skills attribution consume via mapping CLAUDE.md + manifest scan
 - `connectivity-layering.md` · 3 layers canon · Meta API + Google Ads API + Shopify API · attribution data sources cross-platform
 - `notion-bridge-doctrine.md` v2.57+ · bidirectionnel pull/push · attribution data sync canon
-- `brand-isolation-discipline.md` · canon copy cross-brand · attribution baseline organic brand-specific isolation
+- `brand-isolation-doctrine.md` · canon copy cross-brand · attribution baseline organic brand-specific isolation
 
 **Skills consumers v2.78+** ·
 
@@ -280,11 +280,11 @@ Application uniforme attribution window cross-stages (e.g. 7d-click stage scale 
 ## Status
 
 - **Canonique v2.78+.** Doctrine canon · ferme gap *"attribution multi-touch canon manquant"* flag P0 Sprint v2.78 Agent media buyer.
-- **Doctrine sœur** · pacing-discipline.md (mesure pacing stage-aware) · creative-testing-discipline.md (ROAS attribution post-test) · operational-system-discipline.md v2.71 (doctrine mère 5 couches).
+- **Doctrine sœur** · pacing-doctrine.md (mesure pacing stage-aware) · creative-testing-doctrine.md (ROAS attribution post-test) · operational-system-discipline.md v2.71 (doctrine mère 5 couches).
 - **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills legacy pre-v2.78 conservent attribution logic inline jusqu'à patch · v2.78+ migration progressive consume canon.
 - **First applications** · analyze-perf v2.78 (cross-référence reconciliation) · routine-perf v2.78 (monitoring stage-aware) · audit-meta-account v2.78 (Meta attribution canon) · audit-google-pmax v2.78 (Google attribution canon).
 - **Promotion criterion** · à reviewer après 3+ skills attribution-aware migrated consume canon + 1 audit cross-account reconciliation patterns convergence + learnings.json append attribution divergence patterns.
 
 ---
 
-*Doctrine canonique skill-author-facing + media-buyer-facing. Canonise cadrage attribution multi-touch stage-dependent · 3 axes (windows canon par canal · reconciliation 3 sources · métriques iCAC/CAC/MER) + stage alignment (test/maintain/scale/saturation). Ferme gap structurel *"Meta-reported blind trust sur-estime systémique"*. Pattern miroir pacing-discipline.md (stages alignment cross-doctrine) et creative-testing-discipline.md (win/kill ROAS attribution canon).*
+*Doctrine canonique skill-author-facing + media-buyer-facing. Canonise cadrage attribution multi-touch stage-dependent · 3 axes (windows canon par canal · reconciliation 3 sources · métriques iCAC/CAC/MER) + stage alignment (test/maintain/scale/saturation). Ferme gap structurel *"Meta-reported blind trust sur-estime systémique"*. Pattern miroir pacing-doctrine.md (stages alignment cross-doctrine) et creative-testing-doctrine.md (win/kill ROAS attribution canon).*

@@ -10,7 +10,7 @@ description: >
   détecte fatigue signaux canon (CTR decay 14-30j · CPM rise +30% week-over-week
   · frequency saturation >2.5 · ROAS decay). Flag à operator avec reco trigger
   recompose-creative (variant_axis hook_swap OR background_swap). À scale c'est
-  le killer #1 paid media. Cross-refs pacing-discipline.md v2.78.
+  le killer #1 paid media. Cross-refs pacing-doctrine.md v2.78.
   Step 0 bridge proactif canon v2.77.
   FR: "audit fatigue créa", "check creative fatigue", "fatigue scan ads",
       "creative refresh check", "audit fatigue creatives", "scan fatigue".
@@ -55,7 +55,7 @@ Scanner fatigue creatives produced brand-side. Pull Meta Insights par ad_id, com
 
 **Matrix** (applied per creative): *signal canon × current value × seuil canon × fatigue contribution × directional read*.
 
-**Codified reference**: `docs/system/pacing-discipline.md` (seuils canon 4 axes), `resources/conventions/meta-ads.json` (Insights endpoints + rate limits), `creative.schema v1.2` (variant_axis enum). Si convention incomplète, Gate doc canon (WebFetch official doc + fill) avant pull.
+**Codified reference**: `docs/system/pacing-doctrine.md` (seuils canon 4 axes), `resources/conventions/meta-ads.json` (Insights endpoints + rate limits), `creative.schema v1.2` (variant_axis enum). Si convention incomplète, Gate doc canon (WebFetch official doc + fill) avant pull.
 
 ---
 
@@ -288,7 +288,7 @@ Scan · {N} creatives déployés Meta sur 30 derniers jours
 2. ...
 
 ## Cross-refs
-- pacing-discipline.md v2.78 (seuils canon respectés)
+- pacing-doctrine.md v2.78 (seuils canon respectés)
 - recompose-creative downstream consumer
 ```
 
@@ -321,7 +321,7 @@ Cross-ref · `learn-from-session Trigger 9` daemon peut promouvoir cette finding
 ## Hard Rules
 
 - **HR1** · Step 0 bridge proactif canon v2.77 MANDATORY · jamais skip access check. Default proactif (a) connect-mcp-server, fallback (b) declarative. **NEVER** silently fail sur missing token.
-- **HR2** · Seuils canon `docs/system/pacing-discipline.md` respectés strict · CTR decay -25%, CPM rise +30% WoW, frequency 2.5/4.0, ROAS decay -30%. **NEVER** improviser des seuils différents.
+- **HR2** · Seuils canon `docs/system/pacing-doctrine.md` respectés strict · CTR decay -25%, CPM rise +30% WoW, frequency 2.5/4.0, ROAS decay -30%. **NEVER** improviser des seuils différents.
 - **HR3** · 5 sections investigation-posture output obligatoire (Observé / Déduit / Inconnu / Leviers / Close ouvert). Anti-pattern AP-5 doctrine investigation-posture BANNI (synthèse close affirmative).
 - **HR4** · JAMAIS affirmer fatigue comme un fait. Tout flag = hypothèse avec confidence chain explicite (forte / moyenne / faible / TRÈS faible). Anti-pattern AP-1 doctrine BANNI.
 - **HR5** · JAMAIS trigger recompose-creative silent sans operator gate. Audit propose reco, operator décide trigger. Mode `interactive` (pas `direct`).
@@ -348,7 +348,7 @@ Cross-ref · `learn-from-session Trigger 9` daemon peut promouvoir cette finding
 
 ## Cross-refs
 
-- `docs/system/pacing-discipline.md` v2.78 · seuils canon 4 axes pacing chiffrés
+- `docs/system/pacing-doctrine.md` v2.78 · seuils canon 4 axes pacing chiffrés
 - `docs/system/investigation-posture.md` · 5 sections obligatoires output stratégique
 - `docs/system/canonical-matrix-reasoning.md` · matrix-driven fatigue compute
 - `recompose-creative` · downstream consumer (variant_axis hook_swap, background_swap, audience_swap)

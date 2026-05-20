@@ -157,6 +157,6 @@ Sans DRGFP : 4 skills chain qui font tous L3 silent → output final non-évalu�
 - `resources/schemas/skill-prerequisites.schema.json` (v2.37 schema validation)
 - `docs/system/confidence-propagation.md` (v2.37 algèbre cascade)
 - `docs/system/canon-tool.schema.json` v1.1 (v2.37 attribution + decay)
-- `docs/system/brand-isolation-discipline.md` (v2.37 isolation_scope)
+- `docs/system/brand-isolation-doctrine.md` (v2.37 isolation_scope)
 - `docs/system/operator-vocabulary-translation.md` (v2.37 jargon translation)
 - `docs/system/skill-authoring-discipline.md` (frontmatter triad enrichi)

@@ -85,7 +85,7 @@ Pattern equivalent autres vendors ·
 
 - `docs/system/skill-authoring-discipline.md` (frontmatter permissions canon)
 - `docs/system/compositional-cartography.md` (production loop canon)
-- `docs/system/visual-identity-discipline.md` v2.43 (chantier 1 fidélité)
+- `docs/system/visual-identity-doctrine.md` v2.43 (chantier 1 fidélité)
 - Memory user `feedback_model_versioning_check.md` (apprentissage S55 cycle USAGE)
 
 ## Rationale pragma (NEW v2.46)

@@ -1,0 +1,66 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.85.0",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.85.0 LITE · rename structurel 6/21 fichiers `*-discipline.md` → `*-doctrine.md` (lot 1/4) · alignment naming convention voice-doctrine v2.84.1 politique linguistique FR/EN canon · stratégie LITE post-escalade garde-fous pré-flight · 107 cross-refs patches batch · tests non-régression PASSÉS · 15 doctrines restantes backlog v2.85.0.x.",
+  "context_amont": {
+    "trigger": "Voice-doctrine v2.84.1 a posé décision canon · 'doctrine' terme canonique · 'discipline' déprécié et réservé aux fichiers historiques en attente de rename. Backlog v2.85.0 listait sprint dédié rename 21 fichiers `*-discipline.md` → `*-doctrine.md` (cross-refs sibling + CLAUDE.md root + manifest skills · 2-3h estimé multi-agents parallèle scope disjoint).",
+    "pre_flight_phase_1A": "3 sub-agents Haiku parallèle scope disjoint (wall-time ~3 min) · Agent A cross-refs entrantes markdown 1066 cumulatif · Agent B 37 false positives 'discipline' prose préservés · Agent C 170 refs artefacts non-markdown (117 manifests + 28 slash commands + 18 memory canons + 3 schemas + 4 python).",
+    "garde_fous_declenches": [
+      "Cross-refs markdown 1066 > 300 seuil · DÉPASSÉ",
+      "Refs non-markdown 170 > 50 seuil Agent C · DÉPASSÉ",
+      "Total cumulé ~1236 refs · 6x estimation haute briefing (60-200 attendu)"
+    ],
+    "decision_largo": "STRATÉGIE LITE confirmée · scope réduit à 6 doctrines low-stakes (~88 refs cumulées · 16/21 risque faible runtime sensible) pour valider pattern · 15 doctrines restantes en lots dédiés v2.85.0.x sur sessions ultérieures · cohérent memory canon iterative_validation · doctrine_ripening_period en pratique"
+  },
+  "6_doctrines_renommees": [
+    {"old": "attribution-multitouch-discipline.md", "new": "attribution-multitouch-doctrine.md", "refs": 25, "sensibilite": "docs only"},
+    {"old": "brand-isolation-discipline.md", "new": "brand-isolation-doctrine.md", "refs": 47, "sensibilite": "runtime sensible (skills + manifests)"},
+    {"old": "changelog-discipline.md", "new": "changelog-doctrine.md", "refs": 54, "sensibilite": "runtime sensible (manifests + slash commands)"},
+    {"old": "creative-testing-discipline.md", "new": "creative-testing-doctrine.md", "refs": 33, "sensibilite": "docs only"},
+    {"old": "pacing-discipline.md", "new": "pacing-doctrine.md", "refs": 71, "sensibilite": "runtime sensible (skills + manifests)"},
+    {"old": "visual-identity-discipline.md", "new": "visual-identity-doctrine.md", "refs": 28, "sensibilite": "runtime sensible (3 skill refs + manifests)"}
+  ],
+  "refs_total_cumulees_lot_1": 258,
+  "patches_appliques": [
+    "Phase 1.A pré-flight obligatoire · 3 sub-agents Haiku parallèle scope disjoint · garde-fous globaux 1066 + 170 + 1236 documentés · décision LITE confirmée Largo",
+    "Phase 1.B stratégie lot · 1 seul lot 6 fichiers low-stakes (cap iterative_validation)",
+    "Phase 1.C exécution · git mv 6 fichiers · 107 cross-refs patches batch via script Python (37 fichiers + 4 skills résiduels = 41 fichiers consumers patched · 99 + 8 = 107 replacements total)",
+    "Phase 1.D tests non-régression · build-manifest.py 81 skills + 92 jargon entries ✓ · build-brand-snapshot.py _EXAMPLE 24 lines ✓ · grep résiduel anciens noms 0 occurrence ✓",
+    "Phase 1.E ship · _version bump 2.84.4 → 2.85.0 · NEW manifest 2.85.0 · CHANGELOG entry Lot 1/4 · project-journal narrative · D#455 + 2 NEW memory canons"
+  ],
+  "files_patched": [
+    {"file": "workspace-template/docs/system/*-discipline.md → *-doctrine.md", "scope": "6 git mv (attribution-multitouch · brand-isolation · changelog · creative-testing · pacing · visual-identity)"},
+    {"file": "41 fichiers consumers cross-refs", "scope": "107 patches batch script Python · docs/system + docs/internal + manifests + skills + slash commands + memory canons + R&D"},
+    {"file": "_version.json", "scope": "Bump 2.84.4 → 2.85.0 + summary"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.85.0 prepended · Lot 1/4 sur 21 doctrines"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.85.0 LITE · escalade garde-fou + décision B + observations"},
+    {"file": "docs/internal/refactor/v2.85.0-rename-log.md", "scope": "NEW · journal sprint détaillé"},
+    {"file": "docs/internal/releases/manifest/2.85.0-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["6 git mv lot 1/4", "107 cross-refs patches batch", "tests non-régression PASSÉS", "version + manifest + CHANGELOG + project-journal + D#455 + 2 memory canons", "rename-log journal", "ship via PR (pas push direct main · revue visuelle demain matin)"],
+    "out_of_scope_explicit": ["15 doctrines restantes (lots v2.85.0.x sessions ultérieures)", "v2.85.1 propagation contenu lot 1 (reportée demain frais)", "DÉSAMBIG-1.5 backlog post-distribution"]
+  },
+  "decisions_captured": ["D#455"],
+  "memory_canons_new": ["doctrine_naming_canon", "v85_0_lite_lessons"],
+  "backlog_v2_85_0_x": [
+    "v2.85.0.1 · lot 2/4 · 6 doctrines suivantes (claude-md · skill-authoring · output-clarity · scope-extension · territory · entry-arc · cible refs cumulées 200-250)",
+    "v2.85.0.2 · lot 3/4 · 6 doctrines suivantes",
+    "v2.85.0.3 · lot 4/4 · 3 doctrines restantes HIGH risk runtime (decomposition-visibility-discipline 176 refs · engagement-disclosure-discipline 101 refs · schema-encoding-discipline 66 refs · lot dédié validation runtime intensive)",
+    "v2.85.1 · propagation contenu voice-doctrine STRICT 5-6 doctrines lot 1 (post-rename complet)",
+    "v2.85.2+ · propagation contenu lots 2-4 (boucle 26 doctrines)",
+    "v2.86.0 · audit cross-files final + grep orphelins",
+    "DÉSAMBIG-1.5 (backlog post-distribution) · rename ciblé S4 dominant si polysémie insuffisante"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.85.0 = git revert HEAD strict · 6 git mv reversibles + 107 cross-refs patches reversibles · zéro impact runtime (tests Phase 1.D PASSÉS · _manifest.json + _jargon_bank.json regenerés cohérents)."
+}

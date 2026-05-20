@@ -258,7 +258,7 @@ Error codes :
 [SKILL-ISOLATION-GATE-MISSING] .skills/skills/{name}/SKILL.md → `isolation_scope: cross_brand_with_gate` sans AskUserQuestion gate explicit dans Step prose avant cross-brand read.
 ```
 
-**Rationale** : empêche cross-contamination silencieuse multi-brand (red team finding A7). Critique en context agency multi-clients · NDAs interdisent cross-pollination data. Default `brand_only` est le filet de sécurité par défaut. Full doctrine `docs/system/brand-isolation-discipline.md`.
+**Rationale** : empêche cross-contamination silencieuse multi-brand (red team finding A7). Critique en context agency multi-clients · NDAs interdisent cross-pollination data. Default `brand_only` est le filet de sécurité par défaut. Full doctrine `docs/system/brand-isolation-doctrine.md`.
 
 ---
 
