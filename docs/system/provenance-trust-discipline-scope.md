@@ -1,4 +1,4 @@
-# Provenance & Trust Discipline (PTD) · Scope Cadrage
+# Provenance & Trust Doctrine (PTD) · Scope Cadrage
 
 > Working scope draft, R&D zone, Build mode. **Scope-only document, NOT a full doctrine.** Full PTD is to be authored when trigger conditions hit (see §5). Today this file reserves the conceptual space and bounds the scope so future work is constrained.
 
@@ -132,4 +132,4 @@ Even before PTD ships full, three anti-patterns are flagged by the scope:
 
 ---
 
-*Scope cadrage S44 · 2026-04-26, reservation of the conceptual space for Provenance & Trust Discipline. Full doctrine deferred to trigger conditions (multi-operator / knowledge pack / third-party skill).*
+*Scope cadrage S44 · 2026-04-26, reservation of the conceptual space for Provenance & Trust Doctrine. Full doctrine deferred to trigger conditions (multi-operator / knowledge pack / third-party skill).*

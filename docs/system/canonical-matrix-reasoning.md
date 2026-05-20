@@ -78,13 +78,13 @@ Frame test : Extractibility (Extractibility test), transverse, not a doctrine bu
  │
 MASTER : Contextual Intelligence (CI), the agent reasons, never form-fills
  │
- ├─ SED (Schema Encoding Discipline), substrate ; without rigorous schema, a matrix has nothing to range over
+ ├─ SED (Schema Encoding Doctrine), substrate ; without rigorous schema, a matrix has nothing to range over
  │ └─ Required prerequisite of CMR
  │
  ├─ CMR (Canonical Matrix Reasoning), production mechanism atop SED
  │ ↑ depends ontologically on SED ; "schema alone fails, matrix alone fails, both succeed"
  │
- └─ SAD (Skill Authoring Discipline), meta-discipline that governs how skills consuming SED+CMR are built
+ └─ SAD (Skill Authoring Doctrine), meta-doctrine that governs how skills consuming SED+CMR are built
  ↑ operates above SED and CMR (skills consuming both are governed by SAD)
 ```
 
@@ -93,7 +93,7 @@ MASTER : Contextual Intelligence (CI), the agent reasons, never form-fills
 2. **CMR ⊂ CI (sub-pattern).** CI states the goal (intelligence over universe, not form-fill). CMR states the concrete mechanism by which a production skill achieves it on intersectional outputs. CMR doesn't replace CI, it operationalizes it for one class of tasks.
 3. **SAD > {SED, CMR} (meta).** SAD governs the *creation and evolution* of skills consuming SED and CMR. It includes the decision-aid (when to apply CMR, when not), composition contracts between skills, lifecycle (Build/Release, hooks, updates).
 
-**A fourth discipline · PTD (Provenance & Trust Discipline)**, is cross-cutting and partial-scope today (multi-operator authorship, canon-as-product, marketplace skills). It is drafted in `research/provenance-trust-discipline-scope-2026-04-26.md` (R&D zone) and will graduate to full doctrine in `docs/system/` when trigger conditions hit (2nd operator connected, 1st knowledge pack sold, 1st third-party skill).
+**A fourth doctrine · PTD (Provenance & Trust Doctrine)**, is cross-cutting and partial-scope today (multi-operator authorship, canon-as-product, marketplace skills). It is drafted in `provenance-trust-discipline-scope.md` (R&D zone) and will graduate to full doctrine in `docs/system/` when trigger conditions hit (2nd operator connected, 1st knowledge pack sold, 1st third-party skill).
 
 Doctrine governance (how to amend, retract, resolve conflicts among the disciplines) lives in `docs/system/doctrine-governance.md` as a meta-process, not a doctrine.
 

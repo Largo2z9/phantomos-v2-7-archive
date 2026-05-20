@@ -1,0 +1,97 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.86.0",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.86.0 · AUDIT CROSS-FILES FINAL · ~56 patches résiduels Discipline → Doctrine + 3 décisions tranchées (synthesis CONSERVÉ EN · Notion/Airtable CONSERVÉ · 26ème doctrine résolue) · 27/28 doctrines propagées cumul · 0 régression runtime.",
+  "context_amont": {
+    "trigger": "Sprint dernière passe post-clôture chantier propagation contenu v2.85.5. Audit transverse résiduel pre-distribution + sprints v2.86.1 (validation runtime gate) + v2.86.2 (test discovery externe).",
+    "audit_haiku_phase_1_synthesis": "70 occurrences synthesis cross 18 doctrines. Recommandation Option A · CONSERVÉ EN unified (architectural concept CMR/CI primitif · pas localisable · cohérent technical canon term). 0 patch.",
+    "audit_haiku_phase_2_grep": "Haiku faux positif initial 0 Discipline residual. Verification main thread Sonnet · 107 occurrences résiduelles identifiées · 56 patches appliqués + 2 préservés (voice-doctrine descriptifs convention historique)."
+  },
+  "decisions_tranchees_v2_86_0": [
+    {
+      "topic": "synthesis (48 occurrences cumul lots 1-4)",
+      "verdict": "Option A · CONSERVÉ EN unified",
+      "rationale": "synthesis = architectural concept CMR/CI primitif · pas localisable · cohérent technical canon term. Hybridation 'synthesis stratégique' = composition naturelle prose contextuelle bound, pas ambigu. API technical (notion-bridge pull/push) = canon preserved EN. 0 patch."
+    },
+    {
+      "topic": "Notion/Airtable mention operational-system §1",
+      "verdict": "CONSERVÉE",
+      "rationale": "Mention dans tableau Différenciation PhantomOS vs outils existants (couches multiplicatives) = STRUCTURELLE comparative table, pas takedown. Memory canon `premium_tone` autorise 'registre cible GitHub/Vercel'. Refactor structurel hors scope voice-doctrine v2.86.0. Backlog si nécessaire pre-distribution v2.86.x."
+    },
+    {
+      "topic": "26ème doctrine non-propagée identifiée",
+      "verdict": "3 doctrines en réalité non-propagées + 1 oubli lot 1 corrigés v2.86.0",
+      "rationale": "Audit grep révèle · (1) claude-md-doctrine.md non-propagée (7 patches titre + body + frontmatter) · (2) changelog-doctrine.md non-propagée (3 patches frontmatter + titre + body) · (3) notion-bridge-doctrine.md déjà conforme (0 patch · pas de 'Discipline' interne) · (4) compositional-cartography.md OUBLI titre + cross-refs lot 1 (3 patches). Memory canon erroné v2.85.5 (annonçait 25/26 mais réel = 22/28 sans v2.86.0 fix). État réel post-v2.86.0 = 27/28 doctrines cohérentes."
+    }
+  ],
+  "patches_appliques_audit_final": [
+    {"file": "docs/system/README.md", "patches": "~25 catalogue listings Discipline → Doctrine via replace_all (17 patterns uniques)"},
+    {"file": "docs/system/claude-md-doctrine.md", "patches": "9 (frontmatter name + Claude.md Discipline replace_all + Operational System Discipline cross-ref harmonisée)"},
+    {"file": "docs/system/changelog-doctrine.md", "patches": "3 (frontmatter name + Changelog Discipline replace_all)"},
+    {"file": "docs/system/compositional-cartography.md", "patches": "5 (titre Compositional Cartography Discipline replace_all + Schema Encoding Discipline + Skill Authoring Discipline + Provenance & Trust Discipline body refs · OUBLI lot 1 corrigé)"},
+    {"file": "docs/system/canonical-matrix-reasoning.md", "patches": "3 (Schema Encoding Discipline + Skill Authoring Discipline + Provenance & Trust Discipline cross-refs body)"},
+    {"file": "docs/system/contextual-intelligence.md", "patches": "4 (Schema Encoding Discipline + Skill Authoring Discipline + Provenance & Trust Discipline + table header Discipline → Doctrine)"},
+    {"file": "docs/system/operational-system-doctrine.md", "patches": "2 (Territory Discipline replace_all body refs §4+§11)"},
+    {"file": "docs/system/update-distribution-doctrine.md", "patches": "1 (Decomposition Visibility Discipline body narrative)"},
+    {"file": "docs/system/voice.md", "patches": "1 (catalogue acronymes ligne 104 · Schema Encoding/Skill Authoring/Provenance & Trust Discipline → Doctrine)"},
+    {"file": "docs/internal/canon.md", "patches": "3 (SED + SAD + PTD descriptors cross-refs)"},
+    {"file": "docs/system/provenance-trust-discipline-scope.md", "patches": "2 (titre + footer Discipline → Doctrine · filename preserved R&D scope exception)"},
+    {"file": "docs/system/doctrine-governance.md", "patches": "2 (table header Discipline → Doctrine + exemples futures doctrines Model-Adaptive/Provider-Agnostic Discipline → Doctrine)"}
+  ],
+  "preservation_legitimes": [
+    "voice-doctrine.md ligne 71 · table linguistique exemple 'Territory Discipline toléré en nom doctrine' (descriptive convention historique · documentaire)",
+    "voice-doctrine.md ligne 91 · table descriptive 'Contextual Intelligence, Schema Encoding Discipline' exemples convention titre (documentaire)",
+    "voice-doctrine.md ligne 103 · em-dash dans entry table 'em-dash interdit canon' (documentation règle interdiction · intentionnelle)"
+  ],
+  "tests_non_regression": {
+    "build_manifest": "PASS · 81 skills + 92 jargon entries",
+    "build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+    "discipline_residual_post_audit_final": "0 occurrence (sauf 2 voice-doctrine descriptifs + 1 em-dash documentation · tous légitimes)",
+    "synthesis_count_cumul_post_v2_86_0": "48 occurrences cross 10 doctrines · CONSERVÉ EN unified per décision Option A"
+  },
+  "etat_chantier_propagation_post_v2_86_0": {
+    "doctrines_propagated_cumul": "27/28 cohérentes",
+    "doctrines_avec_descriptifs_legitimes_preserves": "voice-doctrine.md (2 lignes table conventions historiques)",
+    "regressions_runtime_cumulees": "0 sur 18 sprints v2.84.0 → v2.86.0",
+    "patches_cumules_chantier_complete": "~203 cross 27 doctrines + canon.md interne + README.md + voice.md + doctrine-governance + provenance-trust-discipline-scope"
+  },
+  "files_patched": [
+    {"file": "docs/system/README.md", "scope": "Catalogue listings doctrines cohérence post-rename"},
+    {"file": "docs/system/claude-md-doctrine.md", "scope": "Doctrine propagation oubli (28ème doctrine)"},
+    {"file": "docs/system/changelog-doctrine.md", "scope": "Doctrine propagation oubli"},
+    {"file": "docs/system/compositional-cartography.md", "scope": "Oubli lot 1 corrigé (titre + body cross-refs)"},
+    {"file": "docs/system/canonical-matrix-reasoning.md", "scope": "Cross-refs descriptors"},
+    {"file": "docs/system/contextual-intelligence.md", "scope": "Cross-refs descriptors + table header"},
+    {"file": "docs/system/operational-system-doctrine.md", "scope": "Territory Discipline body refs"},
+    {"file": "docs/system/update-distribution-doctrine.md", "scope": "Decomposition Visibility body narrative"},
+    {"file": "docs/system/voice.md", "scope": "Catalogue acronymes ligne 104"},
+    {"file": "docs/internal/canon.md", "scope": "Descriptors cross-refs interne"},
+    {"file": "docs/system/provenance-trust-discipline-scope.md", "scope": "Titre + footer"},
+    {"file": "docs/system/doctrine-governance.md", "scope": "Table header + exemples futures doctrines"},
+    {"file": "_version.json", "scope": "Bump 2.85.5 → 2.86.0"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.86.0 audit cross-files final"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.86.0"},
+    {"file": "docs/internal/releases/manifest/2.86.0-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["Audit cross-files final post-clôture chantier", "Résolution synthesis décision (Option A CONSERVÉ EN)", "Résolution Notion/Airtable mention (CONSERVÉE)", "Résolution 26ème doctrine périphérique (3 doctrines + 1 oubli lot 1 traités)", "Tests non-régression standards"],
+    "out_of_scope_explicit": ["voice-doctrine.md lignes 71+91 (descriptifs convention historique legitime · backlog v2.86.x si refonte)", "Refactor structurel Notion/Airtable mention (refus voice-doctrine v2.86.0)", "v2.86.1 validation runtime 5 scénarios (sprint dédié post-pause cognitive)", "v2.86.2 test discovery externe"]
+  },
+  "decisions_captured": ["D#465"],
+  "memory_canons_updated": ["doctrine_propagation_complete (enrichi audit final v2.86.0 · 27/28 cohérent · 3 décisions tranchées)"],
+  "backlog_v2_86_1_plus": [
+    "v2.86.1 · validation runtime 5 scénarios (GATE distribution · dette depuis v2.82.0)",
+    "v2.86.2 · test discovery externe",
+    "v2.86.x · voice-doctrine.md lignes 71+91 refonte si nécessaire (descriptifs convention historique)",
+    "Distribution · GitHub Releases tags + liste opérateurs + message invitation + canal feedback"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.86.0 = git revert HEAD strict · ~56 patches additifs mineurs cohérence post-rename · zéro impact runtime."
+}

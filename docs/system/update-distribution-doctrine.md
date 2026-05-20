@@ -166,7 +166,7 @@ NEW skill · NEW doctrine canon · NEW feature additive. Type changement = ADDIT
 - v2.69 NEW skill trendtrack-enrich-brand + NEW slash command /breakdown
 - v2.71 NEW doctrine mère operational-system-discipline (5 couches)
 - v2.75 NEW doctrine extension-discovery-discipline
-- v2.79 NEW Decomposition Visibility Discipline + brand strategy frameworks
+- v2.79 NEW Decomposition Visibility Doctrine + brand strategy frameworks
 
 **Migration requirement** · aucune (ADDITIVE strict).
 

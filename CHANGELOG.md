@@ -7,6 +7,20 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.86.0] · 2026-05-20
+### Changed
+- **AUDIT CROSS-FILES FINAL** post-clôture chantier propagation contenu v2.85.5
+- **~56 patches résiduels Discipline → Doctrine cross-files** · `docs/system/README.md` catalogue listings (~25) + `claude-md-doctrine.md` propagation oubli (9) + `changelog-doctrine.md` propagation oubli (3) + `compositional-cartography.md` titre oubli lot 1 corrigé (5) + 6 doctrines body cross-refs descriptors + `voice.md` ligne 104 catalogue + `canon.md` interne descriptors + `provenance-trust-discipline-scope.md` titre + footer + `doctrine-governance.md` table header + exemples futures doctrines
+### Notes
+- **3 décisions tranchées v2.86.0** ·
+  1. **synthesis** · Option A · CONSERVÉ EN unified (48 occurrences architectural concept CMR/CI primitif · 0 patch)
+  2. **Notion/Airtable mention operational-system §1** · CONSERVÉE (tableau Différenciation structurelle comparative · registre GitHub/Vercel autorisé · refactor structurel hors scope)
+  3. **26ème doctrine périphérique** · 3 doctrines non-propagées réellement identifiées (claude-md + changelog · notion-bridge déjà conforme) + 1 oubli lot 1 (compositional-cartography titre) · TOUTES traitées v2.86.0
+- Tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep Discipline résiduel 0 (sauf 2 voice-doctrine descriptifs convention historique + 1 em-dash documentation interdiction · tous légitimes)
+- **État chantier propagation contenu post-v2.86.0** · 27/28 doctrines cohérentes · ~203 patches cumulés cross chantier complete · 18 sprints v2.84.0 → v2.86.0 · 0 régression runtime cumulée
+- D#465 captured · memory canon `doctrine_propagation_complete` enrichi audit final
+- Backlog · v2.86.1 validation runtime 5 scénarios (GATE distribution) · v2.86.2 test discovery externe · distribution préparation
+
 ## [2.85.5] · 2026-05-20
 ### Changed
 - **CLÔTURE chantier propagation contenu voice-doctrine v2.84.1** · `brand-isolation-doctrine.md` propagée (68L · 1 patch principal titre `Brand isolation discipline` → `Brand Isolation Doctrine` cohérence post-rename + capitalisation canon)

@@ -14,7 +14,7 @@ Contextual Intelligence est la doctrine racine. Toutes les autres doctrines la s
 
 ## Operational system
 
-- **Operational System Discipline** (v2.71) · `operational-system-doctrine.md` · doctrine mère 5 couches · ECR × Règles × Templates × Métriques × Rituels · pattern racine pour tout système opérationnel encodé PhantomOS
+- **Operational System Doctrine** (v2.71) · `operational-system-doctrine.md` · doctrine mère 5 couches · ECR × Règles × Templates × Métriques × Rituels · pattern racine pour tout système opérationnel encodé PhantomOS
 - **Connectivity Layering** · `connectivity-layering.md` · 3 layers (MCP Claude Code · APIs callables via skills · scripts shipped) · ne jamais confondre
 
 ## Cartographie & substrate
@@ -23,36 +23,36 @@ Contextual Intelligence est la doctrine racine. Toutes les autres doctrines la s
 - **Canonical Matrix Reasoning** · `canonical-matrix-reasoning.md` · schema + canon matrix = cohérence output 95% · cardinality cap · internal scoring · modulator/cell
 - **Audiences Cartography** (v2.64) · `audience-cartography.md` · parent/enfants sémantique pure · 4 mouvements + 3 axes · hand-off pédagogique vers mine-voc
 - **Pain Benefit Chain** (v2.79.4) · `pain-benefit-chain.md` · functional · identity · emotional · aspirational · chaînage canonique douleur/bénéfice pour audience et copy
-- **Progressive Cartography Discipline** (v2.68) · `progressive-cartography-doctrine.md` · hypothèse confidence 0.5 valide vers sourced · cartographier ≠ produire · seul producer paid requiert 5+ verbatims
-- **Territory Discipline** (v2.67) · `territory-doctrine.md` · substrate stable vs productions runtime · séparation fondations encodées et outputs générés
-- **Scope Extension Discipline** (v2.65) · `scope-extension-doctrine.md` · élasticité scope opérateur-driven · PhantomOS accueille n'importe quel domaine encodé
-- **Extension Discovery Discipline** (v2.75) · `extension-discovery-doctrine.md` · scaffold × register × discovery × consume · pipeline NEW entities auto-consommées par skills downstream
+- **Progressive Cartography Doctrine** (v2.68) · `progressive-cartography-doctrine.md` · hypothèse confidence 0.5 valide vers sourced · cartographier ≠ produire · seul producer paid requiert 5+ verbatims
+- **Territory Doctrine** (v2.67) · `territory-doctrine.md` · substrate stable vs productions runtime · séparation fondations encodées et outputs générés
+- **Scope Extension Doctrine** (v2.65) · `scope-extension-doctrine.md` · élasticité scope opérateur-driven · PhantomOS accueille n'importe quel domaine encodé
+- **Extension Discovery Doctrine** (v2.75) · `extension-discovery-doctrine.md` · scaffold × register × discovery × consume · pipeline NEW entities auto-consommées par skills downstream
 
 ## Output & operator-facing
 
 - **Investigation Posture** · `investigation-posture.md` · 5 sections obligatoires (observé · déduit · inconnu · leviers · close ouvert) · confidence chain explicit · drill-down macro opérateur
-- **Decomposition Visibility Discipline** (v2.81.1+) · `decomposition-visibility-doctrine.md` · l'agent prouve qu'il a compris en montrant sa réflexion · 3 phases temporelles canon (NIVEAU 0 paramètres pré-exec · NIVEAU LIVE thinking aloud pendant · NIVEAUX 1-4 matrices post-exec)
-- **Output Clarity Discipline** (v2.79.2) · `output-clarity-doctrine.md` · standards Vercel/GitHub-grade · iconographie unique · dejargonisation · headers FR sobres · one thing per line · density modérée · 8 Hard Rules enforcement runtime
-- **Onboarding Holistic Discipline** (v2.80.3) · `onboarding-holistic-doctrine.md` · agnostique + holistique + prose conversationnelle native · panorama 360° 7 territoires DTC pied d'égalité · zéro typage opérateur entrée
-- **Engagement Disclosure Discipline** (v2.79.5) · `engagement-disclosure-doctrine.md` · disclosure pré-engagement obligatoire skills orchestrateurs/producer heavy · plan + ETA + démarche + paramètres décomposés + confirmation
-- **Entry Arc Discipline** (v2.81.0) · `entry-arc-doctrine.md` · post-tour multi-entry 4 portes MECE · A conversationnel · B brand-first · C import existant · D progressif libre · first 30 minutes canon
+- **Decomposition Visibility Doctrine** (v2.81.1+) · `decomposition-visibility-doctrine.md` · l'agent prouve qu'il a compris en montrant sa réflexion · 3 phases temporelles canon (NIVEAU 0 paramètres pré-exec · NIVEAU LIVE thinking aloud pendant · NIVEAUX 1-4 matrices post-exec)
+- **Output Clarity Doctrine** (v2.79.2) · `output-clarity-doctrine.md` · standards Vercel/GitHub-grade · iconographie unique · dejargonisation · headers FR sobres · one thing per line · density modérée · 8 Hard Rules enforcement runtime
+- **Onboarding Holistic Doctrine** (v2.80.3) · `onboarding-holistic-doctrine.md` · agnostique + holistique + prose conversationnelle native · panorama 360° 7 territoires DTC pied d'égalité · zéro typage opérateur entrée
+- **Engagement Disclosure Doctrine** (v2.79.5) · `engagement-disclosure-doctrine.md` · disclosure pré-engagement obligatoire skills orchestrateurs/producer heavy · plan + ETA + démarche + paramètres décomposés + confirmation
+- **Entry Arc Doctrine** (v2.81.0) · `entry-arc-doctrine.md` · post-tour multi-entry 4 portes MECE · A conversationnel · B brand-first · C import existant · D progressif libre · first 30 minutes canon
 
 ## Distribution & update
 
-- **Update Distribution Discipline** (v2.80.0) · `update-distribution-doctrine.md` · pattern mise à jour opérateur-facing · preserve operator state · migrations versionnées · backup + rollback canon
+- **Update Distribution Doctrine** (v2.80.0) · `update-distribution-doctrine.md` · pattern mise à jour opérateur-facing · preserve operator state · migrations versionnées · backup + rollback canon
 - **Notion Bridge Doctrine** (v2.57+) · `notion-bridge-doctrine.md` · bidirectionnel pull/push · PhantomOS source de vérité · Notion miroir consultable opérateur
 
 ## Routing & skill invocation
 
-- **Skill Routing Discipline** · `skill-routing-doctrine.md` · canon skill invocation cross-sessions · mapping output → skill · fallback manifest scan · cross-ref Investigation Posture + CMR + /scope
+- **Skill Routing Doctrine** · `skill-routing-doctrine.md` · canon skill invocation cross-sessions · mapping output → skill · fallback manifest scan · cross-ref Investigation Posture + CMR + /scope
 
 ## Authoring infrastructure (skill builders · pas canon opéré runtime)
 
-- **Schema Encoding Discipline** · `schema-encoding-doctrine.md` · substrate · mutation rule · `_field_types` · sourcing tags · triangulation · append-only · memory layers
-- **Skill Authoring Discipline** · `skill-authoring-doctrine.md` · type taxonomy · frontmatter triad · composition contracts · lifecycle · failure doctrine
-- **Provenance Trust Discipline** · `provenance-trust-discipline-scope.md` · scope · multi-operator · canon-as-product · marketplace skills
-- **Claude-MD Discipline** (v2.82.0) · `claude-md-doctrine.md` · cap fichiers · marqueurs priorité 3 max · test de suppression · refactor atomique
-- **Changelog Discipline** (v2.83.0) · `changelog-doctrine.md` · Keep-a-Changelog strict · cap 80L par release · sections atomiques · split narrative archive
+- **Schema Encoding Doctrine** · `schema-encoding-doctrine.md` · substrate · mutation rule · `_field_types` · sourcing tags · triangulation · append-only · memory layers
+- **Skill Authoring Doctrine** · `skill-authoring-doctrine.md` · type taxonomy · frontmatter triad · composition contracts · lifecycle · failure doctrine
+- **Provenance Trust Doctrine** · `provenance-trust-discipline-scope.md` · scope · multi-operator · canon-as-product · marketplace skills
+- **Claude-MD Doctrine** (v2.82.0) · `claude-md-doctrine.md` · cap fichiers · marqueurs priorité 3 max · test de suppression · refactor atomique
+- **Changelog Doctrine** (v2.83.0) · `changelog-doctrine.md` · Keep-a-Changelog strict · cap 80L par release · sections atomiques · split narrative archive
 - **Voice Doctrine** (v2.84.0) · `voice-doctrine.md` · ton reference-grade artefacts internes · 5 principes wording · politique FR/EN canon · conventions casse · famille paramétrage NEW · 8 anti-patterns
 
 ## Governance
@@ -73,14 +73,14 @@ Cf `decomposition-visibility-doctrine.md` v2.81.1+.
 
 ### Doctrines sœurs onboarding
 
-- Onboarding Holistic Discipline (panorama agnostique prose native)
-- Entry Arc Discipline (4 portes MECE post-tour first 30 minutes)
-- Engagement Disclosure Discipline (gate pré-engagement orchestrateurs)
+- Onboarding Holistic Doctrine (panorama agnostique prose native)
+- Entry Arc Doctrine (4 portes MECE post-tour first 30 minutes)
+- Engagement Disclosure Doctrine (gate pré-engagement orchestrateurs)
 
 ### Doctrines sœurs canon shipped product
 
-- Output Clarity Discipline (standards Vercel/GitHub-grade)
-- Decomposition Visibility Discipline (3 phases temporelles canon)
+- Output Clarity Doctrine (standards Vercel/GitHub-grade)
+- Decomposition Visibility Doctrine (3 phases temporelles canon)
 - Voice canon · `voice.md`
 - Operator vocabulary translation · `operator-vocabulary-translation.md`
 
@@ -89,14 +89,14 @@ Cf `decomposition-visibility-doctrine.md` v2.81.1+.
 - Compositional Cartography (équation créative · implémentation CMR domaine-spécifique)
 - Canonical Matrix Reasoning (schema + matrix canon · racine intersectionnelle)
 - Audiences Cartography (parent/enfants · 4 mouvements)
-- Progressive Cartography Discipline (hypothèse → sourced)
-- Territory Discipline (substrate vs runtime)
+- Progressive Cartography Doctrine (hypothèse → sourced)
+- Territory Doctrine (substrate vs runtime)
 
 ### Doctrines sœurs substrate
 
-- Schema Encoding Discipline (mutation rule · field_types · sourcing)
-- Territory Discipline (séparation fondations/productions)
-- Extension Discovery Discipline (scaffold × register × discovery × consume)
+- Schema Encoding Doctrine (mutation rule · field_types · sourcing)
+- Territory Doctrine (séparation fondations/productions)
+- Extension Discovery Doctrine (scaffold × register × discovery × consume)
 
 ---
 

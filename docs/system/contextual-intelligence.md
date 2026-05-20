@@ -172,12 +172,12 @@ CI is the master doctrine. Three sub-corpus extend it without becoming peer doct
 
 CI states *what* the agent reasons over (the business universe). Four sub-doctrines operationalize CI on different axes:
 
-| Discipline | Territory | File |
+| Doctrine | Territory | File |
 |---|---|---|
-| **Schema Encoding Discipline (SED)** | Substrate, how to encode rigorously (mutation rule, `_field_types`, sourcing tags, triangulation, append-only, memory layers). Prerequisite of CMR. | `docs/system/schema-encoding-doctrine.md` |
+| **Schema Encoding Doctrine (SED)** | Substrate, how to encode rigorously (mutation rule, `_field_types`, sourcing tags, triangulation, append-only, memory layers). Prerequisite of CMR. | `docs/system/schema-encoding-doctrine.md` |
 | **Canonical Matrix Reasoning (CMR)** | Production mechanism, how to produce 95% quality on intersectional outputs (schema + canon matrix, modulator/cell, cardinality cap, internal scoring). Sub-pattern of CI on intersectional production. | `docs/system/canonical-matrix-reasoning.md` |
-| **Skill Authoring Discipline (SAD)** | Authoring meta, how skills consuming SED+CMR are created, evolve, compose, fail safely. Includes type taxonomy, frontmatter triad, composition contracts, lifecycle (hooks, Build/Release, updates, provider-agnostic). | `docs/system/skill-authoring-doctrine.md` |
-| **Provenance & Trust Discipline (PTD)** | Trust, multi-operator authorship, canon-as-product, marketplace skills. Scope-only today, full doctrine deferred to trigger conditions. | `docs/system/provenance-trust-discipline-scope.md` (promoted from R&D zone v2.42, scope-only, graduates to full doctrine on triggers) |
+| **Skill Authoring Doctrine (SAD)** | Authoring meta, how skills consuming SED+CMR are created, evolve, compose, fail safely. Includes type taxonomy, frontmatter triad, composition contracts, lifecycle (hooks, Build/Release, updates, provider-agnostic). | `docs/system/skill-authoring-doctrine.md` |
+| **Provenance & Trust Doctrine (PTD)** | Trust, multi-operator authorship, canon-as-product, marketplace skills. Scope-only today, full doctrine deferred to trigger conditions. | `docs/system/provenance-trust-discipline-scope.md` (promoted from R&D zone v2.42, scope-only, graduates to full doctrine on triggers) |
 
 Doctrine Governance (promotion / amendment / retraction / conflict resolution among the disciplines), meta-process : `docs/system/doctrine-governance.md`.
 

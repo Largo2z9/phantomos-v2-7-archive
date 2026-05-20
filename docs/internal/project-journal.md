@@ -12,6 +12,75 @@
 
 ---
 
+## v2.86.0 · 2026-05-20 · AUDIT CROSS-FILES FINAL · 56 patches résiduels + 3 décisions tranchées · D#465 captured
+
+Sprint dernière passe post-clôture chantier propagation contenu v2.85.5. Audit transverse résiduel pre-distribution + sprints v2.86.1 (validation runtime gate) + v2.86.2 (test discovery externe).
+
+**Phase 1 inventaire synthesis** · délégation Haiku · 70 occurrences cross 18 doctrines. Recommandation Option A CONSERVÉ EN unified · architectural concept CMR/CI primitif · pas localisable · cohérent technical canon term. **Décision Largo tranchée · CONSERVÉ EN · 0 patch.**
+
+**Phase 2 audit grep transverse** · délégation Haiku initial faux positif "0 Discipline residual" · verification main thread Sonnet révèle 107 occurrences résiduelles cross docs/. Sources identifiées ·
+
+| Source | Patches | Type |
+|--------|---------|------|
+| docs/system/README.md | ~25 | Catalogue listings doctrines (17 patterns replace_all) |
+| claude-md-doctrine.md | 9 | Doctrine NON-propagée (frontmatter + titre + body + cross-ref) |
+| changelog-doctrine.md | 3 | Doctrine NON-propagée (frontmatter + titre + body) |
+| compositional-cartography.md | 5 | OUBLI lot 1 (titre + body cross-refs) |
+| canonical-matrix-reasoning.md | 3 | Cross-refs descriptors SED/SAD/PTD |
+| contextual-intelligence.md | 4 | Cross-refs descriptors + table header |
+| operational-system-doctrine.md | 2 | Territory Discipline body refs |
+| update-distribution-doctrine.md | 1 | Decomposition Visibility body narrative |
+| voice.md | 1 | Catalogue acronymes ligne 104 |
+| canon.md interne | 3 | Descriptors cross-refs |
+| provenance-trust-discipline-scope.md | 2 | Titre + footer (filename preserved R&D scope exception) |
+| doctrine-governance.md | 2 | Table header + exemples futures doctrines |
+| **TOTAL** | **~56** | **Discipline → Doctrine cross-files** |
+
+**Phase 3 application fix** · 56 patches appliqués via replace_all + targeted Edit · 0% compression structurelle · scope strict voice-doctrine respecté.
+
+**3 décisions tranchées v2.86.0** ·
+
+1. **synthesis** (48 occurrences cumul lots 1-4) · **Option A CONSERVÉ EN unified** · rationale · synthesis = architectural concept CMR/CI primitif · pas localisable · cohérent technical canon term. Hybridation "synthesis stratégique" = composition naturelle prose contextuelle bound, pas ambigu. 0 patch.
+
+2. **Notion/Airtable mention operational-system §1** · **CONSERVÉE** · rationale · mention dans tableau Différenciation PhantomOS vs outils existants (couches multiplicatives) = STRUCTURELLE comparative table, pas takedown. Memory canon `premium_tone` autorise registre GitHub/Vercel reference. Refactor structurel hors scope voice-doctrine v2.86.0.
+
+3. **26ème doctrine non-propagée identifiée** · **3 doctrines réellement non-propagées + 1 oubli lot 1 corrigés** · audit grep révèle ·
+   - claude-md-doctrine.md NON-propagée (oversight memory canon antérieur) · 9 patches v2.86.0
+   - changelog-doctrine.md NON-propagée · 3 patches v2.86.0
+   - notion-bridge-doctrine.md déjà conforme (0 patch)
+   - compositional-cartography.md OUBLI lot 1 titre + cross-refs (3 patches v2.86.0)
+
+Memory canon v2.85.5 erroné (annonçait 25/26 propagated mais réel = ~22/28 cohérentes). État réel post-v2.86.0 = **27/28 doctrines cohérentes**.
+
+**Phase 4 tests non-régression PASSÉS** · `python3 .skills/build-manifest.py` · 81 skills + 92 jargon ✓ · `python3 .skills/build-brand-snapshot.py _EXAMPLE` · 24 lines ✓ · grep `Discipline\b` cross docs/system/ · 0 occurrence (sauf 2 voice-doctrine descriptifs + 1 em-dash documentation · tous légitimes).
+
+**Préservations legitimes documentées** ·
+- voice-doctrine.md ligne 71 · table linguistique "Territory Discipline toléré en nom doctrine" (convention historique documentaire)
+- voice-doctrine.md ligne 91 · table descriptive "Contextual Intelligence, Schema Encoding Discipline" exemples convention titre (documentaire)
+- voice-doctrine.md ligne 103 · em-dash dans entry "em-dash interdit canon" (documentation règle interdiction · intentionnelle)
+
+**État chantier propagation contenu post-v2.86.0** ·
+
+- **27/28 doctrines cohérentes**
+- **~203 patches cumulés** cross chantier complete (147 lots 1-5 + 56 audit final v2.86.0)
+- **18 sprints v2.84.0 → v2.86.0** · 0 régression runtime cumulée
+- 6 garde-fous canons codifiés en memory canons
+- Politique FR/EN consolidée canon validée 6 sprints
+
+**Wall-time consommée v2.86.0** · ~50 min (cap 1.5h respecté · marge 40 min).
+
+**Apprentissage canon v2.86.0** · audit Haiku initial faux positif sur grep Discipline · main thread Sonnet vérification systématique obligatoire pour audits transverses. Pattern reproductible pour audits cross-files futurs · NE PAS faire confiance aux verdicts Haiku audit grep sans vérification spot-check Sonnet (Haiku semble trop conservateur dans count detection).
+
+**Backlog v2.86.1 → distribution** ·
+- v2.86.1 · validation runtime 5 scénarios (GATE distribution · dette depuis v2.82.0)
+- v2.86.2 · test discovery externe
+- v2.86.x · voice-doctrine.md lignes 71+91 refonte si nécessaire (descriptifs convention historique)
+- Distribution · GitHub Releases tags + liste opérateurs + message invitation + canal feedback
+
+D#465 captured · memory canon `doctrine_propagation_complete` enrichi audit final (3 décisions tranchées + état réel 27/28 + faux positif Haiku audit pattern documenté).
+
+---
+
 ## v2.85.5 · 2026-05-20 · **CLÔTURE chantier propagation contenu voice-doctrine** · brand-isolation-doctrine · 25/26 · D#464 captured
 
 Sprint court dédié pour clôturer chantier propagation contenu post-v2.85.4 lot 4. 7e candidate v2.85.4 reportée traitée ici.
