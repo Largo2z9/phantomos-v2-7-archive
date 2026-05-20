@@ -1,6 +1,6 @@
-# Operational System Discipline · Operating Doctrine
+# Operational System Doctrine · Operating Doctrine
 
-> Canonique v2.71+. Doctrine mère qui canonise les 5 couches d'un système opérationnel complet. Doctrine sœur de CI (Contextual Intelligence · master), CMR (Canonical Matrix Reasoning), SED (Schema Encoding), CC (Compositional Cartography), Territory Discipline, SED-X (Scope Extension). Codifie la grammaire commune que PhantomOS impose à tout système métier reproductible · pourquoi PhantomOS bâtit des systèmes opérationnels complets, vs Notion qui stocke du texte ou Airtable qui structure des données.
+> Canonique v2.71+. Doctrine mère qui canonise les 5 couches d'un système opérationnel complet. Doctrine sœur de CI (Contextual Intelligence · master), CMR (Canonical Matrix Reasoning), SED (Schema Encoding), CC (Compositional Cartography), Territory Doctrine, SED-X (Scope Extension). Codifie la grammaire commune que PhantomOS impose à tout système métier reproductible · pourquoi PhantomOS bâtit des systèmes opérationnels complets, vs Notion qui stocke du texte ou Airtable qui structure des données.
 
 ---
 
@@ -32,7 +32,7 @@ Cette doctrine codifie la grammaire commune. Toute doctrine canon existante (CI 
 
 ---
 
-## 2. Le problème Operational System Discipline résout
+## 2. Le problème Operational System Doctrine résout
 
 Avant doctrine ·
 
@@ -46,7 +46,7 @@ Avant doctrine ·
 
 5. **Couche manquante = système qui s'effondre, sans diagnostic clair.** Un workspace freelance sans rituels ne tient pas la durée. Un workspace sans métriques ne s'auto-corrige pas. Un workspace sans templates duplique l'effort. Sans grammaire 5 couches, le diagnostic *"qu'est-ce qui manque ?"* reste opaque.
 
-Operational System Discipline = doctrine canon qui ferme ces gaps.
+Operational System Doctrine = doctrine canon qui ferme ces gaps.
 
 ---
 
@@ -84,7 +84,7 @@ Operational System Discipline = doctrine canon qui ferme ces gaps.
 | *"Comment architecte-t-on ce système ?"* | Système |
 | *"Comment mesure-t-on cette performance ?"* | Performance |
 
-Instances canon · `compositional-cartography.md` (Strat × Compo × Exé · creative · v3.1), `canonical-matrix-reasoning.md` (modèle schema+matrice production), `audiences-cartography-doctrine.md` (fractal parent/enfants), `pain-benefit-chain-doctrine.md` (surface → consequence → deep).
+Instances canon · `compositional-cartography.md` (Strat × Compo × Exé · creative · v3.1), `canonical-matrix-reasoning.md` (modèle schema+matrice production), `audience-cartography-doctrine.md` (fractal parent/enfants), `pain-benefit-chain.md` (surface → consequence → deep).
 
 ---
 
@@ -289,11 +289,11 @@ Q4 · Le skill capture-t-il une mesure ou alimente-t-il un signal feedback ?
 - **`canonical-matrix-reasoning.md` (CMR)** · instance couche 1 (modèle schema+matrice) + couche 4 (métriques score-matrix scoring interne)
 - **`schema-encoding-doctrine.md` (SED)** · instance couche 4 (traçabilité _field_types · provenance par champ) + couche 1 (atomicité décomposition)
 - **`scope-extension-doctrine.md` (SED-X)** · méthodologie ECR appliquée à la validation de scope extension nouveau domaine
-- **`audiences-cartography-doctrine.md`** · instance couche 1 fractal pattern parent/enfants + couche 2 règles (cartographie ≠ targeting)
+- **`audience-cartography-doctrine.md`** · instance couche 1 fractal pattern parent/enfants + couche 2 règles (cartographie ≠ targeting)
 - **`territory-doctrine.md`** · territoire = substrat couche 1 (substrat brand canonisé) · production = livrable issu de couches 2+3 · meta = couches 4+5 transverses
 - **`progressive-cartography-doctrine.md`** · rituel couche 5 cadence inter-palier + couche 2 gates light règles
 - **`investigation-posture.md`** · règle couche 2 (5 sections IP = heuristique décision méta enforcement skills production)
-- **`pain-benefit-chain-doctrine.md`** · instance couche 1 fractal pattern surface → consequence → deep
+- **`pain-benefit-chain.md`** · instance couche 1 fractal pattern surface → consequence → deep
 - **`skill-authoring-doctrine.md` (SAD)** · méthodologie design skill via décomposition couches · type taxonomy correspond à couche dominante (cf §12 table)
 - **`doctrine-governance.md`** · amendment process append-only D# verrouillé · cross-refs traçables pour évolution doctrine
 - **`dependency-resolution-protocol.md` (DRGFP)** · règle canon couche 2 · L1+L2+L3 gap-filling heuristique décision

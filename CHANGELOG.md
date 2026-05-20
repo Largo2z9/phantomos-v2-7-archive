@@ -7,6 +7,23 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.85.4] · 2026-05-20
+### Changed
+- **PROPAGATION VOICE-DOCTRINE LOT 4/4** · 6 doctrines opérationnelles éditées critique main thread Sonnet · `operational-system-doctrine` · `attribution-multitouch-doctrine` · `skill-routing-doctrine` · `engagement-disclosure-doctrine` · `onboarding-holistic-doctrine` · `update-distribution-doctrine`
+- 2346L → 2346L (0% compression structurelle · scope strict voice-doctrine respecté · 4 lots consécutifs validés)
+- 40 patches cumulés · 5 titres Discipline → Doctrine + body occurrences (Skill Routing · Engagement Disclosure · Onboarding Holistic · Update Distribution · Attribution Multitouch + 1 dans operational-system pour Operational System Discipline auto-référence) + 5 cross-refs `Operational System Discipline v2.71` → `système opérationnel (operational-system-doctrine.md)` harmonisées systémique + 1 frontmatter `update-distribution-discipline` → `-doctrine` + 4 cross-refs cassées corrigées dans operational-system (`audiences-cartography-doctrine.md` plural typo → `audience-cartography-doctrine.md` singular + `pain-benefit-chain-doctrine.md` inexistant → `pain-benefit-chain.md`)
+### Notes
+- Pré-flight Phase 1 · 1 sub-agent Haiku · 7 candidates inventoriées · filter main thread Sonnet · 0 doctrine effort 3 réel · cap 500L respecté (max 473L update-distribution · marge 27L)
+- **Décision pré-flight** · brand-isolation-doctrine REPORTÉE v2.85.5 sprint court (68L · 1 patch principal · ~20-30 min) · cap strict 6 doctrines maintenu lot 4
+- **Hypothèse VALIDÉE 4 lots consécutifs** · doctrines opérationnelles aussi conformes que doctrines racines (lot 1) + audience/creative (lot 2) + structurantes (lot 3). Pattern voice-doctrine propagation par ricochet confirmé sur cycle complet
+- **Pattern systémique NEW lot 4** · `Operational System Discipline v2.71` → `système opérationnel (operational-system-doctrine.md)` harmonisé cross 5 doctrines référencantes (skill-routing · engagement-disclosure · onboarding-holistic + déjà patché lots 1+2 sur OCD + pacing)
+- **Pattern cross-ref cassées corrigées** · operational-system-doctrine référençait 2 fichiers inexistants/typos (`audiences-cartography-doctrine.md` plural + `pain-benefit-chain-doctrine.md` non-existing) · corrigés cohérence cross-rename systémique
+- Tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep em-dash 0 cross 6 doctrines · grep Discipline résiduel 0
+- **Spot-check operational-system cross-refs entrantes** · TOUS valides post-édition (CI ligne 146 · pacing 191/268/281/288 · OCD 375 → `operational-system-doctrine.md`) · cohérence cascade canonical préservée · scope strict respect règles canon 5 couches confirmé
+- Monitor `synthesis` lot 4 · 2 occurrences (engagement-disclosure 2) · cumul lots 1+2+3+4 = 48 occurrences pour v2.86.0 audit cross-files résolution unifiée
+- D#463 captured · memory canon `doctrine_propagation_progress` mis à jour (compteur 4/4 lots traités · 24/26 doctrines propagated · brand-isolation PENDING v2.85.5)
+- Backlog · v2.85.5 sprint court brand-isolation (CLÔTURE 25/26 atteint) · v2.86.0 audit cross-files final + synthesis résolution + Notion/Airtable mention operational-system
+
 ## [2.85.3] · 2026-05-20
 ### Changed
 - **PROPAGATION VOICE-DOCTRINE LOT 3/4** · 6 doctrines authoring + schema éditées critique main thread Sonnet · `skill-authoring-doctrine` · `schema-encoding-doctrine` · `extension-discovery-doctrine` · `scope-extension-doctrine` · `territory-doctrine` · `entry-arc-doctrine`

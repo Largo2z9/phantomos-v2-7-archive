@@ -1,12 +1,12 @@
 ---
-name: update-distribution-discipline
+name: update-distribution-doctrine
 description: Doctrine canon racine · pattern de mise à jour PhantomOS opérateur-facing. Preserve operator state · migrations versionnées · semver strict · backup + rollback canon.
 type: doctrine
 version: v2.80.0
 status: shipped
 ---
 
-# Update Distribution Discipline · Operating Doctrine
+# Update Distribution Doctrine · Operating Doctrine
 
 > Canonique v2.80.0. Doctrine canon racine qui codifie le pattern de distribution et mise à jour PhantomOS opérateur-facing. L'opérateur reçoit les updates sans friction · preserve son contexte (brands · learnings · operator state · todos · credentials · session-state) · les migrations canon adaptent ses données aux nouvelles structures (BREAKING) sans intervention manuelle. Doctrine sœur de `engagement-disclosure-doctrine.md` v2.79.5 (disclosure pré-update cohérent), `decomposition-visibility-doctrine.md` v2.79.5+ (NIVEAU 0 paramètres update décomposés), `output-clarity-doctrine.md` v2.79.2 (iconographie + headers FR sobres dans rendu update), `territory-doctrine.md` v2.67 (substrate stable vs production runtime · l'update touche le substrate canon, jamais la production opérateur). Ferme le gap *"distribution updates PhantomOS manuelle (clone Largo2z9/phantomos + git pull) sans preserve operator state · sans check version · sans disclosure pré-update · sans migrations canon BREAKING · sans backup automatique · sans rollback path · risque opérateur perd brands à un update manuel · friction adoption forte"* flag systémique Sprint v2.80 post-audit Largo distribution pipeline canon (état actuel manuel · cible scalable jusqu'à 20-50 opérateurs sans friction · niveau pro shipped product).
 
@@ -45,7 +45,7 @@ Cette doctrine canonise le pattern systémique cross-versions de PhantomOS · sc
 
 ## 2. Le problème résolu
 
-Sans Update Distribution Discipline canon ·
+Sans Update Distribution Doctrine canon ·
 
 1. **Operator state écrasé silent.** Update manuelle (clone Largo2z9/phantomos + `git pull`) ne distingue pas fichiers canon (workspace-template structure) et fichiers opérateur (brands encodés · operator profile · credentials · session-state). Rsync naïf écrase brands. Opérateur perd 20-50h encoding workspace à un update mal exécuté. Risque irreversible.
 
@@ -61,7 +61,7 @@ Sans Update Distribution Discipline canon ·
 
 7. **Friction adoption forte · pas scalable.** État actuel pipeline manuel scale mal. 1-2 opérateurs supportés en mode artisanal · 20-50 opérateurs cible impossible sans pipeline canon shipped product. Distribution = goulot d'étranglement croissance.
 
-Update Distribution Discipline = doctrine canon qui ferme ces 7 gaps via 3 types changements canon + pipeline migrations idempotentes + semver strict + preserve operator state + backup + rollback + disclosure pré-update + GitHub Releases tags + changelog publique.
+Update Distribution Doctrine = doctrine canon qui ferme ces 7 gaps via 3 types changements canon + pipeline migrations idempotentes + semver strict + preserve operator state + backup + rollback + disclosure pré-update + GitHub Releases tags + changelog publique.
 
 ---
 
@@ -150,7 +150,7 @@ TRANSFORM significatif OR NEW slash command racine OR NEW concept canon racine. 
 **Exemples canon historiques** ·
 
 - v2.0 (premier release canon)
-- v2.80 (NEW doctrine racine update-distribution-discipline + NEW slash commands /update + /version)
+- v2.80 (NEW doctrine racine update-distribution-doctrine + NEW slash commands /update + /version)
 
 **Migration requirement** · obligatoire (TRANSFORM) OR shipped scaffold (ADDITIVE structurel).
 
@@ -448,7 +448,7 @@ Voir §10 ci-dessus. Pattern miroir HR-UDD-1 à HR-UDD-8 enforcement runtime.
 
 ## 14. Position dans le système opérationnel
 
-Update Distribution Discipline est la couche racine DELIVERY canon · permet à PhantomOS de se déployer / updater / migrer professionnellement sans friction opérateur · scalable jusqu'à N opérateurs.
+Update Distribution Doctrine est la couche racine DELIVERY canon · permet à PhantomOS de se déployer / updater / migrer professionnellement sans friction opérateur · scalable jusqu'à N opérateurs.
 
 **Couche DELIVERY canon** · UDD opère AVANT runtime workspace opérateur. Pipeline canon · distribution Largo2z9/phantomos (canon source of truth) → update local workspace opérateur (rsync exclude strict) → migrations canon (TRANSFORM) → validation post-update → backup préservé. Cohérent territory-doctrine.md v2.67 (substrate stable vs production runtime).
 
@@ -467,7 +467,7 @@ UDD est le GATE distribution canon · couche DELIVERY entre canon source of trut
 - **Canonique v2.80.0.** Codifie pattern systémique distribution + update PhantomOS opérateur-facing identifié post-audit Largo distribution pipeline canon Sprint v2.80 (état actuel manuel clone Largo2z9/phantomos + git pull · sans preserve operator state · sans check version · sans disclosure pré-update · sans migrations canon BREAKING · sans backup automatique · sans rollback path · cible scalable jusqu'à 20-50 opérateurs sans friction · niveau pro shipped product).
 - **Doctrine sœur** · engagement-disclosure-doctrine.md v2.79.5 (disclosure pré-update cohérent · sister doctrine AMONT) · decomposition-visibility-doctrine.md v2.79.5+ (NIVEAU 0 paramètres update décomposés pre-exec) · output-clarity-doctrine.md v2.79.2 (iconographie + headers FR sobres dans rendu update) · territory-doctrine.md v2.67 (substrate stable vs production runtime canon delimitation) · operational-system-doctrine.md v2.71 (doctrine mère 5 couches · UDD opère Couche 1 + 5) · extension-discovery-doctrine.md v2.75 (NEW entities ADDITIVE auto-consommées cohérent type 1).
 - **Backward compat** · strict additif. Doctrine NEW n'override aucune existing. Pipeline distribution legacy pre-v2.80 (clone manuel) toléré jusqu'à patch · v2.80+ migration progressive enforce pipeline canon UDD via NEW slash commands `/update` + `/version` + `/rollback`. Skills existing `update-workspace` + `migrate-workspace` à wirer pipeline canon Sprint v2.80+.
-- **First applications** · Sprint v2.80 NEW doctrine racine update-distribution-discipline + NEW slash commands `/update` + `/version` (Agent 2 sprint v2.80) + GitHub Releases tags rétroactifs v2.65 → v2.79.5 sur Largo2z9/phantomos (Agent 1 sprint v2.80). Sprint v2.81+ NEW slash command `/rollback {version}` + scaffold migrations canon historiques v2.63 + v2.64 + v2.66 BREAKING + pipeline CI/CD GitHub Actions release automation.
+- **First applications** · Sprint v2.80 NEW doctrine racine update-distribution-doctrine + NEW slash commands `/update` + `/version` (Agent 2 sprint v2.80) + GitHub Releases tags rétroactifs v2.65 → v2.79.5 sur Largo2z9/phantomos (Agent 1 sprint v2.80). Sprint v2.81+ NEW slash command `/rollback {version}` + scaffold migrations canon historiques v2.63 + v2.64 + v2.66 BREAKING + pipeline CI/CD GitHub Actions release automation.
 - **Promotion criterion** · à reviewer après 5+ opérateurs onboard via pipeline canon UDD plus 1 audit cross-opérateur update adoption rate convergence plus learnings.json append patterns UDD adoption rate stable 90%+ plus zéro operator state écrasé cross 3+ updates consécutifs plus zéro captivité opérateur post-update cross 3+ rollback paths utilisés.
 
 ---

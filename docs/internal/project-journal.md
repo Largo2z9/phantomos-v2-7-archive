@@ -12,6 +12,83 @@
 
 ---
 
+## v2.85.4 · 2026-05-20 · PROPAGATION VOICE-DOCTRINE LOT 4/4 · 6 doctrines opérationnelles · 24/26 cumul · D#463 captured
+
+Lot 4/4 cible doctrines OPÉRATIONNELLES (fonctionnement runtime). Particularité · 7 candidates potentielles vs 6 sur les lots précédents.
+
+**Pré-flight Phase 1** · 1 sub-agent Haiku scope disjoint · 7 doctrines inventoriées · Haiku score effort 1/2 cross 7 candidates · filter main thread Sonnet · 0 doctrine effort 3 réel · garde-fous tous PASSÉS (cap 500L · max 473L update-distribution · marge 27L).
+
+**Décision pré-flight · 7e candidate** · `brand-isolation-doctrine.md` REPORTÉE v2.85.5 sprint court (68L · plus petite + plus périphérique du noyau opérationnel · 1 patch principal frontmatter + titre Discipline → Doctrine + 1 anglicisme `default` · effort 1 · wall-time estimé 20-30 min). Cap strict 6 doctrines maintenu lot 4.
+
+**Politique FR/EN consolidée 4 lots appliquée** · acronymes industrie EN préservés · creative/operator/campaign FR · platform-specific EN · termes canon `canonical`/`load-bearing` préservés.
+
+**Phase 2 propagation main thread Sonnet** · 6 doctrines traitées ordre producer central → consumers ·
+
+| Doctrine | Vol | Patches | Compression |
+|----------|-----|---------|-------------|
+| operational-system-doctrine.md | 322L | 8 (1 titre + 1 Territory Discipline + 2 body + 4 cross-refs cassées corrigées `audiences-cartography` plural + `pain-benefit-chain-doctrine` inexistant) | 0% |
+| attribution-multitouch-doctrine.md | 290L | 5 (replace_all Attribution Multitouch Discipline → Doctrine) | 0% |
+| skill-routing-doctrine.md | 391L | 10 (Skill Routing Discipline replace_all 7 + Extension Discovery Discipline replace_all 2 + Operational System cross-ref harmonisé) | 0% |
+| engagement-disclosure-doctrine.md | 412L | 7 (Engagement Disclosure Discipline replace_all 5 + Operational System replace_all 2) | 0% |
+| onboarding-holistic-doctrine.md | 458L | 5 (Onboarding Holistic Discipline replace_all 4 + Operational System cross-ref harmonisé) | 0% |
+| update-distribution-doctrine.md | 473L | 5+ (frontmatter `name: update-distribution-discipline` → `-doctrine` + Update Distribution Discipline replace_all + update-distribution-discipline body cross-refs replace_all) | 0% |
+| **TOTAL** | **2346L** | **40 patches** | **0% compression structurelle** |
+
+**Phase 3 tests non-régression PASSÉS** · `python3 .skills/build-manifest.py` · 81 skills + 92 jargon entries ✓ · `python3 .skills/build-brand-snapshot.py _EXAMPLE` · 24 lines ✓ · grep em-dash cross 6 doctrines · 0 occurrence ✓ · grep `Discipline` résiduel · 0 occurrence ✓.
+
+**Phase 3 SPOT-CHECK operational-system cross-refs entrantes** (obligatoire post-édition operational-system risque cascade canonical) ·
+
+Cross-refs entrantes depuis lots 1+2 propagés vérifiées ·
+- `contextual-intelligence.md` ligne 146 · ref `operational-system-doctrine.md` ✓ valide
+- `pacing-doctrine.md` lignes 191/268/281/288 · refs `operational-system-doctrine.md` ✓ tous valides
+- `output-clarity-doctrine.md` ligne 375 · ref `operational-system-doctrine.md` ✓ valide
+
+**Verdict spot-check** · cohérence cascade canonical PRÉSERVÉE post-édition operational-system. Scope strict voice-doctrine respect des règles canon 5 couches confirmé (zéro reformulation règle canon · uniquement patches FR/EN + Discipline → Doctrine + cross-refs cassées corrigées).
+
+**Apprentissage canon majeur lot 4** · **hypothèse VALIDÉE 4 lots consécutifs** · doctrines opérationnelles aussi conformes que doctrines racines (lot 1) + audience/creative (lot 2) + structurantes (lot 3). Pattern voice-doctrine propagation par ricochet confirmé sur cycle complet · 0.4-1.4 violations actionnable / 100L cross 4 lots cumulés.
+
+**Compression réelle 0%** (cohérent lots 2+3 0% · lot 1 -1%) · scope strict voice-doctrine respecté · patches mécaniques substitution/cohérence uniquement.
+
+**Pattern systémique NEW lot 4 · Operational System cross-ref harmonisation** ·
+
+5 doctrines lot 4 référençaient `Operational System Discipline v2.71` en prose · harmonisé cross-doctrines `système opérationnel (operational-system-doctrine.md)` cohérent style canon (déjà patché lots 1+2 sur OCD + pacing v2.85.1bis + lot 3 sur skill-routing + scope-extension).
+
+Cumul cross 4 lots · pattern `Operational System Discipline v2.71` → `système opérationnel (operational-system-doctrine.md)` propagated sur 9-10 doctrines référençantes.
+
+**Pattern NEW lot 4 · cross-refs cassées corrigées** ·
+
+operational-system-doctrine.md référençait 2 fichiers cassés/typos ·
+- `audiences-cartography-doctrine.md` (plural typo) → corrigé `audience-cartography-doctrine.md` (singular)
+- `pain-benefit-chain-doctrine.md` (file inexistant · pain-benefit-chain.md n'a jamais reçu -doctrine suffix dans chantier rename) → corrigé `pain-benefit-chain.md`
+
+Cas isolé operational-system · pas pattern systémique cross-doctrines. Cross-refs valides post-fix.
+
+**Monitor synthesis lot 4** · 2 occurrences cumulées (engagement-disclosure 2). Cumul lots 1+2+3+4 = **48 occurrences** (44 lots 1+2 + 2 lot 3 + 2 lot 4). Résolution unifiée reportée v2.86.0 audit cross-files final.
+
+**État chantier propagation contenu post-v2.85.4** ·
+
+- **24/26 doctrines propagated cumulé** (4 lots SHIPPED · 24 doctrines)
+- **2 doctrines restantes** ·
+  - `brand-isolation-doctrine.md` PENDING v2.85.5 sprint court (68L · effort 1)
+  - 1 doctrine flottante (à confirmer · probablement déjà couverte ou exception canon)
+- **CLÔTURE chantier propagation contenu** · ATTEINTE à 25/26 post-v2.85.5 sprint court
+
+**Wall-time consommée** · ~95 min sur 6 doctrines (cap 2.5h respecté · marge 55 min).
+
+**Apprentissage v2.85.1bis + v2.85.3 appliqués** · Phase 2.A lecture intégrale obligatoire respectée sur 6/6 doctrines · filter main thread Sonnet sur scoring Haiku appliqué · self-conformance Phase 2.C menée sur chaque doctrine post-édition · spot-check operational-system cross-refs entrantes NEW v2.85.4 obligatoire respecté.
+
+**Backward compat strict additif** · 27 doctrines · 81 skills · 10 slash commands inchangé · 6 doctrines patchées modifications additives mineures · zéro impact runtime · réversible git revert.
+
+D#463 captured · memory canon `doctrine_propagation_progress` mis à jour (compteur 4/4 lots traités · 24/26 doctrines propagated · brand-isolation PENDING v2.85.5 · spot-check pattern NEW v2.85.4).
+
+**Backlog v2.85.5 → v2.86.x** ·
+- v2.85.5 · sprint court brand-isolation-doctrine.md (68L · 1-3 patches · ~20-30 min) · CLÔTURE chantier propagation contenu 25/26 ATTEINTE
+- v2.86.0 · audit cross-files final + grep orphelins + résolution `synthesis/synthèse` unifiée cross 26 doctrines (48 occurrences cumulées lots 1+2+3+4) + résolution Notion/Airtable mention operational-system (refactor structurel hors scope lot 4)
+- v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)
+- v2.86.2 · test discovery externe
+
+---
+
 ## v2.85.3 · 2026-05-20 · PROPAGATION VOICE-DOCTRINE LOT 3/4 · 6 doctrines authoring + schema · D#462 captured
 
 Lot 3/4 cible doctrines AUTHORING + SCHEMA (structurantes substrate). Hypothèse pré-flight · ces doctrines ont possiblement plus de cross-refs internes que les lots précédents (définissent les conventions consommées par les autres doctrines).

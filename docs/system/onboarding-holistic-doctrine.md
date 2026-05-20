@@ -1,4 +1,4 @@
-# Onboarding Holistic Discipline · Operating Doctrine
+# Onboarding Holistic Doctrine · Operating Doctrine
 
 > Canonique v2.80.3. Doctrine canon qui codifie la porte d'entrée opérateur PhantomOS. Patch v2.80.3 · `/tour` est l'explication conversationnelle de PhantomOS · accueil court qui dit ce qu'est le système, puis ARC SUBSTANCE guidé (pourquoi ça existe · comment ça raisonne · ce qui le distingue · le cycle · les 7 territoires) distillé un volet à la fois via `AskUserQuestion`, piloté par l'opérateur, expansions courtes. Double interdit canon · jamais un pavé (gap v2.80.2 *"là j'arrive sur un pavé"*) ET jamais une amorce amputée qui saute au choix de territoire sans présenter la vision/le fonctionnement/la doctrine (gap v2.80.3 recadrage Largo *"ça ne me va pas, tu ne présentes aucunement ce qu'est PhantomOS, vision, doctrine etc ?"*). `/about` reste le backup deep doc exhaustif, jamais un substitut de `/tour`. Pattern miroir AP-OHD-10. Onboarding agnostique (aucun typage métier à l'entrée) plus holistique (panorama 360° des territoires capability-mapped sur pied d'égalité visuelle) plus rendu EN PROSE CONVERSATIONNELLE NATIVE (pas d'interface ASCII boxes/tableaux/séparateurs structurés · réservée aux slash commands cockpit). Doctrine sœur de `scope-extension-doctrine.md` (canon élasticité scope opérateur-driven · racine philosophique), `output-clarity-doctrine.md` v2.79.2 (iconographie canon + headers FR sobres dans panorama), `engagement-disclosure-doctrine.md` v2.79.3 (disclosure gros skills · sister porte d'entrée), `pattern-detection-triggers.md` (smart suggest daemon apprentissage par usage), et `voice.md` (registre · ton accueil). Ferme le gap *"l'onboarding /tour survend creative/copywriting/brand-strategist alors que PhantomOS accueille n'importe quel métier DTC encodé · un opérateur tracking-GTM ne se reconnaît pas et ressent friction adoption"* flag systémique Sprint v2.79.3 post-audit Largo recadrage panorama 360° plus gap v2.80.1 *"/tour rendu en interface ASCII boxes/tableaux/séparateurs structurés · l'opérateur recadre · je ne veux pas d'interface, juste des messages natifs"* flag test live Largo Sprint v2.80.0.
 
@@ -34,7 +34,7 @@ Cette doctrine canonise le pattern porte d'entrée opérateur. Toute surface onb
 
 ## 2. Le problème résolu
 
-Sans Onboarding Holistic Discipline canon ·
+Sans Onboarding Holistic Doctrine canon ·
 
 1. **Survente territoires creative/copy/brand.** L'onboarding `/tour` historique présente proéminemment skills creative production · copywriting · brand strategy · audiences cartography. Opérateur tracking-GTM specialist (pixels Shopify · consent mode · server-side setup) ne se reconnaît pas · friction adoption · sentiment *"PhantomOS n'est pas pour moi"*. Adoption cassée hors-profil-survendu.
 
@@ -50,7 +50,7 @@ Sans Onboarding Holistic Discipline canon ·
 
 7. **Onboarding rendu en interface ASCII boxes/tableaux/séparateurs structurés.** Cas test live Largo Sprint v2.80.0 · `/tour` rendu en panorama 360° formaté ASCII boxes (━━━ ─── tableaux structurés · légende iconographie ✓ ◐ ○ ✗ ⚠ au pied · grille visuelle) · pattern matriciel canon réservé aux slash commands cockpit (`/phantom` `/bird` `/breakdown` `/about` `/update` `/version`) appliqué par erreur à l'onboarding. Recadrage opérateur direct · *"je ne veux pas d'interface · uniquement pour les commandes slash Phantom · juste des messages natifs pendant tout l'onboarding"*. L'onboarding (`/tour` plus premiers messages opérateur) DOIT être prose conversationnelle native · pas d'interface · pas de structure ASCII · pas de tableau. Pattern miroir AP-OHD-9.
 
-Onboarding Holistic Discipline = doctrine canon qui ferme ces 7 gaps via panorama 360° de 7 territoires capability-mapped en PROSE CONVERSATIONNELLE NATIVE + zéro typage entrée + apprentissage par usage + re-entrée évolutive + 9 Hard Rules enforcement runtime.
+Onboarding Holistic Doctrine = doctrine canon qui ferme ces 7 gaps via panorama 360° de 7 territoires capability-mapped en PROSE CONVERSATIONNELLE NATIVE + zéro typage entrée + apprentissage par usage + re-entrée évolutive + 9 Hard Rules enforcement runtime.
 
 ---
 
@@ -431,7 +431,7 @@ Deux faces du même anti-pattern. **Face A · pavé** · `/tour` déverse toute 
 
 ## 15. Position dans le système opérationnel 5 couches
 
-Onboarding Holistic Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71 · OHD est la PORTE D'ENTRÉE canon · couche racine accueil opérateur sans typage.
+Onboarding Holistic Doctrine opère sur 3 couches simultanément du multiplicatif système opérationnel (`operational-system-doctrine.md`) · OHD est la PORTE D'ENTRÉE canon · couche racine accueil opérateur sans typage.
 
 **Couche 2 · Règles (heuristiques décision).** 9 Hard Rules canon strict (HR-OHD-1 à HR-OHD-9) sont heuristiques décision canon · *"si onboarding /tour opérateur-facing alors panorama 360° agnostique 7 territoires obligatoires EN PROSE CONVERSATIONNELLE NATIVE"* enforcement runtime cross-surface onboarding. Distinction canon binaire onboarding (prose native) versus slash commands cockpit `/phantom` `/bird` `/breakdown` `/about` `/update` `/version` (format matriciel ASCII canon). Confondre les deux casse flow conversationnel porte d'entrée. Pattern miroir `output-clarity-doctrine.md` 8 Hard Rules · `decomposition-visibility-doctrine.md` 9 Hard Rules.
 
