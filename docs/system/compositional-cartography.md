@@ -122,7 +122,7 @@ récursion) plutôt que dupliquer CC en variante.
 
 - `resources/templates/creative-formula.md` · registry vivant exhaustif (mécaniques, hooks, proof, angles, sous-types UGC, curseur texte/visual, classificateur production, 522 créas analysées, 10 patches S55).
 - `docs/system/canonical-matrix-reasoning.md` · théorie matrice parente (13 invariants, 4 modes, anti-patterns).
-- `docs/system/schema-encoding-discipline.md` · substrat encodage requis (entités, fields, sourcing tags, vocabulaire fermé).
+- `docs/system/schema-encoding-doctrine.md` · substrat encodage requis (entités, fields, sourcing tags, vocabulaire fermé).
 - `docs/system/atlas-canon-copy.md` · sense 1 cross-brand, référentiel typé partagé outils canon copy.
 - `docs/system/atlas-brand.md` · sense 4 brand-spécifique, cartographie holistique data d'une brand.
 - `docs/system/audience-cartography-doctrine.md` · cartographie audiences spécifique (3 niveaux, invariants validate-resources).

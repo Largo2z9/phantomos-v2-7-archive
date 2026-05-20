@@ -6,7 +6,7 @@ Chaque schema sous `resources/schemas/*.schema.json` a une doc dédiée ici qui 
 
 1. Lis la `description` inline JSON du schema d'abord (autoritatif sur path + version + champs).
 2. Si décision sémantique non triviale (champ load-bearing, conflit entre schemas, encodage flou), lis `docs/system/schemas/{name}.md` (≤ 2 min de lecture).
-3. Si toujours flou après ces deux lectures, drill plus profond, `schema-encoding-discipline.md` pour la mécanique d'encodage, `field-types.md` pour les tags `_field_types`, `audience-cartography.md` pour la doctrine audience.
+3. Si toujours flou après ces deux lectures, drill plus profond, `schema-encoding-doctrine.md` pour la mécanique d'encodage, `field-types.md` pour les tags `_field_types`, `audience-cartography.md` pour la doctrine audience.
 
 ## Index par entité
 

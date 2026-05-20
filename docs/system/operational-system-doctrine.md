@@ -287,7 +287,7 @@ Q4 · Le skill capture-t-il une mesure ou alimente-t-il un signal feedback ?
 - **`contextual-intelligence.md` (CI)** · master doctrine méta · operational-system décrit l'implémentation méthodologique des 5 couches dans le runtime PhantomOS
 - **`compositional-cartography.md` (CC v3.1)** · instance couche 1 ECR pattern Strat × Compo × Exé · équation OUTPUT = NOYAU × CONTEXTE × MODIFIEURS · domaine créatif
 - **`canonical-matrix-reasoning.md` (CMR)** · instance couche 1 (modèle schema+matrice) + couche 4 (métriques score-matrix scoring interne)
-- **`schema-encoding-discipline.md` (SED)** · instance couche 4 (traçabilité _field_types · provenance par champ) + couche 1 (atomicité décomposition)
+- **`schema-encoding-doctrine.md` (SED)** · instance couche 4 (traçabilité _field_types · provenance par champ) + couche 1 (atomicité décomposition)
 - **`scope-extension-doctrine.md` (SED-X)** · méthodologie ECR appliquée à la validation de scope extension nouveau domaine
 - **`audiences-cartography-doctrine.md`** · instance couche 1 fractal pattern parent/enfants + couche 2 règles (cartographie ≠ targeting)
 - **`territory-doctrine.md`** · territoire = substrat couche 1 (substrat brand canonisé) · production = livrable issu de couches 2+3 · meta = couches 4+5 transverses

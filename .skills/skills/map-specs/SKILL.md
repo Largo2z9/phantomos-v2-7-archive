@@ -389,7 +389,7 @@ Stage chacun via mutation gate.
 - Schema target · `resources/schemas/spec.schema.json` (v1.11 sub-fields specs.*)
 - Doctrine investigation · `docs/system/investigation-posture.md`
 - Doctrine production · `docs/system/canonical-matrix-reasoning.md`
-- Doctrine substrate · `docs/system/schema-encoding-discipline.md`
+- Doctrine substrate · `docs/system/schema-encoding-doctrine.md`
 - Sub-skill ingest (composition PDF founder) · `.skills/skills/ingest-resource/SKILL.md`
 - Mutation gate · `write_to_context` (JAMAIS Edit/Write direct sur `.json`)
 - Validation post-write · `validate-resources` (silent, flag MAJOR/CRITICAL)

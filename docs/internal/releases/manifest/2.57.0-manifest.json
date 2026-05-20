@@ -58,7 +58,7 @@
     {
       "category": "doctrine_sed_schema_evolutions_v257",
       "action": "patched",
-      "files": ["docs/system/schema-encoding-discipline.md"],
+      "files": ["docs/system/schema-encoding-doctrine.md"],
       "section": "Bloc 4.1 · SED §13 enrichi sub-table v2.57 schemas changes + décisions design",
       "rationale": "Section §13 Schema evolutions registry enrichie avec sub-table v2.57 documentant 4 schemas changes (brand v2.4, profile v1.7, friction v1.1, spec v1.11) + décisions design SED-side · (a) encoding identity-level pas fork services entity (raison · spec.identity.product_category enum supporte déjà service + spec.identity.type extension additive accepte service/hybrid/clinical_service · DRY) · (b) ID pattern PNT-NN/OBJ-NN cohérent avec FRC-NN/ANG-NN/MEC-NN canon (alphanum 2-3 digits, pas UUID) · (c) enum extensions strictement additives (jamais retrait) · (d) cohérence cross-schema triple brand.business_model + spec.identity.type + product_category · activation runtime via snapshot-brand v1.2.0 Step 2bis + /phantom mode brand 5 sections adaptive."
     },

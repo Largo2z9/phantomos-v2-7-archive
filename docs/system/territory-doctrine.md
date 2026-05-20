@@ -26,7 +26,7 @@ Avant doctrine ·
 
 1. **Confusion setup-territoire vs production-livrable.** Opérateur cargo-cult · skills mélangés dans orchestrators (build-atlas-complete v1.2.0 incluait Steps 8-9 production briefs+créas par erreur · corrigé v1.3.0 strip). Cause · pas de discipline layer canon sur skill authoring.
 
-2. **Vocabularies canon scattered.** Trois noms canon historiques distincts pour le même concept · **Reference** (architecture.md §7 Data Nature table 2×4 · canon anglo) · **Spatial encoding** (schema-encoding-discipline.md §3 · canon technique skill-author) · **Substrat** (session-log S54 + capture FR · canon FR). Aucun unification documentée.
+2. **Vocabularies canon scattered.** Trois noms canon historiques distincts pour le même concept · **Reference** (architecture.md §7 Data Nature table 2×4 · canon anglo) · **Spatial encoding** (schema-encoding-doctrine.md §3 · canon technique skill-author) · **Substrat** (session-log S54 + capture FR · canon FR). Aucun unification documentée.
 
 3. **Cycle promotion implicite.** Production testée validée (winning angle ROAS >2.5 30j · winning hook · winning offer mechanic) devrait se cristalliser en territoire enrichi (roadmap.mix · profile.voice · spec.benefits). Mécanisme existait via `learn-from-session` Trigger N + `promote-learning` mais cycle pas doctrinalement nommé.
 
@@ -116,14 +116,14 @@ Trois vocabularies canon historiques distincts désignaient le même concept ter
 | Canon historique | Source | Scope | Mapping v2.67+ |
 |---|---|---|---|
 | **Reference** (Reference vs Production) | `architecture.md §7 Data Nature` (table 2×4 existing) | Anglo skill-author | = **territoire** |
-| **Spatial encoding** (Spatial vs Temporal) | `schema-encoding-discipline.md §3` (pattern technique) | Technique skill-author | = **territoire** |
+| **Spatial encoding** (Spatial vs Temporal) | `schema-encoding-doctrine.md §3` (pattern technique) | Technique skill-author | = **territoire** |
 | **Substrat** | `session-log.md S54` (capture FR) | FR opérateur + skill-author | = **territoire** |
 | **Production** (Reference vs Production) | `architecture.md §7` + `canonical-matrix-reasoning.md` | Stable cross-canon | = **production** (préservé) |
-| **Temporal encoding** | `schema-encoding-discipline.md §3` | Technique skill-author | englobe **production + meta** (split v2.67+) |
+| **Temporal encoding** | `schema-encoding-doctrine.md §3` | Technique skill-author | englobe **production + meta** (split v2.67+) |
 
 Sourcing verbatim `architecture.md §7 Data Nature` (à citer dans skill docstrings v2.67+) · *"Reference data (specs, audiences, angles, learnings) is canonical substrate. Production data (briefs, creatives, audits) is runtime output."*
 
-Sourcing verbatim `schema-encoding-discipline.md §3` · *"Spatial encoding captures persistent entities (the workspace shape). Temporal encoding captures events (the workspace history)."* Territory Discipline raffine · Temporal split en Production (runtime livrable) + Meta (système).
+Sourcing verbatim `schema-encoding-doctrine.md §3` · *"Spatial encoding captures persistent entities (the workspace shape). Temporal encoding captures events (the workspace history)."* Territory Discipline raffine · Temporal split en Production (runtime livrable) + Meta (système).
 
 Doctrine v2.67+ canon · **territoire / production / meta** trio. Synonymes historiques préservés via Section 6 (zero breaking change).
 
@@ -335,7 +335,7 @@ en livrable à la demande).
 ## 13. Cross-references
 
 - `architecture.md §7 Data Nature` · Reference vs Production · table 2×4 historique anglo (synonyme territoire/production canon v2.67+ Section 6)
-- `schema-encoding-discipline.md §3` · Spatial encoding vs Temporal encoding · pattern technique skill-author (synonyme territoire vs production+meta canon v2.67+)
+- `schema-encoding-doctrine.md §3` · Spatial encoding vs Temporal encoding · pattern technique skill-author (synonyme territoire vs production+meta canon v2.67+)
 - `compositional-cartography.md` · cycle produce → test → learn → promote · pattern référence cycle promotion Section 7 niveau créatif
 - `canonical-matrix-reasoning.md` (CMR) · production skills 95% quality · doctrine sœur production layer canon
 - `scope-extension-doctrine.md` (SED-X v2.65) · sister doctrine · pattern miroir 13 sections canon-style

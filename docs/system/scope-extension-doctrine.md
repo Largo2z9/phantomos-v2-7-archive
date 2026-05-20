@@ -291,7 +291,7 @@ non-MECE. Avec ECR, scope extension produit doctrine systématique.
 
 ## 8. Cross-references
 
-- `schema-encoding-discipline.md` (SED) · substrate sub-doctrine · schemas + mutation gate + _field_types
+- `schema-encoding-doctrine.md` (SED) · substrate sub-doctrine · schemas + mutation gate + _field_types
 - `skill-authoring-doctrine.md` (SAD) · skill creation discipline · type taxonomy · composition contracts
 - `canonical-matrix-reasoning.md` (CMR) · production 95% quality
 - `compositional-cartography.md` (CC) · cartographier + composer outputs créatifs

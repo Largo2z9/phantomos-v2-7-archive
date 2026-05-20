@@ -17,7 +17,7 @@
         "resources/schemas/angle.schema.json",
         "resources/schemas/learnings.schema.json",
         "operations/migrations/v2.63-pain-objection-collections.py",
-        "docs/system/schema-encoding-discipline.md"
+        "docs/system/schema-encoding-doctrine.md"
       ],
       "section": "Agent A · 2 NEW schemas + 4 patches + migration + SED §13 v2.63",
       "rationale": "pain_points.schema v1.0 + objections.schema v1.0 NEW collections top-level canonical. Profile.schema v1.7 → v2.0 BREAKING remove pain_points + objections arrays. Friction v1.1 → v1.2 cross_refs canonical patterns PNT-NN/OBJ-NN enforced. Angle v1.2 → v1.3 lineage.pain_ref + objection_ref optional. Learnings v1.0 → v1.1 cross_refs canonical IDs. Migration script idempotent · backups · events log · mapping FR→EN type/frequency. SED §13 v2.63 sub-table documenté."

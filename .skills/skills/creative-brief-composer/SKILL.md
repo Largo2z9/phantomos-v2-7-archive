@@ -114,7 +114,7 @@ Chairman orchestrating a 2-step pipeline with an operator gate in between. Narra
 
 ## Engagement disclosure pré-runtime · canon v2.79.3
 
-Avant de lancer la composition brief + variants, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3) ·
+Avant de lancer la composition brief + variants, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-doctrine.md` v2.79.3) ·
 
 ```
 Composition brief créa + N variants · ce qui va se passer
@@ -140,7 +140,7 @@ Composition brief créa + N variants · ce qui va se passer
 
 ATTENDS confirmation explicite avant de lancer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.3.
 
-Cross-ref doctrine racine `docs/system/engagement-disclosure-discipline.md` v2.79.3.
+Cross-ref doctrine racine `docs/system/engagement-disclosure-doctrine.md` v2.79.3.
 
 ## Expert methodology
 

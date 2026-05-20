@@ -189,7 +189,7 @@ Si un row Notion contient un field qui n'existe pas dans le schema PhantomOS can
 - `connectivity-layering.md` · Layer 1 MCP servers (cette doctrine étend la Layer 1)
 - `compositional-cartography.md` · doctrine compositionnelle parente · le système Notion stride-up implémente exactement les 4 arbres + matrice + modulateurs canon
 - `brand-isolation-doctrine.md` · règle isolation cross-brand respectée par le bridge
-- `schema-encoding-discipline.md` · mutation gate + `_field_types` + validation_status canon
+- `schema-encoding-doctrine.md` · mutation gate + `_field_types` + validation_status canon
 - `investigation-posture.md` · synthesis pull/push respecte les 5 sections (Observé / Déduit / Inconnu / Leviers / Close ouvert)
 - `.skills/skills/sync-notion-atlas/SKILL.md` · implémentation du bridge
 - `.mcp.json.example` · entry notion server Layer 1

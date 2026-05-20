@@ -326,7 +326,7 @@ Extension Discovery Discipline opère sur 3 couches simultanément du multiplica
 - `confidence-propagation.md` · algèbre cascade confidence cross-skill · pattern audit trail miroir `extensions_consumed` annotation output
 - `dependency-resolution-protocol.md` (DRGFP) · règle canon couche 2 · L1+L2+L3 gap-filling pre-flight Step 0 enrichi
 - `pattern-detection-triggers.md` · registre canonique 8 triggers learn-from-session · pattern miroir rituel cadence couche 5
-- `schema-encoding-discipline.md` (SED) · substrate ontologique · `_extensions.json` sidecar schema validation · mutation gate `consumable_by` field append-only
+- `schema-encoding-doctrine.md` (SED) · substrate ontologique · `_extensions.json` sidecar schema validation · mutation gate `consumable_by` field append-only
 - `skill-authoring-doctrine.md` (SAD) · skill creation discipline · frontmatter `extension_hooks` NEW field validation · type taxonomy producer/orchestrator opt-in discovery
 - `doctrine-governance.md` · amendment process append-only D# verrouillé · cette doctrine entry registry append-only post-ship
 

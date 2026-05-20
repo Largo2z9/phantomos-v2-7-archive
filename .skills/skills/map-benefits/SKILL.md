@@ -360,7 +360,7 @@ Si zéro mechanism enriched · flag gap · "map-mechanisms à lancer pour compl�
 - Doctrine investigation · `docs/system/investigation-posture.md`
 - Doctrine compositional cartography (chain canon functional/emotional/identity) · `docs/system/compositional-cartography.md`
 - Doctrine production · `docs/system/canonical-matrix-reasoning.md`
-- Doctrine substrate · `docs/system/schema-encoding-discipline.md`
+- Doctrine substrate · `docs/system/schema-encoding-doctrine.md`
 - Canon refs psychology · `resources/canon/copy/heuristiques-persuasion/*.json`
 - Canon refs niveaux conscience · `resources/canon/copy/niveaux-schwartz/*.json` (pour cross-ref identity layer avec Schwartz 5 stages)
 - Sub-skill mine-voc (verbatims Layer B) · `.skills/skills/mine-voc/SKILL.md`

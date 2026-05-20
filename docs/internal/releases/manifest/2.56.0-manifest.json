@@ -137,7 +137,7 @@
       "category": "doctrine_patch_schema_encoding_registry",
       "action": "patched",
       "files": [
-        "docs/system/schema-encoding-discipline.md"
+        "docs/system/schema-encoding-doctrine.md"
       ],
       "section": "Bloc 4.3 · schema-encoding-discipline §13 NEW Schema evolutions registry",
       "rationale": "Section §13 NEW Schema evolutions registry append-only. Entrée v2.56 documente tous les changements schemas Bloc 1 (NEW friction + roadmap + patches spec v1.10 + profile v1.6 + offer v2.2 + brand v2.3). Inclut décisions design SED-side (pas de duplication meta.source/meta.confidence puisque _field_types couvre déjà la sémantique source canon · pas de objection.schema dédié car objection consumée par profile + angle, pas arbre standalone). Documente activation runtime brief.schema (orphan v2.42 → activée v1.4 produce-copy-brief). Documente bridge sync external Layer 1 (sync-notion-atlas consume les schemas v2.56)."

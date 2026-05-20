@@ -174,7 +174,7 @@ CI states *what* the agent reasons over (the business universe). Four sub-doctri
 
 | Discipline | Territory | File |
 |---|---|---|
-| **Schema Encoding Discipline (SED)** | Substrate, how to encode rigorously (mutation rule, `_field_types`, sourcing tags, triangulation, append-only, memory layers). Prerequisite of CMR. | `docs/system/schema-encoding-discipline.md` |
+| **Schema Encoding Discipline (SED)** | Substrate, how to encode rigorously (mutation rule, `_field_types`, sourcing tags, triangulation, append-only, memory layers). Prerequisite of CMR. | `docs/system/schema-encoding-doctrine.md` |
 | **Canonical Matrix Reasoning (CMR)** | Production mechanism, how to produce 95% quality on intersectional outputs (schema + canon matrix, modulator/cell, cardinality cap, internal scoring). Sub-pattern of CI on intersectional production. | `docs/system/canonical-matrix-reasoning.md` |
 | **Skill Authoring Discipline (SAD)** | Authoring meta, how skills consuming SED+CMR are created, evolve, compose, fail safely. Includes type taxonomy, frontmatter triad, composition contracts, lifecycle (hooks, Build/Release, updates, provider-agnostic). | `docs/system/skill-authoring-doctrine.md` |
 | **Provenance & Trust Discipline (PTD)** | Trust, multi-operator authorship, canon-as-product, marketplace skills. Scope-only today, full doctrine deferred to trigger conditions. | `docs/system/provenance-trust-discipline-scope.md` (promoted from R&D zone v2.42, scope-only, graduates to full doctrine on triggers) |

@@ -13,7 +13,7 @@ patch_notes:
   v2.0.1: "v2.67 territoire-only alignment doctrine territory-doctrine.md NEW. Phase B push default = 10 collections territoire strict (Produits + Specs + Mécanismes + Bénéfices + Personae + Pain Points + Angles + Objections + Frictions usage + Roadmap). Full funnel Meta (creatives = production layer) RETIRÉE du push v2.0.1 · creatives push via NEW skill dédié sync-creatives-to-notion v2.68+ (cards/Kanban Notion pour briefs + créas par angle · production layer séparée per doctrine territory-discipline). Backward compat · operators v2.0.0 qui invoquaient --mode=push obtenaient 11 collections · v2.0.1 obtiennent 10 strict (no opt-in flag · clean split par layer). Migration · si besoin push creatives Notion, attendre v2.68+ ship ou push manuel temporairement. Strict alignment doctrine · 1 skill par layer canon."
   v2.0.0: "v2.66 NEW · Phase B push runtime exec-ready · Steps B1-B7 detailed · canvas + 11 DBs + rows + relations 2-pass + idempotency lookup. Phase A pull preserved unchanged backward compat strict additif. BREAKING bump justified (dual-direction sync operational, --mode=push activé from previous stub). Phase C diff (--mode=diff) reste deferred v2.59+."
   v1.1.0: "v2.58 coverage extend · friction.{current_workarounds, resolution_state, cross_refs.*} mapping enrichi · roadmap.{mix[], relations} mapping + denormalized view auto-computed. Closes 4 orphans audit v2.57. Phase B push toujours stubbée v2.58. Backward compat strict additif."
-  v1.0.0: "v2.57 Phase A pull-only MVP shipped. Bridge Notion → PhantomOS pour les 11 collections canon stride-up (Produits, Specs, Mécanismes, Bénéfices, Personae, Pain Points, Angles, Objections, Frictions usage, Roadmap, Full funnel Meta). Mappings canon docs/system/notion-bridge-doctrine.md. Mutation gate strict (write-to-context.py mode=proposed) + isolation_scope brand_only. Phase B push + Phase C diff stubbés mais inactifs v1.0.0. Cross-ref doctrines · notion-bridge-doctrine.md (source canon) · compositional-cartography.md §4 mappings · brand-isolation-doctrine.md · investigation-posture.md (5 sections close) · schema-encoding-discipline.md (mutation rule + _field_types)."
+  v1.0.0: "v2.57 Phase A pull-only MVP shipped. Bridge Notion → PhantomOS pour les 11 collections canon stride-up (Produits, Specs, Mécanismes, Bénéfices, Personae, Pain Points, Angles, Objections, Frictions usage, Roadmap, Full funnel Meta). Mappings canon docs/system/notion-bridge-doctrine.md. Mutation gate strict (write-to-context.py mode=proposed) + isolation_scope brand_only. Phase B push + Phase C diff stubbés mais inactifs v1.0.0. Cross-ref doctrines · notion-bridge-doctrine.md (source canon) · compositional-cartography.md §4 mappings · brand-isolation-doctrine.md · investigation-posture.md (5 sections close) · schema-encoding-doctrine.md (mutation rule + _field_types)."
 description: >
   v2.0.1 (v2.67) · territoire-only alignment doctrine territory-doctrine.md NEW. Phase B push refactor · 10 databases territoire strict (Produits, Specs, Mécanismes, Bénéfices, Personae, Pain Points, Angles, Objections, Frictions usage, Roadmap). Full funnel Meta (creatives = production layer) RETIRÉE du push v2.0.1 · creatives push via NEW skill dédié sync-creatives-to-notion v2.68+ futur (production layer séparée · cards/Kanban Notion pour briefs + créas par angle). Phase A pull (Steps 0-6) preserved unchanged backward compat strict additif (pull peut ingérer 11 collections si présent Notion-side legacy). --mode=diff reste deferred Phase C v2.59+.
   v2.0.0 (v2.66) · Phase B push runtime exec-ready · Steps B1-B7 detailed (canvas + 11 DBs creation + rows population + relations 2-pass + idempotency lookup par phantom_entity_id). Phase A pull (Steps 0-6) preserved unchanged backward compat strict additif. Dual-direction sync operational. --mode=diff reste deferred v2.59+.
@@ -287,7 +287,7 @@ Post-mapping rows roadmap, computer aggregat denormalized auto-computed · colle
 
 ### Tags universels mapping (épistemic)
 
-Les 3 tags universels stride-up Notion mappent sur l'encodage épistemic PhantomOS (cf. `docs/system/schema-encoding-discipline.md`) ·
+Les 3 tags universels stride-up Notion mappent sur l'encodage épistemic PhantomOS (cf. `docs/system/schema-encoding-doctrine.md`) ·
 
 | Notion (select/text property) | PhantomOS field |
 |---|---|
@@ -330,7 +330,7 @@ Pour chaque row d'une collection ·
 
 **Goal** · pour chaque entité PhantomOS construite Step 3, stage la mutation via le mutation gate canonique `write-to-context.py --mode=proposed`.
 
-**Anti-pattern absolu** · JAMAIS hand-edit JSON sous `brands/{brand_slug}/`. JAMAIS bypass write-to-context. JAMAIS d'`Edit/Write/NotebookEdit` sur les `.json` brand-side (refusé runtime par mutation-guard PreToolUse hook). Toute mutation via write-to-context (`docs/system/schema-encoding-discipline.md § Mutation rule`).
+**Anti-pattern absolu** · JAMAIS hand-edit JSON sous `brands/{brand_slug}/`. JAMAIS bypass write-to-context. JAMAIS d'`Edit/Write/NotebookEdit` sur les `.json` brand-side (refusé runtime par mutation-guard PreToolUse hook). Toute mutation via write-to-context (`docs/system/schema-encoding-doctrine.md § Mutation rule`).
 
 ### Stage execution pattern
 
@@ -1359,7 +1359,7 @@ Stateless idempotent. Re-run `/sync-notion-atlas {brand_slug} --mode=pull {notio
 
 ## Hard rules
 
-- **Mutation gate strict.** TOUT write via `python3 .skills/write-to-context.py`. JAMAIS `Edit/Write/NotebookEdit` sur les `.json` sous `brands/{brand_slug}/`. Bypass = refusé runtime par mutation-guard PreToolUse hook + corrupt proposal/acceptance workflow. Doctrine canon · `docs/system/schema-encoding-discipline.md § Mutation rule`.
+- **Mutation gate strict.** TOUT write via `python3 .skills/write-to-context.py`. JAMAIS `Edit/Write/NotebookEdit` sur les `.json` sous `brands/{brand_slug}/`. Bypass = refusé runtime par mutation-guard PreToolUse hook + corrupt proposal/acceptance workflow. Doctrine canon · `docs/system/schema-encoding-doctrine.md § Mutation rule`.
 - **isolation_scope brand_only.** Le sync n'affecte QUE `brands/{brand_slug}/`. JAMAIS workspace-global, JAMAIS cross-brand. 1 brand par invocation. Pour sync brand A + brand B · 2 invocations distinctes. Doctrine canon · `docs/system/brand-isolation-doctrine.md`.
 - **Stateless idempotent.** Re-run identique = même résultat. Notion = source of truth en mode pull, PhantomOS canonical write via gate. Idempotent par design (les mutations re-stagées remplacent les pending non-accept).
 - **No scoring leak.** JAMAIS expose confidence numeric à l'opérateur. Use qualitatif `forte / moyenne / faible / TRÈS faible` per investigation-posture canon. Confidence numeric reste agent-side / encoded JSON / consumers internes.
@@ -1382,7 +1382,7 @@ Stateless idempotent. Re-run `/sync-notion-atlas {brand_slug} --mode=pull {notio
 - `docs/system/compositional-cartography.md` · 4 arbres compositionnels + matrice canon + modulateurs que les 11 collections Notion stride-up implémentent (§4 mappings table)
 - `docs/system/brand-isolation-doctrine.md` · isolation_scope brand_only enforcement (default obligatoire, privacy multi-clients agency)
 - `docs/system/investigation-posture.md` · 5 sections close synthesis canon (Observé / Déduit / Inconnu / Leviers / Close ouvert)
-- `docs/system/schema-encoding-discipline.md` · mutation rule canon (write-to-context.py only) + `_field_types` enum + sourcing tags
+- `docs/system/schema-encoding-doctrine.md` · mutation rule canon (write-to-context.py only) + `_field_types` enum + sourcing tags
 - `docs/system/connectivity-layering.md` · Layer 1 MCP servers (Notion MCP positioning)
 - `docs/system/dependency-resolution-protocol.md` · DRGFP L1/L2/L3 prerequisite checks Step 0
 

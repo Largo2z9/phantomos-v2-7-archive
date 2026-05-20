@@ -116,7 +116,7 @@ Format canon obligatoire ·
   spans sessions OR 2+ sub-skills OR producer heavy paid. PhantomOS does not fill forms 
   silently. The operator deserves to know before committing 5 minutes. Without disclosure 
   the operator quits early in 5 profiles out of 6 (cas Abyss central · base tracking-GTM 
-  centralisée). Full canon · `docs/system/engagement-disclosure-discipline.md` v2.79.5.
+  centralisée). Full canon · `docs/system/engagement-disclosure-doctrine.md` v2.79.5.
 ```
 
 5 lignes · 1 instruction noyée dans brand positioning + cas usage + cross-ref + version inline. Pattern correctif ·
@@ -127,7 +127,7 @@ Format canon obligatoire ·
   sessions OR 2+ sub-skills OR producer heavy paid
 ```
 
-2 lignes · 1 instruction atomique impérative. Justification externalisée vers `engagement-disclosure-discipline.md`. Version inline supprimée (vit dans frontmatter doctrine).
+2 lignes · 1 instruction atomique impérative. Justification externalisée vers `engagement-disclosure-doctrine.md`. Version inline supprimée (vit dans frontmatter doctrine).
 
 ---
 
@@ -244,7 +244,7 @@ Index complet · `docs/system/README.md`
 
 - `contextual-intelligence.md` v2.79+ · master doctrine canon agentic
 - `decomposition-visibility-doctrine.md` v2.79.5+ · 4 niveaux matriciels
-- `engagement-disclosure-discipline.md` v2.79.5 · disclosure pré-engagement
+- `engagement-disclosure-doctrine.md` v2.79.5 · disclosure pré-engagement
 - `entry-arc-doctrine.md` v2.81.0 · multi-entry 4 portes post-tour
 - `onboarding-holistic-doctrine.md` v2.80.3 · panorama 360° pré-tour
 - `operational-system-doctrine.md` v2.71 · mère 5 couches

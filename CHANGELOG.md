@@ -7,6 +7,18 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.85.0.3b] · 2026-05-20
+### Changed
+- **CLÔTURE CHANTIER RENAME · 21/21 doctrines renommées** · 2 dernières fichiers `*-discipline.md` → `*-doctrine.md` · `engagement-disclosure` · `schema-encoding` · alignment voice-doctrine v2.84.1 politique linguistique FR/EN canon COMPLET
+- 147 cross-refs patches batch · 68 fichiers consumers patchés
+### Notes
+- Pré-flight ciblé Phase 1 · 1 sub-agent Haiku · garde-fous tous PASSÉS (174 cumulé < 250 · max 105 par doctrine < 150)
+- Tests non-régression Phase 4 PASSÉS · build-manifest 81 skills · build-brand-snapshot _EXAMPLE 24 lines · grep résiduel 0 occurrence · spot-check 2 skills consumers (import-archive 4 refs · sync-notion-atlas 5 refs) ✓ · vérification 0 fichier `*-discipline.md` restant ✓
+- **Bilan chantier rename 5 sprints v2.85.0 → v2.85.0.3b** · 21 doctrines renommées · 926 replacements cumulés (107 + 253 + 258 + 161 + 147) · 0 régression runtime
+- D#459 captured · NEW memory canon `doctrine_rename_complete` (clôture officielle) · memory `v85_0_lite_lessons` mis à jour (calibration finale 5 lots)
+- Pattern reproductible documenté pour sprints futurs refactor structurel cross-files (pré-flight + garde-fous + script Python batch + tests + spot-check + ship via PR)
+- Prochain chantier · v2.85.1 propagation contenu voice-doctrine STRICT (qualitativement différent · pause cognitive obligatoire avant)
+
 ## [2.85.0.3a] · 2026-05-20
 ### Changed
 - **Rename lot 4a/4** · isolation `decomposition-visibility-discipline.md` → `decomposition-visibility-doctrine.md` (doctrine la plus consommée du système · 12 skills consumer runtime) · **19/21 doctrines cumulées** renommées
@@ -151,7 +163,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.79.3] · 2026-05-17
 ### Added
-- NEW doctrines `onboarding-holistic-doctrine.md` + `engagement-disclosure-discipline.md` · /tour panorama 7 territoires · 6 orchestrators disclosure
+- NEW doctrines `onboarding-holistic-doctrine.md` + `engagement-disclosure-doctrine.md` · /tour panorama 7 territoires · 6 orchestrators disclosure
 
 ## [2.79.2] · 2026-05-17
 ### Added

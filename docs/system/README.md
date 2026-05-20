@@ -34,7 +34,7 @@ Contextual Intelligence est la doctrine racine. Toutes les autres doctrines la s
 - **Decomposition Visibility Discipline** (v2.81.1+) · `decomposition-visibility-doctrine.md` · l'agent prouve qu'il a compris en montrant sa réflexion · 3 phases temporelles canon (NIVEAU 0 paramètres pré-exec · NIVEAU LIVE thinking aloud pendant · NIVEAUX 1-4 matrices post-exec)
 - **Output Clarity Discipline** (v2.79.2) · `output-clarity-doctrine.md` · standards Vercel/GitHub-grade · iconographie unique · dejargonisation · headers FR sobres · one thing per line · density modérée · 8 Hard Rules enforcement runtime
 - **Onboarding Holistic Discipline** (v2.80.3) · `onboarding-holistic-doctrine.md` · agnostique + holistique + prose conversationnelle native · panorama 360° 7 territoires DTC pied d'égalité · zéro typage opérateur entrée
-- **Engagement Disclosure Discipline** (v2.79.5) · `engagement-disclosure-discipline.md` · disclosure pré-engagement obligatoire skills orchestrateurs/producer heavy · plan + ETA + démarche + paramètres décomposés + confirmation
+- **Engagement Disclosure Discipline** (v2.79.5) · `engagement-disclosure-doctrine.md` · disclosure pré-engagement obligatoire skills orchestrateurs/producer heavy · plan + ETA + démarche + paramètres décomposés + confirmation
 - **Entry Arc Discipline** (v2.81.0) · `entry-arc-doctrine.md` · post-tour multi-entry 4 portes MECE · A conversationnel · B brand-first · C import existant · D progressif libre · first 30 minutes canon
 
 ## Distribution & update
@@ -48,7 +48,7 @@ Contextual Intelligence est la doctrine racine. Toutes les autres doctrines la s
 
 ## Authoring infrastructure (skill builders · pas canon opéré runtime)
 
-- **Schema Encoding Discipline** · `schema-encoding-discipline.md` · substrate · mutation rule · `_field_types` · sourcing tags · triangulation · append-only · memory layers
+- **Schema Encoding Discipline** · `schema-encoding-doctrine.md` · substrate · mutation rule · `_field_types` · sourcing tags · triangulation · append-only · memory layers
 - **Skill Authoring Discipline** · `skill-authoring-doctrine.md` · type taxonomy · frontmatter triad · composition contracts · lifecycle · failure doctrine
 - **Provenance Trust Discipline** · `provenance-trust-discipline-scope.md` · scope · multi-operator · canon-as-product · marketplace skills
 - **Claude-MD Discipline** (v2.82.0) · `claude-md-doctrine.md` · cap fichiers · marqueurs priorité 3 max · test de suppression · refactor atomique
@@ -102,7 +102,7 @@ Cf `decomposition-visibility-doctrine.md` v2.81.1+.
 
 ## Référence
 
-Pour la doctrine racine canon (mechanical vs semantic) · cf `contextual-intelligence.md`. Pour le canon enforcement (mutations · schemas · paths) · cf `schema-encoding-discipline.md`. Pour la gouvernance amendement doctrines · cf `doctrine-governance.md`.
+Pour la doctrine racine canon (mechanical vs semantic) · cf `contextual-intelligence.md`. Pour le canon enforcement (mutations · schemas · paths) · cf `schema-encoding-doctrine.md`. Pour la gouvernance amendement doctrines · cf `doctrine-governance.md`.
 
 ### Architecture & specs (hors doctrines)
 

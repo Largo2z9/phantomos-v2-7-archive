@@ -405,7 +405,7 @@ Exit code 2 → blocking, revise. Exit code 0 → ship.
 - `docs/system/investigation-posture.md` · 5 sections canon, confidence chain explicit, close drill-down macro.
 - `docs/system/dependency-resolution-protocol.md` · DRGFP L1/L2/L3 prerequisite check.
 - `docs/system/confidence-propagation.md` · algèbre cascade confidence cross-skill (audience → angle → brief), MIN conservative.
-- `docs/system/schema-encoding-discipline.md` · mutation rule, `_field_types`, sourcing tags, atom-level encoding.
+- `docs/system/schema-encoding-doctrine.md` · mutation rule, `_field_types`, sourcing tags, atom-level encoding.
 - `docs/system/canonical-matrix-reasoning.md` · production 95% qualité, canon-driven.
 - `resources/schemas/angle.schema.json` v1.2 · formula deep atoms structure (11 atoms canon).
 - `resources/schemas/spec.schema.json` v1.10+ · mechanisms[] + benefits[] · canon refs pour spec_activated + benefit_served.

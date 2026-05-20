@@ -79,7 +79,7 @@
     {
       "category": "doctrine_sed_schema_evolutions_v258",
       "action": "patched",
-      "files": ["docs/system/schema-encoding-discipline.md"],
+      "files": ["docs/system/schema-encoding-doctrine.md"],
       "section": "Bloc C1 · SED §13 sub-table v2.58",
       "rationale": "Sub-table v2.58 appended documente 2 NEW schemas (strategy v1.0 + learnings v1.0) + 4 décisions design SED-side · (a) R&D zone ship rationale post-10-days lag (D#386 + build-atlas-complete dette) · (b) learnings fragmentation closure single canonical schema · (c) id patterns cohérence canon PNT-NN/OBJ-NN/FRC-NN/ANG-NN/CRT-NN/LRN-NNNN/GOAL-NN/CST-NN alphanum 2-5 digits · (d) runtime activation via produce-strategy + build-atlas-complete patched."
     },
