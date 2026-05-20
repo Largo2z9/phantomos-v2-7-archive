@@ -1,0 +1,76 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.85.2",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.85.2 · PROPAGATION VOICE-DOCTRINE LOT 2/4 · 6 doctrines audience + creative éditées critique main thread Sonnet · 1457L → 1457L · 0% compression structurelle (scope strict voice-doctrine respecté) · 30 patches cumulés majoritairement Discipline → Doctrine cohérence post-rename + franglais · tests non-régression PASSÉS · 0 régression runtime.",
+  "context_amont": {
+    "trigger": "Lot 1/4 (v2.85.1 + v2.85.1bis) clos propre. Lot 2/4 cible doctrines audience + creative créées plus tôt dans l'histoire du projet (v2.6x-v2.7x typique). Hypothèse pré-flight · doctrines anciennes auraient plus de violations vs lot 1. RÉSULTAT · hypothèse partiellement INFIRMÉE (cf apprentissage canon).",
+    "garde_fous_v2_85_1bis_appliques": "Cap 500L par doctrine validé (max 379L progressive-cartography) · 0 isolation nécessaire · Phase 2.A lecture intégrale obligatoire sur les 6 doctrines · Phase 2.C self-conformance obligatoire · alerte compression > -15% (non-déclenchée · 0% compression réelle).",
+    "decision_largo_calibration": "GO Phase 2 standard avec politique FR/EN tranchée · acronymes industrie EN conservés (CPM · CPA · ROAS · etc.) · termes traduits FR (creative→créative · campaign→campagne) · technical platform-specific conservés EN (adset · copy · retargeting · landing page) · scope strict voice-doctrine UNIQUEMENT (pas refactor structurel)."
+  },
+  "6_doctrines_propagated_lot_2": [
+    {"doctrine": "pain-benefit-chain.md", "lines_before": 317, "lines_after": 317, "compression": "0%", "patches": ["Line 19 'explicit' → 'explicite' (cohérence FR/EN)", "Line 27 'collapse' → 's'effondrent' (anglicisme prose)", "Line 97 'Souvent skipée' → 'Souvent négligée' (franglais)", "Line 100 'explicit dans audience profile' → 'explicite dans audience profile'", "Line 119 'Souvent skipée' → 'Souvent négligée' (franglais)", "Line 121 'explicit dans audience profile' → 'explicite dans audience profile'"]},
+    {"doctrine": "audience-cartography-doctrine.md", "lines_before": 86, "lines_after": 86, "compression": "0%", "patches": ["Line 17 'chevauchement signaled' → 'chevauchement signalé' (franglais)", "Line 23 'Hiérarchie capped' → 'Hiérarchie limitée' (franglais)"]},
+    {"doctrine": "progressive-cartography-doctrine.md", "lines_before": 379, "lines_after": 379, "compression": "0%", "patches": ["Line 1 titre 'Progressive Cartography Discipline' → 'Progressive Cartography Doctrine' (cohérence post-rename)", "Line 3 'Territory Discipline (TD v2.67)' → 'Territory Doctrine (TD v2.67)'", "Line 3 'Schema Encoding Discipline (SED)' → 'Schema Encoding Doctrine (SED)'", "Line 3 'Scope Extension Discipline (SED-X)' → 'Scope Extension Doctrine (SED-X)'", "Line 24 'Progressive Cartography Discipline codifie' → 'Progressive Cartography Doctrine codifie'", "Line 28 H2 'Progressive Cartography Discipline résout' → 'Progressive Cartography Doctrine résout'", "Line 44 'Progressive Cartography Discipline = doctrine canon' → 'Progressive Cartography Doctrine = doctrine canon'", "Line 265 'Violation · Progressive Cartography Discipline thesis' → 'Violation · Progressive Cartography Doctrine thesis'"]},
+    {"doctrine": "creative-testing-doctrine.md", "lines_before": 280, "lines_after": 280, "compression": "0%", "patches": ["Line 1 titre 'Creative Testing Discipline' → 'Creative Testing Doctrine'", "Line 20 tableau 'Creative Testing Discipline canon' → 'Creative Testing Doctrine canon'", "Line 28 'Creative Testing Discipline n'est pas une checklist' → 'Creative Testing Doctrine n'est pas une checklist'", "Line 34 'Sans Creative Testing Discipline canon' → 'Sans Creative Testing Doctrine canon'", "Line 48 'Creative Testing Discipline = doctrine canon' → 'Creative Testing Doctrine = doctrine canon'"]},
+    {"doctrine": "pacing-doctrine.md", "lines_before": 288, "lines_after": 288, "compression": "0%", "patches": ["Line 1 titre 'Pacing Discipline' → 'Pacing Doctrine'", "Line 20 tableau 'Pacing Discipline canon' → 'Pacing Doctrine canon'", "Line 28 'Pacing Discipline n'est pas une checklist statique' → 'Pacing Doctrine n'est pas une checklist statique'", "Line 34 'Sans Pacing Discipline canon' → 'Sans Pacing Doctrine canon'", "Line 46 'Pacing Discipline = doctrine canon' → 'Pacing Doctrine = doctrine canon'", "Line 268 'Pacing Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71' → 'Pacing Doctrine opère sur 3 couches simultanément du système opérationnel (operational-system-doctrine.md)' (double patch cohérence post-rename)"]},
+    {"doctrine": "visual-identity-doctrine.md", "lines_before": 107, "lines_after": 107, "compression": "0%", "patches": ["Line 1 titre 'Visual Identity Discipline' → 'Visual Identity Doctrine'", "Line 90 'Operator voit' → 'L'opérateur voit' (FR canon)", "Line 106 'côté operator brut' → 'côté opérateur brut' (FR canon)"]}
+  ],
+  "total_lignes_lot_2": {"before": 1457, "after": 1457, "compression": "0% (scope strict voice-doctrine respecté · patches mécaniques substitution/cohérence · pas refactor structurel)"},
+  "patches_appliques": [
+    "Phase 1 pré-flight obligatoire · 1 sub-agent Haiku · 6 doctrines inventoriées · effort 1 sur 2/6 + effort 2 sur 4/6 · 21 violations totales identifiées · garde-fous tous PASSÉS (cap 500L · 0 effort 3 · 0 isolation)",
+    "Phase 2.A lecture critique intégrale OBLIGATOIRE main thread Sonnet · 6/6 doctrines lues intégralement (apprentissage v2.85.1bis appliqué · pas de raccourci pré-flight)",
+    "Phase 2.B édition critique · 30 patches cumulés cross 6 doctrines · 0% compression structurelle (substitutions mécaniques uniquement)",
+    "Phase 2.C self-conformance lecture critique post-édition · sémantique préservée sur 6 doctrines",
+    "Phase 3 tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep em-dash 0 cross 6 doctrines · grep Discipline résiduel titre interne 0",
+    "Phase 4 ship · _version + manifest + CHANGELOG + project-journal + D#461 + memory canon doctrine_propagation_progress mis à jour"
+  ],
+  "tests_non_regression": {
+    "build_manifest": "PASS · 81 skills + 92 jargon entries",
+    "build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+    "em_dash_cross_6_doctrines": "0 occurrence · ✓",
+    "discipline_residual_titre_interne_cross_6_doctrines": "0 occurrence · ✓"
+  },
+  "apprentissage_canon_lot_2": {
+    "hypothese_pre_flight_partiellement_infirmee": "Doctrines audience + creative v2.6x-v2.7x sont aussi conformes que doctrines récentes lot 1 (0.7-1.4 violations / 100L · cumul 21 violations sur 1457L). Voice-doctrine s'est propagée par ricochet plus largement qu'estimé (création récente sous discipline canon + trilogie v2.84.2-v2.84.4 + chantier rename v2.85.0.x).",
+    "compression_reelle_vs_briefing": "Compression 0% lot 2 (vs briefing -10/-20%) · préservation stricte sémantique > forced compression · violations identifiées sont majoritairement cosmétiques (Discipline → Doctrine cohérence post-rename + franglais isolés)",
+    "politique_fr_en_consolidee": "Largo politique tranchée appliquée · acronymes industrie EN préservés (CPM · ROAS · CTR · etc.) · termes traduits FR (creative→créative usage substantive · operator→opérateur prose FR) · technical platform-specific préservés EN (adset · copy · retargeting · landing page · buyer). Pattern cohérent voice-doctrine v2.84.1 P2 politique linguistique.",
+    "synthesis_question_reportee": "Anglicisme 'synthesis' (~10 occurrences lot 2 + 34 occurrences lot 1 déjà shipped) NON patché · cohérence cross-files prime sur patch unilatéral · question reportée v2.86.0 audit cross-files final.",
+    "calibration_lots_3_4_attendue": "Lots 3 (authoring + schema) et 4 (opérationnelles) probables compression réelle proche 0-1% aussi · pré-flight ciblé reste obligatoire mais hypothèse forte 'doctrines majoritairement conformes' désormais validée 2 lots consécutifs."
+  },
+  "files_patched": [
+    {"file": "docs/system/pain-benefit-chain.md", "scope": "6 patches franglais + cohérence FR/EN · 317L stable"},
+    {"file": "docs/system/audience-cartography-doctrine.md", "scope": "2 patches franglais · 86L stable"},
+    {"file": "docs/system/progressive-cartography-doctrine.md", "scope": "8 patches Discipline → Doctrine cohérence post-rename · 379L stable"},
+    {"file": "docs/system/creative-testing-doctrine.md", "scope": "5 patches Discipline → Doctrine · 280L stable"},
+    {"file": "docs/system/pacing-doctrine.md", "scope": "6 patches Discipline → Doctrine + Operational System cross-ref · 288L stable"},
+    {"file": "docs/system/visual-identity-doctrine.md", "scope": "3 patches Discipline → Doctrine + operator FR/EN · 107L stable"},
+    {"file": "_version.json", "scope": "Bump 2.85.1 → 2.85.2"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.85.2 propagation lot 2/4"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.85.2"},
+    {"file": "docs/internal/releases/manifest/2.85.2-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["6 doctrines lot 2 audience + creative édition critique main thread Sonnet", "Tests non-régression standards", "version + manifest + CHANGELOG + project-journal + D#461 + memory canon update"],
+    "out_of_scope_explicit": ["14 doctrines restantes (lots 3-4 sessions ultérieures)", "Refactor structurel (réordonnancement sections · fusion blocs · suppression redondances internes) noté backlog v2.86.x", "Anglicisme 'synthesis' (cohérence cross-files lot 1 · reportée v2.86.0 audit cross-files)", "Patches doctrines lot 1 déjà shipped (asymétrie temporaire acceptée)"]
+  },
+  "decisions_captured": ["D#461"],
+  "memory_canons_updated": ["doctrine_propagation_progress (compteur 2/4 lots · 12/26 doctrines propagated · pattern observé · hypothèse doctrines anciennes plus conformes que prédit · apprentissage canon)"],
+  "backlog_v2_85_3_plus": [
+    "v2.85.3 · lot 3/4 authoring + schema · 5-6 doctrines (skill-authoring-doctrine · schema-encoding-doctrine · extension-discovery-doctrine · scope-extension-doctrine · territory-doctrine · entry-arc-doctrine) · compression réelle attendue 0-1%",
+    "v2.85.4 · lot 4/4 opérationnelles · 6-7 doctrines (operational-system-doctrine · onboarding-holistic-doctrine · engagement-disclosure-doctrine · update-distribution-doctrine · skill-routing-doctrine · attribution-multitouch-doctrine · brand-isolation-doctrine) · compression réelle attendue 0-1%",
+    "v2.86.0 · audit cross-files final + grep orphelins + question synthesis/synthèse résolution unifiée cross 26 doctrines",
+    "v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)",
+    "v2.86.2 · test discovery externe"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.85.2 = git revert HEAD strict · 6 doctrines patchées modifications additives mineures · zéro impact runtime."
+}

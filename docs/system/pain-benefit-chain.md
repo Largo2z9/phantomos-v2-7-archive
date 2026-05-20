@@ -16,7 +16,7 @@ status: shipped
 
 Toute douleur audience se chaîne à un bénéfice via 4 couches structurées · functional · emotional · identity · aspirational. Cette chaîne est le fil conducteur copy DR et audience profiling.
 
-Sans ce chaînage explicit, copy reste superficiel feature-listing. Audiences profilées plates sans pyramide motivationnelle. Angles paid répétitifs sans variance couches.
+Sans ce chaînage explicite, copy reste superficiel feature-listing. Audiences profilées plates sans pyramide motivationnelle. Angles paid répétitifs sans variance couches.
 
 Le pattern n'est pas inventé · il consolide l'héritage de 3 traditions copy DR canoniques (Gary Halbert sur la chaîne pain/promise, Joseph Sugarman sur les niveaux psychologiques, Donald Miller StoryBrand sur la transformation identitaire) en grammaire opérationnelle PhantomOS reproductible cross-skills.
 
@@ -24,7 +24,7 @@ Le pattern n'est pas inventé · il consolide l'héritage de 3 traditions copy D
 
 ## 2. Problème résolu
 
-Sans canon, les outputs copy DR collapse sur 3 anti-patterns récurrents ·
+Sans canon, les outputs copy DR s'effondrent sur 3 anti-patterns récurrents ·
 
 - **Feature-listing** · copy énumère ce que le produit FAIT sans chaîner ce que l'utilisateur RESSENT ou DEVIENT. Niveau functional seul. Plat, oubliable.
 - **Benefit-listing flou** · copy mentionne des bénéfices mais sans les distinguer par couche. Mix functional/emotional/identity dans la même phrase. Perd la hiérarchie motivationnelle.
@@ -94,10 +94,10 @@ Niveau identitaire social. Réponse à *"quel type de personne suis-je en utilis
 **Caractéristiques** ·
 - Projection sociale (comment je me vois et comment les autres me voient)
 - Levier identitaire (consommation comme expression d'identité)
-- Souvent skipée par copy débutant (resté coincé sur functional/emotional)
+- Souvent négligée par copy débutant (resté coincé sur functional/emotional)
 - Pattern StoryBrand · le client est le héros, le produit lui permet de devenir une meilleure version de lui-même
 
-**Signal d'encoding** · la couche identity DOIT être explicit dans audience profile (identity_projection ou équivalent dans pain_benefit_chains). Skipper cette couche = copy plate sans projection.
+**Signal d'encoding** · la couche identity DOIT être explicite dans audience profile (identity_projection ou équivalent dans pain_benefit_chains). Skipper cette couche = copy plate sans projection.
 
 ---
 
@@ -116,9 +116,9 @@ Niveau projection long-terme. Réponse à *"quelle vie idéale ce produit me rap
 - Vision long-terme (au-delà de l'usage produit immédiat)
 - Souvent diffuse (l'utilisateur lui-même ne la verbalise pas explicitement)
 - Levier visionnaire (motivation transcendantale au-delà du fonctionnel)
-- Souvent skipée par copy court-terme (resté sur bénéfices immédiats)
+- Souvent négligée par copy court-terme (resté sur bénéfices immédiats)
 
-**Signal d'encoding** · la couche aspirational DOIT être explicit dans audience profile (aspirational_vision ou équivalent). Skipper cette couche = copy court-terme sans projection vie idéale.
+**Signal d'encoding** · la couche aspirational DOIT être explicite dans audience profile (aspirational_vision ou équivalent). Skipper cette couche = copy court-terme sans projection vie idéale.
 
 ---
 

@@ -12,6 +12,53 @@
 
 ---
 
+## v2.85.2 · 2026-05-20 · PROPAGATION VOICE-DOCTRINE LOT 2/4 · 6 doctrines audience + creative · D#461 captured
+
+Lot 2/4 cible doctrines AUDIENCE + CREATIVE créées plus tôt dans l'histoire du projet (v2.6x-v2.7x typique). Hypothèse de travail · ces doctrines auraient probablement plus de violations voice-doctrine que le lot 1 racines (qui était déjà conforme par ricochet des sprints v2.84.x).
+
+**Pré-flight Phase 1** · 1 sub-agent Haiku scope disjoint · 6 doctrines inventoriées · effort 1 sur 2/6 (pain-benefit-chain · audience-cartography-doctrine) + effort 2 sur 4/6 (progressive-cartography · creative-testing · pacing · visual-identity) · 21 violations totales sur 1457L cumulés · garde-fous tous PASSÉS (cap 500L · max 379L · 0 isolation v2.85.2bis nécessaire). 1 false positive Haiku diagnostiqué main thread (broken ref `operator-vocabulary-translation.md` visual-identity ligne 100 · fichier EXISTE bien).
+
+**Politique FR/EN tranchée Largo pré-Phase 2** · acronymes industrie EN préservés (CPM · CPA · ROAS · CTR · etc.) · termes traduits FR (creative→créative usage substantive · campaign→campagne · operator→opérateur prose FR) · technical platform-specific préservés EN (adset · copy · retargeting · landing page · buyer). Scope strict voice-doctrine UNIQUEMENT (pas refactor structurel).
+
+**Phase 2 propagation main thread Sonnet** · édition critique non-déléguable · 6 doctrines traitées ordre producer → consumer ·
+
+| Doctrine | Vol | Patches | Compression |
+|----------|-----|---------|-------------|
+| pain-benefit-chain.md | 317L | 6 (franglais · `explicit→explicite` · `collapse→effondrent` · `skipée→négligée` 2x · cohérence FR/EN) | 0% |
+| audience-cartography-doctrine.md | 86L | 2 (franglais · `signaled→signalé` · `capped→limitée`) | 0% |
+| progressive-cartography-doctrine.md | 379L | 8 (1 titre + 3 cross-refs Discipline → Doctrine + 4 occurrences body) | 0% |
+| creative-testing-doctrine.md | 280L | 5 (1 titre + 4 occurrences body Discipline → Doctrine) | 0% |
+| pacing-doctrine.md | 288L | 6 (1 titre + 4 occurrences body Discipline → Doctrine + 1 cross-ref Operational System) | 0% |
+| visual-identity-doctrine.md | 107L | 3 (1 titre Discipline → Doctrine + 2 operator → opérateur prose FR) | 0% |
+| **TOTAL** | **1457L** | **30 patches** | **0% compression structurelle** |
+
+**Phase 3 tests non-régression PASSÉS** · `python3 .skills/build-manifest.py` · 81 skills + 92 jargon entries ✓ · `python3 .skills/build-brand-snapshot.py _EXAMPLE` · 24 lines ✓ · grep em-dash cross 6 doctrines · 0 occurrence ✓ · grep `Discipline` résiduel titre interne · 0 occurrence ✓.
+
+**Apprentissage canon majeur lot 2** · l'hypothèse pré-flight initiale (doctrines anciennes auraient plus de violations) est PARTIELLEMENT INFIRMÉE. Les doctrines audience + creative v2.6x-v2.7x sont aussi conformes que doctrines récentes lot 1 (0.7-1.4 violations / 100L · cumul 21 violations sur 1457L · vs lot 1 ~15 violations sur 2102L = 0.7 violations / 100L). Voice-doctrine s'est propagée par ricochet plus largement qu'estimé · 3 vecteurs identifiés · (a) doctrines créées sous discipline canon en amont · (b) trilogie propagations v2.84.2-v2.84.4 (canon.md interne · lexicon · README/WELCOME) a aligné vocabulaire transverse cross-files · (c) chantier rename v2.85.0.x touchait noms pas contenu textuel.
+
+**Compression réelle 0%** (vs briefing -10/-20%) · scope strict voice-doctrine respecté · patches mécaniques substitution/cohérence uniquement · 0 compression structurelle. Pattern préservation stricte sémantique > forced compression confirmé pour 2ème lot consécutif.
+
+**Pattern cohérence post-rename Discipline → Doctrine confirmé** · 4 titres patchés (progressive-cartography · creative-testing · pacing · visual-identity) + 18 occurrences body cross 6 doctrines. Pattern systématique post-rename v2.85.0.x désormais documenté · à propager aux 14 doctrines restantes lots 3-4.
+
+**Question anglicisme `synthesis` reportée v2.86.0** · ~10 occurrences lot 2 + 34 occurrences lot 1 déjà shipped (CMR 9 · DVD 19 · CI 4 · IP 2). Cohérence cross-files prime sur patch unilatéral · résolution unifiée nécessaire dans audit cross-files final v2.86.0 (décision FR canon `synthèse` cross 26 doctrines OR conservation EN `synthesis` comme technical canon term).
+
+**Wall-time consommée** · ~80 min sur 6 doctrines (cap 3h respecté · marge 100 min).
+
+**Apprentissage v2.85.1bis appliqué** · Phase 2.A lecture intégrale obligatoire respectée sur 6/6 doctrines · 0 raccourci pré-flight · cap 500L respecté · self-conformance Phase 2.C menée sur chaque doctrine post-édition.
+
+**Backward compat strict additif** · 27 doctrines · 81 skills · 10 slash commands inchangé · 6 doctrines patchées modifications additives mineures · zéro impact runtime · réversible git revert.
+
+D#461 captured · memory canon `doctrine_propagation_progress` mis à jour (compteur 2/4 lots · 12/26 doctrines propagated · hypothèse doctrines anciennes plus conformes que prédit · apprentissage canon).
+
+**Backlog v2.85.3 → v2.86.x** ·
+- v2.85.3 · lot 3/4 authoring + schema · 5-6 doctrines (skill-authoring-doctrine · schema-encoding-doctrine · extension-discovery-doctrine · scope-extension-doctrine · territory-doctrine · entry-arc-doctrine) · compression réelle attendue 0-1% (hypothèse forte validée 2 lots consécutifs)
+- v2.85.4 · lot 4/4 opérationnelles · 6-7 doctrines (operational-system-doctrine · onboarding-holistic-doctrine · engagement-disclosure-doctrine · update-distribution-doctrine · skill-routing-doctrine · attribution-multitouch-doctrine · brand-isolation-doctrine)
+- v2.86.0 · audit cross-files final + grep orphelins + question synthesis/synthèse résolution unifiée cross 26 doctrines
+- v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)
+- v2.86.2 · test discovery externe
+
+---
+
 ## v2.85.1 · 2026-05-20 · PROPAGATION VOICE-DOCTRINE LOT 1/4 · 6 doctrines racines + investigation · D#460 captured
 
 Ouverture chantier qualitativement différent post-clôture rename · propagation voice-doctrine v2.84.1 au contenu textuel des 26 doctrines existantes. Lot 1/4 cible doctrines racines + investigation (socle épistémique du système · propager en premier garantit cohérence vocabulaire avant que doctrines aval s'y réfèrent).

@@ -1,6 +1,6 @@
-# Progressive Cartography Discipline · Operating Doctrine
+# Progressive Cartography Doctrine · Operating Doctrine
 
-> Canonique v2.68+. Codifie le phasing progressif du territoire posage par niveaux de profondeur, avec validations light entre paliers et enrichissement continu non-bloquant. Doctrine sœur de Territory Discipline (TD v2.67), Investigation Posture (IP), Compositional Cartography (CC), Schema Encoding Discipline (SED), Scope Extension Discipline (SED-X), Canonical Matrix Reasoning (CMR), Contextual Intelligence (CI). Évite anti-pattern "dump synthesis d'un bloc" + "Q&A questions premature" canon CI.
+> Canonique v2.68+. Codifie le phasing progressif du territoire posage par niveaux de profondeur, avec validations light entre paliers et enrichissement continu non-bloquant. Doctrine sœur de Territory Doctrine (TD v2.67), Investigation Posture (IP), Compositional Cartography (CC), Schema Encoding Doctrine (SED), Scope Extension Doctrine (SED-X), Canonical Matrix Reasoning (CMR), Contextual Intelligence (CI). Évite anti-pattern "dump synthesis d'un bloc" + "Q&A questions premature" canon CI.
 
 ---
 
@@ -21,11 +21,11 @@ Ce contrat est cassé si ·
 4. Skill Phase 4 enrichissement bloque flow principal en attente insight opérateur (violation non-bloquant)
 5. Fast-track default activé pour première fois opérateur (violation onboarding · perd repère)
 
-Progressive Cartography Discipline codifie phasing 1-4 + gates light + fast-track opt-in + enforcement runtime via decision-aid skill authors.
+Progressive Cartography Doctrine codifie phasing 1-4 + gates light + fast-track opt-in + enforcement runtime via decision-aid skill authors.
 
 ---
 
-## 2. Le problème Progressive Cartography Discipline résout
+## 2. Le problème Progressive Cartography Doctrine résout
 
 Avant doctrine ·
 
@@ -41,7 +41,7 @@ Avant doctrine ·
 
 6. **Fast-track multi-brand agency manquant.** Opérateur agency multi-brand (≥3 brands setup) refait gates Phase 1-3 à chaque onboard. Friction inutile · opérateur expert connaît le pattern. Pas de mode skip canon.
 
-Progressive Cartography Discipline = doctrine canon qui ferme ces gaps.
+Progressive Cartography Doctrine = doctrine canon qui ferme ces gaps.
 
 ---
 
@@ -262,7 +262,7 @@ Agent pose 3-4 questions avant scrape OR post-scrape sans avoir drill-down auton
 
 Skill dump Phase 1+2+3+4 synthesis d'un coup post-scrape complet. Saturation opérateur · pas de validation à grain fin · si la base produit/offre est wrong, l'opérateur doit tout corriger en bulk sans avoir pu corriger tôt.
 
-**Violation** · Progressive Cartography Discipline thesis Section 1.
+**Violation** · Progressive Cartography Doctrine thesis Section 1.
 
 **Pattern canon** · phasing 1-4 avec gates light intermédiaires. Validation grain fin permet correction précoce, évite re-cartographie complète sur base wrong.
 

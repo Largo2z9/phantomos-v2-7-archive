@@ -14,13 +14,13 @@ profile.schema.json v1.3+ supporte 3 champs hiérarchie :
 |---|---|---|---|
 | `meta.scope` | string | broad / segment / micro | 3 niveaux MECE max |
 | `meta.parent_slug` | string | (slug) | Slug parent dans hiérarchie · null pour broad racine |
-| `meta.overlap_with` | array | (slugs) | Slugs des audiences cousines avec chevauchement signaled |
+| `meta.overlap_with` | array | (slugs) | Slugs des audiences cousines avec chevauchement signalé |
 
 ## Invariants à enforcer
 
 ### Invariant 1 · 3 niveaux maximum
 
-Pas de sous-micro. Hiérarchie capped à broad → segment → micro. validate-resources doit refuser un parent_slug sur une audience qui résulterait en niveau 4+.
+Pas de sous-micro. Hiérarchie limitée à broad → segment → micro. validate-resources doit refuser un parent_slug sur une audience qui résulterait en niveau 4+.
 
 ### Invariant 2 · Pas d'orphelin segment
 
