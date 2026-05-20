@@ -10,7 +10,7 @@ Documentation longue opt-in pour l'opérateur curieux qui veut comprendre profon
 
 **Cible** · opérateur curieux post-onboarding, prospect partenaire, contributeur skill, opérateur expert en recadrage.
 
-**Registre** · institutionnel sérieux + accessible. Voix Vercel/GitHub product shipped. Zéro jargon plumbing (canon `output-clarity-discipline.md` v2.79.2).
+**Registre** · institutionnel sérieux + accessible. Voix Vercel/GitHub product shipped. Zéro jargon plumbing (canon `output-clarity-doctrine.md` v2.79.2).
 
 **Language** · adapter FR/EN selon language opérateur détecté (cf canon Language root CLAUDE.md). Output bilingue conditionnel sur premier signal opérateur. Defaults FR.
 
@@ -414,7 +414,7 @@ Detect operator language at first turn (cf canon Language root CLAUDE.md). Outpu
 ## Related canon
 
 - `docs/system/onboarding-holistic-discipline.md` · doctrine racine onboarding (v2.80.3 · arc substance guidé · `/about` backup)
-- `docs/system/output-clarity-discipline.md` · standards Vercel-grade opérateur-facing (v2.79.2)
+- `docs/system/output-clarity-doctrine.md` · standards Vercel-grade opérateur-facing (v2.79.2)
 - `docs/system/decomposition-visibility-discipline.md` · 4 niveaux matriciels canon (v2.79+)
 - `docs/system/investigation-posture.md` · 5 sections obligatoires stratégique
 - `docs/system/canonical-matrix-reasoning.md` · schema + matrice canon cohérence output

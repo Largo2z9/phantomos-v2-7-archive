@@ -1,0 +1,64 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.85.0.1",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.85.0.1 · rename structurel lot 2/4 (6 doctrines mid-stakes) · 12/21 doctrines au total renommées · alignment naming convention voice-doctrine v2.84.1 politique linguistique FR/EN canon.",
+  "context_amont": {
+    "trigger": "v2.85.0 LITE shippé hier soir (lot 1/4 · 6 low-stakes · 258 cross-refs cumulées · 107 replacements). 2 PRs squash mergées avant lancement v2.85.0.1. Backlog v2.85.0.1 listait lot 2 mid-stakes · 6 doctrines avec volume cross-refs modéré (30-80 par doctrine en pré-flight) et impact runtime modéré.",
+    "calibration_lot_1_reelle": "Ratio cross-refs cumulatif / replacements effectifs lot 1 = 258/107 = 2.4:1 (pas 4:1 briefing théorique). Appliqué lot 2."
+  },
+  "6_doctrines_renommees_lot_2": [
+    {"old": "claude-md-discipline.md", "new": "claude-md-doctrine.md", "refs_cumulees": 59, "replacements_estimes": 25, "replacements_reels": 25, "sensibilite": "docs only"},
+    {"old": "skill-authoring-discipline.md", "new": "skill-authoring-doctrine.md", "refs_cumulees": 186, "replacements_estimes": 78, "replacements_reels_estim": "(inclut worktrees · ~30-40 hors worktrees)", "sensibilite": "runtime CRITICAL (7 SKILL.md consomment)"},
+    {"old": "output-clarity-discipline.md", "new": "output-clarity-doctrine.md", "refs_cumulees": 69, "replacements_estimes": 29, "sensibilite": "docs only"},
+    {"old": "scope-extension-discipline.md", "new": "scope-extension-doctrine.md", "refs_cumulees": 45, "replacements_estimes": 19, "sensibilite": "docs only"},
+    {"old": "territory-discipline.md", "new": "territory-doctrine.md", "refs_cumulees": 86, "replacements_estimes": 36, "sensibilite": "runtime CRITICAL (5 SKILL.md consomment)"},
+    {"old": "entry-arc-discipline.md", "new": "entry-arc-doctrine.md", "refs_cumulees": 32, "replacements_estimes": 13, "sensibilite": "docs only"}
+  ],
+  "refs_total_cumulees_lot_2": 477,
+  "replacements_total_reels_lot_2": 253,
+  "ratio_cumulatif_replacements_lot_2": "1.9:1 (plus dense que lot 1 · 2.4:1)",
+  "patches_appliques": [
+    "Phase 1 pré-flight ciblé · 1 sub-agent Haiku · output JSON structuré · garde-fous tous PASSÉS (replacements estimés 200 < cap 250 · territory share 18% < cap 40% · false positives prose tolérables)",
+    "Phase 2 exécution · git mv 6 fichiers · script Python batch patches · 75 fichiers consumers patchés · 253 replacements total · wall-time ~3 min · 0 résiduels post-batch (Round 1 suffisant · pas de Round 2 nécessaire)",
+    "Phase 3 tests non-régression PASSÉS · build-manifest.py 81 skills + 92 jargon entries · build-brand-snapshot.py _EXAMPLE 24 lines · grep résiduel 6 anciens noms 0 occurrence · zéro régression silencieuse",
+    "Phase 4 ship · _version bump 2.85.0 → 2.85.0.1 · NEW manifest 2.85.0.1 · CHANGELOG entry Lot 2/4 · project-journal narrative · D#456 + memory canon v85_0_lite_lessons mis à jour"
+  ],
+  "calibration_lessons_lot_2": {
+    "ratio_cumulatif_replacements": "Lot 1 (low-stakes manifest-heavy) · 2.4:1 · Lot 2 (mid-stakes runtime + sibling doctrines denses) · 1.9:1 · Pattern · plus la doctrine est runtime/sibling-dense, plus le ratio se rapproche de 1:1 (chaque occurrence cumulative = 1 replacement effective). Lot 3 (mid-stakes similaire au lot 2) · attendre ratio 1.9-2.0:1. Lot 4 HIGH risk · attendre ratio 1.5-1.8:1 (decomposition-visibility + engagement-disclosure + schema-encoding tous runtime critical).",
+    "skill-authoring_186_refs_cumulatives": "Inclut occurrences worktrees (CHANGELOG.md worktrees · create-skill/SKILL.md worktrees · etc) · l'agent comptait les copies worktrees sans exclusion explicite. Script Python a exclu `.claude/worktrees/` · replacements réels = portion runtime + manifests + docs system + memory canons. Pour lots futurs · script Python pattern excluant worktrees + _archive reste reproductible.",
+    "75_fichiers_consumers_distincts_patches": "Distribution · docs system (10 doctrines) + docs internal (project-journal + canon + 4 refactor mappings) + manifests JSON (16 releases) + skills (16 SKILL.md) + slash commands (4 about/tour/breakdown/version) + CLAUDE.md root + brands _EXAMPLE README + memory canons (3) + R&D (canon.md + decisions.md + session-log + research)",
+    "false_positives_discipline_prose": "Préservés intentionnellement · ~20 usages generic word identifiés Agent · zéro collision avec patterns ciblés fiables (les 6 anciens noms sont distinctifs)"
+  },
+  "files_patched": [
+    {"file": "workspace-template/docs/system/*-discipline.md → *-doctrine.md", "scope": "6 git mv (claude-md · skill-authoring · output-clarity · scope-extension · territory · entry-arc)"},
+    {"file": "75 fichiers consumers cross-refs", "scope": "253 patches batch script Python · docs system + docs internal + manifests + skills + slash commands + CLAUDE.md root + memory canons + R&D"},
+    {"file": "_version.json", "scope": "Bump 2.85.0 → 2.85.0.1 + summary"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.85.0.1 prepended · Lot 2/4 sur 21 doctrines (12/21 cumulé)"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.85.0.1"},
+    {"file": "docs/internal/releases/manifest/2.85.0.1-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["6 git mv lot 2/4", "253 cross-refs patches batch", "tests non-régression PASSÉS", "version + manifest + CHANGELOG + project-journal + D#456 + update memory v85_0_lite_lessons"],
+    "out_of_scope_explicit": ["9 doctrines restantes (lots v2.85.0.2 + v2.85.0.3)", "v2.85.1 propagation contenu (post-rename complet)", "v2.86.0 audit cross-files final"]
+  },
+  "decisions_captured": ["D#456"],
+  "memory_canons_updated": ["v85_0_lite_lessons (lot 2 data added · ratio 1.9:1 vs 2.4:1 lot 1)"],
+  "backlog_v2_85_0_x": [
+    "v2.85.0.2 · lot 3/4 · 6 doctrines mid-stakes restantes (operational-system · onboarding-holistic · skill-routing · extension-discovery · progressive-cartography · update-distribution · ~200-300 refs cumulées estimées)",
+    "v2.85.0.3 · lot 4/4 · 3 doctrines HIGH risk runtime (decomposition-visibility 176 refs · engagement-disclosure 101 · schema-encoding 66 = 343 refs cumulées) · validation runtime intensive obligatoire · lendemain matin frais OBLIGATOIRE",
+    "v2.85.1 · propagation contenu voice-doctrine STRICT 5-6 doctrines lot 1 (post-rename complet)",
+    "v2.85.2+ · propagation contenu lots 2-4 (boucle 26 doctrines)",
+    "v2.86.0 · audit cross-files final + grep orphelins"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.85.0.1 = git revert HEAD strict · 6 git mv reversibles + 253 cross-refs patches reversibles · zéro impact runtime (tests Phase 3 PASSÉS · _manifest.json + _jargon_bank.json regenerés cohérents)."
+}

@@ -27,7 +27,7 @@ Lis-le avant ta première brand · puis reviens-le consulter quand tu te demande
 
 | Fichier | Doctrine canon démontrée | Doc reference |
 |---|---|---|
-| Tous JSON | Substrat stable canonisé · territoire de marque | `docs/system/territory-discipline.md` (v2.67) |
+| Tous JSON | Substrat stable canonisé · territoire de marque | `docs/system/territory-doctrine.md` (v2.67) |
 | `brand.json` `spec.json` | Compositional cartography v3.1 · 4 arbres + matrice + modulateurs | `docs/system/compositional-cartography.md` |
 | `audiences/*/profile.json` parent/enfants | Sub-audience sémantique pure v2.64 | `docs/system/schema-encoding-discipline.md` |
 | `pain_points/PNT-*.json` chain surface→consequence→deep | Pain-benefit chain doctrine v2.60 | `docs/doctrine/pain-benefit-chain-doctrine.md` |
@@ -80,7 +80,7 @@ Cible · opérateur marketeur, créa, stratège paid qui veut comprendre comment
 ## Pour aller plus loin
 
 - **Construire ta brand** · lance `/onboard-brand` (chain `setup-brand` → `snapshot-brand` → `validate-resources`) ou `/build-atlas-complete {brand_slug}` (chain progressive cartography v2.68 · gates light entre paliers Phase 1 Macro → Phase 2 Drilling → Phase 3 Audiences hiérarchique → Phase 4 Enrichissement)
-- **Doctrine territoire substrat** · `docs/system/territory-discipline.md`
+- **Doctrine territoire substrat** · `docs/system/territory-doctrine.md`
 - **Doctrine progressive-cartography** · `docs/system/progressive-cartography-discipline.md`
 - **Catalogue skills canon** · `.skills/README.md` + `.skills/_manifest.json`
 

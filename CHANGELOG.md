@@ -7,6 +7,17 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.85.0.1] · 2026-05-20
+### Changed
+- **Rename lot 2/4** · 6 fichiers mid-stakes `*-discipline.md` → `*-doctrine.md` dans `docs/system/` · `claude-md` · `skill-authoring` · `output-clarity` · `scope-extension` · `territory` · `entry-arc` · **12/21 doctrines cumulées** renommées
+- 253 cross-refs patches batch via script Python · 75 fichiers consumers patchés (docs system + docs internal + manifests + skills + slash commands + CLAUDE.md root + memory canons + R&D)
+### Notes
+- Pré-flight ciblé Phase 1 · 1 sub-agent Haiku (~30s) · garde-fous tous PASSÉS (territory share 18% < cap 40% · replacements estimés 200 < cap 250 · false positives prose tolérables)
+- Tests non-régression Phase 3 PASSÉS · build-manifest.py 81 skills + 92 jargon entries · build-brand-snapshot.py _EXAMPLE 24 lines · grep résiduel 0 occurrence (Round 1 suffisant)
+- Calibration ratio cumulatif/replacements affinée · lot 1 = 2.4:1 (258/107) · lot 2 = 1.9:1 (477/253) · plus dense car mid-stakes runtime + sibling doctrines
+- D#456 captured · memory canon `v85_0_lite_lessons` mis à jour
+- Backlog · v2.85.0.2 lot 3/4 mid-stakes · v2.85.0.3 lot 4/4 HIGH risk (3 doctrines validation runtime intensive obligatoire · lendemain matin frais)
+
 ## [2.85.0] · 2026-05-20
 ### Changed
 - **Rename lot 1/4** · 6 fichiers `*-discipline.md` → `*-doctrine.md` dans `docs/system/` · alignment naming convention voice-doctrine v2.84.1 politique linguistique FR/EN canon · `attribution-multitouch` · `brand-isolation` · `changelog` · `creative-testing` · `pacing` · `visual-identity`
@@ -83,7 +94,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.82.0] · 2026-05-19
 ### Changed
-- CLAUDE.md root refactor atomique 332L → 144L (-57%) · NEW doctrine `claude-md-discipline.md` · NEW index `docs/system/README.md`
+- CLAUDE.md root refactor atomique 332L → 144L (-57%) · NEW doctrine `claude-md-doctrine.md` · NEW index `docs/system/README.md`
 
 ## [2.81.1] · 2026-05-19
 ### Added
@@ -91,7 +102,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.81.0] · 2026-05-18
 ### Added
-- NEW doctrine `entry-arc-discipline.md` (4 portes MECE) · NEW skill `import-archive` · NEW M5b first deliverable
+- NEW doctrine `entry-arc-doctrine.md` (4 portes MECE) · NEW skill `import-archive` · NEW M5b first deliverable
 
 ## [2.80.3] · 2026-05-18
 ### Changed
@@ -119,7 +130,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.79.2] · 2026-05-17
 ### Added
-- NEW doctrine `output-clarity-discipline.md` · /phantom + /bird + /breakdown refactor
+- NEW doctrine `output-clarity-doctrine.md` · /phantom + /bird + /breakdown refactor
 
 ## [2.79.1] · 2026-05-17
 ### Added
@@ -195,7 +206,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.67.0] · 2026-05-15
 ### Added
-- NEW doctrine `territory-discipline.md` · layer field 67 skills
+- NEW doctrine `territory-doctrine.md` · layer field 67 skills
 
 ## [2.66.0] · 2026-05-15
 ### Breaking
@@ -203,6 +214,6 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.65.0] · 2026-05-15
 ### Added
-- NEW doctrine `scope-extension-discipline.md` (canon élasticité opérateur)
+- NEW doctrine `scope-extension-doctrine.md` (canon élasticité opérateur)
 
 Release tags · `https://github.com/Largo2z9/phantomos/releases/tag/v{version}`.

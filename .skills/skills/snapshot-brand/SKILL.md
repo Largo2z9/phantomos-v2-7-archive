@@ -40,9 +40,9 @@ permissions:
 consumes:
   - path: docs/doctrine/breakthrough-advertising-5-stages.md
   - path: docs/doctrine/audiences-cartography-doctrine.md
-  - path: docs/system/scope-extension-discipline.md
+  - path: docs/system/scope-extension-doctrine.md
   - path: docs/system/progressive-cartography-discipline.md
-  - path: docs/system/territory-discipline.md
+  - path: docs/system/territory-doctrine.md
   - path: docs/system/contextual-intelligence.md
   - path: docs/system/investigation-posture.md
 pipeline:
@@ -1242,7 +1242,7 @@ The `_TEMPLATE` is at v1.8. When scraping a product page, you must look for and 
 - `docs/system/decomposition-visibility-discipline.md` (NEW v2.78.2 · canon racine · v2.81.1+ NEW NIVEAU LIVE thinking aloud) · doctrine 3 phases temporelles · AVANT exec NIVEAU 0 paramètres décomposés · PENDANT exec NIVEAU LIVE thinking aloud expert (2 niveaux abstraction macro + micro many-to-many phrasé) · APRÈS exec NIVEAUX 1-4 matrices post-synthèse 5 sections IP (NIVEAU 1 décomposition produit specs · mécanismes · bénéfices 3 couches · NIVEAU 2 many-to-many matrix · NIVEAU 3 stage business filter · NIVEAU 4 méthode pédagogique verbale). Implémenté ici · NIVEAU LIVE section pré-Step 0 (v1.5.1) + Phase Output Decomposition Visibility Step 7b extend (v1.5.0). Sister skills consumers cohérents · `build-atlas-complete` + `profile-audience` + `define-specs` (tous patches v2.78.2 + v2.81.1+ parallèles).
 - `docs/system/pain-benefit-chain.md` · canon 3 couches bénéfices · Functional (mesurable extérieur) · Emotional (ressenti subjectif) · Identity (projection identitaire). Consommé NIVEAU 1 décomposition produit Phase Decomposition Visibility v1.5.0.
 - `docs/system/progressive-cartography-discipline.md` (NEW v2.68) · Phase 1 Macro confirmation + Phase 2 Drilling autonome implémenté ici dans Steps 7a + 7b. Doctrine canon · drop questionnaire pre-action, drill-down autonome, gate light binaire entre phases. Sections 3-4 spécifient le contrat opérationnel des deux phases.
-- `docs/system/territory-discipline.md` (v2.67) · layer territoire pattern · snapshot-brand classified `layer: territoire` (cf frontmatter). Steps 1-6 scrape produisent substrat canonisé · spec.json + offers.json + profile.json draft. Steps 7a+7b livrent synthèse macro+drill autonome operator-facing sans corrompre cycle promotion canon.
+- `docs/system/territory-doctrine.md` (v2.67) · layer territoire pattern · snapshot-brand classified `layer: territoire` (cf frontmatter). Steps 1-6 scrape produisent substrat canonisé · spec.json + offers.json + profile.json draft. Steps 7a+7b livrent synthèse macro+drill autonome operator-facing sans corrompre cycle promotion canon.
 - `docs/system/contextual-intelligence.md` (master doctrine) · "No questionnaire before action" canon · agent reasons not form-fills. Hard Rule "No Q&A premature on audience" enforce ce canon spécifique au layer audience.
 - `docs/system/investigation-posture.md` (v2.54 doctrine canon) · cartographier avant affirmer · confidence chain explicit · drill-down macro = opérateur · 5 sections obligatoires Step 7b (Observé / Déduit / Inconnu / Leviers / Close ouvert).
 - `docs/system/audience-cartography.md` · doctrinal contract Step 5 (4 movements audience).

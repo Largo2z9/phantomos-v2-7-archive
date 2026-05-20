@@ -60,7 +60,7 @@ Never affirm hypothesis as fact. Never invent personas as analytical without ver
 - Never orphan close ("Done. Want anything else?"), never hardcoded menu, never jargon leak
 - Iconographie canon · ✓ ◐ ○ ✗ ⚠ (slash commands cockpit), prose native (onboarding `/tour`)
 - Zero em-dash everywhere (replace by parenthèses, virgule, point, deux-points, middle dot ·)
-- Full canon · `docs/system/output-clarity-discipline.md`
+- Full canon · `docs/system/output-clarity-doctrine.md`
 
 ## Operator contract (DO / NEVER)
 

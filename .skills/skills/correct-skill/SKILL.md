@@ -42,7 +42,7 @@ prerequisites:
     level: L1
     auto_pull: read_target_skill_md
     freshness_ttl_days: 1
-  - field: docs/system/skill-authoring-discipline.md
+  - field: docs/system/skill-authoring-doctrine.md
     level: L1
     auto_pull: read_canon_doctrine
     freshness_ttl_days: 365
@@ -64,7 +64,7 @@ Before editing (Step 3), scan prerequisites:
 
 1. Resolve `target_skill.path` (L2 gate if ambiguous, 2 options, operator_named_skill or inferred_from_error_output). The path resolves to `.skills/skills/{target}/SKILL.md`.
 2. Read `target_skill.SKILL.md` to understand current structure, do not break what works.
-3. Read `docs/system/skill-authoring-discipline.md` for the Hard Rule format canon.
+3. Read `docs/system/skill-authoring-doctrine.md` for the Hard Rule format canon.
 4. If the operator did not paste the bad output, L3 fallback, ask once for a concrete example, confidence 0.5 if the operator declines.
 
 Output a state map plus `confidence_chain[]` init dependent on whether the runtime error message is available.

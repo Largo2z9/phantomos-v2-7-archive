@@ -52,7 +52,7 @@
   "decisions_captured": ["D#449"],
   "backlog_v283_plus": [
     "Re-test live workspace fresh v2.83.0 sur ~/dev/phantom-test-v280_3/ pour valider /version + /update rendu post-split (output Keep-a-Changelog format vs legacy verbose)",
-    "PRIO 3 backlog v2.82.2 · audit claude-md-discipline.md self-applied (HR 8 vs 4 cible · cohérent test de suppression appliqué v2.83.0)",
+    "PRIO 3 backlog v2.82.2 · audit claude-md-doctrine.md self-applied (HR 8 vs 4 cible · cohérent test de suppression appliqué v2.83.0)",
     "Skills tracking-GTM territoire NEW v2.84+ (cas Abyss central · audit-tracking-coverage · setup-server-side-gtm)",
     "Pattern méta doctrine_ripening_period · 2-3 semaines pratique informelle avant codification · pas codifier maintenant (ironique de canoniser pattern de ralentissement immédiatement)"
   ],

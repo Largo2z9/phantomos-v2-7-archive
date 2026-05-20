@@ -65,7 +65,7 @@
     {
       "category": "docs_patched",
       "action": "patched",
-      "files": ["docs/system/skill-authoring-discipline.md"],
+      "files": ["docs/system/skill-authoring-doctrine.md"],
       "section": "§5bis Bidirectional canon contract",
       "rationale": "Ajout section §5bis au SAD : tout skill producer/curator qui interagit avec un atlas canon doit déclarer son contrat bidirectionnel (consume_from + produce_to). consume_from : quelles couches canon le skill lit en input (ex: produce-paid-angles consume canon copy frameworks/hooks/angles). produce_to : quelles entries canon le skill peut alimenter en output via append validations[] (ex: learn-from-session produce_to canon copy {layer}/{tool}#validations[]). Sans ce contrat, l'atlas reste mort. Avec, il devient vivant. Encode le pattern v2.27 comme doctrine pour les futurs skills. Source S55 : pattern émergent observé sur 4 skills v2.27, formalisé en doctrine."
     },
@@ -95,7 +95,7 @@
       "action": "patched",
       "files": ["docs/internal/canon.md"],
       "section": "3 sections enrichies (atlas + composition + canon vivant)",
-      "rationale": "Section Atlas mise à jour pour pointer vers atlas-canon-copy.md doctrine. Section Composition reasoning ajoutée (comment canon × brand × profile compose un output 95% qualité, ref canonical-matrix-reasoning.md). Section Canon vivant ajoutée (mécanisme d'enrichissement bidirectional consume + produce, ref skill-authoring-discipline.md §5bis). Source S55."
+      "rationale": "Section Atlas mise à jour pour pointer vers atlas-canon-copy.md doctrine. Section Composition reasoning ajoutée (comment canon × brand × profile compose un output 95% qualité, ref canonical-matrix-reasoning.md). Section Canon vivant ajoutée (mécanisme d'enrichissement bidirectional consume + produce, ref skill-authoring-doctrine.md §5bis). Source S55."
     },
     {
       "category": "docs_patched",

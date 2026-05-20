@@ -12,6 +12,51 @@
 
 ---
 
+## v2.85.0.1 · 2026-05-20 · Sprint MINOR · rename structurel lot 2/4 · 6 fichiers mid-stakes · 12/21 cumulé · D#456 captured
+
+v2.85.0 LITE shippé hier soir · 2 PRs mergées (#1 largo-kb · #4 phantomos · squash merge ce matin · main fresh post-merge). Backlog v2.85.0.1 listait lot 2/4 mid-stakes · 6 doctrines avec volume cross-refs modéré et impact runtime modéré.
+
+**Pré-flight ciblé Phase 1** · 1 sub-agent Haiku (~30s wall-time) · cross-refs par fichier + estimation ratio 2.4:1 (calibration réelle lot 1) + audit territory share + false positives.
+
+**Résultats pré-flight lot 2** ·
+
+| Doctrine | Refs cumulées | Replacements estimés | Sensibilité |
+|----------|---------------|----------------------|-------------|
+| claude-md-discipline.md | 59 | 25 | docs only |
+| skill-authoring-discipline.md | 186 (worktrees inclus) | 78 estim | runtime CRITICAL |
+| output-clarity-discipline.md | 69 | 29 | docs only |
+| scope-extension-discipline.md | 45 | 19 | docs only |
+| territory-discipline.md | 86 | 36 | runtime CRITICAL |
+| entry-arc-discipline.md | 32 | 13 | docs only |
+
+**Total cumulé** · 477 refs · **replacements estimés** · 200 · **territory share** · 18% < cap 40% ✓ · **Garde-fous tous PASSÉS** · GO 6 fichiers.
+
+**Phase 2 exécution** · git mv 6 fichiers · script Python batch patches (exclusion worktrees + _archive) · **75 fichiers consumers patchés · 253 replacements réels** · wall-time ~3 min · **0 résiduels post-batch Round 1** (pas de Round 2 nécessaire).
+
+**Distribution 75 fichiers patchés** · docs system (10 doctrines) + docs internal (project-journal + canon + 4 refactor mappings) + manifests JSON (16 releases) + skills (16 SKILL.md) + slash commands (4) + CLAUDE.md root + brands _EXAMPLE README + memory canons (3) + R&D (canon.md + decisions.md + session-log + research).
+
+**Phase 3 tests non-régression PASSÉS** · `build-manifest.py` 81 skills + 92 jargon entries ✓ · `build-brand-snapshot.py _EXAMPLE` 24 lines ✓ · grep résiduel 6 anciens noms 0 occurrence ✓ · zéro régression silencieuse.
+
+**Calibration ratio cumulatif/replacements affinée** ·
+- Lot 1 v2.85.0 (low-stakes manifest-heavy) · 258/107 = **2.4:1**
+- Lot 2 v2.85.0.1 (mid-stakes runtime + sibling-dense) · 477/253 = **1.9:1**
+
+Pattern · plus la doctrine est runtime/sibling-dense, plus le ratio se rapproche de 1:1. Lot 3 (mid-stakes similaire) · attendre ratio 1.9-2.0:1. Lot 4 HIGH risk · attendre 1.5-1.8:1.
+
+**Backward compat strict additif** · 27 doctrines · 81 skills · 10 slash commands inchangé · zéro impact runtime · réversible git revert.
+
+D#456 captured · memory canon `v85_0_lite_lessons` mis à jour avec données lot 2 (ratio calibré + pattern denser mid-stakes runtime).
+
+**Ship via PR** (pas push direct main · cohérent doctrine git canon).
+
+**Backlog v2.85.0.2 → v2.86.0** ·
+- v2.85.0.2 · lot 3/4 mid-stakes (operational-system · onboarding-holistic · skill-routing · extension-discovery · progressive-cartography · update-distribution · ~200-300 refs cumulées)
+- v2.85.0.3 · lot 4/4 HIGH risk (decomposition-visibility 176 · engagement-disclosure 101 · schema-encoding 66 = 343 cumulées) · validation runtime intensive obligatoire · **lendemain matin frais OBLIGATOIRE**
+- v2.85.1 propagation contenu lot 1 voice-doctrine STRICT post-rename complet
+- v2.86.0 audit cross-files final + grep orphelins
+
+---
+
 ## v2.85.0 LITE · 2026-05-20 · Sprint MINOR · rename structurel lot 1/4 · 6 fichiers `*-discipline.md` → `*-doctrine.md` · D#455 captured
 
 Voice-doctrine v2.84.1 a posé décision canon · 'doctrine' terme canonique · 'discipline' déprécié et réservé aux fichiers historiques en attente de rename. Trilogie de propagations downstream complétée v2.84.4. Backlog v2.85.0 listait sprint rename 21 fichiers `*-discipline.md` → `*-doctrine.md`.
@@ -154,7 +199,7 @@ D#452 captured · cadre canon voice-doctrine v2.84.1 testé via propagation rée
 
 Audit externe Claude Web phase 2-bis sur voice-doctrine v2.84.0 a validé "shipped" à 90% MAIS flag 4 drifts mineurs + 1 zone fragilité structurelle. Verdict détaillé · auto-conforme à ~90% (5 principes wording + 8 anti-patterns respectés en s'écrivant · zéro liaison molle · zéro sycophant · zéro adjectif vague · registre tiers maintenu). Test méta de cohérence largement passé.
 
-**4 drifts identifiés** · D1 AP-VD-3 vs AP-VD-8 chevauchement perçu (formules politesse vs pronoms conversationnels distincts mais imbriqués en pratique) · D2 cross-refs `claude-md-discipline.md` + `changelog-doctrine.md` + `output-clarity-discipline.md` + `decomposition-visibility-discipline.md` listées comme legacy dans une doctrine qui déclare 'discipline' deprecated et 'doctrine' canon (auto-cohérence visible à l'œil nu) · D3 frontmatter `***` au lieu de `---` standard YAML (HALLUCINATION audit · file utilise déjà `---` · lignes 1+7 vérifiées Read tool) · D4 variation typographique séparateurs `·` prose vs `|` tables sans convention canon formalisée.
+**4 drifts identifiés** · D1 AP-VD-3 vs AP-VD-8 chevauchement perçu (formules politesse vs pronoms conversationnels distincts mais imbriqués en pratique) · D2 cross-refs `claude-md-doctrine.md` + `changelog-doctrine.md` + `output-clarity-doctrine.md` + `decomposition-visibility-discipline.md` listées comme legacy dans une doctrine qui déclare 'discipline' deprecated et 'doctrine' canon (auto-cohérence visible à l'œil nu) · D3 frontmatter `***` au lieu de `---` standard YAML (HALLUCINATION audit · file utilise déjà `---` · lignes 1+7 vérifiées Read tool) · D4 variation typographique séparateurs `·` prose vs `|` tables sans convention canon formalisée.
 
 **Zone fragilité structurelle** · section "Exception README / WELCOME (semi-public)" introduit un 3e registre hybride non nommé ailleurs dans le système. Trois options proposées · (Opt 1) promouvoir 'semi-public' en registre canon nommé · 3 registres listés en haut comme boussole auteur · (Opt 2) supprimer exception et appliquer reference-grade strict aussi au README · (Opt 3) externaliser dans `public-surface-doctrine.md` (mais ajoute 28e doctrine vs ripening period). Opt 1 choisie · pas nouvelle doctrine, pas simplification réductrice, pose 3 niveaux clairement.
 
@@ -248,7 +293,7 @@ Backward compat strict additif · skills 81 inchangé · slash commands 10 incha
 
 **Why** · Audit externe Claude Web sur CLAUDE.md root v2.81.1 a flag 9 problèmes structurels · pattern dégradation cumulative · file ambitieux mais contre-productif · violation propres règles · LLM ignore uniformément partie des règles au-delà capacité attention ~150-200 instructions. Negative ROI territory. 9 problèmes flag · (1) taille root file approchant limite attention LLM · (2) inflation marqueurs CRITICAL/YOU MUST diluant signal d'urgence · (3) règles-sandwich (règles englobées dans narrative explicative) · (4) méta-doctrine (méta-discours sur fonctionnement règles vs règles atomiques) · (5) MECE chevauchements sections doctrine routing/disclosure/decomposition · (6) versioning inline pollution (v2.79.5+ · v2.81.1+ partout) · (7) pollution narrative au lieu d'impératif atomique · (8) point-médian listes plates substitut bullets sur listes structurelles · (9) auto-références cycliques (root pointe doctrines · doctrines pointent root). Citation audit Claude Web · *"CLAUDE.md root v2.81.1 est ambitieux mais contre-productif · file viole ses propres règles de discipline et atteint la zone où LLM ignore uniformément partie des règles"*.
 
-**What** · Sprint MAJOR REFACTOR v2.82.0 patches 3 surfaces structurelles parallèle scope disjoint (3 agents structurels + release engineering ce job) · refonte CLAUDE.md root workspace-template + NEW doctrine canon racine claude-md-discipline.md (pattern canon TOUT CLAUDE.md PhantomOS) + NEW index docs/system/README.md (navigation 24 → 25 doctrines pour skill-authors).
+**What** · Sprint MAJOR REFACTOR v2.82.0 patches 3 surfaces structurelles parallèle scope disjoint (3 agents structurels + release engineering ce job) · refonte CLAUDE.md root workspace-template + NEW doctrine canon racine claude-md-doctrine.md (pattern canon TOUT CLAUDE.md PhantomOS) + NEW index docs/system/README.md (navigation 24 → 25 doctrines pour skill-authors).
 
 **Patches structurels (3 surfaces · 3 agents structurels + release engineering)** ·
 
@@ -256,18 +301,18 @@ Backward compat strict additif · skills 81 inchangé · slash commands 10 incha
 
 2. **NEW docs/system/README.md** (Agent 2) · index navigable 24 doctrines canon shipped pour skill-authors · versions inline pour lookup · cross-refs entre doctrines · patterns transverses (decomposition · disclosure · routing · onboarding · update · brand strategy · investigation · output clarity · territory · extension · operational system · etc.) · point d'entrée unique remplaçant inventaire dispersé dans CLAUDE.md root.
 
-3. **NEW doctrine canon racine claude-md-discipline.md** (Agent 3) · 13 sections canon-style miroir SED-X + EDD + OHD + EAD · 8 HR-CMD + 8 AP-CMD enforcement runtime · pattern canon TOUT CLAUDE.md PhantomOS · 4 tailles canon par niveau (root 150L · pillar 100L · project 120L · brand 80L) · test mental obligatoire avant ajout règle ("Si je retire cette ligne, quelle erreur concrète Claude fait ?") · externalisation versioning vers CHANGELOG · inventaire vers docs/system/README.md · justifications vers doctrines fichiers · audit externe régulier (Claude Web ou autre) sur capacité d'attention LLM runtime utile.
+3. **NEW doctrine canon racine claude-md-doctrine.md** (Agent 3) · 13 sections canon-style miroir SED-X + EDD + OHD + EAD · 8 HR-CMD + 8 AP-CMD enforcement runtime · pattern canon TOUT CLAUDE.md PhantomOS · 4 tailles canon par niveau (root 150L · pillar 100L · project 120L · brand 80L) · test mental obligatoire avant ajout règle ("Si je retire cette ligne, quelle erreur concrète Claude fait ?") · externalisation versioning vers CHANGELOG · inventaire vers docs/system/README.md · justifications vers doctrines fichiers · audit externe régulier (Claude Web ou autre) sur capacité d'attention LLM runtime utile.
 
 4. **Release engineering** (ce job) · `_version.json` 2.81.1 → 2.82.0 MAJOR + summary détaillé refactor + NEW doctrine + NEW index · `CHANGELOG.md` v2.82.0 entry prepended (this entry) · `docs/internal/releases/manifest/2.82.0-manifest.json` NEW · `decisions.md` workspace ROOT D#447 captured · memory canon `phantomos_state` updated v2.82.0 + NEW memory canon `claude_md_discipline_canon` + MEMORY.md index updated.
 
-**Pattern systémique fermé** · TOUT CLAUDE.md PhantomOS (root + pillars + project + brand) respecte désormais doctrine `claude-md-discipline.md` canon racine v2.82.0 · instructions atomiques impératives uniquement · 3 CRITICAL/YOU MUST max global · zéro versioning inline · zéro narrative doctrinale · zéro inventaire détaillé · sections consolidées · bullets une instruction par ligne · tailles canon par niveau respectées · test mental obligatoire avant ajout règle. 9 problèmes audit Claude Web fermés (8 fully · 1 nuancé sur point-médian remplacé bullets sur listes structurelles uniquement · point-médian préservé sur prose).
+**Pattern systémique fermé** · TOUT CLAUDE.md PhantomOS (root + pillars + project + brand) respecte désormais doctrine `claude-md-doctrine.md` canon racine v2.82.0 · instructions atomiques impératives uniquement · 3 CRITICAL/YOU MUST max global · zéro versioning inline · zéro narrative doctrinale · zéro inventaire détaillé · sections consolidées · bullets une instruction par ligne · tailles canon par niveau respectées · test mental obligatoire avant ajout règle. 9 problèmes audit Claude Web fermés (8 fully · 1 nuancé sur point-médian remplacé bullets sur listes structurelles uniquement · point-médian préservé sur prose).
 
-**Backward compat strict SÉMANTIQUE additif** · toutes règles canon préservées · juste reformat atomique · externalisation justifications/inventaires vers fichiers dédiés · skills 81 inchangé · slash commands 10 inchangé · doctrines 24 → 25 (+1 NEW claude-md-discipline.md) · zéro BREAKING data opérateur · zéro impact workspace existing · revert v2.82.0 = git revert HEAD strict · CLAUDE.md root reverts v2.81.1 · NEW doctrine retirable · NEW index retirable · skills consumers + autres doctrines non affectés.
+**Backward compat strict SÉMANTIQUE additif** · toutes règles canon préservées · juste reformat atomique · externalisation justifications/inventaires vers fichiers dédiés · skills 81 inchangé · slash commands 10 inchangé · doctrines 24 → 25 (+1 NEW claude-md-doctrine.md) · zéro BREAKING data opérateur · zéro impact workspace existing · revert v2.82.0 = git revert HEAD strict · CLAUDE.md root reverts v2.81.1 · NEW doctrine retirable · NEW index retirable · skills consumers + autres doctrines non affectés.
 
 **Files patched** ·
 - `CLAUDE.md` root workspace-template v2.81.1 → v2.82.0 (refonte atomique ≤150L · 3 CRITICAL max · zéro versioning inline · zéro narrative · zéro inventaire détaillé · skill routing consolidé · bullets structurels)
 - `docs/system/README.md` NEW v2.82.0 (index navigable 24 doctrines canon shipped · versions inline · cross-refs · patterns transverses · point d'entrée skill-authors)
-- `docs/system/claude-md-discipline.md` NEW v2.82.0 (13 sections canon-style miroir · 8 HR-CMD + 8 AP-CMD enforcement runtime · pattern canon TOUT CLAUDE.md · 4 tailles canon par niveau · test mental avant ajout règle)
+- `docs/system/claude-md-doctrine.md` NEW v2.82.0 (13 sections canon-style miroir · 8 HR-CMD + 8 AP-CMD enforcement runtime · pattern canon TOUT CLAUDE.md · 4 tailles canon par niveau · test mental avant ajout règle)
 - `_version.json` 2.81.1 → 2.82.0 MAJOR + summary détaillé refactor + NEW doctrine + NEW index
 - `CHANGELOG.md` entry v2.82.0 prepended (this entry)
 - `docs/internal/releases/manifest/2.82.0-manifest.json` NEW
@@ -277,7 +322,7 @@ Backward compat strict additif · skills 81 inchangé · slash commands 10 incha
 - Re-test live workspace fresh v2.82.0 sur `~/dev/phantom-test-v280_3/` pour valider rendu opérateur post-refactor CLAUDE.md root + lookup doctrines via NEW docs/system/README.md
 - Skills tracking-GTM territoire NEW backlog v2.82+ (cas Abyss central · audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode)
 
-**Skills count 81 (inchangé) · slash commands 10 (inchangé) · doctrines 24 → 25 (+1 NEW claude-md-discipline.md).**
+**Skills count 81 (inchangé) · slash commands 10 (inchangé) · doctrines 24 → 25 (+1 NEW claude-md-doctrine.md).**
 
 ---
 
@@ -340,19 +385,19 @@ après   · NIVEAUX 1-4        matrices post-exec              v2.79+
 
 1. **Refonte `/tour` v2.80.3 → v2.81.0** (Agent 1) · M1 splitter AskUserQuestion 4 portes équivalentes visuellement (A conversationnel arc substance · B brand-first URL → snapshot-brand · C import existant text/visuels/APIs/Notion/vrac · D progressif libre pattern detection daemon) · NEW M5b first deliverable skill canon lancé 5-15 min après sélection porte · canons Vincent runtime slugs `exit:setup` et `pivot:{volet}` dans AskUserQuestion post-M1 · audit ton premium M6 zéro concurrent nommé enforced cross-canon · bilingual FR + EN trigger phrases.
 
-2. **NEW doctrine `entry-arc-discipline.md` v2.81.0** (Agent 2) · 13 sections canon-style miroir SED-X + EDD + OHD · 8 HR-EAD + 8 AP-EAD enforcement runtime · 4 portes MECE codifiées · first 30 minutes canon · skills wirage par porte (catalogue existant 80% couverture · pas NEW skills MVP sauf import-archive orchestrator porte C) · canons Vincent runtime slugs · ton premium cross-canon zéro concurrent nommé. Patch /about §6 audit résiduels concurrents nommés résiduels post-v2.80.3.
+2. **NEW doctrine `entry-arc-doctrine.md` v2.81.0** (Agent 2) · 13 sections canon-style miroir SED-X + EDD + OHD · 8 HR-EAD + 8 AP-EAD enforcement runtime · 4 portes MECE codifiées · first 30 minutes canon · skills wirage par porte (catalogue existant 80% couverture · pas NEW skills MVP sauf import-archive orchestrator porte C) · canons Vincent runtime slugs · ton premium cross-canon zéro concurrent nommé. Patch /about §6 audit résiduels concurrents nommés résiduels post-v2.80.3.
 
 3. **NEW skill `import-archive`** (Agent 3) · type orchestrator · porte C consumer canon · drop dossier vrac mixed-content (text · visuels · APIs · Notion exports · mélange) · 8 HR-IA enforcement runtime · chain ingest-resource + import-asset + connect-source + sync-notion-atlas selon classification automatique items · disclosure pré-engagement obligatoire (cohérent EDD v2.79.5 + NIVEAU 0 DVD v2.79.5+) · `subagent_safe: true` · `recommended_model: sonnet`.
 
 4. **Release engineering** (ce job) · `_version.json` 2.80.3 → 2.81.0 MINOR + summary multi-entry détaillé · `CHANGELOG.md` v2.81.0 entry prepended · `docs/internal/releases/manifest/2.81.0-manifest.json` NEW · `CLAUDE.md` root sommaire doctrines 23 → 24 (NEW entry-arc-discipline) + skills 80 → 81 · `decisions.md` workspace ROOT D#445 captured · memory canon `phantomos_state` updated v2.81.0 + NEW memory canon `entry_arc_4_doors`.
 
-**Pattern systémique fermé** · `/tour` v2.81.0 redevient le splitter 4 portes MECE accueillant tous les profils opérateur (DTC senior creative strategist · media buyer · agency owner · solo founder · auditeur tracking-GTM Abyss · curieux progressif). First 30 minutes canon · porte → setup → first deliverable concret encadré. NEW skill import-archive orchestrator complète couverture porte C (drop vrac mixed-content). NEW doctrine entry-arc-discipline.md canonise patterns runtime cross /tour + skills wirés · enforcement HR-EAD + AP-EAD. Ton premium canon Largo enforced cross-canon (zéro concurrent nommé · registre GitHub/Vercel · on affirme avec conviction sans takedown).
+**Pattern systémique fermé** · `/tour` v2.81.0 redevient le splitter 4 portes MECE accueillant tous les profils opérateur (DTC senior creative strategist · media buyer · agency owner · solo founder · auditeur tracking-GTM Abyss · curieux progressif). First 30 minutes canon · porte → setup → first deliverable concret encadré. NEW skill import-archive orchestrator complète couverture porte C (drop vrac mixed-content). NEW doctrine entry-arc-doctrine.md canonise patterns runtime cross /tour + skills wirés · enforcement HR-EAD + AP-EAD. Ton premium canon Largo enforced cross-canon (zéro concurrent nommé · registre GitHub/Vercel · on affirme avec conviction sans takedown).
 
 **Backward compat strict additif** · skills 80 → 81 (+1 NEW import-archive) · slash commands 10 inchangé · doctrines 23 → 24 (+1 NEW entry-arc-discipline) · zéro BREAKING data opérateur · zéro impact workspace existing · revert v2.81.0 = git revert HEAD strict · NEW doctrine retirable · NEW skill retirable · /tour revert v2.80.3 possible · skills shipped wirés non affectés.
 
 **Files patched** ·
 - `.claude/commands/tour.md` v2.80.3 → v2.81.0 (refonte M1 splitter 4 portes + NEW M5b first deliverable + canons Vincent runtime slugs + audit ton premium M6 + bilingual)
-- `docs/system/entry-arc-discipline.md` NEW v2.81.0 (13 sections canon-style miroir · 8 HR-EAD + 8 AP-EAD)
+- `docs/system/entry-arc-doctrine.md` NEW v2.81.0 (13 sections canon-style miroir · 8 HR-EAD + 8 AP-EAD)
 - `.skills/skills/import-archive/SKILL.md` NEW v0.1.0 (orchestrator porte C consumer · 8 HR-IA · chain 4 skills)
 - `.claude/commands/about.md` patch §6 audit résiduels concurrents nommés
 - `.skills/_manifest.json` rebuilt v2.81.0 (+1 entry import-archive)
@@ -735,7 +780,7 @@ Plus de typage métier en porte d'entrée. Plus de skills orchestrateurs lourds 
 
 3. **Refonte `/breakdown` v2.79.2 + audit 4 autres slash commands** (Agent 3) · `/breakdown` clarté pédagogique cas Stepprs 13 chapitres préservé · 4 NIVEAUX Decomposition Visibility préservés (canon DVD scope `/breakdown` consumer) · audit cohérence iconographie + dejargonisation cross `/scope` + `/skills` + `/tour` + `/lexicon`.
 
-4. **NEW doctrine `output-clarity-discipline.md`** (Agent 4) · doctrine canon clarté livrable opérateur-facing · iconographie unifiée + dejargonisation systémique + grammaire 4 sections cockpit + scope canon DVD révisé (`/phantom` exclu) + patch CLAUDE.md root sommaire 14 → 15 doctrines.
+4. **NEW doctrine `output-clarity-doctrine.md`** (Agent 4) · doctrine canon clarté livrable opérateur-facing · iconographie unifiée + dejargonisation systémique + grammaire 4 sections cockpit + scope canon DVD révisé (`/phantom` exclu) + patch CLAUDE.md root sommaire 14 → 15 doctrines.
 
 5. **Patch CLAUDE.md root § Skill routing v2.79.2** (Agent 5 · ce job) · retire `/phantom {brand}` des triggers verbaux canon DVD · garde `/bird {brand}` plus `/breakdown {brand}` · ajoute nuance scope `/phantom` exception cockpit scan rapide · anti-pattern strict révisé "synthèse brand opérateur-facing prose-only sans matrices ASCII = invalid output canon SAUF `/phantom` (cockpit scan rapide)" · bump sub-section header v2.79.1 → v2.79.2.
 
@@ -748,7 +793,7 @@ Plus de typage métier en porte d'entrée. Plus de skills orchestrateurs lourds 
 **Pattern systémique fermé · clarté livrable canon v2.79.2**
 
 ```
-Layer 1 · NEW doctrine output-clarity-discipline.md       ✓ v2.79.2
+Layer 1 · NEW doctrine output-clarity-doctrine.md       ✓ v2.79.2
 Layer 2 · CLAUDE.md root skill routing v2.79.2            ✓ scope révisé
 Layer 3 · 7 slash commands audit (cohérence iconographie) ✓ cross-commands
 Layer 4 · /bird skill miroir refonte                      ✓ v0.3.0
@@ -770,7 +815,7 @@ Plus de jargon doctrinal leak runtime. Plus d'iconographie hétérogène cross-c
 - `.claude/commands/skills.md` audit cohérence (Agent 3)
 - `.claude/commands/tour.md` audit cohérence (Agent 3)
 - `.claude/commands/lexicon.md` audit cohérence (Agent 3)
-- `docs/system/output-clarity-discipline.md` NEW (Agent 4)
+- `docs/system/output-clarity-doctrine.md` NEW (Agent 4)
 - `CLAUDE.md` root § Skill routing v2.79.2 + sommaire 14 → 15 doctrines (Agent 4 + Agent 5)
 - `docs/system/decomposition-visibility-discipline.md` v2.79.2 (Agent 5)
 - `decisions.md` workspace ROOT D#435 captured (Agent 5)
@@ -1175,7 +1220,7 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 | **1 · `decompose-ad` v1.5.0 → v2.0.0** | Enrichissement fiche v5 Section 4 ANATOMIE 3 niveaux cohérente équation v3.1 NOYAU × CONTEXTE × MODIFIEURS canon · CE QUI FAIT PERFORMER (à garder · 5 éléments humains) / À ADAPTER À TA BRAND (5 refs humaines · IDs canoniques silent) / À SITUER (5 modifieurs situationnels) · output opérateur-facing 100% humain · zero raw field name · zero registry ID exposé · canon résonne back-end via creative.json v1.2 IDs canoniques persisted silent · 4 NEW Hard Rules HR-anatomie-1 à 4 · close 1 question binaire vers `/adapt-from-competitor {CRT-NN}` · 419L → 535L | Décomposition créa concurrente structurée canon · grille variables 3 niveaux opérateur-facing accessible · cross-skill reproducibilité via back-end |
 | **2 · NEW skill canonical `adapt-from-competitor` v1.0.0** | Orchestrator chain decompose-ad output → operator gate isolation variables → produce-copy-brief brand-side · pipeline 5 phases (load competitor + brand context → match canonical refs → operator gate AskUserQuestion 3 paths → chain downstream selon path → synthesis 5 sections IP) · 7 Hard Rules canon · 3 paths flow opérateur (variant complet · 1 axe seul · registry promotion) · 206L | Phase 2 du flow décompose créa concurrente câblée canon · cible marketing senior 25 min idéation à brief variant atteint à ~80% |
 | **3 · Cleanup hygiène P0 wording drift** | 7 files patched · `brands/_EXAMPLE/README.md` + brand.json + status.json + roadmap.json + spec.json + offers.json + breakdown.md · zero `brand fictive` résiduel · uniformisé 13 topics + 30 min lecture + 5 couches + 3 transverses · cohérence canon anti-hallucination v2.72.0 | Contradictions canon production résolues · Stepprs wording uniformément "brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com..." cross-files |
-| **4 · Cleanup hygiène P0 doctrine** | `operational-system-discipline.md` cross-ref singulier `audience-cartography-doctrine.md` (CASSÉ) → pluriel `audiences-cartography-doctrine.md` (canonical) · 2 occurrences L87 + L292 · `skill-authoring-discipline.md` NEW section `Position dans le système opérationnel 5 couches` (omission v2.71.0 corrigée · couche transverse meta gouverne authoring skills consommant les 5 couches) | Cohérence canon doctrine post-v2.71.0 complétée · 11/11 doctrines structurelles ancrées dans grammaire op-system 5 couches |
+| **4 · Cleanup hygiène P0 doctrine** | `operational-system-discipline.md` cross-ref singulier `audience-cartography-doctrine.md` (CASSÉ) → pluriel `audiences-cartography-doctrine.md` (canonical) · 2 occurrences L87 + L292 · `skill-authoring-doctrine.md` NEW section `Position dans le système opérationnel 5 couches` (omission v2.71.0 corrigée · couche transverse meta gouverne authoring skills consommant les 5 couches) | Cohérence canon doctrine post-v2.71.0 complétée · 11/11 doctrines structurelles ancrées dans grammaire op-system 5 couches |
 | **5 · Audit 18 broken resource refs (READ-ONLY)** | 8 false positive (folder structure existing OK · canonical paths différents) · 7 cleanup légers backlog v2.73.1 (refs CHANGELOG + check-existing-coverage) · 2 ship réels backlog v2.74 (`skill-routing-discipline.md` doctrine NEW + `.skills/skills/audit-meta-global/` orchestrator NEW) · 1 SOP pédagogique préservé OK | Backlog précis identifié pour next sprints · aucun blocker live runtime |
 
 **3 patterns canon introduits** ·
@@ -1204,7 +1249,7 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 - `brands/_EXAMPLE/products/massage-insoles/offers.json` ($comment)
 - `.claude/commands/breakdown.md` (5 patches · 6 occurrences "brand fictive" + uniformisé 13 topics + 5 couches + 3 transverses)
 - `docs/system/operational-system-discipline.md` (2 occurrences singulier → pluriel)
-- `docs/system/skill-authoring-discipline.md` (NEW section "Position dans le système opérationnel 5 couches")
+- `docs/system/skill-authoring-doctrine.md` (NEW section "Position dans le système opérationnel 5 couches")
 - `.skills/_manifest.json` regen (skills 69 → 70)
 - `_version.json` 2.72.1 → 2.73.0
 - `CHANGELOG.md` v2.73.0 entry (this entry)
@@ -1363,9 +1408,9 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 - `docs/system/compositional-cartography.md` (NEW section Position 5 couches)
 - `docs/system/canonical-matrix-reasoning.md` (NEW section Position 5 couches)
 - `docs/system/schema-encoding-discipline.md` (NEW section Position 5 couches)
-- `docs/system/scope-extension-discipline.md` (NEW section Position 5 couches)
+- `docs/system/scope-extension-doctrine.md` (NEW section Position 5 couches)
 - `docs/doctrine/audiences-cartography-doctrine.md` (NEW section Position 5 couches)
-- `docs/system/territory-discipline.md` (NEW section Position 5 couches)
+- `docs/system/territory-doctrine.md` (NEW section Position 5 couches)
 - `docs/system/progressive-cartography-discipline.md` (NEW section Position 5 couches)
 - `docs/system/investigation-posture.md` (NEW section Position 5 couches)
 - `docs/doctrine/pain-benefit-chain-doctrine.md` (NEW section Position 5 couches)
@@ -1543,7 +1588,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 
 | Bloc | Output | Impact |
 |---|---|---|
-| **1 · NEW doctrine `territory-discipline.md`** | 356L · 13 sections canon-style miroir SED-X · sister SED/CMR/SED-X/CC/InvestigationPosture | Skill-author-facing technique + opérateur-facing pédagogique · pattern usage opérateur Section 8 explicit |
+| **1 · NEW doctrine `territory-doctrine.md`** | 356L · 13 sections canon-style miroir SED-X · sister SED/CMR/SED-X/CC/InvestigationPosture | Skill-author-facing technique + opérateur-facing pédagogique · pattern usage opérateur Section 8 explicit |
 | **2 · Refactor `build-atlas-complete` v1.2.0 → v1.3.0 BREAKING** | Steps 8-9 stripped (produce-copy-brief + compose-creative) · frontmatter clean · postconditions update · emits_events update · cross-ref doctrine · "top-3 territoires" → "top-3 axes créatifs" lexicon disambiguation | Orchestrator territoire-pure · productions via creative-brief-composer post-atlas downstream (separate invocation · clean split) |
 | **3 · `layer` field NEW sur 66 SKILL.md** | Frontmatter `layer: territoire | production | meta` · 31 territoire + 11 production + 25 meta indexed (1 template skipped) · manifest regen avec layer discoverability | Routing canon + future enforcement mutation gate + observability cost tracking per layer |
 | **4 · Lexicon disambiguation** | NEW entries "Territoire" (sens macro · substrat brand + synonymes canon historiques) + "Axe créatif" (sens micro · output score-matrix renommé) | Polysémie résolue · operateur comprend distinction macro/micro |
@@ -1567,7 +1612,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 **Backward compat strict additif sur layer field 67 SKILL.md + lexicon entries + doctrine NEW** · zero override existing fields.
 
 **Files patched** ·
-- `docs/system/territory-discipline.md` NEW 356L
+- `docs/system/territory-doctrine.md` NEW 356L
 - `.skills/skills/build-atlas-complete/SKILL.md` v1.2.0 → v1.3.0 (415L → 470L)
 - `.skills/skills/sync-notion-atlas/SKILL.md` v2.0.0 → v2.0.1 (1423L → 1417L)
 - `.skills/skills/{66 skills}/SKILL.md` frontmatter `layer` field add (66 patches additifs)
@@ -1648,7 +1693,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 
 **Why** · 8 releases v2.55-v2.64 ont shippé multiples extensions scope (NEW orchestrators · NEW schemas · NEW mappers · NEW bridge tool · NEW doctrine layer · NEW migration scripts) sans pattern canon formalisé. v2.65 codifie SED-X · le canon technique de l'extension scope pour skill authors. Pattern reproductible pour évolutions futures workspace.
 
-**What** · NEW doctrine `docs/system/scope-extension-discipline.md` · 326 lignes · 13 sections canon-style · skill-author-facing (sister de SED + SAD + CMR + CC + PTD) ·
+**What** · NEW doctrine `docs/system/scope-extension-doctrine.md` · 326 lignes · 13 sections canon-style · skill-author-facing (sister de SED + SAD + CMR + CC + PTD) ·
 
 **7 patterns canonicaux d'extension scope** ·
 | # | Pattern | Skill canonical | Effort |
@@ -2145,7 +2190,7 @@ Distinction nette · qui lance le script. Plus de chevauchement sémantique avec
 
 **What.** Scrubbed brand references (Karacare, Hair Boost, Cellule Boost) to fictitious brand (Glowco, Glow Boost, Cell Boost), GitHub org placeholder, personal absolute paths to anonymized form, named co-operators to generic (Operator A + Operator B), agency-specific surface to generic (agency side), maintainer name references in doctrines / skills / schemas to neutral (`the operator` / `the maintainer` / `operator`) per contextual fit. Cross-files cohérence préservée. Substance pédagogique intacte.
 
-**Files patched.** `resources/templates/operator-fiche-output.md`, `.skills/skills/brief-day/SKILL.md`, `.claude/commands/phantom.md`, `.skills/skills/snapshot-brand/SKILL.md`, `CONTRIBUTING.md`, `resources/schemas/visual_identity.schema.json`, `resources/schemas/angle.schema.json`, `resources/schemas/brand.schema.json`, `resources/templates/creative-formula.md`, `resources/templates/hook-formulas.md`, `.claude/commands/tour.md`, `docs/system/audience-cartography.md`, `docs/system/model-versioning-canon.md`, `docs/system/provenance-trust-discipline-scope.md`, `lexicon.md`, `.skills/INDEX.md`, `.skills/skills/export-session/SKILL.md`, `.skills/skills/ingest-resource/SKILL.md`, `.skills/skills/compose-creative/SKILL.md`, `.skills/skills/import-asset/SKILL.md`, `.skills/skills/validate-output-coherence/SKILL.md`, `.skills/skills/compose-overlay-text/SKILL.md`, `.skills/skills/craft-packshot/SKILL.md`, `.skills/skills/learn-from-session/SKILL.md`, `docs/system/skill-authoring-discipline.md`, `docs/system/skill-authoring-toolkit.md`, `docs/vision/roadmap.md`, `docs/vision/README.md`, `docs/vision/offering-deployment.md`, `docs/system/voice.md`, `docs/system/agent-contracts.md`, `docs/system/canonical-matrix-reasoning.md`, `docs/system/doctrine-governance.md`, `docs/system/atlas-canon-copy.md`, `docs/system/schema-encoding-discipline.md`, `docs/internal/canon.md`, `docs/internal/releases/manifest/2.45.0-manifest.json`, `docs/internal/releases/manifest/2.11.0-manifest.json`, `resources/frameworks/paid-angle-scoring.md`, `CHANGELOG.md` (paths perso scrubbés + note historique en tête).
+**Files patched.** `resources/templates/operator-fiche-output.md`, `.skills/skills/brief-day/SKILL.md`, `.claude/commands/phantom.md`, `.skills/skills/snapshot-brand/SKILL.md`, `CONTRIBUTING.md`, `resources/schemas/visual_identity.schema.json`, `resources/schemas/angle.schema.json`, `resources/schemas/brand.schema.json`, `resources/templates/creative-formula.md`, `resources/templates/hook-formulas.md`, `.claude/commands/tour.md`, `docs/system/audience-cartography.md`, `docs/system/model-versioning-canon.md`, `docs/system/provenance-trust-discipline-scope.md`, `lexicon.md`, `.skills/INDEX.md`, `.skills/skills/export-session/SKILL.md`, `.skills/skills/ingest-resource/SKILL.md`, `.skills/skills/compose-creative/SKILL.md`, `.skills/skills/import-asset/SKILL.md`, `.skills/skills/validate-output-coherence/SKILL.md`, `.skills/skills/compose-overlay-text/SKILL.md`, `.skills/skills/craft-packshot/SKILL.md`, `.skills/skills/learn-from-session/SKILL.md`, `docs/system/skill-authoring-doctrine.md`, `docs/system/skill-authoring-toolkit.md`, `docs/vision/roadmap.md`, `docs/vision/README.md`, `docs/vision/offering-deployment.md`, `docs/system/voice.md`, `docs/system/agent-contracts.md`, `docs/system/canonical-matrix-reasoning.md`, `docs/system/doctrine-governance.md`, `docs/system/atlas-canon-copy.md`, `docs/system/schema-encoding-discipline.md`, `docs/internal/canon.md`, `docs/internal/releases/manifest/2.45.0-manifest.json`, `docs/internal/releases/manifest/2.11.0-manifest.json`, `resources/frameworks/paid-angle-scoring.md`, `CHANGELOG.md` (paths perso scrubbés + note historique en tête).
 
 **Backward compat.** Strict additif. Substance préservée. Manifest skills regen 56 skills.
 
@@ -2481,7 +2526,7 @@ Distinction nette · qui lance le script. Plus de chevauchement sémantique avec
 
 **Operator impact.** Vocabulaire métier unifié pour parler de la cartographie holistique data brand (`atlas brand`). Cockpit `/phantom` atteint parité Notion Stride-Up (9/9 tableaux navigables). Pipeline E2E P0→P5 sur kara désormais robuste : compose-creative produit en 4:5 fidèle, produce-paid-angles refuse de shipper sans gate explicit si corpus thin. Pattern compound learning préservé (atlas vivant validations[] continue à enrichir atlas canon copy DANS l'atlas brand). Backward compat strict additif.
 
-**Next.** v2.37+ : skill `compose-overlay-text` dédié PIL post-gen (résout définitivement Friction 3) · Pattern AskUserQuestion gate généralisé à decompose-ad / compose-creative · Phase B audit sémantique atlas sur `roadmap.md` + `skill-authoring-discipline.md` si signal opérateur drift.
+**Next.** v2.37+ : skill `compose-overlay-text` dédié PIL post-gen (résout définitivement Friction 3) · Pattern AskUserQuestion gate généralisé à decompose-ad / compose-creative · Phase B audit sémantique atlas sur `roadmap.md` + `skill-authoring-doctrine.md` si signal opérateur drift.
 
 ---
 
@@ -2659,7 +2704,7 @@ ongoing               · learn-from-session smart-suggest daemon · validate-res
 
 **Infra.** Documentation `TRENDTRACK_API_KEY` dans `credentials_shared.env.example` + section dédiée dans `docs/system/credentials.md` (où l'obtenir, scope, rate limits, fallback si absent). Sans clé : decompose-ad mode TrendTrack désactivé, modes URL paste + drop direct restent fonctionnels. Cache `/tmp/decompose/` (TTL 24h pour assets téléchargés) ajouté à `.gitignore` template.
 
-**Source empirique.** S55 fiche v5 spec validée Largo + decisions.md largo-kb D#391 (stress test 23 ads cross-typologies, validation pipeline TrendTrack end-to-end, équation compositionnelle v3.1). Cross-refs : v2.29.0 manifest (creative.schema, awareness_stage, origin_axis), creative-formula.md v3.1, atlas-canon-copy.md, skill-authoring-discipline.md §5bis (bidirectional canon contract).
+**Source empirique.** S55 fiche v5 spec validée Largo + decisions.md largo-kb D#391 (stress test 23 ads cross-typologies, validation pipeline TrendTrack end-to-end, équation compositionnelle v3.1). Cross-refs : v2.29.0 manifest (creative.schema, awareness_stage, origin_axis), creative-formula.md v3.1, atlas-canon-copy.md, skill-authoring-doctrine.md §5bis (bidirectional canon contract).
 
 **Next up.** v2.31+ : skill `compose-creative` orchestrant canon × brand.creative_zone × profile.persona_archetype × creative.composition_equation pour générer un creative statique 95% qualité (consomme les décompositions decompose-ad). Removal fields deprecated v2.29 (gift_economy, craft_mode/longevity_signal/cta sur angle, alias legacy schwartzConscience/source/identity.archetype). Audit downstream complet sur brands existants (we-bet, _EXAMPLE).
 
@@ -2681,7 +2726,7 @@ ongoing               · learn-from-session smart-suggest daemon · validate-res
 
 - **`docs/system/atlas-canon-copy.md` (NEW).** Doctrine atlas canon inscrite formellement : structure (canon-tool.schema.json), enrichment mechanism (validations[] append-only), bidirectional canon contract, composition canon (canon × brand creative_zone × profile persona_archetype). Documente le pattern atlas vivant pour futurs canons (sales-letter, vsl, email).
 - **`docs/system/schemas/{README, spec, angle, profile, brand, offer}.md` (NEW, 6 docs).** Une doc humaine par entité brand : sémantique des fields, distinctions MECE (insight vs tension vs pain_point), trade-offs encodage, exemples cross-typologies, anti-patterns. README indexe + pose conventions communes (snake_case, _field_types, sourcing sémantique).
-- **`docs/system/skill-authoring-discipline.md` §5bis (NEW section).** Bidirectional canon contract : tout skill producer/curator interagissant avec un atlas canon doit déclarer `consume_from` (couches lues) + `produce_to` (entries appendables via validations[]). Encode le pattern v2.27 comme doctrine pour futurs skills.
+- **`docs/system/skill-authoring-doctrine.md` §5bis (NEW section).** Bidirectional canon contract : tout skill producer/curator interagissant avec un atlas canon doit déclarer `consume_from` (couches lues) + `produce_to` (entries appendables via validations[]). Encode le pattern v2.27 comme doctrine pour futurs skills.
 - **`docs/system/creative-formula.md` (PATCHED).** Réconciliation v3 + v3.1 : v3.1 promu canonique (creative_statique = concept × execution), v3 archivé en historique. Ajout section composition reasoning pointant vers atlas-canon-copy.md.
 - **`resources/registries/creative-mechanics-registry.md` (PATCHED).** 4 mécaniques PROPOSED graduées vers VALIDATED suite stress test S55 (curiosity_teaser, emotional_reframe, educational_diagram, listicle). 4 nouvelles PROPOSED ajoutées (ladder_of_futures, accusatory_hook, payoff_externalization, evergreen_winner_signal). Total : 16 VALIDATED + 4 PROPOSED.
 - **`lexicon.md` (PATCHED, 14 entrées enrichies).** Distinctions MECE clarifiées : Insight vs Pain_point vs Tension vs JTBD ; Mécanique (compositionnel d'angle) vs Mechanism (produit biologique) ; Atlas vs Canon ; Atome irréductible ; Awareness (stages canon V3) vs Sophistication (vagues marché) ; Origin_axis vs source ; Brand_equity_level ; Buyer_user_split ; Persona_archetype ; Composition reasoning ; Bidirectional canon contract.
@@ -3030,7 +3075,7 @@ ongoing               · learn-from-session smart-suggest daemon · validate-res
 
 - **Skill rename swept** : `audit-meta-setup` → `audit-meta-account` references closed in `.skills/INDEX.md`, `.skills/README.md`, `.skills/_manifest.json`, `.skills/skills/validate-resources/SKILL.md`, `.skills/skills/connect-source/SKILL.md`.
 - **Release manifest path fixed** : template `README.md` pointed to `docs/releases/{version}-manifest.json`. Real path is `docs/internal/releases/manifest/{version}-manifest.json`.
-- **Ghost skill flagged** : `correct-skill` was described as shipped in `docs/system/autonomous-correction-pattern.md`, `docs/system/pattern-detection-triggers.md`, `docs/system/skill-authoring-discipline.md`. Marked `[backlog, not shipped]` inline.
+- **Ghost skill flagged** : `correct-skill` was described as shipped in `docs/system/autonomous-correction-pattern.md`, `docs/system/pattern-detection-triggers.md`, `docs/system/skill-authoring-doctrine.md`. Marked `[backlog, not shipped]` inline.
 - **Lexicon pointer added** : `Connected source` entry in `lexicon.md` now points to `docs/internal/canon.md` for full definition.
 - **Manifest regenerated** : `.skills/_manifest.json` rebuilt post rename sweep.
 

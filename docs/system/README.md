@@ -24,18 +24,18 @@ Contextual Intelligence est la doctrine racine. Toutes les autres doctrines la s
 - **Audiences Cartography** (v2.64) · `audience-cartography.md` · parent/enfants sémantique pure · 4 mouvements + 3 axes · hand-off pédagogique vers mine-voc
 - **Pain Benefit Chain** (v2.79.4) · `pain-benefit-chain.md` · functional · identity · emotional · aspirational · chaînage canonique douleur/bénéfice pour audience et copy
 - **Progressive Cartography Discipline** (v2.68) · `progressive-cartography-discipline.md` · hypothèse confidence 0.5 valide vers sourced · cartographier ≠ produire · seul producer paid requiert 5+ verbatims
-- **Territory Discipline** (v2.67) · `territory-discipline.md` · substrate stable vs productions runtime · séparation fondations encodées et outputs générés
-- **Scope Extension Discipline** (v2.65) · `scope-extension-discipline.md` · élasticité scope opérateur-driven · PhantomOS accueille n'importe quel domaine encodé
+- **Territory Discipline** (v2.67) · `territory-doctrine.md` · substrate stable vs productions runtime · séparation fondations encodées et outputs générés
+- **Scope Extension Discipline** (v2.65) · `scope-extension-doctrine.md` · élasticité scope opérateur-driven · PhantomOS accueille n'importe quel domaine encodé
 - **Extension Discovery Discipline** (v2.75) · `extension-discovery-discipline.md` · scaffold × register × discovery × consume · pipeline NEW entities auto-consommées par skills downstream
 
 ## Output & operator-facing
 
 - **Investigation Posture** · `investigation-posture.md` · 5 sections obligatoires (observé · déduit · inconnu · leviers · close ouvert) · confidence chain explicit · drill-down macro opérateur
 - **Decomposition Visibility Discipline** (v2.81.1+) · `decomposition-visibility-discipline.md` · l'agent prouve qu'il a compris en montrant sa réflexion · 3 phases temporelles canon (NIVEAU 0 paramètres pré-exec · NIVEAU LIVE thinking aloud pendant · NIVEAUX 1-4 matrices post-exec)
-- **Output Clarity Discipline** (v2.79.2) · `output-clarity-discipline.md` · standards Vercel/GitHub-grade · iconographie unique · dejargonisation · headers FR sobres · one thing per line · density modérée · 8 Hard Rules enforcement runtime
+- **Output Clarity Discipline** (v2.79.2) · `output-clarity-doctrine.md` · standards Vercel/GitHub-grade · iconographie unique · dejargonisation · headers FR sobres · one thing per line · density modérée · 8 Hard Rules enforcement runtime
 - **Onboarding Holistic Discipline** (v2.80.3) · `onboarding-holistic-discipline.md` · agnostique + holistique + prose conversationnelle native · panorama 360° 7 territoires DTC pied d'égalité · zéro typage opérateur entrée
 - **Engagement Disclosure Discipline** (v2.79.5) · `engagement-disclosure-discipline.md` · disclosure pré-engagement obligatoire skills orchestrateurs/producer heavy · plan + ETA + démarche + paramètres décomposés + confirmation
-- **Entry Arc Discipline** (v2.81.0) · `entry-arc-discipline.md` · post-tour multi-entry 4 portes MECE · A conversationnel · B brand-first · C import existant · D progressif libre · first 30 minutes canon
+- **Entry Arc Discipline** (v2.81.0) · `entry-arc-doctrine.md` · post-tour multi-entry 4 portes MECE · A conversationnel · B brand-first · C import existant · D progressif libre · first 30 minutes canon
 
 ## Distribution & update
 
@@ -49,9 +49,9 @@ Contextual Intelligence est la doctrine racine. Toutes les autres doctrines la s
 ## Authoring infrastructure (skill builders · pas canon opéré runtime)
 
 - **Schema Encoding Discipline** · `schema-encoding-discipline.md` · substrate · mutation rule · `_field_types` · sourcing tags · triangulation · append-only · memory layers
-- **Skill Authoring Discipline** · `skill-authoring-discipline.md` · type taxonomy · frontmatter triad · composition contracts · lifecycle · failure doctrine
+- **Skill Authoring Discipline** · `skill-authoring-doctrine.md` · type taxonomy · frontmatter triad · composition contracts · lifecycle · failure doctrine
 - **Provenance Trust Discipline** · `provenance-trust-discipline-scope.md` · scope · multi-operator · canon-as-product · marketplace skills
-- **Claude-MD Discipline** (v2.82.0) · `claude-md-discipline.md` · cap fichiers · marqueurs priorité 3 max · test de suppression · refactor atomique
+- **Claude-MD Discipline** (v2.82.0) · `claude-md-doctrine.md` · cap fichiers · marqueurs priorité 3 max · test de suppression · refactor atomique
 - **Changelog Discipline** (v2.83.0) · `changelog-doctrine.md` · Keep-a-Changelog strict · cap 80L par release · sections atomiques · split narrative archive
 - **Voice Doctrine** (v2.84.0) · `voice-doctrine.md` · ton reference-grade artefacts internes · 5 principes wording · politique FR/EN canon · conventions casse · famille paramétrage NEW · 8 anti-patterns
 

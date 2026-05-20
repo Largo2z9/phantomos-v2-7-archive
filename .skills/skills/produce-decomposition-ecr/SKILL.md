@@ -157,7 +157,7 @@ AskUserQuestion ·
 ## Cross-refs
 
 - `docs/system/operational-system-discipline.md` (doctrine mère ECR canonisée)
-- `docs/system/scope-extension-discipline.md` (SED-X · ECR amont)
+- `docs/system/scope-extension-doctrine.md` (SED-X · ECR amont)
 - `docs/system/compositional-cartography.md` (équation NOYAU × CONTEXTE × MODIFIEURS)
 - Sub-skill of `scaffold-extension` v1.2.0+ (Phase 3bis)
 - Upstream sibling · `analyze-extension-intent` v2.0.0 (produces ECR decomposition object)

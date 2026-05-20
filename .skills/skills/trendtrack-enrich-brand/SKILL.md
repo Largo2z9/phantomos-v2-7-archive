@@ -22,10 +22,10 @@ permissions:
   mode: proposed
   subagent_safe: true
 consumes:
-  - path: docs/system/territory-discipline.md
+  - path: docs/system/territory-doctrine.md
   - path: docs/system/investigation-posture.md
   - path: docs/system/connectivity-layering.md
-  - path: docs/system/scope-extension-discipline.md
+  - path: docs/system/scope-extension-doctrine.md
 pipeline:
   preconditions: |
     brands/{slug}/brand.json non-empty (brand existing required · skill ENRICH pas CREATE)
@@ -254,10 +254,10 @@ Mutations stagées · `brand.json` (identity/financials/social_media/proofs/mark
 
 ## Cross-references
 
-- `docs/system/territory-discipline.md` · layer territoire canon
+- `docs/system/territory-doctrine.md` · layer territoire canon
 - `docs/system/investigation-posture.md` · 5 sections synthesis pattern
 - `docs/system/connectivity-layering.md` · Layer 1 MCP vs Layer 2 API skill calls
-- `docs/system/scope-extension-discipline.md` · pattern NEW skill addition canon
+- `docs/system/scope-extension-doctrine.md` · pattern NEW skill addition canon
 - `.skills/skills/snapshot-brand/SKILL.md` · complementary skill (PDP scrape vs external intelligence)
 - `.skills/skills/decompose-ad/SKILL.md` · downstream skill (deep dive 1 ad post-sample)
 - `.skills/skills/profile-audience/SKILL.md` · downstream enrich (audiences inferred verbatims)

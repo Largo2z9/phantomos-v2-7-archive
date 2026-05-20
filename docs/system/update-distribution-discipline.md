@@ -8,7 +8,7 @@ status: shipped
 
 # Update Distribution Discipline · Operating Doctrine
 
-> Canonique v2.80.0. Doctrine canon racine qui codifie le pattern de distribution et mise à jour PhantomOS opérateur-facing. L'opérateur reçoit les updates sans friction · preserve son contexte (brands · learnings · operator state · todos · credentials · session-state) · les migrations canon adaptent ses données aux nouvelles structures (BREAKING) sans intervention manuelle. Doctrine sœur de `engagement-disclosure-discipline.md` v2.79.5 (disclosure pré-update cohérent), `decomposition-visibility-discipline.md` v2.79.5+ (NIVEAU 0 paramètres update décomposés), `output-clarity-discipline.md` v2.79.2 (iconographie + headers FR sobres dans rendu update), `territory-discipline.md` v2.67 (substrate stable vs production runtime · l'update touche le substrate canon, jamais la production opérateur). Ferme le gap *"distribution updates PhantomOS manuelle (clone Largo2z9/phantomos + git pull) sans preserve operator state · sans check version · sans disclosure pré-update · sans migrations canon BREAKING · sans backup automatique · sans rollback path · risque opérateur perd brands à un update manuel · friction adoption forte"* flag systémique Sprint v2.80 post-audit Largo distribution pipeline canon (état actuel manuel · cible scalable jusqu'à 20-50 opérateurs sans friction · niveau pro shipped product).
+> Canonique v2.80.0. Doctrine canon racine qui codifie le pattern de distribution et mise à jour PhantomOS opérateur-facing. L'opérateur reçoit les updates sans friction · preserve son contexte (brands · learnings · operator state · todos · credentials · session-state) · les migrations canon adaptent ses données aux nouvelles structures (BREAKING) sans intervention manuelle. Doctrine sœur de `engagement-disclosure-discipline.md` v2.79.5 (disclosure pré-update cohérent), `decomposition-visibility-discipline.md` v2.79.5+ (NIVEAU 0 paramètres update décomposés), `output-clarity-doctrine.md` v2.79.2 (iconographie + headers FR sobres dans rendu update), `territory-doctrine.md` v2.67 (substrate stable vs production runtime · l'update touche le substrate canon, jamais la production opérateur). Ferme le gap *"distribution updates PhantomOS manuelle (clone Largo2z9/phantomos + git pull) sans preserve operator state · sans check version · sans disclosure pré-update · sans migrations canon BREAKING · sans backup automatique · sans rollback path · risque opérateur perd brands à un update manuel · friction adoption forte"* flag systémique Sprint v2.80 post-audit Largo distribution pipeline canon (état actuel manuel · cible scalable jusqu'à 20-50 opérateurs sans friction · niveau pro shipped product).
 
 ---
 
@@ -105,7 +105,7 @@ Ajout NEW (skill · doctrine · slash command · field optionnel · resource tem
 
 **Exemples canon historiques** ·
 
-- v2.65 NEW doctrine `scope-extension-discipline.md` (additive · doctrine devient consommable)
+- v2.65 NEW doctrine `scope-extension-doctrine.md` (additive · doctrine devient consommable)
 - v2.69 NEW skill `trendtrack-enrich-brand` (additive · skill devient invokable)
 - v2.70 NEW slash command `/breakdown stepprs` (additive · command devient triggerable)
 - v2.75 NEW doctrine `extension-discovery-discipline.md` (additive · pipeline NEW entities)
@@ -432,8 +432,8 @@ Voir §10 ci-dessus. Pattern miroir HR-UDD-1 à HR-UDD-8 enforcement runtime.
 
 - `engagement-disclosure-discipline.md` v2.79.5 · disclosure pré-update cohérent (HR-UDD-5 cross-ref HR-EDD-1 + HR-EDD-2 + HR-EDD-3) · 5 éléments obligatoires · close binaire canon
 - `decomposition-visibility-discipline.md` v2.79.5+ · NIVEAU 0 paramètres update décomposés pre-exec (HR-UDD-5 cross-ref HR-DVD-10) · 6 éléments obligatoires sur update contenant TRANSFORM
-- `output-clarity-discipline.md` v2.79.2 · iconographie unique 5 symboles + headers FR sobres + density modérée respectés dans rendu update (HR-UDD-5 cross-ref HR-OCD-1 + HR-OCD-3 + HR-OCD-7 + HR-OCD-8)
-- `territory-discipline.md` v2.67 · substrate stable vs production runtime · l'update touche le substrate canon (workspace-template structure) jamais la production opérateur (brands encodés · operator state) · cross-ref HR-UDD-1
+- `output-clarity-doctrine.md` v2.79.2 · iconographie unique 5 symboles + headers FR sobres + density modérée respectés dans rendu update (HR-UDD-5 cross-ref HR-OCD-1 + HR-OCD-3 + HR-OCD-7 + HR-OCD-8)
+- `territory-doctrine.md` v2.67 · substrate stable vs production runtime · l'update touche le substrate canon (workspace-template structure) jamais la production opérateur (brands encodés · operator state) · cross-ref HR-UDD-1
 - `operational-system-discipline.md` v2.71 · doctrine mère 5 couches · UDD opère Couche 1 (ECR · Encoder · Consommer · Réviser) + Couche 5 (Rituels release canon) · cumulatif canon
 - `extension-discovery-discipline.md` v2.75 · NEW entities ADDITIVE auto-consommées post-update · cohérent UDD type 1 ADDITIVE backward compat strict
 - `update-workspace` skill existing · à wirer pipeline canon UDD v2.80
@@ -450,7 +450,7 @@ Voir §10 ci-dessus. Pattern miroir HR-UDD-1 à HR-UDD-8 enforcement runtime.
 
 Update Distribution Discipline est la couche racine DELIVERY canon · permet à PhantomOS de se déployer / updater / migrer professionnellement sans friction opérateur · scalable jusqu'à N opérateurs.
 
-**Couche DELIVERY canon** · UDD opère AVANT runtime workspace opérateur. Pipeline canon · distribution Largo2z9/phantomos (canon source of truth) → update local workspace opérateur (rsync exclude strict) → migrations canon (TRANSFORM) → validation post-update → backup préservé. Cohérent territory-discipline.md v2.67 (substrate stable vs production runtime).
+**Couche DELIVERY canon** · UDD opère AVANT runtime workspace opérateur. Pipeline canon · distribution Largo2z9/phantomos (canon source of truth) → update local workspace opérateur (rsync exclude strict) → migrations canon (TRANSFORM) → validation post-update → backup préservé. Cohérent territory-doctrine.md v2.67 (substrate stable vs production runtime).
 
 **Couche AMONT cohérent EDD v2.79.5** · disclosure pré-update canon cohérent engagement-disclosure-discipline.md sister doctrine. Pattern miroir · EDD couvre AMONT pré-engagement skill (disclosure runtime) · UDD couvre AMONT pré-engagement update (disclosure delivery). Cumulatifs canon · pas redondants.
 
@@ -465,7 +465,7 @@ UDD est le GATE distribution canon · couche DELIVERY entre canon source of trut
 ## Status
 
 - **Canonique v2.80.0.** Codifie pattern systémique distribution + update PhantomOS opérateur-facing identifié post-audit Largo distribution pipeline canon Sprint v2.80 (état actuel manuel clone Largo2z9/phantomos + git pull · sans preserve operator state · sans check version · sans disclosure pré-update · sans migrations canon BREAKING · sans backup automatique · sans rollback path · cible scalable jusqu'à 20-50 opérateurs sans friction · niveau pro shipped product).
-- **Doctrine sœur** · engagement-disclosure-discipline.md v2.79.5 (disclosure pré-update cohérent · sister doctrine AMONT) · decomposition-visibility-discipline.md v2.79.5+ (NIVEAU 0 paramètres update décomposés pre-exec) · output-clarity-discipline.md v2.79.2 (iconographie + headers FR sobres dans rendu update) · territory-discipline.md v2.67 (substrate stable vs production runtime canon delimitation) · operational-system-discipline.md v2.71 (doctrine mère 5 couches · UDD opère Couche 1 + 5) · extension-discovery-discipline.md v2.75 (NEW entities ADDITIVE auto-consommées cohérent type 1).
+- **Doctrine sœur** · engagement-disclosure-discipline.md v2.79.5 (disclosure pré-update cohérent · sister doctrine AMONT) · decomposition-visibility-discipline.md v2.79.5+ (NIVEAU 0 paramètres update décomposés pre-exec) · output-clarity-doctrine.md v2.79.2 (iconographie + headers FR sobres dans rendu update) · territory-doctrine.md v2.67 (substrate stable vs production runtime canon delimitation) · operational-system-discipline.md v2.71 (doctrine mère 5 couches · UDD opère Couche 1 + 5) · extension-discovery-discipline.md v2.75 (NEW entities ADDITIVE auto-consommées cohérent type 1).
 - **Backward compat** · strict additif. Doctrine NEW n'override aucune existing. Pipeline distribution legacy pre-v2.80 (clone manuel) toléré jusqu'à patch · v2.80+ migration progressive enforce pipeline canon UDD via NEW slash commands `/update` + `/version` + `/rollback`. Skills existing `update-workspace` + `migrate-workspace` à wirer pipeline canon Sprint v2.80+.
 - **First applications** · Sprint v2.80 NEW doctrine racine update-distribution-discipline + NEW slash commands `/update` + `/version` (Agent 2 sprint v2.80) + GitHub Releases tags rétroactifs v2.65 → v2.79.5 sur Largo2z9/phantomos (Agent 1 sprint v2.80). Sprint v2.81+ NEW slash command `/rollback {version}` + scaffold migrations canon historiques v2.63 + v2.64 + v2.66 BREAKING + pipeline CI/CD GitHub Actions release automation.
 - **Promotion criterion** · à reviewer après 5+ opérateurs onboard via pipeline canon UDD plus 1 audit cross-opérateur update adoption rate convergence plus learnings.json append patterns UDD adoption rate stable 90%+ plus zéro operator state écrasé cross 3+ updates consécutifs plus zéro captivité opérateur post-update cross 3+ rollback paths utilisés.

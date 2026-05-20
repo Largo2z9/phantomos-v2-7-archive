@@ -1,6 +1,6 @@
 # Skill Authoring Discipline (SAD) · Operating Doctrine
 
-> Working draft, R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` in Release mode. **SAD is the meta-discipline above SED + CMR.** It governs how skills consuming the substrate (SED) and the production mechanism (CMR) are created, evolve, compose, and fail safely. Without SAD, skill authors re-invent gates session-to-session, doctrines drift in the absence of governance, and the system depends on the maintainer's mental arbitration to stay coherent.
+> Working draft, R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/skill-authoring-doctrine.md` in Release mode. **SAD is the meta-discipline above SED + CMR.** It governs how skills consuming the substrate (SED) and the production mechanism (CMR) are created, evolve, compose, and fail safely. Without SAD, skill authors re-invent gates session-to-session, doctrines drift in the absence of governance, and the system depends on the maintainer's mental arbitration to stay coherent.
 
 ---
 
@@ -256,7 +256,7 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 ## 12. Status
 
 - **Draft v0.1** · research zone, Build mode, .
-- **Promotion criterion** · to be reviewed by the maintainer, then promoted to `workspace-template/docs/system/skill-authoring-discipline.md` once cross-references with CI / SED / CMR / PTD scope are validated and the 5 pre-existing skill-* docs are confirmed consolidated as referenced inputs (not deprecated, kept as detail references).
+- **Promotion criterion** · to be reviewed by the maintainer, then promoted to `workspace-template/docs/system/skill-authoring-doctrine.md` once cross-references with CI / SED / CMR / PTD scope are validated and the 5 pre-existing skill-* docs are confirmed consolidated as referenced inputs (not deprecated, kept as detail references).
 - **First applications** · frontmatter triad pass on 6 CMR-adjacent skills, mass `reasoning_pattern: null` declaration on 49 non-matrix skills, invariant-violation-detector hook draft, catalogue size measurement.
 
 ---

@@ -319,6 +319,6 @@ Photo générée      ouvre dans Preview · open {path}
 - `decompose-ad` (reverse-engineering ad externe, sibling P5 visual)
 - `creative.schema.json` v1.2 (variant_of, variant_axis, meta.validation_status)
 - `resources/canon/copy/formats-livrables/*.json` (contraintes platform/format)
-- `docs/system/skill-authoring-discipline.md` (frontmatter triad, type producer baseline)
+- `docs/system/skill-authoring-doctrine.md` (frontmatter triad, type producer baseline)
 - `docs/system/canonical-matrix-reasoning.md` (préservation concept core = matrix-driven)
 - `validate-resources` (post-write silencieux)

@@ -285,7 +285,7 @@ Marquer 🔥 sur top 1 par ligne. `0` sur cellules vierges. Aucun em-dash dans t
 - `creative-formula.md` V3 · 5 sources d'angle canoniques colonnes matrice
 - `docs/system/canonical-matrix-reasoning.md` · cardinalité ≤ 5, awareness compatibility hard rule
 - `docs/system/decomposition-visibility-discipline.md` v2.81.1+ NIVEAU LIVE · doctrine racine 3 phases temporelles · AVANT exec disclosure pré-engagement · PENDANT exec NIVEAU LIVE thinking aloud expert action LOURDE 2 niveaux abstraction macro contexte priorisation + micro top-3 territoires phrasé pourquoi · APRÈS exec top territoires + matrice scoring synthèse (no raw numeric scoring exposed canon Compositional Cartography §7) · HR-DVD-11 + AP-DVD-11 enforcement.
-- `docs/system/skill-authoring-discipline.md` · frontmatter triad + lifecycle
+- `docs/system/skill-authoring-doctrine.md` · frontmatter triad + lifecycle
 - `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
 - `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)
 - `produce-paid-angles` · downstream sur trous détectés

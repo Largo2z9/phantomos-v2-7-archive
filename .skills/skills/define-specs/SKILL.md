@@ -421,7 +421,7 @@ Validation requise · valider en bloc, corriger un champ, ou poser une question 
 - Sub-skill ingest : `.skills/skills/ingest-resource/SKILL.md`
 - Doctrine production : `docs/system/canonical-matrix-reasoning.md`
 - Doctrine substrate : `docs/system/schema-encoding-discipline.md`
-- Doctrine authoring : `docs/system/skill-authoring-discipline.md`
+- Doctrine authoring : `docs/system/skill-authoring-doctrine.md`
 - Doctrine racine v2.78.2 + v2.81.1+ NIVEAU LIVE : `docs/system/decomposition-visibility-discipline.md` (3 phases temporelles · AVANT exec NIVEAU 0 paramètres décomposés · PENDANT exec NIVEAU LIVE thinking aloud expert action LOURDE 2 niveaux abstraction macro produit + micro spec → mécanisme → bénéfice 3 couches phrasé · APRÈS exec NIVEAUX 1-3 Output Specs Visibility Matriciel · HR-DVD-11 + AP-DVD-11 enforcement)
 - Doctrine 3 couches bénéfices : `docs/system/pain-benefit-chain.md` (functional · emotional · identity canon Halbert/Sugarman/StoryBrand)
 - Doctrine investigation 5 sections : `docs/system/investigation-posture.md` (Observé / Déduit / Inconnu / Leviers / Close ouvert)

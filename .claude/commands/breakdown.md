@@ -888,7 +888,7 @@ Système intelligent (PhantomOS)
 
 **Dimension** · transverse · scelle la promesse extensibilité (PhantomOS grandit avec ton besoin, pas l'inverse)
 
-**Concept à transmettre** · PhantomOS arrive avec des concepts canon (audiences, produits, angles, etc.) qui couvrent les marques DTC standard. Mais ton besoin sortira parfois du cadre shipped. Le système est conçu pour absorber l'inconnu via une méthode canonique (doctrine `scope-extension-discipline.md` v2.65 + orchestrateur `scaffold-extension` v1.1.0+ 9 phases).
+**Concept à transmettre** · PhantomOS arrive avec des concepts canon (audiences, produits, angles, etc.) qui couvrent les marques DTC standard. Mais ton besoin sortira parfois du cadre shipped. Le système est conçu pour absorber l'inconnu via une méthode canonique (doctrine `scope-extension-doctrine.md` v2.65 + orchestrateur `scaffold-extension` v1.1.0+ 9 phases).
 
 **Les 4 chemins d'extension canon · cas concrets Stepprs**
 
@@ -1035,7 +1035,7 @@ Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+ c
 - `docs/system/compositional-cartography.md` (équation NOYAU × CONTEXTE × MODIFICATEURS)
 - `docs/doctrine/audiences-cartography-doctrine.md` (cartographie hiérarchique)
 - `docs/doctrine/pain-benefit-chain-doctrine.md` (chaîne douleur surface → racine)
-- `docs/system/territory-discipline.md` (territoire stable vs production volatile)
+- `docs/system/territory-doctrine.md` (territoire stable vs production volatile)
 
 **Doctrines couche 2 (règles)** ·
 - `docs/system/investigation-posture.md` (5 sections obligatoires + vocabulaires fermés)
