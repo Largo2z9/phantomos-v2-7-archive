@@ -1,8 +1,10 @@
 # PhantomOS
 
-PhantomOS is the agentic workspace for DTC (direct-to-consumer) paid acquisition operators. The methodology is encoded once (audiences, angles, creatives, offers, learnings) and the agent operates on it across every session, every brand, every channel. Context lives in the workspace, not in chat threads. Intelligence compounds with use.
+PhantomOS is an agentic workspace for DTC operations. You encode your brand once (products, audiences, strategy, learnings), the agent reasons and executes on it across sessions, and every validated output enriches your knowledge for what's next.
 
-The system targets operators whose paid acquisition is a craft : DTC brand founders past month 6, growth leads at agencies running multiple DTC clients, solo operators spending most of their time on Meta, TikTok, and Google Ads. It is not a chatbot with memory : the operator's context is read from the workspace before every agent response.
+The methodology lives in the workspace, not in chat threads. Context is read from disk before every agent response. Intelligence compounds with use across every session, every brand, every channel.
+
+The system targets DTC operators whose paid acquisition is a craft · brand founders past month 6, growth leads at agencies running multiple DTC clients, solo operators spending most of their time on Meta, TikTok, and Google Ads. It is not a chatbot with memory.
 
 The product is the workspace plus the DTC paid kit. PhantomOS ships with the full DTC paid acquisition kit : angles library, creative mechanics, proof types, audience encoding patterns, advertorial LP frameworks, hook formulas. Day-1 operational on a first brand, no encoding from scratch required. The platform itself is extensible if operating outside DTC, the kit is optimized for DTC paid.
 

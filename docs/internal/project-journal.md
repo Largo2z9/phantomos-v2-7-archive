@@ -12,6 +12,78 @@
 
 ---
 
+## v2.87.0 · 2026-05-20 · SIMPLIFICATION ONBOARDING + COHÉRENCE CROSS-SURFACES · 4 milestones · D#466 captured
+
+Sprint qualitativement différent post-clôture chantier hygiène structurelle v2.86.0. Cible · aligner spec ↔ runtime ↔ surfaces de premier contact. 3 problèmes diagnostiqués v2.86.x ·
+1. tour.md 686L dépasse cap 500L doctrines · spec trop chargée pour exécution rigoureuse runtime
+2. Schema awareness.json fresh workspace manque fields NEW v2.81 (`first_deliverable_built` · `tour_entry_door`) · M5b inexécutable proprement
+3. WELCOME.md + README.md + tour.md = 3 surfaces premier contact non coordonnées · risque drift narratif
+
+**Phase 1 décisions architecture** · 3 décisions tranchées Largo orchestrateur ·
+
+1. **Architecture 4 milestones canoniques** validée · M1 splitter 4 portes (préservé) + M2 first deliverable encadré (remonté de M5b position 9 → position 2 court-circuite tunnel) + M3 close réflexif 4 options réutilisé partout (anciennement M8 + contient M9 dégradé via slug `build-skill:{territoire}`) + M4 replay évolutif (préservé). Anciens M2 arc substance séquentiel + M3 drill territoire + M4 setup hub + M5 wedge + M6 skill concept + M7 synthesis · TOUS fusionnés dans options M3 close via slugs. Caveats préservation · arc substance Porte A accessible via slug `volet:{nom}` dans M3 close + gate Porte A M2 option *"Explorer un volet d'abord"*.
+
+2. **Matrice défauts deliverable par porte M2** validée · Porte A `arc:substance` → snapshot atlas Stepprs (cas pédagogique canon `_EXAMPLE/stepprs`) · Porte B `setup:brand` → atlas complet marque opérateur · Porte C `import:archive` → atlas post-import depuis ressources · Porte D `explore:free` → free-text scan signaux puis recommendation. Free-text override TOUJOURS disponible.
+
+3. **Phrase canon v4** validée · *"PhantomOS est un workspace agentic pour l'opération DTC. Tu encodes ta marque une fois (produits, audiences, stratégie, learnings), l'agent y raisonne et exécute à travers les sessions, et chaque sortie validée enrichit ta connaissance pour la suite."* (micro-ajustement v1 → v4 · `l'agent y raisonne et exécute` au lieu de `dessus`).
+
+**Phase 2 migration schema awareness.json** · v1.0 → v1.1 · 5 fields NEW (`tour_entry_door` enum A/B/C/D + `paths_skipped` array + `first_deliverable_built` boolean | null + `first_deliverable_skill` string | null + `first_deliverable_validated_corrections` integer) + 1 type fix (`first_skill_built` false → null cohérent boolean | null default). Migration script idempotent `operations/migrations/v2.87.0-awareness-schema-fields.py` · backup horodaté · re-run safe · pattern miroir v2.42/v2.63/v2.64. Tests · workspace fresh OK + migration legacy v1.0 → v1.1 confirmée sur phantom-test-v286.
+
+**Phase 3 réécriture tour.md** · 686L → 284L (**-59%**) · cap cible 400L respecté avec marge 116L · cap 500L doctrines largement sous. Structure cible ·
+
+| Section | Lignes |
+|---------|--------|
+| Frontmatter + header + doctrine ref + posture | 16 |
+| Mode detection | 13 |
+| Conversation register calibration (compressé tableaux) | 14 |
+| M1 Splitter 4 portes MECE | 42 |
+| M2 First deliverable encadré | 39 |
+| M3 Close réflexif 4 options | 67 |
+| M4 Replay évolutif | 25 |
+| Awareness writes table | 19 |
+| Constraints non-négociables | 19 |
+| Exit signals | 7 |
+| Related canon | 14 |
+| **TOTAL** | **284L** |
+
+Self-conformance Phase 2.C menée · sémantique opérationnelle préservée · architecture 4 milestones cohérente · slugs runtime déterministes · voice-doctrine compliance 5/5.
+
+**Phase 4 cohérence 3 surfaces** · WELCOME 15L → 17L (+2 phrase canon en tête) · README 67L → 69L (+2 phrase canon restructure) · lexicon 103L → 119L (+16 · 4 entrées NEW · `Workspace agentic` · `Skill` · `Porte d'entrée` · `Slug`). Phrase canon v4 littéralement identique cross 3 surfaces (README L3 + WELCOME L3 + tour.md M1 EN) + entrée lexicon dédiée. Spot-check cross-surfaces · l'utilisateur qui passe README (GitHub public) → WELCOME (Claude Code première activation) → `/tour` (runtime onboarding) lit la même phrase canon · zéro drift narratif possible.
+
+**Phase 5 test runtime ISOLÉE v2.87.0bis** · discipline honnêteté gate distribution non négociable fatigué. Pattern miroir isolations précédentes (v2.85.1bis · v2.85.4 brand-isolation REPORT v2.85.5 · v2.85.3 effort 3). État stable mergeable maintenant · 0 perte risquée overnight · Largo orchestrateur code review intermédiaire avant test runtime.
+
+**Préservations 8/8 confirmées** ·
+
+1. Canons Vincent runtime (slugs `exit:setup` + `pivot:{volet}`) · M3 Constraints + slugs explicit dans options metadata
+2. Détection live registre (grounded/standard/dense/technical) · section dédiée 14L
+3. Bypass URL pasted → Porte B silencieux · M1 section dédiée
+4. Awareness writes structurés (nouveaux fields v1.1) · synthèse table 19L
+5. Failure modes snapshot (3 cas · 3 handlings honnêtes) · M2 section dédiée · pas d'apology nue
+6. HR-OHD-2 zéro typage profil métier · 3 mentions explicit
+7. Prose conversationnelle native + ton premium · posture canon + Constraints
+8. Politique FR/EN voice-doctrine v2.84.1 · patterns FR + EN préservés tous renders opérateur
+
+**Tests non-régression PASSÉS 5/5** · build-manifest 81 skills + 92 jargon ✓ · build-brand-snapshot _EXAMPLE 24 lines ✓ · grep em-dash 0 cross 4 surfaces ✓ · migration script idempotent workspace clean ✓ · migration legacy v1.0 → v1.1 phantom-test-v286 ✓.
+
+**Wall-time consommé v2.87.0** · ~70 min cumulé (Phase 1 8 min + Phase 2 15 min + Phase 3 25 min + Phase 4 10 min + ship 12 min) · cap 2.5h largement respecté.
+
+D#466 captured · D#467 réservé v2.87.0bis · NEW memory canon `onboarding_simplified_v287` (architecture 4 milestones + phrase canon v4 + matrice défauts par porte · enrichi v2.87.0bis post-test runtime).
+
+**Backlog v2.87.0bis** ·
+- Sprint dédié test runtime workspace fresh phantom-test-v287 (clone post-v2.87.0)
+- Capture outputs M1 splitter + M2 first deliverable + M3 close + M4 replay
+- Verdict PASS/FAIL/DEGRADED par milestone
+- Ship v2.87.0bis metadata si PASS · diagnostic + fix sinon
+- Memory canon `validation_runtime_passed` NEW si PASS 5/5
+
+**Backlog distribution** ·
+- GitHub Releases tags
+- Liste opérateurs cible
+- Message invitation
+- Canal feedback
+
+---
+
 ## v2.86.0 · 2026-05-20 · AUDIT CROSS-FILES FINAL · 56 patches résiduels + 3 décisions tranchées · D#465 captured
 
 Sprint dernière passe post-clôture chantier propagation contenu v2.85.5. Audit transverse résiduel pre-distribution + sprints v2.86.1 (validation runtime gate) + v2.86.2 (test discovery externe).

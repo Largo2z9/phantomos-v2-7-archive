@@ -2,6 +2,22 @@
 
 Vocabulaire métier user-facing pour opérateurs DTC paid. Termes classiques que vous utilisez déjà au quotidien.
 
+## Workspace agentic
+
+Le workspace PhantomOS lui-même · un dossier de fichiers (brands, resources, skills, docs) que l'agent lit et écrit à chaque session. Contraste avec un chatbot dont la mémoire vit dans le thread. Ici la mémoire vit sur disque · l'agent la consulte avant chaque réponse.
+
+## Skill
+
+Capacité exécutable de l'agent · cartographier une audience, produire un angle paid, auditer un compte Meta. Une demande en langage naturel route vers le skill correspondant via `.skills/_manifest.json`. Le catalogue est navigable via `/skills`.
+
+## Porte d'entrée
+
+Une des quatre options du splitter initial de `/tour` (A explication guidée · B configurer une marque maintenant · C importer ce qui existe déjà · D juste explorer). Chaque porte route vers un livrable par défaut différent (atlas Stepprs pédagogique pour A · atlas complet marque opérateur pour B · etc.).
+
+## Slug
+
+Identifiant court canon utilisé en interne pour le routing déterministe · `setup:brand`, `volet:cycle`, `drill:creative`, `exit:setup`, `pivot:territoires`. Vous ne tapez pas les slugs, l'agent les pose dans ses options et les consume au moment du choix.
+
 ## Brand
 
 Votre marque encodée dans PhantomOS. Identité, contacts, finances, concurrents. Stockée dans `brands/{slug}/brand.json`.
