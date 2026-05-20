@@ -1,0 +1,109 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.87.0",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "summary": "Sprint MINOR v2.87.0 · SIMPLIFICATION ONBOARDING + COHÉRENCE CROSS-SURFACES · tour.md 686L → 284L (-59%) · architecture 4 milestones · schema awareness.json v1.1 · phrase canon cross 3 surfaces · Phase 5 test runtime ISOLÉE v2.87.0bis.",
+  "context_amont": {
+    "trigger": "Diagnostic v2.86.x identifie 3 problèmes · tour.md 686L dépasse cap 500L doctrines, schema awareness.json manque fields NEW v2.81 (M5b inexécutable proprement), 3 surfaces premier contact non coordonnées (drift narratif).",
+    "decision_largo_phase_1": "3 décisions architecturales tranchées Phase 1 · architecture 4 milestones validée + matrice défauts par porte M2 validée + phrase canon v4 validée (micro-ajustement 'l'agent y raisonne et exécute').",
+    "scope_strict": "Simplification chirurgicale UNIQUEMENT · pas de redesign ambitieux · préservations 8/8 non-négociables tenues."
+  },
+  "phases_executed": {
+    "phase_1_decisions_architecture": "VALIDÉE · 3 décisions Largo + 2 caveats préservation arc substance Porte A via slugs M3 close",
+    "phase_2_schema_awareness_migration": "VALIDÉE · awareness.json v1.0 → v1.1 (5 fields NEW + 1 type fix) + migration script idempotent v2.87.0-awareness-schema-fields.py",
+    "phase_3_tour_md_rewrite": "VALIDÉE · 686L → 284L (-59%) · 4 milestones M1-M4 · self-conformance Phase 2.C menée",
+    "phase_4_coherence_3_surfaces": "VALIDÉE · WELCOME +2L · README +2L · lexicon +16L · phrase canon v4 littéralement identique cross 3 surfaces",
+    "phase_5_test_runtime": "ISOLÉE v2.87.0bis (discipline honnêteté gate distribution pas négociable fatigué)"
+  },
+  "files_patched": [
+    {"file": ".claude/commands/tour.md", "scope": "Réécriture v2.81.0 → v2.87.0 · architecture 4 milestones · 686L → 284L (-59%) · phrase canon v4 M1 welcome FR+EN · matrice défauts M2 par porte · close réflexif M3 universel avec slugs explicit · M4 replay évolutif"},
+    {"file": "operator/awareness.json", "scope": "Schema v1.0 → v1.1 · 5 fields NEW (tour_entry_door · paths_skipped · first_deliverable_built · first_deliverable_skill · first_deliverable_validated_corrections) + 1 type fix (first_skill_built false→null)"},
+    {"file": "operations/migrations/v2.87.0-awareness-schema-fields.py", "scope": "NEW · migration script idempotent · backup horodaté · re-run safe · pattern miroir v2.42/v2.63/v2.64"},
+    {"file": "WELCOME.md", "scope": "15L → 17L · phrase canon v4 EN en tête + flow réécrit pour matcher architecture v2.87 (4 portes splitter + first deliverable 5-15 min + close réflexif 4 options)"},
+    {"file": "README.md", "scope": "67L → 69L · phrase canon v4 EN exacte en tête section description + restructure progression quoi/comment/pour qui"},
+    {"file": "lexicon.md", "scope": "103L → 119L · 4 entrées NEW prepend avant Brand · Workspace agentic · Skill · Porte d'entrée · Slug"},
+    {"file": "_version.json", "scope": "Bump 2.86.0 → 2.87.0"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.87.0 simplification onboarding"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.87.0 + architecture decision 4 milestones + phrase canon v4 cross-surfaces + gap schema awareness corrigé"},
+    {"file": "docs/internal/releases/manifest/2.87.0-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "tour_md_diff": {
+    "before_lines": 686,
+    "after_lines": 284,
+    "compression_percent": -59,
+    "decompte_per_section": {
+      "frontmatter_header_doctrine_ref_posture": 16,
+      "mode_detection": 13,
+      "conversation_register_calibration": 14,
+      "M1_splitter_4_portes": 42,
+      "M2_first_deliverable_encadre": 39,
+      "M3_close_reflexif_4_options": 67,
+      "M4_replay_evolutif": 25,
+      "awareness_writes_table": 19,
+      "constraints_non_negociables": 19,
+      "exit_signals": 7,
+      "related_canon": 14
+    },
+    "architecture_diff": {
+      "M1_splitter_4_portes": "v2.81 = M1 splitter + welcome 3-5L · v2.87 = identique (préservé)",
+      "M2_first_deliverable_encadre": "v2.81 = M5b position 9 (jamais exécuté observé) · v2.87 = M2 position 2 (court-circuit tunnel) + matrice défauts par porte + gate Porte A pédagogique Stepprs",
+      "M3_close_reflexif_4_options": "v2.81 = M8 séparé · v2.87 = M3 réutilisé partout via slugs (volet · drill · exit · pivot · build-skill) · contient M9 dégradé first-skills offer",
+      "M4_replay_evolutif": "v2.81 = section séparée post-M9 · v2.87 = M4 dédié",
+      "milestones_supprimees": "M2 arc substance séquentiel + M3 drill territoire séquentiel + M4 setup hub + M5 wedge + M6 skill concept + M7 synthesis + M9 séquentiel · TOUS fusionnés dans options M3 close réflexif (accessibles à la demande via slugs)"
+    }
+  },
+  "phrase_canon_v4": {
+    "fr": "PhantomOS est un workspace agentic pour l'opération DTC. Tu encodes ta marque une fois (produits, audiences, stratégie, learnings), l'agent y raisonne et exécute à travers les sessions, et chaque sortie validée enrichit ta connaissance pour la suite.",
+    "en": "PhantomOS is an agentic workspace for DTC operations. You encode your brand once (products, audiences, strategy, learnings), the agent reasons and executes on it across sessions, and every validated output enriches your knowledge for what's next.",
+    "presence_cross_surfaces": ["README.md L3 EN", "WELCOME.md L3 EN", "tour.md M1 welcome FR+EN", "lexicon.md entrée Workspace agentic"]
+  },
+  "preservations_non_negociables": {
+    "1_canons_vincent_runtime": "✓ M3 Constraints + slugs exit:setup + pivot:{volet} explicit dans options metadata",
+    "2_detection_live_registre": "✓ Section dédiée 14L (grounded/standard/dense/technical · jamais demandé)",
+    "3_bypass_url_pasted_porte_b": "✓ M1 section dédiée",
+    "4_awareness_writes_structures_v1_1": "✓ Section synthèse table 19L · 5 fields NEW",
+    "5_failure_modes_snapshot_3_cas": "✓ M2 section dédiée · pas d'apology nue · path forward dans même phrase",
+    "6_HR_OHD_2_zero_typage_profil": "✓ 3 mentions explicit (M1 + M4 + Constraints)",
+    "7_prose_native_zero_ascii_ton_premium": "✓ Posture canon + Constraints non-négociables",
+    "8_politique_fr_en_voice_doctrine": "✓ Patterns FR + EN préservés tous renders opérateur · voice-doctrine v2.84.1 référencée"
+  },
+  "schema_awareness_migration": {
+    "before_version": "1.0",
+    "after_version": "1.1",
+    "fields_added": [
+      "tour_entry_door (enum A/B/C/D · null default)",
+      "paths_skipped (array · [] default)",
+      "first_deliverable_built (boolean | null · null default)",
+      "first_deliverable_skill (string | null · null default)",
+      "first_deliverable_validated_corrections (integer · 0 default)"
+    ],
+    "type_fixes": [
+      "first_skill_built false → null (cohérent boolean | null default pas-encore-construit vs construit=false)"
+    ],
+    "migration_script": "operations/migrations/v2.87.0-awareness-schema-fields.py · idempotent · backup horodaté · re-run safe · pattern miroir v2.42/v2.63/v2.64"
+  },
+  "tests_non_regression": {
+    "build_manifest": "PASS · 81 skills + 92 jargon entries",
+    "build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+    "em_dash_cross_4_surfaces": "0 occurrence (tour.md + WELCOME.md + README.md + lexicon.md) · ✓",
+    "migration_script_idempotent": "PASS · re-run sur v1.1 = skip propre · backup créé .bak.YYYY-MM-DD",
+    "migration_script_legacy_v1_0_to_v1_1": "PASS · testé sur phantom-test-v286 · 5 fields ajoutés · defaults corrects"
+  },
+  "scope_constraint": {
+    "in_scope": ["Phase 2 migration schema awareness.json v1.0 → v1.1", "Phase 3 réécriture tour.md 686L → 284L", "Phase 4 cohérence 3 surfaces phrase canon v4", "Tests non-régression standards", "version + manifest + CHANGELOG + project-journal + D#466 + NEW memory canon onboarding_simplified_v287"],
+    "out_of_scope_explicit": ["Phase 5 test runtime · ISOLÉE sprint v2.87.0bis (discipline honnêteté gate distribution pas négociable fatigué · cap reproductible)", "voice-doctrine.md lignes 71+91 refonte (descriptifs convention historique · backlog v2.86.x)", "Notion/Airtable mention operational-system §1 (refactor structurel hors scope · backlog)"]
+  },
+  "decisions_captured": ["D#466"],
+  "decisions_reserved": ["D#467 pour v2.87.0bis test runtime + ship final"],
+  "memory_canons_new": ["onboarding_simplified_v287 (architecture 4 milestones + phrase canon v4 + matrice défauts par porte · enrichi v2.87.0bis post-test runtime)"],
+  "backlog_v2_87_0bis_plus": [
+    "v2.87.0bis · sprint dédié test runtime workspace fresh phantom-test-v287 · /tour 4 milestones validation + ship final si PASS",
+    "Distribution preparation · GitHub Releases tags + liste opérateurs + message invitation + canal feedback"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.87.0 = git revert HEAD strict. Schema awareness.json v1.1 backward compat avec v1.0 (5 fields additifs · 1 type fix). tour.md simplification préservations 8/8. Zéro impact runtime théorique (mécanisme runtime Claude Code identique · slash command chargé pareil)."
+}

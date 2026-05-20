@@ -7,6 +7,27 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.87.0] · 2026-05-20
+### Changed
+- **SIMPLIFICATION ONBOARDING + COHÉRENCE CROSS-SURFACES** · tour.md v2.81.0 → v2.87.0 · architecture 4 milestones canoniques + close réflexif réutilisé partout
+- `.claude/commands/tour.md` · 686L → 284L (**-59%**) · M1 splitter 4 portes + M2 first deliverable encadré (remonté position 2 court-circuite tunnel) + M3 close réflexif universel (slugs `volet:{nom}` · `drill:{territoire}` · `exit:setup` · `pivot:{volet}` · `build-skill:{territoire}`) + M4 replay évolutif
+- `operator/awareness.json` · schema v1.0 → v1.1 · 5 fields NEW (`tour_entry_door` · `paths_skipped` · `first_deliverable_built` · `first_deliverable_skill` · `first_deliverable_validated_corrections`) + 1 type fix (`first_skill_built` false → null)
+- NEW `operations/migrations/v2.87.0-awareness-schema-fields.py` · migration idempotent · backup horodaté · re-run safe (pattern miroir v2.42/v2.63/v2.64)
+- `WELCOME.md` 15L → 17L · phrase canon v4 EN en tête + flow réécrit pour matcher architecture v2.87
+- `README.md` 67L → 69L · phrase canon v4 EN exacte en tête section description + restructure progression
+- `lexicon.md` 103L → 119L · 4 entrées NEW prepend avant Brand (`Workspace agentic` · `Skill` · `Porte d'entrée` · `Slug`)
+### Notes
+- **3 décisions Phase 1 tranchées Largo orchestrateur** ·
+  1. Architecture 4 milestones validée (avec 2 caveats préservation arc substance Porte A via slugs M3 close)
+  2. Matrice défauts deliverable par porte M2 validée (A=Stepprs pédagogique · B=brand opérateur · C=post-import · D=scan signaux)
+  3. Phrase canon v4 validée (micro-ajustement `l'agent y raisonne et exécute`)
+- **Phrase canon v4 littéralement identique cross 3 surfaces premier contact** (README L3 EN · WELCOME L3 EN · tour.md M1 FR+EN · lexicon entrée Workspace agentic)
+- **Préservations 8/8 confirmées** · canons Vincent runtime + détection live registre + bypass URL pasted + awareness writes structurés + failure modes 3 cas + HR-OHD-2 zéro typage profil métier + prose conversationnelle native + politique FR/EN voice-doctrine v2.84.1 + ton premium zéro concurrent nommé
+- Tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep em-dash 0 cross 4 surfaces · migration script idempotent confirmé (workspace clean + legacy v1.0 → v1.1)
+- **Phase 5 test runtime ISOLÉE v2.87.0bis** · discipline honnêteté gate distribution non négociable fatigué · pattern miroir isolations précédentes (v2.85.1bis · v2.85.4 brand-isolation REPORT v2.85.5 · v2.85.3 effort 3)
+- D#466 captured · D#467 réservé v2.87.0bis · NEW memory canon `onboarding_simplified_v287` (architecture 4 milestones + phrase canon v4 + matrice défauts par porte)
+- Backlog · v2.87.0bis test runtime workspace fresh phantom-test-v287 · distribution preparation (GitHub Releases + liste opérateurs + message invitation)
+
 ## [2.86.0] · 2026-05-20
 ### Changed
 - **AUDIT CROSS-FILES FINAL** post-clôture chantier propagation contenu v2.85.5
