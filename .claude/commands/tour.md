@@ -344,7 +344,7 @@ Puis `AskUserQuestion` 4 options · les 3 livrables canon listés + 1 option *"A
 
 **Awareness write post-livraison** · `awareness.first_deliverable_built = true` (si livré et validé par l'opérateur) OR `awareness.first_deliverable_built = false` (si l'opérateur reporte ou skip). Sert au gate M9 first-skills offer (dégradé en option opt-in post-tour · cf. M9 v2.81).
 
-**Validation point par point canon** · le skill consumer rend ses 4 niveaux matriciels canon (cf. `decomposition-visibility-discipline.md` v2.79.2+) AVANT que l'opérateur valide. L'opérateur corrige · l'agent retient · `awareness.first_deliverable_validated_corrections += 1` pour analytics canon.
+**Validation point par point canon** · le skill consumer rend ses 4 niveaux matriciels canon (cf. `decomposition-visibility-doctrine.md` v2.79.2+) AVANT que l'opérateur valide. L'opérateur corrige · l'agent retient · `awareness.first_deliverable_validated_corrections += 1` pour analytics canon.
 
 **Exit signals M5b** · si l'opérateur dit *"plus tard"* / *"pas maintenant"* / *"on saute ça"* → écrire `awareness.first_deliverable_built = false`, proposer en option opt-in post-tour via M9 dégradé. **Jamais** forcer le livrable · canon élasticité scope opérateur-driven.
 
@@ -669,7 +669,7 @@ If the operator expresses fatigue (*"on reprendra"*, *"pas aujourd'hui"*, *"plus
 - `docs/system/onboarding-holistic-doctrine.md` · doctrine racine panorama 360° agnostique (v2.79.3) · onboarding prose narrative canon v2.80.1
 - `docs/system/engagement-disclosure-discipline.md` · disclosure pré-engagement orchestrators + NIVEAU 0 paramètres décomposés (v2.79.5)
 - `docs/system/output-clarity-doctrine.md` · iconographie unique + standards opérateur-facing slash commands matriciels (v2.79.2)
-- `docs/system/decomposition-visibility-discipline.md` · 4 niveaux matriciels + NIVEAU 0 pré-exec (v2.79.5)
+- `docs/system/decomposition-visibility-doctrine.md` · 4 niveaux matriciels + NIVEAU 0 pré-exec (v2.79.5)
 - `lexicon.md` · canonical vocabulary to use verbatim
 - `docs/system/voice.md` · writing register and anti-patterns
 - `docs/vision/prisms.md` · angles to pull from for path expansions

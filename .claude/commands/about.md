@@ -415,7 +415,7 @@ Detect operator language at first turn (cf canon Language root CLAUDE.md). Outpu
 
 - `docs/system/onboarding-holistic-doctrine.md` · doctrine racine onboarding (v2.80.3 · arc substance guidé · `/about` backup)
 - `docs/system/output-clarity-doctrine.md` · standards Vercel-grade opérateur-facing (v2.79.2)
-- `docs/system/decomposition-visibility-discipline.md` · 4 niveaux matriciels canon (v2.79+)
+- `docs/system/decomposition-visibility-doctrine.md` · 4 niveaux matriciels canon (v2.79+)
 - `docs/system/investigation-posture.md` · 5 sections obligatoires stratégique
 - `docs/system/canonical-matrix-reasoning.md` · schema + matrice canon cohérence output
 - `docs/system/skill-routing-doctrine.md` · routing systémique + manifest fallback

@@ -30,13 +30,13 @@
     {"file": ".claude/commands/bird.md", "scope": "NEW Section Decomposition Visibility territoire-level · 4 NIVEAUX adaptés + HR-8 (42 → 109L · +67L)"},
     {"file": ".skills/skills/bird/SKILL.md", "scope": "NEW Section Decomposition Visibility territoire-level miroir bird.md · 4 NIVEAUX + status hypothèse/sourced + v0.1.0 → v0.2.0 (268 → 358L · +90L)"},
     {"file": ".claude/commands/breakdown.md", "scope": "NEW Section transversale Decomposition Visibility cas Stepprs réel encoded · 13 chapitres préservés · 3 HR + 3 AP (963 → 1063L · +100L · frontmatter v2.79.1)"},
-    {"file": "docs/system/decomposition-visibility-discipline.md", "scope": "Section 8 enrichie exhaustif (4+5+14+queries verbal trigger) + NEW HR-DVD-9 enforcement runtime + Section 14 updated · v2.78.2+ → v2.79.1+ (396 → 423L · +27L)"},
+    {"file": "docs/system/decomposition-visibility-doctrine.md", "scope": "Section 8 enrichie exhaustif (4+5+14+queries verbal trigger) + NEW HR-DVD-9 enforcement runtime + Section 14 updated · v2.78.2+ → v2.79.1+ (396 → 423L · +27L)"},
     {"file": "_version.json", "scope": "Bump 2.79.0 → 2.79.1 + manifest path 2.79.1"},
     {"file": "CHANGELOG.md", "scope": "Entry v2.79.1 prepended"},
     {"file": "docs/internal/releases/manifest/2.79.1-manifest.json", "scope": "NEW · this manifest"}
   ],
   "enforcement_runtime_coverage": {
-    "niveau_1_doctrine_canon_racine": "decomposition-visibility-discipline.md v2.79.1+",
+    "niveau_1_doctrine_canon_racine": "decomposition-visibility-doctrine.md v2.79.1+",
     "niveau_2_claude_md_skill_routing": "Skill routing v2.79.1 NEW sub-section",
     "niveau_3_skills_consumers_v2_78_2": ["snapshot-brand v1.5.0", "build-atlas-complete v1.6.0", "profile-audience v1.7.0", "define-specs v1.3.0"],
     "niveau_4_slash_commands_consumers_v2_79_1": ["/phantom NEW Section 6", "/bird NEW Section + skill v0.2.0", "/breakdown NEW Section transversale", "/scope cohérence v2.77 (sister canon)"],

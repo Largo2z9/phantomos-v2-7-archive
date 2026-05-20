@@ -31,7 +31,7 @@ Contextual Intelligence est la doctrine racine. Toutes les autres doctrines la s
 ## Output & operator-facing
 
 - **Investigation Posture** · `investigation-posture.md` · 5 sections obligatoires (observé · déduit · inconnu · leviers · close ouvert) · confidence chain explicit · drill-down macro opérateur
-- **Decomposition Visibility Discipline** (v2.81.1+) · `decomposition-visibility-discipline.md` · l'agent prouve qu'il a compris en montrant sa réflexion · 3 phases temporelles canon (NIVEAU 0 paramètres pré-exec · NIVEAU LIVE thinking aloud pendant · NIVEAUX 1-4 matrices post-exec)
+- **Decomposition Visibility Discipline** (v2.81.1+) · `decomposition-visibility-doctrine.md` · l'agent prouve qu'il a compris en montrant sa réflexion · 3 phases temporelles canon (NIVEAU 0 paramètres pré-exec · NIVEAU LIVE thinking aloud pendant · NIVEAUX 1-4 matrices post-exec)
 - **Output Clarity Discipline** (v2.79.2) · `output-clarity-doctrine.md` · standards Vercel/GitHub-grade · iconographie unique · dejargonisation · headers FR sobres · one thing per line · density modérée · 8 Hard Rules enforcement runtime
 - **Onboarding Holistic Discipline** (v2.80.3) · `onboarding-holistic-doctrine.md` · agnostique + holistique + prose conversationnelle native · panorama 360° 7 territoires DTC pied d'égalité · zéro typage opérateur entrée
 - **Engagement Disclosure Discipline** (v2.79.5) · `engagement-disclosure-discipline.md` · disclosure pré-engagement obligatoire skills orchestrateurs/producer heavy · plan + ETA + démarche + paramètres décomposés + confirmation
@@ -65,7 +65,7 @@ Contextual Intelligence est la doctrine racine. Toutes les autres doctrines la s
 
 ### Trois phases temporelles canon (synthesis brand opérateur-facing)
 
-Cf `decomposition-visibility-discipline.md` v2.81.1+.
+Cf `decomposition-visibility-doctrine.md` v2.81.1+.
 
 - **AVANT exécution** · NIVEAU 0 paramètres décomposés (audience cible · pains · canaux · queries · hypothèses · biais avec POURQUOI explicit chacun)
 - **PENDANT exécution** · NIVEAU LIVE raisonnement thinking aloud expert (calibré par poids action · 2 niveaux abstraction macro + micro many-to-many phrasé sur actions lourdes)

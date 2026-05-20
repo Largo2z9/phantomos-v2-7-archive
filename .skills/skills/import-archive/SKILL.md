@@ -47,7 +47,7 @@ consumes:
   - brands/{slug}/brand.json
   - path: docs/system/entry-arc-doctrine.md
   - path: docs/system/engagement-disclosure-discipline.md
-  - path: docs/system/decomposition-visibility-discipline.md
+  - path: docs/system/decomposition-visibility-doctrine.md
   - path: docs/system/territory-doctrine.md
   - path: docs/system/schema-encoding-discipline.md
   - path: docs/system/onboarding-holistic-doctrine.md
@@ -106,7 +106,7 @@ Si dossier contient un fichier inattendu (corrupted, format inconnu, suspect), s
 
 ## Engagement disclosure pré-runtime · NIVEAU 0 paramètres décomposés (canon v2.79.5+)
 
-Avant de lancer le scan + chain, expose disclosure à l'opérateur en DEUX phases successives (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-discipline.md` v2.79.5).
+Avant de lancer le scan + chain, expose disclosure à l'opérateur en DEUX phases successives (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-doctrine.md` v2.79.5).
 
 **Phase A · NIVEAU 0 paramètres décomposés (v2.79.5)** · expose 6 paramètres décomposés que l'orchestrateur va mobiliser. Import-archive opère sur N fichiers mixed-content · disclosure NIVEAU 0 obligatoire AVANT le plan pour que l'opérateur ajuste un paramètre racine (source · type contenu · brand cible · granularité gate) avant que le batch ne route.
 
@@ -195,7 +195,7 @@ Import archive · ce qui va se passer
 
 ATTENDS confirmation explicite Phase B avant de lancer Step 1. Court-circuit (Phase A + Phase B) autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit OR si N usages successifs >= seuil expert (`auto_skip_after_n_calls` true). Sinon · disclosure 2 phases obligatoire canon v2.79.3 + v2.79.5.
 
-Cross-ref doctrines racine `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-discipline.md` v2.79.5.
+Cross-ref doctrines racine `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-doctrine.md` v2.79.5.
 
 ---
 
@@ -407,7 +407,7 @@ Cohérent doctrine root CLAUDE.md ligne 168 *"ALWAYS after any write under brand
 
 - `docs/system/entry-arc-doctrine.md` v2.81.0 · porte C parent canon · multi-entry onboarding 4 portes MECE · ce skill est consumer porte C `import existant matière préexistante`
 - `docs/system/engagement-disclosure-discipline.md` v2.79.5 · disclosure pré-engagement NIVEAU 0 + plan/ETA/implication/livrable obligatoire
-- `docs/system/decomposition-visibility-discipline.md` v2.79.5+ · NIVEAU 0 paramètres décomposés pré-exécution canon racine
+- `docs/system/decomposition-visibility-doctrine.md` v2.79.5+ · NIVEAU 0 paramètres décomposés pré-exécution canon racine
 - `docs/system/territory-doctrine.md` v2.67 · substrate vs production · import-archive alimente substrate · pas production runtime
 - `docs/system/schema-encoding-discipline.md` · mutation rule canon · sourcing tags · `_field_types` (`observed`/`stated`/`derived`/`structured`) · confidence chain
 - `docs/system/onboarding-holistic-doctrine.md` v2.79.3 · panorama 360° onboarding agnostique · porte C `import existant` couverte par cet orchestrateur
