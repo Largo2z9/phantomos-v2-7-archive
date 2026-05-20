@@ -7,6 +7,21 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.85.3] · 2026-05-20
+### Changed
+- **PROPAGATION VOICE-DOCTRINE LOT 3/4** · 6 doctrines authoring + schema éditées critique main thread Sonnet · `skill-authoring-doctrine` · `schema-encoding-doctrine` · `extension-discovery-doctrine` · `scope-extension-doctrine` · `territory-doctrine` · `entry-arc-doctrine`
+- 2121L → 2121L (0% compression structurelle · scope strict voice-doctrine respecté · patches mécaniques substitution/cohérence uniquement)
+- 55 patches cumulés · 5 titres `Discipline → Doctrine` (preserve acronymes SAD/SED/SED-X) + 28 occurrences body Discipline → Doctrine cohérence post-rename + 4 cross-refs obsolètes avec dates retirées (`canonical-matrix-reasoning-2026-04-26.md` → sans date) + 4 cross-refs `Operational System Discipline v2.71` → `système opérationnel (operational-system-doctrine.md)` harmonisées + 5 patches generic `discipline → doctrine` (meta-discipline · sub-discipline · "an authoring discipline" · "single discipline that governs" · "another discipline") + 1 frontmatter `name: entry-arc-discipline → entry-arc-doctrine` + 1 cross-ref `onboarding-holistic-discipline → onboarding-holistic-doctrine` (4 occurrences replace_all)
+### Notes
+- Pré-flight Phase 1 · 1 sub-agent Haiku · 6 doctrines inventoriées · effort Haiku 2/2/2/2/3/3 · main thread filtre scoring · effort réel scope strict voice-doctrine = 2/6 (0 doctrine effort 3 réel · narratif structurel + termes canon "canonical"/"load-bearing" hors scope)
+- Garde-fous PASSED · cap 500L respecté (max 458L entry-arc · marge 42L) · 0 isolation v2.85.3bis nécessaire
+- **Hypothèse VALIDÉE 3 lots consécutifs** · doctrines structurantes (authoring + schema) aussi conformes que racines (lot 1) et audience + creative (lot 2). Voice-doctrine propagée par ricochet plus largement qu'estimé · violations majoritairement cosmétiques cohérence post-rename
+- **Pattern systémique identifié** · 5 doctrines structurantes utilisaient `meta-discipline` / `an authoring discipline` / `parmi les disciplines` / `sub-discipline` génériques · patch cohérence canon `doctrine` systémique
+- Tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep em-dash 0 cross 6 doctrines · grep `Discipline` résiduel post-Phase 3 fix 0 (1 occurrence extension-discovery ligne 29 manquée Phase 2 fixed Phase 3)
+- Monitor `synthesis` lot 3 · 2 occurrences (skill-authoring 1 + territory 1) · cumul lots 1+2+3 = 46 occurrences pour v2.86.0 audit cross-files résolution unifiée
+- D#462 captured · memory canon `doctrine_propagation_progress` mis à jour (compteur 18/26 cumul · 3 lots SHIPPED · lot 4 PENDING)
+- Backlog · v2.85.4 lot 4/4 opérationnelles · v2.86.0 audit cross-files final + résolution synthesis
+
 ## [2.85.2] · 2026-05-20
 ### Changed
 - **PROPAGATION VOICE-DOCTRINE LOT 2/4** · 6 doctrines audience + creative éditées critique main thread Sonnet · `pain-benefit-chain` · `audience-cartography-doctrine` · `progressive-cartography-doctrine` · `creative-testing-doctrine` · `pacing-doctrine` · `visual-identity-doctrine`

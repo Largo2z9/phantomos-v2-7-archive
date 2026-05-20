@@ -1,4 +1,4 @@
-# Territory Discipline · Operating Doctrine
+# Territory Doctrine · Operating Doctrine
 
 > Canonique v2.67+. Codifie la distinction territoire vs production vs meta canon. Doctrine sœur de SED (Schema Encoding), CMR (Canonical Matrix Reasoning), SAD (Skill Authoring), SED-X (Scope Extension), CC (Compositional Cartography). Unifie trois vocabulaires historiques (Reference · Spatial encoding · Substrat) sous canon nommé unique.
 
@@ -16,11 +16,11 @@ Ce contrat est cassé si ·
 3. Orchestrator chain mixed territoire + production sans hiérarchie de layer dominant (cf build-atlas-complete v1.2.0 anomalie, corrigée v1.3.0)
 4. Sync bridge externe push mixed layers dans canvas Notion canon (cf sync-notion-atlas v2.0.0 anomalie, corrigée v2.0.1)
 
-Territory Discipline codifie classification 67 skills par layer + cycle promotion production validée → territoire + enforcement runtime via frontmatter canon.
+Territory Doctrine codifie classification 67 skills par layer + cycle promotion production validée → territoire + enforcement runtime via frontmatter canon.
 
 ---
 
-## 2. Le problème Territory Discipline résout
+## 2. Le problème Territory Doctrine résout
 
 Avant doctrine ·
 
@@ -34,7 +34,7 @@ Avant doctrine ·
 
 5. **Polysémie macro/micro non disambiguée.** Terme "territoire" utilisé à 2 niveaux dans canon stride-up · macro (substrat brand entière) vs micro (intersection audience×angle output score-matrix). Renommage requis · "top-3 territoires" score-matrix devient "top-3 axes créatifs" pour libérer terme principal.
 
-Territory Discipline = doctrine canon qui ferme ces gaps.
+Territory Doctrine = doctrine canon qui ferme ces gaps.
 
 ---
 
@@ -111,7 +111,7 @@ Storage path canonical · `operator/` + `.skills/` + `resources/canon/` (transve
 
 ## 6. Synonymes canon historiques
 
-Trois vocabularies canon historiques distincts désignaient le même concept territoire. Territory Discipline unifie sous canon v2.67+ sans casser backward compat (Section 13 amendment protocol).
+Trois vocabularies canon historiques distincts désignaient le même concept territoire. Territory Doctrine unifie sous canon v2.67+ sans casser backward compat (Section 13 amendment protocol).
 
 | Canon historique | Source | Scope | Mapping v2.67+ |
 |---|---|---|---|
@@ -123,7 +123,7 @@ Trois vocabularies canon historiques distincts désignaient le même concept ter
 
 Sourcing verbatim `architecture.md §7 Data Nature` (à citer dans skill docstrings v2.67+) · *"Reference data (specs, audiences, angles, learnings) is canonical substrate. Production data (briefs, creatives, audits) is runtime output."*
 
-Sourcing verbatim `schema-encoding-doctrine.md §3` · *"Spatial encoding captures persistent entities (the workspace shape). Temporal encoding captures events (the workspace history)."* Territory Discipline raffine · Temporal split en Production (runtime livrable) + Meta (système).
+Sourcing verbatim `schema-encoding-doctrine.md §3` · *"Spatial encoding captures persistent entities (the workspace shape). Temporal encoding captures events (the workspace history)."* Territory Doctrine raffine · Temporal split en Production (runtime livrable) + Meta (système).
 
 Doctrine v2.67+ canon · **territoire / production / meta** trio. Synonymes historiques préservés via Section 6 (zero breaking change).
 
@@ -144,7 +144,7 @@ Doctrine v2.67+ canon · **territoire / production / meta** trio. Synonymes hist
 | Winning offer mechanic testé multi-creative | Capture mechanic | `promote-learning` | `products/{slug}/spec.benefits[]` enriched |
 | Winning copy hook validé cross-brand (N≥3 brands) | Promotion cross-brand canon | `promote-learning` + canon-tool v1.1 | `resources/canon/copy/` shared |
 
-**Pattern référence** · `compositional-cartography.md` cycle produce → test → learn → promote codifie cette boucle au niveau créatif. Territory Discipline généralise au niveau substrat workspace entier.
+**Pattern référence** · `compositional-cartography.md` cycle produce → test → learn → promote codifie cette boucle au niveau créatif. Territory Doctrine généralise au niveau substrat workspace entier.
 
 **Anti-pattern · mutation directe.** Skill production qui écrit substrat territoire sans cycle promotion = violation thesis Section 1. Bypass validation. Corrompt audit trail (mutation gate `proposed` mode skipping). Refusé canon.
 
@@ -221,7 +221,7 @@ subagent_safe: true
 
 ## 10. Notion bridge implication
 
-**11 collections canon stride-up bridge Notion** · mapping clarifié post-Territory Discipline.
+**11 collections canon stride-up bridge Notion** · mapping clarifié post-Territory Doctrine.
 
 **10 collections layer territoire (push default)** ·
 1. Produits (brand.json + spec.json)
@@ -240,7 +240,7 @@ subagent_safe: true
 
 **Skill `sync-notion-atlas` v2.0.1+ default push = 10 collections territoire strict.** Creatives push deferred via NEW skill dédié `sync-creatives-to-notion` v2.68+ (cards/Kanban Notion pour briefs + créas par angle · production layer séparée).
 
-**Pattern canon · 1 skill par layer Notion-side.** Cohérent avec Territory Discipline thesis. Pattern reproductible cross-tools · bridge externe respecte séparation layers.
+**Pattern canon · 1 skill par layer Notion-side.** Cohérent avec Territory Doctrine thesis. Pattern reproductible cross-tools · bridge externe respecte séparation layers.
 
 **Anomalie corrigée** · `sync-notion-atlas` v2.0.0 push mixed (10 territoire + 1 production) = violation layer separation. Patch v2.0.1 strip Step Full funnel Meta. NEW skill v2.68+ couvre production layer dédié.
 
@@ -314,7 +314,7 @@ Terme "territoire" était utilisé à 2 niveaux dans canon stride-up · macro (s
 
 `sync-notion-atlas v2.0.0` push mixed (10 collections territoire + 1 collection production Full funnel Meta) = violation layer separation Notion-side. Patch v2.0.1 strip production. NEW skill `sync-creatives-to-notion` v2.68+ couvre production layer dédié.
 
-**Pattern canon** · bridge externe respecte Territory Discipline · 1 skill par layer push. Pattern reproductible cross-tools (Linear · ClickUp · Airtable · etc.).
+**Pattern canon** · bridge externe respecte Territory Doctrine · 1 skill par layer push. Pattern reproductible cross-tools (Linear · ClickUp · Airtable · etc.).
 
 ---
 

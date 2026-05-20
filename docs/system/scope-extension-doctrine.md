@@ -1,6 +1,6 @@
-# Scope Extension Discipline (SED-X) · Operating Doctrine
+# Scope Extension Doctrine (SED-X) · Operating Doctrine
 
-> Working draft canon v2.65+. Sister discipline of SED (Schema Encoding), SAD (Skill Authoring), CMR (Canonical Matrix Reasoning). Codifies how PhantomOS workspace extends with NEW scope (brand · produit · audience · doctrine · bridge tool · custom entity) without breaking architectural integrity.
+> Working draft canon v2.65+. Sister doctrine of SED (Schema Encoding), SAD (Skill Authoring), CMR (Canonical Matrix Reasoning). Codifies how PhantomOS workspace extends with NEW scope (brand · produit · audience · doctrine · bridge tool · custom entity) without breaking architectural integrity.
 
 ---
 
@@ -22,7 +22,7 @@ SED-X codifie les 7 patterns canonicaux d'extension + 4 mécanismes auto-update 
 
 ## 2. Le problème SED-X résout
 
-Sans discipline d'extension scope ·
+Sans doctrine d'extension scope ·
 
 1. **Drift architectural cumulé** · 6 mois post-ship, workspace incohérent · 12 audiences encodées 3 façons différentes · 4 schemas redondants · 8 skills overlap. Cause · pas de pattern canon pour évaluer "comment ajouter ce nouveau X?".
 
@@ -165,7 +165,7 @@ Mécanisme · canon-tool schema v1.1 attribution + decay v2.37 · validations[] 
 
 ---
 
-## 5bis. Hiérarchie SED-X parmi les disciplines
+## 5bis. Hiérarchie SED-X parmi les doctrines
 
 SED-X ne sit pas en isolation. Position relative dans le graphe canon ·
 
@@ -174,14 +174,14 @@ Frame test · Extractibility (transverse · contrainte)
  │
 MASTER · Contextual Intelligence (CI) · agent reasons, never form-fills
  │
- ├─ SED (Schema Encoding Discipline) · substrate
+ ├─ SED (Schema Encoding Doctrine) · substrate
  │   └─ Prérequis ontologique de CMR, SAD, SED-X
  │
  ├─ CMR (Canonical Matrix Reasoning) · production mechanism
  │
- ├─ SAD (Skill Authoring Discipline) · skill creation discipline
+ ├─ SAD (Skill Authoring Doctrine) · skill creation discipline
  │
- ├─ SED-X (Scope Extension Discipline) · NEW · how to extend workspace scope
+ ├─ SED-X (Scope Extension Doctrine) · NEW · how to extend workspace scope
  │   ↑ consomme SED (schemas) + SAD (skills) + CMR (production patterns)
  │   ↑ étendue via doctrine-governance pour cas BREAKING
  │
@@ -301,7 +301,7 @@ non-MECE. Avec ECR, scope extension produit doctrine systématique.
 - `contextual-intelligence.md` (CI) · master doctrine
 - `provenance-trust-discipline-scope.md` (PTD scope) · multi-operator · canon-as-product · marketplace
 
-SED-X sister discipline · pattern d'extension scope codifié canon technique. Distinct CI (master) · SED (substrate) · CMR (production) · SAD (authoring) · PTD (provenance).
+SED-X sister doctrine · pattern d'extension scope codifié canon technique. Distinct CI (master) · SED (substrate) · CMR (production) · SAD (authoring) · PTD (provenance).
 
 ---
 

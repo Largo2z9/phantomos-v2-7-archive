@@ -1,6 +1,6 @@
-# Extension Discovery Discipline · Operating Doctrine
+# Extension Discovery Doctrine · Operating Doctrine
 
-> Canonique v2.75+. Doctrine canon qui ferme le gap d'auto-consommation entre extensions scaffolded et orchestrateurs production. Doctrine sœur de SED-X (méthodologie ECR amont scaffold), Territory Discipline (substrat couche 1 lieu où NEW entities vivent), Operational System Discipline v2.71 (doctrine mère 5 couches). Codifie le contrat `extension_hooks` frontmatter + manifest registry scan runtime + `consumable_by` pattern qui permet aux orchestrateurs production de consommer automatiquement les NEW entities scaffolded via `scaffold-extension` v1.2.0 Phase 9.
+> Canonique v2.75+. Doctrine canon qui ferme le gap d'auto-consommation entre extensions scaffolded et orchestrateurs production. Doctrine sœur de SED-X (méthodologie ECR amont scaffold), Territory Doctrine (substrat couche 1 lieu où NEW entities vivent), système opérationnel (`operational-system-doctrine.md`) doctrine mère 5 couches. Codifie le contrat `extension_hooks` frontmatter + manifest registry scan runtime + `consumable_by` pattern qui permet aux orchestrateurs production de consommer automatiquement les NEW entities scaffolded via `scaffold-extension` v1.2.0 Phase 9.
 
 ---
 
@@ -12,7 +12,7 @@ PhantomOS scaffold NEW entities via `scaffold-extension` v1.2.0 selon méthodolo
 
 Ce gap est structurel · l'opérateur scaffold une `video-script` entity custom dans son workspace, mais `creative-brief-composer` ne sait pas qu'elle existe au runtime. Extension dead-end · scaffold consommé seulement si l'opérateur patch manuellement le frontmatter de chaque orchestrateur production.
 
-Extension Discovery Discipline ferme ce gap via 3 mécaniques canon ·
+Extension Discovery Doctrine ferme ce gap via 3 mécaniques canon ·
 
 1. **Frontmatter `extension_hooks`** · NEW canon field optional dans orchestrateurs production qui déclare quels entity types le skill peut consommer via discovery runtime, au-delà du hard-coded canon `consumes`.
 
@@ -26,7 +26,7 @@ Pattern canon · scaffolding amont (SED-X) + discovery runtime (cette doctrine) 
 
 ## 2. Le problème résolu
 
-Sans Extension Discovery Discipline ·
+Sans Extension Discovery Doctrine ·
 
 1. **Extension dead-end.** Operator scaffold NEW entity (e.g. `video-script`, `competitor-analysis`, `landing-variant`) via canonical `scaffold-extension`. Entity registered correctement, sidecar schema valide, mutation gate cohérent. Mais orchestrateurs production ne savent pas qu'elle existe. Scaffold gaspillé.
 
@@ -38,7 +38,7 @@ Sans Extension Discovery Discipline ·
 
 5. **`consumable_by` auto-detection absente.** Sans intelligence à scaffold Phase 9, opérateur doit déclarer manuellement quels orchestrateurs consomment NEW entity. Friction onboarding · charge cognitive · drift naming.
 
-Extension Discovery Discipline = doctrine canon qui ferme ces 5 gaps via contrat structurel + auto-detection + validation gate.
+Extension Discovery Doctrine = doctrine canon qui ferme ces 5 gaps via contrat structurel + auto-detection + validation gate.
 
 ---
 
@@ -284,7 +284,7 @@ Q3 · data_shape compatible quel pattern orchestrateur ?
 
 ## 11. Backward compat strict additif
 
-Extension Discovery Discipline est strict additif par construction. Garanties ·
+Extension Discovery Doctrine est strict additif par construction. Garanties ·
 
 **11.1 Frontmatter `extension_hooks` optional default empty.** Orchestrateurs legacy v2.74.x non-patchés conservent comportement hard-coded `consumes` · zéro discovery · zéro régression. Opt-in explicit · skill author déclare `extension_hooks` quand prêt.
 
@@ -300,7 +300,7 @@ Extension Discovery Discipline est strict additif par construction. Garanties ·
 
 ## 12. Position dans le système opérationnel 5 couches
 
-Extension Discovery Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71 ·
+Extension Discovery Doctrine opère sur 3 couches simultanément du système opérationnel (`operational-system-doctrine.md`) ·
 
 **Couche 2 · Règles (heuristiques décision).** `extension_hooks` frontmatter discipline de décision orchestrateur consume · double match strict `consumable_by` + `entity_type` · Step 0 DRGFP enrichi heuristique pre-flight. Pattern miroir `dependency-resolution-protocol.md` L1+L2+L3 gap-filling.
 
@@ -310,9 +310,9 @@ Extension Discovery Discipline opère sur 3 couches simultanément du multiplica
 
 **Doctrines sœurs canon** ·
 
-- **SED-X (scope-extension-doctrine.md)** · méthodologie ECR amont scaffold · 7 patterns canon extension scope · doctrine sœur prerequisite. Extension Discovery Discipline opère aval de SED-X · scaffolding amont (SED-X) + discovery runtime (cette doctrine) = boucle complète.
-- **Territory Discipline** · substrat couche 1 lieu où NEW entities vivent · territoire = sub-folder workspace path miroir storage. NEW entities discovered alimentent territoire enrichi.
-- **Operational System Discipline v2.71** · doctrine mère 5 couches · cette doctrine est instance multi-couches (2 + 4 + 5).
+- **SED-X (scope-extension-doctrine.md)** · méthodologie ECR amont scaffold · 7 patterns canon extension scope · doctrine sœur prerequisite. Extension Discovery Doctrine opère aval de SED-X · scaffolding amont (SED-X) + discovery runtime (cette doctrine) = boucle complète.
+- **Territory Doctrine** · substrat couche 1 lieu où NEW entities vivent · territoire = sub-folder workspace path miroir storage. NEW entities discovered alimentent territoire enrichi.
+- **Système opérationnel (`operational-system-doctrine.md`)** · doctrine mère 5 couches · cette doctrine est instance multi-couches (2 + 4 + 5).
 
 ---
 
@@ -347,7 +347,7 @@ Extension Discovery Discipline opère sur 3 couches simultanément du multiplica
 ## Status
 
 - **Canonique v2.75+.** Doctrine canon · ferme gap d'auto-consommation extensions scaffolded vs orchestrateurs production hard-coded.
-- **Doctrine sœur** · SED-X (scope-extension-doctrine.md méthodologie ECR amont) · Territory Discipline (substrat couche 1) · Operational System Discipline v2.71 (doctrine mère).
+- **Doctrine sœur** · SED-X (scope-extension-doctrine.md méthodologie ECR amont) · Territory Doctrine (substrat couche 1) · système opérationnel (`operational-system-doctrine.md`) doctrine mère.
 - **Backward compat** · strict additif · doctrine NEW n'override aucune existing. `extension_hooks` frontmatter optional default empty. `consumable_by` field NEW additif `_extensions.json` v1.2.0+.
 - **First applications** · patches 4 orchestrateurs canon v2.75.0 (score-matrix · produce-paid-matrix · creative-brief-composer · build-atlas-complete). Decision-aid §10 Q1-Q3 applicable scaffold-extension v1.2.0+ Phase 9. Pipeline contract §6 applicable Step 0 DRGFP enrichi tous orchestrateurs production opt-in.
 - **Promotion criterion** · à reviewer après 5+ NEW entities scaffolded avec `consumable_by` auto-detection appliqué + 3+ orchestrateurs invoke avec discovery successful + 1 audit systémique gap orchestrateurs production restants.

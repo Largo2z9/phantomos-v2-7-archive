@@ -1,6 +1,6 @@
-# Skill Authoring Discipline (SAD) · Operating Doctrine
+# Skill Authoring Doctrine (SAD) · Operating Doctrine
 
-> Working draft, R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/skill-authoring-doctrine.md` in Release mode. **SAD is the meta-discipline above SED + CMR.** It governs how skills consuming the substrate (SED) and the production mechanism (CMR) are created, evolve, compose, and fail safely. Without SAD, skill authors re-invent gates session-to-session, doctrines drift in the absence of governance, and the system depends on the maintainer's mental arbitration to stay coherent.
+> Working draft, R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/skill-authoring-doctrine.md` in Release mode. **SAD is the meta-doctrine above SED + CMR.** It governs how skills consuming the substrate (SED) and the production mechanism (CMR) are created, evolve, compose, and fail safely. Without SAD, skill authors re-invent gates session-to-session, doctrines drift in the absence of governance, and the system depends on the maintainer's mental arbitration to stay coherent.
 
 ---
 
@@ -18,7 +18,7 @@ It also absorbs as a sub-corpus the system-level concerns that govern *the works
 
 ## 2. The problem SAD addresses
 
-Without an authoring discipline, three failure modes accumulate:
+Without an authoring doctrine, three failure modes accumulate:
 
 1. **Skill proliferation without governance.** A skill author with a fresh idea creates a sibling skill instead of extending an existing one. The catalogue bloats, mental model fragments, gates duplicate. Pattern named in `skill-creation-protocol.md` (extend > create), but isolated. Without SAD as a chapeau, the rule is easy to ignore.
 2. **Implicit contracts break composition.** A producer skill outputs a structure that the next skill in the chain expects ; if either drifts independently, the chain breaks silently. No `consumes:` declaration ties them ; no version compatibility check fires.
@@ -197,10 +197,10 @@ The skill author asks, in this order:
 ## 10. Cross-references
 
 - **`contextual-intelligence.md`** · master doctrine. SAD operationalizes the surface contract of CI for every skill that ships.
-- **`canonical-matrix-reasoning-2026-04-26.md`** · CMR. SAD's CMR-compliance frontmatter triad is the machine-verifiable bridge between SAD authoring and CMR invariants.
-- **`schema-encoding-discipline-2026-04-26.md`** · SED. Skills must respect SED at the substrate layer (mutation gate, sourcing tags, triangulation, layer separation).
-- **`provenance-trust-discipline-scope-2026-04-26.md`** *(R&D zone, lives in `research/` until promotion triggers hit)* · PTD scope. When PTD ships full, SAD will extend with third-party authoring rules (signing, provenance, sandbox).
-- **`doctrine-governance-2026-04-26.md`** · meta-process for amending SAD itself.
+- **`canonical-matrix-reasoning.md`** · CMR. SAD's CMR-compliance frontmatter triad is the machine-verifiable bridge between SAD authoring and CMR invariants.
+- **`schema-encoding-doctrine.md`** · SED. Skills must respect SED at the substrate layer (mutation gate, sourcing tags, triangulation, layer separation).
+- **`provenance-trust-discipline-scope.md`** *(R&D zone, lives in `research/` until promotion triggers hit)* · PTD scope. When PTD ships full, SAD will extend with third-party authoring rules (signing, provenance, sandbox).
+- **`doctrine-governance.md`** · meta-process for amending SAD itself.
 - **`skill-builder-cartography.md`** · pre-existing input. Domain vars → schema → code mapping.
 - **`skill-creation-protocol.md`** · pre-existing input. Graduation matrix, gates, extend-first.
 - **`skill-architecture-redteam.md`** · pre-existing input. Anti-patterns, design invariants.
@@ -217,7 +217,7 @@ The skill author asks, in this order:
 
 ## Position dans le système opérationnel 5 couches
 
-Skill Authoring Discipline (SAD) opère sur la couche transverse meta du système opérationnel PhantomOS (cf `operational-system-doctrine.md` v2.71). C'est la doctrine qui gouverne l'AUTHORING des skills qui consomment et produisent les outputs des 5 couches (modèle · règles · templates · métriques · rituels).
+Skill Authoring Doctrine (SAD) opère sur la couche transverse meta du système opérationnel PhantomOS (cf `operational-system-doctrine.md` v2.71). C'est la doctrine qui gouverne l'AUTHORING des skills qui consomment et produisent les outputs des 5 couches (modèle · règles · templates · métriques · rituels).
 
 Position canon ·
 
