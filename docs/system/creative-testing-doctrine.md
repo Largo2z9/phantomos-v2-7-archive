@@ -183,9 +183,9 @@ Test discipline canon n'est PAS uniforme cross-stages ·
 - `compositional-cartography.md` v3.1 · équation NOYAU × CONTEXTE × MODIFIEURS · pattern ECR couche 1 instance créative · 3x3 matrix instance pattern compositional
 - `pain-benefit-chain.md` · 4 chains canon (functional/identity/emotional/aspirational) · alimente axe angle MECE matrix §3
 - `audience-cartography.md` v2.64 · cartographie audiences segments · alimente axe audience Configuration B matrix
-- `operational-system-discipline.md` v2.71 · doctrine mère 5 couches · cette doctrine instance multi-couches (2 Règles · 3 Templates · 4 Métriques)
-- `extension-discovery-discipline.md` v2.75 · pattern miroir frontmatter · skills test-aware peuvent déclarer `extension_hooks` consume NEW creative entities
-- `skill-routing-discipline.md` v2.77 · routing canon · skills test consume via mapping CLAUDE.md + manifest scan
+- `operational-system-doctrine.md` v2.71 · doctrine mère 5 couches · cette doctrine instance multi-couches (2 Règles · 3 Templates · 4 Métriques)
+- `extension-discovery-doctrine.md` v2.75 · pattern miroir frontmatter · skills test-aware peuvent déclarer `extension_hooks` consume NEW creative entities
+- `skill-routing-doctrine.md` v2.77 · routing canon · skills test consume via mapping CLAUDE.md + manifest scan
 - `investigation-posture.md` · 5 sections rigueur · skills analyze-perf ship output observé/déduit/inconnu/leviers/close ouvert
 
 **Skills consumers v2.78+** ·
@@ -270,7 +270,7 @@ Matrix 3x3 avec 3 hooks identiques juste différemment formulés · MECE cassé 
 ## Status
 
 - **Canonique v2.78+.** Doctrine canon · ferme gap *"creative testing framework manquant"* flag P0 Sprint v2.78 Agent media buyer.
-- **Doctrine sœur** · pacing-doctrine.md (axe 4 CTR decay consume cadence canon) · attribution-multitouch-doctrine.md (cadrage mesure post-test) · operational-system-discipline.md v2.71 (doctrine mère 5 couches).
+- **Doctrine sœur** · pacing-doctrine.md (axe 4 CTR decay consume cadence canon) · attribution-multitouch-doctrine.md (cadrage mesure post-test) · operational-system-doctrine.md v2.71 (doctrine mère 5 couches).
 - **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills legacy pre-v2.78 conservent test logic inline jusqu'à patch · v2.78+ migration progressive consume canon.
 - **First applications** · produce-paid-angles v2.78 (génération matrix 3x3) · compose-creative v2.78 (composition Configuration A/B) · creative-brief-composer v2.78 (brief test plan) · analyze-perf v2.78 (diagnostic win/kill canon).
 - **Promotion criterion** · à reviewer après 3+ skills creative-aware migrated consume canon + 1 audit cross-account test patterns convergence + learnings.json append creative testing patterns.

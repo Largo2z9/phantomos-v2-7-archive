@@ -4,7 +4,7 @@ type: orchestrator
 version: "1.3.0"
 recommended_model: sonnet
 patch_notes:
-  v1.3.0: "v2.75.0 Phase 9 register-and-flag enrichie · NEW consumable_by field auto-detection · scaffold-extension v1.3.0+ register NEW entity avec liste enum orchestrateurs production consommables (creative-brief-composer · score-matrix · produce-paid-matrix · build-atlas-complete) selon entity_type + scope + data_shape · operator validation gate AskUserQuestion accept OR adjust manually. Cross-ref doctrine canon extension-discovery-discipline.md v2.75.0 NEW. Backward compat strict additif · consumable_by champ optional · legacy v1.2.0 NEW entities sans consumable_by still registered mais pas auto-discovery (manual patch nécessaire si consumption later)."
+  v1.3.0: "v2.75.0 Phase 9 register-and-flag enrichie · NEW consumable_by field auto-detection · scaffold-extension v1.3.0+ register NEW entity avec liste enum orchestrateurs production consommables (creative-brief-composer · score-matrix · produce-paid-matrix · build-atlas-complete) selon entity_type + scope + data_shape · operator validation gate AskUserQuestion accept OR adjust manually. Cross-ref doctrine canon extension-discovery-doctrine.md v2.75.0 NEW. Backward compat strict additif · consumable_by champ optional · legacy v1.2.0 NEW entities sans consumable_by still registered mais pas auto-discovery (manual patch nécessaire si consumption later)."
 layer: meta
 reasoning_pattern: null
 description: >
@@ -145,7 +145,7 @@ Operator validates via AskUserQuestion · A) accept and continue Phase 4 · B) a
 
 **Conditional skip** · if `ecr_decomposition.eligibility.applicable = false` (test d'éligibilité 3 critères fail in Phase 1), this phase is skipped. Scaffold proceeds directly to Phase 4.
 
-**Cross-ref** · `docs/system/operational-system-discipline.md` (doctrine mère ECR canonisée v2.71).
+**Cross-ref** · `docs/system/operational-system-doctrine.md` (doctrine mère ECR canonisée v2.71).
 
 ### Phase 4 — `validate-naming`
 
@@ -268,7 +268,7 @@ Final registry entry ·
 }
 ```
 
-Cross-ref doctrine canon · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
+Cross-ref doctrine canon · `docs/system/extension-discovery-doctrine.md` v2.75.0 NEW.
 
 **9.e · Flag adoption todos**
 
@@ -330,7 +330,7 @@ Backward compat · NEW entities scaffolded pré-v1.3.0 (v1.2.0 legacy) sans
 auto-discovery downstream · l'opérateur peut patcher manuellement registry 
 entry pour ajouter consumable_by post-hoc.
 
-Cross-ref · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
+Cross-ref · `docs/system/extension-discovery-doctrine.md` v2.75.0 NEW.
 
 ---
 
@@ -342,5 +342,5 @@ Cross-ref · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
 - `brands/_TEMPLATE/custom/_EXAMPLE/competitor_pricing/` · canonical reference example.
 - `.skills/skills/validate-resources/SKILL.md § Checks 15-18` · post-write integrity checks.
 - `.skills/skills/build-agent/SKILL.md` · delegates here for simple extension intents.
-- `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (doctrine canon consumable_by + extension_hooks)
+- `docs/system/extension-discovery-doctrine.md` v2.75.0 NEW (doctrine canon consumable_by + extension_hooks)
 - 4 orchestrateurs production v2.75.0 downstream consumers (creative-brief-composer · score-matrix · produce-paid-matrix · build-atlas-complete)

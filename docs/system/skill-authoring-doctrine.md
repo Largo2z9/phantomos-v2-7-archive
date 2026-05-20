@@ -217,17 +217,17 @@ The skill author asks, in this order:
 
 ## Position dans le système opérationnel 5 couches
 
-Skill Authoring Discipline (SAD) opère sur la couche transverse meta du système opérationnel PhantomOS (cf `operational-system-discipline.md` v2.71). C'est la doctrine qui gouverne l'AUTHORING des skills qui consomment et produisent les outputs des 5 couches (modèle · règles · templates · métriques · rituels).
+Skill Authoring Discipline (SAD) opère sur la couche transverse meta du système opérationnel PhantomOS (cf `operational-system-doctrine.md` v2.71). C'est la doctrine qui gouverne l'AUTHORING des skills qui consomment et produisent les outputs des 5 couches (modèle · règles · templates · métriques · rituels).
 
 Position canon ·
 
-- Couche dominante · meta (cf doctrine `operational-system-discipline.md` §12 décision-aid Q1-Q4)
+- Couche dominante · meta (cf doctrine `operational-system-doctrine.md` §12 décision-aid Q1-Q4)
 - Couche gouvernée · skills cross-layers (producer · curator · capturer · orchestrator · navigator · builder)
 - Rôle · définit le contrat canon des skills (frontmatter triad name+type+triggers · permissions schema · pipeline preconditions/postconditions · hard rules pattern · cross-ref doctrine consume · subagent delegation contracts · isolation_scope rules)
 
 Sans SAD canon, les skills authored freelance dérivent de l'équation maître. Avec SAD, chaque skill nouveau respecte le contrat canon · ses inputs résonnent avec une ou plusieurs couches existantes, ses outputs alimentent les couches downstream, ses Hard Rules pattern matchent les doctrines opérationnelles.
 
-Cross-ref canon · `docs/system/operational-system-discipline.md` v2.71 (doctrine mère 5 couches · équation maître) + skill builder cartography pour mapping skill → couche.
+Cross-ref canon · `docs/system/operational-system-doctrine.md` v2.71 (doctrine mère 5 couches · équation maître) + skill builder cartography pour mapping skill → couche.
 
 ---
 

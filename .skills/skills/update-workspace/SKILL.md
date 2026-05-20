@@ -41,7 +41,7 @@ Applies release updates to an installed PhantomOS workspace. Preserves operator 
 
 ## Pipeline canon v2.80.0+
 
-Skill consommé par la slash command `/update` (canon Sprint v2.80.0). Doctrine de référence · `docs/system/update-distribution-discipline.md` v2.80.0 (Update Distribution Discipline).
+Skill consommé par la slash command `/update` (canon Sprint v2.80.0). Doctrine de référence · `docs/system/update-distribution-doctrine.md` v2.80.0 (Update Distribution Discipline).
 
 **Position dans le pipeline canon ·**
 
@@ -183,7 +183,7 @@ If flags or migration warnings: surface as a short action list, not a report dum
 
 ## Related
 
-- `docs/system/update-distribution-discipline.md` (v2.80.0) · doctrine canon pattern de mise à jour PhantomOS.
+- `docs/system/update-distribution-doctrine.md` (v2.80.0) · doctrine canon pattern de mise à jour PhantomOS.
 - `docs/system/updates.md` · doctrine for publishing clean updates.
 - `docs/system/engagement-disclosure-discipline.md` (v2.79.5) · disclosure pré-engagement.
 - `docs/system/decomposition-visibility-discipline.md` (v2.79.5+) · NIVEAU 0 paramètres décomposés.

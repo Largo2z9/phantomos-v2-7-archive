@@ -336,7 +336,7 @@ Pattern v2.27 reproductible · learning entry trace WHAT (creative results) + WH
 - `docs/system/contextual-intelligence.md` · master doctrine semantic vs mechanical layer
 - `docs/system/confidence-propagation.md` · algèbre confidence cascade canon-tool validation
 - `docs/system/brand-isolation-doctrine.md` · scope `brand_only` enforced default + canon copy exception
-- `docs/system/extension-discovery-discipline.md` v2.75 · pipeline NEW entities auto-consommées
+- `docs/system/extension-discovery-doctrine.md` v2.75 · pipeline NEW entities auto-consommées
 - `learn-from-session` Trigger 9 · daemon operator gate promotion canon validations[] cross-brand
 - `audit-creative-fatigue` · sibling curator scan fatigue (vs capturer pull data ici)
 - `analyze-perf` · sibling diagnostic deep-dive (vs capturer pull brut ici)

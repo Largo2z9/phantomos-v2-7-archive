@@ -3,7 +3,7 @@
 Migration template canon · v2.80.0+
 
 Pattern · 4 méthodes obligatoires (check_required · run_transformation · validate_state · rollback).
-Cross-reference doctrine · docs/system/update-distribution-discipline.md
+Cross-reference doctrine · docs/system/update-distribution-doctrine.md
 
 Usage ·
   python3 migrations/{version}-{slug}.py --check

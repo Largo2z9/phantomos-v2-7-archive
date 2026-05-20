@@ -322,7 +322,7 @@ Terme "territoire" était utilisé à 2 niveaux dans canon stride-up · macro (s
 
 Le territoire de marque (substrat stable canonisé) est l'objet structurel
 de la couche 1 (modèle) du système opérationnel PhantomOS (cf
-`operational-system-discipline.md`). C'est le résultat tangible de
+`operational-system-doctrine.md`). C'est le résultat tangible de
 l'application de l'ECR à un brand.
 
 La distinction territoire / production runtime est une conséquence directe

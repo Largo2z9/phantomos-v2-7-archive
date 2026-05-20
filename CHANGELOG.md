@@ -7,6 +7,18 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.85.0.2] · 2026-05-20
+### Changed
+- **Rename lot 3/4** · 6 fichiers mid-stakes `*-discipline.md` → `*-doctrine.md` · `operational-system` · `onboarding-holistic` · `skill-routing` · `extension-discovery` · `progressive-cartography` · `update-distribution` · **18/21 doctrines cumulées** renommées
+- 258 cross-refs patches batch · 85 fichiers consumers patchés
+### Notes
+- Pré-flight ciblé Phase 1 · 1 sub-agent Haiku · garde-fous PASSÉS (top doctrine 25.4% · replacements estimés 140)
+- Tests non-régression Phase 3 PASSÉS · build-manifest 81 skills · build-brand-snapshot _EXAMPLE 24 lines · grep résiduel 0
+- Ratio observé lot 3 · 1.05:1 (272/258 · plus dense qu'estimé 1.9:1 · pattern revisité pour lots futurs)
+- Cumul 3 lots · 18 doctrines · 618 replacements · 0 régressions
+- D#457 captured · memory canon `v85_0_lite_lessons` mis à jour
+- Backlog · v2.85.0.3 lot 4/4 HIGH risk 3 doctrines (decomposition-visibility · engagement-disclosure · schema-encoding · validation runtime intensive obligatoire · lendemain matin frais)
+
 ## [2.85.0.1] · 2026-05-20
 ### Changed
 - **Rename lot 2/4** · 6 fichiers mid-stakes `*-discipline.md` → `*-doctrine.md` dans `docs/system/` · `claude-md` · `skill-authoring` · `output-clarity` · `scope-extension` · `territory` · `entry-arc` · **12/21 doctrines cumulées** renommées
@@ -114,7 +126,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.80.0] · 2026-05-18
 ### Added
-- NEW slash commands `/update` + `/version` · NEW doctrine `update-distribution-discipline.md` · NEW migrations framework · GitHub Releases tags v2.65 → v2.79.5
+- NEW slash commands `/update` + `/version` · NEW doctrine `update-distribution-doctrine.md` · NEW migrations framework · GitHub Releases tags v2.65 → v2.79.5
 
 ## [2.79.5] · 2026-05-18
 ### Added
@@ -126,7 +138,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.79.3] · 2026-05-17
 ### Added
-- NEW doctrines `onboarding-holistic-discipline.md` + `engagement-disclosure-discipline.md` · /tour panorama 7 territoires · 6 orchestrators disclosure
+- NEW doctrines `onboarding-holistic-doctrine.md` + `engagement-disclosure-discipline.md` · /tour panorama 7 territoires · 6 orchestrators disclosure
 
 ## [2.79.2] · 2026-05-17
 ### Added
@@ -146,7 +158,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.77.0] · 2026-05-17
 ### Added
-- NEW doctrine `skill-routing-discipline.md` · NEW slash commands `/scope` + `/bird` · 697 em-dashes purgés
+- NEW doctrine `skill-routing-doctrine.md` · NEW slash commands `/scope` + `/bird` · 697 em-dashes purgés
 
 ## [2.76.0] · 2026-05-16
 ### Changed
@@ -158,7 +170,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.75.0] · 2026-05-16
 ### Added
-- NEW doctrine `extension-discovery-discipline.md` · 4 orchestrators extension_hooks
+- NEW doctrine `extension-discovery-doctrine.md` · 4 orchestrators extension_hooks
 
 ## [2.74.1] · 2026-05-16
 ### Fixed
@@ -186,7 +198,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.71.0] · 2026-05-16
 ### Added
-- NEW doctrine mère `operational-system-discipline.md` (ECR × Rules × Templates × Metrics × Rituals)
+- NEW doctrine mère `operational-system-doctrine.md` (ECR × Rules × Templates × Metrics × Rituals)
 
 ## [2.70.0] · 2026-05-16
 ### Added
@@ -202,7 +214,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.68.0] · 2026-05-15
 ### Added
-- NEW doctrine `progressive-cartography-discipline.md` (4 phases · hypothesis confidence 0.5 valid)
+- NEW doctrine `progressive-cartography-doctrine.md` (4 phases · hypothesis confidence 0.5 valid)
 
 ## [2.67.0] · 2026-05-15
 ### Added

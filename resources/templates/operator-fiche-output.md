@@ -437,4 +437,4 @@ Pattern visuel · sobre, scannable, opérateur lit en 30s, zéro jargon.
 - Audit red team source · session 2026-05-13 patterns systémiques A + B
 - Workspace CLAUDE.md root · ligne 132 "NEVER expose paths, field names, internal codes"
 - Skills concernés v2.51+ · compose-creative, recompose-creative, craft-packshot, import-asset, decompose-ad, compose-overlay-text · DOIVENT référencer ce template dans leur HR `Operator output template` section
-- Visual refresh v2.69+ · `audiences-cartography-doctrine.md § Cartographie ≠ ad targeting` (substrat cartographié vs runtime production · respecté en rendu fiche), `territory-doctrine.md` (encodage stable), `progressive-cartography-discipline.md` (annotations confidence sobres operator-facing)
+- Visual refresh v2.69+ · `audiences-cartography-doctrine.md § Cartographie ≠ ad targeting` (substrat cartographié vs runtime production · respecté en rendu fiche), `territory-doctrine.md` (encodage stable), `progressive-cartography-doctrine.md` (annotations confidence sobres operator-facing)

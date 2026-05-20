@@ -4,12 +4,12 @@
   "released_at": "2026-05-15",
   "compatible_from": "2.0.0",
   "type": "canonisation_progressive_cartography_doctrine_NEW_skills_phasing_gates_light",
-  "summary": "Canonisation progressive-cartography · NEW doctrine progressive-cartography-discipline.md (366L · 13 sections canon-style miroir territory-discipline) codifie phasing par profondeur · Phase 1 Macro confirmation light · Phase 2 Drilling autonome · Phase 3 Audiences hiérarchique parent/enfants · Phase 4 Enrichissement continu non-bloquant. Gates light binaires entre paliers (vs Q&A questions premature anti-pattern canon CI No questionnaire before action). Mode fast-track opérateur expert opt-in. snapshot-brand v1.3.1 → v1.4.0 progressive (drop 4 Q&A questions audience · Step 7 split 7a Phase 1 + 7b Phase 2 · drill-down autonome reviews+verbatims). build-atlas-complete v1.3.0 → v1.4.0 chain orchestrator avec gates light entre Phase 1+2 → Phase 3 → Phase 4 + fast-track flag. D#411 captured. Backward compat strict additif.",
+  "summary": "Canonisation progressive-cartography · NEW doctrine progressive-cartography-doctrine.md (366L · 13 sections canon-style miroir territory-discipline) codifie phasing par profondeur · Phase 1 Macro confirmation light · Phase 2 Drilling autonome · Phase 3 Audiences hiérarchique parent/enfants · Phase 4 Enrichissement continu non-bloquant. Gates light binaires entre paliers (vs Q&A questions premature anti-pattern canon CI No questionnaire before action). Mode fast-track opérateur expert opt-in. snapshot-brand v1.3.1 → v1.4.0 progressive (drop 4 Q&A questions audience · Step 7 split 7a Phase 1 + 7b Phase 2 · drill-down autonome reviews+verbatims). build-atlas-complete v1.3.0 → v1.4.0 chain orchestrator avec gates light entre Phase 1+2 → Phase 3 → Phase 4 + fast-track flag. D#411 captured. Backward compat strict additif.",
   "changes": [
     {
       "category": "doctrine_new_progressive_cartography",
       "action": "added",
-      "files": ["docs/system/progressive-cartography-discipline.md"],
+      "files": ["docs/system/progressive-cartography-doctrine.md"],
       "section": "NEW doctrine canon 366L · 13 sections canon-style miroir territory-discipline (Thesis · Problème · Phase 1 Macro · Phase 2 Drilling · Phase 3 Audiences hiérarchique · Phase 4 Enrichissement non-bloquant · Mode skip/fast-track · Pattern gates light · Skills implémentation · Anti-patterns · Decision-aid Q1-Q4 · Cross-references · Status)",
       "rationale": "Pattern phasing progressif territoire posage existait en germe mais non canonisé. Canon snapshot-brand v1.3.1 dumpait Step 7 synthesis bloc + 4 Q&A questions audience post-scrape (anti-patterns canon CI No questionnaire + dump saturation opérateur). v2.68 codifie 4 phases avec gates light entre paliers + enrichissement non-bloquant. Sister doctrine territory-discipline v2.67 (substrat) + progressive-cartography v2.68 (comment substrat se pose progressivement)."
     },

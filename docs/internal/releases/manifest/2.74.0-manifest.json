@@ -110,7 +110,7 @@
       "Registry ugc-confession_vulnerable variante NEW (pattern EXTEND > SIBLING)"
     ],
     "v2.75": [
-      "Doctrine NEW docs/system/skill-routing-discipline.md (flaggée NEW à créer CLAUDE.md L81)",
+      "Doctrine NEW docs/system/skill-routing-doctrine.md (flaggée NEW à créer CLAUDE.md L81)",
       "Orchestrator NEW .skills/skills/audit-meta-global/SKILL.md (SOP existant attendant orchestrator parent)"
     ]
   },

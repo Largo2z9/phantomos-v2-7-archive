@@ -150,7 +150,7 @@ Brand cartographiée 2 audiences mères (workers-shifts + chronic-pain-45) avec 
 
 Pattern reproductible cross brands · audiences cartographiées séparées + production runtime décide single ad cross-audience OR N ads séparées selon scaling strategy + learnings.
 
-Cross-refs · `territory-doctrine.md` (encodage stable substrat), `progressive-cartography-discipline.md` (cartographie hypothèse confidence 0.5 valide avant mining), `compositional-cartography.md` (NOYAU × CONTEXTE × MODIFIEURS · CONTEXTE audience-spécifique cohabite avec NOYAU mécanique cross-audience), ANG-01 hero angle pattern, LRN-0002 cross-narrative single-narrative observation.
+Cross-refs · `territory-doctrine.md` (encodage stable substrat), `progressive-cartography-doctrine.md` (cartographie hypothèse confidence 0.5 valide avant mining), `compositional-cartography.md` (NOYAU × CONTEXTE × MODIFIEURS · CONTEXTE audience-spécifique cohabite avec NOYAU mécanique cross-audience), ANG-01 hero angle pattern, LRN-0002 cross-narrative single-narrative observation.
 
 ## Cross-refs · sub-folders OWNED audience-specific + shared via cross-refs (v2.64)
 
@@ -314,7 +314,7 @@ Pour chaque mère identifiée, valider ·
 
 Audiences cartography est une instance canonique de la couche 1 (modèle ·
 ECR pattern Funnel auto-similaire) du système opérationnel PhantomOS (cf
-`operational-system-discipline.md`). Le pattern parent/enfants hiérarchique
+`operational-system-doctrine.md`). Le pattern parent/enfants hiérarchique
 (audience mère → sous-poches) est fractal · le même schéma de raisonnement
 se répète à toutes les échelles d'audience.
 

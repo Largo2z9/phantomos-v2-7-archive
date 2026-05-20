@@ -25,7 +25,7 @@ triggers_en:
   - "rank paid territories"
   - "score angles by audience"
 description: >
-  v1.3.0 (v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-discipline.md NEW v2.75.0.)
+  v1.3.0 (v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-doctrine.md NEW v2.75.0.)
   v1.2.0 (v2.64 ontologie sémantique pure · pain_points + objections sub-audience) · chain produce-paid-angles v1.10 + weight-dimensions + score-matrix · cohérence read `audiences/{audience_slug}/pain_points/*.json` + `audiences/{audience_slug}/objections/*.json` sub-audience canonical downstream sub-skills. Synthesis territoires top-3 peut référencer pain_points/objections canonical IDs (PNT-NN + OBJ-NN) sub-audience dans rationale Section 2 Déduit. Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved.
   v1.1.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · chain produce-paid-angles v1.9 + weight-dimensions + score-matrix · cohérence read `pain_points/*.json` + `objections/*.json` collections top-level downstream sub-skills (au lieu de profile.json sub-fields legacy). Synthesis territoires top-3 peut désormais référencer pain_points/objections canonical IDs (PNT-NN + OBJ-NN) dans rationale Section 2 Déduit. Backward compat lecture profile.pain_points[] + profile.objections[] legacy preserved (pre-v2.63 brands, sub-skills route transparent).
   v1.0.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (territoires-prioritisation, audiences-cartography). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
@@ -163,7 +163,7 @@ Pour chaque NEW entity registered matching extension_hooks frontmatter ·
 Halt si NEW entity registered sans `consumable_by` field flagué (scaffold-extension v1.2.0 legacy) · 
 silent skip · pas error · l'opérateur peut patcher manuellement le scaffold-extension Phase 9 register-and-flag pour ajouter `consumable_by`.
 
-Cross-ref doctrine canon · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
+Cross-ref doctrine canon · `docs/system/extension-discovery-doctrine.md` v2.75.0 NEW.
 
 ---
 
@@ -499,7 +499,7 @@ The matrice paid sur une fashion brand DTC (différent vertical) surface différ
 - **NEW Step 0 DRGFP Manifest Registry Scan** · pre-flight discovery NEW entities scaffolded via scaffold-extension v1.2.0+ avec `consumable_by` matching ce skill, consommées automatiquement runtime · output enrichi lineage extension dans atome_irreductible.
 - **Step 0 legacy renommé Step 0bis** · Pre-flight DRGFP gates existing pipeline preserved · pas de logique modifiée.
 - **Backward compat strict additif** · `extension_hooks` optional · default empty · legacy v2.74.x comportement hard-coded canon entities preserved · silent skip si NEW entity registered sans `consumable_by` field (pas error).
-- **Cross-ref doctrine canon NEW** · `docs/system/extension-discovery-discipline.md` v2.75.0 + `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry).
+- **Cross-ref doctrine canon NEW** · `docs/system/extension-discovery-doctrine.md` v2.75.0 + `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry).
 
 ### v1.2.0 (v2.64 ontologie sémantique pure · 2026-05-14)
 
@@ -536,7 +536,7 @@ The matrice paid sur une fashion brand DTC (différent vertical) surface différ
 - `docs/system/voice.md` · voice canon · register · banned phrases · no em-dash · prose-first.
 - `docs/system/delegation-pattern.md` · sub-agent delegation · cap depth 1 · max 3 sub-agents parallèles · disjoint scopes.
 - `docs/system/dependency-resolution-protocol.md` · DRGFP L1/L2/L3 gap-filling · Step 0 pre-flight gates canon.
-- `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
+- `docs/system/extension-discovery-doctrine.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
 - `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)
 - `docs/system/brand-isolation-doctrine.md` · isolation_scope brand_only · pas de cross-brand sur paid-matrix.
 - `.skills/skills/produce-paid-angles/SKILL.md` · sub-skill consumé Step 1 · angles ranked par audience.

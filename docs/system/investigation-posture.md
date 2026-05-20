@@ -281,7 +281,7 @@ Skills concernés v2.55+ (audit + propagation) ·
 Investigation posture (5 sections · Observé · Déduit · Inconnu · Leviers ·
 Close ouvert) est une règle canonique de la couche 2 (heuristiques de
 décision) du système opérationnel PhantomOS (cf
-`operational-system-discipline.md`). Elle s'applique à TOUT output
+`operational-system-doctrine.md`). Elle s'applique à TOUT output
 stratégique (audience synthesis · paid angles · brief copy · audit perf · etc.).
 
 Sans cette règle, l'agent freelance des syntheses non-traçables. Avec

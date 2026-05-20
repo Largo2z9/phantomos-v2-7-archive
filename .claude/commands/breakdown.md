@@ -1028,7 +1028,7 @@ Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+ c
 ## Cross-refs canon
 
 **Doctrine mère** ·
-- `docs/system/operational-system-discipline.md` (NEW v2.71.0 · les 5 couches d'un système opérationnel comme grammaire pédagogique mère)
+- `docs/system/operational-system-doctrine.md` (NEW v2.71.0 · les 5 couches d'un système opérationnel comme grammaire pédagogique mère)
 - `docs/system/decomposition-visibility-discipline.md` (v2.79+ canon racine cross-skills opérateur-facing · 4 niveaux matriciels obligatoires sur synthèse stratégique · doctrine sœur Investigation Posture + Canonical Matrix Reasoning + Skill Routing Discipline)
 
 **Doctrines couche 1 (modèle)** ·
@@ -1046,7 +1046,7 @@ Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+ c
 - `docs/system/provenance-trust-discipline-scope.md` (provenance des assertions)
 
 **Doctrines couche 5 (rituels)** ·
-- `docs/system/progressive-cartography-discipline.md` (cadence de mise à jour)
+- `docs/system/progressive-cartography-doctrine.md` (cadence de mise à jour)
 - `docs/system/contract-daily.md` (rituels post-setup daily-use)
 
 **Brand pédagogique source** ·

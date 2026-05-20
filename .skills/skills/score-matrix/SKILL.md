@@ -30,7 +30,7 @@ patch_notes:
   v1.2.1: "v2.81.1 decomposition visibility NIVEAU LIVE · NEW section `Niveau LIVE · raisonnement thinking aloud pendant exécution` insérée AVANT Step 0 DRGFP Manifest Registry Scan (au début Hard Rules). Action LOURDE classification (matrice Sub-cluster × Source d'angle · formule canon Impact × 3 + Vitesse × 2 + Signal × 1 · modulateurs brand × stage business × compatibility rules · top 3-5 territoires output). NIVEAU LIVE narratif étendu obligatoire pendant exécution · 2 niveaux abstraction obligatoires (macro contexte priorisation portfolio brand + micro top-3 territoires phrasé pourquoi en prose narrative sobre). Pose pair senior strategic director thinking aloud · audit temps réel par l'opérateur entre cellules scorées + pédagogie posture experte indissociables. Cross-ref `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 (NIVEAU LIVE obligatoire actions lourdes) + AP-DVD-11 (opacité pendant action lourde = bug invalid). Backward compat strict additif · cycle runtime préservé (Step 0 DRGFP + formule canon + matrice scoring + top territoires + close preserved)."
 description: >
   v1.2.1 (v2.81.1 decomposition visibility NIVEAU LIVE) · NEW section Niveau LIVE thinking aloud obligatoire pendant exécution (au début Hard Rules avant Step 0 DRGFP). Action LOURDE · narratif étendu 2 niveaux abstraction (macro contexte priorisation portfolio brand + micro top-3 territoires phrasé pourquoi en prose). Pose pair senior strategic director · audit temps réel + pédagogie indissociables. Cross-ref `decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 + AP-DVD-11. Backward compat strict additif (cycle runtime préservé).
-  v1.2.0 (v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-discipline.md NEW v2.75.0.)
+  v1.2.0 (v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-doctrine.md NEW v2.75.0.)
   v1.1.1 (v2.61 doctrine consume) · consumes: enrichi avec refs docs/doctrine/ NEW v2.60 (territoires-prioritisation). Skill peut désormais consume ces doctrines canon copywriting/strategy pour informer production sans dépendre schemas exacts.
 consumes:
   - brands/{slug}/audiences/*/profile.json (sub-clusters)
@@ -110,7 +110,7 @@ Pour chaque NEW entity registered matching extension_hooks frontmatter ·
 Halt si NEW entity registered sans `consumable_by` field flagué (scaffold-extension v1.2.0 legacy) · 
 silent skip · pas error · l'opérateur peut patcher manuellement le scaffold-extension Phase 9 register-and-flag pour ajouter `consumable_by`.
 
-Cross-ref doctrine canon · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
+Cross-ref doctrine canon · `docs/system/extension-discovery-doctrine.md` v2.75.0 NEW.
 
 ### Step 0bis · Prerequisite check (DRGFP v2.38)
 
@@ -286,7 +286,7 @@ Marquer 🔥 sur top 1 par ligne. `0` sur cellules vierges. Aucun em-dash dans t
 - `docs/system/canonical-matrix-reasoning.md` · cardinalité ≤ 5, awareness compatibility hard rule
 - `docs/system/decomposition-visibility-discipline.md` v2.81.1+ NIVEAU LIVE · doctrine racine 3 phases temporelles · AVANT exec disclosure pré-engagement · PENDANT exec NIVEAU LIVE thinking aloud expert action LOURDE 2 niveaux abstraction macro contexte priorisation + micro top-3 territoires phrasé pourquoi · APRÈS exec top territoires + matrice scoring synthèse (no raw numeric scoring exposed canon Compositional Cartography §7) · HR-DVD-11 + AP-DVD-11 enforcement.
 - `docs/system/skill-authoring-doctrine.md` · frontmatter triad + lifecycle
-- `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
+- `docs/system/extension-discovery-doctrine.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
 - `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)
 - `produce-paid-angles` · downstream sur trous détectés
 - `produce-copy-brief` · downstream sur top territoire validé

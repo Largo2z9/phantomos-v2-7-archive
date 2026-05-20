@@ -81,7 +81,7 @@ Cible · opérateur marketeur, créa, stratège paid qui veut comprendre comment
 
 - **Construire ta brand** · lance `/onboard-brand` (chain `setup-brand` → `snapshot-brand` → `validate-resources`) ou `/build-atlas-complete {brand_slug}` (chain progressive cartography v2.68 · gates light entre paliers Phase 1 Macro → Phase 2 Drilling → Phase 3 Audiences hiérarchique → Phase 4 Enrichissement)
 - **Doctrine territoire substrat** · `docs/system/territory-doctrine.md`
-- **Doctrine progressive-cartography** · `docs/system/progressive-cartography-discipline.md`
+- **Doctrine progressive-cartography** · `docs/system/progressive-cartography-doctrine.md`
 - **Catalogue skills canon** · `.skills/README.md` + `.skills/_manifest.json`
 
 ## Canon vs réel · data TrendTrack live (2026-05-16)

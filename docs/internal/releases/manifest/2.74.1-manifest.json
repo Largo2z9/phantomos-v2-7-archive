@@ -75,7 +75,7 @@
     "Décision archi resources/catalogues/ · ship 5 JSON catalogues OR retirer couche doctrine (9 refs cross-files)",
     "Em-dash sweep docs/system/canonical-matrix-reasoning.md doctrine (82 em-dashes legacy)",
     "Réconciliation audit path audit-meta-global (audit hygiène hallucination)",
-    "Doctrine NEW docs/system/skill-routing-discipline.md (flaggée CLAUDE.md L81)",
+    "Doctrine NEW docs/system/skill-routing-doctrine.md (flaggée CLAUDE.md L81)",
     "Orchestrator NEW .skills/skills/audit-meta-global/SKILL.md"
   ],
   "rollback_strategy": "Strict additif backward compat · revert v2.74.1 = git revert HEAD strict (zero data loss · 3 axes cleanup retirables independently)"

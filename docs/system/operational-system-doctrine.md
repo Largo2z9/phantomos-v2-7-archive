@@ -152,7 +152,7 @@ Instances canon · `compositional-cartography.md` (Strat × Compo × Exé · cre
 - **`learn-from-session`** · skill fin de session canon · scan conversation + extract learnings + update docs tracking. Rituel session-close.
 - **`validate-resources`** · skill pré-ship canon · audit integrity workspace + flag MAJOR/CRITICAL. Rituel pre-ship et post-mutation.
 - **`hygiene-audit`** · scanner hebdo canon · parasites · orphans · stale · bloat · drift · dupes. Rituel weekly.
-- **`progressive-cartography`** gates light · gate canon entre paliers cartographie (zone identifiée → zone engagée → zone bouclée). Rituel inter-palier. Full doctrine `progressive-cartography-discipline.md`.
+- **`progressive-cartography`** gates light · gate canon entre paliers cartographie (zone identifiée → zone engagée → zone bouclée). Rituel inter-palier. Full doctrine `progressive-cartography-doctrine.md`.
 
 **Pattern canon** · un rituel canon = (a) cadence explicite (daily · weekly · session-close · pre-ship · post-mutation), (b) skill canonical associé (jamais prose CLAUDE.md), (c) déclenchable automatique (trigger registry · hook) ou explicit opérateur shortcut.
 
@@ -291,7 +291,7 @@ Q4 · Le skill capture-t-il une mesure ou alimente-t-il un signal feedback ?
 - **`scope-extension-doctrine.md` (SED-X)** · méthodologie ECR appliquée à la validation de scope extension nouveau domaine
 - **`audiences-cartography-doctrine.md`** · instance couche 1 fractal pattern parent/enfants + couche 2 règles (cartographie ≠ targeting)
 - **`territory-doctrine.md`** · territoire = substrat couche 1 (substrat brand canonisé) · production = livrable issu de couches 2+3 · meta = couches 4+5 transverses
-- **`progressive-cartography-discipline.md`** · rituel couche 5 cadence inter-palier + couche 2 gates light règles
+- **`progressive-cartography-doctrine.md`** · rituel couche 5 cadence inter-palier + couche 2 gates light règles
 - **`investigation-posture.md`** · règle couche 2 (5 sections IP = heuristique décision méta enforcement skills production)
 - **`pain-benefit-chain-doctrine.md`** · instance couche 1 fractal pattern surface → consequence → deep
 - **`skill-authoring-doctrine.md` (SAD)** · méthodologie design skill via décomposition couches · type taxonomy correspond à couche dominante (cf §12 table)

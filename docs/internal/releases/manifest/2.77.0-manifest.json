@@ -28,7 +28,7 @@
     "Architecture.md cross-fichier intra align L43+L57+L92 (3 occurrences entity count 6→7)"
   ],
   "patches_tier_2_P1": [
-    "NEW doctrine skill-routing-discipline.md (391L · 14 sections canon-style miroir extension-discovery + op-system pattern)",
+    "NEW doctrine skill-routing-doctrine.md (391L · 14 sections canon-style miroir extension-discovery + op-system pattern)",
     "Port /scope + /bird workspace-template (2 NEW skills layer:meta + 2 NEW slash commands · manifest regen 72 skills)",
     "Tour.md Milestone 5 proactif insert mesuré (3 lignes ligne 203 · trigger phrase 'connecte mes outils')",
     "4 skills consumer Step 0 bridge proactif (audit-meta-account + mine-vom + sync-notion-atlas + brief-day degraded mode)",
@@ -37,7 +37,7 @@
   "files_patched": [
     {"file": "CLAUDE.md", "scope": "3 patches structurels · sommaire L44-62 13 doctrines + L95 ref skill-routing-discipline + L177 entity count 7 + Context DB table angle row"},
     {"file": "docs/system/architecture.md", "scope": "3 occurrences entity count align L43+L57+L92 vers 7 entities cohérent L10"},
-    {"file": "docs/system/skill-routing-discipline.md", "scope": "NEW · 391L · 14 sections canon-style miroir · 5-phase routing protocol"},
+    {"file": "docs/system/skill-routing-doctrine.md", "scope": "NEW · 391L · 14 sections canon-style miroir · 5-phase routing protocol"},
     {"file": ".skills/skills/scope/SKILL.md", "scope": "NEW · 274L layer:meta · 5 sections investigation-posture intégrées · 2 modes LEARN/BUILD + Excalidraw + chain --for-skill"},
     {"file": ".skills/skills/bird/SKILL.md", "scope": "NEW · 267L layer:meta navigator · HR-7 align investigation-posture · hook /scope au lieu de unfog · persistence brand-level"},
     {"file": ".claude/commands/scope.md", "scope": "NEW · 42L slash command pointer · cohérent 5 existing"},

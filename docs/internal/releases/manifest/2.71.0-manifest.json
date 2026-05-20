@@ -11,12 +11,12 @@
   "slash_commands_count_after": 4,
   "doctrines_count_before": 11,
   "doctrines_count_after": 12,
-  "summary": "NEW doctrine mère canon `operational-system-discipline.md` · canonise l'équation maître `SYSTÈME OPÉRATIONNEL = ECR × RÈGLES × TEMPLATES × MÉTRIQUES × RITUELS` (multiplicatif). 5 couches d'un système opérationnel complet · ECR (couche 1 modèle) · Règles (couche 2 heuristiques) · Templates (couche 3 raccourcis) · Métriques (couche 4 feedback) · Rituels (couche 5 cadence). Doctrine mère sœur de CI au niveau master. Cross-links rétroactifs 10 doctrines existing. Refonte `breakdown.md` cartographie pédagogique mère 5 couches.",
+  "summary": "NEW doctrine mère canon `operational-system-doctrine.md` · canonise l'équation maître `SYSTÈME OPÉRATIONNEL = ECR × RÈGLES × TEMPLATES × MÉTRIQUES × RITUELS` (multiplicatif). 5 couches d'un système opérationnel complet · ECR (couche 1 modèle) · Règles (couche 2 heuristiques) · Templates (couche 3 raccourcis) · Métriques (couche 4 feedback) · Rituels (couche 5 cadence). Doctrine mère sœur de CI au niveau master. Cross-links rétroactifs 10 doctrines existing. Refonte `breakdown.md` cartographie pédagogique mère 5 couches.",
   "additions": [
     {
       "type": "doctrine_canon",
       "name": "operational-system-discipline",
-      "path": "docs/system/operational-system-discipline.md",
+      "path": "docs/system/operational-system-doctrine.md",
       "size_lines": 322,
       "level": "master",
       "scope": "Doctrine mère canon · canonise l'équation maître 5 couches du système opérationnel PhantomOS · sœur de Contextual Intelligence",
@@ -39,7 +39,7 @@
   ],
   "cross_links_retroactif": {
     "count": 10,
-    "format": "NEW section additive `Position dans le système opérationnel 5 couches` 5-10 lignes par doctrine + cross-ref vers operational-system-discipline.md master",
+    "format": "NEW section additive `Position dans le système opérationnel 5 couches` 5-10 lignes par doctrine + cross-ref vers operational-system-doctrine.md master",
     "doctrines_patched": [
       {"file": "docs/system/contextual-intelligence.md", "role": "master · operational-system = implémentation méthodologique"},
       {"file": "docs/system/compositional-cartography.md", "role": "instance couche 1 ECR Strat/Compo/Exé · équation NOYAU × CONTEXTE × MODIFIEURS"},
@@ -48,7 +48,7 @@
       {"file": "docs/system/scope-extension-doctrine.md", "role": "méthodologie ECR amont scope extension"},
       {"file": "docs/doctrine/audiences-cartography-doctrine.md", "role": "couche 1 fractal Funnel parent/enfants + couche 2 règles canon v2.69.1"},
       {"file": "docs/system/territory-doctrine.md", "role": "territoire = substrat couche 1"},
-      {"file": "docs/system/progressive-cartography-discipline.md", "role": "rituel couche 5 cadence + couche 2 gates light règles"},
+      {"file": "docs/system/progressive-cartography-doctrine.md", "role": "rituel couche 5 cadence + couche 2 gates light règles"},
       {"file": "docs/system/investigation-posture.md", "role": "règle couche 2 · 5 sections IP heuristique décision"},
       {"file": "docs/doctrine/pain-benefit-chain-doctrine.md", "role": "couche 1 fractal surface→consequence→deep + couche 4 severity scoring"}
     ],

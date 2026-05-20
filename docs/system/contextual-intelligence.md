@@ -140,7 +140,7 @@ This doctrine inverts the default. **Structure is in service of intelligence, no
 
 Contextual Intelligence est la doctrine méta-mère qui définit le mode de
 raisonnement PhantomOS (business universe vs form-filling). Le système
-opérationnel 5 couches (cf `operational-system-discipline.md`) est son
+opérationnel 5 couches (cf `operational-system-doctrine.md`) est son
 implémentation méthodologique · comment ce raisonnement se structure
 concrètement en modèle (couche 1) · règles (couche 2) · templates
 (couche 3) · métriques (couche 4) · rituels (couche 5).

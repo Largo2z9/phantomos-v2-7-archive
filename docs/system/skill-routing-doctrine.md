@@ -158,7 +158,7 @@ disambiguates_against:
 5. If condition ambiguous OR contradictory · proceed §6 AskUserQuestion gate.
 ```
 
-**Pattern miroir extension_hooks.** `disambiguates_against` field canon frontmatter pattern miroir `extension_hooks` field (cf `extension-discovery-discipline.md` §3). NEW canon fields opt-in v2.76+ · backward compat strict pour skills legacy sans field déclaré.
+**Pattern miroir extension_hooks.** `disambiguates_against` field canon frontmatter pattern miroir `extension_hooks` field (cf `extension-discovery-doctrine.md` §3). NEW canon fields opt-in v2.76+ · backward compat strict pour skills legacy sans field déclaré.
 
 **Cardinality.** `disambiguates_against` enum cap 3 sibling skills max. Au-delà · split skill OR refactor mapping CLAUDE.md pour clarifier scope. Évite drift routing tree complexity.
 
@@ -279,7 +279,7 @@ Agent face à 2+ skills matchant pick au hasard ou via heuristique freestyle au 
 
 **Pas de friction routing.** Pas de freestyle réflexe. Pas de skill mis-trigger. Pattern canon · mapping FIRST + manifest scan SECOND + disambiguation THIRD + /scope FALLBACK + freestyle LAST RESORT = boucle complète zéro friction.
 
-**Audit trail traçable.** Tout invocation skill canon annote audit log `routing_path: [mapping_match | manifest_match | disambiguation_applied | scope_fallback | freestyle_last_resort]` · opérateur drill 360° lineage routing decision. Pattern miroir `extensions_consumed` annotation (cf `extension-discovery-discipline.md` §6).
+**Audit trail traçable.** Tout invocation skill canon annote audit log `routing_path: [mapping_match | manifest_match | disambiguation_applied | scope_fallback | freestyle_last_resort]` · opérateur drill 360° lineage routing decision. Pattern miroir `extensions_consumed` annotation (cf `extension-discovery-doctrine.md` §6).
 
 **Pattern miroir CMR.** Cycle d'apprentissage routing pattern miroir `canonical-matrix-reasoning.md` cycle validation atlas vivant · routing canon UPSTREAM (cette doctrine) + matrice canon DOWNSTREAM (CMR) = qualité output 95% bout-en-bout.
 
@@ -335,7 +335,7 @@ Skill Routing Discipline opère sur 3 couches simultanément du multiplicatif Op
 
 **Couche 2 · Règles (heuristiques décision).** Skill Routing Discipline canon EST une heuristique de décision · mapping FIRST → manifest SECOND → disambiguation THIRD → /scope FALLBACK → freestyle LAST RESORT. Pattern miroir `dependency-resolution-protocol.md` L1+L2+L3 gap-filling Step 0bis canon v2.38+.
 
-**Couche 4 · Métriques (boucles feedback).** Routing audit trail `routing_path: [...]` annoté output · opérateur traçabilité full · operator drill 360° lineage routing decision. Pattern miroir `extensions_consumed` annotation (cf `extension-discovery-discipline.md` §6) et `confidence_chain` (cf `confidence-propagation.md`).
+**Couche 4 · Métriques (boucles feedback).** Routing audit trail `routing_path: [...]` annoté output · opérateur traçabilité full · operator drill 360° lineage routing decision. Pattern miroir `extensions_consumed` annotation (cf `extension-discovery-doctrine.md` §6) et `confidence_chain` (cf `confidence-propagation.md`).
 
 **Couche 5 · Rituels (cadence opérationnelle).** Routing rituel canon agent par invocation · scan mapping + manifest + disambiguation systémique chaque demande stratégique. Pattern miroir `learn-from-session` Trigger 8 smart-suggest daemon (cf `pattern-detection-triggers.md`).
 
@@ -351,8 +351,8 @@ Skill Routing Discipline opère sur 3 couches simultanément du multiplicatif Op
 
 - `canonical-matrix-reasoning.md` (CMR) · qualité output post-routing · doctrine sœur DOWNSTREAM · schema + matrice canon production 95% qualité
 - `investigation-posture.md` · 5 sections rigueur réponse post-skill · doctrine sœur drill-down · observé/déduit/inconnu/leviers/close ouvert
-- `extension-discovery-discipline.md` · pattern miroir frontmatter canon · `extension_hooks` field miroir `disambiguates_against` field · backward compat strict identique
-- `operational-system-discipline.md` v2.71 · doctrine mère 5 couches multiplicatives · cette doctrine instance multi-couches (2 + 4 + 5)
+- `extension-discovery-doctrine.md` · pattern miroir frontmatter canon · `extension_hooks` field miroir `disambiguates_against` field · backward compat strict identique
+- `operational-system-doctrine.md` v2.71 · doctrine mère 5 couches multiplicatives · cette doctrine instance multi-couches (2 + 4 + 5)
 - `dependency-resolution-protocol.md` (DRGFP) · pattern miroir heuristique L1+L2+L3 gap-filling pre-flight
 - `confidence-propagation.md` · audit trail pattern miroir `routing_path` annotation
 - `skill-authoring-doctrine.md` (SAD) · `disambiguates_against` frontmatter field validation · type taxonomy producer/curator/orchestrator routing eligibility
@@ -388,4 +388,4 @@ Skill Routing Discipline opère sur 3 couches simultanément du multiplicatif Op
 
 ---
 
-*Doctrine canonique skill-author-facing + agent-facing. Canonise protocole routing strict 5 phases · scan manifest FIRST · disambiguation rules · /scope fallback · freestyle last resort. Ferme gap structurel agent LLM freestyle réflexe vs skill canon production. Pattern miroir extension-discovery-discipline.md (frontmatter canon discovery) et canonical-matrix-reasoning.md (qualité output DOWNSTREAM).*
+*Doctrine canonique skill-author-facing + agent-facing. Canonise protocole routing strict 5 phases · scan manifest FIRST · disambiguation rules · /scope fallback · freestyle last resort. Ferme gap structurel agent LLM freestyle réflexe vs skill canon production. Pattern miroir extension-discovery-doctrine.md (frontmatter canon discovery) et canonical-matrix-reasoning.md (qualité output DOWNSTREAM).*

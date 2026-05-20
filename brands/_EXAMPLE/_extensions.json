@@ -1,5 +1,5 @@
 {
-  "$comment": "EXEMPLE pédagogique · Extensions Registry du cas canonique Stepprs · NEW entities scaffolded via scaffold-extension v1.3.0+ · consumable_by enum proposed par auto-detection Phase 9.b + operator validation gate 9.c. Doctrine canon · extension-discovery-discipline.md v2.75.0. NE PAS MODIFIER. Vitrine canon · 2 entries démonstratifs représentatifs des patterns courants.",
+  "$comment": "EXEMPLE pédagogique · Extensions Registry du cas canonique Stepprs · NEW entities scaffolded via scaffold-extension v1.3.0+ · consumable_by enum proposed par auto-detection Phase 9.b + operator validation gate 9.c. Doctrine canon · extension-discovery-doctrine.md v2.75.0. NE PAS MODIFIER. Vitrine canon · 2 entries démonstratifs représentatifs des patterns courants.",
   "_schema": "extensions_registry",
   "_version": "1.0",
   "scope": "brand",

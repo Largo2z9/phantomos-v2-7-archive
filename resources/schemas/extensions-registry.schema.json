@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Extensions Registry",
-  "description": "Registry per-scope (brand · operator · workspace) des NEW entities scaffolded via scaffold-extension v1.3.0+ · permet auto-consume par orchestrateurs production via extension_hooks frontmatter + manifest registry scan Step 0 DRGFP. Doctrine canon · extension-discovery-discipline.md v2.75.0.",
+  "description": "Registry per-scope (brand · operator · workspace) des NEW entities scaffolded via scaffold-extension v1.3.0+ · permet auto-consume par orchestrateurs production via extension_hooks frontmatter + manifest registry scan Step 0 DRGFP. Doctrine canon · extension-discovery-doctrine.md v2.75.0.",
   "type": "object",
   "required": ["_schema", "_version", "scope", "extensions"],
   "properties": {

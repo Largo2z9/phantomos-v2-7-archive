@@ -21,7 +21,7 @@ description: >
   v1.7.1 (v2.81.1 decomposition visibility NIVEAU LIVE) · NEW section Niveau LIVE thinking aloud obligatoire pendant exécution (entre disclosure pré-runtime NIVEAU 0 et chain Steps 1-10). Action LOURDE orchestrateur · narratif étendu 2 niveaux abstraction (macro brand entière + micro chaînes audiences/angles cross-encoded en prose) pendant handoffs sub-skills. Pose pair senior expert · audit temps réel + pédagogie indissociables. Cross-ref `decomposition-visibility-discipline.md` v2.81.1+ HR-DVD-11 + AP-DVD-11. Backward compat strict additif (cycle runtime préservé).
   v1.7.0 (v2.79.5 engagement disclosure NIVEAU 0 paramètres décomposés) · Section pré-runtime étendue · NIVEAU 0 ajouté en complément du disclosure plan/ETA/implication/livrable v2.79.3 existant · expose 6 paramètres décomposés au runtime (scope cartographier · profondeur cible · audiences à profiler · angles à générer · hypothèses figées · biais à éviter) avec POURQUOI chacun + close binaire OK ou ajuste · adapté au cycle 7 phases orchestrateur. Cross-ref doctrines decomposition-visibility-discipline + engagement-disclosure-discipline v2.79.5+. Backward compat strict additif (Phases 1-9 runtime preserved · seul l'amont disclosure enrichi).
   v1.6.0 (v2.78.2 decomposition visibility refactor) · NEW Phase Output Atlas Visibility Matriciel Multi-niveau obligatoire post-encoding entités (avant Step 9 Close) · 4 niveaux canon obligatoires (Décomposition produit cross-products · Many-to-many pain × audience matrix cross-atlas · Positionnement filtre par stage business · Méthode pédagogique verbale). Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` NEW v2.78.2. Distinction explicit audience produit-fit (toutes encoded) vs audience ciblage créa (filter sub-set positioning targeting). Backward compat strict additif (Phases 1-7 + Step 8 stage + Step 9 close preserved · NEW phase output insérée entre Step 8 et Step 9). HR-NEW + AP-NEW ajoutés guardrails.
-  v1.4.0 (v2.68 progressive cartography refactor) · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot-brand · gate intermédiaire 1 · Phase 3 map-audiences hiérarchique parent/enfants · gate intermédiaire 2 · Phase 4 mine-voc + profile-audience enrichissement per audience). Mode `--fast-track` opérateur expert bypass gates auto-validate (opt-in flag OR config `auto_validate_after_n_brands` true). Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0 où gates étaient Gate A audiences + Gate B angles seulement). Cross-ref doctrine `docs/system/progressive-cartography-discipline.md` NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs light · fast-track flag opt-in default off · gates A+B angles preserved après Phase 4).
+  v1.4.0 (v2.68 progressive cartography refactor) · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot-brand · gate intermédiaire 1 · Phase 3 map-audiences hiérarchique parent/enfants · gate intermédiaire 2 · Phase 4 mine-voc + profile-audience enrichissement per audience). Mode `--fast-track` opérateur expert bypass gates auto-validate (opt-in flag OR config `auto_validate_after_n_brands` true). Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0 où gates étaient Gate A audiences + Gate B angles seulement). Cross-ref doctrine `docs/system/progressive-cartography-doctrine.md` NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs light · fast-track flag opt-in default off · gates A+B angles preserved après Phase 4).
   v1.3.0 (v2.67 territoire-pure refactor) · Steps 8-9 stripped (produce-copy-brief + compose-creative) · align doctrine `docs/system/territory-doctrine.md` shipped v2.67. Orchestrator scope = territoire substrat only · productions briefs+créas via `creative-brief-composer` post-atlas downstream (separate skill, separate invocation). Output explicite · complete strategic atlas substrate (specs + offers + audiences + angles + territoires scorés). BREAKING · operators v1.x qui invoquaient pour briefs+créas doivent invoquer `creative-brief-composer` post-`build-atlas-complete`. Migration documentée CHANGELOG v2.67.0. Backward compat strict additif sur Steps 1-7 unchanged (territoire chain preserved).
   v1.2.0 (v2.64 ontologie sémantique pure · pain_points + objections sub-audience + frictions sub-product) · Phase 3 deepen-brand-context (chain mine-voc + mine-vom) écrit désormais dans sub-parent locations · `audiences/{a_slug}/pain_points/` + `audiences/{a_slug}/objections/` + `products/{p_slug}/frictions/` (owned natif par parent path). Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved.
   v1.1.0 (v2.63 ontologie pure · pain_points + objections collections top-level) · Phase 3 deepen-brand-context (chain mine-voc + mine-vom) écrit désormais dans 3 collections séparées (`pain_points/` + `objections/` + `frictions/`) plus `profile.json` clean (identity + psychology + voice + behavior + decision_process restent · pain_points + objections sub-fields legacy supprimés post-v2.63 nouvelles brands). Backward compat preserved (pre-v2.63 brands route fallback profile sub-fields legacy).
@@ -61,7 +61,7 @@ consumes:
   - resources/catalogues/formats-livrables.json
   - resources/catalogues/hooks.json
   - resources/catalogues/angles.json
-  - path: docs/system/progressive-cartography-discipline.md
+  - path: docs/system/progressive-cartography-doctrine.md
   - path: docs/system/decomposition-visibility-discipline.md
   - path: docs/system/territory-doctrine.md
   - path: docs/system/investigation-posture.md
@@ -114,9 +114,9 @@ patch_notes:
     - "AP-NEW · Encodage atlas silent sans synthèse matricielle finale · Synthèse prose-only sans Phase Atlas Visibility · Many-to-many implicite cross-products (opérateur déduit) · Stage business absent du filtre positionnement · Méthode pédagogique skip (opérateur ne sait pas comment l'atlas a été construit)"
     - "Backward compat strict additif · Phases 1-7 chain skills preserved · Step 8 stage preserved · Step 9 close preserved (Investigation Posture 5 sections désormais consomme la synthèse matricielle Phase Atlas Visibility en amont · Observé section enrichie cross-niveaux)"
   v1.5.0:
-    - "v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-discipline.md NEW v2.75.0."
+    - "v2.75.0 NEW extension_hooks frontmatter declaration · permet manifest registry scan Step 0 DRGFP enrichi · NEW entities scaffolded via scaffold-extension v1.2.0+ avec consumable_by matching ce skill consommées automatiquement runtime. Backward compat strict additif · extension_hooks vide default · legacy v2.74.x comportement hard-coded canon entities preserved. Pattern canon doctrine extension-discovery-doctrine.md NEW v2.75.0."
   v1.4.0:
-    - "v2.68 progressive cartography refactor · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot · gate · Phase 3 map-audiences · gate · Phase 4 mine-voc + profile-audience). Mode --fast-track opérateur expert bypass gates auto-validate. Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0). Cross-ref progressive-cartography-discipline.md NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs · mode flag opt-in)."
+    - "v2.68 progressive cartography refactor · chain orchestrator avec gates light entre paliers progressive (Phase 1+2 snapshot · gate · Phase 3 map-audiences · gate · Phase 4 mine-voc + profile-audience). Mode --fast-track opérateur expert bypass gates auto-validate. Validation operator entre chaque palier territoire (vs dump synthesis bloc canon précédent v1.3.0). Cross-ref progressive-cartography-doctrine.md NEW v2.68. Backward compat strict additif sur chain skills (Steps preserved · gates additifs · mode flag opt-in)."
   v1.3.0:
     - "v2.67 territoire-pure refactor · Steps 8-9 stripped (produce-copy-brief + compose-creative) · align doctrine territory-doctrine.md. Orchestrator scope = territoire substrat only · productions briefs+créas via creative-brief-composer post-atlas downstream. BREAKING · operators v1.x qui invoquaient pour briefs+créas doivent invoquer creative-brief-composer post-build-atlas-complete. Migration documentée CHANGELOG v2.67.0. Backward compat strict additif sur Steps 1-7 unchanged (territoire chain preserved)."
   v1.0.0:
@@ -149,7 +149,7 @@ patch_notes:
 
 # Skill: build-atlas-complete
 
-**CRITICAL:** this is an **Orchestrator**. **YOU MUST NEVER** re-implement setup-brand, snapshot-brand, map-audiences, mine-voc, profile-audience, weight-dimensions, produce-paid-angles, or score-matrix logic here. **YOU MUST** delegate to each existing skill in sequence via Task tool (when the subskill is `subagent_safe: true`) or inline invocation (when `subagent_safe: false`). Any deviation breaks the canon purity rule established by `onboard-brand`. **Scope v1.4.0 progressive cartography** · 4 paliers chain skills avec gates light entre paliers (`docs/system/progressive-cartography-discipline.md` NEW v2.68) + Gate A audiences + Gate B angles preserved + mode `--fast-track` opérateur expert bypass gates intermédiaires (opt-in). **Scope v1.3.0 territoire-pure preserved** · productions briefs+créas post-atlas via `creative-brief-composer` (separate skill, separate invocation). Voir `docs/system/territory-doctrine.md`.
+**CRITICAL:** this is an **Orchestrator**. **YOU MUST NEVER** re-implement setup-brand, snapshot-brand, map-audiences, mine-voc, profile-audience, weight-dimensions, produce-paid-angles, or score-matrix logic here. **YOU MUST** delegate to each existing skill in sequence via Task tool (when the subskill is `subagent_safe: true`) or inline invocation (when `subagent_safe: false`). Any deviation breaks the canon purity rule established by `onboard-brand`. **Scope v1.4.0 progressive cartography** · 4 paliers chain skills avec gates light entre paliers (`docs/system/progressive-cartography-doctrine.md` NEW v2.68) + Gate A audiences + Gate B angles preserved + mode `--fast-track` opérateur expert bypass gates intermédiaires (opt-in). **Scope v1.3.0 territoire-pure preserved** · productions briefs+créas post-atlas via `creative-brief-composer` (separate skill, separate invocation). Voir `docs/system/territory-doctrine.md`.
 
 ## Tone
 
@@ -289,7 +289,7 @@ Cross-ref · `docs/system/decomposition-visibility-discipline.md` v2.81.1+ HR-DV
 
 **Canonical expert persona**: senior strategic director at a paid-acquisition agency, briefing a brand from blank URL to deployable territoire substrate in one sitting. Owns the chain, validates at each gate, lifts the operator's view to project altitude when uncertainty surfaces. Briefs+créas production handed off post-atlas to `creative-brief-composer`.
 
-**Framework**: sequential territoire substrate chain en **4 paliers progressive cartography** (v1.4.0 v2.68 doctrine `docs/system/progressive-cartography-discipline.md`) avec **gates light entre paliers** + Gate A audiences + Gate B angles preserved après Phase 4. Confidence chain propagated phase-by-phase per `docs/system/confidence-propagation.md`. Investigation Posture enforced on the final operator-facing synthesis per `docs/system/investigation-posture.md`. Scope discipline per `docs/system/territory-doctrine.md` (v2.67).
+**Framework**: sequential territoire substrate chain en **4 paliers progressive cartography** (v1.4.0 v2.68 doctrine `docs/system/progressive-cartography-doctrine.md`) avec **gates light entre paliers** + Gate A audiences + Gate B angles preserved après Phase 4. Confidence chain propagated phase-by-phase per `docs/system/confidence-propagation.md`. Investigation Posture enforced on the final operator-facing synthesis per `docs/system/investigation-posture.md`. Scope discipline per `docs/system/territory-doctrine.md` (v2.67).
 
 **Paliers progressive cartography v1.4.0** ·
 - **Palier Phase 1+2** · snapshot-brand chain (structure + URL scan · ~10-15 min)
@@ -356,7 +356,7 @@ Pour chaque NEW entity registered matching extension_hooks frontmatter ·
 Halt si NEW entity registered sans `consumable_by` field flagué (scaffold-extension v1.2.0 legacy) · 
 silent skip · pas error · l'opérateur peut patcher manuellement le scaffold-extension Phase 9 register-and-flag pour ajouter `consumable_by`.
 
-Cross-ref doctrine canon · `docs/system/extension-discovery-discipline.md` v2.75.0 NEW.
+Cross-ref doctrine canon · `docs/system/extension-discovery-doctrine.md` v2.75.0 NEW.
 
 ---
 
@@ -412,7 +412,7 @@ Surface snapshot Step 7 synthesis paragraph when it returns (4-6 sentences, pros
 
 ## GATE INTERMÉDIAIRE 1 · Phase 1+2 drilling validation (light · v1.4.0)
 
-**Gate light** entre Palier Phase 1+2 (snapshot-brand) → Palier Phase 3 (map-audiences). Format canon doctrine `docs/system/progressive-cartography-discipline.md` Section 8 Pattern gates light · 1-2 lignes synthesis + 1 binaire validation/correction. Pas Q&A verbeux.
+**Gate light** entre Palier Phase 1+2 (snapshot-brand) → Palier Phase 3 (map-audiences). Format canon doctrine `docs/system/progressive-cartography-doctrine.md` Section 8 Pattern gates light · 1-2 lignes synthesis + 1 binaire validation/correction. Pas Q&A verbeux.
 
 **Si `fast_track = true`** · skip ce gate · auto-validate silent log ("Gate 1 bypass auto-validate · territoire produit + offers posé"). Continue direct Palier Phase 3.
 
@@ -432,7 +432,7 @@ Si corrige → route correction inline (write_to_context mode proposed sur field
 
 ## Step 3 · Delegate `map-audiences` via Task tool (Palier Phase 3 hiérarchique)
 
-**Refactor v1.4.0** · Phase 3 cartographie audiences hiérarchique parent/enfants 3 niveaux mère + sous-poches via `map-audiences` (4 questions framework canon doctrine `docs/system/progressive-cartography-discipline.md` Section 5). Remplace ancien Step 3 deepen-brand-context (chain mine-voc + mine-vom upfront) qui a été déplacé vers Palier Phase 4 enrichissement per audience validée.
+**Refactor v1.4.0** · Phase 3 cartographie audiences hiérarchique parent/enfants 3 niveaux mère + sous-poches via `map-audiences` (4 questions framework canon doctrine `docs/system/progressive-cartography-doctrine.md` Section 5). Remplace ancien Step 3 deepen-brand-context (chain mine-voc + mine-vom upfront) qui a été déplacé vers Palier Phase 4 enrichissement per audience validée.
 
 `map-audiences` is `subagent_safe: true`. Spawn single subagent brand-wide.
 
@@ -456,7 +456,7 @@ When map-audiences returns, synthesize at orchestrator level into a single arbre
 
 ## GATE INTERMÉDIAIRE 2 · Phase 3 audiences cartography validation (light · v1.4.0)
 
-**Gate light** entre Palier Phase 3 (map-audiences hiérarchique) → Palier Phase 4 (enrichissement per audience). Format canon doctrine `docs/system/progressive-cartography-discipline.md` Section 8 Pattern gates light.
+**Gate light** entre Palier Phase 3 (map-audiences hiérarchique) → Palier Phase 4 (enrichissement per audience). Format canon doctrine `docs/system/progressive-cartography-doctrine.md` Section 8 Pattern gates light.
 
 **Si `fast_track = true`** · skip ce gate · auto-validate silent log ("Gate 2 bypass auto-validate · arbre audiences posé"). Continue direct Palier Phase 4.
 
@@ -768,7 +768,7 @@ Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeli
 - **AP-NEW · Many-to-many implicite cross-products (v1.6.0)** · NEVER force opérateur à déduire affectations pain × audience par inférence prose · ASCII matrix explicite obligatoire (NIVEAU 2 canon).
 - **AP-NEW · Stage business absent du filtre positionnement (v1.6.0)** · NEVER skip stage filter si signal détectable · stage = inconnu acceptable seulement si zéro signal · NEVER inventer stage.
 - **AP-NEW · Méthode pédagogique skip (v1.6.0)** · NEVER ship atlas matriciel sans verbaliser COMMENT l'atlas a été construit · l'opérateur perd la grammaire de raisonnement runtime.
-- **HR · Gates entre Phases canon (v1.4.0)** · build-atlas-complete v1.4.0+ doit insérer **gate light entre Phase 2 (drilling) → Phase 3 (audiences hiérarchique) → Phase 4 (enrichissement)**. Anti-pattern · chain skills sans validation operator entre paliers progressive cartography (dump synthesis bloc canon précédent v1.3.0 où seuls Gate A + Gate B existaient). Doctrine `docs/system/progressive-cartography-discipline.md` Section 8 Pattern gates light · format 1-2 lignes synthesis + 1 binaire validation/correction. Pas Q&A verbeux.
+- **HR · Gates entre Phases canon (v1.4.0)** · build-atlas-complete v1.4.0+ doit insérer **gate light entre Phase 2 (drilling) → Phase 3 (audiences hiérarchique) → Phase 4 (enrichissement)**. Anti-pattern · chain skills sans validation operator entre paliers progressive cartography (dump synthesis bloc canon précédent v1.3.0 où seuls Gate A + Gate B existaient). Doctrine `docs/system/progressive-cartography-doctrine.md` Section 8 Pattern gates light · format 1-2 lignes synthesis + 1 binaire validation/correction. Pas Q&A verbeux.
 - **HR · Fast-track opt-in opérateur expert (v1.4.0)** · gates intermédiaires auto-validate **seulement si opérateur explicit** (flag `--fast-track` passed dans invocation) OR config opt-in (`operator/profile.json#preferences.auto_validate_after_n_brands` true détecté). Default = gates light visible. Premier-contact opérateur garde gates pour repère cognitif. Gate A + Gate B **toujours preserved** quel que soit le mode (structural decisions audiences finales + angles ranked, jamais bypass).
 - **NEVER** run all phases sequentially blocking on one operator without heartbeat. Surface progress at each gate.
 - **NEVER** skip Gate A or Gate B silently. Audiences gate angles, angles gate scoring. Skipping = fan-out on unvalidated hypotheses = wasted calls + low-quality atlas substrate.
@@ -802,7 +802,7 @@ Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeli
 - `.skills/skills/score-matrix/SKILL.md` · Phase 7
 - `.skills/skills/produce-strategy/SKILL.md` · invokable en post-Phase 9 close si l'opérateur veut cadrer le focus Q{n} sur la brand atlas-complete (strategy.schema v1.0 canon shipped v2.58)
 - `.skills/skills/creative-brief-composer/SKILL.md` · downstream production briefs+créas post-atlas (separate invocation, operator chooses axe créatif)
-- `docs/system/progressive-cartography-discipline.md` · **NEW v2.68** · progressive cartography canon (Sections 3-7 phasing · Section 8 Pattern gates light) · doctrine source v1.4.0 refactor
+- `docs/system/progressive-cartography-doctrine.md` · **NEW v2.68** · progressive cartography canon (Sections 3-7 phasing · Section 8 Pattern gates light) · doctrine source v1.4.0 refactor
 - `docs/system/decomposition-visibility-discipline.md` · **NEW v2.78.2 + v2.81.1+ NIVEAU LIVE** · doctrine canon racine 3 phases temporelles · AVANT exec NIVEAU 0 paramètres décomposés (v2.79.5) · PENDANT exec NIVEAU LIVE thinking aloud expert action LOURDE orchestrateur 2 niveaux abstraction macro + micro chaînes phrasé (v2.81.1+) · APRÈS exec NIVEAUX 1-4 matrices Atlas Visibility post-Step 8 (Décomposition produit cross-products · Many-to-many pain × audience cross-atlas · Stage business filter · Méthode pédagogique verbale · audience produit-fit vs ciblage créa distinction) · HR-DVD-11 + AP-DVD-11 enforcement
 - `docs/system/pain-benefit-chain.md` · canon 3 couches bénéfices (functional · emotional · identity) · consume NIVEAU 1 Décomposition produit
 - `.skills/skills/snapshot-brand/SKILL.md` v2.78.2 cohérent · sister skill encoding products + offers + brand identity (Phase 1+2 chain)
@@ -817,11 +817,11 @@ Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeli
 - `docs/system/compositional-cartography.md` · §7 anti-pattern (no raw numeric scoring to operator) · implémentation domaine créatif de CMR
 - `docs/system/confidence-propagation.md` · confidence chain algebra
 - `docs/system/brand-isolation-doctrine.md` · brand_only scope default
-- `docs/system/skill-routing-discipline.md` · v2.55 routing canon (orchestrator delegates, never freestyles strategic prose)
+- `docs/system/skill-routing-doctrine.md` · v2.55 routing canon (orchestrator delegates, never freestyles strategic prose)
 - `docs/system/delegation-pattern.md` · model routing + parallel caps
 - `docs/system/contract-build.md` · Build mode rules + Orchestration gate
 - `docs/system/voice.md` · operator-facing prose canon (3 movements, no bold-section anchors on synthesis paragraphs)
-- `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
+- `docs/system/extension-discovery-doctrine.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
 - `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)
 
 ---

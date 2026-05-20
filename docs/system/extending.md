@@ -331,7 +331,7 @@ Schema canon · `resources/schemas/extensions-registry.schema.json` v1.0.
 
 NEW field canon · `consumable_by` enum (orchestrateurs production v2.75.0 · build-atlas-complete · score-matrix · produce-paid-matrix · creative-brief-composer) qui permet auto-discovery via extension_hooks frontmatter + Step 0 DRGFP Manifest Registry Scan dans orchestrateurs production.
 
-Doctrine canon NEW v2.75.0 · `docs/system/extension-discovery-discipline.md`.
+Doctrine canon NEW v2.75.0 · `docs/system/extension-discovery-doctrine.md`.
 
 **Legacy `index.json → extensions[]`** · SUPERSEDED v2.75.0. Backward compat preserved en lecture pendant transition (register-and-flag v1.1.0 fallback read si NEW canon absent ET legacy present). Forward writes uniquement vers NEW canon paths. Migration manuelle legacy → NEW canon · backlog v2.76+ si opérateur a entries legacy persisting.
 

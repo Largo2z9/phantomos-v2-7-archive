@@ -25,7 +25,7 @@
   "files_patched": [
     {"file": ".claude/commands/tour.md", "scope": "v2.80.1 → v2.80.3 · 521L → 532L · arc substance guidé + canons Vincent exits/pivot + ton premium volet singulier"},
     {"file": ".claude/commands/about.md", "scope": "v2.79.4 → v2.80.3 · 439L → 426L · ton premium §6 refondu + cross-files alignés + frontmatter"},
-    {"file": "docs/system/onboarding-holistic-discipline.md", "scope": "v2.80.1 → v2.80.3 · 448L → 458L · NEW HR-OHD-10 + AP-OHD-10 + header doctrine"},
+    {"file": "docs/system/onboarding-holistic-doctrine.md", "scope": "v2.80.1 → v2.80.3 · 448L → 458L · NEW HR-OHD-10 + AP-OHD-10 + header doctrine"},
     {"file": "_version.json", "scope": "2.80.1 → 2.80.3 + summary détaillé arc substance + ton premium + canons Vincent"},
     {"file": "CHANGELOG.md", "scope": "Entry v2.80.3 prepended"},
     {"file": "docs/internal/releases/manifest/2.80.3-manifest.json", "scope": "NEW · this manifest"}

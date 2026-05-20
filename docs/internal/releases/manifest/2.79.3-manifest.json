@@ -19,14 +19,14 @@
     "diagnostic_gap_systemique": "Pattern systémique canon · onboarding holistique + disclosure pré-engagement = complémentaires · l'opérateur entre en conscience (panorama 360° visible) et reste en conscience (disclosure pré-skill orchestrator visible). Memory canon `phantomos_elastic_scope` plus memory canon `iterative_validation` (micro-bouchées validées au fur et à mesure pas proposition exhaustive d'un coup) cohérents canon v2.79.3."
   },
   "patches_structurels": [
-    "NEW doctrine canon racine `docs/system/onboarding-holistic-discipline.md` v2.79.3 (Agent 1) · doctrine onboarding agnostique + holistique · panorama 360° des 7 territoires métiers DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · zéro typage profil métier en porte d'entrée · 8 HR-OHD + 8 AP-OHD enforcement runtime",
+    "NEW doctrine canon racine `docs/system/onboarding-holistic-doctrine.md` v2.79.3 (Agent 1) · doctrine onboarding agnostique + holistique · panorama 360° des 7 territoires métiers DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · zéro typage profil métier en porte d'entrée · 8 HR-OHD + 8 AP-OHD enforcement runtime",
     "NEW doctrine canon racine `docs/system/engagement-disclosure-discipline.md` v2.79.3 (Agent 2) · doctrine engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds · 5 triggers canon (type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid) · 4 éléments pattern (plan ≤8 + ETA chiffrée + démarche + close binaire) · court-circuit autorisé UNIQUEMENT opt-out explicit · 8 HR-EDD + 8 AP-EDD enforcement runtime",
     "Refonte `.claude/commands/tour.md` panorama 360° v2.79.3 (Agent 3) · refonte complète onboarding canon · 7 territoires DTC sur pied d'égalité visuelle · iconographie canon v2.79.2 préservée (✓ ◐ ○ ✗ ⚠) · statut shipped/partial/open par territoire · zéro question profil métier porte d'entrée · pédagogie `se reconnaître dans le panorama`",
     "Patch `CLAUDE.md` root v2.79.3 (Agent 4) · sommaire 19 → 21 doctrines (NEW entries onboarding-holistic-discipline + engagement-disclosure-discipline funnel order canon respecté) + 2 NEW operator contract rules (onboarding holistique agnostique + pre-engagement disclosure obligatoire)",
     "Patches 6 skills orchestrateurs lourds canon prioritaires disclosure pré-runtime (Agent 4) · `build-atlas-complete/SKILL.md` + `onboard-brand/SKILL.md` + `mine-voc/SKILL.md` + `setup-brand/SKILL.md` + `creative-brief-composer/SKILL.md` + `produce-paid-matrix/SKILL.md` · section disclosure pré-runtime canon ajoutée AVANT cycle runtime existing · pattern plan + ETA + démarche + close binaire confirmation"
   ],
   "files_patched": [
-    {"file": "docs/system/onboarding-holistic-discipline.md", "scope": "NEW doctrine canon racine onboarding agnostique + holistique panorama 360° 7 territoires DTC pied d'égalité visuelle (Agent 1)"},
+    {"file": "docs/system/onboarding-holistic-doctrine.md", "scope": "NEW doctrine canon racine onboarding agnostique + holistique panorama 360° 7 territoires DTC pied d'égalité visuelle (Agent 1)"},
     {"file": "docs/system/engagement-disclosure-discipline.md", "scope": "NEW doctrine canon racine engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds (Agent 2)"},
     {"file": ".claude/commands/tour.md", "scope": "Refonte v2.79.3 panorama 360° des 7 territoires DTC pied d'égalité visuelle · zéro typage métier porte d'entrée (Agent 3)"},
     {"file": "CLAUDE.md", "scope": "Sommaire 19 → 21 doctrines (Agent 4 NEW entries onboarding-holistic + engagement-disclosure) + 2 NEW operator contract rules (onboarding holistique agnostique + pre-engagement disclosure obligatoire)"},
@@ -42,7 +42,7 @@
     {"file": "docs/internal/releases/manifest/2.79.3-manifest.json", "scope": "NEW · this manifest (Agent 5)"}
   ],
   "onboarding_holistic_coverage": {
-    "doctrine_canon_racine_NEW": "onboarding-holistic-discipline.md v2.79.3 (Agent 1) · 8 HR-OHD + 8 AP-OHD enforcement runtime",
+    "doctrine_canon_racine_NEW": "onboarding-holistic-doctrine.md v2.79.3 (Agent 1) · 8 HR-OHD + 8 AP-OHD enforcement runtime",
     "7_territoires_DTC_pied_egalite": [
       "Creative (atlas créatif · hooks · angles · briefs · compose-creative)",
       "Tracking (pixels · server-side GTM · consent mode · attribution · skills canon v2.80 backlog)",

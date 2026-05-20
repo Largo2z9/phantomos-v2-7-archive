@@ -279,7 +279,7 @@ SED-X est une doctrine · opérationnellement elle impose les conventions infras
 
 SED-X est la méthodologie canon d'extension de scope PhantomOS vers
 un nouveau domaine. Elle applique l'ECR (couche 1 du système opérationnel
-cf `operational-system-discipline.md`) en amont · test d'éligibilité
+cf `operational-system-doctrine.md`) en amont · test d'éligibilité
 (le domaine passe les 3 critères hiérarchie · auto-similarité ·
 interdépendance multiplicative ?), choix du pattern parmi les 4 canon,
 décomposition MECE.

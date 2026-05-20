@@ -155,7 +155,7 @@ Pattern canon strict ·
 
 - `docs/system/claude-md-doctrine.md` v2.82.0 · doctrine sœur · même pattern anti-inflation forme + test de suppression obligatoire
 - `docs/system/output-clarity-doctrine.md` v2.79.2 · standards Vercel/GitHub-grade outputs opérateur-facing · cohérent ton canon
-- `docs/system/update-distribution-discipline.md` v2.80.0 · consumer CHANGELOG via `/version` `/update` slash commands runtime
+- `docs/system/update-distribution-doctrine.md` v2.80.0 · consumer CHANGELOG via `/version` `/update` slash commands runtime
 - `docs/internal/project-journal.md` · journal narratif Largo · archive cognitive · zéro cap
 - `docs/internal/releases/manifest/{version}-manifest.json` · détails structurés étendus par release
 - `https://keepachangelog.com/` · convention externe canon

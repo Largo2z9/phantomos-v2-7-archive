@@ -31,7 +31,7 @@ patch_notes:
     date: "2026-05-16"
     summary: >
       Intègre la méthodologie ECR (Équation Compositionnelle Récursive) canonisée v2.71
-      dans operational-system-discipline.md. Avant de retourner l'intent object, le skill
+      dans operational-system-doctrine.md. Avant de retourner l'intent object, le skill
       applique 5 étapes runtime · (1) test d'éligibilité 3 critères · (2) identifier l'atome
       de sortie · (3) triptyque universel Pourquoi × Quoi × Comment + 4 patterns canon ·
       (4) décomposer chaque phase en 3-5 sous-variables MECE · (5) décomposer
@@ -209,6 +209,6 @@ Return a structured intent object to the orchestrator. v1.0.0 fields preserved �
 
 ## Cross-refs canon
 
-- `docs/system/operational-system-discipline.md` v2.71 · doctrine mère ECR canonisée (couche 1 du système opérationnel · 5 étapes + 4 patterns + 5 pièges).
+- `docs/system/operational-system-doctrine.md` v2.71 · doctrine mère ECR canonisée (couche 1 du système opérationnel · 5 étapes + 4 patterns + 5 pièges).
 - `docs/system/scope-extension-doctrine.md` SED-X · méthodologie ECR amont (scoping extension avant scaffold).
 - `docs/system/compositional-cartography.md` · équation OUTPUT = NOYAU × CONTEXTE × MODIFIEURS (pattern Strat/Compo/Exé instancié au créatif).

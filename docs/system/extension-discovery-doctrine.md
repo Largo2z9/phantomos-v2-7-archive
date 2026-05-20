@@ -318,7 +318,7 @@ Extension Discovery Discipline opère sur 3 couches simultanément du multiplica
 
 ## 13. Cross-references
 
-- `operational-system-discipline.md` v2.71 · doctrine mère 5 couches multiplicatives · grammaire unificatrice PhantomOS
+- `operational-system-doctrine.md` v2.71 · doctrine mère 5 couches multiplicatives · grammaire unificatrice PhantomOS
 - `scope-extension-doctrine.md` (SED-X) · méthodologie ECR amont scaffold · 7 patterns canon extension scope · doctrine sœur prerequisite
 - `compositional-cartography.md` v3.1 · équation NOYAU × CONTEXTE × MODIFIEURS · pattern ECR couche 1 instance créative
 - `canonical-matrix-reasoning.md` (CMR) · schema + matrice canon production 95% qualité · pattern compose intersectional outputs

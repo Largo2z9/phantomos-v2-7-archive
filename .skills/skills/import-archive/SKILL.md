@@ -50,7 +50,7 @@ consumes:
   - path: docs/system/decomposition-visibility-discipline.md
   - path: docs/system/territory-doctrine.md
   - path: docs/system/schema-encoding-discipline.md
-  - path: docs/system/onboarding-holistic-discipline.md
+  - path: docs/system/onboarding-holistic-doctrine.md
 produces_proposals_for:
   - brands/{slug}/brand.json
   - brands/{slug}/products/{slug}/spec.json
@@ -410,7 +410,7 @@ Cohérent doctrine root CLAUDE.md ligne 168 *"ALWAYS after any write under brand
 - `docs/system/decomposition-visibility-discipline.md` v2.79.5+ · NIVEAU 0 paramètres décomposés pré-exécution canon racine
 - `docs/system/territory-doctrine.md` v2.67 · substrate vs production · import-archive alimente substrate · pas production runtime
 - `docs/system/schema-encoding-discipline.md` · mutation rule canon · sourcing tags · `_field_types` (`observed`/`stated`/`derived`/`structured`) · confidence chain
-- `docs/system/onboarding-holistic-discipline.md` v2.79.3 · panorama 360° onboarding agnostique · porte C `import existant` couverte par cet orchestrateur
+- `docs/system/onboarding-holistic-doctrine.md` v2.79.3 · panorama 360° onboarding agnostique · porte C `import existant` couverte par cet orchestrateur
 
 ---
 
