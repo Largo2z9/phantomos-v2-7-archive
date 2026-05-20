@@ -61,8 +61,33 @@
     "in_scope": ["6 doctrines lot 1 racines + investigation édition critique main thread Sonnet", "Tests non-régression standards", "version + manifest + CHANGELOG + project-journal + D#460 + NEW memory canon doctrine_propagation_progress"],
     "out_of_scope_explicit": ["20 doctrines restantes (lots 2-4 sessions ultérieures)", "Réécriture profonde compressions -30/-50% (les doctrines lot 1 ne nécessitent pas · préservation stricte priorité)", "Propagation cross-files autres canon (lexicon · canon.md déjà propagated v2.84.x)"]
   },
-  "decisions_captured": ["D#460"],
-  "memory_canons_new": ["doctrine_propagation_progress (compteur 1/4 lots · 6/26 doctrines propagated · pattern observé · apprentissage canon)"],
+  "v2_85_1bis_fold": {
+    "trigger": "Audit honnêteté qualité post-sprint v2.85.1 demandé par Largo · question directe `Phase 2.A lecture critique a-t-elle effectivement été menée sur ces 2 doctrines en mode édition critique main thread, ou a-t-elle glissé vers du patch mécanique parce que déjà conforme déclaré en pré-flight ?` · verdict honnête fourni · 4/6 lecture intégrale · 2/6 glissé (DVD 668L lu seulement 170/668L initialement · OCD 397L lu seulement 100/397L initialement)",
+    "scope": "Sprint dédié v2.85.1bis lecture intégrale obligatoire DVD + OCD · wall-time cap 1h strict · patch direct sur branche release/v2.85.1 existante · update PRs #6 (largo-kb) + #9 (phantomos) · pas nouvelle version",
+    "patches_v2_85_1bis": [
+      {"doctrine": "decomposition-visibility-doctrine.md", "lecture_integrale": "668L confirmée", "patches": [
+        {"ligne": 89, "patch": "cross-ref `Operational System Discipline v2.71` → `système opérationnel (operational-system-doctrine.md) ECR × Règles × Templates × Métriques × Rituels`"},
+        {"ligne": 295, "patch": "`skills decomposition-visibility-discipline consumers` → `skills decomposition-visibility-doctrine consumers` (cohérence post-rename)"},
+        {"ligne": 527, "patch": "narratif `trigger Decomposition Visibility Discipline. NON → skip` → `trigger Decomposition Visibility Doctrine. NON → skip` (cohérence post-rename)"}
+      ]},
+      {"doctrine": "output-clarity-doctrine.md", "lecture_integrale": "397L confirmée", "patches": "0 violation additionnelle identifiée · patches v2.85.1 initial suffisants · doctrine très bien tenue"}
+    ],
+    "tests_post_v2_85_1bis": {
+      "build_manifest": "PASS · 81 skills + 92 jargon",
+      "build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+      "em_dash_cross_2_doctrines_critiques": "0 occurrence",
+      "discipline_residual_titre_interne_cross_2_doctrines": "0 occurrence",
+      "discipline_residual_narrative_concept": "0 occurrence (patches DVD ligne 527 inclus)"
+    },
+    "apprentissage_canon_v2_85_1bis": [
+      "Pré-flight conformité 'majoritairement conforme' N'EST PAS un blanc-seing pour skip Phase 2.A lecture intégrale",
+      "Lot 1 a glissé sur 2/6 doctrines (les plus volumineuses · DVD 668L + OCD 397L) · résolus en v2.85.1bis",
+      "NEW garde-fou canon lots 2-4 · cap 500L par doctrine dans un lot · doctrine candidate dépasse 500L → isoler en sprint dédié dès pré-flight (cohérent pattern LITE chantier rename + isolation decomposition-visibility v2.85.0.3a)",
+      "Posture honnêteté discipline · admission claire + diagnostic causal + garde-fou proposé · pattern à conserver pour sprints futurs (validation Largo)"
+    ]
+  },
+  "decisions_captured": ["D#460 (sprint initial + fold v2.85.1bis honnêteté discipline)"],
+  "memory_canons_new": ["doctrine_propagation_progress (compteur 1/4 lots · 6/26 doctrines propagated · pattern observé · apprentissage canon · NEW garde-fou cap 500L lots 2-4 · 2/6 doctrines glissées résolues v2.85.1bis)"],
   "backlog_v2_85_2_plus": [
     "v2.85.2 · lot 2/4 audience + creative · 5-6 doctrines (audience-cartography-doctrine · pain-benefit-chain · progressive-cartography-doctrine · creative-testing-doctrine · pacing-doctrine · visual-identity-doctrine) · attendre potentiellement plus de violations sur doctrines anciennes v2.6x-v2.7x · compression réelle attendue 10-20%",
     "v2.85.3 · lot 3/4 authoring + schema (skill-authoring-doctrine · schema-encoding-doctrine · extension-discovery-doctrine · scope-extension-doctrine · territory-doctrine · entry-arc-doctrine)",
@@ -70,5 +95,5 @@
     "v2.86.0 · audit cross-files final + grep orphelins",
     "v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)"
   ],
-  "rollback_strategy": "Strict additif · revert v2.85.1 = git revert HEAD strict · 6 doctrines patchées modifications additives mineures · zéro impact runtime."
+  "rollback_strategy": "Strict additif · revert v2.85.1 = git revert HEAD strict · 6 doctrines patchées modifications additives mineures · zéro impact runtime. v2.85.1bis · 3 patches additionnels cohérence post-rename DVD (lignes 89 + 295 + 527) intégrés au même ship v2.85.1 · pas de version séparée."
 }

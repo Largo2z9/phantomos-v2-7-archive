@@ -86,7 +86,7 @@ NIVEAU 3 · Positionnement filtre par stage business
 NIVEAU 4 · Méthode pédagogique verbale
 ```
 
-**Pattern canon multiplicatif.** Les 5 niveaux sont multiplicatifs · l'absence d'un seul niveau fait s'effondrer la visibilité systémique. Pattern miroir équation Operational System Discipline v2.71 (ECR × Règles × Templates × Métriques × Rituels).
+**Pattern canon multiplicatif.** Les 5 niveaux sont multiplicatifs · l'absence d'un seul niveau fait s'effondrer la visibilité systémique. Pattern miroir équation système opérationnel (`operational-system-doctrine.md`) ECR × Règles × Templates × Métriques × Rituels.
 
 **Cardinalité canon stricte.** Toujours 5 niveaux pour skills intelligence compositionnelle (NIVEAU 0 + NIVEAUX 1-4). Toujours 4 niveaux pour skills synthesis stratégique post-exec sans intelligence compositionnelle pré-exec (NIVEAUX 1-4 seulement · skills mécaniques type snapshot-brand · profile-audience direct sans atlas × métier paramétrique). Jamais 3 (skip bénéfices 3 couches). Jamais 6+ (over-engineer noise). Cap canon issu test live KaraCare workspace v2.78.0 (4 niveaux post-exec) + test live Liv Happyfood v2.79.4 (NIVEAU 0 pre-exec ajouté).
 
@@ -292,7 +292,7 @@ Sans calibration, le thinking aloud noie. Décomposer un `read file` produit du 
 - **Durée action <30s** = triviale (read · grep · lookup manifest · routing trivial)
 - **Durée action 30s-3min** = moyenne (classification single item · décision routing · choix dans liste calibrée · audit single field · scoring angle isolé)
 - **Durée action >3min OR orchestrator type OR producer heavy** = lourde (cartographie · audit perf · production paid · matrice scoring · profile audience · ingest bulk · build atlas)
-- **Override canon** · skills `decomposition-visibility-discipline` consumers explicit (cf §existant DVD scope · skills intelligence compositionnelle atlas × métier) = toujours moyenne MINIMUM (même actions courtes restent moyenne minimum pour préserver pédagogie posture experte)
+- **Override canon** · skills `decomposition-visibility-doctrine` consumers explicit (cf §existant DVD scope · skills intelligence compositionnelle atlas × métier) = toujours moyenne MINIMUM (même actions courtes restent moyenne minimum pour préserver pédagogie posture experte)
 
 **Exemples canon application gradient** ·
 
@@ -524,7 +524,7 @@ Pattern canon · seuls outputs produisant synthèse stratégique opérateur-faci
 - Skill rituel mécanique (brief-day pure status surfacing · hygiene-audit scanner).
 - Skill conversational debug (clarification doctrine · debug technical).
 
-**Pattern canon decision-aid** · *"L'output est-il une synthèse stratégique opérateur-facing qui drive décision business ?"* OUI → trigger Decomposition Visibility Discipline. NON → skip (zéro friction noise).
+**Pattern canon decision-aid** · *"L'output est-il une synthèse stratégique opérateur-facing qui drive décision business ?"* OUI → trigger Decomposition Visibility Doctrine. NON → skip (zéro friction noise).
 
 ---
 

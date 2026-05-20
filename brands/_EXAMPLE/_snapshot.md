@@ -20,5 +20,5 @@
 ## Status
 - Wedge complete: True
 
-_Generated: 2026-05-20T13:34:06Z_
+_Generated: 2026-05-20T16:08:12Z_
 _Refresh: python3 .skills/build-brand-snapshot.py _EXAMPLE_

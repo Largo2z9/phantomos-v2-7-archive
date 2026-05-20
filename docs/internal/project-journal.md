@@ -46,6 +46,40 @@ D#460 captured · NEW memory canon `doctrine_propagation_progress` (compteur 1/4
 
 **Wall-time consommée** · ~95 min sur 6 doctrines (cap 2h respecté · marge 25 min).
 
+---
+
+### Fold v2.85.1bis · 2026-05-20 · AUDIT HONNÊTETÉ QUALITÉ POST-SPRINT · 3 patches additionnels cohérence DVD
+
+**Trigger** · Largo demande audit qualité post-sprint v2.85.1 avant merge PRs #6 + #9 · question directe `Phase 2.A lecture critique a-t-elle effectivement été menée sur ces 2 doctrines (DVD + OCD) en mode édition critique main thread, ou a-t-elle glissé vers du patch mécanique parce que "déjà conforme" déclaré en pré-flight ?`.
+
+**Verdict honnête fourni** · 4/6 lecture intégrale réelle (CI · IP · CMR · CC) · **2/6 GLISSÉ** sur les doctrines les plus volumineuses · DVD 668L lue seulement 170/668L initialement · OCD 397L lue seulement 100/397L initialement. Cause · pression wall-time + pré-flight "optimiste" utilisé comme justification implicite.
+
+**Option A confirmée Largo** · sprint dédié v2.85.1bis lecture intégrale obligatoire DVD + OCD · wall-time cap 1h strict · patch direct branche release/v2.85.1 existante · update PRs #6 + #9 · pas nouvelle version (fold dans v2.85.1).
+
+**Phase 2.A lecture intégrale RÉELLE v2.85.1bis** ·
+
+| Doctrine | Lecture intégrale | Violations identifiées | Patches appliqués |
+|----------|-------------------|------------------------|-------------------|
+| decomposition-visibility-doctrine.md | 668L confirmée | 3 violations cohérence post-rename résiduelles | (1) ligne 89 cross-ref `Operational System Discipline v2.71` → `système opérationnel (operational-system-doctrine.md) ECR × Règles × Templates × Métriques × Rituels` · (2) ligne 295 `skills decomposition-visibility-discipline consumers` → `-doctrine consumers` · (3) ligne 527 narratif `trigger Decomposition Visibility Discipline. NON → skip` → `trigger Decomposition Visibility Doctrine. NON → skip` |
+| output-clarity-doctrine.md | 397L confirmée | 0 violation additionnelle | Doctrine très bien tenue · patches v2.85.1 initial suffisants · 8 HR-OCD + 8 AP-OCD + cross-refs + Position 5 couches + Status + footer tous conformes voice-doctrine |
+
+**Phase 3 tests post v2.85.1bis** · `python3 .skills/build-manifest.py` · 81 skills + 92 jargon ✓ · `python3 .skills/build-brand-snapshot.py _EXAMPLE` · 24 lines ✓ · grep `*Discipline*` titre/narratif cross DVD + OCD · 0 occurrence ✓ · grep em-dash cross 2 doctrines · 0 occurrence ✓.
+
+**Apprentissage canon v2.85.1bis** ·
+
+1. Pré-flight conformité "majoritairement conforme" N'EST PAS un blanc-seing pour skip Phase 2.A lecture intégrale. Doctrines candidates ≥ 500L commandent toujours lecture intégrale obligatoire main thread Sonnet.
+2. Lot 1 a glissé exactement sur les 2 doctrines les plus volumineuses (DVD 668L · OCD 397L). Pattern prévisible · pression wall-time scale avec volume cumulé doctrines lot.
+3. **NEW garde-fou canon lots 2-4** · cap 500L par doctrine dans un lot. Doctrine candidate dépasse 500L → isoler en sprint dédié dès pré-flight (cohérent pattern LITE chantier rename + isolation decomposition-visibility v2.85.0.3a).
+4. Posture honnêteté discipline · admission claire + diagnostic causal + garde-fou proposé · pattern à conserver pour sprints futurs (validation explicite Largo).
+
+**Wall-time consommée v2.85.1bis** · ~45 min (cap 1h respecté · marge 15 min).
+
+**Fold v2.85.1bis intégré au ship v2.85.1** · pas de version séparée · même branche `release/v2.85.1` · update PRs #6 (largo-kb) + #9 (phantomos) existantes.
+
+D#460 enrichi · NEW memory canon mise à jour `doctrine_propagation_progress` (garde-fou cap 500L + 2/6 doctrines glissées résolues v2.85.1bis).
+
+---
+
 **Backlog v2.85.2 → v2.86.x** ·
 - v2.85.2 · lot 2/4 audience + creative · 5-6 doctrines (audience-cartography-doctrine · pain-benefit-chain · progressive-cartography-doctrine · creative-testing-doctrine · pacing-doctrine · visual-identity-doctrine) · attendre potentiellement plus de violations sur doctrines anciennes v2.6x-v2.7x · compression réelle attendue 10-20%
 - v2.85.3 · lot 3/4 authoring + schema (skill-authoring-doctrine · schema-encoding-doctrine · extension-discovery-doctrine · scope-extension-doctrine · territory-doctrine · entry-arc-doctrine)
