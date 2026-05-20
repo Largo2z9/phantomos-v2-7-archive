@@ -8,7 +8,7 @@ description: Onboarding PhantomOS multi-entry 4 portes (A conversationnel · B b
 
 Executable instructions for the agent. This command handles both first-run onboarding and replay presentation. Read top to bottom before acting.
 
-**Doctrine de référence** · `docs/system/onboarding-holistic-doctrine.md` (v2.79.3 · panorama 360° agnostique · zéro typage profil métier initial · HR-OHD-2). Si un orchestrator est appelé en aval (`setup-brand` · `onboard-brand`) · cross-ref `docs/system/engagement-disclosure-discipline.md` (v2.79.3 · disclosure pré-engagement).
+**Doctrine de référence** · `docs/system/onboarding-holistic-doctrine.md` (v2.79.3 · panorama 360° agnostique · zéro typage profil métier initial · HR-OHD-2). Si un orchestrator est appelé en aval (`setup-brand` · `onboard-brand`) · cross-ref `docs/system/engagement-disclosure-doctrine.md` (v2.79.3 · disclosure pré-engagement).
 
 **Posture de rendu canon v2.80.1.** L'onboarding (`/tour` + premiers messages opérateur) est en **prose conversationnelle native**. Zéro interface ASCII (pas de boxes `━━━` `═══` `─────`, pas de tableau territoires structuré, pas de légende iconographie au pied). Le pattern matriciel ASCII reste réservé aux slash commands `/phantom` `/bird` `/breakdown` `/about`. L'onboarding doit ressembler à une intro humaine naturelle, comme un opérateur senior accueille un nouvel arrivant.
 
@@ -147,7 +147,7 @@ Le cœur de la Porte A. Une boucle conversationnelle qui distille la substance d
 - **Slug `volet:{nom}`** · expansion volet substance · même tour suivant, on continue l'arc.
 - **Slug `pivot:{volet}`** · pivot latéral vers autre volet et retour possible · l'agent compose le tour suivant en gardant les volets non encore vus.
 - **Slug `drill:{territoire}`** · territoire nommé (creative / tracking / media buy / brand / ops / business / lifecycle) → Milestone 3.
-- **Slug `exit:setup`** · single action option toujours visible → `setup-brand` orchestrator via M4 (disclosure pré-engagement `engagement-disclosure-discipline.md`).
+- **Slug `exit:setup`** · single action option toujours visible → `setup-brand` orchestrator via M4 (disclosure pré-engagement `engagement-disclosure-doctrine.md`).
 - **Skill scan** · l'opérateur veut le catalogue → `/skills`.
 - **Détail exhaustif** · l'opérateur veut tout d'un bloc → pointer `/about` (backup deep doc), puis revenir à l'arc ou avancer.
 - **Free-text autre** · intent non-listé → l'agent interprète et route, jamais re-poser *"tu fais quoi"*.
@@ -252,7 +252,7 @@ Après le drill territoire, l'agent **ne s'arrête pas sur du texte libre nu** �
 - **Porte C post-import** (slug `import:archive` depuis M1) · `import-archive` OR `ingest-resource` OR `connect-source` d'abord (selon ressources opérateur · Notion · docs · APIs · assets) puis `setup-brand` minimal (la marque est déjà partiellement encodée via l'import).
 - **Porte A sortie** (slug `exit:setup` depuis M2-M3 OR capacité drillée requiert brand encodée) · `setup-brand` standard après arc substance complet · disclosure pré-engagement calibration normale.
 
-**Calibration disclosure pré-engagement par porte** · canon `engagement-disclosure-discipline.md` v2.79.5 · NIVEAU 0 paramètres décomposés AVANT exécution ·
+**Calibration disclosure pré-engagement par porte** · canon `engagement-disclosure-doctrine.md` v2.79.5 · NIVEAU 0 paramètres décomposés AVANT exécution ·
 
 **Porte B canonique** · disclosure cycle complet ·
 
@@ -651,13 +651,13 @@ Do not write `tour_status` back to `in_progress` on replay. Replay does not cons
 - **Never expose file paths, field names, function names** (*write_to_context*, *Task*, *WebFetch*) in operator-facing replies.
 - **Respect conversation register detection continuously.**
 - **Mutation gate.** All writes to `profile.json` and `awareness.json` go through `write_to_context(field_path, value, source, confidence, mode)`. Never edit JSON directly.
-- **Cross-ref doctrine** · `entry-arc-doctrine.md` v2.81.0 (multi-entry 4 portes MECE · canons Vincent runtime · ton premium enforcement) plus `onboarding-holistic-doctrine.md` (panorama 360° canon · prose narrative onboarding v2.80.1) plus `engagement-disclosure-discipline.md` v2.79.5 (disclosure pré-engagement + NIVEAU 0 paramètres décomposés quand orchestrator appelé en aval) plus `output-clarity-doctrine.md` (iconographie unique + dejargonisation + headers FR sobres + one thing per line · canon v2.79.2 cross-outputs slash commands matriciels opérateur-facing).
+- **Cross-ref doctrine** · `entry-arc-doctrine.md` v2.81.0 (multi-entry 4 portes MECE · canons Vincent runtime · ton premium enforcement) plus `onboarding-holistic-doctrine.md` (panorama 360° canon · prose narrative onboarding v2.80.1) plus `engagement-disclosure-doctrine.md` v2.79.5 (disclosure pré-engagement + NIVEAU 0 paramètres décomposés quand orchestrator appelé en aval) plus `output-clarity-doctrine.md` (iconographie unique + dejargonisation + headers FR sobres + one thing per line · canon v2.79.2 cross-outputs slash commands matriciels opérateur-facing).
 
 ---
 
 ## Exit signals
 
-At any point, if the operator says *skip*, *direct*, *on configure*, *pass à l'action*, or equivalent, bypass remaining tour milestones, trigger `setup-brand` (avec disclosure pré-engagement canon `engagement-disclosure-discipline.md` v2.79.3), write `tour_status = "completed"` with the milestones not hit logged as `paths_skipped`.
+At any point, if the operator says *skip*, *direct*, *on configure*, *pass à l'action*, or equivalent, bypass remaining tour milestones, trigger `setup-brand` (avec disclosure pré-engagement canon `engagement-disclosure-doctrine.md` v2.79.3), write `tour_status = "completed"` with the milestones not hit logged as `paths_skipped`.
 
 If the operator expresses fatigue (*"on reprendra"*, *"pas aujourd'hui"*, *"plus tard"*), save state as `tour_status = "in_progress"` with current milestone index so a future `/tour` call resumes. Offer a clean close · *"Got it. Come back with /tour anytime."*
 
@@ -667,7 +667,7 @@ If the operator expresses fatigue (*"on reprendra"*, *"pas aujourd'hui"*, *"plus
 
 - `docs/system/entry-arc-doctrine.md` · doctrine racine multi-entry 4 portes MECE + canons Vincent runtime + ton premium enforcement (v2.81.0)
 - `docs/system/onboarding-holistic-doctrine.md` · doctrine racine panorama 360° agnostique (v2.79.3) · onboarding prose narrative canon v2.80.1
-- `docs/system/engagement-disclosure-discipline.md` · disclosure pré-engagement orchestrators + NIVEAU 0 paramètres décomposés (v2.79.5)
+- `docs/system/engagement-disclosure-doctrine.md` · disclosure pré-engagement orchestrators + NIVEAU 0 paramètres décomposés (v2.79.5)
 - `docs/system/output-clarity-doctrine.md` · iconographie unique + standards opérateur-facing slash commands matriciels (v2.79.2)
 - `docs/system/decomposition-visibility-doctrine.md` · 4 niveaux matriciels + NIVEAU 0 pré-exec (v2.79.5)
 - `lexicon.md` · canonical vocabulary to use verbatim

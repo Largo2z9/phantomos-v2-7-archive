@@ -293,7 +293,7 @@ elle, chaque assertion porte son étiquette d'origine et confidence chain.
 
 - Master · `docs/system/contextual-intelligence.md` (cette doctrine en est une extension cognitive)
 - Sister · `docs/system/canonical-matrix-reasoning.md` (production discipline · cette doctrine encadre la qualité analytique en amont)
-- Sister · `docs/system/schema-encoding-discipline.md` (substrate · les sections observé/déduit/inconnu/leviers s'encodent dans les schemas comme _field_types vs hypothesis_status)
+- Sister · `docs/system/schema-encoding-doctrine.md` (substrate · les sections observé/déduit/inconnu/leviers s'encodent dans les schemas comme _field_types vs hypothesis_status)
 - Workspace CLAUDE.md root · règle "Cartographier avant affirmer · confidence chain explicit · drill-down macro = opérateur"
 
 ---

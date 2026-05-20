@@ -25,7 +25,7 @@
   ],
   "files_patched": [
     {"file": "docs/system/decomposition-visibility-doctrine.md", "scope": "Extension v2.79.2+ → v2.79.5+ NEW NIVEAU 0 pré-exec (6 paramètres décomposés + POURQUOI explicit) + HR-DVD-10 + AP-DVD-10 (Agent 1)"},
-    {"file": "docs/system/engagement-disclosure-discipline.md", "scope": "Extension v2.79.3 → v2.79.5 NEW Trigger 6 intelligence compositionnelle + NEW Paramètres décomposés section dans pattern + HR-EDD-9 + AP-EDD-9 (Agent 1)"},
+    {"file": "docs/system/engagement-disclosure-doctrine.md", "scope": "Extension v2.79.3 → v2.79.5 NEW Trigger 6 intelligence compositionnelle + NEW Paramètres décomposés section dans pattern + HR-EDD-9 + AP-EDD-9 (Agent 1)"},
     {"file": ".skills/skills/mine-voc/SKILL.md", "scope": "NEW NIVEAU 0 paramètres décomposés section v2.79.5 (Agent 2)"},
     {"file": ".skills/skills/profile-audience/SKILL.md", "scope": "NEW NIVEAU 0 paramètres décomposés section v2.79.5 (Agent 2)"},
     {"file": ".skills/skills/produce-paid-angles/SKILL.md", "scope": "NEW NIVEAU 0 paramètres décomposés section v2.79.5 (Agent 3)"},
@@ -52,7 +52,7 @@
     "anti_pattern_strict": "Skill intelligence compositionnelle lance sans NIVEAU 0 décomposé · opérateur valide à l'aveugle · disclosure pré-engagement annonce plan/ETA/démarche MAIS pas POURQUOI paramètres · gap reverse engineering visible amont.",
     "cross_refs_doctrines": [
       "docs/system/decomposition-visibility-doctrine.md v2.79.5+ NIVEAU 0 pré-exec (NEW · avant 4 niveaux post-exec existing)",
-      "docs/system/engagement-disclosure-discipline.md v2.79.5 Trigger 6 intelligence compositionnelle + Paramètres décomposés section (NEW pattern)"
+      "docs/system/engagement-disclosure-doctrine.md v2.79.5 Trigger 6 intelligence compositionnelle + Paramètres décomposés section (NEW pattern)"
     ]
   },
   "decisions_captured": ["D#441"],

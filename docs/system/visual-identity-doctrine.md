@@ -1,6 +1,6 @@
 # Visual Identity Discipline
 
-> Doctrine canonique v2.43+. Sources canoniques haute résolution pour génération fidèle creatives. Catalog assets + logo SVG + wordmark pattern validation. Cross-ref `compositional-cartography.md` v2.42 (équation v3.1 NOYAU × CONTEXTE × MODIFIEURS), `schema-encoding-discipline.md` (mutation rule + sourcing tags), `canonical-matrix-reasoning.md` (production 95%).
+> Doctrine canonique v2.43+. Sources canoniques haute résolution pour génération fidèle creatives. Catalog assets + logo SVG + wordmark pattern validation. Cross-ref `compositional-cartography.md` v2.42 (équation v3.1 NOYAU × CONTEXTE × MODIFIEURS), `schema-encoding-doctrine.md` (mutation rule + sourcing tags), `canonical-matrix-reasoning.md` (production 95%).
 
 ## Le problème
 
@@ -95,7 +95,7 @@ Si `assets_canonical` absent OU tous les slots ont `_fallback_to_cdn: true` ·
 - `.skills/skills/compose-creative/SKILL.md` HR1.4 (v2.43+) · priorité local source
 - `.skills/skills/compose-overlay-text/SKILL.md` v2.43 NEW · PIL composite consumer
 - `docs/system/compositional-cartography.md` v2.42 · équation v3.1 NOYAU × CONTEXTE × MODIFIEURS
-- `docs/system/schema-encoding-discipline.md` · mutation rule + sourcing tags `_canonical: true|false`, `_fallback_to_cdn: true|false`
+- `docs/system/schema-encoding-doctrine.md` · mutation rule + sourcing tags `_canonical: true|false`, `_fallback_to_cdn: true|false`
 - `docs/system/canonical-matrix-reasoning.md` · production 95% intersectional outputs
 - `docs/system/operator-vocabulary-translation.md` · jamais exposer `assets_canonical`, `_fallback_to_cdn`, `wordmark_pattern` côté operator. Mapping · `catalog assets`, `source manquante`, `validation wordmark`.
 

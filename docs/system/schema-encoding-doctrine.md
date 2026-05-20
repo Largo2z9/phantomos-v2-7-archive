@@ -1,6 +1,6 @@
 # Schema Encoding Discipline (SED) · Operating Doctrine
 
-> Working draft, R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/schema-encoding-discipline.md` in Release mode. **SED is the substrate sub-doctrine of `contextual-intelligence.md` (CI).** Without rigorous schema encoding, the matrix-driven reasoning of CMR has nothing to range over and the agent's intelligence has no stable ground.
+> Working draft, R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/schema-encoding-doctrine.md` in Release mode. **SED is the substrate sub-doctrine of `contextual-intelligence.md` (CI).** Without rigorous schema encoding, the matrix-driven reasoning of CMR has nothing to range over and the agent's intelligence has no stable ground.
 
 ---
 
@@ -200,7 +200,7 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 ## 12. Status
 
 - **Draft v0.1** · research zone, Build mode, .
-- **Promotion criterion** · to be reviewed by the maintainer, then promoted to `workspace-template/docs/system/schema-encoding-discipline.md` once cross-references with CMR / SAD / PTD scope are validated and the 11 sub-disciplines previously scattered are confirmed consolidated.
+- **Promotion criterion** · to be reviewed by the maintainer, then promoted to `workspace-template/docs/system/schema-encoding-doctrine.md` once cross-references with CMR / SAD / PTD scope are validated and the 11 sub-disciplines previously scattered are confirmed consolidated.
 - **First applications** · patches to extension layer governance, sourcing-tag enforcement on legacy brand JSONs, triangulation-rule surface in `validate-resources` output.
 
 ---

@@ -40,7 +40,7 @@ Chairman orchestrating a 4-step pipeline. Narrate each handoff briefly to the op
 
 ## Engagement disclosure pré-runtime · canon v2.79.3
 
-Avant de lancer l'orchestration, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3) ·
+Avant de lancer l'orchestration, expose ce disclosure à l'opérateur (pattern canon `docs/system/engagement-disclosure-doctrine.md` v2.79.3) ·
 
 ```
 Onboarding complet · ce qui va se passer
@@ -65,7 +65,7 @@ Onboarding complet · ce qui va se passer
 
 ATTENDS confirmation explicite avant de lancer. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit. Sinon · disclosure obligatoire canon v2.79.3.
 
-Cross-ref doctrine racine `docs/system/engagement-disclosure-discipline.md` v2.79.3.
+Cross-ref doctrine racine `docs/system/engagement-disclosure-doctrine.md` v2.79.3.
 
 ---
 

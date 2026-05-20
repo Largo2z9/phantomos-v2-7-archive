@@ -29,7 +29,7 @@ Lis-le avant ta première brand · puis reviens-le consulter quand tu te demande
 |---|---|---|
 | Tous JSON | Substrat stable canonisé · territoire de marque | `docs/system/territory-doctrine.md` (v2.67) |
 | `brand.json` `spec.json` | Compositional cartography v3.1 · 4 arbres + matrice + modulateurs | `docs/system/compositional-cartography.md` |
-| `audiences/*/profile.json` parent/enfants | Sub-audience sémantique pure v2.64 | `docs/system/schema-encoding-discipline.md` |
+| `audiences/*/profile.json` parent/enfants | Sub-audience sémantique pure v2.64 | `docs/system/schema-encoding-doctrine.md` |
 | `pain_points/PNT-*.json` chain surface→consequence→deep | Pain-benefit chain doctrine v2.60 | `docs/doctrine/pain-benefit-chain-doctrine.md` |
 | `objections/OBJ-*.json` tier + severity discriminante | Objections mapping doctrine | `docs/doctrine/objections-mapping-doctrine.md` |
 | `angles/ANG-*.json` formula OTRB | Angle anatomy doctrine + canonical-matrix-reasoning | `docs/doctrine/angle-anatomy-doctrine.md` + `docs/system/canonical-matrix-reasoning.md` |

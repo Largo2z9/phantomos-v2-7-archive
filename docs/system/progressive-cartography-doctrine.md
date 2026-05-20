@@ -351,7 +351,7 @@ dans PhantomOS.
 - `territory-doctrine.md` (TD v2.67) · sister doctrine · territoire vs production vs meta layers · base distinction layer territoire qui se pose progressivement
 - `investigation-posture.md` (IP) · 5 sections close synthesis canon pattern · Phase 2 drilling output canon strict
 - `compositional-cartography.md` (CC) · cycle produce → test → learn → promote · pattern référence cycle Phase 4 enrichissement validé → substrat
-- `schema-encoding-discipline.md` (SED) §3 · Spatial vs Temporal encoding · territoire = spatial · phasing progressif pose spatial layer
+- `schema-encoding-doctrine.md` (SED) §3 · Spatial vs Temporal encoding · territoire = spatial · phasing progressif pose spatial layer
 - `scope-extension-doctrine.md` (SED-X v2.65) · sister doctrine pattern miroir 13 sections canon-style · pattern reproductible
 - `canonical-matrix-reasoning.md` (CMR) · 95% quality intersectional outputs · production layer canon · Phase 1-3 territoire feed CMR production downstream
 - `contextual-intelligence.md` (CI) · master doctrine · "No questionnaire before action" anti-pattern · CI master rule enforced par phasing progressif (drill avant questions)

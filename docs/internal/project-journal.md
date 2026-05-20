@@ -12,6 +12,71 @@
 
 ---
 
+## v2.85.0.3b · 2026-05-20 · **CLÔTURE CHANTIER RENAME** · 21/21 doctrines renommées · D#459 captured
+
+**Chantier rename PhantomOS officiellement clos.** 21 fichiers historiques `*-discipline.md` sous `docs/system/` renommés `*-doctrine.md` en 5 sprints consécutifs · alignment voice-doctrine v2.84.1 politique linguistique FR/EN canon COMPLET.
+
+**Sprint v2.85.0.3b · 2 dernières doctrines** ·
+- `engagement-disclosure-discipline.md` → `engagement-disclosure-doctrine.md` (105 refs cumulées · runtime dense · 6 skills orchestrators disclosure pre-exec)
+- `schema-encoding-discipline.md` → `schema-encoding-doctrine.md` (69 refs cumulées · substrate mutation rules · 10 skills light-touch consumers)
+
+**Pré-flight Phase 1** · 1 sub-agent Haiku · garde-fous tous PASSÉS (174 cumulé < 250 · max 105 par doctrine < 150 · refs atypiques tolérables).
+
+**Phase 3 exécution** · git mv 2 + script Python batch (exclusion worktrees + _archive) · **68 fichiers consumers patchés · 147 replacements réels** · wall-time ~2 min · **0 résiduels Round 1**.
+
+**Distribution 68 fichiers patchés** · 18 skills SKILL.md (import-archive 6 · sync-notion-atlas 5 · mine-voc 4 · profile-audience 4 · produce-copy-brief 3 · compose-creative 3 · produce-paid-angles 3 · build-atlas-complete 2 · setup-brand 2 · onboard-brand 2 · update-workspace 2 · produce-paid-matrix 2 · creative-brief-composer 2 · import-asset 1 · map-mechanisms 1 · map-specs 1 · map-benefits 1 · decompose-angle 1 · produce-strategy 1 · craft-packshot 1 · define-specs 1) + 10 doctrines sœurs (decomposition-visibility-doctrine 9 · update-distribution-doctrine 6 · onboarding-holistic-doctrine 4 · entry-arc-doctrine 3 · claude-md-doctrine 3 · territory-doctrine 5 · output-clarity-doctrine 1 · scope-extension-doctrine 1 · operational-system-doctrine 1 · skill-routing-doctrine 1 · progressive-cartography-doctrine 1 · extension-discovery-doctrine 1 · visual-identity-doctrine 2 · investigation-posture 1 · contextual-intelligence 1 · compositional-cartography 1 · atlas-canon-copy 1 · notion-bridge-doctrine 1 · README 3) + 4 slash commands (tour 6 · update 1 · breakdown 1 · about absent ce lot) + 8 manifests JSON + memory canons + R&D + docs internal.
+
+**Phase 4 tests non-régression PASSÉS** ·
+- `python3 .skills/build-manifest.py` · 81 skills + 92 jargon entries ✓
+- `python3 .skills/build-brand-snapshot.py _EXAMPLE` · 24 lines ✓
+- Grep anciens noms `*-discipline.md` ref fichier · **0 occurrence** ✓
+- Spot-check `import-archive/SKILL.md` (engagement-disclosure consumer) · **4 refs nouveau nom** ✓
+- Spot-check `sync-notion-atlas/SKILL.md` (schema-encoding consumer) · **5 refs nouveau nom** ✓
+- Vérification finale · **0 fichier `*-discipline.md` restant** dans `docs/system/` ✓ · **21/21 atteint**
+
+**Bilan chantier rename 5 sprints** ·
+
+| Sprint | Lot | Doctrines | Replacements | Ratio cumulatif/replacements |
+|--------|-----|-----------|--------------|------------------------------|
+| v2.85.0 LITE | 1/4 low-stakes | 6 | 107 | 2.4:1 |
+| v2.85.0.1 | 2/4 mid-stakes | 6 | 253 | 1.9:1 |
+| v2.85.0.2 | 3/4 mid-stakes | 6 | 258 | 1.05:1 |
+| v2.85.0.3a | 4a/4 HIGH risk isolation | 1 | 161 | 1.18:1 |
+| v2.85.0.3b | 4b/4 CLÔTURE | 2 | 147 | 1.18:1 |
+| **Total** | | **21/21** | **926** | |
+
+**0 régression runtime cumulée sur 5 sprints.**
+
+**Calibration finale par type doctrine** ·
+- Low-stakes manifest-heavy · ratio 2.4:1 (refs distribuées dans manifests historiques · changelog distribué)
+- Mid-stakes runtime sibling-dense · ratio 1.05-1.9:1 (refs concentrées skills + doctrines sœurs)
+- HIGH risk most-consumed · ratio 1.18:1 (refs concentrées 12+ skills consumers + memory canons)
+
+**Pattern reproductible documenté** (cf memory canon `doctrine_rename_complete` NEW) ·
+1. Pré-flight obligatoire · 1-3 sub-agents Haiku parallèle scope disjoint · wall-time ~30s-3min
+2. Garde-fous quantitatifs · cap 250 refs cumulées · cap 40% top doctrine share · cap 50 false positives
+3. Stratégie isolation top doctrine si >40% share
+4. Script Python batch idempotent · exclusion `.claude/worktrees` + `_archive` + `.git`
+5. Tests non-régression critiques · build-manifest + build-brand-snapshot + grep résiduel · 0 occurrence
+6. Spot-check skills consumers principaux
+7. False positives narratifs préservés (concept en prose proper name historique)
+8. Ship via PR (pas push direct main)
+
+**Backward compat strict additif cumulatif 5 sprints** · 27 doctrines · 81 skills · 10 slash commands inchangé · `_manifest.json` + `_jargon_bank.json` regenerés cohérents 5 fois · zéro impact runtime · 5 PRs squash mergées par repo · réversible git revert.
+
+D#459 captured · **NEW memory canon `doctrine_rename_complete`** (clôture officielle · 21/21 · 926 replacements · pattern reproductible documenté) · memory canon `v85_0_lite_lessons` mis à jour avec calibration finale 5 lots.
+
+**Prochain chantier · PROPAGATION CONTENU voice-doctrine v2.85.1+** · qualitativement différent du rename (mécanique vs sémantique · application des principes wording P1-P5 + AP-VD-1à8 au contenu textuel des doctrines · pas aux noms de fichiers). **Pause cognitive obligatoire** avant attaque (5 sprints rename consécutifs · charge cognitive cumulée · doctrine 'fatigue cognitive STOP').
+
+**Backlog v2.85.1 → v2.86.x** ·
+- v2.85.1 propagation contenu voice-doctrine STRICT lot 1 (5-6 doctrines · post-pause cognitive obligatoire)
+- v2.85.2-4 propagation contenu lots 2-4 (boucle 26 doctrines)
+- v2.86.0 audit cross-files final + grep orphelins
+- v2.86.1 validation runtime 5 scénarios (dette depuis v2.82.0)
+- v2.86.2 test discovery externe
+
+---
+
 ## v2.85.0.3a · 2026-05-20 · Sprint MINOR · isolation decomposition-visibility lot 4a/4 · 19/21 cumulé · D#458 captured
 
 Sprint v2.85.0.3 briefing lendemain matin frais prévoyait lot 4/4 HIGH risk FULL (3 doctrines · decomposition-visibility + engagement-disclosure + schema-encoding · 343 refs cumulées estimées). Pré-flight Phase 1 obligatoire a déclenché 2 garde-fous · décision Largo Option A · isolation decomposition-visibility en v2.85.0.3a.
@@ -690,7 +755,7 @@ rollback(workspace_path)                  · restore state pre-migration depuis 
 
 1. **Doctrine `decomposition-visibility-doctrine.md` v2.79.2+ → v2.79.5+** (Agent 1) · NEW NIVEAU 0 pré-exec ajouté AVANT les 4 niveaux post-exec existing · 6 paramètres décomposés avec POURQUOI explicit chacun · HR-DVD-10 + AP-DVD-10 enforcement runtime · pattern obligatoire skills intelligence compositionnelle.
 
-2. **Doctrine `engagement-disclosure-discipline.md` v2.79.3 → v2.79.5** (Agent 1) · NEW Trigger 6 intelligence compositionnelle ajouté aux 5 triggers existing · NEW Paramètres décomposés section dans pattern disclosure (6 éléments canon + POURQUOI explicit) · HR-EDD-9 + AP-EDD-9 enforcement runtime · cross-ref decomposition-visibility-doctrine.md v2.79.5+ NIVEAU 0.
+2. **Doctrine `engagement-disclosure-doctrine.md` v2.79.3 → v2.79.5** (Agent 1) · NEW Trigger 6 intelligence compositionnelle ajouté aux 5 triggers existing · NEW Paramètres décomposés section dans pattern disclosure (6 éléments canon + POURQUOI explicit) · HR-EDD-9 + AP-EDD-9 enforcement runtime · cross-ref decomposition-visibility-doctrine.md v2.79.5+ NIVEAU 0.
 
 3. **6 skills patchés NIVEAU 0 paramètres décomposés section v2.79.5** (Agents 2-3) · mine-voc · profile-audience · produce-paid-angles · produce-copy-brief · compose-creative · build-atlas-complete · pattern obligatoire 6 éléments + POURQUOI explicit + close binaire "OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?" · l'opérateur valide en conscience expert métier, pas à l'aveugle.
 
@@ -710,7 +775,7 @@ L'opérateur novice valide en conscience expert métier, pas à l'aveugle. Asym�
 
 **Files patched (13)** ·
 - `docs/system/decomposition-visibility-doctrine.md` extension v2.79.5+ NEW NIVEAU 0 pré-exec + HR-DVD-10 + AP-DVD-10 (Agent 1)
-- `docs/system/engagement-disclosure-discipline.md` extension v2.79.5 NEW Trigger 6 + Paramètres décomposés section + HR-EDD-9 + AP-EDD-9 (Agent 1)
+- `docs/system/engagement-disclosure-doctrine.md` extension v2.79.5 NEW Trigger 6 + Paramètres décomposés section + HR-EDD-9 + AP-EDD-9 (Agent 1)
 - `.skills/skills/mine-voc/SKILL.md` NEW NIVEAU 0 section v2.79.5 (Agent 2)
 - `.skills/skills/profile-audience/SKILL.md` NEW NIVEAU 0 section v2.79.5 (Agent 2)
 - `.skills/skills/produce-paid-angles/SKILL.md` NEW NIVEAU 0 section v2.79.5 (Agent 3)
@@ -822,7 +887,7 @@ L'opérateur novice démarre rapidement via /tour court. L'opérateur conscient 
 
 1. **NEW doctrine canon racine `onboarding-holistic-doctrine.md`** (Agent 1) · doctrine canon onboarding agnostique + holistique · panorama 360° des 7 territoires métiers DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · zéro typage profil métier en porte d'entrée · l'opérateur découvre l'étendue, se reconnaît, choisit où commencer · 8 HR-OHD + 8 AP-OHD enforcement runtime.
 
-2. **NEW doctrine canon racine `engagement-disclosure-discipline.md`** (Agent 2) · doctrine canon engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds · 5 triggers canon (type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid) · 4 éléments pattern (plan N étapes ≤8 · ETA chiffrée minutes ou range · démarche implication + livrable · close binaire confirmation) · court-circuit autorisé UNIQUEMENT opérateur opt-out explicit (`--no-disclosure` OR `operator/profile.json#preferences.disclosure_preference: silent`) · canon opt-out expert post-N usages JAMAIS opt-in default · 8 HR-EDD + 8 AP-EDD enforcement runtime.
+2. **NEW doctrine canon racine `engagement-disclosure-doctrine.md`** (Agent 2) · doctrine canon engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds · 5 triggers canon (type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid) · 4 éléments pattern (plan N étapes ≤8 · ETA chiffrée minutes ou range · démarche implication + livrable · close binaire confirmation) · court-circuit autorisé UNIQUEMENT opérateur opt-out explicit (`--no-disclosure` OR `operator/profile.json#preferences.disclosure_preference: silent`) · canon opt-out expert post-N usages JAMAIS opt-in default · 8 HR-EDD + 8 AP-EDD enforcement runtime.
 
 3. **Refonte `/tour.md` panorama 360° holistique** (Agent 3) · refonte complète onboarding canon v2.79.3 · 7 territoires DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · statut shipped/partial/open par territoire · iconographie canon v2.79.2 préservée (✓ complet · ◐ partiel · ○ vide · ✗ absent · ⚠ critique) · zéro question profil métier porte d'entrée · pédagogie "se reconnaître dans le panorama".
 
@@ -832,7 +897,7 @@ L'opérateur novice démarre rapidement via /tour court. L'opérateur conscient 
 
 ```
 Layer 1 · NEW doctrine onboarding-holistic-doctrine.md       ✓ v2.79.3
-Layer 2 · NEW doctrine engagement-disclosure-discipline.md     ✓ v2.79.3
+Layer 2 · NEW doctrine engagement-disclosure-doctrine.md     ✓ v2.79.3
 Layer 3 · CLAUDE.md root sommaire 19 → 21 doctrines            ✓ funnel order
 Layer 4 · CLAUDE.md root 2 NEW operator contract rules         ✓ enforcement
 Layer 5 · /tour panorama 360° refondu                          ✓ 7 territoires
@@ -845,7 +910,7 @@ Plus de typage métier en porte d'entrée. Plus de skills orchestrateurs lourds 
 
 **Files patched (12-14)** ·
 - `docs/system/onboarding-holistic-doctrine.md` NEW (Agent 1)
-- `docs/system/engagement-disclosure-discipline.md` NEW (Agent 2)
+- `docs/system/engagement-disclosure-doctrine.md` NEW (Agent 2)
 - `.claude/commands/tour.md` refonte v2.79.3 panorama 360° (Agent 3)
 - `CLAUDE.md` root sommaire 19 → 21 doctrines + 2 NEW operator contract rules (Agent 4)
 - `.skills/skills/build-atlas-complete/SKILL.md` disclosure pré-runtime section (Agent 4)
@@ -861,7 +926,7 @@ Plus de typage métier en porte d'entrée. Plus de skills orchestrateurs lourds 
 
 **D#436 + D#437 captured** ·
 - **D#436** · Onboarding PhantomOS canon agnostique + holistique. Pas de typage profil métier en porte d'entrée. /tour expose panorama 360° des 7 territoires DTC (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) sur pied d'égalité visuelle. L'opérateur découvre l'étendue, se reconnaît, choisit où commencer. Use case déclencheur · opérateur Abyss tracking-GTM specialist devait pouvoir reconnaître son métier sans typage initial. Doctrine NEW onboarding-holistic-doctrine.md v2.79.3. Cross-refs scope-extension-discipline + tour + CLAUDE.md root operator contract NEW rule. Memory canon `phantomos_elastic_scope` reinforced.
-- **D#437** · Engagement disclosure obligatoire canon pré-engagement skills orchestrateurs lourds. Triggers · type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid. Pattern · plan (N étapes ≤8) + ETA chiffrée (minutes ou range) + démarche (implication + livrable) + confirmation close binaire. 6 skills canon prioritaires patchés v2.79.3 (build-atlas-complete + onboard-brand + mine-voc + setup-brand + creative-brief-composer + produce-paid-matrix). Court-circuit autorisé UNIQUEMENT opérateur opt-out explicit. Doctrine NEW engagement-disclosure-discipline.md v2.79.3.
+- **D#437** · Engagement disclosure obligatoire canon pré-engagement skills orchestrateurs lourds. Triggers · type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid. Pattern · plan (N étapes ≤8) + ETA chiffrée (minutes ou range) + démarche (implication + livrable) + confirmation close binaire. 6 skills canon prioritaires patchés v2.79.3 (build-atlas-complete + onboard-brand + mine-voc + setup-brand + creative-brief-composer + produce-paid-matrix). Court-circuit autorisé UNIQUEMENT opérateur opt-out explicit. Doctrine NEW engagement-disclosure-doctrine.md v2.79.3.
 
 **Backlog v2.79.3+** · Sprint v2.80 4-6 skills tracking-GTM NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode · prérequis brief tracking specialist solide) · Sprint v2.79.x business pilotage backlog v2.79.1 (unit economics + WBR + cohort retention + audit-klaviyo-flows) · Sprint v2.80.x DR copywriting production backlog v2.79.1 (sales letter + email sequence + big-idea-canon + audit-proof-coverage) · Sprint v2.81+ CRO + lifecycle backlog v2.79.1 · Pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md) · Re-test live workspace fresh v2.79.3 sur KaraCare pour valider /tour panorama 360° + disclosure pré-runtime build-atlas-complete.
 
@@ -1510,7 +1575,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 - `docs/system/contextual-intelligence.md` (NEW section Position 5 couches)
 - `docs/system/compositional-cartography.md` (NEW section Position 5 couches)
 - `docs/system/canonical-matrix-reasoning.md` (NEW section Position 5 couches)
-- `docs/system/schema-encoding-discipline.md` (NEW section Position 5 couches)
+- `docs/system/schema-encoding-doctrine.md` (NEW section Position 5 couches)
 - `docs/system/scope-extension-doctrine.md` (NEW section Position 5 couches)
 - `docs/doctrine/audiences-cartography-doctrine.md` (NEW section Position 5 couches)
 - `docs/system/territory-doctrine.md` (NEW section Position 5 couches)
@@ -2166,7 +2231,7 @@ Distinction nette · qui lance le script. Plus de chevauchement sémantique avec
 - `/phantom.md` refactor mode brand en 5 sections obligatoires dividers `────` · Header (cartographie + modèle business + last session) · EN COURS variable contextuel (hot spots auto-scan + background actif + récent 24h) · WORKSPACE NAVIGATION adaptive business_model (Matière brand + Production créative + Stratégie ops · vocabulaire ligne produits / réseau cliniques / services / pipeline deals) · ACTIONS prioritaires paste-ready · DRILL exploration explicit. Cap brand mode 40-50 → 60-80 lignes (page menu workspace structurée). 3 NEW sections canon · "Scaling rules · produits" (1-3 full nested · 4-10 compact · 11-30 top-5 + drill · 30+ groupes catégorie) · "Sub-line metrics canonisées" (ratios + top-1 nominal table 11 entités) · "Business model adaptation" (table 5 colonnes business_model × Matière/Créa/Ops). Entity-drill mode enrichi pattern 6-étapes + 4 nouveaux drills (frictions, roadmap, funnel, services). Item mode enrichi cross-refs résolus inline + 5 entités drillables (audiences, angles, products, frictions, briefs, tests, roadmap phases). Total 1010 → 1363 lignes (+353).
 
 **Doctrine + docs (Bloc 4)** ·
-- `docs/system/schema-encoding-discipline.md` §13 enrichi sub-table v2.57 schemas changes + décisions design (encoding identity-level pas fork services entity, ID pattern PNT-NN/OBJ-NN cohérent FRC-NN/ANG-NN/MEC-NN, enum extensions strictement additives, cohérence cross-schema triple brand.business_model + spec.identity.type + product_category).
+- `docs/system/schema-encoding-doctrine.md` §13 enrichi sub-table v2.57 schemas changes + décisions design (encoding identity-level pas fork services entity, ID pattern PNT-NN/OBJ-NN cohérent FRC-NN/ANG-NN/MEC-NN, enum extensions strictement additives, cohérence cross-schema triple brand.business_model + spec.identity.type + product_category).
 - `docs/system/operator-vocabulary-translation.md` · 9 NEW entries phantom-modes (winners scalés → gagnantes scalées · funnel Meta → tunnel Meta · créas → pubs / pubs créatives · DTC pure → e-commerce direct · canon terms gardés essoufflés + TOF/MOF/BOF).
 
 **Validation runtime** ·
@@ -2210,7 +2275,7 @@ Distinction nette · qui lance le script. Plus de chevauchement sémantique avec
 **Doctrine + docs (Bloc 4 P2)** ·
 - `docs/system/notion-bridge-doctrine.md` NEW · principe PhantomOS=truth + Notion=UI · mappings 11 collections détaillés · tags universels Notion source/confidence/validation_status mapping vers PhantomOS `_field_types` · workflow opérateur pull/push/diff · edge cases (property mismatch, deleted rows, dual-writes, isolation) · positioning Layer 1 · anti-patterns · cross-refs.
 - `docs/system/compositional-cartography.md` patché · cross-ref ajouté vers notion-bridge-doctrine.md dans §Cross-refs (Notion stride-up = implémentation canonique de référence 4 arbres + matrice + modulateurs).
-- `docs/system/schema-encoding-discipline.md` patché · §13 NEW Schema evolutions registry · entrée v2.56 documente Bloc 1 schemas changes + décisions design SED-side + activation runtime brief.schema + bridge sync external.
+- `docs/system/schema-encoding-doctrine.md` patché · §13 NEW Schema evolutions registry · entrée v2.56 documente Bloc 1 schemas changes + décisions design SED-side + activation runtime brief.schema + bridge sync external.
 - `docs/product/capabilities.md` patché · §Scénarios Notion ↔ PhantomOS NEW · 8 scenarios opérateur (onboard from Notion existant, export atlas vers Notion review client, workflow 4-zones in Notion → push, audit gap, friction tracking, roadmap planning, brief créa start Notion, Abyss collectif sync 5 brands).
 - `.mcp.json.example` patché · entry `notion` mcpServers (npx @notionhq/notion-mcp-server, env NOTION_API_KEY, _description used by sync-notion-atlas, _credentials_ref).
 
@@ -2293,7 +2358,7 @@ Distinction nette · qui lance le script. Plus de chevauchement sémantique avec
 
 **What.** Scrubbed brand references (Karacare, Hair Boost, Cellule Boost) to fictitious brand (Glowco, Glow Boost, Cell Boost), GitHub org placeholder, personal absolute paths to anonymized form, named co-operators to generic (Operator A + Operator B), agency-specific surface to generic (agency side), maintainer name references in doctrines / skills / schemas to neutral (`the operator` / `the maintainer` / `operator`) per contextual fit. Cross-files cohérence préservée. Substance pédagogique intacte.
 
-**Files patched.** `resources/templates/operator-fiche-output.md`, `.skills/skills/brief-day/SKILL.md`, `.claude/commands/phantom.md`, `.skills/skills/snapshot-brand/SKILL.md`, `CONTRIBUTING.md`, `resources/schemas/visual_identity.schema.json`, `resources/schemas/angle.schema.json`, `resources/schemas/brand.schema.json`, `resources/templates/creative-formula.md`, `resources/templates/hook-formulas.md`, `.claude/commands/tour.md`, `docs/system/audience-cartography.md`, `docs/system/model-versioning-canon.md`, `docs/system/provenance-trust-discipline-scope.md`, `lexicon.md`, `.skills/INDEX.md`, `.skills/skills/export-session/SKILL.md`, `.skills/skills/ingest-resource/SKILL.md`, `.skills/skills/compose-creative/SKILL.md`, `.skills/skills/import-asset/SKILL.md`, `.skills/skills/validate-output-coherence/SKILL.md`, `.skills/skills/compose-overlay-text/SKILL.md`, `.skills/skills/craft-packshot/SKILL.md`, `.skills/skills/learn-from-session/SKILL.md`, `docs/system/skill-authoring-doctrine.md`, `docs/system/skill-authoring-toolkit.md`, `docs/vision/roadmap.md`, `docs/vision/README.md`, `docs/vision/offering-deployment.md`, `docs/system/voice.md`, `docs/system/agent-contracts.md`, `docs/system/canonical-matrix-reasoning.md`, `docs/system/doctrine-governance.md`, `docs/system/atlas-canon-copy.md`, `docs/system/schema-encoding-discipline.md`, `docs/internal/canon.md`, `docs/internal/releases/manifest/2.45.0-manifest.json`, `docs/internal/releases/manifest/2.11.0-manifest.json`, `resources/frameworks/paid-angle-scoring.md`, `CHANGELOG.md` (paths perso scrubbés + note historique en tête).
+**Files patched.** `resources/templates/operator-fiche-output.md`, `.skills/skills/brief-day/SKILL.md`, `.claude/commands/phantom.md`, `.skills/skills/snapshot-brand/SKILL.md`, `CONTRIBUTING.md`, `resources/schemas/visual_identity.schema.json`, `resources/schemas/angle.schema.json`, `resources/schemas/brand.schema.json`, `resources/templates/creative-formula.md`, `resources/templates/hook-formulas.md`, `.claude/commands/tour.md`, `docs/system/audience-cartography.md`, `docs/system/model-versioning-canon.md`, `docs/system/provenance-trust-discipline-scope.md`, `lexicon.md`, `.skills/INDEX.md`, `.skills/skills/export-session/SKILL.md`, `.skills/skills/ingest-resource/SKILL.md`, `.skills/skills/compose-creative/SKILL.md`, `.skills/skills/import-asset/SKILL.md`, `.skills/skills/validate-output-coherence/SKILL.md`, `.skills/skills/compose-overlay-text/SKILL.md`, `.skills/skills/craft-packshot/SKILL.md`, `.skills/skills/learn-from-session/SKILL.md`, `docs/system/skill-authoring-doctrine.md`, `docs/system/skill-authoring-toolkit.md`, `docs/vision/roadmap.md`, `docs/vision/README.md`, `docs/vision/offering-deployment.md`, `docs/system/voice.md`, `docs/system/agent-contracts.md`, `docs/system/canonical-matrix-reasoning.md`, `docs/system/doctrine-governance.md`, `docs/system/atlas-canon-copy.md`, `docs/system/schema-encoding-doctrine.md`, `docs/internal/canon.md`, `docs/internal/releases/manifest/2.45.0-manifest.json`, `docs/internal/releases/manifest/2.11.0-manifest.json`, `resources/frameworks/paid-angle-scoring.md`, `CHANGELOG.md` (paths perso scrubbés + note historique en tête).
 
 **Backward compat.** Strict additif. Substance préservée. Manifest skills regen 56 skills.
 

@@ -356,7 +356,7 @@ Skill Routing Discipline opère sur 3 couches simultanément du multiplicatif Op
 - `dependency-resolution-protocol.md` (DRGFP) · pattern miroir heuristique L1+L2+L3 gap-filling pre-flight
 - `confidence-propagation.md` · audit trail pattern miroir `routing_path` annotation
 - `skill-authoring-doctrine.md` (SAD) · `disambiguates_against` frontmatter field validation · type taxonomy producer/curator/orchestrator routing eligibility
-- `schema-encoding-discipline.md` (SED) · substrate ontologique · `disambiguates_against` field append-only mutation gate manifest
+- `schema-encoding-doctrine.md` (SED) · substrate ontologique · `disambiguates_against` field append-only mutation gate manifest
 - `pattern-detection-triggers.md` · 8 triggers learn-from-session · pattern miroir rituel cadence couche 5
 - `doctrine-governance.md` · amendment process append-only D# verrouillé · cette doctrine entry registry append-only post-ship
 

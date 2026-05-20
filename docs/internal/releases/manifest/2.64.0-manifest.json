@@ -14,7 +14,7 @@
         "resources/schemas/objections.schema.json",
         "resources/schemas/friction.schema.json",
         "operations/migrations/v2.64-subfolder-collections.py",
-        "docs/system/schema-encoding-discipline.md"
+        "docs/system/schema-encoding-doctrine.md"
       ],
       "section": "Agent A · 3 schemas minor patches + migration + SED §13 v2.64",
       "rationale": "pain_points v1.0 → v1.1 + objections v1.0 → v1.1 + friction v1.2 → v1.3 · description storage paths sub-parent locations · also_affects_audiences[] arrays NEW pour pain shared cross-audiences canonical primary owner. Migration script idempotent · backups · events log · re-run safe."

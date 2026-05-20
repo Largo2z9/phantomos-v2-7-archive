@@ -14,7 +14,7 @@
     },
     {
       "type": "doc-added",
-      "path": "docs/system/schema-encoding-discipline.md",
+      "path": "docs/system/schema-encoding-doctrine.md",
       "summary": "SED doctrine v0.1 — substrate sub-doctrine. Consolidates 11 previously-scattered sub-disciplines (mutation rule, _field_types, _version semver, sourcing tags, triangulation, validation runtime, append-only conventions, snapshot/manifest regen, conventions plateforme, extension layer, memory & observability). Two layers: spatial encoding (entities/fields/schemas) + temporal encoding (events/learnings/awareness). Prerequisite of CMR."
     },
     {

@@ -20,14 +20,14 @@
   },
   "patches_structurels": [
     "NEW doctrine canon racine `docs/system/onboarding-holistic-doctrine.md` v2.79.3 (Agent 1) · doctrine onboarding agnostique + holistique · panorama 360° des 7 territoires métiers DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · zéro typage profil métier en porte d'entrée · 8 HR-OHD + 8 AP-OHD enforcement runtime",
-    "NEW doctrine canon racine `docs/system/engagement-disclosure-discipline.md` v2.79.3 (Agent 2) · doctrine engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds · 5 triggers canon (type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid) · 4 éléments pattern (plan ≤8 + ETA chiffrée + démarche + close binaire) · court-circuit autorisé UNIQUEMENT opt-out explicit · 8 HR-EDD + 8 AP-EDD enforcement runtime",
+    "NEW doctrine canon racine `docs/system/engagement-disclosure-doctrine.md` v2.79.3 (Agent 2) · doctrine engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds · 5 triggers canon (type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid) · 4 éléments pattern (plan ≤8 + ETA chiffrée + démarche + close binaire) · court-circuit autorisé UNIQUEMENT opt-out explicit · 8 HR-EDD + 8 AP-EDD enforcement runtime",
     "Refonte `.claude/commands/tour.md` panorama 360° v2.79.3 (Agent 3) · refonte complète onboarding canon · 7 territoires DTC sur pied d'égalité visuelle · iconographie canon v2.79.2 préservée (✓ ◐ ○ ✗ ⚠) · statut shipped/partial/open par territoire · zéro question profil métier porte d'entrée · pédagogie `se reconnaître dans le panorama`",
     "Patch `CLAUDE.md` root v2.79.3 (Agent 4) · sommaire 19 → 21 doctrines (NEW entries onboarding-holistic-discipline + engagement-disclosure-discipline funnel order canon respecté) + 2 NEW operator contract rules (onboarding holistique agnostique + pre-engagement disclosure obligatoire)",
     "Patches 6 skills orchestrateurs lourds canon prioritaires disclosure pré-runtime (Agent 4) · `build-atlas-complete/SKILL.md` + `onboard-brand/SKILL.md` + `mine-voc/SKILL.md` + `setup-brand/SKILL.md` + `creative-brief-composer/SKILL.md` + `produce-paid-matrix/SKILL.md` · section disclosure pré-runtime canon ajoutée AVANT cycle runtime existing · pattern plan + ETA + démarche + close binaire confirmation"
   ],
   "files_patched": [
     {"file": "docs/system/onboarding-holistic-doctrine.md", "scope": "NEW doctrine canon racine onboarding agnostique + holistique panorama 360° 7 territoires DTC pied d'égalité visuelle (Agent 1)"},
-    {"file": "docs/system/engagement-disclosure-discipline.md", "scope": "NEW doctrine canon racine engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds (Agent 2)"},
+    {"file": "docs/system/engagement-disclosure-doctrine.md", "scope": "NEW doctrine canon racine engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds (Agent 2)"},
     {"file": ".claude/commands/tour.md", "scope": "Refonte v2.79.3 panorama 360° des 7 territoires DTC pied d'égalité visuelle · zéro typage métier porte d'entrée (Agent 3)"},
     {"file": "CLAUDE.md", "scope": "Sommaire 19 → 21 doctrines (Agent 4 NEW entries onboarding-holistic + engagement-disclosure) + 2 NEW operator contract rules (onboarding holistique agnostique + pre-engagement disclosure obligatoire)"},
     {"file": ".skills/skills/build-atlas-complete/SKILL.md", "scope": "Disclosure pré-runtime section ajoutée (Agent 4) · plan + ETA + démarche + close binaire confirmation"},
@@ -57,7 +57,7 @@
     "memory_canon_aligne": "phantomos_elastic_scope reinforced (système agnostique de domaine) · iterative_validation (micro-bouchées 7 territoires scan rapide vs proposition exhaustive d'un coup) · largo_cognitive_profile (visuel/matriciel pied d'égalité)"
   },
   "engagement_disclosure_coverage": {
-    "doctrine_canon_racine_NEW": "engagement-disclosure-discipline.md v2.79.3 (Agent 2) · 8 HR-EDD + 8 AP-EDD enforcement runtime",
+    "doctrine_canon_racine_NEW": "engagement-disclosure-doctrine.md v2.79.3 (Agent 2) · 8 HR-EDD + 8 AP-EDD enforcement runtime",
     "5_triggers_canon": [
       "type: orchestrator (skills `type` frontmatter declared orchestrator)",
       "duration estimée >5 min (skill estimated runtime exceeds 5 min)",

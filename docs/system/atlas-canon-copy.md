@@ -199,5 +199,5 @@ Doctrine confidence chain (propagation, min-chain, gate >= 0.7) → `docs/system
 - `resources/schemas/canon-tool.schema.json` : schema fiche, source de vérité.
 - `docs/system/skill-authoring-doctrine.md § Bidirectional canon contract` : pattern skill author obligatoire.
 - `docs/system/canonical-matrix-reasoning.md` : doctrine production qualité 95% qui consomme atlas.
-- `docs/system/schema-encoding-discipline.md` : substrate (mutation gate, append-only, sourcing tags) qui sous-tend `validations[]`.
+- `docs/system/schema-encoding-doctrine.md` : substrate (mutation gate, append-only, sourcing tags) qui sous-tend `validations[]`.
 - `decisions.md` D#382 (atlas fondation), D#383 (schema canon-tool/1.0), D#391 (boucle bidirectionnelle skills consume + feed).

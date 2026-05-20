@@ -159,7 +159,7 @@ Chairman orchestrating a territoire substrate pipeline that produces the complet
 
 ## Engagement disclosure pré-runtime · canon v2.79.3 + NIVEAU 0 v2.79.5
 
-Avant de lancer l'orchestration, expose ce disclosure à l'opérateur en DEUX phases successives (pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.3 + `docs/system/decomposition-visibility-doctrine.md` v2.79.5).
+Avant de lancer l'orchestration, expose ce disclosure à l'opérateur en DEUX phases successives (pattern canon `docs/system/engagement-disclosure-doctrine.md` v2.79.3 + `docs/system/decomposition-visibility-doctrine.md` v2.79.5).
 
 **Phase A · NIVEAU 0 paramètres décomposés (v2.79.5)** · expose les paramètres décomposés que l'orchestrateur va mobiliser. Build-atlas-complete est le skill orchestrateur le plus complexe du canon (7 paliers · 30-90 min · MCP optionnel · gates intermédiaires + Gate A + Gate B). Disclosure NIVEAU 0 obligatoire AVANT le plan/ETA pour que l'opérateur ajuste un paramètre racine (scope · profondeur · cardinalité audiences/angles) avant de brûler 30+ min.
 
@@ -259,7 +259,7 @@ Build atlas complet · ce qui va se passer
 
 ATTENDS confirmation explicite Phase B avant de lancer Step 0. Court-circuit (Phase A + Phase B) autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set ou si opérateur a flag `--no-disclosure` explicit OR si N usages successifs >= seuil expert (`auto_skip_after_n_calls` true). Sinon · disclosure 2 phases obligatoire canon v2.79.3 + v2.79.5.
 
-Cross-ref doctrines racine `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-doctrine.md` v2.79.5.
+Cross-ref doctrines racine `docs/system/engagement-disclosure-doctrine.md` v2.79.5 + `docs/system/decomposition-visibility-doctrine.md` v2.79.5.
 
 ---
 

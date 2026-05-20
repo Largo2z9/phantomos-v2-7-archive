@@ -1,0 +1,80 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.85.0.3b",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "CLÔTURE CHANTIER RENAME · 21/21 doctrines renommées · v2.85.0.3b · 2 dernières doctrines (engagement-disclosure + schema-encoding) · 147 replacements · tests PASSÉS · 0 régression cumulée sur 5 sprints.",
+  "context_amont": {
+    "trigger": "v2.85.0.3a PR mergées (decomposition-visibility-doctrine.md shipped). 2 doctrines restantes (engagement-disclosure + schema-encoding) pour atteindre 21/21 cumulé. Sprint v2.85.0.3b CLÔTURE chantier rename.",
+    "pre_flight_phase_1": "1 sub-agent Haiku · garde-fous tous PASSÉS (174 cumulé < 250 · max 105 par doctrine < 150 · refs atypiques tolérables)",
+    "decision_largo": "GO 2 doctrines single batch · pas de stratégie rollback séparée (charge légère)"
+  },
+  "2_doctrines_renommees_lot_4b_CLOTURE": [
+    {"old": "engagement-disclosure-discipline.md", "new": "engagement-disclosure-doctrine.md", "refs_cumulees": 105, "sensibilite": "runtime dense"},
+    {"old": "schema-encoding-discipline.md", "new": "schema-encoding-doctrine.md", "refs_cumulees": 69, "sensibilite": "modéré"}
+  ],
+  "refs_total_cumulees_lot_4b": 174,
+  "replacements_total_reels_lot_4b": 147,
+  "ratio_cumulatif_replacements_lot_4b": "1.18:1 (cohérent prédiction 1.2-1.5:1)",
+  "patches_appliques": [
+    "Phase 1 pré-flight ciblé · 1 sub-agent Haiku · garde-fous PASSÉS",
+    "Phase 3 exécution · git mv 2 + script Python batch · 68 fichiers consumers · 147 replacements · 0 résiduels Round 1",
+    "Phase 4 tests non-régression PASSÉS · build-manifest 81 skills · build-brand-snapshot _EXAMPLE 24 lines · grep 0 occurrence · spot-check import-archive 4 refs · sync-notion-atlas 5 refs",
+    "Phase 5 clôture chantier · 0 fichier *-discipline.md restant docs/system/ confirmé · 21/21 atteint",
+    "Phase 6 ship · D#459 + NEW memory canon doctrine_rename_complete + memory v85_0_lite_lessons mis à jour"
+  ],
+  "tests_non_regression": {
+    "build_manifest": "PASS · 81 skills + 92 jargon entries",
+    "build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+    "grep_anciens_noms_ref_fichier": "0 occurrence ✓",
+    "spot_check_import_archive": "4 refs engagement-disclosure-doctrine ✓",
+    "spot_check_sync_notion_atlas": "5 refs schema-encoding-doctrine ✓",
+    "verif_21_21_atteint": "0 fichier *-discipline.md restant docs/system/ ✓"
+  },
+  "bilan_chantier_rename_5_sprints": {
+    "v2_85_0_lot_1": "6 doctrines low-stakes · 107 replacements",
+    "v2_85_0_1_lot_2": "6 doctrines mid-stakes · 253 replacements",
+    "v2_85_0_2_lot_3": "6 doctrines mid-stakes · 258 replacements",
+    "v2_85_0_3a_lot_4a": "1 doctrine HIGH risk · 161 replacements",
+    "v2_85_0_3b_lot_4b": "2 doctrines CLÔTURE · 147 replacements",
+    "total_cumule_final": "21/21 doctrines renommées · 926 replacements cumulés · 0 régression runtime",
+    "alignment_complete": "voice-doctrine v2.84.1 politique linguistique FR/EN canon (doctrine vs discipline) appliquée intégralement aux 21 fichiers `*-discipline.md` historiques"
+  },
+  "calibration_finale_5_lots": {
+    "lot_1_low_stakes_manifest_heavy": "2.4:1 (258/107)",
+    "lot_2_mid_stakes_runtime": "1.9:1 (477/253)",
+    "lot_3_mid_stakes_dense": "1.05:1 (272/258)",
+    "lot_4a_high_risk_most_consumed": "1.18:1 (190/161)",
+    "lot_4b_mixed_runtime_modere": "1.18:1 (174/147)",
+    "pattern_observe": "Ratio cumulatif/replacements varie 1.05-2.4:1 selon type doctrine · low-stakes manifest-heavy = 2.4:1 (refs distribuées) · mid/HIGH stakes runtime dense = 1.05-1.20:1 (refs concentrées skills + doctrines sœurs)"
+  },
+  "files_patched": [
+    {"file": "workspace-template/docs/system/engagement-disclosure-discipline.md → engagement-disclosure-doctrine.md", "scope": "git mv (runtime dense · 6 skills disclosure pre-exec)"},
+    {"file": "workspace-template/docs/system/schema-encoding-discipline.md → schema-encoding-doctrine.md", "scope": "git mv (substrate mutation rules)"},
+    {"file": "68 fichiers consumers cross-refs", "scope": "147 patches batch Python · 18 skills + 10 doctrines sœurs + 4 slash commands + 8 manifests + memory canons + R&D"},
+    {"file": "_version.json", "scope": "Bump 2.85.0.3a → 2.85.0.3b"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.85.0.3b CLÔTURE chantier rename"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.85.0.3b · bilan chantier"},
+    {"file": "docs/internal/releases/manifest/2.85.0.3b-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "decisions_captured": ["D#459"],
+  "memory_canons_new": ["doctrine_rename_complete (clôture officielle · 21/21 · 926 replacements · 5 sprints · 0 régression)"],
+  "memory_canons_updated": ["v85_0_lite_lessons (5 lots calibration finale + pattern observé)"],
+  "next_chantier": "CHANTIER RENAME CLOS. Prochain chantier · PROPAGATION CONTENU voice-doctrine v2.85.1 (5-6 doctrines lot 1 application STRICT) · qualitativement différent du rename (mécanique vs sémantique) · pause cognitive obligatoire avant attaque",
+  "backlog_post_cloture": [
+    "v2.85.1 · propagation contenu voice-doctrine STRICT lot 1 (5-6 doctrines · post-pause cognitive obligatoire · nouveau chantier qualitativement différent)",
+    "v2.85.2-4 · propagation contenu lots suivants (boucle 26 doctrines)",
+    "v2.86.0 · audit cross-files final + grep orphelins",
+    "v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)",
+    "v2.86.2 · test discovery externe"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.85.0.3b = git revert HEAD strict · 2 git mv reversibles + 147 patches reversibles · zéro impact runtime."
+}

@@ -324,7 +324,7 @@ Then AskUserQuestion · *Go / J'ai juste 1-2 dimensions à update (mode update) 
 - `docs/system/canonical-matrix-reasoning.md` · CMR §7 anti-pattern raw scoring exposed
 - `docs/system/dependency-resolution-protocol.md` · DRGFP gates L1/L2/L3
 - `docs/system/contextual-intelligence.md` · master doctrine
-- `docs/system/schema-encoding-discipline.md` · §13 v2.58 entry strategy v1.0 NEW
+- `docs/system/schema-encoding-doctrine.md` · §13 v2.58 entry strategy v1.0 NEW
 
 ---
 

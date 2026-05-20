@@ -311,7 +311,7 @@ Exit code 2 → blocking, revise. Exit code 0 → ship.
 - `docs/system/investigation-posture.md` · 5 sections canon, confidence chain explicit, close drill-down macro.
 - `docs/system/dependency-resolution-protocol.md` · DRGFP L1/L2/L3 prerequisite check.
 - `docs/system/confidence-propagation.md` · algèbre cascade confidence, calibration evidence_level → confidence numeric.
-- `docs/system/schema-encoding-discipline.md` · mutation rule, `_field_types`, sourcing tags.
+- `docs/system/schema-encoding-doctrine.md` · mutation rule, `_field_types`, sourcing tags.
 - `resources/schemas/spec.schema.json` v1.10+ · `mechanisms[]` 7 deep fields canon (D#386 schema cible).
 - `.skills/skills/snapshot-brand/SKILL.md` · upstream producer du light pass mechanisms.
 - `.skills/skills/produce-paid-angles/SKILL.md` · downstream consumer (mechanism-reveal angle).

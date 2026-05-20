@@ -1039,7 +1039,7 @@ Cross-ref doctrine `docs/system/decomposition-visibility-doctrine.md` v2.79+ can
 
 **Doctrines couche 2 (règles)** ·
 - `docs/system/investigation-posture.md` (5 sections obligatoires + vocabulaires fermés)
-- `docs/system/schema-encoding-discipline.md` (encoding rigoureux + sourcing tags)
+- `docs/system/schema-encoding-doctrine.md` (encoding rigoureux + sourcing tags)
 
 **Doctrines couche 4 (métriques)** ·
 - `docs/system/confidence-propagation.md` (cascade confidence cross-skill)

@@ -78,7 +78,7 @@ Unité de production d'un livrable. Croisement typé Audience × Angle × Canal 
 Audience · contributeurs et auteurs internes. Acronymes développés ici, utilisés seuls ensuite.
 
 - **Contextual Intelligence (CI)** · doctrine maître · l'agent raisonne sur l'univers business plutôt que de remplir des formulaires · `docs/system/contextual-intelligence.md`.
-- **Schema Encoding Discipline (SED)** · rigueur d'encodage du substrat · mutations gated · `_field_types` · sourcing · triangulation · append-only · `docs/system/schema-encoding-discipline.md`.
+- **Schema Encoding Discipline (SED)** · rigueur d'encodage du substrat · mutations gated · `_field_types` · sourcing · triangulation · append-only · `docs/system/schema-encoding-doctrine.md`.
 - **Canonical Matrix Reasoning (CMR)** · mécanisme de production · schéma typé croisé avec matrice canon · sortie au seuil canon S3 95% qualité · `docs/system/canonical-matrix-reasoning.md`.
 - **Skill Authoring Discipline (SAD)** · création et évolution des skills consommant SED et CMR · `docs/system/skill-authoring-doctrine.md`.
 - **Provenance & Trust Discipline (PTD)** · authorship multi-opérateur · canon comme produit · skills marketplace · activée sur triggers · source R&D.
@@ -142,7 +142,7 @@ Termes pour comm externe (tweet · LinkedIn · pitch · README). Cohérent avec 
 
 ## Cross-refs
 
-`CLAUDE.md` (two-tier rule) · `lexicon.md` (vocabulaire opérateur user-facing) · `docs/system/contextual-intelligence.md` · `docs/system/schema-encoding-discipline.md` (rename pending v2.85.0+) · `docs/system/canonical-matrix-reasoning.md` · `docs/system/atlas-brand.md` · `docs/system/atlas-canon-copy.md` · `docs/system/voice-doctrine.md` · `docs/system/extending.md` · `resources/templates/creative-formula.md` · `decisions.md` (D#129 · D#252 · D#237 · D#307-308 · D#326-332 · D#382-383 · D#391 · D#450-453) · `docs/README.md` (3 niveaux contexte L1/L2/L3).
+`CLAUDE.md` (two-tier rule) · `lexicon.md` (vocabulaire opérateur user-facing) · `docs/system/contextual-intelligence.md` · `docs/system/schema-encoding-doctrine.md` (rename pending v2.85.0+) · `docs/system/canonical-matrix-reasoning.md` · `docs/system/atlas-brand.md` · `docs/system/atlas-canon-copy.md` · `docs/system/voice-doctrine.md` · `docs/system/extending.md` · `resources/templates/creative-formula.md` · `decisions.md` (D#129 · D#252 · D#237 · D#307-308 · D#326-332 · D#382-383 · D#391 · D#450-453) · `docs/README.md` (3 niveaux contexte L1/L2/L3).
 
 ---
 
