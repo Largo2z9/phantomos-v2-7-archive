@@ -10,12 +10,12 @@ mode: proposed
 operator_facing: true
 reasoning_pattern: null
 patch_notes:
-  v2.0.1: "v2.67 territoire-only alignment doctrine territory-discipline.md NEW. Phase B push default = 10 collections territoire strict (Produits + Specs + Mécanismes + Bénéfices + Personae + Pain Points + Angles + Objections + Frictions usage + Roadmap). Full funnel Meta (creatives = production layer) RETIRÉE du push v2.0.1 · creatives push via NEW skill dédié sync-creatives-to-notion v2.68+ (cards/Kanban Notion pour briefs + créas par angle · production layer séparée per doctrine territory-discipline). Backward compat · operators v2.0.0 qui invoquaient --mode=push obtenaient 11 collections · v2.0.1 obtiennent 10 strict (no opt-in flag · clean split par layer). Migration · si besoin push creatives Notion, attendre v2.68+ ship ou push manuel temporairement. Strict alignment doctrine · 1 skill par layer canon."
+  v2.0.1: "v2.67 territoire-only alignment doctrine territory-doctrine.md NEW. Phase B push default = 10 collections territoire strict (Produits + Specs + Mécanismes + Bénéfices + Personae + Pain Points + Angles + Objections + Frictions usage + Roadmap). Full funnel Meta (creatives = production layer) RETIRÉE du push v2.0.1 · creatives push via NEW skill dédié sync-creatives-to-notion v2.68+ (cards/Kanban Notion pour briefs + créas par angle · production layer séparée per doctrine territory-discipline). Backward compat · operators v2.0.0 qui invoquaient --mode=push obtenaient 11 collections · v2.0.1 obtiennent 10 strict (no opt-in flag · clean split par layer). Migration · si besoin push creatives Notion, attendre v2.68+ ship ou push manuel temporairement. Strict alignment doctrine · 1 skill par layer canon."
   v2.0.0: "v2.66 NEW · Phase B push runtime exec-ready · Steps B1-B7 detailed · canvas + 11 DBs + rows + relations 2-pass + idempotency lookup. Phase A pull preserved unchanged backward compat strict additif. BREAKING bump justified (dual-direction sync operational, --mode=push activé from previous stub). Phase C diff (--mode=diff) reste deferred v2.59+."
   v1.1.0: "v2.58 coverage extend · friction.{current_workarounds, resolution_state, cross_refs.*} mapping enrichi · roadmap.{mix[], relations} mapping + denormalized view auto-computed. Closes 4 orphans audit v2.57. Phase B push toujours stubbée v2.58. Backward compat strict additif."
   v1.0.0: "v2.57 Phase A pull-only MVP shipped. Bridge Notion → PhantomOS pour les 11 collections canon stride-up (Produits, Specs, Mécanismes, Bénéfices, Personae, Pain Points, Angles, Objections, Frictions usage, Roadmap, Full funnel Meta). Mappings canon docs/system/notion-bridge-doctrine.md. Mutation gate strict (write-to-context.py mode=proposed) + isolation_scope brand_only. Phase B push + Phase C diff stubbés mais inactifs v1.0.0. Cross-ref doctrines · notion-bridge-doctrine.md (source canon) · compositional-cartography.md §4 mappings · brand-isolation-doctrine.md · investigation-posture.md (5 sections close) · schema-encoding-discipline.md (mutation rule + _field_types)."
 description: >
-  v2.0.1 (v2.67) · territoire-only alignment doctrine territory-discipline.md NEW. Phase B push refactor · 10 databases territoire strict (Produits, Specs, Mécanismes, Bénéfices, Personae, Pain Points, Angles, Objections, Frictions usage, Roadmap). Full funnel Meta (creatives = production layer) RETIRÉE du push v2.0.1 · creatives push via NEW skill dédié sync-creatives-to-notion v2.68+ futur (production layer séparée · cards/Kanban Notion pour briefs + créas par angle). Phase A pull (Steps 0-6) preserved unchanged backward compat strict additif (pull peut ingérer 11 collections si présent Notion-side legacy). --mode=diff reste deferred Phase C v2.59+.
+  v2.0.1 (v2.67) · territoire-only alignment doctrine territory-doctrine.md NEW. Phase B push refactor · 10 databases territoire strict (Produits, Specs, Mécanismes, Bénéfices, Personae, Pain Points, Angles, Objections, Frictions usage, Roadmap). Full funnel Meta (creatives = production layer) RETIRÉE du push v2.0.1 · creatives push via NEW skill dédié sync-creatives-to-notion v2.68+ futur (production layer séparée · cards/Kanban Notion pour briefs + créas par angle). Phase A pull (Steps 0-6) preserved unchanged backward compat strict additif (pull peut ingérer 11 collections si présent Notion-side legacy). --mode=diff reste deferred Phase C v2.59+.
   v2.0.0 (v2.66) · Phase B push runtime exec-ready · Steps B1-B7 detailed (canvas + 11 DBs creation + rows population + relations 2-pass + idempotency lookup par phantom_entity_id). Phase A pull (Steps 0-6) preserved unchanged backward compat strict additif. Dual-direction sync operational. --mode=diff reste deferred v2.59+.
   v1.1.0 (v2.58 coverage extend) · friction.{current_workarounds, resolution_state, cross_refs.*} mapping enrichi · roadmap.{mix[], relations} mapping + denormalized view auto-computed. Closes 4 orphans audit v2.57.
   v1.0.0 baseline Phase A pull-only MVP. Synchronise un workspace Notion (canvas
@@ -52,7 +52,7 @@ consumes:
   - roadmap.schema
   - friction.schema
   - creative.schema
-  - docs/system/territory-discipline.md
+  - docs/system/territory-doctrine.md
 produces_proposals_for:
   - brands/{slug}/products/{p}/spec.json
   - brands/{slug}/products/{p}/offers.json
@@ -639,7 +639,7 @@ Pas de fallback silencieux. Refuse cleanly avec roadmap d'évolution.
 
 > **Status** · v2.0.1 territoire-only refactor v2.67 · 7 steps B1-B7 runtime-executable. Le skill génère le système Notion canon (canvas wrapper + 10 DBs territoire + rows + relations + tags universels) miroir stride-up Onday template, from blank OR from populated PhantomOS state, sur n'importe quel parent Notion. Idempotent par `phantom_entity_id`. Phase B = `--mode=push` from PhantomOS state populé (territoire only), OR `--mode=scaffold` from blank brand (10 DBs territoire vides, skip Step B3).
 >
-> **Production layer split (doctrine `territory-discipline.md`)** · Full funnel Meta (creatives) = production layer, NOT pushed par sync-notion-atlas v2.0.1+. Push creatives via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur (cards/Kanban Notion pour briefs + créas par angle). Pattern canon · 1 skill par layer. Évite mixed orchestrator anti-pattern.
+> **Production layer split (doctrine `territory-doctrine.md`)** · Full funnel Meta (creatives) = production layer, NOT pushed par sync-notion-atlas v2.0.1+. Push creatives via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur (cards/Kanban Notion pour briefs + créas par angle). Pattern canon · 1 skill par layer. Évite mixed orchestrator anti-pattern.
 
 ### Invocation Phase B
 
@@ -718,7 +718,7 @@ mcp__claude_ai_Notion__notion-create-pages
     Block 4 · Heading 2 "Roadmap angles/audiences"
     Block 5 · Inline database placeholder (sera replacé Step B2 avec Roadmap DB_id)
     
-    Note v2.0.1 territoire-only · canvas root n'inclut PLUS de section "Full funnel Meta" (production layer · push via NEW skill dédié sync-creatives-to-notion v2.68+ futur per doctrine territory-discipline.md). Si le skill production layer v2.68+ ship, il ajoutera sa propre sub-page cards/Kanban sous canvas root.
+    Note v2.0.1 territoire-only · canvas root n'inclut PLUS de section "Full funnel Meta" (production layer · push via NEW skill dédié sync-creatives-to-notion v2.68+ futur per doctrine territory-doctrine.md). Si le skill production layer v2.68+ ship, il ajoutera sa propre sub-page cards/Kanban sous canvas root.
     }
 ```
 
@@ -767,7 +767,7 @@ Store · `data_client_page_id` ← notion_page_id retourné.
 
 **Goal** · créer les 10 DBs Notion territoire (1 sous canvas_root · Roadmap · 9 sous data_client_page · les autres) avec leurs properties non-relation. Les properties `relation` sont DEFERRED à Step B5 (pass 2) pour éviter race condition (relation ne peut pointer vers DB qui n'existe pas encore).
 
-**Note** · Full funnel Meta (creatives = production layer) NOT included in territoire-only push v2.0.1+. Productions sync via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur (cf doctrine `territory-discipline.md` Section 10 Notion bridge implication).
+**Note** · Full funnel Meta (creatives = production layer) NOT included in territoire-only push v2.0.1+. Productions sync via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur (cf doctrine `territory-doctrine.md` Section 10 Notion bridge implication).
 
 **Pattern par DB** · `mcp__claude_ai_Notion__notion-create-database` avec parent + properties spec.
 
@@ -892,7 +892,7 @@ Store · `data_client_page_id` ← notion_page_id retourné.
 - Tags universels
 - **DEFERRED Step B5** · `Angles refs` (relation → Angles, multi) + `Audiences refs` (relation → Personae, multi) + `Products refs` (relation → Produits, multi) + `Creatives refs` (relation field shape conservé pour future bind via skill production layer v2.68+ · resolution empty Step B5b v2.0.1+ · creatives non sync par ce skill)
 
-**Production layer NOT pushed (territoire-only doctrine)** · Full funnel Meta (creatives) RETIRÉE de la loop Step B2 v2.0.1+. La DB creatives sera créée par NEW skill dédié `sync-creatives-to-notion` v2.68+ futur (production layer · cards/Kanban Notion pour briefs + créas par angle · skill séparé per doctrine `territory-discipline.md` Section 10 Notion bridge implication · Section 12 Anti-patterns mixed orchestrator). Pattern canon · 1 skill par layer.
+**Production layer NOT pushed (territoire-only doctrine)** · Full funnel Meta (creatives) RETIRÉE de la loop Step B2 v2.0.1+. La DB creatives sera créée par NEW skill dédié `sync-creatives-to-notion` v2.68+ futur (production layer · cards/Kanban Notion pour briefs + créas par angle · skill séparé per doctrine `territory-doctrine.md` Section 10 Notion bridge implication · Section 12 Anti-patterns mixed orchestrator). Pattern canon · 1 skill par layer.
 
 Store dans working memory · `db_ids = {collection_name: notion_db_id}` mapping (10 entries territoire).
 
@@ -1059,7 +1059,7 @@ Note · `mix[]` est aggregat singleton, expose via `Mix axis` + `Weight` rolled-
 
 #### B3.11 · Full funnel Meta · SKIP v2.0.1+ (production layer)
 
-**Creatives skip** · production layer NON couvert par sync-notion-atlas v2.0.1+. La mapping `creatives/{CRT-NN}.json → 1 row Full funnel Meta` est RETIRÉE de la table mappings Step B3 v2.0.1+. Push creatives via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur (production layer · cards/Kanban Notion pour briefs + créas par angle · per doctrine `territory-discipline.md`). Skill dédié futur · 1 skill par layer canon.
+**Creatives skip** · production layer NON couvert par sync-notion-atlas v2.0.1+. La mapping `creatives/{CRT-NN}.json → 1 row Full funnel Meta` est RETIRÉE de la table mappings Step B3 v2.0.1+. Push creatives via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur (production layer · cards/Kanban Notion pour briefs + créas par angle · per doctrine `territory-doctrine.md`). Skill dédié futur · 1 skill par layer canon.
 
 **Mappings table Step B3 v2.0.1+ · 10 entités territoire seulement** · B3.1 Produits · B3.2 Specs · B3.3 Mécanismes · B3.4 Bénéfices · B3.5 Personae · B3.6 Pain Points · B3.7 Angles · B3.8 Objections · B3.9 Frictions usage · B3.10 Roadmap. B3.11 Full funnel Meta retirée (production layer · futur skill dédié).
 
@@ -1164,7 +1164,7 @@ Mapping deferred relations à ajouter ·
 - **Objections** · `Persona` → Personae (multi) + `Angle dérivé` → Angles produits (multi)
 - **Frictions usage** · `Affected products` → Produits (multi) + `Affected audiences` → Personae (multi) + `Cross-ref objections` → Objections (multi) + `Cross-ref pain points` → Pain Points (multi)
 - **Roadmap** · `Angles refs` → Angles (multi) + `Audiences refs` → Personae (multi) + `Products refs` → Produits (multi). Le `Creatives refs` field shape conservé Notion-side pour future bind via skill production layer v2.68+, mais relation property cible (Full funnel Meta DB) PAS créée par sync-notion-atlas v2.0.1+ (creatives = production layer · skill séparé futur).
-- **Full funnel Meta · NOT pushed v2.0.1+.** Production layer routée via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur. Relations `CONTEXTE angle` + `CONTEXTE persona` seront gérées par le skill production layer dédié (cf doctrine `territory-discipline.md`).
+- **Full funnel Meta · NOT pushed v2.0.1+.** Production layer routée via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur. Relations `CONTEXTE angle` + `CONTEXTE persona` seront gérées par le skill production layer dédié (cf doctrine `territory-doctrine.md`).
 
 **Sub-pass B5b · Set relation values on rows** (skip si mode=scaffold) ·
 
@@ -1291,7 +1291,7 @@ Pour chaque row dans `row_ids` ·
 > *  → Cycle bidirectionnel opérationnel · `--mode=pull` après que client a édité Notion = rapatrie corrections vers PhantomOS canon*
 >
 > *Axe F · Creatives push deferred via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur*
-> *  → Production layer (briefs + créas par angle) routée via skill séparé · cards/Kanban Notion (pas tabular DB territoire) per doctrine `territory-discipline.md`*
+> *  → Production layer (briefs + créas par angle) routée via skill séparé · cards/Kanban Notion (pas tabular DB territoire) per doctrine `territory-doctrine.md`*
 > *  → En attendant v2.68+ ship · creatives restent canon PhantomOS-side (`brands/{slug}/creatives/{CRT-NN}.json`) · push Notion manuel temporairement si besoin urgent*
 
 #### Section 5 · Close ouvert (UNE question macro)
@@ -1321,7 +1321,7 @@ Pour chaque row dans `row_ids` ·
 - **No invented data Notion-side.** Si PhantomOS field null/missing · skip property Notion-side (Step B3). Do NOT default a value. Parité doctrinale `snapshot-brand § Never invent`.
 - **Stage all or none discipline (partial).** Si row creation/update fail · log, flag Section 4, continue batch. Pas de rollback automatique (anti-pattern destructive).
 - **`brand.json` not pushed.** Brand identity reste canon PhantomOS-side, jamais exposée Notion-side (anti-pattern leak identity data multi-clients agency).
-- **Production layer NOT pushed.** Creatives (Full funnel Meta collection canon stride-up) sont production layer per doctrine `territory-discipline.md` · NOT pushed par sync-notion-atlas v2.0.1+. Push creatives via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur (production layer Notion · cards/Kanban briefs+créas par angle). Pattern canon · 1 skill par layer. Évite mixed orchestrator anti-pattern (cf doctrine `territory-discipline.md` Section 12 Anti-patterns).
+- **Production layer NOT pushed.** Creatives (Full funnel Meta collection canon stride-up) sont production layer per doctrine `territory-doctrine.md` · NOT pushed par sync-notion-atlas v2.0.1+. Push creatives via NEW skill dédié `sync-creatives-to-notion` v2.68+ futur (production layer Notion · cards/Kanban briefs+créas par angle). Pattern canon · 1 skill par layer. Évite mixed orchestrator anti-pattern (cf doctrine `territory-doctrine.md` Section 12 Anti-patterns).
 
 ### Workflow post-Phase B (cycle bidirectionnel)
 
@@ -1330,7 +1330,7 @@ Pour chaque row dans `row_ids` ·
 3. Largo run `--mode=pull {brand_slug} {notion_url}` plus tard pour rapatrier les edits Notion → PhantomOS via mutation gate.
 4. Cycle bidirectionnel opérationnel. Conflicts détectés Step B4 idempotency check candidate Phase C diff v2.59+.
 
-**Note v2.0.1+** · Productions (briefs + creatives) éditées via outils séparés · Notion canvas brand-side = territoire only · production tooling via `creative-brief-composer` (canon PhantomOS-side) + futur `sync-creatives-to-notion` v2.68+ (cards/Kanban Notion production layer). Layer split strict per doctrine `territory-discipline.md`.
+**Note v2.0.1+** · Productions (briefs + creatives) éditées via outils séparés · Notion canvas brand-side = territoire only · production tooling via `creative-brief-composer` (canon PhantomOS-side) + futur `sync-creatives-to-notion` v2.68+ (cards/Kanban Notion production layer). Layer split strict per doctrine `territory-doctrine.md`.
 
 ### Évolutions futures Phase B+
 
@@ -1338,7 +1338,7 @@ Pour chaque row dans `row_ids` ·
 - **v2.0.3 · separate per-mix rows Roadmap** · si `roadmap.mix[]` granularity émerge use-case, ajouter colonne dédiée vs rolled-up dans phase rows.
 - **v2.59 · `--mode=diff`** · compare state PhantomOS vs Notion, surface deltas operator-facing en 5 sections, resolve conflicts détectés Step B4.
 - **v2.60 · multi-Notion sources aggregation** · 1 PhantomOS brand pulled from N Notion workspaces (Abyss collectif scaling).
-- **v2.68+ · NEW skill `sync-creatives-to-notion` production layer** · canvas cards/Kanban Notion pour briefs + creatives par angle · skill dédié séparé · 1 skill par layer canon (cf doctrine `territory-discipline.md`).
+- **v2.68+ · NEW skill `sync-creatives-to-notion` production layer** · canvas cards/Kanban Notion pour briefs + creatives par angle · skill dédié séparé · 1 skill par layer canon (cf doctrine `territory-doctrine.md`).
 
 ---
 

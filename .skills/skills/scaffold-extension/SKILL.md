@@ -28,7 +28,7 @@ permissions:
   mode: direct
   subagent_safe: false
 consumes:
-  - path: docs/system/scope-extension-discipline.md
+  - path: docs/system/scope-extension-doctrine.md
 pipeline:
   preconditions: workspace deployed, docs/system/extending.md present, validate-resources skill available
   postconditions: extension registered + validated + operator informed

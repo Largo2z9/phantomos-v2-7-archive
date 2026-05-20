@@ -10,7 +10,7 @@ description: >
   Meta-skill, generates SKILL.md files conformant to the workspace authoring discipline.
   Knows frontmatter triad (name, type, triggers), DRGFP prerequisites schema, isolation_scope rules,
   hard rules pattern, scenario routing, framework cross-ref, subagent delegation contracts.
-  Produces dense, multi-phase skills aligned with `docs/system/skill-authoring-discipline.md`.
+  Produces dense, multi-phase skills aligned with `docs/system/skill-authoring-doctrine.md`.
   Workspace_global because this skill writes to `.skills/skills/` directory, infrastructure surface.
   FR: "crée un skill" "génère un skill" "nouveau skill" "scaffold skill" "skill creator".
   EN: "create skill" "generate skill" "new skill" "scaffold skill" "skill creator".
@@ -38,7 +38,7 @@ prerequisites:
     level: L1
     auto_pull: read_existing_manifest
     freshness_ttl_days: 7
-  - field: docs/system/skill-authoring-discipline.md
+  - field: docs/system/skill-authoring-doctrine.md
     level: L1
     auto_pull: read_canon_doctrine
     freshness_ttl_days: 365
@@ -68,7 +68,7 @@ Generates a `SKILL.md` file that conforms to the workspace authoring discipline.
 Before collecting specs (Phase 1), scan prerequisites:
 
 1. Read `.skills/_manifest.json` to know what skills already exist. If a sibling with the same intent already exists, refuse and propose `correct-skill` or extension instead (extend_before_create discipline, cross-ref `docs/system/skill-creation-protocol.md`).
-2. Read `docs/system/skill-authoring-discipline.md` to align type taxonomy, frontmatter triad, composition contracts, lifecycle.
+2. Read `docs/system/skill-authoring-doctrine.md` to align type taxonomy, frontmatter triad, composition contracts, lifecycle.
 3. Read `resources/schemas/skill-prerequisites.schema.json` for the prerequisites contract (L1/L2/L3 fields, required keys per level).
 4. Confirm `skill.target_name` with operator if ambiguous (L2 gate, 2 options: operator_provided or inferred_from_objective).
 5. Optional, propose `scope` cartography (L3 fallback if operator skips, proceed direct to Phase 1).
@@ -142,7 +142,7 @@ If info missing, ask. Do not invent.
 | **Routing** | Input classification, intent detection, route dispatch, sub-workflow delegation | orchestrator pattern |
 | **Workflow** | Prereq, sequential phases, validation checkpoints, output structure | hybrid pattern |
 
-Cross-ref the typology canon, `docs/system/skill-authoring-discipline.md § Type taxonomy`.
+Cross-ref the typology canon, `docs/system/skill-authoring-doctrine.md § Type taxonomy`.
 
 ## Phase 3, Generate the SKILL.md
 

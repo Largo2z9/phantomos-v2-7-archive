@@ -144,5 +144,5 @@ Substance préservée. Jargon retiré. Operator junior comprend sans doc.
 
 - CLAUDE.md root § Operator contract (règle no_jargon_to_operator)
 - `lexicon.md` (vocabulaire interne canon · NE doit PAS leak operator)
-- `output-clarity-discipline.md` v2.79.2+ (HR-OCD-2 enforcement runtime · Section 5 mapping 12 termes Phantom-interne · cross-ref bidirectionnelle)
+- `output-clarity-doctrine.md` v2.79.2+ (HR-OCD-2 enforcement runtime · Section 5 mapping 12 termes Phantom-interne · cross-ref bidirectionnelle)
 - Mémoire user `feedback_no_jargon_to_operator.md`

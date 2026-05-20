@@ -9,7 +9,7 @@
     {
       "category": "doctrine_new_scope_extension_sed_x",
       "action": "added",
-      "files": ["docs/system/scope-extension-discipline.md"],
+      "files": ["docs/system/scope-extension-doctrine.md"],
       "section": "NEW doctrine SED-X canon technique skill-author-facing",
       "rationale": "8 releases v2.55-v2.64 ont shippé multiples extensions scope sans pattern canon formalisé. v2.65 codifie SED-X. 7 patterns canonicaux (NEW brand · NEW produit · NEW audience · NEW business_model · NEW custom entity · NEW data source · NEW bridge tool) + 4 mécanismes auto-update + 3 limites architecturales + 5 anti-patterns + decision-aid Q1-Q4 + cross-refs SED/SAD/CMR/CC/extending/notion-bridge/doctrine-governance/CI/PTD. Niveau rigueur canon SED/CMR/SAD validé · 326L · 0 em-dash. Sister discipline positioned distinct CI master."
     },
@@ -32,5 +32,5 @@
   },
   "operator_impact": "Skill authors PhantomOS référencent désormais SED-X canon avant tout ship extension scope. Pattern Q1-Q4 decision-aid · invoke skill canonical (Q1) · scaffold-extension custom (Q2) · NEW canonical sprint dédié (Q3) · doctrine governance breaking (Q4). Operators bénéficient indirectement · entry points cohérents par type extension · zéro drift architectural cumulé. NEW doctrine ne change pas le runtime · informe les futurs ship patterns.",
   "backward_compat": "strict_additif_pur. NEW doctrine n'override aucune existing. SED §13 inchangé (pas de schema change v2.65). Manifest 67 skills inchangé. Aucune migration data. Aucun skill modifié.",
-  "next_release_note": "v2.66+ patches identifiés · (a) Skills consume SED-X canon · ajouter ref `docs/system/scope-extension-discipline.md` dans frontmatter consumes de scaffold-extension · setup-brand · snapshot-brand (skills d'extension par excellence). (b) Test live SED-X · valider pattern reproductible sur cas réel (NEW custom entity locations sur Innerskin hybrid post-test live). (c) Audit drift architectural cumulé v2.55-v2.65 · scan workspace pour identifier anti-patterns SED-X commis avant formalisation · patch retroactif si applicable. (d) Doctrine SED §14 NEW · ontologie sémantique pure pattern (post-v2.64 sémantique sub-parent storage). (e) Translation EN SED-X pour skill authors anglophones (post-validation FR)."
+  "next_release_note": "v2.66+ patches identifiés · (a) Skills consume SED-X canon · ajouter ref `docs/system/scope-extension-doctrine.md` dans frontmatter consumes de scaffold-extension · setup-brand · snapshot-brand (skills d'extension par excellence). (b) Test live SED-X · valider pattern reproductible sur cas réel (NEW custom entity locations sur Innerskin hybrid post-test live). (c) Audit drift architectural cumulé v2.55-v2.65 · scan workspace pour identifier anti-patterns SED-X commis avant formalisation · patch retroactif si applicable. (d) Doctrine SED §14 NEW · ontologie sémantique pure pattern (post-v2.64 sémantique sub-parent storage). (e) Translation EN SED-X pour skill authors anglophones (post-validation FR)."
 }

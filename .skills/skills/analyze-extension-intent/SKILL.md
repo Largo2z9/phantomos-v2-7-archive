@@ -210,5 +210,5 @@ Return a structured intent object to the orchestrator. v1.0.0 fields preserved �
 ## Cross-refs canon
 
 - `docs/system/operational-system-discipline.md` v2.71 · doctrine mère ECR canonisée (couche 1 du système opérationnel · 5 étapes + 4 patterns + 5 pièges).
-- `docs/system/scope-extension-discipline.md` SED-X · méthodologie ECR amont (scoping extension avant scaffold).
+- `docs/system/scope-extension-doctrine.md` SED-X · méthodologie ECR amont (scoping extension avant scaffold).
 - `docs/system/compositional-cartography.md` · équation OUTPUT = NOYAU × CONTEXTE × MODIFIEURS (pattern Strat/Compo/Exé instancié au créatif).

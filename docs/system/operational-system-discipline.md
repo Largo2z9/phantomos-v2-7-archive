@@ -288,13 +288,13 @@ Q4 · Le skill capture-t-il une mesure ou alimente-t-il un signal feedback ?
 - **`compositional-cartography.md` (CC v3.1)** · instance couche 1 ECR pattern Strat × Compo × Exé · équation OUTPUT = NOYAU × CONTEXTE × MODIFIEURS · domaine créatif
 - **`canonical-matrix-reasoning.md` (CMR)** · instance couche 1 (modèle schema+matrice) + couche 4 (métriques score-matrix scoring interne)
 - **`schema-encoding-discipline.md` (SED)** · instance couche 4 (traçabilité _field_types · provenance par champ) + couche 1 (atomicité décomposition)
-- **`scope-extension-discipline.md` (SED-X)** · méthodologie ECR appliquée à la validation de scope extension nouveau domaine
+- **`scope-extension-doctrine.md` (SED-X)** · méthodologie ECR appliquée à la validation de scope extension nouveau domaine
 - **`audiences-cartography-doctrine.md`** · instance couche 1 fractal pattern parent/enfants + couche 2 règles (cartographie ≠ targeting)
-- **`territory-discipline.md`** · territoire = substrat couche 1 (substrat brand canonisé) · production = livrable issu de couches 2+3 · meta = couches 4+5 transverses
+- **`territory-doctrine.md`** · territoire = substrat couche 1 (substrat brand canonisé) · production = livrable issu de couches 2+3 · meta = couches 4+5 transverses
 - **`progressive-cartography-discipline.md`** · rituel couche 5 cadence inter-palier + couche 2 gates light règles
 - **`investigation-posture.md`** · règle couche 2 (5 sections IP = heuristique décision méta enforcement skills production)
 - **`pain-benefit-chain-doctrine.md`** · instance couche 1 fractal pattern surface → consequence → deep
-- **`skill-authoring-discipline.md` (SAD)** · méthodologie design skill via décomposition couches · type taxonomy correspond à couche dominante (cf §12 table)
+- **`skill-authoring-doctrine.md` (SAD)** · méthodologie design skill via décomposition couches · type taxonomy correspond à couche dominante (cf §12 table)
 - **`doctrine-governance.md`** · amendment process append-only D# verrouillé · cross-refs traçables pour évolution doctrine
 - **`dependency-resolution-protocol.md` (DRGFP)** · règle canon couche 2 · L1+L2+L3 gap-filling heuristique décision
 - **`confidence-propagation.md`** · métrique canon couche 4 · algèbre cascade confidence cross-skill
@@ -319,4 +319,4 @@ Q4 · Le skill capture-t-il une mesure ou alimente-t-il un signal feedback ?
 
 ---
 
-*Doctrine canonique skill-author-facing. Canonise les 5 couches multiplicatives d'un système opérationnel complet. Grammaire unificatrice PhantomOS. Pattern miroir territory-discipline.md et scope-extension-discipline.md.*
+*Doctrine canonique skill-author-facing. Canonise les 5 couches multiplicatives d'un système opérationnel complet. Grammaire unificatrice PhantomOS. Pattern miroir territory-doctrine.md et scope-extension-doctrine.md.*

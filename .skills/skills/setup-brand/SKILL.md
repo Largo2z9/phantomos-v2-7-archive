@@ -17,7 +17,7 @@ permissions:
   mode: direct
   subagent_safe: false
 consumes:
-  - path: docs/system/scope-extension-discipline.md
+  - path: docs/system/scope-extension-doctrine.md
 pipeline:
   preconditions: workspace-template deployed and accessible
   postconditions: run ingest-resource to populate brand context

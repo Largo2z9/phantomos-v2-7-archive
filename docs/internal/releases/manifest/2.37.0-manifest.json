@@ -68,7 +68,7 @@
       "action": "created",
       "files": [
         "docs/system/brand-isolation-doctrine.md",
-        "docs/system/skill-authoring-discipline.md",
+        "docs/system/skill-authoring-doctrine.md",
         ".skills/skills/validate-resources/SKILL.md",
         "resources/schemas/skill-prerequisites.schema.json"
       ],

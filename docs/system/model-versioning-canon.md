@@ -83,7 +83,7 @@ Pattern equivalent autres vendors ·
 
 ## Cross-refs
 
-- `docs/system/skill-authoring-discipline.md` (frontmatter permissions canon)
+- `docs/system/skill-authoring-doctrine.md` (frontmatter permissions canon)
 - `docs/system/compositional-cartography.md` (production loop canon)
 - `docs/system/visual-identity-doctrine.md` v2.43 (chantier 1 fidélité)
 - Memory user `feedback_model_versioning_check.md` (apprentissage S55 cycle USAGE)

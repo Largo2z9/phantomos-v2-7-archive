@@ -656,7 +656,7 @@ Then AskUserQuestion · *Go / Update spot mode (1-2 axes à ajuster seulement) /
 - `docs/system/audience-cartography.md` · upstream substrate audiences voice fields encoding
 - `docs/system/contextual-intelligence.md` · master doctrine (trust the model semantic, mutation gate mechanical)
 - `docs/system/canonical-matrix-reasoning.md` · CMR §7 anti-pattern raw scoring exposed operator (scores -5/+5 OK car axis bornes, pas raw scoring)
-- `docs/system/scope-extension-discipline.md` · brand voice substrate extension canon
+- `docs/system/scope-extension-doctrine.md` · brand voice substrate extension canon
 
 ### Schemas (consume)
 

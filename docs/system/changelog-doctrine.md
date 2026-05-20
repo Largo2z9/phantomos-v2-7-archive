@@ -8,7 +8,7 @@ status: shipped
 
 # Changelog Discipline · Operating Doctrine
 
-> Canonique v2.83.0. Doctrine canon racine qui codifie le pattern canon pour le `CHANGELOG.md` workspace-template PhantomOS. Résumé exécutif Keep-a-Changelog strict · sections atomiques · cap 80 lignes par release entry. Narrative cognitive Largo vit dans `docs/internal/project-journal.md`. Détails structurés étendus vivent dans `docs/internal/releases/manifest/{version}-manifest.json`. Doctrine sœur de `claude-md-discipline.md` v2.82.0 (même pattern anti-inflation forme · test de suppression obligatoire · capacité attention bornée). Ferme le gap *"CHANGELOG.md racine dérive en narrative doctrinale par release · 4270L vs cible ~1150L · 3-4× sur-dimensionné · founder's curse répété (justification complète au lieu de delta concis) · audit externe Claude Web v2.82.1 flag systémique"*.
+> Canonique v2.83.0. Doctrine canon racine qui codifie le pattern canon pour le `CHANGELOG.md` workspace-template PhantomOS. Résumé exécutif Keep-a-Changelog strict · sections atomiques · cap 80 lignes par release entry. Narrative cognitive Largo vit dans `docs/internal/project-journal.md`. Détails structurés étendus vivent dans `docs/internal/releases/manifest/{version}-manifest.json`. Doctrine sœur de `claude-md-doctrine.md` v2.82.0 (même pattern anti-inflation forme · test de suppression obligatoire · capacité attention bornée). Ferme le gap *"CHANGELOG.md racine dérive en narrative doctrinale par release · 4270L vs cible ~1150L · 3-4× sur-dimensionné · founder's curse répété (justification complète au lieu de delta concis) · audit externe Claude Web v2.82.1 flag systémique"*.
 
 ---
 
@@ -153,8 +153,8 @@ Pattern canon strict ·
 
 ## 7. Cross-références
 
-- `docs/system/claude-md-discipline.md` v2.82.0 · doctrine sœur · même pattern anti-inflation forme + test de suppression obligatoire
-- `docs/system/output-clarity-discipline.md` v2.79.2 · standards Vercel/GitHub-grade outputs opérateur-facing · cohérent ton canon
+- `docs/system/claude-md-doctrine.md` v2.82.0 · doctrine sœur · même pattern anti-inflation forme + test de suppression obligatoire
+- `docs/system/output-clarity-doctrine.md` v2.79.2 · standards Vercel/GitHub-grade outputs opérateur-facing · cohérent ton canon
 - `docs/system/update-distribution-discipline.md` v2.80.0 · consumer CHANGELOG via `/version` `/update` slash commands runtime
 - `docs/internal/project-journal.md` · journal narratif Largo · archive cognitive · zéro cap
 - `docs/internal/releases/manifest/{version}-manifest.json` · détails structurés étendus par release
@@ -165,6 +165,6 @@ Pattern canon strict ·
 
 ## 8. Position dans le système opérationnel
 
-CHANGELOG canon = couche racine résumé exécutif release. Sœur de `claude-md-discipline.md` (anti-inflation forme · root workspace-template). Consommée par `/version` plus `/update` slash commands runtime plus `push-phantomos.sh` release gate plus contributeurs externes scan rapide.
+CHANGELOG canon = couche racine résumé exécutif release. Sœur de `claude-md-doctrine.md` (anti-inflation forme · root workspace-template). Consommée par `/version` plus `/update` slash commands runtime plus `push-phantomos.sh` release gate plus contributeurs externes scan rapide.
 
 **Status** · Doctrine canon shipped v2.83.0 · 4 HR-CHL + 4 AP-CHL enforcés strict · test de suppression appliqué pre-ship documenté section 6.

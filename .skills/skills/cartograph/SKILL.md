@@ -223,7 +223,7 @@ Synthèse READ-ONLY. Lecture du substrate encodé. Aucune mutation.
 ## Cross-référence
 
 - `docs/system/skill-builder-cartography.md` : data cartography (variables → schemas → scaffold-extension). Cartograph est la couche knowledge complémentaire.
-- `docs/system/skill-authoring-discipline.md` : SAD doctrine, contrats skill et composition.
+- `docs/system/skill-authoring-doctrine.md` : SAD doctrine, contrats skill et composition.
 - `docs/system/canonical-matrix-reasoning.md` : CMR matrix-driven generating mode.
 - `docs/system/patterns.md § Operator-facing cartography rule` : règle de translation expert → opérateur.
 - D#323 : build-agent Step 2b carto BUILD silencieuse (complémentaire mode BUILD).

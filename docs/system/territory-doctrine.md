@@ -338,10 +338,10 @@ en livrable à la demande).
 - `schema-encoding-discipline.md §3` · Spatial encoding vs Temporal encoding · pattern technique skill-author (synonyme territoire vs production+meta canon v2.67+)
 - `compositional-cartography.md` · cycle produce → test → learn → promote · pattern référence cycle promotion Section 7 niveau créatif
 - `canonical-matrix-reasoning.md` (CMR) · production skills 95% quality · doctrine sœur production layer canon
-- `scope-extension-discipline.md` (SED-X v2.65) · sister doctrine · pattern miroir 13 sections canon-style
+- `scope-extension-doctrine.md` (SED-X v2.65) · sister doctrine · pattern miroir 13 sections canon-style
 - `investigation-posture.md` · 5 sections close synthesis · pattern enforcement skills production output
 - `lexicon.md` · **Territoire** (sens macro v2.67+) + **Axe créatif** (intersection audience×angle · renommé score-matrix output v2.67+ pour disambiguation polysémie)
-- `skill-authoring-discipline.md` (SAD) · skill type taxonomy · frontmatter triad (+ NEW field `layer` canon v2.67+)
+- `skill-authoring-doctrine.md` (SAD) · skill type taxonomy · frontmatter triad (+ NEW field `layer` canon v2.67+)
 - `doctrine-governance.md` · amendment process append-only D# verrouillé · cross-refs traçables
 - `contextual-intelligence.md` (CI) · master doctrine · agent reasons not form-fills
 - `provenance-trust-discipline-scope.md` (PTD scope) · multi-operator canon-as-product

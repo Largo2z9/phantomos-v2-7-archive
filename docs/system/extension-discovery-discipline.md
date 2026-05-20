@@ -310,7 +310,7 @@ Extension Discovery Discipline opère sur 3 couches simultanément du multiplica
 
 **Doctrines sœurs canon** ·
 
-- **SED-X (scope-extension-discipline.md)** · méthodologie ECR amont scaffold · 7 patterns canon extension scope · doctrine sœur prerequisite. Extension Discovery Discipline opère aval de SED-X · scaffolding amont (SED-X) + discovery runtime (cette doctrine) = boucle complète.
+- **SED-X (scope-extension-doctrine.md)** · méthodologie ECR amont scaffold · 7 patterns canon extension scope · doctrine sœur prerequisite. Extension Discovery Discipline opère aval de SED-X · scaffolding amont (SED-X) + discovery runtime (cette doctrine) = boucle complète.
 - **Territory Discipline** · substrat couche 1 lieu où NEW entities vivent · territoire = sub-folder workspace path miroir storage. NEW entities discovered alimentent territoire enrichi.
 - **Operational System Discipline v2.71** · doctrine mère 5 couches · cette doctrine est instance multi-couches (2 + 4 + 5).
 
@@ -319,7 +319,7 @@ Extension Discovery Discipline opère sur 3 couches simultanément du multiplica
 ## 13. Cross-references
 
 - `operational-system-discipline.md` v2.71 · doctrine mère 5 couches multiplicatives · grammaire unificatrice PhantomOS
-- `scope-extension-discipline.md` (SED-X) · méthodologie ECR amont scaffold · 7 patterns canon extension scope · doctrine sœur prerequisite
+- `scope-extension-doctrine.md` (SED-X) · méthodologie ECR amont scaffold · 7 patterns canon extension scope · doctrine sœur prerequisite
 - `compositional-cartography.md` v3.1 · équation NOYAU × CONTEXTE × MODIFIEURS · pattern ECR couche 1 instance créative
 - `canonical-matrix-reasoning.md` (CMR) · schema + matrice canon production 95% qualité · pattern compose intersectional outputs
 - `scaffold-extension` v1.2.0+ Phase 9 register-and-flag · upstream skill qui register NEW entities avec `consumable_by` auto-detection (cf §10 decision-aid Q1-Q3)
@@ -327,7 +327,7 @@ Extension Discovery Discipline opère sur 3 couches simultanément du multiplica
 - `dependency-resolution-protocol.md` (DRGFP) · règle canon couche 2 · L1+L2+L3 gap-filling pre-flight Step 0 enrichi
 - `pattern-detection-triggers.md` · registre canonique 8 triggers learn-from-session · pattern miroir rituel cadence couche 5
 - `schema-encoding-discipline.md` (SED) · substrate ontologique · `_extensions.json` sidecar schema validation · mutation gate `consumable_by` field append-only
-- `skill-authoring-discipline.md` (SAD) · skill creation discipline · frontmatter `extension_hooks` NEW field validation · type taxonomy producer/orchestrator opt-in discovery
+- `skill-authoring-doctrine.md` (SAD) · skill creation discipline · frontmatter `extension_hooks` NEW field validation · type taxonomy producer/orchestrator opt-in discovery
 - `doctrine-governance.md` · amendment process append-only D# verrouillé · cette doctrine entry registry append-only post-ship
 
 **Skills concernés v2.75.0 (downstream consumers patches)** ·
@@ -347,11 +347,11 @@ Extension Discovery Discipline opère sur 3 couches simultanément du multiplica
 ## Status
 
 - **Canonique v2.75+.** Doctrine canon · ferme gap d'auto-consommation extensions scaffolded vs orchestrateurs production hard-coded.
-- **Doctrine sœur** · SED-X (scope-extension-discipline.md méthodologie ECR amont) · Territory Discipline (substrat couche 1) · Operational System Discipline v2.71 (doctrine mère).
+- **Doctrine sœur** · SED-X (scope-extension-doctrine.md méthodologie ECR amont) · Territory Discipline (substrat couche 1) · Operational System Discipline v2.71 (doctrine mère).
 - **Backward compat** · strict additif · doctrine NEW n'override aucune existing. `extension_hooks` frontmatter optional default empty. `consumable_by` field NEW additif `_extensions.json` v1.2.0+.
 - **First applications** · patches 4 orchestrateurs canon v2.75.0 (score-matrix · produce-paid-matrix · creative-brief-composer · build-atlas-complete). Decision-aid §10 Q1-Q3 applicable scaffold-extension v1.2.0+ Phase 9. Pipeline contract §6 applicable Step 0 DRGFP enrichi tous orchestrateurs production opt-in.
 - **Promotion criterion** · à reviewer après 5+ NEW entities scaffolded avec `consumable_by` auto-detection appliqué + 3+ orchestrateurs invoke avec discovery successful + 1 audit systémique gap orchestrateurs production restants.
 
 ---
 
-*Doctrine canonique skill-author-facing. Canonise contrat extension_hooks + manifest registry scan + consumable_by pattern. Ferme gap structurel v2.74.x audit READ-ONLY Patch 5. Pattern miroir scope-extension-discipline.md (méthodologie ECR amont) et territory-discipline.md (substrat couche 1).*
+*Doctrine canonique skill-author-facing. Canonise contrat extension_hooks + manifest registry scan + consumable_by pattern. Ferme gap structurel v2.74.x audit READ-ONLY Patch 5. Pattern miroir scope-extension-doctrine.md (méthodologie ECR amont) et territory-doctrine.md (substrat couche 1).*

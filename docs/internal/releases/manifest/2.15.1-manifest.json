@@ -34,7 +34,7 @@
       "files": [
         "docs/system/autonomous-correction-pattern.md",
         "docs/system/pattern-detection-triggers.md",
-        "docs/system/skill-authoring-discipline.md"
+        "docs/system/skill-authoring-doctrine.md"
       ],
       "skill": "correct-skill",
       "rationale": "3 doctrine docs described correct-skill as if shipped. Skill is backlog only. Marked [backlog, not shipped] inline to prevent operator and author confusion."

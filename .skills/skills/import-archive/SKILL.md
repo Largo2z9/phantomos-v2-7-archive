@@ -9,7 +9,7 @@ recommended_model: sonnet
 subagent_safe: false
 mode: interactive
 patch_notes:
-  v1.0.0: "v2.81 NEW · orchestrator drop dossier vrac mixed-content · détecte type fichier par fichier · chain skill spécialisé correspondant (ingest-resource text · import-asset visuels · connect-source APIs si config files · sync-notion-atlas si Notion exports · craft-packshot si packshot images) · présente synthèse opérateur pour validation gate · sourcing tag 'import bulk · {timestamp}' obligatoire pour validation par brand downstream (canon HR-EAD-8 entry-arc-discipline.md v2.81.0). Cohérent canon NIVEAU 0 paramètres décomposés engagement-disclosure-discipline v2.79.5 + decomposition-visibility-discipline v2.79.5+. Porte C onboarding multi-entry · import existant matière préexistante."
+  v1.0.0: "v2.81 NEW · orchestrator drop dossier vrac mixed-content · détecte type fichier par fichier · chain skill spécialisé correspondant (ingest-resource text · import-asset visuels · connect-source APIs si config files · sync-notion-atlas si Notion exports · craft-packshot si packshot images) · présente synthèse opérateur pour validation gate · sourcing tag 'import bulk · {timestamp}' obligatoire pour validation par brand downstream (canon HR-EAD-8 entry-arc-doctrine.md v2.81.0). Cohérent canon NIVEAU 0 paramètres décomposés engagement-disclosure-discipline v2.79.5 + decomposition-visibility-discipline v2.79.5+. Porte C onboarding multi-entry · import existant matière préexistante."
 description: >
   v1.0.0 (v2.81). Orchestrator skill pour onboarding porte C (import existant)
   bulk · drop dossier vrac mixed-content sans avoir à invoquer chaque skill
@@ -45,10 +45,10 @@ pipeline:
   postconditions: validate-resources triggered post-import sur brand affectée
 consumes:
   - brands/{slug}/brand.json
-  - path: docs/system/entry-arc-discipline.md
+  - path: docs/system/entry-arc-doctrine.md
   - path: docs/system/engagement-disclosure-discipline.md
   - path: docs/system/decomposition-visibility-discipline.md
-  - path: docs/system/territory-discipline.md
+  - path: docs/system/territory-doctrine.md
   - path: docs/system/schema-encoding-discipline.md
   - path: docs/system/onboarding-holistic-discipline.md
 produces_proposals_for:
@@ -405,10 +405,10 @@ Cohérent doctrine root CLAUDE.md ligne 168 *"ALWAYS after any write under brand
 
 ## Cross-refs · doctrines canon
 
-- `docs/system/entry-arc-discipline.md` v2.81.0 · porte C parent canon · multi-entry onboarding 4 portes MECE · ce skill est consumer porte C `import existant matière préexistante`
+- `docs/system/entry-arc-doctrine.md` v2.81.0 · porte C parent canon · multi-entry onboarding 4 portes MECE · ce skill est consumer porte C `import existant matière préexistante`
 - `docs/system/engagement-disclosure-discipline.md` v2.79.5 · disclosure pré-engagement NIVEAU 0 + plan/ETA/implication/livrable obligatoire
 - `docs/system/decomposition-visibility-discipline.md` v2.79.5+ · NIVEAU 0 paramètres décomposés pré-exécution canon racine
-- `docs/system/territory-discipline.md` v2.67 · substrate vs production · import-archive alimente substrate · pas production runtime
+- `docs/system/territory-doctrine.md` v2.67 · substrate vs production · import-archive alimente substrate · pas production runtime
 - `docs/system/schema-encoding-discipline.md` · mutation rule canon · sourcing tags · `_field_types` (`observed`/`stated`/`derived`/`structured`) · confidence chain
 - `docs/system/onboarding-holistic-discipline.md` v2.79.3 · panorama 360° onboarding agnostique · porte C `import existant` couverte par cet orchestrateur
 

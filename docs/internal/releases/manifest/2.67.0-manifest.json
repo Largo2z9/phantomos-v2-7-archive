@@ -4,12 +4,12 @@
   "released_at": "2026-05-15",
   "compatible_from": "2.0.0",
   "type": "canonisation_territoire_production_meta_doctrine_NEW_skills_layer_field",
-  "summary": "Canonisation territoire vs production vs meta · NEW doctrine territory-discipline.md (356L · 13 sections canon-style) sister SED/CMR/SED-X/CC/InvestigationPosture. Unifie 3 vocabularies historiques scattered (Reference + Spatial encoding + Substrat) sous canon territoire/production/meta. Frontmatter layer field NEW sur 67 SKILL.md (30 territoire + 11 production + 25 meta = 66 indexed · 1 non-classifié template skipped) · manifest regen avec layer discoverability. build-atlas-complete v1.2.0 → v1.3.0 BREAKING territoire-pure (Steps 8-9 stripped). sync-notion-atlas v2.0.0 → v2.0.1 territoire-only default 10 collections strict. Lexicon entries Territoire macro + Axe créatif (renommage score-matrix output micro résout polysémie). Pattern canon 1 skill par layer · clean split. D#410 captured.",
+  "summary": "Canonisation territoire vs production vs meta · NEW doctrine territory-doctrine.md (356L · 13 sections canon-style) sister SED/CMR/SED-X/CC/InvestigationPosture. Unifie 3 vocabularies historiques scattered (Reference + Spatial encoding + Substrat) sous canon territoire/production/meta. Frontmatter layer field NEW sur 67 SKILL.md (30 territoire + 11 production + 25 meta = 66 indexed · 1 non-classifié template skipped) · manifest regen avec layer discoverability. build-atlas-complete v1.2.0 → v1.3.0 BREAKING territoire-pure (Steps 8-9 stripped). sync-notion-atlas v2.0.0 → v2.0.1 territoire-only default 10 collections strict. Lexicon entries Territoire macro + Axe créatif (renommage score-matrix output micro résout polysémie). Pattern canon 1 skill par layer · clean split. D#410 captured.",
   "changes": [
     {
       "category": "doctrine_new_territory_discipline",
       "action": "added",
-      "files": ["docs/system/territory-discipline.md"],
+      "files": ["docs/system/territory-doctrine.md"],
       "section": "NEW doctrine canon 356L · 13 sections canon-style miroir SED-X (Thesis · Problème · Définition territoire · Définition production · Définition meta · Synonymes canon historiques · Cycle promotion · Pattern usage opérateur · Skill layer enforcement · Notion bridge implication · Decision-aid Q1-Q4 · Anti-patterns · Cross-refs explicites)",
       "rationale": "3 vocabularies historiques (Reference architecture.md §7 + Spatial encoding SED §3 + Substrat session-log S54) coexistent sans unification canon. Pattern existait en germe mais non nommé. v2.67 codifie territoire/production/meta canon. Skill-author-facing technique + opérateur-facing pédagogique. Cross-refs explicites tous doctrines existing."
     },
@@ -51,7 +51,7 @@
   ],
   "files_patched_total": "70+ files (1 NEW doctrine 356L · 66 SKILL.md layer field add · 2 SKILL.md major refactors (build-atlas-complete v1.3.0 + sync-notion-atlas v2.0.1) · 1 lexicon enriched · _version.json bump · CHANGELOG.md entry · 2.67.0-manifest.json NEW · _manifest.json regen · decisions.md D#410)",
   "patterns_introduced": {
-    "territoire_production_meta_canon_unified": "Pattern canon v2.67 · 3 layers orthogonaux (territoire substrat stable · production livrable runtime on-demand · meta système) consolidant 3 vocabularies historiques scattered. Doctrine territory-discipline.md codifie · 13 sections canon-style miroir SED-X. Pattern reproductible pour évaluation futurs skills (Decision-aid Q1-Q4).",
+    "territoire_production_meta_canon_unified": "Pattern canon v2.67 · 3 layers orthogonaux (territoire substrat stable · production livrable runtime on-demand · meta système) consolidant 3 vocabularies historiques scattered. Doctrine territory-doctrine.md codifie · 13 sections canon-style miroir SED-X. Pattern reproductible pour évaluation futurs skills (Decision-aid Q1-Q4).",
     "skill_layer_field_frontmatter_canon": "Pattern canon v2.67 · frontmatter `layer: territoire | production | meta` field obligatoire sur chaque SKILL.md. Manifest expose layer discoverability + routing canon + future enforcement mutation gate (production skill peut pas écrire substrat sans operator gate). 1 skill par layer principle.",
     "1_skill_per_layer_clean_split_canon": "Pattern canon v2.67 · 1 skill par layer · clean split territoire/production/meta. build-atlas-complete v1.3.0 territoire-pure · creative-brief-composer production-pure · sync-notion-atlas v2.0.1 territoire-only (creatives via NEW skill dédié v2.68+ futur sync-creatives-to-notion). Pattern reproductible pour futures bridges + orchestrators."
   },

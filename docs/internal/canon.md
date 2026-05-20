@@ -80,7 +80,7 @@ Audience · contributeurs et auteurs internes. Acronymes développés ici, utili
 - **Contextual Intelligence (CI)** · doctrine maître · l'agent raisonne sur l'univers business plutôt que de remplir des formulaires · `docs/system/contextual-intelligence.md`.
 - **Schema Encoding Discipline (SED)** · rigueur d'encodage du substrat · mutations gated · `_field_types` · sourcing · triangulation · append-only · `docs/system/schema-encoding-discipline.md`.
 - **Canonical Matrix Reasoning (CMR)** · mécanisme de production · schéma typé croisé avec matrice canon · sortie au seuil canon S3 95% qualité · `docs/system/canonical-matrix-reasoning.md`.
-- **Skill Authoring Discipline (SAD)** · création et évolution des skills consommant SED et CMR · `docs/system/skill-authoring-discipline.md`.
+- **Skill Authoring Discipline (SAD)** · création et évolution des skills consommant SED et CMR · `docs/system/skill-authoring-doctrine.md`.
 - **Provenance & Trust Discipline (PTD)** · authorship multi-opérateur · canon comme produit · skills marketplace · activée sur triggers · source R&D.
 - **Doctrine Governance** · méta-process · promotion · amendement · rétraction · résolution de conflits entre doctrines · `docs/system/doctrine-governance.md`.
 
