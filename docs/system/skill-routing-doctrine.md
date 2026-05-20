@@ -1,4 +1,4 @@
-# Skill Routing Discipline · Operating Doctrine
+# Skill Routing Doctrine · Operating Doctrine
 
 > Canonique v2.76+. Doctrine canon qui codifie comment l'agent route une requête opérateur vers le bon skill (ou chaîne de skills) en utilisant le manifest registry pré-buildé, le champ `disambiguates_against`, la posture investigation, et le slash command `/scope` comme filet de sécurité. Doctrine sœur de `canonical-matrix-reasoning.md` (qualité output post-routing) et `investigation-posture.md` (rigueur réponse). Ferme le gap entre intent opérateur exprimé en langage naturel et invocation skill canon zéro freestyle.
 
@@ -10,7 +10,7 @@
 
 PhantomOS ship 70+ skills typés (producer, curator, capturer, orchestrator, navigator, builder, shared) qui consomment les matrices canon (hooks, angles, heuristiques-persuasion, creative-mechanics-registry, niveaux-schwartz, formats-livrables) restées dormantes en mode prose libre. Mais l'agent LLM, sans discipline routing stricte, dérive vers freestyle prose comme premier réflexe sur tout output stratégique demandé. Résultat · matrices canon ignorées · output dégradé · qualité 60% au lieu de 95% (cf `canonical-matrix-reasoning.md` § cohérence schema + canon).
 
-Skill Routing Discipline ferme ce gap structurel via protocole strict 5 phases ·
+Skill Routing Doctrine ferme ce gap structurel via protocole strict 5 phases ·
 
 1. **Mapping explicite first.** Agent scan d'abord le mapping output → skill verrouillé dans `CLAUDE.md` § Skill routing (v2.55 baseline · 20+ entrées canon).
 
@@ -28,7 +28,7 @@ Pattern canon · scan manifest first (canonical) + disambiguation rules (explici
 
 ## 2. Le problème résolu
 
-Sans Skill Routing Discipline ·
+Sans Skill Routing Doctrine ·
 
 1. **Freestyle prose réflexe.** Agent reçoit demande stratégique (e.g. *"produis-moi un angle paid sur cette audience"*), commence à improviser une matrice angle from scratch en prose libre, ignore `produce-paid-angles` skill canon qui consume formula Obs+Tension+Reframe+Bridge + registry angle-mechanics + niveaux-schwartz. Output dégradé · qualité 60% au lieu de 95%.
 
@@ -40,7 +40,7 @@ Sans Skill Routing Discipline ·
 
 5. **Disambiguation rules ignorées.** 2+ skills matchent (setup-brand vs onboard-brand · validate-resources vs audit-meta-account). Agent pick au hasard ou via heuristique freestyle au lieu de lire `disambiguates_against` field manifest. Routing inconsistent · drift session-to-session.
 
-Skill Routing Discipline = doctrine canon qui ferme ces 5 gaps via protocole structurel + manifest scan canon + `/scope` fallback + AskUserQuestion gate.
+Skill Routing Doctrine = doctrine canon qui ferme ces 5 gaps via protocole structurel + manifest scan canon + `/scope` fallback + AskUserQuestion gate.
 
 ---
 
@@ -77,7 +77,7 @@ Première étape canon · mapping output → skill verrouillé dans `CLAUDE.md` 
 - Mapping append-only · NEW skills shippés par `create-skill` ajoutés au mapping via amendment doctrine (cf `doctrine-governance.md` append-only D# verrouillé).
 - Mapping ≠ exhaustif · couvre les outputs fréquents · fallback manifest scan canon pour outputs périphériques (cf §4).
 
-**Routing exception · conversation libre.** Questions, clarifications, debug, doctrine discussion restent en prose libre. La règle Skill Routing Discipline s'applique au contenu stratégique livré, pas au dialogue conversationnel.
+**Routing exception · conversation libre.** Questions, clarifications, debug, doctrine discussion restent en prose libre. La règle Skill Routing Doctrine s'applique au contenu stratégique livré, pas au dialogue conversationnel.
 
 ---
 
@@ -315,7 +315,7 @@ Q3 · Disambiguation rules canon · `disambiguates_against` field lecture
 
 ## 11. Backward compat strict additif
 
-Skill Routing Discipline est strict additif par construction. Garanties ·
+Skill Routing Doctrine est strict additif par construction. Garanties ·
 
 **11.1 Mapping CLAUDE.md verrouillé v2.55 baseline préservé.** 20+ entries mapping output → skill verrouillées canon · skills legacy v2.55-v2.74 routing comportement identique post-doctrine ship. Aucune régression routing.
 
@@ -331,9 +331,9 @@ Skill Routing Discipline est strict additif par construction. Garanties ·
 
 ## 12. Position dans le système opérationnel 5 couches
 
-Skill Routing Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71 ·
+Skill Routing Doctrine opère sur 3 couches simultanément du système opérationnel (`operational-system-doctrine.md`) ·
 
-**Couche 2 · Règles (heuristiques décision).** Skill Routing Discipline canon EST une heuristique de décision · mapping FIRST → manifest SECOND → disambiguation THIRD → /scope FALLBACK → freestyle LAST RESORT. Pattern miroir `dependency-resolution-protocol.md` L1+L2+L3 gap-filling Step 0bis canon v2.38+.
+**Couche 2 · Règles (heuristiques décision).** Skill Routing Doctrine canon EST une heuristique de décision · mapping FIRST → manifest SECOND → disambiguation THIRD → /scope FALLBACK → freestyle LAST RESORT. Pattern miroir `dependency-resolution-protocol.md` L1+L2+L3 gap-filling Step 0bis canon v2.38+.
 
 **Couche 4 · Métriques (boucles feedback).** Routing audit trail `routing_path: [...]` annoté output · opérateur traçabilité full · operator drill 360° lineage routing decision. Pattern miroir `extensions_consumed` annotation (cf `extension-discovery-doctrine.md` §6) et `confidence_chain` (cf `confidence-propagation.md`).
 
@@ -343,7 +343,7 @@ Skill Routing Discipline opère sur 3 couches simultanément du multiplicatif Op
 
 - **Canonical Matrix Reasoning (CMR)** · qualité output post-routing · doctrine sœur DOWNSTREAM · skill canon invoqué produit output 95% via schema + matrice canon · routing canon UPSTREAM + matrice canon DOWNSTREAM = qualité bout-en-bout.
 - **Investigation Posture** · 5 sections rigueur réponse · doctrine sœur post-skill · skill canon ship output structuré observé/déduit/inconnu/leviers/close ouvert · routing canon + posture investigation = qualité réponse strategique.
-- **Extension Discovery Discipline** · pattern miroir frontmatter discovery · `extension_hooks` field pattern miroir `disambiguates_against` field · backward compat strict additif identique · NEW canon fields opt-in v2.76+.
+- **Extension Discovery Doctrine** · pattern miroir frontmatter discovery · `extension_hooks` field pattern miroir `disambiguates_against` field · backward compat strict additif identique · NEW canon fields opt-in v2.76+.
 
 ---
 
@@ -381,7 +381,7 @@ Skill Routing Discipline opère sur 3 couches simultanément du multiplicatif Op
 ## Status
 
 - **Canonique v2.76+.** Doctrine canon · codifie protocole routing strict 5 phases · mapping FIRST → manifest SECOND → disambiguation THIRD → /scope FALLBACK → freestyle LAST RESORT.
-- **Doctrine sœur** · Canonical Matrix Reasoning (qualité output DOWNSTREAM) · Investigation Posture (rigueur réponse post-skill) · Extension Discovery Discipline (pattern miroir frontmatter canon).
+- **Doctrine sœur** · Canonical Matrix Reasoning (qualité output DOWNSTREAM) · Investigation Posture (rigueur réponse post-skill) · Extension Discovery Doctrine (pattern miroir frontmatter canon).
 - **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Mapping CLAUDE.md v2.55 baseline préservé. `disambiguates_against` field NEW additif manifest v2.76+. `/scope` fallback NEW v2.76+ default · skills pré-v2.76 freestyle fallback legacy.
 - **First applications** · routing canonical 70+ skills shipped workspace-template v2.76+. Decision-aid §10 Q1-Q3 applicable agent main thread chaque demande stratégique. Pipeline routing §6 applicable tous skills production opt-in `disambiguates_against` declaration.
 - **Promotion criterion** · à reviewer après 10+ skills additionnels patched avec `disambiguates_against` field + 5+ `/scope` invocations successful fallback routing + 1 audit systémique routing patterns frequencies (mapping_match vs manifest_match vs scope_fallback vs freestyle_last_resort).

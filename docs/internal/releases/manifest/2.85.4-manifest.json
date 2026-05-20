@@ -1,0 +1,88 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.85.4",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.85.4 · PROPAGATION VOICE-DOCTRINE LOT 4/4 · 6 doctrines opérationnelles · 2346L stable · 0% compression structurelle · 40 patches cumulés cohérence post-rename · 7e candidate brand-isolation REPORTÉE v2.85.5 sprint court · 24/26 doctrines propagées cumul · tests non-régression PASSÉS · 0 régression runtime.",
+  "context_amont": {
+    "trigger": "Lot 3/4 (v2.85.3 authoring + schema) clos propre. Lot 4/4 cible doctrines OPÉRATIONNELLES (fonctionnement runtime). Particularité · 7 candidates potentielles vs 6 sur les lots précédents. Cap 6 maintenu · 7e doctrine brand-isolation REPORTÉE v2.85.5 sprint court.",
+    "pre_flight_filter_main_thread": "Pré-flight Haiku flag 7 candidates · 0 effort 3 réel post-filter main thread Sonnet · cap 500L respecté (max 473L update-distribution · marge 27L) · ordre traitement producer central (operational-system) → consumers · spot-check operational-system cross-refs entrantes obligatoire Phase 3 (CI + OCD + pacing lots 1+2).",
+    "decision_largo_calibration": "GO standard 6 doctrines lot 4 · brand-isolation REPORT v2.85.5 (68L · périphérique noyau opérationnel · plus petite · sprint court ~30 min). Politique FR/EN consolidée 4 lots appliquée."
+  },
+  "6_doctrines_propagated_lot_4": [
+    {"doctrine": "operational-system-doctrine.md", "lines_before": 322, "lines_after": 322, "compression": "0%", "patches": ["Line 1 titre 'Operational System Discipline' → 'Operational System Doctrine'", "Line 3 'Territory Discipline' → 'Territory Doctrine'", "Line 35 H2 'Le problème Operational System Discipline résout' → 'Doctrine résout'", "Line 49 'Operational System Discipline = doctrine canon' → 'Doctrine = doctrine canon'", "Line 87 cross-ref 'audiences-cartography-doctrine.md' (plural broken) → 'audience-cartography-doctrine.md' (singular)", "Line 87 cross-ref 'pain-benefit-chain-doctrine.md' (inexistant) → 'pain-benefit-chain.md' (no suffix)", "Line 292 cross-ref 'audiences-cartography-doctrine.md' → 'audience-cartography-doctrine.md'", "Line 296 cross-ref 'pain-benefit-chain-doctrine.md' → 'pain-benefit-chain.md'"]},
+    {"doctrine": "attribution-multitouch-doctrine.md", "lines_before": 290, "lines_after": 290, "compression": "0%", "patches": ["Replace_all 'Attribution Multitouch Discipline' → 'Attribution Multitouch Doctrine' (5 occurrences · titre + body)"]},
+    {"doctrine": "skill-routing-doctrine.md", "lines_before": 391, "lines_after": 391, "compression": "0%", "patches": ["Replace_all 'Skill Routing Discipline' → 'Skill Routing Doctrine' (7 occurrences)", "Replace_all 'Extension Discovery Discipline' → 'Extension Discovery Doctrine' (2 occurrences cross-ref body)", "Line 334 'Operational System Discipline v2.71' → 'système opérationnel (operational-system-doctrine.md)'"]},
+    {"doctrine": "engagement-disclosure-doctrine.md", "lines_before": 412, "lines_after": 412, "compression": "0%", "patches": ["Replace_all 'Engagement Disclosure Discipline' → 'Engagement Disclosure Doctrine' (5 occurrences titre + body)", "Replace_all 'Operational System Discipline v2.71' → 'système opérationnel (operational-system-doctrine.md)' (2 occurrences §3 + §12)"]},
+    {"doctrine": "onboarding-holistic-doctrine.md", "lines_before": 458, "lines_after": 458, "compression": "0%", "patches": ["Replace_all 'Onboarding Holistic Discipline' → 'Onboarding Holistic Doctrine' (4 occurrences titre + body)", "Line 434 'Operational System Discipline v2.71' → 'système opérationnel (operational-system-doctrine.md)'"]},
+    {"doctrine": "update-distribution-doctrine.md", "lines_before": 473, "lines_after": 473, "compression": "0%", "patches": ["Line 2 frontmatter 'name: update-distribution-discipline' → 'name: update-distribution-doctrine'", "Replace_all 'Update Distribution Discipline' → 'Update Distribution Doctrine' (3+ occurrences titre + body)", "Replace_all 'update-distribution-discipline' → 'update-distribution-doctrine' (occurrences body cross-refs)"]}
+  ],
+  "total_lignes_lot_4": {"before": 2346, "after": 2346, "compression": "0% (scope strict voice-doctrine respecté · patches mécaniques substitution/cohérence)"},
+  "patches_appliques": [
+    "Phase 1 pré-flight obligatoire · 1 sub-agent Haiku · 7 doctrines inventoriées · filter main thread Sonnet · effort 1/2 cross 7 candidates · 0 effort 3 réel · garde-fous tous PASSÉS",
+    "Décision pré-flight · brand-isolation REPORT v2.85.5 sprint court (cap strict 6 doctrines maintenu)",
+    "Phase 2.A lecture critique intégrale OBLIGATOIRE main thread Sonnet · 6/6 doctrines lues intégralement",
+    "Phase 2.B édition critique · 40 patches cumulés cross 6 doctrines · 0% compression structurelle · scope strict voice-doctrine respecté · 0 reformulation règles canon operational-system (5 couches préservées strict)",
+    "Phase 2.C self-conformance lecture critique post-édition · sémantique préservée sur 6 doctrines",
+    "Phase 3 tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep em-dash 0 cross 6 doctrines · grep Discipline résiduel 0 · spot-check operational-system cross-refs entrantes valide (CI + OCD + pacing)",
+    "Phase 4 ship · _version + manifest + CHANGELOG + project-journal + D#463 + memory canon doctrine_propagation_progress mis à jour (24/26)"
+  ],
+  "tests_non_regression": {
+    "build_manifest": "PASS · 81 skills + 92 jargon entries",
+    "build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+    "em_dash_cross_6_doctrines": "0 occurrence · ✓",
+    "discipline_residual_cross_6_doctrines": "0 occurrence · ✓",
+    "spot_check_operational_system_cross_refs_entrantes": "TOUS valides · CI ligne 146 + pacing 191/268/281/288 + OCD 375 → operational-system-doctrine.md (cohérence cascade canonical préservée post-édition)"
+  },
+  "monitor_synthesis_lot_4": {
+    "operational_system_doctrine": 0,
+    "attribution_multitouch_doctrine": 0,
+    "skill_routing_doctrine": 0,
+    "engagement_disclosure_doctrine": 2,
+    "onboarding_holistic_doctrine": 0,
+    "update_distribution_doctrine": 0,
+    "total_lot_4": 2,
+    "cumul_lots_1_2_3_4": "48 occurrences cumulé (44 lots 1+2 + 2 lot 3 + 2 lot 4) · résolution unifiée v2.86.0 audit cross-files"
+  },
+  "apprentissage_canon_lot_4": {
+    "hypothese_validee_4_lots_consecutifs": "Doctrines opérationnelles (operational-system + onboarding + engagement + update + routing + attribution) aussi conformes que doctrines racines (lot 1) + audience/creative (lot 2) + structurantes (lot 3). 4 lots consécutifs confirment pattern voice-doctrine ricochet · violations majoritairement cosmétiques cohérence post-rename.",
+    "compression_reelle_vs_briefing": "Compression 0% lot 4 (cohérent lots 2+3 0% · lot 1 -1%) · scope strict voice-doctrine respecté · préservation stricte sémantique > forced reduction",
+    "pattern_operational_system_cross_ref_harmonise": "Pattern systémique identifié · 5 doctrines lot 4 référençaient 'Operational System Discipline v2.71' en prose · harmonisé cross-doctrines 'système opérationnel (operational-system-doctrine.md)' cohérent style canon",
+    "pattern_cross_ref_obsoletes_corrected": "operational-system-doctrine.md référençait 2 cross-refs cassées · audiences-cartography-doctrine.md (plural typo) + pain-benefit-chain-doctrine.md (file inexistant). Corrigés audience-cartography-doctrine.md + pain-benefit-chain.md (sans -doctrine suffix preserved).",
+    "spot_check_operational_system_validated": "Spot-check post-édition operational-system cross-refs entrantes lots 1+2 (CI ligne 146 + OCD 375 + pacing 191/268/281/288) TOUS valides · cohérence cascade canonical préservée · scope strict voice-doctrine respect des règles canon 5 couches confirmé.",
+    "calibration_brand_isolation_v2_85_5": "Brand-isolation REPORT v2.85.5 sprint court · 68L · 1 patch principal frontmatter + titre Discipline → Doctrine + 1 anglicisme isolé `default` · effort 1 · wall-time estimé 20-30 min ship rapide."
+  },
+  "files_patched": [
+    {"file": "docs/system/operational-system-doctrine.md", "scope": "8 patches cohérence + 4 cross-refs cassées corrigées · 322L stable"},
+    {"file": "docs/system/attribution-multitouch-doctrine.md", "scope": "5 patches Discipline → Doctrine via replace_all · 290L stable"},
+    {"file": "docs/system/skill-routing-doctrine.md", "scope": "10 patches Skill Routing + Extension Discovery Discipline → Doctrine + Operational System cross-ref · 391L stable"},
+    {"file": "docs/system/engagement-disclosure-doctrine.md", "scope": "7 patches Engagement Disclosure + Operational System replace_all · 412L stable"},
+    {"file": "docs/system/onboarding-holistic-doctrine.md", "scope": "5 patches Onboarding Holistic + Operational System replace_all · 458L stable"},
+    {"file": "docs/system/update-distribution-doctrine.md", "scope": "5+ patches frontmatter + Update Distribution Discipline + update-distribution-discipline replace_all · 473L stable"},
+    {"file": "_version.json", "scope": "Bump 2.85.3 → 2.85.4"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.85.4 propagation lot 4/4"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.85.4 (état chantier 24/26 · brand-isolation PENDING v2.85.5)"},
+    {"file": "docs/internal/releases/manifest/2.85.4-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["6 doctrines lot 4 opérationnelles édition critique main thread Sonnet", "Tests non-régression standards", "spot-check operational-system cross-refs entrantes", "version + manifest + CHANGELOG + project-journal + D#463 + memory canon update"],
+    "out_of_scope_explicit": ["brand-isolation-doctrine.md (REPORT v2.85.5 sprint court)", "Notion/Airtable concurrent mention operational-system §1 (refactor structurel hors scope voice-doctrine · backlog v2.86.x)", "Anglicisme 'synthesis' (cohérence cross-files 48 occurrences cumul · reportée v2.86.0)", "Resolution unifiée FR/EN cross-doctrines (audit final v2.86.0)"]
+  },
+  "decisions_captured": ["D#463"],
+  "memory_canons_updated": ["doctrine_propagation_progress (compteur 4/4 lots traités · 24/26 doctrines propagated · brand-isolation REPORT v2.85.5 · 4 lots consécutifs hypothèse validée · pattern operational-system cross-ref harmonisation systémique · spot-check cascade canonical validated)"],
+  "backlog_v2_85_5_plus": [
+    "v2.85.5 · sprint court brand-isolation-doctrine.md (68L · 1-3 patches mineurs · ~20-30 min) · CLÔTURE chantier propagation contenu 25/26 (operational-system reste déjà propagated lot 4 · au final 25/26 ATTEINT post-v2.85.5)",
+    "v2.86.0 · audit cross-files final + grep orphelins + résolution synthesis/synthèse unifiée cross 26 doctrines (48 occurrences cumulées lots 1+2+3+4) + résolution Notion/Airtable mention operational-system (backlog v2.85.4)",
+    "v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)",
+    "v2.86.2 · test discovery externe"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.85.4 = git revert HEAD strict · 6 doctrines patchées modifications additives mineures · zéro impact runtime."
+}

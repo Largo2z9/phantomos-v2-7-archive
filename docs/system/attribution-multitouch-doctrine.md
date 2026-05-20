@@ -1,4 +1,4 @@
-# Attribution Multitouch Discipline · Operating Doctrine
+# Attribution Multitouch Doctrine · Operating Doctrine
 
 > Canonique v2.78+. Doctrine canon qui codifie le cadrage attribution multi-touch stage-dependent (7d-click vs 1d-click vs view-through · Meta-reported vs Shopify actual vs TripleWhale blended · iCAC vs CAC vs MER) au-delà du *"Meta dit ROAS 3 donc on est rentable"*. Doctrine sœur de `pacing-doctrine.md` (mesure pacing stage-aware) et `creative-testing-doctrine.md` (ROAS attribution post-test). Ferme le gap *"attribution multi-touch canon manquant"* flag P0 Sprint v2.78 Agent media buyer. Substrat consommé par `analyze-perf` (cross-référence Sheets + Meta + Shopify) · `routine-perf` (monitoring stage-aware) · `audit-setup` (vérifie attribution windows tracking) · `audit-meta-account` (attribution audit canon) · `audit-google-pmax` (attribution GA4 cross-canon).
 
@@ -17,7 +17,7 @@
 
 **Différenciation canon vs Meta-only blind trust** ·
 
-| Layer | Meta-only trust | Shopify-only trust | TripleWhale blended | Attribution Multitouch Discipline canon |
+| Layer | Meta-only trust | Shopify-only trust | TripleWhale blended | Attribution Multitouch Doctrine canon |
 |---|---|---|---|---|
 | Source vérité | Meta reported | Shopify UTM | TW blended pivot | reconciliation 3 sources canon |
 | Window canon | 7d-click default Meta | 30d UTM Shopify | 30d view + 7d click TW | stage-dependent canon § 4 |
@@ -25,13 +25,13 @@
 | iCAC vs CAC | confusion | absent | partial | mapping canon §6 |
 | MER target | absent | absent | partial | stage canon 1.5x/2.5x/3.5x |
 
-Attribution Multitouch Discipline n'est pas un choix idéologique (Meta vs Shopify vs TW). C'est la grammaire structurée qui aligne attribution window + source vérité + métrique pivot + stage stage-aware en canon partagé.
+Attribution Multitouch Doctrine n'est pas un choix idéologique (Meta vs Shopify vs TW). C'est la grammaire structurée qui aligne attribution window + source vérité + métrique pivot + stage stage-aware en canon partagé.
 
 ---
 
 ## 2. Le problème résolu
 
-Sans Attribution Multitouch Discipline canon ·
+Sans Attribution Multitouch Doctrine canon ·
 
 1. **Meta-reported sur-estime systémique.** Buyer trust Meta ROAS 3.5 · scale spend · Shopify révèle ROAS réel 1.8 · perte budget · client signale décalage. Pattern Meta · 7d-click + 1d-view double-counting + cross-device over-credit + iOS 14.5 modeling gap.
 
@@ -45,7 +45,7 @@ Sans Attribution Multitouch Discipline canon ·
 
 6. **Skills analyze-perf + routine-perf + audit-meta-account sans substrat doctrinal.** Skills cross-référence sans canon partagé doctrinal · chaque skill ré-invente reconciliation logic inline · drift maintenance dette.
 
-Attribution Multitouch Discipline = doctrine canon qui ferme ces 6 gaps via 3 axes (windows · sources · métriques) + stage alignment.
+Attribution Multitouch Doctrine = doctrine canon qui ferme ces 6 gaps via 3 axes (windows · sources · métriques) + stage alignment.
 
 ---
 
