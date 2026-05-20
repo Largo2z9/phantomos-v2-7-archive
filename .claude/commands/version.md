@@ -204,7 +204,7 @@ PhantomOS · historique versions
 
 - `/update` · pair canon · pipeline mutation
 - `docs/system/update-distribution-discipline.md` v2.80.0 · doctrine racine pipeline update
-- `docs/system/changelog-discipline.md` v2.83.0 · doctrine split canon CHANGELOG vs project-journal vs manifests
+- `docs/system/changelog-doctrine.md` v2.83.0 · doctrine split canon CHANGELOG vs project-journal vs manifests
 - `CHANGELOG.md` · résumé exécutif Keep-a-Changelog (runtime consumable)
 - `docs/internal/releases/manifest/{version}-manifest.json` · détails structurés par release (source de vérité deep dive)
 - `docs/internal/project-journal.md` · narrative archive v2.83.0+ (contexte historique étendu)

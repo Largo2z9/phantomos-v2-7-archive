@@ -270,7 +270,7 @@ Test A/B/C/D avec hypothèses différenciées par couche. Apprentissage cross-co
 - `audience-cartography.md` (parent/enfants sémantique + pains encodées · pain-benefit-chain consume les pains côté audience cartography pure)
 - `decomposition-visibility-discipline.md` (4 niveaux matriciels · bénéfices 3 couches référencés NIVEAU 1 décomposition produit)
 - `compositional-cartography.md` (composer outputs créatifs · pain-benefit composante NOYAU de l'équation canon)
-- `creative-testing-discipline.md` (test variance créative par couche bénéfice · hypothèses A/B/C/D différenciées)
+- `creative-testing-doctrine.md` (test variance créative par couche bénéfice · hypothèses A/B/C/D différenciées)
 - `investigation-posture.md` (sourcing explicit · confidence chain · pain-benefit chaînes documentent les déductions)
 - `progressive-cartography-discipline.md` (hypothèse confidence 0.5 valide pour chaînes en cours de validation)
 
@@ -303,7 +303,7 @@ audience-cartography.md (pain side encodée)
             ↓
    compositional-cartography.md (composition outputs créatifs)
             ↓
-   creative-testing-discipline.md (test variance par couche)
+   creative-testing-doctrine.md (test variance par couche)
 ```
 
 Sans pain-benefit-chain, la cartographie audience reste descriptive et le copy DR reste superficiel. Avec pain-benefit-chain encoding canon, le système opère une chaîne complète pain → benefit → angle → copy → test → apprentissage cross-couches.

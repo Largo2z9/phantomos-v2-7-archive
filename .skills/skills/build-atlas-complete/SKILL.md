@@ -783,7 +783,7 @@ Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeli
 - **ALWAYS** propagate confidence chain phase-by-phase per `docs/system/confidence-propagation.md`. Worst-case floor wins on the final synthesis.
 - **ALWAYS** apply Investigation Posture 5 sections on Step 9 close. The audit gap that triggered v1.0.0 was exactly this missing structured close.
 - **ALWAYS** respect parallel cap (3 subagents per phase) and depth cap (1 · `deepen-brand-context` already chains its own subagents, that is depth-2 already authorized by the architecture).
-- **ALWAYS** Brand isolation: this orchestrator operates `brand_only` per `docs/system/brand-isolation-discipline.md`. Cross-brand pulls (canon copy resources) are read-only references, never write to other brands.
+- **ALWAYS** Brand isolation: this orchestrator operates `brand_only` per `docs/system/brand-isolation-doctrine.md`. Cross-brand pulls (canon copy resources) are read-only references, never write to other brands.
 - **One brand at a time.** No parallel atlas-build on multiple brands. Confuses Layer B mutation scoping.
 
 ---
@@ -816,7 +816,7 @@ Then AskUserQuestion: *Go / Skip URL scan / Active fast-track / Ajuste le pipeli
 - `docs/system/canonical-matrix-reasoning.md` · CMR · production discipline (95% quality on intersectional outputs)
 - `docs/system/compositional-cartography.md` · §7 anti-pattern (no raw numeric scoring to operator) · implémentation domaine créatif de CMR
 - `docs/system/confidence-propagation.md` · confidence chain algebra
-- `docs/system/brand-isolation-discipline.md` · brand_only scope default
+- `docs/system/brand-isolation-doctrine.md` · brand_only scope default
 - `docs/system/skill-routing-discipline.md` · v2.55 routing canon (orchestrator delegates, never freestyles strategic prose)
 - `docs/system/delegation-pattern.md` · model routing + parallel caps
 - `docs/system/contract-build.md` · Build mode rules + Orchestration gate

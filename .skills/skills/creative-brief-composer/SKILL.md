@@ -346,6 +346,6 @@ Operator override possible · *"genre 2 variants sur même hook, 1 sur hook alte
 - **Sub-skills** · `produce-copy-brief` SKILL.md (Phase 2 producer) · `compose-creative` SKILL.md (Phase 4 producer)
 - **Parent pattern** · `onboard-brand` SKILL.md (Step 4-5 gate validate then push pattern)
 - **Confidence propagation** · `docs/system/confidence-propagation.md` (cascade confidence cross-skill orchestrator)
-- **Brand isolation** · `docs/system/brand-isolation-discipline.md` (`isolation_scope: brand_only` enforcement)
+- **Brand isolation** · `docs/system/brand-isolation-doctrine.md` (`isolation_scope: brand_only` enforcement)
 - `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
 - `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)

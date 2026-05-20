@@ -1,6 +1,6 @@
 # Creative Testing Discipline · Operating Doctrine
 
-> Canonique v2.78+. Doctrine canon qui codifie le protocole creative testing (3x3 matrix · win/kill seuils chiffrés · refresh cadence) au-delà du *"polish 1 angle"* ou *"test 50 variants random"*. Doctrine sœur de `pacing-discipline.md` (axe 4 CTR decay · refresh cadence 21j) et `attribution-multitouch-discipline.md` (cadrage mesure post-test). Ferme le gap *"creative testing framework canon manquant"* flag P0 Sprint v2.78 Agent media buyer. Substrat consommé par `produce-paid-angles` (génération variants) · `compose-creative` (composition variants) · `creative-brief-composer` (brief test plan) · `analyze-perf` (diagnostic win/kill) · `routine-perf` (monitoring tests).
+> Canonique v2.78+. Doctrine canon qui codifie le protocole creative testing (3x3 matrix · win/kill seuils chiffrés · refresh cadence) au-delà du *"polish 1 angle"* ou *"test 50 variants random"*. Doctrine sœur de `pacing-doctrine.md` (axe 4 CTR decay · refresh cadence 21j) et `attribution-multitouch-doctrine.md` (cadrage mesure post-test). Ferme le gap *"creative testing framework canon manquant"* flag P0 Sprint v2.78 Agent media buyer. Substrat consommé par `produce-paid-angles` (génération variants) · `compose-creative` (composition variants) · `creative-brief-composer` (brief test plan) · `analyze-perf` (diagnostic win/kill) · `routine-perf` (monitoring tests).
 
 ---
 
@@ -122,7 +122,7 @@ Pattern canon win/kill seuils ROAS × spend × days ·
 **Rationale 21j sweet spot canon** ·
 
 - < 14j · learning phase non finie · refresh waste partial signal · over-test
-- 14j · minimum acceptable · creative-fatigue signal warning canon (cf `pacing-discipline.md` axe 4)
+- 14j · minimum acceptable · creative-fatigue signal warning canon (cf `pacing-doctrine.md` axe 4)
 - 21j · sweet spot canon · audience seen creative ~2.5 fois · CTR decay -20-25% · refresh optimal avant CTR effondré
 - 30j · max acceptable · CTR decay -40% canon critical · refresh mandatory · auction punit
 - > 30j · creative dead · CPM auction blow up · waste budget continu
@@ -178,8 +178,8 @@ Test discipline canon n'est PAS uniforme cross-stages ·
 
 ## 7. Cross-refs
 
-- `pacing-discipline.md` v2.78 · doctrine sœur · axe 4 CTR decay + refresh cadence 21j canon consumed (alignment cross-doctrine)
-- `attribution-multitouch-discipline.md` v2.78 · doctrine sœur · cadrage mesure post-test · ROAS attribution stage-aware miroir
+- `pacing-doctrine.md` v2.78 · doctrine sœur · axe 4 CTR decay + refresh cadence 21j canon consumed (alignment cross-doctrine)
+- `attribution-multitouch-doctrine.md` v2.78 · doctrine sœur · cadrage mesure post-test · ROAS attribution stage-aware miroir
 - `compositional-cartography.md` v3.1 · équation NOYAU × CONTEXTE × MODIFIEURS · pattern ECR couche 1 instance créative · 3x3 matrix instance pattern compositional
 - `pain-benefit-chain.md` · 4 chains canon (functional/identity/emotional/aspirational) · alimente axe angle MECE matrix §3
 - `audience-cartography.md` v2.64 · cartographie audiences segments · alimente axe audience Configuration B matrix
@@ -270,11 +270,11 @@ Matrix 3x3 avec 3 hooks identiques juste différemment formulés · MECE cassé 
 ## Status
 
 - **Canonique v2.78+.** Doctrine canon · ferme gap *"creative testing framework manquant"* flag P0 Sprint v2.78 Agent media buyer.
-- **Doctrine sœur** · pacing-discipline.md (axe 4 CTR decay consume cadence canon) · attribution-multitouch-discipline.md (cadrage mesure post-test) · operational-system-discipline.md v2.71 (doctrine mère 5 couches).
+- **Doctrine sœur** · pacing-doctrine.md (axe 4 CTR decay consume cadence canon) · attribution-multitouch-doctrine.md (cadrage mesure post-test) · operational-system-discipline.md v2.71 (doctrine mère 5 couches).
 - **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills legacy pre-v2.78 conservent test logic inline jusqu'à patch · v2.78+ migration progressive consume canon.
 - **First applications** · produce-paid-angles v2.78 (génération matrix 3x3) · compose-creative v2.78 (composition Configuration A/B) · creative-brief-composer v2.78 (brief test plan) · analyze-perf v2.78 (diagnostic win/kill canon).
 - **Promotion criterion** · à reviewer après 3+ skills creative-aware migrated consume canon + 1 audit cross-account test patterns convergence + learnings.json append creative testing patterns.
 
 ---
 
-*Doctrine canonique skill-author-facing + media-buyer-facing. Canonise 3x3 testing matrix MECE + win/kill seuils chiffrés (ROAS × spend × days) + refresh cadence 21j sweet spot canon + stage alignment (test wide · scale focus · saturation re-test). Ferme gap structurel *"creative testing instinct sans protocole"*. Pattern miroir compositional-cartography.md (équation NOYAU × CONTEXTE × MODIFIEURS · ECR couche 1) et pacing-discipline.md (axe 4 CTR decay refresh canon).*
+*Doctrine canonique skill-author-facing + media-buyer-facing. Canonise 3x3 testing matrix MECE + win/kill seuils chiffrés (ROAS × spend × days) + refresh cadence 21j sweet spot canon + stage alignment (test wide · scale focus · saturation re-test). Ferme gap structurel *"creative testing instinct sans protocole"*. Pattern miroir compositional-cartography.md (équation NOYAU × CONTEXTE × MODIFIEURS · ECR couche 1) et pacing-doctrine.md (axe 4 CTR decay refresh canon).*

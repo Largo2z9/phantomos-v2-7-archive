@@ -45,7 +45,7 @@
   "backlog_v282_2_plus": [
     "Re-test live workspace fresh v2.82.1 sur ~/dev/phantom-test-v280_3/ pour valider runtime opérateur post-refactor + validation",
     "PRIO 3 · audit claude-md-discipline.md self-applied (4 questions · HR 8 vs 4 + AP vs HR symétriques + lignes vs cible + versioning interne) · v2.82.2 si redondance flag",
-    "PRIO 4 · sprint v2.83.0 refactor CHANGELOG (~4270L → ~1150L cible) + NEW doctrine changelog-discipline.md (cap 80L par release · sections atomiques)",
+    "PRIO 4 · sprint v2.83.0 refactor CHANGELOG (~4270L → ~1150L cible) + NEW doctrine changelog-doctrine.md (cap 80L par release · sections atomiques)",
     "Pattern méta-canon doctrine_ripening_period · 2-3 semaines pratique informelle avant codification canon · pas codifier maintenant pour respecter le pattern lui-même"
   ],
   "rollback_strategy": "Strict additif · revert v2.82.1 = git revert HEAD strict · 2 fichiers documentation retirables · zéro impact runtime."

@@ -52,7 +52,7 @@ Contextual Intelligence est la doctrine racine. Toutes les autres doctrines la s
 - **Skill Authoring Discipline** · `skill-authoring-discipline.md` · type taxonomy · frontmatter triad · composition contracts · lifecycle · failure doctrine
 - **Provenance Trust Discipline** · `provenance-trust-discipline-scope.md` · scope · multi-operator · canon-as-product · marketplace skills
 - **Claude-MD Discipline** (v2.82.0) · `claude-md-discipline.md` · cap fichiers · marqueurs priorité 3 max · test de suppression · refactor atomique
-- **Changelog Discipline** (v2.83.0) · `changelog-discipline.md` · Keep-a-Changelog strict · cap 80L par release · sections atomiques · split narrative archive
+- **Changelog Discipline** (v2.83.0) · `changelog-doctrine.md` · Keep-a-Changelog strict · cap 80L par release · sections atomiques · split narrative archive
 - **Voice Doctrine** (v2.84.0) · `voice-doctrine.md` · ton reference-grade artefacts internes · 5 principes wording · politique FR/EN canon · conventions casse · famille paramétrage NEW · 8 anti-patterns
 
 ## Governance
@@ -126,13 +126,13 @@ Pour la doctrine racine canon (mechanical vs semantic) · cf `contextual-intelli
 - `delegation-pattern.md` · sub-agent delegation · model routing par cognitive demand · disjoint scopes
 - `dependency-resolution-protocol.md` · DRGFP 3 niveaux L1/L2/L3 gap-filling Step 0bis canon
 - `confidence-propagation.md` · algèbre cascade confidence cross-skill · audit trail confidence_chain
-- `brand-isolation-discipline.md` · default isolation_scope brand_only · exception canon copy cross-brand
+- `brand-isolation-doctrine.md` · default isolation_scope brand_only · exception canon copy cross-brand
 - `pattern-detection-triggers.md` · registre canonique 8 triggers learn-from-session + smart-suggest daemon
-- `pacing-discipline.md` · rythme exécution skills · sub-agent dispatch timing
-- `creative-testing-discipline.md` · canon testing creative variants
-- `attribution-multitouch-discipline.md` · attribution multi-touch tracking
+- `pacing-doctrine.md` · rythme exécution skills · sub-agent dispatch timing
+- `creative-testing-doctrine.md` · canon testing creative variants
+- `attribution-multitouch-doctrine.md` · attribution multi-touch tracking
 - `model-versioning-canon.md` · model routing canon par task cognitive demand
-- `visual-identity-discipline.md` · visual identity canon shipped product
+- `visual-identity-doctrine.md` · visual identity canon shipped product
 - `atlas-brand.md` · atlas brand structure
 - `atlas-canon-copy.md` · canon copy cross-brand reference
 

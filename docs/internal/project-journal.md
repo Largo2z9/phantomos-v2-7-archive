@@ -12,6 +12,46 @@
 
 ---
 
+## v2.85.0 LITE · 2026-05-20 · Sprint MINOR · rename structurel lot 1/4 · 6 fichiers `*-discipline.md` → `*-doctrine.md` · D#455 captured
+
+Voice-doctrine v2.84.1 a posé décision canon · 'doctrine' terme canonique · 'discipline' déprécié et réservé aux fichiers historiques en attente de rename. Trilogie de propagations downstream complétée v2.84.4. Backlog v2.85.0 listait sprint rename 21 fichiers `*-discipline.md` → `*-doctrine.md`.
+
+**Pré-flight Phase 1.A obligatoire** · 3 sub-agents Haiku parallèle scope disjoint (wall-time ~3 min) · Agent A cross-refs entrantes markdown · Agent B false positives discipline prose · Agent C refs artefacts non-markdown.
+
+**Résultat pré-flight · ESCALADE GARDE-FOUS** ·
+
+| Métrique | Valeur réelle | Seuil briefing | Status |
+|----------|---------------|----------------|--------|
+| Cross-refs markdown cumulatif | 1066 | >300 | ⚠️ DÉPASSÉ |
+| Refs artefacts non-markdown | 170 | >50 | ⚠️ DÉPASSÉ |
+| False positives prose | 37 | >50 | ✓ sous seuil |
+| Fichiers à renommer | 21 | >80 | ✓ sous seuil |
+| Total cumulé | ~1236 | (6x estimation 60-200) | escalade |
+
+**Décision Largo · STRATÉGIE LITE confirmée** · scope réduit 6 doctrines low-stakes (~258 refs cumulées réelles · 16/21 risque faible runtime sensible) · 15 doctrines restantes en lots dédiés v2.85.0.x sessions ultérieures · cohérent memory canon `iterative_validation` + `no_overengineer`.
+
+**6 doctrines renommées lot 1/4** · `attribution-multitouch-doctrine.md` (25 refs · docs only) · `brand-isolation-doctrine.md` (47 refs · runtime sensible) · `changelog-doctrine.md` (54 refs · runtime sensible) · `creative-testing-doctrine.md` (33 refs · docs only) · `pacing-doctrine.md` (71 refs · runtime sensible) · `visual-identity-doctrine.md` (28 refs · runtime sensible).
+
+**Phase 1.C exécution** · git mv 6 fichiers · script Python batch patches cross-refs · Round 1 37 fichiers consumers · 99 replacements · Round 2 4 skills résiduels détectés via grep final · 8 replacements · **Total 107 replacements · 41 fichiers consumers patched** · wall-time exécution batch ~3 min.
+
+**Distribution patches** · docs system + docs internal + manifests JSON (6 releases) + skills (10 SKILL.md) + slash commands (update.md + version.md) + schemas (skill-prerequisites) + memory canons (2) + R&D (canon.md + decisions.md + CHANGELOG.md + market-intelligence rnd).
+
+**Phase 1.D tests non-régression PASSÉS** · `build-manifest.py` 81 skills + 92 jargon entries ✓ · `build-brand-snapshot.py _EXAMPLE` 24 lines ✓ · grep résiduel 6 anciens noms 0 occurrence ✓ · zéro régression silencieuse détectée.
+
+**37 false positives "discipline" en prose préservés** · concept doctrinal pur (4) · méta-pattern (10) · concept technique (18) · autre (5). Aucune modification (le mot "discipline" comme concept système reste vivant cohérent intention).
+
+**Backward compat strict additif** · 27 doctrines · 81 skills · 10 slash commands inchangé · `_manifest.json` + `_jargon_bank.json` regenerés cohérents · zéro impact runtime · réversible git revert.
+
+D#455 captured · 2 NEW memory canons · `doctrine_naming_canon` (règle pérenne nouveau fichier doctrinal sous `docs/system/` porte suffixe `-doctrine.md`) · `v85_0_lite_lessons` (observations tactiques pour lots suivants v2.85.0.x · estimations réelles vs briefing · script Python batch pattern · tests critiques · décision LITE calibration).
+
+**Ship via PR** (pas push direct main même sur largo-kb · cohérent doctrine git canon · revue visuelle demain matin avant merge cohérent contexte session nuit).
+
+**Backlog v2.85.0.x → v2.86.0** · v2.85.0.1 lot 2/4 6 doctrines mid-stakes · v2.85.0.2 lot 3/4 6 doctrines mid-stakes · v2.85.0.3 lot 4/4 3 doctrines HIGH risk (decomposition-visibility 176 refs · engagement-disclosure 101 refs · schema-encoding 66 refs) validation runtime intensive · v2.85.1 propagation contenu post-rename complet · v2.85.2-4 propagation contenu lots 2-4 · v2.86.0 audit cross-files final · DÉSAMBIG-1.5 backlog post-distribution.
+
+**v2.85.1 reportée demain frais** · cap garde-fous wall-time cumulé respecté · cohérent doctrine 'STOP en état · prochain sprint reprend où on s'est arrêté'.
+
+---
+
 ## v2.84.4 · 2026-05-20 · Sprint PATCH · 3ème propagation downstream voice-doctrine · README + WELCOME registre semi-public · trilogie complétée · D#454 captured
 
 Backlog v2.84.0-v2.84.3 listait v2.84.4 audit README/WELCOME application registre semi-public canon. Voice-doctrine v2.84.1 définit 3 registres canon (reference-grade interne / semi-public README et WELCOME / runtime opérateur). Sprint court 30-45 min complète la trilogie de propagations doctrinales avant les gros sprints v2.85.0+.
@@ -114,7 +154,7 @@ D#452 captured · cadre canon voice-doctrine v2.84.1 testé via propagation rée
 
 Audit externe Claude Web phase 2-bis sur voice-doctrine v2.84.0 a validé "shipped" à 90% MAIS flag 4 drifts mineurs + 1 zone fragilité structurelle. Verdict détaillé · auto-conforme à ~90% (5 principes wording + 8 anti-patterns respectés en s'écrivant · zéro liaison molle · zéro sycophant · zéro adjectif vague · registre tiers maintenu). Test méta de cohérence largement passé.
 
-**4 drifts identifiés** · D1 AP-VD-3 vs AP-VD-8 chevauchement perçu (formules politesse vs pronoms conversationnels distincts mais imbriqués en pratique) · D2 cross-refs `claude-md-discipline.md` + `changelog-discipline.md` + `output-clarity-discipline.md` + `decomposition-visibility-discipline.md` listées comme legacy dans une doctrine qui déclare 'discipline' deprecated et 'doctrine' canon (auto-cohérence visible à l'œil nu) · D3 frontmatter `***` au lieu de `---` standard YAML (HALLUCINATION audit · file utilise déjà `---` · lignes 1+7 vérifiées Read tool) · D4 variation typographique séparateurs `·` prose vs `|` tables sans convention canon formalisée.
+**4 drifts identifiés** · D1 AP-VD-3 vs AP-VD-8 chevauchement perçu (formules politesse vs pronoms conversationnels distincts mais imbriqués en pratique) · D2 cross-refs `claude-md-discipline.md` + `changelog-doctrine.md` + `output-clarity-discipline.md` + `decomposition-visibility-discipline.md` listées comme legacy dans une doctrine qui déclare 'discipline' deprecated et 'doctrine' canon (auto-cohérence visible à l'œil nu) · D3 frontmatter `***` au lieu de `---` standard YAML (HALLUCINATION audit · file utilise déjà `---` · lignes 1+7 vérifiées Read tool) · D4 variation typographique séparateurs `·` prose vs `|` tables sans convention canon formalisée.
 
 **Zone fragilité structurelle** · section "Exception README / WELCOME (semi-public)" introduit un 3e registre hybride non nommé ailleurs dans le système. Trois options proposées · (Opt 1) promouvoir 'semi-public' en registre canon nommé · 3 registres listés en haut comme boussole auteur · (Opt 2) supprimer exception et appliquer reference-grade strict aussi au README · (Opt 3) externaliser dans `public-surface-doctrine.md` (mais ajoute 28e doctrine vs ripening period). Opt 1 choisie · pas nouvelle doctrine, pas simplification réductrice, pose 3 niveaux clairement.
 
@@ -866,9 +906,9 @@ Ferme gap test live KaraCare flag par Largo · différenciation structurelle dé
 
 **3 NEW doctrines canon shipped (858 lignes total)** ·
 
-6. **`pacing-discipline.md` (288L)** · seuils canon chiffrés · variance ±10/±20/±40% · frequency Meta ≤1.8/2.5/4.0 · frequency PMAX ≤3.0/5.0 · CPM drift WoW ±15%/+30%/+50% · CTR decay 14j/21j/30j · stages 1.5x/2.5x/3.5x · sweet spot 21j
-7. **`creative-testing-discipline.md` (280L)** · 3x3 matrix = 27 variants · Configuration A (angle × hook × visual) + Configuration B (angle × audience × visual) · win ROAS ≥ breakeven × 1.2 + spend ≥ 3 × CPM + days ≥ 7 · kill ROAS < breakeven × 0.7 + spend ≥ 1 × CPM + days ≥ 3 · refresh 14j min / 21j sweet spot / 30j max
-8. **`attribution-multitouch-discipline.md` (290L)** · 7d-click vs 1d-click vs view-through canon · windows par canal table (Meta/Google/Klaviyo/Shopify/TW/GA4) · reconciliation 3 sources mandatory stage maintain+ · iCAC/CAC/MER mapping canon · MER target 3.5x/2.5x/1.5x/2.0x par stage · divergence Meta vs Shopify > 30% flag canon
+6. **`pacing-doctrine.md` (288L)** · seuils canon chiffrés · variance ±10/±20/±40% · frequency Meta ≤1.8/2.5/4.0 · frequency PMAX ≤3.0/5.0 · CPM drift WoW ±15%/+30%/+50% · CTR decay 14j/21j/30j · stages 1.5x/2.5x/3.5x · sweet spot 21j
+7. **`creative-testing-doctrine.md` (280L)** · 3x3 matrix = 27 variants · Configuration A (angle × hook × visual) + Configuration B (angle × audience × visual) · win ROAS ≥ breakeven × 1.2 + spend ≥ 3 × CPM + days ≥ 7 · kill ROAS < breakeven × 0.7 + spend ≥ 1 × CPM + days ≥ 3 · refresh 14j min / 21j sweet spot / 30j max
+8. **`attribution-multitouch-doctrine.md` (290L)** · 7d-click vs 1d-click vs view-through canon · windows par canal table (Meta/Google/Klaviyo/Shopify/TW/GA4) · reconciliation 3 sources mandatory stage maintain+ · iCAC/CAC/MER mapping canon · MER target 3.5x/2.5x/1.5x/2.0x par stage · divergence Meta vs Shopify > 30% flag canon
 
 **1 convention enrichie** ·
 
@@ -2269,7 +2309,7 @@ Distinction nette · qui lance le script. Plus de chevauchement sémantique avec
 **What shipped.** 4 patches couplés (~8h cumulé · 3 agents parallèles).
 
 - **visual_identity.schema v1.0 → v1.1** · 3 nouveaux blocs additifs · `assets_canonical{}` catalog haute résolution local source (packshot_front/back/3_4/top + lifestyle[] requis path+resolution+format+background+captured_at) · `logo_svg{}` path vectoriel + variants enum 6 (primary/monochrome-black/monochrome-white/horizontal/vertical/icon) · `wordmark_pattern` regex strict validation runtime post-gen. Backward compat strict v1.0 préservé + additionalProperties true sous-objets pour accommoder noms champs alternatifs brand kara existing.
-- **Doctrine `docs/system/visual-identity-discipline.md` créée** · ~700 mots · 3 piliers (catalog assets produit + logo SVG brand + wordmark regex) · consumers (compose-creative HR1.4 v2.43+ priorité local > CDN + compose-overlay-text v2.43 NEW + decompose-ad reference) · migration 6 étapes pré-v2.43 · fallback graceful warning operator-facing translation.
+- **Doctrine `docs/system/visual-identity-doctrine.md` créée** · ~700 mots · 3 piliers (catalog assets produit + logo SVG brand + wordmark regex) · consumers (compose-creative HR1.4 v2.43+ priorité local > CDN + compose-overlay-text v2.43 NEW + decompose-ad reference) · migration 6 étapes pré-v2.43 · fallback graceful warning operator-facing translation.
 - **Structure assets/ kara live** ·
   - Produit-level · `brands/kara/products/cellule-boost-anti-chute/assets/` (4 packshots placeholders · front 1784×1784 CDN extract · 3 slots transparent 1×1 attendant upload Largo) + README workflow upload
   - Brand-level · `brands/kara/assets/` (logo.svg placeholder bordeaux #6E1A1F + 5 variants SVG + palette-reference.png 800×200 PIL render 3 swatches + README workflow + _brand-guidelines.md anti-patterns + placement canon bottom-right)
@@ -2419,7 +2459,7 @@ Distinction nette · qui lance le script. Plus de chevauchement sémantique avec
 - **Schema `skill-prerequisites.schema.json` créé**. Draft-07 strict, 3 levels L1/L2/L3 conditional required (L1 auto_pull + freshness_ttl_days · L2 options 2-4 · L3 fallback + confidence_default). validate-resources HR-19 valide + cross-doc check frontmatter ↔ Step 0bis prose (interdit multi-source of truth). Prêt pour ship DRGFP v2.38.
 - **Doctrine `confidence-propagation.md` créée**. Default obligatoire `confidence_propagation: min` defensive (output = min(all_inputs, local)) + 4 modes override (multiplicative, weighted_avg, passthrough, local_only) + audit trail `confidence_chain[]` visible. Operator surface translation (>=0.8 high · 0.5-0.8 medium · <0.5 low avec weakest input flag). Atlas vivant promotion gate require min(chain) >= 0.7. Empêche cascade 4 skills @0.6 affichant 0.6 alors que réalité multiplicative 0.13. validation-state.json v2.32 → v2.33 additif (confidence_chain[] + confidence_propagation optionnels).
 - **canon-tool schema v1.0 → v1.1**. 5 fields requis sur validations[] · brand_slug (isolation) · attribution_layer enum 10 (hook/angle/framework/archetype/format/targeting/budget/creative_execution/timing/unknown) · validated_at date · decay_ttl_days int default 90 · _isolation_boundary const brand auto-set. Empêche pollution atlas vivant par signaux non-imputables (failed = bad targeting vs bad hook indistinct) + lock-in winner précoce (decay 90j default override autorisé 30 fast TikTok / 180 slow benefit chains). learn-from-session HR-Canon-V11 enforcement (attribution unknown → AskUserQuestion gate avant write) + HR-Canon-Decay filter promotion (entries stale → require re-test ou operator override). atlas-canon-copy.md section 11 Schema v1.1 + roadmap entry. Backward compat lecture (defaults injectés sur entries v1.0).
-- **Doctrine `brand-isolation-discipline.md` créée**. Default obligatoire `isolation_scope: brand_only` enforced + 3 enum (brand_only · cross_brand_with_gate · workspace_global infrastructure only). Empêche cross-contamination multi-clients agency (NDAs). Exception canonique atlas canon copy (sense 1 cross-brand par design, lecture libre). validations[] cross-brand interdit (brand_slug requis, promotion canon copy require N>=3 brands distinctes). skill-authoring-discipline section 4 invariants ligne 2bis. validate-resources Check 13c (3 codes erreur). prerequisites schema enrichi · cross_brand_required bool. Runtime enforcement mutation-gate hook = patch séparé futur.
+- **Doctrine `brand-isolation-doctrine.md` créée**. Default obligatoire `isolation_scope: brand_only` enforced + 3 enum (brand_only · cross_brand_with_gate · workspace_global infrastructure only). Empêche cross-contamination multi-clients agency (NDAs). Exception canonique atlas canon copy (sense 1 cross-brand par design, lecture libre). validations[] cross-brand interdit (brand_slug requis, promotion canon copy require N>=3 brands distinctes). skill-authoring-discipline section 4 invariants ligne 2bis. validate-resources Check 13c (3 codes erreur). prerequisites schema enrichi · cross_brand_required bool. Runtime enforcement mutation-gate hook = patch séparé futur.
 
 **Operator impact.** Visible : `/phantom kara atlas` ne leak plus de jargon. Brand fresh propose actions concrètes au lieu de vue vide décourageante. Invisible mais critique : terrain armé pour ship sans risk les 3 grosses doctrines v2.38-v2.40. Skills ne peuvent plus shipper data stale silencieuse, confidence cascade trompeuse, atlas vivant lock-in monoculturel, cross-brand contamination. Backward compat strict additif partout · skills v2.36 fonctionnent, warnings non-blocking sur ceux sans nouveaux fields.
 

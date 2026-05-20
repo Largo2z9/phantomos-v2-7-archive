@@ -253,7 +253,7 @@ Légende systématique au pied de tout output structuré.
 
 - `docs/system/update-distribution-discipline.md` v2.80.0 · doctrine racine update pipeline
 - `docs/system/engagement-disclosure-discipline.md` v2.79.5 · disclosure pattern NIVEAU 0
-- `docs/system/changelog-discipline.md` v2.83.0 · doctrine split CHANGELOG / project-journal / manifests
+- `docs/system/changelog-doctrine.md` v2.83.0 · doctrine split CHANGELOG / project-journal / manifests
 - `.skills/skills/update-workspace/SKILL.md` · skill orchestrator sous-jacent
 - `.skills/skills/migrate-workspace/SKILL.md` · skill schema migration brand-by-brand
 - `/version` · pair canon · affiche état version sans muter

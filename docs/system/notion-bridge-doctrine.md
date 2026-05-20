@@ -176,7 +176,7 @@ Le pull stage les mutations en mode `proposed`. L'opérateur valide via `pending
 
 ### AP-4 · Bridge mutation cross-brand
 
-Un sync = un brand. JAMAIS de bridge cross-brand · si Largo veut sync Brand A puis Brand B, 2 invocations distinctes du skill. Respecte `brand-isolation-discipline.md`.
+Un sync = un brand. JAMAIS de bridge cross-brand · si Largo veut sync Brand A puis Brand B, 2 invocations distinctes du skill. Respecte `brand-isolation-doctrine.md`.
 
 ### AP-5 · Mapper sans canon validation
 
@@ -188,7 +188,7 @@ Si un row Notion contient un field qui n'existe pas dans le schema PhantomOS can
 
 - `connectivity-layering.md` · Layer 1 MCP servers (cette doctrine étend la Layer 1)
 - `compositional-cartography.md` · doctrine compositionnelle parente · le système Notion stride-up implémente exactement les 4 arbres + matrice + modulateurs canon
-- `brand-isolation-discipline.md` · règle isolation cross-brand respectée par le bridge
+- `brand-isolation-doctrine.md` · règle isolation cross-brand respectée par le bridge
 - `schema-encoding-discipline.md` · mutation gate + `_field_types` + validation_status canon
 - `investigation-posture.md` · synthesis pull/push respecte les 5 sections (Observé / Déduit / Inconnu / Leviers / Close ouvert)
 - `.skills/skills/sync-notion-atlas/SKILL.md` · implémentation du bridge

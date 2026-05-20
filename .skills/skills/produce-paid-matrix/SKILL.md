@@ -538,7 +538,7 @@ The matrice paid sur une fashion brand DTC (différent vertical) surface différ
 - `docs/system/dependency-resolution-protocol.md` · DRGFP L1/L2/L3 gap-filling · Step 0 pre-flight gates canon.
 - `docs/system/extension-discovery-discipline.md` v2.75.0 NEW (extension_hooks + manifest registry scan canon)
 - `scaffold-extension` v1.2.0+ Phase 9 register-and-flag (upstream registry NEW entities)
-- `docs/system/brand-isolation-discipline.md` · isolation_scope brand_only · pas de cross-brand sur paid-matrix.
+- `docs/system/brand-isolation-doctrine.md` · isolation_scope brand_only · pas de cross-brand sur paid-matrix.
 - `.skills/skills/produce-paid-angles/SKILL.md` · sub-skill consumé Step 1 · angles ranked par audience.
 - `.skills/skills/weight-dimensions/SKILL.md` · sub-skill consumé Step 2 · pondérations dimensions audience × angle.
 - `.skills/skills/score-matrix/SKILL.md` · sub-skill consumé Step 3 · matrice Sub-cluster × Source d'angle scorée.

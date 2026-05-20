@@ -394,7 +394,7 @@ Si tu veux, on peut la tester en live.
 - `brands/{slug}/assets/logo.svg` (Agent F2 parallel · source SVG canonique brand-level).
 - `.skills/skills/compose-creative/SKILL.md` v1.1.0 · HR3.4 retry policy existing (compose-overlay-text complete, ne remplace pas).
 - `.skills/skills/recompose-creative/SKILL.md` · variants adaptation (audience/platform/format), pas confondre.
-- `docs/system/visual-identity-discipline.md` (Agent F1 parallel · doctrine canon).
+- `docs/system/visual-identity-doctrine.md` (Agent F1 parallel · doctrine canon).
 - `docs/system/compositional-cartography.md` v2.42 (equation v3.1 NOYAU x CONTEXTE x MODIFIEURS · compose-overlay-text raffine MODIFIEURS post-gen).
 - `docs/system/operator-vocabulary-translation.md` (HR6 mappings canon).
 - `docs/system/dependency-resolution-protocol.md` (DRGFP v2.38 · L1/L2/L3 prerequisite gap-filling).

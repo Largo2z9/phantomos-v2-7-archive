@@ -1,6 +1,6 @@
 # Pacing Discipline · Operating Doctrine
 
-> Canonique v2.78+. Doctrine canon qui codifie les seuils chiffrés partagés du pacing media buyer (spend variance · frequency saturation · CPM drift · creative fatigue) au-delà du gut feeling subjectif. Doctrine sœur de `creative-testing-discipline.md` (cycle test/refresh) et `attribution-multitouch-discipline.md` (cadrage mesure post-pacing). Ferme le gap *"seuils pacing inventés ad-hoc"* flag P0 Sprint v2.78 Agent media buyer. Substrat consommé par `routine-perf` (pacing daily) et `analyze-perf` (diagnostic deep) et `audit-google-pmax` (PMAX pacing).
+> Canonique v2.78+. Doctrine canon qui codifie les seuils chiffrés partagés du pacing media buyer (spend variance · frequency saturation · CPM drift · creative fatigue) au-delà du gut feeling subjectif. Doctrine sœur de `creative-testing-doctrine.md` (cycle test/refresh) et `attribution-multitouch-doctrine.md` (cadrage mesure post-pacing). Ferme le gap *"seuils pacing inventés ad-hoc"* flag P0 Sprint v2.78 Agent media buyer. Substrat consommé par `routine-perf` (pacing daily) et `analyze-perf` (diagnostic deep) et `audit-google-pmax` (PMAX pacing).
 
 ---
 
@@ -186,8 +186,8 @@ Pattern canon · *"1 warning si X · critical si Y"* explicit cross-axe ·
 
 ## 7. Cross-refs
 
-- `creative-testing-discipline.md` v2.78 · doctrine sœur · cycle test/refresh consume seuils CTR decay axe 4 + refresh cadence 21j canon
-- `attribution-multitouch-discipline.md` v2.78 · doctrine sœur · cadrage mesure post-pacing · attribution stage-aware miroir stages pacing test/maintain/scale
+- `creative-testing-doctrine.md` v2.78 · doctrine sœur · cycle test/refresh consume seuils CTR decay axe 4 + refresh cadence 21j canon
+- `attribution-multitouch-doctrine.md` v2.78 · doctrine sœur · cadrage mesure post-pacing · attribution stage-aware miroir stages pacing test/maintain/scale
 - `operational-system-discipline.md` v2.71 · doctrine mère 5 couches · cette doctrine instance multi-couches (2 Règles · 4 Métriques · 5 Rituels)
 - `investigation-posture.md` · 5 sections rigueur · skills pacing-aware (routine-perf · analyze-perf) ship output structuré observé/déduit/inconnu/leviers/close ouvert
 - `skill-routing-discipline.md` v2.77 · routing canon · skills consume pacing canon via mapping CLAUDE.md + manifest scan
@@ -278,7 +278,7 @@ Pacing Discipline opère sur 3 couches simultanément du multiplicatif Operation
 ## Status
 
 - **Canonique v2.78+.** Doctrine canon · ferme gap *"pacing seuils ad-hoc"* flag P0 Sprint v2.78 Agent media buyer.
-- **Doctrine sœur** · creative-testing-discipline.md (cycle test/refresh consume seuils axe 4) · attribution-multitouch-discipline.md (cadrage mesure post-pacing) · operational-system-discipline.md v2.71 (doctrine mère 5 couches).
+- **Doctrine sœur** · creative-testing-doctrine.md (cycle test/refresh consume seuils axe 4) · attribution-multitouch-doctrine.md (cadrage mesure post-pacing) · operational-system-discipline.md v2.71 (doctrine mère 5 couches).
 - **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills legacy pre-v2.78 conservent seuils inline jusqu'à patch · v2.78+ migration progressive consume canon.
 - **First applications** · routine-perf v2.78 (pilotage quotidien) · analyze-perf v2.78 (diagnostic deep) · audit-google-pmax v2.78 (PMAX pacing) consume canon §3-§5 via cross-ref.
 - **Promotion criterion** · à reviewer après 3+ skills pacing-aware migrated consume canon + 1 audit cross-account seuils convergence + learnings.json append pacing patterns.

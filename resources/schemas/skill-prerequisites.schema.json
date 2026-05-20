@@ -54,7 +54,7 @@
       "cross_brand_required": {
         "type": "boolean",
         "default": false,
-        "description": "Optional v2.37+. Si true, force gate L2 AskUserQuestion pour reads cross-brand sur cette dependance. Bypass scope brand_only default. Doctrine docs/system/brand-isolation-discipline.md"
+        "description": "Optional v2.37+. Si true, force gate L2 AskUserQuestion pour reads cross-brand sur cette dependance. Bypass scope brand_only default. Doctrine docs/system/brand-isolation-doctrine.md"
       }
     },
     "allOf": [

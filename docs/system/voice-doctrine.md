@@ -147,4 +147,4 @@ Semver strict · patch (clarification, exemple, AP complémentaire) · minor (no
 
 ## Cross-refs
 
-`claude-md-discipline.md` v2.82.0 (cap, marqueurs, test de suppression · rename pending v2.85.0+) · `changelog-discipline.md` v2.83.0 (Keep-a-Changelog · rename pending v2.85.0+) · `output-clarity-discipline.md` v2.79.2 (rendu opérateur-facing, couche runtime aval · rename pending v2.85.0+) · `compositional-cartography.md` v3.1 (NOYAU × CONTEXTE × MODIFIEURS) · `decomposition-visibility-discipline.md` v2.81.1+ (NIVEAUX 0/1-4/LIVE casse · rename pending v2.85.0+) · `contract-daily.md` (Operator-facing rule absolue · AP-VD-6).
+`claude-md-discipline.md` v2.82.0 (cap, marqueurs, test de suppression · rename pending v2.85.0+) · `changelog-doctrine.md` v2.83.0 (Keep-a-Changelog · rename pending v2.85.0+) · `output-clarity-discipline.md` v2.79.2 (rendu opérateur-facing, couche runtime aval · rename pending v2.85.0+) · `compositional-cartography.md` v3.1 (NOYAU × CONTEXTE × MODIFIEURS) · `decomposition-visibility-discipline.md` v2.81.1+ (NIVEAUX 0/1-4/LIVE casse · rename pending v2.85.0+) · `contract-daily.md` (Operator-facing rule absolue · AP-VD-6).
