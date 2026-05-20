@@ -303,7 +303,7 @@ Tu veux qu'on creuse le flag frequency ou qu'on connecte Google + TW d'abord ?
 ## Cross-refs
 
 - `docs/system/investigation-posture.md` (v2.54 doctrine canon) · 5 sections obligatoires Observé / Déduit / Inconnu / Leviers / Close ouvert · confidence chain explicite · anti-pattern AP-1 (affirmation hypothèse) et AP-5 (close fermé) BANNIS strict.
-- `docs/system/skill-routing-discipline.md` (v2.76+ canon) · routing 5 phases · disambiguation rules canon vs audit-meta-account + analyze-perf + brief-day.
+- `docs/system/skill-routing-doctrine.md` (v2.76+ canon) · routing 5 phases · disambiguation rules canon vs audit-meta-account + analyze-perf + brief-day.
 - `docs/system/connectivity-layering.md` · 3 layers · Layer 1 facebook-graph MCP + Layer 2 Google Ads / Shopify / TripleWhale APIs callable via skills.
 - `docs/system/contextual-intelligence.md` · master doctrine · no orphan output (close ouvert Section 5), trust the model on semantic layer, jargon zéro en surface.
 - `docs/system/canonical-matrix-reasoning.md` · qualité output post-routing · cette skill consume matrices canon seuils (pacing, frequency, CPM, ROAS, fatigue).

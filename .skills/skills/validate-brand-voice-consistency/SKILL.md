@@ -357,7 +357,7 @@ Cross-ref · `learn-from-session Trigger 9` daemon peut promouvoir cette finding
 
 - `docs/system/investigation-posture.md` · 5 sections obligatoires output stratégique
 - `docs/system/canonical-matrix-reasoning.md` · matrix-driven drift compute
-- `docs/system/skill-routing-discipline.md` · skill routing canon (analyze-copy single-touchpoint, validate-brand-voice-consistency cross-touchpoint)
+- `docs/system/skill-routing-doctrine.md` · skill routing canon (analyze-copy single-touchpoint, validate-brand-voice-consistency cross-touchpoint)
 - `define-brand-voice` · upstream prerequisite (produce voice chart 4D axes + do/don't lexicon)
 - `produce-positioning-canvas` · sister Sprint v2.80 (brand positioning canvas cross-référencé voice cohérence)
 - `recompose-creative` · downstream trigger (variant_axis=copy_tone_swap pour critical drift creatives)

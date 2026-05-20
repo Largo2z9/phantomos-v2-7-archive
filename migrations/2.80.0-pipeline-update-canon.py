@@ -7,7 +7,7 @@ Ships · NEW slash commands /update + /version + NEW doctrine
 update-distribution-discipline + NEW migrations framework.
 
 Backward compat strict · aucune transformation opérateur state.
-Cross-reference doctrine · docs/system/update-distribution-discipline.md
+Cross-reference doctrine · docs/system/update-distribution-doctrine.md
 """
 
 import argparse
@@ -70,7 +70,7 @@ def run_transformation(dry_run: bool = False) -> None:
     print("→ Additive migration · NEW canon shipped via rsync · no data transformation")
     print("→ NEW slash command · /update")
     print("→ NEW slash command · /version")
-    print("→ NEW doctrine · docs/system/update-distribution-discipline.md")
+    print("→ NEW doctrine · docs/system/update-distribution-doctrine.md")
     print("→ NEW framework · migrations/ (README + _template.py)")
 
 
@@ -81,7 +81,7 @@ def validate_state() -> Tuple[bool, str]:
     required_files = [
         WORKSPACE_ROOT / ".claude" / "commands" / "update.md",
         WORKSPACE_ROOT / ".claude" / "commands" / "version.md",
-        WORKSPACE_ROOT / "docs" / "system" / "update-distribution-discipline.md",
+        WORKSPACE_ROOT / "docs" / "system" / "update-distribution-doctrine.md",
         WORKSPACE_ROOT / "migrations" / "_template.py",
         WORKSPACE_ROOT / "migrations" / "README.md",
     ]

@@ -272,7 +272,7 @@ Test A/B/C/D avec hypothèses différenciées par couche. Apprentissage cross-co
 - `compositional-cartography.md` (composer outputs créatifs · pain-benefit composante NOYAU de l'équation canon)
 - `creative-testing-doctrine.md` (test variance créative par couche bénéfice · hypothèses A/B/C/D différenciées)
 - `investigation-posture.md` (sourcing explicit · confidence chain · pain-benefit chaînes documentent les déductions)
-- `progressive-cartography-discipline.md` (hypothèse confidence 0.5 valide pour chaînes en cours de validation)
+- `progressive-cartography-doctrine.md` (hypothèse confidence 0.5 valide pour chaînes en cours de validation)
 
 **Skills consumers + producers** ·
 

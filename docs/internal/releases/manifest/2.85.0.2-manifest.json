@@ -1,0 +1,57 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.85.0.2",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.85.0.2 · rename lot 3/4 sur 21 doctrines · 6 mid-stakes · 18/21 cumulé · 258 replacements 85 fichiers consumers · tests non-régression PASSÉS.",
+  "6_doctrines_renommees_lot_3": [
+    {"old": "operational-system-discipline.md", "new": "operational-system-doctrine.md", "refs_cumulees": 37, "sensibilite": "high"},
+    {"old": "onboarding-holistic-discipline.md", "new": "onboarding-holistic-doctrine.md", "refs_cumulees": 69, "sensibilite": "very high"},
+    {"old": "skill-routing-discipline.md", "new": "skill-routing-doctrine.md", "refs_cumulees": 55, "sensibilite": "very high"},
+    {"old": "extension-discovery-discipline.md", "new": "extension-discovery-doctrine.md", "refs_cumulees": 51, "sensibilite": "very high"},
+    {"old": "progressive-cartography-discipline.md", "new": "progressive-cartography-doctrine.md", "refs_cumulees": 32, "sensibilite": "very high"},
+    {"old": "update-distribution-discipline.md", "new": "update-distribution-doctrine.md", "refs_cumulees": 28, "sensibilite": "high"}
+  ],
+  "refs_total_cumulees_lot_3": 272,
+  "replacements_total_reels_lot_3": 258,
+  "ratio_cumulatif_replacements_lot_3": "1.05:1 (plus dense que prévu 1.9:1 · pré-flight Agent comptait top consumers seulement)",
+  "patches_appliques": [
+    "Phase 1 pré-flight ciblé · 1 sub-agent Haiku · garde-fous PASSÉS (top doctrine 25.4% · replacements estimés 140)",
+    "Phase 2 exécution · git mv 6 + script Python batch · 85 fichiers consumers · 258 replacements · 0 résiduels",
+    "Phase 3 tests non-régression PASSÉS · build-manifest 81 skills · build-brand-snapshot _EXAMPLE 24 lines",
+    "Phase 4 ship · _version + manifest + CHANGELOG + project-journal + D#457 + memory v85_0_lite_lessons"
+  ],
+  "calibration_observation_lot_3": "Ratio cumulatif/replacements lot 3 = 1.05:1 (272/258 · plus dense que estimé 1.9:1 · Agent pré-flight comptait top 3-5 consumers par doctrine vs script Python comptant TOUTES occurrences cross-files entiers). Pattern revisité · pour lots futurs, multiplier estimation pré-flight par 1.8x pour replacements réels.",
+  "lots_cumules": {
+    "lot_1_v2_85_0": "6 doctrines low-stakes · 107 replacements",
+    "lot_2_v2_85_0_1": "6 doctrines mid-stakes · 253 replacements",
+    "lot_3_v2_85_0_2": "6 doctrines mid-stakes · 258 replacements",
+    "total_cumule_3_lots": "18 doctrines · 618 replacements · 0 régressions",
+    "lot_4_pending": "3 doctrines HIGH risk runtime (decomposition-visibility 176 + engagement-disclosure 101 + schema-encoding 66 = 343 refs cumulées · ratio attendu 1.5-1.8:1 · validation runtime intensive obligatoire)"
+  },
+  "files_patched": [
+    {"file": "workspace-template/docs/system/*-discipline.md → *-doctrine.md", "scope": "6 git mv lot 3 (operational-system · onboarding-holistic · skill-routing · extension-discovery · progressive-cartography · update-distribution)"},
+    {"file": "85 fichiers consumers cross-refs", "scope": "258 patches batch Python · docs system + docs internal + manifests + skills + slash commands + CLAUDE.md root + brands _EXAMPLE + memory canons + R&D"},
+    {"file": "_version.json", "scope": "Bump 2.85.0.1 → 2.85.0.2"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.85.0.2 Lot 3/4 (18/21 cumulé)"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.85.0.2"},
+    {"file": "docs/internal/releases/manifest/2.85.0.2-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "decisions_captured": ["D#457"],
+  "memory_canons_updated": ["v85_0_lite_lessons (lot 3 ratio observé 1.05:1 · pattern revisité)"],
+  "backlog_v2_85_0_3_plus": [
+    "v2.85.0.3 · lot 4/4 HIGH risk (3 doctrines · decomposition-visibility 176 + engagement-disclosure 101 + schema-encoding 66 = 343 refs cumulées · ratio attendu 1.5-1.8:1 = 200-230 replacements estimés · **validation runtime intensive obligatoire** · **lendemain matin frais OBLIGATOIRE** · 21/21 doctrines cumulées post-ship)",
+    "v2.85.1 · propagation contenu lot 1 voice-doctrine STRICT post-rename complet (5-6 doctrines · cap 6)",
+    "v2.85.2-4 · propagation contenu lots 2-4 (boucle 26 doctrines existantes)",
+    "v2.86.0 · audit cross-files final + grep orphelins + validation runtime 5 scénarios"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.85.0.2 = git revert HEAD strict · 6 git mv + 258 patches reversibles · zéro impact runtime."
+}

@@ -12,6 +12,46 @@
 
 ---
 
+## v2.85.0.2 · 2026-05-20 · Sprint MINOR · rename structurel lot 3/4 · 6 fichiers mid-stakes · 18/21 cumulé · D#457 captured
+
+v2.85.0.1 PR mergées (#2 largo-kb · #5 phantomos). Sprint v2.85.0.2 lance lot 3/4 mid-stakes.
+
+**Pré-flight ciblé Phase 1** · 1 sub-agent Haiku · cross-refs par fichier + estimation ratio (révisé 1.9-2.0:1 d'après calibration lots 1+2).
+
+**Résultats pré-flight lot 3** ·
+
+| Doctrine | Refs cumulées | Replacements estimés | Sensibilité |
+|----------|---------------|----------------------|-------------|
+| operational-system-discipline.md | 37 | 19 | high |
+| onboarding-holistic-discipline.md | 69 | 35 | very high |
+| skill-routing-discipline.md | 55 | 28 | very high |
+| extension-discovery-discipline.md | 51 | 26 | very high |
+| progressive-cartography-discipline.md | 32 | 16 | very high |
+| update-distribution-discipline.md | 28 | 14 | high |
+
+**Total cumulé** · 272 refs · **replacements estimés** · 140 · **top doctrine share** · 25.4% < cap 40% ✓ · **Garde-fous tous PASSÉS** · GO 6 fichiers.
+
+**Phase 2 exécution** · git mv 6 fichiers · script Python batch (exclusion worktrees + _archive) · **85 fichiers consumers patchés · 258 replacements réels** · wall-time ~3 min · **0 résiduels Round 1**.
+
+**Phase 3 tests non-régression PASSÉS** · build-manifest.py 81 skills + 92 jargon entries · build-brand-snapshot.py _EXAMPLE 24 lines · grep résiduel 0 occurrence · zéro régression.
+
+**Calibration observation lot 3** · ratio cumulatif/replacements = 272/258 = **1.05:1** · plus dense que prévu (1.9:1 estimé). Pattern · pré-flight Agent comptait top 3-5 consumers par doctrine seulement · script Python comptait TOUTES occurrences cross-files entiers. Pour lots futurs · multiplier estimation pré-flight par **~1.8x** pour replacements réels.
+
+**Lots cumulés** · lot 1 (107) + lot 2 (253) + lot 3 (258) = **618 replacements 18 doctrines** · 0 régressions.
+
+**Backward compat strict additif** · 27 doctrines · 81 skills · 10 slash commands inchangé · zéro impact runtime.
+
+D#457 captured · memory canon `v85_0_lite_lessons` mis à jour (lot 3 ratio observé + pattern Agent comptage top consumers vs script complet).
+
+**Ship via PR** (pas push direct main).
+
+**Backlog v2.85.0.3 → v2.86.0** ·
+- v2.85.0.3 · lot 4/4 HIGH risk (decomposition-visibility 176 · engagement-disclosure 101 · schema-encoding 66 = 343 refs cumulées · ratio attendu 1.5-1.8:1 · 200-230 replacements estimés · **validation runtime intensive obligatoire** · **lendemain matin frais OBLIGATOIRE** · 21/21 doctrines cumulées post-ship)
+- v2.85.1 propagation contenu lot 1 voice-doctrine STRICT post-rename complet
+- v2.86.0 audit cross-files final + grep orphelins
+
+---
+
 ## v2.85.0.1 · 2026-05-20 · Sprint MINOR · rename structurel lot 2/4 · 6 fichiers mid-stakes · 12/21 cumulé · D#456 captured
 
 v2.85.0 LITE shippé hier soir · 2 PRs mergées (#1 largo-kb · #4 phantomos · squash merge ce matin · main fresh post-merge). Backlog v2.85.0.1 listait lot 2/4 mid-stakes · 6 doctrines avec volume cross-refs modéré et impact runtime modéré.
@@ -426,7 +466,7 @@ après   · NIVEAUX 1-4        matrices post-exec              v2.79+
 
 2. Refonte `/about` v2.79.4 → v2.80.3 · §6 "Différenciation" → "Ce qui le rend singulier" · supprime matrice comparative chiffrée vs concurrents nommés + paragraphes takedown · remplace par 4 propriétés affirmées avec conviction (univers métier qui persiste · raisonnement cadré pas improvisé · exécution pas que du texte · connaissance qui se capitalise) + 1 ligne sobre "la plupart des outils en tiennent une, PhantomOS les tient toutes les quatre" zéro concurrent nommé. §2 reformule friction sans nommer Notion/Airtable/ClickUp/ChatGPT. §4 retire cadrage "Vs standard / LLM" → positif. §1 "Ce que PhantomOS N'EST PAS" → "Le principe" affirmatif. §10 cross-refs alignés v2.80.3 (/tour explication conversationnelle · /about backup deep doc). Frontmatter v2.79.4 → v2.80.3.
 
-3. Patch doctrine `onboarding-holistic-discipline.md` v2.80.1 → v2.80.3 · NEW HR-OHD-10 "Arc substance guidé tour à tour · ni pavé ni amorce amputée" (5 volets canon · AskUserQuestion · 4 options · exits toujours présentes canon Vincent · pivot cross-subject canon Vincent · ton premium canon Largo · double interdit pavé+amputée). NEW AP-OHD-10 "Pavé en entrée OU amorce amputée sans substance" (2 faces du même anti-pattern). Header doctrine bumpé v2.80.3 explicit canons Vincent + Largo.
+3. Patch doctrine `onboarding-holistic-doctrine.md` v2.80.1 → v2.80.3 · NEW HR-OHD-10 "Arc substance guidé tour à tour · ni pavé ni amorce amputée" (5 volets canon · AskUserQuestion · 4 options · exits toujours présentes canon Vincent · pivot cross-subject canon Vincent · ton premium canon Largo · double interdit pavé+amputée). NEW AP-OHD-10 "Pavé en entrée OU amorce amputée sans substance" (2 faces du même anti-pattern). Header doctrine bumpé v2.80.3 explicit canons Vincent + Largo.
 
 **Pattern systémique fermé** · onboarding `/tour` redevient l'explication conversationnelle guidée de PhantomOS (vision · fonctionnement · différenciation · territoires distillés tour à tour, piloté opérateur, expansions courtes, porte sortie setup toujours visible, pivot cross-subject quand imbriqué). `/about` reste backup deep doc exhaustif jamais substitut. Ton premium canon Largo enforced cross /tour + /about (zéro concurrent nommé · registre GitHub/Vercel · on affirme avec conviction sans takedown comparatif).
 
@@ -435,7 +475,7 @@ après   · NIVEAUX 1-4        matrices post-exec              v2.79+
 **Files patched** ·
 - `.claude/commands/tour.md` v2.80.1 → v2.80.3 (521L → 532L · +11L · Milestone 1 enrichi + Milestone 2 arc substance + canons Vincent exits + pivot)
 - `.claude/commands/about.md` v2.79.4 → v2.80.3 (439L → 426L · -13L · §6 refondu sans concurrents + §1 §2 §4 §10 ton premium + frontmatter v2.80.3)
-- `docs/system/onboarding-holistic-discipline.md` v2.80.1 → v2.80.3 (448L → 458L · +10L · HR-OHD-10 + AP-OHD-10 + header bumped canons Vincent + Largo)
+- `docs/system/onboarding-holistic-doctrine.md` v2.80.1 → v2.80.3 (448L → 458L · +10L · HR-OHD-10 + AP-OHD-10 + header bumped canons Vincent + Largo)
 - `_version.json` 2.80.1 → 2.80.3 + summary détaillé
 - `CHANGELOG.md` entry v2.80.3 prepended
 - `docs/internal/releases/manifest/2.80.3-manifest.json` NEW
@@ -452,13 +492,13 @@ après   · NIVEAUX 1-4        matrices post-exec              v2.79+
 
 **Why** · Test live Largo v2.80.0 fresh workspace · invoke `/tour` onboarding · recadrage FORT · *"je ne veux pas d'interface, pas cette espèce d'interface que tu fais, uniquement pour les commandes slash Phantom. Je veux juste des messages natifs pendant tout l'onboarding."* `/tour` v2.79.4 → v2.80.0 rendait panorama 360° en interface ASCII matricielle (boxes ━━━ ═══ ───── · tableau territoires · légende iconographie · bloc visuel intro · action close en bloc). Pattern hérité skills synthesis brand (decomposition-visibility-discipline v2.79.2 4 niveaux matriciels) appliqué littéralement à l'onboarding · friction novice premier contact. L'opérateur arrive et s'attend à un accueil humain naturel · pas à une interface technique structurée. Mismatch d'attente = friction adoption.
 
-**What** · Sprint patch v2.80.1 patches 2 surfaces structurelles parallèle scope disjoint (2 agents + release engineering ce job) · refonte `/tour` onboarding en prose conversationnelle native (zéro interface ASCII boxes/tableaux/séparateurs · réservée slash commands cockpit) + patch doctrine `onboarding-holistic-discipline.md` v2.79.3 → v2.80.1 NEW HR-OHD-9 + AP-OHD-9 enforcement runtime + NEW Section "Rendu prose conversationnelle native". Distinction canon claire formalisée.
+**What** · Sprint patch v2.80.1 patches 2 surfaces structurelles parallèle scope disjoint (2 agents + release engineering ce job) · refonte `/tour` onboarding en prose conversationnelle native (zéro interface ASCII boxes/tableaux/séparateurs · réservée slash commands cockpit) + patch doctrine `onboarding-holistic-doctrine.md` v2.79.3 → v2.80.1 NEW HR-OHD-9 + AP-OHD-9 enforcement runtime + NEW Section "Rendu prose conversationnelle native". Distinction canon claire formalisée.
 
 **Patches structurels (2 surfaces scope disjoint)** ·
 
 1. **Refonte `/tour` onboarding v2.79.4 → v2.80.1** (Agent 1) · retire toutes les boxes ASCII (━━━ ═══ ─────) + séparateurs structurés · retire tableau territoires + légende iconographie + bloc visuel intro + action close en bloc · transforme panorama 360° en prose narrative · action close en phrase intégrée prose · onboarding = prose conversationnelle native uniquement.
 
-2. **Patch doctrine `onboarding-holistic-discipline.md` v2.79.3 → v2.80.1** (Agent 2) · NEW HR-OHD-9 enforcement runtime (onboarding prose conversationnelle native obligatoire · pattern matriciel ASCII réservé slash commands cockpit) + NEW AP-OHD-9 anti-pattern (onboarding rendu avec interface ASCII · confondu avec slash command UI) + NEW Section "Rendu prose conversationnelle native" clarifie distinction canon onboarding prose vs slash commands matriciel.
+2. **Patch doctrine `onboarding-holistic-doctrine.md` v2.79.3 → v2.80.1** (Agent 2) · NEW HR-OHD-9 enforcement runtime (onboarding prose conversationnelle native obligatoire · pattern matriciel ASCII réservé slash commands cockpit) + NEW AP-OHD-9 anti-pattern (onboarding rendu avec interface ASCII · confondu avec slash command UI) + NEW Section "Rendu prose conversationnelle native" clarifie distinction canon onboarding prose vs slash commands matriciel.
 
 **Distinction canon claire formalisée v2.80.1**
 
@@ -476,14 +516,14 @@ Onboarding (premier contact opérateur novice · accueil humain naturel)      ·
 
 **Files patched (6)** ·
 - `.claude/commands/tour.md` refonte v2.79.4 → v2.80.1 prose conversationnelle native (Agent 1)
-- `docs/system/onboarding-holistic-discipline.md` patch v2.79.3 → v2.80.1 NEW HR-OHD-9 + AP-OHD-9 + NEW Section Rendu prose (Agent 2)
+- `docs/system/onboarding-holistic-doctrine.md` patch v2.79.3 → v2.80.1 NEW HR-OHD-9 + AP-OHD-9 + NEW Section Rendu prose (Agent 2)
 - `../../../decisions.md` workspace ROOT · D#443 captured (ce job · release engineering)
 - `_version.json` bumped 2.80.0 → 2.80.1 PATCH (ce job · release engineering)
 - `CHANGELOG.md` v2.80.1 entry prepended (this entry · ce job · release engineering)
 - `docs/internal/releases/manifest/2.80.1-manifest.json` NEW (ce job · release engineering)
 
 **D#443 captured** ·
-- **D#443** · Sprint v2.80.1 onboarding prose conversationnelle native canon. Test live Largo v2.80.0 fresh workspace `/tour` recadrage FORT · onboarding `/tour` + premiers messages opérateur = prose conversationnelle native uniquement · slash commands `/phantom` `/bird` `/breakdown` `/about` `/update` `/version` = OK matriciel ASCII boxes (canon UI cockpit). Refonte `/tour` v2.79.4 → v2.80.1 retire toutes boxes ASCII + tableau territoires + légende iconographie + bloc visuel intro · transforme panorama 360° en prose narrative. Patch doctrine `onboarding-holistic-discipline.md` v2.79.3 → v2.80.1 · NEW HR-OHD-9 + AP-OHD-9 enforcement runtime. Cohérent memory canon Largo · `phantomos_pitch_posture` (institutionnel sérieux + accessible) · `iterative_validation` (test live + recadrage rapide) · `solutions_not_observations` (output prose native = solution actionnable conversationnelle). Backward compat strict additif · skills 80 · slash commands 10 · doctrines 23 (extension, pas NEW). Cross-refs · D#436 onboarding-holistic foundation · D#438 split intro /tour + /about deep doc · D#442 pipeline update canon (sprint précédent).
+- **D#443** · Sprint v2.80.1 onboarding prose conversationnelle native canon. Test live Largo v2.80.0 fresh workspace `/tour` recadrage FORT · onboarding `/tour` + premiers messages opérateur = prose conversationnelle native uniquement · slash commands `/phantom` `/bird` `/breakdown` `/about` `/update` `/version` = OK matriciel ASCII boxes (canon UI cockpit). Refonte `/tour` v2.79.4 → v2.80.1 retire toutes boxes ASCII + tableau territoires + légende iconographie + bloc visuel intro · transforme panorama 360° en prose narrative. Patch doctrine `onboarding-holistic-doctrine.md` v2.79.3 → v2.80.1 · NEW HR-OHD-9 + AP-OHD-9 enforcement runtime. Cohérent memory canon Largo · `phantomos_pitch_posture` (institutionnel sérieux + accessible) · `iterative_validation` (test live + recadrage rapide) · `solutions_not_observations` (output prose native = solution actionnable conversationnelle). Backward compat strict additif · skills 80 · slash commands 10 · doctrines 23 (extension, pas NEW). Cross-refs · D#436 onboarding-holistic foundation · D#438 split intro /tour + /about deep doc · D#442 pipeline update canon (sprint précédent).
 
 **Backlog v2.80.1+** · Re-test live workspace fresh v2.80.1 sur opérateur novice (Abyss + testeur alpha) pour valider `/tour` prose native + premiers messages post-tour · audit autres surfaces opérateur-facing (messages agent post-onboarding · acks initiaux · welcome flow brand setup) pour cohérence prose native si applicable · backlog v2.80.0+ pipeline update preserved (CLI standalone · package manager · monitoring telemetry · auto-notification · Issue 7 panorama 11 territoires · tracking-GTM skills · business pilotage · DR copywriting · CRO + lifecycle · pre-commit hook em-dash sweep).
 
@@ -503,7 +543,7 @@ Onboarding (premier contact opérateur novice · accueil humain naturel)      ·
 
 2. **NEW slash command `/version.md`** (Agent 2) · opérateur-facing · current + latest + changelog summary + delta + history mode · visibilité état workspace shipped product.
 
-3. **NEW doctrine canon racine `update-distribution-discipline.md`** (Agent 1) · 13 sections canon-style miroir SED-X · 8 HR-UDD + 8 AP-UDD enforcement runtime · 3 types changements canon (additive · transform · deprecate) · semver strict MAJOR/MINOR/PATCH · pipeline migrations versionnées · preserve operator state canon · backup + rollback canon · GitHub Releases canon.
+3. **NEW doctrine canon racine `update-distribution-doctrine.md`** (Agent 1) · 13 sections canon-style miroir SED-X · 8 HR-UDD + 8 AP-UDD enforcement runtime · 3 types changements canon (additive · transform · deprecate) · semver strict MAJOR/MINOR/PATCH · pipeline migrations versionnées · preserve operator state canon · backup + rollback canon · GitHub Releases canon.
 
 4. **NEW migrations framework `workspace-template/migrations/`** (Agent 3) · README · _template.py canon 4 méthodes obligatoires (check_required · run_transformation · validate_state · rollback) idempotent + backup pré-migration canon · `2.80.0-pipeline-update-canon.py` historique premier script additif.
 
@@ -555,7 +595,7 @@ rollback(workspace_path)                  · restore state pre-migration depuis 
 **Files patched (12-14)** ·
 - `.claude/commands/update.md` NEW slash command opérateur-facing (Agent 2)
 - `.claude/commands/version.md` NEW slash command opérateur-facing (Agent 2)
-- `docs/system/update-distribution-discipline.md` NEW doctrine canon racine (Agent 1)
+- `docs/system/update-distribution-doctrine.md` NEW doctrine canon racine (Agent 1)
 - `migrations/README.md` NEW framework README (Agent 3)
 - `migrations/_template.py` NEW template canon 4 méthodes obligatoires (Agent 3)
 - `migrations/2.80.0-pipeline-update-canon.py` NEW historique premier script additif (Agent 3)
@@ -717,7 +757,7 @@ L'opérateur novice démarre rapidement via /tour court. L'opérateur conscient 
 
 **Patches structurels (4 parallèle)** ·
 
-1. **NEW doctrine canon racine `onboarding-holistic-discipline.md`** (Agent 1) · doctrine canon onboarding agnostique + holistique · panorama 360° des 7 territoires métiers DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · zéro typage profil métier en porte d'entrée · l'opérateur découvre l'étendue, se reconnaît, choisit où commencer · 8 HR-OHD + 8 AP-OHD enforcement runtime.
+1. **NEW doctrine canon racine `onboarding-holistic-doctrine.md`** (Agent 1) · doctrine canon onboarding agnostique + holistique · panorama 360° des 7 territoires métiers DTC sur pied d'égalité visuelle (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) · zéro typage profil métier en porte d'entrée · l'opérateur découvre l'étendue, se reconnaît, choisit où commencer · 8 HR-OHD + 8 AP-OHD enforcement runtime.
 
 2. **NEW doctrine canon racine `engagement-disclosure-discipline.md`** (Agent 2) · doctrine canon engagement disclosure pré-engagement obligatoire skills orchestrateurs lourds · 5 triggers canon (type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid) · 4 éléments pattern (plan N étapes ≤8 · ETA chiffrée minutes ou range · démarche implication + livrable · close binaire confirmation) · court-circuit autorisé UNIQUEMENT opérateur opt-out explicit (`--no-disclosure` OR `operator/profile.json#preferences.disclosure_preference: silent`) · canon opt-out expert post-N usages JAMAIS opt-in default · 8 HR-EDD + 8 AP-EDD enforcement runtime.
 
@@ -728,7 +768,7 @@ L'opérateur novice démarre rapidement via /tour court. L'opérateur conscient 
 **Pattern systémique fermé · onboarding holistique + engagement disclosure canon v2.79.3**
 
 ```
-Layer 1 · NEW doctrine onboarding-holistic-discipline.md       ✓ v2.79.3
+Layer 1 · NEW doctrine onboarding-holistic-doctrine.md       ✓ v2.79.3
 Layer 2 · NEW doctrine engagement-disclosure-discipline.md     ✓ v2.79.3
 Layer 3 · CLAUDE.md root sommaire 19 → 21 doctrines            ✓ funnel order
 Layer 4 · CLAUDE.md root 2 NEW operator contract rules         ✓ enforcement
@@ -741,7 +781,7 @@ Plus de typage métier en porte d'entrée. Plus de skills orchestrateurs lourds 
 **Backward compat strict additif** · 2 doctrines NEW additif strict (retirables via revert) · /tour refondu (revert to v2.79.2 state possible) · CLAUDE.md root 2 NEW operator rules retirables · 6 skills disclosure section additif strict (cycle runtime préservé · disclosure ajoutée AVANT exécution skill existing). Skills count 80 inchangé (NEW 6 skills tracking-GTM backlog v2.80 séparé). Slash commands 7 inchangé (/tour refondu mais pas nouveau). Doctrines 19 → 21 (+2 NEW · onboarding-holistic-discipline + engagement-disclosure-discipline).
 
 **Files patched (12-14)** ·
-- `docs/system/onboarding-holistic-discipline.md` NEW (Agent 1)
+- `docs/system/onboarding-holistic-doctrine.md` NEW (Agent 1)
 - `docs/system/engagement-disclosure-discipline.md` NEW (Agent 2)
 - `.claude/commands/tour.md` refonte v2.79.3 panorama 360° (Agent 3)
 - `CLAUDE.md` root sommaire 19 → 21 doctrines + 2 NEW operator contract rules (Agent 4)
@@ -757,7 +797,7 @@ Plus de typage métier en porte d'entrée. Plus de skills orchestrateurs lourds 
 - `docs/internal/releases/manifest/2.79.3-manifest.json` NEW (Agent 5 · ce job)
 
 **D#436 + D#437 captured** ·
-- **D#436** · Onboarding PhantomOS canon agnostique + holistique. Pas de typage profil métier en porte d'entrée. /tour expose panorama 360° des 7 territoires DTC (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) sur pied d'égalité visuelle. L'opérateur découvre l'étendue, se reconnaît, choisit où commencer. Use case déclencheur · opérateur Abyss tracking-GTM specialist devait pouvoir reconnaître son métier sans typage initial. Doctrine NEW onboarding-holistic-discipline.md v2.79.3. Cross-refs scope-extension-discipline + tour + CLAUDE.md root operator contract NEW rule. Memory canon `phantomos_elastic_scope` reinforced.
+- **D#436** · Onboarding PhantomOS canon agnostique + holistique. Pas de typage profil métier en porte d'entrée. /tour expose panorama 360° des 7 territoires DTC (Creative · Tracking · Media Buy · Brand · Ops · Business · Lifecycle) sur pied d'égalité visuelle. L'opérateur découvre l'étendue, se reconnaît, choisit où commencer. Use case déclencheur · opérateur Abyss tracking-GTM specialist devait pouvoir reconnaître son métier sans typage initial. Doctrine NEW onboarding-holistic-doctrine.md v2.79.3. Cross-refs scope-extension-discipline + tour + CLAUDE.md root operator contract NEW rule. Memory canon `phantomos_elastic_scope` reinforced.
 - **D#437** · Engagement disclosure obligatoire canon pré-engagement skills orchestrateurs lourds. Triggers · type orchestrator OR duration >5 min OR spans sessions OR 2+ sub-skills OR producer heavy paid. Pattern · plan (N étapes ≤8) + ETA chiffrée (minutes ou range) + démarche (implication + livrable) + confirmation close binaire. 6 skills canon prioritaires patchés v2.79.3 (build-atlas-complete + onboard-brand + mine-voc + setup-brand + creative-brief-composer + produce-paid-matrix). Court-circuit autorisé UNIQUEMENT opérateur opt-out explicit. Doctrine NEW engagement-disclosure-discipline.md v2.79.3.
 
 **Backlog v2.79.3+** · Sprint v2.80 4-6 skills tracking-GTM NEW (audit-tracking-coverage · setup-server-side-gtm · validate-pixel-firing · audit-consent-mode · prérequis brief tracking specialist solide) · Sprint v2.79.x business pilotage backlog v2.79.1 (unit economics + WBR + cohort retention + audit-klaviyo-flows) · Sprint v2.80.x DR copywriting production backlog v2.79.1 (sales letter + email sequence + big-idea-canon + audit-proof-coverage) · Sprint v2.81+ CRO + lifecycle backlog v2.79.1 · Pre-commit hook em-dash sweep skills SKILL.md (937 em-dashes restantes P3 todos.md) · Re-test live workspace fresh v2.79.3 sur KaraCare pour valider /tour panorama 360° + disclosure pré-runtime build-atlas-complete.
@@ -990,7 +1030,7 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 3. **CLAUDE.md L95 skill-routing-discipline ref shipped** · `NEW à créer si gap` carried v2.55→v2.74.1 backlog remplacé par référence shipped doctrine canon
 4. **CLAUDE.md L177 entity count 7 with angle** · `6 core entities per brand` → `7 core entities · brand, product spec, offers, audience profile, angle, learnings, strategy` cohérent atlas auto-cartographie PhantomOS · Context DB table enrichie ligne angle
 5. **Architecture.md cross-fichier intra align** · L43+L57+L92 (3 occurrences entity count 6→7) patchées intra-fichier cohérent L10
-6. **Doctrine NEW skill-routing-discipline.md** · 391 lignes 14 sections canon-style miroir (extension-discovery + op-system pattern) · 5-phase routing protocol (mapping → manifest registry → disambiguation rules → /scope fallback → freestyle last resort) · ferme gap doctrine fantôme · cross-refs CMR + investigation-posture + extension-discovery + OSD + DRGFP
+6. **Doctrine NEW skill-routing-doctrine.md** · 391 lignes 14 sections canon-style miroir (extension-discovery + op-system pattern) · 5-phase routing protocol (mapping → manifest registry → disambiguation rules → /scope fallback → freestyle last resort) · ferme gap doctrine fantôme · cross-refs CMR + investigation-posture + extension-discovery + OSD + DRGFP
 7. **Port `/scope` workspace-template** · `.skills/skills/scope/SKILL.md` 274L layer:meta · 5 sections canon investigation-posture intégrées (Observé · Déduit · Inconnu · Leviers · Close ouvert) · 2 modes LEARN/BUILD + 5 phases + Excalidraw + chain `--for-skill=`
 8. **Port `/bird` workspace-template** · `.skills/skills/bird/SKILL.md` 267L layer:meta navigator · HR-7 alignement investigation-posture · hook unfog (pas shipped) remplacé par `/scope` · persistence paths brand-level
 9. **2 NEW slash commands pointers** · `.claude/commands/scope.md` + `.claude/commands/bird.md` · description compact + cohérent pattern 5 existing
@@ -1005,7 +1045,7 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 **Files patched (16 + 4 NEW)** ·
 - `CLAUDE.md` (3 patches structurels · sommaire 13 doctrines + L95 ref + L177 entity 7)
 - `docs/system/architecture.md` (3 occurrences entity count align L43+L57+L92)
-- `docs/system/skill-routing-discipline.md` NEW (391L · 14 sections)
+- `docs/system/skill-routing-doctrine.md` NEW (391L · 14 sections)
 - `.skills/skills/scope/SKILL.md` NEW (274L layer:meta)
 - `.skills/skills/bird/SKILL.md` NEW (267L layer:meta)
 - `.claude/commands/scope.md` NEW (42L)
@@ -1027,7 +1067,7 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 **D#424-D#427 captured** ·
 - D#424 · Em-dash policy purge complète foundation docs (Memory canon `no_em_dash` prime sur voice.md L113 ancien · cohérence stricte cross-canon go-to-market defendable)
 - D#425 · Entity count canon 7 with angle (cohérent atlas auto-cartographie PhantomOS · schema angle/1.4 shipped · registry angle-mechanics)
-- D#426 · NEW doctrine skill-routing-discipline.md shipped (close gap fantôme L83 référencée v2.55 jamais shippée · 5-phase routing protocol canon)
+- D#426 · NEW doctrine skill-routing-doctrine.md shipped (close gap fantôme L83 référencée v2.55 jamais shippée · 5-phase routing protocol canon)
 - D#427 · /scope + /bird port workspace-template (pair canon root largo-kb shipped template · 5 sections investigation-posture canon alignment · skills 70 → 72 · slash commands 5 → 7)
 
 **Backlog v2.77+** · 30 files em-dash restants docs/internal + docs/product + docs/vision · pattern proactif propagation 2 skills MCP-dépendants (watch-competitors + trendtrack-enrich-brand) · port unfog (3e pair canon avec scope/bird) · convention argument-hint accolades non-quotées PyYAML strict documentation `_TEMPLATE/SKILL.md`.
@@ -1106,7 +1146,7 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 
 | Bloc | Output | Impact |
 |---|---|---|
-| **1 · NEW doctrine canon `extension-discovery-discipline.md`** | 357L · 13 sections canon-style · formalise contrat extension_hooks frontmatter + manifest registry scan Step 0 DRGFP + consumable_by enum auto-detection · sister SED-X + territory + op-system master 5 couches | Grammaire canon NEW pour auto-consume NEW entities · contrat explicit cross-skill |
+| **1 · NEW doctrine canon `extension-discovery-doctrine.md`** | 357L · 13 sections canon-style · formalise contrat extension_hooks frontmatter + manifest registry scan Step 0 DRGFP + consumable_by enum auto-detection · sister SED-X + territory + op-system master 5 couches | Grammaire canon NEW pour auto-consume NEW entities · contrat explicit cross-skill |
 | **2 · `extension_hooks` + Step 0 DRGFP sur 4 orchestrateurs production** | `score-matrix` v1.2.0 (3 types) · `produce-paid-matrix` v1.3.0 (3 types) · `creative-brief-composer` v1.3.0 (4 types) · `build-atlas-complete` v1.5.0 (7 types atlas complet) | Auto-consume NEW entities runtime · zéro patch manuel · cross-skill discovery |
 | **3 · `scaffold-extension` v1.2.0 → v1.3.0 · Phase 9 enrichie** | NEW 9.b consumable_by auto-detection (Q1 entity_type + Q2 scope + Q3 data_shape) + 9.c operator validation gate AskUserQuestion + 9.d persist registry · NEW HR-consumable-1 | Auto-detection consumable_by au scaffold · operator validation systematic · backward compat preserved |
 | **4 · `register-and-flag` v1.0.0 → v1.1.0** | Route writes vers NEW canon `{scope}/_extensions.json` scope-routed · pas `index.json → extensions[]` legacy · idempotent · backward compat read fallback transition | Registry physique aligné NEW canon · pattern EXTEND > SIBLING |
@@ -1121,7 +1161,7 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 **Backward compat strict additif** · 7 patches · zero override fonctionnel · `extension_hooks` frontmatter default empty (legacy v2.74.x preserved) · `consumable_by` optional (legacy NEW entities pré-v2.75 still registered fonctionnellement) · `register-and-flag` v1.1.0 backward compat read fallback `index.json → extensions[]` legacy pendant transition · skills count 70 → 70 (zero new skill · 5 skills existing patchés) · doctrines canon 12 → 13 (NEW extension-discovery-discipline) · slash commands 5 → 5.
 
 **Files patched** ·
-- `docs/system/extension-discovery-discipline.md` NEW 357L
+- `docs/system/extension-discovery-doctrine.md` NEW 357L
 - `.skills/skills/score-matrix/SKILL.md` v1.1.1 → v1.2.0
 - `.skills/skills/produce-paid-matrix/SKILL.md` v1.2.0 → v1.3.0
 - `.skills/skills/creative-brief-composer/SKILL.md` v1.2.0 → v1.3.0
@@ -1205,7 +1245,7 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 - v2.74.1 cleanup léger doublons accessibilité Stepprs (~30 min · consolider disclaimer 5 files + fusionner canon-vs-réel _EXAMPLE/README + enrichir brands/README pointer `/breakdown`)
 - v2.74.1 patch léger refs v2.73.x backlog (CHANGELOG L1474 + check-existing-coverage L83 path canonical)
 - v2.74.1 registry `ugc-confession_vulnerable` variante NEW (pattern EXTEND > SIBLING canon)
-- v2.75 doctrine ship `docs/system/skill-routing-discipline.md` NEW + orchestrator `audit-meta-global` NEW
+- v2.75 doctrine ship `docs/system/skill-routing-doctrine.md` NEW + orchestrator `audit-meta-global` NEW
 
 ---
 
@@ -1220,8 +1260,8 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 | **1 · `decompose-ad` v1.5.0 → v2.0.0** | Enrichissement fiche v5 Section 4 ANATOMIE 3 niveaux cohérente équation v3.1 NOYAU × CONTEXTE × MODIFIEURS canon · CE QUI FAIT PERFORMER (à garder · 5 éléments humains) / À ADAPTER À TA BRAND (5 refs humaines · IDs canoniques silent) / À SITUER (5 modifieurs situationnels) · output opérateur-facing 100% humain · zero raw field name · zero registry ID exposé · canon résonne back-end via creative.json v1.2 IDs canoniques persisted silent · 4 NEW Hard Rules HR-anatomie-1 à 4 · close 1 question binaire vers `/adapt-from-competitor {CRT-NN}` · 419L → 535L | Décomposition créa concurrente structurée canon · grille variables 3 niveaux opérateur-facing accessible · cross-skill reproducibilité via back-end |
 | **2 · NEW skill canonical `adapt-from-competitor` v1.0.0** | Orchestrator chain decompose-ad output → operator gate isolation variables → produce-copy-brief brand-side · pipeline 5 phases (load competitor + brand context → match canonical refs → operator gate AskUserQuestion 3 paths → chain downstream selon path → synthesis 5 sections IP) · 7 Hard Rules canon · 3 paths flow opérateur (variant complet · 1 axe seul · registry promotion) · 206L | Phase 2 du flow décompose créa concurrente câblée canon · cible marketing senior 25 min idéation à brief variant atteint à ~80% |
 | **3 · Cleanup hygiène P0 wording drift** | 7 files patched · `brands/_EXAMPLE/README.md` + brand.json + status.json + roadmap.json + spec.json + offers.json + breakdown.md · zero `brand fictive` résiduel · uniformisé 13 topics + 30 min lecture + 5 couches + 3 transverses · cohérence canon anti-hallucination v2.72.0 | Contradictions canon production résolues · Stepprs wording uniformément "brand pédagogique du cas canonique PhantomOS, marque réelle stepprs.com..." cross-files |
-| **4 · Cleanup hygiène P0 doctrine** | `operational-system-discipline.md` cross-ref singulier `audience-cartography-doctrine.md` (CASSÉ) → pluriel `audiences-cartography-doctrine.md` (canonical) · 2 occurrences L87 + L292 · `skill-authoring-doctrine.md` NEW section `Position dans le système opérationnel 5 couches` (omission v2.71.0 corrigée · couche transverse meta gouverne authoring skills consommant les 5 couches) | Cohérence canon doctrine post-v2.71.0 complétée · 11/11 doctrines structurelles ancrées dans grammaire op-system 5 couches |
-| **5 · Audit 18 broken resource refs (READ-ONLY)** | 8 false positive (folder structure existing OK · canonical paths différents) · 7 cleanup légers backlog v2.73.1 (refs CHANGELOG + check-existing-coverage) · 2 ship réels backlog v2.74 (`skill-routing-discipline.md` doctrine NEW + `.skills/skills/audit-meta-global/` orchestrator NEW) · 1 SOP pédagogique préservé OK | Backlog précis identifié pour next sprints · aucun blocker live runtime |
+| **4 · Cleanup hygiène P0 doctrine** | `operational-system-doctrine.md` cross-ref singulier `audience-cartography-doctrine.md` (CASSÉ) → pluriel `audiences-cartography-doctrine.md` (canonical) · 2 occurrences L87 + L292 · `skill-authoring-doctrine.md` NEW section `Position dans le système opérationnel 5 couches` (omission v2.71.0 corrigée · couche transverse meta gouverne authoring skills consommant les 5 couches) | Cohérence canon doctrine post-v2.71.0 complétée · 11/11 doctrines structurelles ancrées dans grammaire op-system 5 couches |
+| **5 · Audit 18 broken resource refs (READ-ONLY)** | 8 false positive (folder structure existing OK · canonical paths différents) · 7 cleanup légers backlog v2.73.1 (refs CHANGELOG + check-existing-coverage) · 2 ship réels backlog v2.74 (`skill-routing-doctrine.md` doctrine NEW + `.skills/skills/audit-meta-global/` orchestrator NEW) · 1 SOP pédagogique préservé OK | Backlog précis identifié pour next sprints · aucun blocker live runtime |
 
 **3 patterns canon introduits** ·
 
@@ -1248,7 +1288,7 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 - `brands/_EXAMPLE/products/massage-insoles/spec.json` ($comment)
 - `brands/_EXAMPLE/products/massage-insoles/offers.json` ($comment)
 - `.claude/commands/breakdown.md` (5 patches · 6 occurrences "brand fictive" + uniformisé 13 topics + 5 couches + 3 transverses)
-- `docs/system/operational-system-discipline.md` (2 occurrences singulier → pluriel)
+- `docs/system/operational-system-doctrine.md` (2 occurrences singulier → pluriel)
 - `docs/system/skill-authoring-doctrine.md` (NEW section "Position dans le système opérationnel 5 couches")
 - `.skills/_manifest.json` regen (skills 69 → 70)
 - `_version.json` 2.72.1 → 2.73.0
@@ -1260,7 +1300,7 @@ Pipeline canon end-to-end opéré quotidiennement par skills dédiés (vs ad-hoc
 **Backlog identifié** ·
 - v2.73.1 patch léger · 7 cleanup refs CHANGELOG + check-existing-coverage path canonical · 15 min
 - v2.73.1 patch optionnel · `creative-mechanics-registry.md` NEW variante `ugc-confession_vulnerable` dans fiche `ugc` existing (pattern EXTEND > SIBLING canon)
-- v2.74 doctrine ship · `docs/system/skill-routing-discipline.md` NEW (flaggée NEW à créer CLAUDE.md L81) + `.skills/skills/audit-meta-global/` orchestrator NEW (SOP existant attendant orchestrator parent)
+- v2.74 doctrine ship · `docs/system/skill-routing-doctrine.md` NEW (flaggée NEW à créer CLAUDE.md L81) + `.skills/skills/audit-meta-global/` orchestrator NEW (SOP existant attendant orchestrator parent)
 
 ---
 
@@ -1334,7 +1374,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 
 **D#417 captured** · `decisions.md` PhantomOS · v2.72.0 sprint majeur ECR runtime + anti-hallucination canon + extension dimension breakdown + audit orchestrateurs production backlog v2.73.0.
 
-**Backlog v2.73.0 identifié** · auto-consume NEW entity registered dans orchestrateurs production · pattern `extension_hooks` frontmatter + manifest registry scan Step 0 + NEW doctrine canon `extension-discovery-discipline.md`. Sprint dédié 8-10h estimé.
+**Backlog v2.73.0 identifié** · auto-consume NEW entity registered dans orchestrateurs production · pattern `extension_hooks` frontmatter + manifest registry scan Step 0 + NEW doctrine canon `extension-discovery-doctrine.md`. Sprint dédié 8-10h estimé.
 
 ---
 
@@ -1375,7 +1415,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 
 ---
 
-## v2.71.0 · 2026-05-16 · NEW doctrine mère `operational-system-discipline.md` · équation maître 5 couches
+## v2.71.0 · 2026-05-16 · NEW doctrine mère `operational-system-doctrine.md` · équation maître 5 couches
 
 **Why** · PhantomOS avait toutes les briques d'un système opérationnel complet (ECR via CC v3.1 + atomicité + fractalité · Règles via resources/registries + investigation-posture · Templates via resources/templates + brand _TEMPLATE · Métriques via learnings.json + validation_status + _field_types · Rituels via brief-day + learn-from-session + hygiene-audit) mais aucune grammaire commune nommant ces couches comme système multiplicatif. La doctrine mère manquait · sans elle, PhantomOS restait un assemblage de doctrines spécialisées vs plateforme de systémisation complète différenciée. v2.71 canonise l'équation maître `SYSTÈME OPÉRATIONNEL = ECR × RÈGLES × TEMPLATES × MÉTRIQUES × RITUELS` · doctrine mère sœur de Contextual Intelligence au niveau master.
 
@@ -1383,7 +1423,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 
 | Bloc | Output | Impact |
 |---|---|---|
-| **1 · NEW doctrine mère** | `docs/system/operational-system-discipline.md` 322L · 13 sections canon-style miroir territory + SED-X · thèse multiplicatif explicit + tableau différenciation PhantomOS vs Notion vs Airtable vs SOPs + décision-aid Q1-Q4 routing skill → couche + cycle promotion entre couches + 15 cross-refs explicit | Grammaire opérationnelle PhantomOS canonisée · plateforme de systémisation complète différenciée |
+| **1 · NEW doctrine mère** | `docs/system/operational-system-doctrine.md` 322L · 13 sections canon-style miroir territory + SED-X · thèse multiplicatif explicit + tableau différenciation PhantomOS vs Notion vs Airtable vs SOPs + décision-aid Q1-Q4 routing skill → couche + cycle promotion entre couches + 15 cross-refs explicit | Grammaire opérationnelle PhantomOS canonisée · plateforme de systémisation complète différenciée |
 | **2 · Cross-links rétroactifs 10 doctrines existing** | NEW section `Position dans le système opérationnel 5 couches` additive sur · contextual-intelligence (master · operational-system = implémentation méthodologique) · compositional-cartography (instance couche 1 ECR Strat/Compo/Exé) · canonical-matrix-reasoning (couche 1 + couche 4 scoring) · schema-encoding-discipline (couche 4 traçabilité + couche 1 atomicité) · scope-extension-discipline (méthodologie ECR amont) · audiences-cartography (couche 1 fractal Funnel + couche 2 règles canon v2.69.1) · territory-discipline (substrat couche 1) · progressive-cartography (rituel couche 5 + couche 2 gates light) · investigation-posture (règle couche 2 · 5 sections) · pain-benefit-chain (couche 1 fractal surface→consequence→deep + couche 4 severity scoring). 130 insertions, 0 deletions. Backward compat strict additif confirmed. | 10 doctrines existing ancrées dans la grammaire commune · cohérence canon cross-doctrines |
 | **3 · Refonte `breakdown.md` slash command** | Cartographie 10 topics restructurés autour 5 couches comme grammaire pédagogique mère · principe transverse + atomicité/fractalité/composition/matrices (couche 1 modèle) + règles (couche 2) + templates (couche 3 NEW) + métriques (couche 4 NEW) + rituels (couche 5 NEW) + production (démo livrable concret combinant 5 couches). Vocabulaire universel novice complet (DTC expliqué inline · scale · audience · OTRB · template via image recette pain · matrice via image tableau 2D · fractalité via image flocon de neige et chou romanesco). 768L (vs 280L v2.70 · profondeur pédagogique justifiée). | Vitrine pédagogique PhantomOS opérationnelle pour novice complet · grammaire opérationnelle rendue tangible via cas concret riche |
 
@@ -1403,7 +1443,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 **Backward compat strict additif** · NEW doctrine n'override aucune existing · 10 cross-links additifs section NEW preserved structure existing · slash command breakdown.md refonte preserved frontmatter + mode index + topic guides paths Stepprs files · skills count 68 → 68 (zero new skill) · doctrines canon 11 → 12 (NEW operational-system-discipline mère). Operators v2.70.x non affectés sauf invocation `/breakdown stepprs` qui retombe sur version refactorée 10 topics structurés (silent backward compat · cartographie plus riche).
 
 **Files patched** ·
-- `docs/system/operational-system-discipline.md` NEW 322L
+- `docs/system/operational-system-doctrine.md` NEW 322L
 - `docs/system/contextual-intelligence.md` (NEW section Position 5 couches)
 - `docs/system/compositional-cartography.md` (NEW section Position 5 couches)
 - `docs/system/canonical-matrix-reasoning.md` (NEW section Position 5 couches)
@@ -1411,7 +1451,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 - `docs/system/scope-extension-doctrine.md` (NEW section Position 5 couches)
 - `docs/doctrine/audiences-cartography-doctrine.md` (NEW section Position 5 couches)
 - `docs/system/territory-doctrine.md` (NEW section Position 5 couches)
-- `docs/system/progressive-cartography-discipline.md` (NEW section Position 5 couches)
+- `docs/system/progressive-cartography-doctrine.md` (NEW section Position 5 couches)
 - `docs/system/investigation-posture.md` (NEW section Position 5 couches)
 - `docs/doctrine/pain-benefit-chain-doctrine.md` (NEW section Position 5 couches)
 - `.claude/commands/breakdown.md` refonte complète 280L → 640L (10 topics restructurés 5 couches + vocabulaire universel novice)
@@ -1547,7 +1587,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 
 | Bloc | Output | Impact |
 |---|---|---|
-| **1 · NEW doctrine `progressive-cartography-discipline.md`** | 366L · 13 sections canon-style miroir territory-discipline · sister SED/CMR/SED-X/CC/IP/TD | Codifie phasing 4 phases + gates light + mode fast-track opt-in + 5 anti-patterns + decision-aid Q1-Q4 + cross-refs CI/IP/CC/SED/SED-X/CMR explicit |
+| **1 · NEW doctrine `progressive-cartography-doctrine.md`** | 366L · 13 sections canon-style miroir territory-discipline · sister SED/CMR/SED-X/CC/IP/TD | Codifie phasing 4 phases + gates light + mode fast-track opt-in + 5 anti-patterns + decision-aid Q1-Q4 + cross-refs CI/IP/CC/SED/SED-X/CMR explicit |
 | **2 · Refactor `snapshot-brand` v1.3.1 → v1.4.0** | 1069L → 1141L (+72L) · Step 7 split 7a Phase 1 macro confirmation light + 7b Phase 2 drilling autonome · drop 4 Q&A questions audience · NEW 2 hard rules (No Q&A premature + Gate light binaire) | Premier contact opérateur · synthesis 3-5 lignes Phase 1 + gate binaire valide/corrige + drilling autonome Phase 2 vs canon précédent saturation bloc |
 | **3 · Refactor `build-atlas-complete` v1.3.0 → v1.4.0** | 470L → 561L (+91L) · chain orchestrator Phase 1+2 → Gate 1 → Phase 3 map-audiences → Gate 2 → Phase 4 mine-voc + profile-audience · NEW flag `--fast-track` opérateur expert · NEW 2 hard rules Guardrails | Validation operator grain fin entre paliers + fast-track opt-in opérateur expert (config `/operator/profile.json#preferences.auto_validate_after_n_brands true`) |
 | **4 · Pattern enrichissement continu canonisé** | Absorbé dans Bloc 1 doctrine Section 6 Phase 4 · agent listening passive · opérateur drop insight first-party à tout moment · stage proposed auto via mutation gate · cartographie background non-bloquant | Expérience usage naturelle · opérateur enrichit territoire au fil de l'eau sans bloquer flow principal |
@@ -1569,7 +1609,7 @@ Après · "brand pédagogique foot care DTC encodée canon avec 13 chapitres
 **Backward compat strict additif** · chain skills existing preserved · Steps 1-6 snapshot-brand inchangés · Steps existing build-atlas-complete preserved · gates additifs entre paliers · fast-track flag opt-in (default gates visible). 67 em-dashes legacy snapshot-brand Steps 1-6 préservés par contrainte strict additif (NEW content zero em-dash · audit ciblé sweep v2.68.1 candidate).
 
 **Files patched** ·
-- `docs/system/progressive-cartography-discipline.md` NEW 366L
+- `docs/system/progressive-cartography-doctrine.md` NEW 366L
 - `.skills/skills/snapshot-brand/SKILL.md` v1.3.1 → v1.4.0 (1069L → 1141L)
 - `.skills/skills/build-atlas-complete/SKILL.md` v1.3.0 → v1.4.0 (470L → 561L)
 - `_version.json` 2.67.0 → 2.68.0

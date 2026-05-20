@@ -191,7 +191,7 @@ Variant brand-side `brands/{slug}/produced/{CRT-M}.json` PERSISTED avec `variant
 
 ## Cross-refs
 
-- `docs/system/operational-system-discipline.md` v2.71 (équation maître canonisée · 5 couches grammar)
+- `docs/system/operational-system-doctrine.md` v2.71 (équation maître canonisée · 5 couches grammar)
 - `docs/system/compositional-cartography.md` v3.1 (équation v3.1 canon)
 - `docs/system/canonical-matrix-reasoning.md` (schema + matrice canon)
 - `docs/system/investigation-posture.md` (5 sections IP synthese)

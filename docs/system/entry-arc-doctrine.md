@@ -8,7 +8,7 @@ status: shipped
 
 # Entry Arc Discipline · Operating Doctrine
 
-> Canonique v2.81.0. Doctrine canon racine qui codifie la phase post-tour PhantomOS · multi-entry 4 portes MECE A/B/C/D (conversationnel · brand-first · import existant · progressif libre). First 30 minutes canon entre la fin du panorama 360° (parent canon `onboarding-holistic-discipline.md` v2.80.3) et la production du premier livrable concret encadré. Canons Vincent runtime appliqués (slugs nommés `exit:setup` porte de sortie toujours visible · `pivot:{volet}` pivot cross-subject sujets imbriqués). Ton premium enforcement cross-canon (zéro concurrent nommé · zéro takedown · zéro matrice comparative chiffrée · registre cible GitHub/Vercel sobre affirmatif). Doctrine sœur de `onboarding-holistic-discipline.md` v2.80.3 (parent canon panorama 360° agnostique + prose native + arc substance guidé), `engagement-disclosure-discipline.md` v2.79.5 (disclosure pré-engagement canon · cohérent first deliverable encadré), `decomposition-visibility-discipline.md` v2.79.5+ (NIVEAU 0 paramètres décomposés pre-exec · cohérent disclosure first deliverable), `output-clarity-doctrine.md` v2.79.2 (iconographie + headers FR sobres · cohérent rendu output), `territory-doctrine.md` v2.67 (substrate vs production · brand-first wow = preview loyale), `update-distribution-discipline.md` v2.80.0 (sister doctrine canon distribution). Ferme le gap *"`/tour` mono-arc conversational suppose opérateur vierge brand-par-brand depuis zéro · trou structurel post-tour entre comprend et produit premier livrable · adoption se joue dans ce gap · 5 profils sur 6 disqualifiés en 10 premières minutes (cas Abyss tracking-GTM central)"* flag systémique Sprint v2.81 post-test live multi-profil onboarding · canonisation des 4 contextes hétérogènes opérateur.
+> Canonique v2.81.0. Doctrine canon racine qui codifie la phase post-tour PhantomOS · multi-entry 4 portes MECE A/B/C/D (conversationnel · brand-first · import existant · progressif libre). First 30 minutes canon entre la fin du panorama 360° (parent canon `onboarding-holistic-doctrine.md` v2.80.3) et la production du premier livrable concret encadré. Canons Vincent runtime appliqués (slugs nommés `exit:setup` porte de sortie toujours visible · `pivot:{volet}` pivot cross-subject sujets imbriqués). Ton premium enforcement cross-canon (zéro concurrent nommé · zéro takedown · zéro matrice comparative chiffrée · registre cible GitHub/Vercel sobre affirmatif). Doctrine sœur de `onboarding-holistic-doctrine.md` v2.80.3 (parent canon panorama 360° agnostique + prose native + arc substance guidé), `engagement-disclosure-discipline.md` v2.79.5 (disclosure pré-engagement canon · cohérent first deliverable encadré), `decomposition-visibility-discipline.md` v2.79.5+ (NIVEAU 0 paramètres décomposés pre-exec · cohérent disclosure first deliverable), `output-clarity-doctrine.md` v2.79.2 (iconographie + headers FR sobres · cohérent rendu output), `territory-doctrine.md` v2.67 (substrate vs production · brand-first wow = preview loyale), `update-distribution-doctrine.md` v2.80.0 (sister doctrine canon distribution). Ferme le gap *"`/tour` mono-arc conversational suppose opérateur vierge brand-par-brand depuis zéro · trou structurel post-tour entre comprend et produit premier livrable · adoption se joue dans ce gap · 5 profils sur 6 disqualifiés en 10 premières minutes (cas Abyss tracking-GTM central)"* flag systémique Sprint v2.81 post-test live multi-profil onboarding · canonisation des 4 contextes hétérogènes opérateur.
 
 ---
 
@@ -423,12 +423,12 @@ AskUserQuestion post-M1 splitter sans option `slug: "exit:setup"`. Opérateur en
 
 Doctrines canon associées (lecture pré-requise pour authoring extensions Entry Arc) ·
 
-- `docs/system/onboarding-holistic-discipline.md` v2.80.3 (parent canon onboarding · panorama 360° agnostique + prose native + arc substance · Entry Arc Discipline applique post-tour)
+- `docs/system/onboarding-holistic-doctrine.md` v2.80.3 (parent canon onboarding · panorama 360° agnostique + prose native + arc substance · Entry Arc Discipline applique post-tour)
 - `docs/system/engagement-disclosure-discipline.md` v2.79.5 (disclosure pré-engagement canon · cohérent first deliverable M5b encadré)
 - `docs/system/decomposition-visibility-discipline.md` v2.79.5+ (NIVEAU 0 paramètres décomposés pre-exec · cohérent disclosure first deliverable)
 - `docs/system/output-clarity-doctrine.md` v2.79.2 (iconographie + headers FR sobres · cohérent rendu output post-deliverable)
 - `docs/system/territory-doctrine.md` v2.67 (substrate vs production · brand-first wow = preview LOYALE = substrate preview, pas production paid)
-- `docs/system/update-distribution-discipline.md` v2.80.0 (sister doctrine canon distribution · updates preserve operator state, Entry Arc preserve operator context post-tour)
+- `docs/system/update-distribution-doctrine.md` v2.80.0 (sister doctrine canon distribution · updates preserve operator state, Entry Arc preserve operator context post-tour)
 - `.claude/commands/tour.md` v2.81.0 (M1 splitter 4 portes + M5b first deliverable · consumer canon)
 - `.claude/commands/about.md` v2.80.3+ (deep doc backup · ton premium aligné · zéro concurrent nommé)
 
@@ -440,10 +440,10 @@ Entry Arc Discipline est la couche racine ENTRY canon post-tour. Permet à Phant
 
 **Couches canon imbriquées** ·
 
-- `onboarding-holistic-discipline.md` v2.80.3 · définit le panorama 360° agnostique + prose native + arc substance guidé (PHASE 1 · COMPREND)
+- `onboarding-holistic-doctrine.md` v2.80.3 · définit le panorama 360° agnostique + prose native + arc substance guidé (PHASE 1 · COMPREND)
 - `entry-arc-doctrine.md` v2.81.0 · définit comment l'opérateur ENTRE après avoir vu le panorama (PHASE 2 · CHOISIT ARC + PRODUIT FIRST DELIVERABLE)
 - `engagement-disclosure-discipline.md` v2.79.5 · définit comment skills lourds s'annoncent pré-engagement (PHASE 3 · OPÈRE QUOTIDIEN)
-- `update-distribution-discipline.md` v2.80.0 · définit comment workspace évolue cross-versions (PHASE 4 · ÉVOLUE)
+- `update-distribution-doctrine.md` v2.80.0 · définit comment workspace évolue cross-versions (PHASE 4 · ÉVOLUE)
 
 Sister doctrine onboarding-holistic-discipline (qui définit le panorama 360°). Entry Arc définit comment l'opérateur ENTRE après avoir vu le panorama, pas le panorama lui-même.
 
@@ -455,4 +455,4 @@ Pattern systémique canon · l'opérateur scan le panorama (PHASE 1), choisit so
 
 Doctrine canon shipped v2.81.0 · 4 portes MECE A/B/C/D · first 30 minutes canon · 8 HR-EAD + 8 AP-EAD enforcés · canons Vincent runtime (slugs `exit:setup` `pivot:{volet}`) · ton premium cross-canon enforced.
 
-Sister canon shipped post-/tour multi-entry onboarding. Consumer canon · `/tour` v2.81.0 (M1 splitter + M5b first deliverable). Adjacent canon · `onboarding-holistic-discipline.md` v2.80.3 (parent panorama 360° agnostique).
+Sister canon shipped post-/tour multi-entry onboarding. Consumer canon · `/tour` v2.81.0 (M1 splitter + M5b first deliverable). Adjacent canon · `onboarding-holistic-doctrine.md` v2.80.3 (parent panorama 360° agnostique).

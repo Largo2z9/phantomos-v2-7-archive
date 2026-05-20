@@ -34,7 +34,7 @@ Handles field additions, renames, restructuring, and deprecations, without data 
 
 ## Pipeline canon v2.80.0+
 
-Skill consommé par `update-workspace` (orchestrator) quand BREAKING détecté dans la chaîne de manifests. Doctrine de référence · `docs/system/update-distribution-discipline.md` v2.80.0 (Update Distribution Discipline).
+Skill consommé par `update-workspace` (orchestrator) quand BREAKING détecté dans la chaîne de manifests. Doctrine de référence · `docs/system/update-distribution-doctrine.md` v2.80.0 (Update Distribution Discipline).
 
 **Position dans le pipeline canon ·**
 

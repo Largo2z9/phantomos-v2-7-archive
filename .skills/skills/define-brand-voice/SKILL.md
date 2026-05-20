@@ -61,7 +61,7 @@ consumes:
   - path: brands/{slug}/products/*/spec.json
     min_version: 1.0.0
   - path: docs/system/investigation-posture.md
-  - path: docs/system/skill-routing-discipline.md
+  - path: docs/system/skill-routing-doctrine.md
   - path: docs/system/audience-cartography.md
   - path: docs/system/contextual-intelligence.md
   - path: resources/schemas/brand.schema.json
@@ -652,7 +652,7 @@ Then AskUserQuestion · *Go / Update spot mode (1-2 axes à ajuster seulement) /
 ### Doctrines canon (consume direct)
 
 - `docs/system/investigation-posture.md` · doctrine 5 sections obligatoires Step 5
-- `docs/system/skill-routing-discipline.md` · canon skill routing v2.55 (define-brand-voice invoked sur output strategic brand voice)
+- `docs/system/skill-routing-doctrine.md` · canon skill routing v2.55 (define-brand-voice invoked sur output strategic brand voice)
 - `docs/system/audience-cartography.md` · upstream substrate audiences voice fields encoding
 - `docs/system/contextual-intelligence.md` · master doctrine (trust the model semantic, mutation gate mechanical)
 - `docs/system/canonical-matrix-reasoning.md` · CMR §7 anti-pattern raw scoring exposed operator (scores -5/+5 OK car axis bornes, pas raw scoring)

@@ -4,7 +4,7 @@ Versioned migration scripts shipped per BREAKING release of the workspace templa
 
 Each BREAKING change to the template (`MAJOR.MINOR.0` releases that transform operator workspace state) ships a Python migration script that brings an existing workspace from `v(N-1).x` to `vN.0.0` safely. Additive releases (NEW skills · NEW commands · NEW doctrines · zero data transformation) also ship a script for traceability and rollback, even if `run_transformation` is a no-op.
 
-Cross-reference doctrine · `docs/system/update-distribution-discipline.md` (v2.80.0+).
+Cross-reference doctrine · `docs/system/update-distribution-doctrine.md` (v2.80.0+).
 
 ## Pattern
 

@@ -169,7 +169,7 @@ When in doubt about whether a rule is SED or another discipline, ask: *"is this 
 ## Position dans le système opérationnel 5 couches
 
 SED opère sur 2 couches du système opérationnel (cf
-`operational-system-discipline.md`) · couche 1 (modèle · atomicité des
+`operational-system-doctrine.md`) · couche 1 (modèle · atomicité des
 entités, cross-refs canonical, append-only learnings) · couche 4 (métriques ·
 _field_types observed/stated/derived/structured assure traçabilité audit
 trail, mutation gate proposed/accepted feedback loop).

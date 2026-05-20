@@ -349,7 +349,7 @@ To amend this doctrine, follow the procedure documented in `docs/system/doctrine
 ## Position dans le système opérationnel 5 couches
 
 CMR opère sur 2 couches du système opérationnel (cf
-`operational-system-discipline.md`) · couche 1 (modèle) via l'imposition
+`operational-system-doctrine.md`) · couche 1 (modèle) via l'imposition
 schema + matrice canon comme structure de production · couche 4 (métriques)
 via le scoring intersectionnel qui mesure la qualité output par cellule.
 

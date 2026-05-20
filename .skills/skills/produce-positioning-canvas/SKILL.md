@@ -423,7 +423,7 @@ Update `brands/{slug}/status.json` ·
 ## Cross-references
 
 - `docs/system/investigation-posture.md` · doctrine 5 sections obligatoires output stratégique
-- `docs/system/skill-routing-discipline.md` v2.77 · canon 5-phase routing protocol · bridge proactif gate access pattern
+- `docs/system/skill-routing-doctrine.md` v2.77 · canon 5-phase routing protocol · bridge proactif gate access pattern
 - `docs/system/canonical-matrix-reasoning.md` · schema + matrice canon = qualité output 95%
 - `docs/system/confidence-propagation.md` · algèbre cascade confidence cross-skill · MIN conservative aggregated
 - `docs/system/contextual-intelligence.md` · master doctrine · no orphan output rule

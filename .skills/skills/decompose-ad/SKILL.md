@@ -603,7 +603,7 @@ field name · zero registry ID exposé · scoring exposé en humain (0-10
 
 ### Related canon (v2.0.0)
 
-- `docs/system/operational-system-discipline.md` v2.71 (équation maître canonisée · canon résonance back-end)
+- `docs/system/operational-system-doctrine.md` v2.71 (équation maître canonisée · canon résonance back-end)
 - `docs/system/compositional-cartography.md` v3.1 (équation v3.1 NOYAU × CONTEXTE × MODIFIEURS canon)
 - `docs/system/canonical-matrix-reasoning.md` (schema + matrice canon)
 - `adapt-from-competitor` v1.0.0+ NEW downstream orchestrator (consume creative.json v1.2 sub-couche)

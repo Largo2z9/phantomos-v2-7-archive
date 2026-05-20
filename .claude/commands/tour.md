@@ -8,7 +8,7 @@ description: Onboarding PhantomOS multi-entry 4 portes (A conversationnel · B b
 
 Executable instructions for the agent. This command handles both first-run onboarding and replay presentation. Read top to bottom before acting.
 
-**Doctrine de référence** · `docs/system/onboarding-holistic-discipline.md` (v2.79.3 · panorama 360° agnostique · zéro typage profil métier initial · HR-OHD-2). Si un orchestrator est appelé en aval (`setup-brand` · `onboard-brand`) · cross-ref `docs/system/engagement-disclosure-discipline.md` (v2.79.3 · disclosure pré-engagement).
+**Doctrine de référence** · `docs/system/onboarding-holistic-doctrine.md` (v2.79.3 · panorama 360° agnostique · zéro typage profil métier initial · HR-OHD-2). Si un orchestrator est appelé en aval (`setup-brand` · `onboard-brand`) · cross-ref `docs/system/engagement-disclosure-discipline.md` (v2.79.3 · disclosure pré-engagement).
 
 **Posture de rendu canon v2.80.1.** L'onboarding (`/tour` + premiers messages opérateur) est en **prose conversationnelle native**. Zéro interface ASCII (pas de boxes `━━━` `═══` `─────`, pas de tableau territoires structuré, pas de légende iconographie au pied). Le pattern matriciel ASCII reste réservé aux slash commands `/phantom` `/bird` `/breakdown` `/about`. L'onboarding doit ressembler à une intro humaine naturelle, comme un opérateur senior accueille un nouvel arrivant.
 
@@ -446,7 +446,7 @@ Present as native `AskUserQuestion` tool call with **exactly 4 substantive optio
 
 Before composing any close, the agent runs an internal reasoning step (extended thinking if available). **This reasoning is silent, not exposed to the operator.** The reasoning addresses, in order ·
 
-1. **What the operator has revealed so far.** Their language, their concerns, their hesitations, what they questioned and what they accepted without challenging. **Pas de typage profil métier** (canon HR-OHD-2 doctrine onboarding-holistic-discipline.md) · l'agent infère SEULEMENT depuis les signaux verbaux organiques, jamais via question explicite.
+1. **What the operator has revealed so far.** Their language, their concerns, their hesitations, what they questioned and what they accepted without challenging. **Pas de typage profil métier** (canon HR-OHD-2 doctrine onboarding-holistic-doctrine.md) · l'agent infère SEULEMENT depuis les signaux verbaux organiques, jamais via question explicite.
 2. **What has already been covered.** Read `/operator/awareness.json → paths_explored` and `concepts_introduced`. The close never proposes angles already exhausted.
 3. **Quel territoire actif** (Milestone 2-3) **et quelles capacités drillées**. Les options proposées s'alignent sur le territoire actif, pas sur un profil métier supposé.
 4. **What pivot or broadening would serve them.** Decide the right mix per close · all dig-deeper, mix of dig-deeper and reorient, lateral only · whatever serves this specific conversation.
@@ -632,7 +632,7 @@ Do not write `tour_status` back to `in_progress` on replay. Replay does not cons
 
 ## Constraints (non-negotiable)
 
-- **Doctrines de référence** · `docs/system/onboarding-holistic-discipline.md` v2.80.3 (HR-OHD-2 · zéro question profil métier initial) PLUS `docs/system/entry-arc-doctrine.md` v2.81.0 (multi-entry 4 portes MECE · canons Vincent runtime · ton premium enforcement).
+- **Doctrines de référence** · `docs/system/onboarding-holistic-doctrine.md` v2.80.3 (HR-OHD-2 · zéro question profil métier initial) PLUS `docs/system/entry-arc-doctrine.md` v2.81.0 (multi-entry 4 portes MECE · canons Vincent runtime · ton premium enforcement).
 - **Multi-entry 4 portes canon v2.81.** Milestone 1 splitter `AskUserQuestion` 4 options explicit (Porte A `arc:substance` · Porte B `setup:brand` · Porte C `import:archive` · Porte D `explore:free`). Bypass URL collée passive vers Porte B préservé. Slugs runtime nommés pour routing déterministe. Pas de chemin unique imposé · l'opérateur choisit son entry mode selon son contexte.
 - **Arc substance guidé tour à tour (canon v2.81 · Porte A uniquement).** `/tour` est l'explication conversationnelle de PhantomOS quand l'opérateur choisit Porte A. Milestone 1 · accueil court qui dit ce qu'est le système (3-5 lignes, jamais amputé jusqu'à n'être qu'une liste de territoires) puis splitter 4 portes. Milestone 2 (Porte A corps uniquement) · arc substance distillé un volet à la fois (pourquoi ça existe · comment ça raisonne · ce qui le distingue · le cycle · les 7 territoires) via `AskUserQuestion`, piloté par l'opérateur, expansions courtes, jamais d'attente texte-libre nu. **Jamais** un pavé, **jamais** déverser toute la substance d'un bloc, **jamais** sauter direct au choix de territoire sans avoir dit ce qu'est PhantomOS. `/about` est le backup deep doc exhaustif (mentionné en une ligne), jamais un substitut de `/tour`.
 - **M5b first deliverable encadré canon v2.81.** Skill canon lancé en 5-15 min · livrable concret à l'écran · validation point par point. Wow effect honnête déclaré (preview loyale 5-min). Disclosure pré-engagement canon NIVEAU 0 paramètres décomposés (cohérent EDD v2.79.5). Awareness write `first_deliverable_built` post-livraison · sert au gate M9 dégradé.
@@ -651,7 +651,7 @@ Do not write `tour_status` back to `in_progress` on replay. Replay does not cons
 - **Never expose file paths, field names, function names** (*write_to_context*, *Task*, *WebFetch*) in operator-facing replies.
 - **Respect conversation register detection continuously.**
 - **Mutation gate.** All writes to `profile.json` and `awareness.json` go through `write_to_context(field_path, value, source, confidence, mode)`. Never edit JSON directly.
-- **Cross-ref doctrine** · `entry-arc-doctrine.md` v2.81.0 (multi-entry 4 portes MECE · canons Vincent runtime · ton premium enforcement) plus `onboarding-holistic-discipline.md` (panorama 360° canon · prose narrative onboarding v2.80.1) plus `engagement-disclosure-discipline.md` v2.79.5 (disclosure pré-engagement + NIVEAU 0 paramètres décomposés quand orchestrator appelé en aval) plus `output-clarity-doctrine.md` (iconographie unique + dejargonisation + headers FR sobres + one thing per line · canon v2.79.2 cross-outputs slash commands matriciels opérateur-facing).
+- **Cross-ref doctrine** · `entry-arc-doctrine.md` v2.81.0 (multi-entry 4 portes MECE · canons Vincent runtime · ton premium enforcement) plus `onboarding-holistic-doctrine.md` (panorama 360° canon · prose narrative onboarding v2.80.1) plus `engagement-disclosure-discipline.md` v2.79.5 (disclosure pré-engagement + NIVEAU 0 paramètres décomposés quand orchestrator appelé en aval) plus `output-clarity-doctrine.md` (iconographie unique + dejargonisation + headers FR sobres + one thing per line · canon v2.79.2 cross-outputs slash commands matriciels opérateur-facing).
 
 ---
 
@@ -666,7 +666,7 @@ If the operator expresses fatigue (*"on reprendra"*, *"pas aujourd'hui"*, *"plus
 ## Related canon
 
 - `docs/system/entry-arc-doctrine.md` · doctrine racine multi-entry 4 portes MECE + canons Vincent runtime + ton premium enforcement (v2.81.0)
-- `docs/system/onboarding-holistic-discipline.md` · doctrine racine panorama 360° agnostique (v2.79.3) · onboarding prose narrative canon v2.80.1
+- `docs/system/onboarding-holistic-doctrine.md` · doctrine racine panorama 360° agnostique (v2.79.3) · onboarding prose narrative canon v2.80.1
 - `docs/system/engagement-disclosure-discipline.md` · disclosure pré-engagement orchestrators + NIVEAU 0 paramètres décomposés (v2.79.5)
 - `docs/system/output-clarity-doctrine.md` · iconographie unique + standards opérateur-facing slash commands matriciels (v2.79.2)
 - `docs/system/decomposition-visibility-discipline.md` · 4 niveaux matriciels + NIVEAU 0 pré-exec (v2.79.5)

@@ -16,7 +16,7 @@
     {
       "id": 1,
       "name": "NEW doctrine extension-discovery-discipline",
-      "file": "docs/system/extension-discovery-discipline.md",
+      "file": "docs/system/extension-discovery-doctrine.md",
       "size_lines": 357,
       "type": "doctrine_canon_new"
     },

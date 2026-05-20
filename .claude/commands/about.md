@@ -413,12 +413,12 @@ Detect operator language at first turn (cf canon Language root CLAUDE.md). Outpu
 
 ## Related canon
 
-- `docs/system/onboarding-holistic-discipline.md` · doctrine racine onboarding (v2.80.3 · arc substance guidé · `/about` backup)
+- `docs/system/onboarding-holistic-doctrine.md` · doctrine racine onboarding (v2.80.3 · arc substance guidé · `/about` backup)
 - `docs/system/output-clarity-doctrine.md` · standards Vercel-grade opérateur-facing (v2.79.2)
 - `docs/system/decomposition-visibility-discipline.md` · 4 niveaux matriciels canon (v2.79+)
 - `docs/system/investigation-posture.md` · 5 sections obligatoires stratégique
 - `docs/system/canonical-matrix-reasoning.md` · schema + matrice canon cohérence output
-- `docs/system/skill-routing-discipline.md` · routing systémique + manifest fallback
+- `docs/system/skill-routing-doctrine.md` · routing systémique + manifest fallback
 - `.claude/commands/tour.md` · onboarding holistique court (panorama 360°)
 - `.claude/commands/lexicon.md` · magic keywords prompting (10-15 termes canon)
 - `.claude/commands/phantom.md` · cockpit workspace + brand

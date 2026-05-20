@@ -336,7 +336,7 @@ Q4 · Skill mode enrichissement Phase 4 (capture insights first-party) ?
 ## Position dans le système opérationnel 5 couches
 
 Progressive cartography opère sur 2 couches du système opérationnel (cf
-`operational-system-discipline.md`) · couche 5 (rituels · cadence par
+`operational-system-doctrine.md`) · couche 5 (rituels · cadence par
 phases avec gates light entre paliers) · couche 2 (règles · gates light
 binaire valide/corrige sont des heuristiques de décision canon).
 

@@ -19,11 +19,11 @@
   },
   "patches_structurels": [
     "Refonte /tour onboarding v2.79.4 → v2.80.1 (Agent 1) · retire toutes les boxes ASCII (━━━ ═══ ───── · séparateurs structurés) · retire tableau territoires + légende iconographie + bloc visuel intro + action close en bloc · transforme panorama 360° en prose narrative · action close en phrase intégrée prose. Onboarding = prose conversationnelle native uniquement.",
-    "Patch doctrine onboarding-holistic-discipline.md v2.79.3 → v2.80.1 (Agent 2) · NEW HR-OHD-9 enforcement runtime (onboarding prose conversationnelle native obligatoire · pattern matriciel ASCII réservé slash commands cockpit) + NEW AP-OHD-9 anti-pattern (onboarding rendu avec interface ASCII · confondu avec slash command UI) + NEW Section 'Rendu prose conversationnelle native' clarifie distinction canon onboarding prose vs slash commands matriciel."
+    "Patch doctrine onboarding-holistic-doctrine.md v2.79.3 → v2.80.1 (Agent 2) · NEW HR-OHD-9 enforcement runtime (onboarding prose conversationnelle native obligatoire · pattern matriciel ASCII réservé slash commands cockpit) + NEW AP-OHD-9 anti-pattern (onboarding rendu avec interface ASCII · confondu avec slash command UI) + NEW Section 'Rendu prose conversationnelle native' clarifie distinction canon onboarding prose vs slash commands matriciel."
   ],
   "files_patched": [
     {"file": ".claude/commands/tour.md", "scope": "Refonte v2.79.4 → v2.80.1 · prose conversationnelle native (Agent 1)"},
-    {"file": "docs/system/onboarding-holistic-discipline.md", "scope": "Patch v2.79.3 → v2.80.1 · NEW HR-OHD-9 + AP-OHD-9 + NEW Section Rendu prose conversationnelle native (Agent 2)"},
+    {"file": "docs/system/onboarding-holistic-doctrine.md", "scope": "Patch v2.79.3 → v2.80.1 · NEW HR-OHD-9 + AP-OHD-9 + NEW Section Rendu prose conversationnelle native (Agent 2)"},
     {"file": "../../../decisions.md", "scope": "D#443 captured workspace ROOT (ce job · release engineering)"},
     {"file": "_version.json", "scope": "Bump 2.80.0 → 2.80.1 PATCH + manifest path 2.80.1 + summary refonte /tour prose native (ce job · release engineering)"},
     {"file": "CHANGELOG.md", "scope": "Entry v2.80.1 prepended (ce job · release engineering)"},

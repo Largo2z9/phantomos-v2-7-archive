@@ -189,10 +189,10 @@ Pattern canon · 3 métriques canon CAC/MER · usage stage-aware ·
 
 - `pacing-doctrine.md` v2.78 · doctrine sœur · mesure pacing stage-aware · attribution windows alignment cross-doctrine
 - `creative-testing-doctrine.md` v2.78 · doctrine sœur · ROAS attribution post-test · win/kill seuils consume attribution canon
-- `operational-system-discipline.md` v2.71 · doctrine mère 5 couches · cette doctrine instance multi-couches (2 Règles · 4 Métriques)
+- `operational-system-doctrine.md` v2.71 · doctrine mère 5 couches · cette doctrine instance multi-couches (2 Règles · 4 Métriques)
 - `investigation-posture.md` · 5 sections rigueur · skills attribution-aware (analyze-perf · audit-meta-account) ship output structuré observé/déduit/inconnu/leviers/close ouvert
 - `confidence-propagation.md` · audit trail algèbre cascade confidence · attribution divergence cross-platform préserve confidence chain
-- `skill-routing-discipline.md` v2.77 · routing canon · skills attribution consume via mapping CLAUDE.md + manifest scan
+- `skill-routing-doctrine.md` v2.77 · routing canon · skills attribution consume via mapping CLAUDE.md + manifest scan
 - `connectivity-layering.md` · 3 layers canon · Meta API + Google Ads API + Shopify API · attribution data sources cross-platform
 - `notion-bridge-doctrine.md` v2.57+ · bidirectionnel pull/push · attribution data sync canon
 - `brand-isolation-doctrine.md` · canon copy cross-brand · attribution baseline organic brand-specific isolation
@@ -280,7 +280,7 @@ Application uniforme attribution window cross-stages (e.g. 7d-click stage scale 
 ## Status
 
 - **Canonique v2.78+.** Doctrine canon · ferme gap *"attribution multi-touch canon manquant"* flag P0 Sprint v2.78 Agent media buyer.
-- **Doctrine sœur** · pacing-doctrine.md (mesure pacing stage-aware) · creative-testing-doctrine.md (ROAS attribution post-test) · operational-system-discipline.md v2.71 (doctrine mère 5 couches).
+- **Doctrine sœur** · pacing-doctrine.md (mesure pacing stage-aware) · creative-testing-doctrine.md (ROAS attribution post-test) · operational-system-doctrine.md v2.71 (doctrine mère 5 couches).
 - **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Skills legacy pre-v2.78 conservent attribution logic inline jusqu'à patch · v2.78+ migration progressive consume canon.
 - **First applications** · analyze-perf v2.78 (cross-référence reconciliation) · routine-perf v2.78 (monitoring stage-aware) · audit-meta-account v2.78 (Meta attribution canon) · audit-google-pmax v2.78 (Google attribution canon).
 - **Promotion criterion** · à reviewer après 3+ skills attribution-aware migrated consume canon + 1 audit cross-account reconciliation patterns convergence + learnings.json append attribution divergence patterns.

@@ -64,7 +64,7 @@
       "name": "Cleanup hygiène P0 doctrine · 2 patches",
       "patches": [
         {
-          "file": "docs/system/operational-system-discipline.md",
+          "file": "docs/system/operational-system-doctrine.md",
           "change": "2 occurrences cross-ref singulier 'audience-cartography-doctrine.md' (CASSÉ) → pluriel 'audiences-cartography-doctrine.md' (canonical) · L87 + L292"
         },
         {
@@ -85,7 +85,7 @@
       },
       "backlog_identified": {
         "v2.73.1": "Cleanup refs CHANGELOG L1474 + check-existing-coverage L83 path canonical · 15 min",
-        "v2.74": "Doctrine NEW skill-routing-discipline.md + orchestrator NEW audit-meta-global"
+        "v2.74": "Doctrine NEW skill-routing-doctrine.md + orchestrator NEW audit-meta-global"
       }
     }
   ],

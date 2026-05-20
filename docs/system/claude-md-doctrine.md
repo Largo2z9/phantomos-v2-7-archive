@@ -8,7 +8,7 @@ status: shipped
 
 # Claude.md Discipline · Operating Doctrine
 
-> Canonique v2.82.0. Doctrine canon racine qui codifie le pattern canon pour TOUT fichier `CLAUDE.md` PhantomOS (root workspace-template plus pillars `00-meta/` `01-marketing/` `02-ai/` `03-product/` `04-brand/` `05-projects/` `06-agency/` plus project `context-engine/` `abyss/build/` plus brand `brands/{slug}/`). Instructions atomiques impératives uniquement. Doctrines détaillées vivent dans `docs/system/*.md`. Versioning vit dans `CHANGELOG.md`. Inventaires détaillés vivent dans `docs/system/README.md`. Le CLAUDE.md root pointe, n'explique pas. Doctrine sœur de `voice.md` (registre prose · cohérent atomicité impératif), `output-clarity-doctrine.md` v2.79.2 (standards Vercel/GitHub-grade outputs opérateur-facing · cohérent forme canon), `operational-system-discipline.md` v2.71 (mère 5 couches · CLAUDE.md fait partie de la couche templates). Ferme le gap *"CLAUDE.md root workspace-template viole ses propres règles · 9 problèmes structurels (taille dépassée · inflation marqueurs priorité · règles-sandwich · méta-doctrine · chevauchements MECE · versioning inline · pollution narrative · point-médian listes plates · auto-références cycliques) · LLM ignore uniformément les règles au-delà capacité attention ~150-200 instructions distinctes · negative ROI territory"* flag systémique Sprint v2.82 post-audit externe Claude Web sur CLAUDE.md root v2.81.1.
+> Canonique v2.82.0. Doctrine canon racine qui codifie le pattern canon pour TOUT fichier `CLAUDE.md` PhantomOS (root workspace-template plus pillars `00-meta/` `01-marketing/` `02-ai/` `03-product/` `04-brand/` `05-projects/` `06-agency/` plus project `context-engine/` `abyss/build/` plus brand `brands/{slug}/`). Instructions atomiques impératives uniquement. Doctrines détaillées vivent dans `docs/system/*.md`. Versioning vit dans `CHANGELOG.md`. Inventaires détaillés vivent dans `docs/system/README.md`. Le CLAUDE.md root pointe, n'explique pas. Doctrine sœur de `voice.md` (registre prose · cohérent atomicité impératif), `output-clarity-doctrine.md` v2.79.2 (standards Vercel/GitHub-grade outputs opérateur-facing · cohérent forme canon), `operational-system-doctrine.md` v2.71 (mère 5 couches · CLAUDE.md fait partie de la couche templates). Ferme le gap *"CLAUDE.md root workspace-template viole ses propres règles · 9 problèmes structurels (taille dépassée · inflation marqueurs priorité · règles-sandwich · méta-doctrine · chevauchements MECE · versioning inline · pollution narrative · point-médian listes plates · auto-références cycliques) · LLM ignore uniformément les règles au-delà capacité attention ~150-200 instructions distinctes · negative ROI territory"* flag systémique Sprint v2.82 post-audit externe Claude Web sur CLAUDE.md root v2.81.1.
 
 ---
 
@@ -64,7 +64,7 @@ Sans Claude.md Discipline canon ·
 
 8. **Sections dupliquées fragmentent mental model.** Skill routing apparaît dans 5 sections distinctes (Master rule · Skill routing · Investigation posture · Mutation rule · Skills). Mental model fragmenté · agent doit reconstruire le pattern · erreurs d'application. Pattern canon · 1 section consolidée + sous-règles.
 
-9. **Auto-références cycliques inutiles.** *"Doctrine reference · `docs/system/contextual-intelligence.md`"* + *"Sub-doctrines index · `docs/system/README.md`"* + *"Full canon · `docs/system/skill-routing-discipline.md`"* multipliés par section. Claude ne suit pas cross-refs en runtime · soit l'info est inline (et l'instruction est complète) · soit elle vit dans doc externe (et le pointer suffit) · jamais les deux dans le même bloc.
+9. **Auto-références cycliques inutiles.** *"Doctrine reference · `docs/system/contextual-intelligence.md`"* + *"Sub-doctrines index · `docs/system/README.md`"* + *"Full canon · `docs/system/skill-routing-doctrine.md`"* multipliés par section. Claude ne suit pas cross-refs en runtime · soit l'info est inline (et l'instruction est complète) · soit elle vit dans doc externe (et le pointer suffit) · jamais les deux dans le même bloc.
 
 Claude.md Discipline = doctrine canon qui ferme ces 9 gaps via 4 tailles canon par niveau + atomicité stricte + marqueurs priorité parcimonieux + zéro versioning inline + zéro narrative doctrinale + zéro inventaire détaillé + format atomique impératif + 8 Hard Rules canon + 8 anti-patterns canonisés + test de suppression obligatoire.
 
@@ -246,8 +246,8 @@ Index complet · `docs/system/README.md`
 - `decomposition-visibility-discipline.md` v2.79.5+ · 4 niveaux matriciels
 - `engagement-disclosure-discipline.md` v2.79.5 · disclosure pré-engagement
 - `entry-arc-doctrine.md` v2.81.0 · multi-entry 4 portes post-tour
-- `onboarding-holistic-discipline.md` v2.80.3 · panorama 360° pré-tour
-- `operational-system-discipline.md` v2.71 · mère 5 couches
+- `onboarding-holistic-doctrine.md` v2.80.3 · panorama 360° pré-tour
+- `operational-system-doctrine.md` v2.71 · mère 5 couches
 - `output-clarity-doctrine.md` v2.79.2 · standards Vercel/GitHub-grade
 - `pacing-doctrine.md` · rythme outputs stage filter ARR
 - `voice.md` · registre · ton · anti-patterns prose
@@ -385,7 +385,7 @@ Skill routing apparaît dans 5 sections distinctes (Master rule · Skill routing
 
 ### AP-CMD-8 · Auto-références cycliques inline + externe
 
-Bloc combine *"Doctrine reference · `docs/system/contextual-intelligence.md`"* + *"Sub-doctrines index · `docs/system/README.md`"* + *"Full canon · `docs/system/skill-routing-discipline.md`"* dans la même section. Claude ne suit pas cross-refs en runtime · soit l'info est inline (instruction complète) · soit elle vit dans doc externe (pointer suffit) · jamais les deux. Pattern correctif · HR-CMD-1 + HR-CMD-6 · choisir un mode unique par règle.
+Bloc combine *"Doctrine reference · `docs/system/contextual-intelligence.md`"* + *"Sub-doctrines index · `docs/system/README.md`"* + *"Full canon · `docs/system/skill-routing-doctrine.md`"* dans la même section. Claude ne suit pas cross-refs en runtime · soit l'info est inline (instruction complète) · soit elle vit dans doc externe (pointer suffit) · jamais les deux. Pattern correctif · HR-CMD-1 + HR-CMD-6 · choisir un mode unique par règle.
 
 ---
 
@@ -393,7 +393,7 @@ Bloc combine *"Doctrine reference · `docs/system/contextual-intelligence.md`"* 
 
 - `contextual-intelligence.md` · master doctrine canon agentic · CLAUDE.md est la surface où la doctrine devient instruction LLM runtime
 - `output-clarity-doctrine.md` · standards Vercel/GitHub-grade outputs opérateur-facing · cohérent atomicité plus headers sobres plus density modérée applicable forme CLAUDE.md
-- `operational-system-discipline.md` · mère 5 couches · CLAUDE.md fait partie de la couche templates plus rituels (load au démarrage de session)
+- `operational-system-doctrine.md` · mère 5 couches · CLAUDE.md fait partie de la couche templates plus rituels (load au démarrage de session)
 - `voice.md` · registre prose plus ton plus anti-patterns prose · cohérent atomicité impératif plus zéro narrative doctrinale
 - `docs/system/README.md` · index canon doctrines · pointer canon depuis CLAUDE.md root plus enforcement HR-CMD-5
 - `CHANGELOG.md` · versioning canon plus zéro version inline CLAUDE.md plus enforcement HR-CMD-3
@@ -420,11 +420,11 @@ Claude.md Discipline est la couche racine FORME canon · permet à PhantomOS de 
 - **Canonique v2.82.0.** Codifie discipline forme cross-CLAUDE.md PhantomOS identifiée post-audit externe Claude Web sur CLAUDE.md root workspace-template v2.81.1 (9 problèmes structurels redteam audit · taille violée · inflation marqueurs priorité · règles-sandwich · méta-doctrine · chevauchements MECE · versioning inline · pollution narrative · point-médian listes plates · auto-références cycliques). Ferme gap *"CLAUDE.md root viole ses propres règles · LLM ignore uniformément les règles au-delà capacité attention ~150-200 instructions distinctes · negative ROI territory"* plus enforcement runtime obligatoire cross-CLAUDE.md root plus pillars plus projects plus brands.
 - **4 tailles canon par niveau.** Root ≤150 lignes · pillar ≤100 lignes · project ≤120 lignes · brand ≤80 lignes. Capacité attention LLM runtime respectée. Mécanisme de croissance contrôlée canon via test de suppression obligatoire avant ajout règle.
 - **8 Hard Rules canon (HR-CMD-1 à HR-CMD-8) plus 8 anti-patterns canonisés (AP-CMD-1 à AP-CMD-8).** Enforcement runtime cross-CLAUDE.md. Test de suppression obligatoire avant chaque ajout règle. Marqueurs priorité parcimonieux (CRITICAL + YOU MUST + IMPORTANT cumul ≤3 · NEVER ≤10).
-- **Doctrine sœur** · `output-clarity-doctrine.md` v2.79.2 (standards Vercel/GitHub-grade outputs opérateur-facing · cohérent forme canon) · `voice.md` (registre prose plus ton plus anti-patterns prose · cohérent atomicité impératif) · `operational-system-discipline.md` v2.71 (mère 5 couches · CLAUDE.md fait partie templates plus rituels).
+- **Doctrine sœur** · `output-clarity-doctrine.md` v2.79.2 (standards Vercel/GitHub-grade outputs opérateur-facing · cohérent forme canon) · `voice.md` (registre prose plus ton plus anti-patterns prose · cohérent atomicité impératif) · `operational-system-doctrine.md` v2.71 (mère 5 couches · CLAUDE.md fait partie templates plus rituels).
 - **Backward compat** · strict additif · doctrine NEW n'override aucune existing. CLAUDE.md legacy pre-v2.82.0 conservent conventions jusqu'à patch · v2.82.0+ migration progressive enforce 4 tailles canon par niveau plus 8 Hard Rules.
 - **First applications** · Sprint v2.82.0 patches parallèle CLAUDE.md root workspace-template (sortie narrative + externalisation inventaire 24 doctrines vers `docs/system/README.md` + suppression versioning inline + calibration marqueurs priorité ≤3) plus pillars `00-meta/CLAUDE.md` plus `01-marketing/CLAUDE.md` plus brand `brands/_EXAMPLE/CLAUDE.md` migration progressive enforce 8 Hard Rules canon.
 - **Promotion criterion** · à reviewer après 5+ CLAUDE.md patched canon-conformes plus 1 audit cross-niveau (root + pillar + project + brand) convergence plus learnings.json append patterns Claude.md Discipline adoption rate stable 90%+ plus zero violation taille canon par niveau persistante 3+ sprints consécutifs.
 
 ---
 
-*Doctrine canonique skill-author-facing plus mainteneur-facing plus agent-facing. Canonise 4 tailles canon par niveau (root 150 · pillar 100 · project 120 · brand 80) plus 8 Hard Rules canon strict (HR-CMD-1 à HR-CMD-8) plus 8 anti-patterns canonisés (AP-CMD-1 à AP-CMD-8). Ferme gap structurel *"CLAUDE.md root workspace-template viole ses propres règles · 9 problèmes structurels audit externe Claude Web v2.81.1"* via HR-CMD-1 à HR-CMD-8 enforcement runtime plus test de suppression obligatoire avant ajout règle. Pattern miroir output-clarity-doctrine.md (8 Hard Rules canon · standards Vercel/GitHub-grade outputs opérateur-facing) plus voice.md (registre prose · ton · anti-patterns prose) plus operational-system-discipline.md (mère 5 couches · CLAUDE.md fait partie templates plus rituels).*
+*Doctrine canonique skill-author-facing plus mainteneur-facing plus agent-facing. Canonise 4 tailles canon par niveau (root 150 · pillar 100 · project 120 · brand 80) plus 8 Hard Rules canon strict (HR-CMD-1 à HR-CMD-8) plus 8 anti-patterns canonisés (AP-CMD-1 à AP-CMD-8). Ferme gap structurel *"CLAUDE.md root workspace-template viole ses propres règles · 9 problèmes structurels audit externe Claude Web v2.81.1"* via HR-CMD-1 à HR-CMD-8 enforcement runtime plus test de suppression obligatoire avant ajout règle. Pattern miroir output-clarity-doctrine.md (8 Hard Rules canon · standards Vercel/GitHub-grade outputs opérateur-facing) plus voice.md (registre prose · ton · anti-patterns prose) plus operational-system-doctrine.md (mère 5 couches · CLAUDE.md fait partie templates plus rituels).*
