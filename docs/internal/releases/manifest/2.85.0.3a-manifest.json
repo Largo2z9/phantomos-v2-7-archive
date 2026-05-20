@@ -1,0 +1,71 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.85.0.3a",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.85.0.3a · isolation decomposition-visibility-discipline → decomposition-visibility-doctrine · 19/21 doctrines renommées · tests non-régression INTENSIFS PASSÉS · 0 régression.",
+  "context_amont": {
+    "trigger": "Lot 4/4 HIGH risk briefing v2.85.0.3 prévoyait 3 doctrines (decomposition-visibility + engagement-disclosure + schema-encoding). Pré-flight Phase 1 a révélé 2 garde-fous DÉPASSÉS sur lot 4 FULL.",
+    "garde_fous_depasses": [
+      "Top doctrine share decomposition-visibility 51.5% > cap 40% (+11.5 pts)",
+      "Replacements estimés cumulés 610 (ratio 1.65:1) > cap 280 (2.17x)"
+    ],
+    "decision_largo": "Option A · ISOLATION decomposition-visibility en v2.85.0.3a · engagement-disclosure + schema-encoding reportés v2.85.0.3b session suivante (cohérent doctrine LITE + iterative_validation)"
+  },
+  "1_doctrine_renommee_lot_4a": {
+    "old": "decomposition-visibility-discipline.md",
+    "new": "decomposition-visibility-doctrine.md",
+    "refs_cumulees_reelles": 190,
+    "replacements_reels": 161,
+    "ratio_cumulatif_replacements": "1.18:1 (dense · cohérent doctrine la plus consommée)",
+    "sensibilite": "MAXIMAL · 12 skills consumer runtime · 5 manifests · 6 slash commands · 4 memory canons"
+  },
+  "patches_appliques": [
+    "Phase 1 pré-flight ciblé · 1 sub-agent Haiku · 2 garde-fous DÉPASSÉS détectés · décision isolation",
+    "Phase 2 stratégie rollback · 1 fichier seul · batch unique + Round 2 grep résiduel · git revert HEAD si rupture",
+    "Phase 3 exécution · git mv decomposition-visibility-discipline.md → decomposition-visibility-doctrine.md · script Python batch · 40 fichiers consumers · 161 replacements · 0 résiduels Round 1",
+    "Phase 4 tests non-régression INTENSIFS PASSÉS · build-manifest 81 skills · build-brand-snapshot _EXAMPLE 24 lines · 34 occurrences sans .md préservées (concept narrative · false positives intentionnels) · spot-check 3 skills consumers OK · memory canons OK",
+    "Phase 6 ship · _version + manifest + CHANGELOG + project-journal + D#458 + memory canon v85_0_lite_lessons"
+  ],
+  "tests_non_regression_intensifs": {
+    "a_build_manifest": "PASS · 81 skills + 92 jargon entries",
+    "b_build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+    "c_grep_ancien_nom_md": "0 occurrence ref fichier · ✓",
+    "d_grep_concept_narrative": "34 occurrences en prose narrative (decisions.md D#430-D#446 · session-log · project-journal · SKILL.md patch_notes · manifests JSON summary) · TOUS false positives intentionnels cohérents règle Phase 1.A initiale · concept 'Decomposition Visibility Discipline' comme proper name dans historical records · à préserver",
+    "e_spot_check_3_skills": "build-atlas-complete 13 refs nouveau nom · profile-audience 11 refs · mine-voc 8 refs · TOUS cohérents",
+    "f_grep_memory_canons": "2 occurrences en prose concept · false positives OK (project_phantomos_state historique + feedback_thinking_aloud_canon contextuel)"
+  },
+  "files_patched": [
+    {"file": "workspace-template/docs/system/decomposition-visibility-discipline.md → decomposition-visibility-doctrine.md", "scope": "1 git mv (the most consumed file)"},
+    {"file": "40 fichiers consumers cross-refs", "scope": "161 patches batch Python · 12 skills SKILL.md + 5 doctrines sœurs + 4 slash commands + 5 manifests + 4 memory canons + R&D"},
+    {"file": "_version.json", "scope": "Bump 2.85.0.2 → 2.85.0.3a"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.85.0.3a (19/21 cumulé · clôture chantier pending v2.85.0.3b)"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.85.0.3a"},
+    {"file": "docs/internal/releases/manifest/2.85.0.3a-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "cumul_4_sprints_rename": {
+    "v2_85_0_lot_1": "6 doctrines low-stakes · 107 replacements",
+    "v2_85_0_1_lot_2": "6 doctrines mid-stakes · 253 replacements",
+    "v2_85_0_2_lot_3": "6 doctrines mid-stakes · 258 replacements",
+    "v2_85_0_3a_lot_4a": "1 doctrine HIGH risk · 161 replacements",
+    "total_cumule": "19/21 doctrines renommées · 779 replacements · 0 régressions"
+  },
+  "decisions_captured": ["D#458"],
+  "memory_canons_updated": ["v85_0_lite_lessons (lot 4a ratio 1.18:1)"],
+  "backlog_v2_85_0_3b_plus": [
+    "v2.85.0.3b · CLÔTURE chantier rename · 2 doctrines restantes (engagement-disclosure-discipline 109 refs + schema-encoding-discipline 70 refs = 179 refs cumulées · ratio attendu 1.2-1.5:1 = ~120-150 replacements estimés · 21/21 cumulé post-ship · memory canon doctrine_rename_complete NEW)",
+    "v2.85.1 · propagation contenu lot 1 voice-doctrine STRICT post-rename complet (5-6 doctrines)",
+    "v2.85.2-4 · propagation contenu lots suivants",
+    "v2.86.0 · audit cross-files final + grep orphelins",
+    "v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.85.0.3a = git revert HEAD strict · 1 git mv reversible + 161 patches reversibles · zéro impact runtime (tests intensifs PASSÉS)."
+}

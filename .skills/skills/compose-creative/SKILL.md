@@ -11,7 +11,7 @@ operator_facing: true
 reasoning_pattern: matrix-driven
 matrix_mode: composing
 patch_notes:
-  v1.7.0: "v2.79.5 engagement disclosure NIVEAU 0 paramètres décomposés · Section pré-runtime ajoutée AVANT HR1 (detect input mode) · expose 6 paramètres décomposés au runtime (brief source · mécanique creative · variants visuels · hook variants · packshot/asset · hypothèses figées · biais à éviter) avec POURQUOI chacun + close binaire OK ou ajuste. Cross-ref doctrines `docs/system/decomposition-visibility-discipline.md` v2.79.5+ + `docs/system/engagement-disclosure-discipline.md` v2.79.5+. Backward compat strict additif (HR1-HR7 runtime preserved · seul l'amont disclosure change)."
+  v1.7.0: "v2.79.5 engagement disclosure NIVEAU 0 paramètres décomposés · Section pré-runtime ajoutée AVANT HR1 (detect input mode) · expose 6 paramètres décomposés au runtime (brief source · mécanique creative · variants visuels · hook variants · packshot/asset · hypothèses figées · biais à éviter) avec POURQUOI chacun + close binaire OK ou ajuste. Cross-ref doctrines `docs/system/decomposition-visibility-doctrine.md` v2.79.5+ + `docs/system/engagement-disclosure-discipline.md` v2.79.5+. Backward compat strict additif (HR1-HR7 runtime preserved · seul l'amont disclosure change)."
   v1.6.0: "v2.64 ontologie sémantique pure pain_points + objections sub-audience · HR2 CONTEXTE refactor · `context.pain_point` lookup canonical `audiences/{audience_slug}/pain_points/{PNT-NN}.json` (sub-audience NEW v2.64 · owned natif par parent path). HR5 persist · creative.json#context.pain_point_ref stage PNT-NN canonical (lookup chain sub-audience d'abord). Backward compat strict additif · fallback top-level v2.63 + profile sub-fields v1.7 preserved. Cohérent ontologie sémantique cross-skill (produce-paid-angles v1.10 + produce-copy-brief v1.6 + decompose-angle v1.2 idem refactor)."
   v1.5.0: "v2.63 ontologie pure pain_points + objections collections top-level · HR2 CONTEXTE refactor · `context.pain_point` lookup canonique `pain_points/{PNT-NN}.json` filtered by affected_audiences contains audience_slug (au lieu de profile.problem_map[idx] legacy sub-field). HR5 persist · creative.json#context.pain_point_ref stage PNT-NN canonical (au lieu de pain_extract text legacy seul). Backward compat lecture profile.pain_points[] preserved (pre-v2.63 brands · skip canonical ref, fallback pain text inline). Cohérent ontologie pure cross-skill (produce-paid-angles v1.9 + produce-copy-brief v1.5 + decompose-angle v1.1 idem refactor)."
   v1.4.2: "v2.51 operator-fiche-output canonique template applied · header + gate + footer refactor langage métier. Operator output template (HR6) refactor selon canonique resources/templates/operator-fiche-output.md · header `═══ {BRAND_HUMAIN} · Pub n°{N} ═══` + sous-titre plain language (drop `COMPOSE CREATIVE · CRT-N`). Section 1 / Section 2 / Section 3 réécrites plain language (drop `format: static_image | ratio: 4:5` JSON-style, drop `intent_mix` enum, drop `craft_mode density=0.6`, drop `concept_id: cpt_brand_audience_001`). Bloc `TAGS RETRIEVAL` retiré du template rendu operator (vit backstage dans creative.json pour retrieval programmatique). Footer · 1 reco soft offer 1 ligne max, pas menu. HR3.4 retry wording `compositing externe recommandé v2.35` clean → wording métier. HR-COMPOSITE soft offers wording cohérent canonique sans nommer skills."
@@ -172,7 +172,7 @@ Output state map + confidence_chain[] init.
 
 ## Engagement disclosure pré-runtime · NIVEAU 0 paramètres décomposés (canon v2.79.5)
 
-Avant HR1 (detect input mode + load pre-requisites), expose ce disclosure NIVEAU 0 à l'opérateur. Pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-discipline.md` v2.79.5. Le but · rendre les paramètres décomposés que ce skill va mobiliser visibles AVANT exécution. Coût compose-creative = appel fal.ai nano-banana-2/edit facturé (token + crédit image gen). Disclosure protège l'opérateur d'un run qui part sur mauvais asset / mauvaise mécanique.
+Avant HR1 (detect input mode + load pre-requisites), expose ce disclosure NIVEAU 0 à l'opérateur. Pattern canon `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-doctrine.md` v2.79.5. Le but · rendre les paramètres décomposés que ce skill va mobiliser visibles AVANT exécution. Coût compose-creative = appel fal.ai nano-banana-2/edit facturé (token + crédit image gen). Disclosure protège l'opérateur d'un run qui part sur mauvais asset / mauvaise mécanique.
 
 ```
 Paramètres posés · ce sur quoi je pars
@@ -241,7 +241,7 @@ Paramètres posés · ce sur quoi je pars
 
 ATTENDS confirmation explicite avant de lancer HR1. Court-circuit autorisé UNIQUEMENT si `operator/profile.json#preferences.disclosure_preference: silent` set OR si l'opérateur a flag `--no-disclosure` explicit OR si N usages successifs >= seuil expert (`auto_skip_after_n_calls` true). Sinon · disclosure obligatoire canon v2.79.5.
 
-Cross-ref doctrines racine `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-discipline.md` v2.79.5.
+Cross-ref doctrines racine `docs/system/engagement-disclosure-discipline.md` v2.79.5 + `docs/system/decomposition-visibility-doctrine.md` v2.79.5.
 
 ---
 

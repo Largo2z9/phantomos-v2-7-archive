@@ -243,7 +243,7 @@ Index complet · `docs/system/README.md`
 ## Doctrines
 
 - `contextual-intelligence.md` v2.79+ · master doctrine canon agentic
-- `decomposition-visibility-discipline.md` v2.79.5+ · 4 niveaux matriciels
+- `decomposition-visibility-doctrine.md` v2.79.5+ · 4 niveaux matriciels
 - `engagement-disclosure-discipline.md` v2.79.5 · disclosure pré-engagement
 - `entry-arc-doctrine.md` v2.81.0 · multi-entry 4 portes post-tour
 - `onboarding-holistic-doctrine.md` v2.80.3 · panorama 360° pré-tour
@@ -407,7 +407,7 @@ Claude.md Discipline opère sur 3 couches du multiplicatif Operational System Di
 
 **Couche 3 · Templates (raccourcis combinaisons gagnantes).** 4 tailles canon par niveau (root 150 · pillar 100 · project 120 · brand 80) plus format atomique impératif plus tableau DO/NEVER plus marqueurs priorité parcimonieux sont templates canon réutilisables cross-CLAUDE.md PhantomOS. Pattern miroir `resources/templates/*` canon plus `output-clarity-doctrine.md` Couche 3 templates iconographie plus headers FR.
 
-**Couche 2 · Règles (heuristiques décision).** 8 Hard Rules canon strict (HR-CMD-1 à HR-CMD-8) sont heuristiques décision canon · *"si CLAUDE.md alors 4 tailles canon par niveau plus 6 standards de forme obligatoires"* enforcement runtime cross-CLAUDE.md. Pattern miroir `output-clarity-doctrine.md` 8 Hard Rules canon plus `decomposition-visibility-discipline.md` 9 Hard Rules.
+**Couche 2 · Règles (heuristiques décision).** 8 Hard Rules canon strict (HR-CMD-1 à HR-CMD-8) sont heuristiques décision canon · *"si CLAUDE.md alors 4 tailles canon par niveau plus 6 standards de forme obligatoires"* enforcement runtime cross-CLAUDE.md. Pattern miroir `output-clarity-doctrine.md` 8 Hard Rules canon plus `decomposition-visibility-doctrine.md` 9 Hard Rules.
 
 **Couche 5 · Rituels (cadence opérationnelle).** Test de suppression canon obligatoire avant chaque ajout règle · audit immédiat violation taille canon · externalisation systémique narrative doctrinale plus inventaire détaillé · consolidation sections dupliquées. Rituel canon mainteneur par modification CLAUDE.md. Pattern miroir `output-clarity-doctrine.md` enforcement runtime canon plus `voice.md` editor checklist before commit.
 

@@ -144,9 +144,9 @@ Légende iconographie (canon sprint v2.79.2)
 - **✦ markers sobres** pour annotations qui décompressent un point dense
 - **Density modérée** · séparateurs ━━━━━━ entre sections majeures de la fiche (cohérent sprint v2.79.2)
 - **Fiche ~30 lignes max**, drill en fin
-- **Section transversale Decomposition Visibility canon v2.79+ obligatoire** sur les chapitres `principe` · `atomicite` · `composition` · `matrices` · `production`. L'agent ship en synthèse les 4 niveaux matriciels appliqués au cas Stepprs encoded (NIVEAU 1 décomposition produit · NIVEAU 2 many-to-many · NIVEAU 3 stage filter · NIVEAU 4 pédagogie verbale). Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+.
+- **Section transversale Decomposition Visibility canon v2.79+ obligatoire** sur les chapitres `principe` · `atomicite` · `composition` · `matrices` · `production`. L'agent ship en synthèse les 4 niveaux matriciels appliqués au cas Stepprs encoded (NIVEAU 1 décomposition produit · NIVEAU 2 many-to-many · NIVEAU 3 stage filter · NIVEAU 4 pédagogie verbale). Cross-ref doctrine `docs/system/decomposition-visibility-doctrine.md` v2.79+.
 - **4 niveaux matriciels appliqués cas Stepprs réel encoded** (workers-shifts + chronic-pain-45+ audiences, massage-insoles product, atomes encodés `brands/_EXAMPLE/`). Jamais projection hypothétique sur ces chapitres · sourcing depuis le workspace canon.
-- **Cross-ref doctrine canon racine** `decomposition-visibility-discipline.md` cité explicit en clôture de synthèse pour les chapitres consumer.
+- **Cross-ref doctrine canon racine** `decomposition-visibility-doctrine.md` cité explicit en clôture de synthèse pour les chapitres consumer.
 
 ## Topic guides · ce que l'agent doit produire par topic
 
@@ -1009,7 +1009,7 @@ Verbaliser le HOW à l'opérateur AVANT et APRÈS la décomposition. Verbatim ca
 
 Pattern reproductible · l'opérateur encode SA marque en réappliquant les 4 niveaux. Même grammaire, brand différente, output canon. C'est la promesse PhantomOS · grammaire transférable, pas template figé.
 
-Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+ canon racine cross-skills opérateur-facing.
+Cross-ref doctrine `docs/system/decomposition-visibility-doctrine.md` v2.79+ canon racine cross-skills opérateur-facing.
 
 ## Anti-patterns à éviter dans toute fiche
 
@@ -1029,7 +1029,7 @@ Cross-ref doctrine `docs/system/decomposition-visibility-discipline.md` v2.79+ c
 
 **Doctrine mère** ·
 - `docs/system/operational-system-doctrine.md` (NEW v2.71.0 · les 5 couches d'un système opérationnel comme grammaire pédagogique mère)
-- `docs/system/decomposition-visibility-discipline.md` (v2.79+ canon racine cross-skills opérateur-facing · 4 niveaux matriciels obligatoires sur synthèse stratégique · doctrine sœur Investigation Posture + Canonical Matrix Reasoning + Skill Routing Discipline)
+- `docs/system/decomposition-visibility-doctrine.md` (v2.79+ canon racine cross-skills opérateur-facing · 4 niveaux matriciels obligatoires sur synthèse stratégique · doctrine sœur Investigation Posture + Canonical Matrix Reasoning + Skill Routing Discipline)
 
 **Doctrines couche 1 (modèle)** ·
 - `docs/system/compositional-cartography.md` (équation NOYAU × CONTEXTE × MODIFICATEURS)

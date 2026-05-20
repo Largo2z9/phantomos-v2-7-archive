@@ -7,6 +7,19 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.85.0.3a] · 2026-05-20
+### Changed
+- **Rename lot 4a/4** · isolation `decomposition-visibility-discipline.md` → `decomposition-visibility-doctrine.md` (doctrine la plus consommée du système · 12 skills consumer runtime) · **19/21 doctrines cumulées** renommées
+- 161 cross-refs patches batch via script Python · 40 fichiers consumers patchés (12 skills + 5 doctrines sœurs + 4 slash commands + 5 manifests + 4 memory canons + R&D)
+### Notes
+- Pré-flight Phase 1 a révélé 2 garde-fous DÉPASSÉS sur lot 4 FULL · top doctrine 51.5% > cap 40% · replacements estimés 610 > cap 280 · décision Largo isolation v2.85.0.3a (decomposition-visibility seul) + v2.85.0.3b à venir (engagement-disclosure + schema-encoding)
+- Tests non-régression INTENSIFS Phase 4 PASSÉS · build-manifest 81 skills · build-brand-snapshot _EXAMPLE 24 lines · spot-check 3 skills consumers (build-atlas-complete 13 refs · profile-audience 11 · mine-voc 8) tous OK
+- 34 occurrences "decomposition-visibility-discipline" sans `.md` préservées en l'état (concept narrative · false positives intentionnels cohérents règle Phase 1.A initiale)
+- Ratio observé lot 4a · 1.18:1 (190/161 · cohérent doctrine HIGH risk dense)
+- Cumul 4 sprints rename · 19 doctrines · 779 replacements · 0 régressions
+- D#458 captured · memory canon `v85_0_lite_lessons` mis à jour (lot 4a données)
+- Backlog · v2.85.0.3b clôture chantier (engagement-disclosure + schema-encoding · 21/21 cumulé post-ship)
+
 ## [2.85.0.2] · 2026-05-20
 ### Changed
 - **Rename lot 3/4** · 6 fichiers mid-stakes `*-discipline.md` → `*-doctrine.md` · `operational-system` · `onboarding-holistic` · `skill-routing` · `extension-discovery` · `progressive-cartography` · `update-distribution` · **18/21 doctrines cumulées** renommées
@@ -146,7 +159,7 @@ Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
 ## [2.79.1] · 2026-05-17
 ### Added
-- NEW doctrine `decomposition-visibility-discipline.md` (4 NIVEAUX matricial) · 4 skills patched
+- NEW doctrine `decomposition-visibility-doctrine.md` (4 NIVEAUX matricial) · 4 skills patched
 
 ## [2.79.0] · 2026-05-17
 ### Added

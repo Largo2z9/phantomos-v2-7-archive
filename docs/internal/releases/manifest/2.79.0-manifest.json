@@ -32,7 +32,7 @@
     "NEW validate-brand-voice-consistency SKILL.md (373L · curator cross-touchpoint drift severity ≤1/2-3/4-5/≥6)"
   ],
   "patches_sprint_v2_78_2_decomposition_visibility": [
-    "NEW doctrine decomposition-visibility-discipline.md (396L · 14 sections canon-style miroir · 4 niveaux obligatoires · 8 HR + 8 AP + 12 cross-refs canon)",
+    "NEW doctrine decomposition-visibility-doctrine.md (396L · 14 sections canon-style miroir · 4 niveaux obligatoires · 8 HR + 8 AP + 12 cross-refs canon)",
     "Patch snapshot-brand v1.4.1 → v1.5.0 (+84L · NEW Phase Decomposition Visibility 4 niveaux matriciels canon · 5 NEW HR + 3 NEW AP)",
     "Patch build-atlas-complete v1.5.0 → v1.6.0 (+113L · NEW Phase Atlas Visibility Matriciel multi-niveau · 6 HR-NEW + 5 AP-NEW)",
     "Patch profile-audience v1.6.0 → v1.7.0 (+151L · NEW Output Audience Visibility Matriciel · 5 HR-NEW + 4 AP-NEW)",
@@ -50,7 +50,7 @@
     {"file": ".skills/skills/define-brand-voice/SKILL.md", "scope": "NEW · 705L producer · Nielsen Norman 4D scoring -5/+5 + do/don't lexique sourcing canonical + 4 touchpoints samples · 10 HR + 7 AP"},
     {"file": ".skills/skills/setup-brand/SKILL.md", "scope": "Enrich · 443 → 667L · v2.0.0 → v2.1.0 · 4 sub-steps NEW (4a archetype + 4b purpose Sinek + 4c values anti-buzzword + 4d founder story) · 5 NEW HR (HR4-HR8)"},
     {"file": ".skills/skills/validate-brand-voice-consistency/SKILL.md", "scope": "NEW · 373L curator · scan cross-touchpoint paid/organic/CRM/UI/PDP · drift severity seuils canon ≤1/2-3/4-5/≥6 · 12 HR + 10 AP"},
-    {"file": "docs/system/decomposition-visibility-discipline.md", "scope": "NEW · 396L · 14 sections canon-style miroir · 4 niveaux obligatoires · 8 HR-DVD + 8 AP-DVD + 12 cross-refs canon valid"},
+    {"file": "docs/system/decomposition-visibility-doctrine.md", "scope": "NEW · 396L · 14 sections canon-style miroir · 4 niveaux obligatoires · 8 HR-DVD + 8 AP-DVD + 12 cross-refs canon valid"},
     {"file": ".skills/skills/snapshot-brand/SKILL.md", "scope": "Enrich · +84L · v1.4.1 → v1.5.0 · NEW Phase Decomposition Visibility 4 niveaux matriciels canon · 5 NEW HR + 3 NEW AP"},
     {"file": ".skills/skills/build-atlas-complete/SKILL.md", "scope": "Enrich · +113L · v1.5.0 → v1.6.0 · NEW Phase Atlas Visibility Matriciel multi-niveau · 6 HR-NEW + 5 AP-NEW"},
     {"file": ".skills/skills/profile-audience/SKILL.md", "scope": "Enrich · +151L · v1.6.0 → v1.7.0 · NEW Output Audience Visibility Matriciel · 5 HR-NEW + 4 AP-NEW"},

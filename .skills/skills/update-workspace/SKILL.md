@@ -55,7 +55,7 @@ Skill consommé par la slash command `/update` (canon Sprint v2.80.0). Doctrine 
 **Contrat opérateur-facing canon v2.80.0 ·**
 
 - Disclosure pré-update obligatoire (cohérent `engagement-disclosure-discipline.md` v2.79.5 · plan + ETA + démarche + close binaire confirmation).
-- NIVEAU 0 paramètres décomposés exposés AVANT exécution (cohérent `decomposition-visibility-discipline.md` v2.79.5+).
+- NIVEAU 0 paramètres décomposés exposés AVANT exécution (cohérent `decomposition-visibility-doctrine.md` v2.79.5+).
 - Preserve operator state strict · brands/ + operator/ + credentials + session-state + learnings intacts.
 - Migrations versionnées automatiques pour BREAKING changes (jamais silent).
 - Backup pre-migration obligatoire (rollback path canon).
@@ -186,7 +186,7 @@ If flags or migration warnings: surface as a short action list, not a report dum
 - `docs/system/update-distribution-doctrine.md` (v2.80.0) · doctrine canon pattern de mise à jour PhantomOS.
 - `docs/system/updates.md` · doctrine for publishing clean updates.
 - `docs/system/engagement-disclosure-discipline.md` (v2.79.5) · disclosure pré-engagement.
-- `docs/system/decomposition-visibility-discipline.md` (v2.79.5+) · NIVEAU 0 paramètres décomposés.
+- `docs/system/decomposition-visibility-doctrine.md` (v2.79.5+) · NIVEAU 0 paramètres décomposés.
 - `docs/releases/{version}-manifest.json` · per-release change manifest.
 - `.skills/skills/migrate-workspace/SKILL.md` · delegated schema migration (consume `migrations/` framework v2.80.0).
 - `migrations/` · framework canon v2.80.0 (scripts Python par BREAKING release).

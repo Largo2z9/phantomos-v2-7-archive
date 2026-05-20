@@ -1,6 +1,6 @@
 # Output Clarity Discipline · Operating Doctrine
 
-> Canonique v2.79.2+. Doctrine canon qui codifie les standards de clarté niveau Vercel / GitHub shipped product pour tous les outputs opérateur-facing PhantomOS. Doctrine sœur de `decomposition-visibility-discipline.md` (4 niveaux matriciels obligatoires · DVD applique OCD), `operator-vocabulary-translation.md` (mapping vocabulaire interne · OCD enforce mapping HR-OCD-2), `voice.md` (registre · ton · anti-patterns prose), `investigation-posture.md` (5 sections canon outputs stratégiques), `pacing-doctrine.md` (rythme outputs). Ferme le gap *"outputs PhantomOS mélangent 3 registres · 2 langues · 4 systèmes iconographie · 12 termes jargon interne · polish niveau alpha pas shipped product"* flag systémique Sprint v2.79.2 post-test live `/phantom mykara-care` workspace v2.79.1.
+> Canonique v2.79.2+. Doctrine canon qui codifie les standards de clarté niveau Vercel / GitHub shipped product pour tous les outputs opérateur-facing PhantomOS. Doctrine sœur de `decomposition-visibility-doctrine.md` (4 niveaux matriciels obligatoires · DVD applique OCD), `operator-vocabulary-translation.md` (mapping vocabulaire interne · OCD enforce mapping HR-OCD-2), `voice.md` (registre · ton · anti-patterns prose), `investigation-posture.md` (5 sections canon outputs stratégiques), `pacing-doctrine.md` (rythme outputs). Ferme le gap *"outputs PhantomOS mélangent 3 registres · 2 langues · 4 systèmes iconographie · 12 termes jargon interne · polish niveau alpha pas shipped product"* flag systémique Sprint v2.79.2 post-test live `/phantom mykara-care` workspace v2.79.1.
 
 ---
 
@@ -358,7 +358,7 @@ Output ship symboles ✓ ◐ ○ ✗ ⚠ sans légende. Opérateur junior devine
 
 ## 13. Cross-refs
 
-- `decomposition-visibility-discipline.md` v2.79+ · 4 NIVEAUX matriciels canon appliquent les 6 standards Output Clarity (iconographie unique cells matrice · headers FR sobres · density modérée matrices ASCII)
+- `decomposition-visibility-doctrine.md` v2.79+ · 4 NIVEAUX matriciels canon appliquent les 6 standards Output Clarity (iconographie unique cells matrice · headers FR sobres · density modérée matrices ASCII)
 - `operator-vocabulary-translation.md` v2.79.2+ · mapping vocabulaire interne · opérateur-facing 60+ entries enrichi des 12 termes Section 5 · cross-ref bidirectionnelle · HR-OCD-2 enforcement
 - `voice.md` · registre · ton · anti-patterns prose · OCD complète voice canon avec layer visuel cross-output
 - `investigation-posture.md` · 5 sections canon outputs stratégiques (Observé / Déduit / Inconnu / Leviers / Close ouvert) respectent OCD iconographie + headers + density
@@ -374,11 +374,11 @@ Output ship symboles ✓ ◐ ○ ✗ ⚠ sans légende. Opérateur junior devine
 
 Output Clarity Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71 ·
 
-**Couche 2 · Règles (heuristiques décision).** 8 Hard Rules canon strict (HR-OCD-1 à HR-OCD-8) sont heuristiques décision canon · *"si output opérateur-facing user-visible alors 6 standards canon obligatoires"* enforcement runtime cross-skills cross-slash commands. Pattern miroir `decomposition-visibility-discipline.md` 9 Hard Rules · `investigation-posture.md` 5 sections obligatoires.
+**Couche 2 · Règles (heuristiques décision).** 8 Hard Rules canon strict (HR-OCD-1 à HR-OCD-8) sont heuristiques décision canon · *"si output opérateur-facing user-visible alors 6 standards canon obligatoires"* enforcement runtime cross-skills cross-slash commands. Pattern miroir `decomposition-visibility-doctrine.md` 9 Hard Rules · `investigation-posture.md` 5 sections obligatoires.
 
 **Couche 3 · Templates (raccourcis combinaisons gagnantes).** Iconographie 5 symboles · headers FR canon · format action items stable · drill footer minimaliste · séparateurs ━━ ─── sont templates canon réutilisables cross-skills cross-commands. Pattern miroir `resources/templates/*` canon.
 
-**Couche 5 · Rituels (cadence opérationnelle).** Trigger systémique cross-skills opérateur-facing cross-slash commands cross-outputs synthesis stratégique brand-related enforcement runtime canon. Rituel canon agent par output user-visible. Pattern miroir `decomposition-visibility-discipline.md` enforcement runtime cross-slash commands HR-DVD-9.
+**Couche 5 · Rituels (cadence opérationnelle).** Trigger systémique cross-skills opérateur-facing cross-slash commands cross-outputs synthesis stratégique brand-related enforcement runtime canon. Rituel canon agent par output user-visible. Pattern miroir `decomposition-visibility-doctrine.md` enforcement runtime cross-slash commands HR-DVD-9.
 
 **Couche 4 · Métriques additionnelle.** % outputs canon-conformes trackable via `learnings.json` append-only · Trigger 8 daemon scan jargon detected étendu OCD violation. Métrique convergente · OCD adoption rate cross-outputs baseline v2.79.2 enforcement runtime.
 
@@ -387,11 +387,11 @@ Output Clarity Discipline opère sur 3 couches simultanément du multiplicatif O
 ## Status
 
 - **Canonique v2.79.2+.** Codifie standards Vercel / GitHub-grade shipped product cross-outputs opérateur-facing PhantomOS identifié post-test live `/phantom mykara-care` v2.79.1 (14 problèmes structurels redteam audit). Ferme gap *"outputs PhantomOS polish niveau alpha pas shipped product"* plus enforcement runtime obligatoire cross-skills cross-slash commands.
-- **Doctrine sœur** · decomposition-visibility-discipline.md v2.79.1 (4 niveaux matriciels canon · DVD applique OCD) · operator-vocabulary-translation.md v2.79.2 (mapping 60+ enrichi des 12 termes Section 5 · HR-OCD-2 enforcement) · voice.md (registre · ton prose · OCD complète layer visuel) · investigation-posture.md (5 sections canon outputs stratégiques) · pacing-doctrine.md (rythme outputs).
+- **Doctrine sœur** · decomposition-visibility-doctrine.md v2.79.1 (4 niveaux matriciels canon · DVD applique OCD) · operator-vocabulary-translation.md v2.79.2 (mapping 60+ enrichi des 12 termes Section 5 · HR-OCD-2 enforcement) · voice.md (registre · ton prose · OCD complète layer visuel) · investigation-posture.md (5 sections canon outputs stratégiques) · pacing-doctrine.md (rythme outputs).
 - **Backward compat** · strict additif · doctrine NEW n'override aucune existing. Outputs legacy pre-v2.79.2 conservent conventions jusqu'à patch · v2.79.2+ migration progressive enforce 6 standards canon.
-- **First applications** · Sprint v2.79.2 patches 5 surfaces parallèle · `/phantom` · `/bird` · `/breakdown` · `/scope` · `/tour` · CLAUDE.md root · decomposition-visibility-discipline.md cross-ref. Skills synthesis stratégique brand-related opérateur-facing migration progressive v2.79.2+ enforce 6 standards canon.
+- **First applications** · Sprint v2.79.2 patches 5 surfaces parallèle · `/phantom` · `/bird` · `/breakdown` · `/scope` · `/tour` · CLAUDE.md root · decomposition-visibility-doctrine.md cross-ref. Skills synthesis stratégique brand-related opérateur-facing migration progressive v2.79.2+ enforce 6 standards canon.
 - **Promotion criterion** · à reviewer après 5+ commands patched canon-conformes plus 1 audit cross-brand output clarity convergence plus learnings.json append patterns OCD adoption rate stable 80%+ plus zero polish alpha leak shipped product cross 3+ workspaces consécutifs.
 
 ---
 
-*Doctrine canonique skill-author-facing plus agent-facing. Canonise 6 standards Vercel / GitHub-grade shipped product (iconographie unique · dejargonisation · headers FR sobres · one thing per line · action items isolés · density modérée) plus 8 Hard Rules canon strict (HR-OCD-1 à HR-OCD-8) plus 8 anti-patterns canonisés. Ferme gap structurel *"outputs PhantomOS polish niveau alpha pas shipped product"* via HR-OCD-1 à HR-OCD-8 enforcement runtime. Pattern miroir decomposition-visibility-discipline.md (4 niveaux matriciels canon · DVD applique OCD) plus operator-vocabulary-translation.md (mapping 60+ entries enrichi 12 termes Section 5) plus voice.md (registre · ton prose · OCD complète layer visuel cross-output) plus investigation-posture.md (5 sections canon outputs stratégiques) plus pacing-doctrine.md (rythme outputs cross-output).*
+*Doctrine canonique skill-author-facing plus agent-facing. Canonise 6 standards Vercel / GitHub-grade shipped product (iconographie unique · dejargonisation · headers FR sobres · one thing per line · action items isolés · density modérée) plus 8 Hard Rules canon strict (HR-OCD-1 à HR-OCD-8) plus 8 anti-patterns canonisés. Ferme gap structurel *"outputs PhantomOS polish niveau alpha pas shipped product"* via HR-OCD-1 à HR-OCD-8 enforcement runtime. Pattern miroir decomposition-visibility-doctrine.md (4 niveaux matriciels canon · DVD applique OCD) plus operator-vocabulary-translation.md (mapping 60+ entries enrichi 12 termes Section 5) plus voice.md (registre · ton prose · OCD complète layer visuel cross-output) plus investigation-posture.md (5 sections canon outputs stratégiques) plus pacing-doctrine.md (rythme outputs cross-output).*

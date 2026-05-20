@@ -39,7 +39,7 @@ This rule precedes all other instructions in this file.
 - Decomposition visibility on synthesis brand opérateur-facing (avant NIVEAU 0 paramètres pré-exec, pendant NIVEAU LIVE thinking aloud, après NIVEAUX 1-4 matrices)
 - Exception cockpit · `/phantom {brand}` rend ALERTES · ÉTAT · ACTIONS · Drill footer, pas les 4 niveaux matriciels
 - Exception conversation libre · questions, clarifications, debug restent en prose libre
-- Full canon · `docs/system/skill-routing-doctrine.md` + `docs/system/decomposition-visibility-discipline.md` + `docs/system/engagement-disclosure-discipline.md`
+- Full canon · `docs/system/skill-routing-doctrine.md` + `docs/system/decomposition-visibility-doctrine.md` + `docs/system/engagement-disclosure-discipline.md`
 
 ## Investigation posture (absolute rule)
 

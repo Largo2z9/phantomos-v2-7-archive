@@ -20,11 +20,11 @@
   },
   "patches_structurels": [
     "Doctrine Decomposition Visibility Discipline v2.79.2+ → v2.79.5+ (Agent 1) · NEW NIVEAU 0 pré-exec ajouté AVANT les 4 niveaux post-exec existing · 6 paramètres décomposés (audience cible · pains prioritaires · canaux · queries opératoires · hypothèses figées · biais à éviter) avec POURQUOI explicit chacun · HR-DVD-10 + AP-DVD-10 enforcement runtime · pattern obligatoire skills intelligence compositionnelle (atlas × métier · récursive).",
-    "Doctrine Engagement Disclosure Discipline v2.79.3 → v2.79.5 (Agent 1) · NEW Trigger 6 intelligence compositionnelle ajouté aux 5 triggers existing · NEW Paramètres décomposés section dans pattern disclosure (6 éléments canon + POURQUOI explicit) · HR-EDD-9 + AP-EDD-9 enforcement runtime · cross-ref decomposition-visibility-discipline.md v2.79.5+ NIVEAU 0.",
+    "Doctrine Engagement Disclosure Discipline v2.79.3 → v2.79.5 (Agent 1) · NEW Trigger 6 intelligence compositionnelle ajouté aux 5 triggers existing · NEW Paramètres décomposés section dans pattern disclosure (6 éléments canon + POURQUOI explicit) · HR-EDD-9 + AP-EDD-9 enforcement runtime · cross-ref decomposition-visibility-doctrine.md v2.79.5+ NIVEAU 0.",
     "6 skills patchés NIVEAU 0 paramètres décomposés section v2.79.5 (Agents 2-3) · mine-voc + profile-audience + produce-paid-angles + produce-copy-brief + compose-creative + build-atlas-complete · pattern obligatoire 6 éléments + POURQUOI explicit + close binaire 'OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?' · l'opérateur valide en conscience expert métier, pas à l'aveugle."
   ],
   "files_patched": [
-    {"file": "docs/system/decomposition-visibility-discipline.md", "scope": "Extension v2.79.2+ → v2.79.5+ NEW NIVEAU 0 pré-exec (6 paramètres décomposés + POURQUOI explicit) + HR-DVD-10 + AP-DVD-10 (Agent 1)"},
+    {"file": "docs/system/decomposition-visibility-doctrine.md", "scope": "Extension v2.79.2+ → v2.79.5+ NEW NIVEAU 0 pré-exec (6 paramètres décomposés + POURQUOI explicit) + HR-DVD-10 + AP-DVD-10 (Agent 1)"},
     {"file": "docs/system/engagement-disclosure-discipline.md", "scope": "Extension v2.79.3 → v2.79.5 NEW Trigger 6 intelligence compositionnelle + NEW Paramètres décomposés section dans pattern + HR-EDD-9 + AP-EDD-9 (Agent 1)"},
     {"file": ".skills/skills/mine-voc/SKILL.md", "scope": "NEW NIVEAU 0 paramètres décomposés section v2.79.5 (Agent 2)"},
     {"file": ".skills/skills/profile-audience/SKILL.md", "scope": "NEW NIVEAU 0 paramètres décomposés section v2.79.5 (Agent 2)"},
@@ -51,7 +51,7 @@
     "pattern_canon_niveau_0_obligatoire": "Avant exécution · l'agent décompose 6 paramètres d'entrée (audience cible · pains prioritaires · canaux · queries opératoires · hypothèses figées · biais à éviter) avec POURQUOI explicit chacun (raisonnement métier expert visible) + close binaire confirmation 'OK avec ces paramètres ? Tu ajustes lequel avant que je lance ?'",
     "anti_pattern_strict": "Skill intelligence compositionnelle lance sans NIVEAU 0 décomposé · opérateur valide à l'aveugle · disclosure pré-engagement annonce plan/ETA/démarche MAIS pas POURQUOI paramètres · gap reverse engineering visible amont.",
     "cross_refs_doctrines": [
-      "docs/system/decomposition-visibility-discipline.md v2.79.5+ NIVEAU 0 pré-exec (NEW · avant 4 niveaux post-exec existing)",
+      "docs/system/decomposition-visibility-doctrine.md v2.79.5+ NIVEAU 0 pré-exec (NEW · avant 4 niveaux post-exec existing)",
       "docs/system/engagement-disclosure-discipline.md v2.79.5 Trigger 6 intelligence compositionnelle + Paramètres décomposés section (NEW pattern)"
     ]
   },
