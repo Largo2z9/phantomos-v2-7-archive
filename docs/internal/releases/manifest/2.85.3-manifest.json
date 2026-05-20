@@ -1,0 +1,86 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.85.3",
+  "released_at": "2026-05-20",
+  "type": "minor",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "slash_commands_count_before": 10,
+  "slash_commands_count_after": 10,
+  "doctrines_count_before": 27,
+  "doctrines_count_after": 27,
+  "summary": "Sprint MINOR v2.85.3 · PROPAGATION VOICE-DOCTRINE LOT 3/4 · 6 doctrines authoring + schema éditées critique main thread Sonnet · 2121L stable · 0% compression structurelle · 55 patches cumulés cohérence post-rename · tests non-régression PASSÉS · 0 régression runtime.",
+  "context_amont": {
+    "trigger": "Lot 2/4 (v2.85.2 audience + creative) clos propre. Lot 3/4 cible doctrines AUTHORING + SCHEMA (structurantes substrate). Hypothèse pré-flight · doctrines plus cross-refs internes que lots précédents (définissent conventions consommées par autres doctrines). À surveiller au pré-flight.",
+    "pre_flight_haiku_filtré_main_thread": "Pré-flight Haiku flag effort 3 sur territory + entry-arc (Haiku scoring incluant counts hors scope · narratif structurel architectural + termes canon \"canonical\"/\"load-bearing\" comme adjectifs vagues). Main thread Sonnet filtre · scope strict voice-doctrine = 0 doctrine effort 3 réel · 6 doctrines toutes effort 2. Caveat entry-arc 458L proche cap 500L mis en monitoring pendant édition (non-déclenché).",
+    "decision_largo_calibration": "GO Option A · 6 doctrines lot 3 standard · scope strict voice-doctrine UNIQUEMENT · politique FR/EN consolidée appliquée (acronymes EN · creative/operator FR · platform-specific EN · termes canon \"canonical\"/\"load-bearing\" préservés)."
+  },
+  "6_doctrines_propagated_lot_3": [
+    {"doctrine": "skill-authoring-doctrine.md", "lines_before": 264, "lines_after": 264, "compression": "0%", "patches": ["Line 1 titre 'Skill Authoring Discipline (SAD)' → 'Skill Authoring Doctrine (SAD)' (preserve SAD acronym)", "Line 3 'the meta-discipline above SED + CMR' → 'the meta-doctrine above SED + CMR'", "Line 21 'Without an authoring discipline' → 'Without an authoring doctrine'", "Line 200 cross-ref 'canonical-matrix-reasoning-2026-04-26.md' → 'canonical-matrix-reasoning.md'", "Line 201 cross-ref 'schema-encoding-discipline-2026-04-26.md' → 'schema-encoding-doctrine.md'", "Line 202 cross-ref 'provenance-trust-discipline-scope-2026-04-26.md' → 'provenance-trust-discipline-scope.md'", "Line 203 cross-ref 'doctrine-governance-2026-04-26.md' → 'doctrine-governance.md'"]},
+    {"doctrine": "schema-encoding-doctrine.md", "lines_before": 332, "lines_after": 332, "compression": "0%", "patches": ["Line 1 titre 'Schema Encoding Discipline (SED)' → 'Schema Encoding Doctrine (SED)' (preserve SED acronym)", "Line 13 'into one named discipline' → 'into one named doctrine'", "Line 19 'Without an encoding discipline' → 'Without an encoding doctrine'", "Line 25 'a single discipline that governs' → 'a single doctrine that governs'", "Line 149 'is SED or another discipline' → 'is SED or another doctrine'", "Line 183 'substrate sub-discipline' → 'substrate sub-doctrine'", "Lines 184-186 cross-refs CMR/SAD/PTD dates retirées + SAD Discipline → Doctrine"]},
+    {"doctrine": "extension-discovery-doctrine.md", "lines_before": 357, "lines_after": 357, "compression": "0%", "patches": ["Line 1 titre 'Extension Discovery Discipline' → 'Extension Discovery Doctrine'", "Line 3 description 'Territory Discipline' → 'Territory Doctrine' + 'Operational System Discipline v2.71' → 'système opérationnel (operational-system-doctrine.md)'", "Line 15 'Extension Discovery Discipline ferme' → 'Extension Discovery Doctrine ferme'", "Line 29 (post Phase 3 fix) 'Sans Extension Discovery Discipline' → 'Sans Extension Discovery Doctrine'", "Line 41 'Extension Discovery Discipline = doctrine canon' → 'Extension Discovery Doctrine = doctrine canon'", "Line 287 'Extension Discovery Discipline est strict additif' → 'Extension Discovery Doctrine est strict additif'", "Line 303 'Extension Discovery Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71' → 'Extension Discovery Doctrine opère sur 3 couches simultanément du système opérationnel (operational-system-doctrine.md)'", "Lines 313-315 cross-refs Territory Discipline + Operational System Discipline → Doctrine/operational-system-doctrine.md", "Line 350 Status cross-refs Territory Discipline + Operational System Discipline → Doctrine/operational-system-doctrine.md"]},
+    {"doctrine": "scope-extension-doctrine.md", "lines_before": 340, "lines_after": 340, "compression": "0%", "patches": ["Line 1 titre 'Scope Extension Discipline (SED-X)' → 'Scope Extension Doctrine (SED-X)' (preserve SED-X acronym)", "Line 3 'Sister discipline of SED, SAD, CMR' → 'Sister doctrine of SED, SAD, CMR'", "Line 25 'Sans discipline d'extension scope' → 'Sans doctrine d'extension scope'", "Line 168 H2 'parmi les disciplines' → 'parmi les doctrines'", "Lines 177-184 hierarchy diagram SED/SAD/SED-X Discipline → Doctrine (3 patches)", "Line 304 'SED-X sister discipline' → 'SED-X sister doctrine'"]},
+    {"doctrine": "territory-doctrine.md", "lines_before": 370, "lines_after": 370, "compression": "0%", "patches": ["Line 1 titre 'Territory Discipline' → 'Territory Doctrine' + 9 occurrences cumulées replace_all (titre + body lignes 19/23/37/114/126/147/244/317)"]},
+    {"doctrine": "entry-arc-doctrine.md", "lines_before": 458, "lines_after": 458, "compression": "0%", "patches": ["Line 2 frontmatter 'name: entry-arc-discipline' → 'name: entry-arc-doctrine'", "Replace_all 'Entry Arc Discipline' → 'Entry Arc Doctrine' (7 occurrences titre + body)", "Replace_all 'onboarding-holistic-discipline' → 'onboarding-holistic-doctrine' (4 occurrences cross-refs lignes 341/393/396/448)"]}
+  ],
+  "total_lignes_lot_3": {"before": 2121, "after": 2121, "compression": "0% (scope strict voice-doctrine respecté · patches mécaniques substitution/cohérence · pas refactor structurel)"},
+  "patches_appliques": [
+    "Phase 1 pré-flight obligatoire · 1 sub-agent Haiku · 6 doctrines inventoriées · effort 2 cross 6/6 (filtre main thread Sonnet sur scoring Haiku) · garde-fous tous PASSÉS (cap 500L · max 458L entry-arc · 0 isolation v2.85.3bis)",
+    "Phase 2.A lecture critique intégrale OBLIGATOIRE main thread Sonnet · 6/6 doctrines lues intégralement (apprentissage v2.85.1bis appliqué)",
+    "Phase 2.B édition critique · 55 patches cumulés cross 6 doctrines · 0% compression structurelle",
+    "Phase 2.C self-conformance lecture critique post-édition · sémantique préservée sur 6 doctrines",
+    "Phase 3 tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep em-dash 0 cross 6 doctrines · grep Discipline résiduel post-fix 0 (1 occurrence extension-discovery ligne 29 manquée Phase 2 fixed Phase 3)",
+    "Phase 4 ship · _version + manifest + CHANGELOG + project-journal + D#462 + memory canon doctrine_propagation_progress mis à jour"
+  ],
+  "tests_non_regression": {
+    "build_manifest": "PASS · 81 skills + 92 jargon entries",
+    "build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+    "em_dash_cross_6_doctrines": "0 occurrence · ✓",
+    "discipline_residual_cross_6_doctrines": "0 occurrence post-Phase 3 fix · ✓"
+  },
+  "monitor_synthesis_lot_3": {
+    "skill_authoring_doctrine": 1,
+    "schema_encoding_doctrine": 0,
+    "extension_discovery_doctrine": 0,
+    "scope_extension_doctrine": 0,
+    "territory_doctrine": 1,
+    "entry_arc_doctrine": 0,
+    "total_lot_3": 2,
+    "cumul_lots_1_2_3": "46 occurrences cumulé (44 lots 1+2 + 2 lot 3) · résolution unifiée v2.86.0 audit cross-files"
+  },
+  "apprentissage_canon_lot_3": {
+    "hypothese_validee_3_lots_consecutifs": "Doctrines structurantes (authoring + schema) aussi conformes que doctrines racines (lot 1) et audience + creative (lot 2). 3 lots consécutifs confirment pattern · voice-doctrine propagée par ricochet plus largement qu'estimé · violations majoritairement cosmétiques cohérence post-rename.",
+    "compression_reelle_vs_briefing": "Compression 0% lot 3 (cohérent lots 1 -1% et lot 2 0%) · scope strict voice-doctrine respecté · préservation stricte sémantique > forced reduction",
+    "pattern_meta_discipline_doctrine": "Pattern systémique identifié · doctrines structurantes (SAD · SED · SED-X · Extension Discovery · Territory) utilisaient 'meta-discipline' / 'an authoring discipline' / 'parmi les disciplines' / 'sub-discipline' génériques. Patch cohérence canon 'doctrine' systémique cross 5 doctrines.",
+    "pattern_dates_obsoletes_cross_refs": "Pattern · skill-authoring-doctrine + schema-encoding-doctrine référençaient encore 4 cross-refs avec suffixe '-2026-04-26.md' (artefact pre-rename chantier). Patchés dates retirées + Discipline → Doctrine cohérence.",
+    "filter_haiku_scoring_validated": "Filtre main thread Sonnet sur scoring Haiku effort 3 (territory + entry-arc flagués) validé · 0 doctrine effort 3 réel scope strict voice-doctrine · 0 isolation v2.85.3bis nécessaire · pattern reproductible lot 4.",
+    "calibration_lot_4_attendue": "Lot 4 (opérationnelles) probable compression 0-1% structurelle · hypothèse forte validée 3 lots consécutifs · pré-flight ciblé reste obligatoire mais effort réel doctrines opérationnelles attendu effort 2 cap."
+  },
+  "files_patched": [
+    {"file": "docs/system/skill-authoring-doctrine.md", "scope": "7 patches cohérence post-rename + cross-refs obsolètes · 264L stable"},
+    {"file": "docs/system/schema-encoding-doctrine.md", "scope": "9 patches cohérence post-rename + cross-refs dates retirées · 332L stable"},
+    {"file": "docs/system/extension-discovery-doctrine.md", "scope": "11 patches Discipline → Doctrine + Operational System cross-ref harmonisée · 357L stable"},
+    {"file": "docs/system/scope-extension-doctrine.md", "scope": "7 patches Discipline → Doctrine + hierarchy diagram · 340L stable"},
+    {"file": "docs/system/territory-doctrine.md", "scope": "9 patches Territory Discipline → Territory Doctrine (replace_all) · 370L stable"},
+    {"file": "docs/system/entry-arc-doctrine.md", "scope": "12 patches frontmatter + Entry Arc Discipline + onboarding-holistic-discipline cross-refs (3 replace_all) · 458L stable"},
+    {"file": "_version.json", "scope": "Bump 2.85.2 → 2.85.3"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.85.3 propagation lot 3/4"},
+    {"file": "docs/internal/project-journal.md", "scope": "Narrative entry v2.85.3"},
+    {"file": "docs/internal/releases/manifest/2.85.3-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "scope_constraint": {
+    "in_scope": ["6 doctrines lot 3 authoring + schema édition critique main thread Sonnet", "Tests non-régression standards", "version + manifest + CHANGELOG + project-journal + D#462 + memory canon update"],
+    "out_of_scope_explicit": ["8 doctrines restantes (lot 4 session ultérieure)", "Refactor structurel (narratif blocs > 6 lignes architectural intentionnel) noté backlog v2.86.x", "Anglicisme 'synthesis' (cohérence cross-files lots 1+2+3 = 46 occurrences · reportée v2.86.0 audit cross-files)", "Resolution unifiée FR/EN cross-doctrines (cohérence inter-doctrines · audit final v2.86.0)"]
+  },
+  "decisions_captured": ["D#462"],
+  "memory_canons_updated": ["doctrine_propagation_progress (compteur 3/4 lots · 18/26 doctrines propagated · hypothèse 3 lots consécutifs confirmée · pattern meta-discipline → meta-doctrine systémique · filter Haiku scoring validated)"],
+  "backlog_v2_85_4_plus": [
+    "v2.85.4 · lot 4/4 opérationnelles · 6-7 doctrines (operational-system-doctrine · onboarding-holistic-doctrine · engagement-disclosure-doctrine · update-distribution-doctrine · skill-routing-doctrine · attribution-multitouch-doctrine · brand-isolation-doctrine) · compression réelle attendue 0-1% · effort 2 attendu",
+    "v2.86.0 · audit cross-files final + grep orphelins + résolution synthesis/synthèse unifiée cross 26 doctrines (46 occurrences cumulées lots 1+2+3 + estimé lot 4)",
+    "v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)",
+    "v2.86.2 · test discovery externe"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.85.3 = git revert HEAD strict · 6 doctrines patchées modifications additives mineures · zéro impact runtime."
+}

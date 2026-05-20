@@ -1,4 +1,4 @@
-# Schema Encoding Discipline (SED) · Operating Doctrine
+# Schema Encoding Doctrine (SED) · Operating Doctrine
 
 > Working draft, R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/schema-encoding-doctrine.md` in Release mode. **SED is the substrate sub-doctrine of `contextual-intelligence.md` (CI).** Without rigorous schema encoding, the matrix-driven reasoning of CMR has nothing to range over and the agent's intelligence has no stable ground.
 
@@ -10,19 +10,19 @@
 
 A workspace is a knowledge container. The agent reasons over what is encoded in it, entities, fields, sources, vocabulary, lifecycle. If the encoding is sloppy (free-text where enums should be, untracked sources, unversioned schemas, mutations that bypass the gate), every downstream skill inherits the noise. The matrix in CMR cannot select cells correctly when the schema is ambiguous. The recommendations in CI are unreliable when the substrate they rest on is unverifiable. The skills authored under SAD become brittle because the canon they consume drifts session-to-session.
 
-SED names what it takes to keep the substrate clean: typed fields, externalized canon, append-only history, gated mutations, sourcing tags, triangulation, lifecycle hygiene. None of these are individually surprising, they exist scattered across `field-types.md`, `architecture.md`, `extending.md`, hooks, conventions, and the `_field_types` system. SED consolidates them into one named discipline so that a skill author can ask, "am I encoding this correctly?" and have a single place to check.
+SED names what it takes to keep the substrate clean: typed fields, externalized canon, append-only history, gated mutations, sourcing tags, triangulation, lifecycle hygiene. None of these are individually surprising, they exist scattered across `field-types.md`, `architecture.md`, `extending.md`, hooks, conventions, and the `_field_types` system. SED consolidates them into one named doctrine so that a skill author can ask, "am I encoding this correctly?" and have a single place to check.
 
 ---
 
 ## 2. The problem SED addresses
 
-Without an encoding discipline, three kinds of silent failure accumulate:
+Without an encoding doctrine, three kinds of silent failure accumulate:
 
 1. **Sloppy substrate poisons reasoning.** A field tagged `derived` but actually filled by an operator's stated value, an entity referenced by inconsistent slugs, a canon variable inlined in skill prose rather than externalized, each is a small drift. Cumulatively they make the agent's reasoning unreliable in ways that don't surface as bugs but as creeping inconsistency.
 2. **Mutations bypass the gate.** A direct `Edit` on a brand JSON skips the audit trail, breaks the proposal/acceptance workflow, and corrupts the event log. The hooks (`mutation-guard.py`, `convention-guard.py`) catch the obvious cases ; without a doctrine that names and explains them, the rules feel arbitrary and accumulate exceptions.
 3. **The temporal layer drifts independently of the spatial layer.** Entities (brand, product, audience, offers, learnings, strategy) describe what the brand *is*. But what the workspace has *learned*, *observed*, *captured over time*, events, learnings lifecycle, operator awareness, session traces, is a parallel encoding with its own discipline. Without naming this Memory & Observability sub-corpus inside SED, it falls between the cracks.
 
-SED is the answer: a single discipline that governs how the substrate gets and stays rigorous.
+SED is the answer: a single doctrine that governs how the substrate gets and stays rigorous.
 
 ---
 
@@ -146,7 +146,7 @@ To prevent scope creep, SED explicitly does NOT cover:
 - **The agent's communication style** (CI Surface contract sub-corpus · voice, close, sharpening).
 - **The vision / extractibility test** (Extractibility frame test).
 
-When in doubt about whether a rule is SED or another discipline, ask: *"is this about how data gets and stays well-encoded ?"* If yes, SED. If no, route elsewhere.
+When in doubt about whether a rule is SED or another doctrine, ask: *"is this about how data gets and stays well-encoded ?"* If yes, SED. If no, route elsewhere.
 
 ---
 
@@ -180,10 +180,10 @@ SED est le squelette technique sur lequel toutes les autres couches s'appuient.
 
 ## 11. Cross-references
 
-- **`contextual-intelligence.md`** · master doctrine ; SED is the substrate sub-discipline that keeps CI's reasoning honest.
-- **`canonical-matrix-reasoning-2026-04-26.md`** · CMR depends on SED ontologically (no schema → no matrix). SED invariants 3 (sourcing) and 5 (triangulation) feed CMR invariants 4 (canon sourcing) and 9 (triangulation rule) directly.
-- **`skill-authoring-discipline-2026-04-26.md`** · SAD governs how skills consume the SED substrate. SAD reads SED, not the inverse.
-- **`provenance-trust-discipline-scope-2026-04-26.md`** *(R&D zone, lives in `research/` until promotion triggers hit)* · PTD will extend SED with provenance/trust at the multi-tenant scale. The same R&D-zone caveat applies to the other doctrine drafts referenced above with the `2026-04-26` date suffix.
+- **`contextual-intelligence.md`** · master doctrine ; SED is the substrate sub-doctrine that keeps CI's reasoning honest.
+- **`canonical-matrix-reasoning.md`** · CMR depends on SED ontologically (no schema → no matrix). SED invariants 3 (sourcing) and 5 (triangulation) feed CMR invariants 4 (canon sourcing) and 9 (triangulation rule) directly.
+- **`skill-authoring-doctrine.md`** · SAD governs how skills consume the SED substrate. SAD reads SED, not the inverse.
+- **`provenance-trust-discipline-scope.md`** *(R&D zone, lives in `research/` until promotion triggers hit)* · PTD will extend SED with provenance/trust at the multi-tenant scale.
 - **`field-types.md`** · canonical reference for the four `_field_types` values. Source of truth, SED chapter that points to it.
 - **`extending.md`** · extension layer rules ; SED chapter that contextualizes them in the broader discipline.
 - **`architecture.md`** · entity dependency graph, context budget, structural reference ; pre-existing input to SED.

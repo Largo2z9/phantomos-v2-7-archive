@@ -12,6 +12,71 @@
 
 ---
 
+## v2.85.3 · 2026-05-20 · PROPAGATION VOICE-DOCTRINE LOT 3/4 · 6 doctrines authoring + schema · D#462 captured
+
+Lot 3/4 cible doctrines AUTHORING + SCHEMA (structurantes substrate). Hypothèse pré-flight · ces doctrines ont possiblement plus de cross-refs internes que les lots précédents (définissent les conventions consommées par les autres doctrines).
+
+**Pré-flight Phase 1** · 1 sub-agent Haiku scope disjoint · 6 doctrines inventoriées · Haiku score effort 2/2/2/2/3/3 sur 2121L cumulés (207 violations brutes). **Main thread Sonnet filtre scoring Haiku** · effort 3 sur territory + entry-arc surestimé · counts gonflés par (a) narratif > 6 lignes structurel architectural (hors scope voice-doctrine) · (b) "adjectifs vagues" incluant "canonical" / "load-bearing" qui sont termes canon PhantomOS · (c) liaisons molles "souvent" en contexte factuel pattern observation. Real actionable voice-doctrine patches = effort 2 high pour territory + entry-arc, pas 3.
+
+**Pré-flight verdict main thread** · 0 doctrine effort 3 réel · 6 doctrines toutes effort 2 · garde-fous PASSED · cap 500L respecté (max 458L entry-arc · marge 42L) · 0 isolation v2.85.3bis nécessaire. Caveat entry-arc 458L proche cap mis en monitoring (non-déclenché pendant édition).
+
+**Politique tranchée Largo pré-Phase 2** ·
+- Termes canon EN préservés NON-PATCHABLES · `canonical` (voice-doctrine S1) · `load-bearing` (canon CI) · `Operator-facing` compound technical · acronymes industrie standard
+- `Souvent` en prose · quantitatif observationnel conservé · liaison molle diluant compressé · décision au cas par cas
+- Caveat entry-arc actif · si édition révèle effort réel >2 high, isolation v2.85.3bis activée immédiatement (non-déclenché)
+- Ordre traitement validé · skill-authoring → schema-encoding → extension-discovery → scope-extension → territory → entry-arc (producer central → consumers chaîne dépendances)
+
+**Phase 2 propagation main thread Sonnet** · édition critique non-déléguable · 6 doctrines traitées ordre producer → consumer ·
+
+| Doctrine | Vol | Patches | Compression |
+|----------|-----|---------|-------------|
+| skill-authoring-doctrine.md | 264L | 7 (1 titre + 2 generic discipline + 4 cross-refs avec dates retirées) | 0% |
+| schema-encoding-doctrine.md | 332L | 9 (1 titre + 5 generic discipline + 1 sub-discipline + 3 cross-refs dates retirées + 1 SAD discipline → doctrine) | 0% |
+| extension-discovery-doctrine.md | 357L | 11 (1 titre + 7 body Discipline → Doctrine + 3 cross-refs Operational System harmonisées + post-Phase 3 fix ligne 29 manquée Phase 2) | 0% |
+| scope-extension-doctrine.md | 340L | 7 (1 titre + 1 sister discipline + 1 sans discipline + 1 H2 + 3 hierarchy diagram + 1 sister discipline body) | 0% |
+| territory-doctrine.md | 370L | 9 (replace_all "Territory Discipline" → "Territory Doctrine" cross body + titre) | 0% |
+| entry-arc-doctrine.md | 458L | 12 (1 frontmatter + 7 Entry Arc Discipline replace_all + 4 onboarding-holistic-discipline replace_all) | 0% |
+| **TOTAL** | **2121L** | **55 patches** | **0% compression structurelle** |
+
+**Phase 3 tests non-régression PASSÉS** · `python3 .skills/build-manifest.py` · 81 skills + 92 jargon entries ✓ · `python3 .skills/build-brand-snapshot.py _EXAMPLE` · 24 lines ✓ · grep em-dash cross 6 doctrines · 0 occurrence ✓ · grep `Discipline` résiduel post-Phase 3 fix · 0 occurrence ✓ (1 occurrence extension-discovery ligne 29 manquée Phase 2 patchée Phase 3).
+
+**Apprentissage canon majeur lot 3** · **hypothèse VALIDÉE 3 lots consécutifs** · doctrines structurantes (authoring + schema) aussi conformes que racines (lot 1) et audience + creative (lot 2). 0.7-2.6 violations actionnable / 100L sur 3 lots cumulés. Voice-doctrine propagée par ricochet plus largement qu'estimé · 3 vecteurs validés (création récente sous discipline canon + trilogie v2.84.2-v2.84.4 + chantier rename v2.85.0.x).
+
+**Compression réelle 0%** (cohérent lots 1 -1% et lot 2 0%) · scope strict voice-doctrine respecté · patches mécaniques substitution/cohérence uniquement · 0 compression structurelle. Pattern préservation stricte sémantique > forced compression confirmé pour 3ème lot consécutif.
+
+**Pattern systémique meta-discipline → meta-doctrine identifié** · 5 doctrines structurantes utilisaient ·
+- `meta-discipline above SED + CMR` (SAD)
+- `single discipline that governs` (SED)
+- `an authoring discipline` (SAD)
+- `an encoding discipline` (SED)
+- `Sister discipline of SED, SAD, CMR` (SED-X)
+- `parmi les disciplines` H2 (SED-X)
+- `sub-discipline of CI` (SED)
+
+Pattern cohérence canon `doctrine` systémique cross 5 doctrines · 8 occurrences generic discipline → doctrine.
+
+**Pattern dates obsoletes cross-refs identifié** · skill-authoring-doctrine + schema-encoding-doctrine référençaient encore 4 cross-refs avec suffixe `-2026-04-26.md` (artefact pre-rename chantier v2.85.0.x) · patchés dates retirées + Discipline → Doctrine cohérence systémique.
+
+**Filter Haiku scoring validated** · main thread Sonnet filtre effort 3 Haiku (territory + entry-arc flagués) validé · 0 doctrine effort 3 réel scope strict voice-doctrine · 0 isolation v2.85.3bis nécessaire · pattern reproductible lot 4.
+
+**Monitor synthesis lot 3** · 2 occurrences cumulées (skill-authoring 1 + territory 1). Cumul lots 1+2+3 = 46 occurrences (44 lots 1+2 + 2 lot 3). Résolution unifiée reportée v2.86.0 audit cross-files final.
+
+**Wall-time consommée** · ~90 min sur 6 doctrines (cap 2h respecté · marge 30 min).
+
+**Apprentissage v2.85.1bis appliqué** · Phase 2.A lecture intégrale obligatoire respectée sur 6/6 doctrines · 0 raccourci pré-flight · cap 500L respecté · self-conformance Phase 2.C menée sur chaque doctrine post-édition. Sauf Phase 3 fix supplémentaire pour 1 occurrence extension-discovery ligne 29 manquée Phase 2 (cas isolé · patchée immédiatement Phase 3 · pas de glissement systémique).
+
+**Backward compat strict additif** · 27 doctrines · 81 skills · 10 slash commands inchangé · 6 doctrines patchées modifications additives mineures · zéro impact runtime · réversible git revert.
+
+D#462 captured · memory canon `doctrine_propagation_progress` mis à jour (compteur 3/4 lots · 18/26 doctrines propagated · hypothèse 3 lots consécutifs confirmée · pattern meta-discipline → meta-doctrine systémique · filter Haiku scoring validated).
+
+**Backlog v2.85.4 → v2.86.x** ·
+- v2.85.4 · lot 4/4 opérationnelles · 6-7 doctrines (operational-system-doctrine · onboarding-holistic-doctrine · engagement-disclosure-doctrine · update-distribution-doctrine · skill-routing-doctrine · attribution-multitouch-doctrine · brand-isolation-doctrine) · compression réelle attendue 0-1% (hypothèse forte validée 3 lots consécutifs)
+- v2.86.0 · audit cross-files final + grep orphelins + résolution synthesis/synthèse unifiée cross 26 doctrines (46 occurrences cumulées lots 1+2+3 + estimé lot 4)
+- v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)
+- v2.86.2 · test discovery externe
+
+---
+
 ## v2.85.2 · 2026-05-20 · PROPAGATION VOICE-DOCTRINE LOT 2/4 · 6 doctrines audience + creative · D#461 captured
 
 Lot 2/4 cible doctrines AUDIENCE + CREATIVE créées plus tôt dans l'histoire du projet (v2.6x-v2.7x typique). Hypothèse de travail · ces doctrines auraient probablement plus de violations voice-doctrine que le lot 1 racines (qui était déjà conforme par ricochet des sprints v2.84.x).
