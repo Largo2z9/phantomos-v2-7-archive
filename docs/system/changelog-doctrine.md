@@ -1,12 +1,12 @@
 ---
-name: changelog-discipline
+name: changelog-doctrine
 description: Doctrine canon · pattern CHANGELOG.md Keep-a-Changelog convention · cap 80L par release · sections atomiques · 3 sources vérité distinctes (CHANGELOG public · project-journal interne · manifests JSON détails)
 type: doctrine
 version: v2.83.0
 status: shipped
 ---
 
-# Changelog Discipline · Operating Doctrine
+# Changelog Doctrine · Operating Doctrine
 
 > Canonique v2.83.0. Doctrine canon racine qui codifie le pattern canon pour le `CHANGELOG.md` workspace-template PhantomOS. Résumé exécutif Keep-a-Changelog strict · sections atomiques · cap 80 lignes par release entry. Narrative cognitive Largo vit dans `docs/internal/project-journal.md`. Détails structurés étendus vivent dans `docs/internal/releases/manifest/{version}-manifest.json`. Doctrine sœur de `claude-md-doctrine.md` v2.82.0 (même pattern anti-inflation forme · test de suppression obligatoire · capacité attention bornée). Ferme le gap *"CHANGELOG.md racine dérive en narrative doctrinale par release · 4270L vs cible ~1150L · 3-4× sur-dimensionné · founder's curse répété (justification complète au lieu de delta concis) · audit externe Claude Web v2.82.1 flag systémique"*.
 
@@ -39,7 +39,7 @@ CHANGELOG narratif signale que le mainteneur écrit pour lui-même (archivage co
 
 ## 2. Le problème résolu
 
-Sans Changelog Discipline canon ·
+Sans Changelog Doctrine canon ·
 
 1. **Founder's curse répété par release.** Chaque release devient justification doctrinale complète au lieu de delta concis. Le mainteneur explique *pourquoi* la doctrine existe (déjà dans le fichier doctrine) au lieu de signaler *quoi* a changé. Audit externe Claude Web sur PhantomOS v2.82.1 flag 4270L CHANGELOG vs cible ~1150L · 3-4× sur-dimensionné systémique.
 

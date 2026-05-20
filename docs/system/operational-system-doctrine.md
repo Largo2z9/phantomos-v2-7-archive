@@ -42,7 +42,7 @@ Avant doctrine ·
 
 3. **Skills authors sans décision-aid couche.** NEW skill créé sans question explicite *"sur quelle couche du système opère-t-il principalement ?"*. Conséquence · skill orphelin couche, ou couvre 2-3 couches sans dominante claire, fragmente le mental model opérateur.
 
-4. **Cycle de promotion entre couches implicite.** Une règle stable devrait pouvoir être promue en template. Une métrique convergente devrait pouvoir être rituélée. Un template fatigué devrait être détecté par une métrique. Mécaniques existaient (cycle promotion Territory Discipline §7, cycle validation CC §4) mais pas généralisées au niveau système.
+4. **Cycle de promotion entre couches implicite.** Une règle stable devrait pouvoir être promue en template. Une métrique convergente devrait pouvoir être rituélée. Un template fatigué devrait être détecté par une métrique. Mécaniques existaient (cycle promotion Territory Doctrine §7, cycle validation CC §4) mais pas généralisées au niveau système.
 
 5. **Couche manquante = système qui s'effondre, sans diagnostic clair.** Un workspace freelance sans rituels ne tient pas la durée. Un workspace sans métriques ne s'auto-corrige pas. Un workspace sans templates duplique l'effort. Sans grammaire 5 couches, le diagnostic *"qu'est-ce qui manque ?"* reste opaque.
 
@@ -235,7 +235,7 @@ Couches couplées unidirectionnellement (ECR → Règles → Templates) sans fee
 | **Couche 3 → Couche 4** (template → métrique) | un template usage drop ou fatigue détectée → métrique de surveillance | métrique adoption_rate + métrique success_rate par template | template `cold-email-template-v1` adoption drop → métrique `template_adoption_rate` lance audit fatigue |
 | **Couche 5 → Couche 2** (rituel → règle implicite) | un rituel automatique appliqué sans exception → règle hardcodée | règle promote-to-hook avec enforcement runtime | rituel `validate-resources` post-mutation appliqué systématique → règle hard PreToolUse hook enforcement |
 
-**Pattern référence** · cycle promotion Territory Discipline §7 (production validée → territoire enrichi) est une instance du cycle général entre couches. Cycle validation Compositional Cartography §4 (produce → test → learn → promote) opère même mécanisme niveau créatif.
+**Pattern référence** · cycle promotion Territory Doctrine §7 (production validée → territoire enrichi) est une instance du cycle général entre couches. Cycle validation Compositional Cartography §4 (produce → test → learn → promote) opère même mécanisme niveau créatif.
 
 **Anti-pattern · mutation directe sans cycle promotion.** Brique d'une couche écrite en place dans une autre couche sans cycle promotion = corruption audit trail. Pattern canon · promotion explicit via cycle canonical, jamais mutation directe.
 

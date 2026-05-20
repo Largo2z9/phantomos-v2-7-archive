@@ -60,7 +60,7 @@ A binding doctrine cannot be retracted silently. Three options:
 
 When two doctrines appear to conflict, the resolution follows this priority:
 
-| Layer | Discipline | Wins on |
+| Layer | Doctrine | Wins on |
 |---|---|---|
 | 0 (Frame) | Extractibility (Extractibility test) | Architectural agnosticity, a feature that breaks the test loses |
 | 1 (Master) | CI | Substantive judgment, surface contract, two-tier rule |
@@ -82,7 +82,7 @@ When conflict is genuinely irreducible : route to the maintainer. Decision logge
 
 ## 6. Adding a new doctrine
 
-A new doctrine candidate (e.g. tomorrow : Model-Adaptive Discipline, or Provider-Agnostic Discipline) requires:
+A new doctrine candidate (e.g. tomorrow : Model-Adaptive Doctrine, or Provider-Agnostic Doctrine) requires:
 
 1. **Gap demonstration**, clearly named gap that no existing doctrine covers, validated on ≥2 concrete cases.
 2. **Sub-corpus check**, could the gap be covered by a sub-corpus of an existing doctrine? Default *yes* until proven otherwise (per, sub-corpus stratégie).

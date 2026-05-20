@@ -1,6 +1,6 @@
-# Compositional Cartography Discipline
+# Compositional Cartography Doctrine
 
-> Doctrine canonique v2.42+. Méthode systémique de cartographier puis composer outputs créatifs et stratégiques via équation v3.1 NOYAU × CONTEXTE × MODIFIEURS. Sœur de Schema Encoding Discipline (SED) et Canonical Matrix Reasoning (CMR), opère comme implémentation domaine-spécifique de CMR appliquée au créatif.
+> Doctrine canonique v2.42+. Méthode systémique de cartographier puis composer outputs créatifs et stratégiques via équation v3.1 NOYAU × CONTEXTE × MODIFIEURS. Sœur de Schema Encoding Doctrine (SED) et Canonical Matrix Reasoning (CMR), opère comme implémentation domaine-spécifique de CMR appliquée au créatif.
 
 ---
 
@@ -91,10 +91,10 @@ Pattern compound learning canonisé v2.27.0 (atlas vivant) · canon-tool schema 
 Compositional Cartography est la sixième discipline. Sœur de :
 
 1. **Contextual Intelligence (CI)** · master doctrine. L'agent raisonne sur l'univers business, ne form-fill jamais.
-2. **Schema Encoding Discipline (SED)** · substrat, encodage rigoureux des entités, fields, sources, vocabulaire.
+2. **Schema Encoding Doctrine (SED)** · substrat, encodage rigoureux des entités, fields, sources, vocabulaire.
 3. **Canonical Matrix Reasoning (CMR)** · production qualité 95% via schema + canon matrice. Théorie générale.
-4. **Skill Authoring Discipline (SAD)** · création et extension de skills. Type taxonomy, frontmatter triad, composition contracts, lifecycle.
-5. **Provenance & Trust Discipline (PTD)** · scope provenance, multi-operator, marketplace skills.
+4. **Skill Authoring Doctrine (SAD)** · création et extension de skills. Type taxonomy, frontmatter triad, composition contracts, lifecycle.
+5. **Provenance & Trust Doctrine (PTD)** · scope provenance, multi-operator, marketplace skills.
 6. **Compositional Cartography (CC)** · cartographier + composer outputs créatifs via équation v3.1. Cette doctrine.
 7. **Doctrine Governance** · meta-process évolution doctrines (promotion, amendment, retraction, conflict resolution).
 
