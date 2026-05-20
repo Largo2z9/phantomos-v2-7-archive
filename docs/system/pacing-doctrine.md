@@ -1,4 +1,4 @@
-# Pacing Discipline · Operating Doctrine
+# Pacing Doctrine · Operating Doctrine
 
 > Canonique v2.78+. Doctrine canon qui codifie les seuils chiffrés partagés du pacing media buyer (spend variance · frequency saturation · CPM drift · creative fatigue) au-delà du gut feeling subjectif. Doctrine sœur de `creative-testing-doctrine.md` (cycle test/refresh) et `attribution-multitouch-doctrine.md` (cadrage mesure post-pacing). Ferme le gap *"seuils pacing inventés ad-hoc"* flag P0 Sprint v2.78 Agent media buyer. Substrat consommé par `routine-perf` (pacing daily) et `analyze-perf` (diagnostic deep) et `audit-google-pmax` (PMAX pacing).
 
@@ -17,7 +17,7 @@
 
 **Différenciation canon vs gut feeling** ·
 
-| Layer | Gut feeling | Pacing Discipline canon |
+| Layer | Gut feeling | Pacing Doctrine canon |
 |---|---|---|
 | Seuils | subjectifs · session-to-session drift | chiffrés partagés cross-account |
 | Trigger alerte | reactive · client signale | proactive · seuil canon hit |
@@ -25,13 +25,13 @@
 | Cohérence team | absent · chaque buyer son barème | canon partagé team |
 | Action stage-aware | absent · même action toutes stages | stage canon (test/maintain/scale) calibrée |
 
-Pacing Discipline n'est pas une checklist statique. C'est la grammaire chiffrée qui permet à l'opérateur (humain ou agent) de surveiller un compte à fréquence sans réinventer la barème chaque session.
+Pacing Doctrine n'est pas une checklist statique. C'est la grammaire chiffrée qui permet à l'opérateur (humain ou agent) de surveiller un compte à fréquence sans réinventer la barème chaque session.
 
 ---
 
 ## 2. Le problème résolu
 
-Sans Pacing Discipline canon ·
+Sans Pacing Doctrine canon ·
 
 1. **Drift seuils ad-hoc.** Chaque buyer (ou chaque session agent) invente ses seuils dans la prose : *"frequency haute"* (3 ? 5 ?), *"CPM en hausse"* (10% ? 30% ?), *"creative fatiguée"* (7j ? 21j ?). Drift session-to-session · output dispersé · trust cassé client.
 
@@ -43,7 +43,7 @@ Sans Pacing Discipline canon ·
 
 5. **Stage alignment absent.** Pacing test stage (audience nouvelle · CPM élevé OK car learning) traité comme pacing scale stage (audience validée · CPM stable canon). Confusion seuils cross-stage · over-react sur learning phase.
 
-Pacing Discipline = doctrine canon qui ferme ces 5 gaps via 4 axes chiffrés + stages alignment + trigger patterns explicit.
+Pacing Doctrine = doctrine canon qui ferme ces 5 gaps via 4 axes chiffrés + stages alignment + trigger patterns explicit.
 
 ---
 
@@ -265,7 +265,7 @@ CPM +60% WoW pause silent sans drill auction vs creative vs tracking. Diagnostic
 
 ## 8. Position dans le système opérationnel 5 couches
 
-Pacing Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71 ·
+Pacing Doctrine opère sur 3 couches simultanément du système opérationnel (`operational-system-doctrine.md`) ·
 
 **Couche 2 · Règles (heuristiques décision).** Seuils chiffrés canon §3-§4 + patterns trigger alerte §6 + stage detection §5 sont heuristiques de décision canon · *"si variance > ±40% alors action immédiate"*. Pattern miroir `dependency-resolution-protocol.md` L1+L2+L3 gap-filling pre-flight.
 

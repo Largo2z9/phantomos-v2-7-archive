@@ -1,4 +1,4 @@
-# Visual Identity Discipline
+# Visual Identity Doctrine
 
 > Doctrine canonique v2.43+. Sources canoniques haute résolution pour génération fidèle creatives. Catalog assets + logo SVG + wordmark pattern validation. Cross-ref `compositional-cartography.md` v2.42 (équation v3.1 NOYAU × CONTEXTE × MODIFIEURS), `schema-encoding-doctrine.md` (mutation rule + sourcing tags), `canonical-matrix-reasoning.md` (production 95%).
 
@@ -87,7 +87,7 @@ Si `assets_canonical` absent OU tous les slots ont `_fallback_to_cdn: true` ·
 - compose-creative warning logged `assets_canonical_missing`
 - Dégrade automatiquement vers `packshots.primary_front` + `packshots.cdn_paths[]`
 - Quality flag déposé `learnings.json` · pattern `gen_quality_degraded_no_canonical` pour audit cross-session
-- Operator-facing · zéro exposition technique (`assets_canonical`, `_fallback_to_cdn` jamais surfacés). Operator voit · `source haute résolution manquante, gen dégradée. Upload packshot studio recommandé.`
+- Operator-facing · zéro exposition technique (`assets_canonical`, `_fallback_to_cdn` jamais surfacés). L'opérateur voit · `source haute résolution manquante, gen dégradée. Upload packshot studio recommandé.`
 
 ## Cross-refs
 
@@ -103,5 +103,5 @@ Si `assets_canonical` absent OU tous les slots ont `_fallback_to_cdn: true` ·
 
 - Ne pas upload sources canon prétextant "le CDN suffit". Le CDN n'est pas une source canon, c'est un fallback.
 - Ne pas hardcoder le wordmark dans le prompt compose-creative. Regex `wordmark_pattern` est la validation runtime, le wordmark vit dans `label.wordmark` + canonical SVG.
-- Ne pas exposer `_canonical: false` ou `_fallback_to_cdn: true` côté operator brut. Translation operator-facing · `source haute résolution manquante, à uploader`.
+- Ne pas exposer `_canonical: false` ou `_fallback_to_cdn: true` côté opérateur brut. Translation operator-facing · `source haute résolution manquante, à uploader`.
 - Ne pas confondre `assets_canonical` (produit-level, packshots) avec `logo_svg` (brand-level OU produit override rare). Les deux blocs sont distincts, complémentaires.

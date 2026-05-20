@@ -7,6 +7,20 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.85.2] · 2026-05-20
+### Changed
+- **PROPAGATION VOICE-DOCTRINE LOT 2/4** · 6 doctrines audience + creative éditées critique main thread Sonnet · `pain-benefit-chain` · `audience-cartography-doctrine` · `progressive-cartography-doctrine` · `creative-testing-doctrine` · `pacing-doctrine` · `visual-identity-doctrine`
+- 1457L → 1457L (0% compression structurelle · scope strict voice-doctrine respecté · patches mécaniques substitution/cohérence uniquement)
+- 30 patches cumulés · majoritairement `Discipline → Doctrine` cohérence post-rename v2.85.0.x (4 titres + 4 occurrences body) + franglais isolés (`skipée → négligée` · `explicit → explicite` · `capped → limitée` · `signaled → signalé` · `collapse → effondrent` · `operator → opérateur` prose FR) + 1 cross-ref `Operational System Discipline v2.71` → `système opérationnel (operational-system-doctrine.md)` (pacing-doctrine §8)
+### Notes
+- Pré-flight Phase 1 · 1 sub-agent Haiku · 6 doctrines inventoriées · effort 1 sur 2/6 + effort 2 sur 4/6 · garde-fous tous PASSÉS (cap 500L · max 379L · 0 isolation v2.85.2bis nécessaire)
+- **Hypothèse pré-flight PARTIELLEMENT INFIRMÉE** · doctrines audience + creative v2.6x-v2.7x aussi conformes que doctrines récentes lot 1 (0.7-1.4 violations / 100L) · voice-doctrine propagée par ricochet plus largement qu'estimé (création sous discipline canon + trilogie v2.84.2-v2.84.4 + chantier rename v2.85.0.x)
+- **Politique FR/EN consolidée** (validation Largo) · acronymes industrie EN préservés (CPM · CPA · ROAS · CTR · etc.) · termes traduits FR (creative→créative usage substantive · operator→opérateur prose FR) · technical platform-specific préservés EN (adset · copy · retargeting · landing page · buyer)
+- Tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep em-dash 0 cross 6 doctrines · grep `Discipline` résiduel titre interne 0
+- D#461 captured · memory canon `doctrine_propagation_progress` mis à jour (compteur 12/26 cumul · lots 3-4 PENDING)
+- Anglicisme `synthesis` (~10 occurrences lot 2 + 34 occurrences lot 1 déjà shipped) NON patché · cohérence cross-files prime sur patch unilatéral · question reportée v2.86.0 audit cross-files
+- Backlog · v2.85.3 lot 3/4 authoring + schema · v2.85.4 lot 4/4 opérationnelles · v2.86.0 audit cross-files final + question synthesis
+
 ## [2.85.1] · 2026-05-20
 ### Changed
 - **PROPAGATION VOICE-DOCTRINE LOT 1/4** · 6 doctrines racines + investigation éditées critique main thread Sonnet · `contextual-intelligence` · `investigation-posture` · `canonical-matrix-reasoning` · `compositional-cartography` · `decomposition-visibility-doctrine` · `output-clarity-doctrine`

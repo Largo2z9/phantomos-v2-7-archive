@@ -1,4 +1,4 @@
-# Creative Testing Discipline · Operating Doctrine
+# Creative Testing Doctrine · Operating Doctrine
 
 > Canonique v2.78+. Doctrine canon qui codifie le protocole creative testing (3x3 matrix · win/kill seuils chiffrés · refresh cadence) au-delà du *"polish 1 angle"* ou *"test 50 variants random"*. Doctrine sœur de `pacing-doctrine.md` (axe 4 CTR decay · refresh cadence 21j) et `attribution-multitouch-doctrine.md` (cadrage mesure post-test). Ferme le gap *"creative testing framework canon manquant"* flag P0 Sprint v2.78 Agent media buyer. Substrat consommé par `produce-paid-angles` (génération variants) · `compose-creative` (composition variants) · `creative-brief-composer` (brief test plan) · `analyze-perf` (diagnostic win/kill) · `routine-perf` (monitoring tests).
 
@@ -17,7 +17,7 @@
 
 **Différenciation canon vs gut feeling** ·
 
-| Layer | Polish 1 angle | Test 50 random | Creative Testing Discipline canon |
+| Layer | Polish 1 angle | Test 50 random | Creative Testing Doctrine canon |
 |---|---|---|---|
 | Diversification | absent · 1 angle hyper-poli | over · 50 variants noise | structuré · 3x3 matrix 27 variants MECE |
 | Win/kill seuils | subjectifs · gut feeling | absent · vibes only | chiffrés canon ROAS×spend×days |
@@ -25,13 +25,13 @@
 | Stage alignment | absent · même action toutes stages | absent · over-test scale | stage canon test wide · scale focus winners |
 | Audit trail | absent · pas extractible | absent · noise non-traçable | learnings.json append-only · validation_status |
 
-Creative Testing Discipline n'est pas une checklist. C'est la grammaire structurée qui transforme variant testing chaotique en protocole reproductible avec audit trail.
+Creative Testing Doctrine n'est pas une checklist. C'est la grammaire structurée qui transforme variant testing chaotique en protocole reproductible avec audit trail.
 
 ---
 
 ## 2. Le problème résolu
 
-Sans Creative Testing Discipline canon ·
+Sans Creative Testing Doctrine canon ·
 
 1. **Over-test polish 1 angle.** Buyer s'attache à 1 angle gagnant historique · polish 10 variants visuels de ce même angle · diversification absente · audience saturation rapide · ROAS dégrade silencieusement.
 
@@ -45,7 +45,7 @@ Sans Creative Testing Discipline canon ·
 
 6. **Refresh cadence ad-hoc.** Refresh à 7j panic mode OR jamais (until death). Pas de canon 21j sweet spot · waste budget OR audience saturation cumulative.
 
-Creative Testing Discipline = doctrine canon qui ferme ces 6 gaps via 3x3 matrix + win/kill chiffrés + refresh cadence canon + stage alignment.
+Creative Testing Doctrine = doctrine canon qui ferme ces 6 gaps via 3x3 matrix + win/kill chiffrés + refresh cadence canon + stage alignment.
 
 ---
 
