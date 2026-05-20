@@ -1,4 +1,4 @@
-# Output Clarity Discipline · Operating Doctrine
+# Output Clarity Doctrine · Operating Doctrine
 
 > Canonique v2.79.2+. Doctrine canon qui codifie les standards de clarté niveau Vercel / GitHub shipped product pour tous les outputs opérateur-facing PhantomOS. Doctrine sœur de `decomposition-visibility-doctrine.md` (4 niveaux matriciels obligatoires · DVD applique OCD), `operator-vocabulary-translation.md` (mapping vocabulaire interne · OCD enforce mapping HR-OCD-2), `voice.md` (registre · ton · anti-patterns prose), `investigation-posture.md` (5 sections canon outputs stratégiques), `pacing-doctrine.md` (rythme outputs). Ferme le gap *"outputs PhantomOS mélangent 3 registres · 2 langues · 4 systèmes iconographie · 12 termes jargon interne · polish niveau alpha pas shipped product"* flag systémique Sprint v2.79.2 post-test live `/phantom mykara-care` workspace v2.79.1.
 
@@ -35,7 +35,7 @@ Cette doctrine canonise le pattern systémique cross-skills · cross-slash comma
 
 ## 2. Le problème résolu
 
-Sans Output Clarity Discipline canon ·
+Sans Output Clarity Doctrine canon ·
 
 1. **Dérive permanente cross-commands.** `/phantom`, `/bird`, `/breakdown`, `/scope`, `/tour`, plus tous les skills synthesis stratégique brand-related produisent chacun leurs propres conventions ad-hoc. Drift session-to-session · output dispersé · trust cassé opérateur · perception alpha permanent.
 
@@ -49,7 +49,7 @@ Sans Output Clarity Discipline canon ·
 
 6. **Cognitif overload opérateur.** Largo signal direct · *"polish niveau alpha pas shipped product"*. Profil cognitif Largo systematizer-strategist visuel · output matriciel scan en 5 secondes obligatoire. Density variable · whitespace random · iconographie mixte = surcharge cognitive · décision impossible.
 
-Output Clarity Discipline = doctrine canon qui ferme ces 6 gaps via 6 standards canon + iconographie unique + mapping dejargonisation + headers FR sobres + Hard Rules enforcement runtime.
+Output Clarity Doctrine = doctrine canon qui ferme ces 6 gaps via 6 standards canon + iconographie unique + mapping dejargonisation + headers FR sobres + Hard Rules enforcement runtime.
 
 ---
 
@@ -372,7 +372,7 @@ Output ship symboles ✓ ◐ ○ ✗ ⚠ sans légende. Opérateur junior devine
 
 ## 14. Position dans le système opérationnel 5 couches
 
-Output Clarity Discipline opère sur 3 couches simultanément du multiplicatif Operational System Discipline v2.71 ·
+Output Clarity Doctrine opère sur 3 couches simultanément du système opérationnel (`operational-system-doctrine.md`) ·
 
 **Couche 2 · Règles (heuristiques décision).** 8 Hard Rules canon strict (HR-OCD-1 à HR-OCD-8) sont heuristiques décision canon · *"si output opérateur-facing user-visible alors 6 standards canon obligatoires"* enforcement runtime cross-skills cross-slash commands. Pattern miroir `decomposition-visibility-doctrine.md` 9 Hard Rules · `investigation-posture.md` 5 sections obligatoires.
 

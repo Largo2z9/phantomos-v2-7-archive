@@ -12,6 +12,49 @@
 
 ---
 
+## v2.85.1 · 2026-05-20 · PROPAGATION VOICE-DOCTRINE LOT 1/4 · 6 doctrines racines + investigation · D#460 captured
+
+Ouverture chantier qualitativement différent post-clôture rename · propagation voice-doctrine v2.84.1 au contenu textuel des 26 doctrines existantes. Lot 1/4 cible doctrines racines + investigation (socle épistémique du système · propager en premier garantit cohérence vocabulaire avant que doctrines aval s'y réfèrent).
+
+**Pré-flight Phase 1** · 1 sub-agent Haiku scope disjoint · 6 doctrines inventoriées · **toutes en effort 1 (mineur)** · ~15 violations totales sur 2102L cumulés · 0 liaisons molles · 0 sycophant · 0 em-dash · 0 FR/EN drift critique · garde-fous tous PASSÉS. Volume total 2102L < cap 2000L acceptable.
+
+**Calibration ajustée pré-Phase 2** · compression réaliste 10-20% par doctrine (vs briefing -30/-50%) · doctrines déjà majoritairement conformes voice-doctrine en amont · préservation stricte sémantique > forced reduction. Largo confirme Option A GO standard avec calibration.
+
+**Phase 2 propagation main thread Sonnet** · édition critique non-déléguable · 6 doctrines traitées dans l'ordre canon (racine → investigation → CMR → compositional → decomposition-visibility → output-clarity) ·
+
+| Doctrine | Avant | Après | Patches typiques |
+|----------|-------|-------|------------------|
+| contextual-intelligence.md | 203L | 203L (densité accrue) | 7 sections compressées · bullets ligne 42-43 (Détection intention + Sourcing externe) en sous-bullets structurés · anti-patterns Tunnel vision + Run-away delegation Fix compressés · Memory cap §92 compressé · Why this matters compressé · Why master mantra compressé · Position 5 couches compressé · Amendment protocol compressé |
+| investigation-posture.md | 309L | 300L (-3%) | 3 sections compressées · Symptômes observables bullets denses · AP-7 test binaire compressé · Position 5 couches compressé |
+| canonical-matrix-reasoning.md | 380L | 372L (-2.1%) | 5 patches · Frontmatter Status "Working draft R&D zone Build mode" → "Shipped doctrine" · cross-ref "doctrine-governance-2026-04-26.md" → "docs/system/doctrine-governance.md" · Amendment protocol compressé · Position 5 couches compressé · Section 13 Status "Draft" → "Shipped" + footer obsolète retiré |
+| compositional-cartography.md | 145L | 143L (-1.4%) | Position 5 couches compressé · préservation stricte (doctrine déjà très propre 0 violation pré-flight) |
+| decomposition-visibility-doctrine.md | 668L | 668L (0%) | 2 cohérences titre · "Decomposition Visibility Discipline" → "Doctrine" (post-rename v2.85.0.3a) · Position 5 couches "Operational System Discipline v2.71" → "système opérationnel (operational-system-doctrine.md)" |
+| output-clarity-doctrine.md | 397L | 397L (0%) | 4 cohérences · titre + 3 occurrences "Output Clarity Discipline" → "Doctrine" (post-rename v2.85.0.1) · Position 3 couches cross-ref corrigée |
+| **TOTAL** | **2102L** | **2083L** | **-1% préservation stricte** |
+
+**Phase 3 tests non-régression PASSÉS** · `python3 .skills/build-manifest.py` · 81 skills + 92 jargon entries ✓ · `python3 .skills/build-brand-snapshot.py _EXAMPLE` · 24 lines ✓ · grep em-dash cross 6 doctrines · 0 occurrence ✓ · grep "Output Clarity Discipline" résiduel · 0 occurrence ✓.
+
+**Apprentissage canon majeur** · l'hypothèse pré-flight est CONFIRMÉE · les doctrines racines + investigation sont déjà majoritairement conformes voice-doctrine. Raisons identifiées · (a) créées récemment v2.79.x-v2.82.x sous discipline canon en amont · (b) trilogie propagations v2.84.2-v2.84.4 a déjà aligné vocabulaire transverse cross-files · (c) chantier rename v2.85.0.x touchait noms pas contenu textuel. Compression réelle ~1% (vs briefing -30/-50%) · préservation stricte sémantique > forced compression sur du contenu déjà canon.
+
+**Pattern cohérence post-rename identifié** · les doctrines renommées v2.85.0.x conservent titre interne "X Discipline" dans le contenu alors que le fichier porte le nom "X-doctrine.md". Patch cohérence systématique "Discipline → Doctrine" appliqué (decomposition-visibility · output-clarity · canonical-matrix-reasoning · doctrine-governance ref). À propager systématiquement aux 19 autres doctrines lots 2-4.
+
+**Hypothèse pour lots 2-4** · doctrines plus anciennes (audience-cartography v2.64 · pain-benefit-chain v2.79.4 · territory v2.67 · operational-system v2.71 · etc.) auront probablement plus de violations · compression réelle attendue plus proche briefing initial -10/-20% par doctrine. Pré-flight ciblé reste obligatoire pour ajuster effort par lot.
+
+**Backward compat strict additif** · 27 doctrines · 81 skills · 10 slash commands inchangé · 6 doctrines patchées modifications additives mineures · zéro impact runtime · réversible git revert.
+
+D#460 captured · NEW memory canon `doctrine_propagation_progress` (compteur 1/4 lots · 6/26 doctrines propagated · 20 restantes lots 2-4 · pattern observé + apprentissage canon).
+
+**Wall-time consommée** · ~95 min sur 6 doctrines (cap 2h respecté · marge 25 min).
+
+**Backlog v2.85.2 → v2.86.x** ·
+- v2.85.2 · lot 2/4 audience + creative · 5-6 doctrines (audience-cartography-doctrine · pain-benefit-chain · progressive-cartography-doctrine · creative-testing-doctrine · pacing-doctrine · visual-identity-doctrine) · attendre potentiellement plus de violations sur doctrines anciennes v2.6x-v2.7x · compression réelle attendue 10-20%
+- v2.85.3 · lot 3/4 authoring + schema (skill-authoring-doctrine · schema-encoding-doctrine · extension-discovery-doctrine · scope-extension-doctrine · territory-doctrine · entry-arc-doctrine)
+- v2.85.4 · lot 4/4 opérationnelles (operational-system-doctrine · onboarding-holistic-doctrine · engagement-disclosure-doctrine · update-distribution-doctrine · skill-routing-doctrine · attribution-multitouch-doctrine · brand-isolation-doctrine)
+- v2.86.0 · audit cross-files final + grep orphelins
+- v2.86.1 · validation runtime 5 scénarios (dette depuis v2.82.0)
+
+---
+
 ## v2.85.0.3b · 2026-05-20 · **CLÔTURE CHANTIER RENAME** · 21/21 doctrines renommées · D#459 captured
 
 **Chantier rename PhantomOS officiellement clos.** 21 fichiers historiques `*-discipline.md` sous `docs/system/` renommés `*-doctrine.md` en 5 sprints consécutifs · alignment voice-doctrine v2.84.1 politique linguistique FR/EN canon COMPLET.

@@ -1,6 +1,6 @@
 # Canonical Matrix Reasoning (CMR) · Operating Doctrine
 
-> Working draft, R&D zone, Build mode. To be reviewed, then promoted to `workspace-template/docs/system/canonical-matrix-reasoning.md` in Release mode. **CMR is a sub-pattern of execution of `contextual-intelligence.md` (CI)**, CI is the master doctrine ("the agent reasons over a business universe, never form-fills"); CMR is the concrete mechanism by which a *production* skill achieves CI when its output is intersectional.
+> Shipped doctrine. **CMR is a sub-pattern of execution of `contextual-intelligence.md` (CI)**, CI is the master doctrine ("the agent reasons over a business universe, never form-fills") ; CMR is the concrete mechanism by which a *production* skill achieves CI when its output is intersectional.
 
 ---
 
@@ -95,7 +95,7 @@ MASTER : Contextual Intelligence (CI), the agent reasons, never form-fills
 
 **A fourth discipline · PTD (Provenance & Trust Discipline)**, is cross-cutting and partial-scope today (multi-operator authorship, canon-as-product, marketplace skills). It is drafted in `research/provenance-trust-discipline-scope-2026-04-26.md` (R&D zone) and will graduate to full doctrine in `docs/system/` when trigger conditions hit (2nd operator connected, 1st knowledge pack sold, 1st third-party skill).
 
-Doctrine governance (how to amend, retract, resolve conflicts among the disciplines) lives in `doctrine-governance-2026-04-26.md` as a meta-process, not a doctrine.
+Doctrine governance (how to amend, retract, resolve conflicts among the disciplines) lives in `docs/system/doctrine-governance.md` as a meta-process, not a doctrine.
 
 ---
 
@@ -342,19 +342,15 @@ This pattern was named after live red-team feedback that the original draft of C
 
 ## Amendment protocol
 
-To amend this doctrine, follow the procedure documented in `docs/system/doctrine-governance.md` § Amendment : draft the change in a research note, register a new D# entry in `decisions.md` with explicit `[SUPERSEDES Dxxx]` annotation, patch the doctrine file with a changelog header, and surface a re-test list of consumer skills. Silent edits to a binding doctrine are refused by convention.
+Procedure · `docs/system/doctrine-governance.md` § Amendment. Draft change in research note · register new D# entry in `decisions.md` with explicit `[SUPERSEDES Dxxx]` · patch doctrine file with changelog header · surface re-test list of consumer skills. Silent edits refused by convention.
 
 ---
 
 ## Position dans le système opérationnel 5 couches
 
-CMR opère sur 2 couches du système opérationnel (cf
-`operational-system-doctrine.md`) · couche 1 (modèle) via l'imposition
-schema + matrice canon comme structure de production · couche 4 (métriques)
-via le scoring intersectionnel qui mesure la qualité output par cellule.
+CMR opère sur 2 couches du système opérationnel (`operational-system-doctrine.md`) · couche 1 (modèle) via l'imposition schema + matrice canon comme structure de production · couche 4 (métriques) via le scoring intersectionnel qui mesure la qualité output par cellule.
 
-CMR garantit la cohérence cross-skill au niveau modèle. La couche 4
-métriques traçabilité audit ses outputs.
+CMR garantit la cohérence cross-skill au niveau modèle. La couche 4 métriques audit ses outputs.
 
 ---
 
@@ -371,10 +367,6 @@ métriques traçabilité audit ses outputs.
 
 ## 13. Status
 
-- **Draft** · research zone, Build mode. To be reviewed by the maintainer, iterated, then promoted to `workspace-template/docs/system/canonical-matrix-reasoning.md` in Release mode.
-- **Implementation roadmap** · Phase 3 of the cadrage: audit each producer/curator/orchestrator skill against §5 invariants, scope patches, ship v2.10.x batch.
+- **Shipped** · canon doctrine consumed cross-skills.
+- **Implementation roadmap** · audit each producer/curator/orchestrator skill against §5 invariants, scope patches, ship.
 - **First applications** · refactor `analyze-copy` with modulator macro. Patch `angles-biases-matrix` with verbatim anchoring. Canonize C1–C10 macro-matrix. Externalize `paid-angle-scoring` weights to JSON.
-
----
-
-*Doctrine · internal review.*

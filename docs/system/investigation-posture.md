@@ -12,17 +12,13 @@ Test live opérateur v2.53 sur cas réel (snapshot-brand sur URL Housswood, 6 mi
 
 **Symptômes** ·
 
-- L'agent scan une URL en 6 minutes puis produit un rapport stratégique complet (audiences, projections ROAS, leviers, plan de pitch) **comme s'il connaissait la marque depuis 6 mois**.
-- L'opérateur lit *"leur volume est plafonné par leur calendrier de drops influenceurs"* comme un fait, alors que c'est une hypothèse dérivée de 3 indicateurs partiels.
-- Les *"3 audiences"* présentées sont du persona-building creative-driven (intuition LLM sur le copy lu), pas data-driven (verbatims clients réels, mine-voc, analytics).
-- L'agent ferme la conversation avec une synthèse complète. L'opérateur valide ou rejette en bloc, ne creuse pas. La porte n'est pas ouverte.
-- Le ton confiant qui en résulte produit du copywriting marketing déguisé en analyse business (*"C'est pas une marque de mobilier enfant, c'est une réponse artisanale à une contradiction..."*).
+- Scan URL en 6 minutes puis rapport stratégique complet (audiences, projections ROAS, leviers, plan de pitch) **comme s'il connaissait la marque depuis 6 mois**.
+- Hypothèses dérivées de 3 indicateurs partiels lues comme faits (*"leur volume est plafonné par leur calendrier de drops influenceurs"*).
+- Personas creative-driven (intuition LLM sur copy lu) présentés comme analyse data-driven (verbatims clients, mine-voc, analytics).
+- Conversation fermée par synthèse complète · l'opérateur valide ou rejette en bloc, ne creuse pas, la porte reste fermée.
+- Ton confiant produit du copywriting marketing déguisé en analyse business.
 
-**Pourquoi c'est grave** ·
-
-- Sur des décisions à 5-50k€ de budget paid acquisition, présenter des hypothèses comme des faits casse la confiance opérateur dès qu'il découvre une approximation.
-- L'agent ferme l'espace de conversation que l'opérateur devrait ouvrir. La valeur d'un expert externe est de faire émerger les vraies questions, pas de remplir les blancs avec de la prose convaincante.
-- Sur scaling cross-clients, un agent qui affirme sans cartographier produit des outputs interchangeables non-adaptés à la réalité de chaque marque.
+**Pourquoi c'est grave** · sur décisions à 5-50k€ de budget paid, affirmer hypothèses comme faits casse la confiance opérateur dès qu'une approximation est découverte · l'agent ferme l'espace de conversation que l'opérateur devrait ouvrir · scaling cross-clients produit des outputs interchangeables non-adaptés à chaque marque.
 
 ---
 
@@ -227,7 +223,7 @@ Avant ·
 Après ·
 > Operator pose même question. L'agent invoque le skill correspondant via Task tool · `profile-audience` pour audiences, `produce-paid-angles` pour angles. Le skill consume les matrices canon, applique l'équation compositionnelle, retourne un output structuré avec hypothèses confidence chain + références canon explicites. L'agent surface le résultat à l'opérateur en respectant la posture investigation (5 sections).
 
-Le test binaire pour ce AP · "Est-ce que l'output que je produis aurait pu sortir directement d'un skill PhantomOS, ou je suis en train d'inventer la roue en prose ?". Si le skill existe → invoke-le. Si pas → flag le gap, propose `create-skill`. Improviser en prose = bug v2.55+.
+Test binaire · *"Est-ce que cet output aurait pu sortir directement d'un skill PhantomOS, ou j'invente la roue en prose ?"*. Skill existe → invoke. Pas de skill → flag gap, propose `create-skill`. Improvisation prose = bug v2.55+.
 
 ---
 
@@ -278,14 +274,9 @@ Skills concernés v2.55+ (audit + propagation) ·
 
 ## Position dans le système opérationnel 5 couches
 
-Investigation posture (5 sections · Observé · Déduit · Inconnu · Leviers ·
-Close ouvert) est une règle canonique de la couche 2 (heuristiques de
-décision) du système opérationnel PhantomOS (cf
-`operational-system-doctrine.md`). Elle s'applique à TOUT output
-stratégique (audience synthesis · paid angles · brief copy · audit perf · etc.).
+Investigation posture (5 sections · Observé · Déduit · Inconnu · Leviers · Close ouvert) est règle canon couche 2 du système opérationnel (cf `operational-system-doctrine.md`). Elle s'applique à TOUT output stratégique (audience synthesis · paid angles · brief copy · audit perf · etc).
 
-Sans cette règle, l'agent freelance des syntheses non-traçables. Avec
-elle, chaque assertion porte son étiquette d'origine et confidence chain.
+Sans cette règle · synthèses non-traçables freelancées. Avec elle · chaque assertion porte son étiquette d'origine et confidence chain.
 
 ---
 

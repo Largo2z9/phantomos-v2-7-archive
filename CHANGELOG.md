@@ -7,6 +7,18 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.85.1] · 2026-05-20
+### Changed
+- **PROPAGATION VOICE-DOCTRINE LOT 1/4** · 6 doctrines racines + investigation éditées critique main thread Sonnet · `contextual-intelligence` · `investigation-posture` · `canonical-matrix-reasoning` · `compositional-cartography` · `decomposition-visibility-doctrine` · `output-clarity-doctrine`
+- 2102L → 2083L (-1% · préservation stricte sémantique)
+- 18 patches cumulés · titres `Discipline → Doctrine` (cohérence post-rename v2.85.0.x) · Status DRAFT → SHIPPED canonical-matrix-reasoning · cross-ref `doctrine-governance-2026-04-26.md` corrigée · sections Position 5 couches compressées · bullets/sections narratives compressées (CI bullets ligne 42-43 · IP symptômes · CMR amendment · etc.)
+### Notes
+- Pré-flight Phase 1 · 1 sub-agent Haiku · 6 doctrines toutes en effort 1 (mineur) · ~15 violations totales · garde-fous tous PASSÉS
+- **Apprentissage canon majeur** · doctrines racines + investigation déjà majoritairement conformes voice-doctrine (créées récemment v2.79.x-v2.82.x sous discipline canon · trilogie v2.84.2-v2.84.4 a aligné vocabulaire transverse · chantier rename v2.85.0.x touchait noms pas contenu) · compression réelle -1% vs briefing -30/-50% · préservation stricte sémantique > forced reduction
+- Tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · grep em-dash 0 cross 6 doctrines
+- D#460 captured · NEW memory canon `doctrine_propagation_progress` (1/4 lots · 6/26 doctrines propagated)
+- Backlog · v2.85.2 lot 2 audience + creative (doctrines plus anciennes v2.6x-v2.7x · compression réelle attendue plus proche briefing 10-20%)
+
 ## [2.85.0.3b] · 2026-05-20
 ### Changed
 - **CLÔTURE CHANTIER RENAME · 21/21 doctrines renommées** · 2 dernières fichiers `*-discipline.md` → `*-doctrine.md` · `engagement-disclosure` · `schema-encoding` · alignment voice-doctrine v2.84.1 politique linguistique FR/EN canon COMPLET
