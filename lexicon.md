@@ -8,15 +8,11 @@ Le workspace PhantomOS lui-même · un dossier de fichiers (brands, resources, s
 
 ## Skill
 
-Capacité exécutable de l'agent · cartographier une audience, produire un angle paid, auditer un compte Meta. Une demande en langage naturel route vers le skill correspondant via `.skills/_manifest.json`. Le catalogue est navigable via `/skills`.
+Capacité exécutable de l'agent · cartographier une audience, produire un angle paid, auditer un compte Meta. L'agent reconnaît votre demande en langage naturel et mobilise la bonne capacité. Le catalogue est navigable via `/skills`.
 
 ## Porte d'entrée
 
-Une des quatre options du splitter initial de `/tour` (A explication guidée · B configurer une marque maintenant · C importer ce qui existe déjà · D juste explorer). Chaque porte route vers un livrable par défaut différent (atlas Stepprs pédagogique pour A · atlas complet marque opérateur pour B · etc.).
-
-## Slug
-
-Identifiant court canon utilisé en interne pour le routing déterministe · `setup:brand`, `volet:cycle`, `drill:creative`, `exit:setup`, `pivot:territoires`. Vous ne tapez pas les slugs, l'agent les pose dans ses options et les consume au moment du choix.
+Une des quatre options proposées au démarrage de `/tour` selon votre intention (explication guidée, configurer une marque maintenant, importer ce qui existe déjà, ou juste explorer). Chaque porte route vers un livrable par défaut adapté à l'intention choisie.
 
 ## Brand
 

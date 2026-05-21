@@ -1,0 +1,86 @@
+{
+  "_schema": "release-manifest/1.0",
+  "version": "2.87.3",
+  "released_at": "2026-05-21",
+  "type": "patch",
+  "backward_compat": "strict-additive",
+  "compatible_from": "2.0.0",
+  "skills_count_before": 81,
+  "skills_count_after": 81,
+  "summary": "Sprint PATCH v2.87.3 LITE P0 · 6 chantiers chirurgicaux surfaces premier contact pré-partage opérateurs externes · résout 13/16 frictions HIGH audit qualité narration v2.87.2 · gate partage.",
+  "context_amont": {
+    "trigger": "Audit qualité narration v2.87.2 cross-surfaces (4 agents Sonnet parallèle · 21 surfaces · 16 frictions HIGH · 20 MEDIUM · 15 LOW · 23 OK · verdict NON PARTAGEABLE EN L'ÉTAT) identifie 13/16 HIGH concentrées plomberie premier contact (WELCOME + lexicon + tour M2 failure modes + tour slugs/labels + em-dashes massifs skills + jargon JSON produce-paid-angles).",
+    "decision_largo_seqence_A": "Patches AVANT runtime validation (séquence A tranchée) · rationale runtime ne doit pas être testé sur surfaces qu'on sait cassées · frictions plomberie leak vont polluer observations runtime drift · patcher d'abord pour wording propre.",
+    "scope_strict": "6 chantiers chirurgicaux identifiés audit v2.87.2. Aucune modification hors-scope. Cap wall-time 2h. Ship partiel propre si débordement (priorité C1+C2+C3+C6 surfaces premier contact pure)."
+  },
+  "chantiers_executed": {
+    "C1_welcome_chirurgie": "VALIDÉ · L9+L11+L13 patches · Runtime definition section cut · Awareness tracking reformulé Memory across sessions plain language · gate plomberie L13 cut · 17L → 15L · phrase canon v4 EN L3 préservée · trailing instruction agent L15 préservée",
+    "C2_lexicon_slug_skill": "VALIDÉ · section Slug intégralement supprimée · Skill reformulé sans mention _manifest.json · 119L → 115L · 4 entrées NEW v2.87.0 préservées (Workspace agentic · Skill · Porte d'entrée · Brand etc)",
+    "C3_tour_failure_modes": "VALIDÉ · L122-123 Chrome MCP → ton navigateur Chrome plain language · L124 auto-snapshot ({score}%) → atlas fiable plain language · scraper → analyse automatique cohérent registre · 3 cas canon failure modes préservés",
+    "C4_tour_annotation_slugs": "VALIDÉ · 2 notes blockquote interne agent ajoutées tête M1 et M3 · labels portes A/B/C/D + slugs runtime (arc:substance · setup:brand · import:archive · explore:free · volet · drill · exit:setup · pivot · build-skill) vocabulaire interne agent · jamais exposer AskUserQuestion ni prose opérateur · 284L → 288L (+4L)",
+    "C5_em_dashes_sed": "VALIDÉ · 147 em-dashes cumul → 0 résiduel cross 3 skills (mine-voc 62 + produce-paid-angles 65 + audit-meta-account 20) · substitut middle dot `·` canon voice-doctrine v2.84.1 · sémantique runtime intacte",
+    "C6_produce_paid_angles_jargon": "VALIDÉ · renforce HR Banned jargon in operator surface (ligne 730) · ajout explicit field paths interdits (voice.key_expressions[] · verbatim_quotes[] · pain_points[].verbatim_quotes[] · formula.tension.reason_blocked) + clause générale no JSON field paths whatsoever en surface opérateur · clarification logique gate · check interne uniquement"
+  },
+  "files_patched": [
+    {"file": "WELCOME.md", "scope": "Chirurgie L9+L11+L13 · Runtime definition cut · Awareness tracking reformulé · gate plomberie L13 cut · 17L → 15L"},
+    {"file": "lexicon.md", "scope": "Section Slug supprimée intégralement (concept interne agent) + Skill reformulé plain language sans _manifest.json · 119L → 115L"},
+    {"file": ".claude/commands/tour.md", "scope": "Failure modes M2 plain language (Chrome MCP → navigateur Chrome · {score}% → atlas fiable) + 2 notes blockquote interne agent tête M1 et M3 (labels A-D + slugs runtime invisibles opérateur) · 284L → 288L"},
+    {"file": ".skills/skills/mine-voc/SKILL.md", "scope": "sed em-dashes 62 occurrences → 0 (substitut middle dot ·)"},
+    {"file": ".skills/skills/produce-paid-angles/SKILL.md", "scope": "sed em-dashes 65 occurrences → 0 + renforce HR Banned jargon in operator surface (ajout voice.key_expressions[] · verbatim_quotes[] · pain_points[].verbatim_quotes[] · formula.tension.reason_blocked + clause générale no JSON paths)"},
+    {"file": ".skills/skills/audit-meta-account/SKILL.md", "scope": "sed em-dashes 20 occurrences → 0"},
+    {"file": "_version.json", "scope": "Bump 2.87.0 → 2.87.3"},
+    {"file": "CHANGELOG.md", "scope": "Entry v2.87.3 patches LITE P0 surfaces premier contact"},
+    {"file": "docs/internal/releases/manifest/2.87.3-manifest.json", "scope": "NEW · this manifest"}
+  ],
+  "audit_v2_87_2_resolution": {
+    "frictions_HIGH_resolved": 13,
+    "frictions_HIGH_total": 16,
+    "frictions_HIGH_remaining_p1_backlog": 3,
+    "p1_chantiers_v2_87_4": [
+      "Chantier 7 · doctrines docstrings massifs EDD + DVD + OCD auto-violation (~45min)",
+      "Chantier 8 · produce-paid-angles NIVEAU LIVE add (~45min)",
+      "Chantier 9 · creative-brief-composer disclosure v2.79.3 → v2.79.5 + ANG-NN exposé + NIVEAU LIVE (~1h)"
+    ],
+    "p2_chantiers_v2_88_plus": [
+      "Chantier 10 · audit-meta-account disclosure pré-engagement + NIVEAU 0 (~1.5h)",
+      "Chantier 11 · EDD↔DVD frontière format NIVEAU 0 cross-ref propriété explicit (~30min)",
+      "Chantier 12 · IP 5 sections adoption mine-voc + audit-meta-account + produce-paid-angles (~1h)"
+    ]
+  },
+  "tests_non_regression": {
+    "build_manifest": "PASS · 81 skills + 92 jargon entries",
+    "build_brand_snapshot": "PASS · _EXAMPLE 24 lines",
+    "em_dash_4_surfaces_premier_contact": "PASS · 0 occurrence (tour.md + WELCOME.md + README.md + lexicon.md) · 1 résiduel voice-doctrine.md L103 légitime (symbole banni cité dans doctrine canon)",
+    "em_dash_3_skills_patched": "PASS · 0/0/0 (mine-voc + produce-paid-angles + audit-meta-account)",
+    "path_leak_welcome_lexicon": "PASS · 0 occurrence _manifest.json + /operator/awareness.json + /.claude/commands en surface opérateur",
+    "slug_section_lexicon": "PASS · 0 ## Slug section",
+    "note_interne_agent_tour": "PASS · 2 occurrences (M1 + M3)"
+  },
+  "preservations_canon": {
+    "phrase_canon_v4_cross_surfaces": "PRÉSERVÉE · README L3 EN + WELCOME L3 EN + tour M1 FR+EN littérale",
+    "4_portes_mece_splitter": "PRÉSERVÉE · structure M1 intacte (4 options A/B/C/D · slugs internes annotés)",
+    "matrice_defauts_par_porte_m2": "PRÉSERVÉE · 4 portes default skill mappings intactes",
+    "8_preservations_v2_87_0": "PRÉSERVÉES · canons Vincent runtime + détection live registre + bypass URL pasted + awareness writes structurés + failure modes 3 cas + HR-OHD-2 + prose conversationnelle native + politique FR/EN",
+    "voice_doctrine_v2_84_1": "RENFORCÉE · 147 em-dashes cumulés éliminés cross 3 skills + HR730 produce-paid-angles renforcée",
+    "spec_runtime_3_skills": "INTACTE · Steps 0-12 produce-paid-angles + Steps 0-7 mine-voc + 5 blocs diagnostic audit-meta-account preserved · IDs · paths · schemas · workflows unchanged"
+  },
+  "scope_constraint": {
+    "in_scope": ["6 chantiers chirurgicaux audit v2.87.2 (C1-C6)", "Tests non-régression standards", "_version.json + CHANGELOG.md + 2.87.3-manifest.json NEW"],
+    "out_of_scope_explicit": ["3 frictions HIGH P1 (chantiers 7-9 backlog v2.87.4 · doctrines docstrings + NIVEAU LIVE + creative-brief-composer disclosure upgrade)", "9 frictions P2 (chantiers 10-12 backlog v2.88.0+ · audit-meta-account disclosure + EDD↔DVD + IP 5 sections adoption)", "Phase 5 test runtime (ISOLÉE v2.87.0bis post-v2.87.3 merge)", "Lexicon section Porte d'entrée mention A/B/C/D (audit n'a pas flagué · scope strict respecté · revert appliqué après improvisation détectée)"]
+  },
+  "honnetete_discipline_findings": [
+    "Chantier 6 finding partiellement faux à la relecture · les messages opérateur produce-paid-angles déjà plain language · paths apparaissent dans spec instruction agent qui entoure (contexte logique check) · patch C6 renforce HR730 prévient leak runtime futur par mimétisme agent · pas reformulation de message opérateur (déjà clean)",
+    "Lexicon Porte d'entrée mention A/B/C/D détectée pendant C2 (cohérence implicite avec C4 annotation) · improvisation hors-scope reverted (respect strict scope sprint LITE P0) · signaler à Largo comme finding bonus à trancher v2.87.4+"
+  ],
+  "decisions_captured": ["D#467 (v2.87.3 LITE P0 patches surfaces premier contact)"],
+  "memory_canons_new": ["lite_p0_patches_v287 (6 chantiers + 13/16 HIGH résolus + 3/16 backlog v2.87.4 + finding C6 honnêteté + pattern reproductible chirurgical 2h)"],
+  "backlog_post_v2_87_3": [
+    "v2.87.0bis · test runtime onboarding fresh phantom-test-v287 post-v2.87.3 (~45min)",
+    "v2.86.1 · validation runtime 5 scénarios skills compositionnels heavy (~1.5h) si v2.87.0bis PASS",
+    "v2.87.4 · 3 chantiers P1 (doctrines docstrings + NIVEAU LIVE + creative-brief-composer disclosure) ~2.5h",
+    "v2.88.0 · verbatim gate downstream dette HIGH conditional (~1.5h)",
+    "v2.88.x · 3 chantiers P2 (audit-meta-account disclosure + EDD↔DVD + IP 5 sections) ~3h",
+    "Distribution préparation · message + GitHub Releases tags + canal feedback"
+  ],
+  "rollback_strategy": "Strict additif · revert v2.87.3 = git revert HEAD strict. Sémantique runtime 3 skills intacte (em-dash → middle dot canonical substitut · HR renforcée additive). WELCOME + lexicon + tour patches structurels sans impact runtime mécanisme. Zéro impact runtime théorique (mécanisme runtime Claude Code identique · skills chargés pareil · jargon enforcement runtime pareil)."
+}
