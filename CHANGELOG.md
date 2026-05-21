@@ -7,6 +7,26 @@ Détails étendus par release · `docs/internal/releases/manifest/{version}-mani
 Archive narrative Largo · `docs/internal/project-journal.md`.
 Doctrine canon · `docs/system/changelog-doctrine.md` (v2.83.0+).
 
+## [2.87.3] · 2026-05-21
+### Changed
+- **PATCHES SURFACES PREMIER CONTACT PRÉ-PARTAGE** · 6 chantiers chirurgicaux résolvent 13/16 frictions HIGH audit qualité narration v2.87.2 (gate partage opérateurs externes)
+- `WELCOME.md` 17L → 15L · chirurgie L9+L11+L13 · couper section Runtime definition (path interne `.claude/commands/tour.md`) · reformuler Awareness tracking en *Memory across sessions* plain language (zéro path `/operator/awareness.json`) · couper parenthèse gate plomberie L13 (`first deliverable built + operator explicitly asks`)
+- `lexicon.md` 119L → 115L · supprime section Slug intégralement (concept interne agent · n'a pas place glossaire opérateur) · reformule Skill plain language (`L'agent reconnaît votre demande en langage naturel` · zéro mention `.skills/_manifest.json`)
+- `.claude/commands/tour.md` 284L → 288L · failure modes M2 plain language (`Chrome MCP` → `ton navigateur Chrome` · `auto-snapshot ({score}%)` → `atlas fiable`) + 2 notes blockquote interne agent en tête M1 et M3 (labels portes A/B/C/D + slugs runtime `arc:substance`, `setup:brand`, `import:archive`, `explore:free`, `volet:{nom}`, `drill:{territoire}`, `exit:setup`, `pivot:{volet}`, `build-skill:{territoire}` sont vocabulaire interne agent · jamais exposer `AskUserQuestion` ni prose opérateur)
+- `.skills/skills/mine-voc/SKILL.md` · sed em-dashes (62 occurrences → 0)
+- `.skills/skills/produce-paid-angles/SKILL.md` · sed em-dashes (65 occurrences → 0) + renforce HR Banned jargon in operator surface (ajout explicit `voice.key_expressions[]` · `verbatim_quotes[]` · `pain_points[].verbatim_quotes[]` · `formula.tension.reason_blocked` + clause générale *no JSON field paths whatsoever in operator-facing surface*)
+- `.skills/skills/audit-meta-account/SKILL.md` · sed em-dashes (20 occurrences → 0)
+- Em-dashes cumul cross 3 skills · 147 → 0 (substitut middle dot `·` canon voice-doctrine v2.84.1)
+### Notes
+- **Audit qualité narration v2.87.2 référentiel** · 16 frictions HIGH identifiées (5 narration · 3 doctrines · 4 onboarding · 4 skills) · sprint LITE P0 chirurgical résout 13/16 (couches narration + onboarding + skills surface)
+- **Sémantique runtime intacte** · cycles Step 0-12 produce-paid-angles + Steps 0-7 mine-voc + 5 blocs diagnostic audit-meta-account preserved · spec instructions agent inchangées · canons Vincent runtime slugs préservés (annotation interne ajoutée pour bloquer leak runtime futur)
+- **3 frictions HIGH restantes** (P1 backlog v2.87.4 · ~2.5h) · doctrines docstrings massifs EDD + DVD + OCD auto-violation (chantier 7) · produce-paid-angles NIVEAU LIVE absent (chantier 8) · creative-brief-composer disclosure v2.79.3 → v2.79.5 + ANG-NN exposé + NIVEAU LIVE (chantier 9)
+- **9 frictions P2 backlog v2.88.0+** · audit-meta-account disclosure pré-engagement add (chantier 10) · EDD↔DVD frontière format NIVEAU 0 cross-ref propriété explicit (chantier 11) · IP 5 sections adoption mine-voc + audit-meta-account + produce-paid-angles (chantier 12)
+- Tests non-régression PASSÉS · build-manifest 81 skills + 92 jargon · build-brand-snapshot _EXAMPLE 24 lines · em-dash 0 cross 4 surfaces premier contact + 3 skills patchés · 0 path leak WELCOME + lexicon · 0 ## Slug section lexicon · 2 Note interne agent tour.md (M1 + M3)
+- **Finding honnêteté discipline** · audit C6 (jargon JSON exposé opérateur produce-paid-angles) partiellement faux à la relecture · messages opérateur déjà plain language · paths apparaissent dans spec instruction agent qui entoure (contexte logique check) · patch C6 = renforcement HR730 prévient leak runtime futur par mimétisme agent
+- **Séquence demain** · v2.87.0bis test runtime onboarding fresh post-v2.87.3 (~45min) · v2.86.1 validation runtime 5 scénarios skills compositionnels heavy (~1.5h) · v2.88.0 verbatim gate downstream (~1.5h) · distribution préparation
+- D#467 captured · NEW memory canon `lite_p0_patches_v287` à poser
+
 ## [2.87.0] · 2026-05-20
 ### Changed
 - **SIMPLIFICATION ONBOARDING + COHÉRENCE CROSS-SURFACES** · tour.md v2.81.0 → v2.87.0 · architecture 4 milestones canoniques + close réflexif réutilisé partout

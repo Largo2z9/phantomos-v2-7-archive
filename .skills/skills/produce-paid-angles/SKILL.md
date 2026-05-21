@@ -48,7 +48,7 @@ description: >
   v1.7.0 (v2.56 Notion zone 3→4 filter-by-persona extension) : Step 11 artifact ajoute encart pivot fin de table · `Pour pivoter sur une autre audience, relance avec {audience_slug_other}` avec liste des autres `brands/{slug}/audiences/*/profile.json` cartographiées. Couvre opérationnellement le pattern Notion zone 3→4 filter-by-persona observé dans workspace stride-up. Pas de skill standalone `filter-angles-by-persona` (anti-pattern fork) · ce skill est déjà multi-audience friendly via input `{audience_slug}`. L'encart matérialise la capacité existing.
   v1.6.1 (v2.55 audit consume canon matrices) : frontmatter consumes: enrichi avec resources/canon/copy/{hooks,angles,frameworks,niveaux-schwartz,archetypes-voix,heuristiques-persuasion,_shared/awareness-stage.json}. Aligne déclaration consumes: avec Step 0ter qui lit déjà ces matrices via phantom-canon.py. Master doctrine PhantomOS reasons over a business universe ré-activé · canon dormant = output générique averaged-LLM. Mécanismes inchangés.
   v1.6.0 (v2.54 investigation posture refactor) : angles présentés avec confidence chain inheritée audience+brand en surface opérateur. Chaque angle porte derived_from_audience_confidence + derived_from_brand_confidence + claim_confidence agrégée (min des deux héritages). Ranked table colonne `Confiance` ajoutée. Close ouvre drill-down macro · test ces angles tels quels OU upgrade confidence audience source d'abord. Préserve équation Obs+Tension+Reframe+Bridge, lineage canon copy, scoring framework. Refacto uniquement la posture surface · angles avec confidence chain visible vs recommandations stratégiques posées. Cross-ref docs/system/investigation-posture.md.
-  v1.4.0 (v2.36 frictions runtime patch) : HR4.5 verbatim density floor gate strict. AskUserQuestion explicit gate quand voice.key_expressions[] < 5 OR cumulative verbatim_quotes[] < 5 — pas de production sans operator response (a/b/c). Resoud anti-pattern mou v1.3.0 ou angles inferes shippaient avec flag inline sans gate explicite.
+  v1.4.0 (v2.36 frictions runtime patch) : HR4.5 verbatim density floor gate strict. AskUserQuestion explicit gate quand voice.key_expressions[] < 5 OR cumulative verbatim_quotes[] < 5 · pas de production sans operator response (a/b/c). Resoud anti-pattern mou v1.3.0 ou angles inferes shippaient avec flag inline sans gate explicite.
   v1.3.0 (v2.32 alignment) : when reading creative.json instances, prefer intent_mix over intent and overlay_density + brand_mark_present over craft_mode. validation_status read via oneOf (legacy string OR composite object).
   Generates a ranked matrice copy of paid creative angles for an audience
   on a brand. Consumes encoded intelligence (verbatims, pains, objections,
@@ -70,10 +70,10 @@ pipeline:
   preconditions: brand exists with at least one audience profile.json containing pain_points, objections, voice.key_expressions. Ideally mine-voc has run on the audience.
   postconditions: ranked angles artifact in produced/paid-angles/, scoring trace in sources/produced-angles/, learnings appended if pattern detected, finalize-mutation-batch event emitted.
 disambiguates_against:
-  produce-copy-brief: "route to produce-copy-brief when operator wants a full copywriter brief on ONE chosen angle (audience + angle + channel structured doc) — produce-paid-angles is the upstream ideation step"
-  mine-voc: "route to mine-voc when audience profile is thin (no verbatims encoded yet) — paid-angles needs verbatim density to score, must capture first"
-  mine-audience: "route to mine-audience when audience itself is not yet defined or split — paid-angles assumes audience encoded"
-  ingest-resource: "route to ingest-resource when operator drops a single brief or doc — that's a one-off ingestion, not angle ideation"
+  produce-copy-brief: "route to produce-copy-brief when operator wants a full copywriter brief on ONE chosen angle (audience + angle + channel structured doc) · produce-paid-angles is the upstream ideation step"
+  mine-voc: "route to mine-voc when audience profile is thin (no verbatims encoded yet) · paid-angles needs verbatim density to score, must capture first"
+  mine-audience: "route to mine-audience when audience itself is not yet defined or split · paid-angles assumes audience encoded"
+  ingest-resource: "route to ingest-resource when operator drops a single brief or doc · that's a one-off ingestion, not angle ideation"
 prerequisites:
   - field: audiences/{slug}/profile.json
     level: L1
@@ -116,11 +116,11 @@ Synthesizer, not fabricator. Reads encoded brand intelligence, reasons over a ca
 
 ## Tone
 
-Synthesis-first, prose-first. The output structure IS a ranked table — that's the visible deliverable. The prose around it follows the snapshot-brand Step 7 voice canon strictly: three implicit movements, no bold-section anchors, no enumeration of dimensions analyzed, no exposed scores, no internal labels. The agent never says *"5 dimensions analyzed"*, never says *"Score 73/100"*, never names a JSON field path, never closes on a hardcoded *"(a)/(b)/(c)/(d) Other"* menu. Read snapshot-brand SKILL.md Step 7 before writing the synthesis paragraph if any uncertainty.
+Synthesis-first, prose-first. The output structure IS a ranked table · that's the visible deliverable. The prose around it follows the snapshot-brand Step 7 voice canon strictly: three implicit movements, no bold-section anchors, no enumeration of dimensions analyzed, no exposed scores, no internal labels. The agent never says *"5 dimensions analyzed"*, never says *"Score 73/100"*, never names a JSON field path, never closes on a hardcoded *"(a)/(b)/(c)/(d) Other"* menu. Read snapshot-brand SKILL.md Step 7 before writing the synthesis paragraph if any uncertainty.
 
 ## Expert methodology
 
-**Persona:** senior media buyer who has watched ten thousand creatives ship and knows what wins on cold versus warm, on Reels versus Stories, on premium versus mass-market positioning. Reads a brand's encoded intelligence the way a senior strategist reads a research deck — lands on what matters, drops what dilutes, ranks by load-bearing weight, names the trade-off when there is one.
+**Persona:** senior media buyer who has watched ten thousand creatives ship and knows what wins on cold versus warm, on Reels versus Stories, on premium versus mass-market positioning. Reads a brand's encoded intelligence the way a senior strategist reads a research deck · lands on what matters, drops what dilutes, ranks by load-bearing weight, names the trade-off when there is one.
 
 **Framework:** five-lens scoring per `resources/frameworks/paid-angle-scoring.md`. Verbatim density (35% weight, dominant), emotional resonance (20%), objection neutralization (20%), placement viability (binary filter), awareness-acquisition alignment (25%). Cluster-deduplication rule de-dupes near-identical cells. Verbatim anchor selection rule per framework Section 4.
 
@@ -188,14 +188,14 @@ Cross-ref doctrines racine `docs/system/engagement-disclosure-doctrine.md` v2.79
 
 ---
 
-## Step 0 — Resolve target audience
+## Step 0 · Resolve target audience
 
 The operator references the audience in natural language. Examples: *"femme minceur okr"*, *"audience anti-âge"*, *"hommes sport perf"*, *"women 30-55 weight loss"*. Match the reference against `brands/{slug}/audiences/*/profile.json` using `meta.tags`, `identity.label`, `identity.description`, `pain_points[].formulation` as match surfaces.
 
 Three branches:
 - **One match** → continue to Step 1.
 - **Multiple matches** → ask one disambiguation question via AskUserQuestion. *"On part sur la femme post-grossesse ou la femme 40+ pré-ménopause ?"* Plain language, no field names, no slugs surfaced.
-- **Zero matches** → audience does not exist yet. Surface clearly: *"Pas trouvé d'audience qui matche sur cette marque. Le move utile c'est de la créer d'abord — `mine-audience` ~10 min, ou tu m'envoies les éléments en clair et je la code."* Stop. Do not invent an audience to satisfy the request.
+- **Zero matches** → audience does not exist yet. Surface clearly: *"Pas trouvé d'audience qui matche sur cette marque. Le move utile c'est de la créer d'abord · `mine-audience` ~10 min, ou tu m'envoies les éléments en clair et je la code."* Stop. Do not invent an audience to satisfy the request.
 
 ---
 
@@ -232,14 +232,14 @@ Pour chaque outil canon lu, garder en mémoire : `id, when_works[], when_avoid[]
 
 ---
 
-## Step 1 — Read encoded data (v1.10.0 ontologie sémantique pure)
+## Step 1 · Read encoded data (v1.10.0 ontologie sémantique pure)
 
-Load the encoded substrate for this brand and this audience. Read silently — never narrate the loading.
+Load the encoded substrate for this brand and this audience. Read silently · never narrate the loading.
 
 **Sub-audience v2.64 (NEW · ontologie sémantique pure)** ·
 
-- `brands/{slug}/audiences/{audience_slug}/pain_points/*.json` — pain canon entity owned natif par parent path (PNT-NN id, formulation, emotion, trigger, awareness_stage, verbatim_quotes[], severity, confidence_chain). Source de vérité pour `formula.tension.state_actual` + `formula.observation.phenomenon`. L'audience parente est implicite via path (pas de filter affected_audiences[] nécessaire).
-- `brands/{slug}/audiences/{audience_slug}/objections/*.json` — objection canon entity owned natif (OBJ-NN id, formulation, type, response_counter, derived_angle_refs[], lifecycle_stage). Source de vérité pour `formula.tension.reason_blocked` + cells objection axis.
+- `brands/{slug}/audiences/{audience_slug}/pain_points/*.json` · pain canon entity owned natif par parent path (PNT-NN id, formulation, emotion, trigger, awareness_stage, verbatim_quotes[], severity, confidence_chain). Source de vérité pour `formula.tension.state_actual` + `formula.observation.phenomenon`. L'audience parente est implicite via path (pas de filter affected_audiences[] nécessaire).
+- `brands/{slug}/audiences/{audience_slug}/objections/*.json` · objection canon entity owned natif (OBJ-NN id, formulation, type, response_counter, derived_angle_refs[], lifecycle_stage). Source de vérité pour `formula.tension.reason_blocked` + cells objection axis.
 
 **Backward compat lecture (v2.63 brands)** · si `brands/{slug}/audiences/{audience_slug}/pain_points/` ET `brands/{slug}/audiences/{audience_slug}/objections/` n'existent pas, fallback top-level `brands/{slug}/pain_points/*.json` + `brands/{slug}/objections/*.json` filtered by `affected_audiences[]` contains `{audience_slug}`. Skill ne refuse jamais sur ce point, route transparent.
 
@@ -247,33 +247,33 @@ Load the encoded substrate for this brand and this audience. Read silently — n
 
 **Audience profile (toujours lu)** ·
 
-- `brands/{slug}/audiences/{audience-slug}/profile.json` — voice.key_expressions[] (with frequency / sample_size), psychology.jtbd (functional / emotional / social), market_position.awareness_level, demographics. **Note v2.64** · `pain_points[]` + `objections[]` sub-fields legacy preserved en lecture pour backward compat, mais sub-audience collections prennent priorité si présentes.
-- `brands/{slug}/products/{product-slug}/spec.json` — problems_solved[].verbatim_quotes[], benefits[].chain (functional → emotional → identity), proofs.{social|authority|performance|scientific}, market_context.sophistication, identity.
-- `brands/{slug}/products/{product-slug}/offers.json` — active offers, urgency flags, bundle structure, subscription presence (informs offer-led angle activation).
-- `brands/{slug}/brand.json` — tone_of_voice, market.* if VoM has run (vernacular, sophistication_stage, awareness_distribution, white_spaces, external_intelligence).
-- `brands/{slug}/strategy.json#current_focus` — acquisition_focus when encoded (awareness lens weight signal).
-- Optional: `brands/{slug}/learnings.json` — past angle patterns (winners, killed, recurring objection-proof pairings).
+- `brands/{slug}/audiences/{audience-slug}/profile.json` · voice.key_expressions[] (with frequency / sample_size), psychology.jtbd (functional / emotional / social), market_position.awareness_level, demographics. **Note v2.64** · `pain_points[]` + `objections[]` sub-fields legacy preserved en lecture pour backward compat, mais sub-audience collections prennent priorité si présentes.
+- `brands/{slug}/products/{product-slug}/spec.json` · problems_solved[].verbatim_quotes[], benefits[].chain (functional → emotional → identity), proofs.{social|authority|performance|scientific}, market_context.sophistication, identity.
+- `brands/{slug}/products/{product-slug}/offers.json` · active offers, urgency flags, bundle structure, subscription presence (informs offer-led angle activation).
+- `brands/{slug}/brand.json` · tone_of_voice, market.* if VoM has run (vernacular, sophistication_stage, awareness_distribution, white_spaces, external_intelligence).
+- `brands/{slug}/strategy.json#current_focus` · acquisition_focus when encoded (awareness lens weight signal).
+- Optional: `brands/{slug}/learnings.json` · past angle patterns (winners, killed, recurring objection-proof pairings).
 
-**Verbatim density floor check.** Count `voice.key_expressions[]` entries with sample_size populated AND total `verbatim_quotes[]` across `pain_points` and `problems_solved`. If `voice.key_expressions[]` < 5 OR cumulative `verbatim_quotes[]` < 5 → flag thin corpus. Surface to the operator before producing: *"La voix client est trop fine pour ranker proprement — j'ai 2 verbatims sur la pain principale, je sortirais des angles inférés à 80%. Le move qui paie c'est de runner mine-voc d'abord, ~20 min, et on revient avec des angles ancrés. Sinon je peux quand même produire en flaguant chaque hook inféré."* Default behavior: pause unless operator forces.
+**Verbatim density floor check.** Count `voice.key_expressions[]` entries with sample_size populated AND total `verbatim_quotes[]` across `pain_points` and `problems_solved`. If `voice.key_expressions[]` < 5 OR cumulative `verbatim_quotes[]` < 5 → flag thin corpus. Surface to the operator before producing: *"La voix client est trop fine pour ranker proprement · j'ai 2 verbatims sur la pain principale, je sortirais des angles inférés à 80%. Le move qui paie c'est de runner mine-voc d'abord, ~20 min, et on revient avec des angles ancrés. Sinon je peux quand même produire en flaguant chaque hook inféré."* Default behavior: pause unless operator forces.
 
 ---
 
-## Step 2 — Resolve placement context
+## Step 2 · Resolve placement context
 
 Read `operator/profile.json#context.stack[]` (captured pre-snapshot per cascade C v2.8). Derive active placements from the stack:
 
 - **Meta in stack** → Reels, Stories, Feed UGC eligible.
 - **TikTok in stack** → TikTok organic / paid eligible.
-- **Google in stack** → Search, Display eligible (filter applies — Search only for solution-aware+, Display for problem-aware).
+- **Google in stack** → Search, Display eligible (filter applies · Search only for solution-aware+, Display for problem-aware).
 - **Pinterest in stack** → Pinterest eligible (lifestyle / aspiration verticals).
 
-If operator stack signals only Shopify + Klaviyo (no paid platform), warn explicitly: *"Ton stack capté ne flag aucune plateforme paid active. Une matrice paid perd sa relevance là — le move utile c'est sûrement un brief copy email ou landing à la place. Tu veux que je pivote sur `produce-copy-brief` pour ton flow Klaviyo, ou tu confirmes que tu actives Meta/TikTok bientôt et je reste sur paid ?"*
+If operator stack signals only Shopify + Klaviyo (no paid platform), warn explicitly: *"Ton stack capté ne flag aucune plateforme paid active. Une matrice paid perd sa relevance là · le move utile c'est sûrement un brief copy email ou landing à la place. Tu veux que je pivote sur `produce-copy-brief` pour ton flow Klaviyo, ou tu confirmes que tu actives Meta/TikTok bientôt et je reste sur paid ?"*
 
-Default placement scope when stack is silent: Reels / Stories / Feed UGC / TikTok — the four DTC paid placements with highest current leverage.
+Default placement scope when stack is silent: Reels / Stories / Feed UGC / TikTok · the four DTC paid placements with highest current leverage.
 
 ---
 
-## Step 3 — Select active dimensions
+## Step 3 · Select active dimensions
 
 Not a fixed list. The selection adapts to what is encoded densely on this brand. Pick 4-5 dimensions max from the candidate set below, applying the activation rule per dimension and the cap rule overall.
 
@@ -286,9 +286,9 @@ Not a fixed list. The selection adapts to what is encoded densely on this brand.
 - `audience.awareness_stage` (if encoded with cross-source consistency)
 
 **Sometimes active:**
-- `placement` (when multi-platform stack — single-platform stack drops this dimension since placement is fixed)
-- `product.proof.type` (when `proofs.*` carries 2+ varied types — single-proof brand locks this dimension to dominant proof, no axis variation)
-- `offer.urgency` or `offer.type` (when operator query is offer-led — *"angles pour la promo BFCM"* boosts these into active set)
+- `placement` (when multi-platform stack · single-platform stack drops this dimension since placement is fixed)
+- `product.proof.type` (when `proofs.*` carries 2+ varied types · single-proof brand locks this dimension to dominant proof, no axis variation)
+- `offer.urgency` or `offer.type` (when operator query is offer-led · *"angles pour la promo BFCM"* boosts these into active set)
 - `brand.market.vernacular` (when VoM has run, raises hook quality)
 
 **Hard cap: 5 dimensions max.** Beyond 5, cartesian explodes (5×4×3×3×2 = 360 cells) and signal dilutes per scoring framework anti-pattern. The agent picks the 4-5 highest-density dimensions for THIS brand and THIS query, never defaults to a fixed list.
@@ -297,7 +297,7 @@ The selection rationale lives in the Layer A trace, never in operator output.
 
 ---
 
-## Step 4 — Generate cartesian product (INTERNAL)
+## Step 4 · Generate cartesian product (INTERNAL)
 
 Iterate over the active dimensions, build all combinations. Internal data structure only. Never mentioned in operator output. Never logged in a way the operator can stumble on (Layer A trace only).
 
@@ -312,7 +312,7 @@ Cell shape (internal):
 
 ---
 
-## Step 5 — Score each cell per framework
+## Step 5 · Score each cell per framework
 
 Apply `resources/frameworks/paid-angle-scoring.md` lens by lens:
 
@@ -326,7 +326,7 @@ Composite score 0-100. **Never exposed to the operator.** Never written to the o
 
 ---
 
-## Step 6 — Cluster filter de-dupe
+## Step 6 · Cluster filter de-dupe
 
 Two cells are "similar" when they share: same dominant pain (theme + emotion) AND same dominant objection AND same placement. Keep the highest-scored cell per cluster, drop the rest.
 
@@ -336,31 +336,31 @@ When two cells differ only on placement (same pain + same objection + same emoti
 
 ---
 
-## Step 7 — Rank and cap
+## Step 7 · Rank and cap
 
 Rank surviving cells by composite score descending.
 
 Cap rules:
 - **5 angles by default.** This is the scannable ceiling for an operator briefing a copywriter.
 - **Up to 7 angles** when the top 3 cells score above the high-density threshold defined in `paid-angle-scoring.md` AND the operator stated a wide-test objective (*"je lance un test large"*, *"vague d'ouverture"*, *"sortir 7 angles à tester"*).
-- **Below 5 angles** only when the corpus is genuinely thin and the synthesis explains why in prose. Never silently ship 3 angles when 5 were expected — name the corpus thinness.
+- **Below 5 angles** only when the corpus is genuinely thin and the synthesis explains why in prose. Never silently ship 3 angles when 5 were expected · name the corpus thinness.
 
 ---
 
-## Step 8 — Verbatim anchor selection per ranked cell
+## Step 8 · Verbatim anchor selection per ranked cell
 
 Per scoring framework Section 4, for each ranked cell, select the hook anchor in this priority:
 
 1. **Exact verbatim match** from `voice.key_expressions[]` with `sample_size ≥ 5` and high emotional weight. Highest priority. The hook IS the verbatim or a 2-4 word adaptation of it.
 2. **Semantic verbatim match** from `pain_points[].verbatim_quotes[]` or `problems_solved[].verbatim_quotes[]` with strong emotional anchor. The hook adapts the verbatim while preserving the customer voice signature.
-3. **Hook formula** from `resources/templates/hook-formulas.md` matched to the cell's awareness stage, when no verbatim is available. The Layer A trace flags this cell with `(formulation type, no direct customer voice)`. In operator output, the hook ships with no anchor mention — internal sourcing stays internal.
+3. **Hook formula** from `resources/templates/hook-formulas.md` matched to the cell's awareness stage, when no verbatim is available. The Layer A trace flags this cell with `(formulation type, no direct customer voice)`. In operator output, the hook ships with no anchor mention · internal sourcing stays internal.
 4. **Never invent a quote attributed to customers.** Never paraphrase a verbatim and present it as if it were a real customer quote. Either real or formula-flagged. The trust contract is non-negotiable.
 
 Each shipped hook passes the `resources/quality-specs/hook-quality-spec.md` 5-criterion test (Pattern Interrupt, Identification, Open Loop, Spécificité, Awareness Match) at threshold ≥ 4/5. Hook below 4/5 → either retry once with a different anchor or drop the cell entirely. The skill does not negotiate on hook quality.
 
 ---
 
-## Step 9 — Operator-facing output (synthesis + table + close drill-down, v2.54)
+## Step 9 · Operator-facing output (synthesis + table + close drill-down, v2.54)
 
 Apply snapshot-brand Step 7 v2.54 doctrine investigation-posture STRICTLY. Angles dérivent d'hypothèses (audience source, brand source) · leur confidence chain est héritée, doit être visible en surface, jamais cachée.
 
@@ -454,7 +454,7 @@ L'opérateur arbitre · l'agent enchaîne le drill-down sur l'axe choisi (silenc
 
 ---
 
-## Step 10 — Layer A scoring trace
+## Step 10 · Layer A scoring trace
 
 Write to `brands/{slug}/sources/produced-angles/{YYYY-MM-DD}/scoring-trace.jsonl`. One line per cell scored. Audit substrate, never auto-loaded into context, never surfaced unless the operator asks *"pourquoi cet angle ranke premier"*.
 
@@ -510,13 +510,13 @@ The trace is queryable post-hoc. It is the proof that no verbatim was fabricated
 
 ---
 
-## Step 11 — Layer B operator artifact
+## Step 11 · Layer B operator artifact
 
 Write the synthesis + ranked table as markdown to:
 
 `brands/{slug}/produced/paid-angles/{YYYY-MM-DD}-{audience-slug}.md`
 
-Pure deliverable. Copy-pasteable into Notion, Slack, a Google Doc, a brief sent to a copywriter. Header carries: brand name / audience label / date / angle count. Body carries the synthesis paragraph and the ranked table. Footer carries the citations row when verbatims were used (verbatim IDs referencing the original `voc/` corpus when relevant) — never inline scores, never field paths.
+Pure deliverable. Copy-pasteable into Notion, Slack, a Google Doc, a brief sent to a copywriter. Header carries: brand name / audience label / date / angle count. Body carries the synthesis paragraph and the ranked table. Footer carries the citations row when verbatims were used (verbatim IDs referencing the original `voc/` corpus when relevant) · never inline scores, never field paths.
 
 **Canon lineage block (v2.26.0+, refacto v2.29.0).** Chaque angle dans le ranked table porte son lignage canon explicite. Format ligne par angle :
 
@@ -582,7 +582,7 @@ The next-step proposal lives in the conversational reply, NOT in the artifact fi
 
 ---
 
-## Step 11bis — Back-refs auto-persist (v1.8.0, v2.58 coverage extend)
+## Step 11bis · Back-refs auto-persist (v1.8.0, v2.58 coverage extend)
 
 **Append-only additive coverage.** Trois orphans audit v2.57 fermés par back-refs auto-persistées **post-Step 11 artifact write, pre-Step 12 finalize**. Patches NE remplacent PAS la production angles ranked, ils ENRICHISSENT le graph audience↔angle pour rendre la fiche audience drillable downstream (`/phantom {brand_slug} audiences {a_slug}` rendra les objections avec leur response_counter + derived_angle_refs[]).
 
@@ -660,7 +660,7 @@ L'opérateur qui drill `/phantom {brand_slug} angles ANG-NN` voit la matrice de 
 
 ---
 
-## Step 12 — Finalize
+## Step 12 · Finalize
 
 Mandatory before shipping the operator-facing summary:
 
@@ -695,11 +695,11 @@ The cache prevents LLM-variance noise on repeated identical queries (same operat
 
 The skill accepts a focus modifier for narrower runs:
 
-- **default** (no flag) — full ranked table 5 angles + synthesis + next-step proposal.
-- **`--focus=cold`** — only angles for problem-aware / solution-aware audience cohorts (cold acquisition). Filters out product-aware and most-aware cells from cartesian.
-- **`--focus=retargeting`** — only angles for product-aware / most-aware cohorts (warm retargeting). Filters out problem-aware and solution-aware cells.
-- **`--focus=objection`** — table emphasizes objection neutralization, sorts by that lens, surfaces angles where the objection-proof match is strongest.
-- **`--fresh`** — bypasses cache, forces re-run with current encoded data.
+- **default** (no flag) · full ranked table 5 angles + synthesis + next-step proposal.
+- **`--focus=cold`** · only angles for problem-aware / solution-aware audience cohorts (cold acquisition). Filters out product-aware and most-aware cells from cartesian.
+- **`--focus=retargeting`** · only angles for product-aware / most-aware cohorts (warm retargeting). Filters out problem-aware and solution-aware cells.
+- **`--focus=objection`** · table emphasizes objection neutralization, sorts by that lens, surfaces angles where the objection-proof match is strongest.
+- **`--fresh`** · bypasses cache, forces re-run with current encoded data.
 
 Focus modifiers are operator-facing additions (the operator can say *"angles paid pour la femme minceur okr en cold uniquement"* and the agent maps to `--focus=cold`). Internal flag, never surfaced as `--focus=` syntax to the operator.
 
@@ -723,20 +723,20 @@ Focus modifiers are operator-facing additions (the operator can say *"angles pai
 - **Cluster filter mandatory.** Output never contains 2+ cells saying the same thing with different wording. Same pain + same objection + same placement = one angle, drop the rest.
 - **Score never exposed.** Operator sees ranked angles, not numbers. No `Score 73/100`, no percentage, no rating bar.
 - **Synthesis follows snapshot Step 7 canon strictly.** Pure prose, three implicit movements, no bold-section anchors, no enumeration of dimensions, no jargon leak. Read snapshot-brand SKILL.md Step 7 if uncertain.
-- **Verbatim anchor flagged when formula-derived.** In the Layer A trace, every formula-derived cell carries `(formulation type, no direct customer voice)`. In operator output, formula-derived hooks ship with no anchor mention — internal sourcing stays internal, but inferred angles are flagged inline (*"à valider, pas de verbatim direct"*) so the operator knows what to test cautiously.
+- **Verbatim anchor flagged when formula-derived.** In the Layer A trace, every formula-derived cell carries `(formulation type, no direct customer voice)`. In operator output, formula-derived hooks ship with no anchor mention · internal sourcing stays internal, but inferred angles are flagged inline (*"à valider, pas de verbatim direct"*) so the operator knows what to test cautiously.
 - **No orphan output mandatory.** Always close on a reasoned next-step proposal per doctrine v2.10.0. Never *"voilà tes angles, autre chose ?"*. Never a hardcoded `(a)/(b)/(c)/(d) Other` menu. The proposal is a function of operator goal × what was produced × what is runnable, not a template.
 - **Cache invalidation on entity mutation.** No stale results when fresh data lands. Cache invalidates automatically on any mutation to in-scope `profile.json`, `spec.json`, or `brand.json#market.*`.
-- **Schema field semantics as analytical vocabulary, never JSON path mentions.** *"the emotional driver is identity"* — yes. *"emotional_driver: identity"* — banned.
-- **Banned jargon in operator surface.** No `awareness_stage:problem-aware`, no `cartesian_size: 72`, no `cluster filter applied`, no `dimensions_active`, no `score 87`, no `verbatim_anchor_id`, no skill names mentioned in synthesis.
+- **Schema field semantics as analytical vocabulary, never JSON path mentions.** *"the emotional driver is identity"* · yes. *"emotional_driver: identity"* · banned.
+- **Banned jargon in operator surface.** No `awareness_stage:problem-aware`, no `cartesian_size: 72`, no `cluster filter applied`, no `dimensions_active`, no `score 87`, no `verbatim_anchor_id`, no `voice.key_expressions[]`, no `verbatim_quotes[]`, no `pain_points[].verbatim_quotes[]`, no `formula.tension.reason_blocked`, no JSON field paths whatsoever in operator-facing surface. The gate logic (Step 1 verbatim density check, HR4.5) reads these paths internally · the operator-facing surface uses plain language only (*"ta voix client est trop fine"*, *"verbatims sur la pain principale"*, *"j'ai 2 verbatims"*). No skill names mentioned in synthesis.
 - **Auto-trigger after mine-voc OFF.** Even when `mine-voc` proposes `produce-paid-angles` as next step per no-orphan-output, the skill never auto-runs. Operator confirmation explicit, every time.
 - **DTC-bounded in v1.** SaaS lead-gen, agency services, B2B information products carry different dimensions and proof emphasis. v1 ships DTC-only. SaaS adaptation belongs to a v2 mode or sibling skill, not a default branch.
-- **Paid-only by name and scope in v1.** If operators ask for non-paid (content / email / organic) angles 2+ times, extend this skill via a new mode — do not fork into `produce-creative-angles` (per `extend_before_create`).
+- **Paid-only by name and scope in v1.** If operators ask for non-paid (content / email / organic) angles 2+ times, extend this skill via a new mode · do not fork into `produce-creative-angles` (per `extend_before_create`).
 - **Hook quality spec mandatory.** Every shipped hook passes the 5-criterion test at ≥ 4/5. Below threshold → retry once with a different anchor or drop the cell. Non-negotiable.
 - **`finalize-mutation-batch` mandatory.** Step 12 runs the Python primitive before any operator-facing summary. Exit code 2 = revise before shipping.
 - **Weights are externalized canon.** All scoring weights (35/25/20/20 + binary placement filter) live in `resources/frameworks/paid-angle-scoring-weights.json` versioned. **NEVER override inline.** To propose new weights, bump `_version` in the JSON file and add a migration entry in `_change_log`. Improvised inline weights = refused, doctrine violation.
 - **Voice consistency cross-block on multi-hook outputs.** When the output ships >1 hook (e.g. wide-test brief with 5-7 hooks for one campaign), persona and lexical_register must stay stable ±1 step across all hooks. Drift = MAJOR, refuse to ship without operator override.
 - **Emotional diversity check post-rank.** If the top N ranked angles all collapse to the same emotional driver category (5 angles all loss-aversion-driven), the cluster filter has failed at the emotional-driver layer. Flag MAJOR, regenerate with explicit driver diversity constraint (anti-pattern: ranked angles paraphrasing the same fear).
-- **Risk_bet slot opt-in via `--mode=breakthrough`.** Operator can request 5 safe + 1 risk_bet (max). The bet cell carries `bet=true`, `anchor=null` (verbatim-anchor suspended), `hypothesis_to_test` declared in plain language. Cell tagged in Layer A trace, surfaced in output with explicit *"Pari : [angle]. Hypothèse : [...]. À valider en test."* marker. Post-test routing: validated → promote to learnings, falsified → [SUPERSEDED]. Default OFF — never auto-trigger. See internal quality spec for the breakthrough mode protocol.
+- **Risk_bet slot opt-in via `--mode=breakthrough`.** Operator can request 5 safe + 1 risk_bet (max). The bet cell carries `bet=true`, `anchor=null` (verbatim-anchor suspended), `hypothesis_to_test` declared in plain language. Cell tagged in Layer A trace, surfaced in output with explicit *"Pari : [angle]. Hypothèse : [...]. À valider en test."* marker. Post-test routing: validated → promote to learnings, falsified → [SUPERSEDED]. Default OFF · never auto-trigger. See internal quality spec for the breakthrough mode protocol.
 
 ---
 
@@ -744,20 +744,20 @@ Focus modifiers are operator-facing additions (the operator can say *"angles pai
 
 - `docs/system/investigation-posture.md` (v2.54 doctrine canon) · cartographier avant affirmer · confidence chain explicit · angles portent confidence inheritée audience+brand en surface · close drill-down macro · opérateur arbitre (test direct vs upgrade audience source).
 - `docs/system/confidence-propagation.md` · algèbre cascade confidence cross-skill (audience → angle → brief créa · MIN conservative).
-- `resources/frameworks/paid-angle-scoring.md` — analytical canon. Mandatory read at first invocation. Codifies the five-lens scoring and the cluster-deduplication rule.
-- `resources/registries/angle-registry.md` — angle taxonomy reference (14 angle types). Cell labels map to registry entries when possible.
-- `resources/registries/proof-registry.md` — objection-neutralization mapping (which proof type defuses which objection).
-- `resources/templates/hook-formulas.md` — fallback hook library (15 patterns) when verbatim is thin.
-- `resources/quality-specs/hook-quality-spec.md` — 5-criterion hook quality test. Mandatory threshold ≥ 4/5 before shipping any hook.
-- `resources/routing/awareness-angle-matrix.md` — awareness-angle pairing, used to filter cells in the "avoid" column for the dominant awareness stage.
-- `.skills/skills/snapshot-brand/SKILL.md` — voice canon source for Step 9 synthesis. Read before writing the synthesis paragraph if any uncertainty.
-- `.skills/skills/mine-voc/SKILL.md` — upstream Layer B source. Provides the verbatim density that ranking depends on.
-- `.skills/skills/mine-vom/SKILL.md` — optional upstream. Vernacular and white-space signals raise hook quality and unlock the market dimension.
-- `.skills/skills/produce-copy-brief/SKILL.md` — downstream production skill. Operator picks an angle from the ranked table → `produce-copy-brief` turns it into a hook variant set + body opening + CTA family.
-- `.skills/finalize-mutation-batch.py` — mandatory Step 12 primitive.
-- `.skills/write-to-context.py` — canonical mutation channel for any write to `learnings.json` if a pattern is detected during the run.
-- `docs/system/contextual-intelligence.md` — master doctrine. No orphan output rule, contextual reasoning, anti-patterns.
-- `docs/system/voice.md` — voice canon, register, banned phrases.
+- `resources/frameworks/paid-angle-scoring.md` · analytical canon. Mandatory read at first invocation. Codifies the five-lens scoring and the cluster-deduplication rule.
+- `resources/registries/angle-registry.md` · angle taxonomy reference (14 angle types). Cell labels map to registry entries when possible.
+- `resources/registries/proof-registry.md` · objection-neutralization mapping (which proof type defuses which objection).
+- `resources/templates/hook-formulas.md` · fallback hook library (15 patterns) when verbatim is thin.
+- `resources/quality-specs/hook-quality-spec.md` · 5-criterion hook quality test. Mandatory threshold ≥ 4/5 before shipping any hook.
+- `resources/routing/awareness-angle-matrix.md` · awareness-angle pairing, used to filter cells in the "avoid" column for the dominant awareness stage.
+- `.skills/skills/snapshot-brand/SKILL.md` · voice canon source for Step 9 synthesis. Read before writing the synthesis paragraph if any uncertainty.
+- `.skills/skills/mine-voc/SKILL.md` · upstream Layer B source. Provides the verbatim density that ranking depends on.
+- `.skills/skills/mine-vom/SKILL.md` · optional upstream. Vernacular and white-space signals raise hook quality and unlock the market dimension.
+- `.skills/skills/produce-copy-brief/SKILL.md` · downstream production skill. Operator picks an angle from the ranked table → `produce-copy-brief` turns it into a hook variant set + body opening + CTA family.
+- `.skills/finalize-mutation-batch.py` · mandatory Step 12 primitive.
+- `.skills/write-to-context.py` · canonical mutation channel for any write to `learnings.json` if a pattern is detected during the run.
+- `docs/system/contextual-intelligence.md` · master doctrine. No orphan output rule, contextual reasoning, anti-patterns.
+- `docs/system/voice.md` · voice canon, register, banned phrases.
 - `resources/canon/copy/_shared/awareness-stage.json` · `$ref` partagé v2.29.0, 5 stages Schwartz canoniques. Source unique consommée par `lineage.awareness_stage` dans `angle.schema.json` v1.2.
 - `resources/schemas/angle.schema.json` (v1.2) · schema cible persistance brand-side. Renommages : `source` devient `origin_axis`, `lineage.schwartz_conscience` devient `lineage.awareness_stage`. 8 fields migrés vers creative.
 - `resources/schemas/creative.schema.json` (v1.1, NEW) · 7ème entité brand. Absorbe `intent`, `mecanique`, `seasonality_trigger`, `execution.*`, classification, `variant_of`. Si production créa instance complète, écrire ici (skill `compose-creative` v2.31+ ou direct).
@@ -765,7 +765,7 @@ Focus modifiers are operator-facing additions (the operator can say *"angles pai
 
 ---
 
-## Example output — okr probiotique minceur
+## Example output · okr probiotique minceur
 
 What the operator sees in the terminal after triggering *"trouve les meilleurs angles paid pour la femme minceur okr"*:
 

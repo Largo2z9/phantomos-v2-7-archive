@@ -45,6 +45,8 @@ Default to **standard** when ambiguous. Update assumption as more signals come. 
 
 ## Milestone 1 · Splitter 4 portes MECE
 
+> **Note interne agent.** Les labels portes A/B/C/D et tous les slugs runtime (`arc:substance`, `setup:brand`, `import:archive`, `explore:free`, `volet:{nom}`, `drill:{territoire}`, `exit:setup`, `pivot:{volet}`, `build-skill:{territoire}`) sont du vocabulaire interne agent pour routing déterministe. Ne jamais les exposer dans les options `AskUserQuestion` ni dans la prose opérateur-facing. Affiche uniquement les libellés humains (*"Explication guidée"*, *"Configurer une marque maintenant"*, etc.).
+
 **First-run** · accueil court qui dit **ce qu'est PhantomOS** (3-5 lignes), puis **immédiatement** `AskUserQuestion` 4 options explicit (les 4 portes MECE A/B/C/D). **Jamais** un pavé. **Jamais** une amorce amputée qui saute au choix sans avoir dit ce qu'est le système. **Jamais** demander *"tu fais quoi"* / *"ton métier"* / *"ton rôle"* (canon HR-OHD-2).
 
 **Pattern de rendu opérateur · prose conversationnelle native (langue détectée FR/EN). Zéro box ASCII. Zéro tableau. Zéro légende au pied.**
@@ -119,14 +121,16 @@ Puis poser **immédiatement** `AskUserQuestion` 4 options explicit · les 4 port
 **Failure modes snapshot · 3 cas, 3 handlings honnêtes** (Porte B/C scrape ou ingest échoue) · jamais d'apology nue, toujours path forward dans la même phrase ·
 
 - **URL 404 / DNS / paywalled** → *"L'URL ne répond pas. Si tu as une autre URL ou la home en texte, je repars dessus. Sinon bascule vers mode conversational · tu me décris la marque en deux lignes et je construis."*
-- **JS-heavy SPA / scraping incomplet** → *"Le site est rendu côté JavaScript et le scraper accède à peu de contenu. J'ai capté {X} mais la moitié manque. Trois options · transmets-moi hero copy + 2-3 prix dans le chat, connecte Chrome MCP pour scrape complet, ou bascule conversational."*
-- **Page trop fine sub-confidence** → *"La page est trop légère pour auto-snapshot ({score}%). Trois questions courtes calibrent · qu'est-ce que ce produit fait, qui l'achète, quel format ou cure. Réponds, je construis."*
+- **JS-heavy SPA / scraping incomplet** → *"Le site est rendu côté JavaScript et l'analyse automatique accède à peu de contenu. J'ai capté {X} mais la moitié manque. Trois options · transmets-moi hero copy + 2-3 prix dans le chat, connecte ton navigateur Chrome pour une analyse complète, ou bascule conversational."*
+- **Page trop fine sub-confidence** → *"La page contient trop peu de contenu pour générer un atlas fiable. Trois questions courtes calibrent · qu'est-ce que ce produit fait, qui l'achète, quel format ou cure. Réponds, je construis."*
 
 **Exit signals M2** · si l'opérateur dit *"plus tard"* / *"pas maintenant"* / *"saute"* → écrire `first_deliverable_built = false`, proposer en option opt-in via M3 close. Jamais forcer · canon élasticité scope opérateur-driven.
 
 ---
 
 ## Milestone 3 · Close réflexif 4 options (réutilisé partout)
+
+> **Note interne agent.** Les slugs runtime (`volet:{nom}`, `drill:{territoire}`, `exit:setup`, `pivot:{volet}`, `build-skill:{territoire}`) servent au routing déterministe agent uniquement. Ne jamais les exposer dans les options `AskUserQuestion` ni dans la prose opérateur. L'opérateur voit uniquement les libellés humains composés reflectively (*"Drill un territoire"*, *"Configurer la marque"*, etc.) · le slug est consume silencieusement au moment du choix.
 
 Le close réflexif est le **pattern de routing universel** post-M1, post-M2, et entre toute expansion. Présent comme native `AskUserQuestion` 4 options **reflectively composed** sur chaque close (jamais picked depuis template fixe).
 

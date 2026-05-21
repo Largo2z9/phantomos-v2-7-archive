@@ -1,6 +1,6 @@
 {
   "_version": "1.0",
-  "_generated_at": "2026-05-20T20:54:09Z",
+  "_generated_at": "2026-05-21T12:07:13Z",
   "_count": 81,
   "skills": [
     {
@@ -189,7 +189,7 @@
         ]
       },
       "disambiguates_against": {
-        "validate-resources": "route to validate-resources when operator says 'audit' or 'check' without a platform context — that's a workspace integrity check, not a Meta platform audit"
+        "validate-resources": "route to validate-resources when operator says 'audit' or 'check' without a platform context · that's a workspace integrity check, not a Meta platform audit"
       },
       "isolation_scope": "brand_only",
       "layer": "production",
@@ -1112,7 +1112,7 @@
       "disambiguates_against": {
         "mine-vom": "route to mine-vom when operator wants market-level voice (competitors, niche communities), not brand-bound customer voice",
         "mine-audience": "route to mine-audience when operator wants product-level audience discovery from scraping, not review verbatim mining",
-        "ingest-resource": "route to ingest-resource when operator drops a single document/CSV — that's a one-off ingest, not a multi-source mining session",
+        "ingest-resource": "route to ingest-resource when operator drops a single document/CSV · that's a one-off ingest, not a multi-source mining session",
         "watch-competitors": "route to watch-competitors when operator wants recurring monitoring of competitors' paid creatives, not one-shot customer voice"
       },
       "isolation_scope": "brand_only",
@@ -1246,10 +1246,10 @@
         ]
       },
       "disambiguates_against": {
-        "produce-copy-brief": "route to produce-copy-brief when operator wants a full copywriter brief on ONE chosen angle (audience + angle + channel structured doc) — produce-paid-angles is the upstream ideation step",
-        "mine-voc": "route to mine-voc when audience profile is thin (no verbatims encoded yet) — paid-angles needs verbatim density to score, must capture first",
-        "mine-audience": "route to mine-audience when audience itself is not yet defined or split — paid-angles assumes audience encoded",
-        "ingest-resource": "route to ingest-resource when operator drops a single brief or doc — that's a one-off ingestion, not angle ideation"
+        "produce-copy-brief": "route to produce-copy-brief when operator wants a full copywriter brief on ONE chosen angle (audience + angle + channel structured doc) · produce-paid-angles is the upstream ideation step",
+        "mine-voc": "route to mine-voc when audience profile is thin (no verbatims encoded yet) · paid-angles needs verbatim density to score, must capture first",
+        "mine-audience": "route to mine-audience when audience itself is not yet defined or split · paid-angles assumes audience encoded",
+        "ingest-resource": "route to ingest-resource when operator drops a single brief or doc · that's a one-off ingestion, not angle ideation"
       },
       "isolation_scope": "brand_only",
       "layer": "territoire",

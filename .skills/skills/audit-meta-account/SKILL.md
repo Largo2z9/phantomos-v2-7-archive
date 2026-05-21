@@ -24,7 +24,7 @@ pipeline:
   preconditions: brands/{slug}/brand.json must exist
   postconditions: optional capture-learning for key findings with confidence ≥ 8
 disambiguates_against:
-  validate-resources: "route to validate-resources when operator says 'audit' or 'check' without a platform context — that's a workspace integrity check, not a Meta platform audit"
+  validate-resources: "route to validate-resources when operator says 'audit' or 'check' without a platform context · that's a workspace integrity check, not a Meta platform audit"
 ---
 
 # Skill: audit-meta-account
@@ -67,7 +67,7 @@ Cross-ref · `docs/system/decomposition-visibility-doctrine.md` v2.81.1+ HR-DVD-
 
 ---
 
-## Step 0 — Gate access check (MANDATORY, before anything else)
+## Step 0 · Gate access check (MANDATORY, before anything else)
 
 **CRITICAL:** **YOU MUST** check Meta API access BEFORE starting the audit. **NEVER** fall back to a questionnaire silently.
 
@@ -93,26 +93,26 @@ Default proactif proactif · (a) si l'opérateur a le temps, sinon fallback (b) 
 
 ---
 
-## Step 1A — API mode (default when token available)
+## Step 1A · API mode (default when token available)
 
 Read `brands/{slug}/brand.json` for name, language, stage.
 
 Pull from Meta Marketing API (respect rate limits in convention):
 
-1. **Ad Accounts** — list, IDs, currency, owner
-2. **Pixels + CAPI** — installed, CAPI events last 7 days, event_id dedup rate
-3. **Domain verification** — verified domains at business level
-4. **Standard events** — received last 28 days per pixel, volume per event
-5. **Campaign structure** — campaigns by objective, ad sets, ads
-6. **Catalog** — connected catalogs, product count, last sync, feed errors
-7. **Attribution + iOS14 AEM** — 8-event priority, attribution window per campaign
-8. **Account warnings** — policy flags, spending limits, identity confirmation
+1. **Ad Accounts** · list, IDs, currency, owner
+2. **Pixels + CAPI** · installed, CAPI events last 7 days, event_id dedup rate
+3. **Domain verification** · verified domains at business level
+4. **Standard events** · received last 28 days per pixel, volume per event
+5. **Campaign structure** · campaigns by objective, ad sets, ads
+6. **Catalog** · connected catalogs, product count, last sync, feed errors
+7. **Attribution + iOS14 AEM** · 8-event priority, attribution window per campaign
+8. **Account warnings** · policy flags, spending limits, identity confirmation
 
 Deliver a factual audit: 5 blocks with **data-backed findings**. Each finding = status (OK / Warning / Issue) + what the data says + one-line operational impact. **NEVER** ask the operator questions the API already answered.
 
 ---
 
-## Step 1B — Declarative mode (fallback only)
+## Step 1B · Declarative mode (fallback only)
 
 Announce the mode explicitly:
 > *"Declarative mode. Structured questions on 5 areas. Answer what you know, skip what you don't, screenshots OK. The audit will be as reliable as your memory of the setup."*
@@ -121,11 +121,11 @@ Then proceed area by area, conversationally. **NEVER** a form, **NEVER** decorat
 
 ---
 
-## Step 1 — Initialisation (applies to both modes)
+## Step 1 · Initialisation (applies to both modes)
 
 Read `brands/{slug}/brand.json`. Extract:
 - Brand name and positioning
-- Language preference (FR/EN) — default FR
+- Language preference (FR/EN) · default FR
 - Existing `platforms.meta` config (if any)
 - Brand stage (new, piloting, scaling)
 
@@ -137,7 +137,7 @@ If `platforms.meta` exists, read current setup notes to avoid re-auditing known 
 
 ## The 5 audit blocks
 
-### Block 1 — Pixel and tracking
+### Block 1 · Pixel and tracking
 
 Verify:
 - Meta pixel installed on all pages (Events Manager diagnostics)
@@ -146,7 +146,7 @@ Verify:
 - Domain verified at Business Manager level
 - Pixel + CAPI deduplication active (shared event_id)
 
-### Block 2 — Account structure
+### Block 2 · Account structure
 
 Verify:
 - Business Manager hygiene (users, assets, access levels)
@@ -155,7 +155,7 @@ Verify:
 - Lookalike sources (source quality signal)
 - Catalog connected if ecommerce
 
-### Block 3 — Campaign structure
+### Block 3 · Campaign structure
 
 Verify:
 - Campaign count per objective (not too fragmented)
@@ -164,7 +164,7 @@ Verify:
 - Active vs paused ratio
 - Campaign naming convention
 
-### Block 4 — Catalog and dynamic ads
+### Block 4 · Catalog and dynamic ads
 
 Verify (if catalog connected):
 - Product count and last sync timestamp
@@ -172,7 +172,7 @@ Verify (if catalog connected):
 - Dynamic ads set up with audience signals
 - Product sets and use cases
 
-### Block 5 — Rules and safety
+### Block 5 · Rules and safety
 
 Verify:
 - Account warnings or policy flags
@@ -187,7 +187,7 @@ Verify:
 Deliver findings per block. For each:
 
 ```
-Block N — {name}
+Block N · {name}
 
 - {finding 1}: OK | Warning | Issue
   {what the data or answer says}
